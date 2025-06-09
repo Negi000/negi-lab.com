@@ -24,6 +24,16 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
+  <!-- Amazonアソシエイト Cookie埋め込み -->
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=YOUR_AMAZON_ID" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <!-- 楽天アフィリエイト Cookie埋め込み -->
+  <img src="https://ad.rakuten.co.jp/s/?id=YOUR_RAKUTEN_ID" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+
+  <!-- AmazonアフィリエイトCookie用ピクセル -->
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=YOUR_AMAZON_ID&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <!-- 楽天アフィリエイトCookie用ピクセル -->
+  <img src="https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" />
+
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
@@ -77,7 +87,7 @@
         <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="tools.sectionTitle">便利ツール集</h2>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <!-- 1 -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/unit-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="3" rx="1.5"/><rect x="4" y="14" width="16" height="3" rx="1.5"/></svg>
             </div>
@@ -86,7 +96,7 @@
             <a href="tools/unit-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.unitConverter.open">開く</a>
           </div>
           <!-- 2 -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/image-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="7" cy="7" r="2"/><path d="M21 21l-6-6-4 4-2-2-5 5"/></svg>
             </div>
@@ -95,7 +105,7 @@
             <a href="tools/image-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageConverter.open">開く</a>
           </div>
           <!-- 3 -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/qr-code-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
             </div>
@@ -104,7 +114,7 @@
             <a href="tools/qr-code-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.qrGenerator.open">開く</a>
           </div>
           <!-- 4 -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/url-shortener.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v12m6-6H6"/></svg>
             </div>
