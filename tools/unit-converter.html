@@ -180,63 +180,161 @@
         length: {
           baseUnit: 'meters',
           definitions: {
-            'meters': { nameKey: 'unitConverter.length.meters', factor: 1 },
-            'kilometers': { nameKey: 'unitConverter.length.kilometers', factor: 1000 },
-            'centimeters': { nameKey: 'unitConverter.length.centimeters', factor: 0.01 },
-            'millimeters': { nameKey: 'unitConverter.length.millimeters', factor: 0.001 },
-            'miles': { nameKey: 'unitConverter.length.miles', factor: 1609.34 },
-            'yards': { nameKey: 'unitConverter.length.yards', factor: 0.9144 },
-            'feet': { nameKey: 'unitConverter.length.feet', factor: 0.3048 },
-            'inches': { nameKey: 'unitConverter.length.inches', factor: 0.0254 }
+            'meters': { nameKey: 'unitConverter.length.meters', ja: 'メートル', en: 'Meters', factor: 1 },
+            'kilometers': { nameKey: 'unitConverter.length.kilometers', ja: 'キロメートル', en: 'Kilometers', factor: 1000 },
+            'centimeters': { nameKey: 'unitConverter.length.centimeters', ja: 'センチメートル', en: 'Centimeters', factor: 0.01 },
+            'millimeters': { nameKey: 'unitConverter.length.millimeters', ja: 'ミリメートル', en: 'Millimeters', factor: 0.001 },
+            'micrometers': { nameKey: 'unitConverter.length.micrometers', ja: 'マイクロメートル', en: 'Micrometers', factor: 1e-6 },
+            'nanometers': { nameKey: 'unitConverter.length.nanometers', ja: 'ナノメートル', en: 'Nanometers', factor: 1e-9 },
+            'miles': { nameKey: 'unitConverter.length.miles', ja: 'マイル', en: 'Miles', factor: 1609.344 },
+            'yards': { nameKey: 'unitConverter.length.yards', ja: 'ヤード', en: 'Yards', factor: 0.9144 },
+            'feet': { nameKey: 'unitConverter.length.feet', ja: 'フィート', en: 'Feet', factor: 0.3048 },
+            'inches': { nameKey: 'unitConverter.length.inches', ja: 'インチ', en: 'Inches', factor: 0.0254 },
+            'nautical_miles': { nameKey: 'unitConverter.length.nautical_miles', ja: '海里', en: 'Nautical Miles', factor: 1852 },
+            'light_years': { nameKey: 'unitConverter.length.light_years', ja: '光年', en: 'Light Years', factor: 9.4607e15 },
+            'astronomical_units': { nameKey: 'unitConverter.length.astronomical_units', ja: '天文単位', en: 'Astronomical Units', factor: 1.495978707e11 },
+            'parsecs': { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16 }
           }
         },
         weight: {
           baseUnit: 'grams',
           definitions: {
-            'grams': { nameKey: 'unitConverter.weight.grams', factor: 1 },
-            'kilograms': { nameKey: 'unitConverter.weight.kilograms', factor: 1000 },
-            'milligrams': { nameKey: 'unitConverter.weight.milligrams', factor: 0.001 },
-            'pounds': { nameKey: 'unitConverter.weight.pounds', factor: 453.592 },
-            'ounces': { nameKey: 'unitConverter.weight.ounces', factor: 28.3495 }
+            'grams': { nameKey: 'unitConverter.weight.grams', ja: 'グラム', en: 'Grams', factor: 1 },
+            'kilograms': { nameKey: 'unitConverter.weight.kilograms', ja: 'キログラム', en: 'Kilograms', factor: 1000 },
+            'milligrams': { nameKey: 'unitConverter.weight.milligrams', ja: 'ミリグラム', en: 'Milligrams', factor: 0.001 },
+            'micrograms': { nameKey: 'unitConverter.weight.micrograms', ja: 'マイクログラム', en: 'Micrograms', factor: 1e-6 },
+            'tons': { nameKey: 'unitConverter.weight.tons', ja: 'トン', en: 'Tons', factor: 1e6 },
+            'pounds': { nameKey: 'unitConverter.weight.pounds', ja: 'ポンド', en: 'Pounds', factor: 453.59237 },
+            'ounces': { nameKey: 'unitConverter.weight.ounces', ja: 'オンス', en: 'Ounces', factor: 28.349523125 },
+            'carats': { nameKey: 'unitConverter.weight.carats', ja: 'カラット', en: 'Carats', factor: 0.2 },
+            'stones': { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318 }
           }
         },
         temperature: {
-          // Temperature needs special conversion functions, not just factors. Base unit conceptually Celsius.
           definitions: {
-            'celsius': { nameKey: 'unitConverter.temperature.celsius' },
-            'fahrenheit': { nameKey: 'unitConverter.temperature.fahrenheit' },
-            'kelvin': { nameKey: 'unitConverter.temperature.kelvin' }
+            'celsius': { nameKey: 'unitConverter.temperature.celsius', ja: '摂氏(℃)', en: 'Celsius (°C)' },
+            'fahrenheit': { nameKey: 'unitConverter.temperature.fahrenheit', ja: '華氏(°F)', en: 'Fahrenheit (°F)' },
+            'kelvin': { nameKey: 'unitConverter.temperature.kelvin', ja: 'ケルビン(K)', en: 'Kelvin (K)' },
+            'rankine': { nameKey: 'unitConverter.temperature.rankine', ja: 'ランキン(°R)', en: 'Rankine (°R)' }
           },
           convert: (value, from, to) => {
             if (from === to) return value;
             let valInCelsius;
-            // Convert input to Celsius
             if (from === 'celsius') valInCelsius = value;
             else if (from === 'fahrenheit') valInCelsius = (value - 32) * 5/9;
             else if (from === 'kelvin') {
                 if (value < 0) throw new Error('Kelvin cannot be negative');
                 valInCelsius = value - 273.15;
-            }
-            else return NaN; // Should not happen
-
-            // Convert from Celsius to target unit
+            } else if (from === 'rankine') {
+                valInCelsius = (value - 491.67) * 5/9;
+            } else return NaN;
             if (to === 'celsius') return valInCelsius;
             if (to === 'fahrenheit') return (valInCelsius * 9/5) + 32;
             if (to === 'kelvin') return valInCelsius + 273.15;
-            
-            return NaN; // Should not happen
+            if (to === 'rankine') return (valInCelsius + 273.15) * 9/5;
+            return NaN;
+          }
+        },
+        area: {
+          baseUnit: 'square_meters',
+          definitions: {
+            'square_meters': { nameKey: 'unitConverter.area.square_meters', ja: '平方メートル', en: 'Square Meters', factor: 1 },
+            'square_kilometers': { nameKey: 'unitConverter.area.square_kilometers', ja: '平方キロメートル', en: 'Square Kilometers', factor: 1e6 },
+            'square_centimeters': { nameKey: 'unitConverter.area.square_centimeters', ja: '平方センチメートル', en: 'Square Centimeters', factor: 0.0001 },
+            'square_millimeters': { nameKey: 'unitConverter.area.square_millimeters', ja: '平方ミリメートル', en: 'Square Millimeters', factor: 0.000001 },
+            'hectares': { nameKey: 'unitConverter.area.hectares', ja: 'ヘクタール', en: 'Hectares', factor: 10000 },
+            'acres': { nameKey: 'unitConverter.area.acres', ja: 'エーカー', en: 'Acres', factor: 4046.8564224 },
+            'square_miles': { nameKey: 'unitConverter.area.square_miles', ja: '平方マイル', en: 'Square Miles', factor: 2.59e6 },
+            'square_yards': { nameKey: 'unitConverter.area.square_yards', ja: '平方ヤード', en: 'Square Yards', factor: 0.83612736 },
+            'square_feet': { nameKey: 'unitConverter.area.square_feet', ja: '平方フィート', en: 'Square Feet', factor: 0.09290304 },
+            'square_inches': { nameKey: 'unitConverter.area.square_inches', ja: '平方インチ', en: 'Square Inches', factor: 0.00064516 },
+            'tsubo': { nameKey: 'unitConverter.area.tsubo', ja: '坪', en: 'Tsubo', factor: 3.305785 }
+          }
+        },
+        volume: {
+          baseUnit: 'cubic_meters',
+          definitions: {
+            'cubic_meters': { nameKey: 'unitConverter.volume.cubic_meters', ja: '立方メートル', en: 'Cubic Meters', factor: 1 },
+            'cubic_centimeters': { nameKey: 'unitConverter.volume.cubic_centimeters', ja: '立方センチメートル', en: 'Cubic Centimeters', factor: 0.000001 },
+            'cubic_millimeters': { nameKey: 'unitConverter.volume.cubic_millimeters', ja: '立方ミリメートル', en: 'Cubic Millimeters', factor: 0.000000001 },
+            'liters': { nameKey: 'unitConverter.volume.liters', ja: 'リットル', en: 'Liters', factor: 0.001 },
+            'milliliters': { nameKey: 'unitConverter.volume.milliliters', ja: 'ミリリットル', en: 'Milliliters', factor: 0.000001 },
+            'cubic_inches': { nameKey: 'unitConverter.volume.cubic_inches', ja: '立方インチ', en: 'Cubic Inches', factor: 0.000016387064 },
+            'cubic_feet': { nameKey: 'unitConverter.volume.cubic_feet', ja: '立方フィート', en: 'Cubic Feet', factor: 0.028316846592 },
+            'cubic_yards': { nameKey: 'unitConverter.volume.cubic_yards', ja: '立方ヤード', en: 'Cubic Yards', factor: 0.764554857984 },
+            'gallons': { nameKey: 'unitConverter.volume.gallons', ja: 'ガロン(米)', en: 'Gallons (US)', factor: 0.003785411784 },
+            'quarts': { nameKey: 'unitConverter.volume.quarts', ja: 'クォート(米)', en: 'Quarts (US)', factor: 0.000946352946 },
+            'pints': { nameKey: 'unitConverter.volume.pints', ja: 'パイント(米)', en: 'Pints (US)', factor: 0.000473176473 },
+            'cups': { nameKey: 'unitConverter.volume.cups', ja: 'カップ(米)', en: 'Cups (US)', factor: 0.0002365882365 },
+            'tablespoons': { nameKey: 'unitConverter.volume.tablespoons', ja: '大さじ', en: 'Tablespoons', factor: 0.000015 },
+            'teaspoons': { nameKey: 'unitConverter.volume.teaspoons', ja: '小さじ', en: 'Teaspoons', factor: 0.000005 }
+          }
+        },
+        speed: {
+          baseUnit: 'meters_per_second',
+          definitions: {
+            'meters_per_second': { nameKey: 'unitConverter.speed.meters_per_second', ja: 'メートル毎秒', en: 'Meters per second', factor: 1 },
+            'kilometers_per_hour': { nameKey: 'unitConverter.speed.kilometers_per_hour', ja: 'キロメートル毎時', en: 'Kilometers per hour', factor: 0.277777778 },
+            'miles_per_hour': { nameKey: 'unitConverter.speed.miles_per_hour', ja: 'マイル毎時', en: 'Miles per hour', factor: 0.44704 },
+            'knots': { nameKey: 'unitConverter.speed.knots', ja: 'ノット', en: 'Knots', factor: 0.514444 },
+            'feet_per_second': { nameKey: 'unitConverter.speed.feet_per_second', ja: 'フィート毎秒', en: 'Feet per second', factor: 0.3048 }
+          }
+        },
+        pressure: {
+          baseUnit: 'pascals',
+          definitions: {
+            'pascals': { nameKey: 'unitConverter.pressure.pascals', ja: 'パスカル', en: 'Pascals', factor: 1 },
+            'hectopascals': { nameKey: 'unitConverter.pressure.hectopascals', ja: 'ヘクトパスカル', en: 'Hectopascals', factor: 100 },
+            'kilopascals': { nameKey: 'unitConverter.pressure.kilopascals', ja: 'キロパスカル', en: 'Kilopascals', factor: 1000 },
+            'bars': { nameKey: 'unitConverter.pressure.bars', ja: 'バール', en: 'Bars', factor: 100000 },
+            'atmospheres': { nameKey: 'unitConverter.pressure.atmospheres', ja: '大気圧', en: 'Atmospheres', factor: 101325 },
+            'millimeters_of_mercury': { nameKey: 'unitConverter.pressure.millimeters_of_mercury', ja: '水銀柱ミリメートル', en: 'Millimeters of mercury', factor: 133.322 },
+            'pounds_per_square_inch': { nameKey: 'unitConverter.pressure.pounds_per_square_inch', ja: 'psi', en: 'Pounds per square inch', factor: 6894.76 }
+          }
+        },
+        energy: {
+          baseUnit: 'joules',
+          definitions: {
+            'joules': { nameKey: 'unitConverter.energy.joules', ja: 'ジュール', en: 'Joules', factor: 1 },
+            'kilojoules': { nameKey: 'unitConverter.energy.kilojoules', ja: 'キロジュール', en: 'Kilojoules', factor: 1000 },
+            'calories': { nameKey: 'unitConverter.energy.calories', ja: 'カロリー', en: 'Calories', factor: 4.184 },
+            'kilocalories': { nameKey: 'unitConverter.energy.kilocalories', ja: 'キロカロリー', en: 'Kilocalories', factor: 4184 },
+            'watt_hours': { nameKey: 'unitConverter.energy.watt_hours', ja: 'ワット時', en: 'Watt-hours', factor: 3600 },
+            'kilowatt_hours': { nameKey: 'unitConverter.energy.kilowatt_hours', ja: 'キロワット時', en: 'Kilowatt-hours', factor: 3.6e6 },
+            'electronvolts': { nameKey: 'unitConverter.energy.electronvolts', ja: '電子ボルト', en: 'Electronvolts', factor: 1.60218e-19 },
+            'british_thermal_units': { nameKey: 'unitConverter.energy.british_thermal_units', ja: 'BTU', en: 'British thermal units', factor: 1055.06 },
+            'foot_pounds': { nameKey: 'unitConverter.energy.foot_pounds', ja: 'フット・ポンド', en: 'Foot-pounds', factor: 1.35582 }
+          }
+        },
+        power: {
+          baseUnit: 'watts',
+          definitions: {
+            'watts': { nameKey: 'unitConverter.power.watts', ja: 'ワット', en: 'Watts', factor: 1 },
+            'kilowatts': { nameKey: 'unitConverter.power.kilowatts', ja: 'キロワット', en: 'Kilowatts', factor: 1000 },
+            'megawatts': { nameKey: 'unitConverter.power.megawatts', ja: 'メガワット', en: 'Megawatts', factor: 1e6 },
+            'horsepower': { nameKey: 'unitConverter.power.horsepower', ja: '馬力', en: 'Horsepower', factor: 745.7 },
+            'btu_per_hour': { nameKey: 'unitConverter.power.btu_per_hour', ja: 'BTU毎時', en: 'BTU per hour', factor: 0.293071 }
+          }
+        },
+        time: {
+          baseUnit: 'seconds',
+          definitions: {
+            'seconds': { nameKey: 'unitConverter.time.seconds', ja: '秒', en: 'Seconds', factor: 1 },
+            'minutes': { nameKey: 'unitConverter.time.minutes', ja: '分', en: 'Minutes', factor: 60 },
+            'hours': { nameKey: 'unitConverter.time.hours', ja: '時間', en: 'Hours', factor: 3600 },
+            'days': { nameKey: 'unitConverter.time.days', ja: '日', en: 'Days', factor: 86400 },
+            'weeks': { nameKey: 'unitConverter.time.weeks', ja: '週間', en: 'Weeks', factor: 604800 },
+            'months': { nameKey: 'unitConverter.time.months', ja: '月', en: 'Months (30d)', factor: 2592000 },
+            'years': { nameKey: 'unitConverter.time.years', ja: '年', en: 'Years', factor: 31536000 }
           }
         }
       };
       
-      function getTranslatedText(key) {
-          const lang = document.documentElement.lang || 'ja';
-          if (window.translations && window.translations[lang] && window.translations[lang][key]) {
-              return window.translations[lang][key];
-          }
-          return key; // Fallback
+      function getTranslatedUnitName(unitDef) {
+        const lang = document.documentElement.lang || 'ja';
+        if (unitDef[lang]) return unitDef[lang];
+        return unitDef.en || unitDef.ja || unitDef.nameKey;
       }
-
 
       function populateUnits(category) {
         const currentCategoryData = unitsData[category];
@@ -249,45 +347,36 @@
         const unitDefs = currentCategoryData.definitions;
         fromUnitSelect.innerHTML = '';
         toUnitSelect.innerHTML = '';
-        
-        const currentLang = document.documentElement.lang || 'ja';
-        const currentTranslations = window.translations?.[currentLang] || window.translations?.ja;
 
         Object.keys(unitDefs).forEach((unitKey, index) => {
-          const nameKey = unitDefs[unitKey].nameKey;
-          let translatedName = unitKey; 
-          if (currentTranslations && currentTranslations[nameKey]) {
-            translatedName = currentTranslations[nameKey];
-          }
-          
+          const unitDef = unitDefs[unitKey];
+          const translatedName = getTranslatedUnitName(unitDef);
           const optionFrom = document.createElement('option');
           optionFrom.value = unitKey;
           optionFrom.textContent = translatedName;
-          optionFrom.dataset.translateKey = nameKey; 
+          optionFrom.dataset.translateKey = unitDef.nameKey;
           fromUnitSelect.appendChild(optionFrom);
 
           const optionTo = document.createElement('option');
           optionTo.value = unitKey;
           optionTo.textContent = translatedName;
-          optionTo.dataset.translateKey = nameKey;
+          optionTo.dataset.translateKey = unitDef.nameKey;
           toUnitSelect.appendChild(optionTo);
 
-          // Set default selections
           if (index === 0) fromUnitSelect.value = unitKey;
           if (index === 1) toUnitSelect.value = unitKey;
-          else if (Object.keys(unitDefs).length === 1 && index === 0) { // if only one unit, select it for 'to' as well
+          else if (Object.keys(unitDefs).length === 1 && index === 0) {
             toUnitSelect.value = unitKey;
           }
         });
-        
-        // Ensure 'to' unit is different from 'from' if possible
+
         if (fromUnitSelect.value === toUnitSelect.value && Object.keys(unitDefs).length > 1) {
             const secondOptionValue = Object.keys(unitDefs)[1];
             if (secondOptionValue) {
                  toUnitSelect.value = secondOptionValue;
             }
         }
-        if (Object.keys(unitDefs).length === 0) { // Clear selects if no units
+        if (Object.keys(unitDefs).length === 0) {
              fromUnitSelect.innerHTML = '';
              toUnitSelect.innerHTML = '';
         }
