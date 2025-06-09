@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate-key="unitConverter.pageTitle">単位変換ツール - negi-lab.com</title>
+  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ、重さ、温度などの単位を簡単に変換できるツール。日常や学習、仕事に役立ちます。" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+    // Set page-specific translation keys for index.tsx
+    window.pageTitleTranslationKey = "unitConverter.pageTitle";
+    window.metaDescriptionTranslationKey = "unitConverter.metaDescription";
+  </script>
+  <style>
+    .form-select, .form-input {
+      @apply w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent;
+    }
+    select:disabled {
+      @apply bg-gray-100 cursor-not-allowed opacity-70;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="unitConverter.mainTitle">単位変換</h1>
+
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+        <div>
+          <label for="category" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.categoryLabel">カテゴリ:</label>
+          <select id="category" class="form-select">
+            <option value="length" data-translate-key="unitConverter.category.length">長さ</option>
+            <option value="weight" data-translate-key="unitConverter.category.weight">重さ</option>
+            <option value="temperature" data-translate-key="unitConverter.category.temperature">温度</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+          <div>
+            <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
+            <input type="number" id="inputValue" value="1" class="form-input">
+          </div>
+          <div>
+            <label for="fromUnit" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.fromUnitLabel">変換元:</label>
+            <select id="fromUnit" class="form-select"></select>
+          </div>
+        </div>
+        
+        <div class="flex justify-center my-2 md:my-4">
+            <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 12l-4-4m4 4l4-4m6 8v-12m0 12l-4-4m4 4l4 4" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+          <div>
+            <label for="toUnit" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.toUnitLabel">変換先:</label>
+            <select id="toUnit" class="form-select"></select>
+          </div>
+          <div>
+            <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
+            <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed">
+          </div>
+        </div>
+         <p id="errorMessage" class="text-red-600 text-sm"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <div>
+      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
+      <span class="mx-2">|</span>
+      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:info@negi-lab.com" class="underline hover:text-accent">info@negi-lab.com</a></span>
+    </div>
+  </footer>
+
+  <script type="module" src="../index.tsx" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const categorySelect = document.getElementById('category');
+      const inputValue = document.getElementById('inputValue');
+      const fromUnitSelect = document.getElementById('fromUnit');
+      const toUnitSelect = document.getElementById('toUnit');
+      const resultValue = document.getElementById('resultValue');
+      const swapButton = document.getElementById('swapUnits');
+      const errorMessageElement = document.getElementById('errorMessage');
+
+      const unitsData = {
+        length: {
+          baseUnit: 'meters',
+          definitions: {
+            'meters': { nameKey: 'unitConverter.length.meters', factor: 1 },
+            'kilometers': { nameKey: 'unitConverter.length.kilometers', factor: 1000 },
+            'centimeters': { nameKey: 'unitConverter.length.centimeters', factor: 0.01 },
+            'millimeters': { nameKey: 'unitConverter.length.millimeters', factor: 0.001 },
+            'miles': { nameKey: 'unitConverter.length.miles', factor: 1609.34 },
+            'yards': { nameKey: 'unitConverter.length.yards', factor: 0.9144 },
+            'feet': { nameKey: 'unitConverter.length.feet', factor: 0.3048 },
+            'inches': { nameKey: 'unitConverter.length.inches', factor: 0.0254 }
+          }
+        },
+        weight: {
+          baseUnit: 'grams',
+          definitions: {
+            'grams': { nameKey: 'unitConverter.weight.grams', factor: 1 },
+            'kilograms': { nameKey: 'unitConverter.weight.kilograms', factor: 1000 },
+            'milligrams': { nameKey: 'unitConverter.weight.milligrams', factor: 0.001 },
+            'pounds': { nameKey: 'unitConverter.weight.pounds', factor: 453.592 },
+            'ounces': { nameKey: 'unitConverter.weight.ounces', factor: 28.3495 }
+          }
+        },
+        temperature: {
+          // Temperature needs special conversion functions, not just factors. Base unit conceptually Celsius.
+          definitions: {
+            'celsius': { nameKey: 'unitConverter.temperature.celsius' },
+            'fahrenheit': { nameKey: 'unitConverter.temperature.fahrenheit' },
+            'kelvin': { nameKey: 'unitConverter.temperature.kelvin' }
+          },
+          convert: (value, from, to) => {
+            if (from === to) return value;
+            let valInCelsius;
+            // Convert input to Celsius
+            if (from === 'celsius') valInCelsius = value;
+            else if (from === 'fahrenheit') valInCelsius = (value - 32) * 5/9;
+            else if (from === 'kelvin') {
+                if (value < 0) throw new Error('Kelvin cannot be negative');
+                valInCelsius = value - 273.15;
+            }
+            else return NaN; // Should not happen
+
+            // Convert from Celsius to target unit
+            if (to === 'celsius') return valInCelsius;
+            if (to === 'fahrenheit') return (valInCelsius * 9/5) + 32;
+            if (to === 'kelvin') return valInCelsius + 273.15;
+            
+            return NaN; // Should not happen
+          }
+        }
+      };
+      
+      function getTranslatedText(key) {
+          const lang = document.documentElement.lang || 'ja';
+          if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+              return window.translations[lang][key];
+          }
+          return key; // Fallback
+      }
+
+
+      function populateUnits(category) {
+        const currentCategoryData = unitsData[category];
+        if (!currentCategoryData) {
+            fromUnitSelect.innerHTML = '';
+            toUnitSelect.innerHTML = '';
+            resultValue.value = '---';
+            return;
+        }
+        const unitDefs = currentCategoryData.definitions;
+        fromUnitSelect.innerHTML = '';
+        toUnitSelect.innerHTML = '';
+        
+        const currentLang = document.documentElement.lang || 'ja';
+        const currentTranslations = window.translations?.[currentLang] || window.translations?.ja;
+
+        Object.keys(unitDefs).forEach((unitKey, index) => {
+          const nameKey = unitDefs[unitKey].nameKey;
+          let translatedName = unitKey; 
+          if (currentTranslations && currentTranslations[nameKey]) {
+            translatedName = currentTranslations[nameKey];
+          }
+          
+          const optionFrom = document.createElement('option');
+          optionFrom.value = unitKey;
+          optionFrom.textContent = translatedName;
+          optionFrom.dataset.translateKey = nameKey; 
+          fromUnitSelect.appendChild(optionFrom);
+
+          const optionTo = document.createElement('option');
+          optionTo.value = unitKey;
+          optionTo.textContent = translatedName;
+          optionTo.dataset.translateKey = nameKey;
+          toUnitSelect.appendChild(optionTo);
+
+          // Set default selections
+          if (index === 0) fromUnitSelect.value = unitKey;
+          if (index === 1) toUnitSelect.value = unitKey;
+          else if (Object.keys(unitDefs).length === 1 && index === 0) { // if only one unit, select it for 'to' as well
+            toUnitSelect.value = unitKey;
+          }
+        });
+        
+        // Ensure 'to' unit is different from 'from' if possible
+        if (fromUnitSelect.value === toUnitSelect.value && Object.keys(unitDefs).length > 1) {
+            const secondOptionValue = Object.keys(unitDefs)[1];
+            if (secondOptionValue) {
+                 toUnitSelect.value = secondOptionValue;
+            }
+        }
+        if (Object.keys(unitDefs).length === 0) { // Clear selects if no units
+             fromUnitSelect.innerHTML = '';
+             toUnitSelect.innerHTML = '';
+        }
+
+        convert(); 
+      }
+      
+      function convert() {
+        errorMessageElement.textContent = ''; // Clear previous errors
+        const category = categorySelect.value;
+        const currentCategoryData = unitsData[category];
+        const val = parseFloat(inputValue.value);
+
+        if (isNaN(val) || !currentCategoryData || !fromUnitSelect.value || !toUnitSelect.value) {
+          resultValue.value = '---';
+          return;
+        }
+
+        let convertedValue;
+        try {
+            if (category === 'temperature') {
+              if (fromUnitSelect.value === 'kelvin' && val < 0) {
+                  throw new Error(getTranslatedText('unitConverter.error.invalidTempInput'));
+              }
+              convertedValue = currentCategoryData.convert(val, fromUnitSelect.value, toUnitSelect.value);
+            } else {
+              const fromUnit = currentCategoryData.definitions[fromUnitSelect.value];
+              const toUnit = currentCategoryData.definitions[toUnitSelect.value];
+              if (!fromUnit || !toUnit) {
+                 resultValue.value = '---'; return;
+              }
+              const valueInBase = val * fromUnit.factor;
+              convertedValue = valueInBase / toUnit.factor;
+            }
+
+            if (isNaN(convertedValue)) {
+                resultValue.value = 'Error';
+            } else {
+                 // For very small or very large numbers, toPrecision can be better.
+                 // For general numbers, toFixed(sensibleDecimalPlaces) is often cleaner.
+                 // Let's use a dynamic precision approach.
+                 if (Math.abs(convertedValue) > 1e-6 && Math.abs(convertedValue) < 1e6) {
+                    resultValue.value = parseFloat(convertedValue.toFixed(6)).toString(); // Remove trailing zeros from fixed
+                 } else if (convertedValue === 0) {
+                    resultValue.value = "0";
+                 }
+                 else {
+                    resultValue.value = convertedValue.toPrecision(6);
+                 }
+            }
+        } catch (error) {
+            console.error("Conversion error:", error);
+            errorMessageElement.textContent = error.message || getTranslatedText('unitConverter.error.generic'); // Use generic if no message
+            resultValue.value = 'Error';
+        }
+      }
+
+      function swapUnitsHandler() {
+          const fromVal = fromUnitSelect.value;
+          const toVal = toUnitSelect.value;
+          fromUnitSelect.value = toVal;
+          toUnitSelect.value = fromVal;
+          convert();
+      }
+
+      categorySelect.addEventListener('change', () => populateUnits(categorySelect.value));
+      inputValue.addEventListener('input', convert);
+      fromUnitSelect.addEventListener('change', convert);
+      toUnitSelect.addEventListener('change', convert);
+      swapButton.addEventListener('click', swapUnitsHandler);
+
+      populateUnits(categorySelect.value); // Initial population
+
+       const langSwitchObserver = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+            populateUnits(categorySelect.value); 
+            convert(); 
+             // Re-translate error message if visible
+            if (errorMessageElement.textContent) {
+                // This is a bit tricky, ideally error messages should have keys too or be re-triggered
+                // For now, let's assume convert() will handle re-displaying with new lang if inputs are same
+            }
+          }
+        }
+      });
+      langSwitchObserver.observe(document.documentElement, { attributes: true });
+
+    });
+  </script>
+</body>
+</html>

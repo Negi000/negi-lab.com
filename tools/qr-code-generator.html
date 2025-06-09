@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate-key="qrGenerator.pageTitle">QRコード作成ツール - negi-lab.com</title>
+  <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+    window.pageTitleTranslationKey = "qrGenerator.pageTitle";
+    window.metaDescriptionTranslationKey = "qrGenerator.metaDescription";
+  </script>
+  <style>
+    .form-input, .form-select, .form-button {
+      @apply p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent;
+    }
+    .form-button {
+      @apply bg-accent text-white hover:bg-emerald-500 transition duration-150 ease-in-out;
+    }
+    .form-button:disabled {
+      @apply bg-gray-300 cursor-not-allowed hover:bg-gray-300;
+    }
+    #qrcodeOutput {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #e2e8f0; /* gray-200 */
+        border-radius: 0.375rem; /* rounded-md */
+        min-height: 200px; 
+        background-color: white;
+    }
+    #qrcodeOutput img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12">
+    <div class="max-w-2xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="qrGenerator.mainTitle">QRコード作成ツール</h1>
+      
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+        <div>
+          <label for="qrData" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.dataLabel">データ (テキストまたはURL):</label>
+          <textarea id="qrData" rows="3" class="form-input w-full" placeholder="https://negi-lab.com"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <label for="qrSize" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.sizeLabel">サイズ (px):</label>
+                <input type="number" id="qrSize" value="256" min="50" max="1000" class="form-input w-full">
+            </div>
+            <div>
+                <label for="qrErrorCorrection" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.errorCorrectionLabel">エラー訂正レベル:</label>
+                <select id="qrErrorCorrection" class="form-select w-full">
+                    <option value="L" data-translate-key="qrGenerator.errorCorrection.L">Low (L ~7%)</option>
+                    <option value="M" selected data-translate-key="qrGenerator.errorCorrection.M">Medium (M ~15%)</option>
+                    <option value="Q" data-translate-key="qrGenerator.errorCorrection.Q">Quartile (Q ~25%)</option>
+                    <option value="H" data-translate-key="qrGenerator.errorCorrection.H">High (H ~30%)</option>
+                </select>
+            </div>
+        </div>
+         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <label for="qrFgColor" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.fgColorLabel">前景色:</label>
+                <input type="color" id="qrFgColor" value="#000000" class="form-input w-full h-10 p-1">
+            </div>
+            <div>
+                <label for="qrBgColor" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.bgColorLabel">背景色:</label>
+                <input type="color" id="qrBgColor" value="#ffffff" class="form-input w-full h-10 p-1">
+            </div>
+        </div>
+        
+        <button id="generateQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.generateButton">QRコードを生成</button>
+        
+        <div id="qrResultContainer" class="mt-4 space-y-3 hidden">
+            <div id="qrcodeOutput" role="img" aria-label="Generated QR Code">
+                <!-- QR Code will be rendered here by JavaScript -->
+            </div>
+            <button id="downloadQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.downloadButton">PNGでダウンロード</button>
+        </div>
+        
+        <div id="messageArea" class="text-sm mt-2">
+            <p id="statusMessage" class="text-gray-600"></p>
+            <p id="errorMessage" class="text-red-600"></p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <div>
+      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
+      <span class="mx-2">|</span>
+      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:info@negi-lab.com" class="underline hover:text-accent">info@negi-lab.com</a></span>
+    </div>
+  </footer>
+
+  <script type="module" src="../index.tsx" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const qrDataInput = document.getElementById('qrData');
+        const qrSizeInput = document.getElementById('qrSize');
+        const qrFgColorInput = document.getElementById('qrFgColor');
+        const qrBgColorInput = document.getElementById('qrBgColor');
+        const qrErrorCorrectionSelect = document.getElementById('qrErrorCorrection');
+        const generateQrButton = document.getElementById('generateQrButton');
+        const qrcodeOutputDiv = document.getElementById('qrcodeOutput');
+        const qrResultContainer = document.getElementById('qrResultContainer');
+        const downloadQrButton = document.getElementById('downloadQrButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        let qrcodeInstance = null;
+
+        function getLang() {
+            return document.documentElement.lang || 'ja';
+        }
+
+        function translate(key) {
+            const lang = getLang();
+            if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+                return window.translations[lang][key];
+            }
+            const fallbacks = {
+                'qrGenerator.generatingMessage': 'Generating...',
+                'qrGenerator.error.emptyInput': 'Please enter data for QR code.',
+                'qrGenerator.error.generic': 'Error generating QR code.',
+                'qrGenerator.qrAlt': 'Generated QR Code'
+            };
+            return fallbacks[key] || key;
+        }
+        
+        function clearMessages() {
+            statusMessage.textContent = '';
+            errorMessage.textContent = '';
+        }
+
+        function generateQRCode() {
+            clearMessages();
+            const data = qrDataInput.value.trim();
+            if (!data) {
+                errorMessage.textContent = translate('qrGenerator.error.emptyInput');
+                qrResultContainer.classList.add('hidden');
+                return;
+            }
+
+            statusMessage.textContent = translate('qrGenerator.generatingMessage');
+            
+            const size = parseInt(qrSizeInput.value, 10);
+            const fgColor = qrFgColorInput.value;
+            const bgColor = qrBgColorInput.value;
+            const errorCorrectionLevel = qrErrorCorrectionSelect.value;
+
+            qrcodeOutputDiv.innerHTML = ''; 
+
+            try {
+                if (typeof QRCode === 'undefined') {
+                    errorMessage.textContent = translate('qrGenerator.error.generic') + " (Library not loaded)";
+                    statusMessage.textContent = '';
+                    return;
+                }
+
+                qrcodeInstance = new QRCode(qrcodeOutputDiv, {
+                    text: data,
+                    width: size,
+                    height: size,
+                    colorDark: fgColor,
+                    colorLight: bgColor,
+                    correctLevel: QRCode.CorrectLevel[errorCorrectionLevel] || QRCode.CorrectLevel.M
+                });
+                
+                qrResultContainer.classList.remove('hidden');
+                statusMessage.textContent = '';
+                const qrImg = qrcodeOutputDiv.querySelector('img');
+                if (qrImg) {
+                    qrImg.alt = translate('qrGenerator.qrAlt');
+                }
+
+            } catch (error) {
+                console.error("QR Code generation error:", error);
+                errorMessage.textContent = translate('qrGenerator.error.generic');
+                statusMessage.textContent = '';
+                qrResultContainer.classList.add('hidden');
+            }
+        }
+
+        generateQrButton.addEventListener('click', generateQRCode);
+
+        downloadQrButton.addEventListener('click', () => {
+            const qrImg = qrcodeOutputDiv.querySelector('img');
+            const qrCanvas = qrcodeOutputDiv.querySelector('canvas');
+
+            let downloadUrl = null;
+            if (qrImg && qrImg.src) {
+                downloadUrl = qrImg.src;
+            } else if (qrCanvas) {
+                 downloadUrl = qrCanvas.toDataURL('image/png');
+            }
+            
+            if (downloadUrl) {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = downloadUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                errorMessage.textContent = translate('qrGenerator.error.generic') + " (No image found)";
+            }
+        });
+        
+        const langSwitchObserver = new MutationObserver(() => {
+            if (errorMessage.textContent) {
+                 const currentErrorKey = Object.keys(window.translations[getLang()] || {}).find(key => window.translations[getLang()][key] === errorMessage.textContent);
+                 if (currentErrorKey) errorMessage.textContent = translate(currentErrorKey);
+            }
+            const qrImg = qrcodeOutputDiv.querySelector('img');
+            if (qrImg && qrResultContainer.offsetParent !== null) { 
+                 qrImg.alt = translate('qrGenerator.qrAlt');
+            }
+        });
+        langSwitchObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    });
+  </script>
+</body>
+</html>
