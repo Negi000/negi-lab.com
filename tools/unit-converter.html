@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-translate-key="unitConverter.pageTitle">単位変換ツール - negi-lab.com</title>
-  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ、重さ、温度などの単位を簡単に変換できるツール。日常や学習、仕事に役立ちます。" />
+  <title data-translate-key="unitConverter.pageTitle">【全単位網羅】単位変換ツール - 長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位も対応 | negi-lab.com</title>
+  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。スマホ対応・無料・広告最小限。" />
+  <meta name="keywords" content="単位変換,長さ,重さ,温度,体積,圧力,エネルギー,電子レンジ,cc,ml,換算,変換,SI,専門単位,理系,工学,医療,料理,海外,無料,スマホ,negi-lab" />
+  <meta property="og:title" content="【全単位網羅】単位変換ツール | negi-lab.com" />
+  <meta property="og:description" content="長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/tools/unit-converter.html" />
+  <meta property="og:image" content="https://negi-lab.com/ogp-unit-converter.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="【全単位網羅】単位変換ツール | negi-lab.com" />
+  <meta name="twitter:description" content="長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。" />
+  <meta name="twitter:image" content="https://negi-lab.com/ogp-unit-converter.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -114,7 +124,8 @@
         <div class="flex justify-center my-2 md:my-4">
             <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 12l-4-4m4 4l4-4m6 8v-12m0 12l-4-4m4 4l4 4" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 17l4 4 4-4M20 7l-4-4-4 4" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V3" />
                 </svg>
             </button>
         </div>
@@ -193,7 +204,15 @@
             'nautical_miles': { nameKey: 'unitConverter.length.nautical_miles', ja: '海里', en: 'Nautical Miles', factor: 1852 },
             'light_years': { nameKey: 'unitConverter.length.light_years', ja: '光年', en: 'Light Years', factor: 9.4607e15 },
             'astronomical_units': { nameKey: 'unitConverter.length.astronomical_units', ja: '天文単位', en: 'Astronomical Units', factor: 1.495978707e11 },
-            'parsecs': { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16 }
+            'parsecs': { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16 },
+            'angstroms': { nameKey: 'unitConverter.length.angstroms', ja: 'オングストローム', en: 'Angstroms', factor: 1e-10 },
+            'fathoms': { nameKey: 'unitConverter.length.fathoms', ja: 'ファゾム', en: 'Fathoms', factor: 1.8288 },
+            'chains': { nameKey: 'unitConverter.length.chains', ja: 'チェーン', en: 'Chains', factor: 20.1168 },
+            'rods': { nameKey: 'unitConverter.length.rods', ja: 'ロッド', en: 'Rods', factor: 5.0292 },
+            'links': { nameKey: 'unitConverter.length.links', ja: 'リンク', en: 'Links', factor: 0.201168 },
+            'furlongs': { nameKey: 'unitConverter.length.furlongs', ja: 'ハロン', en: 'Furlongs', factor: 201.168 },
+            'cables': { nameKey: 'unitConverter.length.cables', ja: 'ケーブル', en: 'Cables', factor: 185.2 },
+            'mil': { nameKey: 'unitConverter.length.mil', ja: 'ミル', en: 'Mil (thou)', factor: 0.0000254 }
           }
         },
         weight: {
@@ -207,7 +226,12 @@
             'pounds': { nameKey: 'unitConverter.weight.pounds', ja: 'ポンド', en: 'Pounds', factor: 453.59237 },
             'ounces': { nameKey: 'unitConverter.weight.ounces', ja: 'オンス', en: 'Ounces', factor: 28.349523125 },
             'carats': { nameKey: 'unitConverter.weight.carats', ja: 'カラット', en: 'Carats', factor: 0.2 },
-            'stones': { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318 }
+            'stones': { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318 },
+            'grains': { nameKey: 'unitConverter.weight.grains', ja: 'グレーン', en: 'Grains', factor: 0.06479891 },
+            'slugs': { nameKey: 'unitConverter.weight.slugs', ja: 'スラッグ', en: 'Slugs', factor: 14593.903 },
+            'long_tons': { nameKey: 'unitConverter.weight.long_tons', ja: '英トン', en: 'Long Tons (UK)', factor: 1.016e6 },
+            'short_tons': { nameKey: 'unitConverter.weight.short_tons', ja: '米トン', en: 'Short Tons (US)', factor: 907185 },
+            'atomic_mass_unit': { nameKey: 'unitConverter.weight.atomic_mass_unit', ja: '原子質量単位', en: 'Atomic Mass Unit', factor: 1.66053906660e-24 }
           }
         },
         temperature: {
@@ -248,7 +272,11 @@
             'square_yards': { nameKey: 'unitConverter.area.square_yards', ja: '平方ヤード', en: 'Square Yards', factor: 0.83612736 },
             'square_feet': { nameKey: 'unitConverter.area.square_feet', ja: '平方フィート', en: 'Square Feet', factor: 0.09290304 },
             'square_inches': { nameKey: 'unitConverter.area.square_inches', ja: '平方インチ', en: 'Square Inches', factor: 0.00064516 },
-            'tsubo': { nameKey: 'unitConverter.area.tsubo', ja: '坪', en: 'Tsubo', factor: 3.305785 }
+            'tsubo': { nameKey: 'unitConverter.area.tsubo', ja: '坪', en: 'Tsubo', factor: 3.305785 },
+            'a': { nameKey: 'unitConverter.area.a', ja: 'アール', en: 'Are', factor: 100 },
+            'square_rods': { nameKey: 'unitConverter.area.square_rods', ja: '平方ロッド', en: 'Square Rods', factor: 25.2929 },
+            'square_chains': { nameKey: 'unitConverter.area.square_chains', ja: '平方チェーン', en: 'Square Chains', factor: 404.6873 },
+            'square_mils': { nameKey: 'unitConverter.area.square_mils', ja: '平方ミル', en: 'Square Mils', factor: 6.4516e-10 }
           }
         },
         volume: {
@@ -267,7 +295,14 @@
             'pints': { nameKey: 'unitConverter.volume.pints', ja: 'パイント(米)', en: 'Pints (US)', factor: 0.000473176473 },
             'cups': { nameKey: 'unitConverter.volume.cups', ja: 'カップ(米)', en: 'Cups (US)', factor: 0.0002365882365 },
             'tablespoons': { nameKey: 'unitConverter.volume.tablespoons', ja: '大さじ', en: 'Tablespoons', factor: 0.000015 },
-            'teaspoons': { nameKey: 'unitConverter.volume.teaspoons', ja: '小さじ', en: 'Teaspoons', factor: 0.000005 }
+            'teaspoons': { nameKey: 'unitConverter.volume.teaspoons', ja: '小さじ', en: 'Teaspoons', factor: 0.000005 },
+            'cc': { nameKey: 'unitConverter.volume.cc', ja: 'シーシー (cc)', en: 'Cubic Centimeter (cc)', factor: 0.000001 },
+            'ml': { nameKey: 'unitConverter.volume.ml', ja: 'ミリリットル (ml)', en: 'Milliliter (ml)', factor: 0.000001 },
+            'barrels': { nameKey: 'unitConverter.volume.barrels', ja: 'バレル', en: 'Barrels', factor: 0.1589873 },
+            'gills': { nameKey: 'unitConverter.volume.gills', ja: 'ジル', en: 'Gills', factor: 0.0001182941 },
+            'fluid_ounces': { nameKey: 'unitConverter.volume.fluid_ounces', ja: '液量オンス', en: 'Fluid Ounces', factor: 0.00002957353 },
+            'pecks': { nameKey: 'unitConverter.volume.pecks', ja: 'ペック', en: 'Pecks', factor: 0.00880977 },
+            'bushels': { nameKey: 'unitConverter.volume.bushels', ja: 'ブッシェル', en: 'Bushels', factor: 0.03523907 }
           }
         },
         speed: {
@@ -289,7 +324,10 @@
             'bars': { nameKey: 'unitConverter.pressure.bars', ja: 'バール', en: 'Bars', factor: 100000 },
             'atmospheres': { nameKey: 'unitConverter.pressure.atmospheres', ja: '大気圧', en: 'Atmospheres', factor: 101325 },
             'millimeters_of_mercury': { nameKey: 'unitConverter.pressure.millimeters_of_mercury', ja: '水銀柱ミリメートル', en: 'Millimeters of mercury', factor: 133.322 },
-            'pounds_per_square_inch': { nameKey: 'unitConverter.pressure.pounds_per_square_inch', ja: 'psi', en: 'Pounds per square inch', factor: 6894.76 }
+            'pounds_per_square_inch': { nameKey: 'unitConverter.pressure.pounds_per_square_inch', ja: 'psi', en: 'Pounds per square inch', factor: 6894.76 },
+            'torr': { nameKey: 'unitConverter.pressure.torr', ja: 'トル', en: 'Torr', factor: 133.322368 },
+            'psi_uk': { nameKey: 'unitConverter.pressure.psi_uk', ja: 'psi(UK)', en: 'Pounds per square inch (UK)', factor: 6894.757 },
+            'mmh2o': { nameKey: 'unitConverter.pressure.mmh2o', ja: '水柱ミリメートル', en: 'Millimeters of water', factor: 9.80665 }
           }
         },
         energy: {
@@ -303,7 +341,10 @@
             'kilowatt_hours': { nameKey: 'unitConverter.energy.kilowatt_hours', ja: 'キロワット時', en: 'Kilowatt-hours', factor: 3.6e6 },
             'electronvolts': { nameKey: 'unitConverter.energy.electronvolts', ja: '電子ボルト', en: 'Electronvolts', factor: 1.60218e-19 },
             'british_thermal_units': { nameKey: 'unitConverter.energy.british_thermal_units', ja: 'BTU', en: 'British thermal units', factor: 1055.06 },
-            'foot_pounds': { nameKey: 'unitConverter.energy.foot_pounds', ja: 'フット・ポンド', en: 'Foot-pounds', factor: 1.35582 }
+            'foot_pounds': { nameKey: 'unitConverter.energy.foot_pounds', ja: 'フット・ポンド', en: 'Foot-pounds', factor: 1.35582 },
+            'therms': { nameKey: 'unitConverter.energy.therms', ja: 'サーム', en: 'Therms', factor: 105505585.262 },
+            'ergs': { nameKey: 'unitConverter.energy.ergs', ja: 'エルグ', en: 'Ergs', factor: 1e-7 },
+            'hartree': { nameKey: 'unitConverter.energy.hartree', ja: 'ハートリー', en: 'Hartree', factor: 4.3597447222071e-18 }
           }
         },
         power: {
@@ -313,7 +354,9 @@
             'kilowatts': { nameKey: 'unitConverter.power.kilowatts', ja: 'キロワット', en: 'Kilowatts', factor: 1000 },
             'megawatts': { nameKey: 'unitConverter.power.megawatts', ja: 'メガワット', en: 'Megawatts', factor: 1e6 },
             'horsepower': { nameKey: 'unitConverter.power.horsepower', ja: '馬力', en: 'Horsepower', factor: 745.7 },
-            'btu_per_hour': { nameKey: 'unitConverter.power.btu_per_hour', ja: 'BTU毎時', en: 'BTU per hour', factor: 0.293071 }
+            'btu_per_hour': { nameKey: 'unitConverter.power.btu_per_hour', ja: 'BTU毎時', en: 'BTU per hour', factor: 0.293071 },
+            'gigawatts': { nameKey: 'unitConverter.power.gigawatts', ja: 'ギガワット', en: 'Gigawatts', factor: 1e9 },
+            'megacalories_per_hour': { nameKey: 'unitConverter.power.megacalories_per_hour', ja: 'メガカロリー毎時', en: 'Megacalories per hour', factor: 1163000 }
           }
         },
         time: {
@@ -325,7 +368,20 @@
             'days': { nameKey: 'unitConverter.time.days', ja: '日', en: 'Days', factor: 86400 },
             'weeks': { nameKey: 'unitConverter.time.weeks', ja: '週間', en: 'Weeks', factor: 604800 },
             'months': { nameKey: 'unitConverter.time.months', ja: '月', en: 'Months (30d)', factor: 2592000 },
-            'years': { nameKey: 'unitConverter.time.years', ja: '年', en: 'Years', factor: 31536000 }
+            'years': { nameKey: 'unitConverter.time.years', ja: '年', en: 'Years', factor: 31536000 },
+            'fortnights': { nameKey: 'unitConverter.time.fortnights', ja: 'フォートナイト', en: 'Fortnights', factor: 1209600 },
+            'milliseconds': { nameKey: 'unitConverter.time.milliseconds', ja: 'ミリ秒', en: 'Milliseconds', factor: 0.001 },
+            'microseconds': { nameKey: 'unitConverter.time.microseconds', ja: 'マイクロ秒', en: 'Microseconds', factor: 0.000001 }
+          }
+        },
+        microwave: {
+          baseUnit: 'w600',
+          definitions: {
+            'w500': { nameKey: 'unitConverter.microwave.w500', ja: '500W電子レンジ', en: '500W Microwave', factor: 1.2 },
+            'w600': { nameKey: 'unitConverter.microwave.w600', ja: '600W電子レンジ', en: '600W Microwave', factor: 1 },
+            'w700': { nameKey: 'unitConverter.microwave.w700', ja: '700W電子レンジ', en: '700W Microwave', factor: 0.86 },
+            'w800': { nameKey: 'unitConverter.microwave.w800', ja: '800W電子レンジ', en: '800W Microwave', factor: 0.75 },
+            'w1000': { nameKey: 'unitConverter.microwave.w1000', ja: '1000W電子レンジ', en: '1000W Microwave', factor: 0.6 }
           }
         }
       };
