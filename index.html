@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-T" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>negi-lab.com - 便利ツール＆ゲーム情報ポータル</title>
-  <meta name="description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
+  <title data-translate-key="page.title">negi-lab.com - 便利ツール＆ゲーム情報ポータル</title>
+  <meta name="description" data-translate-key="meta.description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,6 +20,7 @@
       }
     }
   </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
@@ -28,13 +29,13 @@
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
-        <ul class="flex gap-6 font-medium text-base">
-          <li><a href="#tools" class="hover:text-accent transition">ツール</a></li>
-          <li><a href="#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" selected>日本語</option>
-              <option value="en">English</option>
+              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
         </ul>
@@ -47,13 +48,13 @@
     <!-- Hero Section -->
     <section id="home" class="bg-gradient-to-b from-accent/10 via-white to-gray-100 py-16">
       <div class="max-w-3xl mx-auto text-center px-4">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-5 text-gray-900">毎日に<b class="text-accent">“ちょうどいい”</b>便利さと<br>楽しさを。</h1>
-        <p class="text-lg text-gray-700 mb-8">  
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-5 text-gray-900" data-translate-html-key="hero.title_html">毎日に<b class="text-accent">“ちょうどいい”</b>便利さと<br>楽しさを。</h1>
+        <p class="text-lg text-gray-700 mb-8" data-translate-html-key="hero.subtitle_html">
           negi-lab.comは、<b class="text-accent">作業効率化</b>や<b class="text-accent">ちょっとした手助け</b>がほしい人、<br>
-          <b class="text-accent">ゲームを深く楽しみたい人</b>に向けた<br class="hidden md:inline">  
+          <b class="text-accent">ゲームを深く楽しみたい人</b>に向けた<br class="hidden md:inline">
           ウェブツール＆情報サービスのポータルです。
         </p>
-        <a href="#tools" class="inline-block bg-accent hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg shadow-md transition text-lg">
+        <a href="#tools" class="inline-block bg-accent hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg shadow-md transition text-lg" data-translate-key="hero.cta">
           ツールを使ってみる
         </a>
       </div>
@@ -62,48 +63,48 @@
     <!-- Tools Section -->
     <section id="tools" class="py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">便利ツール集</h2>
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="tools.sectionTitle">便利ツール集</h2>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <!-- 1 -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="3" rx="1.5"/><rect x="4" y="14" width="16" height="3" rx="1.5"/></svg>
             </div>
-            <h3 class="text-xl font-semibold mb-1">単位変換ツール</h3>
-            <p class="text-gray-600 text-sm mb-3 flex-1">長さ・重さ・面積・温度など、身近な単位から専門分野まで一瞬で変換。</p>
-            <a href="#" class="text-accent hover:underline font-semibold">開く</a>
+            <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.unitConverter.title">単位変換ツール</h3>
+            <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.unitConverter.description">長さ・重さ・温度などの単位を日常や学習、仕事に合わせて簡単に変換。</p>
+            <a href="tools/unit-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.unitConverter.open">開く</a>
           </div>
           <!-- 2 -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="7" cy="7" r="2"/><path d="M21 21l-6-6-4 4-2-2-5 5"/></svg>
             </div>
-            <h3 class="text-xl font-semibold mb-1">画像変換ツール</h3>
-            <p class="text-gray-600 text-sm mb-3 flex-1">写真やイラストをWebP/JPEG/PNGなど自在に変換。圧縮・トリミングも。</p>
-            <a href="#" class="text-accent hover:underline font-semibold">開く</a>
+            <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.imageConverter.title">画像変換ツール</h3>
+            <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.imageConverter.description">画像をJPEG/PNG/WebP形式に変換。品質やサイズも調整可能。</p>
+            <a href="tools/image-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageConverter.open">開く</a>
           </div>
           <!-- 3 -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
             </div>
-            <h3 class="text-xl font-semibold mb-1">QRコード作成</h3>
-            <p class="text-gray-600 text-sm mb-3 flex-1">URLやテキストからカスタムQRを高速生成。色や形も選べる。</p>
-            <a href="#" class="text-accent hover:underline font-semibold">開く</a>
+            <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.qrGenerator.title">QRコード作成</h3>
+            <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.qrGenerator.description">URLやテキストからQRコードを即時生成。エラー訂正レベルや色、サイズもカスタマイズ可能。</p>
+            <a href="tools/qr-code-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.qrGenerator.open">開く</a>
           </div>
           <!-- 4 -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6v12m6-6H6"/></svg>
             </div>
-            <h3 class="text-xl font-semibold mb-1">URL短縮ツール</h3>
-            <p class="text-gray-600 text-sm mb-3 flex-1">長いリンクをコンパクト＆見やすく。分析機能も近日公開。</p>
-            <a href="#" class="text-accent hover:underline font-semibold">開く</a>
+            <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.urlShortener.title">URL短縮ツール</h3>
+            <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.urlShortener.description">長いURLをワンクリックで短縮。統計ログ機能も利用可能。</p>
+            <a href="tools/url-shortener.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.urlShortener.open">開く</a>
           </div>
         </div>
         <!-- 広告枠例 -->
         <div class="max-w-lg mx-auto mt-10">
-          <div class="bg-white border border-dashed border-accent/60 px-6 py-4 rounded-lg text-center text-xs text-gray-400 shadow">
+          <div class="bg-white border border-dashed border-accent/60 px-6 py-4 rounded-lg text-center text-xs text-gray-400 shadow" data-translate-key="tools.adPlaceholder">
             AD / サポートバナー表示枠
           </div>
         </div>
@@ -113,13 +114,15 @@
     <!-- Wikis Section -->
     <section id="wikis" class="py-14 bg-gray-100">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">ゲーム攻略Wiki</h2>
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="wikis.sectionTitle">ゲーム攻略Wiki</h2>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- 1 -->
           <div class="bg-white hover:bg-accent/10 transition rounded-2xl p-7 shadow flex flex-col items-start">
-            <h3 class="text-xl font-semibold mb-2 text-gray-800">新月同行 Wiki</h3>
-            <p class="text-gray-600 text-sm mb-4 flex-1">話題のスマホRPG「新月同行」の最新情報・データベース・攻略・ランキングなどを掲載。<span class="inline-block ml-1 px-2 py-0.5 bg-accent/20 text-xs text-accent rounded">日本語限定</span></p>
-            <a href="#" class="text-accent hover:underline font-semibold">Wikiを見る</a>
+            <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate-key="wikis.shingetsu.title">新月同行 Wiki</h3>
+            <p class="text-gray-600 text-sm mb-4 flex-1">
+              <span data-translate-key="wikis.shingetsu.description">話題のスマホRPG「新月同行」の最新情報・データベース・攻略・ランキングなどを掲載。</span><span class="inline-block ml-1 px-2 py-0.5 bg-accent/20 text-xs text-accent rounded" data-translate-key="wikis.shingetsu.languageBadge">日本語限定</span>
+            </p>
+            <a href="#" class="text-accent hover:underline font-semibold" data-translate-key="wikis.shingetsu.open">Wikiを見る</a>
           </div>
           <!-- 必要に応じて他のWikiも追加 -->
         </div>
@@ -129,11 +132,10 @@
     <!-- About/Message Section -->
     <section id="about" class="py-12 bg-white">
       <div class="max-w-2xl mx-auto text-center px-4">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">negi-lab.com について</h2>
-        <p class="text-gray-700 mb-3">このサイトは「誰でも気軽に使える」「ちょっと楽しい」をコンセプトに、管理人が個人で制作・運営しています。</p>
-        <p class="text-gray-700 mb-3">ツールや情報はこれからも随時追加・改善予定。<br>  
-        「こんな機能がほしい」「使ってみた感想」など、気軽にご意見・ご要望をお寄せください。</p>
-        <p class="text-gray-500 text-xs mt-6">Copyright &copy; 2025 negi-lab.com</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="about.sectionTitle">negi-lab.com について</h2>
+        <p class="text-gray-700 mb-3" data-translate-key="about.paragraph1">このサイトは「誰でも気軽に使える」「ちょっと楽しい」をコンセプトに、管理人が個人で制作・運営しています。</p>
+        <p class="text-gray-700 mb-3" data-translate-html-key="about.paragraph2_html">ツールや情報はこれからも随時追加・改善予定。<br>「こんな機能がほしい」「使ってみた感想」など、気軽にご意見・ご要望をお寄せください。</p>
+        <p class="text-gray-500 text-xs mt-6" data-translate-key="about.copyrightLine">Copyright &copy; 2025 negi-lab.com</p>
       </div>
     </section>
 
@@ -141,19 +143,12 @@
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <div>
-      &copy; 2025 negi-lab.com
+      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
       <span class="mx-2">|</span>
-      <span>お問い合わせ: <a href="mailto:info@negi-lab.com" class="underline hover:text-accent">info@negi-lab.com</a></span>
+      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:info@negi-lab.com" class="underline hover:text-accent">info@negi-lab.com</a></span>
     </div>
   </footer>
 
-  <script>
-    // 今後本格的な多言語化UI導入時用
-    document.getElementById('lang-switch').addEventListener('change', e => {
-      if(e.target.value === "en") {
-        alert("English UI coming soon!");
-      }
-    });
-  </script>
+  <script type="module" src="index.tsx" defer></script>
 </body>
 </html>
