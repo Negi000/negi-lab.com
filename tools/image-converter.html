@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,22 +24,48 @@
   </script>
   <style>
     .form-select, .form-input, .form-button, .form-range {
-      @apply p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .form-select:focus, .form-input:focus, .form-button:focus, .form-range:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
     }
     .form-button {
-      @apply bg-accent text-white hover:bg-emerald-500 transition duration-150 ease-in-out;
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
     }
     .form-button:disabled {
-      @apply bg-gray-300 cursor-not-allowed hover:bg-gray-300;
+      background: #d1d5db;
+      color: #fff;
+      cursor: not-allowed;
     }
     .drop-area {
-        @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-accent transition;
+      border: 2px dashed #d1d5db;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
     }
     .drop-area.dragover {
-        @apply border-accent bg-accent/10;
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.1);
     }
     .preview-image {
-        @apply max-w-full max-h-64 rounded-md border border-gray-200 shadow-sm;
+      max-width: 100%;
+      max-height: 16rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
   </style>
 </head>
@@ -55,7 +81,7 @@
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
@@ -138,7 +164,7 @@
     </div>
   </footer>
 
-  <script type="module" src="../index.tsx" defer></script>
+  <script type="module" src="../index.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const imageFile = document.getElementById('imageFile');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,7 +24,7 @@
     window.metaDescriptionTranslationKey = "qrGenerator.metaDescription";
   </script>
   <style>
-    .form-input, .form-select, .form-button {
+    /* .form-input, .form-select, .form-button {
       @apply p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent;
     }
     .form-button {
@@ -32,6 +32,32 @@
     }
     .form-button:disabled {
       @apply bg-gray-300 cursor-not-allowed hover:bg-gray-300;
+    } */
+    /* 上記@applyはTailwind JIT専用。通常のCSSに書き換え */
+    .form-input, .form-select, .form-button {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #fff;
+      cursor: not-allowed;
     }
     #qrcodeOutput {
         display: flex;
@@ -63,7 +89,7 @@
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
@@ -91,7 +117,7 @@
                 <label for="qrErrorCorrection" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.errorCorrectionLabel">エラー訂正レベル:</label>
                 <select id="qrErrorCorrection" class="form-select w-full">
                     <option value="L" data-translate-key="qrGenerator.errorCorrection.L">Low (L ~7%)</option>
-                    <option value="M" selected data-translate-key="qrGenerator.errorCorrection.M">Medium (M ~15%)</option>
+                    <option value="M" data-translate-key="qrGenerator.errorCorrection.M">Medium (M ~15%)</option>
                     <option value="Q" data-translate-key="qrGenerator.errorCorrection.Q">Quartile (Q ~25%)</option>
                     <option value="H" data-translate-key="qrGenerator.errorCorrection.H">High (H ~30%)</option>
                 </select>
@@ -134,7 +160,7 @@
     </div>
   </footer>
 
-  <script type="module" src="../index.tsx" defer></script>
+  <script type="module" src="../index.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const qrDataInput = document.getElementById('qrData');
