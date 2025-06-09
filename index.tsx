@@ -379,30 +379,26 @@ function setLanguage(lang: Language) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const langSwitch = document.getElementById('lang-switch') as HTMLSelectElement | null;
-  
+
+  // 1. localStorage優先、なければブラウザ言語、なければja
+  let detectedLang: Language = 'ja';
+  const savedLang = localStorage.getItem('selectedLanguage') as Language | null;
+  if (savedLang && translations[savedLang]) {
+    detectedLang = savedLang;
+  } else if (navigator.language) {
+    if (navigator.language.startsWith('en')) detectedLang = 'en';
+    else if (navigator.language.startsWith('ja')) detectedLang = 'ja';
+  }
+
+  // 2. <select>と<html lang>を必ず同期
   if (langSwitch) {
+    langSwitch.value = detectedLang;
     langSwitch.addEventListener('change', (e) => {
       setLanguage((e.target as HTMLSelectElement).value as Language);
     });
-
-    const savedLang = localStorage.getItem('selectedLanguage') as Language | null;
-    let currentLang = langSwitch.value as Language; 
-
-    if (savedLang && translations[savedLang]) {
-      currentLang = savedLang;
-    }
-    
-    setLanguage(currentLang); 
-  } else { // Fallback for pages without a lang-switch (e.g. if header is not included)
-    const savedLang = localStorage.getItem('selectedLanguage') as Language | null;
-    let initialLang: Language = 'ja'; 
-     if (document.documentElement.lang && translations[document.documentElement.lang as Language]) {
-        initialLang = document.documentElement.lang as Language;
-    }
-    if (savedLang && translations[savedLang]) {
-      initialLang = savedLang;
-    }
-    setLanguage(initialLang);
+    setLanguage(detectedLang);
+  } else {
+    setLanguage(detectedLang);
   }
 });
 

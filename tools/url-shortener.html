@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,22 +24,63 @@
   </script>
   <style>
     .form-input, .form-button, .form-checkbox {
-      @apply p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent focus:border-accent;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .form-input:focus, .form-button:focus, .form-checkbox:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
     }
     .form-checkbox {
-        @apply h-4 w-4 text-accent border-gray-300 rounded focus:ring-accent mr-2 align-middle;
+      height: 1rem;
+      width: 1rem;
+      color: #4ADE80;
+      border-radius: 0.375rem;
+      margin-right: 0.5rem;
+      vertical-align: middle;
     }
     .form-button {
-      @apply bg-accent text-white hover:bg-emerald-500 transition duration-150 ease-in-out;
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
     }
     .form-button:disabled {
-      @apply bg-gray-300 cursor-not-allowed hover:bg-gray-300;
+      background: #d1d5db;
+      color: #fff;
+      cursor: not-allowed;
     }
     .result-input {
-        @apply w-full p-2 border border-gray-300 rounded-l-md bg-gray-50 focus:ring-accent focus:border-accent;
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem 0 0 0.375rem;
+      background: #f9fafb;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .result-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
     }
     .copy-button {
-        @apply bg-gray-200 text-gray-700 hover:bg-gray-300 p-2 rounded-r-md border border-l-0 border-gray-300 transition;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 0.5rem;
+      border-radius: 0 0.375rem 0.375rem 0;
+      border: 1px solid #d1d5db;
+      border-left: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .copy-button:hover:not(:disabled) {
+      background: #d1d5db;
     }
   </style>
 </head>
@@ -55,7 +96,7 @@
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" selected data-translate-key="option.ja">日本語</option>
+              <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
@@ -115,7 +156,7 @@
     </div>
   </footer>
 
-  <script type="module" src="../index.tsx" defer></script>
+  <script type="module" src="../index.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const longUrlInput = document.getElementById('longUrlInput');

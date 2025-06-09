@@ -149,6 +149,15 @@
     </div>
   </footer>
 
-  <script type="module" src="index.tsx" defer></script>
+  <script type="module" src="index.js"></script>
+  <script>
+    // Fallback: 手動でDOMContentLoaded時にapplyTranslationsを呼ぶ（deferでwindow.translations未定義のタイミング対策）
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.translations && typeof applyTranslations === 'function') {
+        var lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+        applyTranslations(lang);
+      }
+    });
+  </script>
 </body>
 </html>
