@@ -130,12 +130,14 @@
         </div>
         
         <div class="flex justify-center my-2 md:my-4">
-            <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 17l4 4 4-4M20 7l-4-4-4 4" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21V3" />
-                </svg>
-            </button>
+          <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <g>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 7l3-3m-3 3l3 3" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17H7m10 0l-3 3m3-3l-3-3" />
+              </g>
+            </svg>
+          </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
@@ -203,47 +205,47 @@
         length: {
           baseUnit: 'meters',
           definitions: {
-            'meters': { nameKey: 'unitConverter.length.meters', ja: 'メートル', en: 'Meters', factor: 1 },
-            'kilometers': { nameKey: 'unitConverter.length.kilometers', ja: 'キロメートル', en: 'Kilometers', factor: 1000 },
-            'centimeters': { nameKey: 'unitConverter.length.centimeters', ja: 'センチメートル', en: 'Centimeters', factor: 0.01 },
-            'millimeters': { nameKey: 'unitConverter.length.millimeters', ja: 'ミリメートル', en: 'Millimeters', factor: 0.001 },
-            'micrometers': { nameKey: 'unitConverter.length.micrometers', ja: 'マイクロメートル', en: 'Micrometers', factor: 1e-6 },
-            'nanometers': { nameKey: 'unitConverter.length.nanometers', ja: 'ナノメートル', en: 'Nanometers', factor: 1e-9 },
-            'miles': { nameKey: 'unitConverter.length.miles', ja: 'マイル', en: 'Miles', factor: 1609.344 },
-            'yards': { nameKey: 'unitConverter.length.yards', ja: 'ヤード', en: 'Yards', factor: 0.9144 },
-            'feet': { nameKey: 'unitConverter.length.feet', ja: 'フィート', en: 'Feet', factor: 0.3048 },
-            'inches': { nameKey: 'unitConverter.length.inches', ja: 'インチ', en: 'Inches', factor: 0.0254 },
-            'nautical_miles': { nameKey: 'unitConverter.length.nautical_miles', ja: '海里', en: 'Nautical Miles', factor: 1852 },
-            'light_years': { nameKey: 'unitConverter.length.light_years', ja: '光年', en: 'Light Years', factor: 9.4607e15 },
-            'astronomical_units': { nameKey: 'unitConverter.length.astronomical_units', ja: '天文単位', en: 'Astronomical Units', factor: 1.495978707e11 },
-            'parsecs': { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16 },
-            'angstroms': { nameKey: 'unitConverter.length.angstroms', ja: 'オングストローム', en: 'Angstroms', factor: 1e-10 },
-            'fathoms': { nameKey: 'unitConverter.length.fathoms', ja: 'ファゾム', en: 'Fathoms', factor: 1.8288 },
-            'chains': { nameKey: 'unitConverter.length.chains', ja: 'チェーン', en: 'Chains', factor: 20.1168 },
-            'rods': { nameKey: 'unitConverter.length.rods', ja: 'ロッド', en: 'Rods', factor: 5.0292 },
-            'links': { nameKey: 'unitConverter.length.links', ja: 'リンク', en: 'Links', factor: 0.201168 },
-            'furlongs': { nameKey: 'unitConverter.length.furlongs', ja: 'ハロン', en: 'Furlongs', factor: 201.168 },
-            'cables': { nameKey: 'unitConverter.length.cables', ja: 'ケーブル', en: 'Cables', factor: 185.2 },
-            'mil': { nameKey: 'unitConverter.length.mil', ja: 'ミル', en: 'Mil (thou)', factor: 0.0000254 }
+            'meters': { nameKey: 'unitConverter.length.meters', ja: 'メートル', en: 'Meters', factor: 1, symbol: 'm' },
+            'kilometers': { nameKey: 'unitConverter.length.kilometers', ja: 'キロメートル', en: 'Kilometers', factor: 1000, symbol: 'km' },
+            'centimeters': { nameKey: 'unitConverter.length.centimeters', ja: 'センチメートル', en: 'Centimeters', factor: 0.01, symbol: 'cm' },
+            'millimeters': { nameKey: 'unitConverter.length.millimeters', ja: 'ミリメートル', en: 'Millimeters', factor: 0.001, symbol: 'mm' },
+            'micrometers': { nameKey: 'unitConverter.length.micrometers', ja: 'マイクロメートル', en: 'Micrometers', factor: 1e-6, symbol: 'μm' },
+            'nanometers': { nameKey: 'unitConverter.length.nanometers', ja: 'ナノメートル', en: 'Nanometers', factor: 1e-9, symbol: 'nm' },
+            'miles': { nameKey: 'unitConverter.length.miles', ja: 'マイル', en: 'Miles', factor: 1609.344, symbol: 'mi' },
+            'yards': { nameKey: 'unitConverter.length.yards', ja: 'ヤード', en: 'Yards', factor: 0.9144, symbol: 'yd' },
+            'feet': { nameKey: 'unitConverter.length.feet', ja: 'フィート', en: 'Feet', factor: 0.3048, symbol: 'ft' },
+            'inches': { nameKey: 'unitConverter.length.inches', ja: 'インチ', en: 'Inches', factor: 0.0254, symbol: 'in' },
+            'nautical_miles': { nameKey: 'unitConverter.length.nautical_miles', ja: '海里', en: 'Nautical Miles', factor: 1852, symbol: 'nmi' },
+            'light_years': { nameKey: 'unitConverter.length.light_years', ja: '光年', en: 'Light Years', factor: 9.4607e15, symbol: 'ly' },
+            'astronomical_units': { nameKey: 'unitConverter.length.astronomical_units', ja: '天文単位', en: 'Astronomical Units', factor: 1.495978707e11, symbol: 'AU' },
+            'parsecs': { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16, symbol: 'pc' },
+            'angstroms': { nameKey: 'unitConverter.length.angstroms', ja: 'オングストローム', en: 'Angstroms', factor: 1e-10, symbol: 'Å' },
+            'fathoms': { nameKey: 'unitConverter.length.fathoms', ja: 'ファゾム', en: 'Fathoms', factor: 1.8288, symbol: 'fm' },
+            'chains': { nameKey: 'unitConverter.length.chains', ja: 'チェーン', en: 'Chains', factor: 20.1168, symbol: 'ch' },
+            'rods': { nameKey: 'unitConverter.length.rods', ja: 'ロッド', en: 'Rods', factor: 5.0292, symbol: 'rd' },
+            'links': { nameKey: 'unitConverter.length.links', ja: 'リンク', en: 'Links', factor: 0.201168, symbol: 'li' },
+            'furlongs': { nameKey: 'unitConverter.length.furlongs', ja: 'ハロン', en: 'Furlongs', factor: 201.168, symbol: 'fur' },
+            'cables': { nameKey: 'unitConverter.length.cables', ja: 'ケーブル', en: 'Cables', factor: 185.2, symbol: 'cb' },
+            'mil': { nameKey: 'unitConverter.length.mil', ja: 'ミル', en: 'Mil (thou)', factor: 0.0000254, symbol: 'mil' }
           }
         },
         weight: {
           baseUnit: 'grams',
           definitions: {
-            'grams': { nameKey: 'unitConverter.weight.grams', ja: 'グラム', en: 'Grams', factor: 1 },
-            'kilograms': { nameKey: 'unitConverter.weight.kilograms', ja: 'キログラム', en: 'Kilograms', factor: 1000 },
-            'milligrams': { nameKey: 'unitConverter.weight.milligrams', ja: 'ミリグラム', en: 'Milligrams', factor: 0.001 },
-            'micrograms': { nameKey: 'unitConverter.weight.micrograms', ja: 'マイクログラム', en: 'Micrograms', factor: 1e-6 },
-            'tons': { nameKey: 'unitConverter.weight.tons', ja: 'トン', en: 'Tons', factor: 1e6 },
-            'pounds': { nameKey: 'unitConverter.weight.pounds', ja: 'ポンド', en: 'Pounds', factor: 453.59237 },
-            'ounces': { nameKey: 'unitConverter.weight.ounces', ja: 'オンス', en: 'Ounces', factor: 28.349523125 },
-            'carats': { nameKey: 'unitConverter.weight.carats', ja: 'カラット', en: 'Carats', factor: 0.2 },
-            'stones': { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318 },
-            'grains': { nameKey: 'unitConverter.weight.grains', ja: 'グレーン', en: 'Grains', factor: 0.06479891 },
-            'slugs': { nameKey: 'unitConverter.weight.slugs', ja: 'スラッグ', en: 'Slugs', factor: 14593.903 },
-            'long_tons': { nameKey: 'unitConverter.weight.long_tons', ja: '英トン', en: 'Long Tons (UK)', factor: 1.016e6 },
-            'short_tons': { nameKey: 'unitConverter.weight.short_tons', ja: '米トン', en: 'Short Tons (US)', factor: 907185 },
-            'atomic_mass_unit': { nameKey: 'unitConverter.weight.atomic_mass_unit', ja: '原子質量単位', en: 'Atomic Mass Unit', factor: 1.66053906660e-24 }
+            'grams': { nameKey: 'unitConverter.weight.grams', ja: 'グラム', en: 'Grams', factor: 1, symbol: 'g' },
+            'kilograms': { nameKey: 'unitConverter.weight.kilograms', ja: 'キログラム', en: 'Kilograms', factor: 1000, symbol: 'kg' },
+            'milligrams': { nameKey: 'unitConverter.weight.milligrams', ja: 'ミリグラム', en: 'Milligrams', factor: 0.001, symbol: 'mg' },
+            'micrograms': { nameKey: 'unitConverter.weight.micrograms', ja: 'マイクログラム', en: 'Micrograms', factor: 1e-6, symbol: 'μg' },
+            'tons': { nameKey: 'unitConverter.weight.tons', ja: 'トン', en: 'Tons', factor: 1e6, symbol: 't' },
+            'pounds': { nameKey: 'unitConverter.weight.pounds', ja: 'ポンド', en: 'Pounds', factor: 453.59237, symbol: 'lb' },
+            'ounces': { nameKey: 'unitConverter.weight.ounces', ja: 'オンス', en: 'Ounces', factor: 28.349523125, symbol: 'oz' },
+            'carats': { nameKey: 'unitConverter.weight.carats', ja: 'カラット', en: 'Carats', factor: 0.2, symbol: 'ct' },
+            'stones': { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318, symbol: 'st' },
+            'grains': { nameKey: 'unitConverter.weight.grains', ja: 'グレーン', en: 'Grains', factor: 0.06479891, symbol: 'gr' },
+            'slugs': { nameKey: 'unitConverter.weight.slugs', ja: 'スラッグ', en: 'Slugs', factor: 14593.903, symbol: 'sl' },
+            'long_tons': { nameKey: 'unitConverter.weight.long_tons', ja: '英トン', en: 'Long Tons (UK)', factor: 1.016e6, symbol: 'long ton' },
+            'short_tons': { nameKey: 'unitConverter.weight.short_tons', ja: '米トン', en: 'Short Tons (US)', factor: 907185, symbol: 'short ton' },
+            'atomic_mass_unit': { nameKey: 'unitConverter.weight.atomic_mass_unit', ja: '原子質量単位', en: 'Atomic Mass Unit', factor: 1.66053906660e-24, symbol: 'amu' }
           }
         },
         temperature: {
@@ -404,6 +406,10 @@
         return unitDef.en || unitDef.ja || unitDef.nameKey;
       }
 
+      // --- 単位記号・UI最適化 ---
+      // 単位定義にsymbolを追加
+      // 例: 'meters': { ... , symbol: 'm' }
+      // populateUnitsで選択肢に記号も表示
       function populateUnits(category) {
         const currentCategoryData = unitsData[category];
         if (!currentCategoryData) {
@@ -415,29 +421,26 @@
         const unitDefs = currentCategoryData.definitions;
         fromUnitSelect.innerHTML = '';
         toUnitSelect.innerHTML = '';
-
         Object.keys(unitDefs).forEach((unitKey, index) => {
           const unitDef = unitDefs[unitKey];
           const translatedName = getTranslatedUnitName(unitDef);
+          const symbol = unitDef.symbol ? ` (${unitDef.symbol})` : '';
           const optionFrom = document.createElement('option');
           optionFrom.value = unitKey;
-          optionFrom.textContent = translatedName;
+          optionFrom.textContent = translatedName + symbol;
           optionFrom.dataset.translateKey = unitDef.nameKey;
           fromUnitSelect.appendChild(optionFrom);
-
           const optionTo = document.createElement('option');
           optionTo.value = unitKey;
-          optionTo.textContent = translatedName;
+          optionTo.textContent = translatedName + symbol;
           optionTo.dataset.translateKey = unitDef.nameKey;
           toUnitSelect.appendChild(optionTo);
-
           if (index === 0) fromUnitSelect.value = unitKey;
           if (index === 1) toUnitSelect.value = unitKey;
           else if (Object.keys(unitDefs).length === 1 && index === 0) {
             toUnitSelect.value = unitKey;
           }
         });
-
         if (fromUnitSelect.value === toUnitSelect.value && Object.keys(unitDefs).length > 1) {
             const secondOptionValue = Object.keys(unitDefs)[1];
             if (secondOptionValue) {
@@ -448,10 +451,31 @@
              fromUnitSelect.innerHTML = '';
              toUnitSelect.innerHTML = '';
         }
-
         convert(); 
       }
-      
+      // --- 電子レンジカテゴリなどのUI最適化 ---
+      function updateUIForCategory() {
+        const cat = categorySelect.value;
+        if (cat === 'microwave') {
+          inputValue.placeholder = '例: 600Wでのレシピ時間(秒)';
+          inputValue.step = '1';
+          inputValue.min = '1';
+          resultValue.placeholder = '変換後の加熱時間(秒)';
+        } else if (cat === 'time') {
+          inputValue.placeholder = '例: 60';
+          inputValue.step = '1';
+          inputValue.min = '0';
+          resultValue.placeholder = '変換後の時間';
+        } else {
+          inputValue.placeholder = '数値を入力';
+          inputValue.step = 'any';
+          inputValue.min = '0';
+          resultValue.placeholder = '変換結果';
+        }
+      }
+      categorySelect.addEventListener('change', updateUIForCategory);
+      updateUIForCategory();
+
       function convert() {
         errorMessageElement.textContent = ''; // Clear previous errors
         const category = categorySelect.value;
