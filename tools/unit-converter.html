@@ -107,13 +107,21 @@
             <option value="length" data-translate-key="unitConverter.category.length">長さ</option>
             <option value="weight" data-translate-key="unitConverter.category.weight">重さ</option>
             <option value="temperature" data-translate-key="unitConverter.category.temperature">温度</option>
+            <option value="area" data-translate-key="unitConverter.category.area">面積</option>
+            <option value="volume" data-translate-key="unitConverter.category.volume">体積・容量</option>
+            <option value="speed" data-translate-key="unitConverter.category.speed">速度</option>
+            <option value="pressure" data-translate-key="unitConverter.category.pressure">圧力</option>
+            <option value="energy" data-translate-key="unitConverter.category.energy">エネルギー</option>
+            <option value="power" data-translate-key="unitConverter.category.power">電力</option>
+            <option value="time" data-translate-key="unitConverter.category.time">時間</option>
+            <option value="microwave" data-translate-key="unitConverter.category.microwave">電子レンジ加熱時間</option>
           </select>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
           <div>
             <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
-            <input type="number" id="inputValue" value="1" class="form-input">
+            <input type="number" id="inputValue" value="1" class="form-input" placeholder="数値を入力" aria-label="変換したい値">
           </div>
           <div>
             <label for="fromUnit" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.fromUnitLabel">変換元:</label>
@@ -137,10 +145,14 @@
           </div>
           <div>
             <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
-            <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed">
+            <div class="flex items-center gap-2">
+              <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
+              <button id="copyResult" class="px-2 py-1 rounded bg-accent text-white text-xs hover:bg-emerald-600 transition" title="結果をコピー">コピー</button>
+            </div>
           </div>
         </div>
          <p id="errorMessage" class="text-red-600 text-sm"></p>
+         <div id="categoryDescription" class="text-xs text-gray-500 mt-1 mb-2"></div>
       </div>
 
       <!-- ツール下部：Amazon・楽天バナー横並び -->
@@ -521,6 +533,38 @@
       });
       langSwitchObserver.observe(document.documentElement, { attributes: true });
 
+      // --- ユーザビリティ向上のためのUI改善 ---
+      // 1. カテゴリ選択時に説明を表示
+      const categoryDescriptions = {
+        length: '長さ・距離の単位を変換します（例: メートル、マイル、光年など）',
+        weight: '重さ・質量の単位を変換します（例: グラム、ポンド、トンなど）',
+        temperature: '温度の単位を変換します（例: 摂氏、華氏、ケルビンなど）',
+        area: '面積の単位を変換します（例: 平方メートル、坪、エーカーなど）',
+        volume: '体積・容量の単位を変換します（例: リットル、cc、バレルなど）',
+        speed: '速度の単位を変換します（例: km/h, m/s, ノットなど）',
+        pressure: '圧力の単位を変換します（例: パスカル、トル、psiなど）',
+        energy: 'エネルギーの単位を変換します（例: ジュール、カロリー、BTUなど）',
+        power: '電力の単位を変換します（例: ワット、馬力、ギガワットなど）',
+        time: '時間の単位を変換します（例: 秒、分、年、フォートナイトなど）',
+        microwave: '異なるワット数の電子レンジでの加熱時間を変換します（例: 500W→600Wなど）'
+      };
+      const categoryDescriptionDiv = document.getElementById('categoryDescription');
+      function updateCategoryDescription() {
+        const cat = categorySelect.value;
+        categoryDescriptionDiv.textContent = categoryDescriptions[cat] || '';
+      }
+      categorySelect.addEventListener('change', updateCategoryDescription);
+      updateCategoryDescription();
+      // コピー機能
+      document.getElementById('copyResult').addEventListener('click', () => {
+        const val = resultValue.value;
+        if (val && val !== '---' && val !== 'Error') {
+          navigator.clipboard.writeText(val);
+          document.getElementById('copyResult').textContent = 'コピー済み!';
+          setTimeout(() => { document.getElementById('copyResult').textContent = 'コピー'; }, 1200);
+        }
+      });
+      // 入力欄・結果欄にaria-label追加済み
     });
   </script>
 </body>
