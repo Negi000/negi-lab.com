@@ -155,11 +155,11 @@
           <div class="flex items-center gap-2" id="resultRow">
             <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
             <span id="resultMinuteBox" style="display:none;">
-              <input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="分">
+              <input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center" aria-label="分">
               <span class="text-gray-600 text-sm">分</span>
             </span>
             <span id="resultSecondBox" style="display:none;">
-              <input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="秒">
+              <input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center" aria-label="秒">
               <span class="text-gray-600 text-sm">秒</span>
             </span>
             <select id="toUnit" class="form-select w-36"></select>
@@ -554,6 +554,20 @@
         convert();
       });
 
+      // カテゴリ切替時に分秒BOXを必ずremoveし、通常UIに戻す
+      categorySelect.addEventListener('change', () => {
+        // 分秒BOX非表示
+        const minBoxWrap = document.getElementById('resultMinuteBox');
+        const secBoxWrap = document.getElementById('resultSecondBox');
+        if (minBoxWrap) minBoxWrap.remove();
+        if (secBoxWrap) secBoxWrap.remove();
+        // 結果input, toUnit, copyボタンを中央に戻す
+        const resultValue = document.getElementById('resultValue');
+        resultValue.style.display = '';
+        document.getElementById('toUnit').style.display = '';
+        document.getElementById('copyResult').style.display = '';
+      });
+
       // 単位入れ替えボタン
       swapButton.addEventListener('click', () => {
         const fromIdx = fromUnitSelect.selectedIndex;
@@ -564,18 +578,7 @@
         convert();
       });
 
-      // カテゴリ切替時に分秒BOXを必ず非表示
-      categorySelect.addEventListener('change', () => {
-        // ...existing code...
-        // 分秒BOX非表示
-        const minBoxWrap = document.getElementById('resultMinuteBox');
-        const secBoxWrap = document.getElementById('resultSecondBox');
-        if (minBoxWrap) minBoxWrap.style.display = 'none';
-        if (secBoxWrap) secBoxWrap.style.display = 'none';
-      });
-
-      // --- 電子レンジ専用ロジック修正（分/秒対応） ---
-      // 結果欄の分・秒ボックス生成/切替
+      // --- 電子レンジ専用ロジック修正（分/秒対応・幅バランス） ---
       function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
         const resultValue = document.getElementById('resultValue');
         const toUnit = document.getElementById('toUnit');
@@ -589,7 +592,8 @@
             minBoxWrap = document.createElement('span');
             minBoxWrap.id = 'resultMinuteBox';
             minBoxWrap.style.display = '';
-            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1 text-center" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
+            minBoxWrap.className = 'flex items-center';
+            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center mr-1" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
             resultValue.parentNode.insertBefore(minBoxWrap, resultValue);
           }
           // 秒ボックス
@@ -597,12 +601,10 @@
             secBoxWrap = document.createElement('span');
             secBoxWrap.id = 'resultSecondBox';
             secBoxWrap.style.display = '';
-            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1 text-center" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
+            secBoxWrap.className = 'flex items-center';
+            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center ml-1" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
             resultValue.parentNode.insertBefore(secBoxWrap, resultValue.nextSibling);
           }
-          // 幅を揃える
-          minBoxWrap.querySelector('input').classList.add('mr-1');
-          secBoxWrap.querySelector('input').classList.add('ml-1');
           minBoxWrap.style.display = '';
           secBoxWrap.style.display = '';
           resultValue.style.display = 'none';
@@ -612,8 +614,9 @@
           toUnit.style.display = '';
           copyBtn.style.display = '';
         } else {
-          if (minBoxWrap) minBoxWrap.style.display = 'none';
-          if (secBoxWrap) secBoxWrap.style.display = 'none';
+          // 分秒BOX remove
+          if (minBoxWrap) minBoxWrap.remove();
+          if (secBoxWrap) secBoxWrap.remove();
           resultValue.style.display = '';
           toUnit.style.display = '';
           copyBtn.style.display = '';
