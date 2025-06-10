@@ -508,7 +508,53 @@
         'w3000': { nameKey: 'unitConverter.microwave.w3000', ja: '3000W電子レンジ', en: '3000W Microwave', factor: 0.2 }
       };
 
-      // --- 変換ロジック修正（電子レンジ分/秒対応） ---
+      // --- 単位プルダウン生成 ---
+      function populateUnitDropdowns() {
+        const category = categorySelect.value;
+        fromUnitSelect.innerHTML = '';
+        toUnitSelect.innerHTML = '';
+        if (!unitsData[category]) return;
+        // 温度カテゴリは特殊
+        if (category === 'temperature') {
+          const defs = unitsData[category].definitions;
+          for (const key in defs) {
+            const def = defs[key];
+            const label = `${def.ja} (${def.en.match(/\((.*?)\)/)?.[1] || def.en})`;
+            const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = label;
+            fromUnitSelect.appendChild(opt.cloneNode(true));
+            toUnitSelect.appendChild(opt);
+          }
+        } else {
+          const defs = unitsData[category].definitions;
+          for (const key in defs) {
+            const def = defs[key];
+            // name (symbol) 表示
+            let label = def.ja;
+            if (def.symbol) label += ` (${def.symbol})`;
+            else if (def.en && def.en.match(/\((.*?)\)/)) label += ` (${def.en.match(/\((.*?)\)/)[1]})`;
+            const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = label;
+            fromUnitSelect.appendChild(opt.cloneNode(true));
+            toUnitSelect.appendChild(opt);
+          }
+        }
+        // 先頭を選択
+        fromUnitSelect.selectedIndex = 0;
+        toUnitSelect.selectedIndex = 1 > 0 && toUnitSelect.options.length > 1 ? 1 : 0;
+      }
+      categorySelect.addEventListener('change', () => {
+        populateUnitDropdowns();
+        convert();
+      });
+      document.addEventListener('DOMContentLoaded', () => {
+        populateUnitDropdowns();
+        convert();
+      });
+
+      // --- 電子レンジ専用ロジック修正（分/秒対応） ---
       // 結果欄の分・秒ボックス生成/切替
       function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
         const resultValue = document.getElementById('resultValue');
