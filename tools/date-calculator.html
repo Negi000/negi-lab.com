@@ -1,127 +1,279 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>日付計算ツール | Negi-lab.com</title>
-  <meta name="description" content="2つの日付の差分計算や、指定日からの加減算ができる無料日付計算ツール。">
-  <meta property="og:title" content="日付計算ツール | Negi-lab.com">
-  <meta property="og:description" content="2つの日付の差分計算や、指定日からの加減算ができる無料日付計算ツール。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://negi-lab.com/tools/date-calculator.html">
-  <meta property="og:site_name" content="Negi-lab.com">
-  <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://negi-lab.com/tools/date-calculator.html">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-translate-key="dateCalculator.pageTitle">日付計算ツール - negi-lab.com</title>
+  <meta name="description" data-translate-key="dateCalculator.metaDescription" content="2つの日付の差分や日付の加減算ができる無料日付計算ツール。シンプル・多機能・スマホ対応。" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+    window.pageTitleTranslationKey = "dateCalculator.pageTitle";
+    window.metaDescriptionTranslationKey = "dateCalculator.metaDescription";
+  </script>
   <style>
-    .tool-container { max-width: 520px; margin: 2rem auto; background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 12px #0001; padding: 2.5rem 1.5rem; }
-    .result-box { background: #f1f5f9; border-radius: 0.7rem; padding: 1.2rem; margin-top: 1.2rem; font-size: 1.1rem; }
-    .guide-btn { position: fixed; top: 1.2rem; right: 1.2rem; z-index: 10; }
-    @media (max-width: 600px) { .tool-container { padding: 1.2rem 0.5rem; } }
+    .form-input, .form-button {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .form-input:focus, .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #fff;
+      cursor: not-allowed;
+    }
   </style>
 </head>
-<body>
-  <header class="container">
-    <nav>
-      <ul>
-        <li><a href="/" data-translate-key="header.home">ホーム</a></li>
-        <li><a href="../" data-translate-key="header.tools">ツール一覧</a></li>
-        <li><button class="secondary guide-btn" id="guideBtn" data-translate-key="header.guide">ガイド</button></li>
-      </ul>
-    </nav>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+  <!-- Amazonアソシエイト Cookie埋め込み -->
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <!-- 楽天アフィリエイト Cookie埋め込み -->
+  <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <!-- Google Analytics（gtag.js）全ページ用 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9X3N0RY0H');
+  </script>
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main class="container">
-    <h1 data-translate-key="datecalc.title">日付計算ツール</h1>
-    <div class="tool-container">
-      <h2 class="h3" data-translate-key="datecalc.diffTitle">2つの日付の差を計算</h2>
-      <form id="diffForm">
-        <label><span data-translate-key="datecalc.start">開始日</span>
-          <input type="date" id="startDate" required>
-        </label>
-        <label><span data-translate-key="datecalc.end">終了日</span>
-          <input type="date" id="endDate" required>
-        </label>
-        <button type="submit" data-translate-key="datecalc.calcDiff">日数を計算</button>
-      </form>
-      <div id="diffResult" class="result-box" style="display:none"></div>
-      <hr>
-      <h2 class="h3" data-translate-key="datecalc.addsubTitle">日付の加算・減算</h2>
-      <form id="addsubForm">
-        <label><span data-translate-key="datecalc.base">基準日</span>
-          <input type="date" id="baseDate" required>
-        </label>
-        <label><span data-translate-key="datecalc.days">日数（±）</span>
-          <input type="number" id="days" required placeholder="例: 10 または -5">
-        </label>
-        <button type="submit" data-translate-key="datecalc.calcAddSub">日付を計算</button>
-      </form>
-      <div id="addsubResult" class="result-box" style="display:none"></div>
+  <main class="flex-grow py-12">
+    <div class="max-w-xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="dateCalculator.mainTitle">日付計算ツール</h1>
+      <!-- ツール上部：アドセンス（レスポンシブ） -->
+      <div class="max-w-2xl mx-auto my-6">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-8">
+        <div>
+          <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.diffTitle">2つの日付の差を計算</h2>
+          <form id="diffForm" class="space-y-4">
+            <div>
+              <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="dateCalculator.start">開始日</label>
+              <input type="date" id="startDate" class="form-input w-full" required />
+            </div>
+            <div>
+              <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="dateCalculator.end">終了日</label>
+              <input type="date" id="endDate" class="form-input w-full" required />
+            </div>
+            <button type="submit" class="form-button w-full" data-translate-key="dateCalculator.calcDiff">日数を計算</button>
+          </form>
+          <div id="diffResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.addsubTitle">日付の加算・減算</h2>
+          <form id="addsubForm" class="space-y-4">
+            <div>
+              <label for="baseDate" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="dateCalculator.base">基準日</label>
+              <input type="date" id="baseDate" class="form-input w-full" required />
+            </div>
+            <div>
+              <label for="days" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="dateCalculator.days">日数（±）</label>
+              <input type="number" id="days" class="form-input w-full" required placeholder="例: 10 または -5" />
+            </div>
+            <button type="submit" class="form-button w-full" data-translate-key="dateCalculator.calcAddSub">日付を計算</button>
+          </form>
+          <div id="addsubResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
+        </div>
+      </div>
+      <!-- スポンサーリンクラベル（広告直前） -->
+      <div class="text-xs text-gray-500 mb-1 mt-8" aria-label="スポンサーリンク">スポンサーリンク</div>
+      <!-- ここに広告コード（例: AdSense）を挿入 -->
+      <!-- ツール下部：Amazon・楽天バナー横並び -->
+      <div class="flex flex-wrap justify-center gap-4 my-8">
+        <!-- Amazonバナー例 -->
+        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer" aria-label="Amazonバナー">
+          <img src="https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg" alt="Amazonで探す" style="height:60px;" loading="lazy" />
+        </a>
+        <!-- 楽天バナー例 -->
+        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" aria-label="楽天バナー">
+          <img src="https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png" alt="楽天で探す" style="height:60px;" loading="lazy" />
+        </a>
+      </div>
+      <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
+      <div class="max-w-xl mx-auto my-8">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+             data-ad-slot="0987654321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
     </div>
   </main>
-  <footer class="container" style="margin-top:2.5rem">
-    <nav>
-      <ul>
-        <li><a href="/privacy-policy.html" data-translate-key="footer.privacy">プライバシーポリシー</a></li>
-        <li><a href="/terms.html" data-translate-key="footer.terms">利用規約</a></li>
-        <li><a href="/about.html" data-translate-key="footer.about">運営者情報</a></li>
-        <li><a href="mailto:info@negi-lab.com" data-translate-key="footer.contact">お問い合わせ</a></li>
-        <li><a href="/sitemap.xml" data-translate-key="footer.sitemap">サイトマップ</a></li>
-      </ul>
-    </nav>
-    <small>&copy; 2025 Negi-lab.com</small>
-  </footer>
-  <!-- 広告エリア例 -->
-  <div style="text-align:center;margin:2rem 0;">
-    <!-- ad code here -->
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
   </div>
-  <!-- ガイド・FAQモーダル（全ページ共通UI） -->
-  <dialog id="guideModal">
-    <article>
-      <header>
-        <a href="#close" aria-label="Close" class="close" data-target="guideModal" onclick="document.getElementById('guideModal').close();"></a>
-        <h3 data-translate-key="guide.title">ガイド・FAQ</h3>
-      </header>
-      <section>
-        <ul>
-          <li data-translate-key="datecalc.guide1">2つの日付を入力して「日数を計算」ボタンで日数差がわかります。</li>
-          <li data-translate-key="datecalc.guide2">基準日と日数（正負）を指定して「日付を計算」ボタンで加減算結果が表示されます。</li>
-          <li data-translate-key="datecalc.guide3">祝日・営業日計算には対応していません。</li>
-        </ul>
-      </section>
-    </article>
-  </dialog>
-  <script type="module" src="../index.js"></script>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
+  <script type="module" src="../index.js" defer></script>
   <script>
-    // 日付差分計算
-    document.getElementById('diffForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const s = document.getElementById('startDate').value;
-      const e_ = document.getElementById('endDate').value;
-      if(!s || !e_) return;
-      const d1 = new Date(s);
-      const d2 = new Date(e_);
-      const diff = Math.abs((d2 - d1) / (1000*60*60*24));
-      const res = `${Math.floor(diff)}日`;
-      document.getElementById('diffResult').textContent = res;
-      document.getElementById('diffResult').style.display = '';
+    document.addEventListener('DOMContentLoaded', () => {
+      // 日付差分計算
+      document.getElementById('diffForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const s = document.getElementById('startDate').value;
+        const e_ = document.getElementById('endDate').value;
+        if(!s || !e_) return;
+        const d1 = new Date(s);
+        const d2 = new Date(e_);
+        const diff = Math.abs((d2 - d1) / (1000*60*60*24));
+        const res = `${Math.floor(diff)}日`;
+        const resultBox = document.getElementById('diffResult');
+        resultBox.textContent = res;
+        resultBox.classList.remove('hidden');
+      });
+      // 日付加減算
+      document.getElementById('addsubForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const base = document.getElementById('baseDate').value;
+        const days = parseInt(document.getElementById('days').value, 10);
+        if(!base || isNaN(days)) return;
+        const d = new Date(base);
+        d.setDate(d.getDate() + days);
+        const y = d.getFullYear();
+        const m = ('0'+(d.getMonth()+1)).slice(-2);
+        const dd = ('0'+d.getDate()).slice(-2);
+        const res = `${y}-${m}-${dd}`;
+        const resultBox = document.getElementById('addsubResult');
+        resultBox.textContent = res;
+        resultBox.classList.remove('hidden');
+      });
+      // ガイドモーダル
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      function renderGuide(lang) {
+        const guides = {
+          ja: {
+            title: '日付計算ツールの使い方',
+            list: [
+              '2つの日付を入力して「日数を計算」ボタンで日数差がわかります。',
+              '基準日と日数（正負）を指定して「日付を計算」ボタンで加減算結果が表示されます。',
+              '祝日・営業日計算には対応していません。'
+            ],
+            faqTitle: 'よくある質問',
+            faq: [
+              {q: 'Q. 英語でも使えますか？', a: 'A. 右上の言語切替で英語UIにできます。'},
+              {q: 'Q. 入力データは保存されますか？', a: 'A. 保存されません。プライバシー重視です。'}
+            ],
+            tipsTitle: '活用例・ヒント',
+            tips: [
+              '旅行や出張の日数計算',
+              '締切日や納期の逆算',
+              '日付の加減算で未来・過去の日付を調べる'
+            ]
+          },
+          en: {
+            title: 'How to Use the Date Calculator',
+            list: [
+              'Enter two dates and click "Calculate Days" to get the difference.',
+              'Specify a base date and days (±) to add/subtract and get the result.',
+              'No support for holidays/business days.'
+            ],
+            faqTitle: 'FAQ',
+            faq: [
+              {q: 'Q. Can I use it in English?', a: 'A. Yes, switch language from the top right.'},
+              {q: 'Q. Is my input data saved?', a: 'A. No, your data is never saved.'}
+            ],
+            tipsTitle: 'Tips & Examples',
+            tips: [
+              'Calculate trip or business days',
+              'Back-calculate deadlines',
+              'Find a future/past date by adding/subtracting days'
+            ]
+          }
+        };
+        const g = guides[lang] || guides.ja;
+        let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+        html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.faqTitle}</h3><dl class='mb-4 text-gray-700'>` + g.faq.map(f=>`<dt class='font-semibold'>${f.q}</dt><dd class='mb-2'>${f.a}</dd>`).join('') + '</dl>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        guideContent.innerHTML = html;
+      }
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          renderGuide(lang);
+          guideModal.classList.remove('hidden');
+        });
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
     });
-    // 日付加減算
-    document.getElementById('addsubForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const base = document.getElementById('baseDate').value;
-      const days = parseInt(document.getElementById('days').value, 10);
-      if(!base || isNaN(days)) return;
-      const d = new Date(base);
-      d.setDate(d.getDate() + days);
-      const y = d.getFullYear();
-      const m = ('0'+(d.getMonth()+1)).slice(-2);
-      const dd = ('0'+d.getDate()).slice(-2);
-      const res = `${y}-${m}-${dd}`;
-      document.getElementById('addsubResult').textContent = res;
-      document.getElementById('addsubResult').style.display = '';
-    });
-    // ガイドモーダル
-    document.getElementById('guideBtn').onclick = function(){ document.getElementById('guideModal').showModal(); };
   </script>
 </body>
 </html>
