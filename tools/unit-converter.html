@@ -550,8 +550,28 @@
         convert();
       });
       document.addEventListener('DOMContentLoaded', () => {
-        populateUnitDropdowns();
+        populateUnitDropdowns(); // まず単位プルダウンを生成
         convert();
+      });
+
+      // 単位入れ替えボタン
+      swapButton.addEventListener('click', () => {
+        const fromIdx = fromUnitSelect.selectedIndex;
+        const toIdx = toUnitSelect.selectedIndex;
+        // 値をswap
+        fromUnitSelect.selectedIndex = toIdx;
+        toUnitSelect.selectedIndex = fromIdx;
+        convert();
+      });
+
+      // カテゴリ切替時に分秒BOXを必ず非表示
+      categorySelect.addEventListener('change', () => {
+        // ...existing code...
+        // 分秒BOX非表示
+        const minBoxWrap = document.getElementById('resultMinuteBox');
+        const secBoxWrap = document.getElementById('resultSecondBox');
+        if (minBoxWrap) minBoxWrap.style.display = 'none';
+        if (secBoxWrap) secBoxWrap.style.display = 'none';
       });
 
       // --- 電子レンジ専用ロジック修正（分/秒対応） ---
@@ -569,7 +589,7 @@
             minBoxWrap = document.createElement('span');
             minBoxWrap.id = 'resultMinuteBox';
             minBoxWrap.style.display = '';
-            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
+            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1 text-center" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
             resultValue.parentNode.insertBefore(minBoxWrap, resultValue);
           }
           // 秒ボックス
@@ -577,16 +597,18 @@
             secBoxWrap = document.createElement('span');
             secBoxWrap.id = 'resultSecondBox';
             secBoxWrap.style.display = '';
-            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
+            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1 text-center" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
             resultValue.parentNode.insertBefore(secBoxWrap, resultValue.nextSibling);
           }
+          // 幅を揃える
+          minBoxWrap.querySelector('input').classList.add('mr-1');
+          secBoxWrap.querySelector('input').classList.add('ml-1');
           minBoxWrap.style.display = '';
           secBoxWrap.style.display = '';
           resultValue.style.display = 'none';
           // 値セット
           document.getElementById('resultMinute').value = minVal;
           document.getElementById('resultSecond').value = secVal;
-          // toUnit, copyボタンは常に表示
           toUnit.style.display = '';
           copyBtn.style.display = '';
         } else {
