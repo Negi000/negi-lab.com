@@ -126,7 +126,7 @@
           </select>
         </div>
 
-        <!-- 変換元 入力欄＋単位プルダウン -->
+        <!-- 変換元 入力欄＋単位プルダウン＋（ダミーボタン） -->
         <div class="mb-4">
           <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
           <div class="flex items-center gap-2">
@@ -135,6 +135,7 @@
             <span id="microwaveTimeToggleWrapper" style="display:none;">
               <button id="microwaveSecBtn" type="button" class="px-2 py-1 rounded-l bg-accent text-white text-xs hover:bg-emerald-600 transition">秒</button><button id="microwaveMinBtn" type="button" class="px-2 py-1 rounded-r bg-gray-200 text-gray-700 text-xs hover:bg-accent/20 transition">分</button>
             </span>
+            <span id="dummyBtnWrapper" style="display:none;"><button tabindex="-1" aria-hidden="true" style="opacity:0;pointer-events:none;width:56px;height:28px;"></button></span>
           </div>
         </div>
         <!-- 単位入れ替えボタン -->
@@ -503,8 +504,12 @@
         const category = categorySelect.value;
         const currentCategoryData = unitsData[category];
         let val = parseFloat(inputValue.value);
-        if (category === 'microwave' && microwaveInputMode === 'min' && !isNaN(val)) {
-          val = val * 60; // 分→秒
+        let showAsMinutes = false;
+        if (category === 'microwave') {
+          if (microwaveInputMode === 'min' && !isNaN(val)) {
+            val = val * 60; // 入力値を秒に
+            showAsMinutes = true;
+          }
         }
         if (isNaN(val) || !currentCategoryData || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
@@ -525,6 +530,10 @@
               }
               const valueInBase = val * fromUnit.factor;
               convertedValue = valueInBase / toUnit.factor;
+            }
+            // --- 電子レンジ分モード時は結果も分で表示 ---
+            if (category === 'microwave' && showAsMinutes) {
+              convertedValue = convertedValue / 60;
             }
             if (isNaN(convertedValue)) {
                 resultValue.value = 'Error';
