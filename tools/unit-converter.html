@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -112,6 +112,7 @@
         <div>
           <label for="category" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.categoryLabel">カテゴリ:</label>
           <select id="category" class="form-select">
+            <option value="" selected disabled hidden>-- カテゴリーを選択 --</option>
             <option value="length" data-translate-key="unitConverter.category.length">長さ</option>
             <option value="weight" data-translate-key="unitConverter.category.weight">重さ</option>
             <option value="temperature" data-translate-key="unitConverter.category.temperature">温度</option>
@@ -155,11 +156,11 @@
           <div class="flex items-center gap-2" id="resultRow">
             <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
             <span id="resultMinuteBox" style="display:none;">
-              <input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center" aria-label="分">
+              <input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center" aria-label="分">
               <span class="text-gray-600 text-sm">分</span>
             </span>
             <span id="resultSecondBox" style="display:none;">
-              <input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center" aria-label="秒">
+              <input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center" aria-label="秒">
               <span class="text-gray-600 text-sm">秒</span>
             </span>
             <select id="toUnit" class="form-select w-36"></select>
@@ -169,6 +170,10 @@
         <p id="errorMessage" class="text-red-600 text-sm"></p>
         <div id="categoryDescription" class="text-xs text-gray-500 mt-1 mb-2"></div>
       </div>
+
+      <!-- スポンサーリンクラベル（広告直前） -->
+      <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
+      <!-- ここに広告コード（例: AdSense）を挿入 -->
 
       <!-- ツール下部：Amazon・楽天バナー横並び -->
       <div class="flex flex-wrap justify-center gap-4 my-8">
@@ -195,12 +200,23 @@
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div>
-      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
-      <span class="mx-2">|</span>
-      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">negilab.com@gmail.com</a></span>
-    </div>
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
 
   <script type="module" src="../index.js" defer></script>
@@ -513,7 +529,7 @@
         const category = categorySelect.value;
         fromUnitSelect.innerHTML = '';
         toUnitSelect.innerHTML = '';
-        if (!unitsData[category]) return;
+        if (!category || !unitsData[category]) return;
         // 温度カテゴリは特殊
         if (category === 'temperature') {
           const defs = unitsData[category].definitions;
@@ -585,36 +601,31 @@
         const copyBtn = document.getElementById('copyResult');
         let minBoxWrap = document.getElementById('resultMinuteBox');
         let secBoxWrap = document.getElementById('resultSecondBox');
-        // 分・秒ボックスはラッパーspanで管理
         if (showAsMinutes) {
-          // 分ボックス
           if (!minBoxWrap) {
             minBoxWrap = document.createElement('span');
             minBoxWrap.id = 'resultMinuteBox';
             minBoxWrap.style.display = '';
-            minBoxWrap.className = 'flex items-center';
-            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center mr-1" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
+            minBoxWrap.className = 'flex items-center flex-shrink-0';
+            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center mr-1" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
             resultValue.parentNode.insertBefore(minBoxWrap, resultValue);
           }
-          // 秒ボックス
           if (!secBoxWrap) {
             secBoxWrap = document.createElement('span');
             secBoxWrap.id = 'resultSecondBox';
             secBoxWrap.style.display = '';
-            secBoxWrap.className = 'flex items-center';
-            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-24 text-center ml-1" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
+            secBoxWrap.className = 'flex items-center flex-shrink-0';
+            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center ml-1" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
             resultValue.parentNode.insertBefore(secBoxWrap, resultValue.nextSibling);
           }
           minBoxWrap.style.display = '';
           secBoxWrap.style.display = '';
           resultValue.style.display = 'none';
-          // 値セット
           document.getElementById('resultMinute').value = minVal;
           document.getElementById('resultSecond').value = secVal;
           toUnit.style.display = '';
           copyBtn.style.display = '';
         } else {
-          // 分秒BOX remove
           if (minBoxWrap) minBoxWrap.remove();
           if (secBoxWrap) secBoxWrap.remove();
           resultValue.style.display = '';
@@ -626,9 +637,13 @@
       function convert() {
         errorMessageElement.textContent = '';
         const category = categorySelect.value;
-        const currentCategoryData = unitsData[category];
+        if (!category || !unitsData[category]) {
+          resultValue.value = '';
+          updateMicrowaveResultUI(false);
+          return;
+        }
         let val = parseFloat(inputValue.value);
-        if (isNaN(val) || !currentCategoryData || !fromUnitSelect.value || !toUnitSelect.value) {
+        if (isNaN(val) || !unitsData[category] || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
           updateMicrowaveResultUI(false);
           return;

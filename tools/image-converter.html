@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -126,31 +126,31 @@
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
           <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.uploadLabel">画像ファイルをアップロード:</label>
-          <div id="imageUploadArea" class="drop-area">
-            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif" class="hidden">
-            <p id="dropInstructions" data-translate-html-key="imageConverter.dropInstructions">ここにファイルをドラッグ＆ドロップ<br>またはクリックして選択</p>
+          <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
+            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif" class="hidden" aria-describedby="fileHelp">
+            <p id="dropInstructions" data-translate-html-key="imageConverter.dropInstructions" aria-label="ファイルのドラッグ＆ドロップまたはクリックして選択">ここにファイルをドラッグ＆ドロップ<br>またはクリックして選択</p>
           </div>
-          <p id="fileName" class="text-sm text-gray-500 mt-1"></p>
+          <p id="fileName" class="text-sm text-gray-500 mt-1" aria-label="選択されたファイル名"></p>
         </div>
 
-        <div id="previewContainer" class="mt-4 text-center hidden">
-            <img id="imagePreview" src="#" alt="Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt"/>
+        <div id="previewContainer" class="mt-4 text-center hidden" aria-hidden="true">
+            <img id="imagePreview" src="#" alt="Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt" aria-label="アップロードされた画像のプレビュー"/>
         </div>
 
         <div>
           <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.outputFormatLabel">出力フォーマット:</label>
-          <select id="outputFormat" class="form-select w-full">
+          <select id="outputFormat" class="form-select w-full" aria-label="出力フォーマット選択">
             <option value="image/jpeg" data-translate-key="imageConverter.formatJPEG">JPEG</option>
             <option value="image/png" data-translate-key="imageConverter.formatPNG">PNG</option>
             <option value="image/webp" data-translate-key="imageConverter.formatWebP">WebP</option>
           </select>
         </div>
 
-        <div id="qualityControlContainer" class="hidden">
+        <div id="qualityControlContainer" class="hidden" aria-hidden="true">
             <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.qualityLabel">品質 (JPEG/WebP):</label>
             <div class="flex items-center gap-2">
-                <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right">0.90</span>
+                <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" aria-label="画像品質調整">
+                <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right" aria-label="現在の品質値">0.90</span>
             </div>
         </div>
         
@@ -159,21 +159,21 @@
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label for="maxWidthInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxWidthLabel">最大幅 (px):</label>
-                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920">
+                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920" aria-label="最大幅入力フィールド">
                 </div>
                 <div>
                     <label for="maxHeightInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxHeightLabel">最大高さ (px):</label>
-                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080">
+                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080" aria-label="最大高さ入力フィールド">
                 </div>
             </div>
         </div>
         
-        <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.convertButton">変換する</button>
+        <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.convertButton" aria-label="画像変換実行ボタン">変換する</button>
         
-        <div id="resultContainer" class="mt-4 text-center hidden space-y-3">
+        <div id="resultContainer" class="mt-4 text-center hidden space-y-3" aria-hidden="true">
             <h3 class="text-lg font-medium text-gray-800" data-translate-key="unitConverter.resultLabel">結果:</h3>
-            <img id="convertedImagePreview" src="#" alt="Converted Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt"/>
-            <a id="downloadLink" href="#" download="converted_image.png" class="form-button inline-block py-2 px-4" data-translate-key="imageConverter.downloadButton">ダウンロード</a>
+            <img id="convertedImagePreview" src="#" alt="Converted Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt" aria-label="変換後画像のプレビュー"/>
+            <a id="downloadLink" href="#" download="converted_image.png" class="form-button inline-block py-2 px-4" data-translate-key="imageConverter.downloadButton" aria-label="変換後画像ダウンロードリンク">ダウンロード</a>
         </div>
 
         <div id="messageArea" class="text-sm mt-2">
@@ -183,14 +183,18 @@
 
       </div>
 
+      <!-- スポンサーリンクラベル（広告直前） -->
+      <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
+      <!-- ここに広告コード（例: AdSense）を挿入 -->
+
       <!-- ツール下部：Amazon・楽天バナー横並び -->
       <div class="flex flex-wrap justify-center gap-4 my-8">
         <!-- Amazonバナー例 -->
-        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer" aria-label="Amazonバナー">
           <img src="https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg" alt="Amazonで探す" style="height:60px;" loading="lazy" />
         </a>
         <!-- 楽天バナー例 -->
-        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer">
+        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" aria-label="楽天バナー">
           <img src="https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png" alt="楽天で探す" style="height:60px;" loading="lazy" />
         </a>
       </div>
@@ -209,12 +213,23 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div>
-      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
-      <span class="mx-2">|</span>
-      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">negilab.com@gmail.com</a></span>
-    </div>
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
 
   <script type="module" src="../index.js" defer></script>
