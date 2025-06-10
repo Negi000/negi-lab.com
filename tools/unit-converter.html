@@ -127,43 +127,23 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+          <!-- 変換元 入力欄＋単位プルダウン -->
           <div>
             <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
             <div class="flex items-center gap-2">
-              <input type="number" id="inputValue" value="1" class="form-input" placeholder="数値を入力" aria-label="変換したい値">
-              <span id="inputUnitLabel" class="text-gray-600 text-sm"></span>
+              <input type="number" id="inputValue" value="1" class="form-input flex-1" placeholder="数値を入力" aria-label="変換したい値">
+              <select id="fromUnit" class="form-select w-36"></select>
               <span id="microwaveTimeToggleWrapper" style="display:none;">
                 <button id="microwaveSecBtn" type="button" class="px-2 py-1 rounded-l bg-accent text-white text-xs hover:bg-emerald-600 transition">秒</button><button id="microwaveMinBtn" type="button" class="px-2 py-1 rounded-r bg-gray-200 text-gray-700 text-xs hover:bg-accent/20 transition">分</button>
               </span>
             </div>
           </div>
-          <div>
-            <label for="fromUnit" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.fromUnitLabel">変換元:</label>
-            <select id="fromUnit" class="form-select"></select>
-          </div>
-        </div>
-        
-        <div class="flex justify-center my-2 md:my-4">
-          <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <g>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 7l3-3m-3 3l3 3" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17H7m10 0l-3 3m3-3l-3-3" />
-              </g>
-            </svg>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-          <div>
-            <label for="toUnit" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.toUnitLabel">変換先:</label>
-            <select id="toUnit" class="form-select"></select>
-          </div>
+          <!-- 変換先 結果欄＋単位プルダウン＋コピー -->
           <div>
             <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
             <div class="flex items-center gap-2">
               <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
-              <span id="resultUnitLabel" class="text-gray-600 text-sm"></span>
+              <select id="toUnit" class="form-select w-36"></select>
               <button id="copyResult" class="px-2 py-1 rounded bg-accent text-white text-xs hover:bg-emerald-600 transition" title="結果をコピー">コピー</button>
             </div>
           </div>
@@ -616,6 +596,43 @@
         }
       });
       // 入力欄・結果欄にaria-label追加済み
+
+      // --- 単位プルダウン初期化 ---
+      function populateUnitSelects() {
+        const cat = categorySelect.value;
+        const defs = unitsData[cat]?.definitions;
+        if (!defs) return;
+        // fromUnit
+        fromUnitSelect.innerHTML = '';
+        Object.entries(defs).forEach(([key, def]) => {
+          const opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = getTranslatedUnitName(def) + (def.symbol ? ` (${def.symbol})` : '');
+          fromUnitSelect.appendChild(opt);
+        });
+        // toUnit
+        toUnitSelect.innerHTML = '';
+        Object.entries(defs).forEach(([key, def]) => {
+          const opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = getTranslatedUnitName(def) + (def.symbol ? ` (${def.symbol})` : '');
+          toUnitSelect.appendChild(opt);
+        });
+        // デフォルト選択
+        fromUnitSelect.selectedIndex = 0;
+        toUnitSelect.selectedIndex = 1 > 0 ? 1 : 0;
+      }
+      categorySelect.addEventListener('change', () => {
+        populateUnitSelects();
+        updateUnitLabels();
+        updateMicrowaveToggleUI();
+        convert();
+      });
+      // 初期化
+      populateUnitSelects();
+      updateUnitLabels();
+      updateMicrowaveToggleUI();
+      convert();
     });
   </script>
 </body>
