@@ -126,7 +126,7 @@
           </select>
         </div>
 
-        <!-- 変換元 入力欄＋単位プルダウン＋（ダミーボタン） -->
+        <!-- 変換元 入力欄＋単位プルダウン＋（切替/ダミーボタン） -->
         <div class="mb-4">
           <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
           <div class="flex items-center gap-2">
@@ -135,7 +135,7 @@
             <span id="microwaveTimeToggleWrapper" style="display:none;">
               <button id="microwaveSecBtn" type="button" class="px-2 py-1 rounded-l bg-accent text-white text-xs hover:bg-emerald-600 transition">秒</button><button id="microwaveMinBtn" type="button" class="px-2 py-1 rounded-r bg-gray-200 text-gray-700 text-xs hover:bg-accent/20 transition">分</button>
             </span>
-            <span id="dummyBtnWrapper" style="display:none;"><button tabindex="-1" aria-hidden="true" style="opacity:0;pointer-events:none;width:56px;height:28px;"></button></span>
+            <span id="dummyBtnWrapper"><button tabindex="-1" aria-hidden="true" style="opacity:0;width:56px;height:28px;pointer-events:none;">dummy</button></span>
           </div>
         </div>
         <!-- 単位入れ替えボタン -->
@@ -152,8 +152,16 @@
         <!-- 変換先 結果欄＋単位プルダウン＋コピー -->
         <div class="mb-4">
           <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2" id="resultRow">
             <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
+            <span id="resultMinuteBox" style="display:none;">
+              <input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="分">
+              <span class="text-gray-600 text-sm">分</span>
+            </span>
+            <span id="resultSecondBox" style="display:none;">
+              <input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="秒">
+              <span class="text-gray-600 text-sm">秒</span>
+            </span>
             <select id="toUnit" class="form-select w-36"></select>
             <button id="copyResult" class="px-2 py-1 rounded bg-accent text-white text-xs hover:bg-emerald-600 transition" title="結果をコピー">コピー</button>
           </div>
@@ -499,158 +507,130 @@
       };
 
       // --- 変換ロジック修正（電子レンジ分/秒対応） ---
+      // 結果欄の分・秒ボックス生成/切替
+      function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
+        const resultValue = document.getElementById('resultValue');
+        let minBox = document.getElementById('resultMinuteBox');
+        let secBox = document.getElementById('resultSecondBox');
+        if (showAsMinutes) {
+          // 分・秒ボックスがなければ生成
+          if (!minBox) {
+            minBox = document.createElement('input');
+            minBox.type = 'text';
+            minBox.id = 'resultMinuteBox';
+            minBox.className = 'form-input bg-gray-100 cursor-not-allowed w-20 mr-1';
+            minBox.readOnly = true;
+            minBox.setAttribute('aria-label', '分');
+            resultValue.parentNode.insertBefore(minBox, resultValue);
+          }
+          if (!secBox) {
+            secBox = document.createElement('input');
+            secBox.type = 'text';
+            secBox.id = 'resultSecondBox';
+            secBox.className = 'form-input bg-gray-100 cursor-not-allowed w-20 ml-1';
+            secBox.readOnly = true;
+            secBox.setAttribute('aria-label', '秒');
+            resultValue.parentNode.insertBefore(secBox, resultValue.nextSibling);
+          }
+          minBox.style.display = '';
+          secBox.style.display = '';
+          resultValue.style.display = 'none';
+          minBox.value = minVal;
+          secBox.value = secVal;
+          // 分・秒ラベルも表示
+          if (!document.getElementById('resultMinuteLabel')) {
+            const minLabel = document.createElement('span');
+            minLabel.id = 'resultMinuteLabel';
+            minLabel.textContent = '分';
+            minLabel.className = 'ml-1 text-gray-500';
+            minBox.parentNode.insertBefore(minLabel, minBox.nextSibling);
+          }
+          if (!document.getElementById('resultSecondLabel')) {
+            const secLabel = document.createElement('span');
+            secLabel.id = 'resultSecondLabel';
+            secLabel.textContent = '秒';
+            secLabel.className = 'ml-1 text-gray-500';
+            secBox.parentNode.insertBefore(secLabel, secBox.nextSibling);
+          }
+          document.getElementById('resultMinuteLabel').style.display = '';
+          document.getElementById('resultSecondLabel').style.display = '';
+        } else {
+          // 分・秒ボックス非表示、通常の結果欄のみ
+          if (minBox) minBox.style.display = 'none';
+          if (secBox) secBox.style.display = 'none';
+          if (document.getElementById('resultMinuteLabel')) document.getElementById('resultMinuteLabel').style.display = 'none';
+          if (document.getElementById('resultSecondLabel')) document.getElementById('resultSecondLabel').style.display = 'none';
+          resultValue.style.display = '';
+        }
+      }
+
       function convert() {
         errorMessageElement.textContent = '';
         const category = categorySelect.value;
         const currentCategoryData = unitsData[category];
         let val = parseFloat(inputValue.value);
-        let showAsMinutes = false;
-        if (category === 'microwave') {
-          if (microwaveInputMode === 'min' && !isNaN(val)) {
-            val = val * 60; // 入力値を秒に
-            showAsMinutes = true;
-          }
-        }
         if (isNaN(val) || !currentCategoryData || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
+          updateMicrowaveResultUI(false);
           return;
         }
         let convertedValue;
-        try {
-            if (category === 'temperature') {
-              if (fromUnitSelect.value === 'kelvin' && val < 0) {
-                  throw new Error(getTranslatedText('unitConverter.error.invalidTempInput'));
-              }
-              convertedValue = currentCategoryData.convert(val, fromUnitSelect.value, toUnitSelect.value);
-            } else {
-              const fromUnit = currentCategoryData.definitions[fromUnitSelect.value];
-              const toUnit = currentCategoryData.definitions[toUnitSelect.value];
-              if (!fromUnit || !toUnit) {
-                 resultValue.value = '---'; return;
-              }
-              const valueInBase = val * fromUnit.factor;
-              convertedValue = valueInBase / toUnit.factor;
-            }
-            // --- 電子レンジ分モード時は結果も分で表示 ---
-            if (category === 'microwave' && showAsMinutes) {
-              convertedValue = convertedValue / 60;
-            }
-            if (isNaN(convertedValue)) {
-                resultValue.value = 'Error';
-            } else {
-                 if (Math.abs(convertedValue) > 1e-6 && Math.abs(convertedValue) < 1e6) {
-                    resultValue.value = parseFloat(convertedValue.toFixed(6)).toString();
-                 } else if (convertedValue === 0) {
-                    resultValue.value = "0";
-                 }
-                 else {
-                    resultValue.value = convertedValue.toPrecision(6);
-                 }
-            }
-        } catch (error) {
-            console.error("Conversion error:", error);
-            errorMessageElement.textContent = error.message || getTranslatedText('unitConverter.error.generic');
-            resultValue.value = 'Error';
-        }
-        updateUnitLabels();
-      }
-      // 入力欄の単位ラベルも更新
-      fromUnitSelect.addEventListener('change', () => {
-        const cat = categorySelect.value;
-        if (cat === 'microwave') {
-          inputUnitLabel.textContent = microwaveInputMode === 'minutes' ? '分' : '秒';
+        // 電子レンジ専用ロジック
+        if (category === 'microwave') {
+          let inputSeconds = val;
+          let showAsMinutes = false;
+          if (microwaveTimeToggleWrapper.style.display !== 'none' && microwaveInputMode === 'min') {
+            inputSeconds = val * 60;
+            showAsMinutes = true;
+          }
+          const fromWatt = parseInt(fromUnitSelect.value.replace('w',''));
+          const toWatt = parseInt(toUnitSelect.value.replace('w',''));
+          if (!fromWatt || !toWatt) {
+            resultValue.value = '---';
+            updateMicrowaveResultUI(false);
+            return;
+          }
+          let seconds = inputSeconds * (fromWatt / toWatt);
+          if (showAsMinutes) {
+            // 分・秒分割
+            const min = Math.floor(seconds / 60);
+            const sec = Math.round(seconds - min * 60);
+            updateMicrowaveResultUI(true, min, sec);
+            return;
+          } else {
+            updateMicrowaveResultUI(false);
+            resultValue.value = Math.round(seconds * 100) / 100;
+            return;
+          }
+        } else if (category === 'temperature') {
+          convertedValue = currentCategoryData.convert(val, fromUnitSelect.value, toUnitSelect.value);
+          if (isNaN(convertedValue)) {
+            errorMessageElement.textContent = '温度の変換に失敗しました。';
+            resultValue.value = '---';
+          } else {
+            resultValue.value = convertedValue.toFixed(2);
+          }
         } else {
-          const currentCategoryData = unitsData[cat];
-          const fromUnit = currentCategoryData && currentCategoryData.definitions[fromUnitSelect.value];
-          inputUnitLabel.textContent = fromUnit && fromUnit.symbol ? fromUnit.symbol : '';
+          const fromUnitDef = currentCategoryData.definitions[fromUnitSelect.value];
+          const toUnitDef = currentCategoryData.definitions[toUnitSelect.value];
+          if (!fromUnitDef || !toUnitDef) {
+            resultValue.value = '---';
+            document.getElementById('resultMinuteBox').style.display = 'none';
+            document.getElementById('resultSecondBox').style.display = 'none';
+            resultValue.style.display = '';
+            return;
+          }
+          const baseValue = val * fromUnitDef.factor;
+          convertedValue = baseValue / toUnitDef.factor;
+          resultValue.value = convertedValue.toFixed(6).replace(/\.?0+$/,'');
         }
-        convert();
-      });
-      toUnitSelect.addEventListener('change', convert);
-      inputValue.addEventListener('input', convert);
-      microwaveSecBtn.addEventListener('click', () => {
-        if (microwaveInputMode !== 'sec') {
-          microwaveInputMode = 'sec';
-          updateMicrowaveToggleUI();
-          convert();
-        }
-      });
-      microwaveMinBtn.addEventListener('click', () => {
-        if (microwaveInputMode !== 'min') {
-          microwaveInputMode = 'min';
-          updateMicrowaveToggleUI();
-          convert();
-        }
-      });
-      // --- ユーザビリティ向上のためのUI改善 ---
-      // 1. カテゴリ選択時に説明を表示
-      const categoryDescriptions = {
-        length: '長さ・距離の単位を変換します（例: メートル、マイル、光年など）',
-        weight: '重さ・質量の単位を変換します（例: グラム、ポンド、トンなど）',
-        temperature: '温度の単位を変換します（例: 摂氏、華氏、ケルビンなど）',
-        area: '面積の単位を変換します（例: 平方メートル、坪、エーカーなど）',
-        volume: '体積・容量の単位を変換します（例: リットル、cc、バレルなど）',
-        speed: '速度の単位を変換します（例: km/h, m/s, ノットなど）',
-        pressure: '圧力の単位を変換します（例: パスカル、トル、psiなど）',
-        energy: 'エネルギーの単位を変換します（例: ジュール、カロリー、BTUなど）',
-        power: '電力の単位を変換します（例: ワット、馬力、ギガワットなど）',
-        time: '時間の単位を変換します（例: 秒、分、年、フォートナイトなど）',
-        microwave: '異なるワット数の電子レンジでの加熱時間を変換します（例: 500W→600Wなど）'
-      };
-      const categoryDescriptionDiv = document.getElementById('categoryDescription');
-      function updateCategoryDescription() {
-        const cat = categorySelect.value;
-        categoryDescriptionDiv.textContent = categoryDescriptions[cat] || '';
-      }
-      categorySelect.addEventListener('change', updateCategoryDescription);
-      updateCategoryDescription();
-      // コピー機能
-      document.getElementById('copyResult').addEventListener('click', () => {
-        const val = resultValue.value;
-        if (val && val !== '---' && val !== 'Error') {
-          navigator.clipboard.writeText(val);
-          document.getElementById('copyResult').textContent = 'コピー済み!';
-          setTimeout(() => { document.getElementById('copyResult').textContent = 'コピー'; }, 1200);
-        }
-      });
-      // 入力欄・結果欄にaria-label追加済み
-
-      // --- 単位プルダウン初期化 ---
-      function populateUnitSelects() {
-        const cat = categorySelect.value;
-        const defs = unitsData[cat]?.definitions;
-        if (!defs) return;
-        // fromUnit
-        fromUnitSelect.innerHTML = '';
-        Object.entries(defs).forEach(([key, def]) => {
-          const opt = document.createElement('option');
-          opt.value = key;
-          opt.textContent = getTranslatedUnitName(def) + (def.symbol ? ` (${def.symbol})` : '');
-          fromUnitSelect.appendChild(opt);
-        });
-        // toUnit
-        toUnitSelect.innerHTML = '';
-        Object.entries(defs).forEach(([key, def]) => {
-          const opt = document.createElement('option');
-          opt.value = key;
-          opt.textContent = getTranslatedUnitName(def) + (def.symbol ? ` (${def.symbol})` : '');
-          toUnitSelect.appendChild(opt);
-        });
-        // デフォルト選択
-        fromUnitSelect.selectedIndex = 0;
-        toUnitSelect.selectedIndex = 1 > 0 ? 1 : 0;
-      }
-      categorySelect.addEventListener('change', () => {
-        populateUnitSelects();
         updateUnitLabels();
-        updateMicrowaveToggleUI();
-        convert();
-      });
-      // 初期化
-      populateUnitSelects();
-      updateUnitLabels();
-      updateMicrowaveToggleUI();
-      convert();
+      }
+      inputValue.addEventListener('input', convert);
+      fromUnitSelect.addEventListener('change', convert);
+      toUnitSelect.addEventListener('change', convert);
+      categorySelect.addEventListener('change', convert);
+      document.addEventListener('DOMContentLoaded', convert);
     });
   </script>
 </body>
