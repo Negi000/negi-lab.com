@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-translate-key="page.title">negi-lab.com - 便利ツール＆ゲーム情報ポータル</title>
   <meta name="description" data-translate-key="meta.description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="negi-lab.com" />
+  <meta name="copyright" content="negi-lab.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="negi-lab.com - 便利ツール＆ゲーム情報ポータル" />
+  <meta property="og:description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
+  <meta property="og:url" content="https://negi-lab.com/" />
+  <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="negi-lab.com - 便利ツール＆ゲーム情報ポータル" />
+  <meta name="twitter:description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
+  <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -209,6 +221,17 @@
       </div>
     </section>
 
+    <!-- メインコンテンツ下部：サイト独自性・信頼性・運営方針の強調（SEO・審査対策） -->
+    <section class="max-w-2xl mx-auto my-12 p-6 bg-accent/10 rounded-lg border border-accent/30 text-gray-800 text-sm" aria-label="サイトの独自性・信頼性・運営方針">
+      <h2 class="font-bold text-lg mb-2">negi-lab.comの独自性・信頼性・運営方針</h2>
+      <ul class="list-disc ml-5 mb-2">
+        <li>全ツール・情報は管理人が独自開発・執筆し、他サイトのコピーや自動生成ではありません。</li>
+        <li>広告・アフィリエイトは運営維持のため最小限、ユーザー体験を最優先。</li>
+        <li>正確性・安全性・アクセシビリティ・プライバシー保護を重視しています。</li>
+        <li>ご意見・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで。</li>
+      </ul>
+      <p class="text-xs text-gray-500">2025年6月10日 更新</p>
+    </section>
   </main>
 
   <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
@@ -224,16 +247,30 @@
   </div>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div>
-      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
-      <span class="mx-2">|</span>
-      <a href="/privacy.html" class="underline hover:text-accent mx-1">プライバシーポリシー</a>
-      <span class="mx-2">|</span>
-      <a href="/about.html" class="underline hover:text-accent mx-1">運営者情報</a>
-      <span class="mx-2">|</span>
-      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">negilab.com@gmail.com</a></span>
-    </div>
+    <nav class="mb-2">
+      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
+  <!-- パンくずリスト構造化データ（JSON-LD） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ホーム",
+        "item": "https://negi-lab.com/"
+      }
+    ]
+  }
+  </script>
 
   <script type="module" src="index.js"></script>
   <script>
