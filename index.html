@@ -71,6 +71,9 @@
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -234,34 +237,15 @@
     </section>
 
     <!-- User Guide Section (EN/JA) -->
-    <section id="guide" class="py-12 bg-white">
-      <div class="max-w-2xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="guide.sectionTitle">negi-lab.comの使い方</h2>
-        <ul class="list-disc ml-5 mb-4 text-gray-700" data-translate-key="guide.list">
-          <li><b>ホームやメニューからツールを選択</b>（例：単位変換、画像変換、QRコード作成、URL短縮など）</li>
-          <li>各ツールページのフォームに<b>データを入力</b>し、変換/生成ボタンを押すだけ</li>
-          <li>結果は即時表示。<b>ログインや登録は不要</b></li>
-          <li>全ツールは<b>無料</b>で、日本語・英語どちらでも利用可能。右上メニューで言語切替</li>
-          <li>ご質問・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで</li>
-        </ul>
-        <h3 class="font-bold text-lg mt-8 mb-2" data-translate-key="guide.faqTitle">よくある質問</h3>
-        <dl class="mb-4 text-gray-700">
-          <dt class="font-semibold" data-translate-key="guide.faq.q1">Q. negi-lab.comは無料ですか？</dt>
-          <dd class="mb-2" data-translate-key="guide.faq.a1">A. はい、全てのツール・情報は無料でご利用いただけます。</dd>
-          <dt class="font-semibold" data-translate-key="guide.faq.q2">Q. 英語でも使えますか？</dt>
-          <dd class="mb-2" data-translate-key="guide.faq.a2">A. はい、右上メニューから言語を切り替えれば主要機能は英語でも利用できます。</dd>
-          <dt class="font-semibold" data-translate-key="guide.faq.q3">Q. 入力データやプライバシーは守られますか？</dt>
-          <dd class="mb-2" data-translate-key="guide.faq.a3">A. はい、入力データは保存されません。詳細はプライバシーポリシーをご覧ください。</dd>
-        </dl>
-        <h3 class="font-bold text-lg mt-8 mb-2" data-translate-key="guide.tipsTitle">活用例・ヒント</h3>
-        <ul class="list-disc ml-5 text-gray-700" data-translate-key="guide.tipsList">
-          <li>単位変換ツールでメートル・フィート・インチなどを相互変換</li>
-          <li>画像変換ツールでJPEG/PNG/WebP変換やリサイズ</li>
-          <li>QRコード作成でURLやWi-Fi情報を即時生成</li>
-          <li>URL短縮でSNS用の短縮リンクを作成</li>
-        </ul>
+    <!-- ガイドモーダルの表示/非表示制御 -->
+    <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+      <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+        <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+        <div id="guide-modal-content">
+          <!-- ここにガイド・FAQ・Tipsの内容をJSで挿入 -->
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
@@ -309,6 +293,83 @@
       if (window.translations && typeof applyTranslations === 'function') {
         var lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
         applyTranslations(lang);
+      }
+    });
+    // ガイドモーダルの表示/非表示制御
+    document.addEventListener('DOMContentLoaded', function() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      // 多言語ガイドデータ
+      const guides = {
+        ja: {
+          title: 'negi-lab.comの使い方',
+          list: [
+            '<b>ホームやメニューからツールを選択</b>（例：単位変換、画像変換、QRコード作成、URL短縮など）',
+            '各ツールページのフォームに<b>データを入力</b>し、変換/生成ボタンを押すだけ',
+            '結果は即時表示。<b>ログインや登録は不要</b>',
+            '全ツールは<b>無料</b>で、日本語・英語どちらでも利用可能。右上メニューで言語切替',
+            'ご質問・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで'
+          ],
+          faqTitle: 'よくある質問',
+          faq: [
+            {q: 'Q. negi-lab.comは無料ですか？', a: 'A. はい、全てのツール・情報は無料でご利用いただけます。'},
+            {q: 'Q. 英語でも使えますか？', a: 'A. はい、右上メニューから言語を切り替えれば主要機能は英語でも利用できます。'},
+            {q: 'Q. 入力データやプライバシーは守られますか？', a: 'A. はい、入力データは保存されません。詳細はプライバシーポリシーをご覧ください。'}
+          ],
+          tipsTitle: '活用例・ヒント',
+          tips: [
+            '単位変換ツールでメートル・フィート・インチなどを相互変換',
+            '画像変換ツールでJPEG/PNG/WebP変換やリサイズ',
+            'QRコード作成でURLやWi-Fi情報を即時生成',
+            'URL短縮でSNS用の短縮リンクを作成'
+          ]
+        },
+        en: {
+          title: 'How to Use negi-lab.com',
+          list: [
+            '<b>Choose a tool</b> from the homepage or menu. (e.g. Unit Converter, Image Converter, QR Code Generator, URL Shortener)',
+            'Each tool page has a simple form. <b>Enter your data</b> and press the convert/generate button.',
+            'Results are shown instantly. <b>No login or registration required</b>.',
+            'All tools are <b>free to use</b> and available in Japanese and English. Switch language from the top menu.',
+            'If you have questions or requests, contact us at <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a>.'
+          ],
+          faqTitle: 'Frequently Asked Questions',
+          faq: [
+            {q: 'Q. Is negi-lab.com free?', a: 'A. Yes, all tools and information are free to use.'},
+            {q: 'Q. Can I use the tools in English?', a: 'A. Yes, switch language from the top right menu. All main features are available in English.'},
+            {q: 'Q. Are my data and privacy protected?', a: 'A. Yes, we do not store your input data. Please see our Privacy Policy for details.'}
+          ],
+          tipsTitle: 'Tips & Examples',
+          tips: [
+            'Convert between meters, feet, inches, and more with the Unit Converter.',
+            'Change image format (JPEG, PNG, WebP) and size easily with the Image Converter.',
+            'Generate QR codes for URLs, Wi-Fi, or text instantly.',
+            'Shorten long URLs for sharing on social media.'
+          ]
+        }
+      };
+      function renderGuide(lang) {
+        const g = guides[lang] || guides.ja;
+        let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+        html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.faqTitle}</h3><dl class='mb-4 text-gray-700'>` + g.faq.map(f=>`<dt class='font-semibold'>${f.q}</dt><dd class='mb-2'>${f.a}</dd>`).join('') + '</dl>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        guideContent.innerHTML = html;
+      }
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          renderGuide(lang);
+          guideModal.classList.remove('hidden');
+        });
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
       }
     });
   </script>
