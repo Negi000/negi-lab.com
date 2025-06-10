@@ -117,6 +117,9 @@
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -212,23 +215,14 @@
         <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
       </section>
 
-      <!-- User Guide Section (EN/JA) for URL Shortener -->
-      <section id="guide" class="py-10 bg-white">
-        <div class="max-w-2xl mx-auto px-4">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="guide.sectionTitle">URL短縮ツールの使い方</h2>
-          <ul class="list-disc ml-5 mb-4 text-gray-700" data-translate-key="guide.list">
-            <li>短縮したい長いURLを貼り付け</li>
-            <li>短縮ボタンで即座に短縮リンクを取得</li>
-            <li>コピーしてSNS等で共有</li>
-            <li>右上メニューで日本語・英語切替可能</li>
-          </ul>
-          <h3 class="font-bold text-lg mt-8 mb-2" data-translate-key="guide.tipsTitle">活用例・ヒント</h3>
-          <ul class="list-disc ml-5 text-gray-700" data-translate-key="guide.tipsList">
-            <li>Twitterや名刺用の短縮URL作成</li>
-            <li>クリック統計の確認（対応時）</li>
-          </ul>
+      <!-- Guide Modal Popup -->
+      <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+          <div id="guide-modal-content"></div>
         </div>
-      </section>
+      </div>
+
     </div>
   </main>
 
@@ -382,6 +376,65 @@
                         copyMessage.textContent = 'Copy failed.'; 
                     });
             }
+        });
+
+        // ガイドモーダルの表示/非表示制御
+        document.addEventListener('DOMContentLoaded', function() {
+          const guideBtn = document.getElementById('guide-btn');
+          const guideModal = document.getElementById('guide-modal');
+          const guideClose = document.getElementById('guide-close');
+          const guideContent = document.getElementById('guide-modal-content');
+          // 多言語ガイドデータ
+          const guides = {
+            ja: {
+              title: 'URL短縮ツールの使い方',
+              list: [
+                '短縮したい長いURLを貼り付け',
+                '短縮ボタンで即座に短縮リンクを取得',
+                'コピーしてSNS等で共有',
+                '右上メニューで日本語・英語切替可能'
+              ],
+              tipsTitle: '活用例・ヒント',
+              tips: [
+                'Twitterや名刺用の短縮URL作成',
+                'クリック統計の確認（対応時）'
+              ]
+            },
+            en: {
+              title: 'How to Use the URL Shortener',
+              list: [
+                'Paste the long URL you want to shorten.',
+                'Click the shorten button to get a short link instantly.',
+                'Copy and share the short URL anywhere.',
+                'Switch language from the top menu. All features are available in English and Japanese.'
+              ],
+              tipsTitle: 'Tips & Examples',
+              tips: [
+                'Shorten URLs for Twitter, Instagram, or business cards.',
+                'Track click statistics if available.'
+              ]
+            }
+          };
+          function renderGuide(lang) {
+            const g = guides[lang] || guides.ja;
+            let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+            html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            guideContent.innerHTML = html;
+          }
+          if(guideBtn && guideModal && guideClose && guideContent) {
+            guideBtn.addEventListener('click', function() {
+              const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+              renderGuide(lang);
+              guideModal.classList.remove('hidden');
+            });
+            guideClose.addEventListener('click', function() {
+              guideModal.classList.add('hidden');
+            });
+            guideModal.addEventListener('click', function(e) {
+              if(e.target === guideModal) guideModal.classList.add('hidden');
+            });
+          }
         });
 
         const langSwitchObserver = new MutationObserver(() => {
