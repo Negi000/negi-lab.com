@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>日付計算ツール | Negi-lab.com</title>
+  <meta name="description" content="2つの日付の差分計算や、指定日からの加減算ができる無料日付計算ツール。">
+  <meta property="og:title" content="日付計算ツール | Negi-lab.com">
+  <meta property="og:description" content="2つの日付の差分計算や、指定日からの加減算ができる無料日付計算ツール。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://negi-lab.com/tools/date-calculator.html">
+  <meta property="og:site_name" content="Negi-lab.com">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://negi-lab.com/tools/date-calculator.html">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css">
+  <style>
+    .tool-container { max-width: 520px; margin: 2rem auto; background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 12px #0001; padding: 2.5rem 1.5rem; }
+    .result-box { background: #f1f5f9; border-radius: 0.7rem; padding: 1.2rem; margin-top: 1.2rem; font-size: 1.1rem; }
+    .guide-btn { position: fixed; top: 1.2rem; right: 1.2rem; z-index: 10; }
+    @media (max-width: 600px) { .tool-container { padding: 1.2rem 0.5rem; } }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><a href="/" data-translate-key="header.home">ホーム</a></li>
+        <li><a href="../" data-translate-key="header.tools">ツール一覧</a></li>
+        <li><button class="secondary guide-btn" id="guideBtn" data-translate-key="header.guide">ガイド</button></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <h1 data-translate-key="datecalc.title">日付計算ツール</h1>
+    <div class="tool-container">
+      <h2 class="h3" data-translate-key="datecalc.diffTitle">2つの日付の差を計算</h2>
+      <form id="diffForm">
+        <label><span data-translate-key="datecalc.start">開始日</span>
+          <input type="date" id="startDate" required>
+        </label>
+        <label><span data-translate-key="datecalc.end">終了日</span>
+          <input type="date" id="endDate" required>
+        </label>
+        <button type="submit" data-translate-key="datecalc.calcDiff">日数を計算</button>
+      </form>
+      <div id="diffResult" class="result-box" style="display:none"></div>
+      <hr>
+      <h2 class="h3" data-translate-key="datecalc.addsubTitle">日付の加算・減算</h2>
+      <form id="addsubForm">
+        <label><span data-translate-key="datecalc.base">基準日</span>
+          <input type="date" id="baseDate" required>
+        </label>
+        <label><span data-translate-key="datecalc.days">日数（±）</span>
+          <input type="number" id="days" required placeholder="例: 10 または -5">
+        </label>
+        <button type="submit" data-translate-key="datecalc.calcAddSub">日付を計算</button>
+      </form>
+      <div id="addsubResult" class="result-box" style="display:none"></div>
+    </div>
+  </main>
+  <footer class="container" style="margin-top:2.5rem">
+    <nav>
+      <ul>
+        <li><a href="/privacy-policy.html" data-translate-key="footer.privacy">プライバシーポリシー</a></li>
+        <li><a href="/terms.html" data-translate-key="footer.terms">利用規約</a></li>
+        <li><a href="/about.html" data-translate-key="footer.about">運営者情報</a></li>
+        <li><a href="mailto:info@negi-lab.com" data-translate-key="footer.contact">お問い合わせ</a></li>
+        <li><a href="/sitemap.xml" data-translate-key="footer.sitemap">サイトマップ</a></li>
+      </ul>
+    </nav>
+    <small>&copy; 2025 Negi-lab.com</small>
+  </footer>
+  <!-- 広告エリア例 -->
+  <div style="text-align:center;margin:2rem 0;">
+    <!-- ad code here -->
+  </div>
+  <!-- ガイド・FAQモーダル（全ページ共通UI） -->
+  <dialog id="guideModal">
+    <article>
+      <header>
+        <a href="#close" aria-label="Close" class="close" data-target="guideModal" onclick="document.getElementById('guideModal').close();"></a>
+        <h3 data-translate-key="guide.title">ガイド・FAQ</h3>
+      </header>
+      <section>
+        <ul>
+          <li data-translate-key="datecalc.guide1">2つの日付を入力して「日数を計算」ボタンで日数差がわかります。</li>
+          <li data-translate-key="datecalc.guide2">基準日と日数（正負）を指定して「日付を計算」ボタンで加減算結果が表示されます。</li>
+          <li data-translate-key="datecalc.guide3">祝日・営業日計算には対応していません。</li>
+        </ul>
+      </section>
+    </article>
+  </dialog>
+  <script type="module" src="../index.js"></script>
+  <script>
+    // 日付差分計算
+    document.getElementById('diffForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const s = document.getElementById('startDate').value;
+      const e_ = document.getElementById('endDate').value;
+      if(!s || !e_) return;
+      const d1 = new Date(s);
+      const d2 = new Date(e_);
+      const diff = Math.abs((d2 - d1) / (1000*60*60*24));
+      const res = `${Math.floor(diff)}日`;
+      document.getElementById('diffResult').textContent = res;
+      document.getElementById('diffResult').style.display = '';
+    });
+    // 日付加減算
+    document.getElementById('addsubForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const base = document.getElementById('baseDate').value;
+      const days = parseInt(document.getElementById('days').value, 10);
+      if(!base || isNaN(days)) return;
+      const d = new Date(base);
+      d.setDate(d.getDate() + days);
+      const y = d.getFullYear();
+      const m = ('0'+(d.getMonth()+1)).slice(-2);
+      const dd = ('0'+d.getDate()).slice(-2);
+      const res = `${y}-${m}-${dd}`;
+      document.getElementById('addsubResult').textContent = res;
+      document.getElementById('addsubResult').style.display = '';
+    });
+    // ガイドモーダル
+    document.getElementById('guideBtn').onclick = function(){ document.getElementById('guideModal').showModal(); };
+  </script>
+</body>
+</html>
