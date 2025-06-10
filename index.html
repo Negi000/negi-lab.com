@@ -200,12 +200,12 @@
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- 1 -->
-          <div class="bg-white hover:bg-accent/10 transition rounded-2xl p-7 shadow flex flex-col items-start">
+          <div class="bg-white hover:bg-accent/10 transition rounded-2xl p-7 shadow flex flex-col items-start cursor-pointer wiki-card" tabindex="0" role="button" aria-pressed="false" data-wiki-url="https://fellowmoon.gamewiki.jp">
             <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate-key="wikis.shingetsu.title">新月同行 Wiki</h3>
             <p class="text-gray-600 text-sm mb-4 flex-1">
               <span data-translate-key="wikis.shingetsu.description">話題のスマホRPG「新月同行」の最新情報・データベース・攻略・ランキングなどを掲載。</span><span class="inline-block ml-1 px-2 py-0.5 bg-accent/20 text-xs text-accent rounded" data-translate-key="wikis.shingetsu.languageBadge">日本語限定</span>
             </p>
-            <a href="https://fellowmoon.gamewiki.jp" class="text-accent hover:underline font-semibold" data-translate-key="wikis.shingetsu.open">Wikiを見る</a>
+            <a href="wiki-redirect.html?url=https%3A%2F%2Ffellowmoon.gamewiki.jp" class="text-accent hover:underline font-semibold" data-translate-key="wikis.shingetsu.open" tabindex="-1">Wikiを見る</a>
           </div>
           <!-- 必要に応じて他のWikiも追加 -->
         </div>
@@ -371,6 +371,28 @@
           if(e.target === guideModal) guideModal.classList.add('hidden');
         });
       }
+    });
+    // Wikiカード全体クリック・キーボード操作でリダイレクト
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.wiki-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          // aタグクリック時は二重遷移防止
+          if(e.target.tagName.toLowerCase() === 'a') return;
+          const url = card.getAttribute('data-wiki-url');
+          if(url) {
+            window.location.href = 'wiki-redirect.html?url=' + encodeURIComponent(url);
+          }
+        });
+        card.addEventListener('keydown', function(e) {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const url = card.getAttribute('data-wiki-url');
+            if(url) {
+              window.location.href = 'wiki-redirect.html?url=' + encodeURIComponent(url);
+            }
+          }
+        });
+      });
     });
   </script>
 </body>
