@@ -458,6 +458,7 @@
       function updateMicrowaveToggleUI() {
         if (categorySelect.value === 'microwave') {
           microwaveTimeToggleWrapper.style.display = '';
+          document.getElementById('dummyBtnWrapper').style.display = 'none'; // 電子レンジ時はダミー非表示
           if (microwaveInputMode === 'sec') {
             microwaveSecBtn.classList.add('bg-accent','text-white');
             microwaveSecBtn.classList.remove('bg-gray-200','text-gray-700');
@@ -473,6 +474,7 @@
           }
         } else {
           microwaveTimeToggleWrapper.style.display = 'none';
+          document.getElementById('dummyBtnWrapper').style.display = '';
         }
       }
       microwaveSecBtn.addEventListener('click',()=>{
@@ -510,57 +512,43 @@
       // 結果欄の分・秒ボックス生成/切替
       function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
         const resultValue = document.getElementById('resultValue');
-        let minBox = document.getElementById('resultMinuteBox');
-        let secBox = document.getElementById('resultSecondBox');
+        const toUnit = document.getElementById('toUnit');
+        const copyBtn = document.getElementById('copyResult');
+        let minBoxWrap = document.getElementById('resultMinuteBox');
+        let secBoxWrap = document.getElementById('resultSecondBox');
+        // 分・秒ボックスはラッパーspanで管理
         if (showAsMinutes) {
-          // 分・秒ボックスがなければ生成
-          if (!minBox) {
-            minBox = document.createElement('input');
-            minBox.type = 'text';
-            minBox.id = 'resultMinuteBox';
-            minBox.className = 'form-input bg-gray-100 cursor-not-allowed w-20 mr-1';
-            minBox.readOnly = true;
-            minBox.setAttribute('aria-label', '分');
-            resultValue.parentNode.insertBefore(minBox, resultValue);
+          // 分ボックス
+          if (!minBoxWrap) {
+            minBoxWrap = document.createElement('span');
+            minBoxWrap.id = 'resultMinuteBox';
+            minBoxWrap.style.display = '';
+            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
+            resultValue.parentNode.insertBefore(minBoxWrap, resultValue);
           }
-          if (!secBox) {
-            secBox = document.createElement('input');
-            secBox.type = 'text';
-            secBox.id = 'resultSecondBox';
-            secBox.className = 'form-input bg-gray-100 cursor-not-allowed w-20 ml-1';
-            secBox.readOnly = true;
-            secBox.setAttribute('aria-label', '秒');
-            resultValue.parentNode.insertBefore(secBox, resultValue.nextSibling);
+          // 秒ボックス
+          if (!secBoxWrap) {
+            secBoxWrap = document.createElement('span');
+            secBoxWrap.id = 'resultSecondBox';
+            secBoxWrap.style.display = '';
+            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-16 text-center" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
+            resultValue.parentNode.insertBefore(secBoxWrap, resultValue.nextSibling);
           }
-          minBox.style.display = '';
-          secBox.style.display = '';
+          minBoxWrap.style.display = '';
+          secBoxWrap.style.display = '';
           resultValue.style.display = 'none';
-          minBox.value = minVal;
-          secBox.value = secVal;
-          // 分・秒ラベルも表示
-          if (!document.getElementById('resultMinuteLabel')) {
-            const minLabel = document.createElement('span');
-            minLabel.id = 'resultMinuteLabel';
-            minLabel.textContent = '分';
-            minLabel.className = 'ml-1 text-gray-500';
-            minBox.parentNode.insertBefore(minLabel, minBox.nextSibling);
-          }
-          if (!document.getElementById('resultSecondLabel')) {
-            const secLabel = document.createElement('span');
-            secLabel.id = 'resultSecondLabel';
-            secLabel.textContent = '秒';
-            secLabel.className = 'ml-1 text-gray-500';
-            secBox.parentNode.insertBefore(secLabel, secBox.nextSibling);
-          }
-          document.getElementById('resultMinuteLabel').style.display = '';
-          document.getElementById('resultSecondLabel').style.display = '';
+          // 値セット
+          document.getElementById('resultMinute').value = minVal;
+          document.getElementById('resultSecond').value = secVal;
+          // toUnit, copyボタンは常に表示
+          toUnit.style.display = '';
+          copyBtn.style.display = '';
         } else {
-          // 分・秒ボックス非表示、通常の結果欄のみ
-          if (minBox) minBox.style.display = 'none';
-          if (secBox) secBox.style.display = 'none';
-          if (document.getElementById('resultMinuteLabel')) document.getElementById('resultMinuteLabel').style.display = 'none';
-          if (document.getElementById('resultSecondLabel')) document.getElementById('resultSecondLabel').style.display = 'none';
+          if (minBoxWrap) minBoxWrap.style.display = 'none';
+          if (secBoxWrap) secBoxWrap.style.display = 'none';
           resultValue.style.display = '';
+          toUnit.style.display = '';
+          copyBtn.style.display = '';
         }
       }
 
