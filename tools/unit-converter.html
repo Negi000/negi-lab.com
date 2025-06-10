@@ -126,30 +126,39 @@
           </select>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-          <!-- 変換元 入力欄＋単位プルダウン -->
-          <div>
-            <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
-            <div class="flex items-center gap-2">
-              <input type="number" id="inputValue" value="1" class="form-input flex-1" placeholder="数値を入力" aria-label="変換したい値">
-              <select id="fromUnit" class="form-select w-36"></select>
-              <span id="microwaveTimeToggleWrapper" style="display:none;">
-                <button id="microwaveSecBtn" type="button" class="px-2 py-1 rounded-l bg-accent text-white text-xs hover:bg-emerald-600 transition">秒</button><button id="microwaveMinBtn" type="button" class="px-2 py-1 rounded-r bg-gray-200 text-gray-700 text-xs hover:bg-accent/20 transition">分</button>
-              </span>
-            </div>
-          </div>
-          <!-- 変換先 結果欄＋単位プルダウン＋コピー -->
-          <div>
-            <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
-            <div class="flex items-center gap-2">
-              <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
-              <select id="toUnit" class="form-select w-36"></select>
-              <button id="copyResult" class="px-2 py-1 rounded bg-accent text-white text-xs hover:bg-emerald-600 transition" title="結果をコピー">コピー</button>
-            </div>
+        <!-- 変換元 入力欄＋単位プルダウン -->
+        <div class="mb-4">
+          <label for="inputValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.inputValueLabel">入力値:</label>
+          <div class="flex items-center gap-2">
+            <input type="number" id="inputValue" value="1" class="form-input flex-1" placeholder="数値を入力" aria-label="変換したい値">
+            <select id="fromUnit" class="form-select w-36"></select>
+            <span id="microwaveTimeToggleWrapper" style="display:none;">
+              <button id="microwaveSecBtn" type="button" class="px-2 py-1 rounded-l bg-accent text-white text-xs hover:bg-emerald-600 transition">秒</button><button id="microwaveMinBtn" type="button" class="px-2 py-1 rounded-r bg-gray-200 text-gray-700 text-xs hover:bg-accent/20 transition">分</button>
+            </span>
           </div>
         </div>
-         <p id="errorMessage" class="text-red-600 text-sm"></p>
-         <div id="categoryDescription" class="text-xs text-gray-500 mt-1 mb-2"></div>
+        <!-- 単位入れ替えボタン -->
+        <div class="flex justify-center my-2 md:my-4">
+          <button id="swapUnits" class="p-2 text-accent hover:text-emerald-600 transition rounded-full hover:bg-accent/10" aria-label="Swap units" data-translate-title-key="unitConverter.swapButton" title="単位を入れ替え">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <g>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 7l3-3m-3 3l3 3" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17H7m10 0l-3 3m3-3l-3-3" />
+              </g>
+            </svg>
+          </button>
+        </div>
+        <!-- 変換先 結果欄＋単位プルダウン＋コピー -->
+        <div class="mb-4">
+          <label for="resultValue" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="unitConverter.resultLabel">結果:</label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="resultValue" readonly class="form-input bg-gray-100 cursor-not-allowed flex-1" aria-label="変換結果">
+            <select id="toUnit" class="form-select w-36"></select>
+            <button id="copyResult" class="px-2 py-1 rounded bg-accent text-white text-xs hover:bg-emerald-600 transition" title="結果をコピー">コピー</button>
+          </div>
+        </div>
+        <p id="errorMessage" class="text-red-600 text-sm"></p>
+        <div id="categoryDescription" class="text-xs text-gray-500 mt-1 mb-2"></div>
       </div>
 
       <!-- ツール下部：Amazon・楽天バナー横並び -->
