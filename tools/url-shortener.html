@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,24 +95,24 @@
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
   <!-- Amazonアソシエイト Cookie埋め込み -->
-  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="Amazonアソシエイト Cookie" referrerpolicy="no-referrer" />
   <!-- 楽天アフィリエイト Cookie埋め込み -->
-  <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="楽天アフィリエイト Cookie" referrerpolicy="no-referrer" />
   <!-- AmazonアフィリエイトCookie用ピクセル -->
-  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="AmazonアフィリエイトCookie用ピクセル" loading="eager" />
   <!-- 楽天アフィリエイトCookie用ピクセル -->
-  <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="楽天アフィリエイトCookie用ピクセル" loading="eager" />
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition" aria-label="ホーム">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools" aria-label="ツール">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis" aria-label="ゲームWiki">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="言語選択">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
@@ -124,7 +124,7 @@
 
   <main class="flex-grow py-12">
     <div class="max-w-xl mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="urlShortener.mainTitle">URL短縮ツール</h1>
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮ツール">URL短縮ツール</h1>
       
       <!-- ツール上部：アドセンス（レスポンシブ） -->
       <div class="max-w-xl mx-auto my-6">
@@ -139,32 +139,32 @@
 
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
-          <label for="longUrlInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.longUrlLabel">元のURL:</label>
-          <input type="url" id="longUrlInput" class="form-input w-full" data-translate-placeholder-key="urlShortener.placeholder" placeholder="例: https://www.example.com/very/long/url">
+          <label for="longUrlInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.longUrlLabel" aria-label="元のURLラベル">元のURL:</label>
+          <input type="url" id="longUrlInput" class="form-input w-full" data-translate-placeholder-key="urlShortener.placeholder" placeholder="例: https://www.example.com/very/long/url" aria-label="元のURL入力">
         </div>
 
         <div class="flex items-center">
-            <input type="checkbox" id="enableStats" class="form-checkbox">
-            <label for="enableStats" class="text-sm font-medium text-gray-700 cursor-pointer" data-translate-key="urlShortener.enableStatsLabel">統計ログを有効にする</label>
+            <input type="checkbox" id="enableStats" class="form-checkbox" aria-label="統計ログを有効にする">
+            <label for="enableStats" class="text-sm font-medium text-gray-700 cursor-pointer" data-translate-key="urlShortener.enableStatsLabel" aria-label="統計ログを有効にするラベル">統計ログを有効にする</label>
         </div>
         
-        <button id="shortenButton" class="form-button w-full py-2.5" data-translate-key="urlShortener.shortenButton">短縮する</button>
+        <button id="shortenButton" class="form-button w-full py-2.5" data-translate-key="urlShortener.shortenButton" aria-label="短縮するボタン">短縮する</button>
         
         <div id="resultContainer" class="mt-4 hidden space-y-2">
             <div>
-                <label for="shortUrlOutput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.shortUrlLabel">短縮URL:</label>
+                <label for="shortUrlOutput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.shortUrlLabel" aria-label="短縮URLラベル">短縮URL:</label>
                 <div class="flex">
-                    <input type="text" id="shortUrlOutput" readonly class="result-input flex-grow">
-                    <button id="copyButton" class="copy-button" data-translate-key="urlShortener.copyButton">コピー</button>
+                    <input type="text" id="shortUrlOutput" readonly class="result-input flex-grow" aria-label="短縮URL表示">
+                    <button id="copyButton" class="copy-button" data-translate-key="urlShortener.copyButton" aria-label="コピー">コピー</button>
                 </div>
-                <p id="copyMessage" class="text-sm text-accent mt-1"></p>
+                <p id="copyMessage" class="text-sm text-accent mt-1" aria-live="polite"></p>
             </div>
             <div id="statsLinkContainer" class="hidden">
-                 <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.statsLinkLabel">統計:</label>
-                 <a id="statsLink" href="#" target="_blank" class="text-accent hover:underline text-sm" data-translate-key="urlShortener.statsLinkText">統計ページを見る</a>
-                 <p id="statsInfoMessage" class="text-xs text-gray-500 mt-1" data-translate-key="urlShortener.statsInfo">注意: 統計はis.gdによって提供され、更新に時間がかかる場合があります。</p>
+                 <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.statsLinkLabel" aria-label="統計リンクラベル">統計:</label>
+                 <a id="statsLink" href="#" target="_blank" class="text-accent hover:underline text-sm" data-translate-key="urlShortener.statsLinkText" aria-label="統計ページへのリンク">統計ページを見る</a>
+                 <p id="statsInfoMessage" class="text-xs text-gray-500 mt-1" data-translate-key="urlShortener.statsInfo" aria-label="統計情報">注意: 統計はis.gdによって提供され、更新に時間がかかる場合があります。</p>
             </div>
-             <p id="statsNotEnabledMessage" class="text-xs text-gray-500 mt-1 hidden" data-translate-key="urlShortener.statsNotEnabled">このURLでは統計ログが有効になっていません。</p>
+             <p id="statsNotEnabledMessage" class="text-xs text-gray-500 mt-1 hidden" data-translate-key="urlShortener.statsNotEnabled" aria-label="統計無効メッセージ">このURLでは統計ログが有効になっていません。</p>
         </div>
         
         <div id="messageArea" class="text-sm mt-2">
@@ -174,14 +174,18 @@
 
       </div>
 
+      <!-- スポンサーリンクラベル（広告直前） -->
+      <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
+      <!-- ここに広告コード（例: AdSense）を挿入 -->
+
       <!-- ツール下部：Amazon・楽天バナー横並び -->
       <div class="flex flex-wrap justify-center gap-4 my-8">
         <!-- Amazonバナー例 -->
-        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer" aria-label="Amazonバナー">
           <img src="https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg" alt="Amazonで探す" style="height:60px;" loading="lazy" />
         </a>
         <!-- 楽天バナー例 -->
-        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer">
+        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" aria-label="楽天バナー">
           <img src="https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png" alt="楽天で探す" style="height:60px;" loading="lazy" />
         </a>
       </div>
@@ -196,15 +200,27 @@
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
+
+      <!-- 独自性説明・免責事項セクション -->
+      <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200" aria-label="このツールについて">
+        <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+        <ul class="list-disc ml-5 mb-2">
+          <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+          <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+          <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+        </ul>
+        <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+      </section>
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div>
-      <span data-translate-key="footer.copyrightLine">&copy; 2025 negi-lab.com</span>
-      <span class="mx-2">|</span>
-      <span><span data-translate-key="footer.contactPrefix">お問い合わせ:</span> <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">negilab.com@gmail.com</a></span>
-    </div>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2" aria-label="プライバシーポリシー">プライバシーポリシー</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" aria-label="運営者情報">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" aria-label="お問い合わせ">お問い合わせ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
 
   <script type="module" src="../index.js" defer></script>
