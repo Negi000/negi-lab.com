@@ -605,6 +605,38 @@
         convert();
       });
 
+      // --- 電子レンジ分秒UIの生成・削除を厳密に ---
+      function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
+        let minBoxWrap = document.getElementById('resultMinuteBox');
+        let secBoxWrap = document.getElementById('resultSecondBox');
+        const resultRow = document.getElementById('resultRow');
+        const resultValue = document.getElementById('resultValue');
+        // まず既存の分秒UIを削除
+        if (minBoxWrap) minBoxWrap.remove();
+        if (secBoxWrap) secBoxWrap.remove();
+        if (showAsMinutes) {
+          // 分UI生成
+          minBoxWrap = document.createElement('span');
+          minBoxWrap.id = 'resultMinuteBox';
+          minBoxWrap.className = 'flex items-center flex-shrink-0';
+          minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center mr-1" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
+          // 秒UI生成
+          secBoxWrap = document.createElement('span');
+          secBoxWrap.id = 'resultSecondBox';
+          secBoxWrap.className = 'flex items-center flex-shrink-0';
+          secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center ml-1" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
+          // 追加
+          resultRow.insertBefore(minBoxWrap, resultValue);
+          resultRow.insertBefore(secBoxWrap, resultValue.nextSibling);
+          // 値セット
+          document.getElementById('resultMinute').value = minVal;
+          document.getElementById('resultSecond').value = secVal;
+          resultValue.style.display = 'none';
+        } else {
+          resultValue.style.display = '';
+        }
+      }
+
       // --- 変換ロジック ---
       function convert() {
         errorMessageElement.textContent = '';
@@ -615,7 +647,6 @@
           return;
         }
         let val = parseFloat(inputValue.value);
-        // 電子レンジカテゴリ時はfrom/toUnitの値が空文字列になる場合があるので厳密にチェック
         if (isNaN(val) || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
           updateMicrowaveResultUI(false);
@@ -631,7 +662,6 @@
             inputSeconds = val * 60;
             showAsMinutes = true;
           }
-          // from/toUnitの値が空の場合はoptionのvalueを再取得
           let fromWattVal = fromUnitSelect.value || fromUnitSelect.options[0]?.value || '';
           let toWattVal = toUnitSelect.value || toUnitSelect.options[1]?.value || fromUnitSelect.options[0]?.value || '';
           const fromWatt = parseInt(fromWattVal.replace('w',''));
@@ -643,16 +673,14 @@
           }
           let seconds = inputSeconds * (fromWatt / toWatt);
           if (showAsMinutes) {
-            // 分・秒分割
             const min = Math.floor(seconds / 60);
             const sec = Math.round(seconds - min * 60);
             updateMicrowaveResultUI(true, min, sec);
-            return;
           } else {
             updateMicrowaveResultUI(false);
             resultValue.value = Math.round(seconds * 100) / 100;
-            return;
           }
+          return;
         } else if (category === 'temperature') {
           if (!currentCategoryData.convert) {
             resultValue.value = '---';
@@ -676,6 +704,7 @@
           const baseValue = val * fromUnitDef.factor;
           convertedValue = baseValue / toUnitDef.factor;
           resultValue.value = convertedValue.toFixed(6).replace(/\.?0+$/,'');
+          updateMicrowaveResultUI(false);
         }
         updateUnitLabels();
       }
@@ -698,8 +727,8 @@
       });
 
       // ガイドモーダルの表示/非表示制御
+      // HTML側のIDもguide-btn/guide-modal/guide-close/guide-modal-contentに統一されていることを前提
       document.addEventListener('DOMContentLoaded', function() {
-        // HTML側のIDもguide-btn/guide-modal/guide-close/guide-modal-contentに統一されていることを前提
         const guideBtn = document.getElementById('guide-btn');
         const guideModal = document.getElementById('guide-modal');
         const guideClose = document.getElementById('guide-close');
@@ -738,17 +767,14 @@
             ]
           }
         };
-        function renderGuide(lang) {
-          const g = guides[lang] || guides.ja;
-          let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-          html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-          html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-          guideContent.innerHTML = html;
-        }
         if(guideBtn && guideModal && guideClose && guideContent) {
           guideBtn.addEventListener('click', function() {
             const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-            renderGuide(lang);
+            const g = guides[lang] || guides.ja;
+            let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+            html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            guideContent.innerHTML = html;
             guideModal.classList.remove('hidden');
           });
           guideClose.addEventListener('click', function() {
