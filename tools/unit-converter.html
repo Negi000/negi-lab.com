@@ -569,8 +569,14 @@
             toUnitSelect.appendChild(opt);
           }
         }
+        // 先頭を必ず選択
         fromUnitSelect.selectedIndex = 0;
         toUnitSelect.selectedIndex = 1 > 0 && toUnitSelect.options.length > 1 ? 1 : 0;
+        // 電子レンジカテゴリ時は値が空にならないよう明示的にvalueをセット
+        if (category === 'microwave') {
+          fromUnitSelect.value = fromUnitSelect.options[0]?.value || '';
+          toUnitSelect.value = toUnitSelect.options[1]?.value || fromUnitSelect.options[0]?.value || '';
+        }
       }
       // --- カテゴリ切替時のUI初期化 ---
       function resetUIOnCategoryChange() {
@@ -609,15 +615,14 @@
           return;
         }
         let val = parseFloat(inputValue.value);
+        // 電子レンジカテゴリ時はfrom/toUnitの値が空文字列になる場合があるので厳密にチェック
         if (isNaN(val) || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
           updateMicrowaveResultUI(false);
           return;
         }
         let convertedValue;
-        // 必ずカテゴリごとにcurrentCategoryDataを定義
         let currentCategoryData = unitsData[category];
-        // 電子レンジ専用ロジック
         if (category === 'microwave') {
           currentCategoryData = unitsData['microwave'];
           let inputSeconds = val;
@@ -626,8 +631,11 @@
             inputSeconds = val * 60;
             showAsMinutes = true;
           }
-          const fromWatt = parseInt(fromUnitSelect.value.replace('w',''));
-          const toWatt = parseInt(toUnitSelect.value.replace('w',''));
+          // from/toUnitの値が空の場合はoptionのvalueを再取得
+          let fromWattVal = fromUnitSelect.value || fromUnitSelect.options[0]?.value || '';
+          let toWattVal = toUnitSelect.value || toUnitSelect.options[1]?.value || fromUnitSelect.options[0]?.value || '';
+          const fromWatt = parseInt(fromWattVal.replace('w',''));
+          const toWatt = parseInt(toWattVal.replace('w',''));
           if (!fromWatt || !toWatt) {
             resultValue.value = '---';
             updateMicrowaveResultUI(false);
@@ -691,10 +699,11 @@
 
       // ガイドモーダルの表示/非表示制御
       document.addEventListener('DOMContentLoaded', function() {
-        const guideBtn = document.getElementById('guide-btn') || document.getElementById('guideBtn');
-        const guideModal = document.getElementById('guide-modal') || document.getElementById('guideModal');
-        const guideClose = document.getElementById('guide-close') || document.getElementById('guideClose');
-        const guideContent = document.getElementById('guide-modal-content') || document.getElementById('guideModalContent');
+        // HTML側のIDもguide-btn/guide-modal/guide-close/guide-modal-contentに統一されていることを前提
+        const guideBtn = document.getElementById('guide-btn');
+        const guideModal = document.getElementById('guide-modal');
+        const guideClose = document.getElementById('guide-close');
+        const guideContent = document.getElementById('guide-modal-content');
         const guides = {
           ja: {
             title: '単位変換ツールの使い方',
