@@ -130,6 +130,27 @@
           </form>
           <div id="addsubResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
         </div>
+        <!-- 営業日計算機能 -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.bizTitle">営業日数を計算（祝日・土日除外）</h2>
+          <form id="bizForm" class="space-y-4">
+            <div>
+              <label for="bizStartDate" class="block text-sm font-medium text-gray-700 mb-1">開始日</label>
+              <input type="date" id="bizStartDate" class="form-input w-full" required />
+            </div>
+            <div>
+              <label for="bizEndDate" class="block text-sm font-medium text-gray-700 mb-1">終了日</label>
+              <input type="date" id="bizEndDate" class="form-input w-full" required />
+            </div>
+            <button type="submit" class="form-button w-full">営業日数を計算</button>
+          </form>
+          <div id="bizResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
+        </div>
+        <!-- 日付トリビア表示 -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4">日付トリビア</h2>
+          <div id="dateTrivia" class="bg-emerald-50 rounded-lg p-4 text-gray-700 text-sm"></div>
+        </div>
       </div>
       <!-- スポンサーリンクラベル（広告直前） -->
       <div class="text-xs text-gray-500 mb-1 mt-8" aria-label="スポンサーリンク">スポンサーリンク</div>
@@ -207,6 +228,27 @@
         resultBox.textContent = res;
         resultBox.classList.remove('hidden');
       });
+      // 営業日計算
+      document.getElementById('bizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const s = document.getElementById('bizStartDate').value;
+        const e_ = document.getElementById('bizEndDate').value;
+        if(!s || !e_) return;
+        let d1 = new Date(s);
+        let d2 = new Date(e_);
+        if (d1 > d2) [d1, d2] = [d2, d1];
+        let count = 0;
+        let cur = new Date(d1);
+        while (cur <= d2) {
+          const ymd = cur.toISOString().slice(0,10);
+          if (isBusinessDay(ymd)) count++;
+          cur.setDate(cur.getDate() + 1);
+        }
+        const res = `${count}営業日`;
+        const resultBox = document.getElementById('bizResult');
+        resultBox.textContent = res;
+        resultBox.classList.remove('hidden');
+      });
       // ガイドモーダル
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
@@ -271,6 +313,43 @@
         });
         guideModal.addEventListener('click', function(e) {
           if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
+    });
+    // 営業日計算用の祝日リスト（例: 2025年の日本の祝日一部）
+    const holidays = [
+      '2025-01-01','2025-01-13','2025-02-11','2025-02-23','2025-03-20',
+      '2025-04-29','2025-05-03','2025-05-04','2025-05-05','2025-07-21',
+      '2025-08-11','2025-09-15','2025-09-23','2025-10-13','2025-11-03','2025-11-23'
+    ];
+    function isBusinessDay(dateStr) {
+      const d = new Date(dateStr);
+      const day = d.getDay();
+      if (day === 0 || day === 6) return false; // 日曜・土曜
+      if (holidays.includes(dateStr)) return false;
+      return true;
+    }
+    // 日付トリビア（サンプルデータ）
+    const triviaData = {
+      '2025-06-11': '今日は「傘の日」。梅雨入りの時期にちなみ制定されました。',
+      '2025-01-01': '元日。新年の始まりを祝う日です。',
+      '2025-02-14': 'バレンタインデー。チョコレートを贈る日として有名です。',
+      // ...他の日付も追加可能...
+    };
+    function showDateTrivia(dateStr) {
+      const triviaBox = document.getElementById('dateTrivia');
+      if (triviaData[dateStr]) {
+        triviaBox.textContent = triviaData[dateStr];
+      } else {
+        triviaBox.textContent = 'この日付に関する特別なトリビアはありません。';
+      }
+    }
+    // 日付入力欄のいずれかが変更されたらトリビア表示
+    ['startDate','endDate','baseDate','bizStartDate','bizEndDate'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('change', function() {
+          if (el.value) showDateTrivia(el.value);
         });
       }
     });
