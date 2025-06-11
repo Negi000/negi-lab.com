@@ -20,8 +20,8 @@ jobs:
         run: node tools/update-holidays-trivia.js
       - name: 変更をコミット＆push
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'Negi000'
+          git config --global user.email 'vocaloid39love0519@gmail.com'
           git add tools/holidays-ja.json tools/date-trivia-ja.json
           git commit -m '自動: 祝日・トリビアJSONを更新' || echo 'No changes'
           git push
