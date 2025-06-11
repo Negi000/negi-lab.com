@@ -100,7 +100,23 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-8">
-        <div>
+        <div class="mb-6 flex gap-4">
+          <button id="tabDiff" class="tab-btn px-4 py-2 rounded font-semibold bg-accent text-white">日付の差分</button>
+          <button id="tabAddSub" class="tab-btn px-4 py-2 rounded font-semibold bg-gray-200 text-gray-700">日付の加減算</button>
+        </div>
+        <!-- 共通オプション -->
+        <form id="commonOptions" class="mb-6 flex flex-wrap gap-6 items-center">
+          <label class="inline-flex items-center gap-2">
+            <input type="checkbox" id="optionBiz" class="form-checkbox" checked> 営業日数で計算（祝日・土日除外）
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input type="checkbox" id="optionIncludeStart" class="form-checkbox" checked> 最初の日を含める
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input type="checkbox" id="optionIncludeEnd" class="form-checkbox" checked> 最後の日を含める
+          </label>
+        </form>
+        <div id="diffSection">
           <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.diffTitle">2つの日付の差を計算</h2>
           <form id="diffForm" class="space-y-4">
             <div>
@@ -115,7 +131,7 @@
           </form>
           <div id="diffResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
         </div>
-        <div>
+        <div id="addsubSection" style="display:none;">
           <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.addsubTitle">日付の加算・減算</h2>
           <form id="addsubForm" class="space-y-4">
             <div>
@@ -129,22 +145,6 @@
             <button type="submit" class="form-button w-full" data-translate-key="dateCalculator.calcAddSub">日付を計算</button>
           </form>
           <div id="addsubResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
-        </div>
-        <!-- 営業日計算機能 -->
-        <div>
-          <h2 class="text-xl font-semibold mb-4" data-translate-key="dateCalculator.bizTitle">営業日数を計算（祝日・土日除外）</h2>
-          <form id="bizForm" class="space-y-4">
-            <div>
-              <label for="bizStartDate" class="block text-sm font-medium text-gray-700 mb-1">開始日</label>
-              <input type="date" id="bizStartDate" class="form-input w-full" required />
-            </div>
-            <div>
-              <label for="bizEndDate" class="block text-sm font-medium text-gray-700 mb-1">終了日</label>
-              <input type="date" id="bizEndDate" class="form-input w-full" required />
-            </div>
-            <button type="submit" class="form-button w-full">営業日数を計算</button>
-          </form>
-          <div id="bizResult" class="bg-gray-50 rounded-lg p-4 mt-4 text-lg text-center text-accent font-bold hidden"></div>
         </div>
         <!-- 日付トリビア表示 -->
         <div>
@@ -198,54 +198,106 @@
   <script type="module" src="../index.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // タブ切り替えUI
+      const tabDiff = document.getElementById('tabDiff');
+      const tabAddSub = document.getElementById('tabAddSub');
+      const diffSection = document.getElementById('diffSection');
+      const addsubSection = document.getElementById('addsubSection');
+      function switchTab(mode) {
+        if (mode === 'diff') {
+          tabDiff.classList.add('bg-accent','text-white');
+          tabDiff.classList.remove('bg-gray-200','text-gray-700');
+          tabAddSub.classList.remove('bg-accent','text-white');
+          tabAddSub.classList.add('bg-gray-200','text-gray-700');
+          diffSection.style.display = '';
+          addsubSection.style.display = 'none';
+        } else {
+          tabAddSub.classList.add('bg-accent','text-white');
+          tabAddSub.classList.remove('bg-gray-200','text-gray-700');
+          tabDiff.classList.remove('bg-accent','text-white');
+          tabDiff.classList.add('bg-gray-200','text-gray-700');
+          diffSection.style.display = 'none';
+          addsubSection.style.display = '';
+        }
+      }
+      tabDiff.addEventListener('click',()=>switchTab('diff'));
+      tabAddSub.addEventListener('click',()=>switchTab('addsub'));
+      // 初期化
+      switchTab('diff');
       // 日付差分計算
-      document.getElementById('diffForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const s = document.getElementById('startDate').value;
-        const e_ = document.getElementById('endDate').value;
-        if(!s || !e_) return;
-        const d1 = new Date(s);
-        const d2 = new Date(e_);
-        const diff = Math.abs((d2 - d1) / (1000*60*60*24));
-        const res = `${Math.floor(diff)}日`;
-        const resultBox = document.getElementById('diffResult');
-        resultBox.textContent = res;
-        resultBox.classList.remove('hidden');
-      });
-      // 日付加減算
-      document.getElementById('addsubForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const base = document.getElementById('baseDate').value;
-        const days = parseInt(document.getElementById('days').value, 10);
-        if(!base || isNaN(days)) return;
-        const d = new Date(base);
-        d.setDate(d.getDate() + days);
-        const y = d.getFullYear();
-        const m = ('0'+(d.getMonth()+1)).slice(-2);
-        const dd = ('0'+d.getDate()).slice(-2);
-        const res = `${y}-${m}-${dd}`;
-        const resultBox = document.getElementById('addsubResult');
-        resultBox.textContent = res;
-        resultBox.classList.remove('hidden');
-      });
-      // 営業日計算
-      document.getElementById('bizForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const s = document.getElementById('bizStartDate').value;
-        const e_ = document.getElementById('bizEndDate').value;
-        if(!s || !e_) return;
+      function calcDateDiff(s, e_, useBiz, incStart, incEnd) {
         let d1 = new Date(s);
         let d2 = new Date(e_);
         if (d1 > d2) [d1, d2] = [d2, d1];
         let count = 0;
         let cur = new Date(d1);
-        while (cur <= d2) {
-          const ymd = cur.toISOString().slice(0,10);
-          if (isBusinessDay(ymd)) count++;
-          cur.setDate(cur.getDate() + 1);
+        if (useBiz) {
+          while (cur <= d2) {
+            const ymd = cur.toISOString().slice(0,10);
+            if (isBusinessDay(ymd)) count++;
+            cur.setDate(cur.getDate() + 1);
+          }
+        } else {
+          count = Math.floor((d2 - d1) / (1000*60*60*24)) + 1;
         }
-        const res = `${count}営業日`;
-        const resultBox = document.getElementById('bizResult');
+        // 最初/最後の日を含めるか
+        if (!incStart && count > 0) count--;
+        if (!incEnd && count > 0) count--;
+        if (!incStart && !incEnd && count < 0) count = 0;
+        return count;
+      }
+      document.getElementById('diffForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const s = document.getElementById('startDate').value;
+        const e_ = document.getElementById('endDate').value;
+        const useBiz = document.getElementById('optionBiz').checked;
+        const incStart = document.getElementById('optionIncludeStart').checked;
+        const incEnd = document.getElementById('optionIncludeEnd').checked;
+        if(!s || !e_) return;
+        const days = calcDateDiff(s, e_, useBiz, incStart, incEnd);
+        const res = `${days}日` + (useBiz ? '（営業日）' : '');
+        const resultBox = document.getElementById('diffResult');
+        resultBox.textContent = res;
+        resultBox.classList.remove('hidden');
+      });
+      // 日付加減算
+      function addBusinessDays(base, days) {
+        let d = new Date(base);
+        let step = days >= 0 ? 1 : -1;
+        let absDays = Math.abs(days);
+        let count = 0;
+        while (count < absDays) {
+          d.setDate(d.getDate() + step);
+          const ymd = d.toISOString().slice(0,10);
+          if (isBusinessDay(ymd)) count++;
+        }
+        return d;
+      }
+      document.getElementById('addsubForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const base = document.getElementById('baseDate').value;
+        const days = parseInt(document.getElementById('days').value, 10);
+        const useBiz = document.getElementById('optionBiz').checked;
+        const incStart = document.getElementById('optionIncludeStart').checked;
+        const incEnd = document.getElementById('optionIncludeEnd').checked;
+        if(!base || isNaN(days)) return;
+        let resultDate;
+        let n = days;
+        // 最初/最後の日を含める調整
+        if (!incStart && n > 0) n--;
+        if (!incEnd && n > 0) n--;
+        if (useBiz) {
+          resultDate = addBusinessDays(base, n);
+        } else {
+          let d = new Date(base);
+          d.setDate(d.getDate() + n);
+          resultDate = d;
+        }
+        const y = resultDate.getFullYear();
+        const m = ('0'+(resultDate.getMonth()+1)).slice(-2);
+        const dd = ('0'+resultDate.getDate()).slice(-2);
+        const res = `${y}-${m}-${dd}` + (useBiz ? '（営業日計算）' : '');
+        const resultBox = document.getElementById('addsubResult');
         resultBox.textContent = res;
         resultBox.classList.remove('hidden');
       });
@@ -353,6 +405,17 @@
         });
       }
     });
+    // 機能切り替えUI
+    function updateSections() {
+      document.getElementById('diffSection').style.display = document.getElementById('toggleDiff').checked ? '' : 'none';
+      document.getElementById('addsubSection').style.display = document.getElementById('toggleAddSub').checked ? '' : 'none';
+      document.getElementById('bizSection').style.display = document.getElementById('toggleBiz').checked ? '' : 'none';
+    }
+    document.getElementById('toggleDiff').addEventListener('change', updateSections);
+    document.getElementById('toggleAddSub').addEventListener('change', updateSections);
+    document.getElementById('toggleBiz').addEventListener('change', updateSections);
+    // 初期化
+    updateSections();
   </script>
 </body>
 </html>
