@@ -241,189 +241,65 @@
   </div>
 
   <script type="module" src="../index.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const qrDataInput = document.getElementById('qrData');
-        const qrSizeInput = document.getElementById('qrSize');
-        const qrFgColorInput = document.getElementById('qrFgColor');
-        const qrBgColorInput = document.getElementById('qrBgColor');
-        const qrErrorCorrectionSelect = document.getElementById('qrErrorCorrection');
-        const generateQrButton = document.getElementById('generateQrButton');
-        const qrcodeOutputDiv = document.getElementById('qrcodeOutput');
-        const qrResultContainer = document.getElementById('qrResultContainer');
-        const downloadQrButton = document.getElementById('downloadQrButton');
-        const statusMessage = document.getElementById('statusMessage');
-        const errorMessage = document.getElementById('errorMessage');
-        
-        let qrcodeInstance = null;
-
-        function getLang() {
-            return document.documentElement.lang || 'ja';
-        }
-
-        function translate(key) {
-            const lang = getLang();
-            if (window.translations && window.translations[lang] && window.translations[lang][key]) {
-                return window.translations[lang][key];
-            }
-            const fallbacks = {
-                'qrGenerator.generatingMessage': 'Generating...',
-                'qrGenerator.error.emptyInput': 'Please enter data for QR code.',
-                'qrGenerator.error.generic': 'Error generating QR code.',
-                'qrGenerator.qrAlt': 'Generated QR Code'
-            };
-            return fallbacks[key] || key;
-        }
-        
-        function clearMessages() {
-            statusMessage.textContent = '';
-            errorMessage.textContent = '';
-        }
-
-        function generateQRCode() {
-            clearMessages();
-            const data = qrDataInput.value.trim();
-            if (!data) {
-                errorMessage.textContent = translate('qrGenerator.error.emptyInput');
-                qrResultContainer.classList.add('hidden');
-                return;
-            }
-
-            statusMessage.textContent = translate('qrGenerator.generatingMessage');
-            
-            const size = parseInt(qrSizeInput.value, 10);
-            const fgColor = qrFgColorInput.value;
-            const bgColor = qrBgColorInput.value;
-            const errorCorrectionLevel = qrErrorCorrectionSelect.value;
-
-            qrcodeOutputDiv.innerHTML = ''; 
-
-            try {
-                if (typeof QRCode === 'undefined') {
-                    errorMessage.textContent = translate('qrGenerator.error.generic') + " (Library not loaded)";
-                    statusMessage.textContent = '';
-                    return;
-                }
-
-                qrcodeInstance = new QRCode(qrcodeOutputDiv, {
-                    text: data,
-                    width: size,
-                    height: size,
-                    colorDark: fgColor,
-                    colorLight: bgColor,
-                    correctLevel: QRCode.CorrectLevel[errorCorrectionLevel] || QRCode.CorrectLevel.M
-                });
-                
-                qrResultContainer.classList.remove('hidden');
-                statusMessage.textContent = '';
-                const qrImg = qrcodeOutputDiv.querySelector('img');
-                if (qrImg) {
-                    qrImg.alt = translate('qrGenerator.qrAlt');
-                }
-
-            } catch (error) {
-                console.error("QR Code generation error:", error);
-                errorMessage.textContent = translate('qrGenerator.error.generic');
-                statusMessage.textContent = '';
-                qrResultContainer.classList.add('hidden');
-            }
-        }
-
-        generateQrButton.addEventListener('click', generateQRCode);
-
-        downloadQrButton.addEventListener('click', () => {
-            const qrImg = qrcodeOutputDiv.querySelector('img');
-            const qrCanvas = qrcodeOutputDiv.querySelector('canvas');
-
-            let downloadUrl = null;
-            if (qrImg && qrImg.src) {
-                downloadUrl = qrImg.src;
-            } else if (qrCanvas) {
-                 downloadUrl = qrCanvas.toDataURL('image/png');
-            }
-            
-            if (downloadUrl) {
-                const link = document.createElement('a');
-                link.download = 'qrcode.png';
-                link.href = downloadUrl;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                errorMessage.textContent = translate('qrGenerator.error.generic') + " (No image found)";
-            }
-        });
-        
-        const langSwitchObserver = new MutationObserver(() => {
-            if (errorMessage.textContent) {
-                 const currentErrorKey = Object.keys(window.translations[getLang()] || {}).find(key => window.translations[getLang()][key] === errorMessage.textContent);
-                 if (currentErrorKey) errorMessage.textContent = translate(currentErrorKey);
-            }
-            const qrImg = qrcodeOutputDiv.querySelector('img');
-            if (qrImg && qrResultContainer.offsetParent !== null) { 
-                 qrImg.alt = translate('qrGenerator.qrAlt');
-            }
-        });
-        langSwitchObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-
-        // ガイドモーダルの表示/非表示制御
-    document.addEventListener('DOMContentLoaded', function() {
-      const guideBtn = document.getElementById('guide-btn');
-      const guideModal = document.getElementById('guide-modal');
-      const guideClose = document.getElementById('guide-close');
-      const guideContent = document.getElementById('guide-modal-content');
-      const guides = {
-        ja: {
-          title: 'QRコード作成ツールの使い方',
-          list: [
-            'テキスト・URL・Wi-Fi情報などを入力',
-            'エラー訂正や色・サイズを調整',
-            '生成ボタンでQRコードを作成',
-            '右上メニューで日本語・英語切替可能'
-          ],
-          tipsTitle: '活用例・ヒント',
-          tips: [
-            '名刺やWebサイト用のQRコード作成',
-            'Wi-Fi接続用QRコードの生成'
-          ]
-        },
-        en: {
-          title: 'How to Use the QR Code Generator',
-          list: [
-            'Enter the text, URL, or Wi-Fi info you want to encode.',
-            'Adjust error correction, color, and size as needed.',
-            'Click the generate button to create your QR code.',
-            'Switch language from the top menu. All features are available in English and Japanese.'
-          ],
-          tipsTitle: 'Tips & Examples',
-          tips: [
-            'Create a QR code for your website or business card.',
-            'Generate Wi-Fi QR codes for easy sharing.'
-          ]
-        }
-      };
-      function renderGuide(lang) {
-        const g = guides[lang] || guides.ja;
-        let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-        html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-        guideContent.innerHTML = html;
-      }
-      if(guideBtn && guideModal && guideClose && guideContent) {
-        guideBtn.addEventListener('click', function() {
-          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-          renderGuide(lang);
-          guideModal.classList.remove('hidden');
-        });
-        guideClose.addEventListener('click', function() {
-          guideModal.classList.add('hidden');
-        });
-        guideModal.addEventListener('click', function(e) {
-          if(e.target === guideModal) guideModal.classList.add('hidden');
-        });
-      }
+  <script defer>
+function setupGuideModal() {
+  const guideBtn = document.getElementById('guide-btn');
+  const guideModal = document.getElementById('guide-modal');
+  const guideClose = document.getElementById('guide-close');
+  const guideContent = document.getElementById('guide-modal-content');
+  const guides = {
+    ja: {
+      title: 'QRコード作成ツールの使い方',
+      list: [
+        'テキスト・URL・Wi-Fi情報などを入力',
+        'エラー訂正や色・サイズを調整',
+        '生成ボタンでQRコードを作成',
+        '右上メニューで日本語・英語切替可能'
+      ],
+      tipsTitle: '活用例・ヒント',
+      tips: [
+        '名刺やWebサイト用のQRコード作成',
+        'Wi-Fi接続用QRコードの生成'
+      ]
+    },
+    en: {
+      title: 'How to Use the QR Code Generator',
+      list: [
+        'Enter the text, URL, or Wi-Fi info you want to encode.',
+        'Adjust error correction, color, and size as needed.',
+        'Click the generate button to create your QR code.',
+        'Switch language from the top menu. All features are available in English and Japanese.'
+      ],
+      tipsTitle: 'Tips & Examples',
+      tips: [
+        'Create a QR code for your website or business card.',
+        'Generate Wi-Fi QR codes for easy sharing.'
+      ]
+    }
+  };
+  if(guideBtn && guideModal && guideClose && guideContent) {
+    guideBtn.addEventListener('click', function() {
+      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+      const g = guides[lang] || guides.ja;
+      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      guideContent.innerHTML = html;
+      guideModal.classList.remove('hidden');
     });
+    guideClose.addEventListener('click', function() {
+      guideModal.classList.add('hidden');
     });
-  </script>
+    guideModal.addEventListener('click', function(e) {
+      if(e.target === guideModal) guideModal.classList.add('hidden');
+    });
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupGuideModal);
+} else {
+  setupGuideModal();
+}
+</script>
 </body>
 </html>

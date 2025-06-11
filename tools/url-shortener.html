@@ -238,6 +238,66 @@
   </footer>
 
   <script type="module" src="../index.js" defer></script>
+  <script defer>
+function setupGuideModal() {
+  const guideBtn = document.getElementById('guide-btn');
+  const guideModal = document.getElementById('guide-modal');
+  const guideClose = document.getElementById('guide-close');
+  const guideContent = document.getElementById('guide-modal-content');
+  const guides = {
+    ja: {
+      title: 'URL短縮ツールの使い方',
+      list: [
+        '短縮したい長いURLを貼り付け',
+        '短縮ボタンで即座に短縮リンクを取得',
+        'コピーしてSNS等で共有',
+        '右上メニューで日本語・英語切替可能'
+      ],
+      tipsTitle: '活用例・ヒント',
+      tips: [
+        'Twitterや名刺用の短縮URL作成',
+        'クリック統計の確認（対応時）'
+      ]
+    },
+    en: {
+      title: 'How to Use the URL Shortener',
+      list: [
+        'Paste the long URL you want to shorten.',
+        'Click the shorten button to get a short link instantly.',
+        'Copy and share the short URL anywhere.',
+        'Switch language from the top menu. All features are available in English and Japanese.'
+      ],
+      tipsTitle: 'Tips & Examples',
+      tips: [
+        'Shorten URLs for Twitter, Instagram, or business cards.',
+        'Track click statistics if available.'
+      ]
+    }
+  };
+  if(guideBtn && guideModal && guideClose && guideContent) {
+    guideBtn.addEventListener('click', function() {
+      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+      const g = guides[lang] || guides.ja;
+      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      guideContent.innerHTML = html;
+      guideModal.classList.remove('hidden');
+    });
+    guideClose.addEventListener('click', function() {
+      guideModal.classList.add('hidden');
+    });
+    guideModal.addEventListener('click', function(e) {
+      if(e.target === guideModal) guideModal.classList.add('hidden');
+    });
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupGuideModal);
+} else {
+  setupGuideModal();
+}
+</script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const longUrlInput = document.getElementById('longUrlInput');
