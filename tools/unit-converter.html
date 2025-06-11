@@ -621,9 +621,11 @@
           return;
         }
         let convertedValue;
-        const currentCategoryData = unitsData[category];
+        // 必ずカテゴリごとにcurrentCategoryDataを定義
+        let currentCategoryData = unitsData[category];
         // 電子レンジ専用ロジック
         if (category === 'microwave') {
+          currentCategoryData = unitsData['microwave'];
           let inputSeconds = val;
           let showAsMinutes = false;
           if (microwaveTimeToggleWrapper.style.display !== 'none' && microwaveInputMode === 'min') {
