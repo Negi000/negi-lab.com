@@ -559,7 +559,6 @@
           const defs = unitsData[category].definitions;
           for (const key in defs) {
             const def = defs[key];
-            // name (symbol) 表示
             let label = def.ja;
             if (def.symbol) label += ` (${def.symbol})`;
             else if (def.en && def.en.match(/\((.*?)\)/)) label += ` (${def.en.match(/\((.*?)\)/)[1]})`;
@@ -570,24 +569,19 @@
             toUnitSelect.appendChild(opt);
           }
         }
-        // 先頭を選択
         fromUnitSelect.selectedIndex = 0;
         toUnitSelect.selectedIndex = 1 > 0 && toUnitSelect.options.length > 1 ? 1 : 0;
       }
       // --- カテゴリ切替時のUI初期化 ---
       function resetUIOnCategoryChange() {
-        // 分秒BOX非表示
         const minBoxWrap = document.getElementById('resultMinuteBox');
         const secBoxWrap = document.getElementById('resultSecondBox');
         if (minBoxWrap) minBoxWrap.remove();
         if (secBoxWrap) secBoxWrap.remove();
-        // 結果input, toUnit, copyボタンを中央に戻す
         resultValue.style.display = '';
-        document.getElementById('toUnit').style.display = '';
+        toUnitSelect.style.display = '';
         document.getElementById('copyResult').style.display = '';
-        // プレースホルダー初期化
         inputValue.placeholder = '数値を入力';
-        // エラー初期化
         errorMessageElement.textContent = '';
       }
       categorySelect.addEventListener('change', () => {
@@ -652,6 +646,10 @@
             return;
           }
         } else if (category === 'temperature') {
+          if (!currentCategoryData.convert) {
+            resultValue.value = '---';
+            return;
+          }
           convertedValue = currentCategoryData.convert(val, fromUnitSelect.value, toUnitSelect.value);
           if (isNaN(convertedValue)) {
             errorMessageElement.textContent = '温度の変換に失敗しました。';
@@ -679,12 +677,24 @@
       categorySelect.addEventListener('change', convert);
       document.addEventListener('DOMContentLoaded', convert);
 
+      // 単位入れ替えボタン
+      swapButton.addEventListener('click', () => {
+        // swap value（selectedIndexだけでなくvalueも）
+        const tmp = fromUnitSelect.value;
+        fromUnitSelect.value = toUnitSelect.value;
+        toUnitSelect.value = tmp;
+        // selectedIndexも同期
+        fromUnitSelect.selectedIndex = Array.from(fromUnitSelect.options).findIndex(opt => opt.value === fromUnitSelect.value);
+        toUnitSelect.selectedIndex = Array.from(toUnitSelect.options).findIndex(opt => opt.value === toUnitSelect.value);
+        convert();
+      });
+
       // ガイドモーダルの表示/非表示制御
       document.addEventListener('DOMContentLoaded', function() {
-        const guideBtn = document.getElementById('guide-btn');
-        const guideModal = document.getElementById('guide-modal');
-        const guideClose = document.getElementById('guide-close');
-        const guideContent = document.getElementById('guide-modal-content');
+        const guideBtn = document.getElementById('guide-btn') || document.getElementById('guideBtn');
+        const guideModal = document.getElementById('guide-modal') || document.getElementById('guideModal');
+        const guideClose = document.getElementById('guide-close') || document.getElementById('guideClose');
+        const guideContent = document.getElementById('guide-modal-content') || document.getElementById('guideModalContent');
         const guides = {
           ja: {
             title: '単位変換ツールの使い方',
@@ -740,7 +750,6 @@
           });
         }
       });
-
     });
   </script>
 </body>
