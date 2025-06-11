@@ -574,79 +574,38 @@
         fromUnitSelect.selectedIndex = 0;
         toUnitSelect.selectedIndex = 1 > 0 && toUnitSelect.options.length > 1 ? 1 : 0;
       }
-      categorySelect.addEventListener('change', () => {
-        populateUnitDropdowns();
-        convert();
-      });
-      document.addEventListener('DOMContentLoaded', () => {
-        populateUnitDropdowns(); // まず単位プルダウンを生成
-        convert();
-      });
-
-      // カテゴリ切替時に分秒BOXを必ずremoveし、通常UIに戻す
-      categorySelect.addEventListener('change', () => {
+      // --- カテゴリ切替時のUI初期化 ---
+      function resetUIOnCategoryChange() {
         // 分秒BOX非表示
         const minBoxWrap = document.getElementById('resultMinuteBox');
         const secBoxWrap = document.getElementById('resultSecondBox');
         if (minBoxWrap) minBoxWrap.remove();
         if (secBoxWrap) secBoxWrap.remove();
         // 結果input, toUnit, copyボタンを中央に戻す
-        const resultValue = document.getElementById('resultValue');
         resultValue.style.display = '';
         document.getElementById('toUnit').style.display = '';
         document.getElementById('copyResult').style.display = '';
+        // プレースホルダー初期化
+        inputValue.placeholder = '数値を入力';
+        // エラー初期化
+        errorMessageElement.textContent = '';
+      }
+      categorySelect.addEventListener('change', () => {
+        populateUnitDropdowns();
+        resetUIOnCategoryChange();
+        updateMicrowaveToggleUI();
+        updateUnitLabels();
+        convert();
       });
-
-      // 単位入れ替えボタン
-      swapButton.addEventListener('click', () => {
-        const fromIdx = fromUnitSelect.selectedIndex;
-        const toIdx = toUnitSelect.selectedIndex;
-        // 値をswap
-        fromUnitSelect.selectedIndex = toIdx;
-        toUnitSelect.selectedIndex = fromIdx;
+      document.addEventListener('DOMContentLoaded', () => {
+        populateUnitDropdowns();
+        resetUIOnCategoryChange();
+        updateMicrowaveToggleUI();
+        updateUnitLabels();
         convert();
       });
 
-      // --- 電子レンジ専用ロジック修正（分/秒対応・幅バランス） ---
-      function updateMicrowaveResultUI(showAsMinutes, minVal, secVal) {
-        const resultValue = document.getElementById('resultValue');
-        const toUnit = document.getElementById('toUnit');
-        const copyBtn = document.getElementById('copyResult');
-        let minBoxWrap = document.getElementById('resultMinuteBox');
-        let secBoxWrap = document.getElementById('resultSecondBox');
-        if (showAsMinutes) {
-          if (!minBoxWrap) {
-            minBoxWrap = document.createElement('span');
-            minBoxWrap.id = 'resultMinuteBox';
-            minBoxWrap.style.display = '';
-            minBoxWrap.className = 'flex items-center flex-shrink-0';
-            minBoxWrap.innerHTML = '<input type="text" id="resultMinute" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center mr-1" aria-label="分"><span class="text-gray-600 text-sm">分</span>';
-            resultValue.parentNode.insertBefore(minBoxWrap, resultValue);
-          }
-          if (!secBoxWrap) {
-            secBoxWrap = document.createElement('span');
-            secBoxWrap.id = 'resultSecondBox';
-            secBoxWrap.style.display = '';
-            secBoxWrap.className = 'flex items-center flex-shrink-0';
-            secBoxWrap.innerHTML = '<input type="text" id="resultSecond" readonly class="form-input bg-gray-100 cursor-not-allowed w-20 md:w-28 text-center ml-1" aria-label="秒"><span class="text-gray-600 text-sm">秒</span>';
-            resultValue.parentNode.insertBefore(secBoxWrap, resultValue.nextSibling);
-          }
-          minBoxWrap.style.display = '';
-          secBoxWrap.style.display = '';
-          resultValue.style.display = 'none';
-          document.getElementById('resultMinute').value = minVal;
-          document.getElementById('resultSecond').value = secVal;
-          toUnit.style.display = '';
-          copyBtn.style.display = '';
-        } else {
-          if (minBoxWrap) minBoxWrap.remove();
-          if (secBoxWrap) secBoxWrap.remove();
-          resultValue.style.display = '';
-          toUnit.style.display = '';
-          copyBtn.style.display = '';
-        }
-      }
-
+      // --- 変換ロジック ---
       function convert() {
         errorMessageElement.textContent = '';
         const category = categorySelect.value;
@@ -656,12 +615,13 @@
           return;
         }
         let val = parseFloat(inputValue.value);
-        if (isNaN(val) || !unitsData[category] || !fromUnitSelect.value || !toUnitSelect.value) {
+        if (isNaN(val) || !fromUnitSelect.value || !toUnitSelect.value) {
           resultValue.value = '---';
           updateMicrowaveResultUI(false);
           return;
         }
         let convertedValue;
+        const currentCategoryData = unitsData[category];
         // 電子レンジ専用ロジック
         if (category === 'microwave') {
           let inputSeconds = val;
@@ -702,9 +662,7 @@
           const toUnitDef = currentCategoryData.definitions[toUnitSelect.value];
           if (!fromUnitDef || !toUnitDef) {
             resultValue.value = '---';
-            document.getElementById('resultMinuteBox').style.display = 'none';
-            document.getElementById('resultSecondBox').style.display = 'none';
-            resultValue.style.display = '';
+            updateMicrowaveResultUI(false);
             return;
           }
           const baseValue = val * fromUnitDef.factor;
