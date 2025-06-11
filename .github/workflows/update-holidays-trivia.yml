@@ -1,0 +1,27 @@
+name: '祝日・トリビア自動更新'
+on:
+  schedule:
+    - cron: '0 0 1 * *' # 毎月1日0時(JST+9:00)
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 依存パッケージインストール
+        run: npm install node-fetch@2
+      - name: 祝日・トリビアJSON自動生成
+        run: node tools/update-holidays-trivia.js
+      - name: 変更をコミット＆push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add tools/holidays-ja.json tools/date-trivia-ja.json
+          git commit -m '自動: 祝日・トリビアJSONを更新' || echo 'No changes'
+          git push
