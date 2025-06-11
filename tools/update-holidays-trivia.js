@@ -2,38 +2,70 @@
 // 実運用時はAPI仕様・CORS等に応じて修正してください
 const fs = require('fs');
 const fetch = require('node-fetch');
+const path = require('path');
 
 async function fetchHolidays() {
-  // 例: 国民の祝日API（https://holidays-jp.github.io/api/v1/date.json）
+  // 国民の祝日API（1948年～未来まで）
   const url = 'https://holidays-jp.github.io/api/v1/date.json';
   const res = await fetch(url);
   const data = await res.json();
-  // YYYY-MM-DD形式の配列に変換
+  // YYYY-MM-DD形式の配列
   return Object.keys(data).sort();
 }
 
-async function fetchTrivia() {
-  // 例: Wikipedia APIで「今日は何の日」取得（日本語）
-  // ここではサンプルとして一部固定データを返す
-  // 実運用ではAPIや記念日DB等から自動取得ロジックを実装
-  return {
-    "01-01": "元日。新年の始まりを祝う日です。",
-    "03-11": "東日本大震災が発生した日（2011年）",
-    "07-20": "アポロ11号月面着陸（1969年）",
-    "08-06": "広島に原爆投下（1945年）",
-    "09-01": "防災の日。関東大震災（1923年）",
-    "10-10": "東京オリンピック開会式（1964年）",
-    "12-25": "クリスマス。イエス・キリストの誕生日。"
-    // ...さらに自動取得・拡充可能...
-  };
+async function fetchTriviaAllDays() {
+  // Wikipedia APIから「今日は何の日」全日分を取得
+  // 例: https://ja.wikipedia.org/api/rest_v1/page/mobile-sections/今日は何の日_各日
+  // ここでは1年分(01-01～12-31)をループで取得
+  const trivia = {};
+  for(let m=1;m<=12;m++){
+    for(let d=1;d<=31;d++){
+      const mm = String(m).padStart(2,'0');
+      const dd = String(d).padStart(2,'0');
+      const key = `${mm}-${dd}`;
+      // Wikipedia APIで各日を取得
+      const title = encodeURIComponent(`${m}月${d}日`);
+      const url = `https://ja.wikipedia.org/api/rest_v1/page/summary/${title}`;
+      try {
+        const res = await fetch(url);
+        if(res.ok){
+          const data = await res.json();
+          if(data.extract) trivia[key] = data.extract.replace(/\n/g, ' ');
+        }
+      } catch(e) {/* 無視 */}
+    }
+  }
+  return trivia;
+}
+
+function mergeJson(oldObj, newObj) {
+  // 既存データを優先しつつ、新規データを追加
+  return { ...newObj, ...oldObj };
 }
 
 async function main() {
+  // holidays
   const holidays = await fetchHolidays();
-  fs.writeFileSync('tools/holidays-ja.json', JSON.stringify(holidays, null, 2), 'utf8');
-  const trivia = await fetchTrivia();
-  fs.writeFileSync('tools/date-trivia-ja.json', JSON.stringify(trivia, null, 2), 'utf8');
-  console.log('祝日・トリビアJSONを更新しました');
+  const holidaysPath = path.join(__dirname, 'holidays-ja.json');
+  let oldHolidays = [];
+  if(fs.existsSync(holidaysPath)){
+    oldHolidays = JSON.parse(fs.readFileSync(holidaysPath, 'utf8'));
+  }
+  // 差分追加（重複除去）
+  const mergedHolidays = Array.from(new Set([...oldHolidays, ...holidays])).sort();
+  fs.writeFileSync(holidaysPath, JSON.stringify(mergedHolidays, null, 2), 'utf8');
+
+  // trivia
+  const trivia = await fetchTriviaAllDays();
+  const triviaPath = path.join(__dirname, 'date-trivia-ja.json');
+  let oldTrivia = {};
+  if(fs.existsSync(triviaPath)){
+    oldTrivia = JSON.parse(fs.readFileSync(triviaPath, 'utf8'));
+  }
+  // 既存データ優先でマージ
+  const mergedTrivia = mergeJson(oldTrivia, trivia);
+  fs.writeFileSync(triviaPath, JSON.stringify(mergedTrivia, null, 2), 'utf8');
+  console.log('祝日・トリビアJSONを差分マージで更新しました');
 }
 
 main();
