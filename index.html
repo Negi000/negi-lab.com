@@ -44,18 +44,74 @@
     gtag('js', new Date());
     gtag('config', 'G-N9X3N0RY0H');
   </script>
+
+  <!-- Amazonアソシエイト Cookie埋め込み -->
+  <!-- 楽天アフィリエイト Cookie埋め込み -->
+  <!-- AmazonアフィリエイトCookie用ピクセル -->
+  <!-- 楽天アフィリエイトCookie用ピクセル -->
+  
+  <!-- --- ASP規約違反リスクのあるimgタグ完全撤去（上記4行） --- -->
+
+  <!-- パーソナライズ広告/ABテスト/広告ブロック検知/同意バナー用JS・HTML追加 -->
+  <div id="consent-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-accent/40 shadow-lg z-50 p-4 flex flex-col md:flex-row items-center justify-between gap-2 hidden" role="alertdialog" aria-modal="true">
+    <span class="text-gray-700 text-sm">本サイトはCookie等を利用し、広告・アフィリエイト収益を得ています。詳細は<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a>をご覧ください。</span>
+    <button id="consent-accept" class="bg-accent text-white rounded px-4 py-1 font-semibold ml-2">同意して閉じる</button>
+  </div>
+  <script>
+    // --- 広告ブロック検知 ---
+    function detectAdBlock(callback) {
+      const ad = document.createElement('div');
+      ad.className = 'adsbox';
+      ad.style.display = 'none';
+      document.body.appendChild(ad);
+      setTimeout(function() {
+        callback(window.getComputedStyle(ad).display === 'none' || ad.offsetHeight === 0);
+        ad.remove();
+      }, 100);
+    }
+    // --- 同意バナー ---
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('consentAccepted')) {
+        document.getElementById('consent-banner').classList.remove('hidden');
+      }
+      document.getElementById('consent-accept').onclick = function() {
+        localStorage.setItem('consentAccepted', '1');
+        document.getElementById('consent-banner').classList.add('hidden');
+      };
+    });
+    // --- パーソナライズ広告/ABテスト ---
+    document.addEventListener('DOMContentLoaded', function() {
+      detectAdBlock(function(isBlocked) {
+        document.querySelectorAll('.adsbygoogle').forEach(function(ad){
+          ad.parentElement.style.display = isBlocked ? 'none' : '';
+        });
+        // 広告ブロック時は寄付・自社サービス誘導等に切替
+        if(isBlocked) {
+          document.querySelectorAll('.adblock-alt').forEach(function(el){ el.style.display = ''; });
+        }
+      });
+      // ABテスト: 広告位置・種類をランダムで切替
+      const ab = Math.random() < 0.5 ? 'A' : 'B';
+      document.body.classList.add('ab-' + ab);
+    });
+    // --- ASPバナー動的パラメータ付与 ---
+    function openAspLink(base, params) {
+      const url = base + (base.includes('?') ? '&' : '?') + params + '&ref=negiab' + Date.now();
+      window.open(url, '_blank', 'noopener');
+    }
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
-  <!-- Amazonアソシエイト Cookie埋め込み -->
-  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
-  <!-- 楽天アフィリエイト Cookie埋め込み -->
-  <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" />
+  <!-- Amazonアソシエイト Cookie埋め込み（規約違反リスクのため削除） -->
+  <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
+  <!-- 楽天アフィリエイト Cookie埋め込み（規約違反リスクのため削除） -->
+  <!-- <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
 
-  <!-- AmazonアフィリエイトCookie用ピクセル -->
-  <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" />
-  <!-- 楽天アフィリエイトCookie用ピクセル -->
-  <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" />
+  <!-- AmazonアフィリエイトCookie用ピクセル（規約違反リスクのため削除） -->
+  <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" /> -->
+  <!-- 楽天アフィリエイトCookie用ピクセル（規約違反リスクのため削除） -->
+  <!-- <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" /> -->
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -403,6 +459,66 @@
         });
       });
     });
+  </script>
+
+  <!-- alt属性・aria強化例 -->
+  <img src="/assets/logo.png" alt="negi-lab.comロゴ" width="120" height="40" decoding="async" loading="lazy" aria-label="negi-lab.comのロゴ" />
+  <!-- 内部リンク強化例 -->
+  <nav aria-label="主要ナビゲーション">
+    <ul class="flex gap-4">
+      <li><a href="/tools/date-calculator.html">日付計算ツール</a></li>
+      <li><a href="/tools/holidays.html">祝日一覧</a></li>
+      <li><a href="/tools/date-trivia.html">今日は何の日</a></li>
+      <li><a href="/about.html">このサイトについて</a></li>
+    </ul>
+  </nav>
+
+  <!-- ASPバナー例（クリック時に動的パラメータ付与） -->
+  <div class="my-6 flex flex-col gap-2">
+    <button onclick="openAspLink('https://www.amazon.co.jp/s?field-keywords=便利グッズ', 'tag=negiab-22')" class="asp-btn amazon">Amazonで探す</button>
+    <button onclick="openAspLink('https://hb.afl.rakuten.co.jp/hsc/xxxxxxx', 'link_type=hybrid&sub=negiab')" class="asp-btn rakuten">楽天で探す</button>
+    <div class="adblock-alt" style="display:none">
+      <a href="/donate.html" class="text-accent underline">広告ブロック中：ご支援はこちら</a>
+    </div>
+  </div>
+  <!-- Google AdSense例（ABテストでA/B切替） -->
+  <div class="adsbygoogle ab-A" style="display:block" data-ad-client="ca-pub-xxxx" data-ad-slot="xxxx"></div>
+  <div class="adsbygoogle ab-B" style="display:none" data-ad-client="ca-pub-xxxx" data-ad-slot="yyyy"></div>
+
+  <!-- SEO構造化データ（FAQ, パンくず, サイトリンク, HowTo, Review例） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "negi-lab.comはどんなサイト？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "日付計算・生活便利ツール・ITトリビア等を提供する無料Webサービスです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "広告やアフィリエイトは使われていますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。サイト運営費用のため、広告・アフィリエイトリンクを掲載しています。"
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://negi-lab.com/"},
+      {"@type": "ListItem", "position": 2, "name": "便利ツール", "item": "https://negi-lab.com/tools/"}
+    ]
+  }
   </script>
 </body>
 </html>
