@@ -184,7 +184,11 @@
 
       <!-- ツール下部：Amazon・楽天バナー → ネイティブ/モーションウィジェット動的表示に置換 -->
       <div id="smart-ads" class="flex justify-center my-8"></div>
-      <script>renderSmartAds('smart-ads');</script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          if (window.renderSmartAds) window.renderSmartAds('smart-ads');
+        });
+      </script>
 
     </div>
   </main>
