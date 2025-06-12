@@ -182,5 +182,73 @@
       });
     });
   </script>
+  <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition mt-4" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+  <!-- ガイドモーダル -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+  <script>
+function setupGuideModal() {
+  const guideBtn = document.getElementById('guide-btn');
+  const guideModal = document.getElementById('guide-modal');
+  const guideClose = document.getElementById('guide-close');
+  const guideContent = document.getElementById('guide-modal-content');
+  const guides = {
+    ja: {
+      title: 'JSON⇔CSV/YAML⇔Excel変換ツールの使い方',
+      list: [
+        'ファイルまたはテキストでデータを入力',
+        '変換先形式を選択し、変換ボタンを押す',
+        '結果をプレビュー＆ダウンロード可能',
+        '右上メニューで日本語・英語切替可能'
+      ],
+      tipsTitle: '活用例・ヒント',
+      tips: [
+        'データの一括変換やフォーマット統一',
+        'Excel⇔CSV⇔JSON⇔YAMLの相互変換'
+      ]
+    },
+    en: {
+      title: 'How to Use the JSON⇔CSV/YAML⇔Excel Converter',
+      list: [
+        'Input data via file or text.',
+        'Select the target format and click convert.',
+        'Preview and download the result.',
+        'Switch language from the top menu.'
+      ],
+      tipsTitle: 'Tips & Examples',
+      tips: [
+        'Batch convert and unify data formats.',
+        'Convert between Excel, CSV, JSON, and YAML.'
+      ]
+    }
+  };
+  if(guideBtn && guideModal && guideClose && guideContent) {
+    guideBtn.addEventListener('click', function() {
+      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+      const g = guides[lang] || guides.ja;
+      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      guideContent.innerHTML = html;
+      guideModal.classList.remove('hidden');
+    });
+    guideClose.addEventListener('click', function() {
+      guideModal.classList.add('hidden');
+    });
+    guideModal.addEventListener('click', function(e) {
+      if(e.target === guideModal) guideModal.classList.add('hidden');
+    });
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupGuideModal);
+} else {
+  setupGuideModal();
+}
+</script>
 </body>
 </html>
