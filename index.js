@@ -322,9 +322,26 @@ function renderSmartAds(targetId) {
   // Amazonと楽天を両方表示（ユーザビリティ配慮: 横並び/スマホは縦並び）
   const el = document.getElementById(targetId);
   if (el) {
+    // 1. innerHTMLで一旦挿入
     el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;">
       <div style="min-width:220px;max-width:100%;">${getAmazonNativeAdCode(cat)}</div>
       <div style="min-width:220px;max-width:100%;">${getRakutenMotionWidgetCode(cat)}</div>
     </div>`;
+    // 2. innerHTMLで挿入したscriptタグを手動で実行
+    //   - el内の全scriptタグを抽出し、1つずつ新規script要素として再挿入
+    const scripts = el.querySelectorAll('script');
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement('script');
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      }
+      if (oldScript.type) {
+        newScript.type = oldScript.type;
+      }
+      if (oldScript.textContent) {
+        newScript.textContent = oldScript.textContent;
+      }
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
   }
 }
