@@ -173,11 +173,9 @@
           </div>
         </div>
 
-        <!-- ツールセクション下：Amazon・楽天バナー横並び -->
-        <div class="flex flex-wrap justify-center gap-4 my-10">
-          <!-- Amazonバナー例（imgタグ削除済み） -->
-          <!-- 楽天バナー例（imgタグ削除済み） -->
-        </div>
+        <!-- ツールセクション下：Amazon・楽天バナー横並び → 動的広告バナーに置換 -->
+        <div id="dynamic-ad" class="flex justify-center my-10"></div>
+        <script>renderDynamicAd('dynamic-ad');</script>
 
         <!-- 広告枠例 -->
         <div class="max-w-lg mx-auto mt-10">

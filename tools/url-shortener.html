@@ -174,17 +174,9 @@
       <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
       <!-- ここに広告コード（例: AdSense）を挿入 -->
 
-      <!-- ツール下部：Amazon・楽天バナー横並び -->
-      <div class="flex flex-wrap justify-center gap-4 my-8">
-        <!-- Amazonバナー例 -->
-        <a href="https://www.amazon.co.jp/?tag=YOUR_AMAZON_ID" target="_blank" rel="noopener noreferrer" aria-label="Amazonバナー">
-          <img src="https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg" alt="Amazonで探す" style="height:60px;" loading="lazy" />
-        </a>
-        <!-- 楽天バナー例 -->
-        <a href="https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" aria-label="楽天バナー">
-          <img src="https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png" alt="楽天で探す" style="height:60px;" loading="lazy" />
-        </a>
-      </div>
+      <!-- ツール下部：Amazon・楽天バナー横並び → 動的広告バナーに置換 -->
+      <div id="dynamic-ad" class="flex justify-center my-8"></div>
+      <script>renderDynamicAd('dynamic-ad');</script>
 
       <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
       <div class="max-w-xl mx-auto my-8">
