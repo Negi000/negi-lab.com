@@ -129,9 +129,96 @@
       </div>
 
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <div>
-          <label for="qrData" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.dataLabel">データ (テキストまたはURL):</label>
-          <textarea id="qrData" rows="3" class="form-input w-full" placeholder="https://negi-lab.com" aria-label="QRコードに埋め込むデータ（テキストまたはURL）"></textarea>
+        <!-- ▼▼▼ データ形式選択UI追加 ▼▼▼ -->
+        <div class="mb-4">
+          <label for="qrType" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.typeLabel">データ形式:</label>
+          <select id="qrType" class="form-select w-full">
+            <option value="text" data-translate-key="qrGenerator.type.text">テキスト/URL</option>
+            <option value="email" data-translate-key="qrGenerator.type.email">メールアドレス</option>
+            <option value="tel" data-translate-key="qrGenerator.type.tel">電話番号</option>
+            <option value="sms" data-translate-key="qrGenerator.type.sms">SMS</option>
+            <option value="vcard" data-translate-key="qrGenerator.type.vcard">連絡先（vCard）</option>
+            <option value="wifi" data-translate-key="qrGenerator.type.wifi">Wi-Fi接続</option>
+            <option value="event" data-translate-key="qrGenerator.type.event">カレンダーイベント</option>
+            <option value="geo" data-translate-key="qrGenerator.type.geo">位置情報</option>
+            <option value="line" data-translate-key="qrGenerator.type.line">LINE/SNS</option>
+            <option value="crypto" data-translate-key="qrGenerator.type.crypto">暗号通貨アドレス</option>
+          </select>
+        </div>
+        <!-- ▼▼▼ データ形式ごとの入力欄を動的に切り替え（仮：textのみ表示、後でJSで切替） ▼▼▼ -->
+        <div id="qrInputFields">
+          <div id="qrInput-text">
+            <label for="qrData" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.dataLabel">データ (テキストまたはURL):</label>
+            <textarea id="qrData" rows="3" class="form-input w-full" placeholder="https://negi-lab.com" aria-label="QRコードに埋め込むデータ（テキストまたはURL）"></textarea>
+          </div>
+          <div id="qrInput-email" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">メールアドレス:</label>
+            <input type="email" id="qrEmail" class="form-input w-full" placeholder="example@mail.com">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">件名:</label>
+            <input type="text" id="qrEmailSubject" class="form-input w-full" placeholder="件名（任意）">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">本文:</label>
+            <textarea id="qrEmailBody" rows="2" class="form-input w-full" placeholder="本文（任意）"></textarea>
+          </div>
+          <div id="qrInput-tel" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">電話番号:</label>
+            <input type="tel" id="qrTel" class="form-input w-full" placeholder="09012345678">
+          </div>
+          <div id="qrInput-sms" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">SMS送信先番号:</label>
+            <input type="tel" id="qrSmsNumber" class="form-input w-full" placeholder="09012345678">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">本文:</label>
+            <textarea id="qrSmsBody" rows="2" class="form-input w-full" placeholder="本文（任意）"></textarea>
+          </div>
+          <div id="qrInput-vcard" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">氏名:</label>
+            <input type="text" id="qrVcardName" class="form-input w-full" placeholder="山田 太郎">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">電話番号:</label>
+            <input type="tel" id="qrVcardTel" class="form-input w-full" placeholder="09012345678">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">メール:</label>
+            <input type="email" id="qrVcardEmail" class="form-input w-full" placeholder="example@mail.com">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">会社名:</label>
+            <input type="text" id="qrVcardOrg" class="form-input w-full" placeholder="株式会社サンプル">
+          </div>
+          <div id="qrInput-wifi" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">SSID:</label>
+            <input type="text" id="qrWifiSsid" class="form-input w-full" placeholder="Wi-Fi名">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">パスワード:</label>
+            <input type="text" id="qrWifiPass" class="form-input w-full" placeholder="パスワード">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">暗号化方式:</label>
+            <select id="qrWifiType" class="form-select w-full">
+              <option value="WPA">WPA/WPA2</option>
+              <option value="WEP">WEP</option>
+              <option value="nopass">なし</option>
+            </select>
+          </div>
+          <div id="qrInput-event" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">タイトル:</label>
+            <input type="text" id="qrEventTitle" class="form-input w-full" placeholder="イベント名">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">開始日時:</label>
+            <input type="datetime-local" id="qrEventStart" class="form-input w-full">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">終了日時:</label>
+            <input type="datetime-local" id="qrEventEnd" class="form-input w-full">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">場所:</label>
+            <input type="text" id="qrEventLocation" class="form-input w-full" placeholder="会場名・住所">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">説明:</label>
+            <textarea id="qrEventDesc" rows="2" class="form-input w-full" placeholder="説明（任意）"></textarea>
+          </div>
+          <div id="qrInput-geo" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">緯度:</label>
+            <input type="number" id="qrGeoLat" class="form-input w-full" placeholder="35.681236" step="any">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">経度:</label>
+            <input type="number" id="qrGeoLng" class="form-input w-full" placeholder="139.767125" step="any">
+          </div>
+          <div id="qrInput-line" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">LINE/SNSリンク:</label>
+            <input type="text" id="qrLineUrl" class="form-input w-full" placeholder="https://line.me/xxxx">
+          </div>
+          <div id="qrInput-crypto" style="display:none">
+            <label class="block text-sm font-medium text-gray-700 mb-1">暗号通貨アドレス:</label>
+            <input type="text" id="qrCryptoAddr" class="form-input w-full" placeholder="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa">
+            <label class="block text-sm font-medium text-gray-700 mt-2 mb-1">通貨名:</label>
+            <input type="text" id="qrCryptoType" class="form-input w-full" placeholder="Bitcoin, Ethereum など">
+          </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -167,6 +254,10 @@
                 <!-- QR Code will be rendered here by JavaScript -->
             </div>
             <button id="downloadQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.downloadButton">PNGでダウンロード</button>
+            <div class="flex gap-2 mt-2">
+              <button id="downloadQrSvgButton" class="form-button flex-1" type="button">SVGでダウンロード</button>
+              <button id="downloadQrJpegButton" class="form-button flex-1" type="button">JPEGでダウンロード</button>
+            </div>
         </div>
         
         <div id="messageArea" class="text-sm mt-2">
@@ -174,6 +265,22 @@
             <p id="errorMessage" class="text-red-600"></p>
         </div>
 
+        <div class="mt-4">
+          <label for="qrLogo" class="block text-sm font-medium text-gray-700 mb-1">ロゴ画像（中央合成・任意）:</label>
+          <input type="file" id="qrLogo" accept="image/*" class="form-input w-full" aria-label="QRコード中央に合成するロゴ画像">
+        </div>
+
+        <div id="qrAdBannerToggleBox" class="flex items-center gap-2 mt-2">
+          <input type="checkbox" id="qrAdBannerToggle" class="form-checkbox">
+          <label for="qrAdBannerToggle" class="text-sm">QR画像下部にnegi-labおすすめ情報を表示する</label>
+        </div>
+
+      </div>
+
+      <!-- ▼▼▼ 生成履歴表示エリア ▼▼▼ -->
+      <div id="qrHistoryArea" class="my-6">
+        <h3 class="font-bold text-base mb-2">最近生成したQRコード</h3>
+        <ul id="qrHistoryList" class="space-y-2 text-xs"></ul>
       </div>
 
       <!-- スポンサーリンクラベル（広告直前） -->
@@ -233,64 +340,135 @@
 
   <script type="module" src="../index.js" defer></script>
   <script defer>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: 'QRコード作成ツールの使い方',
-      list: [
-        'テキスト・URL・Wi-Fi情報などを入力',
-        'エラー訂正や色・サイズを調整',
-        '生成ボタンでQRコードを作成',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        '名刺やWebサイト用のQRコード作成',
-        'Wi-Fi接続用QRコードの生成'
-      ]
-    },
-    en: {
-      title: 'How to Use the QR Code Generator',
-      list: [
-        'Enter the text, URL, or Wi-Fi info you want to encode.',
-        'Adjust error correction, color, and size as needed.',
-        'Click the generate button to create your QR code.',
-        'Switch language from the top menu. All features are available in English and Japanese.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Create a QR code for your website or business card.',
-        'Generate Wi-Fi QR codes for easy sharing.'
-      ]
+// Cookie同意判定（consent-bannerの同意ボタン利用想定）
+function isCookieConsentAccepted() {
+  // consent-acceptボタン押下時にlocalStorage.setItem('cookieConsent','accepted')等で保存している前提
+  return localStorage.getItem('cookieConsent') === 'accepted';
+}
+
+// プレビュー機能（入力値変更時に即時反映）
+function setupQrPreview() {
+  const inputs = [
+    'qrType','qrData','qrEmail','qrEmailSubject','qrEmailBody','qrTel','qrSmsNumber','qrSmsBody',
+    'qrVcardName','qrVcardTel','qrVcardEmail','qrVcardOrg','qrWifiSsid','qrWifiPass','qrWifiType',
+    'qrEventTitle','qrEventStart','qrEventEnd','qrEventLocation','qrEventDesc','qrGeoLat','qrGeoLng',
+    'qrLineUrl','qrCryptoAddr','qrCryptoType','qrSize','qrFgColor','qrBgColor','qrLogo','qrErrorCorrection'
+  ];
+  inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
     }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
+  });
+  updatePreview();
+}
+function updatePreview() {
+  const qrType = document.getElementById('qrType').value;
+  const qrData = getQrDataByType();
+  const size = parseInt(document.getElementById('qrSize').value)||256;
+  const fg = document.getElementById('qrFgColor').value;
+  const bg = document.getElementById('qrBgColor').value;
+  const logoInput = document.getElementById('qrLogo');
+  const adBanner = shouldShowAdBanner();
+  let logoFile = logoInput && logoInput.files && logoInput.files[0] ? logoInput.files[0] : null;
+  drawQrWithLogo(qrData, size, fg, bg, logoFile, function(canvas) {
+    const qrcodeOutput = document.getElementById('qrcodeOutput');
+    if (!canvas) return;
+    qrcodeOutput.innerHTML = '';
+    qrcodeOutput.appendChild(canvas);
+    document.getElementById('qrResultContainer').classList.remove('hidden');
+  }, adBanner);
+}
+// 広告合成可否判定
+function shouldShowAdBanner() {
+  if (isCookieConsentAccepted()) return true;
+  const cb = document.getElementById('qrAdBannerToggle');
+  return cb && cb.checked;
+}
+// 広告合成チェックボックスの表示制御
+function setupAdBannerToggleDisplay() {
+  const adBox = document.getElementById('qrAdBannerToggleBox');
+  if (!adBox) return;
+  if (isCookieConsentAccepted()) {
+    adBox.style.display = 'none';
+    document.getElementById('qrAdBannerToggle').checked = true;
+  } else {
+    adBox.style.display = '';
   }
 }
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
+// drawQrWithLogoの広告バナー表現をやわらかく・控えめに
+function drawQrWithLogo(qrData, size, fg, bg, logoFile, callback, adBanner) {
+  const tempDiv = document.createElement('div');
+  new QRCode(tempDiv, {
+    text: qrData,
+    width: size,
+    height: size,
+    colorDark: fg,
+    colorLight: bg,
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  setTimeout(() => {
+    const img = tempDiv.querySelector('img');
+    if (!img) return callback(null);
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,size,size);
+    ctx.drawImage(img,0,0,size,size);
+    if (logoFile) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const logoImg = new window.Image();
+        logoImg.onload = function() {
+          const logoSize = size * 0.22;
+          ctx.drawImage(logoImg, (size-logoSize)/2, (size-logoSize)/2, logoSize, logoSize);
+          if(adBanner) drawAdBanner(ctx, size);
+          callback(canvas);
+        };
+        logoImg.src = e.target.result;
+      };
+      reader.readAsDataURL(logoFile);
+    } else {
+      if(adBanner) drawAdBanner(ctx, size);
+      callback(canvas);
+    }
+  }, 100);
 }
+function drawAdBanner(ctx, size) {
+  // 下部に控えめな帯＋やわらかい文言
+  ctx.save();
+  ctx.globalAlpha = 0.85;
+  ctx.fillStyle = '#f0fdf4';
+  ctx.fillRect(0, size-28, size, 28);
+  ctx.globalAlpha = 1;
+  ctx.font = 'bold 13px Inter, sans-serif';
+  ctx.fillStyle = '#22c55e';
+  ctx.textAlign = 'center';
+  ctx.fillText('negi-labおすすめ: 便利なAI画像生成もぜひご活用ください', size/2, size-10);
+  ctx.restore();
+}
+document.addEventListener('DOMContentLoaded', function() {
+  setupGuideModal();
+  setupQrTypeSwitcher();
+  setupAdBannerToggleDisplay();
+  setupQrPreview();
+  const genBtn = document.getElementById('generateQrButton');
+  if (genBtn) {
+    genBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      let qrType = document.getElementById('qrType').value;
+      let qrData = getQrDataByType();
+      let size = parseInt(document.getElementById('qrSize').value)||256;
+      let fg = document.getElementById('qrFgColor').value;
+      let bg = document.getElementById('qrBgColor').value;
+      saveQrHistory(qrType, qrData, {size, fg, bg});
+      renderQrHistory();
+    });
+  }
+  renderQrHistory();
+});
 </script>
 </body>
 </html>

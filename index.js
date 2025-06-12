@@ -202,6 +202,14 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     setLanguage(detectedLang);
   }
+  var consentBtn = document.getElementById('consent-accept');
+  if (consentBtn) {
+    consentBtn.addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      // ページ全体の広告合成制御やUI再描画のためリロード
+      location.reload();
+    });
+  }
 });
 
 // --- 動的広告表示ロジック ---
