@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/index.css">
   <!-- Google AdSense 審査用コード（head内に1回だけ設置） -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386"
@@ -43,11 +43,27 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
-  <!-- パーソナライズ広告/ABテスト/広告ブロック検知/同意バナー用JS・HTML追加（head→body直下に移動） -->
-  <div id="consent-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-accent/40 shadow-lg z-50 p-4 flex flex-col md:flex-row items-center justify-between gap-2 hidden" role="alertdialog" aria-modal="true">
-    <span class="text-gray-700 text-sm">本サイトはCookie等を利用し、広告・アフィリエイト収益を得ています。詳細は<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a>をご覧ください。</span>
-    <button id="consent-accept" class="bg-accent text-white rounded px-4 py-1 font-semibold ml-2">同意して閉じる</button>
+  <!-- consent-banner: ユーザビリティを損なわない下部バナー型に変更（全画面覆わず、z-indexも控えめに） -->
+  <div id="consent-banner" class="fixed bottom-0 left-0 w-full max-w-full bg-white border-t border-accent/40 shadow-lg z-30 p-3 flex flex-col md:flex-row items-center justify-between gap-2 transition-transform translate-y-0" role="alertdialog" aria-modal="true" style="min-width:240px; max-width:100vw;">
+    <span class="text-gray-700 text-xs md:text-sm">本サイトはCookie等を利用し、広告・アフィリエイト収益を得ています。<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a></span>
+    <button id="consent-accept" class="bg-accent text-white rounded px-3 py-1 text-xs md:text-sm font-semibold ml-2">OK</button>
   </div>
+  <script>
+    // consent-banner: ユーザビリティを損なわない下部バナー型
+    document.addEventListener('DOMContentLoaded', function() {
+      var banner = document.getElementById('consent-banner');
+      var accept = document.getElementById('consent-accept');
+      if (!localStorage.getItem('consentAccepted')) {
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+      accept.onclick = function() {
+        localStorage.setItem('consentAccepted', '1');
+        banner.classList.add('hidden');
+      };
+    });
+  </script>
 
   <!-- Amazonアソシエイト Cookie埋め込み（規約違反リスクのため削除） -->
   <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
@@ -175,14 +191,8 @@
 
         <!-- ツールセクション下：Amazon・楽天バナー横並び -->
         <div class="flex flex-wrap justify-center gap-4 my-10">
-          <!-- Amazonバナー例 -->
-          <a href="https://amzn.to/43TEJOD" target="_blank" rel="noopener noreferrer">
-            <img src="https://m.media-amazon.com/images/G/09/associates/General/t-furusato_02.jpg" alt="Amazonで探す" style="height:60px;" loading="lazy" />
-          </a>
-          <!-- 楽天バナー例 -->
-          <a href="https://hb.afl.rakuten.co.jp/hsc/4910d747.d15dc188.4910d748.d56fc6c6/?pc=https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer">
-            <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/468x60.png" alt="楽天で探す" style="height:60px;" loading="lazy" />
-          </a>
+          <!-- Amazonバナー例（imgタグ削除済み） -->
+          <!-- 楽天バナー例（imgタグ削除済み） -->
         </div>
 
         <!-- 広告枠例 -->
