@@ -36,6 +36,7 @@
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
+          <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
         </ul>
       </nav>
     </div>
@@ -78,7 +79,6 @@
             <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
             <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs">画像をダウンロード</a>
           </div>
-          <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition mt-4" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
         </div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
@@ -183,14 +183,16 @@
           downloadLink.href = url;
         }, 'image/png');
       });
-      <!-- ガイドモーダル -->
-      <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-          <div id="guide-modal-content"></div>
-        </div>
-      </div>
-      <script>
+    });
+  </script>
+  <!-- ガイドモーダルはbody直下でOK -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+  <script>
 function setupGuideModal() {
   const guideBtn = document.getElementById('guide-btn');
   const guideModal = document.getElementById('guide-modal');
@@ -250,7 +252,5 @@ if (document.readyState === "loading") {
   setupGuideModal();
 }
 </script>
-    });
-  </script>
 </body>
 </html>
