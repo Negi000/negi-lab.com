@@ -210,6 +210,19 @@ document.addEventListener('DOMContentLoaded', function() {
       location.reload();
     });
   }
+  var banner = document.getElementById('consent-banner');
+  var accept = document.getElementById('consent-accept');
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.classList.remove('hidden');
+  } else {
+    banner.classList.add('hidden');
+  }
+  accept.onclick = function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.classList.add('hidden');
+    // ページ全体をリロードして同意状態を反映
+    location.reload();
+  };
 });
 
 // --- 動的広告表示ロジック ---
