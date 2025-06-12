@@ -299,23 +299,23 @@ function renderSmartAds(targetId) {
   const banners = {
     science: [
       {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=理系+便利グッズ&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon理系グッズ'},
-      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天理系グッズ'}
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/${RAKUTEN_AFFILIATE_ID}/banner/468x60.png', alt:'楽天理系グッズ'}
     ],
     gadget: [
       {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=ガジェット&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonガジェット'},
-      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天ガジェット'}
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/${RAKUTEN_AFFILIATE_ID}/banner/468x60.png', alt:'楽天ガジェット'}
     ],
     it: [
       {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=IT+書籍&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon IT書籍'},
-      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天IT書籍'}
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/${RAKUTEN_AFFILIATE_ID}/banner/468x60.png', alt:'楽天IT書籍'}
     ],
     office: [
       {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=文房具&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon文房具'},
-      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天文房具'}
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/${RAKUTEN_AFFILIATE_ID}/banner/468x60.png', alt:'楽天文房具'}
     ],
     general: [
       {type:'amazon', url:`https://www.amazon.co.jp/?tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonバナー'},
-      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天バナー'}
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/${RAKUTEN_AFFILIATE_ID}/banner/468x60.png', alt:'楽天バナー'}
     ]
   };
   const el = document.getElementById(targetId);
