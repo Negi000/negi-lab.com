@@ -219,7 +219,19 @@
           <!-- 11: JSON⇔CSV/YAML⇔Excel変換ツール -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/json-csv-yaml-excel.html'">
             <div class="mb-3">
-              <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h8"/></svg>
+              <!-- より表計算らしいアイコンに変更 -->
+              <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <rect x="6.5" y="7" width="3" height="3" rx="0.7"/>
+                <rect x="10.5" y="7" width="3" height="3" rx="0.7"/>
+                <rect x="14.5" y="7" width="3" height="3" rx="0.7"/>
+                <rect x="6.5" y="11" width="3" height="3" rx="0.7"/>
+                <rect x="10.5" y="11" width="3" height="3" rx="0.7"/>
+                <rect x="14.5" y="11" width="3" height="3" rx="0.7"/>
+                <rect x="6.5" y="15" width="3" height="3" rx="0.7"/>
+                <rect x="10.5" y="15" width="3" height="3" rx="0.7"/>
+                <rect x="14.5" y="15" width="3" height="3" rx="0.7"/>
+              </svg>
             </div>
             <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.jsonCsvYamlExcel.title">JSON⇔CSV/YAML⇔Excel</h3>
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.jsonCsvYamlExcel.description">JSON・CSV・YAML・Excelファイルを相互変換。</p>

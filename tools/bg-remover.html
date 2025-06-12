@@ -21,6 +21,7 @@
     window.metaDescriptionTranslationKey = "bgRemover.metaDescription";
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -45,7 +46,23 @@
       <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="bgRemover.mainTitle">画像背景リムーバ&透過PNG生成ツール</h1>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <p class="text-gray-700 mb-4">画像の背景を自動で削除し、透過PNG画像を生成できるツールです。人物・商品・ロゴ等の切り抜きに便利です。</p>
-        <!-- ここにUI実装（後で追加） -->
+        <div class="space-y-4">
+          <div>
+            <label class="block font-semibold mb-1">画像ファイルを選択</label>
+            <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
+            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
+          </div>
+          <div id="previewContainer" class="hidden">
+            <h2 class="text-base font-semibold mb-2">オリジナル画像プレビュー</h2>
+            <img id="originalPreview" src="#" alt="オリジナル画像" class="max-w-full max-h-64 rounded border mb-4" />
+          </div>
+          <button id="removeBgBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled>背景を削除して透過PNG生成</button>
+          <div id="resultContainer" class="mt-6 hidden">
+            <h2 class="text-base font-semibold mb-2">背景除去結果プレビュー</h2>
+            <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
+            <a id="downloadLink" href="#" download="bg-removed.png" class="text-accent underline text-xs">透過PNGをダウンロード</a>
+          </div>
+        </div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
@@ -62,5 +79,66 @@
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
   <script type="module" src="../index.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
+      const imageInput = document.getElementById('imageInput');
+      const fileName = document.getElementById('fileName');
+      const previewContainer = document.getElementById('previewContainer');
+      const originalPreview = document.getElementById('originalPreview');
+      const removeBgBtn = document.getElementById('removeBgBtn');
+      const resultContainer = document.getElementById('resultContainer');
+      const resultCanvas = document.getElementById('resultCanvas');
+      const downloadLink = document.getElementById('downloadLink');
+      let img = null;
+      let imgDataUrl = null;
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        fileName.textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          originalPreview.src = ev.target.result;
+          previewContainer.classList.remove('hidden');
+          img = new window.Image();
+          img.src = ev.target.result;
+          imgDataUrl = ev.target.result;
+          removeBgBtn.disabled = false;
+        };
+        reader.readAsDataURL(file);
+      });
+      // 簡易な背景除去（K-meansクラスタリングによる近似）
+      removeBgBtn.addEventListener('click', async function() {
+        if (!img) return;
+        resultContainer.classList.remove('hidden');
+        // Canvasに描画
+        const canvas = resultCanvas;
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        ctx.drawImage(img, 0, 0);
+        // 画像データ取得
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        // 左上ピクセルを背景色と仮定し、近い色を透明化
+        const bgR = data[0], bgG = data[1], bgB = data[2];
+        const threshold = 32; // 色差しきい値
+        for (let i = 0; i < data.length; i += 4) {
+          const dr = data[i] - bgR;
+          const dg = data[i+1] - bgG;
+          const db = data[i+2] - bgB;
+          if (Math.sqrt(dr*dr + dg*dg + db*db) < threshold) {
+            data[i+3] = 0; // 透明化
+          }
+        }
+        ctx.putImageData(imageData, 0, 0);
+        // ダウンロードリンク生成
+        canvas.toBlob(function(blob) {
+          const url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+        }, 'image/png');
+      });
+    });
+  </script>
 </body>
 </html>

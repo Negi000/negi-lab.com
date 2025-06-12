@@ -21,6 +21,9 @@
     window.metaDescriptionTranslationKey = "jsonCsvYamlExcel.metaDescription";
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -45,7 +48,32 @@
       <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="jsonCsvYamlExcel.mainTitle">JSON⇔CSV/YAML⇔Excel変換ツール</h1>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <p class="text-gray-700 mb-4">JSON・CSV・YAML・Excelファイルを相互に変換できるツールです。データの一括変換やプレビューも可能です。</p>
-        <!-- ここにUI実装（後で追加） -->
+        <div class="space-y-4">
+          <div>
+            <label class="block font-semibold mb-1">ファイルを選択（JSON/CSV/YAML/XLSX）</label>
+            <input type="file" id="fileInput" accept=".json,.csv,.yaml,.yml,.xlsx" class="form-input w-full" />
+            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
+          </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <label class="block font-semibold">またはテキスト貼り付け</label>
+            <textarea id="textInput" rows="4" class="form-input w-full" placeholder="ここにデータを貼り付け"></textarea>
+          </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <label class="block font-semibold">変換先形式</label>
+            <select id="formatSelect" class="form-input">
+              <option value="json">JSON</option>
+              <option value="csv">CSV</option>
+              <option value="yaml">YAML</option>
+              <option value="xlsx">Excel(xlsx)</option>
+            </select>
+            <button id="convertBtn" class="form-button bg-accent text-white rounded px-4 py-2 font-bold">変換＆プレビュー</button>
+          </div>
+          <div id="resultContainer" class="mt-6 hidden">
+            <h2 class="text-base font-semibold mb-2">変換結果プレビュー</h2>
+            <textarea id="resultText" rows="8" class="form-input w-full mb-2" readonly></textarea>
+            <a id="downloadLink" href="#" download="converted.txt" class="text-accent underline text-xs">ファイルをダウンロード</a>
+          </div>
+        </div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
@@ -62,5 +90,97 @@
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
   <script type="module" src="../index.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
+      const fileInput = document.getElementById('fileInput');
+      const fileName = document.getElementById('fileName');
+      const textInput = document.getElementById('textInput');
+      const formatSelect = document.getElementById('formatSelect');
+      const convertBtn = document.getElementById('convertBtn');
+      const resultContainer = document.getElementById('resultContainer');
+      const resultText = document.getElementById('resultText');
+      const downloadLink = document.getElementById('downloadLink');
+      let inputData = null;
+      let inputType = null;
+      let inputName = '';
+      fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        fileName.textContent = file.name;
+        inputName = file.name;
+        const ext = file.name.split('.').pop().toLowerCase();
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          let text = ev.target.result;
+          if (ext === 'json') {
+            inputData = JSON.parse(text);
+            inputType = 'json';
+          } else if (ext === 'csv') {
+            inputData = Papa.parse(text, {header:true}).data;
+            inputType = 'csv';
+          } else if (ext === 'yaml' || ext === 'yml') {
+            inputData = jsyaml.load(text);
+            inputType = 'yaml';
+          } else if (ext === 'xlsx') {
+            const wb = XLSX.read(ev.target.result, {type:'array'});
+            const ws = wb.Sheets[wb.SheetNames[0]];
+            inputData = XLSX.utils.sheet_to_json(ws);
+            inputType = 'xlsx';
+          }
+        };
+        if (ext === 'xlsx') reader.readAsArrayBuffer(file);
+        else reader.readAsText(file);
+      });
+      convertBtn.addEventListener('click', function() {
+        let data = inputData;
+        if (!data && textInput.value.trim()) {
+          // テキスト貼り付け時の自動判定
+          const txt = textInput.value.trim();
+          try {
+            if (txt.startsWith('{') || txt.startsWith('[')) {
+              data = JSON.parse(txt);
+              inputType = 'json';
+            } else if (txt.startsWith('---') || txt.includes(':')) {
+              data = jsyaml.load(txt);
+              inputType = 'yaml';
+            } else if (txt.includes(',')) {
+              data = Papa.parse(txt, {header:true}).data;
+              inputType = 'csv';
+            }
+          } catch(e) { alert('入力データの解析に失敗しました'); return; }
+        }
+        if (!data) { alert('ファイルまたはテキストを入力してください'); return; }
+        let out = '', blob = null, ext = formatSelect.value;
+        try {
+          if (formatSelect.value === 'json') {
+            out = JSON.stringify(data, null, 2);
+            blob = new Blob([out], {type:'application/json'});
+            ext = 'json';
+          } else if (formatSelect.value === 'csv') {
+            out = Papa.unparse(data);
+            blob = new Blob([out], {type:'text/csv'});
+            ext = 'csv';
+          } else if (formatSelect.value === 'yaml') {
+            out = jsyaml.dump(data);
+            blob = new Blob([out], {type:'text/yaml'});
+            ext = 'yaml';
+          } else if (formatSelect.value === 'xlsx') {
+            const ws = XLSX.utils.json_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+            const wbout = XLSX.write(wb, {bookType:'xlsx', type:'array'});
+            blob = new Blob([wbout], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+            out = '[Excelファイル]';
+            ext = 'xlsx';
+          }
+        } catch(e) { alert('変換に失敗しました'); return; }
+        resultText.value = out;
+        resultContainer.classList.remove('hidden');
+        downloadLink.download = `converted.${ext}`;
+        downloadLink.href = URL.createObjectURL(blob);
+      });
+    });
+  </script>
 </body>
 </html>
