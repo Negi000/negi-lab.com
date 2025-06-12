@@ -45,7 +45,10 @@
 
   <!-- consent-banner: ユーザビリティを損なわない下部バナー型に変更（全画面覆わず、z-indexも控えめに） -->
   <div id="consent-banner" class="fixed bottom-0 left-0 w-full max-w-full bg-white border-t border-accent/40 shadow-lg z-30 p-3 flex flex-col md:flex-row items-center justify-between gap-2 transition-transform translate-y-0 hidden" role="alertdialog" aria-modal="true" style="min-width:240px; max-width:100vw;">
-    <span class="text-gray-700 text-xs md:text-sm">本サイトはCookie等を利用し、広告・アフィリエイト収益を得ています。<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a></span>
+    <span class="text-gray-700 text-xs md:text-sm">
+      本サイトはCookie等を利用し、広告・アフィリエイト収益のため、<b>一部ツールやサービスで広告表示やCookie等の埋め込み</b>を行う場合があります。<br>
+      詳細は<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a>をご確認のうえ、<b>同意いただける場合のみ「OK」を押してください。</b>
+    </span>
     <button id="consent-accept" class="bg-accent text-white rounded px-3 py-1 text-xs md:text-sm font-semibold ml-2">OK</button>
   </div>
 
@@ -515,14 +518,15 @@
     document.addEventListener('DOMContentLoaded', function() {
       var banner = document.getElementById('consent-banner');
       var accept = document.getElementById('consent-accept');
-      if (!localStorage.getItem('consentAccepted')) {
+      if (!localStorage.getItem('cookieConsent')) {
         banner.classList.remove('hidden');
       } else {
         banner.classList.add('hidden');
       }
       accept.onclick = function() {
-        localStorage.setItem('consentAccepted', '1');
+        localStorage.setItem('cookieConsent', 'accepted');
         banner.classList.add('hidden');
+        location.reload();
       };
     });
   </script>
