@@ -298,6 +298,8 @@ function getRakutenMotionWidgetCode(type) {
   };
   return codes[type] || codes.general;
 }
+// --- グローバル公開 ---
+window.renderSmartAds = renderSmartAds;
 function renderSmartAds(targetId) {
   // cookie同意・履歴からカテゴリ推定
   const consent = localStorage.getItem('consentAccepted');
