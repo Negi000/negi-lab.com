@@ -270,3 +270,59 @@ function renderDynamicAd(targetId) {
     el.innerHTML = `<a href="${ad.url}" target="_blank" rel="noopener noreferrer"><img src="${ad.img}" alt="${ad.alt}" style="height:60px;max-width:100%;" loading="lazy"></a>`;
   }
 }
+
+// --- Amazonネイティブショッピング広告・楽天モーションウィジェット動的表示ロジック ---
+function getAmazonNativeAdCode(type) {
+  // type例: 'science', 'gadget', 'it', 'office', 'general'
+  // Amazon公式のネイティブショッピング広告コード（typeごとにカスタマイズ可）
+  const codes = {
+    science: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "negiab-22";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "理系 便利グッズ";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";</script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"></script></div>`,
+    gadget: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "negiab-22";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "ガジェット";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";</script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"></script></div>`,
+    it: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "negiab-22";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "IT 書籍";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";</script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"></script></div>`,
+    office: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "negiab-22";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "文房具";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";</script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"></script></div>`,
+    general: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "negiab-22";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "便利グッズ";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";</script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"></script></div>`
+  };
+  return codes[type] || codes.general;
+}
+function getRakutenMotionWidgetCode(type) {
+  // type例: 'science', 'gadget', 'it', 'office', 'general'
+  // 楽天公式のモーションウィジェットコード（typeごとにカスタマイズ可）
+  const codes = {
+    science: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"理系 便利グッズ","affiliateId":"xxxx","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
+    gadget: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"ガジェット","affiliateId":"xxxx","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
+    it: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"IT 書籍","affiliateId":"xxxx","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
+    office: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"文房具","affiliateId":"xxxx","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
+    general: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"便利グッズ","affiliateId":"xxxx","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`
+  };
+  return codes[type] || codes.general;
+}
+function renderSmartAds(targetId) {
+  // cookie同意・履歴からカテゴリ推定
+  const consent = localStorage.getItem('consentAccepted');
+  let cat = 'general';
+  if (consent) {
+    const history = getUserToolHistory();
+    const tool2cat = {
+      'unit-converter': 'science',
+      'image-converter': 'gadget',
+      'qr-code-generator': 'gadget',
+      'url-shortener': 'it',
+      'date-calculator': 'office',
+    };
+    for (let i = history.length - 1; i >= 0; i--) {
+      if (tool2cat[history[i]]) { cat = tool2cat[history[i]]; break; }
+    }
+  } else {
+    // 未同意ならランダム
+    const cats = ['science','gadget','it','office','general'];
+    cat = cats[Math.floor(Math.random()*cats.length)];
+  }
+  // Amazonと楽天を両方表示（ユーザビリティ配慮: 横並び/スマホは縦並び）
+  const el = document.getElementById(targetId);
+  if (el) {
+    el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;">
+      <div style="min-width:220px;max-width:100%;">${getAmazonNativeAdCode(cat)}</div>
+      <div style="min-width:220px;max-width:100%;">${getRakutenMotionWidgetCode(cat)}</div>
+    </div>`;
+  }
+}
