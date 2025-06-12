@@ -45,7 +45,40 @@
       <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="faviconOgGen.mainTitle">ファビコン&OG画像ジェネレータ</h1>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <p class="text-gray-700 mb-4">ファビコンやOGP画像を簡単に生成・ダウンロードできるツールです。WebサイトやSNS用のアイコン・サムネイル作成に。</p>
-        <!-- ここにUI実装（後で追加） -->
+        <div class="space-y-4">
+          <div>
+            <label class="block font-semibold mb-1">画像アップロード（任意）</label>
+            <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
+            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
+          </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <label class="block font-semibold">テキスト（任意）</label>
+            <input type="text" id="textInput" maxlength="32" class="form-input flex-1 min-w-[120px]" placeholder="例: N" />
+            <label class="block font-semibold ml-2">背景色</label>
+            <input type="color" id="bgColorInput" value="#4ADE80" class="form-input w-10 h-10 p-0 border-0" />
+            <label class="block font-semibold ml-2">文字色</label>
+            <input type="color" id="textColorInput" value="#ffffff" class="form-input w-10 h-10 p-0 border-0" />
+          </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <label class="block font-semibold">サイズ</label>
+            <select id="sizeSelect" class="form-input">
+              <option value="favicon">ファビコン(32x32)</option>
+              <option value="ogp">OGP(1200x630)</option>
+              <option value="icon180">iOSアイコン(180x180)</option>
+              <option value="icon192">Androidアイコン(192x192)</option>
+              <option value="custom">カスタム</option>
+            </select>
+            <input type="number" id="customWidth" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
+            <span class="mx-1" id="customX" style="display:none;">×</span>
+            <input type="number" id="customHeight" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
+          </div>
+          <button id="generateBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold">画像生成＆プレビュー</button>
+          <div id="resultContainer" class="mt-6 hidden">
+            <h2 class="text-base font-semibold mb-2">プレビュー＆ダウンロード</h2>
+            <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
+            <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs">画像をダウンロード</a>
+          </div>
+        </div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
@@ -62,5 +95,94 @@
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
   <script type="module" src="../index.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
+      const imageInput = document.getElementById('imageInput');
+      const fileName = document.getElementById('fileName');
+      const textInput = document.getElementById('textInput');
+      const bgColorInput = document.getElementById('bgColorInput');
+      const textColorInput = document.getElementById('textColorInput');
+      const sizeSelect = document.getElementById('sizeSelect');
+      const customWidth = document.getElementById('customWidth');
+      const customHeight = document.getElementById('customHeight');
+      const customX = document.getElementById('customX');
+      const generateBtn = document.getElementById('generateBtn');
+      const resultContainer = document.getElementById('resultContainer');
+      const resultCanvas = document.getElementById('resultCanvas');
+      const downloadLink = document.getElementById('downloadLink');
+      let img = null;
+      let imgDataUrl = null;
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        fileName.textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          img = new window.Image();
+          img.onload = function() { imgDataUrl = ev.target.result; };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+      sizeSelect.addEventListener('change', function() {
+        if (sizeSelect.value === 'custom') {
+          customWidth.style.display = '';
+          customHeight.style.display = '';
+          customX.style.display = '';
+        } else {
+          customWidth.style.display = 'none';
+          customHeight.style.display = 'none';
+          customX.style.display = 'none';
+        }
+      });
+      function getSize() {
+        switch(sizeSelect.value) {
+          case 'favicon': return [32,32];
+          case 'ogp': return [1200,630];
+          case 'icon180': return [180,180];
+          case 'icon192': return [192,192];
+          case 'custom': return [parseInt(customWidth.value)||512, parseInt(customHeight.value)||512];
+        }
+        return [512,512];
+      }
+      generateBtn.addEventListener('click', function() {
+        const [w, h] = getSize();
+        resultCanvas.width = w;
+        resultCanvas.height = h;
+        const ctx = resultCanvas.getContext('2d');
+        // 背景
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = bgColorInput.value;
+        ctx.fillRect(0,0,w,h);
+        // 画像
+        if (img && imgDataUrl) {
+          // 画像を中央にリサイズ描画
+          let iw = img.naturalWidth, ih = img.naturalHeight;
+          let scale = Math.min(w/iw, h/ih, 1);
+          let dw = iw*scale, dh = ih*scale;
+          ctx.drawImage(img, (w-dw)/2, (h-dh)/2, dw, dh);
+        }
+        // テキスト
+        const text = textInput.value;
+        if (text) {
+          ctx.font = `bold ${Math.floor(h*0.5)}px Inter, sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = textColorInput.value;
+          ctx.shadowColor = '#0008';
+          ctx.shadowBlur = Math.floor(h*0.04);
+          ctx.fillText(text, w/2, h/2);
+          ctx.shadowBlur = 0;
+        }
+        // ダウンロードリンク
+        resultContainer.classList.remove('hidden');
+        resultCanvas.toBlob(function(blob) {
+          const url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+        }, 'image/png');
+      });
+    });
+  </script>
 </body>
 </html>

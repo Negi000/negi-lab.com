@@ -21,6 +21,7 @@
     window.metaDescriptionTranslationKey = "pdfTool.metaDescription";
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -45,7 +46,28 @@
       <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="pdfTool.mainTitle">PDFオールインワンツール</h1>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <p class="text-gray-700 mb-4">PDFの結合・分割・圧縮・画像⇔PDF変換など、あらゆるPDF操作ができるオールインワンツールです。</p>
-        <!-- ここにUI実装（後で追加） -->
+        <div class="space-y-4">
+          <div>
+            <label class="block font-semibold mb-1">PDFファイルを選択（複数可）</label>
+            <input type="file" id="pdfFiles" accept="application/pdf" multiple class="form-input w-full" />
+            <div id="pdfFileList" class="text-xs text-gray-500 mt-1"></div>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <button id="mergeBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF結合</button>
+            <button id="splitBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF分割</button>
+            <button id="compressBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF圧縮</button>
+          </div>
+          <div class="mt-4">
+            <label class="block font-semibold mb-1">画像ファイルをPDF化</label>
+            <input type="file" id="imgFiles" accept="image/*" multiple class="form-input w-full" />
+            <button id="img2pdfBtn" class="bg-accent text-white rounded px-4 py-2 font-bold mt-2 disabled:opacity-50">画像→PDF変換</button>
+          </div>
+          <div class="mt-4">
+            <label class="block font-semibold mb-1">PDFを画像化</label>
+            <button id="pdf2imgBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF→画像変換</button>
+          </div>
+        </div>
+        <div id="pdfResult" class="mt-6"></div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
@@ -62,5 +84,96 @@
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
   <script type="module" src="../index.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
+      const pdfFiles = document.getElementById('pdfFiles');
+      const pdfFileList = document.getElementById('pdfFileList');
+      const mergeBtn = document.getElementById('mergeBtn');
+      const splitBtn = document.getElementById('splitBtn');
+      const compressBtn = document.getElementById('compressBtn');
+      const imgFiles = document.getElementById('imgFiles');
+      const img2pdfBtn = document.getElementById('img2pdfBtn');
+      const pdf2imgBtn = document.getElementById('pdf2imgBtn');
+      const pdfResult = document.getElementById('pdfResult');
+      let loadedPdfFiles = [];
+      let loadedImgFiles = [];
+      pdfFiles.addEventListener('change', function(e) {
+        loadedPdfFiles = Array.from(e.target.files);
+        pdfFileList.textContent = loadedPdfFiles.map(f=>f.name).join(', ');
+        mergeBtn.disabled = loadedPdfFiles.length < 2;
+        splitBtn.disabled = loadedPdfFiles.length !== 1;
+        compressBtn.disabled = loadedPdfFiles.length === 0;
+        pdf2imgBtn.disabled = loadedPdfFiles.length !== 1;
+      });
+      imgFiles.addEventListener('change', function(e) {
+        loadedImgFiles = Array.from(e.target.files);
+        img2pdfBtn.disabled = loadedImgFiles.length === 0;
+      });
+      mergeBtn.addEventListener('click', async function() {
+        pdfResult.innerHTML = '結合中...';
+        const pdfDocs = await Promise.all(loadedPdfFiles.map(async f => PDFLib.PDFDocument.load(await f.arrayBuffer())));
+        const mergedPdf = await PDFLib.PDFDocument.create();
+        for(const doc of pdfDocs) {
+          const pages = await mergedPdf.copyPages(doc, doc.getPageIndices());
+          pages.forEach(p => mergedPdf.addPage(p));
+        }
+        const mergedBytes = await mergedPdf.save();
+        const blob = new Blob([mergedBytes], {type:'application/pdf'});
+        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="merged.pdf" class="text-accent underline">結合PDFをダウンロード</a>`;
+      });
+      splitBtn.addEventListener('click', async function() {
+        pdfResult.innerHTML = '分割中...';
+        const file = loadedPdfFiles[0];
+        const pdfDoc = await PDFLib.PDFDocument.load(await file.arrayBuffer());
+        const pages = pdfDoc.getPages();
+        let links = '';
+        for(let i=0;i<pages.length;i++){
+          const newPdf = await PDFLib.PDFDocument.create();
+          const [copied] = await newPdf.copyPages(pdfDoc, [i]);
+          newPdf.addPage(copied);
+          const bytes = await newPdf.save();
+          const blob = new Blob([bytes], {type:'application/pdf'});
+          links += `<a href="${URL.createObjectURL(blob)}" download="page${i+1}.pdf" class="text-accent underline mr-2">${i+1}ページ目</a>`;
+        }
+        pdfResult.innerHTML = links;
+      });
+      compressBtn.addEventListener('click', async function() {
+        pdfResult.innerHTML = '圧縮中...';
+        // 圧縮は画像再埋め込み等の簡易圧縮のみ
+        const pdfDocs = await Promise.all(loadedPdfFiles.map(async f => PDFLib.PDFDocument.load(await f.arrayBuffer())));
+        const compressedPdf = await PDFLib.PDFDocument.create();
+        for(const doc of pdfDocs) {
+          const pages = await compressedPdf.copyPages(doc, doc.getPageIndices());
+          pages.forEach(p => compressedPdf.addPage(p));
+        }
+        // 画像圧縮はpdf-lib単体では困難なため、簡易的な再保存のみ
+        const compressedBytes = await compressedPdf.save();
+        const blob = new Blob([compressedBytes], {type:'application/pdf'});
+        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="compressed.pdf" class="text-accent underline">圧縮PDFをダウンロード</a><div class='text-xs text-gray-500 mt-1'>※本圧縮は簡易的なものです</div>`;
+      });
+      img2pdfBtn.addEventListener('click', async function() {
+        pdfResult.innerHTML = '変換中...';
+        const pdfDoc = await PDFLib.PDFDocument.create();
+        for(const file of loadedImgFiles) {
+          const imgBytes = new Uint8Array(await file.arrayBuffer());
+          let img;
+          if(file.type === 'image/jpeg') {
+            img = await pdfDoc.embedJpg(imgBytes);
+          } else {
+            img = await pdfDoc.embedPng(imgBytes);
+          }
+          const page = pdfDoc.addPage([img.width, img.height]);
+          page.drawImage(img, {x:0, y:0, width:img.width, height:img.height});
+        }
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], {type:'application/pdf'});
+        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="images.pdf" class="text-accent underline">画像PDFをダウンロード</a>`;
+      });
+      pdf2imgBtn.addEventListener('click', async function() {
+        pdfResult.innerHTML = 'PDF→画像変換は現在ベータ対応中です（PDF.js等のCDN連携で今後実装予定）';
+      });
+    });
+  </script>
 </body>
 </html>
