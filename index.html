@@ -53,55 +53,14 @@
   <!-- --- ASP規約違反リスクのあるimgタグ完全撤去（上記4行） --- -->
 
   <!-- パーソナライズ広告/ABテスト/広告ブロック検知/同意バナー用JS・HTML追加 -->
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- パーソナライズ広告/ABテスト/広告ブロック検知/同意バナー用JS・HTML追加（head→body直下に移動） -->
   <div id="consent-banner" class="fixed bottom-0 left-0 w-full bg-white border-t border-accent/40 shadow-lg z-50 p-4 flex flex-col md:flex-row items-center justify-between gap-2 hidden" role="alertdialog" aria-modal="true">
     <span class="text-gray-700 text-sm">本サイトはCookie等を利用し、広告・アフィリエイト収益を得ています。詳細は<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a>をご覧ください。</span>
     <button id="consent-accept" class="bg-accent text-white rounded px-4 py-1 font-semibold ml-2">同意して閉じる</button>
   </div>
-  <script>
-    // --- 広告ブロック検知 ---
-    function detectAdBlock(callback) {
-      const ad = document.createElement('div');
-      ad.className = 'adsbox';
-      ad.style.display = 'none';
-      document.body.appendChild(ad);
-      setTimeout(function() {
-        callback(window.getComputedStyle(ad).display === 'none' || ad.offsetHeight === 0);
-        ad.remove();
-      }, 100);
-    }
-    // --- 同意バナー ---
-    document.addEventListener('DOMContentLoaded', function() {
-      if (!localStorage.getItem('consentAccepted')) {
-        document.getElementById('consent-banner').classList.remove('hidden');
-      }
-      document.getElementById('consent-accept').onclick = function() {
-        localStorage.setItem('consentAccepted', '1');
-        document.getElementById('consent-banner').classList.add('hidden');
-      };
-    });
-    // --- パーソナライズ広告/ABテスト ---
-    document.addEventListener('DOMContentLoaded', function() {
-      detectAdBlock(function(isBlocked) {
-        document.querySelectorAll('.adsbygoogle').forEach(function(ad){
-          ad.parentElement.style.display = isBlocked ? 'none' : '';
-        });
-        // 広告ブロック時は寄付・自社サービス誘導等に切替
-        if(isBlocked) {
-          document.querySelectorAll('.adblock-alt').forEach(function(el){ el.style.display = ''; });
-        }
-      });
-      // ABテスト: 広告位置・種類をランダムで切替
-      const ab = Math.random() < 0.5 ? 'A' : 'B';
-      document.body.classList.add('ab-' + ab);
-    });
-    // --- ASPバナー動的パラメータ付与 ---
-    function openAspLink(base, params) {
-      const url = base + (base.includes('?') ? '&' : '?') + params + '&ref=negiab' + Date.now();
-      window.open(url, '_blank', 'noopener');
-    }
-  </script>
-</head>
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
   <!-- Amazonアソシエイト Cookie埋め込み（規約違反リスクのため削除） -->
   <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
@@ -519,6 +478,51 @@
       {"@type": "ListItem", "position": 2, "name": "便利ツール", "item": "https://negi-lab.com/tools/"}
     ]
   }
+  </script>
+
+  <!-- head内にあったconsent-banner用JSもbody末尾に移動（構造エラー防止） -->
+  <script>
+    // --- 広告ブロック検知 ---
+    function detectAdBlock(callback) {
+      const ad = document.createElement('div');
+      ad.className = 'adsbox';
+      ad.style.display = 'none';
+      document.body.appendChild(ad);
+      setTimeout(function() {
+        callback(window.getComputedStyle(ad).display === 'none' || ad.offsetHeight === 0);
+        ad.remove();
+      }, 100);
+    }
+    // --- 同意バナー ---
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('consentAccepted')) {
+        document.getElementById('consent-banner').classList.remove('hidden');
+      }
+      document.getElementById('consent-accept').onclick = function() {
+        localStorage.setItem('consentAccepted', '1');
+        document.getElementById('consent-banner').classList.add('hidden');
+      };
+    });
+    // --- パーソナライズ広告/ABテスト ---
+    document.addEventListener('DOMContentLoaded', function() {
+      detectAdBlock(function(isBlocked) {
+        document.querySelectorAll('.adsbygoogle').forEach(function(ad){
+          ad.parentElement.style.display = isBlocked ? 'none' : '';
+        });
+        // 広告ブロック時は寄付・自社サービス誘導等に切替
+        if(isBlocked) {
+          document.querySelectorAll('.adblock-alt').forEach(function(el){ el.style.display = ''; });
+        }
+      });
+      // ABテスト: 広告位置・種類をランダムで切替
+      const ab = Math.random() < 0.5 ? 'A' : 'B';
+      document.body.classList.add('ab-' + ab);
+    });
+    // --- ASPバナー動的パラメータ付与 ---
+    function openAspLink(base, params) {
+      const url = base + (base.includes('?') ? '&' : '?') + params + '&ref=negiab' + Date.now();
+      window.open(url, '_blank', 'noopener');
+    }
   </script>
 </body>
 </html>
