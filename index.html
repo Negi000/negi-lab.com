@@ -18,24 +18,11 @@
   <meta name="twitter:description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            negi: "#65c155",
-            accent: "#4ADE80"
-          },
-          fontFamily: { inter: ["Inter", "sans-serif"] }
-        }
-      }
-    }
-  </script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <link rel="stylesheet" href="/index.css">
   <!-- Google AdSense 審査用コード（head内に1回だけ設置） -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386"
-       crossorigin="anonymous"></script>
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386"
+       crossorigin="anonymous"></script> -->
   <!-- Google Analytics（gtag.js）全ページ用 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
@@ -524,5 +511,9 @@
       window.open(url, '_blank', 'noopener');
     }
   </script>
+  <!-- 重要: consent-bannerのHTMLはbody直下に1つだけ。重複やhead内混入がないか必ず確認。 -->
+  <!-- 重要: head内にHTML要素(div等)が混入していないか再度チェック -->
+  <!-- head内はmeta/link/script/title等のみ。div等は絶対に置かない。 -->
+  <!-- 重要: <script>タグのネストや未閉じ、body直下以外へのJS混入がないか再度チェック。 -->
 </body>
 </html>
