@@ -32,10 +32,7 @@
       }
     }
   </script>
-  <!-- Google AdSense 審査用コード（head内に1回だけ設置） -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386"
-       crossorigin="anonymous"></script> -->
-  <!-- Google Analytics（gtag.js）全ページ用 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -43,10 +40,6 @@
     gtag('js', new Date());
     gtag('config', 'G-N9X3N0RY0H');
   </script>
-
-  <!-- --- ASP規約違反リスクのあるimgタグ完全撤去（上記4行） --- -->
-
-  <!-- head内はmeta/link/script/title等のみ。div等のHTML要素は絶対に置かない。 -->
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
@@ -408,26 +401,6 @@
     });
   </script>
 
-  <!-- alt属性・aria強化例 -->
-  <img src="/assets/logo.png" alt="negi-lab.comロゴ" width="120" height="40" decoding="async" loading="lazy" aria-label="negi-lab.comのロゴ" />
-  <!-- 内部リンク強化例 -->
-  <nav aria-label="主要ナビゲーション">
-    <ul class="flex gap-4">
-      <li><a href="/tools/date-calculator.html">日付計算ツール</a></li>
-      <li><a href="/tools/holidays.html">祝日一覧</a></li>
-      <li><a href="/tools/date-trivia.html">今日は何の日</a></li>
-      <li><a href="/about.html">このサイトについて</a></li>
-    </ul>
-  </nav>
-
-  <!-- ASPバナー例（クリック時に動的パラメータ付与） -->
-  <div class="my-6 flex flex-col gap-2">
-    <button onclick="openAspLink('https://www.amazon.co.jp/s?field-keywords=便利グッズ', 'tag=negiab-22')" class="asp-btn amazon">Amazonで探す</button>
-    <button onclick="openAspLink('https://hb.afl.rakuten.co.jp/hsc/xxxxxxx', 'link_type=hybrid&sub=negiab')" class="asp-btn rakuten">楽天で探す</button>
-    <div class="adblock-alt" style="display:none">
-      <a href="/donate.html" class="text-accent underline">広告ブロック中：ご支援はこちら</a>
-    </div>
-  </div>
   <!-- Google AdSense例（ABテストでA/B切替） -->
   <div class="adsbygoogle ab-A" style="display:block" data-ad-client="ca-pub-xxxx" data-ad-slot="xxxx"></div>
   <div class="adsbygoogle ab-B" style="display:none" data-ad-client="ca-pub-xxxx" data-ad-slot="yyyy"></div>
