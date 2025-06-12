@@ -327,3 +327,5 @@ function renderSmartAds(targetId) {
     </div>`;
   }
 }
+
+window.renderSmartAds = renderSmartAds;
