@@ -203,3 +203,70 @@ document.addEventListener('DOMContentLoaded', function() {
     setLanguage(detectedLang);
   }
 });
+
+// --- 動的広告表示ロジック ---
+function getUserToolHistory() {
+  try {
+    return JSON.parse(localStorage.getItem('toolHistory') || '[]');
+  } catch { return []; }
+}
+function addUserToolHistory(tool) {
+  let h = getUserToolHistory();
+  if (!h.includes(tool)) h.push(tool);
+  localStorage.setItem('toolHistory', JSON.stringify(h));
+}
+function getBestAd() {
+  // ツール履歴からカテゴリ推定
+  const history = getUserToolHistory();
+  // 例: ツール名→カテゴリ
+  const tool2cat = {
+    'unit-converter': 'science',
+    'image-converter': 'gadget',
+    'qr-code-generator': 'gadget',
+    'url-shortener': 'it',
+    'date-calculator': 'office',
+  };
+  let cat = 'general';
+  for (let i = history.length - 1; i >= 0; i--) {
+    if (tool2cat[history[i]]) { cat = tool2cat[history[i]]; break; }
+  }
+  // カテゴリ別バナーリスト
+  const ads = {
+    science: [
+      {type:'amazon', url:'https://www.amazon.co.jp/s?field-keywords=理系+便利グッズ&tag=negiab-22', img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon理系グッズ'},
+      {type:'rakuten', url:'https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/', img:'https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png', alt:'楽天理系グッズ'}
+    ],
+    gadget: [
+      {type:'amazon', url:'https://www.amazon.co.jp/s?field-keywords=ガジェット&tag=negiab-22', img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonガジェット'},
+      {type:'rakuten', url:'https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/', img:'https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png', alt:'楽天ガジェット'}
+    ],
+    it: [
+      {type:'amazon', url:'https://www.amazon.co.jp/s?field-keywords=IT+書籍&tag=negiab-22', img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon IT書籍'},
+      {type:'rakuten', url:'https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/', img:'https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png', alt:'楽天IT書籍'}
+    ],
+    office: [
+      {type:'amazon', url:'https://www.amazon.co.jp/s?field-keywords=文房具&tag=negiab-22', img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon文房具'},
+      {type:'rakuten', url:'https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/', img:'https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png', alt:'楽天文房具'}
+    ],
+    general: [
+      {type:'amazon', url:'https://www.amazon.co.jp/?tag=negiab-22', img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonバナー'},
+      {type:'rakuten', url:'https://hb.afl.rakuten.co.jp/hsc/xxxxxx/?pc=https://www.rakuten.co.jp/', img:'https://hbb.afl.rakuten.co.jp/hgb/xxxxxx/banner/468x60.png', alt:'楽天バナー'}
+    ]
+  };
+  // cookie同意判定
+  const consent = localStorage.getItem('consentAccepted');
+  let adList = ads[cat] || ads.general;
+  if (!consent) {
+    // 未同意ならランダム
+    adList = [adList[Math.floor(Math.random()*adList.length)]];
+  }
+  // 複数候補からランダムで1つ選択（同意済みならカテゴリ最適化）
+  return adList[Math.floor(Math.random()*adList.length)];
+}
+function renderDynamicAd(targetId) {
+  const ad = getBestAd();
+  const el = document.getElementById(targetId);
+  if (el && ad) {
+    el.innerHTML = `<a href="${ad.url}" target="_blank" rel="noopener noreferrer"><img src="${ad.img}" alt="${ad.alt}" style="height:60px;max-width:100%;" loading="lazy"></a>`;
+  }
+}
