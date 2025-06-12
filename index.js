@@ -271,35 +271,9 @@ function renderDynamicAd(targetId) {
   }
 }
 
-// --- Amazonネイティブショッピング広告・楽天モーションウィジェット動的表示ロジック ---
+// --- Amazon・楽天バナー型動的最適化 ---
 const AMAZON_ASSOC_ID = "negilab01-22";
 const RAKUTEN_AFFILIATE_ID = "492cd2bc.3580938a.4910d748.d56fc6c6";
-function getAmazonNativeAdCode(type) {
-  // type例: 'science', 'gadget', 'it', 'office', 'general'
-  // Amazon公式のネイティブショッピング広告コード（typeごとにカスタマイズ可）
-  const codes = {
-    science: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "${AMAZON_ASSOC_ID}";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "理系 便利グッズ";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";<\/script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"><\/script></div>`,
-    gadget: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "${AMAZON_ASSOC_ID}";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "ガジェット";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";<\/script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"><\/script></div>`,
-    it: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "${AMAZON_ASSOC_ID}";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "IT 書籍";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";<\/script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"><\/script></div>`,
-    office: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "${AMAZON_ASSOC_ID}";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "文房具";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";<\/script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"><\/script></div>`,
-    general: `<div class="amazon-native-ad"><script type="text/javascript">amzn_assoc_placement = "adunit0";amzn_assoc_tracking_id = "${AMAZON_ASSOC_ID}";amzn_assoc_ad_mode = "search";amzn_assoc_ad_type = "smart";amzn_assoc_marketplace = "amazon";amzn_assoc_region = "JP";amzn_assoc_default_search_phrase = "便利グッズ";amzn_assoc_default_category = "All";amzn_assoc_linkid = "xxxx";<\/script><script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=JP"><\/script></div>`
-  };
-  return codes[type] || codes.general;
-}
-function getRakutenMotionWidgetCode(type) {
-  // type例: 'science', 'gadget', 'it', 'office', 'general'
-  // 楽天公式のモーションウィジェットコード（typeごとにカスタマイズ可）
-  const codes = {
-    science: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"理系 便利グッズ","affiliateId":"${RAKUTEN_AFFILIATE_ID}","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
-    gadget: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"ガジェット","affiliateId":"${RAKUTEN_AFFILIATE_ID}","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
-    it: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"IT 書籍","affiliateId":"${RAKUTEN_AFFILIATE_ID}","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
-    office: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"文房具","affiliateId":"${RAKUTEN_AFFILIATE_ID}","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`,
-    general: `<div class="rakuten-motion-widget"><script type="text/javascript" src="https://widget.rakuten.co.jp/widgets/js/rakuten_widget.js"></script><script type="text/javascript">rakuten_widget_params = {"size":"468x60","keyword":"便利グッズ","affiliateId":"${RAKUTEN_AFFILIATE_ID}","theme":"light"};</script><script type="text/javascript">rakuten_widget();</script></div>`
-  };
-  return codes[type] || codes.general;
-}
-// --- グローバル公開 ---
-window.renderSmartAds = renderSmartAds;
 function renderSmartAds(targetId) {
   // cookie同意・履歴からカテゴリ推定
   const consent = localStorage.getItem('consentAccepted');
@@ -321,29 +295,35 @@ function renderSmartAds(targetId) {
     const cats = ['science','gadget','it','office','general'];
     cat = cats[Math.floor(Math.random()*cats.length)];
   }
-  // Amazonと楽天を両方表示（ユーザビリティ配慮: 横並び/スマホは縦並び）
+  // Amazon・楽天バナー型（img+a）をカテゴリ最適化で2つ横並び表示
+  const banners = {
+    science: [
+      {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=理系+便利グッズ&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon理系グッズ'},
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天理系グッズ'}
+    ],
+    gadget: [
+      {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=ガジェット&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonガジェット'},
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天ガジェット'}
+    ],
+    it: [
+      {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=IT+書籍&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon IT書籍'},
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天IT書籍'}
+    ],
+    office: [
+      {type:'amazon', url:`https://www.amazon.co.jp/s?field-keywords=文房具&tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazon文房具'},
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天文房具'}
+    ],
+    general: [
+      {type:'amazon', url:`https://www.amazon.co.jp/?tag=${AMAZON_ASSOC_ID}`, img:'https://images-fe.ssl-images-amazon.com/images/G/09/associates/banners/amazon_banner_468x60.jpg', alt:'Amazonバナー'},
+      {type:'rakuten', url:`https://hb.afl.rakuten.co.jp/hsc/${RAKUTEN_AFFILIATE_ID}/?pc=https://www.rakuten.co.jp/`, img:'https://hbb.afl.rakuten.co.jp/hgb/492cd2bc.3580938a.4910d748.d56fc6c6/banner/468x60.png', alt:'楽天バナー'}
+    ]
+  };
   const el = document.getElementById(targetId);
   if (el) {
-    // 1. innerHTMLで一旦挿入
+    const [amazon, rakuten] = banners[cat] || banners.general;
     el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;">
-      <div style="min-width:220px;max-width:100%;">${getAmazonNativeAdCode(cat)}</div>
-      <div style="min-width:220px;max-width:100%;">${getRakutenMotionWidgetCode(cat)}</div>
+      <a href="${amazon.url}" target="_blank" rel="noopener sponsored"><img src="${amazon.img}" alt="${amazon.alt}" style="height:60px;max-width:100%;" loading="lazy"></a>
+      <a href="${rakuten.url}" target="_blank" rel="noopener sponsored"><img src="${rakuten.img}" alt="${rakuten.alt}" style="height:60px;max-width:100%;" loading="lazy"></a>
     </div>`;
-    // 2. innerHTMLで挿入したscriptタグを手動で実行
-    //   - el内の全scriptタグを抽出し、1つずつ新規script要素として再挿入
-    const scripts = el.querySelectorAll('script');
-    scripts.forEach(oldScript => {
-      const newScript = document.createElement('script');
-      if (oldScript.src) {
-        newScript.src = oldScript.src;
-      }
-      if (oldScript.type) {
-        newScript.type = oldScript.type;
-      }
-      if (oldScript.textContent) {
-        newScript.textContent = oldScript.textContent;
-      }
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-    });
   }
 }
