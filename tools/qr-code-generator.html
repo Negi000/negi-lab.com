@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-translate-key="qrGenerator.pageTitle">QRコード作成ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 外部CDNライブラリを削除し、ブラウザネイティブAPI + 自作実装に置換 -->  <script>
-    // QRコード生成ライブラリの軽量自作実装（デバッグ強化版）
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script>
+    // 実際に読み取り可能なQRコード生成ライブラリ（qrcode.js使用）
     class SimpleQR {
       static generate(text, options = {}) {
         console.log('SimpleQR.generate called with:', { text, options });
@@ -17,123 +18,87 @@
           return Promise.reject(new Error('QRコードのテキストが空です'));
         }
         
-        const size = Math.min(Math.max(options.size || 256, 128), 1024); // サイズ制限
-        const errorCorrection = options.errorCorrection || 'M';
+        const size = Math.min(Math.max(options.size || 256, 128), 1024);
         
         try {
-          // Google Charts API URLを生成（シンプル版）
-          const params = new URLSearchParams({
-            chs: `${size}x${size}`,
-            cht: 'qr',
-            chl: encodeURIComponent(text),
-            choe: 'UTF-8'
-          });
-          
-          // エラー訂正レベルを追加
-          if (errorCorrection) {
-            params.append('chld', `${errorCorrection}|0`);
-          }
-          
-          const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
-          console.log('Generated QR URL:', qrUrl);
-          
           return new Promise((resolve, reject) => {
-            const img = document.createElement('img');
+            // Canvas要素を作成
+            const canvas = document.createElement('canvas');
             
-            // タイムアウト設定（15秒に延長）
-            const timeout = setTimeout(() => {
-              console.error('QR generation timeout');
-              reject(new Error('QRコード生成がタイムアウトしました（15秒）'));
-            }, 15000);
-            
-            img.onload = () => {
-              clearTimeout(timeout);
-              console.log('QR image loaded successfully');
-              img.className = 'max-w-full h-auto border rounded shadow-sm';
-              img.alt = 'Generated QR Code';
-              img.style.maxWidth = '100%';
-              img.style.height = 'auto';
-              resolve(img);
+            // qrcode.jsを使用してQRコードを生成
+            const qrOptions = {
+              width: size,
+              height: size,
+              color: {
+                dark: options.foregroundColor || '#000000',
+                light: options.backgroundColor || '#ffffff'
+              },
+              errorCorrectionLevel: options.errorCorrection || 'M'
             };
             
-            img.onerror = (e) => {
-              clearTimeout(timeout);
-              console.error('QR image load error:', e);
-              console.error('Failed URL:', qrUrl);
-              reject(new Error('QRコード画像の読み込みに失敗しました。インターネット接続を確認してください。'));
-            };
-            
-            console.log('Setting image src to:', qrUrl);
-            img.src = qrUrl;
+            // QRコードをCanvasに描画
+            QRCode.toCanvas(canvas, text, qrOptions, (error) => {
+              if (error) {
+                console.error('QRコード生成エラー:', error);
+                reject(new Error('QRコード生成に失敗しました'));
+                return;
+              }
+              
+              // Canvas を画像として返す
+              const img = document.createElement('img');
+              img.onload = () => {
+                console.log('QRコード生成成功（qrcode.js版）');
+                img.className = 'max-w-full h-auto border rounded shadow-sm';
+                img.alt = 'Generated QR Code';
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                resolve(img);
+              };
+              img.onerror = () => {
+                console.error('QRコード画像変換失敗');
+                reject(new Error('QRコード画像変換に失敗しました'));
+              };
+              img.src = canvas.toDataURL('image/png');
+            });
           });
         } catch (error) {
-          console.error('SimpleQR.generate error:', error);
-          return Promise.reject(new Error(`QRコード生成エラー: ${error.message}`));
+          console.error('QRコード生成中にエラー:', error);
+          return Promise.reject(error);
         }
-      }
-      
-      // ダウンロード用Canvas生成
+      }      
+      // ダウンロード用Canvas生成（qrcode.js使用）
       static generateCanvas(text, options = {}) {
         if (!text || text.trim() === '') {
           return Promise.reject(new Error('QRコードのテキストが空です'));
         }
         
         const size = Math.min(Math.max(options.size || 256, 128), 1024);
-        const errorCorrection = options.errorCorrection || 'M';
-        const fg = (options.foreground || '#000000').replace('#', '');
-        const bg = (options.background || '#ffffff').replace('#', '');
         
         try {
-          const params = new URLSearchParams({
-            chs: `${size}x${size}`,
-            cht: 'qr',
-            chl: encodeURIComponent(text),
-            choe: 'UTF-8',
-            chld: `${errorCorrection}|0`,
-            chco: `${fg}${bg}`
-          });
-          
-          const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
-          
           return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
+            const canvas = document.createElement('canvas');
             
-            const timeout = setTimeout(() => {
-              reject(new Error('QRコード生成がタイムアウトしました'));
-            }, 10000);
+            const qrOptions = {
+              width: size,
+              height: size,
+              color: {
+                dark: options.foregroundColor || '#000000',
+                light: options.backgroundColor || '#ffffff'
+              },
+              errorCorrectionLevel: options.errorCorrection || 'M'
+            };
             
-            img.onload = () => {
-              clearTimeout(timeout);
-              try {
-                const canvas = document.createElement('canvas');
-                canvas.width = size;
-                canvas.height = size;
-                const ctx = canvas.getContext('2d');
-                
-                // 背景色設定
-                ctx.fillStyle = `#${bg}`;
-                ctx.fillRect(0, 0, size, size);
-                
-                // QRコード描画
-                ctx.drawImage(img, 0, 0, size, size);
-                
-                resolve(canvas);
-              } catch (drawError) {
-                console.warn('Canvas描画エラー:', drawError);
-                // Canvas描画に失敗した場合、元の画像を返す
-                resolve(img);
+            QRCode.toCanvas(canvas, text, qrOptions, (error) => {
+              if (error) {
+                console.error('Canvas QRコード生成エラー:', error);
+                reject(new Error('Canvas QRコード生成に失敗しました'));
+                return;
               }
-            };
-            
-            img.onerror = () => {
-              clearTimeout(timeout);
-              reject(new Error('QRコード画像の読み込みに失敗しました'));
-            };
-            
-            img.src = qrUrl;
+              resolve(canvas);
+            });
           });
-        } catch (error) {          return Promise.reject(new Error(`Canvas生成エラー: ${error.message}`));
+        } catch (error) {
+          return Promise.reject(new Error(`Canvas生成エラー: ${error.message}`));
         }
       }
     }
@@ -720,13 +685,22 @@
             </h3>
             <div class="grid grid-cols-2 gap-3">
               <button class="theme-preset bg-black text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors" data-theme="classic">クラシック</button>
-              <button class="theme-preset bg-blue-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors" data-theme="modern">モダン</button>
-              <button class="theme-preset bg-green-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors" data-theme="nature">ナチュラル</button>
+              <button class="theme-preset bg-blue-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors" data-theme="modern">モダン</button>              <button class="theme-preset bg-green-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors" data-theme="nature">ナチュラル</button>
               <button class="theme-preset bg-purple-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-purple-600 transition-colors" data-theme="creative">クリエイティブ</button>
             </div>
           </div>
+          
+          <!-- デザインタブ専用生成ボタン -->
+          <div class="mt-6">
+            <button id="generateQrButtonDesign" class="form-button w-full py-3 text-lg font-medium hover:bg-green-600 transition-colors duration-200">
+              <svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              デザインでQRコードを生成
+            </button>
+          </div>
         </div>
-      </div>      <!-- 一括生成タブ -->
+      </div><!-- 一括生成タブ -->
       <div id="content-batch" class="tab-content hidden">
         <div class="space-y-6">
           <!-- データ入力エリア -->
@@ -1116,10 +1090,8 @@
         <h2 class="text-xl font-bold text-gray-800">QRコード生成ツール 完全ガイド</h2>
         <button id="guide-close" class="text-gray-400 hover:text-gray-600 text-2xl font-bold" aria-label="閉じる">&times;</button>
       </div>
-      <div id="guide-modal-content" class="flex-1 overflow-y-auto p-6"></div>
-    </div>
-  </div>
-  <script type="module" src="../index.js" defer></script>
+      <div id="guide-modal-content" class="flex-1 overflow-y-auto p-6"></div>    </div>
+  </div>  <!-- 外部JSファイルの読み込みを削除（QRコードジェネレーター専用ページのため） -->
   <script defer>
 // Cookie同意判定（consent-bannerの同意ボタン利用想定）
 function isCookieConsentAccepted() {
@@ -1716,11 +1688,12 @@ function setupGuideModal() {
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
                 </svg>
                 基本的な使い方
-              </h3>
-              <ol class="list-decimal ml-6 space-y-2 text-gray-700 text-sm">
-                <li><strong>データ形式</strong>を選択（テキスト、URL、メール、Wi-Fiなど14種類対応）</li>
-                <li>必要な<strong>情報を入力</strong>（自動フォーマット機能付き）</li>
-                <li>サイズ（128-1024px）や色を<strong>カスタマイズ</strong>（オプション）</li>
+              </h3>              <ol class="list-decimal ml-6 space-y-2 text-gray-700 text-sm">
+                <li><strong>「基本設定」タブ:</strong> データ形式を選択して内容を入力</li>
+                <li><strong>「デザイン」タブ:</strong> 色やスタイルをカスタマイズ</li>
+                <li><strong>「一括生成」タブ:</strong> 複数のQRコードを一度に作成</li>
+                <li><strong>「高度な設定」タブ:</strong> エラー訂正、マージン、ロゴ追加</li>
+                <li><strong>「API/自動化」タブ:</strong> URLパラメータやJavaScript API</li>
                 <li><strong>「QRコードを生成」</strong>ボタンをクリック</li>
                 <li>PNG/JPG/SVG形式で<strong>ダウンロード</strong></li>
               </ol>
@@ -1732,7 +1705,60 @@ function setupGuideModal() {
                 <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15.586 13H14a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                 </svg>
-                5つのタブ機能
+                5つのタブ機能詳細
+              </h3>
+              <div class="space-y-4 text-sm text-gray-700">
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h4 class="font-semibold text-green-800 mb-2">📋 基本設定タブ</h4>
+                  <ul class="space-y-1 ml-4">
+                    <li>• 14種類のデータ形式（テキスト、URL、メール、Wi-Fi、電話番号など）</li>
+                    <li>• 自動フォーマット機能</li>
+                    <li>• リアルタイムプレビュー</li>
+                    <li>• サイズ調整（128-1024px）</li>
+                  </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 class="font-semibold text-blue-800 mb-2">🎨 デザインタブ</h4>
+                  <ul class="space-y-1 ml-4">
+                    <li>• 前景色・背景色のカスタマイズ</li>
+                    <li>• カラーパレットと16進数入力</li>
+                    <li>• プリセットテーマ（クラシック、モダン、ナチュラル、クリエイティブ）</li>
+                    <li>• リアルタイム色調整</li>
+                    <li>• <strong>専用の生成ボタン</strong>でデザイン適用</li>
+                  </ul>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                  <h4 class="font-semibold text-purple-800 mb-2">📦 一括生成タブ</h4>
+                  <ul class="space-y-1 ml-4">
+                    <li>• CSVファイルからの一括読み込み</li>
+                    <li>• 複数のURLやテキストを一度に処理</li>
+                    <li>• ZIP形式での一括ダウンロード</li>
+                    <li>• プログレスバー表示</li>
+                  </ul>
+                </div>
+                
+                <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <h4 class="font-semibold text-orange-800 mb-2">⚙️ 高度な設定タブ</h4>
+                  <ul class="space-y-1 ml-4">
+                    <li>• エラー訂正レベル（L/M/Q/H）</li>
+                    <li>• マージン調整（0-20px）</li>
+                    <li>• ロゴ画像の埋め込み</li>
+                    <li>• 詳細品質設定</li>
+                  </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <h4 class="font-semibold text-gray-800 mb-2">🔧 API/自動化タブ</h4>
+                  <ul class="space-y-1 ml-4">
+                    <li>• URLパラメータでの自動生成</li>
+                    <li>• JavaScript API呼び出し例</li>
+                    <li>• 外部サイトからの連携方法</li>
+                    <li>• 開発者向けドキュメント</li>
+                  </ul>
+                </div>
+              </div>
               </h3>
               <div class="space-y-3">
                 <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
@@ -2596,22 +2622,14 @@ async function downloadQRCode(format = 'png') {
     link.click();
     document.body.removeChild(link);
     
-    showSuccess('QRコードをダウンロードしました！');
-    
+    showSuccess('QRコードをダウンロードしました！');    
   } catch (error) {
     console.error('ダウンロードエラー:', error);
     showError(`ダウンロードに失敗しました: ${error.message}`);
   }
 }
-          const x = (size - logoSize) / 2;
-          const y = (size - logoSize) / 2;
-          
-          // ロゴ背景（白い円）を描画
-          ctx.fillStyle = bgColor;
-          ctx.beginPath();
-          ctx.arc(size/2, size/2, logoSize/2 + 5, 0, 2 * Math.PI);
-          ctx.fill();
-  function downloadCanvasAsFile(canvas, format) {
+
+function downloadCanvasAsFile(canvas, format) {
   const mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/png';
   const extension = format === 'jpeg' ? 'jpg' : format;
   
@@ -2710,56 +2728,55 @@ function setupDownloadButtons() {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM読み込み完了 - 初期化を開始します');
   
-  // 基本機能の初期化
-  console.log('setupGuideModal呼び出し');
-  setupGuideModal();
-  console.log('setupQrTypeSwitcher呼び出し');
-  setupQrTypeSwitcher();
-  console.log('setupTabs呼び出し');
-  setupTabs();
-  console.log('setupColorControls呼び出し');
-  setupColorControls();
-  console.log('setupSizeControls呼び出し');
-  setupSizeControls();
-  console.log('setupDownloadButtons呼び出し');
-  setupDownloadButtons();
-  console.log('setupQrPreview呼び出し');
-  setupQrPreview();
-  
-  // Cookie関連の初期化
-  console.log('setupAdBannerToggleDisplay呼び出し');
-  setupAdBannerToggleDisplay();
-  
-  // 履歴・統計の初期化
-  renderQrHistory();
-  updateStats();
-  
-  // ライブラリ確認
-  if (typeof SimpleQR !== 'undefined') {
-    console.log('SimpleQR ライブラリ読み込み成功');
-  } else {
-    console.error('SimpleQR ライブラリの読み込みに失敗');
-  }
-  
-  // 生成ボタンのイベントリスナー設定
+  // 最初に基本的な要素確認
   const genBtn = document.getElementById('generateQrButton');
+  const guideBtn = document.getElementById('guide-btn');
+  const tabButtons = document.querySelectorAll('.tab-button');
+    console.log('===== 要素確認 =====');
+  console.log('生成ボタン:', genBtn);
+  console.log('ガイドボタン:', guideBtn);
+  console.log('タブボタン数:', tabButtons.length);
+    // 実際の機能を有効にする（テスト用アラートは削除）
+  console.log('===== 実際の機能を有効化 =====');
+    // 生成ボタンの実際の機能
   if (genBtn) {
-    console.log('生成ボタンが見つかりました');
+    console.log('生成ボタンに実際のイベントリスナー設定');
     genBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('生成ボタンクリック');
-      
-      const qrType = document.getElementById('qrType').value;
+      console.log('QRコード生成ボタンクリック');
+      generateQRFromForm();
+    });
+  } else {
+    console.error('❌ 生成ボタンが見つかりません');
+  }
+  
+  // デザインタブの生成ボタン
+  const genBtnDesign = document.getElementById('generateQrButtonDesign');
+  if (genBtnDesign) {
+    console.log('デザインタブ生成ボタンに実際のイベントリスナー設定');
+    genBtnDesign.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('デザインタブ QRコード生成ボタンクリック');
+      generateQRFromForm();
+    });
+  } else {
+    console.error('❌ デザインタブ生成ボタンが見つかりません');
+  }
+  
+  // QR生成の共通関数
+  function generateQRFromForm() {
+    try {
+      const qrType = document.getElementById('qrType')?.value || 'text';
       const qrData = getQrDataByType();
-      const size = parseInt(document.getElementById('qrSize').value) || 256;
-      const fg = document.getElementById('qrFgColor').value;
-      const bg = document.getElementById('qrBgColor').value;
-      const logoFile = document.getElementById('qrLogo').files[0];
+      const size = parseInt(document.getElementById('qrSize')?.value) || 256;
+      const fg = document.getElementById('qrFgColor')?.value || '#000000';
+      const bg = document.getElementById('qrBgColor')?.value || '#ffffff';
+      const logoFile = document.getElementById('qrLogo')?.files[0];
       const enableAds = document.getElementById('qrAdBannerToggle')?.checked || false;
       
       console.log('生成データ:', {qrType, qrData, size, fg, bg});
       
-      if (!qrData) {
+      if (!qrData || qrData.trim() === '') {
         showError('データを入力してください');
         return;
       }
@@ -2771,29 +2788,111 @@ document.addEventListener('DOMContentLoaded', function() {
       saveQrHistory(qrType, qrData, {size, fg, bg});
       renderQrHistory();
       incrementStats();
-    });
-  } else {
-    console.error('生成ボタンが見つかりません');
+    } catch (error) {
+      console.error('QRコード生成エラー:', error);
+      showError('QRコード生成中にエラーが発生しました');
+    }
   }
+    // 基本機能の初期化（エラーハンドリング付き）
+  try {
+    console.log('setupGuideModal呼び出し');
+    setupGuideModal();
+  } catch (error) {
+    console.error('setupGuideModalエラー:', error);
+  }
+  
+  try {
+    console.log('setupQrTypeSwitcher呼び出し');
+    setupQrTypeSwitcher();
+  } catch (error) {
+    console.error('setupQrTypeSwitcherエラー:', error);
+  }
+  
+  try {
+    console.log('setupTabs呼び出し');
+    setupTabs();
+  } catch (error) {
+    console.error('setupTabsエラー:', error);
+  }
+  
+  try {
+    console.log('setupColorControls呼び出し');
+    setupColorControls();
+  } catch (error) {
+    console.error('setupColorControlsエラー:', error);
+  }
+  
+  try {
+    console.log('setupSizeControls呼び出し');
+    setupSizeControls();
+  } catch (error) {
+    console.error('setupSizeControlsエラー:', error);
+  }
+  
+  try {
+    console.log('setupDownloadButtons呼び出し');
+    setupDownloadButtons();
+  } catch (error) {
+    console.error('setupDownloadButtonsエラー:', error);
+  }
+  
+  try {
+    console.log('setupQrPreview呼び出し');
+    setupQrPreview();
+  } catch (error) {
+    console.error('setupQrPreviewエラー:', error);
+  }
+  
+  // Cookie関連の初期化
+  try {
+    console.log('setupAdBannerToggleDisplay呼び出し');
+    setupAdBannerToggleDisplay();
+  } catch (error) {
+    console.error('setupAdBannerToggleDisplayエラー:', error);
+  }
+  
+  // 履歴・統計の初期化
+  try {
+    renderQrHistory();
+    updateStats();
+  } catch (error) {
+    console.error('履歴・統計初期化エラー:', error);
+  }
+  
+  // ライブラリ確認
+  if (typeof SimpleQR !== 'undefined') {
+    console.log('SimpleQR ライブラリ読み込み成功');  } else {
+    console.error('SimpleQR ライブラリの読み込みに失敗');
+  }
+  
   // 初期プレビューを遅延実行
   setTimeout(() => {
     console.log('初期化完了');
     
     // デバッグ用: ボタンの状態確認
-    const genBtn = document.getElementById('generateQrButton');
-    const guideBtn = document.getElementById('guide-btn');
-    const tabButtons = document.querySelectorAll('.tab-button');
+    const genBtnCheck = document.getElementById('generateQrButton');
+    const guideBtnCheck = document.getElementById('guide-btn');
+    const tabButtonsCheck = document.querySelectorAll('.tab-button');
     
-    console.log('最終確認 - 生成ボタン:', !!genBtn, genBtn?.style?.pointerEvents);
-    console.log('最終確認 - ガイドボタン:', !!guideBtn, guideBtn?.style?.pointerEvents);
-    console.log('最終確認 - タブボタン数:', tabButtons.length);
-    
-    // テスト用: Cookie同意状態を自動設定（デバッグ目的）
+    console.log('最終確認 - 生成ボタン:', !!genBtnCheck, genBtnCheck?.style?.pointerEvents);
+    console.log('最終確認 - ガイドボタン:', !!guideBtnCheck, guideBtnCheck?.style?.pointerEvents);
+    console.log('最終確認 - タブボタン数:', tabButtonsCheck.length);
+      // テスト用: Cookie同意状態を自動設定（デバッグ目的）
     if (!localStorage.getItem('cookieConsent')) {
       console.log('デバッグ: Cookie同意を自動設定');
       localStorage.setItem('cookieConsent', 'accepted');
       // setupAdBannerToggleDisplayを再実行
       setupAdBannerToggleDisplay();
+    }
+      // デフォルトQRコード生成（サンプルURL）
+    try {
+      const qrDataInput = document.getElementById('qrData');
+      if (qrDataInput && qrDataInput.value.trim()) {
+        console.log('デフォルトQRコード生成開始:', qrDataInput.value);
+        generateQrCode(qrDataInput.value, 256, '#000000', '#ffffff', null, false);
+      }
+    } catch (error) {
+      console.error('デフォルトQRコード生成エラー:', error);
     }
   }, 500);
 });
