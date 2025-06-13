@@ -7,7 +7,7 @@
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -337,13 +337,204 @@
       <div id="guide-modal-content"></div>
     </div>
   </div>
-
   <script type="module" src="../index.js" defer></script>
   <script defer>
 // Cookie同意判定（consent-bannerの同意ボタン利用想定）
 function isCookieConsentAccepted() {
-  // consent-acceptボタン押下時にlocalStorage.setItem('cookieConsent','accepted')等で保存している前提
   return localStorage.getItem('cookieConsent') === 'accepted';
+}
+
+// ガイドモーダル設定
+function setupGuideModal() {
+  const guideBtn = document.getElementById('guide-btn');
+  const guideModal = document.getElementById('guide-modal');
+  const guideClose = document.getElementById('guide-close');
+  const guideContent = document.getElementById('guide-modal-content');
+  
+  if (guideBtn && guideModal && guideClose && guideContent) {
+    guideBtn.addEventListener('click', function() {
+      guideContent.innerHTML = `
+        <h2 id="guide-modal-title" class="text-xl font-bold mb-4">QRコード生成ツール ガイド</h2>
+        <div class="space-y-3 text-sm">
+          <p><strong>基本的な使い方:</strong></p>
+          <ol class="list-decimal ml-5 space-y-1">
+            <li>データ形式を選択してください</li>
+            <li>必要な情報を入力してください</li>
+            <li>サイズや色をカスタマイズできます</li>
+            <li>「QRコードを生成」ボタンをクリック</li>
+            <li>生成されたQRコードをダウンロードできます</li>
+          </ol>
+          <p><strong>対応形式:</strong> テキスト/URL、メール、電話、SMS、vCard、Wi-Fi、イベント、位置情報など</p>
+          <p><strong>機能:</strong> ロゴ合成、色カスタマイズ、履歴保存</p>
+        </div>
+      `;
+      guideModal.classList.remove('hidden');
+    });
+    
+    guideClose.addEventListener('click', function() {
+      guideModal.classList.add('hidden');
+    });
+    
+    guideModal.addEventListener('click', function(e) {
+      if (e.target === guideModal) {
+        guideModal.classList.add('hidden');
+      }
+    });
+  }
+}
+
+// QRコードタイプ切り替え設定
+function setupQrTypeSwitcher() {
+  const qrTypeSelect = document.getElementById('qrType');
+  if (!qrTypeSelect) return;
+  
+  qrTypeSelect.addEventListener('change', function() {
+    const selectedType = this.value;
+    const allInputs = document.querySelectorAll('#qrInputFields > div');
+    
+    allInputs.forEach(div => {
+      div.style.display = 'none';
+    });
+    
+    const selectedInput = document.getElementById('qrInput-' + selectedType);
+    if (selectedInput) {
+      selectedInput.style.display = 'block';
+    }
+  });
+  
+  // 初期状態設定
+  qrTypeSelect.dispatchEvent(new Event('change'));
+}
+
+// タイプ別データ取得
+function getQrDataByType() {
+  const qrType = document.getElementById('qrType').value;
+  
+  switch(qrType) {
+    case 'text':
+      return document.getElementById('qrData').value || '';
+    case 'email':
+      const email = document.getElementById('qrEmail').value;
+      const subject = document.getElementById('qrEmailSubject').value;
+      const body = document.getElementById('qrEmailBody').value;
+      let mailto = 'mailto:' + email;
+      const params = [];
+      if (subject) params.push('subject=' + encodeURIComponent(subject));
+      if (body) params.push('body=' + encodeURIComponent(body));
+      if (params.length > 0) mailto += '?' + params.join('&');
+      return mailto;
+    case 'tel':
+      return 'tel:' + document.getElementById('qrTel').value;
+    case 'sms':
+      const smsNumber = document.getElementById('qrSmsNumber').value;
+      const smsBody = document.getElementById('qrSmsBody').value;
+      return 'sms:' + smsNumber + (smsBody ? '?body=' + encodeURIComponent(smsBody) : '');
+    case 'vcard':
+      const name = document.getElementById('qrVcardName').value;
+      const tel = document.getElementById('qrVcardTel').value;
+      const email2 = document.getElementById('qrVcardEmail').value;
+      const org = document.getElementById('qrVcardOrg').value;
+      return `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTEL:${tel}\nEMAIL:${email2}\nORG:${org}\nEND:VCARD`;
+    case 'wifi':
+      const ssid = document.getElementById('qrWifiSsid').value;
+      const pass = document.getElementById('qrWifiPass').value;
+      const type = document.getElementById('qrWifiType').value;
+      return `WIFI:T:${type};S:${ssid};P:${pass};;`;
+    case 'event':
+      const title = document.getElementById('qrEventTitle').value;
+      const start = document.getElementById('qrEventStart').value;
+      const end = document.getElementById('qrEventEnd').value;
+      const location = document.getElementById('qrEventLocation').value;
+      const desc = document.getElementById('qrEventDesc').value;
+      const startDate = start ? new Date(start).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z' : '';
+      const endDate = end ? new Date(end).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z' : '';
+      return `BEGIN:VEVENT\nSUMMARY:${title}\nDTSTART:${startDate}\nDTEND:${endDate}\nLOCATION:${location}\nDESCRIPTION:${desc}\nEND:VEVENT`;
+    case 'geo':
+      const lat = document.getElementById('qrGeoLat').value;
+      const lng = document.getElementById('qrGeoLng').value;
+      return `geo:${lat},${lng}`;
+    case 'line':
+      return document.getElementById('qrLineUrl').value || '';
+    case 'crypto':
+      const addr = document.getElementById('qrCryptoAddr').value;
+      const cryptoType = document.getElementById('qrCryptoType').value;
+      return cryptoType.toLowerCase() === 'bitcoin' ? `bitcoin:${addr}` : addr;
+    default:
+      return '';
+  }
+}
+
+// QRコード履歴保存
+function saveQrHistory(type, data, options) {
+  if (!data) return;
+  
+  let history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+  const newEntry = {
+    id: Date.now(),
+    type: type,
+    data: data,
+    options: options,
+    timestamp: new Date().toISOString()
+  };
+  
+  history.unshift(newEntry);
+  history = history.slice(0, 10); // 最新10件まで保持
+  
+  localStorage.setItem('qrHistory', JSON.stringify(history));
+}
+
+// QRコード履歴表示
+function renderQrHistory() {
+  const historyList = document.getElementById('qrHistoryList');
+  if (!historyList) return;
+  
+  const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+  
+  if (history.length === 0) {
+    historyList.innerHTML = '<li class="text-gray-500">履歴がありません</li>';
+    return;
+  }
+  
+  historyList.innerHTML = history.map(entry => {
+    const date = new Date(entry.timestamp).toLocaleString('ja-JP');
+    const shortData = entry.data.length > 30 ? entry.data.substring(0, 30) + '...' : entry.data;
+    return `
+      <li class="flex justify-between items-center p-2 bg-gray-100 rounded">
+        <div>
+          <span class="font-medium">${entry.type}</span>: ${shortData}
+          <div class="text-gray-500">${date}</div>
+        </div>
+        <button onclick="regenerateFromHistory(${entry.id})" class="text-accent hover:text-emerald-600">再生成</button>
+      </li>
+    `;
+  }).join('');
+}
+
+// 履歴から再生成
+function regenerateFromHistory(id) {
+  const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+  const entry = history.find(h => h.id === id);
+  if (!entry) return;
+  
+  // フォームに値を設定
+  document.getElementById('qrType').value = entry.type;
+  document.getElementById('qrType').dispatchEvent(new Event('change'));
+  
+  // タイプ別の入力フィールドに値を設定
+  switch(entry.type) {
+    case 'text':
+      document.getElementById('qrData').value = entry.data;
+      break;
+    // 他のタイプも必要に応じて実装
+  }
+  
+  if (entry.options) {
+    if (entry.options.size) document.getElementById('qrSize').value = entry.options.size;
+    if (entry.options.fg) document.getElementById('qrFgColor').value = entry.options.fg;
+    if (entry.options.bg) document.getElementById('qrBgColor').value = entry.options.bg;
+  }
+  
+  updatePreview();
 }
 
 // プレビュー機能（入力値変更時に即時反映）
@@ -361,31 +552,29 @@ function setupQrPreview() {
       el.addEventListener('change', updatePreview);
     }
   });
-  updatePreview();
 }
+
 function updatePreview() {
-  const qrType = document.getElementById('qrType').value;
   const qrData = getQrDataByType();
-  const size = parseInt(document.getElementById('qrSize').value)||256;
+  if (!qrData) return;
+  
+  const size = parseInt(document.getElementById('qrSize').value) || 256;
   const fg = document.getElementById('qrFgColor').value;
   const bg = document.getElementById('qrBgColor').value;
   const logoInput = document.getElementById('qrLogo');
   const adBanner = shouldShowAdBanner();
-  let logoFile = logoInput && logoInput.files && logoInput.files[0] ? logoInput.files[0] : null;
-  drawQrWithLogo(qrData, size, fg, bg, logoFile, function(canvas) {
-    const qrcodeOutput = document.getElementById('qrcodeOutput');
-    if (!canvas) return;
-    qrcodeOutput.innerHTML = '';
-    qrcodeOutput.appendChild(canvas);
-    document.getElementById('qrResultContainer').classList.remove('hidden');
-  }, adBanner);
+  const logoFile = logoInput && logoInput.files && logoInput.files[0] ? logoInput.files[0] : null;
+  
+  generateQrCode(qrData, size, fg, bg, logoFile, adBanner);
 }
+
 // 広告合成可否判定
 function shouldShowAdBanner() {
   if (isCookieConsentAccepted()) return true;
   const cb = document.getElementById('qrAdBannerToggle');
   return cb && cb.checked;
 }
+
 // 広告合成チェックボックスの表示制御
 function setupAdBannerToggleDisplay() {
   const adBox = document.getElementById('qrAdBannerToggleBox');
@@ -397,77 +586,136 @@ function setupAdBannerToggleDisplay() {
     adBox.style.display = '';
   }
 }
-// drawQrWithLogoの広告バナー表現をやわらかく・控えめに
-function drawQrWithLogo(qrData, size, fg, bg, logoFile, callback, adBanner) {
-  const tempDiv = document.createElement('div');
-  new QRCode(tempDiv, {
-    text: qrData,
+
+// QRコード生成（新しいライブラリ用）
+function generateQrCode(text, size, fgColor, bgColor, logoFile, showAdBanner) {
+  if (!text) return;
+  
+  const options = {
     width: size,
     height: size,
-    colorDark: fg,
-    colorLight: bg,
-    correctLevel: QRCode.CorrectLevel.H
-  });
-  setTimeout(() => {
-    const img = tempDiv.querySelector('img');
-    if (!img) return callback(null);
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = size;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = bg;
-    ctx.fillRect(0,0,size,size);
-    ctx.drawImage(img,0,0,size,size);
-    if (logoFile) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const logoImg = new window.Image();
-        logoImg.onload = function() {
-          const logoSize = size * 0.22;
-          ctx.drawImage(logoImg, (size-logoSize)/2, (size-logoSize)/2, logoSize, logoSize);
-          if(adBanner) drawAdBanner(ctx, size);
-          callback(canvas);
-        };
-        logoImg.src = e.target.result;
-      };
-      reader.readAsDataURL(logoFile);
-    } else {
-      if(adBanner) drawAdBanner(ctx, size);
-      callback(canvas);
+    color: {
+      dark: fgColor,
+      light: bgColor
+    },
+    errorCorrectionLevel: document.getElementById('qrErrorCorrection').value
+  };
+  
+  QRCode.toCanvas(text, options, function(error, canvas) {
+    if (error) {
+      console.error('QRコード生成エラー:', error);
+      return;
     }
-  }, 100);
+    
+    const qrcodeOutput = document.getElementById('qrcodeOutput');
+    const resultContainer = document.getElementById('qrResultContainer');
+    
+    if (logoFile || showAdBanner) {
+      // ロゴまたは広告バナーの合成処理
+      const ctx = canvas.getContext('2d');
+      
+      if (logoFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const logoImg = new Image();
+          logoImg.onload = function() {
+            const logoSize = size * 0.22;
+            const x = (size - logoSize) / 2;
+            const y = (size - logoSize) / 2;
+            ctx.drawImage(logoImg, x, y, logoSize, logoSize);
+            
+            if (showAdBanner) {
+              drawAdBanner(ctx, size);
+            }
+            
+            displayResult(canvas, qrcodeOutput, resultContainer);
+          };
+          logoImg.src = e.target.result;
+        };
+        reader.readAsDataURL(logoFile);
+      } else if (showAdBanner) {
+        drawAdBanner(ctx, size);
+        displayResult(canvas, qrcodeOutput, resultContainer);
+      }
+    } else {
+      displayResult(canvas, qrcodeOutput, resultContainer);
+    }
+  });
 }
+
 function drawAdBanner(ctx, size) {
-  // 下部に控えめな帯＋やわらかい文言
   ctx.save();
   ctx.globalAlpha = 0.85;
   ctx.fillStyle = '#f0fdf4';
-  ctx.fillRect(0, size-28, size, 28);
+  ctx.fillRect(0, size - 28, size, 28);
   ctx.globalAlpha = 1;
-  ctx.font = 'bold 13px Inter, sans-serif';
+  ctx.font = 'bold 11px Inter, sans-serif';
   ctx.fillStyle = '#22c55e';
   ctx.textAlign = 'center';
-  ctx.fillText('negi-labおすすめ: 便利なAI画像生成もぜひご活用ください', size/2, size-10);
+  ctx.fillText('negi-labおすすめ: 便利なAI画像生成もぜひご活用ください', size / 2, size - 10);
   ctx.restore();
 }
+
+function displayResult(canvas, outputElement, containerElement) {
+  outputElement.innerHTML = '';
+  outputElement.appendChild(canvas);
+  containerElement.classList.remove('hidden');
+  
+  // ダウンロードボタンのイベント設定
+  setupDownloadButtons(canvas);
+}
+
+function setupDownloadButtons(canvas) {
+  const downloadBtn = document.getElementById('downloadQrButton');
+  const downloadSvgBtn = document.getElementById('downloadQrSvgButton');
+  const downloadJpegBtn = document.getElementById('downloadQrJpegButton');
+  
+  if (downloadBtn) {
+    downloadBtn.onclick = function() {
+      const link = document.createElement('a');
+      link.download = 'qrcode.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    };
+  }
+  
+  if (downloadJpegBtn) {
+    downloadJpegBtn.onclick = function() {
+      const link = document.createElement('a');
+      link.download = 'qrcode.jpg';
+      link.href = canvas.toDataURL('image/jpeg', 0.9);
+      link.click();
+    };
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   setupGuideModal();
   setupQrTypeSwitcher();
   setupAdBannerToggleDisplay();
   setupQrPreview();
+  renderQrHistory();
+  
   const genBtn = document.getElementById('generateQrButton');
   if (genBtn) {
     genBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      let qrType = document.getElementById('qrType').value;
-      let qrData = getQrDataByType();
-      let size = parseInt(document.getElementById('qrSize').value)||256;
-      let fg = document.getElementById('qrFgColor').value;
-      let bg = document.getElementById('qrBgColor').value;
+      const qrType = document.getElementById('qrType').value;
+      const qrData = getQrDataByType();
+      const size = parseInt(document.getElementById('qrSize').value) || 256;
+      const fg = document.getElementById('qrFgColor').value;
+      const bg = document.getElementById('qrBgColor').value;
+      
+      if (!qrData) {
+        alert('データを入力してください');
+        return;
+      }
+      
       saveQrHistory(qrType, qrData, {size, fg, bg});
       renderQrHistory();
+      updatePreview();
     });
   }
-  renderQrHistory();
 });
 </script>
 </body>
