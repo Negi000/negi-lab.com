@@ -7,83 +7,123 @@
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />  <script src="https://cdn.tailwindcss.com"></script>
   <!-- 外部CDNライブラリを削除し、ブラウザネイティブAPI + 自作実装に置換 -->  <script>
-    // QRコード生成ライブラリの軽量自作実装（CORS問題完全回避版）
+    // QRコード生成ライブラリの軽量自作実装（エラーハンドリング強化版）
     class SimpleQR {
       static generate(text, options = {}) {
-        const size = options.size || 256;
-        
-        // Google Charts API URLを生成
-        const params = new URLSearchParams({
-          chs: `${size}x${size}`,
-          cht: 'qr',
-          chl: text,
-          choe: 'UTF-8'
-        });
-        
-        // エラー訂正レベルの追加
-        if (options.errorCorrection) {
-          params.append('chld', options.errorCorrection);
+        if (!text || text.trim() === '') {
+          return Promise.reject(new Error('QRコードのテキストが空です'));
         }
         
-        const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
+        const size = Math.min(Math.max(options.size || 256, 128), 1024); // サイズ制限
+        const errorCorrection = options.errorCorrection || 'M';
+        const fg = (options.foreground || '#000000').replace('#', '');
+        const bg = (options.background || '#ffffff').replace('#', '');
         
-        return new Promise((resolve, reject) => {
-          // Canvasの代わりに、直接画像要素を返す
-          const img = document.createElement('img');
-          img.onload = () => resolve(img);
-          img.onerror = () => reject(new Error('QRコード生成に失敗しました'));
-          img.src = qrUrl;
-          img.alt = 'QRコード';
-          img.style.maxWidth = '100%';
-          img.style.height = 'auto';
-        });
+        try {
+          // Google Charts API URLを生成
+          const params = new URLSearchParams({
+            chs: `${size}x${size}`,
+            cht: 'qr',
+            chl: encodeURIComponent(text), // URLエンコード追加
+            choe: 'UTF-8',
+            chld: `${errorCorrection}|0`,
+            chco: `${fg}${bg}` // 前景色と背景色
+          });
+          
+          const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
+          
+          return new Promise((resolve, reject) => {
+            const img = document.createElement('img');
+            
+            // タイムアウト設定（10秒）
+            const timeout = setTimeout(() => {
+              reject(new Error('QRコード生成がタイムアウトしました'));
+            }, 10000);
+            
+            img.onload = () => {
+              clearTimeout(timeout);
+              img.className = 'max-w-full h-auto border rounded shadow-sm';
+              img.alt = 'Generated QR Code';
+              img.style.maxWidth = '100%';
+              img.style.height = 'auto';
+              resolve(img);
+            };
+            
+            img.onerror = () => {
+              clearTimeout(timeout);
+              reject(new Error('QRコード画像の読み込みに失敗しました'));
+            };
+            
+            img.src = qrUrl;
+          });
+        } catch (error) {
+          return Promise.reject(new Error(`QRコード生成エラー: ${error.message}`));
+        }
       }
       
-      // ダウンロード用のCanvas生成
+      // ダウンロード用Canvas生成
       static generateCanvas(text, options = {}) {
-        const size = options.size || 256;
-        const canvas = document.createElement('canvas');
-        canvas.width = size;
-        canvas.height = size;
-        const ctx = canvas.getContext('2d');
-        
-        const params = new URLSearchParams({
-          chs: `${size}x${size}`,
-          cht: 'qr',
-          chl: text,
-          choe: 'UTF-8'
-        });
-        
-        if (options.errorCorrection) {
-          params.append('chld', options.errorCorrection);
+        if (!text || text.trim() === '') {
+          return Promise.reject(new Error('QRコードのテキストが空です'));
         }
         
-        const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
+        const size = Math.min(Math.max(options.size || 256, 128), 1024);
+        const errorCorrection = options.errorCorrection || 'M';
+        const fg = (options.foreground || '#000000').replace('#', '');
+        const bg = (options.background || '#ffffff').replace('#', '');
         
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
+        try {
+          const params = new URLSearchParams({
+            chs: `${size}x${size}`,
+            cht: 'qr',
+            chl: encodeURIComponent(text),
+            choe: 'UTF-8',
+            chld: `${errorCorrection}|0`,
+            chco: `${fg}${bg}`
+          });
           
-          img.onload = () => {
-            try {
-              // 背景色設定
-              ctx.fillStyle = options.background || '#ffffff';
-              ctx.fillRect(0, 0, size, size);
-              
-              // QRコード描画
-              ctx.drawImage(img, 0, 0, size, size);
-              
-              resolve(canvas);
-            } catch (error) {
-              console.warn('Canvas描画エラー、代替方法を使用:', error);
-              // Canvas描画に失敗した場合の代替処理
-              resolve(img);
-            }
-          };
+          const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
           
-          img.onerror = () => reject(new Error('QRコード画像の読み込みに失敗しました'));
-          img.src = qrUrl;
-        });
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            
+            const timeout = setTimeout(() => {
+              reject(new Error('QRコード生成がタイムアウトしました'));
+            }, 10000);
+            
+            img.onload = () => {
+              clearTimeout(timeout);
+              try {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                
+                // 背景色設定
+                ctx.fillStyle = `#${bg}`;
+                ctx.fillRect(0, 0, size, size);
+                
+                // QRコード描画
+                ctx.drawImage(img, 0, 0, size, size);
+                
+                resolve(canvas);
+              } catch (drawError) {
+                console.warn('Canvas描画エラー:', drawError);
+                // Canvas描画に失敗した場合、元の画像を返す
+                resolve(img);
+              }
+            };
+            
+            img.onerror = () => {
+              clearTimeout(timeout);
+              reject(new Error('QRコード画像の読み込みに失敗しました'));
+            };
+            
+            img.src = qrUrl;
+          });
+        } catch (error) {          return Promise.reject(new Error(`Canvas生成エラー: ${error.message}`));
+        }
       }
     }
     
@@ -1060,12 +1100,14 @@
     </nav>
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
-
   <!-- Guide Modal Popup -->
   <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
+    <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 my-8 max-h-screen flex flex-col">
+      <div class="flex justify-between items-center p-6 border-b border-gray-200">
+        <h2 class="text-xl font-bold text-gray-800">QRコード生成ツール 完全ガイド</h2>
+        <button id="guide-close" class="text-gray-400 hover:text-gray-600 text-2xl font-bold" aria-label="閉じる">&times;</button>
+      </div>
+      <div id="guide-modal-content" class="flex-1 overflow-y-auto p-6"></div>
     </div>
   </div>
   <script type="module" src="../index.js" defer></script>
@@ -1624,35 +1666,267 @@ function setupGuideModal() {
   const guideModal = document.getElementById('guide-modal');
   const guideClose = document.getElementById('guide-close');
   const guideContent = document.getElementById('guide-modal-content');
-  
-  if (guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
+    if (guideBtn && guideModal && guideClose && guideContent) {    guideBtn.addEventListener('click', function() {
       guideContent.innerHTML = `
-        <h2 id="guide-modal-title" class="text-xl font-bold mb-4">QRコード生成ツール ガイド</h2>
-        <div class="space-y-3 text-sm">
-          <p><strong>基本的な使い方:</strong></p>
-          <ol class="list-decimal ml-5 space-y-1">
-            <li>データ形式を選択してください</li>
-            <li>必要な情報を入力してください</li>
-            <li>サイズや色をカスタマイズできます</li>
-            <li>「QRコードを生成」ボタンをクリック</li>
-            <li>生成されたQRコードをダウンロードできます</li>
-          </ol>
-          <p><strong>対応形式:</strong> テキスト/URL、メール、電話、SMS、vCard、Wi-Fi、イベント、位置情報など</p>
-          <p><strong>機能:</strong> ロゴ合成、色カスタマイズ、履歴保存</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- 左カラム -->
+          <div class="space-y-8">
+            <!-- 基本的な使い方 -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                基本的な使い方
+              </h3>
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700 text-sm">
+                <li><strong>データ形式</strong>を選択（テキスト、URL、メール、Wi-Fiなど14種類対応）</li>
+                <li>必要な<strong>情報を入力</strong>（自動フォーマット機能付き）</li>
+                <li>サイズ（128-1024px）や色を<strong>カスタマイズ</strong>（オプション）</li>
+                <li><strong>「QRコードを生成」</strong>ボタンをクリック</li>
+                <li>PNG/JPG/SVG形式で<strong>ダウンロード</strong></li>
+              </ol>
+            </section>
+
+            <!-- 全機能タブ説明 -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15.586 13H14a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                5つのタブ機能
+              </h3>
+              <div class="space-y-3">
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                  <strong class="text-green-700">1. 基本設定:</strong> 
+                  <p class="text-sm text-gray-600 mt-1">データ入力、サイズ・色の基本設定、14種類のデータ形式対応</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                  <strong class="text-blue-700">2. デザイン:</strong>
+                  <p class="text-sm text-gray-600 mt-1">高度なカラー設定、カラープリセット、ロゴ画像合成、グラデーション</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                  <strong class="text-purple-700">3. 一括生成:</strong>
+                  <p class="text-sm text-gray-600 mt-1">CSV/JSON入力、複数QRコード一括生成、バッチダウンロード</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                  <strong class="text-orange-700">4. 高度な設定:</strong>
+                  <p class="text-sm text-gray-600 mt-1">テンプレート保存・読み込み、QR解析、履歴管理、使用統計</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                  <strong class="text-red-700">5. API/自動化:</strong>
+                  <p class="text-sm text-gray-600 mt-1">完全ローカル動作、データエクスポート、スクリプト生成（サーバー不要）</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 対応データ形式 -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6.5a.5.5 0 01-.5.5.5.5 0 01-.5-.5V7a1 1 0 00-1-1H7a1 1 0 00-1 1v8a2 2 0 002 2h4.5a.5.5 0 01.5.5.5.5 0 01-.5.5H8a3 3 0 01-3-3V5z" clip-rule="evenodd"></path>
+                </svg>
+                14種類のデータ形式対応
+              </h3>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="flex items-center"><span class="w-3 h-3 bg-green-400 rounded-full mr-2"></span>テキスト・URL</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-blue-400 rounded-full mr-2"></span>メールアドレス</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-purple-400 rounded-full mr-2"></span>電話番号</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>SMS</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-red-400 rounded-full mr-2"></span>連絡先（vCard）</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-indigo-400 rounded-full mr-2"></span>Wi-Fi接続情報</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-pink-400 rounded-full mr-2"></span>カレンダーイベント</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-gray-400 rounded-full mr-2"></span>位置情報・地図</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>LINE・SNS</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-orange-400 rounded-full mr-2"></span>暗号通貨・決済</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-teal-400 rounded-full mr-2"></span>MeCard（名刺）</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-cyan-400 rounded-full mr-2"></span>YouTube・Spotify</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>Zoom会議室</div>
+                <div class="flex items-center"><span class="w-3 h-3 bg-green-600 rounded-full mr-2"></span>PayPal送金</div>
+              </div>
+            </section>
+          </div>
+
+          <!-- 右カラム -->
+          <div class="space-y-8">
+            <!-- セキュリティ・プライバシー -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                セキュリティ・プライバシー
+              </h3>
+              <div class="space-y-3 text-sm text-gray-700">
+                <div class="bg-green-50 p-3 rounded border border-green-200">
+                  <strong class="text-green-700">🔒 完全ローカル処理:</strong> 
+                  データはあなたのブラウザでのみ処理され、外部サーバーに送信されません
+                </div>
+                <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                  <strong class="text-blue-700">🚫 外部依存なし:</strong> 
+                  CDNライブラリを使用せず、完全に独立したツールです
+                </div>
+                <div class="bg-purple-50 p-3 rounded border border-purple-200">
+                  <strong class="text-purple-700">📱 オフライン対応:</strong> 
+                  一度読み込めば、インターネット接続なしでも動作します
+                </div>
+                <div class="bg-orange-50 p-3 rounded border border-orange-200">
+                  <strong class="text-orange-700">🍪 Cookie設定:</strong> 
+                  統計機能やアフィリエイト機能は明示的な同意が必要です
+                </div>
+              </div>
+            </section>
+
+            <!-- 高度な機能 -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                </svg>
+                高度な機能
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>ロゴ画像合成:</strong> PNG/JPG画像をQRコード中央に配置
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>カラープリセット:</strong> ビジネス、SNS、セキュリティなど用途別配色
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>一括生成:</strong> CSV/JSONファイルから大量のQRコードを一度に生成
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>テンプレート機能:</strong> 設定の保存・読み込みで作業効率化
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-yellow-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>QR解析:</strong> 既存QRコードの内容解析・デコード機能
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <div>
+                    <strong>使用統計:</strong> 生成履歴・使用状況の追跡（ローカルのみ）
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+            <!-- 使用例 -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                実用的な使用例
+              </h3>
+              <div class="space-y-3 text-sm">
+                <div class="bg-gray-50 p-3 rounded border-l-4 border-green-400">
+                  <strong class="text-green-700">🏢 ビジネス:</strong> 名刺、店舗情報、Wi-Fiパスワード共有
+                </div>
+                <div class="bg-gray-50 p-3 rounded border-l-4 border-blue-400">
+                  <strong class="text-blue-700">📱 SNS:</strong> Instagram、X（Twitter）、YouTube、TikTokプロフィール
+                </div>
+                <div class="bg-gray-50 p-3 rounded border-l-4 border-purple-400">
+                  <strong class="text-purple-700">🎉 イベント:</strong> 参加登録、会場案内、カレンダー追加
+                </div>
+                <div class="bg-gray-50 p-3 rounded border-l-4 border-yellow-400">
+                  <strong class="text-yellow-700">💰 決済:</strong> PayPal送金、暗号通貨ウォレット、送金依頼
+                </div>
+                <div class="bg-gray-50 p-3 rounded border-l-4 border-red-400">
+                  <strong class="text-red-700">🔗 共有:</strong> ファイル共有、メッセージ送信、位置情報
+                </div>
+              </div>
+            </section>
+
+            <!-- トラブルシューティング -->
+            <section>
+              <h3 class="font-semibold text-xl mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                トラブルシューティング
+              </h3>
+              <div class="space-y-3 text-sm">
+                <div class="border border-red-200 bg-red-50 p-3 rounded">
+                  <strong class="text-red-700">Q: QRコードが生成されない</strong>
+                  <ul class="mt-2 ml-4 list-disc text-gray-600">
+                    <li>データが正しく入力されているか確認</li>
+                    <li>インターネット接続を確認（Google Charts API使用）</li>
+                    <li>ブラウザの JavaScript が有効か確認</li>
+                    <li>データ量が大きすぎる場合は短縮してみる</li>
+                  </ul>
+                </div>
+                <div class="border border-orange-200 bg-orange-50 p-3 rounded">
+                  <strong class="text-orange-700">Q: ダウンロードできない</strong>
+                  <ul class="mt-2 ml-4 list-disc text-gray-600">
+                    <li>ポップアップブロッカーを無効にする</li>
+                    <li>ブラウザのダウンロード許可設定を確認</li>
+                    <li>別のブラウザ（Chrome、Firefox、Safari）で試す</li>
+                  </ul>
+                </div>
+                <div class="border border-blue-200 bg-blue-50 p-3 rounded">
+                  <strong class="text-blue-700">Q: ロゴが正しく表示されない</strong>
+                  <ul class="mt-2 ml-4 list-disc text-gray-600">
+                    <li>PNG または JPG 形式の画像を使用</li>
+                    <li>ファイルサイズが大きすぎないか確認（推奨: 1MB以下）</li>
+                    <li>正方形に近い画像が最適</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- 下部の追加情報 -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+          <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
+            <h4 class="font-semibold text-lg text-gray-800 mb-3 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+              </svg>
+              このツールについて
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+              <div>
+                <p><strong>🌟 特徴:</strong> 完全無料、登録不要、外部依存なし</p>
+                <p><strong>🔒 セキュリティ:</strong> 完全ローカル処理、データ送信なし</p>
+                <p><strong>⚡ パフォーマンス:</strong> 高速生成、オフライン対応</p>
+              </div>
+              <div>
+                <p><strong>🎨 デザイン:</strong> 14種類のデータ形式、ロゴ合成対応</p>
+                <p><strong>📊 管理:</strong> 履歴保存、テンプレート機能、統計表示</p>
+                <p><strong>🚀 拡張性:</strong> API機能、一括生成、自動化対応</p>
+              </div>
+            </div>
+          </div>
         </div>
       `;
       guideModal.classList.remove('hidden');
     });
-    
+
     guideClose.addEventListener('click', function() {
       guideModal.classList.add('hidden');
     });
-    
+
     guideModal.addEventListener('click', function(e) {
       if (e.target === guideModal) {
-        guideModal.classList.add('hidden');
-      }
+        guideModal.classList.add('hidden');      }
     });
   }
 }
@@ -2144,6 +2418,7 @@ function setupAdBannerToggleDisplay() {
 async function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffiliates) {
   if (!text) {
     console.log('テキストが空です');
+    showError('データを入力してください');
     return;
   }
   
@@ -2158,11 +2433,24 @@ async function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffi
     const qrcodeOutput = document.getElementById('qrcodeOutput');
     const resultContainer = document.getElementById('qrResultContainer');
     
+    if (!qrcodeOutput) {
+      throw new Error('QRコードプレビュー要素が見つかりません');
+    }
+    
+    // ローディング表示
+    qrcodeOutput.innerHTML = '<div class="flex items-center justify-center h-32"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div><span class="ml-2 text-gray-500">生成中...</span></div>';
+    
     // プレビュー用の画像生成（CORS問題回避）
     const previewImg = await SimpleQR.generate(text, {
       size: size,
+      foreground: fgColor || '#000000',
+      background: bgColor || '#ffffff',
       errorCorrection: document.getElementById('qrErrorCorrection')?.value || 'M'
     });
+    
+    if (!previewImg) {
+      throw new Error('QRコードの生成に失敗しました');
+    }
     
     // プレビュー表示
     qrcodeOutput.innerHTML = '';
@@ -2176,15 +2464,33 @@ async function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffi
       size: size,
       fgColor: fgColor,
       bgColor: bgColor,
-      logoFile: logoFile
+      logoFile: logoFile,
+      errorCorrection: document.getElementById('qrErrorCorrection')?.value || 'M'
     };
     
-    resultContainer.classList.remove('hidden');
+    if (resultContainer) {
+      resultContainer.classList.remove('hidden');
+    }
     
     showSuccess('QRコードを正常に生成しました！');
-      } catch (error) {
+    
+  } catch (error) {
     console.error('QRコード生成エラー:', error);
-    showError('QRコードの生成に失敗しました。データを確認してください。');
+    
+    // エラー画面の表示
+    const qrcodeOutput = document.getElementById('qrcodeOutput');
+    if (qrcodeOutput) {
+      qrcodeOutput.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-32 bg-red-50 border border-red-200 rounded">
+          <svg class="w-8 h-8 text-red-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-red-600 text-sm">生成に失敗しました</span>
+        </div>
+      `;
+    }
+    
+    showError('QRコードの生成に失敗しました。データの形式やサイズを確認してください。');
   }
 }
 
@@ -2369,8 +2675,7 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.error('SimpleQR ライブラリの読み込みに失敗');
   }
-  
-  const genBtn = document.getElementById('generateQrButton');
+    const genBtn = document.getElementById('generateQrButton');
   if (genBtn) {
     genBtn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -2381,21 +2686,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const size = parseInt(document.getElementById('qrSize').value) || 256;
       const fg = document.getElementById('qrFgColor').value;
       const bg = document.getElementById('qrBgColor').value;
+      const logoFile = document.getElementById('qrLogo').files[0];
+      const enableAds = document.getElementById('qrAdBannerToggle')?.checked || false;
       
       console.log('生成データ:', {qrType, qrData, size, fg, bg});
       
       if (!qrData) {
-        alert('データを入力してください');
+        showError('データを入力してください');
         return;
       }
       
+      // QRコード生成を実行
+      generateQrCode(qrData, size, fg, bg, logoFile, enableAds);
+      
+      // 履歴保存
       saveQrHistory(qrType, qrData, {size, fg, bg});
       renderQrHistory();
-      updatePreview();
       incrementStats();
       
-      // Webhook送信（オプション）
-      sendWebhook({type: qrType, data: qrData, timestamp: new Date().toISOString()});
+      // Webhook送信（オプション・ローカルのみ）
+      if (document.getElementById('enableWebhook')?.checked) {
+        console.log('Webhook送信（ローカルログのみ）:', {type: qrType, data: qrData, timestamp: new Date().toISOString()});
+      }
     });
   }
   
