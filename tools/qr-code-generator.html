@@ -12,10 +12,10 @@
   <!-- CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- QR Code Library -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" 
-          onload="console.log('✅ qrcode.js読み込み完了')" 
-          onerror="console.warn('⚠️ qrcode.js読み込みエラー - フォールバックを使用')"></script>
+  <!-- QR Code Library (Qrious) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"
+          onload="console.log('✅ Qrious読み込み完了')"
+          onerror="console.warn('⚠️ Qrious読み込みエラー - フォールバックを使用')"></script>
   
   <!-- Tailwind Config -->
   <script>
@@ -550,70 +550,22 @@
     // QRコード生成ライブラリ（改良版）
     class SimpleQR {
       static generate(text, options = {}) {
-        console.log('SimpleQR.generate called with:', { text, options });
-        
-        if (!text || text.trim() === '') {
-          console.error('Empty text provided');
-          return Promise.reject(new Error('QRコードのテキストが空です'));
+        // Qriousが利用可能かチェック
+        if (typeof window.QRious !== 'undefined') {
+          const size = Math.min(Math.max(options.size || 256, 128), 1024);
+          const qr = new QRious({
+            value: text || '',
+            size: size,
+            level: options.errorCorrection || 'M',
+            background: options.backgroundColor || '#ffffff',
+            foreground: options.foregroundColor || '#000000'
+          });
+          const img = new Image();
+          img.src = qr.toDataURL();
+          return Promise.resolve(img);
         }
-        
-        const size = Math.min(Math.max(options.size || 256, 128), 1024);
-        
-        // qrcode.jsが利用可能かチェック
-        if (typeof window.QRCode !== 'undefined' && window.QRCode) {
-          console.log('qrcode.js使用でQRコード生成');
-          return this.generateWithQRCodeJS(text, size, options);
-        } else {
-          console.log('qrcode.js未利用、Google Charts APIフォールバック使用');
-          return this.generateWithGoogleCharts(text, size, options);
-        }
-      }
-      
-      // qrcode.jsを使用した生成
-      static generateWithQRCodeJS(text, size, options) {
-        return new Promise((resolve, reject) => {
-          try {
-            const canvas = document.createElement('canvas');
-            
-            const qrOptions = {
-              width: size,
-              height: size,
-              color: {
-                dark: options.foregroundColor || '#000000',
-                light: options.backgroundColor || '#ffffff'
-              },
-              errorCorrectionLevel: options.errorCorrection || 'M'
-            };
-            
-            window.QRCode.toCanvas(canvas, text, qrOptions, (error) => {
-              if (error) {
-                console.error('QRコード生成エラー:', error);
-                reject(new Error('QRコード生成に失敗しました'));
-                return;
-              }
-              
-              const img = document.createElement('img');
-              img.onload = () => {
-                console.log('QRコード生成成功（qrcode.js版）');
-                img.className = 'max-w-full h-auto border rounded shadow-sm';
-                img.alt = 'Generated QR Code';
-                img.style.maxWidth = '100%';
-                img.style.height = 'auto';
-                resolve(img);
-              };
-              
-              img.onerror = () => {
-                console.error('QRコード画像変換失敗');
-                reject(new Error('QRコード画像変換に失敗しました'));
-              };
-              
-              img.src = canvas.toDataURL('image/png');
-            });
-          } catch (error) {
-            console.error('qrcode.js使用中にエラー:', error);
-            reject(error);
-          }
-        });
+        // Qriousがない場合、Google Charts APIフォールバック
+        return this.generateWithGoogleCharts(text, (options.size || 256), options);
       }
       
       // Google Charts APIフォールバック
