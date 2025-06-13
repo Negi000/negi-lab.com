@@ -146,10 +146,9 @@
           </select>
         </div>
         <!-- ▼▼▼ データ形式ごとの入力欄を動的に切り替え（仮：textのみ表示、後でJSで切替） ▼▼▼ -->
-        <div id="qrInputFields">
-          <div id="qrInput-text">
+        <div id="qrInputFields">          <div id="qrInput-text">
             <label for="qrData" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.dataLabel">データ (テキストまたはURL):</label>
-            <textarea id="qrData" rows="3" class="form-input w-full" placeholder="https://negi-lab.com" aria-label="QRコードに埋め込むデータ（テキストまたはURL）"></textarea>
+            <textarea id="qrData" rows="3" class="form-input w-full" placeholder="https://negi-lab.com" aria-label="QRコードに埋め込むデータ（テキストまたはURL）">https://negi-lab.com</textarea>
           </div>
           <div id="qrInput-email" style="display:none">
             <label class="block text-sm font-medium text-gray-700 mb-1">メールアドレス:</label>
@@ -246,18 +245,26 @@
                 <input type="color" id="qrBgColor" value="#ffffff" class="form-input w-full h-10 p-1" aria-label="QRコードの背景色">
             </div>
         </div>
-        
-        <button id="generateQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.generateButton">QRコードを生成</button>
-        
-        <div id="qrResultContainer" class="mt-4 space-y-3 hidden">
-            <div id="qrcodeOutput" role="img" aria-label="Generated QR Code">
-                <!-- QR Code will be rendered here by JavaScript -->
+          <div class="space-y-4">
+          <button id="generateQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.generateButton">QRコードを生成</button>
+          
+          <!-- プレビューエリア -->
+          <div id="qrPreviewContainer" class="mt-4">
+            <h3 class="text-lg font-semibold mb-2">プレビュー</h3>
+            <div id="qrcodeOutput" class="border-2 border-dashed border-gray-300 rounded-lg p-4 min-h-[200px] flex items-center justify-center bg-gray-50">
+              <span class="text-gray-500">データを入力するとプレビューが表示されます</span>
             </div>
-            <button id="downloadQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.downloadButton">PNGでダウンロード</button>
-            <div class="flex gap-2 mt-2">
-              <button id="downloadQrSvgButton" class="form-button flex-1" type="button">SVGでダウンロード</button>
-              <button id="downloadQrJpegButton" class="form-button flex-1" type="button">JPEGでダウンロード</button>
+          </div>
+          
+          <!-- ダウンロードエリア -->
+          <div id="qrResultContainer" class="mt-4 space-y-3 hidden">
+            <h3 class="text-lg font-semibold">ダウンロード</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <button id="downloadQrButton" class="form-button py-2" data-translate-key="qrGenerator.downloadButton">PNG</button>
+              <button id="downloadQrJpegButton" class="form-button py-2" type="button">JPEG</button>
+              <button id="downloadQrSvgButton" class="form-button py-2" type="button">SVG</button>
             </div>
+          </div>
         </div>
         
         <div id="messageArea" class="text-sm mt-2">
@@ -545,18 +552,41 @@ function setupQrPreview() {
     'qrEventTitle','qrEventStart','qrEventEnd','qrEventLocation','qrEventDesc','qrGeoLat','qrGeoLng',
     'qrLineUrl','qrCryptoAddr','qrCryptoType','qrSize','qrFgColor','qrBgColor','qrLogo','qrErrorCorrection'
   ];
+  
   inputs.forEach(id => {
     const el = document.getElementById(id);
     if (el) {
-      el.addEventListener('input', updatePreview);
+      el.addEventListener('input', debounce(updatePreview, 300));
       el.addEventListener('change', updatePreview);
     }
   });
+  
+  // 初期プレビュー表示
+  setTimeout(updatePreview, 500);
+}
+
+// デバウンス関数（入力中の過度な処理を防ぐ）
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
 function updatePreview() {
   const qrData = getQrDataByType();
-  if (!qrData) return;
+  const qrcodeOutput = document.getElementById('qrcodeOutput');
+  
+  if (!qrData || qrData.trim() === '') {
+    qrcodeOutput.innerHTML = '<span class="text-gray-500">データを入力するとプレビューが表示されます</span>';
+    document.getElementById('qrResultContainer').classList.add('hidden');
+    return;
+  }
   
   const size = parseInt(document.getElementById('qrSize').value) || 256;
   const fg = document.getElementById('qrFgColor').value;
@@ -564,6 +594,9 @@ function updatePreview() {
   const logoInput = document.getElementById('qrLogo');
   const adBanner = shouldShowAdBanner();
   const logoFile = logoInput && logoInput.files && logoInput.files[0] ? logoInput.files[0] : null;
+  
+  // ローディング表示
+  qrcodeOutput.innerHTML = '<div class="flex items-center justify-center"><span class="text-gray-500">生成中...</span></div>';
   
   generateQrCode(qrData, size, fg, bg, logoFile, adBanner);
 }
@@ -604,6 +637,8 @@ function generateQrCode(text, size, fgColor, bgColor, logoFile, showAdBanner) {
   QRCode.toCanvas(text, options, function(error, canvas) {
     if (error) {
       console.error('QRコード生成エラー:', error);
+      const qrcodeOutput = document.getElementById('qrcodeOutput');
+      qrcodeOutput.innerHTML = '<span class="text-red-500">エラー: QRコードを生成できませんでした</span>';
       return;
     }
     
@@ -622,6 +657,13 @@ function generateQrCode(text, size, fgColor, bgColor, logoFile, showAdBanner) {
             const logoSize = size * 0.22;
             const x = (size - logoSize) / 2;
             const y = (size - logoSize) / 2;
+            
+            // ロゴ背景（白い円）を描画
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, logoSize/2 + 5, 0, 2 * Math.PI);
+            ctx.fill();
+            
             ctx.drawImage(logoImg, x, y, logoSize, logoSize);
             
             if (showAdBanner) {
@@ -645,18 +687,27 @@ function generateQrCode(text, size, fgColor, bgColor, logoFile, showAdBanner) {
 
 function drawAdBanner(ctx, size) {
   ctx.save();
-  ctx.globalAlpha = 0.85;
+  ctx.globalAlpha = 0.9;
   ctx.fillStyle = '#f0fdf4';
-  ctx.fillRect(0, size - 28, size, 28);
+  ctx.fillRect(0, size - 30, size, 30);
+  
   ctx.globalAlpha = 1;
-  ctx.font = 'bold 11px Inter, sans-serif';
+  ctx.font = 'bold 10px Inter, sans-serif';
   ctx.fillStyle = '#22c55e';
   ctx.textAlign = 'center';
-  ctx.fillText('negi-labおすすめ: 便利なAI画像生成もぜひご活用ください', size / 2, size - 10);
+  ctx.fillText('negi-lab おすすめツール', size / 2, size - 15);
+  ctx.font = '8px Inter, sans-serif';
+  ctx.fillText('便利なAI画像生成もご利用ください', size / 2, size - 5);
   ctx.restore();
 }
 
 function displayResult(canvas, outputElement, containerElement) {
+  // キャンバスをレスポンシブにする
+  canvas.style.maxWidth = '100%';
+  canvas.style.height = 'auto';
+  canvas.style.border = '1px solid #e5e7eb';
+  canvas.style.borderRadius = '8px';
+  
   outputElement.innerHTML = '';
   outputElement.appendChild(canvas);
   containerElement.classList.remove('hidden');
@@ -673,8 +724,8 @@ function setupDownloadButtons(canvas) {
   if (downloadBtn) {
     downloadBtn.onclick = function() {
       const link = document.createElement('a');
-      link.download = 'qrcode.png';
-      link.href = canvas.toDataURL();
+      link.download = `qrcode_${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
       link.click();
     };
   }
@@ -682,9 +733,26 @@ function setupDownloadButtons(canvas) {
   if (downloadJpegBtn) {
     downloadJpegBtn.onclick = function() {
       const link = document.createElement('a');
-      link.download = 'qrcode.jpg';
+      link.download = `qrcode_${Date.now()}.jpg`;
       link.href = canvas.toDataURL('image/jpeg', 0.9);
       link.click();
+    };
+  }
+  
+  if (downloadSvgBtn) {
+    downloadSvgBtn.onclick = function() {
+      // SVGは別の方法で生成する必要があるため、代替としてPNGを提供
+      const link = document.createElement('a');
+      link.download = `qrcode_${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      // ユーザーに通知
+      const statusMessage = document.getElementById('statusMessage');
+      if (statusMessage) {
+        statusMessage.textContent = 'SVGは現在PNG形式でダウンロードされます';
+        setTimeout(() => statusMessage.textContent = '', 3000);
+      }
     };
   }
 }
