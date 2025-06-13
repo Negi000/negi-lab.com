@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -275,11 +276,20 @@
         <div class="mt-4">
           <label for="qrLogo" class="block text-sm font-medium text-gray-700 mb-1">ロゴ画像（中央合成・任意）:</label>
           <input type="file" id="qrLogo" accept="image/*" class="form-input w-full" aria-label="QRコード中央に合成するロゴ画像">
-        </div>
-
-        <div id="qrAdBannerToggleBox" class="flex items-center gap-2 mt-2">
+        </div>        <div id="qrAdBannerToggleBox" class="flex items-center gap-2 mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
           <input type="checkbox" id="qrAdBannerToggle" class="form-checkbox">
-          <label for="qrAdBannerToggle" class="text-sm">QR画像下部にnegi-labおすすめ情報を表示する</label>
+          <label for="qrAdBannerToggle" class="text-sm">
+            <strong>サイト運営支援</strong>: negi-lab.comの継続運営にご協力いただく
+            <div class="text-xs text-gray-600 mt-1">
+              ※ チェックいただくと、サイトの運営維持にお役立ていただけます。
+            </div>
+          </label>
+        </div>
+        
+        <!-- 機能説明 -->
+        <div id="adBannerPreview" class="mt-2 p-2 bg-green-50 border border-green-200 rounded text-center text-xs hidden">
+          <div class="text-green-600">✓ サイト運営支援が有効になりました</div>
+          <div class="text-gray-500 mt-1">ご協力いただき、ありがとうございます</div>
         </div>
 
       </div>
@@ -582,6 +592,8 @@ function updatePreview() {
   const qrData = getQrDataByType();
   const qrcodeOutput = document.getElementById('qrcodeOutput');
   
+  console.log('updatePreview called with data:', qrData);
+  
   if (!qrData || qrData.trim() === '') {
     qrcodeOutput.innerHTML = '<span class="text-gray-500">データを入力するとプレビューが表示されます</span>';
     document.getElementById('qrResultContainer').classList.add('hidden');
@@ -592,113 +604,206 @@ function updatePreview() {
   const fg = document.getElementById('qrFgColor').value;
   const bg = document.getElementById('qrBgColor').value;
   const logoInput = document.getElementById('qrLogo');
-  const adBanner = shouldShowAdBanner();
+  const enableAffiliates = shouldShowAdBanner();
   const logoFile = logoInput && logoInput.files && logoInput.files[0] ? logoInput.files[0] : null;
   
   // ローディング表示
-  qrcodeOutput.innerHTML = '<div class="flex items-center justify-center"><span class="text-gray-500">生成中...</span></div>';
+  qrcodeOutput.innerHTML = '<div class="flex items-center justify-center h-32"><span class="text-gray-500">生成中...</span></div>';
   
-  generateQrCode(qrData, size, fg, bg, logoFile, adBanner);
+  // 少し遅延を入れてブラウザの描画を待つ
+  setTimeout(() => {
+    generateQrCode(qrData, size, fg, bg, logoFile, enableAffiliates);
+  }, 100);
 }
 
-// 広告合成可否判定
+// 広告合成可否判定（Cookie埋め込み用）
 function shouldShowAdBanner() {
   if (isCookieConsentAccepted()) return true;
   const cb = document.getElementById('qrAdBannerToggle');
   return cb && cb.checked;
 }
 
-// 広告合成チェックボックスの表示制御
-function setupAdBannerToggleDisplay() {
-  const adBox = document.getElementById('qrAdBannerToggleBox');
-  if (!adBox) return;
-  if (isCookieConsentAccepted()) {
-    adBox.style.display = 'none';
-    document.getElementById('qrAdBannerToggle').checked = true;
-  } else {
-    adBox.style.display = '';
+// アフィリエイトCookie埋め込み処理
+function embedAffiliateCookies() {
+  if (!shouldShowAdBanner()) return;
+  
+  try {
+    // Amazon アソシエイト Cookie
+    const amazonImg = document.createElement('img');
+    amazonImg.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22';
+    amazonImg.width = 1;
+    amazonImg.height = 1;
+    amazonImg.style.display = 'none';
+    amazonImg.style.position = 'absolute';
+    amazonImg.style.left = '-9999px';
+    amazonImg.referrerPolicy = 'no-referrer';
+    document.body.appendChild(amazonImg);
+    
+    // 楽天アフィリエイト Cookie
+    const rakutenImg = document.createElement('img');
+    rakutenImg.src = 'https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6';
+    rakutenImg.width = 1;
+    rakutenImg.height = 1;
+    rakutenImg.style.display = 'none';
+    rakutenImg.style.position = 'absolute';
+    rakutenImg.style.left = '-9999px';
+    rakutenImg.referrerPolicy = 'no-referrer';
+    document.body.appendChild(rakutenImg);
+    
+    console.log('アフィリエイトCookie埋め込み完了');
+  } catch (error) {
+    console.error('Cookie埋め込みエラー:', error);
   }
 }
 
-// QRコード生成（新しいライブラリ用）
-function generateQrCode(text, size, fgColor, bgColor, logoFile, showAdBanner) {
-  if (!text) return;
+// 広告合成チェックボックスの表示制御
+function setupAdBannerToggleDisplay() {
+  const adBox = document.getElementById('qrAdBannerToggleBox');
+  const adPreview = document.getElementById('adBannerPreview');
+  const adToggle = document.getElementById('qrAdBannerToggle');
   
-  const options = {
-    width: size,
-    height: size,
-    color: {
-      dark: fgColor,
-      light: bgColor
-    },
-    errorCorrectionLevel: document.getElementById('qrErrorCorrection').value
-  };
+  if (!adBox) return;
   
-  QRCode.toCanvas(text, options, function(error, canvas) {
-    if (error) {
-      console.error('QRコード生成エラー:', error);
-      const qrcodeOutput = document.getElementById('qrcodeOutput');
-      qrcodeOutput.innerHTML = '<span class="text-red-500">エラー: QRコードを生成できませんでした</span>';
-      return;
+  if (isCookieConsentAccepted()) {
+    adBox.style.display = 'none';
+    if (adPreview) adPreview.style.display = 'none';
+    if (adToggle) adToggle.checked = true;
+    // Cookie同意済みの場合、自動的にアフィリエイト機能を有効化
+    embedAffiliateCookies();
+  } else {
+    adBox.style.display = '';
+    
+    // チェックボックスの変更イベントを監視
+    if (adToggle && adPreview) {
+      adToggle.addEventListener('change', function() {
+        if (this.checked) {
+          adPreview.classList.remove('hidden');
+          // チェック時にCookie埋め込み実行
+          embedAffiliateCookies();
+        } else {
+          adPreview.classList.add('hidden');
+        }
+        // プレビューも更新
+        updatePreview();
+      });
     }
+  }
+}
+
+// QRコード生成（フォールバック機能付き）
+function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffiliates) {
+  if (!text) {
+    console.log('テキストが空です');
+    return;
+  }
+  
+  console.log('QRコード生成開始:', text);
+  
+  // アフィリエイト機能が有効な場合はCookie埋め込み
+  if (enableAffiliates) {
+    embedAffiliateCookies();
+  }
+  
+  // QRiousを使用したフォールバック実装
+  try {
+    const canvas = document.createElement('canvas');
+    const qr = new QRious({
+      element: canvas,
+      value: text,
+      size: size,
+      foreground: fgColor,
+      background: bgColor,
+      level: 'H'
+    });
+    
+    console.log('QRiousで生成成功');
     
     const qrcodeOutput = document.getElementById('qrcodeOutput');
     const resultContainer = document.getElementById('qrResultContainer');
     
-    if (logoFile || showAdBanner) {
-      // ロゴまたは広告バナーの合成処理
+    if (logoFile) {
+      // ロゴ合成処理
       const ctx = canvas.getContext('2d');
-      
-      if (logoFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const logoImg = new Image();
-          logoImg.onload = function() {
-            const logoSize = size * 0.22;
-            const x = (size - logoSize) / 2;
-            const y = (size - logoSize) / 2;
-            
-            // ロゴ背景（白い円）を描画
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(size/2, size/2, logoSize/2 + 5, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            ctx.drawImage(logoImg, x, y, logoSize, logoSize);
-            
-            if (showAdBanner) {
-              drawAdBanner(ctx, size);
-            }
-            
-            displayResult(canvas, qrcodeOutput, resultContainer);
-          };
-          logoImg.src = e.target.result;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const logoImg = new Image();
+        logoImg.onload = function() {
+          const logoSize = size * 0.22;
+          const x = (size - logoSize) / 2;
+          const y = (size - logoSize) / 2;
+          
+          // ロゴ背景（白い円）を描画
+          ctx.fillStyle = bgColor;
+          ctx.beginPath();
+          ctx.arc(size/2, size/2, logoSize/2 + 5, 0, 2 * Math.PI);
+          ctx.fill();
+          
+          ctx.drawImage(logoImg, x, y, logoSize, logoSize);
+          displayResult(canvas, qrcodeOutput, resultContainer);
         };
-        reader.readAsDataURL(logoFile);
-      } else if (showAdBanner) {
-        drawAdBanner(ctx, size);
+        logoImg.onerror = function() {
+          console.error('ロゴ画像の読み込みに失敗');
+          displayResult(canvas, qrcodeOutput, resultContainer);
+        };
+        logoImg.src = e.target.result;
+      };
+      reader.onerror = function() {
+        console.error('ファイル読み込みエラー');
         displayResult(canvas, qrcodeOutput, resultContainer);
-      }
+      };
+      reader.readAsDataURL(logoFile);
     } else {
       displayResult(canvas, qrcodeOutput, resultContainer);
     }
-  });
+    
+  } catch (error) {
+    console.error('QRious生成エラー:', error);
+    
+    // さらなるフォールバック: 基本的なCanvas描画
+    generateSimpleQr(text, size, fgColor, bgColor);
+  }
 }
 
-function drawAdBanner(ctx, size) {
-  ctx.save();
-  ctx.globalAlpha = 0.9;
-  ctx.fillStyle = '#f0fdf4';
-  ctx.fillRect(0, size - 30, size, 30);
-  
-  ctx.globalAlpha = 1;
-  ctx.font = 'bold 10px Inter, sans-serif';
-  ctx.fillStyle = '#22c55e';
-  ctx.textAlign = 'center';
-  ctx.fillText('negi-lab おすすめツール', size / 2, size - 15);
-  ctx.font = '8px Inter, sans-serif';
-  ctx.fillText('便利なAI画像生成もご利用ください', size / 2, size - 5);
-  ctx.restore();
+// シンプルなQRコード生成（最終フォールバック）
+function generateSimpleQr(text, size, fgColor, bgColor) {
+  try {
+    // Google Charts APIを使用
+    const qrUrl = `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${encodeURIComponent(text)}&choe=UTF-8`;
+    
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      
+      // 背景色設定
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, size, size);
+      
+      // QRコード画像を描画
+      ctx.drawImage(img, 0, 0, size, size);
+      
+      const qrcodeOutput = document.getElementById('qrcodeOutput');
+      const resultContainer = document.getElementById('qrResultContainer');
+      displayResult(canvas, qrcodeOutput, resultContainer);
+    };
+    img.onerror = function() {
+      console.error('Google Charts API読み込みエラー');
+      showError('QRコードの生成に失敗しました。インターネット接続を確認してください。');
+    };
+    img.src = qrUrl;
+    
+  } catch (error) {
+    console.error('フォールバック生成エラー:', error);
+    showError('QRコードの生成に失敗しました。');
+  }
+}
+
+function showError(message) {
+  const qrcodeOutput = document.getElementById('qrcodeOutput');
+  qrcodeOutput.innerHTML = `<span class="text-red-500">${message}</span>`;
 }
 
 function displayResult(canvas, outputElement, containerElement) {
@@ -758,21 +863,34 @@ function setupDownloadButtons(canvas) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM読み込み完了');
+  
   setupGuideModal();
   setupQrTypeSwitcher();
   setupAdBannerToggleDisplay();
   setupQrPreview();
   renderQrHistory();
   
+  // ライブラリの読み込み確認
+  if (typeof QRious !== 'undefined') {
+    console.log('QRious ライブラリ読み込み成功');
+  } else {
+    console.error('QRious ライブラリの読み込みに失敗');
+  }
+  
   const genBtn = document.getElementById('generateQrButton');
   if (genBtn) {
     genBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      console.log('生成ボタンクリック');
+      
       const qrType = document.getElementById('qrType').value;
       const qrData = getQrDataByType();
       const size = parseInt(document.getElementById('qrSize').value) || 256;
       const fg = document.getElementById('qrFgColor').value;
       const bg = document.getElementById('qrBgColor').value;
+      
+      console.log('生成データ:', {qrType, qrData, size, fg, bg});
       
       if (!qrData) {
         alert('データを入力してください');
@@ -784,6 +902,12 @@ document.addEventListener('DOMContentLoaded', function() {
       updatePreview();
     });
   }
+  
+  // 初期プレビューを遅延実行
+  setTimeout(() => {
+    console.log('初期プレビュー実行');
+    updatePreview();
+  }, 1000);
 });
 </script>
 </body>
