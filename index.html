@@ -336,15 +336,12 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
-    </nav>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
     <div>&copy; 2025 negi-lab.com</div>
+    <div class="mt-2">
+      <a href="/privacy-policy.html" class="hover:text-accent transition" data-translate-key="footer.privacyPolicyJa">プライバシーポリシー</a> | 
+      <a href="/privacy-policy-en.html" class="hover:text-accent transition" data-translate-key="footer.privacyPolicyEn">Privacy Policy (English)</a>
+    </div>
   </footer>
   <!-- パンくずリスト構造化データ（JSON-LD） -->
   <script type="application/ld+json">
@@ -375,7 +372,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
-      const guideClose = document.getElementById('guide-close');
+      const guideClose = document.getElementById('guide_close');
       const guideContent = document.getElementById('guide-modal-content');
       // 多言語ガイドデータ
       const guides = {
