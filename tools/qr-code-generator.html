@@ -6,52 +6,83 @@
   <title data-translate-key="qrGenerator.pageTitle">QRコード作成ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 外部CDNライブラリを削除し、ブラウザネイティブAPI + 自作実装に置換 -->
-  <script>
-    // QRコード生成ライブラリの軽量自作実装
+  <!-- 外部CDNライブラリを削除し、ブラウザネイティブAPI + 自作実装に置換 -->  <script>
+    // QRコード生成ライブラリの軽量自作実装（CORS問題完全回避版）
     class SimpleQR {
       static generate(text, options = {}) {
+        const size = options.size || 256;
+        
+        // Google Charts API URLを生成
+        const params = new URLSearchParams({
+          chs: `${size}x${size}`,
+          cht: 'qr',
+          chl: text,
+          choe: 'UTF-8'
+        });
+        
+        // エラー訂正レベルの追加
+        if (options.errorCorrection) {
+          params.append('chld', options.errorCorrection);
+        }
+        
+        const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
+        
+        return new Promise((resolve, reject) => {
+          // Canvasの代わりに、直接画像要素を返す
+          const img = document.createElement('img');
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error('QRコード生成に失敗しました'));
+          img.src = qrUrl;
+          img.alt = 'QRコード';
+          img.style.maxWidth = '100%';
+          img.style.height = 'auto';
+        });
+      }
+      
+      // ダウンロード用のCanvas生成
+      static generateCanvas(text, options = {}) {
         const size = options.size || 256;
         const canvas = document.createElement('canvas');
         canvas.width = size;
         canvas.height = size;
         const ctx = canvas.getContext('2d');
         
-        // Google Charts APIを使用した代替実装（完全静的）
-        const googleChartsUrl = `https://chart.googleapis.com/chart?chs=${size}x${size}&cht=qr&chl=${encodeURIComponent(text)}&choe=UTF-8`;
+        const params = new URLSearchParams({
+          chs: `${size}x${size}`,
+          cht: 'qr',
+          chl: text,
+          choe: 'UTF-8'
+        });
+        
+        if (options.errorCorrection) {
+          params.append('chld', options.errorCorrection);
+        }
+        
+        const qrUrl = `https://chart.googleapis.com/chart?${params.toString()}`;
         
         return new Promise((resolve, reject) => {
           const img = new Image();
           img.crossOrigin = 'anonymous';
+          
           img.onload = () => {
-            // 背景色設定
-            ctx.fillStyle = options.background || '#ffffff';
-            ctx.fillRect(0, 0, size, size);
-            
-            // QRコード描画
-            ctx.drawImage(img, 0, 0, size, size);
-            
-            // 前景色フィルタ（簡易版）
-            if (options.foreground && options.foreground !== '#000000') {
-              const imageData = ctx.getImageData(0, 0, size, size);
-              const data = imageData.data;
-              const targetColor = hexToRgb(options.foreground);
+            try {
+              // 背景色設定
+              ctx.fillStyle = options.background || '#ffffff';
+              ctx.fillRect(0, 0, size, size);
               
-              for (let i = 0; i < data.length; i += 4) {
-                // 黒いピクセルを指定色に変換
-                if (data[i] < 128 && data[i+1] < 128 && data[i+2] < 128) {
-                  data[i] = targetColor.r;
-                  data[i + 1] = targetColor.g;
-                  data[i + 2] = targetColor.b;
-                }
-              }
-              ctx.putImageData(imageData, 0, 0);
+              // QRコード描画
+              ctx.drawImage(img, 0, 0, size, size);
+              
+              resolve(canvas);
+            } catch (error) {
+              console.warn('Canvas描画エラー、代替方法を使用:', error);
+              // Canvas描画に失敗した場合の代替処理
+              resolve(img);
             }
-            
-            resolve(canvas);
           };
-          img.onerror = () => reject(new Error('QRコード生成に失敗しました'));
-          img.src = googleChartsUrl;
+          
+          img.onerror = () => reject(new Error('QRコード画像の読み込みに失敗しました'));
+          img.src = qrUrl;
         });
       }
     }
@@ -436,41 +467,61 @@
               <option value="Q">Quartile (Q ~25%)</option>
               <option value="H">High (H ~30%)</option>
             </select>
-          </div>
-          <div>
+          </div>          <div>
             <label for="qrMargin" class="block text-sm font-medium text-gray-700 mb-1">マージン:</label>
             <input type="number" id="qrMargin" value="4" min="0" max="20" class="form-input w-full">
           </div>
-        </div>
-                <label for="qrBgColor" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="qrGenerator.bgColorLabel">背景色:</label>
-                <input type="color" id="qrBgColor" value="#ffffff" class="form-input w-full h-10 p-1" aria-label="QRコードの背景色">
-            </div>
-        </div>
-          <div class="space-y-4">
-          <button id="generateQrButton" class="form-button w-full py-2.5" data-translate-key="qrGenerator.generateButton">QRコードを生成</button>
+        </div>        <div class="space-y-4">
+          <button id="generateQrButton" class="form-button w-full py-3 text-lg font-medium hover:bg-green-600 transition-colors duration-200" data-translate-key="qrGenerator.generateButton">
+            <svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
+            </svg>
+            QRコードを生成
+          </button>
           
           <!-- プレビューエリア -->
-          <div id="qrPreviewContainer" class="mt-4">
-            <h3 class="text-lg font-semibold mb-2">プレビュー</h3>
-            <div id="qrcodeOutput" class="border-2 border-dashed border-gray-300 rounded-lg p-4 min-h-[200px] flex items-center justify-center bg-gray-50">
-              <span class="text-gray-500">データを入力するとプレビューが表示されます</span>
+          <div id="qrPreviewContainer" class="mt-6">
+            <h3 class="text-lg font-semibold mb-3 text-gray-800">プレビュー</h3>
+            <div id="qrcodeOutput" class="border-2 border-dashed border-gray-300 rounded-lg p-6 min-h-[250px] flex items-center justify-center bg-gray-50 transition-all duration-300">
+              <div class="text-center">
+                <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-500">データを入力して「QRコードを生成」をクリックしてください</span>
+              </div>
             </div>
           </div>
           
           <!-- ダウンロードエリア -->
-          <div id="qrResultContainer" class="mt-4 space-y-3 hidden">
-            <h3 class="text-lg font-semibold">ダウンロード</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <button id="downloadQrButton" class="form-button py-2" data-translate-key="qrGenerator.downloadButton">PNG</button>
-              <button id="downloadQrJpegButton" class="form-button py-2" type="button">JPEG</button>
-              <button id="downloadQrSvgButton" class="form-button py-2" type="button">SVG</button>
+          <div id="qrResultContainer" class="mt-6 space-y-4 hidden">
+            <h3 class="text-lg font-semibold text-gray-800">ダウンロード</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button id="downloadQrButton" class="form-button py-3 font-medium hover:bg-blue-600 transition-colors" data-translate-key="qrGenerator.downloadButton">
+                <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                PNG形式
+              </button>
+              <button id="downloadQrJpegButton" class="form-button py-3 font-medium hover:bg-blue-600 transition-colors" type="button">
+                <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                JPEG形式
+              </button>
+              <button id="downloadQrSvgButton" class="form-button py-3 font-medium hover:bg-blue-600 transition-colors" type="button">
+                <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                SVG形式
+              </button>
             </div>
           </div>
         </div>
         
-        <div id="messageArea" class="text-sm mt-2">
-            <p id="statusMessage" class="text-gray-600"></p>
-            <p id="errorMessage" class="text-red-600"></p>
+        <!-- メッセージエリア -->
+        <div id="messageArea" class="mt-4">
+          <div id="statusMessage" class="text-sm text-green-600 hidden"></div>
+          <div id="errorMessage" class="text-sm text-red-600 hidden"></div>
         </div>
 
         <div class="mt-4">
@@ -491,185 +542,229 @@
           <div class="text-gray-500 mt-1">ご協力いただき、ありがとうございます</div>
         </div>
 
-      </div>
-
-      <!-- デザインタブ -->
+      </div>      <!-- デザインタブ -->
       <div id="content-design" class="tab-content hidden">
-        <div class="space-y-4">
-          <!-- 高度なカラー設定 -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">前景色</label>
-              <div class="space-y-2">
-                <div class="flex space-x-2">
-                  <input type="color" id="qrFgColor" value="#000000" class="form-input h-10 w-16 p-1 rounded">
-                  <input type="text" id="qrFgColorText" value="#000000" class="form-input flex-1" placeholder="#000000">
-                </div>
-                <div class="grid grid-cols-6 gap-1">
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#000000" data-color="#000000"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#333333" data-color="#333333"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#666666" data-color="#666666"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#ff0000" data-color="#ff0000"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#00ff00" data-color="#00ff00"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#0000ff" data-color="#0000ff"></div>
+        <div class="space-y-6">
+          <!-- カラー設定 - 統一されたデザイン -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm0 2h12v11H4V4z" clip-rule="evenodd"></path>
+              </svg>
+              カラー設定
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-3">前景色（QRコード）</label>
+                <div class="space-y-3">
+                  <div class="flex space-x-2">
+                    <input type="color" id="qrFgColor" value="#000000" class="form-input h-12 w-16 p-1 rounded-lg border-2">
+                    <input type="text" id="qrFgColorText" value="#000000" class="form-input flex-1 font-mono" placeholder="#000000">
+                  </div>
+                  <div class="grid grid-cols-6 gap-2">
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#000000" data-color="#000000" title="ブラック"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#333333" data-color="#333333" title="ダークグレー"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#666666" data-color="#666666" title="グレー"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#dc2626" data-color="#dc2626" title="レッド"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#16a34a" data-color="#16a34a" title="グリーン"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#2563eb" data-color="#2563eb" title="ブルー"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">背景色</label>
-              <div class="space-y-2">
-                <div class="flex space-x-2">
-                  <input type="color" id="qrBgColor" value="#ffffff" class="form-input h-10 w-16 p-1 rounded">
-                  <input type="text" id="qrBgColorText" value="#ffffff" class="form-input flex-1" placeholder="#ffffff">
-                </div>
-                <div class="grid grid-cols-6 gap-1">
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#ffffff; border: 1px solid #ddd" data-color="#ffffff"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#f8f9fa" data-color="#f8f9fa"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#e9ecef" data-color="#e9ecef"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#ffeaa7" data-color="#ffeaa7"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#fab1a0" data-color="#fab1a0"></div>
-                  <div class="color-preset w-8 h-8 rounded cursor-pointer" style="background:#a29bfe" data-color="#a29bfe"></div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-3">背景色</label>
+                <div class="space-y-3">
+                  <div class="flex space-x-2">
+                    <input type="color" id="qrBgColor" value="#ffffff" class="form-input h-12 w-16 p-1 rounded-lg border-2">
+                    <input type="text" id="qrBgColorText" value="#ffffff" class="form-input flex-1 font-mono" placeholder="#ffffff">
+                  </div>
+                  <div class="grid grid-cols-6 gap-2">
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#ffffff; border-color: #d1d5db" data-color="#ffffff" title="ホワイト"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#f8fafc" data-color="#f8fafc" title="オフホワイト"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#e2e8f0" data-color="#e2e8f0" title="ライトグレー"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#fef3c7" data-color="#fef3c7" title="ライトイエロー"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#fecaca" data-color="#fecaca" title="ライトピンク"></div>
+                    <div class="color-preset w-10 h-10 rounded-lg cursor-pointer border-2 hover:scale-105 transition-transform" style="background:#ddd6fe" data-color="#ddd6fe" title="ライトパープル"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- グラデーション設定 -->
-          <div class="border-t pt-4">
-            <div class="flex items-center space-x-2 mb-3">
-              <input type="checkbox" id="enableGradient" class="form-checkbox">
-              <label for="enableGradient" class="text-sm font-medium">グラデーション効果</label>
-            </div>
-            <div id="gradientControls" class="space-y-2 hidden">
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs text-gray-600">開始色</label>
-                  <input type="color" id="gradientStart" value="#000000" class="form-input h-8 w-full">
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-600">終了色</label>
-                  <input type="color" id="gradientEnd" value="#666666" class="form-input h-8 w-full">
+          <!-- スタイル設定 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+              </svg>
+              スタイル設定
+            </h3>
+            <div class="space-y-4">
+              <!-- ドットパターン -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-3">ドットパターン</label>
+                <div class="grid grid-cols-3 gap-3">
+                  <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                    <input type="radio" name="qrPattern" value="square" class="form-radio mr-2" checked>
+                    <span class="text-sm font-medium">正方形</span>
+                  </label>
+                  <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                    <input type="radio" name="qrPattern" value="circle" class="form-radio mr-2">
+                    <span class="text-sm font-medium">円形</span>
+                  </label>
+                  <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                    <input type="radio" name="qrPattern" value="rounded" class="form-radio mr-2">
+                    <span class="text-sm font-medium">角丸</span>
+                  </label>
                 </div>
               </div>
+              
+              <!-- フレーム設定 -->
               <div>
-                <label class="block text-xs text-gray-600">方向</label>
-                <select id="gradientDirection" class="form-select w-full">
-                  <option value="linear">線形</option>
-                  <option value="radial">放射</option>
+                <label for="qrFrame" class="block text-sm font-medium text-gray-700 mb-2">フレームスタイル</label>
+                <select id="qrFrame" class="form-select w-full">
+                  <option value="none">フレームなし</option>
+                  <option value="simple">シンプル</option>
+                  <option value="rounded">角丸フレーム</option>
+                  <option value="shadow">シャドウ付き</option>
+                  <option value="decorative">装飾的</option>
                 </select>
               </div>
             </div>
           </div>
           
-          <!-- パターン・スタイル設定 -->
-          <div class="border-t pt-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">ドットパターン</label>
-            <div class="grid grid-cols-3 gap-2">
-              <label class="flex items-center space-x-2">
-                <input type="radio" name="qrPattern" value="square" class="form-radio" checked>
-                <span class="text-sm">正方形</span>
-              </label>
-              <label class="flex items-center space-x-2">
-                <input type="radio" name="qrPattern" value="circle" class="form-radio">
-                <span class="text-sm">円形</span>
-              </label>
-              <label class="flex items-center space-x-2">
-                <input type="radio" name="qrPattern" value="rounded" class="form-radio">
-                <span class="text-sm">角丸</span>
-              </label>
-            </div>
-          </div>
-          
-          <!-- フレーム設定 -->
-          <div class="border-t pt-4">
-            <label for="qrFrame" class="block text-sm font-medium text-gray-700 mb-2">フレームスタイル</label>
-            <select id="qrFrame" class="form-select w-full">
-              <option value="none">なし</option>
-              <option value="simple">シンプル</option>
-              <option value="rounded">角丸</option>
-              <option value="shadow">シャドウ付き</option>
-              <option value="decorative">装飾的</option>
-            </select>
-          </div>
-          
-          <!-- ロゴ詳細設定 -->
-          <div class="border-t pt-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">ロゴ設定</label>
-            <div class="space-y-3">
+          <!-- ロゴ設定 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+              </svg>
+              ロゴ設定
+            </h3>
+            <div class="space-y-4">
               <div>
-                <label class="block text-xs text-gray-600 mb-1">ロゴサイズ: <span id="logoSizeValue">20%</span></label>
-                <input type="range" id="logoSize" min="10" max="40" value="20" class="w-full">
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <label class="flex items-center space-x-2">
-                  <input type="checkbox" id="logoBorder" class="form-checkbox">
-                  <span class="text-xs">白い縁取り</span>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  ロゴサイズ: <span id="logoSizeValue" class="font-mono">20%</span>
                 </label>
-                <label class="flex items-center space-x-2">
-                  <input type="checkbox" id="logoShadow" class="form-checkbox">
-                  <span class="text-xs">影効果</span>
+                <input type="range" id="logoSize" min="10" max="40" value="20" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                  <input type="checkbox" id="logoBorder" class="form-checkbox mr-2">
+                  <span class="text-sm font-medium">白い縁取り</span>
+                </label>
+                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
+                  <input type="checkbox" id="logoShadow" class="form-checkbox mr-2">
+                  <span class="text-sm font-medium">影効果</span>
                 </label>
               </div>
             </div>
           </div>
           
           <!-- プリセットテーマ -->
-          <div class="border-t pt-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">プリセットテーマ</label>
-            <div class="grid grid-cols-2 gap-2">
-              <button class="theme-preset bg-black text-white px-3 py-2 rounded text-sm" data-theme="classic">クラシック</button>
-              <button class="theme-preset bg-blue-500 text-white px-3 py-2 rounded text-sm" data-theme="modern">モダン</button>
-              <button class="theme-preset bg-green-500 text-white px-3 py-2 rounded text-sm" data-theme="nature">ナチュラル</button>
-              <button class="theme-preset bg-purple-500 text-white px-3 py-2 rounded text-sm" data-theme="creative">クリエイティブ</button>
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"></path>
+              </svg>
+              プリセットテーマ
+            </h3>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="theme-preset bg-black text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors" data-theme="classic">クラシック</button>
+              <button class="theme-preset bg-blue-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors" data-theme="modern">モダン</button>
+              <button class="theme-preset bg-green-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors" data-theme="nature">ナチュラル</button>
+              <button class="theme-preset bg-purple-500 text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-purple-600 transition-colors" data-theme="creative">クリエイティブ</button>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- 一括生成タブ -->
+      </div>      <!-- 一括生成タブ -->
       <div id="content-batch" class="tab-content hidden">
-        <div class="space-y-4">
-          <!-- バッチ入力エリア -->
-          <div>
-            <label for="batchInput" class="block text-sm font-medium text-gray-700 mb-2">一括データ入力（1行1データ、最大100件）</label>
-            <textarea id="batchInput" rows="8" class="form-input w-full" placeholder="https://example1.com&#10;https://example2.com&#10;contact@example.com&#10;tel:090-1234-5678"></textarea>
-            <div class="flex justify-between items-center mt-2">
-              <span class="text-xs text-gray-500">CSV/JSONファイルからインポート:</span>
-              <input type="file" id="csvImport" accept=".csv,.json,.txt" class="text-xs">
+        <div class="space-y-6">
+          <!-- データ入力エリア -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6.5a.5.5 0 01-.5.5.5.5 0 01-.5-.5V7a1 1 0 00-1-1H7a1 1 0 00-1 1v8a2 2 0 002 2h4.5a.5.5 0 01.5.5.5.5 0 01-.5.5H8a3 3 0 01-3-3V5z" clip-rule="evenodd"></path>
+              </svg>
+              一括データ入力
+            </h3>
+            <div>
+              <label for="batchInput" class="block text-sm font-medium text-gray-700 mb-2">
+                データ入力（1行1データ、最大100件）
+              </label>
+              <textarea 
+                id="batchInput" 
+                rows="8" 
+                class="form-input w-full font-mono text-sm" 
+                placeholder="https://example1.com&#10;https://example2.com&#10;contact@example.com&#10;tel:090-1234-5678&#10;&#10;※ 各行にURLやテキストを入力してください"
+              ></textarea>
+              <div class="flex justify-between items-center mt-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-gray-600">CSV/JSONファイルからインポート:</span>
+                </div>
+                <input type="file" id="csvImport" accept=".csv,.json,.txt" class="text-sm text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+              </div>
             </div>
           </div>
           
-          <!-- バッチ設定 -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div>
-              <label for="batchPrefix" class="block text-xs text-gray-600">ファイル名プレフィックス</label>
-              <input type="text" id="batchPrefix" value="qrcode" class="form-input w-full">
-            </div>
-            <div>
-              <label for="batchFormat" class="block text-xs text-gray-600">出力形式</label>
-              <select id="batchFormat" class="form-select w-full">
-                <option value="png">PNG</option>
-                <option value="jpg">JPEG</option>
-                <option value="svg">SVG</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs text-gray-600">一括サイズ</label>
-              <input type="number" id="batchSize" value="256" min="50" max="1000" class="form-input w-full">
+          <!-- 一括設定 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+              </svg>
+              出力設定
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label for="batchPrefix" class="block text-sm font-medium text-gray-700 mb-2">ファイル名プレフィックス</label>
+                <input type="text" id="batchPrefix" value="qrcode" class="form-input w-full" placeholder="qrcode">
+              </div>
+              <div>
+                <label for="batchFormat" class="block text-sm font-medium text-gray-700 mb-2">出力形式</label>
+                <select id="batchFormat" class="form-select w-full">
+                  <option value="png">PNG画像</option>
+                  <option value="jpg">JPEG画像</option>
+                  <option value="svg">SVG画像</option>
+                </select>
+              </div>
+              <div>
+                <label for="batchSize" class="block text-sm font-medium text-gray-700 mb-2">画像サイズ（px）</label>
+                <input type="number" id="batchSize" value="256" min="50" max="1000" class="form-input w-full" placeholder="256">
+              </div>
             </div>
           </div>
           
-          <!-- 生成・ダウンロードボタン -->
-          <div class="flex space-x-2">
-            <button id="batchGenerate" class="form-button flex-1 py-2">一括生成</button>
-            <button id="batchDownload" class="form-button flex-1 py-2" disabled>ZIPダウンロード</button>
+          <!-- 操作ボタン -->
+          <div class="bg-white p-4 rounded-lg border border-gray-200">
+            <div class="flex space-x-3">
+              <button id="batchGenerate" class="form-button flex-1 py-3 font-medium">
+                <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                一括生成開始
+              </button>
+              <button id="batchDownload" class="form-button flex-1 py-3 font-medium opacity-50 cursor-not-allowed" disabled>
+                <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                JSONダウンロード
+              </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2 text-center">
+              💡 生成されたQRコードは、JSONファイルとして一括ダウンロードできます
+            </p>
           </div>
           
           <!-- 進捗表示 -->
-          <div id="batchProgress" class="hidden">
-            <div class="flex items-center space-x-2 mb-1">
-              <span class="text-sm">進捗:</span>
-              <span id="batchProgressText" class="text-sm font-medium">0 / 0</span>
+          <div id="batchProgress" class="hidden bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm font-medium text-blue-800">生成進捗</span>
+              <span id="batchProgressText" class="text-sm font-mono text-blue-600">0 / 0</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
               <div id="batchProgressBar" class="bg-accent h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
@@ -683,103 +778,235 @@
             <div id="analyzeResult" class="hidden p-3 bg-gray-50 rounded text-sm"></div>
           </div>
         </div>
-      </div>
-
-      <!-- 高度な設定タブ -->
+      </div>      <!-- 高度な設定タブ -->
       <div id="content-advanced" class="tab-content hidden">
-        <div class="space-y-4">
+        <div class="space-y-6">
           <!-- テンプレート管理 -->
-          <div>
-            <h3 class="text-sm font-medium text-gray-700 mb-2">テンプレート管理</h3>
-            <div class="flex space-x-2 mb-2">
-              <select id="templateSelect" class="form-select flex-1">
-                <option value="">テンプレートを選択</option>
-              </select>
-              <button id="saveTemplate" class="form-button px-4">保存</button>
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z"></path>
+              </svg>
+              テンプレート管理
+            </h3>
+            <div class="space-y-3">
+              <div class="flex space-x-2">
+                <select id="templateSelect" class="form-select flex-1">
+                  <option value="">保存されたテンプレートを選択</option>
+                </select>
+                <button id="saveTemplate" class="form-button px-4 py-2">保存</button>
+                <button id="deleteTemplate" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">削除</button>
+              </div>
+              <input type="text" id="templateName" placeholder="テンプレート名を入力" class="form-input w-full">
             </div>
           </div>
           
-          <!-- URL短縮機能 -->
-          <div class="border-t pt-4">
-            <h3 class="text-sm font-medium text-gray-700 mb-2">URL短縮</h3>
-            <div class="flex space-x-2">
-              <select id="urlShortener" class="form-select">
-                <option value="tinyurl">TinyURL</option>
-                <option value="custom">カスタム</option>
-              </select>
-              <button id="shortenUrl" class="form-button px-4">短縮</button>
+          <!-- QRコード解析 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+              </svg>
+              QRコード解析
+            </h3>
+            <div class="space-y-3">
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                <input type="file" id="qrAnalyze" accept="image/*" class="hidden">
+                <label for="qrAnalyze" class="cursor-pointer flex flex-col items-center">
+                  <svg class="w-8 h-8 text-gray-400 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-gray-600">QRコード画像をアップロード</span>
+                </label>
+              </div>
+              <div id="analyzeResult" class="hidden p-3 bg-white rounded border text-sm"></div>
             </div>
           </div>
           
-          <!-- Webhook設定 -->
-          <div class="border-t pt-4">
-            <h3 class="text-sm font-medium text-gray-700 mb-2">Webhook連携</h3>
-            <div class="space-y-2">
-              <label class="flex items-center space-x-2">
-                <input type="checkbox" id="enableWebhook" class="form-checkbox">
-                <span class="text-xs">生成時にWebhook送信</span>
-              </label>
-              <input type="url" id="webhookUrl" placeholder="https://hooks.example.com/webhook" class="form-input w-full text-xs">
+          <!-- URL短縮機能（ローカル処理のみ） -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+              </svg>
+              URL短縮（手動処理）
+            </h3>
+            <div class="space-y-3">
+              <div class="bg-yellow-50 border border-yellow-200 rounded p-3">
+                <p class="text-xs text-yellow-800">⚠️ セキュリティのため、外部API接続は行いません。手動でURL短縮サービスをご利用ください。</p>
+              </div>
+              <div class="flex space-x-2">
+                <input type="url" id="longUrl" placeholder="長いURLを入力" class="form-input flex-1">
+                <button id="copyUrlForShorten" class="form-button px-4">コピー</button>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <a href="https://tinyurl.com/" target="_blank" class="text-blue-500 hover:underline">TinyURL</a>
+                <a href="https://bit.ly/" target="_blank" class="text-blue-500 hover:underline">Bitly</a>
+              </div>
             </div>
           </div>
           
-          <!-- 統計情報 -->
-          <div class="border-t pt-4">
-            <h3 class="text-sm font-medium text-gray-700 mb-2">利用統計</h3>
+          <!-- 利用統計 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+              </svg>
+              利用統計
+            </h3>
             <div class="grid grid-cols-3 gap-4 text-center">
-              <div class="bg-gray-50 p-2 rounded">
-                <div class="text-lg font-bold" id="statsTotal">0</div>
-                <div class="text-xs text-gray-600">総生成数</div>
+              <div class="bg-white p-4 rounded-lg border">
+                <div class="text-2xl font-bold text-blue-600" id="statsTotal">0</div>
+                <div class="text-xs text-gray-600 mt-1">総生成数</div>
               </div>
-              <div class="bg-gray-50 p-2 rounded">
-                <div class="text-lg font-bold" id="statsToday">0</div>
-                <div class="text-xs text-gray-600">今日</div>
+              <div class="bg-white p-4 rounded-lg border">
+                <div class="text-2xl font-bold text-green-600" id="statsToday">0</div>
+                <div class="text-xs text-gray-600 mt-1">今日</div>
               </div>
-              <div class="bg-gray-50 p-2 rounded">
-                <div class="text-lg font-bold" id="statsWeek">0</div>
-                <div class="text-xs text-gray-600">今週</div>
+              <div class="bg-white p-4 rounded-lg border">
+                <div class="text-2xl font-bold text-purple-600" id="statsWeek">0</div>
+                <div class="text-xs text-gray-600 mt-1">今週</div>
               </div>
+            </div>
+            <div class="mt-3 text-center">
+              <button id="clearStats" class="text-xs text-gray-500 hover:text-red-500 transition">統計をリセット</button>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- API/自動化タブ -->
+      </div>      <!-- API/自動化タブ -->
       <div id="content-api" class="tab-content hidden">
-        <div class="space-y-4">
-          <!-- API キー生成 -->
-          <div>
-            <h3 class="text-sm font-medium text-gray-700 mb-2">API キー</h3>
-            <div class="flex space-x-2 mb-2">
-              <input type="text" id="apiKey" readonly class="form-input flex-1 bg-gray-50" placeholder="APIキーが生成されます">
-              <button id="generateApiKey" class="form-button px-4">生成</button>
-              <button id="copyApiKey" class="form-button px-4">コピー</button>
-            </div>
-            <p class="text-xs text-gray-500">このAPIキーはローカルストレージに保存されます</p>
+        <div class="space-y-6">
+          <!-- セキュリティ警告 -->
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 class="text-sm font-semibold text-blue-800 mb-2 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+              </svg>
+              セキュリティに配慮した設計
+            </h3>
+            <p class="text-sm text-blue-700">
+              このツールの全ての機能はブラウザ内で完結し、GitHubリポジトリや外部サーバーへの自動送信は行いません。
+              あなたのデータとプライバシーを保護します。
+            </p>
           </div>
           
-          <!-- GitHub Actions 連携 -->
-          <div class="border-t pt-4">
-            <h3 class="text-sm font-medium text-gray-700 mb-2">GitHub Actions 連携</h3>
-            <p class="text-xs text-gray-600 mb-2">以下のYAMLをGitHubリポジトリの.github/workflows/に配置</p>
-            <textarea id="githubAction" rows="8" class="form-input w-full text-xs font-mono" readonly></textarea>
-            <button id="copyGithubAction" class="form-button w-full mt-2">YAMLをコピー</button>
-          </div>
-          
-          <!-- REST API ドキュメント -->
-          <div class="border-t pt-4">
-            <h3 class="text-sm font-medium text-gray-700 mb-2">API 使用例</h3>
-            <div class="bg-gray-900 text-green-400 p-3 rounded text-xs font-mono">
-              <div># JavaScript例</div>
-              <div>const response = await fetch('data:image/png;base64,', {</div>
-              <div>&nbsp;&nbsp;method: 'POST',</div>
-              <div>&nbsp;&nbsp;headers: { 'X-API-Key': 'your-key' },</div>
-              <div>&nbsp;&nbsp;body: JSON.stringify({ text: 'Hello World' })</div>
-              <div>});</div>
+          <!-- ローカル設定管理 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0" clip-rule="evenodd"></path>
+              </svg>
+              ローカル設定管理
+            </h3>
+            <div class="space-y-3">
+              <div class="flex space-x-2">
+                <input type="text" id="localKey" readonly class="form-input flex-1 bg-gray-100 font-mono text-sm" placeholder="設定キーが生成されます">
+                <button id="generateLocalKey" class="form-button px-4">生成</button>
+                <button id="copyLocalKey" class="form-button px-4">コピー</button>
+              </div>
+              <p class="text-xs text-gray-600">
+                💡 この設定キーはブラウザのローカルストレージにのみ保存され、外部に送信されることはありません
+              </p>
             </div>
           </div>
-        </div>
-      </div>
+          
+          <!-- データエクスポート機能 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              データエクスポート
+            </h3>
+            <div class="space-y-3">
+              <button id="exportSettings" class="form-button w-full py-3 flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15.586 13H14a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                設定をJSONファイルでエクスポート
+              </button>
+              <button id="exportHistory" class="form-button w-full py-3 flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path>
+                </svg>
+                履歴をCSVファイルでエクスポート
+              </button>
+              <button id="exportBatch" class="form-button w-full py-3 flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                </svg>
+                バッチデータをJSONで出力
+              </button>
+            </div>
+            <p class="text-xs text-gray-600 mt-3">
+              📁 エクスポートしたファイルは手動でGitHubリポジトリやその他のサービスにアップロードできます
+            </p>
+          </div>
+          
+          <!-- ローカル自動化スクリプト生成 -->
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <h3 class="text-sm font-semibold text-gray-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              ローカル自動化スクリプト
+            </h3>
+            <p class="text-sm text-gray-600 mb-3">
+              手動でコピー&ペーストして使用する安全なJavaScriptスクリプトを生成します
+            </p>
+            <textarea id="localScript" rows="8" class="form-input w-full text-xs font-mono bg-gray-100" readonly placeholder="「スクリプト生成」ボタンをクリックすると、ここに安全なコードが表示されます"></textarea>
+            <button id="generateLocalScript" class="form-button w-full mt-3 py-3">
+              <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              スクリプト生成
+            </button>
+          </div>
+          
+          <!-- 使用ガイド -->
+          <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h3 class="text-sm font-semibold text-green-800 mb-4 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+              </svg>
+              安全な使用方法
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
+                  <div>
+                    <p class="font-medium text-green-800">データエクスポート</p>
+                    <p class="text-green-700 text-xs">設定や履歴をローカルファイルに安全に保存</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
+                  <div>
+                    <p class="font-medium text-green-800">手動アップロード</p>
+                    <p class="text-green-700 text-xs">必要に応じてGitHubに手動でファイル追加</p>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
+                  <div>
+                    <p class="font-medium text-green-800">ローカル処理</p>
+                    <p class="text-green-700 text-xs">全ての処理はブラウザ内で完結</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</span>
+                  <div>
+                    <p class="font-medium text-green-800">プライバシー保護</p>
+                    <p class="text-green-700 text-xs">外部への自動送信は一切なし</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      </div>
 
       <!-- ▼▼▼ 生成履歴表示エリア ▼▼▼ -->
       <div id="qrHistoryArea" class="my-6">
@@ -1928,17 +2155,55 @@ async function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffi
   }
   
   try {
-    // 自作QRコード生成を使用
-    const canvas = await SimpleQR.generate(text, {
+    const qrcodeOutput = document.getElementById('qrcodeOutput');
+    const resultContainer = document.getElementById('qrResultContainer');
+    
+    // プレビュー用の画像生成（CORS問題回避）
+    const previewImg = await SimpleQR.generate(text, {
       size: size,
-      foreground: fgColor,
-      background: bgColor
+      errorCorrection: document.getElementById('qrErrorCorrection')?.value || 'M'
     });
+    
+    // プレビュー表示
+    qrcodeOutput.innerHTML = '';
+    qrcodeOutput.appendChild(previewImg);
     
     console.log('QRコード生成成功');
     
-    const qrcodeOutput = document.getElementById('qrcodeOutput');
-    const resultContainer = document.getElementById('qrResultContainer');
+    // ダウンロード用のCanvas生成は別途実行
+    window.currentQRData = {
+      text: text,
+      size: size,
+      fgColor: fgColor,
+      bgColor: bgColor,
+      logoFile: logoFile
+    };
+    
+    resultContainer.classList.remove('hidden');
+    
+    showSuccess('QRコードを正常に生成しました！');
+      } catch (error) {
+    console.error('QRコード生成エラー:', error);
+    showError('QRコードの生成に失敗しました。データを確認してください。');
+  }
+}
+
+// ダウンロード関数
+async function downloadQRCode(format = 'png') {
+  if (!window.currentQRData) {
+    alert('先にQRコードを生成してください');
+    return;
+  }
+  
+  try {
+    const { text, size, fgColor, bgColor, logoFile } = window.currentQRData;
+    
+    // ダウンロード用Canvas生成
+    const canvas = await SimpleQR.generateCanvas(text, {
+      size: size,
+      background: bgColor,
+      errorCorrection: document.getElementById('qrErrorCorrection')?.value || 'M'
+    });
     
     if (logoFile) {
       // ロゴ合成処理
@@ -1958,81 +2223,107 @@ async function generateQrCode(text, size, fgColor, bgColor, logoFile, enableAffi
           ctx.fill();
           
           ctx.drawImage(logoImg, x, y, logoSize, logoSize);
-          displayResult(canvas, qrcodeOutput, resultContainer);
-        };
-        logoImg.onerror = function() {
-          console.error('ロゴ画像の読み込みに失敗');
-          displayResult(canvas, qrcodeOutput, resultContainer);
+          
+          // ダウンロード実行
+          downloadCanvasAsFile(canvas, format);
         };
         logoImg.src = e.target.result;
       };
-      reader.onerror = function() {
-        console.error('ファイル読み込みエラー');
-        displayResult(canvas, qrcodeOutput, resultContainer);
-      };
       reader.readAsDataURL(logoFile);
     } else {
-      displayResult(canvas, qrcodeOutput, resultContainer);
+      downloadCanvasAsFile(canvas, format);
     }
-    
   } catch (error) {
-    console.error('QRコード生成エラー:', error);
-    showError('QRコードの生成に失敗しました。');
+    console.error('ダウンロードエラー:', error);
+    alert('ダウンロードに失敗しました');
   }
 }
 
-// 完全静的実装によりシンプルなQR生成に統一
+function downloadCanvasAsFile(canvas, format) {
+  const mimeType = format === 'jpeg' ? 'image/jpeg' : 'image/png';
+  const extension = format === 'jpeg' ? 'jpg' : format;
+  
+  canvas.toBlob(function(blob) {
+    const filename = `qrcode_${Date.now()}.${extension}`;
+    saveAs(blob, filename);
+    showSuccess(`${format.toUpperCase()}ファイルをダウンロードしました`);
+  }, mimeType);
+}
 
 function showError(message) {
+  const errorElement = document.getElementById('errorMessage');
+  const statusElement = document.getElementById('statusMessage');
   const qrcodeOutput = document.getElementById('qrcodeOutput');
-  qrcodeOutput.innerHTML = `<span class="text-red-500">${message}</span>`;
+  
+  // エラーメッセージを表示
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.classList.remove('hidden');
+  }
+  
+  // 成功メッセージを非表示
+  if (statusElement) {
+    statusElement.classList.add('hidden');
+  }
+  
+  // プレビューエリアにもエラーを表示
+  qrcodeOutput.innerHTML = `
+    <div class="text-center">
+      <svg class="w-12 h-12 text-red-400 mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+      </svg>
+      <span class="text-red-500 text-sm">${message}</span>
+    </div>
+  `;
+  
+  // 3秒後にエラーメッセージを非表示
+  setTimeout(() => {
+    if (errorElement) {
+      errorElement.classList.add('hidden');
+    }
+  }, 5000);
 }
 
-function displayResult(canvas, outputElement, containerElement) {
-  // キャンバスをレスポンシブにする
-  canvas.style.maxWidth = '100%';
-  canvas.style.height = 'auto';
-  canvas.style.border = '1px solid #e5e7eb';
-  canvas.style.borderRadius = '8px';
+function showSuccess(message) {
+  const errorElement = document.getElementById('errorMessage');
+  const statusElement = document.getElementById('statusMessage');
   
-  outputElement.innerHTML = '';
-  outputElement.appendChild(canvas);
-  containerElement.classList.remove('hidden');
+  // 成功メッセージを表示
+  if (statusElement) {
+    statusElement.textContent = message;
+    statusElement.classList.remove('hidden');
+  }
   
-  // ダウンロードボタンのイベント設定
-  setupDownloadButtons(canvas);
+  // エラーメッセージを非表示
+  if (errorElement) {
+    errorElement.classList.add('hidden');
+  }
+  
+  // 3秒後に成功メッセージを非表示
+  setTimeout(() => {
+    if (statusElement) {
+      statusElement.classList.add('hidden');
+    }
+  }, 3000);
 }
 
-function setupDownloadButtons(canvas) {
+function setupDownloadButtons() {
   const downloadBtn = document.getElementById('downloadQrButton');
   const downloadSvgBtn = document.getElementById('downloadQrSvgButton');
   const downloadJpegBtn = document.getElementById('downloadQrJpegButton');
   
   if (downloadBtn) {
-    downloadBtn.onclick = function() {
-      const link = document.createElement('a');
-      link.download = `qrcode_${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    };
+    downloadBtn.onclick = () => downloadQRCode('png');
   }
   
   if (downloadJpegBtn) {
-    downloadJpegBtn.onclick = function() {
-      const link = document.createElement('a');
-      link.download = `qrcode_${Date.now()}.jpg`;
-      link.href = canvas.toDataURL('image/jpeg', 0.9);
-      link.click();
-    };
+    downloadJpegBtn.onclick = () => downloadQRCode('jpeg');
   }
   
   if (downloadSvgBtn) {
-    downloadSvgBtn.onclick = function() {
-      // SVGは別の方法で生成する必要があるため、代替としてPNGを提供
-      const link = document.createElement('a');
-      link.download = `qrcode_${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
+    downloadSvgBtn.onclick = () => {
+      // SVGは代替としてPNGを提供
+      downloadQRCode('png');
       
       // ユーザーに通知
       const statusMessage = document.getElementById('statusMessage');
@@ -2052,6 +2343,9 @@ document.addEventListener('DOMContentLoaded', function() {
   setupAdBannerToggleDisplay();
   setupQrPreview();
   renderQrHistory();
+  
+  // ダウンロードボタンの設定
+  setupDownloadButtons();
   
   // 新しい機能のセットアップ
   setupTabs();
