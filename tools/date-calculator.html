@@ -82,12 +82,6 @@
       </nav>
     </div>
   </header>
-  <div id="guide-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
-    </div>
-  </div>
   <main class="flex-grow py-12">
     <div class="max-w-xl mx-auto px-4">
       <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="dateCalculator.mainTitle">日付計算ツール</h1>
@@ -186,6 +180,14 @@
     </ul>
     <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
   </section>
+
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">

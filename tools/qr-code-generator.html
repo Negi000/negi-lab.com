@@ -452,22 +452,14 @@
         </div>
       </div>
 
-      <!-- Guide Modal -->
-      <div id="guide-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-2xl font-bold text-gray-900" data-translate-key="guide.title">
-                QRコード作成ツール ガイド
-              </h2>
-              <button id="close-guide" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-            </div>
-            
+      <!-- Guide Modal Popup（url-shortener.html方式で統一） -->
+      <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+          <div id="guide-modal-content">
             <div class="space-y-4 text-gray-700">
               <section>
-                <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.basic.title">
-                  基本的な使い方
-                </h3>
+                <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.basic.title">基本的な使い方</h3>
                 <ul class="list-disc list-inside space-y-1 text-sm">
                   <li data-translate-key="guide.basic.step1">テキストまたはURLを入力欄に入力</li>
                   <li data-translate-key="guide.basic.step2">サイズとエラー訂正レベルを選択</li>
@@ -477,9 +469,7 @@
               </section>
               
               <section>
-                <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.features.title">
-                  機能説明
-                </h3>
+                <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.features.title">機能説明</h3>
                 <ul class="list-disc list-inside space-y-1 text-sm">
                   <li data-translate-key="guide.features.single">単体生成: 1つのQRコードを生成</li>
                   <li data-translate-key="guide.features.batch">一括生成: 複数のQRコードを一度に生成</li>
@@ -692,7 +682,7 @@
               document.getElementById('guide-modal').classList.remove('hidden');
             });
             
-            document.getElementById('close-guide').addEventListener('click', () => {
+            document.getElementById('guide-close').addEventListener('click', () => {
               document.getElementById('guide-modal').classList.add('hidden');
             });
             
