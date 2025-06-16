@@ -302,5 +302,43 @@ if (document.readyState === "loading") {
   setupGuideModal();
 }
 </script>
+<script>
+        // ファビコン・OGP画像生成ツール用のセキュリティ強化
+        document.addEventListener('DOMContentLoaded', function() {
+          const fileInputs = document.querySelectorAll('input[type="file"]');
+          const textInputs = document.querySelectorAll('input[type="text"], textarea');
+          
+          // ファイル入力の検証
+          fileInputs.forEach(input => {
+            input.addEventListener('change', function(e) {
+              const file = e.target.files[0];
+              if (file) {
+                // 画像ファイルの検証
+                if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'])) {
+                  SecurityUtils.showUserError('JPEG、PNG、GIF、WebP、SVG形式の画像ファイルを選択してください');
+                  this.value = '';
+                  return;
+                }
+                
+                if (!SecurityUtils.validateFileSize(file, 10)) {
+                  SecurityUtils.showUserError('ファイルサイズが10MB以下の画像を選択してください');
+                  this.value = '';
+                  return;
+                }
+              }
+            });
+          });
+          
+          // テキスト入力のサニタイズ
+          textInputs.forEach(input => {
+            input.addEventListener('input', function() {
+              const sanitized = SecurityUtils.sanitizeInput(this.value);
+              if (sanitized !== this.value) {
+                this.value = sanitized;
+              }
+            });
+          });
+        });
+      </script>
 </body>
 </html>

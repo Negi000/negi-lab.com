@@ -278,20 +278,39 @@
         if (!incEnd && count > 0) count--;
         if (!incStart && !incEnd && count < 0) count = 0;
         return count;
-      }
-      document.getElementById('diffForm').addEventListener('submit', function(e) {
+      }      document.getElementById('diffForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const s = document.getElementById('startDate').value;
-        const e_ = document.getElementById('endDate').value;
-        const useBiz = document.getElementById('optionBiz').checked;
-        const incStart = document.getElementById('optionIncludeStart').checked;
-        const incEnd = document.getElementById('optionIncludeEnd').checked;
-        if(!s || !e_) return;
-        const days = calcDateDiff(s, e_, useBiz, incStart, incEnd);
-        const res = `${days}日` + (useBiz ? '（営業日）' : '');
-        const resultBox = document.getElementById('diffResult');
-        resultBox.textContent = res;
-        resultBox.classList.remove('hidden');
+        
+        try {
+          const s = SecurityUtils.sanitizeInput(document.getElementById('startDate').value);
+          const e_ = SecurityUtils.sanitizeInput(document.getElementById('endDate').value);
+          const useBiz = document.getElementById('optionBiz').checked;
+          const incStart = document.getElementById('optionIncludeStart').checked;
+          const incEnd = document.getElementById('optionIncludeEnd').checked;
+          
+          if(!s || !e_) {
+            SecurityUtils.showUserError('開始日と終了日を入力してください');
+            return;
+          }
+          
+          // 日付形式の検証
+          const startDate = new Date(s);
+          const endDate = new Date(e_);
+          if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+            SecurityUtils.showUserError('正しい日付形式で入力してください');
+            return;
+          }
+          
+          const days = calcDateDiff(s, e_, useBiz, incStart, incEnd);
+          const res = `${days}日` + (useBiz ? '（営業日）' : '');
+          const resultBox = document.getElementById('diffResult');
+          resultBox.textContent = res;
+          resultBox.classList.remove('hidden');
+          
+          SecurityUtils.showSuccessMessage('日付差の計算が完了しました');
+        } catch (error) {
+          SecurityUtils.showUserError('計算中にエラーが発生しました', error);
+        }
       });
       // 日付加減算
       function addBusinessDays(base, days) {
@@ -305,34 +324,58 @@
           if (isBusinessDay(ymd)) count++;
         }
         return d;
-      }
-      document.getElementById('addsubForm').addEventListener('submit', function(e) {
+      }      document.getElementById('addsubForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const base = document.getElementById('baseDate').value;
-        const days = parseInt(document.getElementById('days').value, 10);
-        const useBiz = document.getElementById('optionBiz').checked;
-        const incStart = document.getElementById('optionIncludeStart').checked;
-        const incEnd = document.getElementById('optionIncludeEnd').checked;
-        if(!base || isNaN(days)) return;
-        let resultDate;
-        let n = days;
-        // 最初/最後の日を含める調整
-        if (!incStart && n > 0) n--;
-        if (!incEnd && n > 0) n--;
-        if (useBiz) {
-          resultDate = addBusinessDays(base, n);
-        } else {
-          let d = new Date(base);
-          d.setDate(d.getDate() + n);
-          resultDate = d;
+        
+        try {
+          const base = SecurityUtils.sanitizeInput(document.getElementById('baseDate').value);
+          const daysInput = SecurityUtils.sanitizeInput(document.getElementById('days').value);
+          const days = parseInt(daysInput, 10);
+          const useBiz = document.getElementById('optionBiz').checked;
+          const incStart = document.getElementById('optionIncludeStart').checked;
+          const incEnd = document.getElementById('optionIncludeEnd').checked;
+          
+          if(!base || isNaN(days)) {
+            SecurityUtils.showUserError('基準日と日数を正しく入力してください');
+            return;
+          }
+          
+          // 日付形式の検証
+          const baseDate = new Date(base);
+          if (isNaN(baseDate.getTime())) {
+            SecurityUtils.showUserError('正しい日付形式で入力してください');
+            return;
+          }
+          
+          // 日数の範囲制限（セキュリティ対策）
+          if (Math.abs(days) > 36500) { // 100年以内
+            SecurityUtils.showUserError('日数は100年以内（±36500日）で入力してください');
+            return;
+          }
+            let resultDate;
+          let n = days;
+          // 最初/最後の日を含める調整
+          if (!incStart && n > 0) n--;
+          if (!incEnd && n > 0) n--;
+          if (useBiz) {
+            resultDate = addBusinessDays(base, n);
+          } else {
+            let d = new Date(base);
+            d.setDate(d.getDate() + n);
+            resultDate = d;
+          }
+          const y = resultDate.getFullYear();
+          const m = ('0'+(resultDate.getMonth()+1)).slice(-2);
+          const dd = ('0'+resultDate.getDate()).slice(-2);
+          const res = `${y}-${m}-${dd}` + (useBiz ? '（営業日計算）' : '');
+          const resultBox = document.getElementById('addsubResult');
+          resultBox.textContent = res;
+          resultBox.classList.remove('hidden');
+          
+          SecurityUtils.showSuccessMessage('日付計算が完了しました');
+        } catch (error) {
+          SecurityUtils.showUserError('計算中にエラーが発生しました', error);
         }
-        const y = resultDate.getFullYear();
-        const m = ('0'+(resultDate.getMonth()+1)).slice(-2);
-        const dd = ('0'+resultDate.getDate()).slice(-2);
-        const res = `${y}-${m}-${dd}` + (useBiz ? '（営業日計算）' : '');
-        const resultBox = document.getElementById('addsubResult');
-        resultBox.textContent = res;
-        resultBox.classList.remove('hidden');
       });
       // ガイドモーダル
       const guideBtn = document.getElementById('guide-btn');

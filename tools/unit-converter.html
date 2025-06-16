@@ -716,24 +716,35 @@ if (document.readyState === "loading") {
         } else {
           resultValue.style.display = '';
         }
-      }
-
-      // --- 変換ロジック ---
+      }      // --- 変換ロジック ---
       function convert() {
-        errorMessageElement.textContent = '';
-        const category = categorySelect.value;
-        if (!category || !unitsData[category]) {
-          resultValue.value = '';
-          updateMicrowaveResultUI(false);
-          return;
-        }
-        let val = parseFloat(inputValue.value);
-        if (isNaN(val) || !fromUnitSelect.value || !toUnitSelect.value) {
-          resultValue.value = '---';
-          updateMicrowaveResultUI(false);
-          return;
-        }
-        let convertedValue;
+        try {
+          errorMessageElement.textContent = '';
+          const category = categorySelect.value;
+          if (!category || !unitsData[category]) {
+            resultValue.value = '';
+            updateMicrowaveResultUI(false);
+            return;
+          }
+          
+          // 入力値のサニタイズと検証
+          const sanitizedInput = SecurityUtils.sanitizeInput(inputValue.value);
+          let val = parseFloat(sanitizedInput);
+          
+          if (isNaN(val) || !fromUnitSelect.value || !toUnitSelect.value) {
+            resultValue.value = '---';
+            updateMicrowaveResultUI(false);
+            return;
+          }
+          
+          // 極端な値の制限（セキュリティ対策）
+          if (Math.abs(val) > 1e15) {
+            SecurityUtils.showUserError('入力値が大きすぎます');
+            resultValue.value = '---';
+            return;
+          }
+          
+          let convertedValue;
         let currentCategoryData = unitsData[category];
         if (category === 'microwave') {
           currentCategoryData = unitsData['microwave'];
@@ -775,8 +786,7 @@ if (document.readyState === "loading") {
             resultValue.value = convertedValue.toFixed(2);
           }
         } else {
-          const fromUnitDef = currentCategoryData.definitions[fromUnitSelect.value];
-          const toUnitDef = currentCategoryData.definitions[toUnitSelect.value];
+          const fromUnitDef = currentCategoryData.definitions[fromUnitSelect.value];          const toUnitDef = currentCategoryData.definitions[toUnitSelect.value];
           if (!fromUnitDef || !toUnitDef) {
             resultValue.value = '---';
             updateMicrowaveResultUI(false);
@@ -788,6 +798,10 @@ if (document.readyState === "loading") {
           updateMicrowaveResultUI(false);
         }
         updateUnitLabels();
+        } catch (error) {
+          SecurityUtils.showUserError('変換中にエラーが発生しました', error);
+          resultValue.value = '---';
+        }
       }
       inputValue.addEventListener('input', convert);
       fromUnitSelect.addEventListener('change', convert);

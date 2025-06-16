@@ -150,34 +150,69 @@
       const downloadLink = document.getElementById('downloadLink');
       let inputData = null;
       let inputType = null;
-      let inputName = '';
-      fileInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        fileName.textContent = file.name;
-        inputName = file.name;
-        const ext = file.name.split('.').pop().toLowerCase();
-        const reader = new FileReader();
-        reader.onload = function(ev) {
-          let text = ev.target.result;
-          if (ext === 'json') {
-            inputData = JSON.parse(text);
-            inputType = 'json';
-          } else if (ext === 'csv') {
-            inputData = Papa.parse(text, {header:true}).data;
-            inputType = 'csv';
-          } else if (ext === 'yaml' || ext === 'yml') {
-            inputData = jsyaml.load(text);
-            inputType = 'yaml';
-          } else if (ext === 'xlsx') {
-            const wb = XLSX.read(ev.target.result, {type:'array'});
-            const ws = wb.Sheets[wb.SheetNames[0]];
-            inputData = XLSX.utils.sheet_to_json(ws);
-            inputType = 'xlsx';
+      let inputName = '';      fileInput.addEventListener('change', function(e) {
+        try {
+          const file = e.target.files[0];
+          if (!file) return;
+          
+          // ファイル検証
+          const allowedTypes = [
+            'application/json', 'text/csv', 'text/plain', 
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'application/vnd.ms-excel'
+          ];
+          
+          if (!SecurityUtils.validateFileType(file, allowedTypes)) {
+            SecurityUtils.showUserError('JSON、CSV、YAML、Excel形式のファイルを選択してください');
+            this.value = '';
+            return;
           }
-        };
-        if (ext === 'xlsx') reader.readAsArrayBuffer(file);
-        else reader.readAsText(file);
+          
+          if (!SecurityUtils.validateFileSize(file, 10)) { // 10MB制限
+            SecurityUtils.showUserError('ファイルサイズが10MB以下のファイルを選択してください');
+            this.value = '';
+            return;
+          }
+          
+          fileName.textContent = SecurityUtils.escapeHtml(file.name);
+          inputName = SecurityUtils.sanitizeInput(file.name);
+          const ext = file.name.split('.').pop().toLowerCase();
+          const reader = new FileReader();
+          
+          reader.onload = function(ev) {
+            try {
+              let text = ev.target.result;
+              if (ext === 'json') {
+                inputData = JSON.parse(text);
+                inputType = 'json';
+              } else if (ext === 'csv') {
+                inputData = Papa.parse(text, {header:true}).data;
+                inputType = 'csv';
+              } else if (ext === 'yaml' || ext === 'yml') {
+                inputData = jsyaml.load(text);
+                inputType = 'yaml';
+              } else if (ext === 'xlsx') {
+                const wb = XLSX.read(ev.target.result, {type:'array'});
+                const ws = wb.Sheets[wb.SheetNames[0]];
+                inputData = XLSX.utils.sheet_to_json(ws);
+                inputType = 'xlsx';
+              }
+              SecurityUtils.showSuccessMessage('ファイルが正常に読み込まれました');
+            } catch (parseError) {
+              SecurityUtils.showUserError('ファイルの解析に失敗しました。正しい形式のファイルを選択してください', parseError);
+            }
+          };
+          
+          reader.onerror = function() {
+            SecurityUtils.showUserError('ファイルの読み込みに失敗しました');
+          };
+          
+          if (ext === 'xlsx') reader.readAsArrayBuffer(file);
+          else reader.readAsText(file);
+        } catch (error) {
+          SecurityUtils.showUserError('ファイル処理中にエラーが発生しました', error);
+          this.value = '';
+        }
       });
       convertBtn.addEventListener('click', function() {
         let data = inputData;
