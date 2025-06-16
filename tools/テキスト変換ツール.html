@@ -81,27 +81,32 @@
 </head>
 
 <body class="bg-gray-50 font-inter">
-  <!-- Header -->
-  <header class="bg-white shadow-sm border-b border-gray-200">
-    <div class="container mx-auto px-4 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <a href="/" class="text-2xl font-bold text-negi hover:text-accent transition-colors">
-            negi-lab.com
-          </a>
-          <span class="text-gray-400">|</span>
-          <h1 class="text-lg font-semibold text-gray-700">テキスト変換ツール</h1>
-        </div>
-        <button onclick="showGuide()" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-green-600 transition-colors text-sm">
-          菴ｿ縺・婿繧ｬ繧､繝・
-        </button>
-      </div>
+  <!-- Header（unit-converter準拠） -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide" onclick="showGuide()">ガイド</button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <!-- Main Content -->
   <main class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">テキスト変換ツール</h1>
       <!-- Tool Description -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-800 mb-3">テキスト変換ツール</h2>
