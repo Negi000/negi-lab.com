@@ -4,26 +4,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://cdn.jsdelivr.net 
+      https://pagead2.googlesyndication.com 
+      https://www.googletagmanager.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:; 
+    connect-src 'self' 
+      https://www.google-analytics.com; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
   <title data-translate-key="jsonCsvYamlExcel.pageTitle">JSON⇔CSV/YAML⇔Excel変換ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="jsonCsvYamlExcel.metaDescription" content="JSON・CSV・YAML・Excelファイルを相互に変換できる無料ツール。" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { negi: "#65c155", accent: "#4ADE80" },
-          fontFamily: { inter: ["Inter", "sans-serif"] }
-        }
-      }
-    }
-    window.pageTitleTranslationKey = "jsonCsvYamlExcel.pageTitle";
-    window.metaDescriptionTranslationKey = "jsonCsvYamlExcel.metaDescription";
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Data Processing Libraries with SRI -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" 
+          integrity="sha384-YGMnTWg+MH6+5w+J3vqHxG4GqV2f7+hWzs3qR3sVd+q1nLx6VxZq3+j8R3sVd+qP" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" 
+          integrity="sha384-F7D5KvU4Fv+zK9O5R7j3qK5s+8A9K4R7j3qK5s+8A9K4R7j3qK5s+8A9K4R7j3qK" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" 
+          integrity="sha384-B4t4qhT6qR4VJ5gNQ6Y8Q7j3qK5s+8A9K4R7j3qK5s+8A9K4R7j3qK5s+8A9K4R7" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

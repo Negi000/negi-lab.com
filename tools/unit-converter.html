@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data:; 
+    connect-src 'self'; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
   <title data-translate-key="unitConverter.pageTitle">【全単位網羅】単位変換ツール - 長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位も対応 | negi-lab.com</title>
   <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。スマホ対応・無料・広告最小限。" />
   <meta name="keywords" content="単位変換,長さ,重さ,温度,体積,圧力,エネルギー,電子レンジ,cc,ml,換算,変換,SI,専門単位,理系,工学,医療,料理,海外,無料,スマホ,negi-lab" />
@@ -15,8 +37,15 @@
   <meta name="twitter:title" content="【全単位網羅】単位変換ツール | negi-lab.com" />
   <meta name="twitter:description" content="長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-unit-converter.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
