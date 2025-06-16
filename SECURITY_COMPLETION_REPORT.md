@@ -5,14 +5,19 @@
 
 ## 改善されたファイル一覧
 
-### 🔒 メインページ
+### 🔒 メインページ・静的ページ
 - ✅ `index.html` - CSP、SRI、セマンティックHTML、ユーティリティ導入
 - ✅ `about.html` - CSP、セキュリティヘッダー、ユーティリティ導入
 - ✅ `privacy-policy.html` - CSP、セキュリティヘッダー、ユーティリティ導入
+- ✅ `privacy-policy-en.html` - CSP、セキュリティヘッダー、ユーティリティ導入
+- ✅ `privacy-policy-unified.html` - CSP、セキュリティヘッダー、ユーティリティ導入
+- ✅ `404.html` - CSP、セキュリティヘッダー、Tailwind CSS統一
+- ✅ `terms.html` - CSP、セキュリティヘッダー、Tailwind CSS統一
+- ✅ `wiki-redirect.html` - CSP、セキュリティヘッダー、Tailwind CSS統一
 
 ### 🛠️ ツールページ (全11ファイル)
 1. ✅ `tools/qr-code-generator.html` - 完全なセキュリティ強化、入力検証強化
-2. ✅ `tools/image-converter.html` - ファイル検証強化、エラーハンドリング改善
+2. ✅ `tools/image-converter.html` - ファイル検証強化、エラーハンドリング改善、構文エラー修正
 3. ✅ `tools/date-calculator.html` - CSP、セキュリティヘッダー追加
 4. ✅ `tools/unit-converter.html` - CSP、SRI、セキュリティヘッダー追加
 5. ✅ `tools/color-code-tool.html` - CSP、SRI、セキュリティヘッダー追加
