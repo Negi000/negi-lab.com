@@ -29,8 +29,7 @@
   
   <title data-translate-key="qrGenerator.pageTitle">QRコード作成ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
-  
-  <!-- Fonts -->
+    <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   
   <!-- CSS Framework -->
@@ -40,27 +39,40 @@
       window.process = { env: { NODE_ENV: 'development' } };
     }
   </script>
-  <script src="https://cdn.tailwindcss.com" 
-          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
-          crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- QR Code Library with SRI -->
+  <!-- QR Code Library -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" 
-          integrity="sha384-xaQ3VaESrXrVuqkaCxEKdIvNjdYQ+2pKBGAPZ8BHpP0qqvh/sGZp7qzDLdOOD9Hg"
-          crossorigin="anonymous"
           onload="console.log('✅ qrcode.js読み込み完了')" 
           onerror="console.warn('⚠️ qrcode.js読み込みエラー - フォールバックを使用')"></script>
   
-  <!-- QR Code Library Fallback with SRI -->
+  <!-- QR Code Library Fallback -->
   <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js" 
-          integrity="sha384-xaQ3VaESrXrVuqkaCxEKdIvNjdYQ+2pKBGAPZ8BHpP0qqvh/sGZp7qzDLdOOD9Hg"
-          crossorigin="anonymous"
           onload="if (!window.QRCode) { console.log('✅ qrcode.js フォールバック読み込み完了'); }"
           onerror="console.warn('⚠️ qrcode.js フォールバック読み込みエラー')"></script>
   
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { 
+            inter: ["Inter", "sans-serif"] 
+          }
+        }
+      }
+    }
+    window.pageTitleTranslationKey = "qrGenerator.pageTitle";
+    window.metaDescriptionTranslationKey = "qrGenerator.metaDescription";
+  </script>
   
   <!-- Tailwind Config -->
   <script>
