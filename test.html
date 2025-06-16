@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailwindCSS Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 p-8">
+  <h1 class="text-3xl font-bold text-accent mb-4">TailwindCSS Test</h1>
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <p class="text-gray-700 mb-4">This is a test to check if TailwindCSS is working properly.</p>
+    <button class="bg-accent text-white px-4 py-2 rounded hover:bg-emerald-500 transition">Test Button</button>
+  </div>
+  
+  <div class="mt-8">
+    <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden">
+      <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+        <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold">&times;</button>
+        <h2 class="text-xl font-bold mb-4">Test Modal</h2>
+        <p>This is a test modal to check if JavaScript functionality works.</p>
+      </div>
+    </div>
+    <button id="show-modal" class="bg-blue-500 text-white px-4 py-2 rounded">Show Modal</button>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const showModal = document.getElementById('show-modal');
+      const modal = document.getElementById('guide-modal');
+      const closeModal = document.getElementById('guide-close');
+      
+      showModal.addEventListener('click', function() {
+        modal.classList.remove('hidden');
+      });
+      
+      closeModal.addEventListener('click', function() {
+        modal.classList.add('hidden');
+      });
+      
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
