@@ -531,54 +531,34 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-gray-200 py-8">
-    <div class="max-w-7xl mx-auto px-4 text-center text-gray-600">
-      <p>&copy; 2024 negi-lab.com. All rights reserved.</p>
-    </div>
-  </footer>
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+  </section>
 
-  <!-- Guide Modal -->
-  <div id="guide-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-bold text-gray-900" data-translate-key="guide.title">
-            QRコード作成ツール ガイド
-          </h2>
-          <button id="close-guide" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-        </div>
-        
-        <div class="space-y-4 text-gray-700">
-          <section>
-            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.basic.title">
-              基本的な使い方
-            </h3>
-            <ul class="list-disc list-inside space-y-1 text-sm">
-              <li data-translate-key="guide.basic.step1">テキストまたはURLを入力欄に入力</li>
-              <li data-translate-key="guide.basic.step2">サイズとエラー訂正レベルを選択</li>
-              <li data-translate-key="guide.basic.step3">「QRコード生成」ボタンをクリック</li>
-              <li data-translate-key="guide.basic.step4">生成されたQRコードを右クリックで保存</li>
-            </ul>
-          </section>
-          
-          <section>
-            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.features.title">
-              機能説明
-            </h3>
-            <ul class="list-disc list-inside space-y-1 text-sm">
-              <li data-translate-key="guide.features.single">単体生成: 1つのQRコードを生成</li>
-              <li data-translate-key="guide.features.batch">一括生成: 複数のQRコードを一度に生成</li>
-              <li data-translate-key="guide.features.design">デザイン: 色をカスタマイズ</li>
-              <li data-translate-key="guide.features.download">ダウンロード: PNG形式で保存</li>
-            </ul>
-          </section>
-        </div>
-      </div>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
     </div>
   </div>
 
@@ -915,29 +895,13 @@
         document.getElementById('downloadBtn').addEventListener('click', () => {
           this.downloadImage();
         });
-        
-        // カラープリセット
+          // カラープリセット
         document.querySelectorAll('.color-preset').forEach(preset => {
           preset.addEventListener('click', (e) => {
             const fg = e.target.dataset.fg;
             const bg = e.target.dataset.bg;
             this.applyColorPreset(fg, bg);
           });
-        });
-        
-        // ガイドモーダル
-        document.getElementById('guide-btn').addEventListener('click', () => {
-          document.getElementById('guide-modal').classList.remove('hidden');
-        });
-        
-        document.getElementById('close-guide').addEventListener('click', () => {
-          document.getElementById('guide-modal').classList.add('hidden');
-        });
-        
-        document.getElementById('guide-modal').addEventListener('click', (e) => {
-          if (e.target === document.getElementById('guide-modal')) {
-            document.getElementById('guide-modal').classList.add('hidden');
-          }
         });
       }
       
@@ -1275,5 +1239,74 @@
     });
   </script>
 
+  <script>
+    // ガイドモーダルの表示/非表示制御
+    document.addEventListener('DOMContentLoaded', function() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      
+      // 多言語ガイドデータ
+      const guides = {
+        ja: {
+          title: 'QRコード生成ツールの使い方',
+          list: [
+            'テキストまたはURLを入力欄に入力',
+            'サイズとエラー訂正レベルを選択',
+            '「QRコード生成」ボタンをクリック',
+            '生成されたQRコードを右クリックで保存',
+            '右上メニューで日本語・英語切替可能'
+          ],
+          tipsTitle: '活用例・ヒント',
+          tips: [
+            'URLやメールアドレスのQRコード化',
+            'Wi-Fiパスワードの共有',
+            '連絡先情報のQRコード化',
+            '一括生成機能で複数のQRコードを効率的に作成'
+          ]
+        },
+        en: {
+          title: 'How to Use the QR Code Generator',
+          list: [
+            'Enter text or URL in the input field.',
+            'Select size and error correction level.',
+            'Click the "Generate QR Code" button.',
+            'Right-click the generated QR code to save.',
+            'Switch language from the top menu. All features are available in English and Japanese.'
+          ],
+          tipsTitle: 'Tips & Examples',
+          tips: [
+            'Create QR codes for URLs and email addresses.',
+            'Share Wi-Fi passwords easily.',
+            'Convert contact information to QR codes.',
+            'Use batch generation for multiple QR codes efficiently.'
+          ]
+        }
+      };
+      
+      function renderGuide(lang) {
+        const g = guides[lang] || guides.ja;
+        let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+        html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        guideContent.innerHTML = html;
+      }
+      
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          renderGuide(lang);
+          guideModal.classList.remove('hidden');
+        });
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
