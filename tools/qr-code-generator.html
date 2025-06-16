@@ -16,10 +16,18 @@
     }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+<<<<<<< HEAD
     <!-- QR Code Library -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" 
           onload="console.log('✅ qrcode.js読み込み完了')" 
           onerror="console.warn('⚠️ qrcode.js読み込みエラー - フォールバックを使用')"></script>
+=======
+  
+  <!-- QR Code Library (Qrious) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"
+          onload="console.log('✅ Qrious読み込み完了')"
+          onerror="console.warn('⚠️ Qrious読み込みエラー - フォールバックを使用')"></script>
+>>>>>>> e050d7c8401b0e55c3348a50cf9c0f47083ad227
   
   <!-- QR Code Library Fallback -->
   <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js" 
@@ -173,24 +181,14 @@
 
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   
-  <!-- Header -->
+  <!-- Header（統一デザイン） -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">
-        negi-lab.com
-      </a>
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li>
-            <a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">
-              ツール
-            </a>
-          </li>
-          <li>
-            <a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">
-              ゲームWiki
-            </a>
-          </li>
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
               <option value="ja" data-translate-key="option.ja">日本語</option>
@@ -198,13 +196,7 @@
             </select>
           </li>
           <li>
-            <button id="guide-btn" 
-                    class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" 
-                    aria-haspopup="dialog" 
-                    aria-controls="guide-modal" 
-                    data-translate-key="header.guide">
-              ガイド
-            </button>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -212,8 +204,8 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-grow py-12">
-    <div class="max-w-4xl mx-auto px-4">
+  <main class="flex-grow bg-white py-12">
+    <div class="max-w-3xl mx-auto px-4">
       
       <!-- Title Section -->
       <div class="text-center mb-8">
@@ -476,60 +468,40 @@
           </div>
         </div>
       </div>
-
-      <!-- Statistics Section -->
-      <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-xl font-semibold text-gray-900 mb-4" 
-            data-translate-key="qrGenerator.stats.title">
-          生成統計
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-accent" id="totalGenerated">0</div>
-            <div class="text-sm text-gray-600" data-translate-key="qrGenerator.stats.total">
-              総生成数
-            </div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-accent" id="sessionGenerated">0</div>
-            <div class="text-sm text-gray-600" data-translate-key="qrGenerator.stats.session">
-              今回のセッション
-            </div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-accent" id="lastGeneratedTime">-</div>
-            <div class="text-sm text-gray-600" data-translate-key="qrGenerator.stats.lastTime">
-              最終生成時刻
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-gray-200 py-8">
-    <div class="max-w-7xl mx-auto px-4 text-center text-gray-600">
-      <p>&copy; 2024 negi-lab.com. All rights reserved.</p>
-    </div>
+  <!-- 独自性・免責事項セクション（全ツール統一） -->
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto">
+    <h2 class="text-lg font-bold mb-2">独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本サイトは個人が独自に企画・開発・運営しています。</li>
+      <li>利便性・楽しさ・学びを重視し、独自の視点で情報やツールを提供します。</li>
+      <li>内容の正確性・安全性には配慮しますが、利用による損害等の責任は負いかねます。</li>
+    </ul>
+    <p>ご意見・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで。</p>
+  </section>
+
+  <!-- Footer（統一デザイン/navリンク付き） -->
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
 
-  <!-- Guide Modal -->
-  <div id="guide-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-2xl font-bold text-gray-900" data-translate-key="guide.title">
-            QRコード作成ツール ガイド
-          </h2>
-          <button id="close-guide" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-        </div>
-        
+  <!-- Guide Modal Popup（body直下配置でz-index競合回避） -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content">
         <div class="space-y-4 text-gray-700">
           <section>
-            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.basic.title">
-              基本的な使い方
-            </h3>
+            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.basic.title">基本的な使い方</h3>
             <ul class="list-disc list-inside space-y-1 text-sm">
               <li data-translate-key="guide.basic.step1">テキストまたはURLを入力欄に入力</li>
               <li data-translate-key="guide.basic.step2">サイズとエラー訂正レベルを選択</li>
@@ -537,11 +509,8 @@
               <li data-translate-key="guide.basic.step4">生成されたQRコードを右クリックで保存</li>
             </ul>
           </section>
-          
           <section>
-            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.features.title">
-              機能説明
-            </h3>
+            <h3 class="font-semibold text-lg mb-2" data-translate-key="guide.features.title">機能説明</h3>
             <ul class="list-disc list-inside space-y-1 text-sm">
               <li data-translate-key="guide.features.single">単体生成: 1つのQRコードを生成</li>
               <li data-translate-key="guide.features.batch">一括生成: 複数のQRコードを一度に生成</li>
@@ -554,8 +523,12 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- QRコード生成ライブラリ（改良版） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"
+          onload="console.log('✅ Qrious読み込み完了')"
+          onerror="console.warn('⚠️ Qrious読み込みエラー - フォールバックを使用')"></script>
   <script>
+<<<<<<< HEAD
     // QRコード生成ライブラリ（改良版）
     class SimpleQR {
       static generate(text, options = {}) {
@@ -572,10 +545,90 @@
         if (QRCodeLib && typeof QRCodeLib.toCanvas === 'function') {
           console.log('qrcode.js使用でQRコード生成');
           return this.generateWithQRCodeJS(text, size, options, QRCodeLib);
+=======
+    // タブ切り替え
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+      document.getElementById(`${tab}-tab`).classList.remove('hidden');
+    }
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', e => switchTab(e.target.dataset.tab));
+    });
+
+    // カラープリセット
+    function applyColorPreset(fg, bg, target) {
+      document.getElementById('foregroundColor').value = fg;
+      document.getElementById('foregroundColorText').value = fg;
+      document.getElementById('backgroundColor').value = bg;
+      document.getElementById('backgroundColorText').value = bg;
+      document.querySelectorAll('.color-preset').forEach(p => p.classList.remove('active'));
+      if(target) target.classList.add('active');
+    }
+    document.querySelectorAll('.color-preset').forEach(preset => {
+      preset.addEventListener('click', e => {
+        applyColorPreset(e.target.dataset.fg, e.target.dataset.bg, e.target);
+      });
+    });
+
+    document.getElementById('foregroundColor').addEventListener('input', e => {
+      document.getElementById('foregroundColorText').value = e.target.value;
+    });
+    document.getElementById('foregroundColorText').addEventListener('input', e => {
+      if(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(e.target.value))
+        document.getElementById('foregroundColor').value = e.target.value;
+    });
+    document.getElementById('backgroundColor').addEventListener('input', e => {
+      document.getElementById('backgroundColorText').value = e.target.value;
+    });
+    document.getElementById('backgroundColorText').addEventListener('input', e => {
+      if(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(e.target.value))
+        document.getElementById('backgroundColor').value = e.target.value;
+    });
+
+    // ガイドモーダル
+    const guideModal = document.getElementById('guide-modal');
+    document.getElementById('guide-btn').addEventListener('click', () => {
+      guideModal.classList.remove('hidden');
+    });
+    document.getElementById('guide-close').addEventListener('click', () => {
+      guideModal.classList.add('hidden');
+    });
+    guideModal.addEventListener('click', e => {
+      if(e.target === guideModal) guideModal.classList.add('hidden');
+    });
+
+    // QRコード生成
+    function getOptions(single) {
+      return {
+        size: parseInt(document.getElementById(single ? 'qrSize' : 'batchSize').value),
+        errorCorrection: document.getElementById(single ? 'errorCorrection' : 'batchErrorCorrection').value,
+        foreground: document.getElementById('foregroundColorText').value,
+        background: document.getElementById('backgroundColorText').value
+      };
+    }
+    function generateQR(text, options) {
+      return new Promise((resolve, reject) => {
+        if(typeof QRious !== 'undefined') {
+          try {
+            const qr = new QRious({
+              value: text,
+              size: options.size,
+              level: options.errorCorrection,
+              background: options.background,
+              foreground: options.foreground
+            });
+            const img = new window.Image();
+            img.src = qr.toDataURL();
+            img.onload = () => resolve(img);
+            img.onerror = () => reject(new Error('QR生成失敗'));
+          } catch(e) { reject(e); }
+>>>>>>> e050d7c8401b0e55c3348a50cf9c0f47083ad227
         } else {
-          console.log('qrcode.js未利用、Google Charts APIフォールバック使用');
-          return this.generateWithGoogleCharts(text, size, options);
+          reject(new Error('QRiousライブラリが読み込まれていません'));
         }
+<<<<<<< HEAD
       }
       
       // qrcode.jsを使用した生成
@@ -683,6 +736,17 @@
             this.generateWithSimpleQR(text, size, options).then(resolve).catch(reject);
           }
         });
+=======
+      });
+    }
+    function setLoading(btn, loading, text) {
+      if(loading) {
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="loading w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-6.364l-2.828 2.828M8.464 17.536l-2.828 2.828m11.314 0l-2.828-2.828M8.464 6.464L5.636 9.292"/></svg>' + text;
+      } else {
+        btn.disabled = false;
+        btn.textContent = text;
+>>>>>>> e050d7c8401b0e55c3348a50cf9c0f47083ad227
       }
       
       // 最終フォールバック（シンプルなQRコード生成）
@@ -764,406 +828,84 @@
         ctx.fillRect(x + centerOffset, y + centerOffset, centerSize, centerSize);
       }
     }
-
-    // ZIP生成の軽量実装
-    class SimpleZip {
-      constructor() {
-        this.files = [];
+    document.getElementById('generateBtn').addEventListener('click', async () => {
+      const text = document.getElementById('qrText').value.trim();
+      if(!text) return alert('テキストまたはURLを入力してください。');
+      const btn = document.getElementById('generateBtn');
+      setLoading(btn, true, '生成中...');
+      try {
+        const options = getOptions(true);
+        const img = await generateQR(text, options);
+        const output = document.getElementById('qrcodeOutput');
+        output.innerHTML = '';
+        output.appendChild(img);
+        output.classList.add('has-content');
+        document.getElementById('downloadSection').classList.remove('hidden');
+        window._qrImage = img;
+      } catch(e) {
+        alert('QRコード生成に失敗しました: ' + e.message);
+      } finally {
+        setLoading(btn, false, 'QRコード生成');
       }
-      
-      file(filename, data) {
-        this.files.push({name: filename, data: data});
+    });
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      if(!window._qrImage) return;
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = window._qrImage;
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(blob => {
+        const ts = new Date().toISOString().replace(/[-:T.]/g, '').slice(0,14);
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `qrcode_${ts}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      }, 'image/png');
+    });
+    // 一括生成（簡易: 画像を連続生成してダウンロードはjson）
+    document.getElementById('batchGenerateBtn').addEventListener('click', async () => {
+      const batchText = document.getElementById('batchText').value.trim();
+      if(!batchText) return alert('テキストを入力してください（1行ごと）');
+      const lines = batchText.split('\n').filter(l => l.trim());
+      if(lines.length === 0) return alert('有効なテキストが見つかりません。');
+      if(lines.length > 50 && !confirm('50件を超えるQRコードを生成しようとしています。続行しますか？')) return;
+      const btn = document.getElementById('batchGenerateBtn');
+      setLoading(btn, true, '生成中...');
+      document.getElementById('batchDownloadSection').classList.remove('hidden');
+      const options = getOptions(false);
+      const zipData = [];
+      for(let i=0;i<lines.length;i++) {
+        document.getElementById('batchProgress').textContent = `${i+1} / ${lines.length}`;
+        document.getElementById('batchProgressBar').style.width = `${((i+1)/lines.length)*100}%`;
+        try {
+          const img = await generateQR(lines[i], options);
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = options.size;
+          canvas.height = options.size;
+          ctx.drawImage(img, 0, 0);
+          zipData.push({name: `qr_${i+1}.png`, data: canvas.toDataURL('image/png')});
+        } catch(e) {}
       }
-      
-      generateAsync() {
-        const zipData = {
-          type: 'qr-batch',
-          files: this.files.map(f => ({
-            name: f.name,
-            data: f.data
-          })),
-          generated: new Date().toISOString()
-        };
-        
-        const blob = new Blob([JSON.stringify(zipData, null, 2)], {type: 'application/json'});
-        return Promise.resolve(blob);
-      }
-    }
-
-    // FileSaver.js代替実装
-    function saveAs(blob, filename) {
-      const url = URL.createObjectURL(blob);
+      // jsonでダウンロード
+      const blob = new Blob([JSON.stringify(zipData, null, 2)], {type:'application/json'});
       const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
+      a.href = URL.createObjectURL(blob);
+      a.download = `qr_batch_${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    // ユーティリティ関数
-    function hexToRgb(hex) {
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-      } : {r: 0, g: 0, b: 0};
-    }
-
-    function isValidColor(color) {
-      return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
-    }
-
-    // 統計管理
-    class QRStats {
-      constructor() {
-        this.loadStats();
-      }
-      
-      loadStats() {
-        const saved = localStorage.getItem('qr-generator-stats');
-        if (saved) {
-          this.stats = JSON.parse(saved);
-        } else {
-          this.stats = {
-            totalGenerated: 0,
-            sessionGenerated: 0,
-            lastGeneratedTime: null
-          };
-        }
-        this.updateDisplay();
-      }
-      
-      saveStats() {
-        localStorage.setItem('qr-generator-stats', JSON.stringify(this.stats));
-      }
-      
-      incrementGenerated() {
-        this.stats.totalGenerated++;
-        this.stats.sessionGenerated++;
-        this.stats.lastGeneratedTime = new Date().toLocaleString('ja-JP');
-        this.saveStats();
-        this.updateDisplay();
-      }
-      
-      updateDisplay() {
-        document.getElementById('totalGenerated').textContent = this.stats.totalGenerated;
-        document.getElementById('sessionGenerated').textContent = this.stats.sessionGenerated;
-        document.getElementById('lastGeneratedTime').textContent = this.stats.lastGeneratedTime || '-';
-      }
-    }
-
-    // メインアプリケーション
-    class QRGeneratorApp {
-      constructor() {
-        this.stats = new QRStats();
-        this.currentQRImage = null;
-        this.initializeEventListeners();
-        this.initializeColorInputs();
-      }
-      
-      initializeEventListeners() {
-        // タブ切り替え
-        document.querySelectorAll('.tab-button').forEach(button => {
-          button.addEventListener('click', (e) => {
-            const tabName = e.target.dataset.tab;
-            this.switchTab(tabName);
-          });
-        });
-        
-        // 単体生成
-        document.getElementById('generateBtn').addEventListener('click', () => {
-          this.generateSingle();
-        });
-        
-        // 一括生成
-        document.getElementById('batchGenerateBtn').addEventListener('click', () => {
-          this.generateBatch();
-        });
-        
-        // ダウンロード
-        document.getElementById('downloadBtn').addEventListener('click', () => {
-          this.downloadImage();
-        });
-        
-        // カラープリセット
-        document.querySelectorAll('.color-preset').forEach(preset => {
-          preset.addEventListener('click', (e) => {
-            const fg = e.target.dataset.fg;
-            const bg = e.target.dataset.bg;
-            this.applyColorPreset(fg, bg);
-          });
-        });
-        
-        // ガイドモーダル
-        document.getElementById('guide-btn').addEventListener('click', () => {
-          document.getElementById('guide-modal').classList.remove('hidden');
-        });
-        
-        document.getElementById('close-guide').addEventListener('click', () => {
-          document.getElementById('guide-modal').classList.add('hidden');
-        });
-        
-        document.getElementById('guide-modal').addEventListener('click', (e) => {
-          if (e.target === document.getElementById('guide-modal')) {
-            document.getElementById('guide-modal').classList.add('hidden');
-          }
-        });
-      }
-      
-      initializeColorInputs() {
-        // カラーピッカーとテキスト入力の同期
-        const foregroundColor = document.getElementById('foregroundColor');
-        const foregroundColorText = document.getElementById('foregroundColorText');
-        const backgroundColor = document.getElementById('backgroundColor');
-        const backgroundColorText = document.getElementById('backgroundColorText');
-        
-        foregroundColor.addEventListener('input', (e) => {
-          foregroundColorText.value = e.target.value;
-        });
-        
-        foregroundColorText.addEventListener('input', (e) => {
-          if (isValidColor(e.target.value)) {
-            foregroundColor.value = e.target.value;
-          }
-        });
-        
-        backgroundColor.addEventListener('input', (e) => {
-          backgroundColorText.value = e.target.value;
-        });
-        
-        backgroundColorText.addEventListener('input', (e) => {
-          if (isValidColor(e.target.value)) {
-            backgroundColor.value = e.target.value;
-          }
-        });
-      }
-      
-      switchTab(tabName) {
-        // ボタンのアクティブ状態更新
-        document.querySelectorAll('.tab-button').forEach(btn => {
-          btn.classList.remove('active');
-        });
-        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-        
-        // コンテンツの表示切り替え
-        document.querySelectorAll('.tab-content').forEach(content => {
-          content.classList.add('hidden');
-        });
-        document.getElementById(`${tabName}-tab`).classList.remove('hidden');
-      }
-      
-      async generateSingle() {
-        const text = document.getElementById('qrText').value.trim();
-        
-        if (!text) {
-          alert('テキストまたはURLを入力してください。');
-          return;
-        }
-        
-        this.setGenerateButtonLoading(true);
-        
-        try {
-          const options = this.getGenerationOptions();
-          const qrImage = await SimpleQR.generate(text, options);
-          
-          this.displayQRCode(qrImage);
-          this.stats.incrementGenerated();
-          
-        } catch (error) {
-          console.error('QRコード生成エラー:', error);
-          alert('QRコード生成に失敗しました: ' + error.message);
-        } finally {
-          this.setGenerateButtonLoading(false);
-        }
-      }
-      
-      async generateBatch() {
-        const batchText = document.getElementById('batchText').value.trim();
-        
-        if (!batchText) {
-          alert('テキストを入力してください（1行ごと）。');
-          return;
-        }
-        
-        const lines = batchText.split('\n').filter(line => line.trim());
-        
-        if (lines.length === 0) {
-          alert('有効なテキストが見つかりません。');
-          return;
-        }
-        
-        if (lines.length > 50) {
-          if (!confirm('50件を超えるQRコードを生成しようとしています。続行しますか？')) {
-            return;
-          }
-        }
-        
-        this.setBatchGenerateButtonLoading(true);
-        this.showBatchProgress(true);
-        
-        try {
-          const options = this.getBatchGenerationOptions();
-          const zip = new SimpleZip();
-          
-          for (let i = 0; i < lines.length; i++) {
-            const text = lines[i].trim();
-            if (!text) continue;
-            
-            this.updateBatchProgress(i, lines.length);
-            
-            try {
-              // Google Charts APIを使用（一括生成時は軽量化のため）
-              const qrImage = await SimpleQR.generateWithGoogleCharts(text, options.size, options);
-              const canvas = document.createElement('canvas');
-              const ctx = canvas.getContext('2d');
-              
-              canvas.width = options.size;
-              canvas.height = options.size;
-              
-              await new Promise((resolve) => {
-                qrImage.onload = () => {
-                  ctx.drawImage(qrImage, 0, 0);
-                  const dataUrl = canvas.toDataURL('image/png');
-                  const filename = `qr_${i + 1}_${text.substring(0, 20).replace(/[^a-zA-Z0-9]/g, '_')}.png`;
-                  zip.file(filename, dataUrl);
-                  resolve();
-                };
-              });
-              
-              this.stats.incrementGenerated();
-              
-            } catch (error) {
-              console.warn(`QRコード生成失敗 (${i + 1}行目): ${text}`, error);
-            }
-          }
-          
-          this.updateBatchProgress(lines.length, lines.length);
-          
-          const blob = await zip.generateAsync();
-          saveAs(blob, `qr_batch_${new Date().toISOString().slice(0, 10)}.json`);
-          
-          alert(`${lines.length}件のQRコードを生成しました。`);
-          
-        } catch (error) {
-          console.error('一括生成エラー:', error);
-          alert('一括生成に失敗しました: ' + error.message);
-        } finally {
-          this.setBatchGenerateButtonLoading(false);
-          this.showBatchProgress(false);
-        }
-      }
-      
-      getGenerationOptions() {
-        return {
-          size: parseInt(document.getElementById('qrSize').value),
-          errorCorrection: document.getElementById('errorCorrection').value,
-          foregroundColor: document.getElementById('foregroundColorText').value,
-          backgroundColor: document.getElementById('backgroundColorText').value
-        };
-      }
-      
-      getBatchGenerationOptions() {
-        return {
-          size: parseInt(document.getElementById('batchSize').value),
-          errorCorrection: document.getElementById('batchErrorCorrection').value,
-          foregroundColor: document.getElementById('foregroundColorText').value,
-          backgroundColor: document.getElementById('backgroundColorText').value
-        };
-      }
-      
-      displayQRCode(qrImage) {
-        const output = document.getElementById('qrcodeOutput');
-        output.innerHTML = '';
-        output.appendChild(qrImage);
-        output.classList.add('has-content');
-        
-        this.currentQRImage = qrImage;
-        document.getElementById('downloadSection').classList.remove('hidden');
-      }
-      
-      downloadImage() {
-        if (!this.currentQRImage) return;
-        
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const img = this.currentQRImage;
-        
-        canvas.width = img.naturalWidth || img.width;
-        canvas.height = img.naturalHeight || img.height;
-        
-        ctx.drawImage(img, 0, 0);
-        
-        canvas.toBlob((blob) => {
-          const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
-          saveAs(blob, `qrcode_${timestamp}.png`);
-        }, 'image/png');
-      }
-      
-      applyColorPreset(fg, bg) {
-        document.getElementById('foregroundColor').value = fg;
-        document.getElementById('foregroundColorText').value = fg;
-        document.getElementById('backgroundColor').value = bg;
-        document.getElementById('backgroundColorText').value = bg;
-        
-        // プリセットのアクティブ状態更新
-        document.querySelectorAll('.color-preset').forEach(preset => {
-          preset.classList.remove('active');
-        });
-        event.target.classList.add('active');
-      }
-      
-      setGenerateButtonLoading(loading) {
-        const btn = document.getElementById('generateBtn');
-        if (loading) {
-          btn.disabled = true;
-          btn.innerHTML = '<svg class="loading w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-6.364l-2.828 2.828M8.464 17.536l-2.828 2.828m11.314 0l-2.828-2.828M8.464 6.464L5.636 9.292"/></svg>生成中...';
-        } else {
-          btn.disabled = false;
-          btn.textContent = 'QRコード生成';
-        }
-      }
-      
-      setBatchGenerateButtonLoading(loading) {
-        const btn = document.getElementById('batchGenerateBtn');
-        if (loading) {
-          btn.disabled = true;
-          btn.innerHTML = '<svg class="loading w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-6.364l-2.828 2.828M8.464 17.536l-2.828 2.828m11.314 0l-2.828-2.828M8.464 6.464L5.636 9.292"/></svg>生成中...';
-        } else {
-          btn.disabled = false;
-          btn.textContent = '一括生成・ダウンロード';
-        }
-      }
-      
-      showBatchProgress(show) {
-        const section = document.getElementById('batchDownloadSection');
-        if (show) {
-          section.classList.remove('hidden');
-        } else {
-          setTimeout(() => {
-            section.classList.add('hidden');
-          }, 2000);
-        }
-      }
-      
-      updateBatchProgress(current, total) {
-        const progress = document.getElementById('batchProgress');
-        const progressBar = document.getElementById('batchProgressBar');
-        
-        progress.textContent = `${current} / ${total}`;
-        const percentage = (current / total) * 100;
-        progressBar.style.width = `${percentage}%`;
-      }
-    }
-
-    // アプリケーション初期化
-    document.addEventListener('DOMContentLoaded', () => {
-      new QRGeneratorApp();
-      console.log('✅ QRコード生成ツール初期化完了');
+      URL.revokeObjectURL(a.href);
+      setTimeout(()=>{
+        document.getElementById('batchDownloadSection').classList.add('hidden');
+      }, 2000);
+      setLoading(btn, false, '一括生成・ダウンロード');
     });
   </script>
-
 </body>
 </html>

@@ -13,6 +13,9 @@
     @keyframes spin { 100% { transform: rotate(360deg); } }
     .notice { font-size: 1.1rem; margin-top: 1.5rem; }
     .skip { margin-top: 2rem; }
+    footer { background-color: #333; color: #fff; padding: 1rem 0; text-align: center; }
+    footer a { color: #38bdf8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -41,5 +44,15 @@
       document.getElementById('skipLink').style.display = 'none';
     }
   </script>
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-12">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
 </body>
 </html>
