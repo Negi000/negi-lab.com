@@ -3,6 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://pagead2.googlesyndication.com 
+      https://www.googletagmanager.com 
+      https://www.google-analytics.com 
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob: 
+      https://negi-lab.com 
+      https://pagead2.googlesyndication.com 
+      https://www.google-analytics.com 
+      https://googleads.g.doubleclick.net; 
+    connect-src 'self' 
+      https://www.google-analytics.com 
+      https://pagead2.googlesyndication.com; 
+    frame-src 
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  
   <title data-translate-key="page.title">negi-lab.com - 便利ツール＆ゲーム情報ポータル</title>
   <meta name="description" data-translate-key="meta.description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
   <meta name="robots" content="index,follow" />
@@ -17,8 +54,16 @@
   <meta name="twitter:title" content="negi-lab.com - 便利ツール＆ゲーム情報ポータル" />
   <meta name="twitter:description" content="日々の作業をもっとラクに、遊びも快適に。便利なウェブツールやゲーム攻略Wikiが見つかる、negi-lab.comの公式ポータル。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- External Resources with SRI -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -87,7 +132,7 @@
   <main class="flex-grow">
 
     <!-- Hero Section -->
-    <section id="home" class="bg-gradient-to-b from-accent/10 via-white to-gray-100 py-16">
+    <section id="home" class="bg-gradient-to-b from-accent/10 via-white to-gray-100 py-16" role="banner">
       <div class="max-w-3xl mx-auto text-center px-4">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-5 text-gray-900" data-translate-html-key="hero.title_html">毎日に<b class="text-accent">“ちょうどいい”</b>便利さと<br>楽しさを。</h1>
         <p class="text-lg text-gray-700 mb-8" data-translate-html-key="hero.subtitle_html">
@@ -101,7 +146,7 @@
       </div>
 
       <!-- ヒーローセクション下：アドセンス（レスポンシブ） -->
-      <div class="max-w-3xl mx-auto my-8">
+      <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
         <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
         <ins class="adsbygoogle"
              style="display:block"
@@ -110,15 +155,21 @@
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
+      </aside>
     </section>
 
     <!-- Tools Section -->
-    <section id="tools" class="py-14 bg-white">
+    <section id="tools" class="py-14 bg-white" role="main">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="tools.sectionTitle">便利ツール集</h2>
+        <header class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4" data-translate-key="tools.sectionTitle">便利ツール集</h2>
+          <p class="text-lg text-gray-600" data-translate-key="tools.sectionDescription">
+            日常の作業を効率化する、シンプルで使いやすいウェブツール
+          </p>
+        </header>
+        
         <!-- ツールセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
-        <div class="max-w-3xl mx-auto my-8">
+        <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
           <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
           <ins class="adsbygoogle"
                style="display:block"
@@ -127,10 +178,11 @@
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <!-- 1: 単位変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/unit-converter.html'">
+        </aside>
+
+        <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+          <!-- Tool Cards -->
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/unit-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="3" rx="1.5"/><rect x="4" y="14" width="16" height="3" rx="1.5"/></svg>
             </div>
@@ -138,8 +190,7 @@
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.unitConverter.description">長さ・重さ・温度などの単位を日常や学習、仕事に合わせて簡単に変換。</p>
             <a href="tools/unit-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.unitConverter.open">開く</a>
           </div>
-          <!-- 2: 画像変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/image-converter.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="7" cy="7" r="2"/><path d="M21 21l-6-6-4 4-2-2-5 5"/></svg>
             </div>
@@ -148,7 +199,7 @@
             <a href="tools/image-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageConverter.open">開く</a>
           </div>
           <!-- 3: QRコード作成ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/qr-code-generator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/qr-code-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
             </div>
@@ -157,7 +208,7 @@
             <a href="tools/qr-code-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.qrGenerator.open">開く</a>
           </div>
           <!-- 4: URL短縮ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/url-shortener.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/url-shortener.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 7a5 5 0 0 1 0 10M7 17a5 5 0 0 1 0-10"/><path d="M8 12h8"/></svg>
             </div>
@@ -166,7 +217,7 @@
             <a href="tools/url-shortener.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.urlShortener.open">開く</a>
           </div>
           <!-- 5: 日付計算ツール（追加） -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/date-calculator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/date-calculator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="4"/><path d="M8 2v4M16 2v4M3 10h18"/><rect x="7" y="14" width="3" height="3" rx="1.5"/><rect x="14" y="14" width="3" height="3" rx="1.5"/></svg>
             </div>
@@ -175,7 +226,7 @@
             <a href="tools/date-calculator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.dateCalculator.open">開く</a>
           </div>
           <!-- 6: 画像サイズ比較変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/image-size-compare.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-size-compare.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
             </div>
@@ -184,7 +235,7 @@
             <a href="tools/image-size-compare.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageSizeCompare.open">開く</a>
           </div>
           <!-- 7: カラーコード検索・表示ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/color-code-tool.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/color-code-tool.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="6"/></svg>
             </div>
@@ -193,7 +244,7 @@
             <a href="tools/color-code-tool.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.colorCodeTool.open">開く</a>
           </div>
           <!-- 8: PDFオールインワンツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/pdf-tool.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/pdf-tool.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
             </div>
@@ -202,7 +253,7 @@
             <a href="tools/pdf-tool.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.pdfTool.open">開く</a>
           </div>
           <!-- 9: 画像背景リムーバ&透過PNG生成ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/bg-remover.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/bg-remover.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
             </div>
@@ -211,7 +262,7 @@
             <a href="tools/bg-remover.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.bgRemover.open">開く</a>
           </div>
           <!-- 10: ファビコン&OG画像ジェネレータ -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/favicon-og-generator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/favicon-og-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
             </div>
@@ -220,7 +271,7 @@
             <a href="tools/favicon-og-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.faviconOgGen.open">開く</a>
           </div>
           <!-- 11: JSON⇔CSV/YAML⇔Excel変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" onclick="location.href='tools/json-csv-yaml-excel.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/json-csv-yaml-excel.html'">
             <div class="mb-3">
               <!-- より表計算らしいアイコンに変更 -->
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -240,7 +291,7 @@
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.jsonCsvYamlExcel.description">JSON・CSV・YAML・Excelファイルを相互変換。</p>
             <a href="tools/json-csv-yaml-excel.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.jsonCsvYamlExcel.open">開く</a>
           </div>
-        </div>
+        </article>
 
         <!-- ツールセクション下：Amazon・楽天バナー → ネイティブ/モーションウィジェット動的表示に置換 -->
         <div id="smart-ads" class="flex justify-center my-10"></div>

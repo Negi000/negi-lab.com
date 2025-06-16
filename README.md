@@ -141,6 +141,26 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 - Email: negilab.com@gmail.com
 - GitHub Issues: バグ報告・機能要求
 
+## 🔒 セキュリティ機能
+
+**2025年6月16日 大幅セキュリティ強化実施**
+
+- ✅ **Content Security Policy (CSP)**: XSS攻撃防止
+- ✅ **Subresource Integrity (SRI)**: CDN改ざん防止
+- ✅ **入力値サニタイズ**: 全ユーザー入力の無害化
+- ✅ **ファイルアップロード検証**: タイプ・サイズ・内容の厳密チェック
+- ✅ **GitHub Actions固定化**: コミットハッシュによるバージョン固定
+- ✅ **エラーハンドリング強化**: ユーザビリティとセキュリティの両立
+
+詳細: [`SECURITY.md`](./SECURITY.md)
+
+## 🎨 コード品質改善
+
+- ✅ **セマンティックHTML**: `<main>`, `<section>`, `<article>` タグの適切な使用
+- ✅ **アクセシビリティ**: ARIA属性、スクリーンリーダー対応
+- ✅ **共通ユーティリティ**: `/js/security-utils.js`, `/js/common-utils.js`
+- ✅ **統一的エラー処理**: ユーザー向けとデベロッパー向けログの分離
+
 ---
 
 **🌟 完全静的サイトで実現する最高のQRコード生成体験をお楽しみください！**

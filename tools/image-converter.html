@@ -3,10 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:; 
+    connect-src 'self'; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
   <title data-translate-key="imageConverter.pageTitle">画像変換ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="imageConverter.metaDescription" content="画像のフォーマットを変換（JPEG, PNG, WebPなど）したり、品質やサイズ変更ができるツール。" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -300,8 +329,7 @@
             if (files.length > 0) {
                 handleFile(files[0]);
             }
-        });
-        imageFile.addEventListener('change', (event) => {
+        });        imageFile.addEventListener('change', (event) => {
             if (event.target.files.length > 0) {
                 handleFile(event.target.files[0]);
             }
@@ -311,31 +339,38 @@
             clearMessages();
             resultContainer.classList.add('hidden');
             
-            if (file.size > MAX_FILE_SIZE) {
-                errorMessage.textContent = translate('imageConverter.imageTooLarge');
+            // セキュリティ強化されたファイル検証
+            if (!SecurityUtils.validateFileSize(file, 10)) {
+                SecurityUtils.showUserError('ファイルサイズが10MBを超えています');
                 resetFileState();
                 return;
             }
 
-            const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-            if (!validTypes.includes(file.type)) {
-                errorMessage.textContent = translate('imageConverter.error.fileType');
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+            if (!SecurityUtils.validateFileType(file, allowedTypes)) {
+                SecurityUtils.showUserError('サポートされていないファイル形式です（JPEG、PNG、WebP、GIFのみ）');
+                resetFileState();
+                return;
+            }
+
+            // ファイル名の検証とサニタイズ
+            const fileName = SecurityUtils.sanitizeInput(file.name);
+            if (!fileName) {
+                SecurityUtils.showUserError('無効なファイル名です');
                 resetFileState();
                 return;
             }
 
             currentFile = file;
-            originalFileName = file.name.substring(0, file.name.lastIndexOf('.')) || 'image';
-            fileNameDisplay.textContent = file.name;
+            originalFileName = fileName.substring(0, fileName.lastIndexOf('.')) || 'image';
+            fileNameDisplay.textContent = fileName;
             dropInstructions.classList.add('hidden');
             
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                imagePreview.src = e.target.result;
-                previewContainer.classList.remove('hidden');
-            }
-            reader.readAsDataURL(file);
+            // セキュアな画像プレビュー
+            CommonUtils.previewImage(file, 'preview-container-inner');
             convertButton.disabled = false;
+            
+            SecurityUtils.showSuccessMessage(`ファイル "${fileName}" を読み込みました`);
         }
         
         function resetFileState() {
@@ -354,121 +389,141 @@
         function clearMessages() {
             statusMessage.textContent = '';
             errorMessage.textContent = '';
-        }
-
-        convertButton.addEventListener('click', async () => {
+        }        convertButton.addEventListener('click', async () => {
             if (!currentFile) {
-                errorMessage.textContent = translate('imageConverter.noImageSelected');
+                SecurityUtils.showUserError('画像ファイルが選択されていません');
                 return;
             }
+            
             clearMessages();
-            statusMessage.textContent = translate('imageConverter.convertingMessage');
+            CommonUtils.showLoading('status-message-area', '画像を変換中...');
             convertButton.disabled = true;
             resultContainer.classList.add('hidden');
 
-            const pMaxWidth = parseInt(maxWidthInput.value);
-            const pMaxHeight = parseInt(maxHeightInput.value);
-
-            if ((maxWidthInput.value && (isNaN(pMaxWidth) || pMaxWidth <=0)) || (maxHeightInput.value && (isNaN(pMaxHeight) || pMaxHeight <=0))) {
-                errorMessage.textContent = translate('imageConverter.error.invalidDimensions');
-                statusMessage.textContent = '';
-                convertButton.disabled = false;
-                return;
-            }
-
-
             try {
-                const outputMimeType = outputFormatSelect.value;
+                // 入力値検証
+                const maxWidthValue = CommonUtils.getFormValue('maxWidth', false);
+                const maxHeightValue = CommonUtils.getFormValue('maxHeight', false);
+                
+                const pMaxWidth = maxWidthValue ? parseInt(maxWidthValue) : 0;
+                const pMaxHeight = maxHeightValue ? parseInt(maxHeightValue) : 0;
+
+                // サイズ制限チェック
+                if (pMaxWidth > 0 && (pMaxWidth < 1 || pMaxWidth > 10000)) {
+                    SecurityUtils.showUserError('幅は1〜10000ピクセルの範囲で入力してください');
+                    return;
+                }
+                
+                if (pMaxHeight > 0 && (pMaxHeight < 1 || pMaxHeight > 10000)) {
+                    SecurityUtils.showUserError('高さは1〜10000ピクセルの範囲で入力してください');
+                    return;
+                }
+
+                const outputMimeType = SecurityUtils.sanitizeInput(outputFormatSelect.value);
+                const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+                if (!allowedMimeTypes.includes(outputMimeType)) {
+                    SecurityUtils.showUserError('無効な出力形式です');
+                    return;
+                }
+
+                const result = await convertImage(currentFile, outputMimeType, pMaxWidth, pMaxHeight);
+                processConversionResult(result, outputMimeType);
+                
+            } catch (error) {
+                SecurityUtils.showUserError('画像変換に失敗しました', error);
+            } finally {
+                CommonUtils.hideLoading('status-message-area');
+                convertButton.disabled = false;
+            }
+        });
+
+        async function convertImage(file, outputMimeType, maxWidth, maxHeight) {
+            return new Promise((resolve, reject) => {
                 const image = new Image();
                 const reader = new FileReader();
 
                 reader.onload = (event) => {
                     image.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        let { naturalWidth: width, naturalHeight: height } = image;
+                        try {
+                            const canvas = document.createElement('canvas');
+                            let { naturalWidth: width, naturalHeight: height } = image;
 
-                        const userMaxWidth = pMaxWidth || 0;
-                        const userMaxHeight = pMaxHeight || 0;
-
-                        if (userMaxWidth > 0 || userMaxHeight > 0) {
-                            if (userMaxWidth > 0 && userMaxHeight > 0) {
-                                const ratio = Math.min(userMaxWidth / width, userMaxHeight / height);
-                                width = Math.round(width * ratio);
-                                height = Math.round(height * ratio);
-                            } else if (userMaxWidth > 0) {
-                                const ratio = userMaxWidth / width;
-                                width = userMaxWidth;
-                                height = Math.round(height * ratio);
-                            } else if (userMaxHeight > 0) { // only maxHeight is set
-                                const ratio = userMaxHeight / height;
-                                height = userMaxHeight;
-                                width = Math.round(width * ratio);
+                            // サイズ計算（セキュリティ考慮）
+                            if (maxWidth > 0 || maxHeight > 0) {
+                                if (maxWidth > 0 && maxHeight > 0) {
+                                    const ratio = Math.min(maxWidth / width, maxHeight / height);
+                                    width = Math.round(width * ratio);
+                                    height = Math.round(height * ratio);
+                                } else if (maxWidth > 0) {
+                                    const ratio = maxWidth / width;
+                                    width = maxWidth;
+                                    height = Math.round(height * ratio);
+                                } else if (maxHeight > 0) {
+                                    const ratio = maxHeight / height;
+                                    height = maxHeight;
+                                    width = Math.round(width * ratio);
+                                }
                             }
-                        }
-                        
-                        canvas.width = width > 0 ? width : 1; // Ensure canvas dimensions are positive
-                        canvas.height = height > 0 ? height : 1;
+                            
+                            // 最小サイズ保証
+                            canvas.width = Math.max(width, 1);
+                            canvas.height = Math.max(height, 1);
 
-                        const ctx = canvas.getContext('2d');
-                        
-                        if (currentFile.type === 'image/gif' && outputMimeType !== 'image/gif') {
-                             ctx.fillStyle = '#FFFFFF'; 
-                             ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        }
-                        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+                            const ctx = canvas.getContext('2d');
+                            
+                            // GIFから他の形式への変換時は背景を白に
+                            if (file.type === 'image/gif' && outputMimeType !== 'image/gif') {
+                                ctx.fillStyle = '#FFFFFF';
+                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                            }
+                            
+                            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-                        let quality = parseFloat(qualityRange.value);
-                        if (outputMimeType === 'image/png') { // PNG doesn't use quality in toBlob like jpeg/webp
-                           canvas.toBlob((blob) => {
-                                processBlob(blob, outputMimeType);
-                           }, outputMimeType);
-                        } else { // JPEG or WebP
-                           canvas.toBlob((blob) => {
-                                processBlob(blob, outputMimeType);
-                           }, outputMimeType, quality);
+                            const quality = parseFloat(qualityRange.value);
+                            
+                            if (outputMimeType === 'image/png') {
+                                canvas.toBlob(resolve, outputMimeType);
+                            } else {
+                                canvas.toBlob(resolve, outputMimeType, quality);
+                            }
+                            
+                        } catch (error) {
+                            reject(error);
                         }
                     };
-                    image.onerror = () => {
-                        errorMessage.textContent = translate('imageConverter.error.generic');
-                        statusMessage.textContent = '';
-                        convertButton.disabled = false;
-                    };
+                    
+                    image.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
                     image.src = event.target.result;
                 };
-                reader.onerror = () => {
-                     errorMessage.textContent = translate('imageConverter.error.generic');
-                     statusMessage.textContent = '';
-                     convertButton.disabled = false;
-                };
-                reader.readAsDataURL(currentFile);
+                
+                reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
+                reader.readAsDataURL(file);
+            });
+        }
 
-            } catch (error) {
-                console.error("Conversion error:", error);
-                errorMessage.textContent = translate('imageConverter.error.generic');
-                statusMessage.textContent = '';
-                convertButton.disabled = false;
-            }
-        });
-        
-        function processBlob(blob, mimeType) {
+        function processConversionResult(blob, mimeType) {
             if (!blob) {
-                errorMessage.textContent = translate('imageConverter.error.generic') + " (blob creation failed)";
-                statusMessage.textContent = '';
-                convertButton.disabled = false;
+                SecurityUtils.showUserError('画像変換に失敗しました');
                 return;
             }
+            
             const convertedUrl = URL.createObjectURL(blob);
             convertedImagePreview.src = convertedUrl;
             
             const fileExtension = mimeType.split('/')[1];
+            const sanitizedFileName = SecurityUtils.sanitizeInput(originalFileName);
             downloadLink.href = convertedUrl;
-            downloadLink.download = `${originalFileName}_converted.${fileExtension}`;
+            downloadLink.download = `${sanitizedFileName}_converted.${fileExtension}`;
+            
+            resultContainer.classList.remove('hidden');
+            SecurityUtils.showSuccessMessage('画像変換が完了しました');
+        }
             
             resultContainer.classList.remove('hidden');
             statusMessage.textContent = '';
-            convertButton.disabled = false;
-        }
-        
+            convertButton.disabled = false;        }
+            
+        // 言語切り替え監視
         const langSwitchObserver = new MutationObserver(() => {
             const dropText = translate('imageConverter.dropInstructions', 'html');
             if (dropInstructions.innerHTML !== dropText) {
@@ -482,7 +537,7 @@
         });
         langSwitchObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
         
-        // Initial setup
+        // 初期設定
         updateQualityVisibility();
         dropInstructions.innerHTML = translate('imageConverter.dropInstructions', 'html');
     });
