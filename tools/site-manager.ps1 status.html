@@ -129,28 +129,15 @@
     </div>
   </main>
 
-  <!-- 迢ｬ閾ｪ諤ｧ繝ｻ驕句霧譁ｹ驥昴・蜈崎ｲｬ莠矩・-->
-  <section class="bg-gray-50 border-t border-gray-200 py-12" id="uniqueness">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">迢ｬ閾ｪ諤ｧ繝ｻ驕句霧譁ｹ驥昴・蜈崎ｲｬ莠矩・/h2>
-      
-      <div class="grid md:grid-cols-3 gap-6 text-sm text-gray-600">
-        <div class="bg-white p-4 rounded-lg border">
-          <h3 class="font-semibold text-gray-800 mb-2">識 迢ｬ閾ｪ諤ｧ</h3>
-          <p>negi-lab.com縺ｯ縲∝ｮ溽畑諤ｧ縺ｨ菴ｿ縺・ｄ縺吶＆繧帝㍾隕悶＠縺溘が繝ｪ繧ｸ繝翫Ν繝・・繝ｫ繧呈署萓帙＠縺ｾ縺吶ゅΘ繝ｼ繧ｶ繝ｼ縺ｮ譌･蟶ｸ讌ｭ蜍吶ｄ蟄ｦ鄙偵ｒ繧ｵ繝昴・繝医☆繧狗峡閾ｪ讖溯・繧帝幕逋ｺ縺励※縺・∪縺吶・/p>
-        </div>
-        
-        <div class="bg-white p-4 rounded-lg border">
-          <h3 class="font-semibold text-gray-800 mb-2">搭 驕句霧譁ｹ驥・/h3>
-          <p>辟｡譁吶〒螳牙・縺ｫ蛻ｩ逕ｨ縺ｧ縺阪ｋWeb繝・・繝ｫ縺ｮ謠蝉ｾ帙ｒ逶ｮ謖・＠縺ｾ縺吶ゅ・繝ｩ繧､繝舌す繝ｼ菫晁ｭｷ繧貞ｾｹ蠎輔＠縲∝ｺ・相繧・ヨ繝ｩ繝・く繝ｳ繧ｰ繧呈怙蟆城剞縺ｫ謚代∴縺溽腸蠅・ｒ邯ｭ謖√＠縺ｾ縺吶・/p>
-        </div>
-        
-        <div class="bg-white p-4 rounded-lg border">
-          <h3 class="font-semibold text-gray-800 mb-2">笞・・蜈崎ｲｬ莠矩・/h3>
-          <p>譛ｬ繝・・繝ｫ縺ｮ蛻ｩ逕ｨ縺ｯ閾ｪ蟾ｱ雋ｬ莉ｻ縺ｧ縺企｡倥＞縺励∪縺吶ゅョ繝ｼ繧ｿ縺ｮ邏帛､ｱ繧・ｪ､蜍穂ｽ懊↓繧医ｋ謳榊ｮｳ縺ｫ縺､縺・※縲・°蝟ｶ閠・・雋ｬ莉ｻ繧定ｲ縺・°縺ｭ縺ｾ縺吶る㍾隕√↑繝・・繧ｿ縺ｯ莠句燕縺ｫ繝舌ャ繧ｯ繧｢繝・・繧呈耳螂ｨ縺励∪縺吶・/p>
-        </div>
-      </div>
-    </div>
+  <!-- ここに独自性・運営方針・免責事項の日本語説明を残す（例として下記を挿入） -->
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
   </section>
 
   <!-- Footer -->
@@ -215,12 +202,12 @@
       const resultContent = document.getElementById('resultContent');
       
       if (!input.trim()) {
-        alert('蜈･蜉帙′蠢・ｦ√〒縺吶・);
+        alert('入力が空です。テキストを入力してください。');
         return;
       }
       
       // TODO: Add your tool-specific processing logic here
-      resultContent.textContent = 蜈･蜉帙＆繧後◆蜀・ｮｹ: $input;
+      resultContent.textContent = `入力内容: ${input}`;
       resultDiv.classList.remove('hidden');
     }
     
