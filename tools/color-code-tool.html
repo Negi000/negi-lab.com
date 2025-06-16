@@ -31,11 +31,8 @@
   
   <title data-translate-key="colorCodeTool.pageTitle">カラーコード検索・表示ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="colorCodeTool.metaDescription" content="画像からスポイトで色を抽出・分析、カラーコード入力で色プレビューもできる無料ツール。" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <script src="https://cdn.tailwindcss.com" 
-          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
-          crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
@@ -52,6 +49,46 @@
     window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
     window.metaDescriptionTranslationKey = "colorCodeTool.metaDescription";
   </script>
+  
+  <!-- Custom Styles -->
+  <style>
+    .form-input, .form-select, .form-button {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    
+    .color-preview {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      transition: all 0.2s;
+    }
+  </style>
+  
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
