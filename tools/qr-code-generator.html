@@ -3,28 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://cdn.jsdelivr.net 
+      https://unpkg.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:; 
+    connect-src 'self'; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
   <title data-translate-key="qrGenerator.pageTitle">QRコード作成ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="qrGenerator.metaDescription" content="テキストやURLから簡単にカスタムQRコードを生成できるツール。エラー訂正レベルも調整可能。" />
   
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-    <!-- CSS Framework -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  
+  <!-- CSS Framework -->
   <script>
     // Tailwind CDNの警告を無効化（開発用）
     if (typeof window !== 'undefined') {
       window.process = { env: { NODE_ENV: 'development' } };
     }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-    <!-- QR Code Library -->
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- QR Code Library with SRI -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" 
+          integrity="sha384-xaQ3VaESrXrVuqkaCxEKdIvNjdYQ+2pKBGAPZ8BHpP0qqvh/sGZp7qzDLdOOD9Hg"
+          crossorigin="anonymous"
           onload="console.log('✅ qrcode.js読み込み完了')" 
           onerror="console.warn('⚠️ qrcode.js読み込みエラー - フォールバックを使用')"></script>
   
-  <!-- QR Code Library Fallback -->
+  <!-- QR Code Library Fallback with SRI -->
   <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js" 
+          integrity="sha384-xaQ3VaESrXrVuqkaCxEKdIvNjdYQ+2pKBGAPZ8BHpP0qqvh/sGZp7qzDLdOOD9Hg"
+          crossorigin="anonymous"
           onload="if (!window.QRCode) { console.log('✅ qrcode.js フォールバック読み込み完了'); }"
           onerror="console.warn('⚠️ qrcode.js フォールバック読み込みエラー')"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   
   <!-- Tailwind Config -->
   <script>
@@ -954,62 +990,101 @@
         });
         document.getElementById(`${tabName}-tab`).classList.remove('hidden');
       }
-      
-      async generateSingle() {
-        const text = document.getElementById('qrText').value.trim();
-        
-        if (!text) {
-          alert('テキストまたはURLを入力してください。');
-          return;
-        }
-        
-        this.setGenerateButtonLoading(true);
-        
+        async generateSingle() {
         try {
-          const options = this.getGenerationOptions();
-          const qrImage = await SimpleQR.generate(text, options);
+          // セキュアな入力値取得と検証
+          const text = CommonUtils.getFormValue('qrText', true, 2000);
+          if (!text) {
+            return;
+          }
+
+          // URL形式の場合は検証
+          if (text.startsWith('http') && !SecurityUtils.validateUrl(text)) {
+            SecurityUtils.showUserError('有効なURLを入力してください');
+            return;
+          }
+
+          // 入力値をサニタイズ
+          const sanitizedText = SecurityUtils.sanitizeInput(text, 2000);
           
-          this.displayQRCode(qrImage);
-          this.stats.incrementGenerated();
+          const size = parseInt(document.getElementById('qrSize').value) || 256;
+          const errorCorrection = document.getElementById('errorCorrection').value || 'M';
+          const foregroundColor = document.getElementById('foregroundColor').value || '#000000';
+          const backgroundColor = document.getElementById('backgroundColor').value || '#ffffff';
+          
+          // 色の値を検証
+          if (!this.isValidColor(foregroundColor) || !this.isValidColor(backgroundColor)) {
+            SecurityUtils.showUserError('有効な色コードを入力してください');
+            return;
+          }
+          
+          const resultDiv = document.getElementById('qrResult');
+          CommonUtils.showLoading('qrResult', 'QRコードを生成中...');
+          
+          const options = {
+            size: Math.min(Math.max(size, 128), 1024), // サイズ制限
+            errorCorrection,
+            foregroundColor: SecurityUtils.sanitizeInput(foregroundColor),
+            backgroundColor: SecurityUtils.sanitizeInput(backgroundColor)
+          };
+          
+          const img = await SimpleQR.generate(sanitizedText, options);
+          
+          resultDiv.innerHTML = '';
+          resultDiv.appendChild(img);
+          
+          // 統計更新
+          this.updateStats();
+          
+          // ダウンロードボタン有効化
+          document.getElementById('downloadBtn').disabled = false;
+            SecurityUtils.showSuccessMessage('QRコードを生成しました');
           
         } catch (error) {
-          console.error('QRコード生成エラー:', error);
-          alert('QRコード生成に失敗しました: ' + error.message);
-        } finally {
-          this.setGenerateButtonLoading(false);
+          SecurityUtils.showUserError('QRコード生成に失敗しました', error);
+          CommonUtils.hideLoading('qrResult');
         }
       }
       
       async generateBatch() {
-        const batchText = document.getElementById('batchText').value.trim();
-        
-        if (!batchText) {
-          alert('テキストを入力してください（1行ごと）。');
-          return;
-        }
-        
-        const lines = batchText.split('\n').filter(line => line.trim());
-        
-        if (lines.length === 0) {
-          alert('有効なテキストが見つかりません。');
-          return;
-        }
-        
-        if (lines.length > 50) {
-          if (!confirm('50件を超えるQRコードを生成しようとしています。続行しますか？')) {
+        try {
+          // セキュアな入力値取得と検証
+          const batchText = CommonUtils.getFormValue('batchText', true);
+          if (!batchText) {
             return;
           }
-        }
-        
-        this.setBatchGenerateButtonLoading(true);
-        this.showBatchProgress(true);
-        
-        try {
+
+          const lines = batchText.split('\n')
+            .map(line => SecurityUtils.sanitizeInput(line.trim(), 2000))
+            .filter(line => line);
+          
+          if (lines.length === 0) {
+            SecurityUtils.showUserError('有効なテキストが見つかりません');
+            return;
+          }
+          
+          if (lines.length > 50) {
+            if (!confirm('50件を超えるQRコードを生成しようとしています。続行しますか？')) {
+              return;
+            }
+          }
+
+          // URL形式のものは検証
+          for (const line of lines) {
+            if (line.startsWith('http') && !SecurityUtils.validateUrl(line)) {
+              SecurityUtils.showUserError(`無効なURL: ${line.substring(0, 50)}...`);
+              return;
+            }
+          }
+          
+          this.setBatchGenerateButtonLoading(true);
+          this.showBatchProgress(true);
+          
           const options = this.getBatchGenerationOptions();
           const zip = new SimpleZip();
           
           for (let i = 0; i < lines.length; i++) {
-            const text = lines[i].trim();
+            const text = lines[i];
             if (!text) continue;
             
             this.updateBatchProgress(i, lines.length);
@@ -1156,6 +1231,49 @@
         const percentage = (current / total) * 100;
         progressBar.style.width = `${percentage}%`;
       }
+      
+      // カラー値検証メソッド
+      isValidColor(color) {
+        if (!color || typeof color !== 'string') return false;
+        
+        // HEX形式チェック (#rrggbb または #rgb)
+        const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+        if (hexPattern.test(color)) {
+          return true;
+        }
+        
+        // CSS色名チェック（基本的なもののみ）
+        const validColorNames = [
+          'black', 'white', 'red', 'green', 'blue', 'yellow', 'orange', 'purple',
+          'gray', 'grey', 'pink', 'brown', 'cyan', 'magenta', 'lime', 'maroon',
+          'navy', 'olive', 'teal', 'silver', 'gold'
+        ];
+        
+        return validColorNames.includes(color.toLowerCase());
+      }
+
+      // 統計更新メソッド
+      updateStats() {
+        try {
+          // セッション統計更新
+          this.sessionGenerated = (this.sessionGenerated || 0) + 1;
+          document.getElementById('sessionGenerated').textContent = this.sessionGenerated;
+          
+          // 総統計更新（ローカルストレージ）
+          const totalGenerated = CommonUtils.localStorage.get('qr_total_generated', 0) + 1;
+          CommonUtils.localStorage.set('qr_total_generated', totalGenerated);
+          document.getElementById('totalGenerated').textContent = totalGenerated;
+          
+          // 最終生成時刻更新
+          const now = new Date().toLocaleTimeString('ja-JP');
+          document.getElementById('lastGeneratedTime').textContent = now;
+          
+        } catch (error) {
+          console.error('統計更新エラー:', error);
+        }
+      }
+
+      // ...existing code...
     }
 
     // アプリケーション初期化
