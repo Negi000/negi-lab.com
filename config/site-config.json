@@ -1,0 +1,48 @@
+{
+  "site": {
+    "name": "negi-lab.com",
+    "year": "2025",
+    "contact_email": "negilab.com@gmail.com",
+    "analytics_id": "G-N9X3N0RY0H",
+    "adsense_client": "ca-pub-1835873052239386"
+  },
+  "security": {
+    "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self';",
+    "headers": {
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-XSS-Protection": "1; mode=block"
+    }
+  },
+  "common_sections": {
+    "uniqueness": "本ツールはnegi-lab.comが独自開発・運営しています。",
+    "policy": "広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。",
+    "disclaimer": "正確性・安全性には万全を期していますが、利用は自己責任でお願いします。"
+  },
+  "footer_links": [
+    {"text": "プライバシーポリシー", "url": "/privacy-policy-unified.html"},
+    {"text": "利用規約", "url": "/terms.html"},
+    {"text": "運営者情報", "url": "/about.html"},
+    {"text": "お問い合わせ", "url": "mailto:negilab.com@gmail.com"},
+    {"text": "サイトマップ", "url": "/sitemap.xml"}
+  ],
+  "theme": {
+    "colors": {
+      "negi": "#65c155",
+      "accent": "#4ADE80"
+    },
+    "fonts": {
+      "primary": "Inter, sans-serif"
+    }
+  },
+  "styles": {
+    "form_input": "padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); transition: box-shadow 0.2s;",
+    "form_input_focus": "outline: none; box-shadow: 0 0 0 2px #4ADE80; border-color: #4ADE80;",
+    "form_button": "background: #4ADE80; color: #fff; transition: background 0.15s, color 0.15s;",
+    "form_button_hover": "background: #10b981;",
+    "form_button_disabled": "background: #d1d5db; color: #9ca3af; cursor: not-allowed;",
+    "drop_area": "border: 2px dashed #d1d5db; border-radius: 0.5rem; padding: 2rem; text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s;",
+    "drop_area_dragover": "border-color: #4ADE80; background: rgba(74, 222, 128, 0.1);",
+    "preview_image": "max-width: 100%; max-height: 16rem; border-radius: 0.375rem; border: 1px solid #e5e7eb; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);"
+  }
+}

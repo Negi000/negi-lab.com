@@ -1,0 +1,26 @@
+{
+  "name": "negi-lab-site-manager",
+  "version": "1.0.0",
+  "description": "negi-lab.comサイト管理ツール - 一貫性のあるWebツール生成と管理",
+  "main": "scripts/site-manager.js",  "scripts": {
+    "validate": "powershell -ExecutionPolicy Bypass -File scripts/simple-consistency.ps1 -action validate",
+    "update": "powershell -ExecutionPolicy Bypass -File scripts/simple-consistency.ps1 -action update",
+    "check": "npm run validate",
+    "fix": "npm run update",
+    "dev": "npm run validate && npm run update",
+    "test": "npm run validate"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "website-management",
+    "template-engine",
+    "consistency",
+    "automation"
+  ],
+  "author": "negi-lab.com",
+  "license": "MIT"
+}

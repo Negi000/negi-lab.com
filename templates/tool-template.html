@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="{{CSP_CONTENT}}" />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
+  <title data-translate-key="{{TOOL_KEY}}.pageTitle">{{TOOL_NAME}} - negi-lab.com</title>
+  <meta name="description" data-translate-key="{{TOOL_KEY}}.metaDescription" content="{{TOOL_DESCRIPTION}}" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  
+  <!-- CSS Framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  {{TOOL_EXTERNAL_SCRIPTS}}
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
+  
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "{{NEGI_COLOR}}",
+            accent: "{{ACCENT_COLOR}}"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+    window.pageTitleTranslationKey = "{{TOOL_KEY}}.pageTitle";
+    window.metaDescriptionTranslationKey = "{{TOOL_KEY}}.metaDescription";
+  </script>
+  
+  <!-- Custom Styles -->
+  <style>
+    .form-input, .form-select, .form-button, .form-textarea {
+      {{FORM_INPUT_STYLE}}
+    }
+    
+    .form-input:focus, .form-select:focus, .form-button:focus, .form-textarea:focus {
+      {{FORM_INPUT_FOCUS_STYLE}}
+    }
+    
+    .form-button {
+      {{FORM_BUTTON_STYLE}}
+    }
+    
+    .form-button:hover:not(:disabled) {
+      {{FORM_BUTTON_HOVER_STYLE}}
+    }
+    
+    .form-button:disabled {
+      {{FORM_BUTTON_DISABLED_STYLE}}
+    }
+    
+    .drop-area {
+      {{DROP_AREA_STYLE}}
+    }
+    
+    .drop-area.dragover {
+      {{DROP_AREA_DRAGOVER_STYLE}}
+    }
+    
+    .preview-image {
+      {{PREVIEW_IMAGE_STYLE}}
+    }
+    
+    {{TOOL_CUSTOM_STYLES}}
+  </style>
+  
+  {{ANALYTICS_SCRIPT}}
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">{{SITE_NAME}}</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/index.html#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/index.html#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+      <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12">
+    <div class="max-w-2xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="{{TOOL_KEY}}.mainTitle">{{TOOL_NAME}}</h1>
+      
+      {{TOOL_CONTENT}}
+    </div>
+  </main>
+
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>{{UNIQUENESS_TEXT}}</li>
+      <li>{{POLICY_TEXT}}</li>
+      <li>{{DISCLAIMER_TEXT}}</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; {{SITE_YEAR}} {{SITE_NAME}}</p>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      {{FOOTER_LINKS}}
+    </nav>
+    <div>&copy; {{SITE_YEAR}} {{SITE_NAME}}</div>
+  </footer>
+
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+
+  {{TOOL_SCRIPTS}}
+
+  <script>
+    // ガイドモーダルの表示/非表示制御
+    document.addEventListener('DOMContentLoaded', function() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      
+      // 多言語ガイドデータ
+      const guides = {{GUIDE_DATA}};
+      
+      function renderGuide(lang) {
+        const g = guides[lang] || guides.ja;
+        let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+        html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+        guideContent.innerHTML = html;
+      }
+      
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          renderGuide(lang);
+          guideModal.classList.remove('hidden');
+        });
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
