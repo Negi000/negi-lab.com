@@ -31,20 +31,88 @@
   
   <title data-translate-key="imageSizeCompare.pageTitle">画像サイズ比較変換ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="imageSizeCompare.metaDescription" content="YouTubeやSNS用サムネ等の用途別画像サイズに一括変換・比較できるツール。" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <script src="https://cdn.tailwindcss.com" 
-          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
-          crossorigin="anonymous"></script>
-  
-  <!-- Pica Library with SRI -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pica Library -->
   <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js" 
-          integrity="sha384-4/PcM3rbJYTJ8oTJ4YqMLyJ+U4OGx5xgVJSr8YD7jSBXBaKarJ6EW3v3QPMQF4z4" 
           crossorigin="anonymous"></script>
   
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
+  
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+    window.pageTitleTranslationKey = "imageSizeCompare.pageTitle";
+    window.metaDescriptionTranslationKey = "imageSizeCompare.metaDescription";
+  </script>
+  
+  <!-- Custom Styles -->
+  <style>
+    .form-input, .form-select, .form-button {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    
+    .drop-area {
+      border: 2px dashed #d1d5db;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    
+    .drop-area.dragover {
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.1);
+    }
+    
+    .preview-image {
+      max-width: 100%;
+      max-height: 16rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    }
+  </style>
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

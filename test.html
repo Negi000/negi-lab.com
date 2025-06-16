@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TailwindCSS Test</title>
+  <title>Complete CSS Test - negi-lab.com</title>
+  
+  <!-- Same as tools pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
       theme: {
@@ -18,44 +23,171 @@
       }
     }
   </script>
-</head>
-<body class="bg-gray-50 p-8">
-  <h1 class="text-3xl font-bold text-accent mb-4">TailwindCSS Test</h1>
-  <div class="bg-white p-6 rounded-lg shadow-md">
-    <p class="text-gray-700 mb-4">This is a test to check if TailwindCSS is working properly.</p>
-    <button class="bg-accent text-white px-4 py-2 rounded hover:bg-emerald-500 transition">Test Button</button>
-  </div>
   
-  <div class="mt-8">
-    <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden">
-      <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-        <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold">&times;</button>
-        <h2 class="text-xl font-bold mb-4">Test Modal</h2>
-        <p>This is a test modal to check if JavaScript functionality works.</p>
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
+  
+  <!-- Custom Styles (same as tools) -->
+  <style>
+    .form-input, .form-select, .form-button {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+    }
+    
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Header (same structure as tools) -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
+          <li>
+            <select id="langSwitch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
+            </select>
+          </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition">ガイド</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-accent mb-8">CSS完全テスト</h1>
+      
+      <!-- Test Form (same structure as tools) -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">フォーム要素テスト</h2>
+        <form class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">テキスト入力</label>
+            <input type="text" class="form-input w-full" placeholder="テキストを入力してください">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">選択</label>
+            <select class="form-select w-full">
+              <option>オプション1</option>
+              <option>オプション2</option>
+              <option>オプション3</option>
+            </select>
+          </div>
+          <div>
+            <button type="button" class="form-button mr-2">有効ボタン</button>
+            <button type="button" class="form-button" disabled>無効ボタン</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Test Modal -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-xl font-semibold mb-4">モーダルテスト</h2>
+        <button id="show-modal" class="form-button">モーダルを表示</button>
       </div>
     </div>
-    <button id="show-modal" class="bg-blue-500 text-white px-4 py-2 rounded">Show Modal</button>
+  </main>
+
+  <!-- Guide Modal (same structure as tools) -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content">
+        <h2 class="text-xl font-bold mb-4">テストモーダル</h2>
+        <p class="text-gray-700 mb-4">これはモーダルのテストです。CSSとJavaScriptが正常に動作しているかを確認します。</p>
+        <ul class="list-disc ml-5 text-gray-700">
+          <li>TailwindCSSのスタイルが適用されているか</li>
+          <li>カスタムCSSクラスが動作しているか</li>
+          <li>JavaScriptイベントが正常に動作するか</li>
+          <li>セキュリティユーティリティが読み込まれているか</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <div>&copy; 2025 negi-lab.com - CSS Test Page</div>
+  </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Guide modal functionality
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
       const showModal = document.getElementById('show-modal');
-      const modal = document.getElementById('guide-modal');
-      const closeModal = document.getElementById('guide-close');
       
-      showModal.addEventListener('click', function() {
-        modal.classList.remove('hidden');
-      });
+      if (guideBtn && guideModal && guideClose) {
+        guideBtn.addEventListener('click', function() {
+          guideModal.classList.remove('hidden');
+        });
+        
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        
+        guideModal.addEventListener('click', function(e) {
+          if (e.target === guideModal) {
+            guideModal.classList.add('hidden');
+          }
+        });
+      }
       
-      closeModal.addEventListener('click', function() {
-        modal.classList.add('hidden');
-      });
+      if (showModal) {
+        showModal.addEventListener('click', function() {
+          guideModal.classList.remove('hidden');
+        });
+      }
       
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.classList.add('hidden');
-        }
-      });
+      // Test SecurityUtils availability
+      if (window.SecurityUtils) {
+        console.log('✅ SecurityUtils loaded successfully');
+        // Show success message
+        setTimeout(() => {
+          SecurityUtils.showSuccessMessage('セキュリティユーティリティが正常に読み込まれました');
+        }, 1000);
+      } else {
+        console.error('❌ SecurityUtils not available');
+      }
+      
+      // Test CommonUtils availability
+      if (window.CommonUtils) {
+        console.log('✅ CommonUtils loaded successfully');
+      } else {
+        console.error('❌ CommonUtils not available');
+      }
     });
   </script>
 </body>
