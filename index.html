@@ -432,12 +432,11 @@
         var lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
         applyTranslations(lang);
       }
-    });
-    // ガイドモーダルの表示/非表示制御
+    });    // ガイドモーダルの表示/非表示制御
     document.addEventListener('DOMContentLoaded', function() {
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
-      const guideClose = document.getElementById('guide_close');
+      const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
       // 多言語ガイドデータ
       const guides = {
