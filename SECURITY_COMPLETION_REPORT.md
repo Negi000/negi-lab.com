@@ -15,18 +15,18 @@
 - ✅ `terms.html` - CSP、セキュリティヘッダー、Tailwind CSS統一
 - ✅ `wiki-redirect.html` - CSP、セキュリティヘッダー、Tailwind CSS統一
 
-### 🛠️ ツールページ (全11ファイル)
+### 🛠️ ツールページ (全11ファイル) - すべてセキュリティ強化完了
 1. ✅ `tools/qr-code-generator.html` - 完全なセキュリティ強化、入力検証強化
 2. ✅ `tools/image-converter.html` - ファイル検証強化、エラーハンドリング改善、構文エラー修正
-3. ✅ `tools/date-calculator.html` - CSP、セキュリティヘッダー追加
-4. ✅ `tools/unit-converter.html` - CSP、SRI、セキュリティヘッダー追加
-5. ✅ `tools/color-code-tool.html` - CSP、SRI、セキュリティヘッダー追加
-6. ✅ `tools/pdf-tool.html` - CSP、SRI、セキュリティヘッダー追加
-7. ✅ `tools/bg-remover.html` - CSP、SRI、セキュリティヘッダー追加
-8. ✅ `tools/json-csv-yaml-excel.html` - CSP、SRI、セキュリティヘッダー追加
+3. ✅ `tools/date-calculator.html` - CSP、セキュリティヘッダー、入力検証、エラーハンドリング追加
+4. ✅ `tools/unit-converter.html` - CSP、SRI、セキュリティヘッダー、入力検証、エラーハンドリング追加
+5. ✅ `tools/color-code-tool.html` - CSP、SRI、セキュリティヘッダー、ファイル検証、入力サニタイズ追加
+6. ✅ `tools/pdf-tool.html` - CSP、SRI、セキュリティヘッダー、ファイル検証、サイズ制限追加
+7. ✅ `tools/bg-remover.html` - CSP、SRI、セキュリティヘッダー、画像ファイル検証、エラーハンドリング追加
+8. ✅ `tools/json-csv-yaml-excel.html` - CSP、SRI、セキュリティヘッダー、ファイル検証、パース処理エラーハンドリング追加
 9. ✅ `tools/url-shortener.html` - CSP、セキュリティヘッダー、入力検証強化
-10. ✅ `tools/favicon-og-generator.html` - CSP、SRI、セキュリティヘッダー追加
-11. ✅ `tools/image-size-compare.html` - CSP、SRI、セキュリティヘッダー追加
+10. ✅ `tools/favicon-og-generator.html` - CSP、SRI、セキュリティヘッダー、ファイル検証、入力サニタイズ追加
+11. ✅ `tools/image-size-compare.html` - CSP、SRI、セキュリティヘッダー、画像ファイル検証、サイズ制限追加
 
 ### 🚀 GitHub Actions (全2ファイル)
 - ✅ `.github/workflows/update-holidays-trivia.yml` - アクションバージョン固定

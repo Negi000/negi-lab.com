@@ -140,17 +140,72 @@
       const pdf2imgBtn = document.getElementById('pdf2imgBtn');
       const pdfResult = document.getElementById('pdfResult');
       let loadedPdfFiles = [];
-      let loadedImgFiles = [];
-      pdfFiles.addEventListener('change', function(e) {
-        loadedPdfFiles = Array.from(e.target.files);
-        pdfFileList.textContent = loadedPdfFiles.map(f=>f.name).join(', ');
-        mergeBtn.disabled = loadedPdfFiles.length < 2;
-        splitBtn.disabled = loadedPdfFiles.length !== 1;
-        compressBtn.disabled = loadedPdfFiles.length === 0;
-        pdf2imgBtn.disabled = loadedPdfFiles.length !== 1;
-      });
-      imgFiles.addEventListener('change', function(e) {
-        loadedImgFiles = Array.from(e.target.files);
+      let loadedImgFiles = [];      pdfFiles.addEventListener('change', function(e) {
+        try {
+          const files = Array.from(e.target.files);
+          loadedPdfFiles = [];
+          
+          // ファイル検証
+          for (const file of files) {
+            if (!SecurityUtils.validateFileType(file, ['application/pdf'])) {
+              SecurityUtils.showUserError('PDFファイルのみアップロード可能です');
+              this.value = '';
+              return;
+            }
+            
+            if (!SecurityUtils.validateFileSize(file, 50)) { // 50MB制限
+              SecurityUtils.showUserError('ファイルサイズが50MB以下のPDFを選択してください');
+              this.value = '';
+              return;
+            }
+            
+            loadedPdfFiles.push(file);
+          }
+          
+          pdfFileList.textContent = loadedPdfFiles.map(f=>SecurityUtils.escapeHtml(f.name)).join(', ');
+          mergeBtn.disabled = loadedPdfFiles.length < 2;
+          splitBtn.disabled = loadedPdfFiles.length !== 1;
+          compressBtn.disabled = loadedPdfFiles.length === 0;
+          pdf2imgBtn.disabled = loadedPdfFiles.length !== 1;
+          
+          if (loadedPdfFiles.length > 0) {
+            SecurityUtils.showSuccessMessage(`${loadedPdfFiles.length}個のPDFファイルが読み込まれました`);
+          }
+        } catch (error) {
+          SecurityUtils.showUserError('ファイル読み込み中にエラーが発生しました', error);
+          this.value = '';
+        }
+      });      imgFiles.addEventListener('change', function(e) {
+        try {
+          const files = Array.from(e.target.files);
+          loadedImgFiles = [];
+          
+          // 画像ファイル検証
+          for (const file of files) {
+            if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+              SecurityUtils.showUserError('JPEG、PNG、GIF、WebP形式の画像ファイルのみアップロード可能です');
+              this.value = '';
+              return;
+            }
+            
+            if (!SecurityUtils.validateFileSize(file, 20)) { // 20MB制限
+              SecurityUtils.showUserError('ファイルサイズが20MB以下の画像を選択してください');
+              this.value = '';
+              return;
+            }
+            
+            loadedImgFiles.push(file);
+          }
+          
+          img2pdfBtn.disabled = loadedImgFiles.length === 0;
+          
+          if (loadedImgFiles.length > 0) {
+            SecurityUtils.showSuccessMessage(`${loadedImgFiles.length}個の画像ファイルが読み込まれました`);
+          }
+        } catch (error) {
+          SecurityUtils.showUserError('画像ファイル読み込み中にエラーが発生しました', error);
+          this.value = '';
+        }
         img2pdfBtn.disabled = loadedImgFiles.length === 0;
       });
       mergeBtn.addEventListener('click', async function() {
