@@ -3,10 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data:; 
+    connect-src 'self'; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
   <title data-translate-key="urlShortener.pageTitle">URL短縮ツール - negi-lab.com</title>
   <meta name="description" data-translate-key="urlShortener.metaDescription" content="長いURLを短く使いやすいリンクに変換するツール。統計ログ機能も利用可能。" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com" 
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -346,23 +375,30 @@ if (document.readyState === "loading") {
             } catch (_) {
                 return false;  
             }
-        }
-
-        shortenButton.addEventListener('click', async () => {
+        }        shortenButton.addEventListener('click', async () => {
             clearMessages();
-            const longUrl = longUrlInput.value.trim();
-
-            if (!longUrl || !isValidUrl(longUrl)) {
-                errorMessage.textContent = translate('urlShortener.error.invalidUrl');
+            
+            // セキュアな入力値取得と検証
+            const longUrl = CommonUtils.getFormValue('longUrl', true, 2000);
+            if (!longUrl) {
                 return;
             }
 
-            statusMessage.textContent = translate('urlShortener.shorteningMessage');
+            // URL検証を強化
+            if (!SecurityUtils.validateUrl(longUrl)) {
+                SecurityUtils.showUserError('有効なURL（http://またはhttps://）を入力してください');
+                return;
+            }
+
+            // 入力値をサニタイズ
+            const sanitizedUrl = SecurityUtils.sanitizeInput(longUrl, 2000);
+
+            CommonUtils.showLoading('status-area', 'URLを短縮中...');
             shortenButton.disabled = true;
             resultContainer.classList.add('hidden');
 
             try {
-                const encodedUrl = encodeURIComponent(longUrl);
+                const encodedUrl = encodeURIComponent(sanitizedUrl);
                 const logStats = enableStatsCheckbox.checked ? 1 : 0;
                 const apiUrl = `https://is.gd/create.php?format=json&url=${encodedUrl}&logstats=${logStats}`;
                 
