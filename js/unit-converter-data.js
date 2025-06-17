@@ -1,6 +1,5 @@
 // 単位定義データ（カテゴリごとに分割・拡張しやすい構造）
-window.unitConverterData = {
-  length: {
+window.unitConverterData = {  length: {
     baseUnit: 'meters',
     definitions: {
       meters: { nameKey: 'unitConverter.length.meters', ja: 'メートル', en: 'Meters', factor: 1, symbol: 'm' },
@@ -9,6 +8,8 @@ window.unitConverterData = {
       millimeters: { nameKey: 'unitConverter.length.millimeters', ja: 'ミリメートル', en: 'Millimeters', factor: 0.001, symbol: 'mm' },
       micrometers: { nameKey: 'unitConverter.length.micrometers', ja: 'マイクロメートル', en: 'Micrometers', factor: 1e-6, symbol: 'μm' },
       nanometers: { nameKey: 'unitConverter.length.nanometers', ja: 'ナノメートル', en: 'Nanometers', factor: 1e-9, symbol: 'nm' },
+      picometers: { nameKey: 'unitConverter.length.picometers', ja: 'ピコメートル', en: 'Picometers', factor: 1e-12, symbol: 'pm' },
+      decimeters: { nameKey: 'unitConverter.length.decimeters', ja: 'デシメートル', en: 'Decimeters', factor: 0.1, symbol: 'dm' },
       miles: { nameKey: 'unitConverter.length.miles', ja: 'マイル', en: 'Miles', factor: 1609.344, symbol: 'mi' },
       yards: { nameKey: 'unitConverter.length.yards', ja: 'ヤード', en: 'Yards', factor: 0.9144, symbol: 'yd' },
       feet: { nameKey: 'unitConverter.length.feet', ja: 'フィート', en: 'Feet', factor: 0.3048, symbol: 'ft' },
@@ -17,21 +18,39 @@ window.unitConverterData = {
       light_years: { nameKey: 'unitConverter.length.light_years', ja: '光年', en: 'Light Years', factor: 9.4607e15, symbol: 'ly' },
       astronomical_units: { nameKey: 'unitConverter.length.astronomical_units', ja: '天文単位', en: 'Astronomical Units', factor: 1.495978707e11, symbol: 'AU' },
       parsecs: { nameKey: 'unitConverter.length.parsecs', ja: 'パーセク', en: 'Parsecs', factor: 3.085677581e16, symbol: 'pc' },
-      angstroms: { nameKey: 'unitConverter.length.angstroms', ja: 'オングストローム', en: 'Angstroms', factor: 1e-10, symbol: 'Å' }
+      angstroms: { nameKey: 'unitConverter.length.angstroms', ja: 'オングストローム', en: 'Angstroms', factor: 1e-10, symbol: 'Å' },
+      // 日本の伝統単位
+      shaku: { nameKey: 'unitConverter.length.shaku', ja: '尺', en: 'Shaku', factor: 0.303030303, symbol: '尺' },
+      sun: { nameKey: 'unitConverter.length.sun', ja: '寸', en: 'Sun', factor: 0.0303030303, symbol: '寸' },
+      ken: { nameKey: 'unitConverter.length.ken', ja: '間', en: 'Ken', factor: 1.8181818, symbol: '間' },
+      ri: { nameKey: 'unitConverter.length.ri', ja: '里', en: 'Ri', factor: 3927.27, symbol: '里' },
+      jo: { nameKey: 'unitConverter.length.jo', ja: '丈', en: 'Jo', factor: 3.030303, symbol: '丈' },
+      cho: { nameKey: 'unitConverter.length.cho', ja: '町', en: 'Cho', factor: 109.09091, symbol: '町' }
     }
-  },
-  weight: {
+  },  weight: {
     baseUnit: 'grams',
     definitions: {
       grams: { nameKey: 'unitConverter.weight.grams', ja: 'グラム', en: 'Grams', factor: 1, symbol: 'g' },
       kilograms: { nameKey: 'unitConverter.weight.kilograms', ja: 'キログラム', en: 'Kilograms', factor: 1000, symbol: 'kg' },
       milligrams: { nameKey: 'unitConverter.weight.milligrams', ja: 'ミリグラム', en: 'Milligrams', factor: 0.001, symbol: 'mg' },
       micrograms: { nameKey: 'unitConverter.weight.micrograms', ja: 'マイクログラム', en: 'Micrograms', factor: 1e-6, symbol: 'μg' },
+      nanograms: { nameKey: 'unitConverter.weight.nanograms', ja: 'ナノグラム', en: 'Nanograms', factor: 1e-9, symbol: 'ng' },
       tons: { nameKey: 'unitConverter.weight.tons', ja: 'トン', en: 'Tons', factor: 1e6, symbol: 't' },
       pounds: { nameKey: 'unitConverter.weight.pounds', ja: 'ポンド', en: 'Pounds', factor: 453.59237, symbol: 'lb' },
       ounces: { nameKey: 'unitConverter.weight.ounces', ja: 'オンス', en: 'Ounces', factor: 28.349523125, symbol: 'oz' },
       carats: { nameKey: 'unitConverter.weight.carats', ja: 'カラット', en: 'Carats', factor: 0.2, symbol: 'ct' },
-      stones: { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318, symbol: 'st' }
+      stones: { nameKey: 'unitConverter.weight.stones', ja: 'ストーン', en: 'Stones', factor: 6350.29318, symbol: 'st' },
+      // 日本の伝統単位
+      kan: { nameKey: 'unitConverter.weight.kan', ja: '貫', en: 'Kan', factor: 3750, symbol: '貫' },
+      kin: { nameKey: 'unitConverter.weight.kin', ja: '斤', en: 'Kin', factor: 600, symbol: '斤' },
+      ryo: { nameKey: 'unitConverter.weight.ryo', ja: '両', en: 'Ryo', factor: 37.5, symbol: '両' },
+      momme: { nameKey: 'unitConverter.weight.momme', ja: '匁', en: 'Momme', factor: 3.75, symbol: '匁' },
+      fun: { nameKey: 'unitConverter.weight.fun', ja: '分', en: 'Fun', factor: 0.375, symbol: '分' },
+      // その他の国際単位
+      grain: { nameKey: 'unitConverter.weight.grain', ja: 'グレーン', en: 'Grains', factor: 0.06479891, symbol: 'gr' },
+      dram: { nameKey: 'unitConverter.weight.dram', ja: 'ドラム', en: 'Drams', factor: 1.7718451953125, symbol: 'dr' },
+      troy_ounces: { nameKey: 'unitConverter.weight.troy_ounces', ja: 'トロイオンス', en: 'Troy Ounces', factor: 31.1034768, symbol: 'oz t' },
+      troy_pounds: { nameKey: 'unitConverter.weight.troy_pounds', ja: 'トロイポンド', en: 'Troy Pounds', factor: 373.2417216, symbol: 'lb t' }
     }
   },
   temperature: {
@@ -74,14 +93,18 @@ window.unitConverterData = {
       square_yards: { nameKey: 'unitConverter.area.square_yards', ja: '平方ヤード', en: 'Square Yards', factor: 0.83612736, symbol: 'yd²' },
       square_miles: { nameKey: 'unitConverter.area.square_miles', ja: '平方マイル', en: 'Square Miles', factor: 2589988.110336, symbol: 'mi²' }
     }
-  },
-  volume: {
+  },  volume: {
     baseUnit: 'liters',
     definitions: {
       liters: { nameKey: 'unitConverter.volume.liters', ja: 'リットル', en: 'Liters', factor: 1, symbol: 'L' },
       milliliters: { nameKey: 'unitConverter.volume.milliliters', ja: 'ミリリットル', en: 'Milliliters', factor: 0.001, symbol: 'mL' },
+      microliters: { nameKey: 'unitConverter.volume.microliters', ja: 'マイクロリットル', en: 'Microliters', factor: 1e-6, symbol: 'μL' },
       cubic_meters: { nameKey: 'unitConverter.volume.cubic_meters', ja: '立方メートル', en: 'Cubic Meters', factor: 1000, symbol: 'm³' },
       cubic_centimeters: { nameKey: 'unitConverter.volume.cubic_centimeters', ja: '立方センチメートル', en: 'Cubic Centimeters', factor: 0.001, symbol: 'cm³' },
+      cubic_millimeters: { nameKey: 'unitConverter.volume.cubic_millimeters', ja: '立方ミリメートル', en: 'Cubic Millimeters', factor: 1e-6, symbol: 'mm³' },
+      cubic_inches: { nameKey: 'unitConverter.volume.cubic_inches', ja: '立方インチ', en: 'Cubic Inches', factor: 0.016387064, symbol: 'in³' },
+      cubic_feet: { nameKey: 'unitConverter.volume.cubic_feet', ja: '立方フィート', en: 'Cubic Feet', factor: 28.316846592, symbol: 'ft³' },
+      cubic_yards: { nameKey: 'unitConverter.volume.cubic_yards', ja: '立方ヤード', en: 'Cubic Yards', factor: 764.554857984, symbol: 'yd³' },
       gallons_us: { nameKey: 'unitConverter.volume.gallons_us', ja: 'ガロン(米)', en: 'Gallons (US)', factor: 3.785411784, symbol: 'gal' },
       gallons_uk: { nameKey: 'unitConverter.volume.gallons_uk', ja: 'ガロン(英)', en: 'Gallons (UK)', factor: 4.54609, symbol: 'gal' },
       quarts_us: { nameKey: 'unitConverter.volume.quarts_us', ja: 'クォート(米)', en: 'Quarts (US)', factor: 0.946352946, symbol: 'qt' },
@@ -89,7 +112,16 @@ window.unitConverterData = {
       cups_us: { nameKey: 'unitConverter.volume.cups_us', ja: 'カップ(米)', en: 'Cups (US)', factor: 0.2365882365, symbol: 'cup' },
       fluid_ounces_us: { nameKey: 'unitConverter.volume.fluid_ounces_us', ja: '液量オンス(米)', en: 'Fluid Ounces (US)', factor: 0.0295735296875, symbol: 'fl oz' },
       tablespoons: { nameKey: 'unitConverter.volume.tablespoons', ja: '大さじ', en: 'Tablespoons', factor: 0.01478676478125, symbol: 'tbsp' },
-      teaspoons: { nameKey: 'unitConverter.volume.teaspoons', ja: '小さじ', en: 'Teaspoons', factor: 0.00492892159375, symbol: 'tsp' }
+      teaspoons: { nameKey: 'unitConverter.volume.teaspoons', ja: '小さじ', en: 'Teaspoons', factor: 0.00492892159375, symbol: 'tsp' },
+      // 日本の料理単位
+      cups_jp: { nameKey: 'unitConverter.volume.cups_jp', ja: 'カップ(日本)', en: 'Cups (Japan)', factor: 0.2, symbol: 'カップ' },
+      gou: { nameKey: 'unitConverter.volume.gou', ja: '合', en: 'Gou', factor: 0.18039, symbol: '合' },
+      sho: { nameKey: 'unitConverter.volume.sho', ja: '升', en: 'Sho', factor: 1.8039, symbol: '升' },
+      to: { nameKey: 'unitConverter.volume.to', ja: '斗', en: 'To', factor: 18.039, symbol: '斗' },
+      koku: { nameKey: 'unitConverter.volume.koku', ja: '石', en: 'Koku', factor: 180.39, symbol: '石' },
+      // バレル等
+      barrels_oil: { nameKey: 'unitConverter.volume.barrels_oil', ja: 'バレル(石油)', en: 'Barrels (Oil)', factor: 158.987294928, symbol: 'bbl' },
+      bushels_us: { nameKey: 'unitConverter.volume.bushels_us', ja: 'ブッシェル(米)', en: 'Bushels (US)', factor: 35.2390704, symbol: 'bu' }
     }
   },
   speed: {
@@ -162,7 +194,8 @@ window.unitConverterData = {
       '700w': { nameKey: 'unitConverter.microwave.700w', ja: '700W', en: '700W', factor: 1, baseWatt: 700, symbol: 'W' },
       '800w': { nameKey: 'unitConverter.microwave.800w', ja: '800W', en: '800W', factor: 1, baseWatt: 800, symbol: 'W' },
       '900w': { nameKey: 'unitConverter.microwave.900w', ja: '900W', en: '900W', factor: 1, baseWatt: 900, symbol: 'W' },
-      '1000w': { nameKey: 'unitConverter.microwave.1000w', ja: '1000W', en: '1000W', factor: 1, baseWatt: 1000, symbol: 'W' }
+      '1000w': { nameKey: 'unitConverter.microwave.1000w', ja: '1000W', en: '1000W', factor: 1, baseWatt: 1000, symbol: 'W' },
+      '1200w': { nameKey: 'unitConverter.microwave.1200w', ja: '1200W', en: '1200W', factor: 1, baseWatt: 1200, symbol: 'W' }
     },
     convert: function(val, from, to) {
       // 電子レンジの時間変換：同じエネルギー量で計算
@@ -170,6 +203,76 @@ window.unitConverterData = {
       const fromWatt = this.definitions[from].baseWatt;
       const toWatt = this.definitions[to].baseWatt;
       return val * (fromWatt / toWatt);
+    }
+  },
+  frequency: {
+    baseUnit: 'hertz',
+    definitions: {
+      hertz: { nameKey: 'unitConverter.frequency.hertz', ja: 'ヘルツ', en: 'Hertz', factor: 1, symbol: 'Hz' },
+      kilohertz: { nameKey: 'unitConverter.frequency.kilohertz', ja: 'キロヘルツ', en: 'Kilohertz', factor: 1000, symbol: 'kHz' },
+      megahertz: { nameKey: 'unitConverter.frequency.megahertz', ja: 'メガヘルツ', en: 'Megahertz', factor: 1e6, symbol: 'MHz' },
+      gigahertz: { nameKey: 'unitConverter.frequency.gigahertz', ja: 'ギガヘルツ', en: 'Gigahertz', factor: 1e9, symbol: 'GHz' },
+      terahertz: { nameKey: 'unitConverter.frequency.terahertz', ja: 'テラヘルツ', en: 'Terahertz', factor: 1e12, symbol: 'THz' },
+      revolutions_per_minute: { nameKey: 'unitConverter.frequency.revolutions_per_minute', ja: '回転毎分', en: 'Revolutions per Minute', factor: 1/60, symbol: 'rpm' },
+      radians_per_second: { nameKey: 'unitConverter.frequency.radians_per_second', ja: 'ラジアン毎秒', en: 'Radians per Second', factor: 1/(2*Math.PI), symbol: 'rad/s' }
+    }
+  },
+  angle: {
+    baseUnit: 'degrees',
+    definitions: {
+      degrees: { nameKey: 'unitConverter.angle.degrees', ja: '度', en: 'Degrees', factor: 1, symbol: '°' },
+      radians: { nameKey: 'unitConverter.angle.radians', ja: 'ラジアン', en: 'Radians', factor: 180/Math.PI, symbol: 'rad' },
+      gradians: { nameKey: 'unitConverter.angle.gradians', ja: 'グラディアン', en: 'Gradians', factor: 0.9, symbol: 'gon' },
+      turns: { nameKey: 'unitConverter.angle.turns', ja: '回転', en: 'Turns', factor: 360, symbol: 'turn' },
+      mils: { nameKey: 'unitConverter.angle.mils', ja: 'ミル', en: 'Mils', factor: 0.05625, symbol: 'mil' }
+    }
+  },
+  data: {
+    baseUnit: 'bytes',
+    definitions: {
+      bytes: { nameKey: 'unitConverter.data.bytes', ja: 'バイト', en: 'Bytes', factor: 1, symbol: 'B' },
+      kilobytes: { nameKey: 'unitConverter.data.kilobytes', ja: 'キロバイト', en: 'Kilobytes', factor: 1024, symbol: 'KB' },
+      megabytes: { nameKey: 'unitConverter.data.megabytes', ja: 'メガバイト', en: 'Megabytes', factor: 1024*1024, symbol: 'MB' },
+      gigabytes: { nameKey: 'unitConverter.data.gigabytes', ja: 'ギガバイト', en: 'Gigabytes', factor: 1024*1024*1024, symbol: 'GB' },
+      terabytes: { nameKey: 'unitConverter.data.terabytes', ja: 'テラバイト', en: 'Terabytes', factor: 1024*1024*1024*1024, symbol: 'TB' },
+      petabytes: { nameKey: 'unitConverter.data.petabytes', ja: 'ペタバイト', en: 'Petabytes', factor: Math.pow(1024, 5), symbol: 'PB' },
+      bits: { nameKey: 'unitConverter.data.bits', ja: 'ビット', en: 'Bits', factor: 1/8, symbol: 'bit' },
+      kilobits: { nameKey: 'unitConverter.data.kilobits', ja: 'キロビット', en: 'Kilobits', factor: 1024/8, symbol: 'Kbit' },
+      megabits: { nameKey: 'unitConverter.data.megabits', ja: 'メガビット', en: 'Megabits', factor: 1024*1024/8, symbol: 'Mbit' },
+      gigabits: { nameKey: 'unitConverter.data.gigabits', ja: 'ギガビット', en: 'Gigabits', factor: 1024*1024*1024/8, symbol: 'Gbit' }
+    }
+  },
+  fuel_consumption: {
+    baseUnit: 'kilometers_per_liter',
+    definitions: {
+      kilometers_per_liter: { nameKey: 'unitConverter.fuel.kilometers_per_liter', ja: 'キロメートル毎リットル', en: 'Kilometers per Liter', factor: 1, symbol: 'km/L' },
+      miles_per_gallon_us: { nameKey: 'unitConverter.fuel.miles_per_gallon_us', ja: 'マイル毎ガロン(米)', en: 'Miles per Gallon (US)', factor: 2.352145833, symbol: 'mpg' },
+      miles_per_gallon_uk: { nameKey: 'unitConverter.fuel.miles_per_gallon_uk', ja: 'マイル毎ガロン(英)', en: 'Miles per Gallon (UK)', factor: 2.824809363, symbol: 'mpg' },
+      liters_per_100km: { nameKey: 'unitConverter.fuel.liters_per_100km', ja: 'リットル毎100キロメートル', en: 'Liters per 100 Kilometers', factor: 1, symbol: 'L/100km', isInverse: true }
+    },
+    convert: function(val, from, to) {
+      // 燃費変換の特殊ロジック（L/100kmは逆数関係）
+      if (from === 'liters_per_100km') {
+        val = 100 / val; // km/Lに変換
+        from = 'kilometers_per_liter';
+      }
+      
+      let kmPerLiter;
+      if (from === 'kilometers_per_liter') {
+        kmPerLiter = val;
+      } else {
+        const fromDef = this.definitions[from];
+        kmPerLiter = val / fromDef.factor;
+      }
+      
+      if (to === 'liters_per_100km') {
+        return 100 / kmPerLiter;
+      } else if (to === 'kilometers_per_liter') {
+        return kmPerLiter;
+      } else {
+        const toDef = this.definitions[to];
+        return kmPerLiter * toDef.factor;
+      }
     }
   }
 };

@@ -8,9 +8,13 @@ window.unitConverterCore = {
     if (category === 'temperature' && typeof data.convert === 'function') {
       return data.convert(value, fromUnit, toUnit);
     }
-    
-    // 電子レンジの特殊変換
+      // 電子レンジの特殊変換
     if (category === 'microwave' && typeof data.convert === 'function') {
+      return data.convert(value, fromUnit, toUnit);
+    }
+    
+    // 燃費の特殊変換
+    if (category === 'fuel_consumption' && typeof data.convert === 'function') {
       return data.convert(value, fromUnit, toUnit);
     }
     
