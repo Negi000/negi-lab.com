@@ -98,9 +98,10 @@ window.unitConverterData = {  length: {
     definitions: {
       liters: { nameKey: 'unitConverter.volume.liters', ja: 'リットル', en: 'Liters', factor: 1, symbol: 'L' },
       milliliters: { nameKey: 'unitConverter.volume.milliliters', ja: 'ミリリットル', en: 'Milliliters', factor: 0.001, symbol: 'mL' },
+      cubic_centimeters: { nameKey: 'unitConverter.volume.cubic_centimeters', ja: '立方センチメートル(㏄)', en: 'Cubic Centimeters (cc)', factor: 0.001, symbol: 'cm³' },
+      cc: { nameKey: 'unitConverter.volume.cc', ja: 'シーシー(㏄)', en: 'CC', factor: 0.001, symbol: 'cc' },
       microliters: { nameKey: 'unitConverter.volume.microliters', ja: 'マイクロリットル', en: 'Microliters', factor: 1e-6, symbol: 'μL' },
       cubic_meters: { nameKey: 'unitConverter.volume.cubic_meters', ja: '立方メートル', en: 'Cubic Meters', factor: 1000, symbol: 'm³' },
-      cubic_centimeters: { nameKey: 'unitConverter.volume.cubic_centimeters', ja: '立方センチメートル', en: 'Cubic Centimeters', factor: 0.001, symbol: 'cm³' },
       cubic_millimeters: { nameKey: 'unitConverter.volume.cubic_millimeters', ja: '立方ミリメートル', en: 'Cubic Millimeters', factor: 1e-6, symbol: 'mm³' },
       cubic_inches: { nameKey: 'unitConverter.volume.cubic_inches', ja: '立方インチ', en: 'Cubic Inches', factor: 0.016387064, symbol: 'in³' },
       cubic_feet: { nameKey: 'unitConverter.volume.cubic_feet', ja: '立方フィート', en: 'Cubic Feet', factor: 28.316846592, symbol: 'ft³' },
@@ -121,7 +122,11 @@ window.unitConverterData = {  length: {
       koku: { nameKey: 'unitConverter.volume.koku', ja: '石', en: 'Koku', factor: 180.39, symbol: '石' },
       // バレル等
       barrels_oil: { nameKey: 'unitConverter.volume.barrels_oil', ja: 'バレル(石油)', en: 'Barrels (Oil)', factor: 158.987294928, symbol: 'bbl' },
-      bushels_us: { nameKey: 'unitConverter.volume.bushels_us', ja: 'ブッシェル(米)', en: 'Bushels (US)', factor: 35.2390704, symbol: 'bu' }
+      bushels_us: { nameKey: 'unitConverter.volume.bushels_us', ja: 'ブッシェル(米)', en: 'Bushels (US)', factor: 35.2390704, symbol: 'bu' },
+      // その他の国際単位
+      drops: { nameKey: 'unitConverter.volume.drops', ja: 'ドロップ', en: 'Drops', factor: 5e-5, symbol: 'drop' },
+      drams: { nameKey: 'unitConverter.volume.drams', ja: 'ドラム', en: 'Drams', factor: 0.0036966911953, symbol: 'dr' },
+      shots: { nameKey: 'unitConverter.volume.shots', ja: 'ショット', en: 'Shots', factor: 0.0443603, symbol: 'shot' }
     }
   },
   speed: {
@@ -270,9 +275,166 @@ window.unitConverterData = {  length: {
       } else if (to === 'kilometers_per_liter') {
         return kmPerLiter;
       } else {
-        const toDef = this.definitions[to];
-        return kmPerLiter * toDef.factor;
+        const toDef = this.definitions[to];        return kmPerLiter * toDef.factor;
       }
+    }
+  },
+  
+  // 新しいカテゴリ群
+  density: {
+    baseUnit: 'kg_per_cubic_meter',
+    definitions: {
+      kg_per_cubic_meter: { nameKey: 'unitConverter.density.kg_per_cubic_meter', ja: 'キログラム毎立方メートル', en: 'kg/m³', factor: 1, symbol: 'kg/m³' },
+      g_per_cubic_centimeter: { nameKey: 'unitConverter.density.g_per_cubic_centimeter', ja: 'グラム毎立方センチメートル', en: 'g/cm³', factor: 1000, symbol: 'g/cm³' },
+      g_per_liter: { nameKey: 'unitConverter.density.g_per_liter', ja: 'グラム毎リットル', en: 'g/L', factor: 1, symbol: 'g/L' },
+      lb_per_cubic_foot: { nameKey: 'unitConverter.density.lb_per_cubic_foot', ja: 'ポンド毎立方フィート', en: 'lb/ft³', factor: 16.0185, symbol: 'lb/ft³' },
+      oz_per_cubic_inch: { nameKey: 'unitConverter.density.oz_per_cubic_inch', ja: 'オンス毎立方インチ', en: 'oz/in³', factor: 1729.994, symbol: 'oz/in³' }
+    }
+  },
+  
+  force: {
+    baseUnit: 'newtons',
+    definitions: {
+      newtons: { nameKey: 'unitConverter.force.newtons', ja: 'ニュートン', en: 'Newtons', factor: 1, symbol: 'N' },
+      kilonewtons: { nameKey: 'unitConverter.force.kilonewtons', ja: 'キロニュートン', en: 'Kilonewtons', factor: 1000, symbol: 'kN' },
+      dynes: { nameKey: 'unitConverter.force.dynes', ja: 'ダイン', en: 'Dynes', factor: 1e-5, symbol: 'dyn' },
+      pounds_force: { nameKey: 'unitConverter.force.pounds_force', ja: 'ポンドフォース', en: 'Pounds Force', factor: 4.4482216, symbol: 'lbf' },
+      kilograms_force: { nameKey: 'unitConverter.force.kilograms_force', ja: 'キログラムフォース', en: 'Kilograms Force', factor: 9.80665, symbol: 'kgf' },
+      tons_force: { nameKey: 'unitConverter.force.tons_force', ja: 'トンフォース', en: 'Tons Force', factor: 9806.65, symbol: 'tf' },
+      ounces_force: { nameKey: 'unitConverter.force.ounces_force', ja: 'オンスフォース', en: 'Ounces Force', factor: 0.27801385, symbol: 'ozf' }
+    }
+  },
+  
+  torque: {
+    baseUnit: 'newton_meters',
+    definitions: {
+      newton_meters: { nameKey: 'unitConverter.torque.newton_meters', ja: 'ニュートンメートル', en: 'Newton-meters', factor: 1, symbol: 'N⋅m' },
+      foot_pounds: { nameKey: 'unitConverter.torque.foot_pounds', ja: 'フィートポンド', en: 'Foot-pounds', factor: 1.3558179, symbol: 'ft⋅lb' },
+      inch_pounds: { nameKey: 'unitConverter.torque.inch_pounds', ja: 'インチポンド', en: 'Inch-pounds', factor: 0.1129848, symbol: 'in⋅lb' },
+      kilogram_meters: { nameKey: 'unitConverter.torque.kilogram_meters', ja: 'キログラムメートル', en: 'Kilogram-meters', factor: 9.80665, symbol: 'kg⋅m' },
+      dyne_centimeters: { nameKey: 'unitConverter.torque.dyne_centimeters', ja: 'ダインセンチメートル', en: 'Dyne-centimeters', factor: 1e-7, symbol: 'dyn⋅cm' }
+    }
+  },
+  
+  acceleration: {
+    baseUnit: 'meters_per_second_squared',
+    definitions: {
+      meters_per_second_squared: { nameKey: 'unitConverter.acceleration.meters_per_second_squared', ja: 'メートル毎秒毎秒', en: 'm/s²', factor: 1, symbol: 'm/s²' },
+      gravity_standard: { nameKey: 'unitConverter.acceleration.gravity_standard', ja: '標準重力', en: 'Standard Gravity', factor: 9.80665, symbol: 'g' },
+      feet_per_second_squared: { nameKey: 'unitConverter.acceleration.feet_per_second_squared', ja: 'フィート毎秒毎秒', en: 'ft/s²', factor: 0.3048, symbol: 'ft/s²' },
+      galileo: { nameKey: 'unitConverter.acceleration.galileo', ja: 'ガル', en: 'Gal', factor: 0.01, symbol: 'Gal' },
+      milligal: { nameKey: 'unitConverter.acceleration.milligal', ja: 'ミリガル', en: 'Milligal', factor: 1e-5, symbol: 'mGal' }
+    }
+  },
+  
+  velocity: {
+    baseUnit: 'meters_per_second',
+    definitions: {
+      meters_per_second: { nameKey: 'unitConverter.velocity.meters_per_second', ja: 'メートル毎秒', en: 'm/s', factor: 1, symbol: 'm/s' },
+      kilometers_per_hour: { nameKey: 'unitConverter.velocity.kilometers_per_hour', ja: 'キロメートル毎時', en: 'km/h', factor: 0.277777778, symbol: 'km/h' },
+      miles_per_hour: { nameKey: 'unitConverter.velocity.miles_per_hour', ja: 'マイル毎時', en: 'mph', factor: 0.44704, symbol: 'mph' },
+      feet_per_second: { nameKey: 'unitConverter.velocity.feet_per_second', ja: 'フィート毎秒', en: 'ft/s', factor: 0.3048, symbol: 'ft/s' },
+      knots: { nameKey: 'unitConverter.velocity.knots', ja: 'ノット', en: 'Knots', factor: 0.514444444, symbol: 'kn' },
+      mach: { nameKey: 'unitConverter.velocity.mach', ja: 'マッハ', en: 'Mach', factor: 343, symbol: 'M' },
+      speed_of_light: { nameKey: 'unitConverter.velocity.speed_of_light', ja: '光速', en: 'Speed of Light', factor: 299792458, symbol: 'c' },
+      mils_per_hour: { nameKey: 'unitConverter.velocity.mils_per_hour', ja: 'ミル毎時', en: 'mil/h', factor: 0.0254e-3, symbol: 'mil/h' }
+    }
+  },
+  
+  luminance: {
+    baseUnit: 'candela_per_square_meter',
+    definitions: {
+      candela_per_square_meter: { nameKey: 'unitConverter.luminance.candela_per_square_meter', ja: 'カンデラ毎平方メートル', en: 'cd/m²', factor: 1, symbol: 'cd/m²' },
+      nit: { nameKey: 'unitConverter.luminance.nit', ja: 'ニト', en: 'Nit', factor: 1, symbol: 'nt' },
+      stilb: { nameKey: 'unitConverter.luminance.stilb', ja: 'スチルブ', en: 'Stilb', factor: 10000, symbol: 'sb' },
+      lambert: { nameKey: 'unitConverter.luminance.lambert', ja: 'ランバート', en: 'Lambert', factor: 3183.09886, symbol: 'L' },
+      foot_lambert: { nameKey: 'unitConverter.luminance.foot_lambert', ja: 'フートランバート', en: 'Foot-lambert', factor: 3.4262591, symbol: 'fL' }
+    }
+  },
+  
+  illuminance: {
+    baseUnit: 'lux',
+    definitions: {
+      lux: { nameKey: 'unitConverter.illuminance.lux', ja: 'ルクス', en: 'Lux', factor: 1, symbol: 'lx' },
+      foot_candles: { nameKey: 'unitConverter.illuminance.foot_candles', ja: 'フートキャンドル', en: 'Foot-candles', factor: 10.76391, symbol: 'fc' },
+      phot: { nameKey: 'unitConverter.illuminance.phot', ja: 'フォト', en: 'Phot', factor: 10000, symbol: 'ph' },
+      nox: { nameKey: 'unitConverter.illuminance.nox', ja: 'ノックス', en: 'Nox', factor: 0.001, symbol: 'nx' }
+    }
+  },
+  
+  electric_current: {
+    baseUnit: 'amperes',
+    definitions: {
+      amperes: { nameKey: 'unitConverter.electric_current.amperes', ja: 'アンペア', en: 'Amperes', factor: 1, symbol: 'A' },
+      milliamperes: { nameKey: 'unitConverter.electric_current.milliamperes', ja: 'ミリアンペア', en: 'Milliamperes', factor: 0.001, symbol: 'mA' },
+      microamperes: { nameKey: 'unitConverter.electric_current.microamperes', ja: 'マイクロアンペア', en: 'Microamperes', factor: 1e-6, symbol: 'μA' },
+      kiloamperes: { nameKey: 'unitConverter.electric_current.kiloamperes', ja: 'キロアンペア', en: 'Kiloamperes', factor: 1000, symbol: 'kA' },
+      abamperes: { nameKey: 'unitConverter.electric_current.abamperes', ja: 'アブアンペア', en: 'Abamperes', factor: 10, symbol: 'abA' }
+    }
+  },
+  
+  voltage: {
+    baseUnit: 'volts',
+    definitions: {
+      volts: { nameKey: 'unitConverter.voltage.volts', ja: 'ボルト', en: 'Volts', factor: 1, symbol: 'V' },
+      millivolts: { nameKey: 'unitConverter.voltage.millivolts', ja: 'ミリボルト', en: 'Millivolts', factor: 0.001, symbol: 'mV' },
+      microvolts: { nameKey: 'unitConverter.voltage.microvolts', ja: 'マイクロボルト', en: 'Microvolts', factor: 1e-6, symbol: 'μV' },
+      kilovolts: { nameKey: 'unitConverter.voltage.kilovolts', ja: 'キロボルト', en: 'Kilovolts', factor: 1000, symbol: 'kV' },
+      megavolts: { nameKey: 'unitConverter.voltage.megavolts', ja: 'メガボルト', en: 'Megavolts', factor: 1e6, symbol: 'MV' }
+    }
+  },
+  
+  resistance: {
+    baseUnit: 'ohms',
+    definitions: {
+      ohms: { nameKey: 'unitConverter.resistance.ohms', ja: 'オーム', en: 'Ohms', factor: 1, symbol: 'Ω' },
+      milliohms: { nameKey: 'unitConverter.resistance.milliohms', ja: 'ミリオーム', en: 'Milliohms', factor: 0.001, symbol: 'mΩ' },
+      microohms: { nameKey: 'unitConverter.resistance.microohms', ja: 'マイクロオーム', en: 'Microohms', factor: 1e-6, symbol: 'μΩ' },
+      kiloohms: { nameKey: 'unitConverter.resistance.kiloohms', ja: 'キロオーム', en: 'Kiloohms', factor: 1000, symbol: 'kΩ' },
+      megaohms: { nameKey: 'unitConverter.resistance.megaohms', ja: 'メガオーム', en: 'Megaohms', factor: 1e6, symbol: 'MΩ' }
+    }
+  },
+  
+  capacitance: {
+    baseUnit: 'farads',
+    definitions: {
+      farads: { nameKey: 'unitConverter.capacitance.farads', ja: 'ファラド', en: 'Farads', factor: 1, symbol: 'F' },
+      millifarads: { nameKey: 'unitConverter.capacitance.millifarads', ja: 'ミリファラド', en: 'Millifarads', factor: 0.001, symbol: 'mF' },
+      microfarads: { nameKey: 'unitConverter.capacitance.microfarads', ja: 'マイクロファラド', en: 'Microfarads', factor: 1e-6, symbol: 'μF' },
+      nanofarads: { nameKey: 'unitConverter.capacitance.nanofarads', ja: 'ナノファラド', en: 'Nanofarads', factor: 1e-9, symbol: 'nF' },
+      picofarads: { nameKey: 'unitConverter.capacitance.picofarads', ja: 'ピコファラド', en: 'Picofarads', factor: 1e-12, symbol: 'pF' }
+    }
+  },
+  
+  inductance: {
+    baseUnit: 'henries',
+    definitions: {
+      henries: { nameKey: 'unitConverter.inductance.henries', ja: 'ヘンリー', en: 'Henries', factor: 1, symbol: 'H' },
+      millihenries: { nameKey: 'unitConverter.inductance.millihenries', ja: 'ミリヘンリー', en: 'Millihenries', factor: 0.001, symbol: 'mH' },
+      microhenries: { nameKey: 'unitConverter.inductance.microhenries', ja: 'マイクロヘンリー', en: 'Microhenries', factor: 1e-6, symbol: 'μH' },
+      nanohenries: { nameKey: 'unitConverter.inductance.nanohenries', ja: 'ナノヘンリー', en: 'Nanohenries', factor: 1e-9, symbol: 'nH' }
+    }
+  },
+  
+  radioactivity: {
+    baseUnit: 'becquerels',
+    definitions: {
+      becquerels: { nameKey: 'unitConverter.radioactivity.becquerels', ja: 'ベクレル', en: 'Becquerels', factor: 1, symbol: 'Bq' },
+      curies: { nameKey: 'unitConverter.radioactivity.curies', ja: 'キュリー', en: 'Curies', factor: 3.7e10, symbol: 'Ci' },
+      rutherford: { nameKey: 'unitConverter.radioactivity.rutherford', ja: 'ラザフォード', en: 'Rutherford', factor: 1e6, symbol: 'Rd' },
+      disintegrations_per_minute: { nameKey: 'unitConverter.radioactivity.disintegrations_per_minute', ja: '毎分崩壊数', en: 'DPM', factor: 1/60, symbol: 'dpm' },
+      disintegrations_per_second: { nameKey: 'unitConverter.radioactivity.disintegrations_per_second', ja: '毎秒崩壊数', en: 'DPS', factor: 1, symbol: 'dps' }
+    }
+  },
+  
+  radiation_dose: {
+    baseUnit: 'grays',
+    definitions: {
+      grays: { nameKey: 'unitConverter.radiation_dose.grays', ja: 'グレイ', en: 'Grays', factor: 1, symbol: 'Gy' },
+      rads: { nameKey: 'unitConverter.radiation_dose.rads', ja: 'ラド', en: 'Rads', factor: 0.01, symbol: 'rad' },
+      sieverts: { nameKey: 'unitConverter.radiation_dose.sieverts', ja: 'シーベルト', en: 'Sieverts', factor: 1, symbol: 'Sv' },
+      rems: { nameKey: 'unitConverter.radiation_dose.rems', ja: 'レム', en: 'Rems', factor: 0.01, symbol: 'rem' },
+      roentgens: { nameKey: 'unitConverter.radiation_dose.roentgens', ja: 'レントゲン', en: 'Roentgens', factor: 0.00877, symbol: 'R' }
     }
   }
 };
