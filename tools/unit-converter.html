@@ -787,8 +787,7 @@
           });
         });
       }
-      
-      // 電子レンジモード切り替え
+        // 電子レンジモード切り替え
       microwaveSecBtn.addEventListener('click', () => {
         if (microwaveInputMode !== 'sec') {
           microwaveInputMode = 'sec';
@@ -801,7 +800,9 @@
             const totalSeconds = minutes * 60 + seconds;
             inputValue.value = totalSeconds;
           }
-            hideMinuteSecondInputs();
+          hideMinuteSecondInputs();
+          // 結果表示も秒モードに切り替え（分・秒表示を隠す）
+          hideResultMinuteSecond();
           convert();
         }
       });
@@ -837,15 +838,14 @@
           minInput.className = 'flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent';
           minInput.placeholder = '分';
           minInput.min = '0';
-        }
-        if (!secInput) {
+        }        if (!secInput) {
           secInput = document.createElement('input');
           secInput.type = 'number';
           secInput.id = 'inputSecond';
           secInput.className = 'flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent';
           secInput.placeholder = '秒';
           secInput.min = '0';
-          secInput.max = '59';        }
+        }
       }
       
       function showMinuteSecondInputs(fromSeconds = null) {
@@ -878,11 +878,12 @@
         
         container.appendChild(minWrapper);
         container.appendChild(secWrapper);
-        
-        // 値設定
+          // 値設定
         if (fromSeconds !== null && !isNaN(fromSeconds)) {
-          minInput.value = Math.floor(fromSeconds / 60);
-          secInput.value = Math.round(fromSeconds % 60);        }
+          const totalSecondsRounded = Math.round(fromSeconds);
+          minInput.value = Math.floor(totalSecondsRounded / 60);
+          secInput.value = totalSecondsRounded % 60;
+        }
       }
       
       function hideMinuteSecondInputs() {
@@ -892,11 +893,23 @@
           container.style.display = 'none';
           container.innerHTML = '';
         }
-      }
-
-      function addMinuteSecondInputListeners() {
+      }      function addMinuteSecondInputListeners() {
         if (minInput) minInput.addEventListener('input', convert);
-        if (secInput) secInput.addEventListener('input', convert);
+        if (secInput) {
+          secInput.addEventListener('input', function() {
+            // 秒が60以上入力された場合、自動的に分に変換
+            const secValue = parseInt(this.value) || 0;
+            if (secValue >= 60) {
+              const additionalMinutes = Math.floor(secValue / 60);
+              const remainingSeconds = secValue % 60;
+              const currentMinutes = parseInt(minInput.value) || 0;
+              
+              minInput.value = currentMinutes + additionalMinutes;
+              this.value = remainingSeconds;
+            }
+            convert();
+          });
+        }
       }
 
       function updateMicrowaveToggleUI() {
@@ -1031,10 +1044,14 @@
           } else {
             const displayValue = (category === 'temperature') ? convertedValue.toFixed(2) : convertedValue.toFixed(6).replace(/\.?0+$/,'');
             resultValue.value = displayValue;
-            
-            // 電子レンジモードの結果表示
+              // 電子レンジモードの結果表示
             if (category === 'microwave') {
-              showResultMinuteSecond(convertedValue);
+              // 入力モードに応じて結果表示も切り替え
+              if (microwaveInputMode === 'min') {
+                showResultMinuteSecond(convertedValue);
+              } else {
+                hideResultMinuteSecond();
+              }
             } else {
               hideResultMinuteSecond();
             }
@@ -1044,9 +1061,7 @@
           SecurityUtils.showUserError('変換中にエラーが発生しました', error);
           resultValue.value = '';
         }
-      }
-
-      // 結果側の分・秒表示関数
+      }      // 結果側の分・秒表示関数
       function showResultMinuteSecond(totalSeconds) {
         const container = document.getElementById('resultMinuteBox');
         if (!container) return;
@@ -1055,8 +1070,10 @@
         container.style.display = 'flex';
         container.className = 'flex gap-2 mt-2';
         
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = Math.round(totalSeconds % 60);
+        // 秒数を正確に分・秒に変換（秒数が59を超える場合を適切に処理）
+        const totalSecondsRounded = Math.round(totalSeconds);
+        const minutes = Math.floor(totalSecondsRounded / 60);
+        const seconds = totalSecondsRounded % 60;
         
         // 分表示
         const minWrapper = document.createElement('div');
