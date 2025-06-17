@@ -30,7 +30,8 @@ window.translations = {
     'unitConverter.category.time': '時間',
     'unitConverter.category.microwave': '電子レンジ',
 
-    // 入力・出力エリア    'unitConverter.inputTitle': '入力',
+    // 入力・出力エリア    
+    'unitConverter.inputTitle': '入力',
     'unitConverter.outputTitle': '結果',
     'unitConverter.inputValueLabel': '数値を入力',
     'unitConverter.inputPlaceholder': '例: 100',
