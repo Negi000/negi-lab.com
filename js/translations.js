@@ -17,8 +17,7 @@ window.translations = {
     'unitConverter.categoryTitle': 'カテゴリを選択',
     'unitConverter.swapButton': '単位を入れ替え',
     
-    // カテゴリ
-    'unitConverter.category.length': '長さ',
+    // カテゴリ    'unitConverter.category.length': '長さ',
     'unitConverter.category.weight': '重さ',
     'unitConverter.category.temperature': '温度',
     'unitConverter.category.area': '面積',
@@ -29,6 +28,10 @@ window.translations = {
     'unitConverter.category.power': '電力',
     'unitConverter.category.time': '時間',
     'unitConverter.category.microwave': '電子レンジ',
+    'unitConverter.category.frequency': '周波数',
+    'unitConverter.category.angle': '角度',
+    'unitConverter.category.data': 'データ量',
+    'unitConverter.category.fuel_consumption': '燃費',
 
     // 入力・出力エリア    
     'unitConverter.inputTitle': '入力',
@@ -160,8 +163,7 @@ window.translations = {
     'unitConverter.categoryTitle': 'Select Category',
     'unitConverter.swapButton': 'Swap Units',
     
-    // カテゴリ
-    'unitConverter.category.length': 'Length',
+    // カテゴリ    'unitConverter.category.length': 'Length',
     'unitConverter.category.weight': 'Weight',
     'unitConverter.category.temperature': 'Temperature',
     'unitConverter.category.area': 'Area',
@@ -172,6 +174,10 @@ window.translations = {
     'unitConverter.category.power': 'Power',
     'unitConverter.category.time': 'Time',
     'unitConverter.category.microwave': 'Microwave',
+    'unitConverter.category.frequency': 'Frequency',
+    'unitConverter.category.angle': 'Angle',
+    'unitConverter.category.data': 'Data Size',
+    'unitConverter.category.fuel_consumption': 'Fuel Efficiency',
 
     // 入力・出力エリア    
     'unitConverter.inputTitle': 'Input',
