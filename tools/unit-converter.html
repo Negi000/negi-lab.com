@@ -39,8 +39,8 @@
   <meta name="twitter:image" content="https://negi-lab.com/ogp-unit-converter.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Security and Common Utilities -->
+    <!-- Security and Common Utilities -->
+  <script src="../js/translations.js"></script>
   <script src="../js/unit-converter-data.js"></script>
     <script src="../js/unit-converter-core.js"></script>
     <script src="../js/security-utils.js"></script>
@@ -478,9 +478,9 @@
               
               <div class="space-y-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.inputValueLabel">数値を入力</label>
-                  <input type="number" id="inputValue" value="1" 
+                  <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.inputValueLabel">数値を入力</label>                  <input type="number" id="inputValue" value="1" 
                          class="w-full px-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200 bg-white"
+                         data-translate-key="unitConverter.inputPlaceholder"
                          placeholder="例: 100">
                   <span id="inputMinuteSecondBox" class="hidden mt-2 flex gap-2"></span>
                 </div>
@@ -492,12 +492,11 @@
                     <span id="inputUnitLabel" class="text-sm text-gray-500 font-medium min-w-[2rem]"></span>
                   </div>
                 </div>
-                
-                <div id="microwaveControls" class="hidden">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">入力形式</label>
+                  <div id="microwaveControls" class="hidden">
+                  <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.microwave.inputFormat">入力形式</label>
                   <div class="flex rounded-xl border border-gray-300 overflow-hidden">
-                    <button id="microwaveSecBtn" class="flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition">秒</button>
-                    <button id="microwaveMinBtn" class="flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">分</button>
+                    <button id="microwaveSecBtn" class="flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition" data-translate-key="unitConverter.microwave.seconds">秒</button>
+                    <button id="microwaveMinBtn" class="flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-translate-key="unitConverter.microwave.minutes">分</button>
                   </div>
                 </div>
               </div>
@@ -511,15 +510,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
-                <h3 class="text-lg font-semibold text-gray-900" data-translate-key="unitConverter.resultTitle">結果</h3>
+                <h3 class="text-lg font-semibold text-gray-900" data-translate-key="unitConverter.outputTitle">結果</h3>
               </div>
               
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.resultLabel">変換結果</label>
-                  <div class="relative">
-                    <input type="text" id="resultValue" readonly 
+                  <div class="relative">                    <input type="text" id="resultValue" readonly 
                            class="w-full px-4 py-3 text-lg font-semibold border border-gray-300 rounded-xl bg-gray-50 text-gray-900"
+                           data-translate-key="unitConverter.resultPlaceholder"
                            placeholder="結果がここに表示されます">
                     <button id="copyResult" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-accent transition-colors">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -539,10 +538,7 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- 単位入れ替えボタン -->
-          <div class="flex justify-center mb-6">
+          </div>          <div class="flex justify-center mb-6">
             <button id="swapUnits" class="flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-xl hover:bg-accent/90 transition-all duration-200 transform hover:scale-105 shadow-lg">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
@@ -863,13 +859,12 @@
           container.style.display = 'flex';
           container.className = 'flex gap-2 mt-2 w-full';
         }
-        
-        // 分入力
+          // 分入力
         const minWrapper = document.createElement('div');
         minWrapper.className = 'flex-1 min-w-0';
         const minLabel = document.createElement('label');
         minLabel.className = 'block text-xs text-gray-600 mb-1';
-        minLabel.textContent = '分';
+        minLabel.textContent = window.t('unitConverter.microwave.minutesLabel', '分');
         minInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
         minWrapper.appendChild(minLabel);
         minWrapper.appendChild(minInput);
@@ -879,7 +874,7 @@
         secWrapper.className = 'flex-1 min-w-0';
         const secLabel = document.createElement('label');
         secLabel.className = 'block text-xs text-gray-600 mb-1';
-        secLabel.textContent = '秒';
+        secLabel.textContent = window.t('unitConverter.microwave.secondsLabel', '秒');
         secInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
         secWrapper.appendChild(secLabel);
         secWrapper.appendChild(secInput);
@@ -918,28 +913,31 @@
             convert();
           });
         }
-      }
-
-      function updateMicrowaveToggleUI() {
+      }      function updateMicrowaveToggleUI() {
         if (categorySelect.value === 'microwave') {
           if (microwaveInputMode === 'sec') {
             microwaveSecBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition';
             microwaveMinBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
-            inputValue.placeholder = '例: 600Wでのレシピ時間(秒)';
+            const lang = window.getLanguage();
+            inputValue.placeholder = lang === 'en' 
+              ? 'e.g. Recipe time (seconds) for 600W' 
+              : '例: 600Wでのレシピ時間(秒)';
             hideMinuteSecondInputs();
           } else {
             microwaveMinBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition';
             microwaveSecBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
-            inputValue.placeholder = '例: 600Wでのレシピ時間(分)';
+            const lang = window.getLanguage();
+            inputValue.placeholder = lang === 'en'
+              ? 'e.g. Recipe time (minutes) for 600W'
+              : '例: 600Wでのレシピ時間(分)';
           }
         }
       }
 
       // 既存の関数群
       const unitsData = window.unitConverterData;
-      
-      function getTranslatedUnitName(unitDef) {
-        const lang = document.documentElement.lang || 'ja';
+        function getTranslatedUnitName(unitDef) {
+        const lang = window.getLanguage();
         if (unitDef[lang]) return unitDef[lang];
         return unitDef.en || unitDef.ja || unitDef.nameKey;
       }
@@ -998,9 +996,8 @@
           fromUnitSelect.selectedIndex = 0;
           toUnitSelect.selectedIndex = 1;
         }
-      }
-
-      function updateUnitLabels() {
+      }      // 単位ラベルを更新する関数（多言語対応）
+      window.updateUnitLabels = function() {
         const cat = categorySelect.value;
         let fromUnitSymbol = '';
         let toUnitSymbol = '';
@@ -1015,6 +1012,29 @@
         }
         inputUnitLabel.textContent = fromUnitSymbol;
         resultUnitLabel.textContent = toUnitSymbol;
+          // 電子レンジモードの分・秒ラベルも更新
+        updateMinuteSecondLabels();
+      };
+
+      // 分・秒ラベルの翻訳を更新する関数
+      function updateMinuteSecondLabels() {
+        // 入力側の分・秒ラベル
+        const inputContainer = document.getElementById('inputMinuteSecondBox');
+        if (inputContainer && inputContainer.style.display !== 'none') {
+          const minuteLabel = inputContainer.querySelector('label:first-child');
+          const secondLabel = inputContainer.querySelector('label:last-child');
+          if (minuteLabel) minuteLabel.textContent = window.t('unitConverter.microwave.minutesLabel', '分');
+          if (secondLabel) secondLabel.textContent = window.t('unitConverter.microwave.secondsLabel', '秒');
+        }
+        
+        // 結果側の分・秒ラベル
+        const resultContainer = document.getElementById('resultMinuteBox');
+        if (resultContainer && resultContainer.style.display !== 'none') {
+          const minuteLabel = resultContainer.querySelector('label:first-child');
+          const secondLabel = resultContainer.querySelector('label:last-child');
+          if (minuteLabel) minuteLabel.textContent = window.t('unitConverter.microwave.minutesLabel', '分');
+          if (secondLabel) secondLabel.textContent = window.t('unitConverter.microwave.secondsLabel', '秒');
+        }
       }
 
       // 変換ロジック
@@ -1087,13 +1107,12 @@
         const totalSecondsRounded = Math.round(totalSeconds);
         const minutes = Math.floor(totalSecondsRounded / 60);
         const seconds = totalSecondsRounded % 60;
-        
-        // 分表示
+          // 分表示
         const minWrapper = document.createElement('div');
         minWrapper.className = 'flex-1 min-w-0';
         const minLabel = document.createElement('label');
         minLabel.className = 'block text-xs text-gray-600 mb-1';
-        minLabel.textContent = '分';
+        minLabel.textContent = window.t('unitConverter.microwave.minutesLabel', '分');
         const minDisplay = document.createElement('input');
         minDisplay.type = 'text';
         minDisplay.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 min-w-0';
@@ -1107,7 +1126,7 @@
         secWrapper.className = 'flex-1 min-w-0';
         const secLabel = document.createElement('label');
         secLabel.className = 'block text-xs text-gray-600 mb-1';
-        secLabel.textContent = '秒';
+        secLabel.textContent = window.t('unitConverter.microwave.secondsLabel', '秒');
         const secDisplay = document.createElement('input');
         secDisplay.type = 'text';
         secDisplay.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 min-w-0';
@@ -1130,11 +1149,13 @@
           </svg>
         `;
         minuteSecondCopyBtn.title = '分・秒形式でコピー';
-        
-        // 分・秒コピーボタンのイベントリスナー
+          // 分・秒コピーボタンのイベントリスナー
         minuteSecondCopyBtn.addEventListener('click', async () => {
           try {
-            const textToCopy = `${minutes}分${seconds}秒`;
+            const lang = window.getLanguage();
+            const textToCopy = lang === 'en' 
+              ? `${minutes}min ${seconds}sec` 
+              : `${minutes}分${seconds}秒`;
             await navigator.clipboard.writeText(textToCopy);
             minuteSecondCopyBtn.innerHTML = '✓';
             setTimeout(() => {
