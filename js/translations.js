@@ -173,7 +173,8 @@ window.translations = {
     'unitConverter.category.time': 'Time',
     'unitConverter.category.microwave': 'Microwave',
 
-    // 入力・出力エリア    'unitConverter.inputTitle': 'Input',
+    // 入力・出力エリア    
+    'unitConverter.inputTitle': 'Input',
     'unitConverter.outputTitle': 'Result',
     'unitConverter.inputValueLabel': 'Enter Value',
     'unitConverter.inputPlaceholder': 'e.g. 100',
