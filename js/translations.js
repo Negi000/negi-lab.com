@@ -10,7 +10,8 @@ window.translations = {
     'option.en': 'English',
     'header.nav.tools': 'ツール',
     'header.nav.wikis': 'ゲームWiki',
-    'header.guide': 'ガイド',    // 単位変換ツール
+    'header.guide': 'ガイド',    
+    // 単位変換ツール
     'unitConverter.pageTitle': '【全単位網羅】単位変換ツール - 長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位も対応 | negi-lab.com',
     'unitConverter.metaDescription': '長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。スマホ対応・無料・広告最小限。',
     'unitConverter.mainTitle': '単位変換ツール',
@@ -79,7 +80,8 @@ window.translations = {
     'unitConverter.guide.step1': '1. カテゴリを選択',
     'unitConverter.guide.step2': '2. 数値を入力',
     'unitConverter.guide.step3': '3. 変換元・変換先の単位を選択',
-    'unitConverter.guide.step4': '4. 結果が自動表示されます',    // SEOセクション
+    'unitConverter.guide.step4': '4. 結果が自動表示されます',    
+    // SEOセクション
     'unitConverter.seo.featuresTitle': '単位変換ツールの特徴',
     'unitConverter.seo.comprehensiveTitle': '豊富な単位カテゴリ',
     'unitConverter.seo.specializedTitle': '専門・科学単位も対応',
@@ -257,14 +259,16 @@ window.translations = {
     'option.en': 'English',
     'header.nav.tools': 'Tools',
     'header.nav.wikis': 'Game Wiki',
-    'header.guide': 'Guide',    // 単位変換ツール
+    'header.guide': 'Guide',    
+    // 単位変換ツール
     'unitConverter.pageTitle': 'Universal Unit Converter - Length, Weight, Temperature, Volume, Pressure, Energy, Time & More | negi-lab.com',
     'unitConverter.metaDescription': 'Comprehensive unit converter for length, weight, temperature, volume, pressure, energy, time, and specialized units. Perfect for daily use, engineering, science, cooking, and international living.',
     'unitConverter.mainTitle': 'Unit Converter',
     'unitConverter.categoryTitle': 'Select Category',
     'unitConverter.swapButton': 'Swap Units',
     
-    // カテゴリ    'unitConverter.category.length': 'Length',
+    // カテゴリ    
+    'unitConverter.category.length': 'Length',
     'unitConverter.category.weight': 'Weight',
     'unitConverter.category.temperature': 'Temperature',
     'unitConverter.category.area': 'Area',
@@ -325,7 +329,8 @@ window.translations = {
     'unitConverter.guide.step1': '1. Select a category',
     'unitConverter.guide.step2': '2. Enter a value',
     'unitConverter.guide.step3': '3. Choose from and to units',
-    'unitConverter.guide.step4': '4. Result will be displayed automatically',    // SEOセクション
+    'unitConverter.guide.step4': '4. Result will be displayed automatically',    
+    // SEOセクション
     'unitConverter.seo.featuresTitle': 'Universal Unit Converter Features',
     'unitConverter.seo.comprehensiveTitle': 'Comprehensive Unit Categories',
     'unitConverter.seo.specializedTitle': 'Specialized & Scientific Units',
