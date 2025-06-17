@@ -154,20 +154,21 @@ window.unitConverterData = {
       microseconds: { nameKey: 'unitConverter.time.microseconds', ja: 'マイクロ秒', en: 'Microseconds', factor: 1e-6, symbol: 'μs' },
       nanoseconds: { nameKey: 'unitConverter.time.nanoseconds', ja: 'ナノ秒', en: 'Nanoseconds', factor: 1e-9, symbol: 'ns' }
     }
-  },
-  microwave: {
-    baseUnit: 'watts',
+  },  microwave: {
+    baseUnit: 'seconds',
     definitions: {
-      '500w': { nameKey: 'unitConverter.microwave.500w', ja: '500W', en: '500W', factor: 500, symbol: 'W' },
-      '600w': { nameKey: 'unitConverter.microwave.600w', ja: '600W', en: '600W', factor: 600, symbol: 'W' },
-      '700w': { nameKey: 'unitConverter.microwave.700w', ja: '700W', en: '700W', factor: 700, symbol: 'W' },
-      '800w': { nameKey: 'unitConverter.microwave.800w', ja: '800W', en: '800W', factor: 800, symbol: 'W' },
-      '900w': { nameKey: 'unitConverter.microwave.900w', ja: '900W', en: '900W', factor: 900, symbol: 'W' },
-      '1000w': { nameKey: 'unitConverter.microwave.1000w', ja: '1000W', en: '1000W', factor: 1000, symbol: 'W' }
+      '500w': { nameKey: 'unitConverter.microwave.500w', ja: '500W', en: '500W', factor: 1, baseWatt: 500, symbol: 'W' },
+      '600w': { nameKey: 'unitConverter.microwave.600w', ja: '600W', en: '600W', factor: 1, baseWatt: 600, symbol: 'W' },
+      '700w': { nameKey: 'unitConverter.microwave.700w', ja: '700W', en: '700W', factor: 1, baseWatt: 700, symbol: 'W' },
+      '800w': { nameKey: 'unitConverter.microwave.800w', ja: '800W', en: '800W', factor: 1, baseWatt: 800, symbol: 'W' },
+      '900w': { nameKey: 'unitConverter.microwave.900w', ja: '900W', en: '900W', factor: 1, baseWatt: 900, symbol: 'W' },
+      '1000w': { nameKey: 'unitConverter.microwave.1000w', ja: '1000W', en: '1000W', factor: 1, baseWatt: 1000, symbol: 'W' }
     },
     convert: function(val, from, to) {
-      const fromWatt = parseInt(from.replace('w', ''));
-      const toWatt = parseInt(to.replace('w', ''));
+      // 電子レンジの時間変換：同じエネルギー量で計算
+      // 基本原理：エネルギー = 電力 × 時間 が一定
+      const fromWatt = this.definitions[from].baseWatt;
+      const toWatt = this.definitions[to].baseWatt;
       return val * (fromWatt / toWatt);
     }
   }
