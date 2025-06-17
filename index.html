@@ -18,12 +18,13 @@
       https://fonts.googleapis.com 
       https://cdn.tailwindcss.com; 
     font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob: 
+      https://fonts.gstatic.com;    img-src 'self' data: blob: 
       https://negi-lab.com 
       https://pagead2.googlesyndication.com 
       https://www.google-analytics.com 
-      https://googleads.g.doubleclick.net; 
+      https://googleads.g.doubleclick.net
+      https://www.amazon.co.jp
+      https://hbb.afl.rakuten.co.jp;
     connect-src 'self' 
       https://www.google-analytics.com 
       https://pagead2.googlesyndication.com; 
@@ -572,7 +573,6 @@
     ]
   }
   </script>
-
   <!-- head内にあったconsent-banner用JSもbody末尾に移動（構造エラー防止） -->
   <script>
     // consent-banner: ユーザビリティを損なわない下部バナー型
@@ -589,6 +589,86 @@
         banner.classList.add('hidden');
         location.reload();
       };
+    });
+
+    // Amazon・楽天Cookie埋め込み機能（同意取得済みユーザーのみ）
+    function embedAffiliateCookies() {
+      // Cookie承諾チェック
+      if (localStorage.getItem('cookieConsent') !== 'accepted') {
+        return false;
+      }
+
+      try {
+        // Amazon アソシエイト Cookie埋め込み
+        var amazonImg = document.createElement('img');
+        amazonImg.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211';
+        amazonImg.width = '1';
+        amazonImg.height = '1';
+        amazonImg.style.display = 'none';
+        amazonImg.alt = '';
+        amazonImg.loading = 'eager';
+        amazonImg.referrerPolicy = 'no-referrer';
+        document.body.appendChild(amazonImg);
+
+        // 楽天アフィリエイト Cookie埋め込み
+        var rakutenImg = document.createElement('img');
+        rakutenImg.src = 'https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie';
+        rakutenImg.width = '1';
+        rakutenImg.height = '1';
+        rakutenImg.style.display = 'none';
+        rakutenImg.alt = '';
+        rakutenImg.loading = 'eager';
+        rakutenImg.referrerPolicy = 'no-referrer';
+        document.body.appendChild(rakutenImg);
+
+        console.log('Affiliate cookies embedded for consented user');
+        return true;
+      } catch (error) {
+        console.error('Failed to embed affiliate cookies:', error);
+        return false;
+      }
+    }
+
+    // 単位変換ツールカードクリック時のCookie埋め込み
+    document.addEventListener('DOMContentLoaded', function() {
+      // 単位変換ツールカードの要素を取得
+      var unitConverterCard = document.querySelector('[onclick*="unit-converter.html"]');
+      var unitConverterLink = document.querySelector('a[href="tools/unit-converter.html"]');
+      
+      if (unitConverterCard) {
+        // 既存のonclickを一時的に無効化して、新しいイベントハンドラを追加
+        unitConverterCard.removeAttribute('onclick');
+        unitConverterCard.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Cookie承諾を得ている場合のみCookie埋め込み
+          if (localStorage.getItem('cookieConsent') === 'accepted') {
+            embedAffiliateCookies();
+          }
+          
+          // 少し遅延してページ遷移（Cookie埋め込み完了後）
+          setTimeout(function() {
+            window.location.href = 'tools/unit-converter.html';
+          }, 100);
+        });
+      }
+
+      // リンクの場合も同様に処理
+      if (unitConverterLink) {
+        unitConverterLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Cookie承諾を得ている場合のみCookie埋め込み
+          if (localStorage.getItem('cookieConsent') === 'accepted') {
+            embedAffiliateCookies();
+          }
+          
+          // 少し遅延してページ遷移（Cookie埋め込み完了後）
+          setTimeout(function() {
+            window.location.href = 'tools/unit-converter.html';
+          }, 100);
+        });
+      }
     });
   </script>
   <!-- 重要: consent-bannerのHTMLはbody直下に1つだけ。重複やhead内混入がないか必ず確認。 -->
