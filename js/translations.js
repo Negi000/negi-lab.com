@@ -17,7 +17,8 @@ window.translations = {
     'unitConverter.categoryTitle': 'カテゴリを選択',
     'unitConverter.swapButton': '単位を入れ替え',
     
-    // カテゴリ    'unitConverter.category.length': '長さ',
+    // カテゴリ    
+    'unitConverter.category.length': '長さ',
     'unitConverter.category.weight': '重さ',
     'unitConverter.category.temperature': '温度',
     'unitConverter.category.area': '面積',
