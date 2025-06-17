@@ -561,8 +561,7 @@
       <!-- ここに広告コード（例: AdSense）を挿入 -->
 
       <!-- ツール下部：Amazon・楽天バナー → ネイティブ/モーションウィジェット動的表示に置換 -->
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-      <script>
+      <div id="smart-ads" class="flex justify-center my-8"></div>      <script>
         document.addEventListener('DOMContentLoaded', function() {
           if (window.renderSmartAds) window.renderSmartAds('smart-ads');
         });
@@ -609,77 +608,91 @@
     </nav>
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
-
-  <script defer>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: '単位変換ツールの使い方',
-      list: [
-        'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
-        '変換元・変換先の単位を選ぶ',
-        '値（または分・秒）を入力',
-        '変換ボタンを押すと即時結果が表示',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        'レシピ用に180°Cを華氏に変換',
-        '500gをポンドに変換して海外通販',
-        '電子レンジの秒数を分:秒形式に変換'
-      ]
-    },
-    en: {
-      title: 'How to Use the Unit Converter',
-      list: [
-        'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
-        'Choose the units to convert from and to.',
-        'Enter the value (or minutes/seconds for microwave mode).',
-        'Click the convert button to see the result instantly.',
-        'Switch language from the top menu. All features are available in English and Japanese.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Convert 180°C to Fahrenheit for recipes.',
-        'Change 500g to pounds for international shopping.',
-        'Convert microwave time from seconds to minutes:seconds format.'
-      ]
+  <script>
+    function setupGuideModal() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      const guides = {        ja: {
+          title: '単位変換ツールの使い方',
+          list: [
+            'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
+            '変換元・変換先の単位を選ぶ',
+            '値（または分・秒）を入力',
+            '変換ボタンを押すと即時結果が表示',
+            '右上メニューで日本語・英語切替可能'
+          ],
+          tipsTitle: '活用例・ヒント',
+          tips: [
+            'レシピ用に180°Cを華氏に変換',
+            '500gをポンドに変換して海外通販',
+            '電子レンジの秒数を分:秒形式に変換'
+          ]
+        },
+        en: {
+          title: 'How to Use the Unit Converter',
+          list: [
+            'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
+            'Choose the units to convert from and to.',
+            'Enter the value (or minutes/seconds for microwave mode).',
+            'Click the convert button to see the result instantly.',
+            'Switch language from the top menu. All features are available in English and Japanese.'
+          ],
+          tipsTitle: 'Tips & Examples',
+          tips: [
+            'Convert 180°C to Fahrenheit for recipes.',
+            'Change 500g to pounds for international shopping.',
+            'Convert microwave time from seconds to minutes:seconds format.'
+          ]
+        }
+      };
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          const g = guides[lang] || guides.ja;
+          let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+          html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+          html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+          guideContent.innerHTML = html;
+          guideModal.classList.remove('hidden');
+        });
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
     }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
-}
-  </script>  <script>
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupGuideModal);
+    } else {
+      setupGuideModal();
+    }
+  </script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded fired');
+      
       // 新しいGUI要素の取得
       const categoryGrid = document.getElementById('categoryGrid');
       const categorySelect = document.getElementById('category');
       const converterArea = document.getElementById('converterArea');
       const microwaveControls = document.getElementById('microwaveControls');
+      
+      console.log('Elements found:', {
+        categoryGrid: !!categoryGrid,
+        categorySelect: !!categorySelect,
+        converterArea: !!converterArea,
+        microwaveControls: !!microwaveControls
+      });
+      
+      console.log('External scripts check:', {
+        unitConverterData: !!window.unitConverterData,
+        unitConverterCore: !!window.unitConverterCore,
+        SecurityUtils: !!window.SecurityUtils
+      });
       
       const inputValue = document.getElementById('inputValue');
       const fromUnitSelect = document.getElementById('fromUnit');
@@ -695,14 +708,15 @@ if (document.readyState === "loading") {
       let microwaveInputMode = 'sec';
       let minInput = null;
       let secInput = null;
-      let minSecInputWrap = null;
-
-      // カテゴリボタンのクリックイベント
+      let minSecInputWrap = null;      // カテゴリボタンのクリックイベント
       categoryGrid.addEventListener('click', (e) => {
+        console.log('Category grid clicked', e.target);
         const categoryBtn = e.target.closest('.category-btn');
+        console.log('Category button found:', categoryBtn);
         if (!categoryBtn) return;
         
         const category = categoryBtn.dataset.category;
+        console.log('Selected category:', category);
         
         // アクティブ状態の切り替え
         document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
@@ -725,12 +739,57 @@ if (document.readyState === "loading") {
         
         // 既存のロジックを呼び出し
         handleCategoryChange();
-        
-        // スムーズスクロール
+          // スムーズスクロール
         converterArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
-
-      // 電子レンジモード切り替え      microwaveSecBtn.addEventListener('click', () => {
+      
+      // 代替案：各カテゴリボタンに直接イベントリスナーを追加
+      if (!categoryGrid) {
+        console.error('categoryGrid not found! Adding fallback event listeners.');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            console.log('Direct button click:', this.dataset.category);
+            const category = this.dataset.category;
+            
+            // アクティブ状態の切り替え
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 隠しselectの値を更新
+            if (categorySelect) categorySelect.value = category;
+            
+            // 変換エリアを表示
+            if (converterArea) {
+              converterArea.classList.remove('hidden');
+              converterArea.classList.add('fade-in');
+            }
+            
+            // 電子レンジ特有のコントロール表示制御
+            if (microwaveControls) {
+              if (category === 'microwave') {
+                microwaveControls.classList.remove('hidden');
+                microwaveControls.classList.add('slide-up');
+              } else {
+                microwaveControls.classList.add('hidden');
+              }
+            }
+            
+            // 既存のロジックを呼び出し
+            if (typeof handleCategoryChange === 'function') {
+              handleCategoryChange();
+            }
+            
+            // スムーズスクロール
+            if (converterArea) {
+              converterArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+      }
+      
+      // 電子レンジモード切り替え
+      microwaveSecBtn.addEventListener('click', () => {
         if (microwaveInputMode !== 'sec') {
           microwaveInputMode = 'sec';
           updateMicrowaveToggleUI();
@@ -742,18 +801,21 @@ if (document.readyState === "loading") {
             const totalSeconds = minutes * 60 + seconds;
             inputValue.value = totalSeconds;
           }
-          
-          hideMinuteSecondInputs();
+            hideMinuteSecondInputs();
           convert();
         }
-      });microwaveMinBtn.addEventListener('click', () => {
+      });
+      
+      microwaveMinBtn.addEventListener('click', () => {
         if (microwaveInputMode !== 'min') {
+          console.log('Switching to minute mode');
           microwaveInputMode = 'min';
           updateMicrowaveToggleUI();
           
           // 現在の秒数値を取得して分・秒に変換
           let fromSeconds = parseFloat(inputValue.value);
           if (isNaN(fromSeconds)) fromSeconds = 0;
+          console.log('Converting seconds to min:sec:', fromSeconds);
           
           showMinuteSecondInputs(fromSeconds);
           addMinuteSecondInputListeners();
@@ -783,9 +845,10 @@ if (document.readyState === "loading") {
           secInput.className = 'flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent';
           secInput.placeholder = '秒';
           secInput.min = '0';
-          secInput.max = '59';
-        }
-      }      function showMinuteSecondInputs(fromSeconds = null) {
+          secInput.max = '59';        }
+      }
+      
+      function showMinuteSecondInputs(fromSeconds = null) {
         createMinuteSecondInputs();
         inputValue.style.display = 'none';
         
@@ -819,9 +882,10 @@ if (document.readyState === "loading") {
         // 値設定
         if (fromSeconds !== null && !isNaN(fromSeconds)) {
           minInput.value = Math.floor(fromSeconds / 60);
-          secInput.value = Math.round(fromSeconds % 60);
-        }
-      }      function hideMinuteSecondInputs() {
+          secInput.value = Math.round(fromSeconds % 60);        }
+      }
+      
+      function hideMinuteSecondInputs() {
         inputValue.style.display = '';
         const container = document.getElementById('inputMinuteSecondBox');
         if (container) {
@@ -939,13 +1003,13 @@ if (document.readyState === "loading") {
           const category = categorySelect.value;
           if (!category || !unitsData[category]) {
             resultValue.value = '';
-            return;
-          }
+            return;          }
           let val;
           if (category === 'microwave' && microwaveInputMode === 'min') {
             let minVal = minInput ? parseInt(minInput.value) || 0 : 0;
             let secVal = secInput ? parseInt(secInput.value) || 0 : 0;
             val = minVal * 60 + secVal;
+            console.log('Microwave min mode - minutes:', minVal, 'seconds:', secVal, 'total:', val);
           } else {
             const sanitizedInput = SecurityUtils.sanitizeInput(inputValue.value);
             val = parseFloat(sanitizedInput);
@@ -1025,14 +1089,15 @@ if (document.readyState === "loading") {
         container.appendChild(minWrapper);
         container.appendChild(secWrapper);
       }
-      
-      function hideResultMinuteSecond() {
+        function hideResultMinuteSecond() {
         const container = document.getElementById('resultMinuteBox');
         if (container) {
           container.style.display = 'none';
           container.innerHTML = '';
         }
-      }      function handleCategoryChange() {
+      }
+      
+      function handleCategoryChange() {
         populateUnitSelects();
         updateUnitLabels();
         updateMicrowaveToggleUI();
