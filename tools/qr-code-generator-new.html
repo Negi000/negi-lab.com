@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -65,19 +65,8 @@
   <meta property="og:description" content="高品質なQRコードを簡単生成。サイズ・色・エラー訂正レベル調整、ロゴ挿入、一括生成対応。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
-    <!-- Tailwind CSS -->
-  <script>
-    // Tailwind CDN警告を抑制
-    if (typeof console !== 'undefined') {
-      const originalWarn = console.warn;
-      console.warn = function(...args) {
-        if (args[0] && args[0].includes && args[0].includes('cdn.tailwindcss.com')) {
-          return; // Tailwind警告をブロック
-        }
-        originalWarn.apply(console, args);
-      };
-    }
-  </script>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -394,44 +383,12 @@
            data-full-width-responsive="true"></ins>
     </div>
 
-  </div>  <!-- QRコードライブラリ -->
-  <script src="../js/qrcode.min.js" 
-          onload="console.log('✅ QRライブラリ読み込み完了'); 
-                  console.log('QRCode:', QRCode); 
-                  console.log('qrcode:', typeof qrcode !== 'undefined' ? qrcode : 'undefined');
-                  console.log('window.QRCode:', window.QRCode);
-                  console.log('window.qrcode:', window.qrcode);                  if (typeof QRCode !== 'undefined') {
-                    console.log('QRCode.toCanvas:', typeof QRCode.toCanvas);
-                    console.log('QRCode.toDataURL:', typeof QRCode.toDataURL);
-                    console.log('QRCodeのプロパティ:', Object.keys(QRCode));
-                    console.log('QRCode.prototype:', Object.keys(QRCode.prototype || {}));
-                    
-                    // インスタンス作成テスト
-                    try {
-                      const testDiv = document.createElement('div');
-                      const qrInstance = new QRCode(testDiv, 'test');
-                      console.log('QRCodeインスタンス作成成功:', qrInstance);
-                      console.log('インスタンスメソッド:', Object.keys(qrInstance));
-                    } catch(e) {
-                      console.log('QRCodeインスタンス作成エラー:', e);
-                    }
-                  }" 
-          onerror="loadQRCodeFallback()"></script>
+  </div>
 
-  <!-- QRコードライブラリフォールバック -->
-  <script>
-    function loadQRCodeFallback() {
-      console.warn('⚠️ ローカルQRライブラリ読み込み失敗、CDNフォールバック中...');
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';
-      script.onload = () => {
-        console.log('✅ QRライブラリCDNフォールバック完了');
-        console.log('CDN後の利用可能API:', {QRCode: typeof QRCode, qrcode: typeof qrcode, windowQRCode: typeof window.QRCode, windowqrcode: typeof window.qrcode});
-      };
-      script.onerror = () => console.error('❌ QRライブラリCDNフォールバックも失敗');
-      document.head.appendChild(script);
-    }
-  </script>
+  <!-- QRコードライブラリ -->
+  <script src="../js/qrcode.min.js" 
+          onload="console.log('✅ QRライブラリ読み込み完了')" 
+          onerror="console.warn('⚠️ QRライブラリ読み込み失敗')"></script>
 
   <!-- メイン JavaScript -->
   <script>
@@ -561,94 +518,12 @@
               light: this.elements.backgroundColor.value
             },
             errorCorrectionLevel: this.elements.errorCorrection.value
-          };          // QRコード生成（古いタイプのQRCodeライブラリ対応）
+          };
+
+          // QRコード生成
           if (typeof QRCode !== 'undefined') {
-            console.log('=== 古いタイプのQRCodeライブラリを使用 ===');
-            
-            // 一時的なコンテナを作成
-            const tempDiv = document.createElement('div');
-            tempDiv.style.width = options.width + 'px';
-            tempDiv.style.height = options.height + 'px';
-            
-            try {              // QRCodeインスタンスを作成
-              const qrOptions = {
-                text: text,
-                width: options.width,
-                height: options.height,
-                colorDark: options.color.dark,
-                colorLight: options.color.light
-              };
-              
-              // エラー訂正レベルの設定
-              if (QRCode.CorrectLevel) {
-                const levelMap = {
-                  'L': QRCode.CorrectLevel.L,
-                  'M': QRCode.CorrectLevel.M,
-                  'Q': QRCode.CorrectLevel.Q,
-                  'H': QRCode.CorrectLevel.H
-                };
-                qrOptions.correctLevel = levelMap[options.errorCorrectionLevel] || QRCode.CorrectLevel.M;
-              }
-              
-              console.log('QRコード設定:', qrOptions);
-              const qrCode = new QRCode(tempDiv, qrOptions);
-                // 生成されたQRコードを取得
-              setTimeout(() => {
-                const qrImg = tempDiv.querySelector('img');
-                const qrCanvas = tempDiv.querySelector('canvas');
-                
-                if (qrImg) {
-                  console.log('✅ QRコード生成成功（img要素）');
-                  
-                  this.elements.qrResult.innerHTML = '';
-                  const clonedImg = qrImg.cloneNode(true);
-                  clonedImg.className = 'max-w-full h-auto mx-auto rounded-lg shadow-md';
-                  this.elements.qrResult.appendChild(clonedImg);
-                  
-                  // Canvasに変換してダウンロード用に保存
-                  const canvas = document.createElement('canvas');
-                  const ctx = canvas.getContext('2d');
-                  canvas.width = options.width;
-                  canvas.height = options.height;
-                  
-                  clonedImg.onload = () => {
-                    ctx.drawImage(clonedImg, 0, 0);
-                    this.currentQRCanvas = canvas;
-                    this.elements.downloadBtn.classList.remove('hidden');
-                  };
-                  
-                  // 画像が既に読み込まれている場合
-                  if (clonedImg.complete) {
-                    ctx.drawImage(clonedImg, 0, 0);
-                    this.currentQRCanvas = canvas;
-                    this.elements.downloadBtn.classList.remove('hidden');
-                  }
-                  
-                } else if (qrCanvas) {
-                  console.log('✅ QRコード生成成功（canvas要素）');
-                  
-                  this.elements.qrResult.innerHTML = '';
-                  const clonedCanvas = qrCanvas.cloneNode(true);
-                  clonedCanvas.className = 'max-w-full h-auto mx-auto rounded-lg shadow-md';
-                  this.elements.qrResult.appendChild(clonedCanvas);
-                  
-                  this.currentQRCanvas = clonedCanvas;
-                  this.elements.downloadBtn.classList.remove('hidden');
-                  
-                } else {
-                  console.error('QRコード要素が見つかりません tempDiv.innerHTML:', tempDiv.innerHTML);
-                  throw new Error('QRコード要素が生成されませんでした');
-                }
-              }, 500); // 生成完了を待つ（少し長めに設定）
-              
-            } catch (error) {
-              console.error('QRCodeインスタンス作成エラー:', error);
-              throw error;
-            }
-          } else if (typeof qrcode !== 'undefined' && qrcode.toCanvas) {
-            // 小文字の qrcode オブジェクトを使用
             const canvas = document.createElement('canvas');
-            await qrcode.toCanvas(canvas, text, options);
+            await QRCode.toCanvas(canvas, text, options);
             
             this.elements.qrResult.innerHTML = '';
             canvas.className = 'max-w-full h-auto mx-auto rounded-lg shadow-md';
@@ -657,76 +532,9 @@
             this.currentQRCanvas = canvas;
             this.elements.downloadBtn.classList.remove('hidden');
             
-            console.log('✅ QRコード生成成功（qrcode.toCanvas）');
-          } else if (typeof window.qrcode !== 'undefined' && window.qrcode.toCanvas) {
-            // window.qrcode を使用
-            const canvas = document.createElement('canvas');
-            await window.qrcode.toCanvas(canvas, text, options);
-            
-            this.elements.qrResult.innerHTML = '';
-            canvas.className = 'max-w-full h-auto mx-auto rounded-lg shadow-md';
-            this.elements.qrResult.appendChild(canvas);
-            
-            this.currentQRCanvas = canvas;
-            this.elements.downloadBtn.classList.remove('hidden');
-            
-            console.log('✅ QRコード生成成功（window.qrcode.toCanvas）');
-          } else {            // ライブラリの詳細情報をログ出力
-            console.log('=== QRライブラリ詳細調査 ===');
-            console.log('QRCode:', typeof QRCode !== 'undefined' ? QRCode : 'undefined');
-            console.log('qrcode:', typeof qrcode !== 'undefined' ? qrcode : 'undefined');
-            console.log('window.QRCode:', window.QRCode);
-            console.log('window.qrcode:', window.qrcode);
-            
-            if (typeof QRCode !== 'undefined') {
-              console.log('QRCodeのプロパティ:', Object.keys(QRCode));
-              console.log('QRCode.toCanvas:', typeof QRCode.toCanvas);
-              console.log('QRCode.toDataURL:', typeof QRCode.toDataURL);
-              console.log('QRCode.create:', typeof QRCode.create);
-            }
-            
-            if (typeof qrcode !== 'undefined') {
-              console.log('qrcodeのプロパティ:', Object.keys(qrcode));
-            }
-              // 代替手段：データURLを直接生成
-            if (typeof QRCode !== 'undefined' && QRCode.toDataURL) {
-              console.log('QRCode.toDataURLを試行中...');
-              
-              // Promise版とコールバック版の両方を試行
-              try {
-                const dataURL = await QRCode.toDataURL(text, options);
-                console.log('✅ QRCode.toDataURL（Promise版）成功');
-                this.displayQRFromDataURL(dataURL, options);
-              } catch (promiseError) {
-                console.log('Promise版失敗、コールバック版を試行:', promiseError);
-                QRCode.toDataURL(text, options, (error, dataURL) => {
-                  if (error) {
-                    console.error('QRCode.toDataURL（コールバック版）エラー:', error);
-                    throw error;
-                  }
-                  console.log('✅ QRCode.toDataURL（コールバック版）成功');
-                  this.displayQRFromDataURL(dataURL, options);
-                });
-              }
-            } else if (typeof QRCode !== 'undefined' && QRCode.create) {
-              console.log('QRCode.createを試行中...');
-              const qr = QRCode.create(text, options);
-              console.log('QRCode.create結果:', qr);
-              
-              // SVGまたは他の形式で表示
-              this.elements.qrResult.innerHTML = `
-                <div class="text-center text-green-600">
-                  <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <p>QRコード生成完了</p>
-                  <p class="text-sm mt-2">QRCode.createメソッドで作成されました</p>
-                  <pre class="text-xs mt-4 bg-gray-100 p-2 rounded">${JSON.stringify(qr, null, 2)}</pre>
-                </div>
-              `;
-            } else {
-              throw new Error('QRライブラリのAPIが利用できません');
-            }
+            console.log('✅ QRコード生成成功');
+          } else {
+            throw new Error('QRライブラリが利用できません');
           }
 
         } catch (error) {
@@ -740,27 +548,7 @@
               <p class="text-sm mt-2">${error.message}</p>
             </div>
           `;
-        }      }
-
-      displayQRFromDataURL(dataURL, options) {
-        const img = document.createElement('img');
-        img.src = dataURL;
-        img.className = 'max-w-full h-auto mx-auto rounded-lg shadow-md';
-        
-        this.elements.qrResult.innerHTML = '';
-        this.elements.qrResult.appendChild(img);
-        
-        // CanvasをDataURLから作成
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = options.width;
-        canvas.height = options.height;
-        
-        img.onload = () => {
-          ctx.drawImage(img, 0, 0);
-          this.currentQRCanvas = canvas;
-          this.elements.downloadBtn.classList.remove('hidden');
-        };
+        }
       }
 
       downloadQR() {
