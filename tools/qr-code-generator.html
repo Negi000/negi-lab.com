@@ -55,10 +55,9 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  
-  <title>QRコード生成ツール - negi-lab.com</title>
-  <meta name="description" content="高品質なQRコードを簡単生成。サイズ・色・エラー訂正レベル調整、ロゴ挿入、一括生成対応。無料で使いやすいQR作成ツール。" />
-  <meta name="keywords" content="QRコード,生成,作成,無料,ツール,バーコード,スマホ,URL,テキスト,Wi-Fi,連絡先,高品質,カスタマイズ" />
+    <title>クリエイティブQRコード生成ツール - negi-lab.com</title>
+  <meta name="description" content="従来の四角形に縛られない、自由な形・色・配置のクリエイティブQRコードを生成。テンプレート・バッチ生成・Wi-Fi・メール対応。無料で使いやすいQR作成ツール。" />
+  <meta name="keywords" content="QRコード,生成,作成,無料,ツール,クリエイティブ,デザイン,カスタマイズ,SVG,バーコード,スマホ,URL,テキスト,Wi-Fi,連絡先,高品質" />
   
   <!-- OG Tags -->
   <meta property="og:title" content="QRコード生成ツール - negi-lab.com" />
@@ -173,14 +172,67 @@
       align-items: center;
       justify-content: center;
     }
-    
-    .loading {
+      .loading {
       animation: spin 1s linear infinite;
     }
     
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    /* クリエイティブ機能用スタイル */
+    .shape-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      min-height: 50px;
+      transition: all 0.2s ease;
+      font-size: 0.75rem;
+    }
+    
+    .shape-btn:hover {
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.1);
+    }
+    
+    .shape-btn.active {
+      border-color: #4ADE80;
+      background: #4ADE80;
+      color: white;
+    }
+
+    .qr-cell {
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    
+    .qr-cell:hover {
+      opacity: 0.7;
+    }
+
+    .qr-cell.selected {
+      stroke: #4ADE80;
+      stroke-width: 2;
+    }
+
+    .gradient-preview {
+      width: 100%;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      margin-top: 8px;
+    }
+
+    .preset-btn:hover {
+      background: rgba(74, 222, 128, 0.1);
+      border-color: #4ADE80;
     }
   </style>
 
@@ -206,12 +258,11 @@
 
 <body class="bg-gray-50 text-gray-900">
   <div class="container mx-auto px-4 py-8 max-w-6xl">
-    
-    <!-- ヘッダー -->
+      <!-- ヘッダー -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">QRコード生成ツール</h1>
-      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-        テキストやURLを高品質なQRコードに変換。サイズ・色・エラー訂正レベルをカスタマイズ可能。
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">🎨 クリエイティブQRコード生成ツール</h1>
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        従来の四角形に縛られない、自由な形・色・配置のQRコードを作成。テンプレート・バッチ生成・Wi-Fi・メール等に対応。
       </p>
     </div>
 
@@ -628,13 +679,137 @@
               <label class="block text-sm font-medium text-gray-700 mb-1">背景色</label>
               <input type="color" id="backgroundColor" value="#ffffff" class="form-input h-12">
             </div>
+              </div>
+        </div>
+
+        <!-- クリエイティブ設定 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+            </svg>
+            🎨 クリエイティブ設定
+          </h2>
+
+          <!-- デザインモード -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">デザインモード</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button id="standardModeBtn" class="mode-btn active text-sm py-2" data-design-mode="standard">
+                標準
+              </button>
+              <button id="creativeModeBtn" class="mode-btn text-sm py-2" data-design-mode="creative">
+                クリエイティブ
+              </button>
+            </div>
+          </div>
+
+          <!-- クリエイティブオプション -->
+          <div id="creativeOptions" class="hidden space-y-4">
             
+            <!-- セルの形状 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">セルの形状</label>
+              <div class="grid grid-cols-4 gap-2">
+                <button class="shape-btn active text-xs" data-shape="square">
+                  <div class="w-3 h-3 bg-current mx-auto"></div>
+                  正方
+                </button>
+                <button class="shape-btn text-xs" data-shape="circle">
+                  <div class="w-3 h-3 bg-current rounded-full mx-auto"></div>
+                  円
+                </button>
+                <button class="shape-btn text-xs" data-shape="rounded">
+                  <div class="w-3 h-3 bg-current rounded mx-auto"></div>
+                  角丸
+                </button>
+                <button class="shape-btn text-xs" data-shape="diamond">
+                  <div class="w-2 h-2 bg-current transform rotate-45 mx-auto"></div>
+                  ◆
+                </button>
+              </div>
+            </div>
+
+            <!-- カラーモード -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">カラーモード</label>
+              <select id="colorMode" class="form-select text-sm">
+                <option value="solid">単色</option>
+                <option value="gradient">グラデーション</option>
+                <option value="rainbow">レインボー</option>
+                <option value="pattern">パターン</option>
+              </select>
+            </div>
+
+            <!-- グラデーション設定 -->
+            <div id="gradientSettings" class="hidden space-y-3">
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">開始色</label>
+                  <input type="color" id="gradientStart" value="#ff0000" class="form-input h-8">
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">終了色</label>
+                  <input type="color" id="gradientEnd" value="#0000ff" class="form-input h-8">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs text-gray-600 mb-1">方向</label>
+                <select id="gradientDirection" class="form-select text-sm">
+                  <option value="horizontal">水平</option>
+                  <option value="vertical">垂直</option>
+                  <option value="diagonal">対角線</option>
+                  <option value="radial">放射状</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- プリセット -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">プリセット</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="minimal">
+                  ミニマル
+                </button>
+                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="neon">
+                  ネオン
+                </button>
+                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="nature">
+                  ナチュラル
+                </button>
+                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="retro">
+                  レトロ
+                </button>
+              </div>
+            </div>
+
+            <!-- 検出パターン設定 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">検出パターン</label>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <select id="patternSelect" class="form-select text-xs flex-1">
+                    <option value="all">すべて</option>
+                    <option value="top-left">左上</option>
+                    <option value="top-right">右上</option>
+                    <option value="bottom-left">左下</option>
+                  </select>
+                  <input type="color" id="patternColor" value="#000000" class="form-input h-8 w-12">
+                </div>
+                <div class="grid grid-cols-3 gap-1">
+                  <button class="shape-btn active text-xs py-1" data-pattern-shape="square">□</button>
+                  <button class="shape-btn text-xs py-1" data-pattern-shape="circle">○</button>
+                  <button class="shape-btn text-xs py-1" data-pattern-shape="rounded">▢</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- 生成ボタン -->
         <button id="generateBtn" class="w-full bg-accent hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-lg">
-          QRコードを生成
+          🎨 QRコードを生成
         </button>
 
       </div>
@@ -652,8 +827,7 @@
               </svg>
               <p>QRコードがここに表示されます</p>
             </div>
-          </div>
-            <!-- ダウンロードボタン -->
+          </div>            <!-- ダウンロードボタン -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
             <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg hidden">
               <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -668,6 +842,28 @@
               </svg>
               全形式DL
             </button>
+          </div>
+
+          <!-- クリエイティブQR専用ダウンロード -->
+          <div id="creativeDownloadSection" class="hidden mt-4 space-y-3">
+            <div class="border-t pt-4">
+              <h3 class="text-sm font-medium text-gray-700 mb-3">🎨 クリエイティブQR専用</h3>
+              <div class="grid grid-cols-2 gap-2">
+                <button id="downloadSVG" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+                  <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
+                  SVG
+                </button>
+                <button id="downloadPNG" class="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+                  <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  PNG
+                </button>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">※ クリエイティブモードの場合のみ利用可能</p>
+            </div>
           </div>
         </div><!-- 使い方ガイド -->
         <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
@@ -765,6 +961,11 @@
                   }" 
           onerror="loadQRCodeFallback()"></script>
 
+  <!-- クリエイティブQR用ライブラリ -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"
+          onload="console.log('✅ qrcode-generator読み込み完了');"
+          onerror="console.warn('⚠️ qrcode-generator読み込み失敗');"></script>
+
   <!-- QRコードライブラリフォールバック -->
   <script>
     function loadQRCodeFallback() {
@@ -786,6 +987,19 @@
         this.currentTemplate = 'text';
         this.currentMode = 'single';
         this.batchData = [];
+        
+        // クリエイティブ機能追加
+        this.designMode = 'standard'; // 'standard' or 'creative'
+        this.currentShape = 'square';
+        this.currentColorMode = 'solid';
+        this.qrData = null; // SVG生成用
+        this.cellCustomizations = new Map();
+        this.patternCustomizations = {
+          'top-left': { shape: 'square', color: '#000000', size: 1.0 },
+          'top-right': { shape: 'square', color: '#000000', size: 1.0 },
+          'bottom-left': { shape: 'square', color: '#000000', size: 1.0 }
+        };
+        
         this.initializeElements();
         this.bindEvents();
         console.log('✅ QRGenerator初期化完了');
@@ -855,11 +1069,25 @@
           emailBody: document.getElementById('emailBody'),
           qrSize: document.getElementById('qrSize'),
           errorCorrection: document.getElementById('errorCorrection'),
-          foregroundColor: document.getElementById('foregroundColor'),
-          backgroundColor: document.getElementById('backgroundColor'),
+          foregroundColor: document.getElementById('foregroundColor'),          backgroundColor: document.getElementById('backgroundColor'),
           generateBtn: document.getElementById('generateBtn'),
           qrResult: document.getElementById('qrResult'),
-          downloadBtn: document.getElementById('downloadBtn')
+          downloadBtn: document.getElementById('downloadBtn'),
+          
+          // クリエイティブ機能要素
+          standardModeBtn: document.getElementById('standardModeBtn'),
+          creativeModeBtn: document.getElementById('creativeModeBtn'),
+          creativeOptions: document.getElementById('creativeOptions'),
+          colorMode: document.getElementById('colorMode'),
+          gradientSettings: document.getElementById('gradientSettings'),
+          gradientStart: document.getElementById('gradientStart'),
+          gradientEnd: document.getElementById('gradientEnd'),
+          gradientDirection: document.getElementById('gradientDirection'),
+          patternSelect: document.getElementById('patternSelect'),
+          patternColor: document.getElementById('patternColor'),
+          creativeDownloadSection: document.getElementById('creativeDownloadSection'),
+          downloadSVG: document.getElementById('downloadSVG'),
+          downloadPNG: document.getElementById('downloadPNG')
         };
       }      bindEvents() {
         // モード選択
@@ -907,11 +1135,72 @@
         this.elements.jpegQuality.addEventListener('input', () => {
           this.elements.jpegQualityValue.textContent = Math.round(this.elements.jpegQuality.value * 100) + '%';
         });
-        
-        // 全形式ダウンロード
+          // 全形式ダウンロード
         this.elements.downloadAllBtn.addEventListener('click', () => {
           this.downloadAllFormats();
         });
+
+        // クリエイティブ機能イベント
+        this.bindCreativeEvents();
+      }
+
+      bindCreativeEvents() {
+        // デザインモード切り替え
+        this.elements.standardModeBtn.addEventListener('click', () => {
+          this.switchDesignMode('standard');
+        });
+        
+        this.elements.creativeModeBtn.addEventListener('click', () => {
+          this.switchDesignMode('creative');
+        });
+
+        // 形状選択
+        document.querySelectorAll('.shape-btn[data-shape]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.shape-btn[data-shape]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentShape = btn.dataset.shape;
+            if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+          });
+        });
+
+        // カラーモード
+        this.elements.colorMode.addEventListener('change', () => {
+          this.currentColorMode = this.elements.colorMode.value;
+          this.updateColorModeUI();
+          if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+        });
+
+        // グラデーション設定
+        [this.elements.gradientStart, this.elements.gradientEnd, this.elements.gradientDirection].forEach(el => {
+          el.addEventListener('change', () => {
+            if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+          });
+        });
+
+        // 検出パターン
+        document.querySelectorAll('.shape-btn[data-pattern-shape]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.shape-btn[data-pattern-shape]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.updatePatternShape(btn.dataset.patternShape);
+          });
+        });
+
+        this.elements.patternColor.addEventListener('change', () => {
+          this.updatePatternColor();
+        });
+
+        // プリセット
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            this.applyPreset(btn.dataset.preset);
+          });
+        });
+
+        // クリエイティブダウンロード
+        this.elements.downloadSVG.addEventListener('click', () => this.downloadCreativeSVG());
+        this.elements.downloadPNG.addEventListener('click', () => this.downloadCreativePNG());
       }
       
       updateDownloadFormatUI() {
@@ -1031,9 +1320,7 @@
           default:
             return '';
         }
-      }
-
-      async generateQR() {
+      }      async generateQR() {
         const text = this.getQRText();
         if (!text) {
           alert('内容を入力してください');
@@ -1051,6 +1338,13 @@
         `;
 
         try {
+          // クリエイティブモードの場合
+          if (this.designMode === 'creative') {
+            await this.generateCreativeQR(text);
+            return;
+          }
+
+          // 標準モードの場合（既存のロジック）
           const options = {
             width: parseInt(this.elements.qrSize.value),
             height: parseInt(this.elements.qrSize.value),
@@ -1059,7 +1353,7 @@
               light: this.elements.backgroundColor.value
             },
             errorCorrectionLevel: this.elements.errorCorrection.value
-          };          // QRコード生成（古いQRCode.jsライブラリ形式）
+          };// QRコード生成（古いQRCode.jsライブラリ形式）
           if (typeof QRCode !== 'undefined') {
             console.log('QRCode（古い形式）での生成を試行...');
             
@@ -1540,14 +1834,456 @@
         // 簡易SVG生成（実際のQRコードロジックは省略）
         const foreground = this.elements.foregroundColor.value;
         const background = this.elements.backgroundColor.value;
-        
-        return `<?xml version="1.0" encoding="UTF-8"?>
+          return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
   <rect width="100%" height="100%" fill="${background}"/>
   <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="12" fill="${foreground}">
     QR Code: ${text.substring(0, 20)}...
   </text>
 </svg>`;
+      }
+      
+      // クリエイティブQR機能メソッド
+      switchDesignMode(mode) {
+        this.designMode = mode;
+        
+        // ボタンスタイル更新
+        document.querySelectorAll('[data-design-mode]').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.designMode === mode);
+        });
+        
+        // クリエイティブオプション表示切り替え
+        if (mode === 'creative') {
+          this.elements.creativeOptions.classList.remove('hidden');
+          this.elements.creativeDownloadSection.classList.remove('hidden');
+        } else {
+          this.elements.creativeOptions.classList.add('hidden');
+          this.elements.creativeDownloadSection.classList.add('hidden');
+        }
+      }
+
+      updateColorModeUI() {
+        if (this.currentColorMode === 'gradient') {
+          this.elements.gradientSettings.classList.remove('hidden');
+        } else {
+          this.elements.gradientSettings.classList.add('hidden');
+        }
+      }
+
+      async generateCreativeQR(text) {
+        try {
+          // QRコードデータ生成（qrcode-generatorライブラリを使用）
+          const qr = qrcode(0, 'M'); // エラー訂正レベル M
+          qr.addData(text);
+          qr.make();
+          
+          this.qrData = qr;
+          this.renderCreativeQR();
+          
+          console.log('✅ クリエイティブQRコード生成完了');
+        } catch (error) {
+          console.error('❌ クリエイティブQRコード生成エラー:', error);
+          this.elements.qrResult.innerHTML = `
+            <div class="text-center text-red-500">
+              <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+              <p>クリエイティブQRコード生成に失敗しました</p>
+              <p class="text-sm mt-2">${error.message}</p>
+            </div>
+          `;
+        }
+      }
+
+      renderCreativeQR() {
+        if (!this.qrData) return;
+
+        const moduleCount = this.qrData.getModuleCount();
+        const size = parseInt(this.elements.qrSize.value);
+        const cellSize = Math.floor(size / moduleCount);
+        const actualSize = cellSize * moduleCount;
+
+        // SVG作成
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', actualSize);
+        svg.setAttribute('height', actualSize);
+        svg.setAttribute('viewBox', `0 0 ${actualSize} ${actualSize}`);
+        svg.style.maxWidth = '100%';
+        svg.style.height = 'auto';
+
+        // グラデーション定義
+        if (this.currentColorMode === 'gradient') {
+          this.addGradientDefinition(svg);
+        }
+
+        // 背景
+        const background = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        background.setAttribute('width', actualSize);
+        background.setAttribute('height', actualSize);
+        background.setAttribute('fill', this.elements.backgroundColor.value);
+        svg.appendChild(background);
+
+        // セル描画
+        for (let row = 0; row < moduleCount; row++) {
+          for (let col = 0; col < moduleCount; col++) {
+            if (this.qrData.isDark(row, col)) {
+              const x = col * cellSize;
+              const y = row * cellSize;
+              
+              // 検出パターンかチェック
+              const isPattern = this.isDetectionPattern(row, col, moduleCount);
+              
+              if (isPattern) {
+                this.drawDetectionPattern(svg, row, col, cellSize, moduleCount, isPattern);
+              } else {
+                this.drawCreativeCell(svg, x, y, cellSize, row, col);
+              }
+            }
+          }
+        }
+
+        // プレビューに表示
+        this.elements.qrResult.innerHTML = '';
+        this.elements.qrResult.appendChild(svg);
+
+        // セルクリックイベント追加
+        this.addCellClickEvents(svg);
+
+        // ダウンロードボタン表示
+        this.elements.downloadBtn.classList.remove('hidden');
+        this.elements.downloadAllBtn.classList.remove('hidden');
+      }
+
+      addGradientDefinition(svg) {
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        gradient.setAttribute('id', 'cellGradient');
+        
+        const direction = this.elements.gradientDirection.value;
+        switch (direction) {
+          case 'horizontal':
+            gradient.setAttribute('x1', '0%');
+            gradient.setAttribute('y1', '0%');
+            gradient.setAttribute('x2', '100%');
+            gradient.setAttribute('y2', '0%');
+            break;
+          case 'vertical':
+            gradient.setAttribute('x1', '0%');
+            gradient.setAttribute('y1', '0%');
+            gradient.setAttribute('x2', '0%');
+            gradient.setAttribute('y2', '100%');
+            break;
+          case 'diagonal':
+            gradient.setAttribute('x1', '0%');
+            gradient.setAttribute('y1', '0%');
+            gradient.setAttribute('x2', '100%');
+            gradient.setAttribute('y2', '100%');
+            break;
+          case 'radial':
+            // 放射状グラデーション用
+            const radialGradient = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+            radialGradient.setAttribute('id', 'cellGradient');
+            radialGradient.setAttribute('cx', '50%');
+            radialGradient.setAttribute('cy', '50%');
+            radialGradient.setAttribute('r', '50%');
+            
+            const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop1.setAttribute('offset', '0%');
+            stop1.setAttribute('stop-color', this.elements.gradientStart.value);
+
+            const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop2.setAttribute('offset', '100%');
+            stop2.setAttribute('stop-color', this.elements.gradientEnd.value);
+
+            radialGradient.appendChild(stop1);
+            radialGradient.appendChild(stop2);
+            defs.appendChild(radialGradient);
+            svg.appendChild(defs);
+            return;
+        }
+
+        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('stop-color', this.elements.gradientStart.value);
+
+        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('stop-color', this.elements.gradientEnd.value);
+
+        gradient.appendChild(stop1);
+        gradient.appendChild(stop2);
+        defs.appendChild(gradient);
+        svg.appendChild(defs);
+      }
+
+      isDetectionPattern(row, col, moduleCount) {
+        // 左上 (0-6, 0-6)
+        if (row < 7 && col < 7) return 'top-left';
+        
+        // 右上 (0-6, moduleCount-7 to moduleCount-1)
+        if (row < 7 && col >= moduleCount - 7) return 'top-right';
+        
+        // 左下 (moduleCount-7 to moduleCount-1, 0-6)
+        if (row >= moduleCount - 7 && col < 7) return 'bottom-left';
+        
+        return false;
+      }
+
+      drawDetectionPattern(svg, row, col, cellSize, moduleCount, patternType) {
+        const x = col * cellSize;
+        const y = row * cellSize;
+        const customization = this.patternCustomizations[patternType];
+        
+        // 検出パターンは通常のセルとして描画（将来的に特別な描画を追加可能）
+        this.drawCreativeCell(svg, x, y, cellSize, row, col, customization.color);
+      }
+
+      drawCreativeCell(svg, x, y, size, row, col, customColor = null) {
+        const cellId = `cell-${row}-${col}`;
+        
+        // 個別カスタマイズチェック
+        const customization = this.cellCustomizations.get(cellId);
+        const shape = customization?.shape || this.currentShape;
+        const color = customColor || customization?.color || this.getCellColor(row, col);
+
+        let element;
+
+        switch (shape) {
+          case 'circle':
+            element = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            element.setAttribute('cx', x + size / 2);
+            element.setAttribute('cy', y + size / 2);
+            element.setAttribute('r', size * 0.4);
+            break;
+            
+          case 'rounded':
+            element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            element.setAttribute('x', x + size * 0.1);
+            element.setAttribute('y', y + size * 0.1);
+            element.setAttribute('width', size * 0.8);
+            element.setAttribute('height', size * 0.8);
+            element.setAttribute('rx', size * 0.2);
+            break;
+            
+          case 'diamond':
+            element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            element.setAttribute('x', x + size / 2);
+            element.setAttribute('y', y + size / 2);
+            element.setAttribute('width', size * 0.7);
+            element.setAttribute('height', size * 0.7);
+            element.setAttribute('transform', `rotate(45 ${x + size / 2} ${y + size / 2}) translate(${-size * 0.35} ${-size * 0.35})`);
+            break;
+            
+          default: // square
+            element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            element.setAttribute('x', x);
+            element.setAttribute('y', y);
+            element.setAttribute('width', size);
+            element.setAttribute('height', size);
+            break;
+        }
+
+        element.setAttribute('fill', color);
+        element.setAttribute('data-row', row);
+        element.setAttribute('data-col', col);
+        element.setAttribute('data-cell-id', cellId);
+        element.classList.add('qr-cell');
+
+        svg.appendChild(element);
+      }
+
+      getCellColor(row, col) {
+        switch (this.currentColorMode) {
+          case 'gradient':
+            return 'url(#cellGradient)';
+            
+          case 'rainbow':
+            const hue = ((row + col) * 30) % 360;
+            return `hsl(${hue}, 70%, 50%)`;
+            
+          case 'pattern':
+            // チェッカーボードパターン
+            return (row + col) % 2 === 0 ? this.elements.foregroundColor.value : '#666666';
+            
+          default: // solid
+            return this.elements.foregroundColor.value;
+        }
+      }
+
+      addCellClickEvents(svg) {
+        svg.addEventListener('click', (e) => {
+          const cell = e.target.closest('.qr-cell');
+          if (cell) {
+            this.selectCell(cell);
+          }
+        });
+
+        svg.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          const cell = e.target.closest('.qr-cell');
+          if (cell) {
+            this.cycleCellShape(cell);
+          }
+        });
+      }
+
+      selectCell(cell) {
+        // 前の選択を解除
+        document.querySelectorAll('.qr-cell').forEach(c => {
+          c.classList.remove('selected');
+        });
+
+        // 新しい選択
+        cell.classList.add('selected');
+
+        const row = cell.getAttribute('data-row');
+        const col = cell.getAttribute('data-col');
+        const cellId = cell.getAttribute('data-cell-id');
+
+        console.log(`セル選択: (${row}, ${col})`);
+      }
+
+      cycleCellShape(cell) {
+        const shapes = ['square', 'circle', 'rounded', 'diamond'];
+        const cellId = cell.getAttribute('data-cell-id');
+        const current = this.cellCustomizations.get(cellId)?.shape || this.currentShape;
+        const currentIndex = shapes.indexOf(current);
+        const nextShape = shapes[(currentIndex + 1) % shapes.length];
+
+        const customization = this.cellCustomizations.get(cellId) || {};
+        customization.shape = nextShape;
+        this.cellCustomizations.set(cellId, customization);
+
+        this.renderCreativeQR();
+      }
+
+      updatePatternShape(shape) {
+        const selectedPattern = this.elements.patternSelect.value;
+        if (selectedPattern === 'all') {
+          Object.keys(this.patternCustomizations).forEach(key => {
+            this.patternCustomizations[key].shape = shape;
+          });
+        } else {
+          this.patternCustomizations[selectedPattern].shape = shape;
+        }
+        
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      }
+
+      updatePatternColor() {
+        const color = this.elements.patternColor.value;
+        const selectedPattern = this.elements.patternSelect.value;
+        
+        if (selectedPattern === 'all') {
+          Object.keys(this.patternCustomizations).forEach(key => {
+            this.patternCustomizations[key].color = color;
+          });
+        } else {
+          this.patternCustomizations[selectedPattern].color = color;
+        }
+        
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      }
+
+      applyPreset(preset) {
+        switch (preset) {
+          case 'minimal':
+            this.elements.foregroundColor.value = '#000000';
+            this.elements.backgroundColor.value = '#ffffff';
+            this.elements.colorMode.value = 'solid';
+            this.currentShape = 'square';
+            break;
+            
+          case 'neon':
+            this.elements.gradientStart.value = '#ff0080';
+            this.elements.gradientEnd.value = '#00ff80';
+            this.elements.colorMode.value = 'gradient';
+            this.elements.backgroundColor.value = '#000000';
+            this.currentShape = 'rounded';
+            break;
+            
+          case 'nature':
+            this.elements.gradientStart.value = '#22c55e';
+            this.elements.gradientEnd.value = '#16a34a';
+            this.elements.colorMode.value = 'gradient';
+            this.elements.backgroundColor.value = '#f0fdf4';
+            this.currentShape = 'circle';
+            break;
+            
+          case 'retro':
+            this.elements.foregroundColor.value = '#d97706';
+            this.elements.backgroundColor.value = '#fef3c7';
+            this.elements.colorMode.value = 'solid';
+            this.currentShape = 'rounded';
+            break;
+        }
+
+        // UI更新
+        this.currentColorMode = this.elements.colorMode.value;
+        this.updateColorModeUI();
+        
+        // 形状ボタン更新
+        document.querySelectorAll('.shape-btn[data-shape]').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.shape === this.currentShape);
+        });
+
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      }
+
+      downloadCreativeSVG() {
+        const svg = this.elements.qrResult.querySelector('svg');
+        if (!svg) {
+          alert('先にクリエイティブQRコードを生成してください');
+          return;
+        }
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'creative-qr-code.svg';
+        a.click();
+
+        URL.revokeObjectURL(url);
+      }
+
+      downloadCreativePNG() {
+        const svg = this.elements.qrResult.querySelector('svg');
+        if (!svg) {
+          alert('先にクリエイティブQRコードを生成してください');
+          return;
+        }
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+
+        const size = parseInt(this.elements.qrSize.value);
+        canvas.width = size;
+        canvas.height = size;
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0);
+          
+          canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'creative-qr-code.png';
+            a.click();
+            URL.revokeObjectURL(url);
+          }, 'image/png');
+          
+          URL.revokeObjectURL(url);
+        };
+
+        img.src = url;
       }
       
       async generateQRCanvas(text, options) {
