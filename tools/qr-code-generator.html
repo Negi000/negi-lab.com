@@ -258,6 +258,10 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="../js/common-utils.js"></script>
+  <script src="../js/qrcode.min.js"></script>
+  <script src="../js/qr-code-creative.js"></script>
+  <script src="../js/qr-code-ui.js"></script>
+
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
@@ -429,13 +433,7 @@
 
         <!-- バッチ生成セクション -->
         <div id="batchGenerationSection" class="hidden">
-          <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-            <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
-              <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              バッチ生成データ
-            </h2>
+          <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">            <h2 class="text-xl font-bold mb-4 text-gray-800">バッチ生成データ</h2>
             
             <!-- CSVインポート -->
             <div class="mb-4">
@@ -457,11 +455,7 @@
             </div>
 
             <!-- バッチ生成ボタン -->
-            <div class="mt-4">
-              <button id="generateBatchBtn" class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
+            <div class="mt-4">              <button id="generateBatchBtn" class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                 バッチ生成・ダウンロード
               </button>
             </div>
@@ -1011,11 +1005,15 @@
                     }
                   }" 
           onerror="loadQRCodeFallback()"></script>
-
   <!-- クリエイティブQR用ライブラリ -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"
           onload="console.log('✅ qrcode-generator読み込み完了');"
           onerror="console.warn('⚠️ qrcode-generator読み込み失敗');"></script>
+
+  <!-- JSZip for batch download -->
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
+          onload="console.log('✅ JSZip読み込み完了');"
+          onerror="console.warn('⚠️ JSZip読み込み失敗');"></script>
 
   <!-- QRコードライブラリフォールバック -->
   <script>
