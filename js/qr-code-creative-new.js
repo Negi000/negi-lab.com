@@ -161,7 +161,6 @@ class QRGenerator {
     // クリエイティブ機能イベント
     this.bindCreativeEvents();
   }
-
   bindCreativeEvents() {
     // デザインモード切り替え
     if (this.elements.standardModeBtn) {
@@ -182,9 +181,25 @@ class QRGenerator {
         document.querySelectorAll('.shape-btn[data-shape]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         this.currentShape = btn.dataset.shape;
+        console.log('形状変更:', this.currentShape);
         if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
       });
-    });    // カラーモード
+    });
+
+    // カラーモードボタン
+    document.querySelectorAll('.color-mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.color-mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.currentColorMode = btn.dataset.colorMode;
+        if (this.elements.colorMode) this.elements.colorMode.value = this.currentColorMode;
+        this.updateColorModeUI();
+        console.log('カラーモード変更:', this.currentColorMode);
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      });
+    });
+
+    // カラーモード（セレクト要素）
     if (this.elements.colorMode) {
       this.elements.colorMode.addEventListener('change', () => {
         this.currentColorMode = this.elements.colorMode.value;
@@ -680,7 +695,6 @@ class QRGenerator {
     
     console.log('✅ クリエイティブQR描画完了');
   }
-
   createCreativeSVG(qrData, size, moduleSize, moduleCount) {
     var foregroundColor = this.elements.foregroundColor.value || '#000000';
     var backgroundColor = this.elements.backgroundColor.value || '#ffffff';
@@ -695,22 +709,47 @@ class QRGenerator {
       svg += this.createGradientDefs();
     }
     
-    // モジュールを描画
+    // 描画済みの検出パターン位置を記録
+    var finderPatternPositions = [
+      {startRow: 0, endRow: 6, startCol: 0, endCol: 6},           // 左上
+      {startRow: 0, endRow: 6, startCol: moduleCount-7, endCol: moduleCount-1}, // 右上
+      {startRow: moduleCount-7, endRow: moduleCount-1, startCol: 0, endCol: 6}  // 左下
+    ];
+    
+    // 通常のモジュールを描画
     for (var row = 0; row < moduleCount; row++) {
       for (var col = 0; col < moduleCount; col++) {
         if (qrData.isDark(row, col)) {
+          // 検出パターン領域かチェック
+          var isInFinderPattern = false;
+          for (var p = 0; p < finderPatternPositions.length; p++) {
+            var pos = finderPatternPositions[p];
+            if (row >= pos.startRow && row <= pos.endRow && 
+                col >= pos.startCol && col <= pos.endCol) {
+              isInFinderPattern = true;
+              break;
+            }
+          }
+          
           var x = col * moduleSize;
           var y = row * moduleSize;
           
-          // 検出パターンの特別処理
-          if (this.isFinderPattern(row, col, moduleCount)) {
-            svg += this.createFinderPatternSVG(x, y, moduleSize);
+          if (isInFinderPattern) {
+            // 検出パターンはスキップ（後で別途描画）
+            continue;
           } else {
             svg += this.createModuleSVG(x, y, moduleSize, row, col);
           }
         }
       }
     }
+    
+    // 検出パターンを最後に描画
+    finderPatternPositions.forEach(pos => {
+      var x = pos.startCol * moduleSize;
+      var y = pos.startRow * moduleSize;
+      svg += this.createFinderPatternSVG(x, y, moduleSize);
+    });
     
     svg += '</svg>';
     return svg;
@@ -811,8 +850,7 @@ class QRGenerator {
     if (row >= size - 7 && row < size && col >= 0 && col < 7) return true;
     
     return false;
-  }
-  createCreativeCanvas(qrData, size, moduleSize, moduleCount) {
+  }  createCreativeCanvas(qrData, size, moduleSize, moduleCount) {
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     canvas.width = size;
@@ -821,6 +859,13 @@ class QRGenerator {
     // 背景を描画
     ctx.fillStyle = this.elements.backgroundColor.value || '#ffffff';
     ctx.fillRect(0, 0, size, size);
+    
+    // 検出パターンの位置を定義
+    var finderPatternPositions = [
+      {startRow: 0, endRow: 6, startCol: 0, endCol: 6},           // 左上
+      {startRow: 0, endRow: 6, startCol: moduleCount-7, endCol: moduleCount-1}, // 右上
+      {startRow: moduleCount-7, endRow: moduleCount-1, startCol: 0, endCol: 6}  // 左下
+    ];
     
     // モジュール描画用のスタイルを設定
     var self = this;
@@ -844,15 +889,27 @@ class QRGenerator {
       }
     }
     
-    // モジュールを描画
+    // 通常のモジュールを描画
     for (var row = 0; row < moduleCount; row++) {
       for (var col = 0; col < moduleCount; col++) {
         if (qrData.isDark(row, col)) {
+          // 検出パターン領域かチェック
+          var isInFinderPattern = false;
+          for (var p = 0; p < finderPatternPositions.length; p++) {
+            var pos = finderPatternPositions[p];
+            if (row >= pos.startRow && row <= pos.endRow && 
+                col >= pos.startCol && col <= pos.endCol) {
+              isInFinderPattern = true;
+              break;
+            }
+          }
+          
           var x = col * moduleSize;
           var y = row * moduleSize;
           
-          if (this.isFinderPattern(row, col, moduleCount)) {
-            this.drawFinderPatternCanvas(ctx, x, y, moduleSize);
+          if (isInFinderPattern) {
+            // 検出パターンはスキップ
+            continue;
           } else {
             setModuleFillStyle();
             this.drawModuleCanvas(ctx, x, y, moduleSize);
@@ -860,6 +917,13 @@ class QRGenerator {
         }
       }
     }
+    
+    // 検出パターンを最後に描画
+    finderPatternPositions.forEach(pos => {
+      var x = pos.startCol * moduleSize;
+      var y = pos.startRow * moduleSize;
+      self.drawFinderPatternCanvas(ctx, x, y, moduleSize);
+    });
     
     return Promise.resolve(canvas);
   }
@@ -962,12 +1026,52 @@ class QRGenerator {
     if (this.qrData && this.designMode === 'creative') {
       this.renderCreativeQR();
     }
-  }
-  applyPreset(preset) {
+  }  applyPreset(preset) {
     console.log('プリセット適用:', preset);
     
     // プリセット設定を適用
     switch (preset) {
+      case 'nature':
+        this.currentShape = 'circle';
+        this.currentColorMode = 'gradient';
+        if (this.elements.foregroundColor) this.elements.foregroundColor.value = '#10b981';
+        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#ffffff';
+        if (this.elements.gradientStart) this.elements.gradientStart.value = '#10b981';
+        if (this.elements.gradientEnd) this.elements.gradientEnd.value = '#3b82f6';
+        if (this.elements.gradientDirection) this.elements.gradientDirection.value = 'linear';
+        if (this.elements.patternColor) this.elements.patternColor.value = '#10b981';
+        break;
+      
+      case 'sunset':
+        this.currentShape = 'rounded';
+        this.currentColorMode = 'gradient';
+        if (this.elements.gradientStart) this.elements.gradientStart.value = '#fb923c';
+        if (this.elements.gradientEnd) this.elements.gradientEnd.value = '#ef4444';
+        if (this.elements.gradientDirection) this.elements.gradientDirection.value = 'linear';
+        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#ffffff';
+        if (this.elements.patternColor) this.elements.patternColor.value = '#fb923c';
+        break;
+      
+      case 'ocean':
+        this.currentShape = 'circle';
+        this.currentColorMode = 'gradient';
+        if (this.elements.gradientStart) this.elements.gradientStart.value = '#3b82f6';
+        if (this.elements.gradientEnd) this.elements.gradientEnd.value = '#14b8a6';
+        if (this.elements.gradientDirection) this.elements.gradientDirection.value = 'radial';
+        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#ffffff';
+        if (this.elements.patternColor) this.elements.patternColor.value = '#3b82f6';
+        break;
+      
+      case 'royal':
+        this.currentShape = 'diamond';
+        this.currentColorMode = 'gradient';
+        if (this.elements.gradientStart) this.elements.gradientStart.value = '#a855f7';
+        if (this.elements.gradientEnd) this.elements.gradientEnd.value = '#ec4899';
+        if (this.elements.gradientDirection) this.elements.gradientDirection.value = 'linear';
+        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#ffffff';
+        if (this.elements.patternColor) this.elements.patternColor.value = '#a855f7';
+        break;
+      
       case 'minimal':
         this.currentShape = 'square';
         this.currentColorMode = 'solid';
@@ -999,37 +1103,39 @@ class QRGenerator {
       case 'tech':
         this.currentShape = 'square';
         this.currentColorMode = 'solid';
-        if (this.elements.foregroundColor) this.elements.foregroundColor.value = '#00ff88';
-        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#0a0a0a';
-        if (this.elements.patternColor) this.elements.patternColor.value = '#00ff88';
+        if (this.elements.foregroundColor) this.elements.foregroundColor.value = '#1f2937';
+        if (this.elements.backgroundColor) this.elements.backgroundColor.value = '#f3f4f6';
+        if (this.elements.patternColor) this.elements.patternColor.value = '#ef4444';
         break;
     }
-    
-    // UIを更新
-    this.updateUIFromPreset();
+
+    // UI要素の状態を更新
+    this.updateUIFromCurrentState();
     
     // QRコードを再描画
     if (this.qrData && this.designMode === 'creative') {
       this.renderCreativeQR();
     }
   }
-
-  updateUIFromPreset() {
-    // 形状ボタンの更新
-    document.querySelectorAll('.shape-btn[data-shape]').forEach(function(btn) {
+  updateUIFromCurrentState() {
+    // 形状ボタンの状態更新
+    document.querySelectorAll('.shape-btn[data-shape]').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.shape === this.currentShape);
-    }.bind(this));
-    
-    // カラーモードの更新
+    });
+
+    // カラーモードボタンの状態更新
+    document.querySelectorAll('.color-mode-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.colorMode === this.currentColorMode);
+    });
+
+    // セレクト要素の値更新
     if (this.elements.colorMode) {
       this.elements.colorMode.value = this.currentColorMode;
-      
-      // カラーモード変更イベントを手動で発火
-      var event = new Event('change');
-      this.elements.colorMode.dispatchEvent(event);
     }
-    
+
+    // グラデーション設定の表示/非表示
     this.updateColorModeUI();
+  }
     
     console.log('✅ プリセットUI更新完了:', {
       shape: this.currentShape,

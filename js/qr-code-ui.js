@@ -1,17 +1,30 @@
 // UI関連の初期化とイベントハンドリング
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 DOM読み込み完了 - QRGenerator初期化チェック');
+    console.log('🚀 DOM読み込み完了 - QRGeneratorインスタンス確認');
     
-    // QRGeneratorが既に初期化されているかチェック
-    if (typeof window.qrGenerator === 'undefined') {
-        try {
-            const qrGenerator = new QRGenerator();
-            window.qrGenerator = qrGenerator; // デバッグ用にグローバルに公開
-            console.log('✅ QRGenerator初期化成功');
-        } catch (error) {
-            console.error('❌ QRGenerator初期化失敗:', error);
+    // QRGeneratorInstanceが初期化されるまで待機（最大10秒、50回まで）
+    let attempts = 0;
+    const maxAttempts = 50;
+    
+    const checkQRGenerator = () => {
+        attempts++;
+        if (window.qrGeneratorInstance) {
+            console.log('✅ QRGeneratorインスタンス確認成功');
+            // 必要に応じて追加のUI初期化処理をここに記述
+        } else if (attempts < maxAttempts) {
+            console.log(`⏳ QRGeneratorインスタンス待機中... (${attempts}/${maxAttempts})`);
+            setTimeout(checkQRGenerator, 200); // 200ms後に再チェック
+        } else {
+            console.error('❌ QRGeneratorインスタンス初期化タイムアウト');
+            // フォールバック処理：強制的にインスタンスを作成
+            try {
+                window.qrGeneratorInstance = new QRGenerator();
+                console.log('✅ フォールバック: QRGeneratorインスタンス作成成功');
+            } catch (error) {
+                console.error('❌ フォールバック: QRGeneratorインスタンス作成失敗:', error);
+            }
         }
-    } else {
-        console.log('✅ QRGeneratorは既に初期化済み');
-    }
+    };
+    
+    checkQRGenerator();
 });

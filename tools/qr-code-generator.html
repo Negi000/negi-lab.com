@@ -27,7 +27,7 @@
   <meta property="og:description" content="従来の四角形に縛られない、自由な形・色・配置のクリエイティブQRコードを生成。テンプレート・バッチ生成・Wi-Fi・メール対応。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />  <!-- Tailwind CSS (本番環境では PostCSS plugin または Tailwind CLI を使用推奨) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" onload="console.log('✅ Tailwind CSS読み込み完了')" onerror="console.error('❌ Tailwind CSS読み込み失敗')"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -42,6 +42,7 @@
         }
       }
     };
+    console.log('✅ Tailwind設定完了');
   </script>
 
   <style>    .form-input, .form-select {
@@ -416,13 +417,22 @@
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-700 mb-2">手動入力（1行1件）</label>
               <textarea id="batchTextData" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent" placeholder="例:&#10;https://example.com&#10;連絡先情報&#10;WiFi設定データ"></textarea>
-            </div>
-
-            <!-- プレビュー -->
+            </div>            <!-- プレビュー -->
             <div id="batchPreview" class="hidden">
               <h4 class="text-sm font-medium text-gray-700 mb-2">生成予定リスト（<span id="batchCount">0</span>件）</h4>
-              <div id="batchPreviewList" class="max-h-32 overflow-y-auto border border-gray-200 rounded-lg p-3 text-xs bg-gray-50"></div>
-            </div>            <!-- バッチ生成ボタン -->
+              <div id="batchPreviewList" class="max-h-32 overflow-y-auto border border-gray-200 rounded-lg p-3 text-xs bg-gray-50 space-y-1"></div>
+            </div>
+
+            <!-- 進捗バー -->
+            <div id="batchProgressContainer" class="hidden mt-4">
+              <div class="flex justify-between text-sm text-gray-600 mb-2">
+                <span>生成進捗</span>
+                <span id="batchProgressText">0 / 0</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="batchProgress" class="bg-accent h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div><!-- バッチ生成ボタン -->
             <div class="mt-6">
               <button id="generateBatchBtn" class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed" disabled>                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
@@ -705,19 +715,22 @@
                   ダイヤ
                 </button>
               </div>
-            </div>
-
-            <!-- カラーモード -->
+            </div>            <!-- カラーモード -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-3">カラーモード</label>
               <div class="grid grid-cols-2 gap-2 mb-4">
-                <button class="color-mode-btn active text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="solid">
+                <button id="solidColorBtn" class="color-mode-btn active text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="solid">
                   単色
                 </button>
-                <button class="color-mode-btn text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="gradient">
+                <button id="gradientColorBtn" class="color-mode-btn text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="gradient">
                   グラデーション
                 </button>
               </div>
+              <!-- 隠しセレクト要素（JavaScript制御用） -->
+              <select id="colorMode" class="hidden">
+                <option value="solid">solid</option>
+                <option value="gradient">gradient</option>
+              </select>
 
               <!-- グラデーション設定 -->
               <div id="gradientSettings" class="hidden space-y-3 p-4 bg-gray-50 rounded-lg">
@@ -948,9 +961,7 @@
           </div>        </div>
 
       </div>
-    </div>
-
-    <!-- AdSense -->
+    </div>    <!-- AdSense -->
     <div class="mt-12 text-center">
       <ins class="adsbygoogle"
            style="display:block"
@@ -961,6 +972,7 @@
     </div>
 
   </div>
+  </main>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
@@ -1012,10 +1024,18 @@
       script.onerror = () => console.error('❌ QRライブラリCDNフォールバックも失敗');
       document.head.appendChild(script);
     }
-  </script>
-  <!-- メイン JavaScript -->
-  <script src="../js/qr-code-creative-new.js"></script>
-  <script src="../js/qr-code-ui.js"></script>
+  </script>  <!-- JSZip ライブラリ（バッチ生成用） -->
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" 
+          onload="console.log('✅ JSZip読み込み完了');" 
+          onerror="console.error('❌ JSZip読み込み失敗');"></script>
+
+  <!-- メイン JavaScript (デバッグ用簡易版) -->
+  <script src="../js/qr-code-simple.js" 
+          onload="console.log('✅ qr-code-simple.js読み込み完了');" 
+          onerror="console.error('❌ qr-code-simple.js読み込み失敗');"></script>
+  <script src="../js/qr-code-ui.js" 
+          onload="console.log('✅ qr-code-ui.js読み込み完了');" 
+          onerror="console.error('❌ qr-code-ui.js読み込み失敗');"></script>
 
   <!-- デバッグ用スクリプト -->
   <script>
@@ -1044,12 +1064,11 @@
           console.warn(`⚠️ ボタンが見つかりません: ${id}`);
         }
       });
-      
-      // QRGeneratorインスタンスの確認
+        // QRGeneratorインスタンスの確認
       setTimeout(() => {
-        if (window.qrGenerator) {
+        if (window.qrGeneratorInstance) {
           console.log('✅ QRGeneratorインスタンス確認済み');
-          console.log('QRGenerator methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(window.qrGenerator)));
+          console.log('QRGenerator methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(window.qrGeneratorInstance)));
         } else {
           console.error('❌ QRGeneratorインスタンスが見つかりません');
         }
