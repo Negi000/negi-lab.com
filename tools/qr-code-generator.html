@@ -3,80 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- Content Security Policy -->
+    <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://cdn.jsdelivr.net 
-      https://unpkg.com
-      https://www.googletagmanager.com
-      https://pagead2.googlesyndication.com
-      https://partner.googleadservices.com
-      https://tpc.googlesyndication.com
-      https://ep1.adtrafficquality.google
-      https://ep2.adtrafficquality.google
-      https://googleads.g.doubleclick.net
-      https://*.googlesyndication.com
-      https://*.google.com
-      https://*.doubleclick.net;
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com;    img-src 'self' data: blob:
-      https://pagead2.googlesyndication.com
-      https://googleads.g.doubleclick.net
-      https://*.googlesyndication.com
-      https://*.google.com
-      https://*.doubleclick.net
-      https://ep1.adtrafficquality.google
-      https://ep2.adtrafficquality.google
-      https://chart.googleapis.com;    connect-src 'self'
-      https://www.google-analytics.com
-      https://ep1.adtrafficquality.google
-      https://ep2.adtrafficquality.google
-      https://pagead2.googlesyndication.com
-      https://*.google.com
-      https://*.doubleclick.net;
-    frame-src 'self'
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com
-      https://pagead2.googlesyndication.com
-      https://ep1.adtrafficquality.google
-      https://ep2.adtrafficquality.google
-      https://*.google.com
-      https://*.doubleclick.net;
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.google.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://*.google.com;
+    connect-src 'self' https://www.google-analytics.com;
+    frame-src 'self' https://*.google.com;
     worker-src 'self';
-    object-src 'none'; 
+    object-src 'none';
     base-uri 'self';
   " />
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title>クリエイティブQRコード生成ツール - negi-lab.com</title>
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />  <title>クリエイティブQRコード生成ツール - negi-lab.com</title>
   <meta name="description" content="従来の四角形に縛られない、自由な形・色・配置のクリエイティブQRコードを生成。テンプレート・バッチ生成・Wi-Fi・メール対応。無料で使いやすいQR作成ツール。" />
   <meta name="keywords" content="QRコード,生成,作成,無料,ツール,クリエイティブ,デザイン,カスタマイズ,SVG,バーコード,スマホ,URL,テキスト,Wi-Fi,連絡先,高品質" />
   
   <!-- OG Tags -->
-  <meta property="og:title" content="QRコード生成ツール - negi-lab.com" />
-  <meta property="og:description" content="高品質なQRコードを簡単生成。サイズ・色・エラー訂正レベル調整、ロゴ挿入、一括生成対応。" />
+  <meta property="og:title" content="クリエイティブQRコード生成ツール - negi-lab.com" />
+  <meta property="og:description" content="従来の四角形に縛られない、自由な形・色・配置のクリエイティブQRコードを生成。テンプレート・バッチ生成・Wi-Fi・メール対応。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
-    <!-- Tailwind CSS -->
-  <script>
-    // Tailwind CDN警告を抑制
-    if (typeof console !== 'undefined') {
-      const originalWarn = console.warn;
-      console.warn = function(...args) {
-        if (args[0] && args[0].includes && args[0].includes('cdn.tailwindcss.com')) {
-          return; // Tailwind警告をブロック
-        }
-        originalWarn.apply(console, args);
-      };
-    }
-  </script>
+  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -94,108 +45,101 @@
     };
   </script>
 
-  <style>
-    .form-input, .form-select {
+  <style>    .form-input, .form-select {
       width: 100%;
       padding: 0.5rem;
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      border-radius: 0.5rem;
+      background: white;
+      transition: border-color 0.2s;
     }
     
     .form-input:focus, .form-select:focus {
       outline: none;
-      border-color: #4ADE80;
-      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+      border-color: #65c155;
+      box-shadow: 0 0 0 3px rgba(101, 193, 85, 0.1);
     }
-      /* モードボタンスタイル */
+
     .mode-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background: white;
+      padding: 0.75rem 1rem;
       border: 2px solid #e5e7eb;
-      border-radius: 1rem;
+      border-radius: 0.75rem;
+      background: white;
+      transition: all 0.2s ease;
       cursor: pointer;
-      min-height: 100px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      font-weight: 500;
     }
     
     .mode-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(74, 222, 128, 0.15);
     }
     
     .mode-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
       color: white;
-      box-shadow: 0 8px 25px rgba(74, 222, 128, 0.25);
     }
-    
+
     .qr-template-btn {
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      background: white;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background: white;
-      border: 2px solid #e5e7eb;
-      border-radius: 1rem;
-      cursor: pointer;
-      min-height: 100px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .qr-template-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(74, 222, 128, 0.15);
     }
     
     .qr-template-btn.active {
       border-color: #4ADE80;
-      background: rgba(74, 222, 128, 0.1);
-    }
-    
-    #qrResult {
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-      .loading {
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      background: #4ADE80;
+      color: white;
     }
 
-    /* クリエイティブ機能用スタイル */
+    .color-mode-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .color-mode-btn:hover {
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.05);
+    }
+    
+    .color-mode-btn.active {
+      border-color: #4ADE80;
+      background: #4ADE80;
+      color: white;
+    }
+    
     .shape-btn {
+      padding: 0.75rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-      background: white;
-      border: 2px solid #e5e7eb;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      min-height: 50px;
-      transition: all 0.2s ease;
-      font-size: 0.75rem;
-    }
+      justify-content: center;    }
     
     .shape-btn:hover {
       border-color: #4ADE80;
@@ -208,55 +152,64 @@
       color: white;
     }
 
-    .qr-cell {
+    .preset-btn {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      transition: all 0.2s ease;
       cursor: pointer;
-      transition: all 0.1s;
+      text-align: center;
     }
     
-    .qr-cell:hover {
-      opacity: 0.7;
-    }
-
-    .qr-cell.selected {
-      stroke: #4ADE80;
-      stroke-width: 2;
-    }
-
-    .gradient-preview {
-      width: 100%;
-      height: 30px;
-      border-radius: 6px;
-      border: 1px solid #e5e7eb;
-      margin-top: 8px;
-    }
-
     .preset-btn:hover {
-      background: rgba(74, 222, 128, 0.1);
       border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.05);
     }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #65c155, #4ADE80);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #59b049, #22c55e);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(101, 193, 85, 0.3);    }
+
+    /* 古いCSSを削除して新しいスタイルを適用 */
+    .template-input {
+      transition: all 0.3s ease;
+    }
+
+    .template-input.hidden {
+      display: none;
+    }
+
+    /* レスポンシブデザイン */
+    @media (max-width: 768px) {
+      .grid.xl\\:grid-cols-3 {
+        grid-template-columns: 1fr;
+      }    }
   </style>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H" 
-          onerror="console.warn('Google Analytics読み込みスキップ')"></script>
+  <!-- External Scripts -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
-    try {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N9X3N0RY0H');
-    } catch(e) {
-      console.warn('Google Analytics初期化スキップ');
-    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9X3N0RY0H');
   </script>
   
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" 
-          crossorigin="anonymous"
-          onerror="console.warn('Google AdSense読み込みスキップ')"></script>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>  <!-- Fonts and Local Scripts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="../js/common-utils.js"></script>
   <script src="../js/qrcode.min.js"></script>
   <script src="../js/qr-code-creative.js"></script>
@@ -292,41 +245,62 @@
     <div class="container mx-auto px-4 max-w-6xl">
       <!-- ヘッダー -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">🎨 クリエイティブQRコード生成ツール</h1>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">クリエイティブQRコード生成ツール</h1>
       <p class="text-gray-600 text-lg max-w-3xl mx-auto">
         従来の四角形に縛られない、自由な形・色・配置のQRコードを作成。テンプレート・バッチ生成・Wi-Fi・メール等に対応。
       </p>
-    </div>
-
-    <!-- メインコンテンツ -->    <div class="grid lg:grid-cols-2 gap-8">
+    </div>    <!-- メインコンテンツ -->
+    <div class="grid xl:grid-cols-3 lg:grid-cols-2 gap-8">
       
       <!-- 左側: 設定パネル -->
-      <div class="space-y-6">
+      <div class="xl:col-span-2 space-y-6">
         
         <!-- モード選択 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
             <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             生成モード
           </h2>
           <div class="grid grid-cols-2 gap-4">
-            <button id="singleModeBtn" class="mode-btn active" data-mode="single">
-              <div class="mb-2">
+            <button id="singleModeBtn" class="mode-btn active" data-mode="single">              <div class="mb-2">
                 <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <span class="font-medium text-sm">単体生成</span>
             </button>
-            <button id="batchModeBtn" class="mode-btn" data-mode="batch">
-              <div class="mb-2">
+            <button id="batchModeBtn" class="mode-btn" data-mode="batch">              <div class="mb-2">
                 <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
               <span class="font-medium text-sm">バッチ生成</span>
+            </button>
+          </div>        </div>
+
+        <!-- デザインモード選択（単体生成時のみ表示） -->
+        <div id="designModeSection" class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            デザインモード
+          </h2>
+          <div class="grid grid-cols-2 gap-4">
+            <button id="standardModeBtn" class="mode-btn active" data-design="standard">              <div class="mb-2">
+                <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+              <span class="font-medium text-sm">標準モード</span>
+            </button>
+            <button id="creativeModeBtn" class="mode-btn" data-design="creative">              <div class="mb-2">
+                <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </div>
+              <span class="font-medium text-sm">クリエイティブ</span>
             </button>
           </div>
         </div>
@@ -452,10 +426,11 @@
             <div id="batchPreview" class="hidden">
               <h4 class="text-sm font-medium text-gray-700 mb-2">生成予定リスト（<span id="batchCount">0</span>件）</h4>
               <div id="batchPreviewList" class="max-h-32 overflow-y-auto border border-gray-200 rounded-lg p-3 text-xs bg-gray-50"></div>
-            </div>
-
-            <!-- バッチ生成ボタン -->
-            <div class="mt-4">              <button id="generateBatchBtn" class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            </div>            <!-- バッチ生成ボタン -->
+            <div class="mt-6">
+              <button id="generateBatchBtn" class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed" disabled>                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                </svg>
                 バッチ生成・ダウンロード
               </button>
             </div>
@@ -618,7 +593,7 @@
                 <input type="text" id="locationName" class="form-input" placeholder="東京駅">
               </div>
               <div class="text-xs text-gray-500">
-                <p>💡 Google マップで場所を右クリック → 座標をコピーできます</p>
+                <p>ヒント: Google マップで場所を右クリック → 座標をコピーできます</p>
               </div>
             </div>
           </div>
@@ -644,7 +619,7 @@
                 <input type="text" id="socialUsername" class="form-input" placeholder="@username または完全なURL">
               </div>
               <div class="text-xs text-gray-500">
-                <p>💡 @なしのユーザー名または完全なURLを入力してください</p>
+                <p>ヒント: @なしのユーザー名または完全なURLを入力してください</p>
               </div>
             </div>
           </div>
@@ -702,154 +677,152 @@
               <input type="color" id="backgroundColor" value="#ffffff" class="form-input h-12">
             </div>
               </div>
-        </div>
-
-        <!-- クリエイティブ設定 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+        </div>        <!-- クリエイティブ設定（クリエイティブモード時のみ表示） -->
+        <div id="creativeSettingsSection" class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hidden">
           <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
             <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
             </svg>
-            🎨 クリエイティブ設定
+            クリエイティブオプション
           </h2>
-
-          <!-- デザインモード -->
-          <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">デザインモード</label>
-            <div class="grid grid-cols-2 gap-2">
-              <button id="standardModeBtn" class="mode-btn active text-sm py-2" data-design-mode="standard">
-                標準
-              </button>
-              <button id="creativeModeBtn" class="mode-btn text-sm py-2" data-design-mode="creative">
-                クリエイティブ
-              </button>
-            </div>
-          </div>
-
-          <!-- クリエイティブオプション -->
-          <div id="creativeOptions" class="hidden space-y-4">
+          
+          <div class="space-y-6">
             
             <!-- セルの形状 -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">セルの形状</label>
-              <div class="grid grid-cols-4 gap-2">
-                <button class="shape-btn active text-xs" data-shape="square">
-                  <div class="w-3 h-3 bg-current mx-auto"></div>
-                  正方
+              <label class="block text-sm font-medium text-gray-700 mb-3">セルの形状</label>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <button class="shape-btn active flex flex-col items-center text-xs py-3 px-2 border border-gray-200 rounded-lg hover:border-accent transition-all" data-shape="square">
+                  <div class="w-4 h-4 bg-current mb-1"></div>
+                  正方形
                 </button>
-                <button class="shape-btn text-xs" data-shape="circle">
-                  <div class="w-3 h-3 bg-current rounded-full mx-auto"></div>
-                  円
+                <button class="shape-btn flex flex-col items-center text-xs py-3 px-2 border border-gray-200 rounded-lg hover:border-accent transition-all" data-shape="circle">
+                  <div class="w-4 h-4 bg-current rounded-full mb-1"></div>
+                  円形
                 </button>
-                <button class="shape-btn text-xs" data-shape="rounded">
-                  <div class="w-3 h-3 bg-current rounded mx-auto"></div>
+                <button class="shape-btn flex flex-col items-center text-xs py-3 px-2 border border-gray-200 rounded-lg hover:border-accent transition-all" data-shape="rounded">
+                  <div class="w-4 h-4 bg-current rounded mb-1"></div>
                   角丸
                 </button>
-                <button class="shape-btn text-xs" data-shape="diamond">
-                  <div class="w-2 h-2 bg-current transform rotate-45 mx-auto"></div>
-                  ◆
+                <button class="shape-btn flex flex-col items-center text-xs py-3 px-2 border border-gray-200 rounded-lg hover:border-accent transition-all" data-shape="diamond">
+                  <div class="w-3 h-3 bg-current transform rotate-45 mb-1"></div>
+                  ダイヤ
                 </button>
               </div>
             </div>
 
             <!-- カラーモード -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">カラーモード</label>
-              <select id="colorMode" class="form-select text-sm">
-                <option value="solid">単色</option>
-                <option value="gradient">グラデーション</option>
-                <option value="rainbow">レインボー</option>
-                <option value="pattern">パターン</option>
-              </select>
-            </div>
+              <label class="block text-sm font-medium text-gray-700 mb-3">カラーモード</label>
+              <div class="grid grid-cols-2 gap-2 mb-4">
+                <button class="color-mode-btn active text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="solid">
+                  単色
+                </button>
+                <button class="color-mode-btn text-sm py-2 px-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-color-mode="gradient">
+                  グラデーション
+                </button>
+              </div>
 
-            <!-- グラデーション設定 -->
-            <div id="gradientSettings" class="hidden space-y-3">
-              <div class="grid grid-cols-2 gap-2">
-                <div>
-                  <label class="block text-xs text-gray-600 mb-1">開始色</label>
-                  <input type="color" id="gradientStart" value="#ff0000" class="form-input h-8">
+              <!-- グラデーション設定 -->
+              <div id="gradientSettings" class="hidden space-y-3 p-4 bg-gray-50 rounded-lg">
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs text-gray-600 mb-1">開始色</label>
+                    <input type="color" id="gradientStart" value="#ff0000" class="form-input h-10">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-600 mb-1">終了色</label>
+                    <input type="color" id="gradientEnd" value="#0000ff" class="form-input h-10">
+                  </div>
                 </div>
                 <div>
-                  <label class="block text-xs text-gray-600 mb-1">終了色</label>
-                  <input type="color" id="gradientEnd" value="#0000ff" class="form-input h-8">
+                  <label class="block text-xs text-gray-600 mb-1">方向</label>
+                  <select id="gradientDirection" class="form-select text-sm">
+                    <option value="horizontal">水平</option>
+                    <option value="vertical">垂直</option>
+                    <option value="diagonal">対角線</option>
+                    <option value="radial">放射状</option>
+                  </select>
                 </div>
               </div>
-              <div>
-                <label class="block text-xs text-gray-600 mb-1">方向</label>
-                <select id="gradientDirection" class="form-select text-sm">
-                  <option value="horizontal">水平</option>
-                  <option value="vertical">垂直</option>
-                  <option value="diagonal">対角線</option>
-                  <option value="radial">放射状</option>
-                </select>
-              </div>
             </div>
 
-            <!-- プリセット -->
+            <!-- 検出パターンカスタマイズ -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">プリセット</label>
-              <div class="grid grid-cols-2 gap-2">
-                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="minimal">
-                  ミニマル
-                </button>
-                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="neon">
-                  ネオン
-                </button>
-                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="nature">
-                  ナチュラル
-                </button>
-                <button class="preset-btn text-xs py-2 px-3 border border-gray-200 rounded hover:border-accent transition-colors" data-preset="retro">
-                  レトロ
-                </button>
-              </div>
-            </div>
-
-            <!-- 検出パターン設定 -->
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">検出パターン</label>
-              <div class="space-y-2">
-                <div class="flex items-center gap-2">
-                  <select id="patternSelect" class="form-select text-xs flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-3">検出パターン</label>
+              <div class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                <div class="flex items-center gap-3">
+                  <select id="patternSelect" class="form-select text-sm flex-1">
                     <option value="all">すべて</option>
                     <option value="top-left">左上</option>
                     <option value="top-right">右上</option>
                     <option value="bottom-left">左下</option>
                   </select>
-                  <input type="color" id="patternColor" value="#000000" class="form-input h-8 w-12">
+                  <input type="color" id="patternColor" value="#000000" class="form-input h-10 w-16">
                 </div>
-                <div class="grid grid-cols-3 gap-1">
-                  <button class="shape-btn active text-xs py-1" data-pattern-shape="square">□</button>
-                  <button class="shape-btn text-xs py-1" data-pattern-shape="circle">○</button>
-                  <button class="shape-btn text-xs py-1" data-pattern-shape="rounded">▢</button>
+                <div class="grid grid-cols-3 gap-2">
+                  <button class="shape-btn active text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="square">□</button>
+                  <button class="shape-btn text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="circle">○</button>
+                  <button class="shape-btn text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="rounded">▢</button>
                 </div>
               </div>
             </div>
 
+            <!-- プリセット -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-3">デザインプリセット</label>
+              <div class="grid grid-cols-2 gap-3">
+                <button class="preset-btn flex flex-col items-center p-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-preset="nature">
+                  <div class="w-full h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded mb-2"></div>
+                  <span class="text-xs">自然</span>
+                </button>
+                <button class="preset-btn flex flex-col items-center p-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-preset="sunset">
+                  <div class="w-full h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded mb-2"></div>
+                  <span class="text-xs">夕日</span>
+                </button>
+                <button class="preset-btn flex flex-col items-center p-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-preset="ocean">
+                  <div class="w-full h-6 bg-gradient-to-r from-blue-400 to-teal-500 rounded mb-2"></div>
+                  <span class="text-xs">海</span>
+                </button>
+                <button class="preset-btn flex flex-col items-center p-3 border border-gray-200 rounded-lg hover:border-accent transition-all" data-preset="royal">
+                  <div class="w-full h-6 bg-gradient-to-r from-purple-400 to-pink-500 rounded mb-2"></div>
+                  <span class="text-xs">王室</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- 生成ボタン -->
-        <button id="generateBtn" class="w-full bg-accent hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-lg">
-          🎨 QRコードを生成
-        </button>
-
-      </div>
-
-      <!-- 右側: 結果表示 -->
-      <div class="space-y-6">
+      </div>      <!-- 右側: 結果表示 -->
+      <div class="xl:col-span-1 lg:col-span-1 space-y-6 sticky top-24 self-start">
         
         <!-- QRコード表示 -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-          <h2 class="text-xl font-bold mb-4 text-gray-800">生成結果</h2>
-          <div id="qrResult" class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl">
-            <div class="text-center text-gray-500">
-              <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM18 14h2v2h-2zM16 16h2v2h-2zM18 18h2v2h-2z"></path>
+        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM18 14h2v2h-2zM16 16h2v2h-2zM18 18h2v2h-2z"></path>
+            </svg>
+            生成結果
+          </h2>
+          <div id="qrResult" class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl min-h-[300px] flex items-center justify-center">
+            <div class="text-center text-gray-500">              <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 4h4v4H4zM16 4h4v4h-4zM4 16h4v4H4zM20 16h-2v-2m0 0h-2m2 0v2m0-2v-2h2v2z"></path>
               </svg>
-              <p>QRコードがここに表示されます</p>
+              <p class="text-lg font-medium mb-2">QRコードがここに表示されます</p>
+              <p class="text-sm text-gray-400">テンプレートを選択して内容を入力してください</p>
             </div>
-          </div>            <!-- ダウンロードボタン -->
+          </div>
+
+          <!-- 生成ボタン -->
+          <div class="mt-6">
+            <button id="generateBtn" class="w-full bg-gradient-to-r from-accent to-green-500 hover:from-accent/90 hover:to-green-500/90 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">              <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+              QRコード生成
+            </button>
+          </div>
+
+          <!-- ダウンロードボタン -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
             <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg hidden">
               <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -869,7 +842,9 @@
           <!-- クリエイティブQR専用ダウンロード -->
           <div id="creativeDownloadSection" class="hidden mt-4 space-y-3">
             <div class="border-t pt-4">
-              <h3 class="text-sm font-medium text-gray-700 mb-3">🎨 クリエイティブQR専用</h3>
+              <h3 class="text-sm font-medium text-gray-700 mb-3 flex items-center">                <span class="mr-1"></span>
+                クリエイティブQR専用
+              </h3>
               <div class="grid grid-cols-2 gap-2">
                 <button id="downloadSVG" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">
                   <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -887,66 +862,94 @@
               <p class="text-xs text-gray-500 mt-2">※ クリエイティブモードの場合のみ利用可能</p>
             </div>
           </div>
-        </div><!-- 使い方ガイド -->
-        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-          <h2 class="text-xl font-bold mb-4 text-gray-800">使い方</h2>
-          
-          <!-- 単体生成 -->
-          <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2 text-gray-700 flex items-center">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              単体生成
-            </h3>
-            <div class="space-y-3 text-sm text-gray-600">
-              <div class="flex items-start gap-3">
-                <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                <p>テンプレートを選択してください（テキスト、URL、Wi-Fi、メール、SMS、電話）</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                <p>内容を入力してください</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                <p>お好みでサイズや色をカスタマイズ</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
-                <p>「QRコードを生成」ボタンをクリック</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- バッチ生成 -->
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-gray-700 flex items-center">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              バッチ生成
-            </h3>
-            <div class="space-y-3 text-sm text-gray-600">
-              <div class="flex items-start gap-3">
-                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                <p>「バッチ生成」モードを選択</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                <p>CSVファイルをアップロードまたは手動入力（1行1件）</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                <p>形式: 「内容,ファイル名」（ファイル名は省略可）</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
-                <p>「バッチ生成・ダウンロード」で一括ダウンロード</p>
-              </div>
-            </div>
-          </div>
         </div>
+
+        <!-- クリエイティブ設定パネル -->
+        <div id="creativeOptions" class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hidden">
+          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+            </svg>
+            クリエイティブ設定
+          </h2>
+          
+          <!-- セル形状 -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-700 mb-3">セルの形状</h3>
+            <div class="grid grid-cols-3 gap-2">
+              <button class="shape-btn active" data-shape="square">
+                <div class="w-4 h-4 bg-current mx-auto mb-1"></div>
+                <span>四角</span>
+              </button>
+              <button class="shape-btn" data-shape="circle">
+                <div class="w-4 h-4 bg-current rounded-full mx-auto mb-1"></div>
+                <span>丸</span>
+              </button>
+              <button class="shape-btn" data-shape="diamond">
+                <div class="w-4 h-4 bg-current transform rotate-45 mx-auto mb-1"></div>
+                <span>ダイヤ</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- カラーモード -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-700 mb-3">配色モード</h3>
+            <select id="colorMode" class="form-select text-sm">
+              <option value="solid">単色</option>
+              <option value="gradient">グラデーション</option>
+              <option value="pattern">パターン</option>
+            </select>
+          </div>
+
+          <!-- グラデーション設定 -->
+          <div id="gradientSettings" class="mb-6 hidden">
+            <h3 class="text-sm font-medium text-gray-700 mb-3">グラデーション設定</h3>
+            <div class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">開始色</label>
+                  <input type="color" id="gradientStart" value="#4ADE80" class="form-input h-10">
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">終了色</label>
+                  <input type="color" id="gradientEnd" value="#22C55E" class="form-input h-10">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs text-gray-600 mb-1">方向</label>
+                <select id="gradientDirection" class="form-select text-sm">
+                  <option value="to-right">→ 左から右</option>
+                  <option value="to-bottom">↓ 上から下</option>
+                  <option value="to-br">↘ 左上から右下</option>
+                  <option value="to-bl">↙ 右上から左下</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- プリセット -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-700 mb-3">プリセット</h3>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="preset-btn" data-preset="nature">
+                <div class="w-full h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded mb-1"></div>
+                <span class="text-xs">自然</span>
+              </button>
+              <button class="preset-btn" data-preset="sunset">
+                <div class="w-full h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded mb-1"></div>
+                <span class="text-xs">夕日</span>
+              </button>
+              <button class="preset-btn" data-preset="ocean">
+                <div class="w-full h-6 bg-gradient-to-r from-blue-400 to-teal-500 rounded mb-1"></div>
+                <span class="text-xs">海</span>
+              </button>
+              <button class="preset-btn" data-preset="royal">
+                <div class="w-full h-6 bg-gradient-to-r from-purple-400 to-pink-500 rounded mb-1"></div>
+                <span class="text-xs">王室</span>
+              </button>
+            </div>
+          </div>        </div>
 
       </div>
     </div>
@@ -1029,10 +1032,158 @@
       document.head.appendChild(script);
     }
   </script>
-
   <!-- メイン JavaScript -->
   <script src="../js/qr-code-creative.js"></script>
   <script src="../js/qr-code-ui.js"></script>
+
+  <!-- ガイドモーダル -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 p-6 relative max-h-[90vh] overflow-y-auto">
+      <button id="guide-close" class="absolute top-4 right-4 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // ガイドモーダル設定
+    function setupGuideModal() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      
+      const guides = {
+        ja: {
+          title: 'QRコード生成ツールの使い方',
+          sections: [
+            {
+              title: '基本的な使い方',
+              content: [
+                'テンプレートを選択（テキスト・URL・Wi-Fi・メール等）',
+                '必要な情報を入力フォームに記入',
+                '「QRコード生成」ボタンをクリック',
+                '生成されたQRコードをダウンロード'
+              ]
+            },
+            {
+              title: 'バッチ生成機能',
+              content: [
+                '「バッチ生成」モードを選択',
+                'CSVファイルアップロードまたは手動入力（1行1件）',
+                '形式：「内容,ファイル名」（ファイル名は省略可）',
+                '「バッチ生成・ダウンロード」で一括ダウンロード'
+              ]
+            },
+            {
+              title: 'クリエイティブモード',
+              content: [
+                'セルの形状変更（丸・四角・星型等）',
+                'グラデーション・カスタム配色機能',
+                '検出パターンのカスタマイズ',
+                'SVG・PNG形式での高品質出力'
+              ]
+            },
+            {
+              title: '活用例・ヒント',
+              content: [
+                'イベント・店舗のWi-Fi接続QR作成',
+                '名刺・ポスターの連絡先QR生成',
+                'SNSフォロー用QRコード制作',
+                '商品・サービスのURL誘導',
+                'メール・SMS連携QRコード作成'
+              ]
+            }
+          ]
+        },
+        en: {
+          title: 'How to Use QR Code Generator',
+          sections: [
+            {
+              title: 'Basic Usage',
+              content: [
+                'Select a template (Text, URL, Wi-Fi, Email, etc.)',
+                'Fill in the required information',
+                'Click "Generate QR Code" button',
+                'Download the generated QR code'
+              ]
+            },
+            {
+              title: 'Batch Generation',
+              content: [
+                'Select "Batch Generation" mode',
+                'Upload CSV file or manual input (one per line)',
+                'Format: "content,filename" (filename is optional)',
+                'Bulk download with "Batch Generate & Download"'
+              ]
+            },
+            {
+              title: 'Creative Mode',
+              content: [
+                'Change cell shapes (circle, square, star, etc.)',
+                'Gradient and custom color features',
+                'Customize detection patterns',
+                'High-quality SVG and PNG output'
+              ]
+            },
+            {
+              title: 'Use Cases & Tips',
+              content: [
+                'Create Wi-Fi connection QR for events/stores',
+                'Generate contact QR for business cards/posters',
+                'Create SNS follow QR codes',
+                'Product/service URL guidance',
+                'Email/SMS integration QR codes'
+              ]
+            }
+          ]
+        }
+      };
+
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+          const g = guides[lang] || guides.ja;
+          
+          let html = `<h2 class='text-2xl font-bold mb-6 text-accent'>${g.title}</h2>`;
+          
+          g.sections.forEach(section => {
+            html += `<div class="mb-6">`;
+            html += `<h3 class='text-lg font-bold mb-3 text-gray-800'>${section.title}</h3>`;
+            html += '<ul class="list-disc ml-6 space-y-2 text-gray-700">';
+            section.content.forEach(item => {
+              html += `<li class="text-sm leading-relaxed">${item}</li>`;
+            });
+            html += '</ul></div>';
+          });
+          
+          guideContent.innerHTML = html;
+          guideModal.classList.remove('hidden');
+        });
+        
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+        
+        // ESCキーで閉じる
+        document.addEventListener('keydown', function(e) {
+          if(e.key === 'Escape' && !guideModal.classList.contains('hidden')) {
+            guideModal.classList.add('hidden');
+          }
+        });
+      }
+    }
+
+    // DOMContentLoaded または既に読み込み済みの場合に実行
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupGuideModal);
+    } else {
+      setupGuideModal();
+    }
+  </script>
 
 </body>
 </html>

@@ -90,11 +90,14 @@ class QRGenerator {
       generateBtn: document.getElementById('generateBtn'),
       qrResult: document.getElementById('qrResult'),
       downloadBtn: document.getElementById('downloadBtn'),
-      
-      // クリエイティブ機能要素
+        // クリエイティブ機能要素
+      designModeSection: document.getElementById('designModeSection'),
       standardModeBtn: document.getElementById('standardModeBtn'),
       creativeModeBtn: document.getElementById('creativeModeBtn'),
-      creativeOptions: document.getElementById('creativeOptions'),
+      creativeSettingsSection: document.getElementById('creativeSettingsSection'),
+      creativeOptions: document.getElementById('creativeSettingsSection'), // 新しいID
+      shapeBtns: document.querySelectorAll('.shape-btn[data-shape]'),
+      colorModeBtns: document.querySelectorAll('.color-mode-btn'),
       colorMode: document.getElementById('colorMode'),
       gradientSettings: document.getElementById('gradientSettings'),
       gradientStart: document.getElementById('gradientStart'),
@@ -237,8 +240,7 @@ class QRGenerator {
       this.elements.downloadPNG.addEventListener('click', () => this.downloadCreativePNG());
     }
   }
-  
-  switchDesignMode(mode) {
+    switchDesignMode(mode) {
     this.designMode = mode;
     
     // ボタンスタイル更新
@@ -247,12 +249,12 @@ class QRGenerator {
       this.elements.creativeModeBtn.classList.toggle('active', mode === 'creative');
     }
     
-    // クリエイティブオプションの表示切り替え
-    if (this.elements.creativeOptions) {
+    // クリエイティブ設定セクションの表示切り替え
+    if (this.elements.creativeSettingsSection) {
       if (mode === 'creative') {
-        this.elements.creativeOptions.classList.remove('hidden');
+        this.elements.creativeSettingsSection.classList.remove('hidden');
       } else {
-        this.elements.creativeOptions.classList.add('hidden');
+        this.elements.creativeSettingsSection.classList.add('hidden');
       }
     }
     
@@ -266,6 +268,8 @@ class QRGenerator {
         if (this.elements.downloadBtn) this.elements.downloadBtn.classList.remove('hidden');
       }
     }
+    
+    console.log(`✅ デザインモードを${mode}に切り替えました`);
   }
 
   updateDownloadFormatUI() {
