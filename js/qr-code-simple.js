@@ -27,13 +27,12 @@ class QRGenerator {
     console.log('🔧 QRGenerator.safeInitialize() 開始');    try {
       this.initializeElements();
       this.bindBasicEvents();
-      this.updateDetectionColorSettings(); // 初期状態の設定
+      this.initializeDetectionColorDefault(); // 検出パターンのデフォルト色を初期化
       console.log('✅ QRGenerator基本初期化完了');
     } catch (error) {
       console.error('❌ QRGenerator初期化エラー:', error);
     }
   }
-
   // 検出パターン色設定UIを更新
   updateDetectionColorSettings() {
     if (!this.elements.detectionColorMode || !this.elements.customDetectionColor) return;
@@ -41,9 +40,36 @@ class QRGenerator {
     const mode = this.elements.detectionColorMode.value;
     if (mode === 'custom') {
       this.elements.customDetectionColor.classList.remove('hidden');
+      
+      // 独自の色のデフォルト値を現在のデータ部の色に設定
+      if (this.elements.detectionColor) {
+        let defaultColor = '#000000';
+        
+        // 現在のカラーモードに応じてデフォルト色を決定
+        if (this.currentColorMode === 'gradient') {
+          // グラデーションの場合は開始色を使用
+          defaultColor = this.elements.gradientStart?.value || '#000000';
+        } else {
+          // 単色の場合は前景色を使用
+          defaultColor = this.elements.foregroundColor?.value || '#000000';
+        }
+        
+        this.elements.detectionColor.value = defaultColor;
+        console.log('検出パターンデフォルト色設定:', defaultColor);
+      }
     } else {
       this.elements.customDetectionColor.classList.add('hidden');
     }    console.log('検出パターン色設定更新:', mode);
+  }
+
+  // 検出パターンのデフォルト色を初期化
+  initializeDetectionColorDefault() {
+    if (this.elements.detectionColor && this.elements.foregroundColor) {
+      // 前景色と同じ値に設定
+      const defaultColor = this.elements.foregroundColor.value;
+      this.elements.detectionColor.value = defaultColor;
+      console.log('検出パターン初期デフォルト色設定:', defaultColor);
+    }
   }
 
   // 検出パターンの位置を取得
@@ -508,19 +534,38 @@ class QRGenerator {
     }
     
     console.log('✅ クリエイティブQR描画完了');
-  }
-
-  // グラデーション作成
+  }  // グラデーション作成
   createGradient(ctx, size) {
     let gradient;
     const startColor = this.elements.gradientStart?.value || '#000000';
     const endColor = this.elements.gradientEnd?.value || '#333333';
-    const direction = this.elements.gradientDirection?.value || 'linear';
+    const direction = this.elements.gradientDirection?.value || 'horizontal';
     
-    if (direction === 'radial') {
-      gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
-    } else {
-      gradient = ctx.createLinearGradient(0, 0, size, size);
+    switch (direction) {
+      case 'horizontal':
+        gradient = ctx.createLinearGradient(0, 0, size, 0);
+        break;
+      case 'vertical':
+        gradient = ctx.createLinearGradient(0, 0, 0, size);
+        break;
+      case 'diagonal':
+        gradient = ctx.createLinearGradient(0, 0, size, size);
+        break;
+      case 'diagonal-reverse':
+        gradient = ctx.createLinearGradient(size, 0, 0, size);
+        break;
+      case 'radial':
+        gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+        break;
+      case 'radial-reverse':
+        gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+        // 放射状逆方向の場合は色の順序を逆にする
+        gradient.addColorStop(0, endColor);
+        gradient.addColorStop(1, startColor);
+        return gradient;
+      default:
+        gradient = ctx.createLinearGradient(0, 0, size, 0);
+        break;
     }
     
     gradient.addColorStop(0, startColor);
@@ -621,22 +666,21 @@ class QRGenerator {
     }
     ctx.closePath();
     ctx.fill();
-  }
-  // 検出パターン描画
+  }  // 検出パターン描画
   drawDetectionPatterns(ctx, moduleCount, moduleSize) {
     // 検出パターンの色を決定
-    let patternColor;
+    let patternFillStyle;
     const detectionMode = this.elements.detectionColorMode?.value || 'same';
     
     if (detectionMode === 'custom') {
-      patternColor = this.elements.detectionColor?.value || '#000000';
+      patternFillStyle = this.elements.detectionColor?.value || '#000000';
     } else {
-      // データ部と同じ色を使用
+      // データ部と同じ色を使用（グラデーションも含む）
       if (this.currentColorMode === 'gradient') {
-        // グラデーションの場合は開始色を使用（読み取り安定性のため）
-        patternColor = this.elements.gradientStart?.value || '#000000';
+        // 検出パターン用のグラデーションを作成
+        patternFillStyle = this.createGradient(ctx, moduleCount * moduleSize);
       } else {
-        patternColor = this.elements.foregroundColor?.value || '#000000';
+        patternFillStyle = this.elements.foregroundColor?.value || '#000000';
       }
     }
     
@@ -649,18 +693,18 @@ class QRGenerator {
     
     positions.forEach(([startX, startY]) => {
       // 外側の黒い四角形 (7x7)
-      ctx.fillStyle = patternColor;
+      ctx.fillStyle = patternFillStyle;
       ctx.fillRect(startX * moduleSize, startY * moduleSize, 7 * moduleSize, 7 * moduleSize);
       
       // 内側の白い四角形 (5x5)
       ctx.fillStyle = this.elements.backgroundColor?.value || '#ffffff';
       ctx.fillRect((startX + 1) * moduleSize, (startY + 1) * moduleSize, 5 * moduleSize, 5 * moduleSize);      
       // 中心の黒い四角形 (3x3)
-      ctx.fillStyle = patternColor;
+      ctx.fillStyle = patternFillStyle;
       ctx.fillRect((startX + 2) * moduleSize, (startY + 2) * moduleSize, 3 * moduleSize, 3 * moduleSize);
     });
     
-    console.log('✅ 検出パターン描画完了 - 色:', patternColor, 'モード:', detectionMode);
+    console.log('✅ 検出パターン描画完了 - 色:', typeof patternFillStyle === 'string' ? patternFillStyle : 'グラデーション', 'モード:', detectionMode);
   }
 
   // ダウンロード機能
@@ -739,21 +783,46 @@ class QRGenerator {
     
     // 背景
     const bgColor = this.elements.backgroundColor?.value || '#ffffff';
-    svg += `<rect width="${size}" height="${size}" fill="${bgColor}"/>`;
-    
-    // グラデーション定義
+    svg += `<rect width="${size}" height="${size}" fill="${bgColor}"/>`;    // グラデーション定義
     if (this.currentColorMode === 'gradient') {
       const startColor = this.elements.gradientStart?.value || '#000000';
       const endColor = this.elements.gradientEnd?.value || '#333333';
-      const direction = this.elements.gradientDirection?.value || 'linear';
+      const direction = this.elements.gradientDirection?.value || 'horizontal';
       
-      if (direction === 'radial') {
+      if (direction === 'radial' || direction === 'radial-reverse') {
         svg += `<defs><radialGradient id="qrGrad" cx="50%" cy="50%" r="50%">`;
+        // 放射状逆方向の場合は色の順序を逆にする
+        if (direction === 'radial-reverse') {
+          svg += `<stop offset="0%" style="stop-color:${endColor}"/>`;
+          svg += `<stop offset="100%" style="stop-color:${startColor}"/>`;
+        } else {
+          svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
+          svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
+        }
       } else {
-        svg += `<defs><linearGradient id="qrGrad" x1="0%" y1="0%" x2="100%" y2="100%">`;
+        // 線形グラデーションの方向設定
+        let gradientAttrs;
+        switch (direction) {
+          case 'horizontal':
+            gradientAttrs = 'x1="0%" y1="0%" x2="100%" y2="0%"';
+            break;
+          case 'vertical':
+            gradientAttrs = 'x1="0%" y1="0%" x2="0%" y2="100%"';
+            break;
+          case 'diagonal':
+            gradientAttrs = 'x1="0%" y1="0%" x2="100%" y2="100%"';
+            break;
+          case 'diagonal-reverse':
+            gradientAttrs = 'x1="100%" y1="0%" x2="0%" y2="100%"';
+            break;
+          default:
+            gradientAttrs = 'x1="0%" y1="0%" x2="100%" y2="0%"';
+            break;
+        }
+        svg += `<defs><linearGradient id="qrGrad" ${gradientAttrs}>`;
+        svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
+        svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
       }
-      svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
-      svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
       svg += `</linearGradient></defs>`;
     }
     
@@ -791,7 +860,6 @@ class QRGenerator {
         return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fillColor}"/>`;
     }
   }
-
   // SVG検出パターン生成
   getSVGDetectionPatterns(moduleCount, moduleSize, bgColor) {
     // 検出パターンの色を決定
@@ -801,8 +869,10 @@ class QRGenerator {
     if (detectionMode === 'custom') {
       patternColor = this.elements.detectionColor?.value || '#000000';
     } else {
+      // データ部と同じ色を使用
       if (this.currentColorMode === 'gradient') {
-        patternColor = this.elements.gradientStart?.value || '#000000';
+        // SVGでグラデーションを使用
+        patternColor = 'url(#qrGrad)';
       } else {
         patternColor = this.elements.foregroundColor?.value || '#000000';
       }
