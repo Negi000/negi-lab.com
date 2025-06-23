@@ -960,8 +960,7 @@
             </div>
           </div>        </div>
 
-      </div>
-    </div>    <!-- AdSense -->
+      </div>    <!-- AdSense -->
     <div class="mt-12 text-center">
       <ins class="adsbygoogle"
            style="display:block"
@@ -1225,5 +1224,92 @@
     }
   </script>
 
+  <!-- Amazon・楽天Cookie埋め込み機能（同意取得済みユーザーのみ） -->
+  <script>
+    // アフィリエイトCookie埋め込み関数
+    function embedAffiliateCookies() {
+      // Cookie承諾チェック
+      if (localStorage.getItem('cookieConsent') !== 'accepted') {
+        console.log('Cookie consent not given, skipping affiliate cookies');
+        return false;
+      }
+
+      try {
+        // Amazon アソシエイト Cookie埋め込み
+        var amazonImg = document.createElement('img');
+        amazonImg.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211';
+        amazonImg.width = '1';
+        amazonImg.height = '1';
+        amazonImg.style.display = 'none';
+        amazonImg.alt = '';
+        amazonImg.loading = 'eager';
+        amazonImg.referrerPolicy = 'no-referrer';
+        document.body.appendChild(amazonImg);
+
+        // 楽天アフィリエイト Cookie埋め込み
+        var rakutenImg = document.createElement('img');
+        rakutenImg.src = 'https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie';
+        rakutenImg.width = '1';
+        rakutenImg.height = '1';
+        rakutenImg.style.display = 'none';
+        rakutenImg.alt = '';
+        rakutenImg.loading = 'eager';
+        rakutenImg.referrerPolicy = 'no-referrer';
+        document.body.appendChild(rakutenImg);
+
+        console.log('✅ QRツール: アフィリエイトCookie埋め込み完了');
+        return true;
+      } catch (error) {
+        console.error('❌ QRツール: アフィリエイトCookie埋め込み失敗:', error);
+        return false;      }
+    }
+
+    // QRGenerator クラスの generateQR メソッドを拡張
+    document.addEventListener('DOMContentLoaded', function() {
+      // 元の generateQR 関数をフック
+      if (window.qrGeneratorInstance) {
+        console.log('🔧 QRGenerator インスタンス検出済み、Cookie機能を統合');
+        extendQRGeneratorWithAffiliates();
+      } else {
+        // インスタンスの作成を待機
+        const checkInterval = setInterval(() => {
+          if (window.qrGeneratorInstance) {
+            console.log('🔧 QRGenerator インスタンス作成確認、Cookie機能を統合');
+            extendQRGeneratorWithAffiliates();
+            clearInterval(checkInterval);
+          }
+        }, 100);
+        
+        // 5秒でタイムアウト
+        setTimeout(() => {
+          clearInterval(checkInterval);
+          console.warn('⚠️ QRGenerator インスタンスが見つかりませんでした');
+        }, 5000);
+      }
+    });
+
+    function extendQRGeneratorWithAffiliates() {
+      if (!window.qrGeneratorInstance) return;
+
+      // 元の generateQR メソッドを保存
+      const originalGenerateQR = window.qrGeneratorInstance.generateQR;      // generateQR メソッドを拡張
+      window.qrGeneratorInstance.generateQR = function() {
+        console.log('🚀 QRコード生成開始 - アフィリエイトCookie機能付き');
+        
+        // Cookie承諾を得ている場合は常にCookie埋め込み
+        if (localStorage.getItem('cookieConsent') === 'accepted') {
+          console.log('🍪 Cookie承諾済みユーザー - アフィリエイトCookie埋め込み実行');
+          embedAffiliateCookies();
+        } else {
+          console.log('ℹ️ Cookie未承諾ユーザー - Cookie埋め込みをスキップ');
+        }
+
+        // 元の generateQR メソッドを実行
+        return originalGenerateQR.call(this);
+      };
+
+      console.log('✅ QRGenerator にアフィリエイトCookie機能を統合完了');
+    }
+  </script>
 </body>
 </html>
