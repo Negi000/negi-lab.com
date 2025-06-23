@@ -387,12 +387,18 @@ class QRGenerator {
         if (this.qrData.isDark(row, col)) {
           ctx.fillRect(col * moduleSize, row * moduleSize, moduleSize, moduleSize);
         }
-      }
-    }
+      }    }
     
     this.currentCreativeCanvas = canvas;
     if (this.elements.qrResult) {
       this.elements.qrResult.innerHTML = '';
+      // プレビューエリア内に収まるようにスタイルを追加
+      canvas.style.maxWidth = '100%';
+      canvas.style.maxHeight = '400px';
+      canvas.style.height = 'auto';
+      canvas.style.width = 'auto';
+      canvas.style.borderRadius = '0.5rem';
+      canvas.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
       this.elements.qrResult.appendChild(canvas);
     }
   }
@@ -440,12 +446,18 @@ class QRGenerator {
       }
     }
     
-    // 検出パターンを特別描画（オプション）
-    this.drawDetectionPatterns(ctx, moduleCount, moduleSize);
+    // 検出パターンを特別描画（オプション）    this.drawDetectionPatterns(ctx, moduleCount, moduleSize);
     
     this.currentCreativeCanvas = canvas;
     if (this.elements.qrResult) {
       this.elements.qrResult.innerHTML = '';
+      // プレビューエリア内に収まるようにスタイルを追加
+      canvas.style.maxWidth = '100%';
+      canvas.style.maxHeight = '400px';
+      canvas.style.height = 'auto';
+      canvas.style.width = 'auto';
+      canvas.style.borderRadius = '0.5rem';
+      canvas.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
       this.elements.qrResult.appendChild(canvas);
     }
     
