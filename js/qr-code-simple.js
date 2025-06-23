@@ -319,9 +319,9 @@ class QRGenerator {
     } else {
       content = this.getContentFromTemplate();
     }
-    
-    if (!content) {
-      alert('必要な情報を入力してください');
+      if (!content) {
+      const message = window.languageManager ? window.languageManager.t('qrCode.error.required') : '必要な情報を入力してください';
+      alert(message);
       return;
     }
 
@@ -358,10 +358,10 @@ class QRGenerator {
       }
       
       console.log('✅ QRコード生成成功 - 内容:', content);
-      
-    } catch (error) {
+        } catch (error) {
       console.error('❌ QRコード生成エラー:', error);
-      alert('QRコード生成に失敗しました: ' + error.message);
+      const message = window.languageManager ? window.languageManager.t('qrCode.error.generateFailed') : 'QRコード生成に失敗しました';
+      alert(message + ': ' + error.message);
     }
   }
 

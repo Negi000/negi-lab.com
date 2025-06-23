@@ -37,9 +37,123 @@ window.translations = {
     
     'faviconOgGen.pageTitle': '【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成 | negi-lab.com',
     'faviconOgGen.metaDescription': 'Webサイトのファビコンやソーシャルメディア用OGP画像を簡単生成。複数サイズ一括出力でホームページ制作・ブログ運営に便利な無料ツール。',
-    
-    'jsonCsvYamlExcel.pageTitle': '【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com',
+      'jsonCsvYamlExcel.pageTitle': '【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com',
     'jsonCsvYamlExcel.metaDescription': 'JSON・CSV・YAML・Excelファイルを相互変換できる無料ツール。プログラミング・データ分析・システム連携に便利。ブラウザ完結でセキュリティも安心。',
+    
+    // QRコード生成ツール
+    'qrCode.pageTitle': '【無料】QRコード作成ツール - ロゴ挿入・色変更も可能 | negi-lab.com',
+    'qrCode.metaDescription': 'URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整が可能。エラー訂正レベル対応で読み取り精度も抜群。登録不要でブラウザ完結型の安全なQR生成ツール。',
+    'qrCode.mainTitle': 'QRコード生成ツール',
+    'qrCode.subtitle': 'URLやテキストから高品質なQRコードを無料で作成',
+    
+    // モード選択
+    'qrCode.mode.single': '単体生成',
+    'qrCode.mode.batch': '一括生成',
+    'qrCode.mode.singleDesc': '1つのQRコードを作成',
+    'qrCode.mode.batchDesc': '複数のQRコードを一度に作成',
+    
+    // テンプレート
+    'qrCode.template.text': 'テキスト',
+    'qrCode.template.textDesc': '任意のテキストをQRコードに',
+    'qrCode.template.url': 'URL',
+    'qrCode.template.urlDesc': 'ウェブサイトのリンクをQRコードに',
+    'qrCode.template.wifi': 'Wi-Fi',
+    'qrCode.template.wifiDesc': 'Wi-Fi接続情報をQRコードに',
+    'qrCode.template.email': 'メール',
+    'qrCode.template.emailDesc': 'メール送信情報をQRコードに',
+    'qrCode.template.sms': 'SMS',
+    'qrCode.template.smsDesc': 'SMS送信情報をQRコードに',
+    'qrCode.template.phone': '電話',
+    'qrCode.template.phoneDesc': '電話番号をQRコードに',
+    
+    // 入力フィールド
+    'qrCode.input.textPlaceholder': 'QRコードにしたいテキストを入力',
+    'qrCode.input.urlPlaceholder': 'https://example.com',
+    'qrCode.input.wifiSSID': 'ネットワーク名（SSID）',
+    'qrCode.input.wifiPassword': 'パスワード',
+    'qrCode.input.wifiSecurity': 'セキュリティ',
+    'qrCode.input.emailAddress': 'メールアドレス',
+    'qrCode.input.emailSubject': '件名',
+    'qrCode.input.emailBody': 'メール本文',
+    'qrCode.input.smsNumber': '電話番号',
+    'qrCode.input.smsMessage': 'メッセージ',
+    'qrCode.input.phoneNumber': '電話番号',
+    
+    // QR設定
+    'qrCode.settings.title': 'QR設定',
+    'qrCode.settings.size': 'サイズ',
+    'qrCode.settings.errorCorrection': 'エラー訂正レベル',
+    'qrCode.settings.errorCorrectionL': '低（7%）',
+    'qrCode.settings.errorCorrectionM': '中（15%）',
+    'qrCode.settings.errorCorrectionQ': '準高（25%）',
+    'qrCode.settings.errorCorrectionH': '高（30%）',
+    'qrCode.settings.foregroundColor': '前景色',
+    'qrCode.settings.backgroundColor': '背景色',
+    
+    // デザインモード
+    'qrCode.design.title': 'デザインモード',
+    'qrCode.design.standard': 'スタンダード',
+    'qrCode.design.standardDesc': '基本的なQRコード',
+    'qrCode.design.creative': 'クリエイティブ',
+    'qrCode.design.creativeDesc': 'カスタマイズ可能なデザイン',
+    
+    // クリエイティブ設定
+    'qrCode.creative.colorMode': 'カラーモード',
+    'qrCode.creative.colorModeSolid': '単色',
+    'qrCode.creative.colorModeGradient': 'グラデーション',
+    'qrCode.creative.gradientStart': '開始色',
+    'qrCode.creative.gradientEnd': '終了色',
+    'qrCode.creative.gradientDirection': '方向',
+    'qrCode.creative.gradientDirectionHorizontal': '水平',
+    'qrCode.creative.gradientDirectionVertical': '垂直',
+    'qrCode.creative.gradientDirectionDiagonal': '対角',
+    'qrCode.creative.gradientDirectionRadial': '放射',
+    
+    // バッチ生成
+    'qrCode.batch.title': '一括生成',
+    'qrCode.batch.csvUpload': 'CSVファイルをアップロード',
+    'qrCode.batch.textData': 'テキストデータ（1行1つ）',
+    'qrCode.batch.preview': 'プレビュー',
+    'qrCode.batch.downloadAll': '一括ダウンロード',
+    
+    // 結果・ダウンロード
+    'qrCode.result.title': '生成結果',
+    'qrCode.result.placeholder': 'QRコードがここに表示されます',
+    'qrCode.result.placeholderSub': 'テンプレートを選択して内容を入力してください',
+    'qrCode.button.generate': 'QRコード生成',
+    'qrCode.button.download': 'ダウンロード',
+    'qrCode.button.downloadAll': '全形式DL',
+    'qrCode.button.downloadSVG': 'SVGダウンロード',
+    'qrCode.button.downloadPNG': 'PNGダウンロード',
+    
+    // ダウンロード設定
+    'qrCode.download.format': 'ダウンロード形式',
+    'qrCode.download.jpegQuality': 'JPEG品質',
+    
+    // エラーメッセージ
+    'qrCode.error.required': '必要な情報を入力してください',
+    'qrCode.error.generateFailed': 'QRコード生成に失敗しました',
+    'qrCode.error.downloadFailed': 'ダウンロードに失敗しました',
+    
+    // 成功メッセージ
+    'qrCode.success.generated': 'QRコードを生成しました',
+    'qrCode.success.downloaded': 'ダウンロードが完了しました',
+    
+    // ガイド
+    'qrCode.guide.title': 'QRコード生成ツールの使い方',
+    'qrCode.guide.basicTitle': '基本的な使い方',
+    'qrCode.guide.basic1': 'テンプレートを選択（テキスト・URL・Wi-Fi・メール等）',
+    'qrCode.guide.basic2': '必要な情報を入力',
+    'qrCode.guide.basic3': 'サイズや色などを設定（オプション）',
+    'qrCode.guide.basic4': '「QRコード生成」ボタンをクリック',
+    'qrCode.guide.basic5': '生成されたQRコードをダウンロード',
+    
+    'qrCode.guide.featuresTitle': '主な機能',
+    'qrCode.guide.feature1': '多様なテンプレート対応',
+    'qrCode.guide.feature2': 'カスタマイズ可能なデザイン',
+    'qrCode.guide.feature3': '一括生成機能',
+    'qrCode.guide.feature4': '高品質な出力',
+    'qrCode.guide.feature5': '複数フォーマット対応',
     
     // 単位変換ツール
     'unitConverter.pageTitle': '【全単位網羅】単位変換ツール - 長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位も対応 | negi-lab.com',
@@ -315,9 +429,123 @@ window.translations = {
     
     'faviconOgGen.pageTitle': 'Free Favicon & OGP Image Generator - Website Image Creator | negi-lab.com',
     'faviconOgGen.metaDescription': 'Generate favicons and social media OGP images for websites. Batch export multiple sizes for homepage creation and blog management.',
-    
-    'jsonCsvYamlExcel.pageTitle': 'Free JSON CSV YAML Excel Converter - Data Format Conversion | negi-lab.com',
+      'jsonCsvYamlExcel.pageTitle': 'Free JSON CSV YAML Excel Converter - Data Format Conversion | negi-lab.com',
     'jsonCsvYamlExcel.metaDescription': 'Convert between JSON, CSV, YAML, and Excel formats. Perfect for programming, data analysis, and system integration. Browser-based for security.',
+    
+    // QR Code Generator Tool
+    'qrCode.pageTitle': 'Free QR Code Generator - Logo Insert & Color Customization | negi-lab.com',
+    'qrCode.metaDescription': 'Create high-quality QR codes from URLs and text for free. Supports logo insertion, color customization, and size adjustment. Error correction levels ensure excellent readability. No registration required, browser-based secure QR generator.',
+    'qrCode.mainTitle': 'QR Code Generator',
+    'qrCode.subtitle': 'Create high-quality QR codes from URLs and text for free',
+    
+    // Mode Selection
+    'qrCode.mode.single': 'Single Generation',
+    'qrCode.mode.batch': 'Batch Generation',
+    'qrCode.mode.singleDesc': 'Create one QR code',
+    'qrCode.mode.batchDesc': 'Create multiple QR codes at once',
+    
+    // Templates
+    'qrCode.template.text': 'Text',
+    'qrCode.template.textDesc': 'Convert any text to QR code',
+    'qrCode.template.url': 'URL',
+    'qrCode.template.urlDesc': 'Convert website links to QR code',
+    'qrCode.template.wifi': 'Wi-Fi',
+    'qrCode.template.wifiDesc': 'Convert Wi-Fi connection info to QR code',
+    'qrCode.template.email': 'Email',
+    'qrCode.template.emailDesc': 'Convert email information to QR code',
+    'qrCode.template.sms': 'SMS',
+    'qrCode.template.smsDesc': 'Convert SMS information to QR code',
+    'qrCode.template.phone': 'Phone',
+    'qrCode.template.phoneDesc': 'Convert phone number to QR code',
+    
+    // Input Fields
+    'qrCode.input.textPlaceholder': 'Enter text to convert to QR code',
+    'qrCode.input.urlPlaceholder': 'https://example.com',
+    'qrCode.input.wifiSSID': 'Network Name (SSID)',
+    'qrCode.input.wifiPassword': 'Password',
+    'qrCode.input.wifiSecurity': 'Security',
+    'qrCode.input.emailAddress': 'Email Address',
+    'qrCode.input.emailSubject': 'Subject',
+    'qrCode.input.emailBody': 'Email Body',
+    'qrCode.input.smsNumber': 'Phone Number',
+    'qrCode.input.smsMessage': 'Message',
+    'qrCode.input.phoneNumber': 'Phone Number',
+    
+    // QR Settings
+    'qrCode.settings.title': 'QR Settings',
+    'qrCode.settings.size': 'Size',
+    'qrCode.settings.errorCorrection': 'Error Correction Level',
+    'qrCode.settings.errorCorrectionL': 'Low (7%)',
+    'qrCode.settings.errorCorrectionM': 'Medium (15%)',
+    'qrCode.settings.errorCorrectionQ': 'Quartile (25%)',
+    'qrCode.settings.errorCorrectionH': 'High (30%)',
+    'qrCode.settings.foregroundColor': 'Foreground Color',
+    'qrCode.settings.backgroundColor': 'Background Color',
+    
+    // Design Mode
+    'qrCode.design.title': 'Design Mode',
+    'qrCode.design.standard': 'Standard',
+    'qrCode.design.standardDesc': 'Basic QR code',
+    'qrCode.design.creative': 'Creative',
+    'qrCode.design.creativeDesc': 'Customizable design',
+    
+    // Creative Settings
+    'qrCode.creative.colorMode': 'Color Mode',
+    'qrCode.creative.colorModeSolid': 'Solid',
+    'qrCode.creative.colorModeGradient': 'Gradient',
+    'qrCode.creative.gradientStart': 'Start Color',
+    'qrCode.creative.gradientEnd': 'End Color',
+    'qrCode.creative.gradientDirection': 'Direction',
+    'qrCode.creative.gradientDirectionHorizontal': 'Horizontal',
+    'qrCode.creative.gradientDirectionVertical': 'Vertical',
+    'qrCode.creative.gradientDirectionDiagonal': 'Diagonal',
+    'qrCode.creative.gradientDirectionRadial': 'Radial',
+    
+    // Batch Generation
+    'qrCode.batch.title': 'Batch Generation',
+    'qrCode.batch.csvUpload': 'Upload CSV File',
+    'qrCode.batch.textData': 'Text Data (One per line)',
+    'qrCode.batch.preview': 'Preview',
+    'qrCode.batch.downloadAll': 'Download All',
+    
+    // Result & Download
+    'qrCode.result.title': 'Generation Result',
+    'qrCode.result.placeholder': 'QR code will be displayed here',
+    'qrCode.result.placeholderSub': 'Select a template and enter content',
+    'qrCode.button.generate': 'Generate QR Code',
+    'qrCode.button.download': 'Download',
+    'qrCode.button.downloadAll': 'Download All Formats',
+    'qrCode.button.downloadSVG': 'Download SVG',
+    'qrCode.button.downloadPNG': 'Download PNG',
+    
+    // Download Settings
+    'qrCode.download.format': 'Download Format',
+    'qrCode.download.jpegQuality': 'JPEG Quality',
+    
+    // Error Messages
+    'qrCode.error.required': 'Please enter required information',
+    'qrCode.error.generateFailed': 'Failed to generate QR code',
+    'qrCode.error.downloadFailed': 'Download failed',
+    
+    // Success Messages
+    'qrCode.success.generated': 'QR code generated successfully',
+    'qrCode.success.downloaded': 'Download completed',
+    
+    // Guide
+    'qrCode.guide.title': 'How to use QR Code Generator',
+    'qrCode.guide.basicTitle': 'Basic Usage',
+    'qrCode.guide.basic1': 'Select template (Text, URL, Wi-Fi, Email, etc.)',
+    'qrCode.guide.basic2': 'Enter required information',
+    'qrCode.guide.basic3': 'Configure size and colors (optional)',
+    'qrCode.guide.basic4': 'Click "Generate QR Code" button',
+    'qrCode.guide.basic5': 'Download the generated QR code',
+    
+    'qrCode.guide.featuresTitle': 'Main Features',
+    'qrCode.guide.feature1': 'Multiple template support',
+    'qrCode.guide.feature2': 'Customizable design',
+    'qrCode.guide.feature3': 'Batch generation',
+    'qrCode.guide.feature4': 'High-quality output',
+    'qrCode.guide.feature5': 'Multiple format support',
     
     // 単位変換ツール
     'unitConverter.pageTitle': 'Free Unit Converter - Length, Weight, Temperature, Volume & 500+ Units | negi-lab.com',
