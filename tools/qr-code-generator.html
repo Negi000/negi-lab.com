@@ -2,16 +2,15 @@
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Content Security Policy -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />    <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.google.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: https://*.google.com;
-    connect-src 'self' https://www.google-analytics.com;
-    frame-src 'self' https://*.google.com;
+    img-src 'self' data: blob: https://*.google.com https://*.doubleclick.net;
+    connect-src 'self' https://www.google-analytics.com https://*.google.com;
+    frame-src 'self' https://*.google.com https://*.doubleclick.net;
     worker-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -27,7 +26,7 @@
   <meta property="og:title" content="クリエイティブQRコード生成ツール - negi-lab.com" />
   <meta property="og:description" content="従来の四角形に縛られない、自由な形・色・配置のクリエイティブQRコードを生成。テンプレート・バッチ生成・Wi-Fi・メール対応。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />  <!-- Tailwind CSS -->
+  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />  <!-- Tailwind CSS (本番環境では PostCSS plugin または Tailwind CLI を使用推奨) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -211,9 +210,6 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>  <!-- Fonts and Local Scripts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="../js/common-utils.js"></script>
-  <script src="../js/qrcode.min.js"></script>
-  <script src="../js/qr-code-creative-new.js"></script>
-  <script src="../js/qr-code-ui.js"></script>
 
 </head>
 
@@ -984,33 +980,19 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
-  </footer>
+    <div>&copy; 2025 negi-lab.com</div>  </footer>
 
-  <!-- QRコードライブラリ -->
+  <!-- 共通ユーティリティ -->
+  <script src="../js/common-utils.js"></script>
+  
+  <!-- QRコードライブラリ（順序重要） -->
   <script src="../js/qrcode.min.js" 
-          onload="console.log('✅ QRライブラリ読み込み完了'); 
-                  console.log('QRCode:', QRCode); 
-                  console.log('qrcode:', typeof qrcode !== 'undefined' ? qrcode : 'undefined');
-                  console.log('window.QRCode:', window.QRCode);
-                  console.log('window.qrcode:', window.qrcode);                  if (typeof QRCode !== 'undefined') {
-                    console.log('QRCode.toCanvas:', typeof QRCode.toCanvas);
-                    console.log('QRCode.toDataURL:', typeof QRCode.toDataURL);
-                    console.log('QRCodeのプロパティ:', Object.keys(QRCode));
-                    console.log('QRCodeのプロトタイプ:', Object.getOwnPropertyNames(QRCode.prototype));
-                    
-                    // QRCodeインスタンスを作成してメソッドを確認
-                    try {
-                      const testQR = new QRCode(document.createElement('div'));
-                      console.log('QRCodeインスタンスメソッド:', Object.getOwnPropertyNames(Object.getPrototypeOf(testQR)));
-                    } catch(e) {
-                      console.log('QRCodeインスタンス作成エラー:', e);
-                    }
-                  }" 
+          onload="console.log('✅ QRライブラリ読み込み完了');" 
           onerror="loadQRCodeFallback()"></script>
+  
   <!-- クリエイティブQR用ライブラリ -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"
-          onload="console.log('✅ qrcode-generator読み込み完了');"
+          onload="console.log('✅ qrcode-generator読み込み完了: ', typeof qrcode);"
           onerror="console.warn('⚠️ qrcode-generator読み込み失敗');"></script>
 
   <!-- JSZip for batch download -->
@@ -1026,14 +1008,54 @@
       script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';
       script.onload = () => {
         console.log('✅ QRライブラリCDNフォールバック完了');
-        console.log('CDN後の利用可能API:', {QRCode: typeof QRCode, qrcode: typeof qrcode, windowQRCode: typeof window.QRCode, windowqrcode: typeof window.qrcode});
       };
       script.onerror = () => console.error('❌ QRライブラリCDNフォールバックも失敗');
       document.head.appendChild(script);
     }
-  </script>  <!-- メイン JavaScript -->
+  </script>
+  <!-- メイン JavaScript -->
   <script src="../js/qr-code-creative-new.js"></script>
   <script src="../js/qr-code-ui.js"></script>
+
+  <!-- デバッグ用スクリプト -->
+  <script>
+    // ボタンのクリックイベントをテスト
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('デバッグ: DOM読み込み完了');
+      
+      // 主要なボタンの存在確認
+      const buttons = [
+        'generateBtn',
+        'singleModeBtn', 
+        'batchModeBtn',
+        'standardModeBtn',
+        'creativeModeBtn'
+      ];
+      
+      buttons.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          console.log(`✅ ボタン発見: ${id}`);
+          // テスト用のクリックイベント
+          btn.addEventListener('click', function() {
+            console.log(`🔘 ${id} がクリックされました`);
+          });
+        } else {
+          console.warn(`⚠️ ボタンが見つかりません: ${id}`);
+        }
+      });
+      
+      // QRGeneratorインスタンスの確認
+      setTimeout(() => {
+        if (window.qrGenerator) {
+          console.log('✅ QRGeneratorインスタンス確認済み');
+          console.log('QRGenerator methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(window.qrGenerator)));
+        } else {
+          console.error('❌ QRGeneratorインスタンスが見つかりません');
+        }
+      }, 1000);
+    });
+  </script>
 
   <!-- ガイドモーダル -->
   <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
