@@ -1,3 +1,4 @@
+// QRGeneratorクラス定義
 class QRGenerator {
   constructor() {
     this.currentTemplate = 'text';
