@@ -111,11 +111,9 @@ class QRGenerator {
       
       // クリエイティブ設定
       colorMode: document.getElementById('colorMode'),
-      gradientSettings: document.getElementById('gradientSettings'),
-      gradientStart: document.getElementById('gradientStart'),
+      gradientSettings: document.getElementById('gradientSettings'),      gradientStart: document.getElementById('gradientStart'),
       gradientEnd: document.getElementById('gradientEnd'),
       gradientDirection: document.getElementById('gradientDirection'),
-      patternColor: document.getElementById('patternColor'),
       creativeDownloadSection: document.getElementById('creativeDownloadSection'),
       downloadSVG: document.getElementById('downloadSVG'),
       downloadPNG: document.getElementById('downloadPNG'),
@@ -208,7 +206,7 @@ class QRGenerator {
         });
       }
     });    // 色の変更
-    [this.elements.foregroundColor, this.elements.backgroundColor, this.elements.patternColor].forEach(el => {
+    [this.elements.foregroundColor, this.elements.backgroundColor].forEach(el => {
       if (el) {
         el.addEventListener('change', () => {
           console.log('色設定変更');

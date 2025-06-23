@@ -765,25 +765,21 @@
                   </select>
                 </div>
               </div>
-            </div>
-
-            <!-- 検出パターンカスタマイズ -->
+            </div>            <!-- 検出パターンカスタマイズ -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-3">検出パターン</label>
+              <label class="block text-sm font-medium text-gray-700 mb-3">位置検出パターン（四隅の角）</label>
               <div class="space-y-3 p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center gap-3">
-                  <select id="patternSelect" class="form-select text-sm flex-1">
-                    <option value="all">すべて</option>
-                    <option value="top-left">左上</option>
-                    <option value="top-right">右上</option>
-                    <option value="bottom-left">左下</option>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">検出パターンの色設定</label>
+                  <select id="detectionColorMode" class="form-select text-sm">
+                    <option value="same">データ部と同じ色</option>
+                    <option value="custom">独自の色</option>
                   </select>
-                  <input type="color" id="patternColor" value="#000000" class="form-input h-10 w-16">
                 </div>
-                <div class="grid grid-cols-3 gap-2">
-                  <button class="shape-btn active text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="square">□</button>
-                  <button class="shape-btn text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="circle">○</button>
-                  <button class="shape-btn text-sm py-2 border border-gray-200 rounded hover:border-accent transition-all" data-pattern-shape="rounded">▢</button>
+                <div id="customDetectionColor" class="hidden">
+                  <label class="block text-xs text-gray-600 mb-1">検出パターンの色</label>
+                  <input type="color" id="detectionColor" value="#000000" class="form-input h-10">
+                  <p class="text-xs text-gray-500 mt-1">※ 読み取り精度向上のため、背景色と明確に異なる色を推奨</p>
                 </div>
               </div>
             </div>
@@ -876,117 +872,12 @@
                   </svg>
                   PNG
                 </button>
-              </div>
-              <p class="text-xs text-gray-500 mt-2">※ クリエイティブモードの場合のみ利用可能</p>
+              </div>              <p class="text-xs text-gray-500 mt-2">※ クリエイティブモードの場合のみ利用可能</p>
             </div>
           </div>
         </div>
 
-        <!-- クリエイティブ設定パネル -->
-        <div id="creativeOptions" class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hidden">
-          <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
-            <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
-            </svg>
-            クリエイティブ設定
-          </h2>
-          
-          <!-- セル形状 -->
-          <div class="mb-6">
-            <h3 class="text-sm font-medium text-gray-700 mb-3">セルの形状</h3>
-            <div class="grid grid-cols-3 gap-2">
-              <button class="shape-btn active" data-shape="square">
-                <div class="w-4 h-4 bg-current mx-auto mb-1"></div>
-                <span>四角</span>
-              </button>
-              <button class="shape-btn" data-shape="circle">
-                <div class="w-4 h-4 bg-current rounded-full mx-auto mb-1"></div>
-                <span>丸</span>
-              </button>
-              <button class="shape-btn" data-shape="diamond">
-                <div class="w-4 h-4 bg-current transform rotate-45 mx-auto mb-1"></div>
-                <span>ダイヤ</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- カラーモード -->
-          <div class="mb-6">
-            <h3 class="text-sm font-medium text-gray-700 mb-3">配色モード</h3>
-            <select id="colorMode" class="form-select text-sm">
-              <option value="solid">単色</option>
-              <option value="gradient">グラデーション</option>
-              <option value="pattern">パターン</option>
-            </select>
-          </div>          <!-- グラデーション設定 -->
-          <div id="gradientSettings" class="mb-6 hidden">
-            <h3 class="text-sm font-medium text-gray-700 mb-3">グラデーション設定</h3>
-            <div class="space-y-3">
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs text-gray-600 mb-1">開始色</label>
-                  <input type="color" id="gradientStart" value="#4ADE80" class="form-input h-10">
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-600 mb-1">終了色</label>
-                  <input type="color" id="gradientEnd" value="#22C55E" class="form-input h-10">
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs text-gray-600 mb-1">方向</label>
-                <select id="gradientDirection" class="form-select text-sm">
-                  <option value="to-right">→ 左から右</option>
-                  <option value="to-bottom">↓ 上から下</option>
-                  <option value="to-br">↘ 左上から右下</option>
-                  <option value="to-bl">↙ 右上から左下</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- 検出パターン設定 -->
-          <div class="mb-6">
-            <h3 class="text-sm font-medium text-gray-700 mb-3">位置検出パターン（四隅の角）</h3>
-            <div class="space-y-3">
-              <div>
-                <label class="block text-xs text-gray-600 mb-1">検出パターンの色設定</label>
-                <select id="detectionColorMode" class="form-select text-sm">
-                  <option value="same">データ部と同じ色</option>
-                  <option value="custom">独自の色</option>
-                </select>
-              </div>
-              <div id="customDetectionColor" class="hidden">
-                <label class="block text-xs text-gray-600 mb-1">検出パターンの色</label>
-                <input type="color" id="detectionColor" value="#000000" class="form-input h-10">
-                <p class="text-xs text-gray-500 mt-1">※ 読み取り精度向上のため、背景色と明確に異なる色を推奨</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- プリセット -->
-          <div>
-            <h3 class="text-sm font-medium text-gray-700 mb-3">プリセット</h3>
-            <div class="grid grid-cols-2 gap-2">
-              <button class="preset-btn" data-preset="nature">
-                <div class="w-full h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded mb-1"></div>
-                <span class="text-xs">自然</span>
-              </button>
-              <button class="preset-btn" data-preset="sunset">
-                <div class="w-full h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded mb-1"></div>
-                <span class="text-xs">夕日</span>
-              </button>
-              <button class="preset-btn" data-preset="ocean">
-                <div class="w-full h-6 bg-gradient-to-r from-blue-400 to-teal-500 rounded mb-1"></div>
-                <span class="text-xs">海</span>
-              </button>
-              <button class="preset-btn" data-preset="royal">
-                <div class="w-full h-6 bg-gradient-to-r from-purple-400 to-pink-500 rounded mb-1"></div>
-                <span class="text-xs">王室</span>
-              </button>
-            </div>
-          </div>        </div>
-
-      </div>    <!-- AdSense -->
+      </div><!-- AdSense -->
     <div class="mt-12 text-center">
       <ins class="adsbygoogle"
            style="display:block"
