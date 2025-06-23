@@ -1,3 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /js/
+Disallow: /config/
+Disallow: /data/
+Disallow: /scripts/
+Disallow: /templates/
+Disallow: *.bat
+Disallow: *.ps1
+
+# サイトマップ
 Sitemap: https://negi-lab.com/sitemap.xml
+
+# クロール頻度の調整
+Crawl-delay: 1

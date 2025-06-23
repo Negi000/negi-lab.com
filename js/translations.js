@@ -5,12 +5,42 @@
 
 window.translations = {
   ja: {
+    // メインページ
+    'page.title': '【無料】オンラインツール集 | QRコード作成・画像変換・単位変換 - negi-lab.com',
+    'meta.description': '登録不要で使える無料のオンラインツール集。QRコード作成、画像変換、単位変換、URL短縮など、日々の作業を効率化する便利なツールを提供。セキュリティ重視で安心してご利用いただけます。',
+    
     // 共通
     'option.ja': '日本語',
     'option.en': 'English',
     'header.nav.tools': 'ツール',
     'header.nav.wikis': 'ゲームWiki',
-    'header.guide': 'ガイド',    
+    'header.guide': 'ガイド',
+    
+    // 各ツールのSEO最適化されたメタ情報
+    'urlShortener.pageTitle': '【無料】URL短縮ツール - 長いリンクを短縮・統計機能付き | negi-lab.com',
+    'urlShortener.metaDescription': '長いURLを短く使いやすいリンクに無料で変換。クリック統計やアクセス解析機能も搭載。SNSシェアや効率的なリンク管理に最適な無料ツール。',
+    
+    'dateCalculator.pageTitle': '【無料】日付計算ツール - 期間計算・日数計算・年齢計算 | negi-lab.com',
+    'dateCalculator.metaDescription': '2つの日付の期間・日数計算や、日付の加減算が簡単にできる無料ツール。年齢計算、勤続年数、記念日までの日数計算にも対応。スマホ・PC両対応。',
+    
+    'imageSizeCompare.pageTitle': '【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化 | negi-lab.com',
+    'imageSizeCompare.metaDescription': 'YouTube、Twitter、Instagram、Facebook等のSNS用サムネイルや投稿画像の最適サイズに一括変換・比較。Webサイト用画像サイズも対応した無料ツール。',
+    
+    'colorCodeTool.pageTitle': '【無料】カラーコード検索・色抽出ツール - HEX・RGB・HSL変換対応 | negi-lab.com',
+    'colorCodeTool.metaDescription': '画像からスポイトで色を抽出・分析、HEX・RGB・HSL形式でカラーコード表示。Webデザイン・グラフィック制作に便利な無料カラーツール。',
+    
+    'pdfTool.pageTitle': '【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com',
+    'pdfTool.metaDescription': 'PDFの結合・分割・圧縮・画像変換が全て無料でできるオールインワンツール。ブラウザ完結でセキュリティも安心。登録不要でPDF編集が簡単。',
+    
+    'bgRemover.pageTitle': '【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除 | negi-lab.com',
+    'bgRemover.metaDescription': 'AI技術で画像の背景を自動削除し、透過PNGを生成。人物・商品写真の背景除去がワンクリック。画像切り抜き・背景透明化が簡単にできる無料ツール。',
+    
+    'faviconOgGen.pageTitle': '【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成 | negi-lab.com',
+    'faviconOgGen.metaDescription': 'Webサイトのファビコンやソーシャルメディア用OGP画像を簡単生成。複数サイズ一括出力でホームページ制作・ブログ運営に便利な無料ツール。',
+    
+    'jsonCsvYamlExcel.pageTitle': '【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com',
+    'jsonCsvYamlExcel.metaDescription': 'JSON・CSV・YAML・Excelファイルを相互変換できる無料ツール。プログラミング・データ分析・システム連携に便利。ブラウザ完結でセキュリティも安心。',
+    
     // 単位変換ツール
     'unitConverter.pageTitle': '【全単位網羅】単位変換ツール - 長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位も対応 | negi-lab.com',
     'unitConverter.metaDescription': '長さ・重さ・温度・体積・圧力・エネルギー・電子レンジ・cc・ml・専門単位まで全て網羅！日常・理系・工学・医療・料理・海外生活にも役立つ最強の単位変換ツール。スマホ対応・無料・広告最小限。',
@@ -252,17 +282,46 @@ window.translations = {
     'unit.month': '月',
     'unit.year': '年'
   },
-
   en: {
+    // Main page
+    'page.title': 'Free Online Tools | QR Code Generator, Image Converter, Unit Converter - negi-lab.com',
+    'meta.description': 'Free online tools collection. QR code generator, image converter, unit converter, URL shortener and more. No registration required, browser-based, secure and easy to use.',
+    
     // 共通
     'option.ja': '日本語',
     'option.en': 'English',
     'header.nav.tools': 'Tools',
     'header.nav.wikis': 'Game Wiki',
-    'header.guide': 'Guide',    
+    'header.guide': 'Guide',
+    
+    // SEO optimized meta information for each tool (English)
+    'urlShortener.pageTitle': 'Free URL Shortener Tool - Link Shortening with Analytics | negi-lab.com',
+    'urlShortener.metaDescription': 'Free URL shortener to convert long links into short, manageable URLs. Includes click statistics and analytics. Perfect for social media sharing and link management.',
+    
+    'dateCalculator.pageTitle': 'Free Date Calculator Tool - Date Difference, Age Calculator | negi-lab.com',
+    'dateCalculator.metaDescription': 'Calculate date differences, periods, and age easily. Perfect for anniversary countdowns, work tenure calculations, and date arithmetic. Mobile and PC compatible.',
+    
+    'imageSizeCompare.pageTitle': 'Free Image Size Converter - YouTube, SNS, Web Optimization | negi-lab.com',
+    'imageSizeCompare.metaDescription': 'Convert images to optimal sizes for YouTube, Twitter, Instagram, Facebook and other social media platforms. Batch conversion for thumbnails and web images.',
+    
+    'colorCodeTool.pageTitle': 'Free Color Code Tool - HEX, RGB, HSL Color Extractor | negi-lab.com',
+    'colorCodeTool.metaDescription': 'Extract colors from images with eyedropper tool. Display color codes in HEX, RGB, HSL formats. Perfect for web design and graphic creation.',
+    
+    'pdfTool.pageTitle': 'Free PDF All-in-One Tool - Merge, Split, Compress, Convert | negi-lab.com',
+    'pdfTool.metaDescription': 'Complete PDF toolkit for merging, splitting, compressing, and converting PDFs. Browser-based for security. No registration required for PDF editing.',
+    
+    'bgRemover.pageTitle': 'Free Background Remover - AI Automatic Background Removal | negi-lab.com',
+    'bgRemover.metaDescription': 'AI-powered automatic background removal to create transparent PNGs. One-click background removal for portraits and product photos. Easy image cutout tool.',
+    
+    'faviconOgGen.pageTitle': 'Free Favicon & OGP Image Generator - Website Image Creator | negi-lab.com',
+    'faviconOgGen.metaDescription': 'Generate favicons and social media OGP images for websites. Batch export multiple sizes for homepage creation and blog management.',
+    
+    'jsonCsvYamlExcel.pageTitle': 'Free JSON CSV YAML Excel Converter - Data Format Conversion | negi-lab.com',
+    'jsonCsvYamlExcel.metaDescription': 'Convert between JSON, CSV, YAML, and Excel formats. Perfect for programming, data analysis, and system integration. Browser-based for security.',
+    
     // 単位変換ツール
-    'unitConverter.pageTitle': 'Universal Unit Converter - Length, Weight, Temperature, Volume, Pressure, Energy, Time & More | negi-lab.com',
-    'unitConverter.metaDescription': 'Comprehensive unit converter for length, weight, temperature, volume, pressure, energy, time, and specialized units. Perfect for daily use, engineering, science, cooking, and international living.',
+    'unitConverter.pageTitle': 'Free Unit Converter - Length, Weight, Temperature, Volume & 500+ Units | negi-lab.com',
+    'unitConverter.metaDescription': 'Free online unit converter supporting 500+ units including length, weight, temperature, volume, pressure, energy, and Japanese traditional units. Perfect for daily use, engineering, science, and cooking.',
     'unitConverter.mainTitle': 'Unit Converter',
     'unitConverter.categoryTitle': 'Select Category',
     'unitConverter.swapButton': 'Swap Units',
