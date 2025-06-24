@@ -784,6 +784,43 @@
                   <input type="color" id="detectionColor" value="#000000" class="form-input h-10">
                   <p class="text-xs text-gray-500 mt-1">※ 読み取り精度向上のため、背景色と明確に異なる色を推奨</p>
                 </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">検出パターンの形状</label>
+                  <select id="detectionShape" class="form-select text-sm">
+                    <option value="square">■ 四角形（推奨）</option>
+                    <option value="rounded">▢ 角丸四角形</option>
+                    <option value="circle">● 円形</option>
+                  </select>
+                  <p class="text-xs text-gray-500 mt-1">※ 四角形が最も読み取り精度が高いです</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 外枠設定 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-3">外枠設定</label>
+              <div class="space-y-3 p-4 bg-gray-50 rounded-lg">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" id="borderEnabled" class="form-checkbox">
+                  <label for="borderEnabled" class="text-sm">外枠を表示</label>
+                </div>
+                <div id="borderSettings" class="hidden space-y-2">
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="block text-xs text-gray-600 mb-1">枠の太さ</label>
+                      <select id="borderWidth" class="form-select text-sm">
+                        <option value="1">細い (1px)</option>
+                        <option value="2" selected>普通 (2px)</option>
+                        <option value="3">太い (3px)</option>
+                        <option value="4">とても太い (4px)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-xs text-gray-600 mb-1">枠の色</label>
+                      <input type="color" id="borderColor" value="#000000" class="form-input h-10">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

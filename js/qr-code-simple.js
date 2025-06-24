@@ -67,9 +67,20 @@ class QRGenerator {
     if (this.elements.detectionColor && this.elements.foregroundColor) {
       // 前景色と同じ値に設定
       const defaultColor = this.elements.foregroundColor.value;
-      this.elements.detectionColor.value = defaultColor;
-      console.log('検出パターン初期デフォルト色設定:', defaultColor);
+      this.elements.detectionColor.value = defaultColor;      console.log('検出パターン初期デフォルト色設定:', defaultColor);
     }
+  }
+
+  // 外枠設定UIを更新
+  updateBorderSettings() {
+    if (!this.elements.borderEnabled || !this.elements.borderSettings) return;
+    
+    if (this.elements.borderEnabled.checked) {
+      this.elements.borderSettings.classList.remove('hidden');
+    } else {
+      this.elements.borderSettings.classList.add('hidden');
+    }
+    console.log('外枠設定更新:', this.elements.borderEnabled.checked);
   }
 
   // 検出パターンの位置を取得
@@ -143,11 +154,17 @@ class QRGenerator {
       creativeDownloadSection: document.getElementById('creativeDownloadSection'),
       downloadSVG: document.getElementById('downloadSVG'),
       downloadPNG: document.getElementById('downloadPNG'),
-      
-      // 検出パターン設定
+        // 検出パターン設定
       detectionColorMode: document.getElementById('detectionColorMode'),
       detectionColor: document.getElementById('detectionColor'),
       customDetectionColor: document.getElementById('customDetectionColor'),
+      detectionShape: document.getElementById('detectionShape'),
+      
+      // 外枠設定
+      borderEnabled: document.getElementById('borderEnabled'),
+      borderSettings: document.getElementById('borderSettings'),
+      borderWidth: document.getElementById('borderWidth'),
+      borderColor: document.getElementById('borderColor'),
       
       // バッチ生成
       csvFileInput: document.getElementById('csvFileInput'),
@@ -247,14 +264,38 @@ class QRGenerator {
         this.updateDetectionColorSettings();
         if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
       });
-    }
-
-    if (this.elements.detectionColor) {
+    }    if (this.elements.detectionColor) {
       this.elements.detectionColor.addEventListener('change', () => {
         console.log('検出パターン色変更');
         if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
       });
     }
+
+    // 検出パターン形状変更
+    if (this.elements.detectionShape) {
+      this.elements.detectionShape.addEventListener('change', () => {
+        console.log('検出パターン形状変更');
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      });
+    }
+
+    // 外枠設定
+    if (this.elements.borderEnabled) {
+      this.elements.borderEnabled.addEventListener('change', () => {
+        this.updateBorderSettings();
+        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+      });
+    }
+
+    // 外枠の詳細設定
+    [this.elements.borderWidth, this.elements.borderColor].forEach(el => {
+      if (el) {
+        el.addEventListener('change', () => {
+          console.log('外枠設定変更');
+          if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+        });
+      }
+    });
 
     // プリセット
     document.querySelectorAll('.preset-btn')?.forEach(btn => {
@@ -516,9 +557,11 @@ class QRGenerator {
         }
       }
     }
-    
-    // 検出パターンを別途描画
+      // 検出パターンを別途描画
     this.drawDetectionPatterns(ctx, moduleCount, moduleSize);
+    
+    // 外枠を描画（有効な場合）
+    this.drawBorder(ctx, qrSize);
     
     this.currentCreativeCanvas = canvas;
     if (this.elements.qrResult) {
@@ -690,6 +733,9 @@ class QRGenerator {
       }
     }
     
+    // 検出パターンの形状を取得
+    const detectionShape = this.elements.detectionShape?.value || 'square';
+    
     // 検出パターンの位置
     const positions = [
       [0, 0], // 左上
@@ -698,19 +744,58 @@ class QRGenerator {
     ];
     
     positions.forEach(([startX, startY]) => {
-      // 外側の黒い四角形 (7x7)
-      ctx.fillStyle = patternFillStyle;
-      ctx.fillRect(startX * moduleSize, startY * moduleSize, 7 * moduleSize, 7 * moduleSize);
-      
-      // 内側の白い四角形 (5x5)
-      ctx.fillStyle = this.elements.backgroundColor?.value || '#ffffff';
-      ctx.fillRect((startX + 1) * moduleSize, (startY + 1) * moduleSize, 5 * moduleSize, 5 * moduleSize);      
-      // 中心の黒い四角形 (3x3)
-      ctx.fillStyle = patternFillStyle;
-      ctx.fillRect((startX + 2) * moduleSize, (startY + 2) * moduleSize, 3 * moduleSize, 3 * moduleSize);
+      this.drawSingleDetectionPattern(ctx, startX, startY, moduleSize, patternFillStyle, detectionShape);
     });
     
-    console.log('✅ 検出パターン描画完了 - 色:', typeof patternFillStyle === 'string' ? patternFillStyle : 'グラデーション', 'モード:', detectionMode);
+    console.log('✅ 検出パターン描画完了 - 色:', typeof patternFillStyle === 'string' ? patternFillStyle : 'グラデーション', '形状:', detectionShape);
+  }
+  // 単一の検出パターンを描画
+  drawSingleDetectionPattern(ctx, startX, startY, moduleSize, fillStyle, shape) {
+    const bgColor = this.elements.backgroundColor?.value || '#ffffff';
+    
+    console.log(`🎯 検出パターン描画: 位置(${startX}, ${startY}), 形状: ${shape}`);
+    
+    // 外側の四角形 (7x7)
+    ctx.fillStyle = fillStyle;
+    this.drawDetectionShape(ctx, startX * moduleSize, startY * moduleSize, 7 * moduleSize, shape);
+    
+    // 内側の白い四角形 (5x5)
+    ctx.fillStyle = bgColor;
+    this.drawDetectionShape(ctx, (startX + 1) * moduleSize, (startY + 1) * moduleSize, 5 * moduleSize, shape);
+    
+    // 中心の黒い四角形 (3x3)
+    ctx.fillStyle = fillStyle;
+    this.drawDetectionShape(ctx, (startX + 2) * moduleSize, (startY + 2) * moduleSize, 3 * moduleSize, shape);
+  }
+  // 検出パターンの形状を描画
+  drawDetectionShape(ctx, x, y, size, shape) {
+    switch (shape) {
+      case 'rounded':
+        this.drawRoundedRect(ctx, x, y, size, size, size * 0.15);
+        break;
+      case 'circle':
+        ctx.beginPath();
+        ctx.arc(x + size/2, y + size/2, size/2, 0, 2 * Math.PI);
+        ctx.fill();
+        break;
+      default: // square
+        ctx.fillRect(x, y, size, size);
+        break;
+    }
+  }
+
+  // 外枠描画
+  drawBorder(ctx, qrSize) {
+    if (!this.elements.borderEnabled?.checked) return;
+    
+    const borderWidth = parseInt(this.elements.borderWidth?.value) || 2;
+    const borderColor = this.elements.borderColor?.value || '#000000';
+    
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = borderWidth;
+    ctx.strokeRect(0, 0, qrSize, qrSize);
+    
+    console.log('✅ 外枠描画完了 - 太さ:', borderWidth, '色:', borderColor);
   }
 
   // ダウンロード機能
@@ -836,13 +921,15 @@ class QRGenerator {
       }
       svg += `</linearGradient></defs>`;
     }
+      const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
     
-    const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
+    // 検出パターンの位置を計算
+    const detectionPatterns = this.getDetectionPatterns(moduleCount);
     
-    // QRモジュール描画
+    // QRモジュール描画（データ部のみ、検出パターンを除く）
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
-        if (this.qrData.isDark(row, col)) {
+        if (this.qrData.isDark(row, col) && !this.isDetectionPattern(row, col, detectionPatterns)) {
           const x = col * moduleSize;
           const y = row * moduleSize;
           
@@ -850,6 +937,11 @@ class QRGenerator {
         }
       }
     }
+      // 検出パターンをSVGで描画
+    svg += this.getSVGDetectionPatterns(moduleCount, moduleSize, bgColor);
+    
+    // 外枠をSVGで描画
+    svg += this.getSVGBorder(size);
     
     svg += '</svg>';
     
@@ -870,8 +962,7 @@ class QRGenerator {
       default:
         return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fillColor}"/>`;
     }
-  }
-  // SVG検出パターン生成
+  }  // SVG検出パターン生成
   getSVGDetectionPatterns(moduleCount, moduleSize, bgColor) {
     // 検出パターンの色を決定
     let patternColor;
@@ -889,6 +980,7 @@ class QRGenerator {
       }
     }
     
+    const detectionShape = this.elements.detectionShape?.value || 'square';
     const positions = [
       [0, 0], // 左上
       [moduleCount - 7, 0], // 右上
@@ -897,21 +989,54 @@ class QRGenerator {
     
     let svg = '';
     positions.forEach(([startX, startY]) => {
-      const x = startX * moduleSize;
-      const y = startY * moduleSize;
-      const size7 = 7 * moduleSize;
-      const size5 = 5 * moduleSize;
-      const size3 = 3 * moduleSize;
-      
-      // 外側の黒い四角形 (7x7)
-      svg += `<rect x="${x}" y="${y}" width="${size7}" height="${size7}" fill="${patternColor}"/>`;
-      // 内側の白い四角形 (5x5)
-      svg += `<rect x="${x + moduleSize}" y="${y + moduleSize}" width="${size5}" height="${size5}" fill="${bgColor}"/>`;
-      // 中心の黒い四角形 (3x3)
-      svg += `<rect x="${x + 2 * moduleSize}" y="${y + 2 * moduleSize}" width="${size3}" height="${size3}" fill="${patternColor}"/>`;
+      svg += this.getSVGSingleDetectionPattern(startX, startY, moduleSize, patternColor, bgColor, detectionShape);
     });
     
     return svg;
+  }
+
+  // SVG単一検出パターン生成
+  getSVGSingleDetectionPattern(startX, startY, moduleSize, fillColor, bgColor, shape) {
+    const x = startX * moduleSize;
+    const y = startY * moduleSize;
+    const size7 = 7 * moduleSize;
+    const size5 = 5 * moduleSize;
+    const size3 = 3 * moduleSize;
+    
+    let svg = '';
+    
+    // 外側 (7x7)
+    svg += this.getSVGDetectionShape(x, y, size7, fillColor, shape);
+    // 内側 (5x5)
+    svg += this.getSVGDetectionShape(x + moduleSize, y + moduleSize, size5, bgColor, shape);
+    // 中心 (3x3)
+    svg += this.getSVGDetectionShape(x + 2 * moduleSize, y + 2 * moduleSize, size3, fillColor, shape);
+    
+    return svg;
+  }
+
+  // SVG検出パターン形状生成
+  getSVGDetectionShape(x, y, size, fill, shape) {
+    switch (shape) {
+      case 'rounded':
+        const radius = size * 0.15;
+        return `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="${radius}" fill="${fill}"/>`;
+      case 'circle':
+        const r = size / 2;
+        return `<circle cx="${x + r}" cy="${y + r}" r="${r}" fill="${fill}"/>`;
+      default: // square
+        return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fill}"/>`;
+    }
+  }
+
+  // SVG外枠生成
+  getSVGBorder(size) {
+    if (!this.elements.borderEnabled?.checked) return '';
+    
+    const borderWidth = parseInt(this.elements.borderWidth?.value) || 2;
+    const borderColor = this.elements.borderColor?.value || '#000000';
+    
+    return `<rect x="0" y="0" width="${size}" height="${size}" fill="none" stroke="${borderColor}" stroke-width="${borderWidth}"/>`;
   }
 
   // PNGダウンロード（クリエイティブ専用）
