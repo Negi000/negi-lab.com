@@ -545,8 +545,14 @@ class QRGenerator {
       case 'horizontal':
         gradient = ctx.createLinearGradient(0, 0, size, 0);
         break;
+      case 'horizontal-reverse':
+        gradient = ctx.createLinearGradient(size, 0, 0, 0);
+        break;
       case 'vertical':
         gradient = ctx.createLinearGradient(0, 0, 0, size);
+        break;
+      case 'vertical-reverse':
+        gradient = ctx.createLinearGradient(0, size, 0, 0);
         break;
       case 'diagonal':
         gradient = ctx.createLinearGradient(0, 0, size, size);
@@ -798,16 +804,21 @@ class QRGenerator {
         } else {
           svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
           svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
-        }
-      } else {
+        }      } else {
         // 線形グラデーションの方向設定
         let gradientAttrs;
         switch (direction) {
           case 'horizontal':
             gradientAttrs = 'x1="0%" y1="0%" x2="100%" y2="0%"';
             break;
+          case 'horizontal-reverse':
+            gradientAttrs = 'x1="100%" y1="0%" x2="0%" y2="0%"';
+            break;
           case 'vertical':
             gradientAttrs = 'x1="0%" y1="0%" x2="0%" y2="100%"';
+            break;
+          case 'vertical-reverse':
+            gradientAttrs = 'x1="0%" y1="100%" x2="0%" y2="0%"';
             break;
           case 'diagonal':
             gradientAttrs = 'x1="0%" y1="0%" x2="100%" y2="100%"';
