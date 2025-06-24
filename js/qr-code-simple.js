@@ -797,7 +797,6 @@ class QRGenerator {
     
     console.log('✅ 外枠描画完了 - 太さ:', borderWidth, '色:', borderColor);
   }
-
   // ダウンロード機能
   downloadQR() {
     if (!this.currentCreativeCanvas) {
@@ -805,27 +804,60 @@ class QRGenerator {
       return;
     }
     
+    // 余白を追加したキャンバスを作成
+    const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+    
     const format = this.elements.downloadFormat?.value || 'png';
     let filename = 'qr-code';
     let dataURL;
     
     switch (format) {
       case 'png':
-        dataURL = this.currentCreativeCanvas.toDataURL('image/png');
+        dataURL = canvasWithMargin.toDataURL('image/png');
         filename += '.png';
         break;
       case 'jpeg':
         const quality = parseFloat(this.elements.jpegQuality?.value) || 0.9;
-        dataURL = this.currentCreativeCanvas.toDataURL('image/jpeg', quality);
+        dataURL = canvasWithMargin.toDataURL('image/jpeg', quality);
         filename += '.jpg';
         break;
       case 'webp':
-        dataURL = this.currentCreativeCanvas.toDataURL('image/webp', 0.9);
+        dataURL = canvasWithMargin.toDataURL('image/webp', 0.9);
         filename += '.webp';
         break;
     }
     
     this.downloadDataURL(dataURL, filename);
+  }
+
+  // 余白付きキャンバスを作成
+  createCanvasWithMargin(originalCanvas) {
+    console.log('📏 余白付きキャンバス作成開始');
+    
+    // QRコードの推奨余白は各辺に4モジュール分
+    const qrSize = originalCanvas.width;
+    const moduleCount = this.qrData ? this.qrData.getModuleCount() : 25; // fallback
+    const moduleSize = Math.floor(qrSize / moduleCount);
+    const margin = moduleSize * 4; // 4モジュール分の余白
+    
+    const newSize = qrSize + (margin * 2);
+    const newCanvas = document.createElement('canvas');
+    const ctx = newCanvas.getContext('2d');
+    
+    newCanvas.width = newSize;
+    newCanvas.height = newSize;
+    
+    // 背景色で全体を塗りつぶし
+    const backgroundColor = this.elements.backgroundColor?.value || '#ffffff';
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, newSize, newSize);
+    
+    // 元のキャンバスを中央に描画
+    ctx.drawImage(originalCanvas, margin, margin);
+    
+    console.log(`✅ 余白付きキャンバス作成完了: ${qrSize}x${qrSize} → ${newSize}x${newSize} (余白: ${margin}px)`);
+    
+    return newCanvas;
   }
 
   // DataURLからダウンロード
@@ -837,7 +869,6 @@ class QRGenerator {
     link.click();
     document.body.removeChild(link);
   }
-
   // 全フォーマットダウンロード
   downloadAllFormats() {
     if (!this.currentCreativeCanvas) return;
@@ -848,33 +879,41 @@ class QRGenerator {
       { format: 'webp', ext: 'webp' }
     ];
     
+    // 余白を追加したキャンバスを作成
+    const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+    
     formats.forEach(({format, ext}, index) => {
       setTimeout(() => {
         let dataURL;
         if (format === 'jpeg') {
           const quality = parseFloat(this.elements.jpegQuality?.value) || 0.9;
-          dataURL = this.currentCreativeCanvas.toDataURL(`image/${format}`, quality);
+          dataURL = canvasWithMargin.toDataURL(`image/${format}`, quality);
         } else {
-          dataURL = this.currentCreativeCanvas.toDataURL(`image/${format}`, 0.9);
+          dataURL = canvasWithMargin.toDataURL(`image/${format}`, 0.9);
         }
         this.downloadDataURL(dataURL, `qr-code.${ext}`);
       }, 100 * index);
     });
   }
-
   // SVGダウンロード
   downloadCreativeSVG() {
     if (!this.qrData) return;
     
-    const size = parseInt(this.elements.qrSize?.value) || 256;
+    const originalSize = parseInt(this.elements.qrSize?.value) || 256;
     const moduleCount = this.qrData.getModuleCount();
-    const moduleSize = size / moduleCount;
+    const moduleSize = originalSize / moduleCount;
     
-    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`;
+    // 余白を追加（4モジュール分）
+    const margin = moduleSize * 4;
+    const totalSize = originalSize + (margin * 2);
+    
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${totalSize}" height="${totalSize}" viewBox="0 0 ${totalSize} ${totalSize}">`;
     
     // 背景
     const bgColor = this.elements.backgroundColor?.value || '#ffffff';
-    svg += `<rect width="${size}" height="${size}" fill="${bgColor}"/>`;    // グラデーション定義
+    svg += `<rect width="${totalSize}" height="${totalSize}" fill="${bgColor}"/>`;
+
+    // グラデーション定義
     if (this.currentColorMode === 'gradient') {
       const startColor = this.elements.gradientStart?.value || '#000000';
       const endColor = this.elements.gradientEnd?.value || '#333333';
@@ -889,7 +928,9 @@ class QRGenerator {
         } else {
           svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
           svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
-        }      } else {
+        }
+        svg += `</radialGradient></defs>`;
+      } else {
         // 線形グラデーションの方向設定
         let gradientAttrs;
         switch (direction) {
@@ -918,10 +959,11 @@ class QRGenerator {
         svg += `<defs><linearGradient id="qrGrad" ${gradientAttrs}>`;
         svg += `<stop offset="0%" style="stop-color:${startColor}"/>`;
         svg += `<stop offset="100%" style="stop-color:${endColor}"/>`;
+        svg += `</linearGradient></defs>`;
       }
-      svg += `</linearGradient></defs>`;
     }
-      const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
+    
+    const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
     
     // 検出パターンの位置を計算
     const detectionPatterns = this.getDetectionPatterns(moduleCount);
@@ -930,18 +972,19 @@ class QRGenerator {
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
         if (this.qrData.isDark(row, col) && !this.isDetectionPattern(row, col, detectionPatterns)) {
-          const x = col * moduleSize;
-          const y = row * moduleSize;
+          const x = col * moduleSize + margin; // 余白分オフセット
+          const y = row * moduleSize + margin; // 余白分オフセット
           
           svg += this.getSVGModule(x, y, moduleSize, fillColor);
         }
       }
     }
-      // 検出パターンをSVGで描画
-    svg += this.getSVGDetectionPatterns(moduleCount, moduleSize, bgColor);
     
-    // 外枠をSVGで描画
-    svg += this.getSVGBorder(size);
+    // 検出パターンをSVGで描画（余白付き）
+    svg += this.getSVGDetectionPatterns(moduleCount, moduleSize, bgColor, margin);
+    
+    // 外枠をSVGで描画（余白付き）
+    svg += this.getSVGBorder(originalSize, margin);
     
     svg += '</svg>';
     
@@ -963,7 +1006,7 @@ class QRGenerator {
         return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fillColor}"/>`;
     }
   }  // SVG検出パターン生成
-  getSVGDetectionPatterns(moduleCount, moduleSize, bgColor) {
+  getSVGDetectionPatterns(moduleCount, moduleSize, bgColor, margin = 0) {
     // 検出パターンの色を決定
     let patternColor;
     const detectionMode = this.elements.detectionColorMode?.value || 'same';
@@ -989,16 +1032,15 @@ class QRGenerator {
     
     let svg = '';
     positions.forEach(([startX, startY]) => {
-      svg += this.getSVGSingleDetectionPattern(startX, startY, moduleSize, patternColor, bgColor, detectionShape);
+      svg += this.getSVGSingleDetectionPattern(startX, startY, moduleSize, patternColor, bgColor, detectionShape, margin);
     });
     
     return svg;
   }
-
   // SVG単一検出パターン生成
-  getSVGSingleDetectionPattern(startX, startY, moduleSize, fillColor, bgColor, shape) {
-    const x = startX * moduleSize;
-    const y = startY * moduleSize;
+  getSVGSingleDetectionPattern(startX, startY, moduleSize, fillColor, bgColor, shape, margin = 0) {
+    const x = startX * moduleSize + margin;
+    const y = startY * moduleSize + margin;
     const size7 = 7 * moduleSize;
     const size5 = 5 * moduleSize;
     const size3 = 3 * moduleSize;
@@ -1028,22 +1070,24 @@ class QRGenerator {
         return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fill}"/>`;
     }
   }
-
   // SVG外枠生成
-  getSVGBorder(size) {
+  getSVGBorder(originalSize, margin = 0) {
     if (!this.elements.borderEnabled?.checked) return '';
     
     const borderWidth = parseInt(this.elements.borderWidth?.value) || 2;
     const borderColor = this.elements.borderColor?.value || '#000000';
+    const size = originalSize + (margin * 2);
     
-    return `<rect x="0" y="0" width="${size}" height="${size}" fill="none" stroke="${borderColor}" stroke-width="${borderWidth}"/>`;
+    // 外枠はQRコード部分のみに描画（余白全体ではなく）
+    return `<rect x="${margin}" y="${margin}" width="${originalSize}" height="${originalSize}" fill="none" stroke="${borderColor}" stroke-width="${borderWidth}"/>`;
   }
-
   // PNGダウンロード（クリエイティブ専用）
   downloadCreativePNG() {
     if (!this.currentCreativeCanvas) return;
     
-    const dataURL = this.currentCreativeCanvas.toDataURL('image/png');
+    // 余白を追加したキャンバスを作成
+    const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+    const dataURL = canvasWithMargin.toDataURL('image/png');
     this.downloadDataURL(dataURL, 'qr-code-creative.png');
   }
 
