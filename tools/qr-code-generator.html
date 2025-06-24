@@ -681,7 +681,14 @@
             <div id="jpegQualityDiv" class="hidden">
               <label class="block text-sm font-medium text-gray-700 mb-1">JPEG品質</label>
               <input type="range" id="jpegQuality" min="0.1" max="1" step="0.1" value="0.9" class="w-full">
-              <span class="text-xs text-gray-500">品質: <span id="jpegQualityValue">90%</span></span>
+              <span class="text-xs text-gray-500">品質: <span id="jpegQualityValue">90%</span></span>            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">画像の角丸</label>
+              <div class="flex items-center gap-3">
+                <input type="checkbox" id="imageRounded" class="form-checkbox">
+                <label for="imageRounded" class="text-sm">角を丸める</label>
+              </div>
             </div>
             
             <div>
@@ -794,9 +801,7 @@
                   <p class="text-xs text-gray-500 mt-1">※ 四角形が最も読み取り精度が高いです</p>
                 </div>
               </div>
-            </div>
-
-            <!-- 外枠設定 -->
+            </div>            <!-- 外枠設定 -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-3">外枠設定</label>
               <div class="space-y-3 p-4 bg-gray-50 rounded-lg">
@@ -804,20 +809,27 @@
                   <input type="checkbox" id="borderEnabled" class="form-checkbox">
                   <label for="borderEnabled" class="text-sm">外枠を表示</label>
                 </div>
-                <div id="borderSettings" class="hidden space-y-2">
-                  <div class="grid grid-cols-2 gap-3">
-                    <div>
-                      <label class="block text-xs text-gray-600 mb-1">枠の太さ</label>
-                      <select id="borderWidth" class="form-select text-sm">
-                        <option value="1">細い (1px)</option>
-                        <option value="2" selected>普通 (2px)</option>
-                        <option value="3">太い (3px)</option>
-                        <option value="4">とても太い (4px)</option>
-                      </select>
+                <div id="borderSettings" class="hidden space-y-3">
+                  <div>
+                    <label class="block text-xs text-gray-600 mb-1">枠の太さ</label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="borderWidth" min="1" max="20" value="8" class="flex-1">
+                      <span id="borderWidthValue" class="text-sm font-mono min-w-[3rem]">8px</span>
                     </div>
-                    <div>
-                      <label class="block text-xs text-gray-600 mb-1">枠の色</label>
-                      <input type="color" id="borderColor" value="#000000" class="form-input h-10">
+                  </div>                  <div>
+                    <label class="block text-xs text-gray-600 mb-2">枠の色設定</label>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <input type="radio" id="borderColorData" name="borderColorMode" value="data" checked class="form-radio">
+                        <label for="borderColorData" class="text-sm">データ部と同じ色</label>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <input type="radio" id="borderColorCustom" name="borderColorMode" value="custom" class="form-radio">
+                        <label for="borderColorCustom" class="text-sm">独自の色</label>
+                      </div>
+                      <div id="customBorderColor" class="hidden ml-6">
+                        <input type="color" id="borderColor" value="#000000" class="form-input h-8 w-16">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -860,11 +872,32 @@
             </svg>
             生成結果
           </h2>          <div id="qrResult" class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl min-h-[300px] max-h-[500px] flex items-center justify-center overflow-auto p-4">
-            <div class="text-center text-gray-500">              <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center text-gray-500">
+              <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 4h4v4H4zM16 4h4v4h-4zM4 16h4v4H4zM20 16h-2v-2m0 0h-2m2 0v2m0-2v-2h2v2z"></path>
-              </svg>              <p class="text-lg font-medium mb-2" data-i18n="qrCode.result.placeholder">QRコードがここに表示されます</p>
+              </svg>
+              <p class="text-lg font-medium mb-2" data-i18n="qrCode.result.placeholder">QRコードがここに表示されます</p>
               <p class="text-sm text-gray-400" data-i18n="qrCode.result.placeholderSub">テンプレートを選択して内容を入力してください</p>
             </div>
+          </div>
+
+          <!-- 保存時プレビュー -->
+          <div id="downloadPreviewSection" class="hidden mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <h3 class="text-sm font-medium text-blue-800 mb-3 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+              保存時プレビュー（余白付き）
+            </h3>
+            <div id="downloadPreview" class="bg-white rounded-lg p-4 flex items-center justify-center min-h-[200px] border border-blue-300">
+              <div class="text-center text-blue-600">
+                <p class="text-sm">保存時の画像がここに表示されます</p>
+              </div>
+            </div>
+            <p class="text-xs text-blue-600 mt-2">
+              ※ 実際に保存される画像には適切な余白（4モジュール分）が追加されます
+            </p>
           </div>
 
           <!-- 生成ボタン -->

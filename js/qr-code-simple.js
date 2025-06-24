@@ -22,12 +22,13 @@ class QRGenerator {
     } else {
       this.safeInitialize();
     }
-  }
-  safeInitialize() {
-    console.log('🔧 QRGenerator.safeInitialize() 開始');    try {
+  }  safeInitialize() {
+    console.log('🔧 QRGenerator.safeInitialize() 開始');
+    try {
       this.initializeElements();
       this.bindBasicEvents();
       this.initializeDetectionColorDefault(); // 検出パターンのデフォルト色を初期化
+      this.updateBorderColorSettings(); // 外枠色設定を初期化
       console.log('✅ QRGenerator基本初期化完了');
     } catch (error) {
       console.error('❌ QRGenerator初期化エラー:', error);
@@ -159,12 +160,21 @@ class QRGenerator {
       detectionColor: document.getElementById('detectionColor'),
       customDetectionColor: document.getElementById('customDetectionColor'),
       detectionShape: document.getElementById('detectionShape'),
-      
-      // 外枠設定
-      borderEnabled: document.getElementById('borderEnabled'),
-      borderSettings: document.getElementById('borderSettings'),
+        // 外枠設定
+      borderEnabled: document.getElementById('borderEnabled'),      borderSettings: document.getElementById('borderSettings'),
       borderWidth: document.getElementById('borderWidth'),
+      borderWidthValue: document.getElementById('borderWidthValue'),
       borderColor: document.getElementById('borderColor'),
+      borderColorData: document.getElementById('borderColorData'),
+      borderColorCustom: document.getElementById('borderColorCustom'),
+      customBorderColor: document.getElementById('customBorderColor'),
+      
+      // 画像の角丸設定
+      imageRounded: document.getElementById('imageRounded'),
+      
+      // プレビュー
+      downloadPreviewSection: document.getElementById('downloadPreviewSection'),
+      downloadPreview: document.getElementById('downloadPreview'),
       
       // バッチ生成
       csvFileInput: document.getElementById('csvFileInput'),
@@ -277,25 +287,67 @@ class QRGenerator {
         console.log('検出パターン形状変更');
         if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
       });
-    }
-
-    // 外枠設定
+    }    // 外枠設定
     if (this.elements.borderEnabled) {
       this.elements.borderEnabled.addEventListener('change', () => {
         this.updateBorderSettings();
-        if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
       });
     }
 
-    // 外枠の詳細設定
-    [this.elements.borderWidth, this.elements.borderColor].forEach(el => {
-      if (el) {
-        el.addEventListener('change', () => {
-          console.log('外枠設定変更');
-          if (this.qrData && this.designMode === 'creative') this.renderCreativeQR();
-        });
-      }
-    });
+    // 外枠の太さスライダー
+    if (this.elements.borderWidth) {
+      this.elements.borderWidth.addEventListener('input', () => {
+        if (this.elements.borderWidthValue) {
+          this.elements.borderWidthValue.textContent = this.elements.borderWidth.value + 'px';
+        }
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
+      });
+    }    // 外枠の色設定モード
+    if (this.elements.borderColorData) {
+      this.elements.borderColorData.addEventListener('change', () => {
+        this.updateBorderColorSettings();
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
+      });
+    }
+
+    if (this.elements.borderColorCustom) {
+      this.elements.borderColorCustom.addEventListener('change', () => {
+        this.updateBorderColorSettings();
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
+      });
+    }
+
+    // 外枠の独自色
+    if (this.elements.borderColor) {
+      this.elements.borderColor.addEventListener('change', () => {
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }      });
+    }
+
+    // 画像の角丸設定
+    if (this.elements.imageRounded) {
+      this.elements.imageRounded.addEventListener('change', () => {
+        if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
+      });
+    }
 
     // プリセット
     document.querySelectorAll('.preset-btn')?.forEach(btn => {
@@ -498,8 +550,7 @@ class QRGenerator {
           ctx.fillRect(col * moduleSize, row * moduleSize, moduleSize, moduleSize);
         }
       }    }
-    
-    this.currentCreativeCanvas = canvas;
+      this.currentCreativeCanvas = canvas;
     if (this.elements.qrResult) {
       this.elements.qrResult.innerHTML = '';
       // プレビューエリア内に収まるようにスタイルを追加
@@ -507,7 +558,14 @@ class QRGenerator {
       canvas.style.maxHeight = '400px';
       canvas.style.height = 'auto';
       canvas.style.width = 'auto';
-      canvas.style.borderRadius = '0.5rem';
+      
+      // 角丸設定に応じてスタイルを適用
+      if (this.elements.imageRounded?.checked) {
+        canvas.style.borderRadius = '0.5rem';
+      } else {
+        canvas.style.borderRadius = '0';
+      }
+      
       canvas.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
       this.elements.qrResult.appendChild(canvas);
     }
@@ -555,13 +613,12 @@ class QRGenerator {
           ctx.fillStyle = fillStyle;
           this.drawCreativeModule(ctx, x, y, moduleSize);
         }
-      }
-    }
+      }    }
       // 検出パターンを別途描画
     this.drawDetectionPatterns(ctx, moduleCount, moduleSize);
     
-    // 外枠を描画（有効な場合）
-    this.drawBorder(ctx, qrSize);
+    // 外枠は保存時のみ描画（プレビューでは余白付きキャンバスで描画）
+    // this.drawBorder(ctx, qrSize);
     
     this.currentCreativeCanvas = canvas;
     if (this.elements.qrResult) {
@@ -573,11 +630,13 @@ class QRGenerator {
       canvas.style.width = 'auto';
       canvas.style.borderRadius = '0.5rem';
       canvas.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-      this.elements.qrResult.appendChild(canvas);
-    }
+      this.elements.qrResult.appendChild(canvas);    }
     
     console.log('✅ クリエイティブQR描画完了');
-  }  // グラデーション作成
+    
+    // 保存時プレビューを更新
+    this.updateDownloadPreview();
+  }// グラデーション作成
   createGradient(ctx, size) {
     let gradient;
     const startColor = this.elements.gradientStart?.value || '#000000';
@@ -829,16 +888,17 @@ class QRGenerator {
     
     this.downloadDataURL(dataURL, filename);
   }
-
   // 余白付きキャンバスを作成
   createCanvasWithMargin(originalCanvas) {
     console.log('📏 余白付きキャンバス作成開始');
     
-    // QRコードの推奨余白は各辺に4モジュール分
+    // QRコードの推奨余白は各辺に4モジュール分 + 外枠の太さ
     const qrSize = originalCanvas.width;
     const moduleCount = this.qrData ? this.qrData.getModuleCount() : 25; // fallback
     const moduleSize = Math.floor(qrSize / moduleCount);
-    const margin = moduleSize * 4; // 4モジュール分の余白
+    const baseMargin = moduleSize * 4; // 4モジュール分の基本余白
+    const borderWidth = this.elements.borderEnabled?.checked ? (parseInt(this.elements.borderWidth?.value) || 8) : 0;
+    const margin = baseMargin + borderWidth; // 基本余白 + 外枠の太さ
     
     const newSize = qrSize + (margin * 2);
     const newCanvas = document.createElement('canvas');
@@ -855,9 +915,30 @@ class QRGenerator {
     // 元のキャンバスを中央に描画
     ctx.drawImage(originalCanvas, margin, margin);
     
+    // 外枠を余白の外側に描画
+    this.drawBorderOnMarginCanvas(ctx, newSize, margin);
+    
     console.log(`✅ 余白付きキャンバス作成完了: ${qrSize}x${qrSize} → ${newSize}x${newSize} (余白: ${margin}px)`);
     
     return newCanvas;
+  }
+  // 余白付きキャンバスに外枠を描画
+  drawBorderOnMarginCanvas(ctx, totalSize, margin) {
+    if (!this.elements.borderEnabled?.checked) return;
+    
+    const borderWidth = parseInt(this.elements.borderWidth?.value) || 8;
+    const borderStyle = this.getBorderGradient(ctx, totalSize);
+    
+    if (!borderStyle) return;
+    
+    console.log(`🖼️ 外枠描画: 太さ${borderWidth}px`);
+    
+    ctx.strokeStyle = borderStyle;
+    ctx.lineWidth = borderWidth;
+    
+    // 外枠は全体の外周に描画
+    const halfWidth = borderWidth / 2;
+    ctx.strokeRect(halfWidth, halfWidth, totalSize - borderWidth, totalSize - borderWidth);
   }
 
   // DataURLからダウンロード
@@ -893,8 +974,8 @@ class QRGenerator {
         }
         this.downloadDataURL(dataURL, `qr-code.${ext}`);
       }, 100 * index);
-    });
-  }
+    });  }
+
   // SVGダウンロード
   downloadCreativeSVG() {
     if (!this.qrData) return;
@@ -903,8 +984,10 @@ class QRGenerator {
     const moduleCount = this.qrData.getModuleCount();
     const moduleSize = originalSize / moduleCount;
     
-    // 余白を追加（4モジュール分）
-    const margin = moduleSize * 4;
+    // 余白を追加（4モジュール分 + 外枠の太さ）
+    const baseMargin = moduleSize * 4;
+    const borderWidth = this.elements.borderEnabled?.checked ? (parseInt(this.elements.borderWidth?.value) || 8) : 0;
+    const margin = baseMargin + borderWidth;
     const totalSize = originalSize + (margin * 2);
     
     let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${totalSize}" height="${totalSize}" viewBox="0 0 ${totalSize} ${totalSize}">`;
@@ -1069,17 +1152,30 @@ class QRGenerator {
       default: // square
         return `<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="${fill}"/>`;
     }
-  }
-  // SVG外枠生成
+  }  // SVG外枠生成
   getSVGBorder(originalSize, margin = 0) {
     if (!this.elements.borderEnabled?.checked) return '';
     
-    const borderWidth = parseInt(this.elements.borderWidth?.value) || 2;
-    const borderColor = this.elements.borderColor?.value || '#000000';
-    const size = originalSize + (margin * 2);
+    const borderWidth = parseInt(this.elements.borderWidth?.value) || 8;
+    const isCustom = this.elements.borderColorCustom?.checked;
     
-    // 外枠はQRコード部分のみに描画（余白全体ではなく）
-    return `<rect x="${margin}" y="${margin}" width="${originalSize}" height="${originalSize}" fill="none" stroke="${borderColor}" stroke-width="${borderWidth}"/>`;
+    let strokeColor;
+    if (isCustom) {
+      strokeColor = this.elements.borderColor?.value || '#000000';
+    } else {
+      // データ部と同じ色/グラデーション
+      if (this.currentColorMode === 'gradient') {
+        strokeColor = 'url(#qrGrad)'; // SVGのグラデーション参照
+      } else {
+        strokeColor = this.elements.foregroundColor?.value || '#000000';
+      }
+    }
+    
+    const totalSize = originalSize + (margin * 2);
+    const halfWidth = borderWidth / 2;
+    
+    // 外枠は全体の外周に描画
+    return `<rect x="${halfWidth}" y="${halfWidth}" width="${totalSize - borderWidth}" height="${totalSize - borderWidth}" fill="none" stroke="${strokeColor}" stroke-width="${borderWidth}"/>`;
   }
   // PNGダウンロード（クリエイティブ専用）
   downloadCreativePNG() {
@@ -1525,10 +1621,100 @@ class QRGenerator {
     this.drawDetectionPatterns(ctx, moduleCount, moduleSize);
   }
 
-  // ファイル名サニタイズ
-  sanitizeFilename(filename) {
-    return filename.replace(/[^a-zA-Z0-9\-_]/g, '_');
+  // 外枠の色設定を更新
+  updateBorderColorSettings() {
+    if (!this.elements.borderColorCustom || !this.elements.customBorderColor) return;
+    
+    const isCustom = this.elements.borderColorCustom.checked;
+    if (isCustom) {
+      this.elements.customBorderColor.classList.remove('hidden');
+    } else {
+      this.elements.customBorderColor.classList.add('hidden');
+    }
   }
+  // 外枠の色を取得
+  getBorderColor() {
+    if (!this.elements.borderEnabled?.checked) return null;
+    
+    const isCustom = this.elements.borderColorCustom?.checked;
+    
+    if (isCustom) {
+      return this.elements.borderColor?.value || '#000000';
+    } else {
+      // データ部と同じ色を使用
+      if (this.currentColorMode === 'gradient') {
+        return this.elements.gradientStart?.value || '#000000';
+      } else {
+        return this.elements.foregroundColor?.value || '#000000';
+      }
+    }
+  }
+
+  // 外枠のグラデーションを取得（Canvas用）
+  getBorderGradient(ctx, size) {
+    if (!this.elements.borderEnabled?.checked) return null;
+    
+    const isCustom = this.elements.borderColorCustom?.checked;
+    
+    if (isCustom) {
+      return this.elements.borderColor?.value || '#000000';
+    } else {
+      // データ部と同じ色/グラデーション
+      if (this.currentColorMode === 'gradient') {
+        return this.createGradient(ctx, size);
+      } else {
+        return this.elements.foregroundColor?.value || '#000000';
+      }
+    }
+  }
+
+  // 保存時プレビューを更新
+  updateDownloadPreview() {
+    if (!this.currentCreativeCanvas || !this.elements.downloadPreview) return;
+    
+    console.log('📸 保存時プレビュー更新開始');
+    
+    try {
+      // 余白付きキャンバスを作成
+      const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+      
+      // プレビューエリアに表示
+      this.elements.downloadPreview.innerHTML = '';
+        // プレビュー用にサイズを調整
+      const previewCanvas = document.createElement('canvas');
+      const previewCtx = previewCanvas.getContext('2d');
+      const previewSize = 200; // プレビューサイズ
+      
+      previewCanvas.width = previewSize;
+      previewCanvas.height = previewSize;
+      previewCanvas.style.maxWidth = '100%';
+      previewCanvas.style.height = 'auto';
+      previewCanvas.style.border = '2px solid #e5e7eb';
+      
+      // 角丸設定に応じてスタイルを適用
+      if (this.elements.imageRounded?.checked) {
+        previewCanvas.style.borderRadius = '0.5rem';
+      } else {
+        previewCanvas.style.borderRadius = '0';
+      }
+      
+      // 縮小して描画
+      previewCtx.drawImage(canvasWithMargin, 0, 0, previewSize, previewSize);
+      
+      this.elements.downloadPreview.appendChild(previewCanvas);
+      
+      // プレビューセクションを表示
+      if (this.elements.downloadPreviewSection) {
+        this.elements.downloadPreviewSection.classList.remove('hidden');
+      }
+      
+      console.log('✅ 保存時プレビュー更新完了');
+    } catch (error) {
+      console.error('❌ 保存時プレビュー更新エラー:', error);
+    }
+  }
+
+  // ...existing code...
 }
 
 // グローバルインスタンス作成
