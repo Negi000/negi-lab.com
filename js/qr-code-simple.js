@@ -29,6 +29,7 @@ class QRGenerator {
       this.bindBasicEvents();
       this.initializeDetectionColorDefault(); // 検出パターンのデフォルト色を初期化
       this.updateBorderColorSettings(); // 外枠色設定を初期化
+      this.initializeRoundedSettings(); // 角丸設定を初期化
       console.log('✅ QRGenerator基本初期化完了');
     } catch (error) {
       console.error('❌ QRGenerator初期化エラー:', error);
@@ -168,9 +169,11 @@ class QRGenerator {
       borderColorData: document.getElementById('borderColorData'),
       borderColorCustom: document.getElementById('borderColorCustom'),
       customBorderColor: document.getElementById('customBorderColor'),
-      
-      // 画像の角丸設定
+        // 画像の角丸設定
       imageRounded: document.getElementById('imageRounded'),
+      roundedRadius: document.getElementById('roundedRadius'),
+      roundedRadiusValue: document.getElementById('roundedRadiusValue'),
+      roundedRadiusDiv: document.getElementById('roundedRadiusDiv'),
       
       // プレビュー
       downloadPreviewSection: document.getElementById('downloadPreviewSection'),
@@ -337,12 +340,28 @@ class QRGenerator {
           this.renderCreativeQR();
           this.updateDownloadPreview();
         }      });
-    }
-
-    // 画像の角丸設定
+    }    // 画像の角丸設定
     if (this.elements.imageRounded) {
       this.elements.imageRounded.addEventListener('change', () => {
+        if (this.elements.roundedRadiusDiv) {
+          this.elements.roundedRadiusDiv.style.display = 
+            this.elements.imageRounded.checked ? 'block' : 'none';
+        }
         if (this.qrData && this.designMode === 'creative') {
+          this.renderCreativeQR();
+          this.updateDownloadPreview();
+        }
+      });
+    }
+
+    // 角丸半径設定
+    if (this.elements.roundedRadius) {
+      this.elements.roundedRadius.addEventListener('input', () => {
+        if (this.elements.roundedRadiusValue) {
+          this.elements.roundedRadiusValue.textContent = 
+            this.elements.roundedRadius.value + '%';
+        }
+        if (this.qrData && this.designMode === 'creative' && this.elements.imageRounded?.checked) {
           this.renderCreativeQR();
           this.updateDownloadPreview();
         }
@@ -854,8 +873,8 @@ class QRGenerator {
     ctx.lineWidth = borderWidth;
     ctx.strokeRect(0, 0, qrSize, qrSize);
     
-    console.log('✅ 外枠描画完了 - 太さ:', borderWidth, '色:', borderColor);
-  }
+    console.log('✅ 外枠描画完了 - 太さ:', borderWidth, '色:', borderColor);  }
+  
   // ダウンロード機能
   downloadQR() {
     if (!this.currentCreativeCanvas) {
@@ -866,22 +885,24 @@ class QRGenerator {
     // 余白を追加したキャンバスを作成
     const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
     
+    // 角丸処理を適用
+    const finalCanvas = this.createRoundedCanvas(canvasWithMargin);
+    
     const format = this.elements.downloadFormat?.value || 'png';
     let filename = 'qr-code';
     let dataURL;
     
     switch (format) {
       case 'png':
-        dataURL = canvasWithMargin.toDataURL('image/png');
+        dataURL = finalCanvas.toDataURL('image/png');
         filename += '.png';
-        break;
-      case 'jpeg':
+        break;      case 'jpeg':
         const quality = parseFloat(this.elements.jpegQuality?.value) || 0.9;
-        dataURL = canvasWithMargin.toDataURL('image/jpeg', quality);
+        dataURL = finalCanvas.toDataURL('image/jpeg', quality);
         filename += '.jpg';
         break;
       case 'webp':
-        dataURL = canvasWithMargin.toDataURL('image/webp', 0.9);
+        dataURL = finalCanvas.toDataURL('image/webp', 0.9);
         filename += '.webp';
         break;
     }
@@ -911,12 +932,13 @@ class QRGenerator {
     const backgroundColor = this.elements.backgroundColor?.value || '#ffffff';
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, newSize, newSize);
-    
-    // 元のキャンバスを中央に描画
+      // 元のキャンバスを中央に描画
     ctx.drawImage(originalCanvas, margin, margin);
     
-    // 外枠を余白の外側に描画
-    this.drawBorderOnMarginCanvas(ctx, newSize, margin);
+    // 外枠を余白の外側に描画（角丸が無効な場合のみ）
+    if (!this.elements.imageRounded?.checked) {
+      this.drawBorderOnMarginCanvas(ctx, newSize, margin);
+    }
     
     console.log(`✅ 余白付きキャンバス作成完了: ${qrSize}x${qrSize} → ${newSize}x${newSize} (余白: ${margin}px)`);
     
@@ -959,18 +981,20 @@ class QRGenerator {
       { format: 'jpeg', ext: 'jpg' },
       { format: 'webp', ext: 'webp' }
     ];
-    
-    // 余白を追加したキャンバスを作成
+      // 余白を追加したキャンバスを作成
     const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+    
+    // 角丸処理を適用
+    const finalCanvas = this.createRoundedCanvas(canvasWithMargin);
     
     formats.forEach(({format, ext}, index) => {
       setTimeout(() => {
         let dataURL;
         if (format === 'jpeg') {
           const quality = parseFloat(this.elements.jpegQuality?.value) || 0.9;
-          dataURL = canvasWithMargin.toDataURL(`image/${format}`, quality);
+          dataURL = finalCanvas.toDataURL(`image/${format}`, quality);
         } else {
-          dataURL = canvasWithMargin.toDataURL(`image/${format}`, 0.9);
+          dataURL = finalCanvas.toDataURL(`image/${format}`, 0.9);
         }
         this.downloadDataURL(dataURL, `qr-code.${ext}`);
       }, 100 * index);
@@ -1045,8 +1069,10 @@ class QRGenerator {
         svg += `</linearGradient></defs>`;
       }
     }
+      const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
     
-    const fillColor = this.currentColorMode === 'gradient' ? 'url(#qrGrad)' : (this.elements.foregroundColor?.value || '#000000');
+    // 角丸クリップの定義と開始（角丸が有効な場合）
+    svg += this.getSVGRoundedClip(totalSize);
     
     // 検出パターンの位置を計算
     const detectionPatterns = this.getDetectionPatterns(moduleCount);
@@ -1066,9 +1092,11 @@ class QRGenerator {
     // 検出パターンをSVGで描画（余白付き）
     svg += this.getSVGDetectionPatterns(moduleCount, moduleSize, bgColor, margin);
     
-    // 外枠をSVGで描画（余白付き）
-    svg += this.getSVGBorder(originalSize, margin);
+    // 外枠をSVGで描画（余白付き）- 角丸対応
+    svg += this.getSVGBorder(originalSize, margin, totalSize);
     
+    // 角丸クリップの終了
+    svg += this.getSVGRoundedClipEnd();
     svg += '</svg>';
     
     const blob = new Blob([svg], { type: 'image/svg+xml' });
@@ -1175,15 +1203,18 @@ class QRGenerator {
     const halfWidth = borderWidth / 2;
     
     // 外枠は全体の外周に描画
-    return `<rect x="${halfWidth}" y="${halfWidth}" width="${totalSize - borderWidth}" height="${totalSize - borderWidth}" fill="none" stroke="${strokeColor}" stroke-width="${borderWidth}"/>`;
-  }
+    return `<rect x="${halfWidth}" y="${halfWidth}" width="${totalSize - borderWidth}" height="${totalSize - borderWidth}" fill="none" stroke="${strokeColor}" stroke-width="${borderWidth}"/>`;  }
+  
   // PNGダウンロード（クリエイティブ専用）
   downloadCreativePNG() {
     if (!this.currentCreativeCanvas) return;
     
     // 余白を追加したキャンバスを作成
     const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
-    const dataURL = canvasWithMargin.toDataURL('image/png');
+    
+    // 角丸処理を適用
+    const finalCanvas = this.createRoundedCanvas(canvasWithMargin);
+    const dataURL = finalCanvas.toDataURL('image/png');
     this.downloadDataURL(dataURL, 'qr-code-creative.png');
   }
 
@@ -1641,12 +1672,8 @@ class QRGenerator {
     if (isCustom) {
       return this.elements.borderColor?.value || '#000000';
     } else {
-      // データ部と同じ色を使用
-      if (this.currentColorMode === 'gradient') {
-        return this.elements.gradientStart?.value || '#000000';
-      } else {
-        return this.elements.foregroundColor?.value || '#000000';
-      }
+      // データ部と同じ色
+      return this.elements.foregroundColor?.value || '#000000';
     }
   }
 
@@ -1673,10 +1700,12 @@ class QRGenerator {
     if (!this.currentCreativeCanvas || !this.elements.downloadPreview) return;
     
     console.log('📸 保存時プレビュー更新開始');
-    
-    try {
+      try {
       // 余白付きキャンバスを作成
       const canvasWithMargin = this.createCanvasWithMargin(this.currentCreativeCanvas);
+      
+      // 角丸処理を適用（実際の保存時と同じ処理）
+      const finalCanvas = this.createRoundedCanvas(canvasWithMargin);
       
       // プレビューエリアに表示
       this.elements.downloadPreview.innerHTML = '';
@@ -1690,16 +1719,15 @@ class QRGenerator {
       previewCanvas.style.maxWidth = '100%';
       previewCanvas.style.height = 'auto';
       previewCanvas.style.border = '2px solid #e5e7eb';
-      
-      // 角丸設定に応じてスタイルを適用
+        // 角丸設定に応じてスタイルを適用
       if (this.elements.imageRounded?.checked) {
         previewCanvas.style.borderRadius = '0.5rem';
       } else {
         previewCanvas.style.borderRadius = '0';
       }
       
-      // 縮小して描画
-      previewCtx.drawImage(canvasWithMargin, 0, 0, previewSize, previewSize);
+      // 縮小して描画（実際の保存時と同じ最終キャンバスを使用）
+      previewCtx.drawImage(finalCanvas, 0, 0, previewSize, previewSize);
       
       this.elements.downloadPreview.appendChild(previewCanvas);
       
@@ -1712,9 +1740,179 @@ class QRGenerator {
     } catch (error) {
       console.error('❌ 保存時プレビュー更新エラー:', error);
     }
+  }  // 角丸キャンバスを作成（外枠対応）
+  createRoundedCanvas(originalCanvas) {
+    if (!this.elements.imageRounded?.checked) {
+      return originalCanvas; // 角丸が無効な場合はそのまま返す
+    }
+
+    console.log('🔄 角丸キャンバス作成開始');
+    
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const size = originalCanvas.width;
+    const borderWidth = this.elements.borderEnabled?.checked ? 
+      (parseInt(this.elements.borderWidth?.value) || 8) : 0;
+    
+    // 角丸半径をカスタム値から取得（デフォルト5%）
+    const radiusPercent = parseInt(this.elements.roundedRadius?.value) || 5;
+    const baseRadius = (size * radiusPercent) / 100;
+    const radius = Math.max(baseRadius, borderWidth + 2); // 最低でも外枠+2px
+    
+    canvas.width = size;
+    canvas.height = size;
+    
+    // 透明な背景で初期化
+    ctx.clearRect(0, 0, size, size);
+    
+    // 高品質描画設定
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    
+    // 外枠がある場合は、角丸の外枠を最初に描画
+    if (this.elements.borderEnabled?.checked) {
+      this.drawRoundedBorder(ctx, size, radius, borderWidth);
+    }
+    
+    // 角丸のクリップパスを作成（外枠の内側）
+    ctx.save();
+    const contentRadius = Math.max(0, radius - borderWidth);
+    this.createRoundedClipPath(ctx, size, contentRadius, borderWidth);
+    ctx.clip();
+    
+    // 元の画像を角丸でクリップして描画
+    ctx.drawImage(originalCanvas, 0, 0);
+    
+    ctx.restore();
+    
+    console.log(`✅ 角丸キャンバス作成完了: 半径${radius}px(${radiusPercent}%), 外枠${borderWidth}px`);
+    return canvas;
+  }// SVG角丸クリップ生成（カスタム半径対応）
+  getSVGRoundedClip(totalSize) {
+    if (!this.elements.imageRounded?.checked) return '';
+    
+    // 角丸半径をカスタム値から取得（デフォルト5%）
+    const radiusPercent = parseInt(this.elements.roundedRadius?.value) || 5;
+    const borderWidth = this.elements.borderEnabled?.checked ? 
+      (parseInt(this.elements.borderWidth?.value) || 8) : 0;
+    
+    const baseRadius = (totalSize * radiusPercent) / 100;
+    const radius = Math.max(baseRadius, borderWidth + 2);
+    
+    console.log(`🎯 SVG角丸クリップ生成: 半径${radius}px(${radiusPercent}%)`);
+    
+    return `
+      <defs>
+        <clipPath id="roundedClip">
+          <rect x="0" y="0" width="${totalSize}" height="${totalSize}" rx="${radius}" ry="${radius}"/>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#roundedClip)">`;
   }
 
-  // ...existing code...
+  // SVG角丸終了タグ
+  getSVGRoundedClipEnd() {
+    if (!this.elements.imageRounded?.checked) return '';
+    return '</g>';
+  }
+
+  // 角丸処理を適用（ベジェ曲線使用）
+  applyRoundedCorners(ctx, x, y, width, height, radius) {
+    ctx.save();
+    ctx.beginPath();
+    this.createRoundedPath(ctx, x, y, width, height, radius);
+    ctx.clip();
+  }
+
+  // 角丸クリップパスを作成（外枠の太さを考慮、ベジェ曲線使用）
+  createRoundedClipPath(ctx, size, radius, borderWidth = 0) {
+    // 外枠がある場合は、その分だけ内側にクリップパスを作成
+    const offset = borderWidth;
+    const innerSize = size - (offset * 2);
+    const x = offset;
+    const y = offset;
+    
+    // 角丸半径が大きすぎる場合は調整
+    const maxRadius = Math.min(innerSize, innerSize) / 2;
+    const actualRadius = Math.min(radius, maxRadius);
+    
+    // ベジェ曲線の制御点計算
+    const cp = actualRadius * 0.552284749831;
+    
+    ctx.beginPath();
+    ctx.moveTo(x + actualRadius, y);
+    ctx.lineTo(x + innerSize - actualRadius, y);
+    ctx.bezierCurveTo(x + innerSize - actualRadius + cp, y, x + innerSize, y + actualRadius - cp, x + innerSize, y + actualRadius);
+    ctx.lineTo(x + innerSize, y + innerSize - actualRadius);
+    ctx.bezierCurveTo(x + innerSize, y + innerSize - actualRadius + cp, x + innerSize - actualRadius + cp, y + innerSize, x + innerSize - actualRadius, y + innerSize);
+    ctx.lineTo(x + actualRadius, y + innerSize);
+    ctx.bezierCurveTo(x + actualRadius - cp, y + innerSize, x, y + innerSize - actualRadius + cp, x, y + innerSize - actualRadius);
+    ctx.lineTo(x, y + actualRadius);
+    ctx.bezierCurveTo(x, y + actualRadius - cp, x + actualRadius - cp, y, x + actualRadius, y);
+    ctx.closePath();
+  }
+
+  // 角丸の外枠を描画（改良版）
+  drawRoundedBorder(ctx, size, radius, borderWidth) {
+    const borderStyle = this.getBorderGradient(ctx, size);
+    
+    if (!borderStyle) return;
+    
+    console.log(`🖼️ 角丸外枠描画: 太さ${borderWidth}px, 半径${radius}px`);
+    
+    // 高品質描画設定
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    
+    // 外枠を塗りつぶしで描画（ストロークより滑らか）
+    ctx.fillStyle = borderStyle;
+    
+    // 外側の角丸パス
+    ctx.beginPath();
+    this.createRoundedPath(ctx, 0, 0, size, size, radius);
+    
+    // 内側の角丸パス（くり抜き用）
+    const innerRadius = Math.max(0, radius - borderWidth);
+    this.createRoundedPath(ctx, borderWidth, borderWidth, 
+                          size - borderWidth * 2, size - borderWidth * 2, innerRadius, true);
+    
+    ctx.fill('evenodd'); // even-odd ルールで内側をくり抜き
+  }
+
+  // 角丸パスを作成するヘルパーメソッド（ベジェ曲線使用）
+  createRoundedPath(ctx, x, y, width, height, radius, reverse = false) {
+    // 角丸半径が大きすぎる場合は調整
+    const maxRadius = Math.min(width, height) / 2;
+    const actualRadius = Math.min(radius, maxRadius);
+    
+    // ベジェ曲線の制御点計算（より滑らかな角丸）
+    const cp = actualRadius * 0.552284749831; // 1/4円に近い値
+    
+    if (reverse) {
+      // 反時計回り（くり抜き用）
+      ctx.moveTo(x + actualRadius, y);
+      ctx.bezierCurveTo(x + actualRadius - cp, y, x, y + actualRadius - cp, x, y + actualRadius);
+      ctx.lineTo(x, y + height - actualRadius);
+      ctx.bezierCurveTo(x, y + height - actualRadius + cp, x + actualRadius - cp, y + height, x + actualRadius, y + height);
+      ctx.lineTo(x + width - actualRadius, y + height);
+      ctx.bezierCurveTo(x + width - actualRadius + cp, y + height, x + width, y + height - actualRadius + cp, x + width, y + height - actualRadius);
+      ctx.lineTo(x + width, y + actualRadius);
+      ctx.bezierCurveTo(x + width, y + actualRadius - cp, x + width - actualRadius + cp, y, x + width - actualRadius, y);
+      ctx.closePath();
+    } else {
+      // 時計回り（通常）
+      ctx.moveTo(x + actualRadius, y);
+      ctx.lineTo(x + width - actualRadius, y);
+      ctx.bezierCurveTo(x + width - actualRadius + cp, y, x + width, y + actualRadius - cp, x + width, y + actualRadius);
+      ctx.lineTo(x + width, y + height - actualRadius);
+      ctx.bezierCurveTo(x + width, y + height - actualRadius + cp, x + width - actualRadius + cp, y + height, x + width - actualRadius, y + height);
+      ctx.lineTo(x + actualRadius, y + height);
+      ctx.bezierCurveTo(x + actualRadius - cp, y + height, x, y + height - actualRadius + cp, x, y + height - actualRadius);
+      ctx.lineTo(x, y + actualRadius);
+      ctx.bezierCurveTo(x, y + actualRadius - cp, x + actualRadius - cp, y, x + actualRadius, y);
+      ctx.closePath();
+    }
+  }
 }
 
 // グローバルインスタンス作成

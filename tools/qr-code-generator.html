@@ -682,12 +682,16 @@
               <label class="block text-sm font-medium text-gray-700 mb-1">JPEG品質</label>
               <input type="range" id="jpegQuality" min="0.1" max="1" step="0.1" value="0.9" class="w-full">
               <span class="text-xs text-gray-500">品質: <span id="jpegQualityValue">90%</span></span>            </div>
-            
-            <div>
+              <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">画像の角丸</label>
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-3 mb-3">
                 <input type="checkbox" id="imageRounded" class="form-checkbox">
                 <label for="imageRounded" class="text-sm">角を丸める</label>
+              </div>
+              <div id="roundedRadiusDiv" class="hidden">
+                <label class="block text-sm font-medium text-gray-600 mb-1">角丸の半径</label>
+                <input type="range" id="roundedRadius" min="1" max="20" step="1" value="5" class="w-full">
+                <span class="text-xs text-gray-500">半径: <span id="roundedRadiusValue">5%</span></span>
               </div>
             </div>
             
