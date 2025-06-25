@@ -79,6 +79,7 @@ class QRGenerator {
       // === セクション ===
       singleGenerationSection: document.getElementById('singleGenerationSection'),
       batchGenerationSection: document.getElementById('batchGenerationSection'),
+      designModeSection: document.getElementById('designModeSection'),
       inputSection: document.getElementById('inputSection'),
       creativeSettingsSection: document.getElementById('creativeSettingsSection'),
 
@@ -86,6 +87,7 @@ class QRGenerator {
       templateBtns: document.querySelectorAll('.qr-template-btn'),
       templateInputs: document.querySelectorAll('.template-input'),
       qrText: document.getElementById('qrText'),
+      urlText: document.getElementById('urlText'),
       wifiSSID: document.getElementById('wifiSSID'),
       wifiPassword: document.getElementById('wifiPassword'),
       wifiSecurity: document.getElementById('wifiSecurity'),
@@ -96,6 +98,31 @@ class QRGenerator {
       smsMessage: document.getElementById('smsMessage'),
       phoneNumber: document.getElementById('phoneNumber'),
 
+      // === VCard関連 ===
+      vcardName: document.getElementById('vcardName'),
+      vcardOrg: document.getElementById('vcardOrg'),
+      vcardTitle: document.getElementById('vcardTitle'),
+      vcardPhone: document.getElementById('vcardPhone'),
+      vcardEmail: document.getElementById('vcardEmail'),
+      vcardUrl: document.getElementById('vcardUrl'),
+      vcardAddress: document.getElementById('vcardAddress'),
+
+      // === イベント関連 ===
+      eventTitle: document.getElementById('eventTitle'),
+      eventStart: document.getElementById('eventStart'),
+      eventEnd: document.getElementById('eventEnd'),
+      eventLocation: document.getElementById('eventLocation'),
+      eventDescription: document.getElementById('eventDescription'),
+
+      // === 位置情報関連 ===
+      locationLat: document.getElementById('locationLat'),
+      locationLng: document.getElementById('locationLng'),
+      locationName: document.getElementById('locationName'),
+
+      // === ソーシャル関連 ===
+      socialType: document.getElementById('socialType'),
+      socialUsername: document.getElementById('socialUsername'),
+
       // === QR設定 ===
       qrSize: document.getElementById('qrSize'),
       errorCorrection: document.getElementById('errorCorrection'),
@@ -104,10 +131,15 @@ class QRGenerator {
 
       // === クリエイティブ設定 ===
       colorMode: document.getElementById('colorMode'),
+      solidColorBtn: document.getElementById('solidColorBtn'),
+      gradientColorBtn: document.getElementById('gradientColorBtn'),
       gradientSettings: document.getElementById('gradientSettings'),
       gradientStart: document.getElementById('gradientStart'),
       gradientEnd: document.getElementById('gradientEnd'),
       gradientDirection: document.getElementById('gradientDirection'),
+
+      // === 形状ボタン ===
+      shapeBtns: document.querySelectorAll('.shape-btn'),
 
       // === 検出パターン設定 ===
       detectionColorMode: document.getElementById('detectionColorMode'),
@@ -781,6 +813,9 @@ class QRGenerator {
       case 'text':
         return this.elements.qrText?.value || '';
       
+      case 'url':
+        return this.elements.urlText?.value || '';
+      
       case 'wifi':
         const ssid = this.elements.wifiSSID?.value || '';
         const password = this.elements.wifiPassword?.value || '';
@@ -801,8 +836,128 @@ class QRGenerator {
       case 'phone':
         return `tel:${this.elements.phoneNumber?.value || ''}`;
       
+      case 'vcard':
+        return this.generateVCardContent();
+      
+      case 'event':
+        return this.generateEventContent();
+      
+      case 'location':
+        return this.generateLocationContent();
+      
+      case 'social':
+        return this.generateSocialContent();
+      
       default:
         return this.elements.qrText?.value || '';
+    }
+  }
+
+  /**
+   * vCardコンテンツを生成
+   */
+  generateVCardContent() {
+    const name = this.elements.vcardName?.value || '';
+    const org = this.elements.vcardOrg?.value || '';
+    const title = this.elements.vcardTitle?.value || '';
+    const phone = this.elements.vcardPhone?.value || '';
+    const email = this.elements.vcardEmail?.value || '';
+    const url = this.elements.vcardUrl?.value || '';
+    const address = this.elements.vcardAddress?.value || '';
+
+    let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
+    if (name) vcard += `FN:${name}\n`;
+    if (org) vcard += `ORG:${org}\n`;
+    if (title) vcard += `TITLE:${title}\n`;
+    if (phone) vcard += `TEL:${phone}\n`;
+    if (email) vcard += `EMAIL:${email}\n`;
+    if (url) vcard += `URL:${url}\n`;
+    if (address) vcard += `ADR:;;${address};;;;\n`;
+    vcard += 'END:VCARD';
+
+    return vcard;
+  }
+
+  /**
+   * イベントコンテンツを生成
+   */
+  generateEventContent() {
+    const title = this.elements.eventTitle?.value || '';
+    const start = this.elements.eventStart?.value || '';
+    const end = this.elements.eventEnd?.value || '';
+    const location = this.elements.eventLocation?.value || '';
+    const description = this.elements.eventDescription?.value || '';
+
+    let event = 'BEGIN:VEVENT\n';
+    if (title) event += `SUMMARY:${title}\n`;
+    if (start) {
+      const startDate = new Date(start).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+      event += `DTSTART:${startDate}\n`;
+    }
+    if (end) {
+      const endDate = new Date(end).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+      event += `DTEND:${endDate}\n`;
+    }
+    if (location) event += `LOCATION:${location}\n`;
+    if (description) event += `DESCRIPTION:${description}\n`;
+    event += 'END:VEVENT';
+
+    return event;
+  }
+
+  /**
+   * 位置情報コンテンツを生成
+   */
+  generateLocationContent() {
+    const lat = this.elements.locationLat?.value || '';
+    const lng = this.elements.locationLng?.value || '';
+    const name = this.elements.locationName?.value || '';
+
+    if (!lat || !lng) {
+      return '';
+    }
+
+    if (name) {
+      return `geo:${lat},${lng}?q=${encodeURIComponent(name)}`;
+    } else {
+      return `geo:${lat},${lng}`;
+    }
+  }
+
+  /**
+   * ソーシャルコンテンツを生成
+   */
+  generateSocialContent() {
+    const type = this.elements.socialType?.value || '';
+    const username = this.elements.socialUsername?.value || '';
+
+    if (!username) return '';
+
+    // カスタムURLの場合
+    if (type === 'custom') {
+      return username.startsWith('http') ? username : `https://${username}`;
+    }
+
+    // ユーザー名から@を除去
+    const cleanUsername = username.replace('@', '');
+
+    switch (type) {
+      case 'twitter':
+        return `https://twitter.com/${cleanUsername}`;
+      case 'facebook':
+        return `https://facebook.com/${cleanUsername}`;
+      case 'instagram':
+        return `https://instagram.com/${cleanUsername}`;
+      case 'linkedin':
+        return `https://linkedin.com/in/${cleanUsername}`;
+      case 'youtube':
+        return `https://youtube.com/@${cleanUsername}`;
+      case 'tiktok':
+        return `https://tiktok.com/@${cleanUsername}`;
+      case 'line':
+        return `https://line.me/ti/p/${cleanUsername}`;
+      default:
+        return username;
     }
   }
 
@@ -1177,9 +1332,15 @@ class QRGenerator {
     if (mode === 'single') {
       this.elements.singleGenerationSection?.classList.remove('hidden');
       this.elements.batchGenerationSection?.classList.add('hidden');
+      // デザインモードセクションを表示
+      this.elements.designModeSection?.classList.remove('hidden');
     } else {
       this.elements.singleGenerationSection?.classList.add('hidden');
       this.elements.batchGenerationSection?.classList.remove('hidden');
+      // バッチモード時はデザインモードセクションを非表示
+      this.elements.designModeSection?.classList.add('hidden');
+      // クリエイティブ設定も非表示
+      this.elements.creativeSettingsSection?.classList.add('hidden');
     }    // ボタンのアクティブ状態更新
     this.elements.modeBtns?.forEach(btn => {
       if (btn.dataset.mode === mode) {
