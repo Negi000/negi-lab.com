@@ -148,6 +148,9 @@ class QRGenerator {
       downloadPreview: document.getElementById('downloadPreview'),
       creativeDownloadSection: document.getElementById('creativeDownloadSection'),
 
+      // === デザインプリセット ===
+      presetBtns: document.querySelectorAll('.preset-btn'),
+
       // === バッチ生成 ===
       csvFileInput: document.getElementById('csvFileInput'),
       batchTextData: document.getElementById('batchTextData'),
@@ -173,6 +176,7 @@ class QRGenerator {
     this.bindBatchEvents();
     console.log('✅ 全イベントバインディング完了');
   }
+  
   /**
    * 初期設定の適用
    */
@@ -489,27 +493,69 @@ class QRGenerator {
         }
       });
     }
+
+    // デザインプリセットボタン
+    if (this.elements.presetBtns) {
+      this.elements.presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const preset = btn.dataset.preset;
+          console.log('デザインプリセット選択:', preset);
+          this.applyDesignPreset(preset);
+        });
+      });
+    }
   }
 
   /**
    * ダウンロード関連イベントのバインド
    */
   bindDownloadEvents() {
+    console.log('🔗 ダウンロードイベントバインド開始');
+    
     // ダウンロードボタン
     if (this.elements.downloadBtn) {
-      this.elements.downloadBtn.addEventListener('click', () => this.downloadQR());
+      console.log('📌 downloadBtn イベントリスナー設定');
+      
+      // ワンショットイベントリスナーを使用して重複を防ぐ
+      const downloadHandler = () => {
+        console.log('🖱️ downloadBtn クリック検出');
+        this.downloadQR();
+      };
+      
+      // 既存のハンドラーがあれば削除
+      if (this.elements.downloadBtn._downloadHandler) {
+        this.elements.downloadBtn.removeEventListener('click', this.elements.downloadBtn._downloadHandler);
+      }
+      
+      this.elements.downloadBtn._downloadHandler = downloadHandler;
+      this.elements.downloadBtn.addEventListener('click', downloadHandler);
     }
 
     if (this.elements.downloadAllBtn) {
-      this.elements.downloadAllBtn.addEventListener('click', () => this.downloadAllFormats());
+      const downloadAllHandler = () => this.downloadAllFormats();
+      if (this.elements.downloadAllBtn._downloadAllHandler) {
+        this.elements.downloadAllBtn.removeEventListener('click', this.elements.downloadAllBtn._downloadAllHandler);
+      }
+      this.elements.downloadAllBtn._downloadAllHandler = downloadAllHandler;
+      this.elements.downloadAllBtn.addEventListener('click', downloadAllHandler);
     }
 
     if (this.elements.downloadSVG) {
-      this.elements.downloadSVG.addEventListener('click', () => this.downloadCreativeSVG());
+      const downloadSVGHandler = () => this.downloadCreativeSVG();
+      if (this.elements.downloadSVG._downloadSVGHandler) {
+        this.elements.downloadSVG.removeEventListener('click', this.elements.downloadSVG._downloadSVGHandler);
+      }
+      this.elements.downloadSVG._downloadSVGHandler = downloadSVGHandler;
+      this.elements.downloadSVG.addEventListener('click', downloadSVGHandler);
     }
 
     if (this.elements.downloadPNG) {
-      this.elements.downloadPNG.addEventListener('click', () => this.downloadCreativePNG());
+      const downloadPNGHandler = () => this.downloadCreativePNG();
+      if (this.elements.downloadPNG._downloadPNGHandler) {
+        this.elements.downloadPNG.removeEventListener('click', this.elements.downloadPNG._downloadPNGHandler);
+      }
+      this.elements.downloadPNG._downloadPNGHandler = downloadPNGHandler;
+      this.elements.downloadPNG.addEventListener('click', downloadPNGHandler);
     }
 
     // フォーマット変更
@@ -1495,18 +1541,26 @@ class QRGenerator {
    * DataURLからファイルをダウンロード
    */
   downloadDataURL(dataURL, filename) {
+    console.log(`🔽 downloadDataURL 実行: ${filename}`);
+    console.trace('downloadDataURL 呼び出し元のスタックトレース:');
+    
     const link = document.createElement('a');
     link.download = filename;
     link.href = dataURL;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
+    console.log(`✅ ダウンロード完了: ${filename}`);
   }
 
   /**
    * QRコードをダウンロード
    */
   downloadQR() {
+    console.log('🔽 downloadQR メソッド呼び出し開始');
+    console.trace('downloadQR 呼び出し元のスタックトレース:');
+    
     if (!this.currentCreativeCanvas) {
       alert('ダウンロードするQRコードがありません。');
       return;
@@ -1874,6 +1928,92 @@ class QRGenerator {
   parseBatchTextData() {
     // 実装予定
     console.log('📝 バッチテキストデータ解析（未実装）');
+  }
+
+  /**
+   * デザインプリセットを適用
+   */
+  applyDesignPreset(preset) {
+    console.log(`デザインプリセット適用: ${preset}`);
+    
+    // プリセットに応じて色とグラデーション設定を変更
+    const presets = {
+      nature: {
+        colorMode: 'gradient',
+        gradientStart: '#4ade80', // green-400
+        gradientEnd: '#3b82f6',   // blue-500
+        gradientDirection: 'to-r'
+      },
+      sunset: {
+        colorMode: 'gradient',
+        gradientStart: '#fb923c', // orange-400
+        gradientEnd: '#ef4444',   // red-500
+        gradientDirection: 'to-r'
+      },
+      ocean: {
+        colorMode: 'gradient',
+        gradientStart: '#60a5fa', // blue-400
+        gradientEnd: '#14b8a6',   // teal-500
+        gradientDirection: 'to-r'
+      },
+      royal: {
+        colorMode: 'gradient',
+        gradientStart: '#a78bfa', // purple-400
+        gradientEnd: '#ec4899',   // pink-500
+        gradientDirection: 'to-r'
+      }
+    };
+    
+    const presetConfig = presets[preset];
+    if (!presetConfig) return;
+    
+    // カラーモードをグラデーションに設定
+    if (this.elements.colorMode) {
+      this.elements.colorMode.value = presetConfig.colorMode;
+      this.currentColorMode = presetConfig.colorMode;
+    }
+    
+    // グラデーション色を設定
+    if (this.elements.gradientStart) {
+      this.elements.gradientStart.value = presetConfig.gradientStart;
+    }
+    if (this.elements.gradientEnd) {
+      this.elements.gradientEnd.value = presetConfig.gradientEnd;
+    }
+    if (this.elements.gradientDirection) {
+      this.elements.gradientDirection.value = presetConfig.gradientDirection;
+    }
+    
+    // UIの表示を更新
+    this.updateColorModeUI();
+    
+    // プリセットボタンのアクティブ状態を更新
+    this.elements.presetBtns?.forEach(btn => {
+      btn.classList.remove('border-accent', 'bg-accent/10');
+      if (btn.dataset.preset === preset) {
+        btn.classList.add('border-accent', 'bg-accent/10');
+      }
+    });
+    
+    // QRコードが生成済みなら再描画
+    if (this.qrData && this.designMode === 'creative') {
+      this.renderCreativeQR();
+      this.updateDownloadPreview();
+    }
+  }
+
+  /**
+   * カラーモードUIを更新
+   */
+  updateColorModeUI() {
+    // カラーモードに応じてUIを更新
+    if (this.currentColorMode === 'solid') {
+      this.elements.gradientSettings?.classList.add('hidden');
+      this.elements.foregroundColor?.classList.remove('hidden');
+    } else {
+      this.elements.gradientSettings?.classList.remove('hidden');
+      this.elements.foregroundColor?.classList.add('hidden');
+    }
   }
 }
 
