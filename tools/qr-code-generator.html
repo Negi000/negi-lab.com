@@ -2,7 +2,10 @@
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />    <!-- Content Security Policy -->  <meta http-equiv="Content-Security-Policy" content="
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.google.com https://*.doubleclick.net;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdn.tailwindcss.com;
@@ -17,13 +20,19 @@
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />  <title data-i18n="qrCode.pageTitle">【無料】QRコード作成ツール - ロゴ挿入・色変更も可能 | negi-lab.com</title>
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
+  <title data-i18n="qrCode.pageTitle">【無料】QRコード作成ツール - ロゴ挿入・色変更も可能 | negi-lab.com</title>
   <meta name="description" data-i18n="qrCode.metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整が可能。エラー訂正レベル対応で読み取り精度も抜群。登録不要でブラウザ完結型の安全なQR生成ツール。" />
-  <meta name="keywords" content="QRコード作成,QRコード生成,無料,ツール,ロゴ入り,色変更,高品質,URL,テキスト,Wi-Fi,バーコード,オンライン" />    <!-- OG Tags -->
+  <meta name="keywords" content="QRコード作成,QRコード生成,無料,ツール,ロゴ入り,色変更,高品質,URL,テキスト,Wi-Fi,バーコード,オンライン" />
+  
+  <!-- OG Tags -->
   <meta property="og:title" data-i18n="qrCode.pageTitle" content="【無料】QRコード作成ツール - ロゴ挿入・色変更も可能 | negi-lab.com" />
   <meta property="og:description" data-i18n="qrCode.metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整が可能。エラー訂正レベル対応で読み取り精度も抜群。登録不要でブラウザ完結型の安全なQR生成ツール。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />  <!-- Tailwind CSS (動的設定対応版) -->
+  <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
+  
+  <!-- Tailwind CSS (動的設定対応版) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -42,7 +51,8 @@
     console.log('✅ Tailwind CSS設定完了');
   </script>
 
-  <style>    .form-input, .form-select {
+  <style>
+    .form-input, .form-select {
       width: 100%;
       padding: 0.5rem;
       border: 1px solid #d1d5db;
@@ -1018,7 +1028,9 @@
   <!-- メイン JavaScript (統合版) -->
   <script src="../js/qr-code-generator.js" 
           onload="console.log('✅ qr-code-generator.js読み込み完了');" 
-          onerror="console.error('❌ qr-code-generator.js読み込み失敗');"></script><!-- アプリケーション準備完了確認 -->
+          onerror="console.error('❌ qr-code-generator.js読み込み失敗');"></script>
+
+  <!-- アプリケーション準備完了確認 -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🚀 QRコード生成ツール初期化チェック');
@@ -1183,7 +1195,8 @@
     }
   </script>
   <!-- Amazon・楽天Cookie埋め込み機能（同意取得済みユーザーのみ） -->
-  <!-- <script>
+  <!-- 
+  <script>
     // 開発環境では一時無効化 - 本番環境で有効化予定
     // アフィリエイトCookie埋め込み関数
     function embedAffiliateCookies() {
@@ -1267,8 +1280,11 @@
         return originalGenerateQR.call(this);
       };      console.log('✅ QRGenerator にアフィリエイトCookie機能を統合完了');
     }
-  </script> -->
+  </script>
+  -->
     
+  <!-- 多言語対応システム -->
+  <script>
     // 多言語対応システム
     class LanguageManager {
       constructor() {
@@ -1386,6 +1402,15 @@
     // 言語マネージャー初期化
     document.addEventListener('DOMContentLoaded', () => {
       window.languageManager = new LanguageManager();
+      
+      // QRGeneratorインスタンス作成（重複防止）
+      if (!window.qrGeneratorInstance) {
+        console.log('🚀 QRGenerator インスタンス作成開始');
+        window.qrGeneratorInstance = new QRGenerator();
+        console.log('✅ QRGenerator インスタンス作成完了');
+      } else {
+        console.log('⚠️ QRGenerator インスタンスは既に存在します');
+      }
     });
   </script>
 </body>
