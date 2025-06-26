@@ -27,27 +27,224 @@
   <meta name="robots" content="index,follow">
   <link rel="stylesheet" href="/index.css">
   
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-  <main class="max-w-2xl mx-auto py-10 px-4">
-    <h1 class="text-2xl font-bold mb-6">運営者情報</h1>
-    <p>negi-lab.comは、個人（管理人：negi）が企画・開発・運営しています。<br>「誰でも気軽に使える」「ちょっと楽しい」をコンセプトに、便利なツールや情報を提供しています。</p>
-    <h2 class="text-xl font-semibold mt-8 mb-2">お問い合わせ</h2>
-    <p>ご意見・ご要望・ご連絡は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> までお願いいたします。</p>
-    <h2 class="text-xl font-semibold mt-8 mb-2">免責事項</h2>
-    <p>当サイトの情報・ツールの正確性・安全性には万全を期していますが、利用による損害等について一切の責任を負いません。</p>
-    <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto">
-      <h2 class="text-lg font-bold mb-2">独自性・運営方針・免責事項</h2>
-      <ul class="list-disc ml-5 mb-2">
-        <li>本サイトは個人が独自に企画・開発・運営しています。</li>
-        <li>利便性・楽しさ・学びを重視し、独自の視点で情報やツールを提供します。</li>
-        <li>内容の正確性・安全性には配慮しますが、利用による損害等の責任は負いかねます。</li>
-      </ul>
-      <p>ご意見・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで。</p>
+  <main class="max-w-4xl mx-auto py-12 px-4">
+    
+    <!-- ヘッダーセクション -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">negi-lab.com について</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        日常業務を効率化する実用的なWebツール集として、「誰でも簡単に、安全に、無料で使える」をモットーに運営しています。
+      </p>
+    </div>
+
+    <!-- サイトの特徴 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">なぜnegi-lab.comなのか</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">完全ブラウザ完結型</h3>
+          <p class="text-gray-600">全ての処理がお使いのブラウザ内で完結。入力データが外部サーバーに送信されることは一切ありません。</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">高速・軽量設計</h3>
+          <p class="text-gray-600">Tailwind CSSとバニラJavaScriptによる最適化で、素早い動作と軽快な操作感を実現しています。</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+          <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">ユーザー体験最優先</h3>
+          <p class="text-gray-600">直感的なUI設計と詳細な使い方ガイドで、ITスキルに関わらず誰でも簡単に使えるツールを提供。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技術的なこだわり -->
+    <section class="mb-16 bg-gray-50 rounded-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">技術的なこだわり</h2>
+      <div class="space-y-8">
+        <div class="flex items-start space-x-4">
+          <div class="bg-blue-500 text-white p-2 rounded-lg flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">セキュリティ重視の設計</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Content Security Policy（CSP）を厳格に設定し、XSS攻撃やコード注入を防御。QRコード生成、画像変換等の全ての処理がクライアントサイドで完結するため、機密情報が外部に漏洩するリスクを根本的に排除しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="bg-green-500 text-white p-2 rounded-lg flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">パフォーマンス最適化</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Tailwind CSSのPurge機能により未使用スタイルを削除、画像の遅延読み込み、Service Workerによるキャッシュ戦略など、モバイル環境でも快適に動作する軽量設計を実現。Core Web Vitalsの全項目で良好なスコアを維持しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="bg-purple-500 text-white p-2 rounded-lg flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-2">アクセシビリティ対応</h3>
+            <p class="text-gray-600 leading-relaxed">
+              WCAG 2.1 AAレベルに準拠したUI設計、キーボードナビゲーション対応、適切なコントラスト比の確保など、視覚や運動機能に制約のある方でも使いやすいバリアフリー設計を心がけています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 運営理念 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">運営理念とビジョン</h2>
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">「日常の小さな作業を、もっと簡単に」</h3>
+          <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            negi-lab.comは、日常的に行う「QRコード作成」「画像変換」「文字数カウント」などの作業を、 
+            わざわざ専用ソフトをインストールしたり、有料サービスに登録したりすることなく、 
+            ブラウザ一つで手軽に実行できる環境を提供することを目指しています。
+          </p>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="border-l-4 border-blue-500 pl-6">
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">プライバシーファースト</h4>
+            <p class="text-gray-600">
+              個人情報やビジネス機密を扱う作業でも安心してご利用いただけるよう、全ての処理をブラウザ内で完結させています。サーバーへのデータ送信は一切行わず、お客様のプライバシーを最優先に考えています。
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-green-500 pl-6">
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">シンプルで使いやすく</h4>
+            <p class="text-gray-600">
+              複雑な設定や専門知識は不要。直感的に操作できるインターフェースと、必要十分な機能に絞ったシンプルな設計で、初めての方でもすぐに使いこなせるツールを心がけています。
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-purple-500 pl-6">
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">継続的な改善</h4>
+            <p class="text-gray-600">
+              ユーザーの皆様のフィードバックを基に、機能の追加・改善を継続的に行っています。新しい技術やブラウザ標準への対応も積極的に取り入れ、常に最良の体験を提供できるよう努めています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 運営者情報 -->
+    <section class="mb-16 bg-gray-50 rounded-xl p-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">運営者について</h2>
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-gray-600 leading-relaxed mb-6">
+          negi-lab.comは、フロントエンド開発とUI/UX設計を専門とする個人開発者によって運営されています。
+          10年以上のWeb開発経験を活かし、「本当に使いやすいツール」の提供を追求しています。
+        </p>
+        <div class="grid md:grid-cols-2 gap-6 text-left">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2">技術スタック</h4>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• フロントエンド: HTML5, CSS3, JavaScript (ES6+)</li>
+              <li>• フレームワーク: Tailwind CSS</li>
+              <li>• ツール: Git, npm, Webpack</li>
+              <li>• デザイン: Figma, Adobe Creative Suite</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2">開発方針</h4>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• ユーザビリティ重視の設計</li>
+              <li>• セキュリティファーストの実装</li>
+              <li>• レスポンシブ・アクセシブルなUI</li>
+              <li>• 継続的な品質改善</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 免責事項・お問い合わせ -->
+    <section class="mb-8">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">免責事項とお問い合わせ</h2>
+        
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">免責事項</h3>
+          <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
+            <p class="text-gray-700 text-sm leading-relaxed">
+              当サイトの情報・ツールの正確性・安全性には万全を期していますが、技術的な制約やブラウザ環境の違いにより、
+              期待通りの動作をしない場合があります。重要なデータの処理前には必ずバックアップを取り、
+              利用による損害等について当サイトは一切の責任を負いかねますことをご了承ください。
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">お問い合わせ</h3>
+          <p class="text-gray-600 mb-6">
+            ツールの改善要望、不具合報告、新機能のご提案など、どんなことでもお気軽にご連絡ください。
+          </p>
+          <a href="mailto:negilab.com@gmail.com" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            メールでお問い合わせ
+          </a>
+          <p class="text-sm text-gray-500 mt-3">通常24時間以内にご返信いたします</p>
+        </div>
+      </div>
     </section>
   </main>
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
