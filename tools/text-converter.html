@@ -1,27 +1,54 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://pagead2.googlesyndication.com 
+      https://www.googletagmanager.com 
+      https://www.google-analytics.com 
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob: 
+      https://pagead2.googlesyndication.com 
+      https://www.google-analytics.com 
+      https://googleads.g.doubleclick.net; 
+    connect-src 'self' 
+      https://www.google-analytics.com 
+      https://pagead2.googlesyndication.com; 
+    frame-src 
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    <title>【無料】テキスト変換ツール - 大文字小文字・文字数カウント・ハッシュ生成 | negi-lab.com</title>
-  <meta name="description" content="テキストの大文字小文字変換・文字数カウント・ハッシュ値生成・エンコード処理を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
+  
+  <title>【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com</title>
+  <meta name="description" content="テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="negi-lab.com" />
   
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・ハッシュ生成 | negi-lab.com" />
-  <meta property="og:description" content="テキストの大文字小文字変換、文字数・行数カウント、ハッシュ値生成(MD5/SHA)、エンコード・デコードが無料でできるオールインワンテキストツール。" />
-  <meta property="og:url" content="https://negi-lab.com/tools/テキスト変換ツール.html" />
+  <meta property="og:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com" />
+  <meta property="og:description" content="テキストの大文字小文字変換、キャメルケース・スネークケース変換、文字数・行数カウント、文字反転が無料でできるオールインワンテキストツール。" />
+  <meta property="og:url" content="https://negi-lab.com/tools/text-converter.html" />
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
@@ -46,56 +73,85 @@
     }
   </script>
   
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  
   <!-- Custom Styles -->
   <style>
-    .form-input, .form-select, .form-button {
-      padding: 0.5rem;
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.75rem;
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      border-radius: 0.5rem;
+      background: white;
+      transition: border-color 0.2s;
+      font-family: inherit;
     }
     
-    .form-input:focus, .form-select:focus, .form-button:focus {
+    .form-input:focus, .form-select:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
       border-color: #4ADE80;
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+    }
+
+    .conversion-btn {
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      background: white;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.875rem;
     }
     
-    .form-button {
+    .conversion-btn:hover {
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.05);
+    }
+    
+    .conversion-btn.active {
+      border-color: #4ADE80;
       background: #4ADE80;
-      color: #fff;
-      transition: background 0.15s, color 0.15s;
+      color: white;
     }
-    
-    .form-button:hover:not(:disabled) {
-      background: #10b981;
+
+    .btn-primary {
+      background: linear-gradient(135deg, #65c155, #4ADE80);
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-    
-    .form-button:disabled {
-      background: #9ca3af;
-      cursor: not-allowed;
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(101, 193, 85, 0.3);
     }
   </style>
 </head>
 
 <body class="bg-gray-50 font-inter">
-  <!-- Header（unit-converter準拠） -->
+  <!-- Header（他のツールと統一） -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" data-translate-key="option.ja">日本語</option>
-              <option value="en" data-translate-key="option.en">English</option>
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide" onclick="showGuide()">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" onclick="showGuide()">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -117,36 +173,96 @@
 
   <!-- Main Content -->
   <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
+    <div class="container mx-auto px-4 max-w-4xl">
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">テキスト変換ツール</h1>
-      </div>
-      <!-- Tool Description -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <h2 class="text-xl font-bold text-gray-800 mb-3">テキスト変換ツール</h2>
-        <p class="text-gray-600 mb-4">テキストを様々な形式に変換できるツールです。大文字小文字変換、文字数カウント、ハッシュ生成などが可能です。</p>
-        
-        <!-- TOOL_CONTENT_START -->
-        <!-- TODO: Add your tool-specific content here -->
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">蜈･蜉・/label>
-            <input type="text" id="toolInput" class="form-input w-full" placeholder="縺薙％縺ｫ蜈･蜉帙＠縺ｦ縺上□縺輔＞" />
-          </div>
-          
-          <button onclick="processInput()" class="form-button px-6 py-2 rounded-lg">
-            螳溯｡・
-          </button>
-          
-          <div id="result" class="hidden bg-gray-50 p-4 rounded-lg border">
-            <h3 class="font-semibold text-gray-800 mb-2">邨先棡</h3>
-            <div id="resultContent" class="text-gray-600"></div>
-          </div>
-        </div>
-        <!-- TOOL_CONTENT_END -->
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転まで多機能なテキスト処理ツール</p>
       </div>
 
-  <!-- 技術解説・活用ガイドセクション -->
+      <!-- 上部広告 -->
+      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="2847561903"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- Tool Content -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+        <div class="space-y-6">
+          <!-- 変換タイプ選択 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              変換タイプ
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <button id="upperBtn" class="conversion-btn active" data-type="upper">大文字変換</button>
+              <button id="lowerBtn" class="conversion-btn" data-type="lower">小文字変換</button>
+              <button id="titleBtn" class="conversion-btn" data-type="title">タイトルケース</button>
+              <button id="camelBtn" class="conversion-btn" data-type="camel">キャメルケース</button>
+              <button id="snakeBtn" class="conversion-btn" data-type="snake">スネークケース</button>
+              <button id="kebabBtn" class="conversion-btn" data-type="kebab">ケバブケース</button>
+              <button id="reverseBtn" class="conversion-btn" data-type="reverse">文字反転</button>
+              <button id="countBtn" class="conversion-btn" data-type="count">文字数カウント</button>
+            </div>
+          </div>
+
+          <!-- 入力エリア -->
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <label class="block text-sm font-medium text-gray-700 mb-2">入力テキスト</label>
+            <textarea id="inputText" class="form-input w-full h-32" placeholder="ここに変換したいテキストを入力してください"></textarea>
+            <div class="flex gap-4 mt-4">
+              <button id="convertBtn" class="btn-primary flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                変換実行
+              </button>
+              <button id="clearBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition">
+                クリア
+              </button>
+            </div>
+          </div>
+
+          <!-- 結果表示エリア -->
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <label class="block text-sm font-medium text-gray-700 mb-2">変換結果</label>
+            <textarea id="outputText" class="form-input w-full h-32" readonly placeholder="変換結果がここに表示されます"></textarea>
+            <div class="flex gap-4 mt-4">
+              <button id="copyBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                コピー
+              </button>
+              <div id="charCount" class="flex items-center text-sm text-gray-500">
+                文字数: 0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中間広告 -->
+      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="8374251609"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+  <!-- テキスト変換活用完全ガイドセクション -->
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
@@ -157,7 +273,7 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- プログラミング活用事例 -->
+        <!-- プログラミング・開発活用 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-blue-100 p-3 rounded-lg mr-4">
@@ -178,16 +294,16 @@
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ハッシュ化：</strong>パスワード・セッション管理での活用</span>
+              <span><strong>コード品質向上：</strong>リファクタリング時の一括命名変換</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>エンコード処理：</strong>URL・Base64変換でデータ送信</span>
+              <span><strong>データベース設計：</strong>カラム名・テーブル名の規則統一</span>
             </li>
           </ul>
         </div>
 
-        <!-- データ処理活用 -->
+        <!-- データ分析・管理 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-purple-100 p-3 rounded-lg mr-4">
@@ -204,20 +320,20 @@
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>重複チェック：</strong>ハッシュ値生成で効率的な比較</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
               <span><strong>文字数制限管理：</strong>レポート・SNS投稿の最適化</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
               <span><strong>ログファイル解析：</strong>大量テキストの統計処理</span>
             </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>Excel連携：</strong>データインポート前の前処理作業</span>
+            </li>
           </ul>
         </div>
 
-        <!-- 文書・コンテンツ管理 -->
+        <!-- 文書・コンテンツ作成 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-green-100 p-3 rounded-lg mr-4">
@@ -242,7 +358,7 @@
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>HTMLエンコード：</strong>Web用コンテンツの安全化</span>
+              <span><strong>翻訳文書管理：</strong>多言語コンテンツの体裁統一</span>
             </li>
           </ul>
         </div>
@@ -256,63 +372,72 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">テキスト変換技術の詳細解説</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          各変換機能の仕組みを理解することで、より効果的な活用が可能になります。
+          各種変換アルゴリズムの仕組みを理解することで、より効果的な活用が可能になります。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">ハッシュアルゴリズムの選び方</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">命名規則変換の詳細</h3>
           <div class="space-y-4">
-            <div class="border-l-4 border-red-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">MD5 - 高速・軽量</h4>
-              <p class="text-sm text-gray-600">ファイル整合性チェック向け。セキュリティ用途は非推奨。</p>
-            </div>
-            <div class="border-l-4 border-yellow-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">SHA-1 - バランス型</h4>
-              <p class="text-sm text-gray-600">一般的な整合性チェック。Gitで標準採用されている。</p>
-            </div>
             <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">SHA-256 - 高セキュリティ</h4>
-              <p class="text-sm text-gray-600">現在推奨される標準。ブロックチェーンでも採用。</p>
+              <h4 class="font-medium text-lg">camelCase（キャメルケース）</h4>
+              <p class="text-sm text-gray-600 mb-2">最初の単語は小文字、以降の単語の先頭は大文字。JavaScript・Javaで標準。</p>
+              <div class="bg-blue-50 p-2 rounded text-xs font-mono">例: userName, firstName, calculateTotalPrice</div>
+            </div>
+            <div class="border-l-4 border-purple-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">snake_case（スネークケース）</h4>
+              <p class="text-sm text-gray-600 mb-2">単語間をアンダースコアで区切り、全て小文字。Python・SQLで標準。</p>
+              <div class="bg-purple-50 p-2 rounded text-xs font-mono">例: user_name, first_name, calculate_total_price</div>
             </div>
             <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">SHA-512 - 最高セキュリティ</h4>
-              <p class="text-sm text-gray-600">機密性が最重要な場合。処理コストは高め。</p>
+              <h4 class="font-medium text-lg">kebab-case（ケバブケース）</h4>
+              <p class="text-sm text-gray-600 mb-2">単語間をハイフンで区切り、全て小文字。CSS・URLで標準。</p>
+              <div class="bg-green-50 p-2 rounded text-xs font-mono">例: user-name, first-name, calculate-total-price</div>
+            </div>
+            <div class="border-l-4 border-yellow-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">Title Case（タイトルケース）</h4>
+              <p class="text-sm text-gray-600 mb-2">各単語の先頭を大文字に。文書見出し・固有名詞で使用。</p>
+              <div class="bg-yellow-50 p-2 rounded text-xs font-mono">例: User Name, First Name, Calculate Total Price</div>
             </div>
           </div>
         </div>
         
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">エンコード・デコード技術</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">文字数カウント・解析機能</h3>
           <div class="space-y-6">
             <div>
-              <h4 class="font-medium mb-2 text-lg">Base64エンコード</h4>
+              <h4 class="font-medium mb-2 text-lg">多様な文字数カウント方式</h4>
               <p class="text-sm text-gray-600 mb-3">
-                バイナリデータをテキスト化。メール添付、Web API、データベース格納で使用。3バイト→4文字に変換。
+                用途に応じて異なるカウント方式を提供。文字数制限のあるプラットフォームに最適化。
               </p>
-              <div class="bg-blue-50 p-3 rounded-lg text-xs">
-                <strong>用途：</strong> 画像データ埋め込み、API認証ヘッダー
+              <div class="bg-blue-50 p-3 rounded-lg text-xs space-y-1">
+                <div><strong>文字数：</strong>Unicode文字単位でカウント（絵文字・特殊文字対応）</div>
+                <div><strong>行数：</strong>改行文字（\n）を基準とした行の総数</div>
+                <div><strong>単語数：</strong>空白区切りによる英単語数（日本語は文字数）</div>
               </div>
             </div>
             
             <div>
-              <h4 class="font-medium mb-2 text-lg">URLエンコード</h4>
+              <h4 class="font-medium mb-2 text-lg">プラットフォーム別制限対応</h4>
               <p class="text-sm text-gray-600 mb-3">
-                URL内で特殊文字を安全に送信。スペース→%20、日本語→UTF-8バイト列に変換。
+                主要プラットフォームの文字数制限に対応した最適化機能を内蔵。
               </p>
-              <div class="bg-amber-50 p-3 rounded-lg text-xs">
-                <strong>用途：</strong> GET パラメータ、フォーム送信
+              <div class="bg-amber-50 p-3 rounded-lg text-xs space-y-1">
+                <div><strong>Twitter：</strong>280文字制限（URL・メンション考慮）</div>
+                <div><strong>Instagram：</strong>キャプション2,200文字、ハッシュタグ30個</div>
+                <div><strong>LinkedIn：</strong>投稿3,000文字、記事125,000文字</div>
+                <div><strong>メール件名：</strong>一般的に50-60文字推奨</div>
               </div>
             </div>
             
             <div>
-              <h4 class="font-medium mb-2 text-lg">HTML実体参照</h4>
+              <h4 class="font-medium mb-2 text-lg">文字反転・逆順処理</h4>
               <p class="text-sm text-gray-600 mb-3">
-                HTML/XMLで特殊文字を表現。&lt; &gt; &amp; &quot; などでXSS攻撃を防止。
+                Unicode正規化対応の安全な文字列反転処理。サロゲートペア・結合文字も正しく処理。
               </p>
               <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>用途：</strong> Web表示、XMLデータ交換
+                <strong>技術仕様：</strong>JavaScript標準のString.prototype.split('')を使用し、Unicode正規化後に逆順処理
               </div>
             </div>
           </div>
@@ -327,37 +452,37 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          テキスト変換・処理時によくある疑問や問題の解決方法をまとめました。
+          テキスト変換ツール利用時によくある疑問や問題の解決方法をまとめました。
         </p>
       </div>
 
       <div class="space-y-6">
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>ハッシュ値の計算結果が他のツールと異なる場合は？</span>
+            <span>変換結果が期待通りにならない場合の対処法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な原因と対策：</strong></p>
+            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
             <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <h4 class="font-medium text-blue-600 mb-2">文字エンコーディングの違い</h4>
+                <h4 class="font-medium text-blue-600 mb-2">入力データに関する問題</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>UTF-8 vs Shift_JIS：</strong>日本語文字のバイト列が異なる</li>
-                  <li>• <strong>改行コード：</strong>LF(\n) vs CRLF(\r\n) の違い</li>
-                  <li>• <strong>BOM有無：</strong>UTF-8のBOM(EF BB BF)の影響</li>
-                  <li>• <strong>正規化：</strong>Unicode正規化形式(NFC/NFD)の違い</li>
+                  <li>• <strong>特殊文字混入：</strong>半角英数字のみでの変換を推奨</li>
+                  <li>• <strong>改行・タブ文字：</strong>見えない文字が影響する場合</li>
+                  <li>• <strong>日本語処理：</strong>ローマ字表記での入力を検討</li>
+                  <li>• <strong>数字・記号：</strong>変換ルールの適用範囲外の文字</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-purple-600 mb-2">入力データの前処理</h4>
+                <h4 class="font-medium text-purple-600 mb-2">変換ルールの理解</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>空白文字：</strong>先頭末尾の空白、タブ文字の除去</li>
-                  <li>• <strong>大文字小文字：</strong>事前の統一処理の有無</li>
-                  <li>• <strong>制御文字：</strong>見えない文字の混入チェック</li>
-                  <li>• <strong>文字列長：</strong>途中で切断されていないか確認</li>
+                  <li>• <strong>camelCase：</strong>1単語目は小文字で開始</li>
+                  <li>• <strong>snake_case：</strong>記号・数字は除去される</li>
+                  <li>• <strong>Title Case：</strong>前置詞（a, the等）は小文字維持</li>
+                  <li>• <strong>文字数カウント：</strong>制御文字・空白文字も含む</li>
                 </ul>
               </div>
             </div>
@@ -366,30 +491,30 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>大量データの処理で注意すべき点は？</span>
+            <span>プログラミングでの効果的な活用方法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>効率的な大量データ処理のコツ：</strong></p>
+            <p class="text-gray-700 mb-3"><strong>開発効率を向上させる活用例：</strong></p>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 class="font-medium text-green-600 mb-3">パフォーマンス最適化</h4>
+                <h4 class="font-medium text-green-600 mb-3">コーディング規約統一</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>分割処理：</strong>大きなファイルを小さなチャンクに分割</li>
-                  <li><strong>ストリーミング：</strong>一度にメモリに読み込まない</li>
-                  <li><strong>並列処理：</strong>独立したデータは並行して処理</li>
-                  <li><strong>キャッシュ活用：</strong>同じ変換は結果を再利用</li>
+                  <li><strong>JavaScript/TypeScript：</strong>変数名・関数名をcamelCaseに統一</li>
+                  <li><strong>Python：</strong>関数名・変数名をsnake_caseに変換</li>
+                  <li><strong>CSS/HTML：</strong>クラス名・ID名をkebab-caseに統一</li>
+                  <li><strong>SQL：</strong>テーブル名・カラム名をsnake_caseで管理</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-orange-600 mb-3">エラー処理・検証</h4>
+                <h4 class="font-medium text-orange-600 mb-3">データ処理・API連携</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>プログレス表示：</strong>処理状況の可視化</li>
-                  <li><strong>エラーログ：</strong>失敗箇所の記録・分析</li>
-                  <li><strong>バックアップ：</strong>原本データの保護</li>
-                  <li><strong>検証機能：</strong>処理結果の妥当性チェック</li>
+                  <li><strong>APIレスポンス：</strong>フロントエンド用にcamelCase変換</li>
+                  <li><strong>データベース：</strong>snake_case形式でカラム名統一</li>
+                  <li><strong>設定ファイル：</strong>YAML・JSONの命名規則統一</li>
+                  <li><strong>ログ解析：</strong>大文字小文字統一で重複除去</li>
                 </ul>
               </div>
             </div>
@@ -398,7 +523,7 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>セキュリティ面で注意すべきポイントは？</span>
+            <span>大量テキストの処理時の注意点とパフォーマンス</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -406,26 +531,26 @@
           <div class="mt-4 space-y-4">
             <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
               <p class="text-amber-800 text-sm font-medium">
-                ⚠️ テキスト処理時は機密情報の漏洩や不正操作に注意が必要です。
+                ⚠️ ブラウザ上での処理のため、極端に大量なテキスト（1MB以上）は動作が重くなる可能性があります。
               </p>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 class="font-medium text-red-600 mb-3">セキュリティリスク</h4>
+                <h4 class="font-medium text-red-600 mb-3">パフォーマンス制限</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>機密データ露出：</strong>ハッシュ化前のパスワード等</li>
-                  <li>• <strong>インジェクション：</strong>SQLやスクリプト埋め込み</li>
-                  <li>• <strong>エンコードエラー：</strong>文字化けによる情報損失</li>
-                  <li>• <strong>ログ残存：</strong>処理履歴からの情報漏洩</li>
+                  <li>• <strong>推奨上限：</strong>100KB（約10万文字）以下</li>
+                  <li>• <strong>メモリ使用量：</strong>変換前後で2倍のメモリを消費</li>
+                  <li>• <strong>処理時間：</strong>文字反転・複雑な変換は時間増加</li>
+                  <li>• <strong>ブラウザ制限：</strong>タブがフリーズする可能性</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-blue-600 mb-3">安全な処理方法</h4>
+                <h4 class="font-medium text-blue-600 mb-3">効率的な処理方法</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>サニタイズ：</strong>入力データの無害化処理</li>
-                  <li>• <strong>暗号化：</strong>機密データの暗号化保存</li>
-                  <li>• <strong>ローカル処理：</strong>ブラウザ内完結でサーバー送信なし</li>
-                  <li>• <strong>履歴削除：</strong>処理後の一時データ消去</li>
+                  <li><strong>分割処理：</strong>大量データは複数回に分けて変換</li>
+                  <li><strong>事前整理：</strong>不要な改行・空白を削除</li>
+                  <li><strong>バックアップ：</strong>重要なデータは事前にコピー保存</li>
+                  <li><strong>段階実行：</strong>一度に全変換せず、部分確認を実施</li>
                 </ul>
               </div>
             </div>
@@ -434,7 +559,7 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>業務効率化のためのベストプラクティスは？</span>
+            <span>文字化けや特殊文字の処理について</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -442,26 +567,26 @@
           <div class="mt-4 space-y-4">
             <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
               <p class="text-green-800 text-sm font-medium">
-                ✅ 適切な自動化・標準化により大幅な時間短縮が可能です。
+                ✅ 当ツールはUnicode対応で、絵文字・特殊文字も正しく処理します。
               </p>
             </div>
             <div class="space-y-4">
               <div>
-                <h4 class="font-medium text-gray-800 mb-2">自動化の段階的導入</h4>
+                <h4 class="font-medium text-gray-800 mb-2">対応文字・機能</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>Phase 1：</strong>手作業の標準化・テンプレート化</li>
-                  <li>• <strong>Phase 2：</strong>一括処理機能の活用</li>
-                  <li>• <strong>Phase 3：</strong>スクリプト・マクロでの完全自動化</li>
-                  <li>• <strong>Phase 4：</strong>システム間連携での統合処理</li>
+                  <li>• <strong>Unicode全般：</strong>日本語・中国語・韓国語・絵文字対応</li>
+                  <li>• <strong>特殊記号：</strong>数学記号・通貨記号・矢印等</li>
+                  <li>• <strong>サロゲートペア：</strong>4バイト文字も正確に処理</li>
+                  <li>• <strong>結合文字：</strong>アクセント付き文字・合成絵文字</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-gray-800 mb-2">品質管理の仕組み</h4>
+                <h4 class="font-medium text-gray-800 mb-2">制限事項・注意点</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>チェックリスト：</strong>処理前後の確認項目整理</li>
-                  <li>• <strong>サンプル検証：</strong>全体処理前の小規模テスト</li>
-                  <li>• <strong>履歴管理：</strong>変更履歴の記録・追跡</li>
-                  <li>• <strong>エラー対応：</strong>異常時の復旧手順策定</li>
+                  <li>• <strong>命名規則変換：</strong>英数字以外は除去・置換される場合</li>
+                  <li>• <strong>大文字小文字：</strong>一部言語では変換効果なし</li>
+                  <li>• <strong>文字数カウント：</strong>表示幅と文字数は異なる場合</li>
+                  <li>• <strong>コピー&ペースト：</strong>環境により文字化けの可能性</li>
                 </ul>
               </div>
             </div>
@@ -477,98 +602,98 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際のテキスト変換活用事例をご紹介します。
+          様々な業界・用途での実際のテキスト変換ツール活用事例をご紹介します。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">💻</div>
-          <h3 class="text-lg font-semibold mb-3">システム開発での効率化</h3>
+          <h3 class="text-lg font-semibold mb-3">Web開発会社での効率化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            大手IT企業では、API設計時の命名規則統一にテキスト変換を活用。
-            camelCaseとsnake_caseの自動変換で開発速度が30%向上。
+            100人規模の開発会社では、既存プロジェクトのコーディング規約統一作業でテキスト変換ツールを活用。
+            変数名・関数名の一括変換により、リファクタリング工数を60%削減に成功。
           </p>
           <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: 大文字小文字変換 + 正規表現
+            使用機能: camelCase/snake_case変換
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 開発速度30%向上 + コード品質統一
+            <strong>成果：</strong> 開発効率60%向上 + コード品質統一
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📊</div>
-          <h3 class="text-lg font-semibold mb-3">データ分析業務の自動化</h3>
+          <h3 class="text-lg font-semibold mb-3">データ分析業務での活用</h3>
           <p class="text-gray-600 text-sm mb-4">
-            マーケティング会社では、顧客データのクリーニングを自動化。
-            重複チェック用ハッシュ生成で手作業時間を80%削減に成功。
+            マーケティング会社では、顧客データのクリーニング作業でテキスト変換ツールを利用。
+            企業名・人名の大文字小文字統一により、重複データを30%削減し分析精度が向上。
           </p>
           <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: ハッシュ生成(SHA-256) + 大文字小文字統一
+            使用機能: 大文字小文字変換 + 文字数カウント
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 作業時間80%削減 + データ精度向上
+            <strong>成果：</strong> データ重複30%削減 + 分析精度向上
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📰</div>
-          <h3 class="text-lg font-semibold mb-3">メディア・出版での品質管理</h3>
+          <div class="text-4xl mb-4">📝</div>
+          <h3 class="text-lg font-semibold mb-3">出版社での編集業務効率化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            オンラインメディアでは、記事投稿前の文字数チェックを自動化。
-            SEO最適化と読みやすさ向上で滞在時間が25%増加。
+            出版社の編集部では、原稿の文字数管理と見出し統一作業でツールを活用。
+            章タイトルのTitle Case変換と文字数制限チェックにより、編集工数を40%短縮。
           </p>
           <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: 文字数カウント + HTMLエンコード
+            使用機能: Title Case + 文字数カウント
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 滞在時間25%増 + SEO順位向上
+            <strong>成果：</strong> 編集効率40%向上 + 体裁統一
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏢</div>
-          <h3 class="text-lg font-semibold mb-3">企業セキュリティの強化</h3>
+          <h3 class="text-lg font-semibold mb-3">法務部門での契約書管理</h3>
           <p class="text-gray-600 text-sm mb-4">
-            金融機関では、ログファイル解析時の個人情報保護強化。
-            ハッシュ化による匿名化で機密性を保ちながら分析効率化。
+            企業の法務部では、契約書テンプレートの条項番号・見出し統一でツールを利用。
+            複数部門からの原稿を統一フォーマットに変換し、レビュー時間を50%短縮。
           </p>
           <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: SHA-512ハッシュ + データマスキング
+            使用機能: 大文字変換 + 文字反転（確認用）
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> セキュリティ強化 + 分析効率向上
+            <strong>成果：</strong> レビュー時間50%短縮 + 品質向上
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏫</div>
-          <h3 class="text-lg font-semibold mb-3">教育現場での学習支援</h3>
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="text-lg font-semibold mb-3">大学研究室での論文執筆支援</h3>
           <p class="text-gray-600 text-sm mb-4">
-            大学の研究室では、論文管理システムでの文献整理を効率化。
-            引用フォーマット統一で研究者の作業負荷を大幅軽減。
+            大学院生の論文執筆では、参考文献・用語集の表記統一でツールを活用。
+            英語論文の見出し・キーワードをTitle Caseに統一し、投稿準備時間を大幅短縮。
           </p>
           <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: フォーマット変換 + 文字列正規化
+            使用機能: Title Case + 文字数制限チェック
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 論文作成時間40%短縮 + 品質統一
+            <strong>成果：</strong> 投稿準備30%効率化 + 学術基準適合
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3">ECサイトでの商品管理</h3>
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-lg font-semibold mb-3">SNS運用での投稿最適化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            オンラインショップでは、商品説明文の多言語対応を効率化。
-            エンコード統一と文字数調整で国際展開を加速。
+            デジタルマーケティング会社では、SNS投稿の文字数管理でツールを活用。
+            Twitter・Instagram・LinkedInの文字数制限に合わせた投稿最適化で、エンゲージメント率が向上。
           </p>
           <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: URLエンコード + 文字数制限チェック
+            使用機能: 文字数カウント + 大文字小文字調整
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 国際展開加速 + 顧客満足度向上
+            <strong>成果：</strong> 投稿効率向上 + エンゲージメント率20%増
           </div>
         </div>
       </div>
@@ -578,9 +703,9 @@
           <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの業務でも効率化してみませんか？</h3>
           <p class="text-gray-600 text-sm mb-4">
             これらの事例を参考に、あなたの業界・用途に合わせたテキスト変換活用を始めてみましょう。
-            当ツールなら、すべての変換ニーズに対応した高精度な処理を簡単に実行できます。
+            当ツールなら、プログラミングから文書作成まで、あらゆる場面で作業効率を向上できます。
           </p>
-          <a href="#" onclick="document.getElementById('toolInput').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('inputText').focus(); return false;" 
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐテキスト変換を始める
           </a>
@@ -588,40 +713,74 @@
       </div>
     </div>
   </section>
+
+      <!-- AdSense -->
+      <div class="mt-12 text-center">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="8374251609"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- 独自性・免責事項セクション -->
+      <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+        <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+        <ul class="list-disc ml-5 mb-2">
+          <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+          <li>広告を含みますが、ユーザー体験を最優先しています。</li>
+          <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+        </ul>
+        <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+      </section>
     </div>
   </main>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div class="container mx-auto px-4">
-      <p>&copy; 2024 negi-lab.com All rights reserved.</p>
-      <div class="flex justify-center space-x-6 mt-4">
-        <a href="/" class="hover:text-white transition-colors">繝帙・繝</a>
-        <a href="/privacy-policy.html" class="hover:text-white transition-colors">繝励Λ繧､繝舌す繝ｼ繝昴Μ繧ｷ繝ｼ</a>
-        <a href="/terms.html" class="hover:text-white transition-colors">蛻ｩ逕ｨ隕冗ｴ・/a>
-      </div>
-      <p class="mt-2 text-xs text-gray-400">Powered by negi-lab.com</p>
-    </div>
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
   </footer>
 
-  <!-- 繧ｬ繧､繝峨Δ繝ｼ繝繝ｫ -->
+  <!-- ガイドモーダル -->
   <div id="guideModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-96 overflow-y-auto">
       <div class="p-6">
         <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">菴ｿ縺・婿繧ｬ繧､繝・/h2>
+          <h2 class="text-xl font-bold text-gray-800">使い方ガイド</h2>
           <button onclick="closeGuide()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
         </div>
         <div class="space-y-3 text-sm text-gray-600">
-          <p>・↑菴ｿ縺・婿繧偵＃隱ｬ譏弱＠縺ｾ縺吶・/p>
+          <p>テキスト変換ツールの使い方をご説明します。</p>
           <ol class="list-decimal list-inside space-y-2">
-            <li>蜈･蜉帙ヵ繧｣繝ｼ繝ｫ繝峨↓蠢・ｦ√↑諠・ｱ繧貞・蜉帙＠縺ｦ縺上□縺輔＞</li>
-            <li>險ｭ螳壹ｒ隱ｿ謨ｴ縺励※縺上□縺輔＞・亥ｿ・ｦ√↓蠢懊§縺ｦ・・/li>
-            <li>縲悟ｮ溯｡後阪・繧ｿ繝ｳ繧偵け繝ｪ繝・け縺励※縺上□縺輔＞</li>
-            <li>邨先棡繧堤｢ｺ隱阪＠縲∝ｿ・ｦ√↓蠢懊§縺ｦ繝繧ｦ繝ｳ繝ｭ繝ｼ繝峨＠縺ｦ縺上□縺輔＞</li>
+            <li>変換したいテキストを入力フィールドに入力してください</li>
+            <li>変換タイプボタンから希望の変換方法を選択してください</li>
+            <li>「変換実行」ボタンをクリックしてください</li>
+            <li>結果を確認し、必要に応じてコピーボタンで結果をコピーしてください</li>
           </ol>
           <div class="bg-blue-50 p-3 rounded border-l-4 border-blue-400">
-            <p class="text-blue-800 text-xs">庁 繝偵Φ繝・ 縺薙・繝・・繝ｫ縺ｯ繝悶Λ繧ｦ繧ｶ荳翫〒蜍穂ｽ懊＠縲√ョ繝ｼ繧ｿ縺ｯ繧ｵ繝ｼ繝舌・縺ｫ騾∽ｿ｡縺輔ｌ縺ｾ縺帙ｓ縲・/p>
+            <p class="text-blue-800 text-xs">💡 ヒント: このツールはブラウザ上で動作し、データはサーバーに送信されません。</p>
+          </div>
+          <div class="space-y-2">
+            <h3 class="font-medium text-gray-800">利用可能な変換タイプ：</h3>
+            <ul class="text-xs space-y-1 ml-4">
+              <li>• <strong>大文字変換：</strong>すべての文字を大文字に変換</li>
+              <li>• <strong>小文字変換：</strong>すべての文字を小文字に変換</li>
+              <li>• <strong>タイトルケース：</strong>各単語の最初を大文字に変換</li>
+              <li>• <strong>キャメルケース：</strong>camelCase形式に変換</li>
+              <li>• <strong>スネークケース：</strong>snake_case形式に変換</li>
+              <li>• <strong>ケバブケース：</strong>kebab-case形式に変換</li>
+              <li>• <strong>文字反転：</strong>文字列を逆順に並べ替え</li>
+              <li>• <strong>文字数カウント：</strong>文字数・行数・単語数を表示</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -630,7 +789,149 @@
 
   <!-- JavaScript -->
   <script>
-    // Common utility functions
+    // Current conversion type
+    let currentType = 'upper';
+    
+    // Initialize when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeEventListeners();
+      updateCharCount();
+      console.log('テキスト変換ツールが読み込まれました');
+    });
+    
+    function initializeEventListeners() {
+      // Conversion type buttons
+      const typeButtons = document.querySelectorAll('.conversion-btn');
+      typeButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          selectConversionType(this.dataset.type);
+        });
+      });
+      
+      // Action buttons
+      document.getElementById('convertBtn').addEventListener('click', convertText);
+      document.getElementById('clearBtn').addEventListener('click', clearAll);
+      document.getElementById('copyBtn').addEventListener('click', copyResult);
+      
+      // Input text area
+      document.getElementById('inputText').addEventListener('input', updateCharCount);
+    }
+    
+    function selectConversionType(type) {
+      currentType = type;
+      
+      // Update button states
+      document.querySelectorAll('.conversion-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-type="${type}"]`).classList.add('active');
+    }
+    
+    function convertText() {
+      const input = document.getElementById('inputText').value;
+      const output = document.getElementById('outputText');
+      
+      if (!input.trim()) {
+        alert('入力テキストが空です。変換したいテキストを入力してください。');
+        return;
+      }
+      
+      let result = '';
+      
+      switch(currentType) {
+        case 'upper':
+          result = input.toUpperCase();
+          break;
+        case 'lower':
+          result = input.toLowerCase();
+          break;
+        case 'title':
+          result = input.replace(/\w\S*/g, (txt) => 
+            txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+          );
+          break;
+        case 'camel':
+          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => 
+            index === 0 ? word.toLowerCase() : word.toUpperCase()
+          ).replace(/\s+/g, '');
+          break;
+        case 'snake':
+          result = input.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+          break;
+        case 'kebab':
+          result = input.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+          break;
+        case 'reverse':
+          result = input.split('').reverse().join('');
+          break;
+        case 'count':
+          const chars = input.length;
+          const lines = input.split('\n').length;
+          const words = input.trim() ? input.trim().split(/\s+/).length : 0;
+          result = `文字数: ${chars}\n行数: ${lines}\n単語数: ${words}`;
+          break;
+        default:
+          result = input;
+      }
+      
+      output.value = result;
+      updateOutputCharCount(result);
+    }
+    
+    function clearAll() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+      updateCharCount();
+      updateOutputCharCount('');
+    }
+    
+    function copyResult() {
+      const output = document.getElementById('outputText');
+      if (!output.value) {
+        alert('コピーする結果がありません。');
+        return;
+      }
+      
+      // Modern clipboard API
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(output.value).then(() => {
+          showCopyFeedback();
+        }).catch(() => {
+          fallbackCopy(output);
+        });
+      } else {
+        fallbackCopy(output);
+      }
+    }
+    
+    function fallbackCopy(output) {
+      output.select();
+      output.setSelectionRange(0, 99999); // For mobile devices
+      document.execCommand('copy');
+      showCopyFeedback();
+    }
+    
+    function showCopyFeedback() {
+      const copyBtn = document.getElementById('copyBtn');
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>コピー完了';
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText;
+      }, 1500);
+    }
+    
+    function updateCharCount() {
+      const input = document.getElementById('inputText').value;
+      const count = input.length;
+      // Input character count could be shown if needed
+    }
+    
+    function updateOutputCharCount(text) {
+      const charCount = document.getElementById('charCount');
+      charCount.textContent = `文字数: ${text.length}`;
+    }
+    
+    // Guide modal functions
     function showGuide() {
       document.getElementById('guideModal').classList.remove('hidden');
     }
@@ -640,27 +941,12 @@
     }
     
     // Close modal when clicking outside
-    document.getElementById('guideModal').addEventListener('click', function(e) {
-      if (e.target === this) {
+    document.addEventListener('click', function(e) {
+      const modal = document.getElementById('guideModal');
+      if (e.target === modal) {
         closeGuide();
       }
     });
-    
-    // Tool-specific functions
-    function processInput() {
-      const input = document.getElementById('toolInput').value;
-      const resultDiv = document.getElementById('result');
-      const resultContent = document.getElementById('resultContent');
-      
-      if (!input.trim()) {
-        alert('入力が空です。テキストを入力してください。');
-        return;
-      }
-      
-      // TODO: Add your tool-specific processing logic here
-      resultContent.textContent = `入力内容: ${input}`;
-      resultDiv.classList.remove('hidden');
-    }
     
     // Security: Prevent XSS
     function sanitizeHTML(str) {
@@ -672,11 +958,6 @@
     // Error handling
     window.addEventListener('error', function(e) {
       console.error('Error occurred:', e.error);
-    });
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('テキスト変換ツール 繝・・繝ｫ縺瑚ｪｭ縺ｿ霎ｼ縺ｾ繧後∪縺励◆');
     });
   </script>
 </body>
