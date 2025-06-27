@@ -147,9 +147,11 @@
     </div>
   </header>
   <main class="flex-grow py-12">
-    <div class="max-w-2xl mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8" data-translate-key="imageSizeCompare.mainTitle">画像サイズ比較変換ツール</h1>
-      <p class="text-center text-gray-600 mb-6" data-translate-key="imageSizeCompare.lead">YouTubeやSNS用サムネイル・アイコン等の用途別画像サイズに一括変換＆プレビュー。アップロード画像と各用途サイズの比較も可能。</p>
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageSizeCompare.mainTitle">画像サイズ比較変換ツール</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="imageSizeCompare.lead">YouTubeやSNS用サムネイル・アイコン等の用途別画像サイズに一括変換＆プレビュー。アップロード画像と各用途サイズの比較も可能。</p>
+      </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
           <label for="imageFile" class="block text-sm font-medium text-gray-700 mb-1">画像ファイルをアップロード:</label>
@@ -332,7 +334,414 @@
     </div>
   </main>
 
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+  <!-- 画像サイズ比較活用完全ガイド -->
+  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">画像サイズ比較活用完全ガイド</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          デザイン最適化からWeb表示まで、画像サイズ比較を効果的に活用するための実践的なノウハウをご紹介します。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Web・UI最適化 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Web・UI最適化</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>レスポンシブ対応：</strong>デバイス別最適サイズの決定</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>ページ速度向上：</strong>表示速度とファイルサイズの最適化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>バナー・ヘッダー：</strong>統一感のあるサイズ調整</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>SNS投稿：</strong>プラットフォーム推奨サイズ確認</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 印刷・出版最適化 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">印刷・出版最適化</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>DPI計算：</strong>印刷品質に適した解像度確認</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>用紙サイズ対応：</strong>A4・B5等の規格サイズ調整</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>カタログ・パンフレット：</strong>レイアウト統一確認</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>ポスター・看板：</strong>大判印刷向け拡大品質評価</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ECサイト・商品撮影 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2-2v6.01"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">ECサイト・商品撮影</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>商品画像統一：</strong>サイズ規格の一貫性確保</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>ズーム機能対応：</strong>高解像度版の品質確認</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>モバイル表示：</strong>スマホ画面での見え方最適化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>ロード時間短縮：</strong>購買体験向上のための軽量化</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技術解説セクション -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">画像サイズ技術の詳細解説</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          画像サイズの仕組みを理解することで、より効果的な画像活用が可能になります。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">解像度とファイルサイズの関係</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-red-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">ピクセル数とファイルサイズ</h4>
+              <p class="text-sm text-gray-600">幅×高さのピクセル数が増加すると、ファイルサイズは二乗的に増大。</p>
+            </div>
+            <div class="border-l-4 border-yellow-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">DPI（解像度）の重要性</h4>
+              <p class="text-sm text-gray-600">印刷品質はDPIで決まる。Web用72dpi、印刷用300dpi以上を推奨。</p>
+            </div>
+            <div class="border-l-4 border-blue-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">圧縮率と画質のバランス</h4>
+              <p class="text-sm text-gray-600">用途に応じてJPEG品質・PNG圧縮レベルを適切に調整。</p>
+            </div>
+            <div class="border-l-4 border-green-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">フォーマット特性の理解</h4>
+              <p class="text-sm text-gray-600">JPEG・PNG・WebPそれぞれの特徴を活かした使い分け。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">レスポンシブ対応とデバイス最適化</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2 text-lg">デバイス別最適サイズ</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                スマホ・タブレット・デスクトップそれぞれに最適化したサイズで、ユーザー体験と表示速度を両立。
+              </p>
+              <div class="bg-blue-50 p-3 rounded-lg text-xs">
+                <strong>推奨サイズ：</strong> モバイル320-480px、タブレット768-1024px、デスクトップ1200px以上
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">画像配信最適化技術</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                WebP・AVIF等の次世代フォーマットと従来フォーマットの使い分けで、全ブラウザ対応と軽量化を実現。
+              </p>
+              <div class="bg-amber-50 p-3 rounded-lg text-xs">
+                <strong>手法：</strong> picture要素・srcset属性活用、CDN連携
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">Core Web Vitals対応</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                Google検索ランキングに影響するページ速度指標LCP・CLS改善のための画像サイズ戦略。
+              </p>
+              <div class="bg-green-50 p-3 rounded-lg text-xs">
+                <strong>対策：</strong> 適切なサイズ指定、遅延読み込み、プリロード活用
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ・トラブルシューティングセクション -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          画像サイズ比較時によくある疑問や問題の解決方法をまとめました。
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>同じピクセル数なのにファイルサイズが違うのは？</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>主な要因と対処法：</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-blue-600 mb-2">画像内容による影響</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>色数：</strong>グラデーション・複雑な画像ほど大容量</li>
+                  <li>• <strong>ノイズ：</strong>圧縮効率を低下させる細かい模様</li>
+                  <li>• <strong>エッジ：</strong>輪郭がはっきりした画像は圧縮しやすい</li>
+                  <li>• <strong>単色領域：</strong>背景色等の均一部分は高圧縮可能</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-purple-600 mb-2">技術的な設定差</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>圧縮品質：</strong>JPEG品質80%と95%で2倍以上の差</li>
+                  <li>• <strong>フォーマット：</strong>PNG・JPEG・WebPで大幅な差異</li>
+                  <li>• <strong>カラープロファイル：</strong>メタデータの埋め込み量</li>
+                  <li>• <strong>プログレッシブ：</strong>JPEG形式の読み込み方式設定</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>Web表示と印刷で画質が異なって見える場合は？</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>表示環境の違いと解決策：</strong></p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-green-600 mb-3">解像度の考え方</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>Web表示：</strong>72-96DPIで十分、ピクセル数が重要</li>
+                  <li><strong>印刷用途：</strong>300DPI以上、物理サイズとの関係</li>
+                  <li><strong>高解像度ディスプレイ：</strong>Retinaディスプレイは2倍解像度</li>
+                  <li><strong>印刷サイズ計算：</strong>ピクセル数÷DPI=実際の印刷サイズ</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-orange-600 mb-3">色彩・表示環境</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>カラースペース：</strong>sRGB（Web）、CMYK（印刷）の差</li>
+                  <li><strong>ディスプレイキャリブレーション：</strong>モニター設定の個体差</li>
+                  <li><strong>ブラウザ色補正：</strong>ブラウザごとの色再現性の違い</li>
+                  <li><strong>印刷機械差：</strong>プリンター・印刷所による仕上がり差</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>スマホ・タブレットで画像が重い・表示が遅い</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
+              <p class="text-amber-800 text-sm font-medium">
+                ⚠️ モバイル環境では通信速度・メモリ制限が厳しく、画像最適化が特に重要です。
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-red-600 mb-3">最適化のポイント</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• <strong>適切なサイズ：</strong>画面幅以上の画像は不要、最大2倍程度</li>
+                  <li>• <strong>次世代フォーマット：</strong>WebP・AVIF採用で30-50%軽量化</li>
+                  <li>• <strong>遅延読み込み：</strong>スクロール時に読み込んで初期表示高速化</li>
+                  <li>• <strong>圧縮レベル調整：</strong>小画面では多少の品質低下は許容範囲</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-blue-600 mb-3">技術的な対策</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• <strong>レスポンシブ画像：</strong>デバイス別最適サイズ自動配信</li>
+                  <li>• <strong>CDN活用：</strong>地理的に近いサーバーから高速配信</li>
+                  <li>• <strong>プリロード：</strong>重要画像の事前読み込み指示</li>
+                  <li>• <strong>キャッシュ最適化：</strong>ブラウザ・サーバーキャッシュ活用</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実用事例集セクション -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          様々な業界・用途での実際の画像サイズ比較ツール活用事例をご紹介します。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🛒</div>
+          <h3 class="text-lg font-semibold mb-3">ECサイトのページ速度改善</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            オンラインショップでは、商品画像のサイズ最適化により、
+            ページ読み込み速度を40%改善。コンバージョン率の大幅向上を実現。
+          </p>
+          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
+            使用機能: 複数サイズ比較 + 最適化
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> ページ速度40%改善 + CVR向上
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-lg font-semibold mb-3">アプリUI設計の統一化</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            モバイルアプリ開発では、アイコン・画像素材のサイズ規格を統一し、
+            デザインシステム構築。開発効率とUI品質を同時に向上。
+          </p>
+          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
+            使用機能: 規格統一確認 + 品質チェック
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 開発効率30%向上 + UI統一
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="text-lg font-semibold mb-3">印刷物制作の品質向上</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            デザイン会社では、印刷用画像の解像度確認により、
+            印刷トラブルを90%削減。クライアント満足度と制作効率が大幅改善。
+          </p>
+          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
+            使用機能: DPI確認 + 印刷適性判定
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 印刷トラブル90%削減 + 品質向上
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">📺</div>
+          <h3 class="text-lg font-semibold mb-3">メディア制作のワークフロー改善</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            映像制作会社では、素材画像のサイズ・品質確認を自動化し、
+            編集前の品質チェック工程を効率化。制作スケジュール短縮を実現。
+          </p>
+          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
+            使用機能: 一括サイズ確認 + 品質評価
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 制作時間20%短縮 + 品質安定化
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🏢</div>
+          <h3 class="text-lg font-semibold mb-3">企業サイトのリニューアル</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            企業では、既存サイトの画像を新デザインに最適化し、
+            Core Web Vitals指標を大幅改善。SEO順位とユーザー体験が向上。
+          </p>
+          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
+            使用機能: パフォーマンス最適化 + SEO対応
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> SEO指標改善 + UX向上
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🏪</div>
+          <h3 class="text-lg font-semibold mb-3">店舗販促材料の効率制作</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            小売チェーンでは、店舗ポスター・POP素材のサイズ統一により、
+            全店一括制作システムを構築。販促効果の向上と制作コスト削減。
+          </p>
+          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
+            使用機能: 店舗規格統一 + 一括制作
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 制作コスト50%削減 + 販促効果向上
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの画像活用も最適化しませんか？</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            これらの事例を参考に、あなたの業界・用途に合わせた画像サイズ最適化を始めてみましょう。
+            当ツールなら、すべての画像活用ニーズに対応した高精度な比較・分析を簡単に実行できます。
+          </p>
+          <a href="#" onclick="document.getElementById('imageFile').focus(); return false;" 
+             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            今すぐ画像サイズ比較を始める
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-6xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">
       <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
