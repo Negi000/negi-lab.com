@@ -243,6 +243,333 @@ if (document.readyState === "loading") {
 </script>
   </main>
 
+  <!-- ツールへ戻るボタン -->
+  <div class="text-center py-8">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-negi hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+      <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l3-3m0 0l3 3m-3-3v12m0-12V4"></path>
+      </svg>
+      ツールに戻る
+    </button>
+  </div>
+
+  <!-- 活用事例・ユースケースセクション -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">カラーコードツールの実用的な活用事例</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          Webデザイン・ブランディング・アクセシビリティ対応での具体的な活用シーンをご紹介します。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Webデザイン・開発 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h4l4-4-4-4H7v8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Webデザイン・開発</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>デザインシステム構築：</strong>ブランドカラーの統一管理・HEX値の一元化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>CSS変数設定：</strong>HSL値を活用した動的カラーテーマの実装</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>レスポンシブ対応：</strong>異なるデバイスでの色表現一貫性確保</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>カラーパレット生成：</strong>メインカラーから調和する配色を構築</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ブランディング・マーケティング -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2m5 0H7m0 0v16a2 2 0 002 2h6a2 2 0 002-2V4m-6 8h2m-2 4h2"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">ブランディング・マーケティング</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>ブランドガイドライン：</strong>企業カラーの正確な数値管理・印刷色指定</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>広告素材統一：</strong>SNS・Web・印刷で一貫したカラー表現</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>季節キャンペーン：</strong>期間限定カラーテーマの企画・実装</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>コンバージョン最適化：</strong>CTA色の効果測定・改善</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- アクセシビリティ・ユーザビリティ -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">アクセシビリティ・ユーザビリティ</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>コントラスト比検証：</strong>WCAG基準準拠の色組み合わせ確認</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>色覚多様性対応：</strong>色弱の方にも識別しやすい配色設計</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>高齢者対応：</strong>視認性の高い色彩設計・文字色最適化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>多言語サイト：</strong>文化的背景に配慮した国際的配色</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技術解説セクション -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">カラーコード技術の詳細解説</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          各色空間の特性と適切な使い分けを理解し、プロジェクトに最適な色指定を実現しましょう。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">色空間と表現形式の違い</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">HEX（16進数）</h4>
+              <p class="text-sm text-gray-600 mb-2">Web標準の色指定方式。RGB値を16進数で表現し、簡潔で識別しやすい。</p>
+              <div class="text-xs bg-blue-50 p-2 rounded">
+                <strong>用途：</strong>CSS・HTML・デザインツール・開発者間共有
+              </div>
+            </div>
+            <div class="border-l-4 border-green-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">RGB（三原色）</h4>
+              <p class="text-sm text-gray-600 mb-2">Red・Green・Blueの光の三原色。ディスプレイ表示に最適化された色空間。</p>
+              <div class="text-xs bg-green-50 p-2 rounded">
+                <strong>用途：</strong>モニター表示・デジタル画像・プログラム処理
+              </div>
+            </div>
+            <div class="border-l-4 border-purple-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">HSL（色相・彩度・明度）</h4>
+              <p class="text-sm text-gray-600 mb-2">直感的な色調整が可能。色相環に基づいた人間の知覚に近い表現。</p>
+              <div class="text-xs bg-purple-50 p-2 rounded">
+                <strong>用途：</strong>UI設計・テーマ作成・動的色変更・アニメーション
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">色彩心理学と実用応用</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2 text-lg">心理的効果と適用場面</h4>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center p-2 bg-red-50 rounded">
+                  <span class="font-medium">赤系（#FF0000～#FF6666）</span>
+                  <span class="text-sm text-gray-600">緊急性・注意喚起・購買意欲</span>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-blue-50 rounded">
+                  <span class="font-medium">青系（#0000FF～#66CCFF）</span>
+                  <span class="text-sm text-gray-600">信頼・安定・企業サイト</span>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-green-50 rounded">
+                  <span class="font-medium">緑系（#00FF00～#66FF99）</span>
+                  <span class="text-sm text-gray-600">自然・健康・エコ・成長</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">コントラスト比計算</h4>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• <strong>AAA基準（7:1以上）：</strong>最高レベル・小さい文字にも対応</li>
+                <li>• <strong>AA基準（4.5:1以上）：</strong>標準レベル・大部分のWebサイトで推奨</li>
+                <li>• <strong>AA大（3:1以上）：</strong>大きな文字・ボタン等に適用</li>
+                <li>• <strong>計算式：</strong>(L1 + 0.05) / (L2 + 0.05) ※L1>L2</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ・トラブルシューティングセクション -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          カラーコード管理・色指定時によくある疑問や問題の解決方法をまとめました。
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>ブラウザ・デバイスで色が違って見える場合は？</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>色差の原因と対策：</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-blue-600 mb-2">技術的な原因</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>カラープロファイル差：</strong>sRGB・Adobe RGB・P3の違い</li>
+                  <li>• <strong>ガンマ値差：</strong>Mac（1.8）とWindows（2.2）の違い</li>
+                  <li>• <strong>液晶パネル特性：</strong>IPS・VA・TNパネルの色再現差</li>
+                  <li>• <strong>ブラウザエンジン差：</strong>Chromium・Gecko・WebKitの処理差</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-purple-600 mb-2">実用的な対策</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>sRGB基準の採用：</strong>最大公約数的な色空間で統一</li>
+                  <li>• <strong>複数環境での確認：</strong>iOS・Android・PC各種で検証</li>
+                  <li>• <strong>重要色の固定化：</strong>ブランドカラーは厳密に管理</li>
+                  <li>• <strong>許容範囲の設定：</strong>ΔE<3程度の色差は許容</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>アクセシブルな色の組み合わせがわからない</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>WCAG準拠の色設計指針：</strong></p>
+            <div class="space-y-4">
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-medium mb-2">推奨カラーパターン（AA基準クリア）</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                  <div class="bg-gray-800 text-white p-2 rounded">#333333 / #FFFFFF</div>
+                  <div class="bg-blue-600 text-white p-2 rounded">#1E40AF / #FFFFFF</div>
+                  <div class="bg-green-600 text-white p-2 rounded">#16A34A / #FFFFFF</div>
+                  <div class="bg-red-600 text-white p-2 rounded">#DC2626 / #FFFFFF</div>
+                </div>
+              </div>
+              <div class="bg-amber-50 p-4 rounded-lg">
+                <h4 class="font-medium mb-2">色覚多様性対応のコツ</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• 赤緑の区別が困難な方（最も多い）への配慮</li>
+                  <li>• 色だけでなく形状・パターンでも情報を表現</li>
+                  <li>• 青系と黄系の組み合わせは比較的識別しやすい</li>
+                  <li>• オンライン検証ツールで事前チェック推奨</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>印刷用とWeb用の色指定を統一したい</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>RGB（光）とCMYK（印刷）の橋渡し：</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-orange-600 mb-2">色空間変換の注意点</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>色域差：</strong>RGB（光）の方が表現範囲が広い</li>
+                  <li>• <strong>鮮やかな色の制約：</strong>蛍光色はCMYKで表現困難</li>
+                  <li>• <strong>紙質・インクの影響：</strong>同じCMYKでも印刷条件で変化</li>
+                  <li>• <strong>プロファイル管理：</strong>ICC プロファイルでの色管理必須</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-green-600 mb-2">実用的な統一手法</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>PANTONE色見本：</strong>物理色見本での統一管理</li>
+                  <li>• <strong>RGB基準設計：</strong>Web優先で色を決定後にCMYK近似</li>
+                  <li>• <strong>印刷テスト：</strong>実際の印刷物で色確認・微調整</li>
+                  <li>• <strong>許容範囲設定：</strong>印刷・Webで微差は許容する方針</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>CSS変数やデザインシステムでの色管理方法</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>効率的な色管理システム：</strong></p>
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h4 class="font-medium mb-2">CSS変数活用例</h4>
+              <pre class="text-xs bg-white p-3 rounded border text-gray-700 overflow-x-auto"><code>:root {
+  /* プライマリ色 */
+  --color-primary-hue: 220;
+  --color-primary: hsl(var(--color-primary-hue), 70%, 50%);
+  --color-primary-light: hsl(var(--color-primary-hue), 70%, 70%);
+  --color-primary-dark: hsl(var(--color-primary-hue), 70%, 30%);
+  
+  /* セマンティック色 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+}</code></pre>
+              <p class="text-sm text-gray-600 mt-2">HSL値を活用することで、色相を保ちつつ明度・彩度バリエーションを簡単生成</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">

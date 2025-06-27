@@ -164,6 +164,156 @@
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
+
+      <!-- 教育的ガイド -->
+      <section class="mt-12 bg-white rounded-xl shadow-lg p-6 md:p-8" id="educational-guide">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 画像背景除去・透過PNG作成の完全ガイド</h2>
+        
+        <!-- ツールへ戻るボタン -->
+        <div class="mb-6">
+          <button onclick="document.querySelector('.bg-white.p-6').scrollIntoView({behavior: 'smooth'})" 
+                  class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200 text-sm font-medium">
+            ⬆️ ツールに戻る
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">🎯 背景除去技術とは</h3>
+            <div class="space-y-3 text-gray-700 text-sm">
+              <p><strong>背景除去（Background Removal）</strong>は、AI技術により画像から主要被写体を自動識別し、背景部分を透明化する処理です。</p>
+              <p><strong>透過PNG</strong>は、背景が透明な画像形式で、Webサイト・印刷物・プレゼンテーション等で被写体のみを表示したい場合に使用されます。</p>
+              <p>機械学習の画像認識技術により、従来手作業で行っていた切り抜き作業を自動化し、効率的な画像処理を実現します。</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">⚙️ 処理フロー</h3>
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>①画像アップロード</strong><br>
+                JPEG・PNG・WebPなど各種形式に対応
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>②AI解析・被写体検出</strong><br>
+                機械学習モデルで主要被写体を識別
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>③背景マスク生成</strong><br>
+                除去対象領域の自動マッピング
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>④透過PNG出力</strong><br>
+                高品質な透明背景画像を生成
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 技術解説 -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">🔧 AI技術と最適化のポイント</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">機械学習による被写体検出</h3>
+            <div class="bg-gray-100 p-4 rounded-lg text-sm">
+              <p class="text-gray-800 mb-2"><strong>セマンティックセグメンテーション</strong></p>
+              <p class="text-gray-600">画像の各ピクセルを「前景」「背景」に分類する深層学習技術。数万枚の学習データから精密な境界検出を実現。</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">高品質な仕上がりのコツ</h3>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>明確な輪郭を持つ被写体が最適</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>コントラストが高い背景で精度向上</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>解像度が高いほど境界が滑らか</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>照明が均一な画像で安定処理</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>複雑な背景は一部手動調整推奨</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>人物・商品・ロゴで特に高精度</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">❓ よくある質問（FAQ）</h2>
+        <div class="space-y-4">
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">どのような画像が背景除去に適していますか？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>人物・商品・ロゴなど明確な輪郭を持つ被写体が最適です。背景とのコントラストが高く、照明が均一な画像ほど精度が向上します。複雑な背景や透明・半透明な被写体は処理が困難な場合があります。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-808">透過PNGと普通のPNGの違いは？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>透過PNGは、アルファチャンネル（透明度情報）を持つPNG画像です。背景が完全に透明になり、他の画像や背景色の上に重ねて表示できます。通常のPNGは背景色が保持されます。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">精度が低い場合の対処法は？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>①画像の解像度を上げる ②被写体と背景のコントラストを調整 ③照明を均一にする ④複雑な背景を避ける ⑤画像編集ソフトで細部を手動調整、などが効果的です。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">どのような用途に使えますか？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>EC商品写真の背景統一、SNS用プロフィール画像作成、プレゼンテーション資料、Webサイト素材、印刷物デザイン、動画編集の素材などに広く活用できます。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 活用事例 -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">💡 実用的な活用事例</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🛍️ ECサイト商品写真</h3>
+            <p class="text-gray-700 text-sm">商品の背景を白色に統一し、プロフェッショナルなカタログ写真を作成。ブランドイメージ向上と購買意欲促進。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">📱 SNS・プロフィール画像</h3>
+            <p class="text-gray-700 text-sm">人物写真の背景を除去し、統一感のあるプロフィール画像を作成。個人ブランディングや企業の人材紹介に活用。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🎨 デザイン・印刷物</h3>
+            <p class="text-gray-700 text-sm">ポスター・チラシ・名刺のデザイン素材として使用。被写体のみを自由にレイアウトし、創造的なデザインを実現。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">💼 プレゼンテーション</h3>
+            <p class="text-gray-700 text-sm">会議資料・企画書での商品・人物画像の活用。背景を除去することで内容に集中した効果的なプレゼンテーション。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🌐 Webサイト制作</h3>
+            <p class="text-gray-700 text-sm">ヘッダー画像・アイコン・装飾要素として活用。サイトデザインに合わせた背景色への自然な合成。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🎬 動画・映像制作</h3>
+            <p class="text-gray-700 text-sm">グリーンスクリーンなしでの人物合成。静止画素材として動画編集で使用し、コスト効率的な映像制作。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ツールへ戻る -->
+      <div class="mt-8 text-center">
+        <button onclick="document.querySelector('.bg-white.p-6').scrollIntoView({behavior: 'smooth'})" 
+                class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-200 font-medium">
+          ⬆️ ツールに戻る
+        </button>
+      </div>
     </div>
   </main>
 
