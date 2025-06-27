@@ -149,11 +149,13 @@
   </header>
 
   <main class="flex-grow py-12">
-    <div class="max-w-xl mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮ツール">URL短縮ツール</h1>
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮ツール">URL短縮ツール</h1>
+      </div>
       
       <!-- ツール上部：アドセンス（レスポンシブ） -->
-      <div class="max-w-xl mx-auto my-6">
+      <div class="max-w-2xl mx-auto my-6">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
@@ -163,7 +165,8 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+      <div class="max-w-xl mx-auto">
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
           <label for="longUrlInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.longUrlLabel" aria-label="元のURLラベル">元のURL:</label>
           <input type="url" id="longUrlInput" class="form-input w-full" data-translate-placeholder-key="urlShortener.placeholder" placeholder="例: https://www.example.com/very/long/url" aria-label="元のURL入力">
@@ -197,7 +200,6 @@
             <p id="statusMessage" class="text-gray-600"></p>
             <p id="errorMessage" class="text-red-600"></p>
         </div>
-
       </div>
 
       <!-- スポンサーリンクラベル（広告直前） -->
@@ -213,7 +215,7 @@
       </script>
 
       <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
-      <div class="max-w-xl mx-auto my-8">
+      <div class="max-w-2xl mx-auto my-8">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
@@ -222,136 +224,105 @@
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
-
-      <!-- 独自性説明・免責事項セクション -->
-      <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200" aria-label="このツールについて">
-        <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-        <ul class="list-disc ml-5 mb-2">
-          <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-          <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-          <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-        </ul>
-        <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
-      </section>
-
-      <!-- Guide Modal Popup -->
-      <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-          <div id="guide-modal-content"></div>
-        </div>
-      </div>
-
     </div>
-  </main>
-
-  <!-- ツールへ戻るボタン -->
-  <div class="text-center py-8">
-    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-negi hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
-      <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l3-3m0 0l3 3m-3-3v12m0-12V4"></path>
-      </svg>
-      ツールに戻る
-    </button>
-  </div>
-
-  <!-- 活用事例・ユースケースセクション -->
-  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+  
+  <!-- 技術解説・活用ガイドセクション -->
+  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">URL短縮ツールの実用的な活用事例</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">URL短縮活用完全ガイド</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          マーケティング・SNS運用・業務効率化での具体的な活用シーンと、その効果をご紹介します。
+          SNSマーケティングからビジネス分析まで、URL短縮を効果的に活用するための実践的なノウハウをご紹介します。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- SNS・マーケティング -->
+        <!-- SNS・マーケティング活用事例 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-blue-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2m5 0H7m0 0v16a2 2 0 002 2h6a2 2 0 002-2V4m-6 8h2m-2 4h2"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V1a1 1 0 011-1h2a1 1 0 011 1v3"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">SNS・マーケティング活用</h3>
+            <h3 class="text-xl font-semibold text-gray-800">SNS・デジタルマーケティング</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>SNS投稿最適化：</strong>長いURLを短縮してTwitter文字数制限をクリア</span>
+              <span><strong>Twitter文字数最適化：</strong>限られた文字数で効果的なCTA実現</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>クリック解析：</strong>どのSNSからのアクセスが多いかを把握</span>
+              <span><strong>Instagramストーリーズ：</strong>スワイプアップ代替の簡潔URL</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>キャンペーン追跡：</strong>プロモーション別効果測定を実現</span>
+              <span><strong>YouTubeディスクリプション：</strong>説明欄での視聴者誘導</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>A/Bテスト：</strong>異なるメッセージの反応率を比較</span>
+              <span><strong>キャンペーン効果測定：</strong>媒体別CTR・CVRの詳細分析</span>
             </li>
           </ul>
         </div>
 
-        <!-- ビジネス・業務効率化 -->
+        <!-- ビジネス・営業活用事例 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-purple-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">ビジネス・業務効率化</h3>
+            <h3 class="text-xl font-semibold text-gray-800">ビジネス・営業支援</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>資料・文書共有：</strong>プレゼンや資料内での見やすいURL表示</span>
+              <span><strong>名刺・資料への記載：</strong>印刷媒体での長URL問題解決</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>メール配信：</strong>ニュースレターでの読みやすいリンク配置</span>
+              <span><strong>メール営業最適化：</strong>長文メールでの視認性向上</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>QRコード連携：</strong>短縮URLをQRコード化して印刷物に活用</span>
+              <span><strong>QRコード生成：</strong>オフライン→オンライン導線構築</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>チーム共有：</strong>覚えやすい短縮URLで社内システムへのアクセス向上</span>
+              <span><strong>顧客行動分析：</strong>資料アクセス状況の把握</span>
             </li>
           </ul>
         </div>
 
-        <!-- イベント・教育 -->
+        <!-- セキュリティ・品質管理 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
           <div class="flex items-center mb-4">
             <div class="bg-green-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">イベント・教育現場</h3>
+            <h3 class="text-xl font-semibold text-gray-800">セキュリティ・品質管理</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>イベント参加者誘導：</strong>セミナー・会議室への案内を短縮URLで簡略化</span>
+              <span><strong>マルウェア検知：</strong>危険URL自動検出システム</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>教材配布：</strong>学習リソースを覚えやすいURLで学生に提供</span>
+              <span><strong>スパム防止：</strong>不正利用防止の多層保護</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>アンケート収集：</strong>イベント後のフィードバック回収率向上</span>
+              <span><strong>プライバシー保護：</strong>個人情報の厳格管理</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>参加統計：</strong>どの告知経路から参加者が来たかを分析</span>
+              <span><strong>リンク永続性：</strong>長期利用での信頼性確保</span>
             </li>
           </ul>
         </div>
@@ -365,75 +336,64 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">URL短縮技術の詳細解説</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          URL短縮の仕組みとSEO・セキュリティへの影響を理解し、効果的に活用しましょう。
+          URL短縮の仕組みを理解することで、より効果的なマーケティング活用が可能になります。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">URL短縮の技術的仕組み</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">短縮アルゴリズムの仕組み</h3>
           <div class="space-y-4">
+            <div class="border-l-4 border-red-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">Base62エンコーディング</h4>
+              <p class="text-sm text-gray-600">数字・英字62文字を使用した効率的な短縮で衝突を最小化。</p>
+            </div>
+            <div class="border-l-4 border-yellow-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">ハッシュ関数利用</h4>
+              <p class="text-sm text-gray-600">URL固有の短縮コード生成で一意性を保証。</p>
+            </div>
             <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">リダイレクト処理</h4>
-              <p class="text-sm text-gray-600 mb-2">短縮URLアクセス時にHTTPリダイレクト（301/302）で元URLへ転送。</p>
-              <div class="text-xs bg-blue-50 p-2 rounded">
-                <strong>301リダイレクト：</strong>恒久的転送でSEO評価を引き継ぎ
-              </div>
+              <h4 class="font-medium text-lg">リダイレクト最適化</h4>
+              <p class="text-sm text-gray-600">HTTP 301/302で高速転送とSEO価値維持。</p>
             </div>
             <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">データベース管理</h4>
-              <p class="text-sm text-gray-600 mb-2">短縮コードと元URLのペアをデータベースで管理・高速検索。</p>
-              <div class="text-xs bg-green-50 p-2 rounded">
-                <strong>インデックス最適化：</strong>ミリ秒単位での高速リダイレクト実現
-              </div>
-            </div>
-            <div class="border-l-4 border-purple-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">統計・解析機能</h4>
-              <p class="text-sm text-gray-600 mb-2">アクセス時にクリック数・参照元・時刻等を記録してデータ分析。</p>
-              <div class="text-xs bg-purple-50 p-2 rounded">
-                <strong>リアルタイム解析：</strong>マーケティング効果の即座な把握
-              </div>
+              <h4 class="font-medium text-lg">データベース効率化</h4>
+              <p class="text-sm text-gray-600">インデックス最適化で大量アクセスに高速対応。</p>
             </div>
           </div>
         </div>
         
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">SEO・セキュリティ考慮事項</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">統計・分析システム</h3>
           <div class="space-y-6">
             <div>
-              <h4 class="font-medium mb-2 text-lg">SEOへの影響と対策</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li class="flex items-start">
-                  <span class="text-green-500 mr-2">✓</span>
-                  <span><strong>301リダイレクト：</strong>検索エンジン評価を90%以上維持</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-green-500 mr-2">✓</span>
-                  <span><strong>正規URL指定：</strong>canonical設定で重複コンテンツ回避</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-yellow-500 mr-2">⚠</span>
-                  <span><strong>過度な使用注意：</strong>検索エンジンが短縮URLを嫌う場合あり</span>
-                </li>
-              </ul>
+              <h4 class="font-medium mb-2 text-lg">リアルタイムトラッキング</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                クリック数・CTR・トラフィック推移をリアルタイムで収集。ユーザーの行動パターンを即座に可視化。
+              </p>
+              <div class="bg-blue-50 p-3 rounded-lg text-xs">
+                <strong>収集データ：</strong> IP地域、デバイス種別、OS、ブラウザ、リファラー
+              </div>
             </div>
             
             <div>
-              <h4 class="font-medium mb-2 text-lg">セキュリティ対策</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li class="flex items-start">
-                  <span class="text-red-500 mr-2">🔒</span>
-                  <span><strong>マルウェア検知：</strong>短縮前にURL安全性チェック実施</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-red-500 mr-2">🔒</span>
-                  <span><strong>アクセス制限：</strong>スパム・悪用防止のため利用回数制限</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-red-500 mr-2">🔒</span>
-                  <span><strong>有効期限設定：</strong>古いリンクの自動無効化でセキュリティ確保</span>
-                </li>
-              </ul>
+              <h4 class="font-medium mb-2 text-lg">地域別・デバイス別分析</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                国・都市レベルの地域分析とPC・スマホ・タブレット別の利用傾向で精密なターゲティングを支援。
+              </p>
+              <div class="bg-amber-50 p-3 rounded-lg text-xs">
+                <strong>活用例：</strong> 地域限定キャンペーン、デバイス最適化
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">プライバシー配慮設計</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                個人特定を避けた匿名化統計で、GDPR等の規制に準拠しながら有用なマーケティングデータを提供。
+              </p>
+              <div class="bg-green-50 p-3 rounded-lg text-xs">
+                <strong>方針：</strong> 個人情報保護とマーケティング活用の両立
+              </div>
             </div>
           </div>
         </div>
@@ -454,30 +414,30 @@
       <div class="space-y-6">
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>短縮URLがクリックされない、信頼されない場合は？</span>
+            <span>短縮URLが機能しない・アクセスできない場合の対処法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>信頼性向上の対策：</strong></p>
+            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
             <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <h4 class="font-medium text-blue-600 mb-2">表示・説明の工夫</h4>
+                <h4 class="font-medium text-blue-600 mb-2">技術的な問題</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>リンク先を明記：</strong>「○○のページ（短縮URL）」と説明追加</li>
-                  <li>• <strong>プレビュー提供：</strong>リンク先サイトのタイトル・説明を併記</li>
-                  <li>• <strong>発信者の信頼性：</strong>公式アカウント・認証済みアカウントから発信</li>
-                  <li>• <strong>文脈の説明：</strong>なぜそのリンクが有用かを事前に説明</li>
+                  <li>• <strong>元URL変更：</strong>リンク先サイトの移転・削除</li>
+                  <li>• <strong>ネットワーク障害：</strong>一時的な接続問題</li>
+                  <li>• <strong>DNS問題：</strong>ドメイン解決の遅延</li>
+                  <li>• <strong>ブラウザキャッシュ：</strong>古い情報の残存</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-purple-600 mb-2">技術的な信頼性向上</h4>
+                <h4 class="font-medium text-purple-600 mb-2">セキュリティ・政策的な問題</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>HTTPS利用：</strong>短縮URL自体をHTTPS化してセキュリティ確保</li>
-                  <li>• <strong>独自ドメイン：</strong>信頼できるドメインでの短縮URL提供</li>
-                  <li>• <strong>統計公開：</strong>クリック数等の透明性確保</li>
-                  <li>• <strong>QRコード併用：</strong>視覚的に安全性をアピール</li>
+                  <li>• <strong>マルウェア検知：</strong>危険サイトへのリンク遮断</li>
+                  <li>• <strong>スパム判定：</strong>不正利用による無効化</li>
+                  <li>• <strong>企業ファイアウォール：</strong>組織の接続制限</li>
+                  <li>• <strong>地域制限：</strong>コンテンツの地理的制限</li>
                 </ul>
               </div>
             </div>
@@ -486,96 +446,103 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>短縮URLがSNSでブロックされる・表示されない</span>
+            <span>統計データの精度と活用方法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>各プラットフォーム別対策：</strong></p>
+            <p class="text-gray-700 mb-3"><strong>統計データの信頼性と活用のポイント：</strong></p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-green-600 mb-3">データの精度について</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>クリック数：</strong>重複除去済みのユニークアクセス</li>
+                  <li><strong>地域データ：</strong>IP地域判定（精度95%以上）</li>
+                  <li><strong>デバイス判定：</strong>User-Agent解析による高精度識別</li>
+                  <li><strong>時間データ：</strong>UTC基準での正確なタイムスタンプ</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-orange-600 mb-3">マーケティング活用法</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>最適配信時間：</strong>クリック時間帯分析で効果最大化</li>
+                  <li><strong>地域別戦略：</strong>地域性を活かしたコンテンツ最適化</li>
+                  <li><strong>デバイス最適化：</strong>主要デバイスに合わせたUX改善</li>
+                  <li><strong>A/Bテスト：</strong>複数URL比較での最適解発見</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>SNSでの短縮URL利用時の注意点は？</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
+              <p class="text-amber-800 text-sm font-medium">
+                ⚠️ SNSプラットフォームごとに短縮URLの扱いが異なるため、適切な対策が重要です。
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-red-600 mb-3">注意すべきポイント</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• <strong>リンクプレビュー：</strong>元URLのOGP情報が表示される</li>
+                  <li>• <strong>スパム判定：</strong>過度な投稿で制限される可能性</li>
+                  <li>• <strong>プラットフォーム独自制限：</strong>外部リンクの表示制限</li>
+                  <li>• <strong>フォロワー信頼性：</strong>不明リンクへの警戒感</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-blue-600 mb-3">効果的な活用方法</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• <strong>信頼できる説明文：</strong>リンク先の内容を明確に説明</li>
+                  <li>• <strong>ブランド統一：</strong>企業アカウントでの一貫した使用</li>
+                  <li>• <strong>OGP最適化：</strong>リンク先のメタ情報を充実</li>
+                  <li>• <strong>統計活用：</strong>SNS別効果測定でコンテンツ改善</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>ビジネス利用でのベストプラクティスは？</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+              <p class="text-green-800 text-sm font-medium">
+                ✅ 戦略的なURL管理により、マーケティング効果を最大化できます。
+              </p>
+            </div>
             <div class="space-y-4">
-              <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">Twitter（X）対策</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• 新しいドメインは一時的にブロックされる場合あり</li>
-                  <li>• 投稿頻度を抑え、スパム判定を回避</li>
-                  <li>• 短縮URLと元URLを併記する方法も有効</li>
-                </ul>
-              </div>
-              <div class="bg-green-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">Facebook・Instagram対策</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• Meta独自の短縮URL判定基準に注意</li>
-                  <li>• OGタグが適切に設定されたページへのリンク推奨</li>
-                  <li>• ビジネスアカウントでの投稿が有利</li>
-                </ul>
-              </div>
-              <div class="bg-yellow-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">一般的な対処法</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• 信頼性の高い短縮サービス利用</li>
-                  <li>• 段階的投稿でプラットフォームの信頼獲得</li>
-                  <li>• 必要に応じて元URLでの投稿に切り替え</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>短縮URLの統計・解析データを活用したい</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>マーケティング分析への活用法：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <h4 class="font-medium text-green-600 mb-2">基本的な活用方法</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>チャンネル別効果測定：</strong>SNS・メール・広告別にURL作成</li>
-                  <li>• <strong>時系列分析：</strong>投稿時間とクリック数の関係を把握</li>
-                  <li>• <strong>A/Bテスト：</strong>異なるメッセージでの反応率比較</li>
-                  <li>• <strong>ROI計算：</strong>コスト対効果の定量的評価</li>
+                <h4 class="font-medium text-gray-800 mb-2">管理・運用のベストプラクティス</h4>
+                <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                  <li>• <strong>命名規則統一：</strong>キャンペーン・媒体別の体系的管理</li>
+                  <li>• <strong>有効期限管理：</strong>期間限定キャンペーンの適切な終了</li>
+                  <li>• <strong>バックアップ計画：</strong>重要URLの代替手段準備</li>
+                  <li>• <strong>定期モニタリング：</strong>リンク切れ・パフォーマンス監視</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-orange-600 mb-2">高度な活用テクニック</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>UTMパラメータ連携：</strong>Google Analyticsとの統合分析</li>
-                  <li>• <strong>コホート分析：</strong>期間別ユーザー行動の変化追跡</li>
-                  <li>• <strong>地域別分析：</strong>アクセス地域による効果の違い把握</li>
-                  <li>• <strong>デバイス別分析：</strong>PC・モバイル別最適化の指針</li>
+                <h4 class="font-medium text-gray-800 mb-2">成果測定・改善サイクル</h4>
+                <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                  <li>• <strong>KPI設定：</strong>CTR・CVR・ROI等の明確な目標設定</li>
+                  <li>• <strong>競合分析：</strong>業界ベンチマークとの比較</li>
+                  <li>• <strong>継続改善：</strong>データに基づく戦略の定期見直し</li>
+                  <li>• <strong>チーム共有：</strong>インサイトの組織内活用</li>
                 </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>短縮URLの有効期限・管理について</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>効果的な管理方法：</strong></p>
-            <div class="bg-amber-50 p-4 rounded-lg">
-              <h4 class="font-medium mb-2">管理のベストプラクティス</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li>• <strong>命名規則：</strong>日付・キャンペーン名を含む体系的な命名</li>
-                <li>• <strong>定期的な見直し：</strong>月1回の不要URL整理・削除</li>
-                <li>• <strong>バックアップ：</strong>重要URLの元URL記録保持</li>
-                <li>• <strong>アクセス監視：</strong>異常なアクセス増加の早期発見</li>
-              </ul>
-              <div class="mt-3 p-3 bg-white rounded border-l-4 border-orange-400">
-                <p class="text-sm text-gray-700">
-                  <strong>推奨：</strong>重要なURL（メインサイト・商品ページ等）は無期限、
-                  キャンペーン用URLは期間限定で設定し、定期的に整理する運用が効果的
-                </p>
               </div>
             </div>
           </div>
@@ -583,6 +550,145 @@
       </div>
     </div>
   </section>
+
+  <!-- 実用事例集セクション -->
+<section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          様々な業界・用途での実際のURL短縮活用事例をご紹介します。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-lg font-semibold mb-3">SNSマーケティングの効率化</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            ファッションブランドでは、Instagram投稿の短縮URLでキャンペーン効果を測定。
+            ストーリーズ・投稿・Bio別の分析でエンゲージメント率30%向上。
+          </p>
+          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
+            使用機能: 複数URL管理 + 詳細統計分析
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> エンゲージメント率30%向上 + ROI可視化
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">💼</div>
+          <h3 class="text-lg font-semibold mb-3">B2Bメール営業の最適化</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            IT企業では、営業メールの提案資料リンクを短縮URL化。
+            開封・クリック率の詳細分析で最適なアプローチタイミングを特定。
+          </p>
+          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
+            使用機能: 時間帯分析 + デバイス別追跡
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 商談化率25%向上 + 営業効率化
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🎪</div>
+          <h3 class="text-lg font-semibold mb-3">イベント集客の精密分析</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            セミナー主催者では、申込みURLを媒体別に分けて効果測定。
+            最優良媒体の特定で広告予算配分を最適化し、参加者数2倍増。
+          </p>
+          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
+            使用機能: A/Bテスト + ROI分析
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 参加者数200%増 + 広告効率向上
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🛒</div>
+          <h3 class="text-lg font-semibold mb-3">Eコマースでの売上向上</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            オンラインショップでは、商品ページへの流入を短縮URLで詳細追跡。
+            地域別・時間帯別の購買傾向分析で在庫最適化を実現。
+          </p>
+          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
+            使用機能: 地域分析 + コンバージョン追跡
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 売上20%増 + 在庫効率化
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">📰</div>
+          <h3 class="text-lg font-semibold mb-3">メディア・コンテンツ配信</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            オンラインメディアでは、記事シェア用短縮URLで読者行動を分析。
+            人気コンテンツの傾向把握で編集方針を最適化し、PV数50%増。
+          </p>
+          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
+            使用機能: ソーシャル分析 + コンテンツ最適化
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> PV数50%増 + 読者エンゲージメント向上
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">🏥</div>
+          <h3 class="text-lg font-semibold mb-3">ヘルスケア・教育分野</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            医療機関では、患者向け情報ページを短縮URLで管理。
+            アクセス状況の把握で重要情報の見直しを行い、患者満足度向上。
+          </p>
+          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
+            使用機能: アクセス頻度分析 + 情報優先順位付け
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>成果：</strong> 患者満足度向上 + 情報提供効率化
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたのビジネスでも効果測定を始めませんか？</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            これらの事例を参考に、あなたの業界・用途に合わせたURL短縮活用を始めてみましょう。
+            当ツールなら、すべてのマーケティングニーズに対応した高精度な分析を簡単に実行できます。
+          </p>
+          <a href="#" onclick="document.querySelector('input[type=url]').focus(); return false;" 
+             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            今すぐURL短縮を始める
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <!-- 独自性説明・免責事項セクション -->
+      <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+          <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+          <ul class="list-disc ml-5 mb-2">
+            <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+            <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+            <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+          </ul>
+          <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+      </section>
+
+      <!-- Guide Modal Popup -->
+      <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+          <div id="guide-modal-content"></div>
+        </div>
+      </div>
+  </main>
+
 
   
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
@@ -886,448 +992,7 @@ if (document.readyState === "loading") {
     });
   </script>
 
-  <!-- 技術解説・活用ガイドセクション -->
-  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">URL短縮活用完全ガイド</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          SNSマーケティングからビジネス分析まで、URL短縮を効果的に活用するための実践的なノウハウをご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- SNS・マーケティング活用事例 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V1a1 1 0 011-1h2a1 1 0 011 1v3"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">SNS・デジタルマーケティング</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>Twitter文字数最適化：</strong>限られた文字数で効果的なCTA実現</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>Instagram Bio活用：</strong>複数リンクを1箇所で効率管理</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>メルマガ最適化：</strong>見た目改善とクリック率向上</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>キャンペーン追跡：</strong>媒体別成果の詳細分析</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- ビジネス分析・最適化 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-purple-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">ビジネス分析・データ活用</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>A/Bテスト効率化：</strong>複数LP比較でCVR最適化</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ROI分析強化：</strong>チャネル別成果の精密測定</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>地域別最適化：</strong>地域性を活かしたタゲティング</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>時間帯分析：</strong>最適配信タイミングの特定</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- セキュリティ・管理機能 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-green-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">セキュリティ・品質管理</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>マルウェア検知：</strong>危険URL自動検出システム</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>スパム防止：</strong>不正利用防止の多層保護</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>プライバシー保護：</strong>個人情報の厳格管理</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>リンク永続性：</strong>長期利用での信頼性確保</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技術解説セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">URL短縮技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          URL短縮の仕組みを理解することで、より効果的なマーケティング活用が可能になります。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">短縮アルゴリズムの仕組み</h3>
-          <div class="space-y-4">
-            <div class="border-l-4 border-red-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">Base62エンコーディング</h4>
-              <p class="text-sm text-gray-600">数字・英字62文字を使用した効率的な短縮で衝突を最小化。</p>
-            </div>
-            <div class="border-l-4 border-yellow-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">ハッシュ関数利用</h4>
-              <p class="text-sm text-gray-600">URL固有の短縮コード生成で一意性を保証。</p>
-            </div>
-            <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">リダイレクト最適化</h4>
-              <p class="text-sm text-gray-600">HTTP 301/302で高速転送とSEO価値維持。</p>
-            </div>
-            <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">データベース効率化</h4>
-              <p class="text-sm text-gray-600">インデックス最適化で大量アクセスに高速対応。</p>
-            </div>
-          </div>
-        </div>
-        
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">統計・分析システム</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-medium mb-2 text-lg">リアルタイムトラッキング</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                クリック数・CTR・トラフィック推移をリアルタイムで収集。ユーザーの行動パターンを即座に可視化。
-              </p>
-              <div class="bg-blue-50 p-3 rounded-lg text-xs">
-                <strong>収集データ：</strong> IP地域、デバイス種別、OS、ブラウザ、リファラー
-              </div>
-            </div>
-            
-            <div>
-              <h4 class="font-medium mb-2 text-lg">地域別・デバイス別分析</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                国・都市レベルの地域分析とPC・スマホ・タブレット別の利用傾向で精密なターゲティングを支援。
-              </p>
-              <div class="bg-amber-50 p-3 rounded-lg text-xs">
-                <strong>活用例：</strong> 地域限定キャンペーン、デバイス最適化
-              </div>
-            </div>
-            
-            <div>
-              <h4 class="font-medium mb-2 text-lg">プライバシー配慮設計</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                個人特定を避けた匿名化統計で、GDPR等の規制に準拠しながら有用なマーケティングデータを提供。
-              </p>
-              <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>方針：</strong> 個人情報保護とマーケティング活用の両立
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ・トラブルシューティングセクション -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          URL短縮サービス利用時によくある疑問や問題の解決方法をまとめました。
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>短縮URLが機能しない・アクセスできない場合の対処法は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-blue-600 mb-2">技術的な問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>元URL変更：</strong>リンク先サイトの移転・削除</li>
-                  <li>• <strong>ネットワーク障害：</strong>一時的な接続問題</li>
-                  <li>• <strong>DNS問題：</strong>ドメイン解決の遅延</li>
-                  <li>• <strong>ブラウザキャッシュ：</strong>古い情報の残存</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-purple-600 mb-2">セキュリティ・政策的な問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>マルウェア検知：</strong>危険サイトへのリンク遮断</li>
-                  <li>• <strong>スパム判定：</strong>不正利用による無効化</li>
-                  <li>• <strong>企業ファイアウォール：</strong>組織の接続制限</li>
-                  <li>• <strong>地域制限：</strong>コンテンツの地理的制限</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-        
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>統計データの精度と活用方法は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>統計データの信頼性と活用のポイント：</strong></p>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 class="font-medium text-green-600 mb-3">データの精度について</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>クリック数：</strong>重複除去済みのユニークアクセス</li>
-                  <li><strong>地域データ：</strong>IP地域判定（精度95%以上）</li>
-                  <li><strong>デバイス判定：</strong>User-Agent解析による高精度識別</li>
-                  <li><strong>時間データ：</strong>UTC基準での正確なタイムスタンプ</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-orange-600 mb-3">マーケティング活用法</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>最適配信時間：</strong>クリック時間帯分析で効果最大化</li>
-                  <li><strong>地域別戦略：</strong>地域性を活かしたコンテンツ最適化</li>
-                  <li><strong>デバイス最適化：</strong>主要デバイスに合わせたUX改善</li>
-                  <li><strong>A/Bテスト：</strong>複数URL比較での最適解発見</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-        
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>SNSでの短縮URL利用時の注意点は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
-              <p class="text-amber-800 text-sm font-medium">
-                ⚠️ SNSプラットフォームごとに短縮URLの扱いが異なるため、適切な対策が重要です。
-              </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 class="font-medium text-red-600 mb-3">注意すべきポイント</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>リンクプレビュー：</strong>元URLのOGP情報が表示される</li>
-                  <li>• <strong>スパム判定：</strong>過度な投稿で制限される可能性</li>
-                  <li>• <strong>プラットフォーム独自制限：</strong>外部リンクの表示制限</li>
-                  <li>• <strong>フォロワー信頼性：</strong>不明リンクへの警戒感</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-blue-600 mb-3">効果的な活用方法</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>信頼できる説明文：</strong>リンク先の内容を明確に説明</li>
-                  <li>• <strong>ブランド統一：</strong>企業アカウントでの一貫した使用</li>
-                  <li>• <strong>OGP最適化：</strong>リンク先のメタ情報を充実</li>
-                  <li>• <strong>統計活用：</strong>SNS別効果測定でコンテンツ改善</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-        
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>ビジネス利用でのベストプラクティスは？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-              <p class="text-green-800 text-sm font-medium">
-                ✅ 戦略的なURL管理により、マーケティング効果を最大化できます。
-              </p>
-            </div>
-            <div class="space-y-4">
-              <div>
-                <h4 class="font-medium text-gray-800 mb-2">管理・運用のベストプラクティス</h4>
-                <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>命名規則統一：</strong>キャンペーン・媒体別の体系的管理</li>
-                  <li>• <strong>有効期限管理：</strong>期間限定キャンペーンの適切な終了</li>
-                  <li>• <strong>バックアップ計画：</strong>重要URLの代替手段準備</li>
-                  <li>• <strong>定期モニタリング：</strong>リンク切れ・パフォーマンス監視</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-gray-800 mb-2">成果測定・改善サイクル</h4>
-                <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>KPI設定：</strong>CTR・CVR・ROI等の明確な目標設定</li>
-                  <li>• <strong>競合分析：</strong>業界ベンチマークとの比較</li>
-                  <li>• <strong>継続改善：</strong>データに基づく戦略の定期見直し</li>
-                  <li>• <strong>チーム共有：</strong>インサイトの組織内活用</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- 実用事例集セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際のURL短縮活用事例をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="text-lg font-semibold mb-3">SNSマーケティングの効率化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            ファッションブランドでは、Instagram投稿の短縮URLでキャンペーン効果を測定。
-            ストーリーズ・投稿・Bio別の分析でエンゲージメント率30%向上。
-          </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: 複数URL管理 + 詳細統計分析
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> エンゲージメント率30%向上 + ROI可視化
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">💼</div>
-          <h3 class="text-lg font-semibold mb-3">B2Bメール営業の最適化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            IT企業では、営業メールの提案資料リンクを短縮URL化。
-            開封・クリック率の詳細分析で最適なアプローチタイミングを特定。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 時間帯分析 + デバイス別追跡
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 商談化率25%向上 + 営業効率化
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🎪</div>
-          <h3 class="text-lg font-semibold mb-3">イベント集客の精密分析</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            セミナー主催者では、申込みURLを媒体別に分けて効果測定。
-            最優良媒体の特定で広告予算配分を最適化し、参加者数2倍増。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: A/Bテスト + ROI分析
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 参加者数200%増 + 広告効率向上
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3">Eコマースでの売上向上</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            オンラインショップでは、商品ページへの流入を短縮URLで詳細追跡。
-            地域別・時間帯別の購買傾向分析で在庫最適化を実現。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: 地域分析 + コンバージョン追跡
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 売上20%増 + 在庫効率化
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📰</div>
-          <h3 class="text-lg font-semibold mb-3">メディア・コンテンツ配信</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            オンラインメディアでは、記事シェア用短縮URLで読者行動を分析。
-            人気コンテンツの傾向把握で編集方針を最適化し、PV数50%増。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: ソーシャル分析 + コンテンツ最適化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> PV数50%増 + 読者エンゲージメント向上
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏥</div>
-          <h3 class="text-lg font-semibold mb-3">ヘルスケア・教育分野</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            医療機関では、患者向け情報ページを短縮URLで管理。
-            アクセス状況の把握で重要情報の見直しを行い、患者満足度向上。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: アクセス頻度分析 + 情報優先順位付け
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 患者満足度向上 + 情報提供効率化
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたのビジネスでも効果測定を始めませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせたURL短縮活用を始めてみましょう。
-            当ツールなら、すべてのマーケティングニーズに対応した高精度な分析を簡単に実行できます。
-          </p>
-          <a href="#" onclick="document.querySelector('input[type=url]').focus(); return false;" 
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐURL短縮を始める
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 </body>
 </html>
 
