@@ -201,6 +201,331 @@
     </div>
   </main>
 
+  <!-- ツールへ戻るボタン -->
+  <div class="text-center py-8">
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-negi hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+      <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l3-3m0 0l3 3m-3-3v12m0-12V4"></path>
+      </svg>
+      ツールに戻る
+    </button>
+  </div>
+
+  <!-- 活用事例・ユースケースセクション -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">日付計算ツールの実用的な活用事例</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          プロジェクト管理・契約業務・人事労務での具体的な活用シーンと、その効果をご紹介します。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- プロジェクト管理・スケジューリング -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">プロジェクト管理・スケジューリング</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>納期逆算：</strong>完成日から開始日を逆算・作業期間最適化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>工数見積もり：</strong>営業日ベースでの正確な作業日数計算</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>マイルストーン設定：</strong>中間締切・レビュー日程の自動算出</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>休日考慮：</strong>祝日・年末年始を除いた実稼働日計算</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 契約・法務・経理 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">契約・法務・経理</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>契約期間管理：</strong>契約満了日・更新タイミングの自動計算</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>支払期限管理：</strong>請求日から支払期限・延滞判定日の算出</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>法定期間計算：</strong>クーリングオフ期間・時効期間の確認</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>決算期管理：</strong>四半期・年次決算期間の自動算出</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 人事・労務・給与 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">人事・労務・給与</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>勤続年数計算：</strong>入社日からの正確な勤続期間・昇格タイミング</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>有給休暇管理：</strong>入社日起算の有給付与日・日数計算</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>試用期間管理：</strong>試用期間満了日・本採用切り替え日程</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✓</span>
+              <span><strong>退職手続き：</strong>退職日から各種手続き完了期限の算出</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技術解説セクション -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">日付計算技術の詳細解説</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          暦法・タイムゾーン・うるう年などの複雑な日付処理のロジックを理解しましょう。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">日付計算の技術的複雑性</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">うるう年の計算規則</h4>
+              <p class="text-sm text-gray-600 mb-2">4年に1度＋100年に1度なし＋400年に1度あり。精密な日数計算に不可欠。</p>
+              <div class="text-xs bg-blue-50 p-2 rounded">
+                <strong>例：</strong>2000年（うるう年）、1900年（平年）、2024年（うるう年）
+              </div>
+            </div>
+            <div class="border-l-4 border-green-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">営業日・祝日の複雑性</h4>
+              <p class="text-sm text-gray-600 mb-2">国民の祝日・振替休日・年末年始の変動パターンを動的に処理。</p>
+              <div class="text-xs bg-green-50 p-2 rounded">
+                <strong>対応：</strong>ハッピーマンデー・春分の日・秋分の日・天皇誕生日変更
+              </div>
+            </div>
+            <div class="border-l-4 border-purple-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">タイムゾーン・夏時間</h4>
+              <p class="text-sm text-gray-600 mb-2">世界各国の時差・夏時間（DST）の開始終了日を考慮した計算。</p>
+              <div class="text-xs bg-purple-50 p-2 rounded">
+                <strong>注意：</strong>国際プロジェクトでは現地時間基準の日付計算が必須
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">実務での計算精度向上</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2 text-lg">営業日計算の実装パターン</h4>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center p-2 bg-red-50 rounded">
+                  <span class="font-medium">基本営業日</span>
+                  <span class="text-sm text-gray-600">月〜金（土日除外）</span>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-yellow-50 rounded">
+                  <span class="font-medium">祝日考慮</span>
+                  <span class="text-sm text-gray-600">国民の祝日・振替休日除外</span>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-blue-50 rounded">
+                  <span class="font-medium">企業独自</span>
+                  <span class="text-sm text-gray-600">夏季・年末年始休暇追加</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">期間計算の注意点</h4>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• <strong>開始日・終了日の扱い：</strong>期間に含むか否かの明確化</li>
+                <li>• <strong>月末日の処理：</strong>31日→2月28日等の月末調整</li>
+                <li>• <strong>時刻の考慮：</strong>日付のみか時刻まで含むかの設定</li>
+                <li>• <strong>小数点以下：</strong>端数処理（切り上げ・切り捨て・四捨五入）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ・トラブルシューティングセクション -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          日付計算時によくある疑問や問題の解決方法をまとめました。
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>営業日計算で休日が正しく反映されない</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>休日データの更新と確認：</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-blue-600 mb-2">国民の祝日の変動要因</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>天皇誕生日：</strong>2019年に12/23→2/23に変更</li>
+                  <li>• <strong>振替休日：</strong>土曜祝日の月曜振替処理</li>
+                  <li>• <strong>ハッピーマンデー：</strong>成人の日・海の日・敬老の日等</li>
+                  <li>• <strong>春分・秋分の日：</strong>年によって20日・21日・22日・23日に変動</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-green-600 mb-2">確認・対処方法</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>内閣府カレンダー：</strong>公式の祝日情報を定期確認</li>
+                  <li>• <strong>企業独自休日：</strong>年末年始・夏季休暇の反映</li>
+                  <li>• <strong>業界特有の休日：</strong>銀行休業日・証券取引所休場日</li>
+                  <li>• <strong>地域特有の休日：</strong>地方自治体の独自休日</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>年齢計算・勤続年数で1日ずれる</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>日付の境界・基準日の扱い：</strong></p>
+            <div class="space-y-4">
+              <div class="bg-amber-50 p-4 rounded-lg">
+                <h4 class="font-medium mb-2">年齢計算の正確な方法</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>満年齢基準：</strong>誕生日当日から次の年齢（民法143条）</li>
+                  <li>• <strong>午前0時基準：</strong>誕生日の午前0時に年齢加算</li>
+                  <li>• <strong>例：</strong>2000/4/1生まれは2024/4/1午前0時に24歳</li>
+                  <li>• <strong>システム上の注意：</strong>時刻までの比較で誤差回避</li>
+                </ul>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-medium mb-2">期間計算の起算日</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>勤続年数：</strong>入社日を含むか否かの社内規定確認</li>
+                  <li>• <strong>契約期間：</strong>開始日・終了日の解釈統一</li>
+                  <li>• <strong>有給休暇：</strong>入社日から6ヶ月後の同日付与</li>
+                  <li>• <strong>試用期間：</strong>入社日から3ヶ月・6ヶ月の満了日計算</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>プロジェクト期間の見積もりが曖昧になる</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>実用的な期間見積もり手法：</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-purple-600 mb-2">見積もり精度向上のコツ</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>バッファ期間：</strong>計算期間の10-20%を予備期間に設定</li>
+                  <li>• <strong>段階的マイルストーン：</strong>月次・週次での進捗確認点</li>
+                  <li>• <strong>リスク要因の明確化：</strong>祝日・年末年始の影響度評価</li>
+                  <li>• <strong>過去データ活用：</strong>類似プロジェクトの実績ベース調整</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-orange-600 mb-2">計画立案のベストプラクティス</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>逆算型計画：</strong>締切から必要期間を逆算して開始日決定</li>
+                  <li>• <strong>クリティカルパス：</strong>最重要タスクの期間確保を優先</li>
+                  <li>• <strong>並行作業の活用：</strong>依存関係のないタスクは同時進行</li>
+                  <li>• <strong>レビュー期間確保：</strong>成果物チェック・修正期間を含める</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>海外展開時のタイムゾーン・現地祝日対応</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>国際対応の実装指針：</strong></p>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h4 class="font-medium mb-2">多国籍プロジェクト管理</h4>
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li>• <strong>基準時刻の統一：</strong>UTC基準での日程管理・各国で現地時刻表示</li>
+                <li>• <strong>現地祝日の考慮：</strong>国別・州別の祝日カレンダー整備</li>
+                <li>• <strong>夏時間対応：</strong>3月・11月の時刻変更期間での計算注意</li>
+                <li>• <strong>文化的配慮：</strong>宗教的祭日・ラマダン等の考慮</li>
+              </ul>
+              <div class="mt-3 p-3 bg-white rounded border-l-4 border-green-400">
+                <p class="text-sm text-gray-700">
+                  <strong>推奨：</strong>グローバル展開時は現地法務・人事部門と連携し、
+                  正確な休日情報・労働基準法の確認が不可欠です
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">

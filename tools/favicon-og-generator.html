@@ -180,6 +180,163 @@
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
+
+      <!-- 教育的ガイド -->
+      <section class="mt-12 bg-white rounded-xl shadow-lg p-6 md:p-8" id="educational-guide">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 ファビコン・OGP画像作成の完全ガイド</h2>
+        
+        <!-- ツールへ戻るボタン -->
+        <div class="mb-6">
+          <button onclick="document.querySelector('.bg-white.p-6').scrollIntoView({behavior: 'smooth'})" 
+                  class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200 text-sm font-medium">
+            ⬆️ ツールに戻る
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">🎯 ファビコン・OGPとは</h3>
+            <div class="space-y-3 text-gray-700 text-sm">
+              <p><strong>ファビコン（Favicon）</strong>は、ブラウザのタブやブックマークに表示される小さなアイコンです。Webサイトの顔として重要な役割を果たします。</p>
+              <p><strong>OGP画像（Open Graph画像）</strong>は、SNSでシェアされた際に表示されるサムネイル画像で、クリック率向上に大きく影響します。</p>
+              <p>これらの画像は、ブランディング・ユーザビリティ・SEO対策において非常に重要な要素です。</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">⚙️ 各サイズの用途</h3>
+            <div class="space-y-2 text-gray-700 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>32×32px（ファビコン）</strong><br>
+                ブラウザタブ・ブックマーク用の基本サイズ
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>1200×630px（OGP）</strong><br>
+                Twitter・Facebook等のSNSシェア用画像
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>180×180px（iOS）</strong><br>
+                iPhoneホーム画面アイコン用
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>192×192px（Android）</strong><br>
+                Androidホーム画面アイコン用
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 技術解説 -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">🔧 技術仕様と実装方法</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">HTML実装方法</h3>
+            <div class="bg-gray-100 p-4 rounded-lg text-sm">
+              <code class="text-gray-800">
+                &lt;!-- ファビコン --&gt;<br>
+                &lt;link rel="icon" href="/favicon.ico"&gt;<br>
+                &lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;<br><br>
+                &lt;!-- OGP画像 --&gt;<br>
+                &lt;meta property="og:image" content="/ogp-image.png"&gt;<br>
+                &lt;meta property="og:image:width" content="1200"&gt;<br>
+                &lt;meta property="og:image:height" content="630"&gt;
+              </code>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">最適化のポイント</h3>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>シンプルで識別しやすいデザイン</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>小さいサイズでも視認性を保つ</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>ブランドカラーの統一</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>適切なファイル形式（PNG推奨）</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>複数サイズの用意</li>
+              <li class="flex items-start"><span class="text-accent mr-2">✓</span>OGP画像は文字を大きく配置</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">❓ よくある質問（FAQ）</h2>
+        <div class="space-y-4">
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">ファビコンが表示されないのはなぜですか？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>ブラウザのキャッシュが原因の場合があります。Ctrl+F5でハードリフレッシュするか、HTMLの&lt;head&gt;内に正しくlink要素を記述しているか確認してください。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">OGP画像の推奨サイズは？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>1200×630pxが標準的です。Facebook・Twitter・LINEなど主要SNSで最適に表示されます。最小サイズは600×315pxです。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">どのファイル形式が良いですか？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>ファビコンはPNG形式を推奨。透明背景が使えます。OGP画像もPNG・JPEG両方対応していますが、品質を重視するならPNG、ファイルサイズを抑えるならJPEGが適しています。</p>
+            </div>
+          </details>
+          
+          <details class="border border-gray-200 rounded-lg p-4">
+            <summary class="font-semibold cursor-pointer text-gray-800">モバイル対応は必要ですか？</summary>
+            <div class="mt-3 text-gray-700 text-sm">
+              <p>はい。iOS用（180×180px）、Android用（192×192px）のアイコンを用意することで、ホーム画面に追加された際に最適な表示が可能です。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 活用事例 -->
+      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">💡 実用的な活用事例</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🏢 企業サイト</h3>
+            <p class="text-gray-700 text-sm">ロゴマークをベースにしたファビコンとOGP画像で、ブランド認知度向上とプロフェッショナルな印象を演出。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">📝 ブログ・メディア</h3>
+            <p class="text-gray-700 text-sm">記事タイトルを含むOGP画像で、SNSシェア時のクリック率向上。統一感のあるファビコンでサイト認知度アップ。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🛍️ ECサイト</h3>
+            <p class="text-gray-700 text-sm">商品画像やブランドロゴを活用した魅力的なOGP画像で、商品ページのSNS拡散効果を最大化。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🎨 ポートフォリオ</h3>
+            <p class="text-gray-700 text-sm">作品のイメージを反映したオリジナルファビコンで、クリエイターの個性を表現。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">📊 データサイト</h3>
+            <p class="text-gray-700 text-sm">グラフやチャートのアイコンで専門性をアピール。データの可視化を意識した統一デザイン。</p>
+          </div>
+          
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h3 class="font-bold text-gray-800 mb-2">🎪 イベントサイト</h3>
+            <p class="text-gray-700 text-sm">イベントロゴやテーマカラーを活用した期間限定デザインで、話題性と拡散効果を狙う。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ツールへ戻る -->
+      <div class="mt-8 text-center">
+        <button onclick="document.querySelector('.bg-white.p-6').scrollIntoView({behavior: 'smooth'})" 
+                class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-200 font-medium">
+          ⬆️ ツールに戻る
+        </button>
+      </div>
     </div>
   </main>
 
