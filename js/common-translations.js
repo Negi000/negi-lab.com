@@ -44,7 +44,29 @@ window.commonTranslations = {
         'footer.copyright': '© 2024 negi-lab.com - All rights reserved',
         'footer.privacy': 'プライバシーポリシー',
         'footer.terms': '利用規約',
-        'footer.about': 'サイトについて'
+        'footer.about': 'サイトについて',
+        
+        // 独自性・運営方針・免責事項
+        'disclaimer.title': 'negi-lab.comの独自性・運営方針・免責事項について',
+        'disclaimer.responsibility': '本ツールはnegi-lab.comが責任開発・運営しています。',
+        'disclaimer.revenue': '広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。',
+        'disclaimer.liability': '精度・安全性には万全を期していますが、利用は自己責任でお願いします。',
+        'disclaimer.copyright': '© 2025 negi-lab.com',
+        
+        // モーダル・UI要素
+        'modal.close': '閉じる',
+        'guide.modalTitle': 'ガイド',
+        
+        // ブレッドクラム
+        'breadcrumb.home': 'ホーム',
+        'breadcrumb.tools': 'ツール',
+        
+        // 共通リンク
+        'common.contact': 'お問い合わせ',
+        'common.sitemap': 'サイトマップ',
+        'common.privacyPolicy': 'プライバシーポリシー',
+        'common.terms': '利用規約',
+        'common.about': '運営者情報',
     },
     
     en: {
@@ -84,7 +106,29 @@ window.commonTranslations = {
         'footer.copyright': '© 2024 negi-lab.com - All rights reserved',
         'footer.privacy': 'Privacy Policy',
         'footer.terms': 'Terms of Service',
-        'footer.about': 'About'
+        'footer.about': 'About',
+        
+        // 独自性・運営方針・免責事項
+        'disclaimer.title': 'About negi-lab.com\'s Uniqueness, Management Policy & Disclaimer',
+        'disclaimer.responsibility': 'This tool is responsibly developed and operated by negi-lab.com.',
+        'disclaimer.revenue': 'While including advertising and affiliate revenue, we prioritize user convenience.',
+        'disclaimer.liability': 'Although we strive for accuracy and safety, please use at your own risk.',
+        'disclaimer.copyright': '© 2025 negi-lab.com',
+        
+        // モーダル・UI要素
+        'modal.close': 'Close',
+        'guide.modalTitle': 'Guide',
+        
+        // ブレッドクラム
+        'breadcrumb.home': 'Home',
+        'breadcrumb.tools': 'Tools',
+        
+        // 共通リンク
+        'common.contact': 'Contact',
+        'common.sitemap': 'Sitemap',
+        'common.privacyPolicy': 'Privacy Policy',
+        'common.terms': 'Terms of Service',
+        'common.about': 'About',
     }
 };
 
