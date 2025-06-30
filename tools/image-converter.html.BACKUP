@@ -1,0 +1,951 @@
+﻿<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy (開発中は一時無効化) -->
+  <!--
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:; 
+    connect-src 'self' 
+      https://www.google-analytics.com
+      https://analytics.google.com; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  -->
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
+  <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
+  <meta property="og:title" content="【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com" />
+  <meta property="og:description" content="KTX・DDS・TGA等13形式対応、ゲーム・VR・3D制作向けプロ仕様画像変換ツール。一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
+  <meta name="robots" content="index,follow" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // tailwind.configはwindow.tailwind.configで設定
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    .form-select, .form-input, .form-button, .form-range {
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      transition: box-shadow 0.2s;
+    }
+    .form-select:focus, .form-input:focus, .form-button:focus, .form-range:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4ADE80;
+      border-color: #4ADE80;
+    }
+    .form-button {
+      background: #4ADE80;
+      color: #fff;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+    }
+    .form-button:hover:not(:disabled) {
+      background: #10b981;
+    }
+    .form-button:disabled {
+      background: #d1d5db;
+      color: #fff;
+      cursor: not-allowed;
+    }
+    .drop-area {
+      border: 2px dashed #d1d5db;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .drop-area.dragover {
+      border-color: #4ADE80;
+      background: rgba(74, 222, 128, 0.1);
+    }
+    .preview-image {
+      max-width: 100%;
+      max-height: 16rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    }
+    
+    /* �g���@�\�p�X�^�C�� */
+    .filter-button-active {
+      background-color: #4ADE80 !important;
+      color: white;
+    }
+    
+    .file-item {
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .results-grid {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* �v���Z�b�g�I���n�C���C�g */
+    .preset-highlight {
+      border-color: #4ADE80;
+      background-color: rgba(74, 222, 128, 0.05);
+    }
+    
+    /* ���]�{�^���A�N�e�B�u���� */
+    .rotation-active {
+      background-color: #3b82f6;
+    }
+    
+    /* �t�@�C���A�b�v���[�h�G���A�̉��P */
+    .drop-area:hover {
+      border-color: #4ADE80;
+      background-color: rgba(74, 222, 128, 0.02);
+    }
+  </style>
+  <!-- JavaScript Modules -->
+  <script src="../js/translations.js"></script>
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
+  <script src="../js/image-converter-core.js"></script>
+  <script src="../js/image-converter-formats.js"></script>
+  <script src="../js/image-converter-presets.js"></script>
+  <script src="../js/image-converter-ui.js"></script>
+  <script src="../js/image-converter-guide.js"></script>
+  <!-- UTIF.js for TIFF���� -->
+  <script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.js" 
+          onload="console.log('UTIF library loaded from jsDelivr CDN')"
+          onerror="console.error('UTIF library failed to load from jsDelivr CDN')"></script>
+  <!-- PNGJS for PNG�����i�u���E�U�ł����p�ł��Ȃ��ꍇ�̓X�L�b�v�j -->
+  <script>
+    // PNGJS��Node.js�����Ȃ̂ŁA�u���E�U�ł̓l�C�e�B�uCanvas API���g�p
+    console.log('PNG processing will use native Canvas API');
+    window.PNGJS_FALLBACK = true;
+  </script>
+  
+  <!-- Google AdSense (�{�Ԋ��̂�) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script> -->
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Google Analytics�igtag.js�j�S�y�[�W�p (�{�Ԋ��̂�) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9X3N0RY0H');
+  </script>
+  -->
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">�c�[��</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">�Q�[��Wiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">���{��</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">�K�C�h</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- �u���b�h�N�����i�r�Q�[�V���� -->
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="�y�[�W�i�r�Q�[�V����">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li><a href="/" class="text-accent hover:underline">�z�[��</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li><a href="/#tools" class="text-accent hover:underline">�c�[��</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-800 font-medium" aria-current="page">�摜�ϊ��c�[��</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="flex-grow py-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.mainTitle">�v���d�l�摜�ϊ��c�[��</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-6">
+          <strong>KTX�EDDS�ETGA��13�`���Ή�</strong> ? �Q�[���EVR�E3D���삩�����ʗp�r�܂�<br>
+          �����t�@�C���ꊇ�����A���]�E�t�B���^�[���ʁA���p�v���Z�b�g���ڂŊJ���������啝����
+        </p>
+      </div>
+      
+      <!-- �c�[���㕔�F�A�h�Z���X�i���X�|���V�u�j -->
+      <div class="max-w-2xl mx-auto my-6">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="2847561903"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+        <div>
+          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.uploadLabel">�摜�t�@�C�����A�b�v���[�h:</label>
+          <div id="imageUploadArea" class="drop-area" aria-label="�摜�t�@�C���A�b�v���[�h�G���A">
+            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, .ktx, .ktx2, .dds, .tga, .hdr, .exr" multiple class="hidden" aria-describedby="fileHelp">
+            <p id="dropInstructions" data-translate-html-key="imageConverter.dropInstructions" aria-label="�t�@�C���̃h���b�O���h���b�v�܂��̓N���b�N���đI��">�����Ƀt�@�C�����h���b�O���h���b�v<br>�܂��̓N���b�N���đI���i�����t�@�C���Ή��j<br><small class="text-gray-500">�Ή��`��: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR</small></p>
+          </div>
+          <div id="fileList" class="mt-2"></div>
+        </div>
+
+        <div id="previewContainer" class="mt-4 text-center hidden" aria-hidden="true">
+            <img id="imagePreview" src="#" alt="Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt" aria-label="�A�b�v���[�h���ꂽ�摜�̃v���r���["/>
+        </div>
+
+        <!-- �v���Z�b�g�ݒ� -->
+        <div>
+          <label for="presetSelect" class="block text-sm font-medium text-gray-700 mb-1">�v���Z�b�g�ݒ�:</label>
+          <select id="presetSelect" class="form-select w-full mb-2" aria-label="�v���Z�b�g�ݒ��I��">
+            <option value="custom">�J�X�^���ݒ�</option>
+            <option value="web-standard">Web�W�� (JPEG 80%)</option>
+            <option value="web-optimized">Web�œK�� (WebP 75%)</option>
+            <option value="social-media">SNS���e�p (JPEG 70%, 1080px)</option>
+            <option value="print-quality">�����i�� (JPEG 95%)</option>
+            <option value="thumbnail">�T���l�C���p (JPEG 70%, 300px)</option>
+            <option value="game-texture">�Q�[���e�N�X�`�� (KTX2 80%)</option>
+            <option value="mobile-game">���o�C���Q�[�� (KTX 512px)</option>
+            <option value="3d-model">3D���f���p (TGA)</option>
+            <option value="hdr-imaging">HDR�C���[�W���O</option>
+            <option value="vfx-exr">VFX�E�f������ (EXR)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.outputFormatLabel">�o�̓t�H�[�}�b�g:</label>
+          <select id="outputFormat" class="form-select w-full" aria-label="�o�̓t�H�[�}�b�g�I��">
+            <option value="image/jpeg" data-translate-key="imageConverter.formatJPEG">JPEG</option>
+            <option value="image/png" data-translate-key="imageConverter.formatPNG">PNG</option>
+            <option value="image/webp" data-translate-key="imageConverter.formatWebP">WebP</option>
+            <option value="image/bmp">BMP</option>
+            <option value="image/tiff">TIFF</option>
+            <option value="application/ktx">KTX (Khronos Texture)</option>
+            <option value="application/ktx2">KTX2 (Khronos Texture 2.0)</option>
+            <option value="image/x-targa">TGA (Targa)</option>
+            <option value="image/vnd.radiance">HDR (���_�C�i�~�b�N�����W)</option>
+            <option value="image/x-exr">EXR (OpenEXR)</option>
+            <option value="image/vnd-ms.dds">DDS (DirectDraw Surface)</option>
+          </select>
+        </div>
+
+        <!-- �摜�ϊ��I�v�V���� -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- ���]�ݒ� -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">�摜���]:</label>
+            <div class="flex gap-2">
+              <button type="button" id="rotate90" class="form-button flex-1 py-1 text-sm">90��</button>
+              <button type="button" id="rotate180" class="form-button flex-1 py-1 text-sm">180��</button>
+              <button type="button" id="rotate270" class="form-button flex-1 py-1 text-sm">270��</button>
+            </div>
+          </div>
+
+          <!-- �A�X�y�N�g���ݒ� -->
+          <div>
+            <label for="aspectRatio" class="block text-sm font-medium text-gray-700 mb-1">�A�X�y�N�g��:</label>
+            <select id="aspectRatio" class="form-select w-full" aria-label="�A�X�y�N�g���I��">
+              <option value="original">���̔䗦���ێ�</option>
+              <option value="1:1">1:1 (�����`)</option>
+              <option value="4:3">4:3</option>
+              <option value="16:9">16:9</option>
+              <option value="3:2">3:2</option>
+              <option value="custom">�J�X�^��</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- �t�B���^�[���� -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">�t�B���^�[����:</label>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <button type="button" id="filterNone" class="form-button py-1 text-sm bg-accent">�Ȃ�</button>
+            <button type="button" id="filterGrayscale" class="form-button py-1 text-sm bg-gray-400">�O���[�X�P�[��</button>
+            <button type="button" id="filterSepia" class="form-button py-1 text-sm bg-yellow-600">�Z�s�A</button>
+            <button type="button" id="filterBlur" class="form-button py-1 text-sm bg-blue-400">�ڂ���</button>
+          </div>
+          <div class="mt-2 hidden" id="brightnessControl">
+            <label for="brightnessRange" class="block text-xs font-medium text-gray-600">���x����:</label>
+            <div class="flex items-center gap-2">
+              <input type="range" id="brightnessRange" min="0.3" max="2" step="0.1" value="1" class="form-range w-full h-2">
+              <span id="brightnessValue" class="text-xs text-gray-600 w-10 text-right">1.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="qualityControlContainer" class="hidden" aria-hidden="true">
+            <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.qualityLabel">�i�� (JPEG/WebP/KTX/TGA):</label>
+            <div class="flex items-center gap-2">
+                <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" aria-label="�摜�i������">
+                <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right" aria-label="���݂̕i���l">0.90</span>
+            </div>
+        </div>
+        
+        <div>
+            <p class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.maxDimensionsLabel">�ő吡�@ (�C��):</p>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="maxWidthInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxWidthLabel">�ő啝 (px):</label>
+                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="��: 1920" aria-label="�ő啝���̓t�B�[���h">
+                </div>
+                <div>
+                    <label for="maxHeightInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxHeightLabel">�ő卂�� (px):</label>
+                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="��: 1080" aria-label="�ő卂�����̓t�B�[���h">
+                </div>
+            </div>
+        </div>
+        
+        <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.convertButton" aria-label="�摜�ϊ����s�{�^��">�ϊ�����</button>
+        
+        <div id="resultContainer" class="mt-4 text-center hidden space-y-3" aria-hidden="true">
+            <h3 class="text-lg font-medium text-gray-800" data-translate-key="unitConverter.resultLabel">����:</h3>
+            <div id="resultsGrid" class="grid grid-cols-1 gap-4"></div>
+            <div class="flex gap-2 justify-center">
+              <button id="downloadAllBtn" class="form-button py-2 px-4 hidden">�S�ă_�E�����[�h</button>
+              <button id="clearResultsBtn" class="form-button py-2 px-4 bg-gray-400">���ʂ��N���A</button>
+            </div>
+        </div>
+
+        <div id="messageArea" class="text-sm mt-2">
+            <p id="statusMessage" class="text-gray-600"></p>
+            <p id="errorMessage" class="text-red-600"></p>
+        </div>
+
+      </div>
+
+      <!-- �X�|���T�[�����N���x���i�L�����O�j -->
+      <div class="text-xs text-gray-500 mb-1" aria-label="�X�|���T�[�����N">�X�|���T�[�����N</div>
+      <!-- �����ɍL���R�[�h�i��: AdSense�j���}�� -->
+
+      <!-- �c�[�������FAmazon�E�y�V�o�i�[ �� �l�C�e�B�u/���[�V�����E�B�W�F�b�g���I�\���ɒu�� -->
+      <div id="smart-ads" class="flex justify-center my-8"></div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          if (window.renderSmartAds) window.renderSmartAds('smart-ads');
+        });
+      </script>
+
+    </div>
+  </main>
+
+  <!-- �Z�p�����E���p�K�C�h�Z�N�V���� -->
+  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">�摜�ϊ����p���S�K�C�h</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          Web�f�U�C�������R���e���c�����܂ŁA�摜�ϊ��E�œK�������ʓI�Ɋ��p���邽�߂̎��H�I�ȃm�E�n�E�����Љ�܂��B
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Web�E�f�W�^�����p���� -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Web�E�A�v���J��</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>���X�|���V�u�Ή��F</strong>�f�o�C�X�ʍœK����UX����</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>Core Web Vitals���P�F</strong>LCP�w�W������SEO����</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>WebP���p�F</strong>�������t�H�[�}�b�g�ō����k</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�y�ʉ��F</strong>�y�[�W�ǂݍ��ݑ��x30-50%����</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- �R���e���c�����E�}�[�P�e�B���O -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">�R���e���c�����ESNS</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>SNS�œK���F</strong>�v���b�g�t�H�[���ʃT�C�Y�����Ή�</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�L���f�ތy�ʉ��F</strong>�\�����x��CTR����</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�i�������F</strong>�p�r�ɉ������œK�o�����X</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�ꊇ�����F</strong>���ʉ摜�̌����I�ϊ�</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- �r�W�l�X�E�Ɩ������� -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 p-3 rounded-lg mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">�r�W�l�X�E�Ɩ�������</h3>
+          </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>E�R�}�[�X�F</strong>���i�摜�����ŃV�X�e��������</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�����EDTP�F</strong>���i���ݒ��ň����Ή�</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�X�g���[�W�팸�F</strong>�e�ʍœK���ŃR�X�g�팸</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">?</span>
+              <span><strong>�Z�L�����e�B�F</strong>���[�J�������ŋ@�����m��</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- �Z�p�����Z�N�V���� -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">�Ή��t�H�[�}�b�g�Z�p����</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          �Q�[���J���EVR/AR�E3D���삩�����ʗp�r�܂ŁA13���ނ̉摜�t�H�[�}�b�g�̓����ƍœK�Ȏg�����������Љ�܂��B
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">�Q�[���EVR/AR�J�������t�H�[�}�b�g</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-purple-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">KTX/KTX2 - Khronos�����e�N�X�`��</h4>
+              <p class="text-sm text-gray-600">GPU�œK�����k�BOpenGL/Vulkan/WebGL�ō����\�B���o�C��VR/AR�ɍœK�B</p>
+            </div>
+            <div class="border-l-4 border-blue-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">DDS - DirectDraw Surface</h4>
+              <p class="text-sm text-gray-600">DirectX�W���BWindows�Q�[����D3D���ō��p�t�H�[�}���X�B</p>
+            </div>
+            <div class="border-l-4 border-green-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">TGA - Targa�`��</h4>
+              <p class="text-sm text-gray-600">3D���f�����O�E�Q�[���J���̕W���B�A���t�@�`�����l�����S�Ή��B</p>
+            </div>
+            <div class="border-l-4 border-orange-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">HDR/EXR - ���_�C�i�~�b�N�����W</h4>
+              <p class="text-sm text-gray-600">�f�������E���A���^�C�������_�����O�������i���t�H�[�}�b�g�B</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">���ʁEWeb�����t�H�[�}�b�g</h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-red-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">JPEG - �ʐ^�E�O���f�[�V��������</h4>
+              <p class="text-sm text-gray-600">���t���k�ŏ��t�@�C���T�C�Y�B�ʐ^�n�摜�ɍœK�B</p>
+            </div>
+            <div class="border-l-4 border-yellow-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">PNG - ���S�E�����x�Ή�</h4>
+              <p class="text-sm text-gray-600">�t���k�ō��i���B�����x�E�V���[�v�G�b�W�ɍœK�B</p>
+            </div>
+            <div class="border-l-4 border-blue-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">WebP - ������Web�œK��</h4>
+              <p class="text-sm text-gray-600">JPEG��30-50%���B���_���u���E�U�ō����k�B</p>
+            </div>
+            <div class="border-l-4 border-gray-400 pl-4 py-2">
+              <h4 class="font-medium text-lg">TIFF/BMP - �����k���i��</h4>
+              <p class="text-sm text-gray-600">�����EDTP�E�A�[�J�C�u�����ō��i���ێ��B</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">�Z�p�d�l�Ə�������</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2 text-lg">Canvas API���p</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                HTML5 Canvas�v�f���g�p�����u���E�U�����i���摜�����B�F���ԕێ��ƃs�N�Z�����x���ێ��B
+              </p>
+              <div class="bg-blue-50 p-3 rounded-lg text-xs">
+                <strong>���_�F</strong> �T�[�o�[���M�s�v�A���A���^�C�������A�v���C�o�V�[�ی�
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">�F���ԁE�掿�ێ�</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                sRGB�F���Ԃ̈ێ��ɂ����A�f�o�C�X�Ԃł̐F�Č������m�ہBICC �v���t�@�C���Ή��ň����i�����ۏ؁B
+              </p>
+              <div class="bg-amber-50 p-3 rounded-lg text-xs">
+                <strong>�Z�p�F</strong> sRGB�ێ��AICC�Ή��A�K���}�␳�K�p
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium mb-2 text-lg">�Z�L�����e�B�E�v���C�o�V�[</h4>
+              <p class="text-sm text-gray-600 mb-3">
+                ���S�N���C�A���g�T�C�h�����ɂ����A�@���摜�����S�ɕϊ��B�摜�f�[�^�̃T�[�o�[���M�͈��؂Ȃ��B
+              </p>
+              <div class="bg-green-50 p-3 rounded-lg text-xs">
+                <strong>�ۏ؁F</strong> ���[�J�������A�f�[�^�񑗐M�A�����폜
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ�E�g���u���V���[�e�B���O�Z�N�V���� -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">�悭���鎿���E�g���u���V���[�e�B���O</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          �摜�ϊ��E�œK�����ɂ悭�����^���������̉������@���܂Ƃ߂܂����B
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>KTX��DDS�Ȃǂ̃Q�[�������t�H�[�}�b�g�̓����́H</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-purple-600 mb-3">�Q�[���EVR/AR�����t�H�[�}�b�g</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>? <strong>KTX/KTX2�F</strong>OpenGL/Vulkan�W���AGPU�œK�����k</li>
+                  <li>? <strong>DDS�F</strong>DirectX�W���AWindows�Q�[���œK</li>
+                  <li>? <strong>TGA�F</strong>3D���f�����O�E�Q�[���J���W��</li>
+                  <li>? <strong>�p�t�H�[�}���X�F</strong>�]����50-80%�����ǂݍ���</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-blue-600 mb-3">�Z�p�I�����b�g</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>? <strong>GPU���ړW�J�F</strong>�����������啝����</li>
+                  <li>? <strong>�X�g���[�~���O�F</strong>���e�ʃe�N�X�`����������</li>
+                  <li>? <strong>�}���`�v���b�g�t�H�[���F</strong>���o�C��?PC����</li>
+                  <li>? <strong>���k���F</strong>PNG��60-90%�t�@�C���T�C�Y�팸</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>�ǂ̉摜�t�H�[�}�b�g���I�Ԃׂ��ł����H</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>�p�r�ʐ����t�H�[�}�b�g�F</strong></p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-medium text-blue-600 mb-2">�ʐ^�E���A���n�摜</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>? <strong>JPEG�i�i��80-90%�j�F</strong>���ʓI��Web�p�r</li>
+                  <li>? <strong>WebP�i�i��75-85%�j�F</strong>���_���u���E�U�œK��</li>
+                  <li>? <strong>JPEG�i�i��90-95%�j�F</strong>�����E���i���p�r</li>
+                  <li>? <strong>SNS���e�F</strong>�t�@�C���T�C�Y�����ɉ����Ē���</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-purple-600 mb-2">���S�E�C���X�g�E�A�C�R��</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>? <strong>PNG�F</strong>�����x���K�v�ȏꍇ</li>
+                  <li>? <strong>WebP�F</strong>�����x�Ή��{�y�ʉ�</li>
+                  <li>? <strong>JPEG�i���i���j�F</strong>�����x�s�v�ȏꍇ</li>
+                  <li>? <strong>SVG�F</strong>�x�N�^�[�f�[�^�����p�\�ȏꍇ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>�i���ݒ��̓K�؂Ȓl�́H</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <p class="text-gray-700 mb-3"><strong>�p�r�ʕi���ݒ��̖ڈ��F</strong></p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-green-600 mb-3">�����i���ݒ�</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>Web���ʗp�r�F</strong>JPEG 70-85%�i�o�����X�d���j</li>
+                  <li><strong>�����E�o�ŁF</strong>JPEG 90-95%�i���i���D���j</li>
+                  <li><strong>SNS���e�F</strong>JPEG 60-75%�i�T�C�Y�����Ή��j</li>
+                  <li><strong>WebP�F</strong>�����i����JPEG��20-30%�팸</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-orange-600 mb-3">�i�����f�̃|�C���g</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><strong>���k�A�[�e�B�t�@�N�g�F</strong>�u���b�N�m�C�Y�̗L���m�F</li>
+                  <li><strong>�����E�G�b�W�F</strong>�V���[�v���̕ێ��x����</li>
+                  <li><strong>�O���f�[�V�����F</strong>�o���f�B���O���ۂ̉���</li>
+                  <li><strong>�t�@�C���T�C�Y�F</strong>�ڕW�T�C�Y�Ƃ̃o�����X</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>�ϊ����ɉ掿���򉻂����ꍇ�̑Ώ��@�́H</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
+              <p class="text-amber-800 text-sm font-medium">
+                ?? �掿�򉻂͎��Ɉ��k�ݒ��⌳�摜�̓����ɋN�����܂��B
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-red-600 mb-3">�򉻌����Ƒ΍�</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>? <strong>�i���ݒ肪�Ⴂ�F</strong>80%�ȏ��ɏグ�čĕϊ�</li>
+                  <li>? <strong>�t�H�[�}�b�g�s�K�؁F</strong>PNG��JPEG���̌�����</li>
+                  <li>? <strong>�d�����k�F</strong>���摜�����Ɉ��k�ς݂̏ꍇ</li>
+                  <li>? <strong>�𑜓x�s���F</strong>���摜�̃T�C�Y�m�F</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-blue-600 mb-3">�i�������̕��@</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>? <strong>PNG�`���F</strong>�t���k�ōō��i��</li>
+                  <li>? <strong>WebP�t�F</strong>PNG���ւŌy�ʉ�</li>
+                  <li>? <strong>JPEG���i���F</strong>90-95%�ݒ�</li>
+                  <li>? <strong>���摜���P�F</strong>���𑜓x�f�ނ̎g�p</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
+          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
+            <span>���e�ʃt�@�C���̏������x���E���s�����ꍇ�́H</span>
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <div class="mt-4 space-y-4">
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+              <p class="text-green-800 text-sm font-medium">
+                ? �u���E�U�����������ɔz�����������Ō����I�ȕϊ����\�ł��B
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-medium text-gray-800 mb-2">���������T�C�Y�ƕ��@</h4>
+                <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                  <li>? <strong>���������F</strong>10MP�i��3000�~3000px�j���x</li>
+                  <li>? <strong>���O���T�C�Y�F</strong>�p�r�ɉ������K�؃T�C�Y�ɒ���</li>
+                  <li>? <strong>���������F</strong>�����t�@�C������������</li>
+                  <li>? <strong>�����������F</strong>�������̃u���E�U���t���b�V��</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 mb-2">�p�t�H�[�}���X�œK��</h4>
+                <ul class="text-sm text-gray-600 space-y-1 ml-4">
+                  <li>? <strong>�u���E�U�I���F</strong>Chrome�EEdge���̍����\�u���E�U</li>
+                  <li>? <strong>���^�u���F</strong>���������\�[�X�̊m��</li>
+                  <li>? <strong>�i�K�I�ϊ��F</strong>���T�C�Y���t�H�[�}�b�g�ϊ��̏���</li>
+                  <li>? <strong>�i�������F</strong>�������ׂƕi���̃o�����X</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ���p�����W�Z�N�V���� -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">���ۂ̊��p����</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+          �l�X�ȋƊE�E�p�r�ł̎��ۂ̉摜�ϊ��E�œK�����p���������Љ�܂��B
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">??</div>
+          <h3 class="text-lg font-semibold mb-3">Web�T�C�g�̕\�����x���P</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            EC���Ƃł́A���i�摜��WebP�`���Ɉꊇ�ϊ��B
+            �y�[�W�ǂݍ��ݎ���40%�Z�k�ɂ����A�R���o�[�W������15%�����������B
+          </p>
+          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
+            �g�p�@�\: JPEG��WebP�ϊ��i�i��80%�j
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> �ǂݍ��ݎ���40%�Z�k + CVR 15%����
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">??</div>
+          <h3 class="text-lg font-semibold mb-3">SNS�}�[�P�e�B���O�̌�����</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            ���e�u�����h�ł́AInstagram���e�p�ɉ摜�������œK���B
+            �e�v���b�g�t�H�[���̃T�C�Y�����ɑΉ����A���e���Ǝ���70%�팸�B
+          </p>
+          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
+            �g�p�@�\: �T�C�Y���� + JPEG�i��70%
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> ���e���Ǝ���70%�팸 + �i������
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">??</div>
+          <h3 class="text-lg font-semibold mb-3">�f�U�C�������̌�����</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            �L���㗝�X�ł́A�N���C�A���g�f�ނ𓝈��t�H�[�}�b�g�ɕϊ��B
+            �����H���̕W�����ɂ����A�v���W�F�N�g�i�s���x30%�����B
+          </p>
+          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
+            �g�p�@�\: PNG��JPEG�ϊ� + �i������
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> ���쑬�x30%���� + �i������
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">??</div>
+          <h3 class="text-lg font-semibold mb-3">���ƃV�X�e���̗e�ʍœK��</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            �����Ƃł́A�Z�p�����̉摜�������k�`���ɕϊ��B
+            �T�[�o�[�e��50%�팸�ɂ����A�C���t���R�X�g�N��200���~�팸�B
+          </p>
+          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
+            �g�p�@�\: PNG��WebP�ϊ��i�i��85%�j
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> �e��50%�팸 + �R�X�g200���~�팸
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">???</div>
+          <h3 class="text-lg font-semibold mb-3">�����E�o�ŋƊE�ł̕i���Ǘ�</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            �o�ŎЂł́AWeb�p�摜�������p���i��JPEG�ɕϊ��B
+            �J�^���O�����̎������ɂ����A��������50%�Z�k�������B
+          </p>
+          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
+            �g�p�@�\: WebP��JPEG�ϊ��i�i��95%�j
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> ��������50%�Z�k + �i������
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="text-4xl mb-4">??</div>
+          <h3 class="text-lg font-semibold mb-3">�@�����d���̉摜����</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            ���Z�@�ւł́A�@�������̉摜�����[�J���ϊ��B
+            �Z�L�����e�B���ۂ��Ȃ��������I�ȃf�W�^�����������B
+          </p>
+          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
+            �g�p�@�\: ���[�J������ + PNG���i���ϊ�
+          </div>
+          <div class="text-xs text-gray-500">
+            <strong>���ʁF</strong> �Z�L�����e�B�m�� + �Ɩ�������
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">���Ȃ��̉摜���œK�����Ă݂܂��񂩁H</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            �������̎������Q�l�ɁA���Ȃ��̋ƊE�E�p�r�ɍ��킹���摜�œK�����n�߂Ă݂܂��傤�B
+            ���c�[���Ȃ��A���ׂĂ̕ϊ��j�[�Y�ɑΉ��������i���ȏ��������S�Ɏ��s�ł��܂��B
+          </p>
+          <a href="#" onclick="document.querySelector('.drop-area').scrollIntoView({behavior: 'smooth'}); return false;" 
+             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            �������摜�ϊ����n�߂�
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="���̃c�[���ɂ���">
+    <h2 class="font-bold text-base mb-2">negi-lab.com�̓Ǝ����E�^�c���j�E�Ɛӎ���</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>�{�c�[����negi-lab.com���Ǝ��J���E�^�c���Ă��܂��B</li>
+      <li>�L���E�A�t�B���G�C�g���܂݂܂����A���[�U�[�̌����ŗD�悵�Ă��܂��B</li>
+      <li>���m���E���S���ɂ͖��S�������Ă��܂����A���p�͎��ȐӔC�ł��肢���܂��B</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">�v���C�o�V�[�|���V�[</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">���p�K��</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">�^�c�ҏ���</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">���₢���킹</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">�T�C�g�}�b�v</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
+
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="����">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+
+  <script type="module" defer>
+    // 翻訳機能やその他の共通機能をここに直接実装
+    window.translations = {
+      ja: {
+        imageConverter: {
+          pageTitle: "【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com",
+          metaDescription: "KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。"
+        }
+      },
+      en: {
+        imageConverter: {
+          pageTitle: "【Free】Professional Image Converter - KTX・DDS・TGA Support Batch Processing | negi-lab.com",
+          metaDescription: "Advanced image converter supporting 13 formats including KTX・KTX2・DDS・TGA for game development. Batch processing, rotation/filter effects, specialized presets for game/VR/3D production. Up to 50MB support."
+        }
+      }
+    };
+  </script>
+  <script>
+    // メインロジックは分離されたJSファイルで実行されます
+    document.addEventListener('DOMContentLoaded', () => {
+        // 画像変換機能の初期化は image-converter-ui.js で実行
+        if (window.ImageConverterUI) {
+            window.ImageConverterUI.init();
+        }
+    });
+  </script>
+  <script src="../js/image-converter-guide.js"></script>
+  
+</body>
+</html>
