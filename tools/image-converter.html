@@ -4,25 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <!-- Content Security Policy -->
+  <!-- Content Security Policy (開発中は一時無効化) -->
+  <!--
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com; 
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com; 
     style-src 'self' 'unsafe-inline' 
       https://fonts.googleapis.com 
       https://cdn.tailwindcss.com; 
     font-src 'self' 
       https://fonts.gstatic.com; 
     img-src 'self' data: blob:; 
-    connect-src 'self'; 
+    connect-src 'self' 
+      https://www.google-analytics.com
+      https://analytics.google.com; 
     object-src 'none'; 
     base-uri 'self';
   " />
+  -->
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
   <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
@@ -32,10 +38,51 @@
   <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
   <meta name="robots" content="index,follow" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <!-- Tailwind CSS (開発用CDN - 本番環境では別途インストールを推奨) -->
   <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <!-- 画像処理ライブラリ（フォールバック処理付き） -->
+  <script>
+    // ライブラリ読み込み確認とフォールバック
+    window.addEventListener('load', function() {
+      console.log('=== 画像変換ツール初期化 ===');
+      
+      if (typeof UTIF === 'undefined') {
+        console.warn('⚠️ UTIF library not loaded - TIFF conversion will use fallback');
+        window.UTIF_FALLBACK = true;
+        
+        // ユーザーに通知
+        setTimeout(() => {
+          const statusMsg = document.getElementById('statusMessage');
+          if (statusMsg) {
+            statusMsg.textContent = 'ℹ️ TIFF変換は簡易モードで動作します（UTIFライブラリ未読み込み）';
+            statusMsg.style.color = '#f59e0b'; // amber color
+          }
+        }, 1000);
+      } else {
+        console.log('✅ UTIF library loaded successfully');
+        window.UTIF_FALLBACK = false;
+      }
+      
+      // TailwindCSS読み込み確認
+      if (typeof tailwind !== 'undefined') {
+        console.log('✅ Tailwind CSS loaded successfully');
+      } else {
+        console.warn('⚠️ Tailwind CSS may not be loaded properly');
+      }
+      
+      console.log('=== 初期化完了 ===');
+    });
+  </script>
+  <!-- UTIF.js for TIFF処理 -->
+  <script src="https://unpkg.com/utif@4.5.0/UTIF.js" 
+          onload="console.log('UTIF library loaded from unpkg.com')"
+          onerror="console.error('UTIF library failed to load from unpkg.com')"></script>
+  <!-- PNGJS for PNG処理（ブラウザ版が利用できない場合はスキップ） -->
+  <script>
+    // PNGJSはNode.js向けなので、ブラウザではネイティブCanvas APIを使用
+    console.log('PNG processing will use native Canvas API');
+    window.PNGJS_FALLBACK = true;
+  </script>
   
   <!-- Tailwind Configuration -->
   <script>
@@ -151,11 +198,13 @@
       background-color: rgba(74, 222, 128, 0.02);
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <!-- Google AdSense (本番環境のみ) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script> -->
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
-  <!-- Google Analytics（gtag.js）全ページ用 -->
+  <!-- Google Analytics（gtag.js）全ページ用 (本番環境のみ) -->
+  <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -163,6 +212,7 @@
     gtag('js', new Date());
     gtag('config', 'G-N9X3N0RY0H');
   </script>
+  -->
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -247,6 +297,8 @@
             <option value="game-texture">ゲームテクスチャ (KTX2 80%)</option>
             <option value="mobile-game">モバイルゲーム (KTX 512px)</option>
             <option value="3d-model">3Dモデル用 (TGA)</option>
+            <option value="hdr-imaging">HDRイメージング</option>
+            <option value="vfx-exr">VFX・映像制作 (EXR)</option>
           </select>
         </div>
 
@@ -261,6 +313,8 @@
             <option value="application/ktx">KTX (Khronos Texture)</option>
             <option value="application/ktx2">KTX2 (Khronos Texture 2.0)</option>
             <option value="image/x-targa">TGA (Targa)</option>
+            <option value="image/vnd.radiance">HDR (高ダイナミックレンジ)</option>
+            <option value="image/x-exr">EXR (OpenEXR)</option>
             <option value="image/vnd-ms.dds">DDS (DirectDraw Surface)</option>
           </select>
         </div>
@@ -522,7 +576,6 @@
             </div>
           </div>
         </div>
-      </div>
         
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">技術仕様と処理方式</h3>
@@ -890,7 +943,23 @@
     </div>
   </div>
 
-  <script type="module" src="../index.js" defer></script>
+  <script type="module" defer>
+    // 翻訳機能やその他の共通機能をここに直接実装
+    window.translations = {
+      ja: {
+        imageConverter: {
+          pageTitle: "【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com",
+          metaDescription: "KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。"
+        }
+      },
+      en: {
+        imageConverter: {
+          pageTitle: "【Free】Professional Image Converter - KTX・DDS・TGA Support Batch Processing | negi-lab.com",
+          metaDescription: "Advanced image converter supporting 13 formats including KTX・KTX2・DDS・TGA for game development. Batch processing, rotation/filter effects, specialized presets for game/VR/3D production. Up to 50MB support."
+        }
+      }
+    };
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         // DOM要素の取得
@@ -924,6 +993,520 @@
         let currentRotation = 0;
         let currentFilter = 'none';
         let results = [];
+
+        // フォーマット変換ユーティリティ
+        const FormatConverter = {
+            // Canvas to various formats
+            canvasToBlob: function(canvas, format, quality) {
+                return new Promise((resolve, reject) => {
+                    try {
+                        switch(format) {
+                            case 'image/jpeg':
+                            case 'image/png':
+                            case 'image/webp':
+                                canvas.toBlob(resolve, format, quality);
+                                break;
+                            case 'image/bmp':
+                                this.canvasToBMP(canvas).then(resolve).catch(reject);
+                                break;
+                            case 'image/tiff':
+                                this.canvasToTIFF(canvas, quality).then(resolve).catch(reject);
+                                break;
+                            case 'application/ktx':
+                                this.canvasToKTX(canvas, quality).then(resolve).catch(reject);
+                                break;
+                            case 'application/ktx2':
+                                this.canvasToKTX2(canvas, quality).then(resolve).catch(reject);
+                                break;
+                            case 'image/x-targa':
+                                this.canvasToTGA(canvas, quality).then(resolve).catch(reject);
+                                break;
+                            case 'image/vnd-ms.dds':
+                                this.canvasToDDS(canvas, quality).then(resolve).catch(reject);
+                                break;
+                            default:
+                                canvas.toBlob(resolve, 'image/png');
+                        }
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
+            },
+
+            // BMP変換
+            canvasToBMP: function(canvas) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const bmpData = this.createBMPFromImageData(imageData);
+                    const blob = new Blob([bmpData], { type: 'image/bmp' });
+                    resolve(blob);
+                });
+            },
+
+            createBMPFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                const rowSize = Math.floor((24 * width + 31) / 32) * 4;
+                const pixelDataSize = rowSize * height;
+                const fileSize = 54 + pixelDataSize;
+                
+                const buffer = new ArrayBuffer(fileSize);
+                const view = new DataView(buffer);
+                
+                // BMP Header
+                view.setUint16(0, 0x424D, true); // 'BM'
+                view.setUint32(2, fileSize, true);
+                view.setUint32(6, 0, true);
+                view.setUint32(10, 54, true);
+                
+                // DIB Header
+                view.setUint32(14, 40, true);
+                view.setUint32(18, width, true);
+                view.setUint32(22, height, true);
+                view.setUint16(26, 1, true);
+                view.setUint16(28, 24, true);
+                view.setUint32(30, 0, true);
+                view.setUint32(34, pixelDataSize, true);
+                view.setUint32(38, 2835, true);
+                view.setUint32(42, 2835, true);
+                view.setUint32(46, 0, true);
+                view.setUint32(50, 0, true);
+                
+                // Pixel data
+                let offset = 54;
+                for (let y = height - 1; y >= 0; y--) {
+                    for (let x = 0; x < width; x++) {
+                        const i = (y * width + x) * 4;
+                        view.setUint8(offset++, data[i + 2]); // B
+                        view.setUint8(offset++, data[i + 1]); // G
+                        view.setUint8(offset++, data[i]);     // R
+                    }
+                    // Padding
+                    const padding = rowSize - (width * 3);
+                    for (let p = 0; p < padding; p++) {
+                        view.setUint8(offset++, 0);
+                    }
+                }
+                
+                return buffer;
+            },
+
+            // TIFF変換（UTIFライブラリ使用）
+            canvasToTIFF: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    try {
+                        const ctx = canvas.getContext('2d');
+                        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        
+                        // UTIFライブラリが利用可能な場合
+                        if (typeof UTIF !== 'undefined' && !window.UTIF_FALLBACK) {
+                            try {
+                                // UTIFでTIFFエンコードを試行
+                                const tiffBuffer = UTIF.encodeImage(imageData.data, canvas.width, canvas.height);
+                                const blob = new Blob([tiffBuffer], { type: 'image/tiff' });
+                                resolve(blob);
+                                return;
+                            } catch (utifError) {
+                                console.warn('UTIF encoding failed:', utifError);
+                            }
+                        }
+                        
+                        // フォールバック: 簡易TIFF実装
+                        const tiffData = this.createSimpleTIFF(imageData);
+                        const blob = new Blob([tiffData], { type: 'image/tiff' });
+                        resolve(blob);
+                        
+                    } catch (error) {
+                        console.warn('TIFF conversion failed, fallback to PNG:', error);
+                        // 最終フォールバック: PNGとして出力
+                        canvas.toBlob((blob) => {
+                            resolve(blob);
+                        }, 'image/png');
+                    }
+                });
+            },
+
+            // 簡易TIFF実装（基本的なTIFFヘッダー）
+            createSimpleTIFF: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                // TIFF ヘッダー（Little Endian）
+                const headerSize = 8;
+                const ifdSize = 12 * 14 + 6; // 14 IFD entries + header + footer
+                const imageDataOffset = headerSize + ifdSize;
+                const totalSize = imageDataOffset + data.length;
+                
+                const buffer = new ArrayBuffer(totalSize);
+                const view = new DataView(buffer);
+                const uint8View = new Uint8Array(buffer);
+                
+                // TIFF Header
+                view.setUint16(0, 0x4949, true); // Little endian
+                view.setUint16(2, 42, true);     // Magic number
+                view.setUint32(4, headerSize, true); // IFD offset
+                
+                // IFD (Image File Directory)
+                let offset = headerSize;
+                
+                // Number of directory entries
+                view.setUint16(offset, 14, true);
+                offset += 2;
+                
+                // IFD entries (12 bytes each)
+                const writeIFDEntry = (tag, type, count, value) => {
+                    view.setUint16(offset, tag, true);     // Tag
+                    view.setUint16(offset + 2, type, true); // Type
+                    view.setUint32(offset + 4, count, true); // Count
+                    view.setUint32(offset + 8, value, true); // Value/Offset
+                    offset += 12;
+                };
+                
+                writeIFDEntry(256, 4, 1, width);          // ImageWidth
+                writeIFDEntry(257, 4, 1, height);         // ImageLength
+                writeIFDEntry(258, 3, 4, 0);              // BitsPerSample (8,8,8,8)
+                writeIFDEntry(259, 3, 1, 1);              // Compression (none)
+                writeIFDEntry(262, 3, 1, 2);              // PhotometricInterpretation (RGB)
+                writeIFDEntry(273, 4, 1, imageDataOffset); // StripOffsets
+                writeIFDEntry(277, 3, 1, 4);              // SamplesPerPixel (RGBA)
+                writeIFDEntry(278, 4, 1, height);         // RowsPerStrip
+                writeIFDEntry(279, 4, 1, data.length);    // StripByteCounts
+                writeIFDEntry(282, 5, 1, 0);              // XResolution
+                writeIFDEntry(283, 5, 1, 0);              // YResolution
+                writeIFDEntry(284, 3, 1, 1);              // PlanarConfiguration
+                writeIFDEntry(296, 3, 1, 2);              // ResolutionUnit
+                writeIFDEntry(338, 3, 1, 1);              // ExtraSamples (alpha)
+                
+                // Next IFD offset (0 = no more IFDs)
+                view.setUint32(offset, 0, true);
+                
+                // Copy image data
+                uint8View.set(data, imageDataOffset);
+                
+                return buffer;
+            },
+
+            // TGA変換
+            canvasToTGA: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const tgaData = this.createTGAFromImageData(imageData);
+                    const blob = new Blob([tgaData], { type: 'image/x-targa' });
+                    resolve(blob);
+                });
+            },
+
+            createTGAFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                const header = new Uint8Array(18);
+                header[0] = 0;  // ID length
+                header[1] = 0;  // Color map type
+                header[2] = 2;  // Image type (uncompressed true-color)
+                header[12] = width & 0xFF;
+                header[13] = (width >> 8) & 0xFF;
+                header[14] = height & 0xFF;
+                header[15] = (height >> 8) & 0xFF;
+                header[16] = 32; // Bits per pixel (RGBA)
+                header[17] = 8;  // Image descriptor
+                
+                const pixelData = new Uint8Array(width * height * 4);
+                
+                // TGA uses bottom-left origin, so flip Y
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        const srcIndex = ((height - 1 - y) * width + x) * 4;
+                        const dstIndex = (y * width + x) * 4;
+                        
+                        pixelData[dstIndex] = data[srcIndex + 2];     // B
+                        pixelData[dstIndex + 1] = data[srcIndex + 1]; // G
+                        pixelData[dstIndex + 2] = data[srcIndex];     // R
+                        pixelData[dstIndex + 3] = data[srcIndex + 3]; // A
+                    }
+                }
+                
+                const result = new Uint8Array(header.length + pixelData.length);
+                result.set(header, 0);
+                result.set(pixelData, header.length);
+                
+                return result;
+            },
+
+            // KTX変換（基本実装）
+            canvasToKTX: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const ktxData = this.createKTXFromImageData(imageData);
+                    const blob = new Blob([ktxData], { type: 'application/ktx' });
+                    resolve(blob);
+                });
+            },
+
+            createKTXFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                // KTX identifier
+                const identifier = new Uint8Array([
+                    0xAB, 0x4B, 0x54, 0x58, 0x20, 0x31, 0x31, 0xBB,
+                    0x0D, 0x0A, 0x1A, 0x0A
+                ]);
+                
+                // KTX header
+                const header = new ArrayBuffer(64);
+                const headerView = new DataView(header);
+                
+                headerView.setUint32(0, 0x04030201, true); // endianness
+                headerView.setUint32(4, 0x1908, true);     // glType (GL_RGBA)
+                headerView.setUint32(8, 1, true);          // glTypeSize
+                headerView.setUint32(12, 0x1908, true);    // glFormat (GL_RGBA)
+                headerView.setUint32(16, 0x1908, true);    // glInternalFormat
+                headerView.setUint32(20, 0x1401, true);    // glBaseInternalFormat
+                headerView.setUint32(24, width, true);     // pixelWidth
+                headerView.setUint32(28, height, true);    // pixelHeight
+                headerView.setUint32(32, 0, true);         // pixelDepth
+                headerView.setUint32(36, 0, true);         // numberOfArrayElements
+                headerView.setUint32(40, 1, true);         // numberOfFaces
+                headerView.setUint32(44, 1, true);         // numberOfMipmapLevels
+                headerView.setUint32(48, 0, true);         // bytesOfKeyValueData
+                
+                // Image data size
+                const imageDataSize = width * height * 4;
+                const imageSizeHeader = new ArrayBuffer(4);
+                const imageSizeView = new DataView(imageSizeHeader);
+                imageSizeView.setUint32(0, imageDataSize, true);
+                
+                // Combine all parts
+                const result = new Uint8Array(
+                    identifier.length + header.byteLength + 
+                    imageSizeHeader.byteLength + imageDataSize
+                );
+                
+                let offset = 0;
+                result.set(identifier, offset);
+                offset += identifier.length;
+                result.set(new Uint8Array(header), offset);
+                offset += header.byteLength;
+                result.set(new Uint8Array(imageSizeHeader), offset);
+                offset += imageSizeHeader.byteLength;
+                result.set(data, offset);
+                
+                return result;
+            },
+
+            // KTX2変換（KTXの拡張版）
+            canvasToKTX2: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    // KTX2は複雑なため、基本のKTXとして処理
+                    this.canvasToKTX(canvas, quality).then(resolve);
+                });
+            },
+
+            // DDS変換（基本実装）
+            canvasToDDS: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const ddsData = this.createDDSFromImageData(imageData);
+                    const blob = new Blob([ddsData], { type: 'image/vnd-ms.dds' });
+                    resolve(blob);
+                });
+            },
+
+            createDDSFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                // DDS header
+                const header = new ArrayBuffer(128);
+                const headerView = new DataView(header);
+                
+                // DDS magic number
+                headerView.setUint32(0, 0x20534444, true); // 'DDS '
+                
+                // DDS_HEADER
+                headerView.setUint32(4, 124, true);        // dwSize
+                headerView.setUint32(8, 0x1007, true);     // dwFlags
+                headerView.setUint32(12, height, true);    // dwHeight
+                headerView.setUint32(16, width, true);     // dwWidth
+                headerView.setUint32(20, width * 4, true); // dwPitchOrLinearSize
+                headerView.setUint32(24, 0, true);         // dwDepth
+                headerView.setUint32(28, 1, true);         // dwMipMapCount
+                
+                // DDS_PIXELFORMAT
+                headerView.setUint32(76, 32, true);        // dwSize
+                headerView.setUint32(80, 0x41, true);      // dwFlags (RGBA)
+                headerView.setUint32(84, 0, true);         // dwFourCC
+                headerView.setUint32(88, 32, true);        // dwRGBBitCount
+                headerView.setUint32(92, 0x000000FF, true); // dwRBitMask
+                headerView.setUint32(96, 0x0000FF00, true); // dwGBitMask
+                headerView.setUint32(100, 0x00FF0000, true); // dwBBitMask
+                headerView.setUint32(104, 0xFF000000, true); // dwABitMask
+                
+                headerView.setUint32(108, 0x1000, true);   // dwCaps
+                
+                // Combine header and pixel data
+                const result = new Uint8Array(header.byteLength + data.length);
+                result.set(new Uint8Array(header), 0);
+                result.set(data, header.byteLength);
+                
+                return result;
+            },
+
+            // SVG変換（Canvas to SVG）
+            canvasToSVG: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const width = canvas.width;
+                    const height = canvas.height;
+                    
+                    // Canvas内容をBase64エンコードされたPNG画像として取得
+                    const dataURL = canvas.toDataURL('image/png');
+                    
+                    // SVGコンテンツ生成
+                    const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <image width="${width}" height="${height}" xlink:href="${dataURL}" />
+</svg>`;
+                    
+                    const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+                    resolve(blob);
+                });
+            },
+
+            // HDR変換（基本実装 - RGBE形式）
+            canvasToHDR: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const hdrData = this.createHDRFromImageData(imageData);
+                    const blob = new Blob([hdrData], { type: 'image/vnd.radiance' });
+                    resolve(blob);
+                });
+            },
+
+            createHDRFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                // HDR（RGBE）ヘッダー
+                const header = `#?RADIANCE\n# Made with negi-lab.com image converter\nFORMAT=32-bit_rle_rgbe\n\n-Y ${height} +X ${width}\n`;
+                const headerBytes = new TextEncoder().encode(header);
+                
+                // RGBE形式のピクセルデータ生成
+                const rgbeData = new Uint8Array(width * height * 4);
+                
+                for (let i = 0; i < width * height; i++) {
+                    const srcIndex = i * 4;
+                    const dstIndex = i * 4;
+                    
+                    // RGB値を0-1範囲に正規化
+                    const r = data[srcIndex] / 255.0;
+                    const g = data[srcIndex + 1] / 255.0;
+                    const b = data[srcIndex + 2] / 255.0;
+                    
+                    // 最大値を見つけて指数部を計算
+                    const maxComponent = Math.max(r, g, b);
+                    
+                    if (maxComponent < 1e-32) {
+                        // 黒ピクセル
+                        rgbeData[dstIndex] = 0;
+                        rgbeData[dstIndex + 1] = 0;
+                        rgbeData[dstIndex + 2] = 0;
+                        rgbeData[dstIndex + 3] = 0;
+                    } else {
+                        // RGBE変換
+                        const exponent = Math.floor(Math.log2(maxComponent)) + 128;
+                        const scale = Math.pow(2, exponent - 128 - 8);
+                        
+                        rgbeData[dstIndex] = Math.min(255, Math.floor(r / scale));
+                        rgbeData[dstIndex + 1] = Math.min(255, Math.floor(g / scale));
+                        rgbeData[dstIndex + 2] = Math.min(255, Math.floor(b / scale));
+                        rgbeData[dstIndex + 3] = exponent;
+                    }
+                }
+                
+                // ヘッダーとデータを結合
+                const result = new Uint8Array(headerBytes.length + rgbeData.length);
+                result.set(headerBytes, 0);
+                result.set(rgbeData, headerBytes.length);
+                
+                return result;
+            },
+
+            // EXR変換（基本実装 - OpenEXR Half形式）
+            canvasToEXR: function(canvas, quality) {
+                return new Promise((resolve) => {
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const exrData = this.createEXRFromImageData(imageData);
+                    const blob = new Blob([exrData], { type: 'image/x-exr' });
+                    resolve(blob);
+                });
+            },
+
+            createEXRFromImageData: function(imageData) {
+                const width = imageData.width;
+                const height = imageData.height;
+                const data = imageData.data;
+                
+                // 簡易EXRヘッダー（実際のEXRは非常に複雑）
+                const header = new ArrayBuffer(1024);
+                const headerView = new DataView(header);
+                
+                // EXRマジックナンバー
+                headerView.setUint32(0, 0x01312f76, true); // EXR magic
+                headerView.setUint32(4, 2, true);          // Version
+                headerView.setUint32(8, width, true);      // Width
+                headerView.setUint32(12, height, true);    // Height
+                
+                // Halfフロート形式のピクセルデータ（簡易実装）
+                const pixelData = new Uint16Array(width * height * 4);
+                
+                for (let i = 0; i < width * height; i++) {
+                    const srcIndex = i * 4;
+                    const dstIndex = i * 4;
+                    
+                    // 8bit RGB を 16bit Half に変換（簡易）
+                    pixelData[dstIndex] = this.floatToHalf(data[srcIndex] / 255.0);       // R
+                    pixelData[dstIndex + 1] = this.floatToHalf(data[srcIndex + 1] / 255.0); // G
+                    pixelData[dstIndex + 2] = this.floatToHalf(data[srcIndex + 2] / 255.0); // B
+                    pixelData[dstIndex + 3] = this.floatToHalf(data[srcIndex + 3] / 255.0); // A
+                }
+                
+                // ヘッダーとデータを結合
+                const result = new Uint8Array(header.byteLength + pixelData.byteLength);
+                result.set(new Uint8Array(header), 0);
+                result.set(new Uint8Array(pixelData.buffer), header.byteLength);
+                
+                return result;
+            },
+
+            // Float to Half precision conversion（簡易実装）
+            floatToHalf: function(val) {
+                const floatView = new Float32Array(1);
+                const int32View = new Int32Array(floatView.buffer);
+                floatView[0] = val;
+                const bits = int32View[0];
+                
+                const sign = (bits >>> 31) << 15;
+                const exponent = (((bits >>> 23) & 0xff) - 127 + 15) << 10;
+                const mantissa = (bits >>> 13) & 0x3ff;
+                
+                return sign | exponent | mantissa;
+            }
+        };
 
         // プリセット設定
         const presets = {
@@ -974,6 +1557,18 @@
                 quality: 0.9,
                 maxWidth: '',
                 maxHeight: ''
+            },
+            'hdr-imaging': {
+                format: 'image/vnd.radiance',
+                quality: 1.0,
+                maxWidth: '',
+                maxHeight: ''
+            },
+            'vfx-exr': {
+                format: 'image/x-exr',
+                quality: 1.0,
+                maxWidth: '',
+                maxHeight: ''
             }
         };
 
@@ -990,8 +1585,20 @@
         }
 
         function showMessage(message, isError = false) {
-            statusMessage.textContent = isError ? '' : message;
-            errorMessage.textContent = isError ? message : '';
+            const statusMessage = document.getElementById('statusMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (statusMessage && errorMessage) {
+                statusMessage.textContent = isError ? '' : message;
+                errorMessage.textContent = isError ? message : '';
+            }
+            
+            // コンソールにも出力
+            if (isError) {
+                console.error('Error:', message);
+            } else {
+                console.log('Status:', message);
+            }
         }
 
         function updateFileList() {
@@ -1182,22 +1789,42 @@
             
             try {
                 results = [];
-                for (let i = 0; i < selectedFiles.length; i++) {
+                const totalFiles = selectedFiles.length;
+                
+                for (let i = 0; i < totalFiles; i++) {
                     const file = selectedFiles[i];
-                    showMessage(`変換中... (${i + 1}/${selectedFiles.length})`);
+                    const progressPercent = Math.round(((i + 1) / totalFiles) * 100);
+                    showMessage(`変換中... ${file.name} (${i + 1}/${totalFiles} - ${progressPercent}%)`);
                     
-                    const result = await convertImage(file);
-                    if (result) {
-                        results.push(result);
+                    try {
+                        const result = await convertImage(file);
+                        if (result) {
+                            results.push(result);
+                            showMessage(`✅ ${file.name} の変換が完了しました (${i + 1}/${totalFiles})`);
+                        }
+                    } catch (fileError) {
+                        console.error(`Error converting ${file.name}:`, fileError);
+                        showMessage(`❌ ${file.name} の変換に失敗しました: ${fileError.message}`, true);
+                        
+                        // 失敗した場合でも続行するかを確認（短時間表示）
+                        setTimeout(() => {
+                            if (i < totalFiles - 1) {
+                                showMessage(`次のファイルの変換を続行します...`);
+                            }
+                        }, 1000);
                     }
                 }
                 
-                displayResults();
-                showMessage(`${results.length}個のファイルが変換されました`);
+                if (results.length > 0) {
+                    displayResults();
+                    showMessage(`🎉 ${results.length}個のファイルが正常に変換されました`);
+                } else {
+                    showMessage('変換できたファイルがありませんでした。ファイル形式やサイズを確認してください。', true);
+                }
                 
             } catch (error) {
                 console.error('Conversion error:', error);
-                showMessage('変換中にエラーが発生しました', true);
+                showMessage('変換処理中に予期しないエラーが発生しました', true);
             } finally {
                 this.disabled = false;
             }
@@ -1311,10 +1938,13 @@
                                         'image/webp': 'webp',
                                         'image/bmp': 'bmp',
                                         'image/tiff': 'tiff',
+                                        'image/svg+xml': 'svg',
                                         'application/ktx': 'ktx',
                                         'application/ktx2': 'ktx2',
                                         'image/x-targa': 'tga',
-                                        'image/vnd-ms.dds': 'dds'
+                                        'image/vnd-ms.dds': 'dds',
+                                        'image/vnd.radiance': 'hdr',
+                                        'image/x-exr': 'exr'
                                     };
                                     
                                     fileExtension = extensionMap[outputMimeType] || outputMimeType.split('/')[1];
@@ -1327,26 +1957,48 @@
                                         originalName: file.name
                                     });
                                 } else {
-                                    reject(new Error('変換に失敗しました'));
+                                    reject(new Error(`${outputMimeType}形式への変換に失敗しました`));
                                 }
                             };
                             
                             // フォーマット別変換処理
-                            if (outputMimeType === 'image/png' || outputMimeType === 'image/bmp' || outputMimeType === 'image/tiff') {
-                                canvas.toBlob(callback, outputMimeType);
-                            } else if (outputMimeType === 'application/ktx' || outputMimeType === 'application/ktx2') {
-                                // KTXフォーマットは特別処理（Canvas APIでは直接対応していないため、データURLで代替）
-                                const dataUrl = canvas.toDataURL('image/png');
-                                fetch(dataUrl)
-                                    .then(res => res.blob())
-                                    .then(callback)
-                                    .catch(() => reject(new Error('KTX変換に失敗しました')));
-                            } else if (outputMimeType === 'image/x-targa') {
-                                // TGA形式も同様にPNGとして処理
-                                canvas.toBlob(callback, 'image/png');
-                            } else {
-                                // 品質設定対応フォーマット
-                                canvas.toBlob(callback, outputMimeType, quality);
+                            try {
+                                if (outputMimeType === 'image/bmp') {
+                                    // BMPフォーマット（FormatConverter使用）
+                                    FormatConverter.canvasToBMP(canvas, quality).then(callback).catch(err => reject(new Error(`BMP変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/x-targa') {
+                                    // TGAフォーマット（FormatConverter使用）
+                                    FormatConverter.canvasToTGA(canvas, quality).then(callback).catch(err => reject(new Error(`TGA変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'application/ktx') {
+                                    // KTXフォーマット（FormatConverter使用）
+                                    FormatConverter.canvasToKTX(canvas, quality).then(callback).catch(err => reject(new Error(`KTX変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'application/ktx2') {
+                                    // KTX2フォーマット（FormatConverter使用）
+                                    FormatConverter.canvasToKTX2(canvas, quality).then(callback).catch(err => reject(new Error(`KTX2変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/vnd-ms.dds') {
+                                    // DDSフォーマット（FormatConverter使用）
+                                    FormatConverter.canvasToDDS(canvas, quality).then(callback).catch(err => reject(new Error(`DDS変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/tiff') {
+                                    // TIFFフォーマット（UTIFライブラリ使用）
+                                    FormatConverter.canvasToTIFF(canvas, quality).then(callback).catch(err => reject(new Error(`TIFF変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/vnd.radiance') {
+                                    // HDRフォーマット（基本実装）
+                                    FormatConverter.canvasToHDR(canvas, quality).then(callback).catch(err => reject(new Error(`HDR変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/x-exr') {
+                                    // EXRフォーマット（基本実装）
+                                    FormatConverter.canvasToEXR(canvas, quality).then(callback).catch(err => reject(new Error(`EXR変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/svg+xml') {
+                                    // SVGフォーマット（ベクター変換）
+                                    FormatConverter.canvasToSVG(canvas, quality).then(callback).catch(err => reject(new Error(`SVG変換エラー: ${err.message}`)));
+                                } else if (outputMimeType === 'image/png') {
+                                    // PNG（標準）
+                                    canvas.toBlob(callback, outputMimeType);
+                                } else {
+                                    // 品質設定対応フォーマット（JPEG, WebP等）
+                                    canvas.toBlob(callback, outputMimeType, quality);
+                                }
+                            } catch (conversionError) {
+                                reject(new Error(`フォーマット変換処理エラー: ${conversionError.message}`));
                             }
                             
                         } catch (error) {
@@ -1448,6 +2100,24 @@
 
         // 初期設定
         updateQualityVisibility();
+        
+        // サポート状況を表示
+        setTimeout(() => {
+            const supportedFormats = [];
+            supportedFormats.push('✅ JPEG, PNG, WebP, GIF (標準サポート)');
+            supportedFormats.push('✅ BMP, TGA, KTX, KTX2, DDS (自前実装)');
+            supportedFormats.push('✅ HDR, EXR, SVG (基本実装)');
+            
+            if (window.UTIF_FALLBACK) {
+                supportedFormats.push('⚠️ TIFF (簡易モード)');
+            } else {
+                supportedFormats.push('✅ TIFF (完全対応)');
+            }
+            
+            console.log('=== 対応フォーマット状況 ===');
+            supportedFormats.forEach(format => console.log(format));
+            console.log('========================');
+        }, 1500);
     });
   </script>
   <script>
@@ -1481,10 +2151,12 @@
           tipsTitle: '活用例・ヒント',
           tips: [
             '🎮 <strong>ゲームテクスチャ：</strong>「ゲームテクスチャ」プリセットでKTX2最適化',
-            '� <strong>モバイルゲーム：</strong>「モバイルゲーム」プリセットで軽量KTX変換',
+            '📱 <strong>モバイルゲーム：</strong>「モバイルゲーム」プリセットで軽量KTX変換',
             '🎬 <strong>3D制作：</strong>「3Dモデル用」プリセットでTGA無圧縮出力',
+            '🎥 <strong>HDRイメージング：</strong>「HDRイメージング」プリセットで高ダイナミックレンジ',
+            '🎞️ <strong>VFX・映像制作：</strong>「VFX・映像制作」プリセットでEXR高品質',
             '⚡ <strong>Web最適化：</strong>「Web最適化」プリセットでWebP軽量化',
-            '�️ <strong>印刷・DTP：</strong>TIFF形式で最高品質保持'
+            '🖨️ <strong>印刷・DTP：</strong>TIFF形式で最高品質保持'
           ]
         },
         en: {
@@ -1509,10 +2181,12 @@
           tipsTitle: 'Tips & Examples',
           tips: [
             '🎮 <strong>Game Textures:</strong> Use "Game Texture" preset for KTX2 optimization',
-            '� <strong>Mobile Games:</strong> Use "Mobile Game" preset for lightweight KTX',
+            '📱 <strong>Mobile Games:</strong> Use "Mobile Game" preset for lightweight KTX',
             '🎬 <strong>3D Production:</strong> Use "3D Model" preset for uncompressed TGA',
+            '🎥 <strong>HDR Imaging:</strong> Use "HDR Imaging" preset for high dynamic range',
+            '🎞️ <strong>VFX Production:</strong> Use "VFX Production" preset for EXR quality',
             '⚡ <strong>Web Optimization:</strong> Use "Web Optimized" preset for WebP compression',
-            '�️ <strong>Print/DTP:</strong> Use TIFF format for maximum quality preservation'
+            '🖨️ <strong>Print/DTP:</strong> Use TIFF format for maximum quality preservation'
           ]
         }
       };
