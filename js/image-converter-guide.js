@@ -93,7 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(guideBtn && guideModal && guideClose && guideContent) {
         guideBtn.addEventListener('click', function() {
-            const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
+            // 翻訳システムから現在の言語を取得
+            const lang = window.ImageConverterTranslationSystem?.currentLang || 
+                        localStorage.getItem('selectedLanguage') || 
+                        document.documentElement.lang || 'ja';
+            console.log('Guide modal opening with language:', lang);
             renderGuide(lang);
             guideModal.classList.remove('hidden');
         });
@@ -105,5 +109,17 @@ document.addEventListener('DOMContentLoaded', function() {
         guideModal.addEventListener('click', function(e) {
             if(e.target === guideModal) guideModal.classList.add('hidden');
         });
+        
+        // 言語切り替え時にガイドモーダルも更新
+        if (window.ImageConverterTranslationSystem) {
+            const originalSwitch = window.ImageConverterTranslationSystem.switchLanguage;
+            window.ImageConverterTranslationSystem.switchLanguage = function(lang) {
+                originalSwitch.call(this, lang);
+                // ガイドモーダルが開いている場合は更新
+                if (!guideModal.classList.contains('hidden')) {
+                    renderGuide(lang);
+                }
+            };
+        }
     }
 });
