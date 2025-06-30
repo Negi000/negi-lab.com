@@ -14,16 +14,21 @@ window.ImageConverterUI = {
     init: function() {
         this.cacheElements();
         this.bindEvents();
-        this.loadCustomPresets();
+        if (window.ImageConverterPresets) {
+            window.ImageConverterPresets.loadCustomPresets();
+        }
         this.initializeForm();
         this.checkFormatSupport();
         this.initializeTranslations();
     },
 
-    // 翻訳システム初期化
+    // 翻訳システム初期化（既に初期化されている場合はスキップ）
     initializeTranslations: function() {
-        if (window.TranslationSystem) {
+        if (window.TranslationSystem && !window.TranslationSystem._initialized) {
+            console.log('ImageConverterUI: Initializing TranslationSystem...');
             window.TranslationSystem.init();
+        } else if (window.TranslationSystem) {
+            console.log('ImageConverterUI: TranslationSystem already initialized');
         }
     },
 

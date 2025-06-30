@@ -265,7 +265,12 @@
   </nav>
 
   <!-- 外部ライブラリの読み込み -->
-  <script src="../js/translations.js"></script>
+  <!-- 新しい翻訳システムを優先 -->
+  <!-- 共通翻訳システム -->
+  <script src="../js/common-translations.js"></script>
+  <!-- 画像変換ツール専用翻訳システム -->
+  <script src="../js/image-converter-translations.js"></script>
+  
   <script src="../js/image-converter-core.js"></script>
   <script src="../js/image-converter-formats.js"></script>
   <script src="../js/image-converter-presets.js"></script>
@@ -971,15 +976,27 @@
     };
   </script>
   <script>
+    // デバッグ用: コンソールにログを出力
+    console.log('HTML script loading...');
+    
     // メインロジックは分離されたJSファイルで実行されます
     document.addEventListener('DOMContentLoaded', () => {
-        // 画像変換機能の初期化は image-converter-ui.js で実行
+        console.log('DOMContentLoaded fired');
+        console.log('TranslationSystem available:', !!window.TranslationSystem);
+        console.log('ImageConverterUI available:', !!window.ImageConverterUI);
+        console.log('translations available:', !!window.translations);
+        
+        // 新しい翻訳システムは自動初期化されるため、UIのみ初期化
         if (window.ImageConverterUI) {
+            console.log('Initializing ImageConverterUI...');
             window.ImageConverterUI.init();
         }
     });
   </script>
   <script src="../js/image-converter-guide.js"></script>
+  
+  <!-- 翻訳システムの最終確認と初期化 -->
+
   
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
