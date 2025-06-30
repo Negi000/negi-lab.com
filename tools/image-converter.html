@@ -30,14 +30,15 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
+  <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
   <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
   <meta property="og:title" content="【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com" />
   <meta property="og:description" content="KTX・DDS・TGA等13形式対応、ゲーム・VR・3D制作向けプロ仕様画像変換ツール。一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
   <meta name="robots" content="index,follow" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -48,9 +49,13 @@
         extend: {
           colors: {
             negi: "#65c155",
-            accent: "#4ADE80"
+            accent: "#4ADE80",
+            primary: "#2563eb",
+            secondary: "#64748b"
           },
-          fontFamily: { inter: ["Inter", "sans-serif"] }
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif']
+          }
         }
       }
     };
@@ -103,7 +108,7 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
     
-    /* 拡張機能用スタイル */
+    /* フィルター機能用スタイル */
     .filter-button-active {
       background-color: #4ADE80 !important;
       color: white;
@@ -154,82 +159,25 @@
       background-color: rgba(74, 222, 128, 0.02);
     }
   </style>
-  <!-- 画像処理ライブラリ（フォールバック処理付き） -->
-  <script>
-    // ライブラリ読み込み確認とフォールバック
-    window.addEventListener('load', function() {
-      console.log('=== 画像変換ツール初期化 ===');
-      
-      if (typeof UTIF === 'undefined') {
-        console.warn('⚠️ UTIF library not loaded - TIFF conversion will use fallback');
-        window.UTIF_FALLBACK = true;
-        
-        // ユーザーに通知
-        setTimeout(() => {
-          const statusMsg = document.getElementById('statusMessage');
-          if (statusMsg) {
-            statusMsg.textContent = 'ℹ️ TIFF変換は簡易モードで動作します（UTIFライブラリ未読み込み）';
-            statusMsg.style.color = '#f59e0b'; // amber color
-          }
-        }, 1000);
-      } else {
-        console.log('✅ UTIF library loaded successfully');
-        window.UTIF_FALLBACK = false;
-      }
-      
-      // TailwindCSS読み込み確認
-      if (typeof window.tailwind !== 'undefined') {
-        console.log('✅ Tailwind CSS loaded successfully');
-      } else {
-        console.warn('⚠️ Tailwind CSS may not be loaded properly');
-      }
-      
-      console.log('=== 初期化完了 ===');
-    });
-  </script>
-  <!-- UTIF.js for TIFF処理 -->
-  <script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.js" 
-          onload="console.log('UTIF library loaded from jsDelivr CDN')"
-          onerror="console.error('UTIF library failed to load from jsDelivr CDN')"></script>
-  <!-- PNGJS for PNG処理（ブラウザ版が利用できない場合はスキップ） -->
-  <script>
-    // PNGJSはNode.js向けなので、ブラウザではネイティブCanvas APIを使用
-    console.log('PNG processing will use native Canvas API');
-    window.PNGJS_FALLBACK = true;
-  </script>
-  
-  <!-- Google AdSense (本番環境のみ) -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script> -->
 </head>
+
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-
-  <!-- Google Analytics（gtag.js）全ページ用 (本番環境のみ) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
-  -->
-
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
-              <option value="ja" data-translate-key="option.ja">日本語</option>
-              <option value="en" data-translate-key="option.en">English</option>
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -237,7 +185,7 @@
   </header>
 
   <!-- ブレッドクラムナビゲーション -->
-  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="パンくずリスト">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
         <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
@@ -249,45 +197,41 @@
     </div>
   </nav>
 
+  <!-- 外部ライブラリの読み込み -->
+  <script src="../js/image-converter-core.js"></script>
+  <script src="../js/image-converter-formats.js"></script>
+  <script src="../js/image-converter-presets.js"></script>
+  <script src="../js/image-converter-ui.js"></script>
+
+  <!-- Main Content -->
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.mainTitle">プロ仕様画像変換ツール</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">プロ仕様画像変換ツール</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-6">
-          <strong>KTX・DDS・TGA等13形式対応</strong> — ゲーム・VR・3D制作から一般用途まで<br>
-          複数ファイル一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上
+          <strong>KTX・DDS・TGA等13形式対応</strong> – ゲーム・VR・3D制作から一般用途まで<br>
+          複数ファイル一括処理、回転・フィルター効果、用途別プリセット搭載で開発効率を大幅向上
         </p>
       </div>
       
-      <!-- ツール上部：アドセンス（レスポンシブ） -->
-      <div class="max-w-2xl mx-auto my-6">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1835873052239386"
-             data-ad-slot="2847561903"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
-          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.uploadLabel">画像ファイルをアップロード:</label>
+          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1">画像ファイルをアップロード:</label>
           <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
-            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, .ktx, .ktx2, .dds, .tga, .hdr, .exr" multiple class="hidden" aria-describedby="fileHelp">
-            <p id="dropInstructions" data-translate-html-key="imageConverter.dropInstructions" aria-label="ファイルのドラッグ＆ドロップまたはクリックして選択">ここにファイルをドラッグ＆ドロップ<br>またはクリックして選択（複数ファイル対応）<br><small class="text-gray-500">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR</small></p>
+            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, .ktx, .ktx2, .dds, .tga, .hdr, .exr" multiple class="hidden">
+            <p id="dropInstructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR</small></p>
           </div>
           <div id="fileList" class="mt-2"></div>
         </div>
 
-        <div id="previewContainer" class="mt-4 text-center hidden" aria-hidden="true">
-            <img id="imagePreview" src="#" alt="Image Preview" class="preview-image inline-block" data-translate-key-alt="imageConverter.previewAlt" aria-label="アップロードされた画像のプレビュー"/>
+        <div id="previewContainer" class="mt-4 text-center hidden">
+            <img id="imagePreview" src="#" alt="Image Preview" class="preview-image inline-block"/>
         </div>
 
         <!-- プリセット設定 -->
         <div>
           <label for="presetSelect" class="block text-sm font-medium text-gray-700 mb-1">プリセット設定:</label>
-          <select id="presetSelect" class="form-select w-full mb-2" aria-label="プリセット設定選択">
+          <select id="presetSelect" class="form-select w-full mb-2">
             <option value="custom">カスタム設定</option>
             <option value="web-standard">Web標準 (JPEG 80%)</option>
             <option value="web-optimized">Web最適化 (WebP 75%)</option>
@@ -303,17 +247,17 @@
         </div>
 
         <div>
-          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.outputFormatLabel">出力フォーマット:</label>
-          <select id="outputFormat" class="form-select w-full" aria-label="出力フォーマット選択">
-            <option value="image/jpeg" data-translate-key="imageConverter.formatJPEG">JPEG</option>
-            <option value="image/png" data-translate-key="imageConverter.formatPNG">PNG</option>
-            <option value="image/webp" data-translate-key="imageConverter.formatWebP">WebP</option>
+          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1">出力フォーマット:</label>
+          <select id="outputFormat" class="form-select w-full">
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
             <option value="image/bmp">BMP</option>
             <option value="image/tiff">TIFF</option>
             <option value="application/ktx">KTX (Khronos Texture)</option>
             <option value="application/ktx2">KTX2 (Khronos Texture 2.0)</option>
             <option value="image/x-targa">TGA (Targa)</option>
-            <option value="image/vnd.radiance">HDR (高ダイナミックレンジ)</option>
+            <option value="image/vnd.radiance">HDR (ハイダイナミックレンジ)</option>
             <option value="image/x-exr">EXR (OpenEXR)</option>
             <option value="image/vnd-ms.dds">DDS (DirectDraw Surface)</option>
           </select>
@@ -334,7 +278,7 @@
           <!-- アスペクト比設定 -->
           <div>
             <label for="aspectRatio" class="block text-sm font-medium text-gray-700 mb-1">アスペクト比:</label>
-            <select id="aspectRatio" class="form-select w-full" aria-label="アスペクト比選択">
+            <select id="aspectRatio" class="form-select w-full">
               <option value="original">元の比率を維持</option>
               <option value="1:1">1:1 (正方形)</option>
               <option value="4:3">4:3</option>
@@ -363,32 +307,32 @@
           </div>
         </div>
 
-        <div id="qualityControlContainer" class="hidden" aria-hidden="true">
-            <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.qualityLabel">品質 (JPEG/WebP/KTX/TGA):</label>
+        <div id="qualityControlContainer" class="hidden">
+            <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1">品質 (JPEG/WebP/KTX/TGA):</label>
             <div class="flex items-center gap-2">
-                <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" aria-label="画像品質調整">
-                <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right" aria-label="現在の品質値">0.90</span>
+                <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right">0.90</span>
             </div>
         </div>
         
         <div>
-            <p class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.maxDimensionsLabel">最大寸法 (任意):</p>
+            <p class="block text-sm font-medium text-gray-700 mb-1">最大寸法 (省略可):</p>
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label for="maxWidthInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxWidthLabel">最大幅 (px):</label>
-                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920" aria-label="最大幅入力フィールド">
+                    <label for="maxWidthInput" class="block text-xs font-medium text-gray-600">最大幅 (px):</label>
+                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920">
                 </div>
                 <div>
-                    <label for="maxHeightInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.maxHeightLabel">最大高さ (px):</label>
-                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080" aria-label="最大高さ入力フィールド">
+                    <label for="maxHeightInput" class="block text-xs font-medium text-gray-600">最大高さ (px):</label>
+                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080">
                 </div>
             </div>
         </div>
         
-        <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.convertButton" aria-label="画像変換実行ボタン">変換する</button>
+        <button id="convertButton" class="form-button w-full py-2.5" disabled>変換開始</button>
         
-        <div id="resultContainer" class="mt-4 text-center hidden space-y-3" aria-hidden="true">
-            <h3 class="text-lg font-medium text-gray-800" data-translate-key="unitConverter.resultLabel">結果:</h3>
+        <div id="resultContainer" class="mt-4 text-center hidden space-y-3">
+            <h3 class="text-lg font-medium text-gray-800">結果:</h3>
             <div id="resultsGrid" class="grid grid-cols-1 gap-4"></div>
             <div class="flex gap-2 justify-center">
               <button id="downloadAllBtn" class="form-button py-2 px-4 hidden">全てダウンロード</button>
@@ -403,34 +347,22 @@
 
       </div>
 
-      <!-- スポンサーリンクラベル（広告直前） -->
-      <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
-      <!-- ここに広告コード（例: AdSense）を挿入 -->
-
-      <!-- ツール下部：Amazon・楽天バナー → ネイティブ/モーションウィジェット動的表示に置換 -->
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          if (window.renderSmartAds) window.renderSmartAds('smart-ads');
-        });
-      </script>
-
     </div>
   </main>
 
-  <!-- 技術解説・活用ガイドセクション -->
+  <!-- 技術的・活用ガイドセクション -->
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">画像変換活用完全ガイド</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          Webデザインからコンテンツ制作まで、画像変換・最適化を効果的に活用するための実践的なノウハウをご紹介します。
+          Webデザインからコンテンツ制作まで、画像変換・最適化を実践的に活用するための実技的なノウハウをご紹介します。
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Web・デジタル活用事例 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- Web・デジタル制作向け -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
           <div class="flex items-center mb-4">
             <div class="bg-blue-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -439,28 +371,28 @@
             </div>
             <h3 class="text-xl font-semibold text-gray-800">Web・アプリ開発</h3>
           </div>
-          <ul class="space-y-3 text-gray-600">
+          <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>レスポンシブ対応：</strong>デバイス別最適化でUX向上</span>
+              <span><strong>レスポンシブ対応:</strong>デバイス別最適化でUX向上</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>Core Web Vitals改善：</strong>LCP指標向上でSEO効果</span>
+              <span><strong>Core Web Vitals向上:</strong>LCP指標改善でSEO向上</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>WebP活用：</strong>次世代フォーマットで高圧縮</span>
+              <span><strong>WebP活用:</strong>次世代フォーマットで高圧縮</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>軽量化：</strong>ページ読み込み速度30-50%向上</span>
+              <span><strong>軽量化:</strong>ページ読み込み速度30-50%向上</span>
             </li>
           </ul>
         </div>
 
         <!-- コンテンツ制作・マーケティング -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
           <div class="flex items-center mb-4">
             <div class="bg-purple-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -469,52 +401,52 @@
             </div>
             <h3 class="text-xl font-semibold text-gray-800">コンテンツ制作・SNS</h3>
           </div>
-          <ul class="space-y-3 text-gray-600">
+          <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>SNS最適化：</strong>プラットフォーム別サイズ制限対応</span>
+              <span><strong>SNS最適化:</strong>プラットフォーム別サイズ自動対応</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>広告素材軽量化：</strong>表示速度でCTR向上</span>
+              <span><strong>ロード軽量化:</strong>表示速度でCTR向上</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>品質調整：</strong>用途に応じた最適バランス</span>
+              <span><strong>画質保持:</strong>用途に応じて最適バランス</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>一括処理：</strong>大量画像の効率的変換</span>
+              <span><strong>一括処理:</strong>複数画像の効率的変換</span>
             </li>
           </ul>
         </div>
 
-        <!-- ビジネス・業務効率化 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+        <!-- ビジネス・印刷業界向け -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
           <div class="flex items-center mb-4">
             <div class="bg-green-100 p-3 rounded-lg mr-4">
               <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">ビジネス・業務効率化</h3>
+            <h3 class="text-xl font-semibold text-gray-800">ビジネス・印刷業界</h3>
           </div>
-          <ul class="space-y-3 text-gray-600">
+          <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>Eコマース：</strong>商品画像統一でシステム効率化</span>
+              <span><strong>Eコマース:</strong>商品画像統一でシステム最適化</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>印刷・DTP：</strong>高品質設定で印刷対応</span>
+              <span><strong>印刷・DTP:</strong>商品設定で高解像度対応</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ストレージ削減：</strong>容量最適化でコスト削減</span>
+              <span><strong>ストレージ削減:</strong>容量最適化でコスト削減</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>セキュリティ：</strong>ローカル処理で機密性確保</span>
+              <span><strong>セキュリティ:</strong>ローカル処理で機密保証</span>
             </li>
           </ul>
         </div>
@@ -528,85 +460,88 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">対応フォーマット技術解説</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          ゲーム開発・VR/AR・3D制作から一般用途まで、13種類の画像フォーマットの特性と最適な使い分けをご紹介します。
+          ゲーム開発・VR/AR・3D制作から一般用途まで、13種類の画像フォーマットの特徴と最適な使い方を詳しくご紹介します。
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">ゲーム・VR/AR開発向けフォーマット</h3>
-          <div class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- ゲーム・VR/AR開発者向けフォーマット -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">ゲーム・VR/AR開発者向けフォーマット</h3>
+          <div class="space-y-4 flex-grow">
             <div class="border-l-4 border-purple-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">KTX/KTX2 - Khronos公式テクスチャ</h4>
-              <p class="text-sm text-gray-600">GPU最適化圧縮。OpenGL/Vulkan/WebGLで高性能。モバイルVR/ARに最適。</p>
+              <h4 class="font-medium text-lg">KTX/KTX2 - Khronos標準テクスチャ</h4>
+              <p class="text-sm text-gray-600">GPU最適化圧縮。OpenGL/Vulkan/WebGLで高速表示。モバイルVR/ARに最適。</p>
             </div>
             <div class="border-l-4 border-blue-400 pl-4 py-2">
               <h4 class="font-medium text-lg">DDS - DirectDraw Surface</h4>
-              <p class="text-sm text-gray-600">DirectX標準。WindowsゲームやD3D環境で高パフォーマンス。</p>
+              <p class="text-sm text-gray-600">DirectX標準。Windowsゲーム・D3Dで最高パフォーマンス。</p>
             </div>
             <div class="border-l-4 border-green-400 pl-4 py-2">
               <h4 class="font-medium text-lg">TGA - Targa形式</h4>
               <p class="text-sm text-gray-600">3Dモデリング・ゲーム開発の標準。アルファチャンネル完全対応。</p>
             </div>
             <div class="border-l-4 border-orange-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">HDR/EXR - 高ダイナミックレンジ</h4>
-              <p class="text-sm text-gray-600">映像制作・リアルタイムレンダリング向け高品質フォーマット。</p>
+              <h4 class="font-medium text-lg">HDR/EXR - ハイダイナミックレンジ</h4>
+              <p class="text-sm text-gray-600">映像制作・リアルタイムレンダリング用高画質フォーマット。</p>
             </div>
           </div>
         </div>
         
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">一般・Web向けフォーマット</h3>
-          <div class="space-y-4">
+        <!-- 一般・Web用フォーマット -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">一般・Web用フォーマット</h3>
+          <div class="space-y-4 flex-grow">
             <div class="border-l-4 border-red-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">JPEG - 写真・グラデーション向け</h4>
-              <p class="text-sm text-gray-600">非可逆圧縮で小ファイルサイズ。写真系画像に最適。</p>
+              <h4 class="font-medium text-lg">JPEG - 写真・グラデーション最適</h4>
+              <p class="text-sm text-gray-600">高圧縮で小さいファイルサイズ。写真系画像に最適。</p>
             </div>
             <div class="border-l-4 border-yellow-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">PNG - ロゴ・透明度対応</h4>
-              <p class="text-sm text-gray-600">可逆圧縮で高品質。透明度・シャープエッジに最適。</p>
+              <h4 class="font-medium text-lg">PNG - 透明・高画質対応</h4>
+              <p class="text-sm text-gray-600">可逆圧縮で高画質。透明度・シャープエッジに最適。</p>
             </div>
             <div class="border-l-4 border-blue-400 pl-4 py-2">
               <h4 class="font-medium text-lg">WebP - 次世代Web最適化</h4>
-              <p class="text-sm text-gray-600">JPEG比30-50%小。モダンブラウザで高圧縮。</p>
+              <p class="text-sm text-gray-600">JPEGより30-50%軽量。モダンブラウザで高速圧縮。</p>
             </div>
             <div class="border-l-4 border-gray-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">TIFF/BMP - 無圧縮高品質</h4>
-              <p class="text-sm text-gray-600">印刷・DTP・アーカイブ向け最高品質保持。</p>
+              <h4 class="font-medium text-lg">TIFF/BMP - 無圧縮高画質</h4>
+              <p class="text-sm text-gray-600">印刷・DTP・アーカイブ用で最高画質保持。</p>
             </div>
           </div>
         </div>
         
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">技術仕様と処理方式</h3>
-          <div class="space-y-6">
+        <!-- 技術仕様と最適化 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800">技術仕様と最適化</h3>
+          <div class="space-y-6 flex-grow">
             <div>
               <h4 class="font-medium mb-2 text-lg">Canvas API活用</h4>
               <p class="text-sm text-gray-600 mb-3">
-                HTML5 Canvas要素を使用したブラウザ内高品質画像処理。色空間保持とピクセル精度を維持。
+                HTML5 Canvas要素を使用したブラウザ内高画質画像処理。色空間保持とピクセル精度保持。
               </p>
               <div class="bg-blue-50 p-3 rounded-lg text-xs">
-                <strong>利点：</strong> サーバー送信不要、リアルタイム処理、プライバシー保護
+                <strong>利点:</strong> サーバー送信不要、リアルタイム処理、プライバシー保護
               </div>
             </div>
             
             <div>
               <h4 class="font-medium mb-2 text-lg">色空間・画質保持</h4>
               <p class="text-sm text-gray-600 mb-3">
-                sRGB色空間の維持により、デバイス間での色再現性を確保。ICC プロファイル対応で印刷品質も保証。
+                sRGB色空間の保持により、デバイス間での色再現性を確保。ICC プロファイル対応で高精度保証。
               </p>
               <div class="bg-amber-50 p-3 rounded-lg text-xs">
-                <strong>技術：</strong> sRGB維持、ICC対応、ガンマ補正適用
+                <strong>技術:</strong> sRGB保持、ICC対応、ガンマ補正適用
               </div>
             </div>
             
             <div>
               <h4 class="font-medium mb-2 text-lg">セキュリティ・プライバシー</h4>
               <p class="text-sm text-gray-600 mb-3">
-                完全クライアントサイド処理により、機密画像も安全に変換。画像データのサーバー送信は一切なし。
+                完全クライアントサイド処理により、機密画像を安全に変換。画像データのサーバー送信は一切なし。
               </p>
               <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>保証：</strong> ローカル処理、データ非送信、即座削除
+                <strong>保証:</strong> ローカル処理、データ非送信、即座削除
               </div>
             </div>
           </div>
@@ -621,7 +556,7 @@
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          画像変換・最適化時によくある疑問や問題の解決方法をまとめました。
+          画像変換・最適化作業によくある疑問と解決方法をまとめました。
         </p>
       </div>
 
@@ -636,21 +571,21 @@
           <div class="mt-4 space-y-4">
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 class="font-medium text-purple-600 mb-3">ゲーム・VR/AR特化フォーマット</h4>
+                <h4 class="font-medium text-purple-600 mb-3">ゲーム・VR/AR向けフォーマット</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>KTX/KTX2：</strong>OpenGL/Vulkan標準、GPU最適化圧縮</li>
-                  <li>• <strong>DDS：</strong>DirectX標準、Windowsゲーム最適</li>
-                  <li>• <strong>TGA：</strong>3Dモデリング・ゲーム開発標準</li>
-                  <li>• <strong>パフォーマンス：</strong>従来比50-80%高速読み込み</li>
+                  <li>• <strong>KTX/KTX2:</strong>OpenGL/Vulkan標準、GPU最適化圧縮</li>
+                  <li>• <strong>DDS:</strong>DirectX標準、Windowsゲーム最適</li>
+                  <li>• <strong>TGA:</strong>3Dモデリング・ゲーム開発標準</li>
+                  <li>• <strong>パフォーマンス:</strong>従来より50-80%高速読み込み</li>
                 </ul>
               </div>
               <div>
                 <h4 class="font-medium text-blue-600 mb-3">技術的メリット</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>GPU直接展開：</strong>メモリ効率大幅向上</li>
-                  <li>• <strong>ストリーミング：</strong>大容量テクスチャ高速処理</li>
-                  <li>• <strong>マルチプラットフォーム：</strong>モバイル〜PC統一</li>
-                  <li>• <strong>圧縮率：</strong>PNG比60-90%ファイルサイズ削減</li>
+                  <li>• <strong>GPU直接展開:</strong>描画負荷大幅軽減</li>
+                  <li>• <strong>ストリーミング:</strong>大容量テクスチャ高速処理</li>
+                  <li>• <strong>マルチプラットフォーム:</strong>モバイル〜PC対応</li>
+                  <li>• <strong>圧縮率:</strong>PNGより60-90%ファイルサイズ削減</li>
                 </ul>
               </div>
             </div>
@@ -665,24 +600,38 @@
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>用途別推奨フォーマット：</strong></p>
+            <p class="text-gray-700 mb-3"><strong>用途別推奨フォーマット:</strong></p>
             <div class="grid md:grid-cols-2 gap-4">
               <div>
                 <h4 class="font-medium text-blue-600 mb-2">写真・リアル系画像</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>JPEG（品質80-90%）：</strong>一般的なWeb用途</li>
-                  <li>• <strong>WebP（品質75-85%）：</strong>モダンブラウザ最適化</li>
-                  <li>• <strong>JPEG（品質90-95%）：</strong>印刷・高品質用途</li>
-                  <li>• <strong>SNS投稿：</strong>ファイルサイズ制限に応じて調整</li>
+                  <li>• <strong>JPEG（品質80-90%）:</strong>一般的なWeb用途</li>
+                  <li>• <strong>WebP（品質75-85%）:</strong>モダンブラウザ最適化</li>
+                  <li>• <strong>TIFF/BMP:</strong>印刷・高画質保存用</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-purple-600 mb-2">ロゴ・イラスト・アイコン</h4>
+                <h4 class="font-medium text-green-600 mb-2">イラスト・ロゴ・アイコン</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>PNG：</strong>透明度が必要な場合</li>
-                  <li>• <strong>WebP：</strong>透明度対応＋軽量化</li>
-                  <li>• <strong>JPEG（高品質）：</strong>透明度不要な場合</li>
-                  <li>• <strong>SVG：</strong>ベクターデータが利用可能な場合</li>
+                  <li>• <strong>PNG:</strong>透明度・鮮明なエッジ</li>
+                  <li>• <strong>WebP:</strong>軽量化重視</li>
+                  <li>• <strong>SVG:</strong>ベクター形式（別途対応）</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-purple-600 mb-2">ゲーム・3D・VR</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>KTX/KTX2:</strong>OpenGL/Vulkan最適</li>
+                  <li>• <strong>DDS:</strong>DirectX・Windows最適</li>
+                  <li>• <strong>TGA:</strong>アルファチャンネル保持</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-orange-600 mb-2">専門・業務用途</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• <strong>HDR/EXR:</strong>映像制作・VFX</li>
+                  <li>• <strong>TIFF:</strong>印刷・DTP・アーカイブ</li>
+                  <li>• <strong>BMP:</strong>非圧縮・色忠実性重視</li>
                 </ul>
               </div>
             </div>
@@ -691,39 +640,7 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>品質設定の適切な値は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>用途別品質設定の目安：</strong></p>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 class="font-medium text-green-600 mb-3">推奨品質設定</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>Web一般用途：</strong>JPEG 70-85%（バランス重視）</li>
-                  <li><strong>印刷・出版：</strong>JPEG 90-95%（高品質優先）</li>
-                  <li><strong>SNS投稿：</strong>JPEG 60-75%（サイズ制限対応）</li>
-                  <li><strong>WebP：</strong>同等品質でJPEG比20-30%削減</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-orange-600 mb-3">品質判断のポイント</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>圧縮アーティファクト：</strong>ブロックノイズの有無確認</li>
-                  <li><strong>文字・エッジ：</strong>シャープさの保持度合い</li>
-                  <li><strong>グラデーション：</strong>バンディング現象の回避</li>
-                  <li><strong>ファイルサイズ：</strong>目標サイズとのバランス</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-        
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>変換後に画質が劣化する場合の対処法は？</span>
+            <span>変換時に画質が劣化してしまう場合の対処方法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -731,26 +648,26 @@
           <div class="mt-4 space-y-4">
             <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
               <p class="text-amber-800 text-sm font-medium">
-                ⚠️ 画質劣化は主に圧縮設定や元画像の特性に起因します。
+                ⚠️ 画質劣化は主に圧縮設定や元画像の特徴に起因します。
               </p>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 class="font-medium text-red-600 mb-3">劣化原因と対策</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>品質設定が低い：</strong>80%以上に上げて再変換</li>
-                  <li>• <strong>フォーマット不適切：</strong>PNG→JPEG等の見直し</li>
-                  <li>• <strong>重複圧縮：</strong>元画像が既に圧縮済みの場合</li>
-                  <li>• <strong>解像度不足：</strong>元画像のサイズ確認</li>
+                  <li>• <strong>品質設定が低い:</strong>80%以上に上げて再変換</li>
+                  <li>• <strong>フォーマット不適切:</strong>PNGからJPEGなど見直し</li>
+                  <li>• <strong>重複圧縮:</strong>元画像が既に圧縮済みの場合</li>
+                  <li>• <strong>解像度不足:</strong>元画像のサイズ確認</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-blue-600 mb-3">品質向上の方法</h4>
+                <h4 class="font-medium text-blue-600 mb-3">画質向上の方法</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>PNG形式：</strong>可逆圧縮で最高品質</li>
-                  <li>• <strong>WebP可逆：</strong>PNG代替で軽量化</li>
-                  <li>• <strong>JPEG高品質：</strong>90-95%設定</li>
-                  <li>• <strong>元画像改善：</strong>高解像度素材の使用</li>
+                  <li>• <strong>PNG変換:</strong>可逆圧縮で最高画質</li>
+                  <li>• <strong>WebP利用:</strong>PNG比で軽量化</li>
+                  <li>• <strong>JPEG高品質:</strong>90-95%設定</li>
+                  <li>• <strong>元画像選択:</strong>高解像度素材の使用</li>
                 </ul>
               </div>
             </div>
@@ -759,7 +676,7 @@
         
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>大容量ファイルの処理が遅い・失敗する場合は？</span>
+            <span>大容量ファイルの処理速度が遅い・失敗する場合は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -767,26 +684,26 @@
           <div class="mt-4 space-y-4">
             <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
               <p class="text-green-800 text-sm font-medium">
-                ✅ ブラウザメモリ制限に配慮した処理で効率的な変換が可能です。
+                💡 ブラウザリソースに配慮した最適な変換が可能です。
               </p>
             </div>
             <div class="space-y-4">
               <div>
-                <h4 class="font-medium text-gray-800 mb-2">推奨処理サイズと方法</h4>
+                <h4 class="font-medium text-gray-800 mb-2">推奨サイズと方法</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>推奨上限：</strong>10MP（約3000×3000px）程度</li>
-                  <li>• <strong>事前リサイズ：</strong>用途に応じた適切サイズに調整</li>
-                  <li>• <strong>分割処理：</strong>複数ファイルを順次処理</li>
-                  <li>• <strong>メモリ解放：</strong>処理後のブラウザリフレッシュ</li>
+                  <li>• <strong>推奨上限:</strong>10MP（約3000×3000px）程度</li>
+                  <li>• <strong>プログレサイズ:</strong>用途に応じて適切サイズに調整</li>
+                  <li>• <strong>分割処理:</strong>大量ファイルは段階的処理</li>
+                  <li>• <strong>ブラウザ更新:</strong>処理後のブラウザリフレッシュ</li>
                 </ul>
               </div>
               <div>
                 <h4 class="font-medium text-gray-800 mb-2">パフォーマンス最適化</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>ブラウザ選択：</strong>Chrome・Edge等の高性能ブラウザ</li>
-                  <li>• <strong>他タブ閉鎖：</strong>メモリリソースの確保</li>
-                  <li>• <strong>段階的変換：</strong>リサイズ→フォーマット変換の順序</li>
-                  <li>• <strong>品質調整：</strong>処理負荷と品質のバランス</li>
+                  <li>• <strong>ブラウザ選択:</strong>Chrome・Edgeなど高性能ブラウザ</li>
+                  <li>• <strong>他タブ閉鎖:</strong>空きリソースの確保</li>
+                  <li>• <strong>段階的変換:</strong>一括サイズ・フォーマット変換の順番</li>
+                  <li>• <strong>画質調整:</strong>速度重視と品質のバランス</li>
                 </ul>
               </div>
             </div>
@@ -796,7 +713,7 @@
     </div>
   </section>
 
-  <!-- 実用事例集セクション -->
+  <!-- 活用事例セクション -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
@@ -809,16 +726,16 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🌐</div>
-          <h3 class="text-lg font-semibold mb-3">Webサイトの表示速度改善</h3>
+          <h3 class="text-lg font-semibold mb-3">Webサイトの表示速度向上</h3>
           <p class="text-gray-600 text-sm mb-4">
             EC企業では、商品画像をWebP形式に一括変換。
-            ページ読み込み時間40%短縮により、コンバージョン率15%向上を実現。
+            ページ読み込み時間40%短縮により、コンバージョン率15%向上を達成。
           </p>
           <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: JPEG→WebP変換（品質80%）
+            使用機能: JPEGからWebP変換（品質80%）
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 読み込み時間40%短縮 + CVR 15%向上
+            <strong>結果:</strong> 読み込み時間40%短縮 + CVR 15%向上
           </div>
         </div>
         
@@ -826,29 +743,29 @@
           <div class="text-4xl mb-4">📱</div>
           <h3 class="text-lg font-semibold mb-3">SNSマーケティングの効率化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            美容ブランドでは、Instagram投稿用に画像を自動最適化。
-            各プラットフォームのサイズ制限に対応し、投稿作業時間70%削減。
+            コンテンツブランドでは、Instagram投稿用に画像サイズ統一で最適化。
+            各プラットフォームのサイズ自動対応により、制作時間70%削減。
           </p>
           <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
             使用機能: サイズ調整 + JPEG品質70%
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 投稿作業時間70%削減 + 品質統一
+            <strong>結果:</strong> 制作時間70%削減 + 画質向上
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎨</div>
-          <h3 class="text-lg font-semibold mb-3">デザイン制作の効率化</h3>
+          <h3 class="text-lg font-semibold mb-3">デザイン事務所の効率化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            広告代理店では、クライアント素材を統一フォーマットに変換。
-            制作工程の標準化により、プロジェクト進行速度30%向上。
+            広告制作会社では、クライアント素材を統一フォーマットに変換。
+            ワークフローの標準化により、プロジェクト進行速度30%向上。
           </p>
           <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: PNG→JPEG変換 + 品質統一
+            使用機能: PNGからJPEG変換 + 品質調整
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 制作速度30%向上 + 品質統一
+            <strong>結果:</strong> 作業速度30%向上 + 品質統一
           </div>
         </div>
         
@@ -856,44 +773,44 @@
           <div class="text-4xl mb-4">🏢</div>
           <h3 class="text-lg font-semibold mb-3">企業システムの容量最適化</h3>
           <p class="text-gray-600 text-sm mb-4">
-            製造業では、技術資料の画像を高圧縮形式に変換。
-            サーバー容量50%削減により、インフラコスト年間200万円削減。
+            メーカー企業では、技術資料の画像を軽量圧縮形式に変換。
+            サーバー容量50%削減により、インフラコスト月200万円削減。
           </p>
           <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: PNG→WebP変換（品質85%）
+            使用機能: PNGからWebP変換（品質85%）
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 容量50%削減 + コスト200万円削減
+            <strong>結果:</strong> 容量50%削減 + コスト200万円削減
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🖨️</div>
+          <div class="text-4xl mb-4">🛒</div>
           <h3 class="text-lg font-semibold mb-3">印刷・出版業界での品質管理</h3>
           <p class="text-gray-600 text-sm mb-4">
-            出版社では、Web用画像を印刷用高品質JPEGに変換。
-            カタログ制作の自動化により、制作期間50%短縮を実現。
+            出版社では、Web用画像から印刷用高品質JPEGに変換。
+            カタログ制作の一元化により、制作期間50%短縮を実現。
           </p>
           <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: WebP→JPEG変換（品質95%）
+            使用機能: WebPからJPEG変換（品質95%）
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 制作期間50%短縮 + 品質向上
+            <strong>結果:</strong> 制作期間50%短縮 + 品質向上
           </div>
         </div>
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🔒</div>
-          <h3 class="text-lg font-semibold mb-3">機密性重視の画像処理</h3>
+          <h3 class="text-lg font-semibold mb-3">機密書類の画像処理</h3>
           <p class="text-gray-600 text-sm mb-4">
-            金融機関では、機密文書の画像をローカル変換。
+            法律事務所では、機密文書の画像をローカル変換。
             セキュリティを保ちながら効率的なデジタル化を実現。
           </p>
           <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
             使用機能: ローカル処理 + PNG高品質変換
           </div>
           <div class="text-xs text-gray-500">
-            <strong>成果：</strong> セキュリティ確保 + 業務効率化
+            <strong>結果:</strong> セキュリティ確保 + 効率向上
           </div>
         </div>
       </div>
@@ -902,8 +819,8 @@
         <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
           <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの画像も最適化してみませんか？</h3>
           <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせた画像最適化を始めてみましょう。
-            当ツールなら、すべての変換ニーズに対応した高品質な処理を安全に実行できます。
+            上記の事例を参考に、あなたの業界・用途に合わせた画像最適化を始めてみましょう。
+            このツールなら、すべての変換ニーズに対応した高品質な処理を安全に実行できます。
           </p>
           <a href="#" onclick="document.querySelector('.drop-area').scrollIntoView({behavior: 'smooth'}); return false;" 
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
@@ -915,25 +832,14 @@
   </section>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <h2 class="font-bold text-base mb-2">negi-lab.comの責任者・運営・免責について</h2>
     <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li>本ツールはnegi-lab.comが責任開発・運営しています。</li>
+      <li>広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。</li>
+      <li>精度・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
     <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
   </section>
-
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
-    </nav>
-    <div>&copy; 2025 negi-lab.com</div>
-  </footer>
 
   <!-- Guide Modal Popup -->
   <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
@@ -961,1267 +867,25 @@
     };
   </script>
   <script>
+    // メインロジックは分離されたJSファイルで実行されます
     document.addEventListener('DOMContentLoaded', () => {
-        // DOM要素の取得
-        const imageFile = document.getElementById('imageFile');
-        const imageUploadArea = document.getElementById('imageUploadArea');
-        const dropInstructions = document.getElementById('dropInstructions');
-        const fileList = document.getElementById('fileList');
-        const outputFormatSelect = document.getElementById('outputFormat');
-        const presetSelect = document.getElementById('presetSelect');
-        const qualityControlContainer = document.getElementById('qualityControlContainer');
-        const qualityRange = document.getElementById('qualityRange');
-        const qualityValue = document.getElementById('qualityValue');
-        const maxWidthInput = document.getElementById('maxWidthInput');
-        const maxHeightInput = document.getElementById('maxHeightInput');
-        const aspectRatio = document.getElementById('aspectRatio');
-        const convertButton = document.getElementById('convertButton');
-        const imagePreview = document.getElementById('imagePreview');
-        const previewContainer = document.getElementById('previewContainer');
-        const resultContainer = document.getElementById('resultContainer');
-        const resultsGrid = document.getElementById('resultsGrid');
-        const downloadAllBtn = document.getElementById('downloadAllBtn');
-        const clearResultsBtn = document.getElementById('clearResultsBtn');
-        const statusMessage = document.getElementById('statusMessage');
-        const errorMessage = document.getElementById('errorMessage');
-        const brightnessRange = document.getElementById('brightnessRange');
-        const brightnessValue = document.getElementById('brightnessValue');
-        const brightnessControl = document.getElementById('brightnessControl');
-
-        // 状態管理
-        let selectedFiles = [];
-        let currentRotation = 0;
-        let currentFilter = 'none';
-        let results = [];
-
-        // フォーマット変換ユーティリティ
-        const FormatConverter = {
-            // Canvas to various formats
-            canvasToBlob: function(canvas, format, quality) {
-                return new Promise((resolve, reject) => {
-                    try {
-                        switch(format) {
-                            case 'image/jpeg':
-                            case 'image/png':
-                            case 'image/webp':
-                                canvas.toBlob(resolve, format, quality);
-                                break;
-                            case 'image/bmp':
-                                this.canvasToBMP(canvas).then(resolve).catch(reject);
-                                break;
-                            case 'image/tiff':
-                                this.canvasToTIFF(canvas, quality).then(resolve).catch(reject);
-                                break;
-                            case 'application/ktx':
-                                this.canvasToKTX(canvas, quality).then(resolve).catch(reject);
-                                break;
-                            case 'application/ktx2':
-                                this.canvasToKTX2(canvas, quality).then(resolve).catch(reject);
-                                break;
-                            case 'image/x-targa':
-                                this.canvasToTGA(canvas, quality).then(resolve).catch(reject);
-                                break;
-                            case 'image/vnd-ms.dds':
-                                this.canvasToDDS(canvas, quality).then(resolve).catch(reject);
-                                break;
-                            default:
-                                canvas.toBlob(resolve, 'image/png');
-                        }
-                    } catch (error) {
-                        reject(error);
-                    }
-                });
-            },
-
-            // BMP変換
-            canvasToBMP: function(canvas) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const bmpData = this.createBMPFromImageData(imageData);
-                    const blob = new Blob([bmpData], { type: 'image/bmp' });
-                    resolve(blob);
-                });
-            },
-
-            createBMPFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                const rowSize = Math.floor((24 * width + 31) / 32) * 4;
-                const pixelDataSize = rowSize * height;
-                const fileSize = 54 + pixelDataSize;
-                
-                const buffer = new ArrayBuffer(fileSize);
-                const view = new DataView(buffer);
-                
-                // BMP Header
-                view.setUint16(0, 0x424D, true); // 'BM'
-                view.setUint32(2, fileSize, true);
-                view.setUint32(6, 0, true);
-                view.setUint32(10, 54, true);
-                
-                // DIB Header
-                view.setUint32(14, 40, true);
-                view.setUint32(18, width, true);
-                view.setUint32(22, height, true);
-                view.setUint16(26, 1, true);
-                view.setUint16(28, 24, true);
-                view.setUint32(30, 0, true);
-                view.setUint32(34, pixelDataSize, true);
-                view.setUint32(38, 2835, true);
-                view.setUint32(42, 2835, true);
-                view.setUint32(46, 0, true);
-                view.setUint32(50, 0, true);
-                
-                // Pixel data
-                let offset = 54;
-                for (let y = height - 1; y >= 0; y--) {
-                    for (let x = 0; x < width; x++) {
-                        const i = (y * width + x) * 4;
-                        view.setUint8(offset++, data[i + 2]); // B
-                        view.setUint8(offset++, data[i + 1]); // G
-                        view.setUint8(offset++, data[i]);     // R
-                    }
-                    // Padding
-                    const padding = rowSize - (width * 3);
-                    for (let p = 0; p < padding; p++) {
-                        view.setUint8(offset++, 0);
-                    }
-                }
-                
-                return buffer;
-            },
-
-            // TIFF変換（UTIFライブラリ使用）
-            canvasToTIFF: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    try {
-                        const ctx = canvas.getContext('2d');
-                        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                        
-                        // UTIFライブラリが利用可能な場合
-                        if (typeof UTIF !== 'undefined' && !window.UTIF_FALLBACK) {
-                            try {
-                                // UTIFでTIFFエンコードを試行
-                                const tiffBuffer = UTIF.encodeImage(imageData.data, canvas.width, canvas.height);
-                                const blob = new Blob([tiffBuffer], { type: 'image/tiff' });
-                                resolve(blob);
-                                return;
-                            } catch (utifError) {
-                                console.warn('UTIF encoding failed:', utifError);
-                            }
-                        }
-                        
-                        // フォールバック: 簡易TIFF実装
-                        const tiffData = this.createSimpleTIFF(imageData);
-                        const blob = new Blob([tiffData], { type: 'image/tiff' });
-                        resolve(blob);
-                        
-                    } catch (error) {
-                        console.warn('TIFF conversion failed, fallback to PNG:', error);
-                        // 最終フォールバック: PNGとして出力
-                        canvas.toBlob((blob) => {
-                            resolve(blob);
-                        }, 'image/png');
-                    }
-                });
-            },
-
-            // 簡易TIFF実装（基本的なTIFFヘッダー）
-            createSimpleTIFF: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                // TIFF ヘッダー（Little Endian）
-                const headerSize = 8;
-                const ifdSize = 12 * 14 + 6; // 14 IFD entries + header + footer
-                const imageDataOffset = headerSize + ifdSize;
-                const totalSize = imageDataOffset + data.length;
-                
-                const buffer = new ArrayBuffer(totalSize);
-                const view = new DataView(buffer);
-                const uint8View = new Uint8Array(buffer);
-                
-                // TIFF Header
-                view.setUint16(0, 0x4949, true); // Little endian
-                view.setUint16(2, 42, true);     // Magic number
-                view.setUint32(4, headerSize, true); // IFD offset
-                
-                // IFD (Image File Directory)
-                let offset = headerSize;
-                
-                // Number of directory entries
-                view.setUint16(offset, 14, true);
-                offset += 2;
-                
-                // IFD entries (12 bytes each)
-                const writeIFDEntry = (tag, type, count, value) => {
-                    view.setUint16(offset, tag, true);     // Tag
-                    view.setUint16(offset + 2, type, true); // Type
-                    view.setUint32(offset + 4, count, true); // Count
-                    view.setUint32(offset + 8, value, true); // Value/Offset
-                    offset += 12;
-                };
-                
-                writeIFDEntry(256, 4, 1, width);          // ImageWidth
-                writeIFDEntry(257, 4, 1, height);         // ImageLength
-                writeIFDEntry(258, 3, 4, 0);              // BitsPerSample (8,8,8,8)
-                writeIFDEntry(259, 3, 1, 1);              // Compression (none)
-                writeIFDEntry(262, 3, 1, 2);              // PhotometricInterpretation (RGB)
-                writeIFDEntry(273, 4, 1, imageDataOffset); // StripOffsets
-                writeIFDEntry(277, 3, 1, 4);              // SamplesPerPixel (RGBA)
-                writeIFDEntry(278, 4, 1, height);         // RowsPerStrip
-                writeIFDEntry(279, 4, 1, data.length);    // StripByteCounts
-                writeIFDEntry(282, 5, 1, 0);              // XResolution
-                writeIFDEntry(283, 5, 1, 0);              // YResolution
-                writeIFDEntry(284, 3, 1, 1);              // PlanarConfiguration
-                writeIFDEntry(296, 3, 1, 2);              // ResolutionUnit
-                writeIFDEntry(338, 3, 1, 1);              // ExtraSamples (alpha)
-                
-                // Next IFD offset (0 = no more IFDs)
-                view.setUint32(offset, 0, true);
-                
-                // Copy image data
-                uint8View.set(data, imageDataOffset);
-                
-                return buffer;
-            },
-
-            // TGA変換
-            canvasToTGA: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const tgaData = this.createTGAFromImageData(imageData);
-                    const blob = new Blob([tgaData], { type: 'image/x-targa' });
-                    resolve(blob);
-                });
-            },
-
-            createTGAFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                const header = new Uint8Array(18);
-                header[0] = 0;  // ID length
-                header[1] = 0;  // Color map type
-                header[2] = 2;  // Image type (uncompressed true-color)
-                header[12] = width & 0xFF;
-                header[13] = (width >> 8) & 0xFF;
-                header[14] = height & 0xFF;
-                header[15] = (height >> 8) & 0xFF;
-                header[16] = 32; // Bits per pixel (RGBA)
-                header[17] = 8;  // Image descriptor
-                
-                const pixelData = new Uint8Array(width * height * 4);
-                
-                // TGA uses bottom-left origin, so flip Y
-                for (let y = 0; y < height; y++) {
-                    for (let x = 0; x < width; x++) {
-                        const srcIndex = ((height - 1 - y) * width + x) * 4;
-                        const dstIndex = (y * width + x) * 4;
-                        
-                        pixelData[dstIndex] = data[srcIndex + 2];     // B
-                        pixelData[dstIndex + 1] = data[srcIndex + 1]; // G
-                        pixelData[dstIndex + 2] = data[srcIndex];     // R
-                        pixelData[dstIndex + 3] = data[srcIndex + 3]; // A
-                    }
-                }
-                
-                const result = new Uint8Array(header.length + pixelData.length);
-                result.set(header, 0);
-                result.set(pixelData, header.length);
-                
-                return result;
-            },
-
-            // KTX変換（基本実装）
-            canvasToKTX: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const ktxData = this.createKTXFromImageData(imageData);
-                    const blob = new Blob([ktxData], { type: 'application/ktx' });
-                    resolve(blob);
-                });
-            },
-
-            createKTXFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                // KTX identifier
-                const identifier = new Uint8Array([
-                    0xAB, 0x4B, 0x54, 0x58, 0x20, 0x31, 0x31, 0xBB,
-                    0x0D, 0x0A, 0x1A, 0x0A
-                ]);
-                
-                // KTX header
-                const header = new ArrayBuffer(64);
-                const headerView = new DataView(header);
-                
-                headerView.setUint32(0, 0x04030201, true); // endianness
-                headerView.setUint32(4, 0x1908, true);     // glType (GL_RGBA)
-                headerView.setUint32(8, 1, true);          // glTypeSize
-                headerView.setUint32(12, 0x1908, true);    // glFormat (GL_RGBA)
-                headerView.setUint32(16, 0x1908, true);    // glInternalFormat
-                headerView.setUint32(20, 0x1401, true);    // glBaseInternalFormat
-                headerView.setUint32(24, width, true);     // pixelWidth
-                headerView.setUint32(28, height, true);    // pixelHeight
-                headerView.setUint32(32, 0, true);         // pixelDepth
-                headerView.setUint32(36, 0, true);         // numberOfArrayElements
-                headerView.setUint32(40, 1, true);         // numberOfFaces
-                headerView.setUint32(44, 1, true);         // numberOfMipmapLevels
-                headerView.setUint32(48, 0, true);         // bytesOfKeyValueData
-                
-                // Image data size
-                const imageDataSize = width * height * 4;
-                const imageSizeHeader = new ArrayBuffer(4);
-                const imageSizeView = new DataView(imageSizeHeader);
-                imageSizeView.setUint32(0, imageDataSize, true);
-                
-                // Combine all parts
-                const result = new Uint8Array(
-                    identifier.length + header.byteLength + 
-                    imageSizeHeader.byteLength + imageDataSize
-                );
-                
-                let offset = 0;
-                result.set(identifier, offset);
-                offset += identifier.length;
-                result.set(new Uint8Array(header), offset);
-                offset += header.byteLength;
-                result.set(new Uint8Array(imageSizeHeader), offset);
-                offset += imageSizeHeader.byteLength;
-                result.set(data, offset);
-                
-                return result;
-            },
-
-            // KTX2変換（KTXの拡張版）
-            canvasToKTX2: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    // KTX2は複雑なため、基本のKTXとして処理
-                    this.canvasToKTX(canvas, quality).then(resolve);
-                });
-            },
-
-            // DDS変換（基本実装）
-            canvasToDDS: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const ddsData = this.createDDSFromImageData(imageData);
-                    const blob = new Blob([ddsData], { type: 'image/vnd-ms.dds' });
-                    resolve(blob);
-                });
-            },
-
-            createDDSFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                // DDS header
-                const header = new ArrayBuffer(128);
-                const headerView = new DataView(header);
-                
-                // DDS magic number
-                headerView.setUint32(0, 0x20534444, true); // 'DDS '
-                
-                // DDS_HEADER
-                headerView.setUint32(4, 124, true);        // dwSize
-                headerView.setUint32(8, 0x1007, true);     // dwFlags
-                headerView.setUint32(12, height, true);    // dwHeight
-                headerView.setUint32(16, width, true);     // dwWidth
-                headerView.setUint32(20, width * 4, true); // dwPitchOrLinearSize
-                headerView.setUint32(24, 0, true);         // dwDepth
-                headerView.setUint32(28, 1, true);         // dwMipMapCount
-                
-                // DDS_PIXELFORMAT
-                headerView.setUint32(76, 32, true);        // dwSize
-                headerView.setUint32(80, 0x41, true);      // dwFlags (RGBA)
-                headerView.setUint32(84, 0, true);         // dwFourCC
-                headerView.setUint32(88, 32, true);        // dwRGBBitCount
-                headerView.setUint32(92, 0x000000FF, true); // dwRBitMask
-                headerView.setUint32(96, 0x0000FF00, true); // dwGBitMask
-                headerView.setUint32(100, 0x00FF0000, true); // dwBBitMask
-                headerView.setUint32(104, 0xFF000000, true); // dwABitMask
-                
-                headerView.setUint32(108, 0x1000, true);   // dwCaps
-                
-                // Combine header and pixel data
-                const result = new Uint8Array(header.byteLength + data.length);
-                result.set(new Uint8Array(header), 0);
-                result.set(data, header.byteLength);
-                
-                return result;
-            },
-
-            // SVG変換（Canvas to SVG）
-            canvasToSVG: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const width = canvas.width;
-                    const height = canvas.height;
-                    
-                    // Canvas内容をBase64エンコードされたPNG画像として取得
-                    const dataURL = canvas.toDataURL('image/png');
-                    
-                    // SVGコンテンツ生成
-                    const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-     width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-  <image width="${width}" height="${height}" xlink:href="${dataURL}" />
-</svg>`;
-                    
-                    const blob = new Blob([svgContent], { type: 'image/svg+xml' });
-                    resolve(blob);
-                });
-            },
-
-            // HDR変換（基本実装 - RGBE形式）
-            canvasToHDR: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const hdrData = this.createHDRFromImageData(imageData);
-                    const blob = new Blob([hdrData], { type: 'image/vnd.radiance' });
-                    resolve(blob);
-                });
-            },
-
-            createHDRFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                // HDR（RGBE）ヘッダー
-                const header = `#?RADIANCE\n# Made with negi-lab.com image converter\nFORMAT=32-bit_rle_rgbe\n\n-Y ${height} +X ${width}\n`;
-                const headerBytes = new TextEncoder().encode(header);
-                
-                // RGBE形式のピクセルデータ生成
-                const rgbeData = new Uint8Array(width * height * 4);
-                
-                for (let i = 0; i < width * height; i++) {
-                    const srcIndex = i * 4;
-                    const dstIndex = i * 4;
-                    
-                    // RGB値を0-1範囲に正規化
-                    const r = data[srcIndex] / 255.0;
-                    const g = data[srcIndex + 1] / 255.0;
-                    const b = data[srcIndex + 2] / 255.0;
-                    
-                    // 最大値を見つけて指数部を計算
-                    const maxComponent = Math.max(r, g, b);
-                    
-                    if (maxComponent < 1e-32) {
-                        // 黒ピクセル
-                        rgbeData[dstIndex] = 0;
-                        rgbeData[dstIndex + 1] = 0;
-                        rgbeData[dstIndex + 2] = 0;
-                        rgbeData[dstIndex + 3] = 0;
-                    } else {
-                        // RGBE変換
-                        const exponent = Math.floor(Math.log2(maxComponent)) + 128;
-                        const scale = Math.pow(2, exponent - 128 - 8);
-                        
-                        rgbeData[dstIndex] = Math.min(255, Math.floor(r / scale));
-                        rgbeData[dstIndex + 1] = Math.min(255, Math.floor(g / scale));
-                        rgbeData[dstIndex + 2] = Math.min(255, Math.floor(b / scale));
-                        rgbeData[dstIndex + 3] = exponent;
-                    }
-                }
-                
-                // ヘッダーとデータを結合
-                const result = new Uint8Array(headerBytes.length + rgbeData.length);
-                result.set(headerBytes, 0);
-                result.set(rgbeData, headerBytes.length);
-                
-                return result;
-            },
-
-            // EXR変換（基本実装 - OpenEXR Half形式）
-            canvasToEXR: function(canvas, quality) {
-                return new Promise((resolve) => {
-                    const ctx = canvas.getContext('2d');
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const exrData = this.createEXRFromImageData(imageData);
-                    const blob = new Blob([exrData], { type: 'image/x-exr' });
-                    resolve(blob);
-                });
-            },
-
-            createEXRFromImageData: function(imageData) {
-                const width = imageData.width;
-                const height = imageData.height;
-                const data = imageData.data;
-                
-                // 簡易EXRヘッダー（実際のEXRは非常に複雑）
-                const header = new ArrayBuffer(1024);
-                const headerView = new DataView(header);
-                
-                // EXRマジックナンバー
-                headerView.setUint32(0, 0x01312f76, true); // EXR magic
-                headerView.setUint32(4, 2, true);          // Version
-                headerView.setUint32(8, width, true);      // Width
-                headerView.setUint32(12, height, true);    // Height
-                
-                // Halfフロート形式のピクセルデータ（簡易実装）
-                const pixelData = new Uint16Array(width * height * 4);
-                
-                for (let i = 0; i < width * height; i++) {
-                    const srcIndex = i * 4;
-                    const dstIndex = i * 4;
-                    
-                    // 8bit RGB を 16bit Half に変換（簡易）
-                    pixelData[dstIndex] = this.floatToHalf(data[srcIndex] / 255.0);       // R
-                    pixelData[dstIndex + 1] = this.floatToHalf(data[srcIndex + 1] / 255.0); // G
-                    pixelData[dstIndex + 2] = this.floatToHalf(data[srcIndex + 2] / 255.0); // B
-                    pixelData[dstIndex + 3] = this.floatToHalf(data[srcIndex + 3] / 255.0); // A
-                }
-                
-                // ヘッダーとデータを結合
-                const result = new Uint8Array(header.byteLength + pixelData.byteLength);
-                result.set(new Uint8Array(header), 0);
-                result.set(new Uint8Array(pixelData.buffer), header.byteLength);
-                
-                return result;
-            },
-
-            // Float to Half precision conversion（簡易実装）
-            floatToHalf: function(val) {
-                const floatView = new Float32Array(1);
-                const int32View = new Int32Array(floatView.buffer);
-                floatView[0] = val;
-                const bits = int32View[0];
-                
-                const sign = (bits >>> 31) << 15;
-                const exponent = (((bits >>> 23) & 0xff) - 127 + 15) << 10;
-                const mantissa = (bits >>> 13) & 0x3ff;
-                
-                return sign | exponent | mantissa;
-            }
-        };
-
-        // プリセット設定
-        const presets = {
-            'web-standard': {
-                format: 'image/jpeg',
-                quality: 0.8,
-                maxWidth: '',
-                maxHeight: ''
-            },
-            'web-optimized': {
-                format: 'image/webp',
-                quality: 0.75,
-                maxWidth: '',
-                maxHeight: ''
-            },
-            'social-media': {
-                format: 'image/jpeg',
-                quality: 0.7,
-                maxWidth: '1080',
-                maxHeight: '1080'
-            },
-            'print-quality': {
-                format: 'image/jpeg',
-                quality: 0.95,
-                maxWidth: '',
-                maxHeight: ''
-            },
-            'thumbnail': {
-                format: 'image/jpeg',
-                quality: 0.7,
-                maxWidth: '300',
-                maxHeight: '300'
-            },
-            'game-texture': {
-                format: 'application/ktx2',
-                quality: 0.8,
-                maxWidth: '1024',
-                maxHeight: '1024'
-            },
-            'mobile-game': {
-                format: 'application/ktx',
-                quality: 0.75,
-                maxWidth: '512',
-                maxHeight: '512'
-            },
-            '3d-model': {
-                format: 'image/x-targa',
-                quality: 0.9,
-                maxWidth: '',
-                maxHeight: ''
-            },
-            'hdr-imaging': {
-                format: 'image/vnd.radiance',
-                quality: 1.0,
-                maxWidth: '',
-                maxHeight: ''
-            },
-            'vfx-exr': {
-                format: 'image/x-exr',
-                quality: 1.0,
-                maxWidth: '',
-                maxHeight: ''
-            }
-        };
-
-        function getLang() {
-            return document.documentElement.lang || 'ja';
+        // 画像変換機能の初期化は image-converter-ui.js で実行
+        if (window.ImageConverterUI) {
+            window.ImageConverterUI.init();
         }
-
-        function translate(key, type = 'text') {
-            const lang = getLang();
-            if (window.translations && window.translations[lang] && window.translations[lang][key]) {
-                return window.translations[lang][key];
-            }
-            return key;
-        }
-
-        function showMessage(message, isError = false) {
-            const statusMessage = document.getElementById('statusMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            if (statusMessage && errorMessage) {
-                statusMessage.textContent = isError ? '' : message;
-                errorMessage.textContent = isError ? message : '';
-            }
-            
-            // コンソールにも出力
-            if (isError) {
-                console.error('Error:', message);
-            } else {
-                console.log('Status:', message);
-            }
-        }
-
-        function updateFileList() {
-            fileList.innerHTML = '';
-            if (selectedFiles.length === 0) {
-                convertButton.disabled = true;
-                return;
-            }
-
-            convertButton.disabled = false;
-            selectedFiles.forEach((file, index) => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'flex items-center justify-between bg-gray-100 p-2 rounded mb-1';
-                fileItem.innerHTML = `
-                    <span class="text-sm text-gray-700">${file.name}</span>
-                    <button type="button" class="text-red-500 hover:text-red-700 text-sm font-bold" onclick="removeFile(${index})">×</button>
-                `;
-                fileList.appendChild(fileItem);
-            });
-        }
-
-        window.removeFile = function(index) {
-            selectedFiles.splice(index, 1);
-            updateFileList();
-        };
-
-        // プリセット選択時の処理
-        presetSelect.addEventListener('change', function() {
-            const preset = presets[this.value];
-            if (preset) {
-                outputFormatSelect.value = preset.format;
-                qualityRange.value = preset.quality;
-                qualityValue.textContent = preset.quality.toFixed(2);
-                maxWidthInput.value = preset.maxWidth;
-                maxHeightInput.value = preset.maxHeight;
-                updateQualityVisibility();
-            }
-        });
-
-        // 回転ボタンイベント
-        document.getElementById('rotate90').addEventListener('click', () => {
-            currentRotation = (currentRotation + 90) % 360;
-            showMessage(`画像を${currentRotation}度回転に設定しました`);
-        });
-
-        document.getElementById('rotate180').addEventListener('click', () => {
-            currentRotation = (currentRotation + 180) % 360;
-            showMessage(`画像を${currentRotation}度回転に設定しました`);
-        });
-
-        document.getElementById('rotate270').addEventListener('click', () => {
-            currentRotation = (currentRotation + 270) % 360;
-            showMessage(`画像を${currentRotation}度回転に設定しました`);
-        });
-
-        // フィルターボタンイベント
-        const filterButtons = ['filterNone', 'filterGrayscale', 'filterSepia', 'filterBlur'];
-        filterButtons.forEach(id => {
-            document.getElementById(id).addEventListener('click', function() {
-                // ボタンの状態更新
-                filterButtons.forEach(btnId => {
-                    document.getElementById(btnId).classList.remove('bg-accent');
-                    document.getElementById(btnId).classList.add('bg-gray-400');
-                });
-                this.classList.remove('bg-gray-400');
-                this.classList.add('bg-accent');
-
-                currentFilter = id.replace('filter', '').toLowerCase();
-                if (currentFilter === 'none') currentFilter = 'none';
-                
-                // 明度調整を表示/非表示
-                if (currentFilter === 'blur') {
-                    brightnessControl.classList.remove('hidden');
-                } else {
-                    brightnessControl.classList.add('hidden');
-                }
-                
-                showMessage(`フィルター「${this.textContent}」を適用します`);
-            });
-        });
-
-        // 明度調整
-        brightnessRange.addEventListener('input', function() {
-            brightnessValue.textContent = this.value;
-        });
-
-        function updateQualityVisibility() {
-            const format = outputFormatSelect.value;
-            const qualityFormats = [
-                'image/jpeg', 'image/webp', 
-                'application/ktx', 'application/ktx2',
-                'image/x-targa'
-            ];
-            
-            if (qualityFormats.includes(format)) {
-                qualityControlContainer.classList.remove('hidden');
-            } else {
-                qualityControlContainer.classList.add('hidden');
-            }
-        }
-
-        qualityRange.addEventListener('input', () => {
-            qualityValue.textContent = parseFloat(qualityRange.value).toFixed(2);
-        });
-
-        outputFormatSelect.addEventListener('change', updateQualityVisibility);
-
-        // ファイル選択とドラッグ&ドロップ
-        imageUploadArea.addEventListener('click', () => imageFile.click());
-        
-        imageFile.addEventListener('change', function(e) {
-            handleFiles(Array.from(e.target.files));
-        });
-
-        imageUploadArea.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            this.classList.add('dragover');
-        });
-
-        imageUploadArea.addEventListener('dragleave', function(e) {
-            e.preventDefault();
-            this.classList.remove('dragover');
-        });
-
-        imageUploadArea.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.classList.remove('dragover');
-            const files = Array.from(e.dataTransfer.files).filter(file => 
-                file.type.startsWith('image/')
-            );
-            handleFiles(files);
-        });
-
-        function handleFiles(files) {
-            // ファイルサイズとタイプの検証
-            const validFiles = files.filter(file => {
-                const validTypes = [
-                    'image/jpeg', 'image/png', 'image/webp', 'image/gif', 
-                    'image/bmp', 'image/tiff', 'image/svg+xml',
-                    'application/ktx', 'application/ktx2',
-                    'image/x-targa', 'image/vnd-ms.dds',
-                    'image/vnd.radiance', 'image/x-exr'
-                ];
-                const validExtensions = ['.ktx', '.ktx2', '.dds', '.tga', '.hdr', '.exr'];
-                const maxSize = 50 * 1024 * 1024; // 50MB（大容量テクスチャ対応）
-                
-                // MIMEタイプまたは拡張子での検証
-                const isValidType = validTypes.includes(file.type) || 
-                    validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
-                
-                if (!isValidType) {
-                    showMessage(`${file.name}: サポートされていないファイル形式です`, true);
-                    return false;
-                }
-                
-                if (file.size > maxSize) {
-                    showMessage(`${file.name}: ファイルサイズが50MBを超えています`, true);
-                    return false;
-                }
-                
-                return true;
-            });
-
-            selectedFiles = validFiles;
-            updateFileList();
-            
-            if (validFiles.length > 0) {
-                // 最初のファイルをプレビュー表示
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    previewContainer.classList.remove('hidden');
-                };
-                reader.readAsDataURL(validFiles[0]);
-                showMessage(`${validFiles.length}個のファイルが選択されました`);
-            }
-        }
-
-        // 変換処理
-        convertButton.addEventListener('click', async function() {
-            if (selectedFiles.length === 0) {
-                showMessage('画像ファイルを選択してください', true);
-                return;
-            }
-
-            this.disabled = true;
-            showMessage('画像を変換中...');
-            
-            try {
-                results = [];
-                const totalFiles = selectedFiles.length;
-                
-                for (let i = 0; i < totalFiles; i++) {
-                    const file = selectedFiles[i];
-                    const progressPercent = Math.round(((i + 1) / totalFiles) * 100);
-                    showMessage(`変換中... ${file.name} (${i + 1}/${totalFiles} - ${progressPercent}%)`);
-                    
-                    try {
-                        const result = await convertImage(file);
-                        if (result) {
-                            results.push(result);
-                            showMessage(`✅ ${file.name} の変換が完了しました (${i + 1}/${totalFiles})`);
-                        }
-                    } catch (fileError) {
-                        console.error(`Error converting ${file.name}:`, fileError);
-                        showMessage(`❌ ${file.name} の変換に失敗しました: ${fileError.message}`, true);
-                        
-                        // 失敗した場合でも続行するかを確認（短時間表示）
-                        setTimeout(() => {
-                            if (i < totalFiles - 1) {
-                                showMessage(`次のファイルの変換を続行します...`);
-                            }
-                        }, 1000);
-                    }
-                }
-                
-                if (results.length > 0) {
-                    displayResults();
-                    showMessage(`🎉 ${results.length}個のファイルが正常に変換されました`);
-                } else {
-                    showMessage('変換できたファイルがありませんでした。ファイル形式やサイズを確認してください。', true);
-                }
-                
-            } catch (error) {
-                console.error('Conversion error:', error);
-                showMessage('変換処理中に予期しないエラーが発生しました', true);
-            } finally {
-                this.disabled = false;
-            }
-        });
-
-        async function convertImage(file) {
-            return new Promise((resolve, reject) => {
-                const image = new Image();
-                const reader = new FileReader();
-
-                reader.onload = (event) => {
-                    image.onload = () => {
-                        try {
-                            const canvas = document.createElement('canvas');
-                            let { naturalWidth: width, naturalHeight: height } = image;
-
-                            // アスペクト比調整
-                            const aspectRatioValue = aspectRatio.value;
-                            if (aspectRatioValue !== 'original') {
-                                const ratios = {
-                                    '1:1': 1,
-                                    '4:3': 4/3,
-                                    '16:9': 16/9,
-                                    '3:2': 3/2
-                                };
-                                
-                                if (ratios[aspectRatioValue]) {
-                                    const targetRatio = ratios[aspectRatioValue];
-                                    const currentRatio = width / height;
-                                    
-                                    if (currentRatio > targetRatio) {
-                                        width = height * targetRatio;
-                                    } else {
-                                        height = width / targetRatio;
-                                    }
-                                }
-                            }
-
-                            // サイズ制限適用
-                            const maxWidth = parseInt(maxWidthInput.value) || 0;
-                            const maxHeight = parseInt(maxHeightInput.value) || 0;
-                            
-                            if (maxWidth > 0 || maxHeight > 0) {
-                                if (maxWidth > 0 && maxHeight > 0) {
-                                    const ratio = Math.min(maxWidth / width, maxHeight / height);
-                                    width = Math.round(width * ratio);
-                                    height = Math.round(height * ratio);
-                                } else if (maxWidth > 0) {
-                                    const ratio = maxWidth / width;
-                                    width = maxWidth;
-                                    height = Math.round(height * ratio);
-                                } else if (maxHeight > 0) {
-                                    const ratio = maxHeight / height;
-                                    height = maxHeight;
-                                    width = Math.round(width * ratio);
-                                }
-                            }
-
-                            // 回転を考慮してキャンバスサイズを設定
-                            if (currentRotation === 90 || currentRotation === 270) {
-                                canvas.width = Math.max(height, 1);
-                                canvas.height = Math.max(width, 1);
-                            } else {
-                                canvas.width = Math.max(width, 1);
-                                canvas.height = Math.max(height, 1);
-                            }
-
-                            const ctx = canvas.getContext('2d');
-                            
-                            // キャンバスの中心を計算
-                            const centerX = canvas.width / 2;
-                            const centerY = canvas.height / 2;
-                            
-                            // 回転処理
-                            ctx.save();
-                            ctx.translate(centerX, centerY);
-                            ctx.rotate((currentRotation * Math.PI) / 180);
-                            
-                            // 回転後の描画位置調整
-                            let drawWidth = width;
-                            let drawHeight = height;
-                            if (currentRotation === 90 || currentRotation === 270) {
-                                drawWidth = height;
-                                drawHeight = width;
-                            }
-                            
-                            // GIFから他の形式への変換時は背景を白に
-                            if (file.type === 'image/gif' && outputFormatSelect.value !== 'image/gif') {
-                                ctx.fillStyle = '#FFFFFF';
-                                ctx.fillRect(-drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
-                            }
-                            
-                            ctx.drawImage(image, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
-                            ctx.restore();
-
-                            // フィルター効果適用
-                            applyFilter(ctx, canvas.width, canvas.height);
-
-                            const outputMimeType = outputFormatSelect.value;
-                            const quality = parseFloat(qualityRange.value);
-                            
-                            const callback = (blob) => {
-                                if (blob) {
-                                    const url = URL.createObjectURL(blob);
-                                    let fileExtension;
-                                    
-                                    // 拡張子マッピング
-                                    const extensionMap = {
-                                        'image/jpeg': 'jpg',
-                                        'image/png': 'png',
-                                        'image/webp': 'webp',
-                                        'image/bmp': 'bmp',
-                                        'image/tiff': 'tiff',
-                                        'image/svg+xml': 'svg',
-                                        'application/ktx': 'ktx',
-                                        'application/ktx2': 'ktx2',
-                                        'image/x-targa': 'tga',
-                                        'image/vnd-ms.dds': 'dds',
-                                        'image/vnd.radiance': 'hdr',
-                                        'image/x-exr': 'exr'
-                                    };
-                                    
-                                    fileExtension = extensionMap[outputMimeType] || outputMimeType.split('/')[1];
-                                    const baseName = file.name.replace(/\.[^/.]+$/, "");
-                                    
-                                    resolve({
-                                        blob,
-                                        url,
-                                        filename: `${baseName}_converted.${fileExtension}`,
-                                        originalName: file.name
-                                    });
-                                } else {
-                                    reject(new Error(`${outputMimeType}形式への変換に失敗しました`));
-                                }
-                            };
-                            
-                            // フォーマット別変換処理
-                            try {
-                                if (outputMimeType === 'image/bmp') {
-                                    // BMPフォーマット（FormatConverter使用）
-                                    FormatConverter.canvasToBMP(canvas, quality).then(callback).catch(err => reject(new Error(`BMP変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/x-targa') {
-                                    // TGAフォーマット（FormatConverter使用）
-                                    FormatConverter.canvasToTGA(canvas, quality).then(callback).catch(err => reject(new Error(`TGA変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'application/ktx') {
-                                    // KTXフォーマット（FormatConverter使用）
-                                    FormatConverter.canvasToKTX(canvas, quality).then(callback).catch(err => reject(new Error(`KTX変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'application/ktx2') {
-                                    // KTX2フォーマット（FormatConverter使用）
-                                    FormatConverter.canvasToKTX2(canvas, quality).then(callback).catch(err => reject(new Error(`KTX2変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/vnd-ms.dds') {
-                                    // DDSフォーマット（FormatConverter使用）
-                                    FormatConverter.canvasToDDS(canvas, quality).then(callback).catch(err => reject(new Error(`DDS変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/tiff') {
-                                    // TIFFフォーマット（UTIFライブラリ使用）
-                                    FormatConverter.canvasToTIFF(canvas, quality).then(callback).catch(err => reject(new Error(`TIFF変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/vnd.radiance') {
-                                    // HDRフォーマット（基本実装）
-                                    FormatConverter.canvasToHDR(canvas, quality).then(callback).catch(err => reject(new Error(`HDR変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/x-exr') {
-                                    // EXRフォーマット（基本実装）
-                                    FormatConverter.canvasToEXR(canvas, quality).then(callback).catch(err => reject(new Error(`EXR変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/svg+xml') {
-                                    // SVGフォーマット（ベクター変換）
-                                    FormatConverter.canvasToSVG(canvas, quality).then(callback).catch(err => reject(new Error(`SVG変換エラー: ${err.message}`)));
-                                } else if (outputMimeType === 'image/png') {
-                                    // PNG（標準）
-                                    canvas.toBlob(callback, outputMimeType);
-                                } else {
-                                    // 品質設定対応フォーマット（JPEG, WebP等）
-                                    canvas.toBlob(callback, outputMimeType, quality);
-                                }
-                            } catch (conversionError) {
-                                reject(new Error(`フォーマット変換処理エラー: ${conversionError.message}`));
-                            }
-                            
-                        } catch (error) {
-                            reject(error);
-                        }
-                    };
-                    
-                    image.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
-                    image.src = event.target.result;
-                };
-                
-                reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
-                reader.readAsDataURL(file);
-            });
-        }
-
-        function applyFilter(ctx, width, height) {
-            if (currentFilter === 'none') return;
-
-            const imageData = ctx.getImageData(0, 0, width, height);
-            const data = imageData.data;
-
-            switch (currentFilter) {
-                case 'grayscale':
-                    for (let i = 0; i < data.length; i += 4) {
-                        const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
-                        data[i] = gray;
-                        data[i + 1] = gray;
-                        data[i + 2] = gray;
-                    }
-                    break;
-                case 'sepia':
-                    for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i + 1];
-                        const b = data[i + 2];
-                        data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
-                        data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
-                        data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
-                    }
-                    break;
-                case 'blur':
-                    const brightness = parseFloat(brightnessRange.value);
-                    for (let i = 0; i < data.length; i += 4) {
-                        data[i] = Math.min(255, data[i] * brightness);
-                        data[i + 1] = Math.min(255, data[i + 1] * brightness);
-                        data[i + 2] = Math.min(255, data[i + 2] * brightness);
-                    }
-                    break;
-            }
-
-            ctx.putImageData(imageData, 0, 0);
-        }
-
-        function displayResults() {
-            resultsGrid.innerHTML = '';
-            
-            results.forEach((result, index) => {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'bg-gray-50 p-4 rounded-lg border';
-                resultItem.innerHTML = `
-                    <div class="text-center">
-                        <img src="${result.url}" alt="変換結果 ${index + 1}" class="preview-image mx-auto mb-2" style="max-height: 200px;">
-                        <p class="text-sm text-gray-600 mb-2">${result.originalName}</p>
-                        <a href="${result.url}" download="${result.filename}" class="form-button inline-block py-1 px-3 text-sm">
-                            ダウンロード
-                        </a>
-                    </div>
-                `;
-                resultsGrid.appendChild(resultItem);
-            });
-            
-            resultContainer.classList.remove('hidden');
-            if (results.length > 1) {
-                downloadAllBtn.classList.remove('hidden');
-            }
-        }
-
-        // 全てダウンロード
-        downloadAllBtn.addEventListener('click', function() {
-            results.forEach(result => {
-                const a = document.createElement('a');
-                a.href = result.url;
-                a.download = result.filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            });
-        });
-
-        // 結果クリア
-        clearResultsBtn.addEventListener('click', function() {
-            results.forEach(result => URL.revokeObjectURL(result.url));
-            results = [];
-            resultContainer.classList.add('hidden');
-            downloadAllBtn.classList.add('hidden');
-            showMessage('結果をクリアしました');
-        });
-
-        // 初期設定
-        updateQualityVisibility();
-        
-        // サポート状況を表示
-        setTimeout(() => {
-            const supportedFormats = [];
-            supportedFormats.push('✅ JPEG, PNG, WebP, GIF (標準サポート)');
-            supportedFormats.push('✅ BMP, TGA, KTX, KTX2, DDS (自前実装)');
-            supportedFormats.push('✅ HDR, EXR, SVG (基本実装)');
-            
-            if (window.UTIF_FALLBACK) {
-                supportedFormats.push('⚠️ TIFF (簡易モード)');
-            } else {
-                supportedFormats.push('✅ TIFF (完全対応)');
-            }
-            
-            console.log('=== 対応フォーマット状況 ===');
-            supportedFormats.forEach(format => console.log(format));
-            console.log('========================');
-        }, 1500);
     });
   </script>
-  <script>
-    // ガイドモーダルの表示/非表示制御
-    document.addEventListener('DOMContentLoaded', function() {
-      const guideBtn = document.getElementById('guide-btn');
-      const guideModal = document.getElementById('guide-modal');
-      const guideClose = document.getElementById('guide-close');
-      const guideContent = document.getElementById('guide-modal-content');
-      // 多言語ガイドデータ
-      const guides = {
-        ja: {
-          title: '高機能画像変換ツールの使い方',
-          list: [
-            '🖼️ <strong>多様なフォーマット対応：</strong>JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR',
-            '⚙️ <strong>プリセット選択：</strong>Web標準・SNS投稿用・印刷品質・ゲームテクスチャ用など',
-            '🔄 <strong>回転・リサイズ：</strong>90°単位での回転、アスペクト比固定リサイズ',
-            '🎨 <strong>フィルター効果：</strong>グレースケール・セピア・明度調整を適用',
-            '🎮 <strong>ゲーム開発対応：</strong>KTX/KTX2テクスチャ、DDS、TGAフォーマット',
-            '📱 <strong>一括変換：</strong>最大50MBファイル、複数同時処理'
-          ],
-          featuresTitle: '新機能・対応フォーマット',
-          features: [
-            'KTX/KTX2: Khronos公式テクスチャフォーマット（ゲーム/VR/AR用）',
-            'DDS: DirectDraw Surface（DirectX/ゲーム開発用）',
-            'TGA: Targa（3Dモデリング・ゲーム開発用）',
-            'HDR/EXR: 高ダイナミックレンジ画像（映像制作用）',
-            'TIFF/BMP: 高品質・無圧縮フォーマット',
-            'ゲーム・VR・3D制作向け専用プリセット'
-          ],
-          tipsTitle: '活用例・ヒント',
-          tips: [
-            '🎮 <strong>ゲームテクスチャ：</strong>「ゲームテクスチャ」プリセットでKTX2最適化',
-            '📱 <strong>モバイルゲーム：</strong>「モバイルゲーム」プリセットで軽量KTX変換',
-            '🎬 <strong>3D制作：</strong>「3Dモデル用」プリセットでTGA無圧縮出力',
-            '🎥 <strong>HDRイメージング：</strong>「HDRイメージング」プリセットで高ダイナミックレンジ',
-            '🎞️ <strong>VFX・映像制作：</strong>「VFX・映像制作」プリセットでEXR高品質',
-            '⚡ <strong>Web最適化：</strong>「Web最適化」プリセットでWebP軽量化',
-            '🖨️ <strong>印刷・DTP：</strong>TIFF形式で最高品質保持'
-          ]
-        },
-        en: {
-          title: 'How to Use the Advanced Image Converter',
-          list: [
-            '🖼️ <strong>Wide Format Support:</strong> JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR',
-            '⚙️ <strong>Preset Settings:</strong> Web Standard, Social Media, Print Quality, Game Texture presets',
-            '🔄 <strong>Rotate & Resize:</strong> 90° rotation steps, aspect ratio preservation',
-            '🎨 <strong>Filter Effects:</strong> Apply grayscale, sepia, brightness adjustments',
-            '🎮 <strong>Game Development:</strong> KTX/KTX2 textures, DDS, TGA format support',
-            '📱 <strong>Batch Convert:</strong> Up to 50MB files, multiple simultaneous processing'
-          ],
-          featuresTitle: 'New Features & Supported Formats',
-          features: [
-            'KTX/KTX2: Khronos official texture format (for games/VR/AR)',
-            'DDS: DirectDraw Surface (for DirectX/game development)',
-            'TGA: Targa (for 3D modeling and game development)',
-            'HDR/EXR: High Dynamic Range images (for video production)',
-            'TIFF/BMP: High quality, uncompressed formats',
-            'Specialized presets for game, VR, and 3D production'
-          ],
-          tipsTitle: 'Tips & Examples',
-          tips: [
-            '🎮 <strong>Game Textures:</strong> Use "Game Texture" preset for KTX2 optimization',
-            '📱 <strong>Mobile Games:</strong> Use "Mobile Game" preset for lightweight KTX',
-            '🎬 <strong>3D Production:</strong> Use "3D Model" preset for uncompressed TGA',
-            '🎥 <strong>HDR Imaging:</strong> Use "HDR Imaging" preset for high dynamic range',
-            '🎞️ <strong>VFX Production:</strong> Use "VFX Production" preset for EXR quality',
-            '⚡ <strong>Web Optimization:</strong> Use "Web Optimized" preset for WebP compression',
-            '🖨️ <strong>Print/DTP:</strong> Use TIFF format for maximum quality preservation'
-          ]
-        }
-      };
-      function renderGuide(lang) {
-        const g = guides[lang] || guides.ja;
-        let html = `<h2 class='text-xl font-bold mb-3 text-accent'>${g.title}</h2>`;
-        html += '<ul class="list-none ml-0 mb-4 text-gray-700 space-y-2">' + g.list.map(x=>`<li class="flex items-start"><span class="mr-2">•</span><span>${x}</span></li>`).join('') + '</ul>';
-        
-        if (g.featuresTitle) {
-          html += `<h3 class='font-bold text-base mt-6 mb-2 text-blue-600'>${g.featuresTitle}</h3>`;
-          html += '<ul class="list-disc ml-5 mb-4 text-gray-700 text-sm space-y-1">' + g.features.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-        }
-        
-        html += `<h3 class='font-bold text-base mt-6 mb-2 text-green-600'>${g.tipsTitle}</h3>`;
-        html += '<ul class="list-none ml-0 text-gray-700 text-sm space-y-2">' + g.tips.map(x=>`<li class="flex items-start"><span class="mr-2">•</span><span>${x}</span></li>`).join('') + '</ul>';
-        
-        guideContent.innerHTML = html;
-      }
-      if(guideBtn && guideModal && guideClose && guideContent) {
-        guideBtn.addEventListener('click', function() {
-          const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-          renderGuide(lang);
-          guideModal.classList.remove('hidden');
-        });
-        guideClose.addEventListener('click', function() {
-          guideModal.classList.add('hidden');
-        });
-        guideModal.addEventListener('click', function(e) {
-          if(e.target === guideModal) guideModal.classList.add('hidden');
-        });
-      }
-    });
-  </script>
-
+  <script src="../js/image-converter-guide.js"></script>
   
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
 </body>
 </html>
-

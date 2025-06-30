@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy (開発中は一時無効化) -->
+  <!--
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:; 
+    connect-src 'self' 
+      https://www.google-analytics.com
+      https://analytics.google.com; 
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  -->
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
+  <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
+  <meta property="og:title" content="【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com" />
+  <meta property="og:description" content="KTX・DDS・TGA等13形式対応、ゲーム・VR・3D制作向けプロ仕様画像変換ツール。一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
+  <meta name="robots" content="index,follow" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // tailwind.configはwindow.tailwind.configで設定
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#65c155",
+            primary: "#2563eb",
+            secondary: "#64748b"
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    /* カスタムスタイル */
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .preview-image {
+      max-width: 300px;
+      max-height: 200px;
+      object-fit: contain;
+    }
+    
+    .upload-area {
+      border: 2px dashed #d1d5db;
+      transition: all 0.3s ease;
+    }
+    
+    .upload-area:hover,
+    .upload-area.dragover {
+      border-color: #65c155;
+      background-color: #f0fdf4;
+    }
+    
+    .form-button {
+      @apply bg-accent hover:bg-accent/90 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    }
+    
+    .form-select {
+      @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent;
+    }
+    
+    .form-input {
+      @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent;
+    }
+    
+    .form-range {
+      @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+    }
+    
+    .form-range::-webkit-slider-thumb {
+      @apply appearance-none h-4 w-4 bg-accent rounded-full cursor-pointer;
+    }
+    
+    .form-range::-moz-range-thumb {
+      @apply h-4 w-4 bg-accent rounded-full cursor-pointer border-0;
+    }
+    
+    /* 翻訳機能用スタイル */
+    .translation-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* プリセット選択ハイライト */
+    .preset-highlight {
+      background: linear-gradient(90deg, #65c155 0%, rgba(101, 193, 85, 0.1) 100%);
+      border-left: 4px solid #65c155;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gray-50 font-sans">
+  <!-- 翻訳切り替えボタン -->
+  <div class="translation-controls">
+    <button id="lang-ja" class="px-3 py-1 text-sm bg-accent text-white rounded mr-1">日本語</button>
+    <button id="lang-en" class="px-3 py-1 text-sm bg-gray-400 text-white rounded">English</button>
+  </div>
+
+  <!-- 外部ライブラリの読み込み -->
+  <script src="../js/image-converter-core.js"></script>
+  <script src="../js/image-converter-formats.js"></script>
+  <script src="../js/image-converter-presets.js"></script>
+  <script src="../js/image-converter-ui.js"></script>
+
+  <!-- Header -->
+  <header class="bg-white shadow-lg border-b-4 border-accent">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <a href="/" class="text-2xl font-bold text-gray-800 hover:text-accent transition-colors">
+            🧪 negi-lab.com
+          </a>
+          <p class="text-sm text-gray-600 mt-1">開発者のための無料ツール集</p>
+        </div>
+        <nav class="hidden md:flex space-x-6">
+          <a href="/tools/" class="text-gray-600 hover:text-accent transition-colors">ツール一覧</a>
+          <a href="/about.html" class="text-gray-600 hover:text-accent transition-colors">About</a>
+          <a href="mailto:negilab.com@gmail.com" class="text-gray-600 hover:text-accent transition-colors">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- ページタイトル -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">
+        🖼️ プロ仕様画像変換ツール
+      </h1>
+      <p class="text-xl text-gray-600 mb-4">
+        KTX・DDS・TGA対応、13種類のフォーマットに対応した高機能変換ツール
+      </p>
+      <div class="flex justify-center space-x-4 mb-6">
+        <button id="guide-btn" class="form-button">
+          📖 使い方ガイド
+        </button>
+        <a href="#converter" class="form-button bg-primary hover:bg-primary/90">
+          🚀 変換を開始
+        </a>
+      </div>
+    </div>
+
+    <!-- 広告スペース1 -->
+    <div class="mb-8 text-center">
+      <div class="bg-gray-100 p-4 rounded-lg border-2 border-dashed border-gray-300">
+        <p class="text-gray-500 text-sm">広告スペース (728x90)</p>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9995732095266282" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9995732095266282"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- 変換ツール -->
+    <section id="converter" class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+        <span class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">1</span>
+        ファイル選択・設定
+      </h2>
+      
+      <!-- ファイルアップロードエリア -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-2">画像ファイルを選択</label>
+        <div id="imageUploadArea" class="upload-area p-8 text-center rounded-lg cursor-pointer">
+          <div id="dropInstructions">
+            <div class="text-4xl mb-4">📁</div>
+            <p class="text-lg font-medium text-gray-700 mb-2">ファイルをドラッグ&ドロップ</p>
+            <p class="text-sm text-gray-500 mb-4">または、クリックしてファイルを選択</p>
+            <p class="text-xs text-gray-400">
+              対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR<br>
+              最大サイズ: 50MB | 複数ファイル対応
+            </p>
+          </div>
+        </div>
+        <input type="file" id="imageFile" multiple accept="image/*,.ktx,.ktx2,.dds,.tga,.hdr,.exr" class="hidden">
+        
+        <!-- 選択されたファイル一覧 -->
+        <div id="fileList" class="mt-4"></div>
+      </div>
+
+      <!-- プリセット選択 -->
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label for="presetSelect" class="block text-sm font-medium text-gray-700 mb-2">
+            🎯 用途別プリセット（推奨）
+          </label>
+          <select id="presetSelect" class="form-select">
+            <option value="">カスタム設定</option>
+            <option value="web-standard">📱 Web標準（JPEG 80%）</option>
+            <option value="web-optimized">⚡ Web最適化（WebP 75%）</option>
+            <option value="social-media">📸 SNS投稿用（1080x1080）</option>
+            <option value="print-quality">🖨️ 印刷品質（JPEG 95%）</option>
+            <option value="thumbnail">🔍 サムネイル（300x300）</option>
+            <option value="game-texture">🎮 ゲームテクスチャ（KTX2）</option>
+            <option value="mobile-game">📱 モバイルゲーム（KTX）</option>
+            <option value="3d-model">🎬 3Dモデル用（TGA）</option>
+            <option value="hdr-imaging">🎥 HDRイメージング</option>
+            <option value="vfx-exr">🎞️ VFX・映像制作（EXR）</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-2">
+            🔄 出力フォーマット
+          </label>
+          <select id="outputFormat" class="form-select">
+            <optgroup label="🌐 Web標準フォーマット">
+              <option value="image/jpeg">JPEG（高圧縮・小サイズ）</option>
+              <option value="image/png">PNG（透明対応・無劣化）</option>
+              <option value="image/webp">WebP（次世代高効率）</option>
+              <option value="image/gif">GIF（アニメーション対応）</option>
+            </optgroup>
+            <optgroup label="🎮 ゲーム・VR開発">
+              <option value="application/ktx">KTX（Khronos標準）</option>
+              <option value="application/ktx2">KTX2（次世代テクスチャ）</option>
+              <option value="image/vnd-ms.dds">DDS（DirectX用）</option>
+              <option value="image/x-targa">TGA（3Dモデル用）</option>
+            </optgroup>
+            <optgroup label="🎥 映像・印刷">
+              <option value="image/tiff">TIFF（印刷・高品質）</option>
+              <option value="image/bmp">BMP（無圧縮）</option>
+              <option value="image/vnd.radiance">HDR（高ダイナミックレンジ）</option>
+              <option value="image/x-exr">EXR（VFX・映像制作）</option>
+            </optgroup>
+            <optgroup label="🔄 ベクター">
+              <option value="image/svg+xml">SVG（ベクター変換）</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <!-- 品質・サイズ設定 -->
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div id="qualityControlContainer">
+          <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-2">
+            品質設定: <span id="qualityValue" class="font-bold text-accent">0.80</span>
+          </label>
+          <input type="range" id="qualityRange" min="0.1" max="1.0" step="0.05" value="0.8" class="form-range">
+          <div class="flex justify-between text-xs text-gray-500 mt-1">
+            <span>低品質</span>
+            <span>高品質</span>
+          </div>
+        </div>
+        
+        <div>
+          <label for="maxWidthInput" class="block text-sm font-medium text-gray-700 mb-2">最大幅（px）</label>
+          <input type="number" id="maxWidthInput" placeholder="制限なし" class="form-input">
+        </div>
+        
+        <div>
+          <label for="maxHeightInput" class="block text-sm font-medium text-gray-700 mb-2">最大高（px）</label>
+          <input type="number" id="maxHeightInput" placeholder="制限なし" class="form-input">
+        </div>
+      </div>
+
+      <!-- アスペクト比設定 -->
+      <div class="mb-6">
+        <label for="aspectRatio" class="block text-sm font-medium text-gray-700 mb-2">📐 アスペクト比</label>
+        <select id="aspectRatio" class="form-select max-w-xs">
+          <option value="original">元の比率を維持</option>
+          <option value="1:1">1:1（正方形）</option>
+          <option value="4:3">4:3（従来型）</option>
+          <option value="16:9">16:9（ワイド）</option>
+          <option value="3:2">3:2（写真用）</option>
+        </select>
+      </div>
+
+      <!-- 回転・フィルター設定 -->
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">🔄 回転</label>
+          <div class="flex space-x-2">
+            <button type="button" id="rotate90" class="form-button bg-gray-400 hover:bg-gray-500">90°</button>
+            <button type="button" id="rotate180" class="form-button bg-gray-400 hover:bg-gray-500">180°</button>
+            <button type="button" id="rotate270" class="form-button bg-gray-400 hover:bg-gray-500">270°</button>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">🎨 フィルター効果</label>
+          <div class="flex space-x-2">
+            <button type="button" id="filterNone" class="form-button bg-accent">なし</button>
+            <button type="button" id="filterGrayscale" class="form-button bg-gray-400 hover:bg-gray-500">グレー</button>
+            <button type="button" id="filterSepia" class="form-button bg-gray-400 hover:bg-gray-500">セピア</button>
+            <button type="button" id="filterBlur" class="form-button bg-gray-400 hover:bg-gray-500">明度調整</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 明度調整（フィルター選択時のみ表示） -->
+      <div id="brightnessControl" class="mb-6 hidden">
+        <label for="brightnessRange" class="block text-sm font-medium text-gray-700 mb-2">
+          💡 明度: <span id="brightnessValue" class="font-bold text-accent">1.0</span>
+        </label>
+        <input type="range" id="brightnessRange" min="0.1" max="2.0" step="0.1" value="1.0" class="form-range">
+        <div class="flex justify-between text-xs text-gray-500 mt-1">
+          <span>暗い</span>
+          <span>明るい</span>
+        </div>
+      </div>
+
+      <!-- 変換ボタン -->
+      <div class="text-center">
+        <button type="button" id="convertButton" disabled class="form-button text-lg py-3 px-8 disabled:bg-gray-400 disabled:cursor-not-allowed">
+          🚀 画像を変換する
+        </button>
+      </div>
+    </section>
+
+    <!-- プレビューエリア -->
+    <section id="previewContainer" class="bg-white rounded-xl shadow-lg p-6 mb-8 hidden">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+        <span class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
+        プレビュー
+      </h2>
+      <div class="text-center">
+        <img id="imagePreview" alt="プレビュー" class="preview-image mx-auto border rounded-lg shadow-md">
+      </div>
+    </section>
+
+    <!-- 状態表示 -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">📊 状態</h2>
+      <div id="statusMessage" class="text-green-600 mb-2"></div>
+      <div id="errorMessage" class="text-red-600 mb-2"></div>
+    </section>
+
+    <!-- 結果表示エリア -->
+    <section id="resultContainer" class="bg-white rounded-xl shadow-lg p-6 mb-8 hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+          <span class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">3</span>
+          変換結果
+        </h2>
+        <div class="space-x-2">
+          <button id="downloadAllBtn" class="form-button bg-green-600 hover:bg-green-700 hidden">
+            📦 全てダウンロード
+          </button>
+          <button id="clearResultsBtn" class="form-button bg-gray-400 hover:bg-gray-500">
+            🗑️ 結果をクリア
+          </button>
+        </div>
+      </div>
+      <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- 広告スペース2 -->
+    <div class="mb-8 text-center">
+      <div class="bg-gray-100 p-4 rounded-lg border-2 border-dashed border-gray-300">
+        <p class="text-gray-500 text-sm">広告スペース (728x90)</p>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9995732095266282" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9995732095266282"
+             data-ad-slot="0987654321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+
+    <!-- 機能説明 -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">✨ 主な機能</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="text-center p-4 bg-blue-50 rounded-lg">
+          <div class="text-3xl mb-3">🎮</div>
+          <h3 class="font-bold text-lg mb-2">ゲーム開発対応</h3>
+          <p class="text-sm text-gray-600">KTX・KTX2・DDS・TGAなど、ゲーム開発に必要なテクスチャフォーマットに対応</p>
+        </div>
+        <div class="text-center p-4 bg-green-50 rounded-lg">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="font-bold text-lg mb-2">高速変換</h3>
+          <p class="text-sm text-gray-600">ブラウザ上で高速変換。最大50MBの大容量ファイルにも対応</p>
+        </div>
+        <div class="text-center p-4 bg-purple-50 rounded-lg">
+          <div class="text-3xl mb-3">🔒</div>
+          <h3 class="font-bold text-lg mb-2">プライバシー保護</h3>
+          <p class="text-sm text-gray-600">ファイルはサーバーに送信されず、ブラウザ内で処理されるため安全</p>
+        </div>
+        <div class="text-center p-4 bg-yellow-50 rounded-lg">
+          <div class="text-3xl mb-3">🎨</div>
+          <h3 class="font-bold text-lg mb-2">豊富な編集機能</h3>
+          <p class="text-sm text-gray-600">回転・リサイズ・フィルター効果で画像を自由に編集</p>
+        </div>
+        <div class="text-center p-4 bg-red-50 rounded-lg">
+          <div class="text-3xl mb-3">📱</div>
+          <h3 class="font-bold text-lg mb-2">一括処理</h3>
+          <p class="text-sm text-gray-600">複数ファイルを同時に選択して一括変換。作業効率が大幅向上</p>
+        </div>
+        <div class="text-center p-4 bg-indigo-50 rounded-lg">
+          <div class="text-3xl mb-3">🌐</div>
+          <h3 class="font-bold text-lg mb-2">13種類のフォーマット</h3>
+          <p class="text-sm text-gray-600">JPEG・PNG・WebPから、KTX2・HDR・EXRまで幅広く対応</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 対応フォーマット詳細 -->
+    <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">📋 対応フォーマット詳細</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-bold text-blue-600 mb-4">🌐 Web・一般用途</h3>
+          <div class="space-y-3">
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>JPEG/JPG</strong> - 写真に最適、高圧縮
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>PNG</strong> - 透明度対応、無劣化圧縮
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>WebP</strong> - 次世代フォーマット、小サイズ
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>GIF</strong> - アニメーション、256色
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>SVG</strong> - ベクター変換、拡大縮小自由
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-purple-600 mb-4">🎮 ゲーム・3D開発</h3>
+          <div class="space-y-3">
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>KTX</strong> - Khronos標準テクスチャ
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>KTX2</strong> - 次世代テクスチャ、GPU圧縮
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>DDS</strong> - DirectDraw Surface、DirectX
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>TGA</strong> - Targa、3Dモデリング用
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-red-600 mb-4">🎥 映像・印刷</h3>
+          <div class="space-y-3">
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>TIFF</strong> - 印刷・DTP用、高品質
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>BMP</strong> - 無圧縮、ビットマップ
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>HDR</strong> - 高ダイナミックレンジ
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-green-500 mr-2">✅</span>
+              <div>
+                <strong>EXR</strong> - VFX・映像制作用
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-green-600 mb-4">🎯 用途別プリセット</h3>
+          <div class="space-y-3">
+            <div class="flex items-start">
+              <span class="text-blue-500 mr-2">🎮</span>
+              <div>
+                <strong>ゲームテクスチャ</strong> - KTX2、1024x1024
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-blue-500 mr-2">📱</span>
+              <div>
+                <strong>モバイルゲーム</strong> - KTX、512x512
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-blue-500 mr-2">🎬</span>
+              <div>
+                <strong>3Dモデル用</strong> - TGA、無圧縮
+              </div>
+            </div>
+            <div class="flex items-start">
+              <span class="text-blue-500 mr-2">🎥</span>
+              <div>
+                <strong>HDRイメージング</strong> - HDR形式
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
+
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+
+  <script type="module" defer>
+    // 翻訳機能やその他の共通機能をここに直接実装
+    window.translations = {
+      ja: {
+        imageConverter: {
+          pageTitle: "【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com",
+          metaDescription: "KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。"
+        }
+      },
+      en: {
+        imageConverter: {
+          pageTitle: "【Free】Professional Image Converter - KTX・DDS・TGA Support Batch Processing | negi-lab.com",
+          metaDescription: "Advanced image converter supporting 13 formats including KTX・KTX2・DDS・TGA for game development. Batch processing, rotation/filter effects, specialized presets for game/VR/3D production. Up to 50MB support."
+        }
+      }
+    };
+  </script>
+  <script>
+    // メインロジックは分離されたJSファイルで実行されます
+    document.addEventListener('DOMContentLoaded', () => {
+        // 画像変換機能の初期化は image-converter-ui.js で実行
+        if (window.ImageConverterUI) {
+            window.ImageConverterUI.init();
+        }
+    });
+  </script>
+  <script src="../js/image-converter-guide.js"></script>
+  
+</body>
+</html>
