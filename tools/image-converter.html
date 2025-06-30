@@ -38,55 +38,12 @@
   <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
   <meta name="robots" content="index,follow" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <!-- Tailwind CSS (開発用CDN - 本番環境では別途インストールを推奨) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 画像処理ライブラリ（フォールバック処理付き） -->
-  <script>
-    // ライブラリ読み込み確認とフォールバック
-    window.addEventListener('load', function() {
-      console.log('=== 画像変換ツール初期化 ===');
-      
-      if (typeof UTIF === 'undefined') {
-        console.warn('⚠️ UTIF library not loaded - TIFF conversion will use fallback');
-        window.UTIF_FALLBACK = true;
-        
-        // ユーザーに通知
-        setTimeout(() => {
-          const statusMsg = document.getElementById('statusMessage');
-          if (statusMsg) {
-            statusMsg.textContent = 'ℹ️ TIFF変換は簡易モードで動作します（UTIFライブラリ未読み込み）';
-            statusMsg.style.color = '#f59e0b'; // amber color
-          }
-        }, 1000);
-      } else {
-        console.log('✅ UTIF library loaded successfully');
-        window.UTIF_FALLBACK = false;
-      }
-      
-      // TailwindCSS読み込み確認
-      if (typeof tailwind !== 'undefined') {
-        console.log('✅ Tailwind CSS loaded successfully');
-      } else {
-        console.warn('⚠️ Tailwind CSS may not be loaded properly');
-      }
-      
-      console.log('=== 初期化完了 ===');
-    });
-  </script>
-  <!-- UTIF.js for TIFF処理 -->
-  <script src="https://unpkg.com/utif@4.5.0/UTIF.js" 
-          onload="console.log('UTIF library loaded from unpkg.com')"
-          onerror="console.error('UTIF library failed to load from unpkg.com')"></script>
-  <!-- PNGJS for PNG処理（ブラウザ版が利用できない場合はスキップ） -->
-  <script>
-    // PNGJSはNode.js向けなので、ブラウザではネイティブCanvas APIを使用
-    console.log('PNG processing will use native Canvas API');
-    window.PNGJS_FALLBACK = true;
-  </script>
   
-  <!-- Tailwind Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
+    // tailwind.configはwindow.tailwind.configで設定
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
       theme: {
         extend: {
           colors: {
@@ -96,10 +53,9 @@
           fontFamily: { inter: ["Inter", "sans-serif"] }
         }
       }
-    }
-    window.pageTitleTranslationKey = "imageConverter.pageTitle";
-    window.metaDescriptionTranslationKey = "imageConverter.metaDescription";
+    };
   </script>
+  
   <style>
     .form-select, .form-input, .form-button, .form-range {
       padding: 0.5rem;
@@ -198,6 +154,50 @@
       background-color: rgba(74, 222, 128, 0.02);
     }
   </style>
+  <!-- 画像処理ライブラリ（フォールバック処理付き） -->
+  <script>
+    // ライブラリ読み込み確認とフォールバック
+    window.addEventListener('load', function() {
+      console.log('=== 画像変換ツール初期化 ===');
+      
+      if (typeof UTIF === 'undefined') {
+        console.warn('⚠️ UTIF library not loaded - TIFF conversion will use fallback');
+        window.UTIF_FALLBACK = true;
+        
+        // ユーザーに通知
+        setTimeout(() => {
+          const statusMsg = document.getElementById('statusMessage');
+          if (statusMsg) {
+            statusMsg.textContent = 'ℹ️ TIFF変換は簡易モードで動作します（UTIFライブラリ未読み込み）';
+            statusMsg.style.color = '#f59e0b'; // amber color
+          }
+        }, 1000);
+      } else {
+        console.log('✅ UTIF library loaded successfully');
+        window.UTIF_FALLBACK = false;
+      }
+      
+      // TailwindCSS読み込み確認
+      if (typeof window.tailwind !== 'undefined') {
+        console.log('✅ Tailwind CSS loaded successfully');
+      } else {
+        console.warn('⚠️ Tailwind CSS may not be loaded properly');
+      }
+      
+      console.log('=== 初期化完了 ===');
+    });
+  </script>
+  <!-- UTIF.js for TIFF処理 -->
+  <script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.js" 
+          onload="console.log('UTIF library loaded from jsDelivr CDN')"
+          onerror="console.error('UTIF library failed to load from jsDelivr CDN')"></script>
+  <!-- PNGJS for PNG処理（ブラウザ版が利用できない場合はスキップ） -->
+  <script>
+    // PNGJSはNode.js向けなので、ブラウザではネイティブCanvas APIを使用
+    console.log('PNG processing will use native Canvas API');
+    window.PNGJS_FALLBACK = true;
+  </script>
+  
   <!-- Google AdSense (本番環境のみ) -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script> -->
 </head>
