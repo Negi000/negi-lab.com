@@ -34,9 +34,9 @@ window.ImageConverterUI = {
             // フォーム要素
             presetSelect: document.getElementById('presetSelect'),
             outputFormat: document.getElementById('outputFormat'),
-            qualitySlider: document.getElementById('qualityRange'),
+            qualitySlider: document.getElementById('quality'),
             qualityValue: document.getElementById('qualityValue'),
-            qualityContainer: document.getElementById('qualityControlContainer'),
+            qualityContainer: document.getElementById('qualityContainer'),
             
             // サイズ制限
             aspectRatio: document.getElementById('aspectRatio'),
@@ -55,9 +55,9 @@ window.ImageConverterUI = {
             filterBlur: document.getElementById('filterBlur'),
             
             // アクションボタン
-            convertBtn: document.getElementById('convertButton'),
+            convertBtn: document.getElementById('convertBtn'),
             downloadAllBtn: document.getElementById('downloadAllBtn'),
-            clearBtn: document.getElementById('clearResultsBtn'),
+            clearBtn: document.getElementById('clearBtn'),
             
             // ステータス・結果
             statusMessage: document.getElementById('statusMessage'),
@@ -455,6 +455,20 @@ window.ImageConverterUI = {
             'image/x-exr': 'exr',
             'image/vnd-ms.dds': 'dds'
         };
+        return extensionMap[format] || 'bin';
+    },
+                const result = await this.processFile(file);
+                results.push(result);
+            } catch (error) {
+                console.error(`ファイル ${file.name} の処理中にエラー:`, error);
+                results.push({
+                    originalFile: file,
+                    error: error.message
+                });
+            }
+        }
+        
+        return results;
     },
 
     // 単一ファイル処理
