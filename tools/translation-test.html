@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation System Test</title>
+</head>
+<body>
+    <h1 data-translate-key="imageConverter.mainTitle">テスト</h1>
+    <p data-translate-key="imageConverter.subtitle">サブタイトル</p>
+    
+    <select id="lang-switch">
+        <option value="ja" data-translate-key="option.ja">日本語</option>
+        <option value="en" data-translate-key="option.en">English</option>
+    </select>
+    
+    <script src="../js/translations.js"></script>
+    <script>
+        // デバッグ用コンソールログ
+        console.log('Test Page: window.translations available:', !!window.translations);
+        console.log('Test Page: window.TranslationSystem available:', !!window.TranslationSystem);
+        
+        if (window.translations) {
+            console.log('Test Page: Available languages:', Object.keys(window.translations));
+            console.log('Test Page: Japanese translations sample:', Object.keys(window.translations.ja || {}).slice(0, 5));
+            console.log('Test Page: English translations sample:', Object.keys(window.translations.en || {}).slice(0, 5));
+        }
+        
+        // 手動で翻訳を適用してテスト
+        function testTranslation() {
+            console.log('Test: Manually applying translations...');
+            
+            if (window.TranslationSystem) {
+                console.log('Test: Using TranslationSystem');
+                window.TranslationSystem.init();
+            } else {
+                console.log('Test: TranslationSystem not available');
+            }
+        }
+        
+        // DOMContentLoaded後にテスト実行
+        document.addEventListener('DOMContentLoaded', testTranslation);
+    </script>
+</body>
+</html>
