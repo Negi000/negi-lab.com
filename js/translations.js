@@ -46,6 +46,114 @@ window.translations = {
     'qrCode.mainTitle': 'QRコード生成ツール',
     'qrCode.subtitle': 'URLやテキストから高品質なQRコードを無料で作成',
     
+    // 画像変換ツール - 包括的多言語対応
+    'imageConverter.pageTitle': '【無料】プロ仕様画像変換ツール - KTX・DDS・TGA等20形式対応 一括処理 | negi-lab.com',
+    'imageConverter.metaDescription': 'KTX・KTX2・DDS・TGAなどゲーム開発対応、最新フォーマット20種類に対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。',
+    'imageConverter.mainTitle': 'プロ仕様画像変換ツール',
+    'imageConverter.subtitle': 'KTX・DDS・TGA等20形式対応 – ゲーム・VR・3D制作から一般用途まで',
+    'imageConverter.description': '複数ファイル一括処理、回転・フィルター効果、用途別プリセット搭載で開発効率を大幅向上',
+    
+    // ファイルアップロード
+    'imageConverter.upload.label': '画像ファイルをアップロード:',
+    'imageConverter.upload.instructions': 'ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）',
+    'imageConverter.upload.supportedFormats': '対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR, AVIF, HEIC, JPEG XL',
+    'imageConverter.upload.maxFileSize': '最大ファイルサイズ: 50MB',
+    'imageConverter.upload.fileSizeError': 'ファイルサイズが50MBを超えています',
+    'imageConverter.upload.unsupportedFormat': '対応していないファイル形式です',
+    
+    // プレビュー
+    'imageConverter.preview.title': 'プレビュー比較',
+    'imageConverter.preview.original': '元画像',
+    'imageConverter.preview.processed': '変換後プレビュー',
+    
+    // プリセット
+    'imageConverter.presets.label': 'プリセット設定:',
+    'imageConverter.presets.custom': 'カスタム設定',
+    'imageConverter.presets.webStandard': 'Web標準 (JPEG 80%)',
+    'imageConverter.presets.webOptimized': 'Web最適化 (WebP 75%)',
+    'imageConverter.presets.socialMedia': 'SNS投稿用 (JPEG 70%, 1080px)',
+    'imageConverter.presets.printQuality': '印刷品質 (JPEG 95%)',
+    'imageConverter.presets.thumbnail': 'サムネイル用 (JPEG 70%, 300px)',
+    'imageConverter.presets.gameTexture': 'ゲームテクスチャ (KTX2 80%)',
+    'imageConverter.presets.mobileGame': 'モバイルゲーム (KTX 512px)',
+    'imageConverter.presets.threeDModel': '3Dモデル用 (TGA)',
+    'imageConverter.presets.hdrImaging': 'HDRイメージング',
+    'imageConverter.presets.vfxExr': 'VFX・映像制作 (EXR)',
+    
+    // 出力フォーマット
+    'imageConverter.outputFormat.label': '出力フォーマット:',
+    'imageConverter.outputFormat.standard': '標準フォーマット',
+    'imageConverter.outputFormat.gaming': 'ゲーム・3D制作',
+    'imageConverter.outputFormat.professional': '高品質・専門用途',
+    'imageConverter.outputFormat.jpeg': 'JPEG',
+    'imageConverter.outputFormat.png': 'PNG',
+    'imageConverter.outputFormat.webp': 'WebP',
+    'imageConverter.outputFormat.gif': 'GIF',
+    'imageConverter.outputFormat.bmp': 'BMP',
+    'imageConverter.outputFormat.tiff': 'TIFF',
+    'imageConverter.outputFormat.avif': 'AVIF (次世代)',
+    'imageConverter.outputFormat.ktx': 'KTX (Khronos Texture)',
+    'imageConverter.outputFormat.ktx2': 'KTX2 (Khronos Texture 2.0)',
+    'imageConverter.outputFormat.tga': 'TGA (Targa)',
+    'imageConverter.outputFormat.dds': 'DDS (DirectDraw Surface)',
+    'imageConverter.outputFormat.hdr': 'HDR (ハイダイナミックレンジ)',
+    'imageConverter.outputFormat.exr': 'EXR (OpenEXR)',
+    'imageConverter.outputFormat.jxl': 'JPEG XL',
+    
+    // 変換オプション
+    'imageConverter.options.rotation': '画像回転:',
+    'imageConverter.options.aspectRatio': 'アスペクト比:',
+    'imageConverter.options.aspectOriginal': '元の比率を維持',
+    'imageConverter.options.aspectSquare': '1:1 (正方形)',
+    'imageConverter.options.aspectCustom': 'カスタム',
+    'imageConverter.options.filters': 'フィルター効果:',
+    'imageConverter.options.filterNone': 'なし',
+    'imageConverter.options.filterGrayscale': 'グレースケール',
+    'imageConverter.options.filterSepia': 'セピア',
+    'imageConverter.options.filterBlur': 'ぼかし',
+    'imageConverter.options.brightness': '明度調整:',
+    'imageConverter.options.quality': '品質 (JPEG/WebP/KTX/TGA):',
+    'imageConverter.options.maxDimensions': '最大寸法 (省略可):',
+    'imageConverter.options.maxWidth': '最大幅 (px):',
+    'imageConverter.options.maxHeight': '最大高さ (px):',
+    'imageConverter.options.exampleWidth': '例: 1920',
+    'imageConverter.options.exampleHeight': '例: 1080',
+    
+    // アクション
+    'imageConverter.actions.convert': '変換開始',
+    'imageConverter.actions.downloading': 'ダウンロード中...',
+    'imageConverter.actions.processing': '処理中...',
+    'imageConverter.actions.downloadAll': '全てダウンロード',
+    'imageConverter.actions.clearResults': '結果をクリア',
+    'imageConverter.actions.delete': '削除',
+    
+    // 結果・ステータス
+    'imageConverter.results.title': '結果:',
+    'imageConverter.results.converted': '変換完了',
+    'imageConverter.results.originalSize': '元のサイズ',
+    'imageConverter.results.convertedSize': '変換後サイズ',
+    'imageConverter.results.compressionRatio': '圧縮率',
+    'imageConverter.results.error': 'エラー',
+    'imageConverter.results.processing': '処理中...',
+    'imageConverter.results.completed': '個のファイルの変換が完了しました。',
+    'imageConverter.results.failed': '変換処理中にエラーが発生しました。',
+    
+    // 進捗
+    'imageConverter.progress.starting': '変換を開始します...',
+    'imageConverter.progress.converting': 'を変換中...',
+    'imageConverter.progress.completed': '変換完了',
+    'imageConverter.progress.percentage': '0%',
+    
+    // セクションタイトル
+    'imageConverter.sections.guideTitle': '画像変換活用完全ガイド',
+    'imageConverter.sections.guideDescription': 'Webデザインからコンテンツ制作まで、画像変換・最適化を実践的に活用するための実技的なノウハウをご紹介します。',
+    'imageConverter.sections.formatTitle': '対応フォーマット技術解説',
+    'imageConverter.sections.formatDescription': 'ゲーム開発・VR/AR・3D制作から一般用途まで、20種類の画像フォーマットの特徴と最適な使い方を詳しくご紹介します。',
+    'imageConverter.sections.faqTitle': 'よくある質問・トラブルシューティング',
+    'imageConverter.sections.faqDescription': '画像変換・最適化作業によくある疑問と解決方法をまとめました。',
+    'imageConverter.sections.casesTitle': '実際の活用事例',
+    'imageConverter.sections.casesDescription': '様々な業界・用途での実際の画像変換・最適化活用事例をご紹介します。',
+    
     // モード選択
     'qrCode.mode.single': '単体生成',
     'qrCode.mode.batch': '一括生成',
@@ -437,6 +545,114 @@ window.translations = {
     'qrCode.metaDescription': 'Create high-quality QR codes from URLs and text for free. Supports logo insertion, color customization, and size adjustment. Error correction levels ensure excellent readability. No registration required, browser-based secure QR generator.',
     'qrCode.mainTitle': 'QR Code Generator',
     'qrCode.subtitle': 'Create high-quality QR codes from URLs and text for free',
+    
+    // Image Converter Tool - Comprehensive multilingual support
+    'imageConverter.pageTitle': 'Free Professional Image Converter - KTX・DDS・TGA 20+ Formats Batch Processing | negi-lab.com',
+    'imageConverter.metaDescription': 'Advanced image converter supporting 20+ formats including KTX・KTX2・DDS・TGA for game development. Batch processing, rotation/filter effects, specialized presets for game/VR/3D production. Up to 50MB support.',
+    'imageConverter.mainTitle': 'Professional Image Converter',
+    'imageConverter.subtitle': '20+ Formats Support – From Gaming/VR/3D to General Use',
+    'imageConverter.description': 'Batch processing, rotation/filter effects, specialized presets for maximum development efficiency',
+    
+    // File upload
+    'imageConverter.upload.label': 'Upload Image Files:',
+    'imageConverter.upload.instructions': 'Drag & drop files here<br>or click to select (multiple files supported)',
+    'imageConverter.upload.supportedFormats': 'Supported: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR, AVIF, HEIC, JPEG XL',
+    'imageConverter.upload.maxFileSize': 'Max file size: 50MB',
+    'imageConverter.upload.fileSizeError': 'File size exceeds 50MB limit',
+    'imageConverter.upload.unsupportedFormat': 'Unsupported file format',
+    
+    // Preview
+    'imageConverter.preview.title': 'Preview Comparison',
+    'imageConverter.preview.original': 'Original',
+    'imageConverter.preview.processed': 'Converted Preview',
+    
+    // Presets
+    'imageConverter.presets.label': 'Preset Settings:',
+    'imageConverter.presets.custom': 'Custom Settings',
+    'imageConverter.presets.webStandard': 'Web Standard (JPEG 80%)',
+    'imageConverter.presets.webOptimized': 'Web Optimized (WebP 75%)',
+    'imageConverter.presets.socialMedia': 'Social Media (JPEG 70%, 1080px)',
+    'imageConverter.presets.printQuality': 'Print Quality (JPEG 95%)',
+    'imageConverter.presets.thumbnail': 'Thumbnail (JPEG 70%, 300px)',
+    'imageConverter.presets.gameTexture': 'Game Texture (KTX2 80%)',
+    'imageConverter.presets.mobileGame': 'Mobile Game (KTX 512px)',
+    'imageConverter.presets.threeDModel': '3D Model (TGA)',
+    'imageConverter.presets.hdrImaging': 'HDR Imaging',
+    'imageConverter.presets.vfxExr': 'VFX・Video Production (EXR)',
+    
+    // Output format
+    'imageConverter.outputFormat.label': 'Output Format:',
+    'imageConverter.outputFormat.standard': 'Standard Formats',
+    'imageConverter.outputFormat.gaming': 'Gaming・3D Creation',
+    'imageConverter.outputFormat.professional': 'High Quality・Professional',
+    'imageConverter.outputFormat.jpeg': 'JPEG',
+    'imageConverter.outputFormat.png': 'PNG',
+    'imageConverter.outputFormat.webp': 'WebP',
+    'imageConverter.outputFormat.gif': 'GIF',
+    'imageConverter.outputFormat.bmp': 'BMP',
+    'imageConverter.outputFormat.tiff': 'TIFF',
+    'imageConverter.outputFormat.avif': 'AVIF (Next-gen)',
+    'imageConverter.outputFormat.ktx': 'KTX (Khronos Texture)',
+    'imageConverter.outputFormat.ktx2': 'KTX2 (Khronos Texture 2.0)',
+    'imageConverter.outputFormat.tga': 'TGA (Targa)',
+    'imageConverter.outputFormat.dds': 'DDS (DirectDraw Surface)',
+    'imageConverter.outputFormat.hdr': 'HDR (High Dynamic Range)',
+    'imageConverter.outputFormat.exr': 'EXR (OpenEXR)',
+    'imageConverter.outputFormat.jxl': 'JPEG XL',
+    
+    // Conversion options
+    'imageConverter.options.rotation': 'Image Rotation:',
+    'imageConverter.options.aspectRatio': 'Aspect Ratio:',
+    'imageConverter.options.aspectOriginal': 'Keep Original Ratio',
+    'imageConverter.options.aspectSquare': '1:1 (Square)',
+    'imageConverter.options.aspectCustom': 'Custom',
+    'imageConverter.options.filters': 'Filter Effects:',
+    'imageConverter.options.filterNone': 'None',
+    'imageConverter.options.filterGrayscale': 'Grayscale',
+    'imageConverter.options.filterSepia': 'Sepia',
+    'imageConverter.options.filterBlur': 'Blur',
+    'imageConverter.options.brightness': 'Brightness Adjustment:',
+    'imageConverter.options.quality': 'Quality (JPEG/WebP/KTX/TGA):',
+    'imageConverter.options.maxDimensions': 'Max Dimensions (optional):',
+    'imageConverter.options.maxWidth': 'Max Width (px):',
+    'imageConverter.options.maxHeight': 'Max Height (px):',
+    'imageConverter.options.exampleWidth': 'e.g.: 1920',
+    'imageConverter.options.exampleHeight': 'e.g.: 1080',
+    
+    // Actions
+    'imageConverter.actions.convert': 'Start Conversion',
+    'imageConverter.actions.downloading': 'Downloading...',
+    'imageConverter.actions.processing': 'Processing...',
+    'imageConverter.actions.downloadAll': 'Download All',
+    'imageConverter.actions.clearResults': 'Clear Results',
+    'imageConverter.actions.delete': 'Delete',
+    
+    // Results & Status
+    'imageConverter.results.title': 'Results:',
+    'imageConverter.results.converted': 'Converted',
+    'imageConverter.results.originalSize': 'Original Size',
+    'imageConverter.results.convertedSize': 'Converted Size',
+    'imageConverter.results.compressionRatio': 'Compression Ratio',
+    'imageConverter.results.error': 'Error',
+    'imageConverter.results.processing': 'Processing...',
+    'imageConverter.results.completed': ' files conversion completed.',
+    'imageConverter.results.failed': 'An error occurred during conversion.',
+    
+    // Progress
+    'imageConverter.progress.starting': 'Starting conversion...',
+    'imageConverter.progress.converting': ' converting...',
+    'imageConverter.progress.completed': 'Conversion completed',
+    'imageConverter.progress.percentage': '0%',
+    
+    // Section titles
+    'imageConverter.sections.guideTitle': 'Complete Image Conversion Guide',
+    'imageConverter.sections.guideDescription': 'Practical know-how for effectively utilizing image conversion and optimization from web design to content creation.',
+    'imageConverter.sections.formatTitle': 'Supported Formats Technical Guide',
+    'imageConverter.sections.formatDescription': 'Detailed introduction to the features and optimal usage of 20 image formats from game development, VR/AR, 3D creation to general use.',
+    'imageConverter.sections.faqTitle': 'FAQ・Troubleshooting',
+    'imageConverter.sections.faqDescription': 'Common questions and solutions for image conversion and optimization work.',
+    'imageConverter.sections.casesTitle': 'Real Use Cases',
+    'imageConverter.sections.casesDescription': 'Actual image conversion and optimization use cases across various industries and applications.',
     
     // Mode Selection
     'qrCode.mode.single': 'Single Generation',
@@ -853,16 +1069,140 @@ window.applyTranslations = function(lang) {
   }
 };
 
+/**
+ * 翻訳システムクラス
+ */
+window.TranslationSystem = {
+    currentLang: 'ja',
+    
+    // 初期化
+    init: function() {
+        this.detectLanguage();
+        this.bindEvents();
+        this.applyTranslations();
+    },
+    
+    // 言語検出
+    detectLanguage: function() {
+        const saved = localStorage.getItem('selectedLanguage') || localStorage.getItem('preferred-language');
+        const browser = navigator.language || navigator.userLanguage;
+        
+        if (saved && (saved === 'ja' || saved === 'en')) {
+            this.currentLang = saved;
+        } else if (browser.startsWith('en')) {
+            this.currentLang = 'en';
+        } else {
+            this.currentLang = 'ja';
+        }
+        
+        // 言語セレクターの状態更新
+        const langSwitch = document.getElementById('lang-switch');
+        if (langSwitch) {
+            langSwitch.value = this.currentLang;
+        }
+    },
+    
+    // イベント設定
+    bindEvents: function() {
+        const langSwitch = document.getElementById('lang-switch');
+        if (langSwitch) {
+            langSwitch.addEventListener('change', (e) => {
+                this.switchLanguage(e.target.value);
+            });
+        }
+    },
+    
+    // 言語切り替え
+    switchLanguage: function(lang) {
+        if (lang !== 'ja' && lang !== 'en') return;
+        
+        this.currentLang = lang;
+        localStorage.setItem('selectedLanguage', lang);
+        localStorage.setItem('preferred-language', lang);
+        this.applyTranslations();
+        
+        // HTMLのlang属性も更新
+        document.documentElement.lang = lang;
+    },
+    
+    // 翻訳適用
+    applyTranslations: function() {
+        const translations = window.translations[this.currentLang];
+        if (!translations) return;
+        
+        // data-translate-key属性を持つ要素を翻訳
+        document.querySelectorAll('[data-translate-key]').forEach(element => {
+            const key = element.getAttribute('data-translate-key');
+            const text = translations[key];
+            
+            if (text) {
+                if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'number')) {
+                    element.placeholder = text;
+                } else if (element.tagName === 'TITLE') {
+                    element.textContent = text;
+                } else if (element.tagName === 'META') {
+                    element.content = text;
+                } else if (element.tagName === 'OPTION') {
+                    element.textContent = text;
+                } else if (element.tagName === 'OPTGROUP') {
+                    element.label = text;
+                } else {
+                    // HTMLタグが含まれている場合はinnerHTMLを使用
+                    if (text.includes('<') || text.includes('&')) {
+                        element.innerHTML = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            }
+        });
+        
+        // タイトルとメタ情報の更新
+        if (translations['imageConverter.pageTitle']) {
+            document.title = translations['imageConverter.pageTitle'];
+            
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.content = translations['imageConverter.metaDescription'];
+            }
+        }
+    },
+    
+    // 翻訳テキスト取得
+    t: function(key, fallback = '') {
+        const text = window.translations[this.currentLang][key];
+        return text || fallback;
+    }
+};
+
+// 後方互換性のため既存の関数も維持
+window.applyTranslations = function(lang) {
+    if (window.TranslationSystem) {
+        window.TranslationSystem.switchLanguage(lang);
+    }
+};
+
 // 初期化
 document.addEventListener('DOMContentLoaded', function() {
   const savedLang = localStorage.getItem('selectedLanguage') || 'ja';
-  window.applyTranslations(savedLang);
+  
+  // 新しい翻訳システムを優先
+  if (window.TranslationSystem) {
+    window.TranslationSystem.init();
+  } else {
+    // フォールバック
+    window.applyTranslations(savedLang);
+  }
   
   // 言語切り替えイベントリスナー
   const langSelect = document.getElementById('lang-switch');
   if (langSelect) {
     langSelect.addEventListener('change', function() {
-      window.applyTranslations(this.value);
+      if (window.TranslationSystem) {
+        window.TranslationSystem.switchLanguage(this.value);
+      } else {
+        window.applyTranslations(this.value);
+      }
     });
   }
 });

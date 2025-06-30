@@ -17,6 +17,14 @@ window.ImageConverterUI = {
         this.loadCustomPresets();
         this.initializeForm();
         this.checkFormatSupport();
+        this.initializeTranslations();
+    },
+
+    // 翻訳システム初期化
+    initializeTranslations: function() {
+        if (window.TranslationSystem) {
+            window.TranslationSystem.init();
+        }
     },
 
     // 要素キャッシュ
@@ -443,17 +451,43 @@ window.ImageConverterUI = {
     // フォーマットから拡張子を取得
     getExtensionFromFormat: function(format) {
         const extensionMap = {
+            // 標準フォーマット
             'image/jpeg': 'jpg',
+            'image/jpg': 'jpg',
             'image/png': 'png',
             'image/webp': 'webp',
+            'image/gif': 'gif',
             'image/bmp': 'bmp',
             'image/tiff': 'tiff',
+            'image/tif': 'tiff',
+            'image/svg+xml': 'svg',
+            'image/svg': 'svg',
+            'image/avif': 'avif',
+            'image/heic': 'heic',
+            'image/heif': 'heif',
+            'image/jxl': 'jxl',
+            // ゲーム・3D制作向け
             'application/ktx': 'ktx',
             'application/ktx2': 'ktx2',
             'image/x-targa': 'tga',
+            'image/tga': 'tga',
+            'image/vnd-ms.dds': 'dds',
+            'image/dds': 'dds',
+            // 高品質・専門フォーマット
             'image/vnd.radiance': 'hdr',
+            'image/hdr': 'hdr',
             'image/x-exr': 'exr',
-            'image/vnd-ms.dds': 'dds'
+            'image/exr': 'exr',
+            'image/x-portable-pixmap': 'ppm',
+            'image/x-portable-graymap': 'pgm',
+            'image/x-portable-bitmap': 'pbm',
+            'image/x-portable-anymap': 'pnm',
+            // RAW・カメラフォーマット
+            'image/x-canon-cr2': 'cr2',
+            'image/x-canon-crw': 'crw',
+            'image/x-nikon-nef': 'nef',
+            'image/x-sony-arw': 'arw',
+            'image/x-adobe-dng': 'dng'
         };
     },
 
