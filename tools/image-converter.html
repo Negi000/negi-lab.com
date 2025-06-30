@@ -7,14 +7,7 @@
   <!-- Content Security Policy (開発中は一時無効化) -->
   <!--
   <meta http-equiv="Content-Security-Policy" content="
-          <div>
-          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.upload.label">画像ファイルをアップロード:</label>
-          <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
-            <input type="file" id="imageFile" accept="image/jpeg, image/jpg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, image/avif, image/heic, image/heif, .ktx, .ktx2, .dds, .tga, .hdr, .exr, .jxl, .cr2, .nef, .arw, .dng" multiple class="hidden">
-            <p id="dropInstructions" data-translate-key="imageConverter.upload.instructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500" data-translate-key="imageConverter.upload.supportedFormats">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR, AVIF, HEIC, JPEG XL</small><br><small class="text-orange-600" data-translate-key="imageConverter.upload.maxFileSize">最大ファイルサイズ: 50MB</small></p>
-          </div>
-          <div id="fileList" class="mt-2"></div>
-        </div>t-src 'self'; 
+    default-src 'self'; 
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
       https://cdn.tailwindcss.com
       https://cdn.jsdelivr.net
@@ -291,10 +284,10 @@
       
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
-          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1">画像ファイルをアップロード:</label>
+          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.upload.label">画像ファイルをアップロード:</label>
           <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
             <input type="file" id="imageFile" accept="image/jpeg, image/jpg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, image/avif, image/heic, image/heif, .ktx, .ktx2, .dds, .tga, .hdr, .exr, .jxl, .cr2, .nef, .arw, .dng" multiple class="hidden">
-            <p id="dropInstructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR</small><br><small class="text-orange-600">最大ファイルサイズ: 50MB</small></p>
+            <p id="dropInstructions" data-translate-key="imageConverter.upload.instructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500" data-translate-key="imageConverter.upload.supportedFormats">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR, AVIF, HEIC, JPEG XL</small><br><small class="text-orange-600" data-translate-key="imageConverter.upload.maxFileSize">最大ファイルサイズ: 50MB</small></p>
           </div>
           <div id="fileList" class="mt-2"></div>
         </div>
@@ -305,15 +298,15 @@
 
         <!-- リアルタイムプレビュー比較 -->
         <div id="realtimePreview" class="mt-4 hidden">
-          <h3 class="text-sm font-medium text-gray-700 mb-2">プレビュー比較</h3>
+          <h3 class="text-sm font-medium text-gray-700 mb-2" data-translate-key="imageConverter.preview.title">プレビュー比較</h3>
           <div class="preview-comparison">
             <div class="preview-box">
-              <h4>元画像</h4>
+              <h4 data-translate-key="imageConverter.preview.original">元画像</h4>
               <img id="originalPreview" src="#" alt="元画像プレビュー" />
               <p class="text-xs text-gray-500 mt-2" id="originalInfo">-</p>
             </div>
             <div class="preview-box">
-              <h4>変換後プレビュー</h4>
+              <h4 data-translate-key="imageConverter.preview.processed">変換後プレビュー</h4>
               <img id="processedPreview" src="#" alt="変換後プレビュー" />
               <p class="text-xs text-gray-500 mt-2" id="processedInfo">-</p>
             </div>
@@ -338,27 +331,27 @@
         </div>
 
         <div>
-          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="outputFormat.label">出力フォーマット:</label>
+          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.outputFormat.label">出力フォーマット:</label>
           <select id="outputFormat" class="form-select w-full">
-            <optgroup label="標準フォーマット" data-translate-key="outputFormat.standard">
-              <option value="image/jpeg" data-translate-key="outputFormat.jpeg">JPEG</option>
-              <option value="image/png" data-translate-key="outputFormat.png">PNG</option>
-              <option value="image/webp" data-translate-key="outputFormat.webp">WebP</option>
-              <option value="image/gif" data-translate-key="outputFormat.gif">GIF</option>
-              <option value="image/bmp" data-translate-key="outputFormat.bmp">BMP</option>
-              <option value="image/tiff" data-translate-key="outputFormat.tiff">TIFF</option>
-              <option value="image/avif" data-translate-key="outputFormat.avif">AVIF (次世代)</option>
+            <optgroup label="標準フォーマット" data-translate-key="imageConverter.outputFormat.standard">
+              <option value="image/jpeg" data-translate-key="imageConverter.outputFormat.jpeg">JPEG</option>
+              <option value="image/png" data-translate-key="imageConverter.outputFormat.png">PNG</option>
+              <option value="image/webp" data-translate-key="imageConverter.outputFormat.webp">WebP</option>
+              <option value="image/gif" data-translate-key="imageConverter.outputFormat.gif">GIF</option>
+              <option value="image/bmp" data-translate-key="imageConverter.outputFormat.bmp">BMP</option>
+              <option value="image/tiff" data-translate-key="imageConverter.outputFormat.tiff">TIFF</option>
+              <option value="image/avif" data-translate-key="imageConverter.outputFormat.avif">AVIF (次世代)</option>
             </optgroup>
-            <optgroup label="ゲーム・3D制作" data-translate-key="outputFormat.gaming">
-              <option value="application/ktx" data-translate-key="outputFormat.ktx">KTX (Khronos Texture)</option>
-              <option value="application/ktx2" data-translate-key="outputFormat.ktx2">KTX2 (Khronos Texture 2.0)</option>
-              <option value="image/x-targa" data-translate-key="outputFormat.tga">TGA (Targa)</option>
-              <option value="image/vnd-ms.dds" data-translate-key="outputFormat.dds">DDS (DirectDraw Surface)</option>
+            <optgroup label="ゲーム・3D制作" data-translate-key="imageConverter.outputFormat.gaming">
+              <option value="application/ktx" data-translate-key="imageConverter.outputFormat.ktx">KTX (Khronos Texture)</option>
+              <option value="application/ktx2" data-translate-key="imageConverter.outputFormat.ktx2">KTX2 (Khronos Texture 2.0)</option>
+              <option value="image/x-targa" data-translate-key="imageConverter.outputFormat.tga">TGA (Targa)</option>
+              <option value="image/vnd-ms.dds" data-translate-key="imageConverter.outputFormat.dds">DDS (DirectDraw Surface)</option>
             </optgroup>
-            <optgroup label="高品質・専門用途" data-translate-key="outputFormat.professional">
-              <option value="image/vnd.radiance" data-translate-key="outputFormat.hdr">HDR (ハイダイナミックレンジ)</option>
-              <option value="image/x-exr" data-translate-key="outputFormat.exr">EXR (OpenEXR)</option>
-              <option value="image/jxl" data-translate-key="outputFormat.jxl">JPEG XL</option>
+            <optgroup label="高品質・専門用途" data-translate-key="imageConverter.outputFormat.professional">
+              <option value="image/vnd.radiance" data-translate-key="imageConverter.outputFormat.hdr">HDR (ハイダイナミックレンジ)</option>
+              <option value="image/x-exr" data-translate-key="imageConverter.outputFormat.exr">EXR (OpenEXR)</option>
+              <option value="image/jxl" data-translate-key="imageConverter.outputFormat.jxl">JPEG XL</option>
             </optgroup>
           </select>
         </div>
@@ -367,7 +360,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- 回転設定 -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">画像回転:</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.rotation">画像回転:</label>
             <div class="flex gap-2">
               <button type="button" id="rotate90" class="form-button flex-1 py-1 text-sm">90°</button>
               <button type="button" id="rotate180" class="form-button flex-1 py-1 text-sm">180°</button>
@@ -377,29 +370,29 @@
 
           <!-- アスペクト比設定 -->
           <div>
-            <label for="aspectRatio" class="block text-sm font-medium text-gray-700 mb-1">アスペクト比:</label>
+            <label for="aspectRatio" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.aspectRatio">アスペクト比:</label>
             <select id="aspectRatio" class="form-select w-full">
-              <option value="original">元の比率を維持</option>
-              <option value="1:1">1:1 (正方形)</option>
+              <option value="original" data-translate-key="imageConverter.options.aspectOriginal">元の比率を維持</option>
+              <option value="1:1" data-translate-key="imageConverter.options.aspectSquare">1:1 (正方形)</option>
               <option value="4:3">4:3</option>
               <option value="16:9">16:9</option>
               <option value="3:2">3:2</option>
-              <option value="custom">カスタム</option>
+              <option value="custom" data-translate-key="imageConverter.options.aspectCustom">カスタム</option>
             </select>
           </div>
         </div>
 
         <!-- フィルター効果 -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">フィルター効果:</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.filters">フィルター効果:</label>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <button type="button" id="filterNone" class="form-button py-1 text-sm bg-accent">なし</button>
-            <button type="button" id="filterGrayscale" class="form-button py-1 text-sm bg-gray-400">グレースケール</button>
-            <button type="button" id="filterSepia" class="form-button py-1 text-sm bg-yellow-600">セピア</button>
-            <button type="button" id="filterBlur" class="form-button py-1 text-sm bg-blue-400">ぼかし</button>
+            <button type="button" id="filterNone" class="form-button py-1 text-sm bg-accent" data-translate-key="imageConverter.options.filterNone">なし</button>
+            <button type="button" id="filterGrayscale" class="form-button py-1 text-sm bg-gray-400" data-translate-key="imageConverter.options.filterGrayscale">グレースケール</button>
+            <button type="button" id="filterSepia" class="form-button py-1 text-sm bg-yellow-600" data-translate-key="imageConverter.options.filterSepia">セピア</button>
+            <button type="button" id="filterBlur" class="form-button py-1 text-sm bg-blue-400" data-translate-key="imageConverter.options.filterBlur">ぼかし</button>
           </div>
           <div class="mt-2 hidden" id="brightnessControl">
-            <label for="brightnessRange" class="block text-xs font-medium text-gray-600">明度調整:</label>
+            <label for="brightnessRange" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.options.brightness">明度調整:</label>
             <div class="flex items-center gap-2">
               <input type="range" id="brightnessRange" min="0.3" max="2" step="0.1" value="1" class="form-range w-full h-2">
               <span id="brightnessValue" class="text-xs text-gray-600 w-10 text-right">1.0</span>
@@ -408,7 +401,7 @@
         </div>
 
         <div id="qualityControlContainer" class="hidden">
-            <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1">品質 (JPEG/WebP/KTX/TGA):</label>
+            <label for="qualityRange" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.quality">品質 (JPEG/WebP/KTX/TGA):</label>
             <div class="flex items-center gap-2">
                 <input type="range" id="qualityRange" min="0.1" max="1" step="0.05" value="0.9" class="form-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                 <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right">0.90</span>
@@ -416,27 +409,27 @@
         </div>
         
         <div>
-            <p class="block text-sm font-medium text-gray-700 mb-1">最大寸法 (省略可):</p>
+            <p class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.maxDimensions">最大寸法 (省略可):</p>
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label for="maxWidthInput" class="block text-xs font-medium text-gray-600">最大幅 (px):</label>
-                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920">
+                    <label for="maxWidthInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.options.maxWidth">最大幅 (px):</label>
+                    <input type="number" id="maxWidthInput" min="1" class="form-input w-full mt-1" placeholder="例: 1920" data-translate-key="imageConverter.options.exampleWidth">
                 </div>
                 <div>
-                    <label for="maxHeightInput" class="block text-xs font-medium text-gray-600">最大高さ (px):</label>
-                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080">
+                    <label for="maxHeightInput" class="block text-xs font-medium text-gray-600" data-translate-key="imageConverter.options.maxHeight">最大高さ (px):</label>
+                    <input type="number" id="maxHeightInput" min="1" class="form-input w-full mt-1" placeholder="例: 1080" data-translate-key="imageConverter.options.exampleHeight">
                 </div>
             </div>
         </div>
         
-        <button id="convertButton" class="form-button w-full py-2.5" disabled>変換開始</button>
+        <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.actions.convert">変換開始</button>
         
         <div id="resultContainer" class="mt-4 text-center hidden space-y-3">
-            <h3 class="text-lg font-medium text-gray-800">結果:</h3>
+            <h3 class="text-lg font-medium text-gray-800" data-translate-key="imageConverter.results.title">結果:</h3>
             <div id="resultsGrid" class="grid grid-cols-1 gap-4"></div>
             <div class="flex gap-2 justify-center">
-              <button id="downloadAllBtn" class="form-button py-2 px-4 hidden">全てダウンロード</button>
-              <button id="clearResultsBtn" class="form-button py-2 px-4 bg-gray-400">結果をクリア</button>
+              <button id="downloadAllBtn" class="form-button py-2 px-4 hidden" data-translate-key="imageConverter.actions.downloadAll">全てダウンロード</button>
+              <button id="clearResultsBtn" class="form-button py-2 px-4 bg-gray-400" data-translate-key="imageConverter.actions.clearResults">結果をクリア</button>
             </div>
         </div>
 
@@ -446,8 +439,8 @@
             <div id="progressBar" class="bg-accent h-4 rounded-full transition-all duration-300" style="width: 0%"></div>
           </div>
           <div class="flex justify-between text-sm text-gray-600">
-            <span id="progressText">処理中...</span>
-            <span id="progressPercent">0%</span>
+            <span id="progressText" data-translate-key="imageConverter.progress.processing">処理中...</span>
+            <span id="progressPercent" data-translate-key="imageConverter.progress.percentage">0%</span>
           </div>
         </div>
 
@@ -465,7 +458,7 @@
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">画像変換活用完全ガイド</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.sections.guideTitle">画像変換活用完全ガイド</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           Webデザインからコンテンツ制作まで、画像変換・最適化を実践的に活用するための実技的なノウハウをご紹介します。
         </p>
@@ -480,7 +473,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">Web・アプリ開発</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="imageConverter.guide.webDev">Web・アプリ開発</h3>
           </div>
           <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
@@ -510,7 +503,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">コンテンツ制作・SNS</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="imageConverter.guide.contentCreation">コンテンツ制作・SNS</h3>
           </div>
           <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
@@ -540,7 +533,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">ビジネス・印刷業界</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="imageConverter.guide.businessPrint">ビジネス・印刷業界</h3>
           </div>
           <ul class="space-y-3 text-gray-600 flex-grow">
             <li class="flex items-start">
@@ -569,7 +562,7 @@
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">対応フォーマット技術解説</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.sections.formatTitle">対応フォーマット技術解説</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           ゲーム開発・VR/AR・3D制作から一般用途まで、13種類の画像フォーマットの特徴と最適な使い方を詳しくご紹介します。
         </p>
@@ -578,7 +571,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
         <!-- ゲーム・VR/AR開発者向けフォーマット -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">ゲーム・VR/AR開発者向けフォーマット</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="imageConverter.formats.gamingSection">ゲーム・VR/AR開発者向けフォーマット</h3>
           <div class="space-y-4 flex-grow">
             <div class="border-l-4 border-purple-400 pl-4 py-2">
               <h4 class="font-medium text-lg">KTX/KTX2 - Khronos標準テクスチャ</h4>
@@ -601,7 +594,7 @@
         
         <!-- 一般・Web用フォーマット -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">一般・Web用フォーマット</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="imageConverter.formats.webSection">一般・Web用フォーマット</h3>
           <div class="space-y-4 flex-grow">
             <div class="border-l-4 border-red-400 pl-4 py-2">
               <h4 class="font-medium text-lg">JPEG - 写真・グラデーション最適</h4>
@@ -624,7 +617,7 @@
         
         <!-- 技術仕様と最適化 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">技術仕様と最適化</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="imageConverter.formats.techSection">技術仕様と最適化</h3>
           <div class="space-y-6 flex-grow">
             <div>
               <h4 class="font-medium mb-2 text-lg">Canvas API活用</h4>
@@ -665,7 +658,7 @@
   <section class="bg-gray-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.sections.faqTitle">よくある質問・トラブルシューティング</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           画像変換・最適化作業によくある疑問と解決方法をまとめました。
         </p>
@@ -828,7 +821,7 @@
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.sections.casesTitle">実際の活用事例</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           様々な業界・用途での実際の画像変換・最適化活用事例をご紹介します。
         </p>
