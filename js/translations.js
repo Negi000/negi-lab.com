@@ -65,6 +65,8 @@ window.translations = {
     'imageConverter.preview.title': 'プレビュー比較',
     'imageConverter.preview.original': '元画像',
     'imageConverter.preview.processed': '変換後プレビュー',
+    'imageConverter.preview.noImage': '画像を選択してください',
+    'imageConverter.preview.processedWait': '変換後に表示されます',
     
     // プリセット
     'imageConverter.presets.label': 'プリセット設定:',
@@ -142,6 +144,7 @@ window.translations = {
     'imageConverter.progress.starting': '変換を開始します...',
     'imageConverter.progress.converting': 'を変換中...',
     'imageConverter.progress.completed': '変換完了',
+    'imageConverter.progress.processing': '処理中...',
     'imageConverter.progress.percentage': '0%',
     
     // セクションタイトル
@@ -153,6 +156,16 @@ window.translations = {
     'imageConverter.sections.faqDescription': '画像変換・最適化作業によくある疑問と解決方法をまとめました。',
     'imageConverter.sections.casesTitle': '実際の活用事例',
     'imageConverter.sections.casesDescription': '様々な業界・用途での実際の画像変換・最適化活用事例をご紹介します。',
+    
+    // ガイドセクション
+    'imageConverter.guide.webDev': 'Web・アプリ開発',
+    'imageConverter.guide.contentCreation': 'コンテンツ制作・SNS',
+    'imageConverter.guide.businessPrint': 'ビジネス・印刷業界',
+    
+    // フォーマットセクション
+    'imageConverter.formats.gamingSection': 'ゲーム・VR/AR開発者向けフォーマット',
+    'imageConverter.formats.webSection': '一般・Web用フォーマット',
+    'imageConverter.formats.techSection': '技術仕様と最適化',
     
     // モード選択
     'qrCode.mode.single': '単体生成',
@@ -565,6 +578,8 @@ window.translations = {
     'imageConverter.preview.title': 'Preview Comparison',
     'imageConverter.preview.original': 'Original',
     'imageConverter.preview.processed': 'Converted Preview',
+    'imageConverter.preview.noImage': 'Please select an image',
+    'imageConverter.preview.processedWait': 'Will be displayed after conversion',
     
     // Presets
     'imageConverter.presets.label': 'Preset Settings:',
@@ -642,6 +657,7 @@ window.translations = {
     'imageConverter.progress.starting': 'Starting conversion...',
     'imageConverter.progress.converting': ' converting...',
     'imageConverter.progress.completed': 'Conversion completed',
+    'imageConverter.progress.processing': 'Processing...',
     'imageConverter.progress.percentage': '0%',
     
     // Section titles
@@ -653,6 +669,16 @@ window.translations = {
     'imageConverter.sections.faqDescription': 'Common questions and solutions for image conversion and optimization work.',
     'imageConverter.sections.casesTitle': 'Real Use Cases',
     'imageConverter.sections.casesDescription': 'Actual image conversion and optimization use cases across various industries and applications.',
+    
+    // Guide sections
+    'imageConverter.guide.webDev': 'Web & App Development',
+    'imageConverter.guide.contentCreation': 'Content Creation & Social Media',
+    'imageConverter.guide.businessPrint': 'Business & Printing Industry',
+    
+    // Format sections
+    'imageConverter.formats.gamingSection': 'Gaming & VR/AR Developer Formats',
+    'imageConverter.formats.webSection': 'General & Web Formats',
+    'imageConverter.formats.techSection': 'Technical Specifications & Optimization',
     
     // Mode Selection
     'qrCode.mode.single': 'Single Generation',
