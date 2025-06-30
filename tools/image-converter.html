@@ -7,7 +7,14 @@
   <!-- Content Security Policy (開発中は一時無効化) -->
   <!--
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
+          <div>
+          <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.upload.label">画像ファイルをアップロード:</label>
+          <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
+            <input type="file" id="imageFile" accept="image/jpeg, image/jpg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, image/avif, image/heic, image/heif, .ktx, .ktx2, .dds, .tga, .hdr, .exr, .jxl, .cr2, .nef, .arw, .dng" multiple class="hidden">
+            <p id="dropInstructions" data-translate-key="imageConverter.upload.instructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500" data-translate-key="imageConverter.upload.supportedFormats">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR, AVIF, HEIC, JPEG XL</small><br><small class="text-orange-600" data-translate-key="imageConverter.upload.maxFileSize">最大ファイルサイズ: 50MB</small></p>
+          </div>
+          <div id="fileList" class="mt-2"></div>
+        </div>t-src 'self'; 
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
       https://cdn.tailwindcss.com
       https://cdn.jsdelivr.net
@@ -30,8 +37,8 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com</title>
-  <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、13種類の画像フォーマットに対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
+  <title data-translate-key="imageConverter.pageTitle">【無料】プロ仕様画像変換ツール - KTX・DDS・TGA等20形式対応 一括処理 | negi-lab.com</title>
+  <meta name="description" data-translate-key="imageConverter.metaDescription" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、最新フォーマット20種類に対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
   <meta property="og:title" content="【無料】プロ仕様画像変換ツール - KTX・DDS・TGA対応 一括処理 | negi-lab.com" />
   <meta property="og:description" content="KTX・DDS・TGA等13形式対応、ゲーム・VR・3D制作向けプロ仕様画像変換ツール。一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上。" />
   <meta property="og:type" content="website" />
@@ -235,8 +242,8 @@
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
               <option value="ja">日本語</option>
@@ -255,16 +262,17 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="パンくずリスト">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">画像変換ツール</li>
+        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="header.nav.imageConverterTool">画像変換ツール</li>
       </ol>
     </div>
   </nav>
 
   <!-- 外部ライブラリの読み込み -->
+  <script src="../js/translations.js"></script>
   <script src="../js/image-converter-core.js"></script>
   <script src="../js/image-converter-formats.js"></script>
   <script src="../js/image-converter-presets.js"></script>
@@ -274,10 +282,10 @@
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">プロ仕様画像変換ツール</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.mainTitle">プロ仕様画像変換ツール</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-6">
-          <strong>KTX・DDS・TGA等13形式対応</strong> – ゲーム・VR・3D制作から一般用途まで<br>
-          複数ファイル一括処理、回転・フィルター効果、用途別プリセット搭載で開発効率を大幅向上
+          <strong data-translate-key="imageConverter.subtitle">KTX・DDS・TGA等20形式対応</strong> – <span data-translate-key="imageConverter.description">ゲーム・VR・3D制作から一般用途まで<br>
+          複数ファイル一括処理、回転・フィルター効果、用途別プリセット搭載で開発効率を大幅向上</span>
         </p>
       </div>
       
@@ -285,7 +293,7 @@
         <div>
           <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1">画像ファイルをアップロード:</label>
           <div id="imageUploadArea" class="drop-area" aria-label="画像ファイルアップロードエリア">
-            <input type="file" id="imageFile" accept="image/jpeg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, .ktx, .ktx2, .dds, .tga, .hdr, .exr" multiple class="hidden">
+            <input type="file" id="imageFile" accept="image/jpeg, image/jpg, image/png, image/webp, image/gif, image/bmp, image/tiff, image/svg+xml, image/avif, image/heic, image/heif, .ktx, .ktx2, .dds, .tga, .hdr, .exr, .jxl, .cr2, .nef, .arw, .dng" multiple class="hidden">
             <p id="dropInstructions">ここにファイルをドラッグ&ドロップ<br>またはクリックで選択（複数ファイル対応）<br><small class="text-gray-500">対応形式: JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, KTX, KTX2, DDS, TGA, HDR, EXR</small><br><small class="text-orange-600">最大ファイルサイズ: 50MB</small></p>
           </div>
           <div id="fileList" class="mt-2"></div>
@@ -312,38 +320,46 @@
           </div>
         </div>
 
-        <!-- プリセット設定 -->
         <div>
-          <label for="presetSelect" class="block text-sm font-medium text-gray-700 mb-1">プリセット設定:</label>
+          <label for="presetSelect" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.presets.label">プリセット設定:</label>
           <select id="presetSelect" class="form-select w-full mb-2">
-            <option value="custom">カスタム設定</option>
-            <option value="web-standard">Web標準 (JPEG 80%)</option>
-            <option value="web-optimized">Web最適化 (WebP 75%)</option>
-            <option value="social-media">SNS投稿用 (JPEG 70%, 1080px)</option>
-            <option value="print-quality">印刷品質 (JPEG 95%)</option>
-            <option value="thumbnail">サムネイル用 (JPEG 70%, 300px)</option>
-            <option value="game-texture">ゲームテクスチャ (KTX2 80%)</option>
-            <option value="mobile-game">モバイルゲーム (KTX 512px)</option>
-            <option value="3d-model">3Dモデル用 (TGA)</option>
-            <option value="hdr-imaging">HDRイメージング</option>
-            <option value="vfx-exr">VFX・映像制作 (EXR)</option>
+            <option value="custom" data-translate-key="imageConverter.presets.custom">カスタム設定</option>
+            <option value="web-standard" data-translate-key="imageConverter.presets.webStandard">Web標準 (JPEG 80%)</option>
+            <option value="web-optimized" data-translate-key="imageConverter.presets.webOptimized">Web最適化 (WebP 75%)</option>
+            <option value="social-media" data-translate-key="imageConverter.presets.socialMedia">SNS投稿用 (JPEG 70%, 1080px)</option>
+            <option value="print-quality" data-translate-key="imageConverter.presets.printQuality">印刷品質 (JPEG 95%)</option>
+            <option value="thumbnail" data-translate-key="imageConverter.presets.thumbnail">サムネイル用 (JPEG 70%, 300px)</option>
+            <option value="game-texture" data-translate-key="imageConverter.presets.gameTexture">ゲームテクスチャ (KTX2 80%)</option>
+            <option value="mobile-game" data-translate-key="imageConverter.presets.mobileGame">モバイルゲーム (KTX 512px)</option>
+            <option value="3d-model" data-translate-key="imageConverter.presets.threeDModel">3Dモデル用 (TGA)</option>
+            <option value="hdr-imaging" data-translate-key="imageConverter.presets.hdrImaging">HDRイメージング</option>
+            <option value="vfx-exr" data-translate-key="imageConverter.presets.vfxExr">VFX・映像制作 (EXR)</option>
           </select>
         </div>
 
         <div>
-          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1">出力フォーマット:</label>
+          <label for="outputFormat" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="outputFormat.label">出力フォーマット:</label>
           <select id="outputFormat" class="form-select w-full">
-            <option value="image/jpeg">JPEG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WebP</option>
-            <option value="image/bmp">BMP</option>
-            <option value="image/tiff">TIFF</option>
-            <option value="application/ktx">KTX (Khronos Texture)</option>
-            <option value="application/ktx2">KTX2 (Khronos Texture 2.0)</option>
-            <option value="image/x-targa">TGA (Targa)</option>
-            <option value="image/vnd.radiance">HDR (ハイダイナミックレンジ)</option>
-            <option value="image/x-exr">EXR (OpenEXR)</option>
-            <option value="image/vnd-ms.dds">DDS (DirectDraw Surface)</option>
+            <optgroup label="標準フォーマット" data-translate-key="outputFormat.standard">
+              <option value="image/jpeg" data-translate-key="outputFormat.jpeg">JPEG</option>
+              <option value="image/png" data-translate-key="outputFormat.png">PNG</option>
+              <option value="image/webp" data-translate-key="outputFormat.webp">WebP</option>
+              <option value="image/gif" data-translate-key="outputFormat.gif">GIF</option>
+              <option value="image/bmp" data-translate-key="outputFormat.bmp">BMP</option>
+              <option value="image/tiff" data-translate-key="outputFormat.tiff">TIFF</option>
+              <option value="image/avif" data-translate-key="outputFormat.avif">AVIF (次世代)</option>
+            </optgroup>
+            <optgroup label="ゲーム・3D制作" data-translate-key="outputFormat.gaming">
+              <option value="application/ktx" data-translate-key="outputFormat.ktx">KTX (Khronos Texture)</option>
+              <option value="application/ktx2" data-translate-key="outputFormat.ktx2">KTX2 (Khronos Texture 2.0)</option>
+              <option value="image/x-targa" data-translate-key="outputFormat.tga">TGA (Targa)</option>
+              <option value="image/vnd-ms.dds" data-translate-key="outputFormat.dds">DDS (DirectDraw Surface)</option>
+            </optgroup>
+            <optgroup label="高品質・専門用途" data-translate-key="outputFormat.professional">
+              <option value="image/vnd.radiance" data-translate-key="outputFormat.hdr">HDR (ハイダイナミックレンジ)</option>
+              <option value="image/x-exr" data-translate-key="outputFormat.exr">EXR (OpenEXR)</option>
+              <option value="image/jxl" data-translate-key="outputFormat.jxl">JPEG XL</option>
+            </optgroup>
           </select>
         </div>
 
