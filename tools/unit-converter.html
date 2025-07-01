@@ -24,8 +24,8 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <title data-translate-key="unitConverter.pageTitle">【無料】単位変換ツール - 長さ・重さ・温度・体積など500+単位対応 | negi-lab.com</title>
-  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ・重さ・温度・体積など500以上の単位に対応した高精度単位変換ツール。日本の伝統単位（尺・寸・合・升）から国際単位まで、理工学・医療・料理など幅広い分野で活用できる専門的な換算機能を提供します。" />
+  <title data-translate-key="pageTitle">【無料】単位変換ツール - 長さ・重さ・温度・体積など500+単位対応 | negi-lab.com</title>
+  <meta name="description" data-translate-key="metaDescription" content="長さ・重さ・温度・体積など500以上の単位に対応した高精度単位変換ツール。日本の伝統単位（尺・寸・合・升）から国際単位まで、理工学・医療・料理など幅広い分野で活用できる専門的な換算機能を提供します。" />
   <meta property="og:title" content="【500+ Units】Universal Unit Converter - Complete Japanese & International Units | negi-lab.com" />
   <meta property="og:description" content="Comprehensive unit converter with 500+ units including Japanese traditional units (shaku, sun, gou, sho), metric, imperial, electrical, radiation. Perfect for international users. 500+単位対応の万能単位変換ツール。日本の伝統単位から国際単位まで完全対応。" />
   <meta property="og:type" content="website" />
@@ -86,12 +86,21 @@
   </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Security and Common Utilities -->
-  <script src="../js/translations.js"></script>
+  <!-- Translation System -->
+  <script src="../js/unit-converter-translations.js"></script>
+  <script src="../js/tool-translation-system.js"></script>
+  <script>
+    // Map unit converter translations to global translations for compatibility
+    window.translations = window.unitConverterTranslations;
+  </script>
+  
+  <!-- Data and Core Logic -->
   <script src="../js/unit-converter-data.js"></script>
-    <script src="../js/unit-converter-core.js"></script>
-    <script src="../js/security-utils.js"></script>
-    <script src="../js/common-utils.js"></script>
+  <script src="../js/unit-converter-core.js"></script>
+  
+  <!-- Security and Common Utilities -->
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
   <script>
     // tailwind.configはwindow.tailwind.configで設定
     window.tailwind = window.tailwind || {};
@@ -328,8 +337,8 @@
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
         <ul class="flex gap-6 font-medium text-base items-center">
-          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="nav.wikis">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
               <option value="ja" data-translate-key="option.ja">日本語</option>
@@ -348,11 +357,11 @@
   <nav class="bg-gray-50 border-b" aria-label="パンくずリスト">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><a href="/" class="text-accent hover:underline" data-translate-key="breadcrumb.home">ホーム</a></li>
         <li class="text-gray-400">/</li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="breadcrumb.tools">ツール</a></li>
         <li class="text-gray-400">/</li>
-        <li class="text-gray-700 font-medium">単位変換ツール</li>
+        <li class="text-gray-700 font-medium" data-translate-key="breadcrumb.unitConverter">単位変換ツール</li>
       </ol>
     </div>
   </nav>
@@ -360,7 +369,7 @@
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="unitConverter.mainTitle">単位変換ツール</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="header.title">単位変換ツール</h1>
       </div>
 
       <!-- ツール上部：アドセンス（レスポンシブ） -->
@@ -393,7 +402,7 @@
                   <circle cx="18" cy="8" r="1.5"/>
                 </svg>
               </div>
-              <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.length">長さ</span>
+              <span class="font-medium text-sm mb-1" data-translate-key="category.length">長さ</span>
               <div class="text-xs text-gray-500 font-mono">m, km, ft, in, mi</div>
             </button>
               <button class="category-btn" data-category="weight">
@@ -404,7 +413,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 8v8l4-4 4 4V8"></path>
                 </svg>
               </div>
-              <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.weight">重さ</span>
+              <span class="font-medium text-sm mb-1" data-translate-key="category.weight">重さ</span>
               <div class="text-xs text-gray-500 font-mono">kg, g, lb, oz, t</div>
             </button>
               <button class="category-btn" data-category="temperature">
@@ -415,7 +424,7 @@
                   <circle cx="12" cy="18" r="2"/>
                 </svg>
               </div>
-              <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.temperature">温度</span>
+              <span class="font-medium text-sm mb-1" data-translate-key="category.temperature">温度</span>
               <div class="text-xs text-gray-500 font-mono">°C, °F, K, °R</div>
             </button>
               <button class="category-btn" data-category="area">
@@ -426,7 +435,7 @@
                   <circle cx="7" cy="7" r="1" fill="currentColor"/>
                 </svg>
               </div>
-              <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.area">面積</span>
+              <span class="font-medium text-sm mb-1" data-translate-key="category.area">面積</span>
               <div class="text-xs text-gray-500 font-mono">m², km², ft², ac, ha</div>
             </button>
               <button class="category-btn" data-category="volume">
@@ -435,7 +444,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 15h10"></path>
                 </svg>
-              </div>              <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.volume">体積</span>
+              </div>              <span class="font-medium text-sm mb-1" data-translate-key="category.volume">体積</span>
               <div class="text-xs text-gray-500 font-mono">L, mL, ㏄, m³, gal</div>
             </button>
               <button class="category-btn" data-category="speed">
@@ -671,7 +680,8 @@
                   <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.inputValueLabel">数値を入力</label>                  <input type="number" id="inputValue" value="1" 
                          class="w-full px-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200 bg-white"
                          data-translate-key="unitConverter.inputPlaceholder"
-                         placeholder="例: 100">
+                         data-translate-placeholder="unitConverter.inputExamplePlaceholder"
+                         placeholder="Enter value (e.g., 100)">
                   <span id="inputMinuteSecondBox" class="hidden mt-2 flex gap-2"></span>
                 </div>
                 
@@ -710,7 +720,8 @@
                            class="w-full px-4 py-3 text-lg font-semibold border border-gray-300 rounded-xl bg-gray-50 text-gray-900"
                            data-translate-key="unitConverter.resultPlaceholder"
                            placeholder="結果がここに表示されます">
-                    <button id="copyResult" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-accent transition-colors">
+                    <button id="copyResult" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-accent transition-colors" 
+                            data-translate-key="unitConverter.copy.copyButton" title="Copy result">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                       </svg>
@@ -743,7 +754,7 @@
       </div>
 
       <!-- スポンサーリンクラベル（広告直前） -->
-      <div class="text-xs text-gray-500 mb-1" aria-label="スポンサーリンク">スポンサーリンク</div>
+      <div class="text-xs text-gray-500 mb-1" data-translate-key="unitConverter.sponsoredLink">スポンサーリンク</div>
       <!-- ここに広告コード（例: AdSense）を挿入 -->
 
       <!-- ツール下部：Amazon・楽天バナー → ネイティブ/モーションウィジェット動的表示に置換 -->
@@ -767,7 +778,7 @@
       <!-- Guide Modal Popup -->
       <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
         <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+          <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" data-translate-key="unitConverter.modal.close" aria-label="Close">&times;</button>
           <div id="guide-modal-content"></div>
         </div>      </div>        <!-- SEO対策：詳細説明セクション -->
       <div class="max-w-4xl mx-auto mt-16 px-4">
@@ -883,8 +894,8 @@
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">単位変換活用完全ガイド</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="unitConverter.guide.sectionTitle">単位変換活用完全ガイド</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="unitConverter.guide.sectionDescription">
           ビジネスから日常生活まで、500以上の単位変換を効果的に活用するための実践的なノウハウをご紹介します。
         </p>
       </div>
@@ -898,24 +909,24 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H7m14 0h2m-2 0h-2M7 21H5m2 0h2m0-14h2m0 14h2m-6-7h2m0-7h2"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">建築・不動産業界</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="unitConverter.business.construction.title">建築・不動産業界</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>坪・平米変換：</strong>顧客との商談で即座に面積換算が可能</span>
+              <span data-translate-key="unitConverter.business.construction.area"><strong>坪・平米変換：</strong>顧客との商談で即座に面積換算が可能</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>尺・メートル変換：</strong>伝統建築と現代建築の寸法統一</span>
+              <span data-translate-key="unitConverter.business.construction.shaku"><strong>尺・メートル変換：</strong>伝統建築と現代建築の寸法統一</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>材料計算：</strong>セメント・鉄筋の重量計算を正確に</span>
+              <span data-translate-key="unitConverter.business.construction.materials"><strong>材料計算：</strong>セメント・鉄筋の重量計算を正確に</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>海外案件：</strong>インチ・フィート系との円滑な情報共有</span>
+              <span data-translate-key="unitConverter.business.construction.overseas"><strong>海外案件：</strong>インチ・フィート系との円滑な情報共有</span>
             </li>
           </ul>
         </div>
@@ -928,24 +939,24 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">医療・科学研究</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="unitConverter.business.medical.title">医療・科学研究</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>薬液濃度計算：</strong>mg/mL・ppm・パーセント間の正確な変換</span>
+              <span data-translate-key="unitConverter.business.medical.concentration"><strong>薬液濃度計算：</strong>mg/mL・ppm・パーセント間の正確な変換</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>体温管理：</strong>華氏・摂氏変換で国際的な医療記録対応</span>
+              <span data-translate-key="unitConverter.business.medical.temperature"><strong>体温管理：</strong>華氏・摂氏変換で国際的な医療記録対応</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>圧力測定：</strong>血圧・大気圧の各種単位間変換</span>
+              <span data-translate-key="unitConverter.business.medical.pressure"><strong>圧力測定：</strong>血圧・大気圧の各種単位間変換</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>放射線量：</strong>シーベルト・レム等の線量換算</span>
+              <span data-translate-key="unitConverter.business.medical.radiation"><strong>放射線量：</strong>シーベルト・レム等の線量換算</span>
             </li>
           </ul>
         </div>
@@ -958,24 +969,24 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">日常・料理活用</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="unitConverter.business.daily.title">日常・料理活用</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>レシピ換算：</strong>海外レシピのカップ・オンス→ml・g変換</span>
+              <span data-translate-key="unitConverter.business.daily.recipe"><strong>レシピ換算：</strong>海外レシピのカップ・オンス→ml・g変換</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>電子レンジ調理：</strong>ワット数変更時の時間自動計算</span>
+              <span data-translate-key="unitConverter.business.daily.microwave"><strong>電子レンジ調理：</strong>ワット数変更時の時間自動計算</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>栄養管理：</strong>カロリー・糖質量の単位統一</span>
+              <span data-translate-key="unitConverter.business.daily.nutrition"><strong>栄養管理：</strong>カロリー・糖質量の単位統一</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>DIY・工作：</strong>インチ規格の材料をcm換算で購入</span>
+              <span data-translate-key="unitConverter.business.daily.diy"><strong>DIY・工作：</strong>インチ規格の材料をcm換算で購入</span>
             </li>
           </ul>
         </div>
@@ -987,45 +998,45 @@
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">単位変換技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="unitConverter.technical.sectionTitle">単位変換技術の詳細解説</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="unitConverter.technical.sectionDescription">
           高精度変換システムの仕組みを理解することで、より効果的な活用が可能になります。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">計算精度と信頼性</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="unitConverter.technical.precision.title">計算精度と信頼性</h3>
           <div class="space-y-4">
             <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">IEEE 754準拠計算</h4>
-              <p class="text-gray-600 text-sm">倍精度浮動小数点演算により15桁の有効数字を保証。科学技術計算レベルの精度を実現。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.precision.ieee754.title">IEEE 754準拠計算</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.precision.ieee754.description">倍精度浮動小数点演算により15桁の有効数字を保証。科学技術計算レベルの精度を実現。</p>
             </div>
             <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">国際標準準拠</h4>
-              <p class="text-gray-600 text-sm">NIST・BIPM等の国際機関が定める最新の定義値を使用。定期的な係数更新で常に正確。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.precision.standard.title">国際標準準拠</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.precision.standard.description">NIST・BIPM等の国際機関が定める最新の定義値を使用。定期的な係数更新で常に正確。</p>
             </div>
             <div class="border-l-4 border-purple-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">多重検証システム</h4>
-              <p class="text-gray-600 text-sm">複数の計算ルートで結果を照合。エラー検出機能により計算ミスを防止。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.precision.verification.title">多重検証システム</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.precision.verification.description">複数の計算ルートで結果を照合。エラー検出機能により計算ミスを防止。</p>
             </div>
           </div>
         </div>
         
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">対応単位システム</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="unitConverter.technical.systems.title">対応単位システム</h3>
           <div class="space-y-4">
             <div class="border-l-4 border-red-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">国際単位系（SI）</h4>
-              <p class="text-gray-600 text-sm">7つの基本単位（メートル・キログラム・秒・アンペア・ケルビン・モル・カンデラ）とその組み合わせ。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.systems.si.title">国際単位系（SI）</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.systems.si.description">7つの基本単位（メートル・キログラム・秒・アンペア・ケルビン・モル・カンデラ）とその組み合わせ。</p>
             </div>
             <div class="border-l-4 border-yellow-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">ヤード・ポンド法</h4>
-              <p class="text-gray-600 text-sm">米国・英国で使用される伝統的単位系。インチ・フィート・ヤード・ポンド・ガロン等。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.systems.imperial.title">ヤード・ポンド法</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.systems.imperial.description">米国・英国で使用される伝統的単位系。インチ・フィート・ヤード・ポンド・ガロン等。</p>
             </div>
             <div class="border-l-4 border-indigo-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">日本伝統単位</h4>
-              <p class="text-gray-600 text-sm">尺貫法・坪・間・升・貫等。文化的価値と実用性を両立した正確な換算比率。</p>
+              <h4 class="font-medium text-lg" data-translate-key="unitConverter.technical.systems.japanese.title">日本伝統単位</h4>
+              <p class="text-gray-600 text-sm" data-translate-key="unitConverter.technical.systems.japanese.description">尺貫法・坪・間・升・貫等。文化的価値と実用性を両立した正確な換算比率。</p>
             </div>
           </div>
         </div>
@@ -1033,13 +1044,14 @@
 
       <div class="mt-12 text-center">
         <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの分野でも活用してみませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate-key="unitConverter.technical.cta.title">あなたの分野でも活用してみませんか？</h3>
+          <p class="text-gray-600 text-sm mb-4" data-translate-key="unitConverter.technical.cta.description">
             これらの技術解説を参考に、あなたの業界・用途に合わせた単位変換を始めてみましょう。
             当ツールなら、すべての計算を高精度で安全に実行できます。
           </p>
           <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" 
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+             data-translate-key="unitConverter.callToAction">
             今すぐ単位変換を始める
           </a>
         </div>
@@ -1058,73 +1070,87 @@
   </div>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <h2 class="font-bold text-base mb-2" data-translate-key="unitConverter.about.title">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li data-translate-key="unitConverter.about.originality">本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="unitConverter.about.advertising">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li data-translate-key="unitConverter.about.disclaimer">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
     <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
   </section>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
   <script>
     function setupGuideModal() {
+      console.log('setupGuideModal called');
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
       const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
-      const guides = {        ja: {
-          title: '単位変換ツールの使い方',
+      
+      console.log('Guide elements:', {
+        guideBtn: !!guideBtn,
+        guideModal: !!guideModal,
+        guideClose: !!guideClose,
+        guideContent: !!guideContent
+      });
+      const guides = {
+        ja: {
+          title: window.t ? window.t('unitConverter.guide.title') : '単位変換ツールの使い方',
           list: [
-            'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
-            '変換元・変換先の単位を選ぶ',
-            '値（または分・秒）を入力',
-            '変換ボタンを押すと即時結果が表示',
-            '右上メニューで日本語・英語切替可能'
+            window.t ? window.t('unitConverter.guide.step1') : 'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
+            window.t ? window.t('unitConverter.guide.step2') : '変換元・変換先の単位を選ぶ',
+            window.t ? window.t('unitConverter.guide.step3') : '値（または分・秒）を入力',
+            window.t ? window.t('unitConverter.guide.step4') : '変換ボタンを押すと即時結果が表示',
+            window.t ? window.t('unitConverter.guide.step5') : '右上メニューで日本語・英語切替可能'
           ],
-          tipsTitle: '活用例・ヒント',
+          tipsTitle: window.t ? window.t('unitConverter.guide.tipsTitle') : '活用例・ヒント',
           tips: [
-            'レシピ用に180°Cを華氏に変換',
-            '500gをポンドに変換して海外通販',
-            '電子レンジの秒数を分:秒形式に変換'
+            window.t ? window.t('unitConverter.guide.tip1') : 'レシピ用に180°Cを華氏に変換',
+            window.t ? window.t('unitConverter.guide.tip2') : '500gをポンドに変換して海外通販',
+            window.t ? window.t('unitConverter.guide.tip3') : '電子レンジの秒数を分:秒形式に変換'
           ]
         },
         en: {
-          title: 'How to Use the Unit Converter',
+          title: window.t ? window.t('unitConverter.guide.title') : 'How to Use the Unit Converter',
           list: [
-            'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
-            'Choose the units to convert from and to.',
-            'Enter the value (or minutes/seconds for microwave mode).',
-            'Click the convert button to see the result instantly.',
-            'Switch language from the top menu. All features are available in English and Japanese.'
+            window.t ? window.t('unitConverter.guide.step1') : 'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
+            window.t ? window.t('unitConverter.guide.step2') : 'Choose the units to convert from and to.',
+            window.t ? window.t('unitConverter.guide.step3') : 'Enter the value (or minutes/seconds for microwave mode).',
+            window.t ? window.t('unitConverter.guide.step4') : 'Click the convert button to see the result instantly.',
+            window.t ? window.t('unitConverter.guide.step5') : 'Switch language from the top menu. All features are available in English and Japanese.'
           ],
-          tipsTitle: 'Tips & Examples',
+          tipsTitle: window.t ? window.t('unitConverter.guide.tipsTitle') : 'Tips & Examples',
           tips: [
-            'Convert 180°C to Fahrenheit for recipes.',
-            'Change 500g to pounds for international shopping.',
-            'Convert microwave time from seconds to minutes:seconds format.'
+            window.t ? window.t('unitConverter.guide.tip1') : 'Convert 180°C to Fahrenheit for recipes.',
+            window.t ? window.t('unitConverter.guide.tip2') : 'Change 500g to pounds for international shopping.',
+            window.t ? window.t('unitConverter.guide.tip3') : 'Convert microwave time from seconds to minutes:seconds format.'
           ]
         }
       };
+      
       if(guideBtn && guideModal && guideClose && guideContent) {
+        console.log('Guide modal elements found, setting up event listeners');
         guideBtn.addEventListener('click', function() {
+          console.log('Guide button clicked');
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
           const g = guides[lang] || guides.ja;
           let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
           html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
           html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
           guideContent.innerHTML = html;
+          console.log('About to show guide modal');
           guideModal.classList.remove('hidden');
+          console.log('Guide modal should now be visible');
         });
         guideClose.addEventListener('click', function() {
           guideModal.classList.add('hidden');
@@ -1132,12 +1158,44 @@
         guideModal.addEventListener('click', function(e) {
           if(e.target === guideModal) guideModal.classList.add('hidden');
         });
+      } else {
+        console.log('Guide modal setup failed - missing elements:', {
+          guideBtn: !!guideBtn,
+          guideModal: !!guideModal,
+          guideClose: !!guideClose,
+          guideContent: !!guideContent
+        });
       }
     }
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", setupGuideModal);
     } else {
       setupGuideModal();
+    }
+
+    // ガイドモーダルの内容を翻訳キーを使って更新する関数
+    function updateGuideModalContentWithTranslations(lang, guideContentElement) {
+      if (!window.t || !guideContentElement) return;
+      
+      const title = window.t('unitConverter.guide.title');
+      const steps = [
+        window.t('unitConverter.guide.step1'),
+        window.t('unitConverter.guide.step2'),
+        window.t('unitConverter.guide.step3'),
+        window.t('unitConverter.guide.step4'),
+        window.t('unitConverter.guide.step5')
+      ];
+      const tipsTitle = window.t('unitConverter.guide.tipsTitle');
+      const tips = [
+        window.t('unitConverter.guide.tip1'),
+        window.t('unitConverter.guide.tip2'),
+        window.t('unitConverter.guide.tip3')
+      ];
+      
+      let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
+      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      guideContentElement.innerHTML = html;
     }
   </script>
     <script>
@@ -1304,7 +1362,7 @@
           minInput.type = 'number';
           minInput.id = 'inputMinute';
           minInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
-          minInput.placeholder = '分';
+          minInput.placeholder = window.t('unitConverter.microwave.minutesLabel', '分');
           minInput.min = '0';
         }
         if (!secInput) {
@@ -1312,7 +1370,7 @@
           secInput.type = 'number';
           secInput.id = 'inputSecond';
           secInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
-          secInput.placeholder = '秒';
+          secInput.placeholder = window.t('unitConverter.microwave.secondsLabel', '秒');
           secInput.min = '0';
         }
       }      function showMinuteSecondInputs(fromSeconds = null) {
@@ -1392,17 +1450,17 @@
             microwaveSecBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition';
             microwaveMinBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
             const lang = window.getLanguage();
-            inputValue.placeholder = lang === 'en' 
+            inputValue.placeholder = window.t('unitConverter.microwave.placeholderSeconds', lang === 'en' 
               ? 'e.g. Recipe time (seconds) for 600W' 
-              : '例: 600Wでのレシピ時間(秒)';
+              : '例: 600Wでのレシピ時間(秒)');
             hideMinuteSecondInputs();
           } else {
             microwaveMinBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition';
             microwaveSecBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
             const lang = window.getLanguage();
-            inputValue.placeholder = lang === 'en'
+            inputValue.placeholder = window.t('unitConverter.microwave.placeholderMinutes', lang === 'en'
               ? 'e.g. Recipe time (minutes) for 600W'
-              : '例: 600Wでのレシピ時間(分)';
+              : '例: 600Wでのレシピ時間(分)');
           }
         }
       }
@@ -1533,7 +1591,7 @@
             return;
           }
           if (Math.abs(val) > 1e15) {
-            SecurityUtils.showUserError('入力値が大きすぎます');
+            SecurityUtils.showUserError(window.t('unitConverter.error.valueTooLarge', '入力値が大きすぎます'));
             resultValue.value = '';
             return;
           }
@@ -1564,7 +1622,7 @@
           }
           updateUnitLabels();
         } catch (error) {
-          SecurityUtils.showUserError('変換中にエラーが発生しました', error);
+          SecurityUtils.showUserError(window.t('unitConverter.error.conversionError', '変換中にエラーが発生しました'), error);
           resultValue.value = '';
         }
       }      // 結果側の分・秒表示関数
@@ -1621,14 +1679,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
           </svg>
         `;
-        minuteSecondCopyBtn.title = '分・秒形式でコピー';
+        minuteSecondCopyBtn.title = window.t('unitConverter.microwave.copyButtonTitle', '分・秒形式でコピー');
           // 分・秒コピーボタンのイベントリスナー
         minuteSecondCopyBtn.addEventListener('click', async () => {
           try {
             const lang = window.getLanguage();
-            const textToCopy = lang === 'en' 
-              ? `${minutes}min ${seconds}sec` 
-              : `${minutes}分${seconds}秒`;
+            const format = window.t('unitConverter.microwave.copyFormat', lang === 'en' ? '{minutes}min {seconds}sec' : '{minutes}分{seconds}秒');
+            const textToCopy = format.replace('{minutes}', minutes).replace('{seconds}', seconds);
             await navigator.clipboard.writeText(textToCopy);
             minuteSecondCopyBtn.innerHTML = '✓';
             setTimeout(() => {
@@ -1697,6 +1754,26 @@
         toUnitSelect.selectedIndex = Array.from(toUnitSelect.options).findIndex(opt => opt.value === toUnitSelect.value);
         convert();
       });
+
+      // 言語切り替え時の処理を定義
+      window.onLanguageChange = function(lang) {
+        console.log('Language changed to:', lang);
+        
+        // 単位プルダウンが表示されている場合は再生成
+        if (categorySelect.value && !converterArea.classList.contains('hidden')) {
+          populateUnitSelects();
+          updateUnitLabels();
+          updateMicrowaveToggleUI(); // 電子レンジモードのUI更新
+        }
+        
+        // ガイドモーダルが開いている場合は内容を更新
+        const guideModal = document.getElementById('guide-modal');
+        const guideContent = document.getElementById('guide-modal-content');
+        if (guideModal && guideContent && !guideModal.classList.contains('hidden')) {
+          // モーダルの内容を翻訳キーを使って更新
+          updateGuideModalContentWithTranslations(lang, guideContent);
+        }
+      };
     });
   </script>  <script>
     // 結果コピー機能
@@ -1717,7 +1794,9 @@
                 if (minuteInput && secondInput) {
                   const minutes = minuteInput.value || '0';
                   const seconds = secondInput.value || '0';
-                  textToCopy = `${minutes}分${seconds}秒`;
+                  const lang = window.getLanguage();
+                  const format = window.t('unitConverter.microwave.copyFormat', lang === 'en' ? '{minutes}min {seconds}sec' : '{minutes}分{seconds}秒');
+                  textToCopy = format.replace('{minutes}', minutes).replace('{seconds}', seconds);
                 }
               }
             }
@@ -1728,17 +1807,23 @@
             }
             
             if (!textToCopy) {
-              copyBtn.textContent = '値がありません';
-              setTimeout(() => { copyBtn.textContent = 'コピー'; }, 1200);
+              copyBtn.textContent = window.t('unitConverter.copy.noValue', '値がありません');
+              setTimeout(() => { 
+                copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+              }, 1200);
               return;
             }
             
             await navigator.clipboard.writeText(textToCopy);
-            copyBtn.textContent = 'コピー済み';
-            setTimeout(() => { copyBtn.textContent = 'コピー'; }, 1200);
+            copyBtn.textContent = window.t('unitConverter.copy.copied', 'コピー済み');
+            setTimeout(() => { 
+              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+            }, 1200);
           } catch (e) {
-            copyBtn.textContent = '失敗';
-            setTimeout(() => { copyBtn.textContent = 'コピー'; }, 1200);
+            copyBtn.textContent = window.t('unitConverter.copy.failed', '失敗');
+            setTimeout(() => { 
+              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+            }, 1200);
           }
         });
       }
