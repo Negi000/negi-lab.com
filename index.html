@@ -37,7 +37,6 @@
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   
   <title data-translate-key="page.title">オンライン便利ツール集 - 日常作業を効率化 | negi-lab.com</title>
@@ -72,8 +71,11 @@
   </script>
   
   <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <script src="js/security-utils.js"></script>
+  <script src="js/common-utils.js"></script>
+  
+  <!-- Portal-specific translations -->
+  <script src="js/portal-translations.js"></script>
   
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
@@ -88,11 +90,11 @@
 
   <!-- consent-banner: ユーザビリティを損なわない下部バナー型に変更（全画面覆わず、z-indexも控えめに） -->
   <div id="consent-banner" class="fixed bottom-0 left-0 w-full max-w-full bg-white border-t border-accent/40 shadow-lg z-30 p-3 flex flex-col md:flex-row items-center justify-between gap-2 transition-transform translate-y-0 hidden" role="alertdialog" aria-modal="true" style="min-width:240px; max-width:100vw;">
-    <span class="text-gray-700 text-xs md:text-sm">
+    <span class="text-gray-700 text-xs md:text-sm" data-translate-html-key="consentBanner.text_html">
       本サイトはCookie等を利用し、広告・アフィリエイト収益のため、<b>一部ツールやサービスで広告表示やCookie等の埋め込み</b>を行う場合があります。<br>
       詳細は<a href="/privacy-policy.html" class="underline text-accent">プライバシーポリシー</a>をご確認のうえ、<b>同意いただける場合のみ「OK」を押してください。</b>
     </span>
-    <button id="consent-accept" class="bg-accent text-white rounded px-3 py-1 text-xs md:text-sm font-semibold ml-2">OK</button>
+    <button id="consent-accept" class="bg-accent text-white rounded px-3 py-1 text-xs md:text-sm font-semibold ml-2" data-translate-key="consentBanner.acceptButton">OK</button>
   </div>
 
   <!-- Amazonアソシエイト Cookie埋め込み（規約違反リスクのため削除） -->
@@ -145,7 +147,7 @@
 
       <!-- ヒーローセクション下：アドセンス（レスポンシブ） -->
       <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-1835873052239386"
@@ -164,19 +166,19 @@
             日常の作業を効率化する、シンプルで使いやすいウェブツール
           </p>
           <div class="mt-4 text-sm text-gray-700 bg-accent/10 rounded-lg p-4 max-w-2xl mx-auto">
-            <p class="font-semibold text-accent mb-2">✨ negi-lab.comの特徴</p>
+            <p class="font-semibold text-accent mb-2" data-translate-key="tools.features.title">✨ negi-lab.comの特徴</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-left">
-              <p>🔒 全処理がブラウザ内で完結</p>
-              <p>📱 スマホ・PC両対応</p>
-              <p>🆓 完全無料・登録不要</p>
-              <p>🌍 日本語・英語対応</p>
+              <p data-translate-key="tools.features.browserOnly">🔒 全処理がブラウザ内で完結</p>
+              <p data-translate-key="tools.features.responsive">📱 スマホ・PC両対応</p>
+              <p data-translate-key="tools.features.free">🆓 完全無料・登録不要</p>
+              <p data-translate-key="tools.features.bilingual">🌍 日本語・英語対応</p>
             </div>
           </div>
         </header>
         
         <!-- ツールセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
         <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-          <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+          <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-1835873052239386"
@@ -334,7 +336,7 @@
         <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="wikis.sectionTitle">ゲーム攻略Wiki</h2>
         <!-- Wikiセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
         <div class="max-w-3xl mx-auto my-8">
-          <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+          <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-1835873052239386"
@@ -360,43 +362,43 @@
     <!-- 使い方ガイドセクション - アドセンス審査対応 -->
     <section id="how-to-use" class="py-14 bg-white">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">各ツールの使い方ガイド</h2>
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="howToUse.sectionTitle">各ツールの使い方ガイド</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-gray-50 rounded-xl p-6">
-            <h3 class="text-xl font-semibold mb-4 text-accent">💡 初心者でも簡単3ステップ</h3>
+            <h3 class="text-xl font-semibold mb-4 text-accent" data-translate-key="howToUse.steps.title">💡 初心者でも簡単3ステップ</h3>
             <ol class="list-decimal ml-6 space-y-2 text-gray-700">
-              <li>使いたいツールをトップページから選択</li>
-              <li>必要な情報を入力フォームに記入</li>
-              <li>「変換」や「生成」ボタンをクリックして結果を取得</li>
+              <li data-translate-key="howToUse.steps.step1">使いたいツールをトップページから選択</li>
+              <li data-translate-key="howToUse.steps.step2">必要な情報を入力フォームに記入</li>
+              <li data-translate-key="howToUse.steps.step3">「変換」や「生成」ボタンをクリックして結果を取得</li>
             </ol>
-            <p class="mt-4 text-sm text-gray-600">登録やダウンロードは一切不要。ブラウザさえあればどなたでもご利用いただけます。</p>
+            <p class="mt-4 text-sm text-gray-600" data-translate-key="howToUse.steps.note">登録やダウンロードは一切不要。ブラウザさえあればどなたでもご利用いただけます。</p>
           </div>
           <div class="bg-gray-50 rounded-xl p-6">
-            <h3 class="text-xl font-semibold mb-4 text-accent">🔧 よく使われる機能</h3>
+            <h3 class="text-xl font-semibold mb-4 text-accent" data-translate-key="howToUse.popular.title">🔧 よく使われる機能</h3>
             <ul class="space-y-2 text-gray-700">
-              <li>📏 <strong>単位変換：</strong>メートル⇔フィート、kg⇔ポンドなど</li>
-              <li>📱 <strong>QRコード：</strong>URL、Wi-Fi設定の即座生成</li>
-              <li>🖼️ <strong>画像変換：</strong>JPEG⇔PNG変換とリサイズ</li>
-              <li>🔗 <strong>URL短縮：</strong>SNS投稿用の短いリンク作成</li>
+              <li data-translate-html-key="howToUse.popular.unitConverter_html">📏 <strong>単位変換：</strong>メートル⇔フィート、kg⇔ポンドなど</li>
+              <li data-translate-html-key="howToUse.popular.qrCode_html">📱 <strong>QRコード：</strong>URL、Wi-Fi設定の即座生成</li>
+              <li data-translate-html-key="howToUse.popular.imageConverter_html">🖼️ <strong>画像変換：</strong>JPEG⇔PNG変換とリサイズ</li>
+              <li data-translate-html-key="howToUse.popular.urlShortener_html">🔗 <strong>URL短縮：</strong>SNS投稿用の短いリンク作成</li>
             </ul>
           </div>
         </div>
 
         <!-- 関連ツール・お役立ちリンク -->
         <div class="mt-12 bg-accent/5 rounded-xl p-6">
-          <h3 class="text-xl font-semibold text-center mb-6 text-gray-800">🔗 関連ツール・機能</h3>
+          <h3 class="text-xl font-semibold text-center mb-6 text-gray-800" data-translate-key="howToUse.relatedTools.title">🔗 関連ツール・機能</h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <a href="tools/unit-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm">
+            <a href="tools/unit-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm" data-translate-html-key="howToUse.relatedTools.unitConverter_html">
               📏 単位変換<br><span class="text-xs text-gray-500">長さ・重量・面積</span>
             </a>
-            <a href="tools/qr-code-generator.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm">
+            <a href="tools/qr-code-generator.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm" data-translate-html-key="howToUse.relatedTools.qrCode_html">
               📱 QRコード<br><span class="text-xs text-gray-500">URL・WiFi設定</span>
             </a>
-            <a href="tools/image-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm">
+            <a href="tools/image-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm" data-translate-html-key="howToUse.relatedTools.imageConverter_html">
               🖼️ 画像変換<br><span class="text-xs text-gray-500">JPEG・PNG・WebP</span>
             </a>
-            <a href="tools/text-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm">
-              � テキスト変換<br><span class="text-xs text-gray-500">大文字小文字・文字数</span>
+            <a href="tools/text-converter.html" class="block p-3 bg-white rounded-lg hover:bg-accent/10 transition text-sm" data-translate-html-key="howToUse.relatedTools.textConverter_html">
+              📝 テキスト変換<br><span class="text-xs text-gray-500">大文字小文字・文字数</span>
             </a>
           </div>
         </div>
@@ -409,8 +411,8 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="about.sectionTitle">negi-lab.com について</h2>
         <p class="text-gray-700 mb-3" data-translate-key="about.paragraph1">このサイトは「誰でも気軽に使える」「ちょっと楽しい」をコンセプトに、管理人が個人で制作・運営しています。</p>
         <p class="text-gray-700 mb-3" data-translate-html-key="about.paragraph2_html">ツールや情報はこれからも随時追加・改善予定。<br>「こんな機能がほしい」「使ってみた感想」など、気軽にご意見・ご要望をお寄せください。</p>
-        <p class="text-gray-700 mb-3">negi-lab.comは独自開発のツール・攻略情報を提供し、他サイトにはない専門性・利便性・安全性を重視しています。広告・アフィリエイトは運営維持のため最小限に設置しています。</p>
-        <p class="text-gray-700 mb-3">免責事項：本サイトの情報・ツールの利用は自己責任でお願いします。内容の正確性・完全性は保証できません。</p>
+        <p class="text-gray-700 mb-3" data-translate-key="about.paragraph3">negi-lab.comは独自開発のツール・攻略情報を提供し、他サイトにはない専門性・利便性・安全性を重視しています。広告・アフィリエイトは運営維持のため最小限に設置しています。</p>
+        <p class="text-gray-700 mb-3" data-translate-key="about.disclaimer">免責事項：本サイトの情報・ツールの利用は自己責任でお願いします。内容の正確性・完全性は保証できません。</p>
         <p class="text-gray-500 text-xs mt-6" data-translate-key="about.copyrightLine">Copyright &copy; 2025 negi-lab.com</p>
       </div>
     </section>
@@ -431,7 +433,7 @@
     <!-- ガイドモーダルの表示/非表示制御 -->
     <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
       <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-        <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+        <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる" data-translate-key="guideModal.closeButton">&times;</button>
         <div id="guide-modal-content">
           <!-- ここにガイド・FAQ・Tipsの内容をJSで挿入 -->
         </div>
@@ -441,7 +443,7 @@
 
   <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
   <div class="max-w-3xl mx-auto my-8">
-    <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+    <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-1835873052239386"
@@ -453,24 +455,24 @@
 
   <!-- 独自性・免責事項セクション（全ツール・ポータル統一/短縮URLツール方式） -->
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このサイトについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">
-      <li>本サイト・各ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li data-translate-key="siteInfo.point1">本サイト・各ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2025 negi-lab.com</p>
   </section>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>  <!-- パンくずリスト構造化データ（JSON-LD） -->
   <script type="application/ld+json">
   {
@@ -526,13 +528,27 @@
   }
   </script>
 
-  <script type="module" src="index.js"></script>
+  <!-- JS Files -->
+  <script src="js/portal-translations.js"></script>
+  <script src="index.js"></script>
   <script>
-    // Fallback: 手動でDOMContentLoaded時にapplyTranslationsを呼ぶ（deferでwindow.translations未定義のタイミング対策）
+    // Simple initialization
     document.addEventListener('DOMContentLoaded', function() {
-      if (window.translations && typeof applyTranslations === 'function') {
-        var lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-        applyTranslations(lang);
+      console.log('DOM loaded. Initializing translation system...');
+      
+      // Verify translations are loaded
+      if (window.translations) {
+        console.log('Translations loaded successfully');
+        console.log('Available languages:', Object.keys(window.translations));
+        
+        // Initialize language system
+        if (typeof window.initLanguageSwitch === 'function') {
+          window.initLanguageSwitch();
+        } else {
+          console.error('initLanguageSwitch function not found');
+        }
+      } else {
+        console.error('Translations not loaded');
       }
     });    // ガイドモーダルの表示/非表示制御
     document.addEventListener('DOMContentLoaded', function() {
@@ -597,6 +613,9 @@
         html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
         guideContent.innerHTML = html;
       }
+      
+      // Make renderGuide available globally
+      window.renderGuide = renderGuide;
       if(guideBtn && guideModal && guideClose && guideContent) {
         guideBtn.addEventListener('click', function() {
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
@@ -795,7 +814,7 @@
           }
           
           // 少し遅延してページ遷移（Cookie埋め込み完了後）
-          setTimeout(function() {
+          setTimeout(function() { 
             window.location.href = 'tools/unit-converter.html';
           }, 100);
         });
