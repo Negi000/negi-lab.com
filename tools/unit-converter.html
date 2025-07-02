@@ -1091,23 +1091,13 @@
   </footer>
   <script>
     function setupGuideModal() {
-      console.log('setupGuideModal called');
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
       const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
       
-      console.log('Guide elements:', {
-        guideBtn: !!guideBtn,
-        guideModal: !!guideModal,
-        guideClose: !!guideClose,
-        guideContent: !!guideContent
-      });
-      
       if(guideBtn && guideModal && guideClose && guideContent) {
-        console.log('Guide modal elements found, setting up event listeners');
         guideBtn.addEventListener('click', function() {
-          console.log('Guide button clicked');
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
           
           // リアルタイムで翻訳キーを使用してコンテンツを生成
@@ -1156,9 +1146,7 @@
             guideContent.innerHTML = html;
           }
           
-          console.log('About to show guide modal');
           guideModal.classList.remove('hidden');
-          console.log('Guide modal should now be visible');
         });
         guideClose.addEventListener('click', function() {
           guideModal.classList.add('hidden');
@@ -1183,9 +1171,7 @@
 
     // ガイドモーダルの内容を翻訳キーを使って更新する関数
     function updateGuideModalContentWithTranslations(lang, guideContentElement) {
-      console.log('updateGuideModalContentWithTranslations called with lang:', lang);
       if (!window.t || !guideContentElement) {
-        console.log('window.t or guideContentElement not available');
         return;
       }
       
@@ -1204,37 +1190,20 @@
         window.t('unitConverter.guide.tip3')
       ];
       
-      console.log('Generated content:', { title, tipsTitle });
-      
       let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
       html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       guideContentElement.innerHTML = html;
-      console.log('Guide modal content updated successfully');
     }
   </script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('DOMContentLoaded fired');
       
       // 新しいGUI要素の取得
       const categoryGrid = document.getElementById('categoryGrid');
       const categorySelect = document.getElementById('category');
       const converterArea = document.getElementById('converterArea');
       const microwaveControls = document.getElementById('microwaveControls');
-      
-      console.log('Elements found:', {
-        categoryGrid: !!categoryGrid,
-        categorySelect: !!categorySelect,
-        converterArea: !!converterArea,
-        microwaveControls: !!microwaveControls
-      });
-      
-      console.log('External scripts check:', {
-        unitConverterData: !!window.unitConverterData,
-        unitConverterCore: !!window.unitConverterCore,
-        SecurityUtils: !!window.SecurityUtils
-      });
       
       const inputValue = document.getElementById('inputValue');
       const fromUnitSelect = document.getElementById('fromUnit');
@@ -1252,13 +1221,10 @@
       let secInput = null;
       let minSecInputWrap = null;      // カテゴリボタンのクリックイベント
       categoryGrid.addEventListener('click', (e) => {
-        console.log('Category grid clicked', e.target);
         const categoryBtn = e.target.closest('.category-btn');
-        console.log('Category button found:', categoryBtn);
         if (!categoryBtn) return;
         
         const category = categoryBtn.dataset.category;
-        console.log('Selected category:', category);
         
         // アクティブ状態の切り替え
         document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
@@ -1287,11 +1253,9 @@
       
       // 代替案：各カテゴリボタンに直接イベントリスナーを追加
       if (!categoryGrid) {
-        console.error('categoryGrid not found! Adding fallback event listeners.');
         const categoryButtons = document.querySelectorAll('.category-btn');
         categoryButtons.forEach(btn => {
           btn.addEventListener('click', function() {
-            console.log('Direct button click:', this.dataset.category);
             const category = this.dataset.category;
             
             // アクティブ状態の切り替え
@@ -1350,14 +1314,12 @@
       });
         microwaveMinBtn.addEventListener('click', () => {
         if (microwaveInputMode !== 'min') {
-          console.log('Switching to minute mode');
           microwaveInputMode = 'min';
           updateMicrowaveToggleUI();
           
           // 現在の秒数値を取得して分・秒に変換
           let fromSeconds = parseFloat(inputValue.value);
           if (isNaN(fromSeconds)) fromSeconds = 0;
-          console.log('Converting seconds to min:sec:', fromSeconds);
           
           showMinuteSecondInputs(fromSeconds);
           addMinuteSecondInputListeners();
@@ -1596,7 +1558,6 @@
             let minVal = minInput ? parseInt(minInput.value) || 0 : 0;
             let secVal = secInput ? parseInt(secInput.value) || 0 : 0;
             val = minVal * 60 + secVal;
-            console.log('Microwave min mode - minutes:', minVal, 'seconds:', secVal, 'total:', val);
           } else {
             const sanitizedInput = SecurityUtils.sanitizeInput(inputValue.value);
             val = parseFloat(sanitizedInput);
@@ -1772,7 +1733,6 @@
 
       // 言語切り替え時の処理を定義
       window.onLanguageChange = function(lang) {
-        console.log('Language changed to:', lang);
         
         // 単位プルダウンが表示されている場合は再生成
         if (categorySelect.value && !converterArea.classList.contains('hidden')) {
