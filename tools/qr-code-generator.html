@@ -22,12 +22,12 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   
-  <title>QRコード生成ツール - 高品質・多機能・ブラウザ完結型 | negi-lab.com</title>
-  <meta name="description" content="URLやテキストから高品質なQRコードを作成。エラー訂正レベル調整、ロゴ挿入、Wi-Fi設定対応。プライバシー重視のブラウザ完結型で安全にご利用いただけます。技術解説と実用ガイド付き。" />
+  <title data-translate-key="pageTitle">【無料】QRコード生成ツール - ロゴ挿入・高品質・多機能 | negi-lab.com</title>
+  <meta name="description" data-translate-key="metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整、エラー訂正レベル対応。プライバシー重視のブラウザ完結型で安全にご利用いただけます。" />
   
   <!-- OG Tags -->
-  <meta property="og:title" data-i18n="qrCode.pageTitle" content="【無料】QRコード作成ツール - ロゴ挿入・色変更も可能 | negi-lab.com" />
-  <meta property="og:description" data-i18n="qrCode.metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整が可能。エラー訂正レベル対応で読み取り精度も抜群。登録不要でブラウザ完結型の安全なQR生成ツール。" />
+  <meta property="og:title" data-translate-key="pageTitle" content="【無料】QRコード生成ツール - ロゴ挿入・高品質・多機能 | negi-lab.com" />
+  <meta property="og:description" data-translate-key="metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整、エラー訂正レベル対応。プライバシー重視のブラウザ完結型で安全にご利用いただけます。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
   
@@ -254,7 +254,7 @@
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -277,9 +277,9 @@
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">      <!-- ヘッダー -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="qrCode.mainTitle">クリエイティブQRコード生成ツール</h1>
-      <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-i18n="qrCode.subtitle">
-        従来の四角形に縛られない、自由な形・色・配置のQRコードを作成。テンプレート・バッチ生成・Wi-Fi・メール等に対応。
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="header.title">QRコード生成ツール</h1>
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="header.subtitle">
+        URLやテキストから高品質なQRコードを作成
       </p>
     </div><!-- メインコンテンツ -->
     <div class="grid xl:grid-cols-3 lg:grid-cols-2 gap-8">
@@ -476,13 +476,13 @@
         </div>
         </div>        <!-- 入力エリア（単体生成時のみ表示） -->
         <div id="inputSection" class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-          <h2 class="text-xl font-bold mb-4 text-gray-800">内容入力</h2>
+          <h2 class="text-xl font-bold mb-4 text-gray-800" data-translate-key="form.inputLabel">内容入力</h2>
             <!-- テキスト入力 -->
           <div id="textInput" class="template-input">
-            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="qrCode.input.textPlaceholder">テキスト・URL</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="form.inputLabel">QRコードにしたいテキストまたはURL</label>
             <textarea id="qrText" class="form-input" rows="4" 
-                      data-i18n-placeholder="qrCode.input.textPlaceholder"
-                      placeholder="QRコードにしたいテキストを入力"></textarea>
+                      data-translate-key="form.inputPlaceholder"
+                      placeholder="https://example.com または テキストを入力"></textarea>
           </div>
 
           <!-- URL入力 -->
@@ -1452,6 +1452,15 @@
     </ul>
     <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
   </section>
+
+  <!-- Guide Modal Popup -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" data-translate-key="common.close" aria-label="Close">&times;</button>
+      <div id="guide-modal-content"></div>
+    </div>
+  </div>
+
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
@@ -1463,8 +1472,14 @@
     <div>&copy; 2025 negi-lab.com</div>  </footer>
   <!-- 共通ユーティリティ -->
   <script src="../js/common-utils.js"></script>
+  <script src="../js/security-utils.js"></script>
   
-  <!-- 多言語対応翻訳データ -->
+  <!-- 多言語対応翻訳システム -->
+  <script src="../js/common-translations.js"></script>
+  <script src="../js/qr-generator-translations.js"></script>
+  <script src="../js/tool-translation-system.js"></script>
+  
+  <!-- 多言語対応翻訳データ（既存、後で削除予定） -->
   <script src="../js/translations.js"></script>
   
   <!-- QRコードライブラリ（順序重要） -->
@@ -1881,7 +1896,71 @@
       } else {
         console.log('⚠️ QRGenerator インスタンスは既に存在します');
       }
+      
+      // ガイドモーダルのセットアップ
+      setupQRGuideModal();
     });
+
+    // QRコード生成ツール用ガイドモーダルのセットアップ
+    function setupQRGuideModal() {
+      const guideBtn = document.getElementById('guide-btn');
+      const guideModal = document.getElementById('guide-modal');
+      const guideClose = document.getElementById('guide-close');
+      const guideContent = document.getElementById('guide-modal-content');
+      
+      if(guideBtn && guideModal && guideClose && guideContent) {
+        guideBtn.addEventListener('click', function() {
+          if (window.t) {
+            updateQRGuideModalContent(guideContent);
+          }
+          guideModal.classList.remove('hidden');
+        });
+        
+        guideClose.addEventListener('click', function() {
+          guideModal.classList.add('hidden');
+        });
+        
+        guideModal.addEventListener('click', function(e) {
+          if(e.target === guideModal) guideModal.classList.add('hidden');
+        });
+      }
+    }
+
+    // QRガイドモーダルの内容更新
+    function updateQRGuideModalContent(guideContentElement) {
+      if (!window.t || !guideContentElement) return;
+      
+      const title = window.t('guide.title');
+      const steps = [
+        window.t('guide.step1'),
+        window.t('guide.step2'),
+        window.t('guide.step3'),
+        window.t('guide.step4'),
+        window.t('guide.step5')
+      ];
+      const tipsTitle = window.t('guide.tipsTitle');
+      const tips = [
+        window.t('guide.tip1'),
+        window.t('guide.tip2'),
+        window.t('guide.tip3'),
+        window.t('guide.tip4')
+      ];
+      
+      let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
+      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      guideContentElement.innerHTML = html;
+    }
+
+    // 言語変更時のコールバック（翻訳システムから呼ばれる）
+    window.onLanguageChange = function(lang) {
+      // ガイドモーダルが開いている場合は内容を更新
+      const guideModal = document.getElementById('guide-modal');
+      const guideContent = document.getElementById('guide-modal-content');
+      if (guideModal && guideContent && !guideModal.classList.contains('hidden')) {
+        updateQRGuideModalContent(guideContent);
+      }
+    };
   </script>
 </body>
 </html>
