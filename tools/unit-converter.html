@@ -1103,51 +1103,59 @@
         guideClose: !!guideClose,
         guideContent: !!guideContent
       });
-      const guides = {
-        ja: {
-          title: window.t ? window.t('unitConverter.guide.title') : '単位変換ツールの使い方',
-          list: [
-            window.t ? window.t('unitConverter.guide.step1') : 'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
-            window.t ? window.t('unitConverter.guide.step2') : '変換元・変換先の単位を選ぶ',
-            window.t ? window.t('unitConverter.guide.step3') : '値（または分・秒）を入力',
-            window.t ? window.t('unitConverter.guide.step4') : '変換ボタンを押すと即時結果が表示',
-            window.t ? window.t('unitConverter.guide.step5') : '右上メニューで日本語・英語切替可能'
-          ],
-          tipsTitle: window.t ? window.t('unitConverter.guide.tipsTitle') : '活用例・ヒント',
-          tips: [
-            window.t ? window.t('unitConverter.guide.tip1') : 'レシピ用に180°Cを華氏に変換',
-            window.t ? window.t('unitConverter.guide.tip2') : '500gをポンドに変換して海外通販',
-            window.t ? window.t('unitConverter.guide.tip3') : '電子レンジの秒数を分:秒形式に変換'
-          ]
-        },
-        en: {
-          title: window.t ? window.t('unitConverter.guide.title') : 'How to Use the Unit Converter',
-          list: [
-            window.t ? window.t('unitConverter.guide.step1') : 'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
-            window.t ? window.t('unitConverter.guide.step2') : 'Choose the units to convert from and to.',
-            window.t ? window.t('unitConverter.guide.step3') : 'Enter the value (or minutes/seconds for microwave mode).',
-            window.t ? window.t('unitConverter.guide.step4') : 'Click the convert button to see the result instantly.',
-            window.t ? window.t('unitConverter.guide.step5') : 'Switch language from the top menu. All features are available in English and Japanese.'
-          ],
-          tipsTitle: window.t ? window.t('unitConverter.guide.tipsTitle') : 'Tips & Examples',
-          tips: [
-            window.t ? window.t('unitConverter.guide.tip1') : 'Convert 180°C to Fahrenheit for recipes.',
-            window.t ? window.t('unitConverter.guide.tip2') : 'Change 500g to pounds for international shopping.',
-            window.t ? window.t('unitConverter.guide.tip3') : 'Convert microwave time from seconds to minutes:seconds format.'
-          ]
-        }
-      };
       
       if(guideBtn && guideModal && guideClose && guideContent) {
         console.log('Guide modal elements found, setting up event listeners');
         guideBtn.addEventListener('click', function() {
           console.log('Guide button clicked');
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-          const g = guides[lang] || guides.ja;
-          let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-          html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-          html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-          guideContent.innerHTML = html;
+          
+          // リアルタイムで翻訳キーを使用してコンテンツを生成
+          if (window.t) {
+            updateGuideModalContentWithTranslations(lang, guideContent);
+          } else {
+            // フォールバック：翻訳システムが利用できない場合
+            const fallbackGuides = {
+              ja: {
+                title: '単位変換ツールの使い方',
+                list: [
+                  'カテゴリ（長さ・重さ・温度・電子レンジ分など）を選択',
+                  '変換元・変換先の単位を選ぶ',
+                  '値（または分・秒）を入力',
+                  '変換ボタンを押すと即時結果が表示',
+                  '右上メニューで日本語・英語切替可能'
+                ],
+                tipsTitle: '活用例・ヒント',
+                tips: [
+                  'レシピ用に180°Cを華氏に変換',
+                  '500gをポンドに変換して海外通販',
+                  '電子レンジの秒数を分:秒形式に変換'
+                ]
+              },
+              en: {
+                title: 'How to Use the Unit Converter',
+                list: [
+                  'Select a category (e.g. Length, Weight, Temperature, Microwave Time, etc.).',
+                  'Choose the units to convert from and to.',
+                  'Enter the value (or minutes/seconds for microwave mode).',
+                  'Click the convert button to see the result instantly.',
+                  'Switch language from the top menu. All features are available in English and Japanese.'
+                ],
+                tipsTitle: 'Tips & Examples',
+                tips: [
+                  'Convert 180°C to Fahrenheit for recipes.',
+                  'Change 500g to pounds for international shopping.',
+                  'Convert microwave time from seconds to minutes:seconds format.'
+                ]
+              }
+            };
+            const g = fallbackGuides[lang] || fallbackGuides.ja;
+            let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
+            html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+            guideContent.innerHTML = html;
+          }
+          
           console.log('About to show guide modal');
           guideModal.classList.remove('hidden');
           console.log('Guide modal should now be visible');
@@ -1175,7 +1183,11 @@
 
     // ガイドモーダルの内容を翻訳キーを使って更新する関数
     function updateGuideModalContentWithTranslations(lang, guideContentElement) {
-      if (!window.t || !guideContentElement) return;
+      console.log('updateGuideModalContentWithTranslations called with lang:', lang);
+      if (!window.t || !guideContentElement) {
+        console.log('window.t or guideContentElement not available');
+        return;
+      }
       
       const title = window.t('unitConverter.guide.title');
       const steps = [
@@ -1192,10 +1204,13 @@
         window.t('unitConverter.guide.tip3')
       ];
       
+      console.log('Generated content:', { title, tipsTitle });
+      
       let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
       html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       guideContentElement.innerHTML = html;
+      console.log('Guide modal content updated successfully');
     }
   </script>
     <script>
