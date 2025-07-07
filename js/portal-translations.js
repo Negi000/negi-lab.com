@@ -86,6 +86,10 @@ window.translations = {
     "tools.textConverter.description": "大文字小文字変換・キャメルケース・スネークケース変換から文字数カウント・文字反転まで多機能。プログラミング・文書作成・データ処理での効率的なテキスト操作を支援。",
     "tools.textConverter.open": "開く",
 
+    "tools.musicGenerator.title": "AI音楽生成ツール",
+    "tools.musicGenerator.description": "プロ品質のBGM・音楽をAIで瞬時に生成。ループ対応、多楽器編成、感情表現豊かな作曲機能でゲーム開発・動画制作・プレゼンテーション用音楽を簡単作成。",
+    "tools.musicGenerator.open": "開く",
+
     // Wikis Section
     "wikis.sectionTitle": "ゲーム攻略Wiki",
     "wikis.shingetsu.title": "新月同行 Wiki",
@@ -222,6 +226,10 @@ window.translations = {
     "tools.textConverter.title": "Text Converter Tool",
     "tools.textConverter.description": "Multi-functional tool from case conversion, camelCase, snake_case conversion to character counting and text reversal. Supports efficient text manipulation for programming, document creation, and data processing.",
     "tools.textConverter.open": "Open",
+
+    "tools.musicGenerator.title": "AI Music Generator Tool",
+    "tools.musicGenerator.description": "Instantly generate professional-quality BGM and music with AI. Create game development, video production, and presentation music easily with loop support, multi-instrument arrangements, and expressive composition features.",
+    "tools.musicGenerator.open": "Open",
 
     // Wikis Section
     "wikis.sectionTitle": "Game Strategy Wikis",
