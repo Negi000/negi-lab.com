@@ -17,6 +17,9 @@ class MusicGeneratorUI {
    * UI初期化
    */
   async init() {
+    // 新しいTone.jsツールへの案内を表示
+    this.showUpgradeNotice();
+    
     // 音楽ジェネレーターが利用可能になるまで待機
     await this.waitForMusicGenerator();
     
@@ -25,6 +28,41 @@ class MusicGeneratorUI {
     this.setupPresets();
     this.initializeAudioVisualization();
     this.isInitialized = true;
+  }
+
+  /**
+   * 新しいTone.jsツールへの案内表示
+   */
+  showUpgradeNotice() {
+    const noticeHtml = `
+      <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg mb-6 shadow-lg">
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">🚀</div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-2">新しい高品質音楽生成ツールが利用可能です！</h3>
+            <p class="mb-4">Tone.jsを使用した音楽理論ベースの高品質音楽生成ツールをご利用ください：</p>
+            <ul class="list-disc list-inside mb-4 space-y-1 text-sm">
+              <li>音楽理論に基づいた自然なコード進行・メロディ</li>
+              <li>高品質なTone.jsシンセサイザー音源</li>
+              <li>自然言語解析対応（「明るく元気な感じで」など）</li>
+              <li>シンプルモード + 詳細設定モード</li>
+              <li>本格的な楽曲構成（Aメロ-Bメロ-サビ）</li>
+            </ul>
+            <a href="./music-generator-tone.html" class="inline-block bg-white text-blue-600 font-bold py-2 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+              🎵 新しいツールを試す
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // メインコンテナの最初に挿入
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+      const noticeDiv = document.createElement('div');
+      noticeDiv.innerHTML = noticeHtml;
+      mainContainer.insertBefore(noticeDiv, mainContainer.firstChild);
+    }
   }
 
   /**
