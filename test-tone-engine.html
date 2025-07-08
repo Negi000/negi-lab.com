@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tone Music Engine Test</title>
+  <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+</head>
+<body>
+  <div style="padding: 20px; font-family: Arial, sans-serif;">
+    <h1>Tone Music Engine テスト</h1>
+    
+    <div style="margin: 20px 0;">
+      <label for="natural-language-input">自然言語入力テスト:</label><br>
+      <input type="text" id="natural-language-input" value="疾走感のある90年代のゲームみたいな音楽" style="width: 300px; padding: 5px; margin: 5px 0;">
+      <button onclick="testNaturalLanguage()">解析テスト</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+      <button onclick="testMusicGeneration()">音楽生成テスト</button>
+      <button onclick="playMusic()">再生</button>
+      <button onclick="stopMusic()">停止</button>
+    </div>
+    
+    <div id="output" style="background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px;">
+      出力ログがここに表示されます...
+    </div>
+  </div>
+
+  <script src="js/music-generator-translations.js"></script>
+  <script src="js/common-utils.js"></script>
+  <script src="js/simple-tone-engine.js"></script>
+  
+  <script>
+    let engine = null;
+    let currentComposition = null;
+    
+    // エンジン初期化
+    async function initEngine() {
+      try {
+        log('Simple Tone Music Engine を初期化中...');
+        engine = new SimpleToneMusicEngine();
+        
+        // 初期化完了を待つ
+        const maxWait = 50;
+        let attempts = 0;
+        while (!engine.isInitialized && attempts < maxWait) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+          attempts++;
+        }
+        
+        if (engine.isInitialized) {
+          log('エンジン初期化完了！');
+        } else {
+          log('エンジン初期化タイムアウト');
+        }
+      } catch (error) {
+        log('エンジン初期化エラー: ' + error.message);
+      }
+    }
+    
+    // 自然言語解析テスト
+    function testNaturalLanguage() {
+      if (!engine) {
+        log('エンジンが初期化されていません');
+        return;
+      }
+      
+      const input = document.getElementById('natural-language-input').value;
+      log('入力テキスト: "' + input + '"');
+      
+      try {
+        const parsed = engine.parseNaturalLanguage(input);
+        log('解析結果:');
+        log(JSON.stringify(parsed, null, 2));
+      } catch (error) {
+        log('解析エラー: ' + error.message);
+      }
+    }
+    
+    // 音楽生成テスト
+    async function testMusicGeneration() {
+      if (!engine) {
+        log('エンジンが初期化されていません');
+        return;
+      }
+      
+      try {
+        log('音楽生成中...');
+        
+        const settings = {
+          genre: 'game',
+          mood: 'energetic',
+          naturalLanguage: document.getElementById('natural-language-input').value,
+          duration: 16, // 16秒
+          key: 'C',
+          tempo: 140
+        };
+        
+        currentComposition = await engine.generateMusic(settings);
+        log('音楽生成完了！');
+        log('楽曲構造: ' + JSON.stringify(currentComposition.structure, null, 2));
+        
+      } catch (error) {
+        log('音楽生成エラー: ' + error.message);
+      }
+    }
+    
+    // 再生
+    function playMusic() {
+      if (!engine || !currentComposition) {
+        log('再生する音楽がありません');
+        return;
+      }
+      
+      try {
+        engine.play();
+        log('再生開始');
+      } catch (error) {
+        log('再生エラー: ' + error.message);
+      }
+    }
+    
+    // 停止
+    function stopMusic() {
+      if (!engine) {
+        log('エンジンが初期化されていません');
+        return;
+      }
+      
+      try {
+        engine.stop();
+        log('再生停止');
+      } catch (error) {
+        log('停止エラー: ' + error.message);
+      }
+    }
+    
+    // ログ出力
+    function log(message) {
+      const output = document.getElementById('output');
+      const timestamp = new Date().toLocaleTimeString();
+      output.innerHTML += `[${timestamp}] ${message}<br>`;
+      output.scrollTop = output.scrollHeight;
+      console.log(message);
+    }
+    
+    // ページ読み込み時に初期化
+    document.addEventListener('DOMContentLoaded', async () => {
+      log('ページ読み込み完了');
+      await initEngine();
+    });
+  </script>
+</body>
+</html>

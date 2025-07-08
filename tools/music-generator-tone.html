@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://unpkg.com
+      https://cdn.jsdelivr.net
+      https://tonejs.github.io
+      https://pagead2.googlesyndication.com 
+      https://www.googletagmanager.com
+      https://partner.googleadservices.com
+      https://googleads.g.doubleclick.net
+      https://securepubads.g.doubleclick.net
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google
+      https://adnxs.com
+      https://adsystem.amazon-adsystem.com
+      blob: data:; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com
+      https://googleads.g.doubleclick.net; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob: 
+      https://googleads.g.doubleclick.net
+      https://pagead2.googlesyndication.com
+      https://www.google.com
+      https://www.gstatic.com; 
+    connect-src 'self' 
+      https://www.google-analytics.com
+      https://stats.g.doubleclick.net
+      https://googleads.g.doubleclick.net
+      https://pagead2.googlesyndication.com
+      https://unpkg.com
+      https://cdn.jsdelivr.net
+      https://tonejs.github.io
+      https://ep1.adtrafficquality.google
+      blob: data:; 
+    worker-src 'self' blob: data:;
+    child-src 'self' blob:;
+    frame-src 'self'
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com
+      https://www.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google;
+    fenced-frame-src 'self'
+      https://googleads.g.doubleclick.net;
+    media-src 'self' blob: data:
+      https://cdn.jsdelivr.net
+      https://unpkg.com;
+    object-src 'none'; 
+    base-uri 'self';
+    form-action 'self';
+  " />
+  
+  <title>【無料】高品質音楽生成ツール - リアル楽器音源対応 | negi-lab.com</title>
+  <meta name="description" content="Tone.jsとリアル楽器サンプルを使用した音楽理論に基づく高品質音楽生成ツール。自然言語解析対応のシンプルモードと詳細設定モードを搭載。プロ品質のBGM・音楽を簡単作成。" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="negi-lab.com" />
+  <meta property="og:title" content="【無料】高品質音楽生成ツール - リアル楽器音源対応 | negi-lab.com" />
+  <meta property="og:description" content="Tone.jsとリアル楽器サンプルを使用した音楽理論に基づく高品質音楽生成ツール。自然言語解析対応。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/tools/music-generator-tone.html" />
+  <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="【無料】高品質音楽生成ツール - リアル楽器音源対応 | negi-lab.com" />
+  <meta name="twitter:description" content="Tone.jsとリアル楽器サンプルを使用した音楽理論に基づく高品質音楽生成ツール。" />
+  <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
+  
+  <!-- Tone.js -->
+  <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+  
+  <!-- Tone.js-Instruments via jsDelivr CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/nbrosowsky/tonejs-instruments@master/Tonejs-Instruments.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .music-wave {
+      background: linear-gradient(90deg, #4ADE80 0%, #3B82F6 50%, #8B5CF6 100%);
+      background-size: 200% 100%;
+      animation: waveMove 3s ease-in-out infinite;
+    }
+    
+    @keyframes waveMove {
+      0%, 100% { background-position: 200% 0; }
+      50% { background-position: 0% 0; }
+    }
+    
+    .instrument-card {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .instrument-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .instrument-card.selected {
+      border-color: #4ADE80;
+      background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+    }
+    
+    .progress-bar {
+      background: linear-gradient(90deg, #4ADE80 0%, #3B82F6 100%);
+      transition: width 0.3s ease;
+    }
+    
+    .loading-dots::after {
+      content: '';
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { 
+        color: rgba(0,0,0,0);
+        text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0), .75em 0 0 rgba(0,0,0,0);
+      }
+      40% { 
+        color: #4ADE80;
+        text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0), .75em 0 0 rgba(0,0,0,0);
+      }
+      60% { 
+        text-shadow: .25em 0 0 #4ADE80, .5em 0 0 rgba(0,0,0,0), .75em 0 0 rgba(0,0,0,0);
+      }
+      80%, 100% { 
+        text-shadow: .25em 0 0 #4ADE80, .5em 0 0 #4ADE80, .75em 0 0 #4ADE80;
+      }
+    }
+    
+    .playback-visualizer {
+      background: linear-gradient(90deg, 
+        rgba(74, 222, 128, 0.2) 0%, 
+        rgba(59, 130, 246, 0.2) 50%, 
+        rgba(139, 92, 246, 0.2) 100%);
+      animation: visualize 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes visualize {
+      0% { transform: scaleX(0.8) scaleY(0.9); }
+      100% { transform: scaleX(1.1) scaleY(1.1); }
+    }
+    
+    /* プリセットボタンのスタイル */
+    .preset-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .preset-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    /* アコーディオンのスタイル */
+    #advanced-icon {
+      transition: transform 0.2s ease;
+    }
+    
+    #advanced-toggle[aria-expanded="true"] #advanced-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* メタデータ表示のスタイル */
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      padding: 16px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .metadata-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .metadata-item .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .metadata-item .value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1f2937;
+    }
+    
+    /* ステータス表示のスタイル */
+    .status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .status.info {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+    
+    .status.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    
+    .status.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    
+    .status.warning {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fed7aa;
+    }
+
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+          <li>
+            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="header.guide">ガイド</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ブレッドクラムナビゲーション -->
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-800 font-medium" aria-current="page">高品質音楽生成ツール</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="flex-grow py-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- ヘッダー -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="header.title">高品質音楽生成ツール</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="header.subtitle">
+          リアル楽器音源とTone.jsを使用した音楽理論に基づく高品質音楽生成
+        </p>
+      </div>
+    <!-- メイン操作エリア -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-xl font-bold mb-6">� 音楽を作成しましょう</h2>
+      
+      <!-- 基本設定 -->
+      <div class="space-y-6">
+        <!-- ジャンルと雰囲気 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">🎭 ジャンル</label>
+            <select id="genre-select" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+              <option value="pop">ポップス</option>
+              <option value="rock">ロック</option>
+              <option value="jazz">ジャズ</option>
+              <option value="classical">クラシック</option>
+              <option value="electronic">エレクトロニック</option>
+              <option value="blues">ブルース</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">🌟 雰囲気</label>
+            <select id="mood-select" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+              <option value="happy">明るい・楽しい</option>
+              <option value="energetic">エネルギッシュ</option>
+              <option value="calm">落ち着いた・穏やか</option>
+              <option value="romantic">ロマンチック</option>
+              <option value="mysterious">神秘的</option>
+              <option value="sad">悲しい・切ない</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- 補足情報 -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">💭 補足情報（自由記入）</label>
+          <textarea 
+            id="description-input" 
+            placeholder="例: カフェで流れるような、ピアノメインで、少しジャジーな感じ..."
+            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent resize-none"
+            rows="3"
+          ></textarea>
+          <p class="text-xs text-gray-500 mt-1">楽器、スタイル、シーンなど、どんな音楽にしたいか自由に書いてください</p>
+        </div>
+        
+        <!-- 基本調整 -->
+        <div class="space-y-4">
+          <h4 class="text-md font-semibold text-gray-800">⚙️ 基本調整</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- テンポ -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">🥁 テンポ</label>
+              <div class="space-y-2">
+                <input 
+                  id="tempo-range" 
+                  type="range" 
+                  min="60" 
+                  max="180" 
+                  value="120" 
+                  class="w-full"
+                />
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>ゆっくり</span>
+                  <span id="tempo-value" class="font-medium">120 BPM</span>
+                  <span>速い</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 曲の長さ -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">⏱️ 曲の長さ</label>
+              <div class="space-y-2">
+                <input 
+                  id="duration-range" 
+                  type="range" 
+                  min="15" 
+                  max="120" 
+                  value="30" 
+                  class="w-full"
+                />
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>短い</span>
+                  <span id="duration-value" class="font-medium">0:30</span>
+                  <span>長い</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 曲の複雑さ -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">🎼 曲の複雑さ</label>
+              <select id="complexity-select" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+                <option value="simple">シンプル</option>
+                <option value="normal" selected>普通</option>
+                <option value="complex">複雑</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- プリセット -->
+      <div class="mt-6">
+        <h4 class="text-md font-semibold text-gray-800 mb-3">✨ クイックプリセット</h4>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button class="preset-btn bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-3 rounded-lg font-medium transition-transform hover:scale-105" data-preset="chill-pop">
+            😊 チルポップ
+          </button>
+          <button class="preset-btn bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-3 rounded-lg font-medium transition-transform hover:scale-105" data-preset="upbeat-rock">
+            � アップビートロック
+          </button>
+          <button class="preset-btn bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-lg font-medium transition-transform hover:scale-105" data-preset="smooth-jazz">
+            🎷 スムースジャズ
+          </button>
+          <button class="preset-btn bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-3 rounded-lg font-medium transition-transform hover:scale-105" data-preset="classical-ensemble">
+            � クラシック
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 詳細設定（アコーディオン） -->
+    <div class="bg-white rounded-xl shadow-lg mb-8">
+      <div class="border-b border-gray-200">
+        <button 
+          id="advanced-toggle" 
+          class="w-full px-6 py-4 text-left font-medium text-gray-700 hover:text-accent transition-colors flex items-center justify-between"
+          type="button"
+        >
+          <span>🔧 詳細設定</span>
+          <svg id="advanced-icon" class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div id="advanced-content" class="hidden p-6 space-y-6">
+        <!-- 楽器選択 -->
+        <div>
+          <h4 class="text-md font-semibold text-gray-800 mb-3">🎹 使用楽器</h4>
+          <div id="instrument-selection" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <!-- JavaScriptで動的に生成 -->
+          </div>
+          <p class="text-xs text-gray-500 mt-2">選択した楽器が音楽生成時に自動読み込みされます</p>
+        </div>
+        
+        <!-- 音楽理論設定 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">🎵 キー</label>
+            <select id="key-select" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+              <option value="C">C（ハ長調）</option>
+              <option value="G">G（ト長調）</option>
+              <option value="D">D（ニ長調）</option>
+              <option value="A">A（イ長調）</option>
+              <option value="E">E（ホ長調）</option>
+              <option value="F">F（ヘ長調）</option>
+              <option value="Bb">B♭（変ロ長調）</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">🎼 スケール</label>
+            <select id="scale-select" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent">
+              <option value="major">メジャー（長調）</option>
+              <option value="minor">マイナー（短調）</option>
+              <option value="pentatonic">ペンタトニック</option>
+              <option value="blues">ブルース</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+
+    <!-- 生成とコントロール -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <!-- ステータス表示 -->
+      <div id="generation-status" class="mb-4 p-3 rounded-lg hidden">
+        <!-- JavaScriptで動的に更新 -->
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mb-6">
+        <button id="generate-music" class="flex-1 bg-accent hover:bg-negi text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          <span class="loading-text">🎵 音楽を生成</span>
+        </button>
+        <button id="play-music" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          ▶️ 再生
+        </button>
+        <button id="pause-music" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          ⏸️ 一時停止
+        </button>
+        <button id="stop-music" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          ⏹️ 停止
+        </button>
+        <button id="download-music" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          💾 ダウンロード
+        </button>
+      </div>
+
+      <!-- 波形表示 -->
+      <div class="mb-6">
+        <h4 class="text-sm font-semibold text-gray-700 mb-3">📊 波形表示</h4>
+        <canvas id="waveform-canvas" class="w-full h-24 bg-gray-50 rounded-lg border" width="800" height="100"></canvas>
+      </div>
+
+      <!-- メタデータ表示 -->
+      <div id="metadata-display" class="mb-6">
+        <!-- JavaScriptで動的に生成 -->
+      </div>
+
+      <!-- 再生状況表示 -->
+      <div id="playback-status" class="hidden">
+        <div class="playback-visualizer h-16 rounded-lg mb-4 flex items-center justify-center">
+          <div class="text-white font-medium">🎵 再生中...</div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span class="text-sm text-gray-600">進行状況:</span>
+          <div class="flex-1 bg-gray-200 rounded-full h-2">
+            <div id="playback-progress" class="progress-bar h-2 rounded-full" style="width: 0%"></div>
+          </div>
+          <span id="playback-time" class="text-sm text-gray-600">0:00 / 0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 結果表示 -->
+    <div id="result-section" class="bg-white rounded-xl shadow-lg p-6 hidden">
+      <h3 class="text-lg font-semibold mb-4">🎼 生成された音楽の詳細</h3>
+      
+      <!-- メタデータ表示 -->
+      <div id="metadata-area" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <!-- JavaScriptで動的に生成されます -->
+      </div>
+
+      <!-- 統計情報 -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+        <div class="bg-gray-50 p-3 rounded-lg text-center">
+          <div class="text-sm text-gray-600">キー</div>
+          <div id="result-key" class="font-semibold">-</div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg text-center">
+          <div class="text-sm text-gray-600">テンポ</div>
+          <div id="result-tempo" class="font-semibold">-</div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg text-center">
+          <div class="text-sm text-gray-600">長さ</div>
+          <div id="result-duration" class="font-semibold">-</div>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg text-center col-span-2 md:col-span-3">
+          <div class="text-sm text-gray-600">コード進行</div>
+          <div id="result-progression" class="font-semibold">-</div>
+        </div>
+      </div>
+
+      <!-- 技術的詳細 -->
+      <details class="mt-4">
+        <summary class="cursor-pointer text-sm text-gray-600 hover:text-gray-800">🔧 技術的詳細を表示</summary>
+        <div id="technical-details" class="mt-3 p-4 bg-gray-50 rounded-lg text-sm">
+          <!-- JavaScriptで動的に生成されます -->
+        </div>
+      </details>
+    </div>
+
+    <!-- 説明セクション -->
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-lg font-semibold mb-4">🎓 このツールについて</h3>
+      <div class="prose prose-sm max-w-none">
+        <p class="text-gray-600 mb-3">
+          このツールは<strong>Tone.js</strong>と<strong>リアル楽器サンプル</strong>を使用した、音楽理論に基づく高品質な音楽生成システムです。
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2">🎹 基本操作</h4>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• ジャンルと雰囲気を選択</li>
+              <li>• 自然言語で補足情報を入力</li>
+              <li>• テンポ・長さ・複雑さを調整</li>
+              <li>• ワンクリックプリセットも利用可能</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-2">� 詳細設定</h4>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 使用楽器の個別選択</li>
+              <li>• キー・スケール・楽曲構造の制御</li>
+              <li>• 音楽理論に基づく高度な設定</li>
+              <li>• 必要な時だけ詳細設定を展開</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-accent/10 rounded-lg">
+          <h5 class="font-semibold text-accent mb-2">🎼 音楽生成アルゴリズム</h5>
+          <p class="text-sm text-gray-700">
+            リアル楽器サンプル × 音楽理論 × アルゴリズム生成により、高品質で多様性のある音楽を生成します。
+            和音進行、メロディー生成、リズムパターンはすべて音楽理論に基づいて構築されています。
+            楽器はオンデマンド読み込み方式により、必要な楽器のみを効率的に読み込みます。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技術解説・特徴セクション -->
+    <section class="py-14 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">🎵 高品質音楽生成の特徴</h2>
+          <p class="text-lg text-gray-600">
+            音楽理論とリアル楽器サンプルによる本格的な音楽生成システム
+          </p>
+        </header>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">🎹</div>
+            <h3 class="text-xl font-semibold mb-3">リアル楽器音源</h3>
+            <p class="text-gray-600 text-sm">
+              本物の楽器から録音されたサンプル音源を使用し、自然で迫力のある音響を実現
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">🎼</div>
+            <h3 class="text-xl font-semibold mb-3">音楽理論エンジン</h3>
+            <p class="text-gray-600 text-sm">
+              コード進行、スケール、和声法など、正統な音楽理論に基づいた自然な楽曲構成
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">🎯</div>
+            <h3 class="text-xl font-semibold mb-3">シンプル操作</h3>
+            <p class="text-gray-600 text-sm">
+              自然言語での指定やワンクリックプリセットで、誰でも簡単に高品質な音楽を生成
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">🔧</div>
+            <h3 class="text-xl font-semibold mb-3">詳細設定対応</h3>
+            <p class="text-gray-600 text-sm">
+              キー、テンポ、楽器、ジャンル、ムードなど、細かなパラメーターを個別に調整可能
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">🔒</div>
+            <h3 class="text-xl font-semibold mb-3">プライバシー重視</h3>
+            <p class="text-gray-600 text-sm">
+              すべての処理はブラウザ内で完結。外部サーバーに音楽データが送信されることはありません
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
+            <div class="text-3xl mb-4">💾</div>
+            <h3 class="text-xl font-semibold mb-3">高品質ダウンロード</h3>
+            <p class="text-gray-600 text-sm">
+              生成した音楽を高品質なWAVファイルでダウンロード。商用利用も可能
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    </div>
+  </main>
+
+  <!-- 独自性・免責事項セクション -->
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li>本音楽生成ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li>生成された音楽の著作権については利用規約をご確認ください。</li>
+    </ul>
+    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div>&copy; 2025 negi-lab.com</div>
+  </footer>
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "高品質音楽生成ツール",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "description": "Tone.jsとリアル楽器サンプルを使用した音楽理論に基づく高品質音楽生成ツール。自然言語解析対応のシンプルモードと詳細設定モードを搭載。",
+    "url": "https://negi-lab.com/tools/music-generator-tone.html",
+    "author": {
+      "@type": "Organization",
+      "name": "negi-lab.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "リアル楽器音源対応",
+      "音楽理論に基づく自動生成",
+      "自然言語による楽曲指定",
+      "詳細パラメーター設定",
+      "ブラウザ完結型処理",
+      "高品質WAVダウンロード"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://negi-lab.com/"},
+      {"@type": "ListItem", "position": 2, "name": "ツール", "item": "https://negi-lab.com/#tools"},
+      {"@type": "ListItem", "position": 3, "name": "高品質音楽生成ツール", "item": "https://negi-lab.com/tools/music-generator-tone.html"}
+    ]
+  }
+  </script>
+
+  <!-- Security and External Scripts -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9X3N0RY0H');
+  </script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  
+  <!-- Scripts -->
+  <!-- Tone.js and Tone.js-Instruments (Must be loaded first) -->
+  <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/nbrosowsky/tonejs-instruments@v1.0.2/build/SampleLibrary.js"></script>
+  
+  <!-- Application Scripts (Order is important) -->
+  <script src="../js/common-utils.js"></script>
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/music-generator-translations.js"></script>
+  <script src="../js/realistic-tone-engine-ondemand.js"></script>
+  <script src="../js/realistic-tone-ui-simple.js"></script>
+
+  <!-- ガイドモーダル -->
+  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
+      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
+      <div id="guide-modal-content">
+        <h2 class="text-xl font-bold mb-3">音楽生成ツールの使い方</h2>
+        <ul class="list-disc ml-5 mb-4 text-gray-700">
+          <li><b>基本操作</b>：ジャンル・雰囲気を選択し、自然言語で補足情報を入力</li>
+          <li><b>クイックプリセット</b>：ワンクリックでお好みの音楽スタイルを設定</li>
+          <li><b>詳細設定</b>：楽器・キー・スケールなどを個別に調整（アコーディオンメニュー）</li>
+          <li><b>生成ボタン</b>を押すと音楽理論に基づいた楽曲が自動生成されます</li>
+          <li>生成された音楽は再生・ダウンロードが可能です</li>
+          <li>すべての処理はブラウザ内で完結し、外部にデータが送信されることはありません</li>
+        </ul>
+        <h3 class="font-bold text-base mt-6 mb-2">よくある質問</h3>
+        <dl class="mb-4 text-gray-700">
+          <dt class="font-semibold">Q. 商用利用は可能ですか？</dt>
+          <dd class="mb-2">A. 生成された音楽は自由にご利用いただけますが、詳細は利用規約をご確認ください。</dd>
+          <dt class="font-semibold">Q. どのような楽器が使用できますか？</dt>
+          <dd class="mb-2">A. ピアノ、ギター、ベース、バイオリン、フルート、サックス等多様な楽器に対応しています。</dd>
+          <dt class="font-semibold">Q. 楽器の読み込み状況は確認できますか？</dt>
+          <dd class="mb-2">A. 楽器は音楽生成時に必要なもののみ自動読み込みされるため、事前の読み込み状況確認は不要です。</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 初期化とガイドモーダル
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        console.log('DOM loaded, initializing music generator...');
+        console.log('Available globals:', {
+          Tone: typeof Tone,
+          SampleLibrary: typeof SampleLibrary,
+          RealisticToneEngine: typeof RealisticToneEngine,
+          RealisticToneUI: typeof RealisticToneUI
+        });
+        
+        // ガイドモーダル制御
+        const guideBtn = document.getElementById('guide-btn');
+        const guideModal = document.getElementById('guide-modal');
+        const guideClose = document.getElementById('guide_close');
+        
+        if (guideBtn && guideModal && guideClose) {
+          guideBtn.addEventListener('click', () => {
+            guideModal.classList.remove('hidden');
+          });
+          guideClose.addEventListener('click', () => {
+            guideModal.classList.add('hidden');
+          });
+          guideModal.addEventListener('click', (e) => {
+            if (e.target === guideModal) guideModal.classList.add('hidden');
+          });
+        }
+        
+        // 必要なライブラリの確認
+        if (typeof Tone === 'undefined') {
+          throw new Error('Tone.js is not loaded');
+        }
+        
+        if (typeof SampleLibrary === 'undefined') {
+          console.warn('Tone.js-Instruments (SampleLibrary) is not available, will use fallback');
+        }
+        
+        // 新しいエンジンの初期化
+        console.log('Creating RealisticToneEngine...');
+        window.musicEngine = new RealisticToneEngine();
+        await window.musicEngine.initialize();
+        console.log('RealisticToneEngine initialized successfully');
+        
+        // 新しいUIの初期化
+        console.log('Creating RealisticToneUI...');
+        window.musicUI = new RealisticToneUI(window.musicEngine);
+        window.musicUI.initialize();
+        console.log('RealisticToneUI initialized successfully');
+        
+      } catch (error) {
+        console.error('Initialization failed:', error);
+        
+        // エラーメッセージを表示
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 p-4 rounded-lg text-white bg-red-500 z-50 max-w-md';
+        errorDiv.innerHTML = `
+          <div class="font-bold">初期化エラー</div>
+          <div class="text-sm">${error.message}</div>
+          <div class="text-xs mt-2">ページを再読み込みしてください</div>
+          <button onclick="location.reload()" class="mt-2 px-2 py-1 bg-red-700 rounded text-xs">再読み込み</button>
+        `;
+        document.body.appendChild(errorDiv);
+      }
+    });
+    
+    // エンジン初期化イベントリスナー
+    window.addEventListener('musicEngineReady', function(event) {
+      console.log('Music engine ready:', event.detail);
+    });
+    
+    window.addEventListener('musicEngineFallback', function(event) {
+      console.warn('Music engine using fallback:', event.detail);
+    });
+  </script>
+</body>
+</html>
