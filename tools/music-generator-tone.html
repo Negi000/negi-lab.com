@@ -753,8 +753,8 @@
   <script src="../js/common-utils.js"></script>
   <script src="../js/security-utils.js"></script>
   <script src="../js/music-generator-translations.js"></script>
-  <script src="../js/realistic-tone-engine-ondemand.js"></script>
-  <script src="../js/realistic-tone-ui-simple.js"></script>
+  <script src="../js/music-generator-engine.js"></script>
+  <script src="../js/music-generator-ui.js"></script>
 
   <!-- ガイドモーダル -->
   <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true">
@@ -821,10 +821,9 @@
           console.warn('Tone.js-Instruments (SampleLibrary) is not available, will use fallback');
         }
         
-        // 新しいエンジンの初期化
+        // エンジンの初期化（既にコンストラクタで初期化済み）
         console.log('Creating RealisticToneEngine...');
         window.musicEngine = new RealisticToneEngine();
-        await window.musicEngine.initialize();
         console.log('RealisticToneEngine initialized successfully');
         
         // 新しいUIの初期化
