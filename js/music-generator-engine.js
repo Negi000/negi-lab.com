@@ -1,808 +1,737 @@
-/**
- * 高品質音楽生成エンジン（統合版）
- * Tone.js + リアル楽器サンプルを使用した音楽理論ベースの音楽生成システム
- * オンデマンド楽器読み込み対応
- */
-class RealisticToneEngine {
-  constructor() {
-    this.samplers = {};
-    this.loadingStatus = {};
-    this.initialized = false;
-    this.currentPlayer = null;
-    this.currentComposition = null;
+// This file will contain the core music generation logic using Tone.js
+
+const MusicGeneratorEngine = (() => {
+  console.log('🎵 Initializing MusicGeneratorEngine...');
+  
+  const reverb = new Tone.Reverb().toDestination();
+  let instruments = {};
+  let lastGeneratedMusic = null; // Variable to store the last generated music data
+  
+  console.log('🔧 Tone.js version:', Tone.version);
+  console.log('🔧 Reverb initialized:', reverb);
+
+  // --- Music Theory & Rulebook ---
+  const musicRulebook = {
+    scales: {
+      major: { name: 'major', intervals: ['1P', '2M', '3M', '4P', '5P', '6M', '7M'] },
+      natural_minor: { name: 'natural minor', intervals: ['1P', '2M', '3m', '4P', '5P', '6m', '7m'] },
+      dorian: { name: 'dorian', intervals: ['1P', '2M', '3m', '4P', '5P', '6M', '7m'] },
+      mixolydian: { name: 'mixolydian', intervals: ['1P', '2M', '3M', '4P', '5P', '6M', '7m'] },
+    },
+    diatonicChords: {
+      major: ['maj7', 'm7', 'm7', 'maj7', '7', 'm7', 'm7b5'],
+      // Imaj7, iim7, iiim7, IVmaj7, V7, vim7, viim7b5
+    },
+    progressions: {
+      pop: [
+        ['I', 'V', 'vi', 'IV'], // I-V-vi-IV
+        ['IV', 'I', 'V', 'vi'], // IV-I-V-vi
+      ],
+      jazz: [
+        ['ii', 'V', 'I', 'I'], // ii-V-I
+      ],
+      rock: [
+        ['I', 'IV', 'V', 'V'], // I-IV-V
+      ]
+    },
+    rhythms: {
+      fourOnTheFloor: [{ time: '0:0' }, { time: '0:1' }, { time: '0:2' }, { time: '0:3' }],
+      // ... other rhythms
+    },
+    tempos: {
+      slow: [60, 80],
+      medium: [90, 120],
+      fast: [130, 160],
+    },
+    structures: {
+        AABA: ['A', 'A', 'B', 'A'],
+        ABAB: ['A', 'B', 'A', 'B'],
+    }
+  };
+
+  // --- Keyword Analysis ---
+  const keywordDictionary = {
+    // Moods
+    'happy': { mood: 'happy', scale: 'major', tempo: 'medium' },
+    'upbeat': { mood: 'happy', scale: 'major', tempo: 'fast' },
+    'sad': { mood: 'sad', scale: 'natural_minor', tempo: 'slow' },
+    'melancholic': { mood: 'sad', scale: 'natural_minor', tempo: 'slow' },
+    'energetic': { mood: 'energetic', genre: 'rock', tempo: 'fast' },
+    'calm': { genre: 'ambient', scale: 'major', tempo: 'slow' },
+    'epic': { genre: 'cinematic', scale: 'major', tempo: 'medium' },
+    'mysterious': { genre: 'ambient', scale: 'natural_minor', tempo: 'slow' },
+    // Genres
+    'pop': { genre: 'pop', scale: 'major', tempo: 'medium' },
+    'rock': { genre: 'rock', scale: 'major', tempo: 'fast' },
+    'jazz': { genre: 'jazz', scale: 'major', tempo: 'medium' },
+    'ambient': { genre: 'ambient', scale: 'major', tempo: 'slow' },
+    'cinematic': { genre: 'cinematic', scale: 'major', tempo: 'medium' },
+    // ... more keywords
+  };
+
+  // --- Instruments ---
+  // let instruments = {}; // Removed duplicate declaration
+  // let lastGeneratedMusic = null; // Variable to store the last generated music data
+
+  // Available instruments using local tonejs-instruments SampleLibrary
+  const availableInstruments = {
+    // Piano family
+    'piano': 'piano',
     
-    // 利用可能楽器の定義（Tone.js-Instruments対応）
-    this.availableInstruments = {
-      'piano': { name: 'ピアノ', category: 'keyboard' },
-      'bass-electric': { name: 'エレキベース', category: 'bass' },
-      'guitar-acoustic': { name: 'アコースティックギター', category: 'strings' },
-      'guitar-electric': { name: 'エレキギター', category: 'strings' },
-      'violin': { name: 'バイオリン', category: 'strings' },
-      'cello': { name: 'チェロ', category: 'strings' },
-      'contrabass': { name: 'コントラバス', category: 'strings' },
-      'harp': { name: 'ハープ', category: 'strings' },
-      'saxophone': { name: 'サックス', category: 'wind' },
-      'trumpet': { name: 'トランペット', category: 'wind' },
-      'trombone': { name: 'トロンボーン', category: 'wind' },
-      'french-horn': { name: 'フレンチホルン', category: 'wind' },
-      'tuba': { name: 'チューバ', category: 'wind' },
-      'flute': { name: 'フルート', category: 'wind' },
-      'clarinet': { name: 'クラリネット', category: 'wind' },
-      'bassoon': { name: 'バスーン', category: 'wind' },
-      'xylophone': { name: 'シロフォン', category: 'percussion' },
-      'organ': { name: 'オルガン', category: 'keyboard' },
-      'harmonium': { name: 'ハーモニウム', category: 'keyboard' }
-    };
+    // Guitar family
+    'guitar-acoustic': 'guitar-acoustic',
+    'guitar-electric': 'guitar-electric',
+    'guitar-nylon': 'guitar-nylon',
+    
+    // Orchestral strings
+    'violin': 'violin',
+    'cello': 'cello',
+    'contrabass': 'contrabass',
+    
+    // Winds
+    'flute': 'flute',
+    'clarinet': 'clarinet',
+    'saxophone': 'saxophone',
+    'trumpet': 'trumpet',
+    'bassoon': 'bassoon',
+    'tuba': 'tuba',
+    'french-horn': 'french-horn',
+    'trombone': 'trombone',
+    
+    // Others
+    'xylophone': 'xylophone',
+    'organ': 'organ',
+    'harp': 'harp',
+    'harmonium': 'harmonium',
+    'bass-electric': 'bass-electric',
+    
+    // Drums using the correct drum sample URLs (keep existing)
+    'drums': {
+        'C1': 'https://tonejs.github.io/audio/drum-samples/acoustic-kit/kick.mp3',
+        'D1': 'https://tonejs.github.io/audio/drum-samples/acoustic-kit/snare.mp3',
+        'F#1': 'https://tonejs.github.io/audio/drum-samples/acoustic-kit/hihat.mp3'
+    }
+  };
 
-    // 音楽理論データ
-    this.scales = {
-      'major': [0, 2, 4, 5, 7, 9, 11],
-      'minor': [0, 2, 3, 5, 7, 8, 10],
-      'pentatonic': [0, 2, 4, 7, 9],
-      'blues': [0, 3, 5, 6, 7, 10]
-    };
+  // Initialize and load instruments
+  async function loadInstruments() {
+    console.log('🎵 Loading instruments...');
+    
+    // Check if SampleLibrary is available
+    if (typeof SampleLibrary === 'undefined') {
+      console.error('❌ SampleLibrary not found! Make sure Tonejs-Instruments.js is loaded.');
+      createFallbackInstruments();
+      return;
+    }
 
-    this.chordProgressions = {
-      'pop': ['I', 'V', 'vi', 'IV'],
-      'jazz': ['ii', 'V', 'I', 'vi'],
-      'rock': ['I', 'VII', 'IV', 'I'],
-      'blues': ['I', 'I', 'I', 'I', 'IV', 'IV', 'I', 'I', 'V', 'IV', 'I', 'V'],
-      'classical': ['I', 'IV', 'V', 'I']
-    };
-
-    this.keywordDictionary = {
-      mood: {
-        happy: ['明るい', '楽しい', '元気', 'ポップ', '幸せ'],
-        sad: ['悲しい', '切ない', '暗い', 'メランコリー'],
-        energetic: ['エネルギッシュ', '激しい', 'パワフル', 'ロック'],
-        calm: ['落ち着いた', '静か', 'リラックス', '穏やか'],
-        romantic: ['ロマンチック', '愛', '甘い', '優雅'],
-        mysterious: ['神秘的', '不思議', 'ミステリアス']
-      },
-      genre: {
-        pop: ['ポップ', 'J-POP', 'ポピュラー'],
-        jazz: ['ジャズ', 'スイング', 'ブルース'],
-        rock: ['ロック', 'ハード', 'メタル'],
-        classical: ['クラシック', 'オーケストラ', '交響曲'],
-        electronic: ['エレクトロニック', 'テクノ', 'シンセ']
-      },
-      tempo: {
-        slow: ['遅い', 'スロー', 'ゆっくり', 'バラード'],
-        medium: ['普通', 'ミディアム', '中程度'],
-        fast: ['速い', 'ファスト', 'アップテンポ', 'ダンス']
-      }
-    };
-
-    this.initialize();
-  }
-
-  /**
-   * エンジン初期化
-   */
-  async initialize() {
+    console.log('✅ SampleLibrary found:', SampleLibrary);
+    
+    // Set the base URL for samples
+    SampleLibrary.baseUrl = '../tonejs-instruments/samples/';
+    
     try {
-      console.log('Initializing RealisticToneEngine...');
+      // Load drums first (uses direct URLs)
+      console.log('🥁 Loading drums...');
+      const drumUrls = availableInstruments.drums;
       
-      if (typeof Tone === 'undefined') {
-        throw new Error('Tone.js is not loaded');
-      }
-
-      if (Tone.context.state !== 'running') {
-        console.log('AudioContext is not running, will start on user interaction');
-      }
-
-      // フォールバック楽器の初期化
-      this.initializeFallbackInstruments();
-      
-      this.initialized = true;
-      console.log('RealisticToneEngine initialized successfully');
-      
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('musicEngineReady', {
-          detail: { engine: this }
-        }));
-      }
-      
-    } catch (error) {
-      console.error('Engine initialization failed:', error);
-      this.initializeFallbackInstruments();
-      this.initialized = true;
-      
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('musicEngineFallback', {
-          detail: { engine: this, error: error.message }
-        }));
-      }
-    }
-  }
-
-  /**
-   * フォールバック楽器の初期化
-   */
-  initializeFallbackInstruments() {
-    console.log('Loading fallback instruments...');
-    
-    this.samplers.piano = new Tone.PolySynth(Tone.Synth, {
-      oscillator: { type: 'triangle' },
-      envelope: { attack: 0.02, decay: 0.3, sustain: 0.3, release: 1.5 }
-    }).toDestination();
-    
-    this.samplers['guitar-acoustic'] = new Tone.PluckSynth({
-      attackNoise: 0.8,
-      dampening: 4000,
-      resonance: 0.9
-    }).toDestination();
-    
-    this.samplers['bass-electric'] = new Tone.MonoSynth({
-      oscillator: { type: 'sawtooth' },
-      filter: { Q: 2, frequency: 150, type: 'lowpass' },
-      envelope: { attack: 0.1, decay: 0.3, sustain: 0.7, release: 0.8 }
-    }).toDestination();
-    
-    this.samplers['guitar-electric'] = new Tone.FMSynth({
-      harmonicity: 3,
-      modulationIndex: 10,
-      oscillator: { type: 'sine' },
-      envelope: { attack: 0.01, decay: 0.1, sustain: 0.3, release: 0.5 }
-    }).toDestination();
-    
-    this.samplers.violin = new Tone.PolySynth(Tone.FMSynth, {
-      harmonicity: 3.01,
-      modulationIndex: 14,
-      oscillator: { type: 'sine' },
-      envelope: { attack: 0.2, decay: 0.3, sustain: 0.6, release: 0.8 }
-    }).toDestination();
-    
-    this.samplers.saxophone = new Tone.Synth({
-      oscillator: { type: 'sawtooth' },
-      envelope: { attack: 0.1, decay: 0.2, sustain: 0.8, release: 0.5 }
-    }).toDestination();
-    
-    this.samplers.trumpet = new Tone.Synth({
-      oscillator: { type: 'square' },
-      envelope: { attack: 0.05, decay: 0.1, sustain: 0.7, release: 0.3 }
-    }).toDestination();
-    
-    this.samplers.flute = new Tone.Synth({
-      oscillator: { type: 'sine' },
-      envelope: { attack: 0.1, decay: 0.1, sustain: 0.8, release: 0.3 }
-    }).toDestination();
-    
-    this.samplers.drums = new Tone.MembraneSynth({
-      pitchDecay: 0.05,
-      octaves: 10,
-      oscillator: { type: 'sine' },
-      envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4 }
-    }).toDestination();
-    
-    console.log('Fallback instruments loaded:', Object.keys(this.samplers));
-  }
-
-  /**
-   * オンデマンド楽器読み込み
-   */
-  async loadInstrument(instrumentKey) {
-    if (this.samplers[instrumentKey]) {
-      return this.samplers[instrumentKey];
-    }
-
-    this.loadingStatus[instrumentKey] = { status: 'loading', progress: 0 };
-
-    try {
-      console.log(`Loading instrument: ${instrumentKey}...`);
-      
-      // SampleLibraryが利用可能な場合はリアル楽器を読み込み
-      if (typeof SampleLibrary !== 'undefined') {
-        const sampler = await this.loadRealInstrument(instrumentKey);
-        this.samplers[instrumentKey] = sampler;
-        this.loadingStatus[instrumentKey] = { status: 'loaded', progress: 100 };
-        console.log(`✓ Real instrument loaded: ${instrumentKey}`);
-        return sampler;
-      } else {
-        // フォールバック楽器を作成
-        const fallbackInstrument = this.createFallbackInstrument(instrumentKey);
-        this.samplers[instrumentKey] = fallbackInstrument;
-        this.loadingStatus[instrumentKey] = { status: 'fallback', progress: 100 };
-        console.log(`✓ Fallback instrument loaded: ${instrumentKey}`);
-        return fallbackInstrument;
-      }
-    } catch (error) {
-      console.warn(`Failed to load ${instrumentKey}, using fallback:`, error);
-      const fallbackInstrument = this.createFallbackInstrument(instrumentKey);
-      this.samplers[instrumentKey] = fallbackInstrument;
-      this.loadingStatus[instrumentKey] = { status: 'fallback', progress: 100 };
-      return fallbackInstrument;
-    }
-  }
-
-  /**
-   * リアル楽器サンプルの読み込み
-   */
-  async loadRealInstrument(instrumentKey) {
-    return new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => {
-        reject(new Error(`Load timeout for ${instrumentKey}`));
-      }, 10000); // 10秒タイムアウト
-
-      try {
-        const instruments = SampleLibrary.load({
-          instruments: [instrumentKey],
-          baseUrl: "https://cdn.jsdelivr.net/gh/nbrosowsky/tonejs-instruments/samples/",
+      await new Promise((resolve, reject) => {
+        instruments.drums = new Tone.Sampler({
+          urls: drumUrls,
           onload: () => {
-            clearTimeout(timeout);
-            const sampler = instruments[instrumentKey];
-            if (sampler) {
-              sampler.toDestination();
-              resolve(sampler);
-            } else {
-              reject(new Error(`Sampler not found for ${instrumentKey}`));
-            }
+            console.log('✅ Drums loaded successfully');
+            resolve();
           },
           onerror: (error) => {
-            clearTimeout(timeout);
-            reject(error);
+            console.error('❌ Error loading drums:', error);
+            instruments.drums = new Tone.MembraneSynth();
+            resolve(); // Continue even if drums fail
+          }
+        }).connect(reverb);
+        
+        // Timeout after 10 seconds
+        setTimeout(() => {
+          console.warn('⏰ Drums loading timeout, using fallback');
+          if (!instruments.drums) {
+            instruments.drums = new Tone.MembraneSynth().connect(reverb);
+          }
+          resolve();
+        }, 10000);
+      });
+      
+      // Load other instruments using SampleLibrary
+      console.log('🎻 Loading SampleLibrary instruments...');
+      const instrumentsToLoad = Object.keys(availableInstruments)
+        .filter(name => name !== 'drums')
+        .map(name => availableInstruments[name]);
+      
+      console.log('📦 Instruments to load:', instrumentsToLoad);
+      
+      await new Promise((resolve, reject) => {
+        let loadedCount = 0;
+        const totalInstruments = instrumentsToLoad.length;
+        
+        const loadedInstruments = SampleLibrary.load({
+          instruments: instrumentsToLoad,
+          baseUrl: '../tonejs-instruments/samples/',
+          onload: () => {
+            loadedCount++;
+            console.log(`📈 Loaded ${loadedCount}/${totalInstruments} instruments`);
+            
+            if (loadedCount === totalInstruments) {
+              console.log('✅ All SampleLibrary instruments loaded');
+              resolve(loadedInstruments);
+            }
           }
         });
-
-        // 即座に利用可能な場合
-        if (instruments && instruments[instrumentKey]) {
-          clearTimeout(timeout);
-          instruments[instrumentKey].toDestination();
-          resolve(instruments[instrumentKey]);
-        }
-      } catch (error) {
-        clearTimeout(timeout);
-        reject(error);
-      }
-    });
-  }
-
-  /**
-   * フォールバック楽器の作成
-   */
-  createFallbackInstrument(instrumentKey) {
-    const category = this.availableInstruments[instrumentKey]?.category || 'keyboard';
-    
-    switch (category) {
-      case 'keyboard':
-        return new Tone.Synth({
-          oscillator: { type: 'triangle' },
-          envelope: { attack: 0.1, decay: 0.3, sustain: 0.3, release: 1 }
-        }).toDestination();
         
-      case 'strings':
-        if (instrumentKey.includes('bass') || instrumentKey === 'contrabass') {
-          return new Tone.MonoSynth({
-            oscillator: { type: 'sawtooth' },
-            filter: { Q: 2, frequency: 150, type: 'lowpass' },
-            envelope: { attack: 0.1, decay: 0.3, sustain: 0.7, release: 0.8 }
-          }).toDestination();
-        } else {
-          return new Tone.PluckSynth({
-            attackNoise: 0.8,
-            dampening: 4000,
-            resonance: 0.9
-          }).toDestination();
-        }
-        
-      case 'wind':
-        return new Tone.Synth({
-          oscillator: { type: 'sine' },
-          envelope: { attack: 0.1, decay: 0.1, sustain: 0.8, release: 0.3 }
-        }).toDestination();
-        
-      case 'percussion':
-        return new Tone.MembraneSynth({
-          pitchDecay: 0.05,
-          octaves: 10,
-          oscillator: { type: 'sine' },
-          envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4 }
-        }).toDestination();
-        
-      default:
-        return new Tone.Synth().toDestination();
-    }
-  }
-
-  /**
-   * 自然言語解析
-   */
-  parseNaturalLanguage(description) {
-    const parsed = {
-      mood: 'happy',
-      genre: 'pop',
-      tempo: 'medium',
-      instruments: ['piano'],
-      duration: 30
-    };
-
-    if (!description) return parsed;
-
-    const lowerDesc = description.toLowerCase();
-
-    // ムード解析
-    for (const [mood, keywords] of Object.entries(this.keywordDictionary.mood)) {
-      if (keywords.some(keyword => lowerDesc.includes(keyword))) {
-        parsed.mood = mood;
-        break;
-      }
-    }
-
-    // ジャンル解析
-    for (const [genre, keywords] of Object.entries(this.keywordDictionary.genre)) {
-      if (keywords.some(keyword => lowerDesc.includes(keyword))) {
-        parsed.genre = genre;
-        break;
-      }
-    }
-
-    // テンポ解析
-    for (const [tempo, keywords] of Object.entries(this.keywordDictionary.tempo)) {
-      if (keywords.some(keyword => lowerDesc.includes(keyword))) {
-        parsed.tempo = tempo;
-        break;
-      }
-    }
-
-    // 楽器解析
-    if (lowerDesc.includes('ピアノ')) parsed.instruments = ['piano'];
-    if (lowerDesc.includes('ギター')) parsed.instruments = ['guitar-acoustic'];
-    if (lowerDesc.includes('ベース')) parsed.instruments = ['bass-electric'];
-    if (lowerDesc.includes('サックス')) parsed.instruments = ['saxophone'];
-    if (lowerDesc.includes('バイオリン')) parsed.instruments = ['violin'];
-
-    return parsed;
-  }
-
-  /**
-   * 音楽生成
-   */
-  async generateMusic(settings) {
-    if (!this.initialized) {
-      throw new Error('Engine not initialized');
-    }
-
-    try {
-      if (Tone.context.state === 'suspended') {
-        await Tone.start();
-      }
-
-      console.log('Generating music with settings:', settings);
-
-      // 自然言語解析
-      let params = settings;
-      if (settings.description) {
-        const parsed = this.parseNaturalLanguage(settings.description);
-        params = { ...parsed, ...settings };
-      }
-
-      // 楽曲構造の生成
-      const composition = this.createComposition(params);
-      
-      // シンプルな音楽データ生成（デモ用）
-      const musicData = this.generateSimpleMusic(composition, params);
-      
-      return {
-        audioBuffer: musicData.buffer,
-        waveform: musicData.waveform,
-        metadata: {
-          duration: params.duration || 30,
-          tempo: composition.tempo,
-          key: composition.key,
-          instruments: params.instruments || ['piano'],
-          chordProgression: composition.chordProgression,
-          quality: 'high'
-        }
-      };
-
-    } catch (error) {
-      console.error('Music generation failed:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * 楽曲構造の作成
-   */
-  createComposition(params) {
-    const keys = ['C', 'G', 'D', 'A', 'E', 'F', 'Bb'];
-    const key = params.key || keys[Math.floor(Math.random() * keys.length)];
-    
-    const progression = this.chordProgressions[params.genre] || this.chordProgressions.pop;
-    const tempo = this.getTempoValue(params.tempo);
-
-    return {
-      key: key,
-      chordProgression: progression,
-      tempo: tempo,
-      scale: params.scale || 'major',
-      structure: this.createSongStructure(params),
-      instruments: params.instruments || ['piano']
-    };
-  }
-
-  /**
-   * テンポ値の取得
-   */
-  getTempoValue(tempoName) {
-    if (typeof tempoName === 'number') return tempoName;
-    
-    const tempoMap = {
-      slow: 70 + Math.random() * 20,
-      medium: 100 + Math.random() * 40,
-      fast: 140 + Math.random() * 40
-    };
-    return Math.floor(tempoMap[tempoName] || tempoMap.medium);
-  }
-
-  /**
-   * 楽曲構造の作成
-   */
-  createSongStructure(params) {
-    const duration = params.duration || 30;
-    const measures = Math.floor(duration / 2);
-
-    return {
-      intro: Math.min(2, Math.floor(measures * 0.1)),
-      verse: Math.floor(measures * 0.4),
-      chorus: Math.floor(measures * 0.4),
-      outro: Math.min(2, Math.floor(measures * 0.1))
-    };
-  }
-
-  /**
-   * シンプルな音楽生成
-   */
-  generateSimpleMusic(composition, params) {
-    const duration = params.duration || 30;
-    const sampleRate = 44100;
-    const bufferLength = duration * sampleRate;
-    const audioBuffer = new Float32Array(bufferLength);
-
-    // 基本周波数（A4 = 440Hz）
-    const baseFreq = 440;
-    const tempo = composition.tempo;
-    const beatDuration = 60 / tempo; // 1拍の長さ（秒）
-
-    for (let i = 0; i < bufferLength; i++) {
-      const t = i / sampleRate;
-      const beatPosition = (t % beatDuration) / beatDuration;
-      
-      // シンプルなコード進行
-      const chordIndex = Math.floor(t / (beatDuration * 4)) % composition.chordProgression.length;
-      const chordFreq = baseFreq * Math.pow(2, chordIndex * 0.1);
-      
-      // 和音とメロディー
-      const chord = Math.sin(2 * Math.PI * chordFreq * t) * 0.3;
-      const melody = Math.sin(2 * Math.PI * chordFreq * 1.5 * t) * 0.2;
-      const rhythm = Math.sin(2 * Math.PI * chordFreq * 0.5 * t) * 0.1;
-      
-      // エンベロープ
-      const envelope = Math.exp(-beatPosition * 2) * 0.5 + 0.5;
-      
-      audioBuffer[i] = (chord + melody + rhythm) * envelope * 0.7;
-    }
-
-    // 波形データの生成
-    const waveform = this.generateWaveform(audioBuffer);
-
-    return {
-      buffer: audioBuffer,
-      waveform: waveform
-    };
-  }
-
-  /**
-   * 波形データの生成
-   */
-  generateWaveform(audioData) {
-    const points = 100;
-    const chunkSize = Math.floor(audioData.length / points);
-    const waveform = [];
-
-    for (let i = 0; i < points; i++) {
-      let sum = 0;
-      const start = i * chunkSize;
-      const end = Math.min(start + chunkSize, audioData.length);
-
-      for (let j = start; j < end; j++) {
-        sum += Math.abs(audioData[j] || 0);
-      }
-
-      waveform.push(sum / (end - start) || 0);
-    }
-
-    return waveform;
-  }
-
-  /**
-   * 利用可能な楽器リストを取得（UI用）
-   */
-  getAvailableInstruments() {
-    return Object.keys(this.availableInstruments).map(key => {
-      const info = this.availableInstruments[key];
-      return {
-        id: key,
-        name: info.name,
-        category: info.category,
-        emoji: this.getInstrumentEmoji(key),
-        default: this.isDefaultInstrument(key)
-      };
-    });
-  }
-
-  /**
-   * 利用可能な楽器リスト取得（UI用）
-   */
-  getAvailableInstrumentsList() {
-    return Object.keys(this.availableInstruments);
-  }
-
-  /**
-   * 楽器の読み込み状況取得
-   */
-  getLoadingStatus() {
-    return this.loadingStatus;
-  }
-
-  /**
-   * 楽器の絵文字を取得
-   */
-  getInstrumentEmoji(key) {
-    const emojiMap = {
-      'piano': '🎹',
-      'guitar-acoustic': '🎸',
-      'guitar-electric': '🎸',
-      'bass-electric': '🎸',
-      'violin': '🎻',
-      'cello': '🎻',
-      'flute': '🎺',
-      'saxophone': '🎷',
-      'trumpet': '🎺',
-      'drums': '🥁'
-    };
-    return emojiMap[key] || '🎵';
-  }
-
-  /**
-   * デフォルト楽器かどうか判定
-   */
-  isDefaultInstrument(key) {
-    const defaultInstruments = ['piano', 'guitar-acoustic', 'bass-electric'];
-    return defaultInstruments.includes(key);
-  }
-
-  /**
-   * 音声再生
-   */
-  async playAudio(audioBuffer) {
-    try {
-      if (Tone.context.state === 'suspended') {
-        await Tone.start();
-      }
-
-      if (this.currentPlayer) {
-        this.currentPlayer.stop();
-        this.currentPlayer.dispose();
-      }
-
-      // AudioBufferをTone.jsで再生可能な形式に変換
-      const buffer = new Tone.ToneAudioBuffer();
-      buffer.fromArray(audioBuffer);
-      
-      this.currentPlayer = new Tone.Player(buffer).toDestination();
-      this.currentPlayer.start();
-      
-      return true;
-    } catch (error) {
-      console.error('Audio playback failed:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * 音声一時停止
-   */
-  async pauseAudio() {
-    if (this.currentPlayer) {
-      this.currentPlayer.stop();
-    }
-  }
-
-  /**
-   * 音声停止
-   */
-  async stopAudio() {
-    if (this.currentPlayer) {
-      this.currentPlayer.stop();
-      this.currentPlayer.dispose();
-      this.currentPlayer = null;
-    }
-  }
-
-  /**
-   * WAVダウンロード
-   */
-  async downloadAudio(audioBuffer, filename = 'generated-music.wav') {
-    try {
-      const wavBuffer = this.audioBufferToWav(audioBuffer);
-      const blob = new Blob([wavBuffer], { type: 'audio/wav' });
-      const url = URL.createObjectURL(blob);
-      
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Download failed:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * AudioBuffer を WAV フォーマットに変換
-   */
-  audioBufferToWav(audioBuffer) {
-    const length = audioBuffer.length;
-    const sampleRate = 44100;
-    const arrayBuffer = new ArrayBuffer(44 + length * 2);
-    const view = new DataView(arrayBuffer);
-
-    // WAVヘッダーの書き込み
-    const writeString = (offset, string) => {
-      for (let i = 0; i < string.length; i++) {
-        view.setUint8(offset + i, string.charCodeAt(i));
-      }
-    };
-
-    writeString(0, 'RIFF');
-    view.setUint32(4, 36 + length * 2, true);
-    writeString(8, 'WAVE');
-    writeString(12, 'fmt ');
-    view.setUint32(16, 16, true);
-    view.setUint16(20, 1, true);
-    view.setUint16(22, 1, true);
-    view.setUint32(24, sampleRate, true);
-    view.setUint32(28, sampleRate * 2, true);
-    view.setUint16(32, 2, true);
-    view.setUint16(34, 16, true);
-    writeString(36, 'data');
-    view.setUint32(40, length * 2, true);
-
-    // 音声データの書き込み
-    let offset = 44;
-    for (let i = 0; i < length; i++) {
-      const sample = Math.max(-1, Math.min(1, audioBuffer[i] || 0));
-      view.setInt16(offset, sample * 0x7FFF, true);
-      offset += 2;
-    }
-
-    return arrayBuffer;
-  }
-
-  /**
-   * 音楽再生
-   */
-  async playMusic(composition) {
-    try {
-      if (Tone.context.state === 'suspended') {
-        await Tone.start();
-      }
-
-      this.stopMusic(); // 既存の再生を停止
-
-      console.log('Playing composition:', composition);
-      
-      // シンプルな再生デモ（実際の楽曲構造に基づく）
-      const piano = this.samplers.piano || await this.loadInstrument('piano');
-      
-      if (piano && composition.chords) {
-        const chordSequence = composition.chords.slice(0, 4); // 最初の4コード
-        const noteSequence = this.generateMelodyFromChords(chordSequence, composition.key);
-        
-        // コード進行の再生
-        let time = 0;
-        chordSequence.forEach((chord, index) => {
-          const chordNotes = this.getChordNotes(chord, composition.key);
-          piano.triggerAttackRelease(chordNotes, '2n', time);
-          time += 2; // 2秒間隔
+        // Map loaded instruments immediately
+        Object.keys(availableInstruments).forEach(name => {
+          if (name !== 'drums') {
+            const instrumentName = availableInstruments[name];
+            if (loadedInstruments && loadedInstruments[instrumentName]) {
+              instruments[name] = loadedInstruments[instrumentName].connect(reverb);
+              console.log(`✅ ${name} (${instrumentName}) connected`);
+            } else {
+              console.warn(`⚠️ ${name} not immediately available, will create fallback`);
+              instruments[name] = new Tone.PolySynth(Tone.Synth).connect(reverb);
+            }
+          }
         });
-
-        return true;
-      }
-      
-      return false;
-    } catch (error) {
-      console.error('Playback failed:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * 音楽停止
-   */
-  stopMusic() {
-    try {
-      // すべての楽器の音を停止
-      Object.values(this.samplers).forEach(sampler => {
-        if (sampler && typeof sampler.releaseAll === 'function') {
-          sampler.releaseAll();
+        
+        // Resolve immediately if instruments are already available
+        if (Object.keys(loadedInstruments).length === totalInstruments) {
+          resolve(loadedInstruments);
         }
+        
+        // Timeout after 15 seconds
+        setTimeout(() => {
+          console.warn('⏰ SampleLibrary loading timeout, using fallbacks');
+          createFallbackInstruments();
+          resolve(loadedInstruments);
+        }, 15000);
       });
-
-      // オーディオプレイヤーも停止
-      if (this.currentPlayer) {
-        this.currentPlayer.pause();
-        this.currentPlayer.currentTime = 0;
-      }
-
-      console.log('Music stopped');
-      return true;
+      
     } catch (error) {
-      console.error('Stop failed:', error);
-      return false;
+      console.error('❌ Error loading instruments:', error);
+      createFallbackInstruments();
+    }
+    
+    console.log('🎵 Instrument loading completed');
+    console.log('📊 Available instruments:', Object.keys(instruments));
+  }
+  
+  function createFallbackInstruments() {
+    console.log('🔧 Creating fallback instruments...');
+    Object.keys(availableInstruments).forEach(name => {
+      if (!instruments[name]) {
+        if (name === 'drums') {
+          instruments[name] = new Tone.MembraneSynth().connect(reverb);
+        } else {
+          instruments[name] = new Tone.PolySynth(Tone.Synth).connect(reverb);
+        }
+        console.log(`🎛️ Created fallback for: ${name}`);
+      }
+    });
+  }
+
+  // Main generation function
+  function generate(options) {
+    console.log('🎵 Generating music with options:', options);
+    console.log('📊 Available instruments:', Object.keys(instruments));
+    console.log('🎛️ Requested instruments:', options.instruments);
+
+    if (Tone.context.state !== 'running') {
+        console.log('🔊 Starting AudioContext...');
+        Tone.context.resume();
+    }
+    
+    // Stop any previous music
+    if (Tone.Transport.state === 'started') {
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
+    }
+
+    // 1. Input Analysis & Rule Decision
+    const key = options.key || 'C';
+    const scaleName = options.scale || 'major';
+    const scale = musicRulebook.scales[scaleName] || musicRulebook.scales.major;
+    const genre = options.genre || 'pop';
+    const length = options.length || 16; // Default to 16 measures
+    const complexity = options.complexity || 'medium';
+    const isLooping = options.isLooping !== undefined ? options.isLooping : true;
+
+    // Select a random progression from the chosen genre
+    const progressionsForGenre = musicRulebook.progressions[genre] || musicRulebook.progressions['pop'];
+    const baseProgression = progressionsForGenre[Math.floor(Math.random() * progressionsForGenre.length)];
+    const progressionChords = createChordProgression(baseProgression, length, isLooping, key);
+    
+    Tone.Transport.bpm.value = options.tempo || 120;
+    reverb.wet.value = options.reverb || 0.1;
+
+    // 2. Element Generation
+    const chordPart = createChordPart(progressionChords);
+    const melodyPart = createMelody(progressionChords, scale, key, complexity);
+    const bassPart = createBassline(progressionChords, complexity);
+    const drumPart = createDrums(length, complexity);
+
+    // 3. Scheduling with safe instrument access
+    console.log('🎼 Scheduling music parts...');
+    
+    // Helper function to safely get instrument
+    const safeGetInstrument = (instrumentRole, fallbackName = 'piano') => {
+      const requestedInstrument = options.instruments[instrumentRole];
+      if (instruments[requestedInstrument]) {
+        console.log(`✅ Using ${instrumentRole}: ${requestedInstrument}`);
+        return instruments[requestedInstrument];
+      }
+      if (instruments[fallbackName]) {
+        console.log(`⚠️ Fallback ${instrumentRole}: ${fallbackName} (${requestedInstrument} not available)`);
+        return instruments[fallbackName];
+      }
+      console.log(`❌ Creating emergency synth for ${instrumentRole}`);
+      return new Tone.PolySynth(Tone.Synth).connect(reverb);
+    };
+
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('chords', 'piano');
+        if (instrument && note.notes) {
+          instrument.triggerAttackRelease(note.notes, note.duration, time);
+        }
+    }, chordPart).start(0);
+
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('melody', 'piano');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, melodyPart).start(0);
+    
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('bass', 'piano');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, bassPart).start(0);
+
+    new Tone.Part((time, note) => {
+        if (instruments.drums && note.pitch) {
+          instruments.drums.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, drumPart).start(0);
+
+
+    // Set transport to loop
+    Tone.Transport.loop = isLooping;
+    Tone.Transport.loopStart = 0;
+    Tone.Transport.loopEnd = `${length}m`;
+
+    console.log('Music scheduled. Ready to play.');
+    // Tone.Transport.start(); // Removed autoplay
+
+    // Store and return the generated data
+    const generatedData = {
+        chordPart,
+        melodyPart,
+        bassPart,
+        drumPart,
+        tempo: Tone.Transport.bpm.value,
+        options // Store all options used for this generation
+    };
+    
+    lastGeneratedMusic = generatedData;
+    return generatedData;
+  }
+
+  function createChordProgression(baseProgression, length, isLooping, key) {
+    const romanNumerals = Tonal.Progression.fromRomanNumerals(key, baseProgression);
+    let fullProgression = [];
+    // Repeat or truncate the base progression to fit the desired length
+    for (let i = 0; i < length; i++) {
+        fullProgression.push(romanNumerals[i % romanNumerals.length]);
+    }
+
+    // If looping, make the end lead back to the beginning
+    if (isLooping && length > 1) {
+        // A simple way to make it loop better is to use a V chord at the end
+        const dominant = Tonal.Progression.fromRomanNumerals(key, ['V'])[0];
+        fullProgression[length - 1] = dominant;
+    }
+    return fullProgression;
+  }
+
+  function createChordPart(progression) {
+    // Creates a simple chord part holding each chord for one measure
+    return progression.map((chordName, i) => {
+        const chord = Tonal.Chord.get(chordName);
+        // Ensure chord is valid, provide a fallback
+        const notes = chord.notes.length > 0 ? chord.notes : Tonal.Chord.get(progression[0]).notes;
+        return {
+            time: `${i}:0:0`,
+            notes: notes.map(n => n + '4'), // Play in 4th octave
+            duration: '1m'
+        };
+    });
+  }
+
+  function createMelody(progression, scale, key, complexity) {
+      // Creates a more musical melody
+      let melody = [];
+      const scaleNotes = Tonal.Scale.get(`${key} ${scale.name}`).notes;
+      const noteDensity = { simple: 2, normal: 4, complex: 6 }[complexity] || 4;
+
+      progression.forEach((chordName, i) => {
+          const chord = Tonal.Chord.get(chordName);
+          // Prioritize chord tones, but allow other scale notes
+          const chordTones = chord.notes;
+          const otherScaleNotes = scaleNotes.filter(n => !chordTones.includes(Tonal.Note.pitchClass(n)));
+          
+          // Create a pool of notes weighted towards chord tones
+          const notePool = [...chordTones, ...chordTones, ...otherScaleNotes];
+
+          for (let j = 0; j < noteDensity; j++) { // Generate notes based on complexity
+              const noteName = notePool[Math.floor(Math.random() * notePool.length)];
+              const octave = (Math.random() > 0.4 ? 5 : 4); // More likely to be 5th octave
+              
+              // Rhythmic variation based on complexity
+              let duration = '8n';
+              if (complexity === 'simple') {
+                  duration = '4n';
+              } else if (complexity === 'complex') {
+                  duration = Math.random() > 0.5 ? '8n' : '16n';
+              }
+              
+              melody.push({
+                  time: `${i}:${(j * 4) / noteDensity}:0`, // Distribute notes evenly in the measure
+                  pitch: noteName + octave,
+                  duration: duration
+              });
+          }
+      });
+      return melody;
+  }
+
+  function createBassline(progression, complexity) {
+      let bassline = [];
+      progression.forEach((chordName, i) => {
+          const root = Tonal.Chord.get(chordName).tonic;
+          if (complexity === 'simple') {
+              // Play the root note for the whole measure
+              bassline.push({
+                  time: `${i}:0:0`,
+                  pitch: root + '2',
+                  duration: '1m'
+              });
+          } else {
+              // Play a more rhythmic pattern
+              const numNotes = complexity === 'normal' ? 2 : 4; // 'complex' will have 4 notes
+              for (let j = 0; j < numNotes; j++) {
+                  bassline.push({
+                      time: `${i}:${j * (4 / numNotes)}:0`,
+                      pitch: root + '2',
+                      duration: '8n'
+                  });
+              }
+          }
+      });
+      return bassline;
+  }
+
+  function createDrums(length, complexity) {
+      // Simple 4/4 kick and snare pattern with some variation
+      let pattern = [];
+      for (let i = 0; i < length; i++) { // Use the specified length
+          // Kick on 1 and 3 (always)
+          pattern.push({ time: `${i}:0:0`, pitch: 'C1', duration: '8n' }); 
+          pattern.push({ time: `${i}:2:0`, pitch: 'C1', duration: '8n' });
+          // Snare on 2 and 4 (always)
+          pattern.push({ time: `${i}:1:0`, pitch: 'D1', duration: '8n' }); 
+          pattern.push({ time: `${i}:3:0`, pitch: 'D1', duration: '8n' });
+
+          // Add hi-hats based on complexity
+          const hihatProbability = { simple: 0.5, normal: 0.8, complex: 1.0 }[complexity] || 0.8;
+          for (let j = 0; j < 8; j++) { // 8th notes
+              if (Math.random() < hihatProbability) {
+                   pattern.push({ time: `${i}:${j * 0.5}`, pitch: 'F#1', duration: '16n' });
+              }
+          }
+
+          // Add a fill at the end of every 4th measure if complexity is high
+          if (complexity === 'complex' && (i + 1) % 4 === 0 && i > 0) {
+              // Clear the last two beats for the fill
+              pattern = pattern.filter(note => !(note.time.startsWith(`${i}:2`) || note.time.startsWith(`${i}:3`)));
+              // Add a simple snare fill
+              for (let j = 0; j < 4; j++) {
+                  pattern.push({ time: `${i}:2:${j * 2}`, pitch: 'D1', duration: '16n' });
+                  if(j % 2 === 1) pattern.push({ time: `${i}:3:${j * 2}`, pitch: 'C1', duration: '16n' });
+              }
+          }
+      }
+      return pattern;
+  }
+
+  function exportMIDI() {
+    if (!lastGeneratedMusic) {
+        console.error("Cannot export MIDI: No music has been generated yet.");
+        throw new Error("No music generated to export.");
+    }
+
+    const midi = new Midi.Midi();
+    midi.header.setTempo(lastGeneratedMusic.tempo);
+
+    const addTrack = (name, part, isDrums = false, isChords = false) => {
+        const track = midi.addTrack();
+        track.name = name;
+        
+        if (isChords) {
+             part.forEach(chord => {
+                chord.notes.forEach(notePitch => {
+                    track.addNote({
+                        midi: Tonal.Note.midi(notePitch),
+                        time: Tone.Time(chord.time).toSeconds(),
+                        duration: Tone.Time(chord.duration).toSeconds()
+                    });
+                });
+            });
+        } else {
+            part.forEach(note => {
+                track.addNote({
+                    midi: Tonal.Note.midi(note.pitch),
+                    time: Tone.Time(note.time).toSeconds(),
+                    duration: Tone.Time(note.duration).toSeconds(),
+                    channel: isDrums ? 9 : 0
+                });
+            });
+        }
+    };
+
+    addTrack('Melody', lastGeneratedMusic.melodyPart);
+    addTrack('Chords', lastGeneratedMusic.chordPart, false, true);
+    addTrack('Bass', lastGeneratedMusic.bassPart);
+    addTrack('Drums', lastGeneratedMusic.drumPart, true);
+
+    return new Blob([midi.toArray()], { type: 'audio/midi' });
+  }
+
+  async function exportWAV() {
+    if (!lastGeneratedMusic) {
+        console.error("Cannot export WAV: No music has been generated yet.");
+        throw new Error("No music generated to export.");
+    }
+
+    // Stop playback before offline rendering
+    await Tone.Transport.stop();
+
+    const duration = Tone.Time(`${lastGeneratedMusic.options.length}m`).toSeconds();
+    
+    const buffer = await Tone.Offline(async (offlineContext) => {
+        // This function runs in an offline audio context
+        const offlineReverb = new Tone.Reverb().toDestination();
+        offlineReverb.wet.value = lastGeneratedMusic.options.reverb || 0.1;
+
+        // Re-create instruments in the offline context using existing loaded instruments
+        const offlineInstruments = {};
+        
+        // Use fallback synths for offline rendering since SampleLibrary doesn't work in offline context
+        Object.keys(availableInstruments).forEach(name => {
+            if (name === 'drums') {
+                offlineInstruments[name] = new Tone.MembraneSynth().connect(offlineReverb);
+            } else {
+                offlineInstruments[name] = new Tone.PolySynth(Tone.Synth).connect(offlineReverb);
+            }
+        });
+        
+        console.log('Offline instruments created for WAV export');
+
+        // Schedule the parts in the offline context
+        const musicData = lastGeneratedMusic;
+        const options = musicData.options;
+        offlineContext.transport.bpm.value = musicData.tempo;
+
+        new Tone.Part((time, note) => {
+            offlineInstruments[options.instruments.chords].triggerAttackRelease(note.notes, note.duration, time);
+        }, musicData.chordPart).start(0);
+        new Tone.Part((time, note) => {
+            offlineInstruments[options.instruments.melody].triggerAttackRelease(note.pitch, note.duration, time);
+        }, musicData.melodyPart).start(0);
+        new Tone.Part((time, note) => {
+            offlineInstruments[options.instruments.bass].triggerAttackRelease(note.pitch, note.duration, time);
+        }, musicData.bassPart).start(0);
+        new Tone.Part((time, note) => {
+            offlineInstruments.drums.triggerAttackRelease(note.pitch, note.duration, time);
+        }, musicData.drumPart).start(0);
+        
+        offlineContext.transport.start();
+
+    }, duration);
+
+    // Convert buffer to WAV
+    const audioBuffer = buffer.get();
+    const wavBlob = bufferToWave(audioBuffer);
+    return wavBlob;
+  }
+
+  // Helper function to convert AudioBuffer to a WAV Blob
+  function bufferToWave(abuffer) {
+    // ... implementation from a standard library or source ...
+    // This is a complex function, so we'll use a simplified placeholder
+    // In a real scenario, you'd use a library or a well-tested function.
+    let numOfChan = abuffer.numberOfChannels,
+        length = abuffer.length * numOfChan * 2 + 44,
+        buffer = new ArrayBuffer(length),
+        view = new DataView(buffer),
+        channels = [], i, sample,
+        offset = 0,
+        pos = 0;
+
+    // write WAVE header
+    setUint32(0x46464952);                         // "RIFF"
+    setUint32(length - 8);                         // file length - 8
+    setUint32(0x45564157);                         // "WAVE"
+
+    setUint32(0x20746d66);                         // "fmt " chunk
+    setUint32(16);                                 // length = 16
+    setUint16(1);                                  // PCM (uncompressed)
+    setUint16(numOfChan);
+    setUint32(abuffer.sampleRate);
+    setUint32(abuffer.sampleRate * 2 * numOfChan); // avg. bytes/sec
+    setUint16(numOfChan * 2);                      // block-align
+    setUint16(16);                                 // 16-bit
+
+    setUint32(0x61746164);                         // "data" - chunk
+    setUint32(length - pos - 4);                   // chunk length
+
+    // write interleaved data
+    for (i = 0; i < abuffer.numberOfChannels; i++)
+        channels.push(abuffer.getChannelData(i));
+
+    while (pos < length) {
+        for (i = 0; i < numOfChan; i++) {
+            sample = Math.max(-1, Math.min(1, channels[i][offset])); // clamp
+            sample = (0.5 + sample < 0 ? sample * 32768 : sample * 32767) | 0; // scale to 16-bit signed int
+            view.setInt16(pos, sample, true);          // write 16-bit sample
+            pos += 2;
+        }
+        offset++
+    }
+
+    return new Blob([buffer], { type: "audio/wav" });
+
+    function setUint16(data) {
+        view.setUint16(pos, data, true);
+        pos += 2;
+    }
+
+    function setUint32(data) {
+        view.setUint32(pos, data, true);
+        pos += 4;
     }
   }
 
-  /**
-   * コードから和音ノートを取得
-   */
-  getChordNotes(chord, key) {
-    // シンプルな三和音の実装
-    const rootNote = this.getNoteFromChord(chord, key);
-    const chordType = this.getChordType(chord);
-    
-    const intervals = chordType === 'minor' ? [0, 3, 7] : [0, 4, 7]; // メジャー/マイナー三和音
-    
-    return intervals.map(interval => 
-      Tone.Frequency(rootNote).transpose(interval).toNote()
-    );
-  }
 
-  /**
-   * コードから根音を取得
-   */
-  getNoteFromChord(chord, key) {
-    const chordMap = {
-      'I': 0, 'ii': 2, 'iii': 4, 'IV': 5, 'V': 7, 'vi': 9, 'VII': 11
+  function playFromHistory(musicData) {
+      if (Tone.context.state !== 'running') {
+        Tone.context.resume();
+    }
+    
+    if (Tone.Transport.state === 'started') {
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
+    }
+
+    lastGeneratedMusic = musicData; // Set the context to the history item
+    const options = musicData.options;
+    Tone.Transport.bpm.value = musicData.tempo;
+
+    // Clear previous parts before scheduling new ones
+    Tone.Transport.cancel(0);
+
+    // Safe instrument getter for playback
+    const safeGetInstrument = (role, fallbackName = 'piano') => {
+        const selected = musicData.options.instruments[role];
+        if (instruments[selected]) {
+            return instruments[selected];
+        }
+        if (instruments[fallbackName]) {
+            console.log(`⚠️ Using fallback ${fallbackName} for ${role} (${selected} not available)`);
+            return instruments[fallbackName];
+        }
+        console.log(`❌ Creating emergency synth for ${role}`);
+        return new Tone.PolySynth(Tone.Synth).toDestination();
     };
+
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('chords', 'piano');
+        if (instrument && note.notes) {
+          instrument.triggerAttackRelease(note.notes, note.duration, time);
+        }
+    }, musicData.chordPart).start(0);
+
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('melody', 'piano');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, musicData.melodyPart).start(0);
     
-    const keyOffset = this.getKeyOffset(key);
-    const chordOffset = chordMap[chord] || 0;
-    
-    return Tone.Frequency('C4').transpose(keyOffset + chordOffset).toNote();
+    new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('bass', 'piano');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, musicData.bassPart).start(0);
+
+    new Tone.Part((time, note) => {
+        if (instruments.drums && note.pitch) {
+          instruments.drums.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+    }, musicData.drumPart).start(0);
+
+    const totalMeasures = musicData.options.length || 4;
+    Tone.Transport.loop = musicData.options.isLooping;
+    Tone.Transport.loopStart = 0;
+    Tone.Transport.loopEnd = `${totalMeasures}m`;
+
+    // Don't auto-start playback - wait for user to press play button
+    // Tone.Transport.start(); // Removed auto-play
   }
 
-  /**
-   * キーのオフセットを取得
-   */
-  getKeyOffset(key) {
-    const keyMap = {
-      'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3,
-      'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
-      'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
-    };
-    return keyMap[key] || 0;
+
+  function stop() {
+    if (Tone.Transport.state !== 'stopped') {
+        Tone.Transport.stop();
+    }
   }
 
-  /**
-   * コードタイプを取得
-   */
-  getChordType(chord) {
-    return chord.toLowerCase() === chord ? 'minor' : 'major';
+  function pause() {
+    if (Tone.Transport.state === 'started') {
+        Tone.Transport.pause();
+    }
   }
 
-  /**
-   * メロディー生成（コード進行から）
-   */
-  generateMelodyFromChords(chords, key) {
-    return chords.map(chord => this.getNoteFromChord(chord, key));
+  function play() {
+    if (Tone.Transport.state !== 'started') {
+        Tone.Transport.start();
+    }
   }
-}
 
-// グローバルに公開
-window.RealisticToneEngine = RealisticToneEngine;
+  // Public API
+  return {
+    loadInstruments,
+    generate,
+    stop,
+    pause,
+    play,
+    exportMIDI,
+    exportWAV,
+    playFromHistory,
+    setReverb: (value) => {
+        if (reverb) {
+            reverb.wet.value = value;
+        }
+    },
+    getTransport: () => Tone.Transport,
+    getKeywordInfo: (keyword) => keywordDictionary[keyword],
+    getTempoRange: (tempoName) => musicRulebook.tempos[tempoName] || musicRulebook.tempos.medium,
+  };
+})();
+

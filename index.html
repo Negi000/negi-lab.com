@@ -134,7 +134,7 @@
     <!-- Hero Section -->
     <section id="home" class="bg-gradient-to-b from-accent/10 via-white to-gray-100 py-16" role="banner">
       <div class="max-w-3xl mx-auto text-center px-4">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-5 text-gray-900" data-translate-html-key="hero.title">毎日に<b class="text-accent">“ちょうどいい”</b>便利さと<br>楽しさを。</h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-5 text-gray-900" data-translate-html-key="hero.title_html">毎日に<b class="text-accent">“ちょうどいい”</b>便利さと<br>楽しさを。</h1>
         <p class="text-lg text-gray-700 mb-8" data-translate-html-key="hero.subtitle_html">
           negi-lab.comは、<b class="text-accent">作業効率化</b>や<b class="text-accent">ちょっとした手助け</b>がほしい人、<br>
           <b class="text-accent">ゲームを深く楽しみたい人</b>に向けた<br class="hidden md:inline">
@@ -299,22 +299,7 @@
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.jsonCsvYamlExcel.description">JSON・CSV・YAML・Excel形式を高精度で相互変換。API開発・データ分析・システム統合での効率的なデータ形式変換を実現する専門データ処理ツール。</p>
             <a href="tools/json-csv-yaml-excel.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.jsonCsvYamlExcel.open">開く</a>
           </div>
-          <!-- 12: 高品質音楽生成ツール (Tone.js) - NEW -->
-          <div class="bg-gradient-to-br from-purple-50 to-blue-50 hover:from-purple-100 hover:to-blue-100 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card border-2 border-purple-200" role="listitem" onclick="location.href='tools/music-generator-tone.html'">
-            <div class="mb-3 flex items-center space-x-2">
-              <svg class="w-9 h-9 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M9 18V5l12-3v13"/>
-                <circle cx="6" cy="18" r="3"/>
-                <circle cx="18" cy="15" r="3"/>
-              </svg>
-              <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-bold">NEW</span>
-            </div>
-            <h3 class="text-xl font-semibold mb-1 text-purple-800">高品質音楽生成ツール</h3>
-            <p class="text-gray-600 text-sm mb-3 flex-1">Tone.js × 音楽理論で作る本格的なBGM。自然言語解析対応（「明るく元気な感じで」）、音楽理論ベースのコード進行、高品質シンセサイザー音源を使用。</p>
-            <a href="tools/music-generator-tone.html" class="text-purple-600 hover:underline font-semibold">🎵 試してみる</a>
-          </div>
-          
-          <!-- 13: テキスト変換ツール -->
+          <!-- 12: テキスト変換ツール -->
           <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/text-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -325,6 +310,17 @@
             <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.textConverter.title">テキスト変換ツール</h3>
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.textConverter.description">大文字小文字変換・キャメルケース・スネークケース変換から文字数カウント・文字反転まで多機能。プログラミング・文書作成・データ処理での効率的なテキスト操作を支援。</p>
             <a href="tools/text-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.textConverter.open">開く</a>
+          </div>
+          <!-- 13: 音楽生成ツール -->
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/music-generator.html'">
+            <div class="mb-3">
+              <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 18V5l12-3v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-1" data-translate-key="tools.musicGenerator.title">音楽生成ツール</h3>
+            <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.musicGenerator.description">音楽理論に基づいた高品質な楽曲生成ツール。ロック・ジャズ・クラシックなど多彩なジャンルと楽器で、オリジナル楽曲を無料作成。動画BGM・創作活動に最適。</p>
+            <a href="tools/music-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.musicGenerator.open">開く</a>
           </div>
         </article>
 
