@@ -1,522 +1,220 @@
-/**
- * 音楽生成ツール翻訳システム
- * BGM・音楽生成ツール専用の多言語対応翻訳データ
- */
-
-window.musicGeneratorTranslations = {
-  ja: {
-    // ページメタデータ
-    pageTitle: "【無料】アルゴリズム音楽生成ツール - BGM作成・ループ対応 プロ品質 | negi-lab.com",
-    metaDescription: "プロ品質のBGM・音楽を無料で生成。ループ対応、多楽器、感情表現豊かなアルゴリズム作曲ツール。ゲーム開発、動画制作、プレゼンテーション用音楽を簡単作成。",
-    ogTitle: "【無料】アルゴリズム音楽生成ツール - BGM作成・ループ対応 | negi-lab.com",
-    ogDescription: "プロ品質のBGM・音楽を無料で生成。ループ対応、多楽器、感情表現豊かなアルゴリズム作曲ツール。",
-
-    // ヘッダー・ナビゲーション
-    header: {
-      nav: {
-        tools: "ツール",
-        wikis: "ゲームWiki"
-      }
-    },
-    lang: {
-      ja: "日本語",
-      en: "English"
-    },
-    ui: {
-      guideButton: "ガイド",
-      showAdvanced: "詳細を表示",
-      hideAdvanced: "詳細を非表示"
-    },
-
-    // メインコンテンツ
-    title: "アルゴリズム音楽生成ツール",
-    subtitle: "プロ品質のBGM・音楽を瞬時に生成",
-    description: "高品質なアルゴリズム技術で、ゲーム開発・動画制作・プレゼンテーション用のBGMを簡単に作成できます。ループ対応で用途に応じた音楽を生成します。",
-
-    // 生成設定セクション
-    generationSettings: {
-      title: "音楽生成設定",
-      genre: {
-        label: "ジャンル",
-        ambient: "アンビエント",
-        classical: "クラシック",
-        electronic: "エレクトロニック",
-        jazz: "ジャズ",
-        rock: "ロック",
-        pop: "ポップ",
-        cinematic: "シネマティック",
-        gameMusic: "ゲーム音楽",
-        lofi: "Lo-Fi",
-        chillout: "チルアウト"
-      },
-      mood: {
-        label: "ムード・感情",
-        happy: "ハッピー",
-        sad: "悲しい",
-        energetic: "エネルギッシュ",
-        calm: "穏やか",
-        mysterious: "神秘的",
-        dramatic: "ドラマティック",
-        romantic: "ロマンティック",
-        epic: "エピック",
-        peaceful: "平和的",
-        tense: "緊張感"
-      },
-      tempo: {
-        label: "テンポ (BPM)",
-        slow: "ゆっくり (60-80)",
-        medium: "普通 (80-120)",
-        fast: "速い (120-160)",
-        veryFast: "とても速い (160+)"
-      },
-      duration: {
-        label: "長さ",
-        short: "短い (30秒)",
-        medium: "普通 (1分)",
-        long: "長い (2分)",
-        extended: "拡張 (3分)"
-      },
-      instruments: {
-        label: "楽器編成",
-        piano: "ピアノ",
-        guitar: "ギター",
-        strings: "ストリングス",
-        synthesizer: "シンセサイザー",
-        drums: "ドラム",
-        bass: "ベース",
-        orchestral: "オーケストラ",
-        electronic: "エレクトロニック"
-      },
-      loop: {
-        label: "ループ設定",
-        enabled: "ループBGMとして生成",
-        disabled: "通常の楽曲として生成"
-      }
-    },
-
-    // 高度な設定
-    advancedSettings: {
-      title: "高度な設定",
-      volume: {
-        label: "音量",
-        description: "生成される音楽の音量レベル"
-      },
-      complexity: {
-        label: "複雑さ",
-        simple: "シンプル",
-        moderate: "適度",
-        complex: "複雑",
-        description: "音楽の複雑さとレイヤー数"
-      },
-      harmony: {
-        label: "ハーモニー",
-        consonant: "協和音",
-        mixed: "混合",
-        dissonant: "不協和音",
-        description: "和声の種類"
-      },
-      dynamics: {
-        label: "ダイナミクス",
-        soft: "ソフト",
-        balanced: "バランス",
-        dramatic: "ドラマティック",
-        description: "音楽の強弱変化"
-      }
-    },
-
-    // 操作ボタン
-    controls: {
-      generate: "音楽を生成",
-      regenerate: "再生成",
-      play: "再生",
-      pause: "一時停止",
-      stop: "停止",
-      download: "ダウンロード",
-      share: "共有",
-      reset: "リセット",
-      generating: "生成中...",
-      processing: "処理中..."
-    },
-
-    // プレビューエリア
-    preview: {
-      title: "生成された音楽",
-      waveform: "波形表示",
-      currentTime: "現在時刻",
-      duration: "長さ",
-      noMusic: "音楽を生成してください",
-      loading: "音楽を生成中...",
-      error: "音楽の生成に失敗しました"
-    },
-
-    // ダウンロード形式
-    downloadFormats: {
-      title: "ダウンロード形式",
-      mp3: "MP3 (推奨)",
-      wav: "WAV (高音質)",
-      ogg: "OGG",
-      m4a: "M4A"
-    },
-
-    // 使用用途プリセット
-    presets: {
-      title: "用途別プリセット",
-      youtube: "YouTube動画",
-      game: "ゲーム背景",
-      presentation: "プレゼンテーション",
-      podcast: "ポッドキャスト",
-      meditation: "瞑想・リラックス",
-      workout: "ワークアウト",
-      study: "勉強・集中",
-      sleep: "睡眠導入"
-    },
-
-    // 教育・ガイドセクション
-    education: {
-      title: "音楽生成について学ぶ",
-      subtitle: "AI音楽生成の基礎知識",
-      sections: {
-        basics: {
-          title: "AI音楽生成の基本",
-          content: "AI音楽生成は、機械学習アルゴリズムを使用して、指定されたパラメータに基づいて音楽を自動生成する技術です。深層学習により、楽器の組み合わせ、メロディ、ハーモニー、リズムを分析し、自然で魅力的な音楽を作成します。"
-        },
-        quality: {
-          title: "高音質生成のコツ",
-          content: "高品質な音楽を生成するためには、明確なジャンルとムードの選択、適切なテンポ設定、楽器編成の調整が重要です。また、用途に応じてループ設定を適切に選択することで、より実用的な音楽が生成されます。"
-        },
-        usage: {
-          title: "商用利用について",
-          content: "生成された音楽は、個人利用・商用利用ともに可能です。ただし、著作権に関する詳細は利用規約をご確認ください。YouTubeやゲーム開発、プレゼンテーションなど、様々な用途でご活用いただけます。"
-        },
-        technical: {
-          title: "技術的な特徴",
-          content: "本ツールは最新のニューラルネットワーク技術を使用し、リアルタイムで高品質な音楽を生成します。複数の楽器レイヤー、動的な音響効果、適応的なハーモニー生成により、プロフェッショナルレベルの音楽制作を実現しています。"
-        }
-      }
-    },
-
-    // 機能・特徴
-    features: {
-      title: "主な機能",
-      list: {
-        realtime: "リアルタイム生成",
-        highQuality: "プロ品質の音質",
-        multiInstrument: "多楽器対応",
-        loopSupport: "ループBGM対応",
-        customizable: "詳細カスタマイズ",
-        commercialUse: "商用利用可能",
-        noRegistration: "登録不要",
-        browserBased: "ブラウザ完結"
-      }
-    },
-
-    // エラーメッセージ
-    errors: {
-      generation: "音楽の生成に失敗しました。設定を確認して再試行してください。",
-      playback: "音楽の再生に失敗しました。",
-      download: "ダウンロードに失敗しました。",
-      unsupported: "お使いのブラウザはこの機能をサポートしていません。",
-      network: "ネットワークエラーが発生しました。"
-    },
-
-    // 成功メッセージ
-    success: {
-      generated: "音楽の生成が完了しました！",
-      downloaded: "音楽をダウンロードしました。",
-      copied: "リンクをクリップボードにコピーしました。"
-    },
-
-    // フッター
-    footer: {
-      usage: "使い方",
-      privacy: "プライバシーポリシー",
-      contact: "お問い合わせ",
-      about: "このツールについて"
-    },
-
-    // ガイドモーダル
-    guide: {
-      title: "音楽生成ツール使い方ガイド",
-      steps: {
-        step1: {
-          title: "1. ジャンルとムードを選択",
-          description: "作りたい音楽のジャンルと感情を選択します。これが音楽の基本的な方向性を決定します。"
-        },
-        step2: {
-          title: "2. テンポと長さを設定",
-          description: "用途に応じてテンポ（BPM）と音楽の長さを設定します。BGMの場合はループ設定も有効にしてください。"
-        },
-        step3: {
-          title: "3. 楽器編成を選択",
-          description: "使用したい楽器を選択します。複数選択可能で、選択した楽器の組み合わせで音楽が生成されます。"
-        },
-        step4: {
-          title: "4. 音楽を生成",
-          description: "「音楽を生成」ボタンをクリックして、AI が音楽を作成します。生成には数秒かかります。"
-        },
-        step5: {
-          title: "5. 再生・ダウンロード",
-          description: "生成された音楽を再生して確認し、気に入ったら希望の形式でダウンロードできます。"
-        }
-      }
-    }
-  },
-
+// Translations for Music Generator Tool
+const musicGeneratorTranslations = {
   en: {
-    // Page metadata
-    pageTitle: "【Free】AI Music Generator - BGM Creation, Loop Support, Pro Quality | negi-lab.com",
-    metaDescription: "Generate professional-quality BGM and music for free. Loop support, multi-instrument, emotionally rich AI composition tool. Easy creation for game development, video production, presentations.",
-    ogTitle: "【Free】AI Music Generator - BGM Creation, Loop Support | negi-lab.com",
-    ogDescription: "Generate professional-quality BGM and music for free. Loop support, multi-instrument, emotionally rich AI composition tool.",
-
-    // Header & Navigation
+    pageTitle: "【Free】AI Music Generator - Compose & Create BGM | negi-lab.com",
+    metaDescription: "AI automatically generates music just by specifying keywords and genres. Create high-quality songs based on music theory for free. Ideal for video BGM and content creation.",
     header: {
       nav: {
         tools: "Tools",
-        wikis: "Game Wikis"
-      }
+        wikis: "Game Wikis",
+      },
     },
-    lang: {
+    option: {
       ja: "日本語",
-      en: "English"
+      en: "English",
     },
-    ui: {
-      guideButton: "Guide",
-      showAdvanced: "Show Advanced",
-      hideAdvanced: "Hide Advanced"
+    breadcrumbs: {
+      currentPage: "Music Generator",
     },
-
-    // Main content
-    title: "AI Music Generator",
-    subtitle: "Generate Professional-Quality BGM & Music Instantly",
-    description: "Create BGM for game development, video production, and presentations easily with high-quality AI technology. Loop support for purpose-specific music generation.",
-
-    // Generation settings
-    generationSettings: {
-      title: "Music Generation Settings",
-      genre: {
-        label: "Genre",
-        ambient: "Ambient",
-        classical: "Classical",
-        electronic: "Electronic",
-        jazz: "Jazz",
-        rock: "Rock",
-        pop: "Pop",
-        cinematic: "Cinematic",
-        gameMusic: "Game Music",
-        lofi: "Lo-Fi",
-        chillout: "Chillout"
-      },
-      mood: {
-        label: "Mood & Emotion",
-        happy: "Happy",
-        sad: "Sad",
-        energetic: "Energetic",
-        calm: "Calm",
-        mysterious: "Mysterious",
-        dramatic: "Dramatic",
-        romantic: "Romantic",
-        epic: "Epic",
-        peaceful: "Peaceful",
-        tense: "Tense"
-      },
-      tempo: {
-        label: "Tempo (BPM)",
-        slow: "Slow (60-80)",
-        medium: "Medium (80-120)",
-        fast: "Fast (120-160)",
-        veryFast: "Very Fast (160+)"
-      },
-      duration: {
-        label: "Duration",
-        short: "Short (30s)",
-        medium: "Medium (1min)",
-        long: "Long (2min)",
-        extended: "Extended (3min)"
-      },
-      instruments: {
-        label: "Instrumentation",
-        piano: "Piano",
-        guitar: "Guitar",
-        strings: "Strings",
-        synthesizer: "Synthesizer",
-        drums: "Drums",
-        bass: "Bass",
-        orchestral: "Orchestral",
-        electronic: "Electronic"
-      },
-      loop: {
-        label: "Loop Settings",
-        enabled: "Generate as Loop BGM",
-        disabled: "Generate as Regular Track"
-      }
+    main: {
+      title: "Music Generator Tool",
+      subtitle: "Generates high-quality original music from keywords and emotions based on music theory.",
     },
-
-    // Advanced settings
-    advancedSettings: {
-      title: "Advanced Settings",
-      volume: {
-        label: "Volume",
-        description: "Volume level of generated music"
-      },
-      complexity: {
-        label: "Complexity",
+    mode: {
         simple: "Simple",
-        moderate: "Moderate",
-        complex: "Complex",
-        description: "Musical complexity and layer count"
-      },
-      harmony: {
-        label: "Harmony",
-        consonant: "Consonant",
-        mixed: "Mixed",
-        dissonant: "Dissonant",
-        description: "Type of harmony"
-      },
-      dynamics: {
-        label: "Dynamics",
-        soft: "Soft",
-        balanced: "Balanced",
-        dramatic: "Dramatic",
-        description: "Musical dynamics variation"
-      }
+        advanced: "Advanced"
     },
-
-    // Control buttons
-    controls: {
-      generate: "Generate Music",
-      regenerate: "Regenerate",
-      play: "Play",
-      pause: "Pause",
-      stop: "Stop",
-      download: "Download",
-      share: "Share",
-      reset: "Reset",
-      generating: "Generating...",
-      processing: "Processing..."
+    simple: {
+        genre: "Genre",
+        mood: "Mood",
+        keywords: "Keywords (Natural Language)"
     },
-
-    // Preview area
-    preview: {
-      title: "Generated Music",
-      waveform: "Waveform Display",
-      currentTime: "Current Time",
-      duration: "Duration",
-      noMusic: "Please generate music",
-      loading: "Generating music...",
-      error: "Failed to generate music"
+    advanced: {
+        key: "Key",
+        tempo: "Tempo (BPM)",
+        instruments: "Instruments",
+        structure: "Song Structure"
     },
-
-    // Download formats
-    downloadFormats: {
-      title: "Download Formats",
-      mp3: "MP3 (Recommended)",
-      wav: "WAV (High Quality)",
-      ogg: "OGG",
-      m4a: "M4A"
+    button: {
+        generate: "Generate Music",
+        downloadWav: "WAV",
+        downloadMidi: "MIDI"
     },
-
-    // Use case presets
-    presets: {
-      title: "Purpose-Based Presets",
-      youtube: "YouTube Video",
-      game: "Game Background",
-      presentation: "Presentation",
-      podcast: "Podcast",
-      meditation: "Meditation & Relaxation",
-      workout: "Workout",
-      study: "Study & Focus",
-      sleep: "Sleep Induction"
+    status: {
+        generating: "AI is composing..."
     },
-
-    // Education & Guide
-    education: {
-      title: "Learn About Music Generation",
-      subtitle: "Fundamentals of AI Music Generation",
-      sections: {
-        basics: {
-          title: "Basics of AI Music Generation",
-          content: "AI music generation is a technology that automatically creates music based on specified parameters using machine learning algorithms. Through deep learning, it analyzes instrument combinations, melodies, harmonies, and rhythms to create natural and appealing music."
-        },
-        quality: {
-          title: "Tips for High-Quality Generation",
-          content: "To generate high-quality music, clear genre and mood selection, appropriate tempo settings, and instrument arrangement adjustments are important. Also, proper loop settings according to the intended use will generate more practical music."
-        },
-        usage: {
-          title: "About Commercial Use",
-          content: "Generated music can be used for both personal and commercial purposes. However, please check the terms of service for detailed copyright information. It can be used for various purposes such as YouTube, game development, and presentations."
-        },
-        technical: {
-          title: "Technical Features",
-          content: "This tool uses cutting-edge neural network technology to generate high-quality music in real-time. Multiple instrument layers, dynamic acoustic effects, and adaptive harmony generation enable professional-level music production."
-        }
-      }
+    player: {
+        title: "Player",
+        placeholder: "Generated music will appear here"
     },
-
-    // Features
-    features: {
-      title: "Key Features",
-      list: {
-        realtime: "Real-time Generation",
-        highQuality: "Professional Quality",
-        multiInstrument: "Multi-instrument Support",
-        loopSupport: "Loop BGM Support",
-        customizable: "Detailed Customization",
-        commercialUse: "Commercial Use OK",
-        noRegistration: "No Registration Required",
-        browserBased: "Browser-based"
-      }
+    history: {
+        title: "Generation History",
+        placeholder: "No history yet"
     },
-
-    // Error messages
-    errors: {
-      generation: "Failed to generate music. Please check settings and try again.",
-      playback: "Failed to play music.",
-      download: "Download failed.",
-      unsupported: "Your browser doesn't support this feature.",
-      network: "Network error occurred."
+    howTo: {
+        title: "How It Works & Music Theory",
+        item1: { title: "1. Genre & Mood Rulebook", desc: "Defines rules for optimal tempo, scale, chord progressions, and rhythm patterns for each genre and mood." },
+        item2: { title: "2. Diatonic Chord Theory", desc: "Automatically assembles musically natural and pleasant-sounding chord progressions based on the selected key's scale." },
+        item3: { title: "3. Musical Melody Generation", desc: "Creates harmonious melodies by prioritizing chord tones and weaving in notes from the scale." },
+        item4: { title: "4. Song Structure & Dynamics", desc: "Generates typical song structures like verse-chorus-bridge and varies instrumentation and volume for an engaging listening experience." },
+        item5: { title: "5. Keyword Analysis System", desc: "Analyzes natural language input and translates it into musical parameters, like increasing tempo for 'uplifting' or using synths for 'space'." },
+        item6: { title: "6. Realistic Instrument Sounds", desc: "Uses the Tone.js-Instruments library to perform with realistic sounds sampled from actual instruments." }
     },
-
-    // Success messages
-    success: {
-      generated: "Music generation completed!",
-      downloaded: "Music downloaded.",
-      copied: "Link copied to clipboard."
+    useCase: {
+        title: "Use Cases for the Music Generator",
+        item1: { title: "BGM for Video Content", desc: "Use as copyright-free original BGM for YouTube videos, vlogs, and corporate promotional videos." },
+        item2: { title: "Game & App Development", desc: "Utilize as background music for indie games and personal app projects to reduce development costs." },
+        item3: { title: "Presentations", desc: "Enhance audience engagement by playing music that matches the atmosphere and theme of your presentation." },
+        item4: { title: "Podcasts & Streaming", desc: "Easily create music for openings, endings, and jingles that fit your show's brand image." },
+        item5: { title: "Songwriting & Arrangement Ideas", desc: "Get inspiration for new songs from melodies and chord progressions generated by the AI." },
+        item6: { title: "Relaxation & Work BGM", desc: "Generate music of your preferred mood and length to use as personal BGM for concentration or relaxation." }
     },
-
-    // Footer
+    siteInfo: {
+        title: "About negi-lab.com's Uniqueness, Policies, and Disclaimers",
+        point1: "This site and its tools are independently developed and operated by negi-lab.com.",
+        point2: "While we include ads and affiliate links, our top priority is the user experience.",
+        point3: "We strive for accuracy and safety, but please use the site at your own risk.",
+        copyright: "© 2025 negi-lab.com"
+    },
     footer: {
-      usage: "How to Use",
-      privacy: "Privacy Policy",
-      contact: "Contact",
-      about: "About This Tool"
+        privacyPolicy: "Privacy Policy",
+        terms: "Terms of Service",
+        about: "About Us",
+        contact: "Contact",
+        sitemap: "Sitemap",
+        copyright: "© 2025 negi-lab.com"
+    }
+  },
+  ja: {
+    pageTitle: "【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com",
+    metaDescription: "キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。",
+    header: {
+      nav: {
+        tools: "ツール",
+        wikis: "ゲームWiki",
+      },
     },
-
-    // Guide modal
-    guide: {
-      title: "Music Generator User Guide",
-      steps: {
-        step1: {
-          title: "1. Select Genre and Mood",
-          description: "Choose the genre and emotion of the music you want to create. This determines the basic direction of the music."
-        },
-        step2: {
-          title: "2. Set Tempo and Duration",
-          description: "Set the tempo (BPM) and music duration according to your purpose. For BGM, also enable loop settings."
-        },
-        step3: {
-          title: "3. Choose Instrumentation",
-          description: "Select the instruments you want to use. Multiple selections are possible, and music will be generated with the combination of selected instruments."
-        },
-        step4: {
-          title: "4. Generate Music",
-          description: "Click the 'Generate Music' button to have AI create the music. Generation takes a few seconds."
-        },
-        step5: {
-          title: "5. Play & Download",
-          description: "Play the generated music to check it, and if you like it, you can download it in your preferred format."
-        }
-      }
+    option: {
+      ja: "日本語",
+      en: "English",
+    },
+    breadcrumbs: {
+      currentPage: "音楽生成ツール",
+    },
+    main: {
+      title: "音楽生成ツール",
+      subtitle: "音楽理論に基づき、キーワードや感情から高品質なオリジナル楽曲を生成します。",
+    },
+    mode: {
+        simple: "シンプル",
+        advanced: "詳細設定"
+    },
+    simple: {
+        genre: "ジャンル",
+        mood: "ムード",
+        keywords: "キーワード（自然言語）"
+    },
+    advanced: {
+        key: "キー",
+        tempo: "テンポ (BPM)",
+        instruments: "楽器",
+        structure: "曲の構造"
+    },
+    button: {
+        generate: "音楽を生成",
+        downloadWav: "WAV",
+        downloadMidi: "MIDI"
+    },
+    status: {
+        generating: "AIが作曲中です..."
+    },
+    player: {
+        title: "プレーヤー",
+        placeholder: "ここに生成された音楽が表示されます"
+    },
+    history: {
+        title: "生成履歴",
+        placeholder: "まだ履歴がありません"
+    },
+    howTo: {
+        title: "音楽生成の仕組みと理論",
+        item1: { title: "1. ジャンルとムードのルールブック", desc: "各ジャンル・ムードに最適なテンポ、スケール、コード進行、リズムパターンのルールを定義しています。" },
+        item2: { title: "2. ダイアトニックコード理論", desc: "選択されたキーのスケールに基づき、音楽的に自然で心地よい響きのコード進行を自動で組み立てます。" },
+        item3: { title: "3. 音楽的なメロディ生成", desc: "コードの構成音（コードトーン）を優先的に使用し、スケール内の音を織り交ぜることで、調和の取れたメロディを創り出します。" },
+        item4: { title: "4. 曲の展開とダイナミクス", desc: "Aメロ→Bメロ→サビといった典型的な曲の構造を生成し、セクションごとに楽器の編成や音量を変化させ、聴き応えのある展開を作ります。" },
+        item5: { title: "5. キーワード解析システム", desc: "入力された自然言語を解析し、「疾走感」ならテンポを上げる、「宇宙」ならシンセサイザーを使うなど、音楽のパラメータに変換します。" },
+        item6: { title: "6. リアルな楽器音源", desc: "Tone.js-Instrumentsライブラリを使用し、実際の楽器からサンプリングされたリアルな音源で演奏します。" }
+    },
+    useCase: {
+        title: "音楽生成ツールの活用例",
+        item1: { title: "動画コンテンツのBGM", desc: "YouTube動画、Vlog、企業プロモーションビデオなど、著作権フリーのオリジナルBGMとして利用できます。" },
+        item2: { title: "ゲーム・アプリ開発", desc: "インディーゲームや個人開発アプリの背景音楽、効果音のベースとして活用し、開発コストを削減します。" },
+        item3: { title: "プレゼンテーション", desc: "発表の雰囲気やテーマに合わせた音楽を流すことで、聴衆のエンゲージメントを高めます。" },
+        item4: { title: "ポッドキャスト・配信", desc: "オープニング、エンディング、ジングルなど、番組のブランドイメージに合った音楽を簡単に作成できます。" },
+        item5: { title: "作曲・編曲のアイデア出し", desc: "AIが生成したメロディやコード進行をヒントに、新しい楽曲のインスピレーションを得ることができます。" },
+        item6: { title: "リラクゼーション・作業用BGM", desc: "好みの雰囲気や長さの音楽を生成し、集中したい時やリラックスしたい時のパーソナルなBGMとして活用します。" }
+    },
+    siteInfo: {
+        title: "negi-lab.comの独自性・運営方針・免責事項",
+        point1: "本サイト・各ツールはnegi-lab.comが独自開発・運営しています。",
+        point2: "広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。",
+        point3: "正確性・安全性には万全を期していますが、利用は自己責任でお願いします。",
+        copyright: "© 2025 negi-lab.com"
+    },
+    footer: {
+        privacyPolicy: "プライバシーポリシー",
+        terms: "利用規約",
+        about: "運営者情報",
+        contact: "お問い合わせ",
+        sitemap: "サイトマップ",
+        copyright: "© 2025 negi-lab.com"
     }
   }
 };
+
+let currentLanguage = localStorage.getItem('language') || 'ja';
+
+function translatePage() {
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (musicGeneratorTranslations[currentLanguage] && musicGeneratorTranslations[currentLanguage][key]) {
+            // For meta tags, update the content attribute
+            if (element.tagName.toLowerCase() === 'meta') {
+                element.setAttribute('content', musicGeneratorTranslations[currentLanguage][key]);
+            } else {
+                element.innerHTML = musicGeneratorTranslations[currentLanguage][key];
+            }
+        }
+    });
+}
+
+function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    const elements = document.querySelectorAll('[data-translate-key]');
+    elements.forEach(el => {
+        const key = el.dataset.translateKey;
+        const translation = key.split('.').reduce((obj, i) => obj && obj[i], musicGeneratorTranslations[lang]);
+        if (translation) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translation;
+            } else {
+                el.textContent = translation;
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const langSwitch = document.getElementById('lang-switch');
+    const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+    langSwitch.value = savedLang;
+    setLanguage(savedLang);
+    translatePage();
+
+    langSwitch.addEventListener('change', (e) => {
+        const newLang = e.target.value;
+        localStorage.setItem('preferredLanguage', newLang);
+        setLanguage(newLang);
+        translatePage();
+    });
+});

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io;
+    frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com;
+    worker-src 'self' blob:;
+    object-src 'none';
+    base-uri 'self';
+  " />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  
+  <title data-translate-key="pageTitle">【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com</title>
+  <meta name="description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  
+  <!-- OG Tags -->
+  <meta property="og:title" data-translate-key="pageTitle" content="【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com" />
+  <meta property="og:description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            negi: "#65c155",
+            accent: "#4ADE80"
+          },
+          fontFamily: { 
+            inter: ["Inter", "sans-serif"] 
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: white;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: #4ADE80;
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #65c155, #4ADE80);
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #59b049, #22c55e);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(101, 193, 85, 0.3);
+    }
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-secondary {
+        background-color: #f3f4f6;
+        color: #374151;
+        border: 1px solid #d1d5db;
+    }
+    .btn-secondary:hover {
+        background-color: #e5e7eb;
+    }
+  </style>
+
+  <!-- External Scripts -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9X3N0RY0H');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  
+  <!-- Fonts and Local Scripts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tone.js and Instruments -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js"></script>
+  <script src="../tonejs-instruments/Tonejs-Instruments.js"></script>
+  <script src="../js/common-utils.js"></script>
+  <script src="../js/music-generator-translations.js"></script>
+  <script src="../js/music-generator-engine.js"></script>
+  <script src="../js/music-generator-ui.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="fixed inset-0 bg-white/80 backdrop-blur-sm flex flex-col justify-center items-center z-[100]">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-accent"></div>
+      <p id="loading-text" class="mt-4 text-lg font-semibold text-gray-700">Initializing...</p>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex gap-6 font-medium text-base items-center">
+          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="breadcrumbs.currentPage">音楽生成ツール</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="flex-grow py-12">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="main.title">音楽生成ツール</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="main.subtitle">
+          音楽理論に基づき、キーワードや感情から高品質なオリジナル楽曲を生成します。
+        </p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Settings Panel -->
+        <div class="lg:col-span-3 space-y-6">
+          <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <!-- Mode Toggle -->
+            <div class="flex justify-center mb-6">
+                <div class="relative flex w-full max-w-xs p-1 bg-gray-100 rounded-full">
+                    <button id="simple-mode-btn" class="relative w-1/2 py-2 text-sm font-bold text-gray-700 rounded-full z-10 transition-colors duration-300" data-translate-key="mode.simple">シンプル</button>
+                    <button id="advanced-mode-btn" class="relative w-1/2 py-2 text-sm font-bold text-gray-700 rounded-full z-10 transition-colors duration-300" data-translate-key="mode.advanced">詳細設定</button>
+                    <div id="mode-slider" class="absolute top-1 left-1 w-1/2 h-[calc(100%-0.5rem)] bg-white rounded-full shadow-md transition-transform duration-300 ease-out"></div>
+                </div>
+            </div>
+
+            <!-- Simple Mode -->
+            <div id="simple-mode-panel" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="genre-select" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="simple.genre">ジャンル</label>
+                  <select id="genre-select" class="form-select">
+                    <option value="pop">ポップ</option>
+                    <option value="rock">ロック</option>
+                    <option value="jazz">ジャズ</option>
+                    <option value="ambient">アンビエント</option>
+                    <option value="cinematic">シネマティック</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="mood-select" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="simple.mood">ムード</label>
+                  <select id="mood-select" class="form-select">
+                    <option value="happy">明るい</option>
+                    <option value="sad">悲しい</option>
+                    <option value="energetic">エネルギッシュ</option>
+                    <option value="calm">穏やか</option>
+                    <option value="epic">壮大</option>
+                    <option value="mysterious">ミステリアス</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="natural-language" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="simple.keywords">キーワード（自由入力）</label>
+                <input type="text" id="natural-language" class="form-input" placeholder="例: 雨の日のカフェ、週末のドライブ、星空">
+              </div>
+              <hr class="border-gray-200">
+              <div class="space-y-6">
+                  <div>
+                      <label for="tempo-simple-slider" class="block text-sm font-medium text-gray-700" data-translate="tempo_label">テンポ: <span id="tempo-simple-value">普通</span></label>
+                      <input id="tempo-simple-slider" type="range" min="0" max="2" step="1" value="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                      <div class="flex justify-between text-xs text-gray-500 px-1">
+                          <span data-translate="tempo_slow">遅い</span>
+                          <span data-translate="tempo_medium">普通</span>
+                          <span data-translate="tempo_fast">速い</span>
+                      </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                          <label for="length-select" class="block text-sm font-medium text-gray-700" data-translate="length_label">曲の長さ</label>
+                          <select id="length-select" class="form-select mt-1">
+                              <option value="8">約15秒（短い）</option>
+                              <option value="16" selected>約30秒（普通）</option>
+                              <option value="32">約1分（長い）</option>
+                          </select>
+                      </div>
+                      <div>
+                          <label for="complexity-select" class="block text-sm font-medium text-gray-700" data-translate="complexity_label">複雑さ</label>
+                          <select id="complexity-select" class="form-select mt-1">
+                              <option value="simple">シンプル</option>
+                              <option value="normal" selected>普通</option>
+                              <option value="complex">複雑</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                      <span class="text-sm font-medium text-gray-700" data-translate="loop_toggle_label">ループ再生</span>
+                      <label for="loop-toggle" class="inline-flex relative items-center cursor-pointer">
+                          <input type="checkbox" id="loop-toggle" class="sr-only peer" checked>
+                          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent-light rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
+                      </label>
+                  </div>
+              </div>
+            </div>
+
+            <!-- Advanced Mode -->
+            <div id="advanced-mode-panel" class="hidden space-y-6">
+                <!-- Key -->
+                <div>
+                    <label for="key" class="block text-sm font-medium text-gray-700" data-translate="key_label">キー</label>
+                    <select id="key" name="key" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm rounded-md">
+                        <option>C</option>
+                        <option>C#</option>
+                        <option>D</option>
+                        <option>D#</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>F#</option>
+                        <option>G</option>
+                        <option>G#</option>
+                        <option>A</option>
+                        <option>A#</option>
+                        <option>B</option>
+                    </select>
+                </div>
+
+                <!-- Instruments by Role -->
+                <div class="space-y-4">
+                    <div>
+                        <label for="melody-instrument-select" class="block text-sm font-medium text-gray-700" data-translate="melody_instrument_label">メロディ楽器</label>
+                        <select id="melody-instrument-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm rounded-md">
+                            <option value="piano">ピアノ</option>
+                            <option value="guitar-acoustic">アコースティックギター</option>
+                            <option value="guitar-electric">エレキギター</option>
+                            <option value="violin">バイオリン</option>
+                            <option value="flute">フルート</option>
+                            <option value="clarinet">クラリネット</option>
+                            <option value="saxophone">サックス</option>
+                            <option value="trumpet">トランペット</option>
+                            <option value="xylophone">木琴</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="chord-instrument-select" class="block text-sm font-medium text-gray-700" data-translate="chord_instrument_label">コード楽器</label>
+                        <select id="chord-instrument-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm rounded-md">
+                            <option value="piano">ピアノ</option>
+                            <option value="guitar-acoustic">アコースティックギター</option>
+                            <option value="organ">オルガン</option>
+                            <option value="harp">ハープ</option>
+                            <option value="harmonium">ハーモニウム</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="bass-instrument-select" class="block text-sm font-medium text-gray-700" data-translate="bass_instrument_label">ベース楽器</label>
+                        <select id="bass-instrument-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm rounded-md">
+                            <option value="bass-electric">エレキベース</option>
+                            <option value="contrabass">コントラバス</option>
+                            <option value="cello">チェロ</option>
+                            <option value="bassoon">ファゴット</option>
+                            <option value="tuba">チューバ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tempo -->
+                <div>
+                    <label for="tempo" class="block text-sm font-medium text-gray-700" data-translate="tempo_label">テンポ (BPM)</label>
+                    <div class="flex items-center space-x-3 mt-1">
+                        <input type="range" id="tempo" name="tempo" min="60" max="180" value="120" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <span id="tempo-value" class="text-sm font-mono text-gray-600">120</span>
+                    </div>
+                </div>
+
+                <!-- Structure -->
+                <div>
+                    <h4 class="block text-sm font-medium text-gray-700" data-translate="structure_label">構成</h4>
+                    <div id="structure-select" class="flex space-x-2 mt-2">
+                        <button data-structure="AABA" class="structure-btn p-2 border rounded-lg text-sm bg-accent/20 border-accent">AABA</button>
+                        <button data-structure="ABAB" class="structure-btn p-2 border rounded-lg text-sm">ABAB</button>
+                        <button data-structure="ABCA" class="structure-btn p-2 border rounded-lg text-sm">ABCA</button>
+                    </div>
+                </div>
+
+                <!-- Effects -->
+                <div>
+                    <label for="reverb" class="block text-sm font-medium text-gray-700" data-translate="reverb_label">リバーブ (残響)</label>
+                    <div class="flex items-center space-x-3 mt-1">
+                        <input type="range" id="reverb" name="reverb" min="0" max="1" value="0.1" step="0.05" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <span id="reverb-value" class="text-sm font-mono text-gray-600">0.1</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Generate Button -->
+            <div class="mt-8">
+              <button id="generate-btn" class="btn-primary w-full py-3 text-lg">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span data-translate-key="button.generate">音楽を生成</span>
+              </button>
+              <div id="loading-indicator" class="hidden text-center mt-2 text-sm text-gray-600">
+                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-accent mx-auto mb-1"></div>
+                <span data-translate-key="status.generating">AIが作曲中です...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Player and History -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Player -->
+          <div class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4" data-translate-key="player.title">プレーヤー</h3>
+            <div id="player-placeholder" class="text-center text-gray-500 py-8 bg-gray-100 rounded-lg" data-translate-key="player.placeholder">
+              曲を生成してください
+            </div>
+            <div id="player-controls" class="hidden flex-col p-4 bg-gray-100 rounded-lg space-y-4">
+              <!-- Waveform Visualizer -->
+              <canvas id="waveform-canvas" class="w-full h-20 bg-white rounded"></canvas>
+              <!-- Controls -->
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center space-x-2">
+                  <button id="play-pause-btn" title="再生/一時停止" class="p-2 rounded-full bg-accent text-white hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+                    <!-- Play icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.002v3.996a1 1 0 001.555.832l3.196-1.998a1 1 0 000-1.664L9.555 7.168z" clip-rule="evenodd"></path></svg>
+                  </button>
+                  <button id="stop-btn" title="停止" class="p-2 rounded-full text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400">
+                    <!-- Stop icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M5 5h10v10H5V5z"/></svg>
+                  </button>
+                  <div id="time-display" class="text-sm text-gray-700 font-mono w-28">0:00 / 0:00</div>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <button id="loop-btn" title="ループ" class="p-2 rounded-full text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" aria-pressed="true">
+                    <!-- Loop icon -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 00-1 1v2.101a7.002 7.002 0 0011.601 2.966a1 1 0 10-1.202-1.604A5.002 5.002 0 015 5.101V3a1 1 0 00-1-1zm10 4a1 1 0 00-1.202 1.604A5.002 5.002 0 0115 14.899V17a1 1 0 001 1h-2a1 1 0 100 2h2a3 3 0 003-3v-2.101a7.002 7.002 0 00-11.601-2.966 1 1 0 101.202 1.604A5.002 5.002 0 0115 14.899V17a1 1 0 102 0v-2.101a7.002 7.002 0 00-11.601-2.966 1 1 0 00-1.202-1.604A7.002 7.002 0 0015 9.101V7a1 1 0 00-1-1h-2a1 1 0 100 2h2z" clip-rule="evenodd"></path></svg>
+                  </button>
+                  <label for="volume-slider" class="flex items-center" title="音量">
+                    <svg class="w-6 h-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>
+                    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.8" class="w-24 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer ml-2">
+                  </label>
+                </div>
+              </div>
+              <!-- Progress Bar -->
+              <div class="w-full bg-gray-300 rounded-full h-2">
+                <div id="progress-bar" class="bg-accent h-2 rounded-full" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generation History -->
+          <div class="mt-8">
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+              <h2 class="text-xl font-bold mb-4 text-gray-800" data-translate-key="history.title">生成履歴</h2>
+              <div id="history-list" class="space-y-2 max-h-60 overflow-y-auto">
+                <p id="history-placeholder" class="text-center text-gray-500 py-4" data-translate-key="history.placeholder">まだ履歴がありません</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Educational Sections -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <!-- How it works -->
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center" data-translate-key="howTo.title">音楽生成の仕組みと理論</h2>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item1.title">1. ジャンルとムードのルールブック</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item1.desc">各ジャンル・ムードに最適なテンポ、スケール、コード進行、リズムパターンのルールを定義しています。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item2.title">2. ダイアトニックコード理論</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item2.desc">選択されたキーのスケールに基づき、音楽的に自然で心地よい響きのコード進行を自動で組み立てます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item3.title">3. 音楽的なメロディ生成</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item3.desc">コードの構成音（コードトーン）を優先的に使用し、スケール内の音を織り交ぜることで、調和の取れたメロディを創り出します。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item4.title">4. 曲の展開とダイナミクス</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item4.desc">Aメロ→Bメロ→サビといった典型的な曲の構造を生成し、セクションごとに楽器の編成や音量を変化させ、聴き応えのある展開を作ります。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item5.title">5. キーワード解析システム</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item5.desc">入力された自然言語を解析し、「疾走感」ならテンポを上げる、「宇宙」ならシンセサイザーを使うなど、音楽のパラメータに変換します。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item6.title">6. リアルな楽器音源</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item6.desc">Tone.js-Instrumentsライブラリを使用し、実際の楽器からサンプリングされたリアルな音源で演奏します。</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Cases -->
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center" data-translate-key="useCase.title">音楽生成ツールの活用例</h2>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item1.title">動画コンテンツのBGM</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item1.desc">YouTube動画、Vlog、企業プロモーションビデオなど、著作権フリーのオリジナルBGMとして利用できます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item2.title">ゲーム・アプリ開発</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item2.desc">インディーゲームや個人開発アプリの背景音楽、効果音のベースとして活用し、開発コストを削減します。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item3.title">プレゼンテーション</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item3.desc">発表の雰囲気やテーマに合わせた音楽を流すことで、聴衆のエンゲージメントを高めます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item4.title">ポッドキャスト・配信</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item4.desc">オープニング、エンディング、ジングルなど、番組のブランドイメージに合った音楽を簡単に作成できます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item5.title">作曲・編曲のアイデア出し</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item5.desc">AIが生成したメロディやコード進行をヒントに、新しい楽曲のインスピレーションを得ることができます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-accent" data-translate-key="useCase.item6.title">リラクゼーション・作業用BGM</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item6.desc">好みの雰囲気や長さの音楽を生成し、集中したい時やリラックスしたい時のパーソナルなBGMとして活用します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Site Info/Disclaimer -->
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このサイトについて">
+    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2">
+      <li data-translate-key="siteInfo.point1">本サイト・各ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    </ul>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2025 negi-lab.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
+    </nav>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
+  </footer>
+</body>
+</html>

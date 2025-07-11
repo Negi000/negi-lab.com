@@ -1,588 +1,442 @@
-/**
- * 高品質音楽生成UI（統合版）
- * - シンプルで直感的な操作
- * - 詳細設定をアコーディオンに格納
- * - プリセット対応
- * - 楽器読み込み状況の非表示化
- */
-class RealisticToneUI {
-  constructor(engine) {
-    this.engine = engine;
-    this.currentAudio = null;
-    this.isPlaying = false;
-    this.currentSettings = {};
-    this.translations = {};
-    this.currentLanguage = 'ja';
-    this.currentComposition = null;
-    
-    // UI要素の参照
-    this.elements = {};
-    
-    this.initializeElements();
-    this.setupEventListeners();
-    this.setupAccordion();
-    this.generateInstrumentSelection();
-    this.loadTranslations();
-  }
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Element Cache ---
+    const simpleModeBtn = document.getElementById('simple-mode-btn');
+    const advancedModeBtn = document.getElementById('advanced-mode-btn');
+    const simpleModePanel = document.getElementById('simple-mode-panel');
+    const advancedModePanel = document.getElementById('advanced-mode-panel');
+    const generateBtn = document.getElementById('generate-btn');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const stopBtn = document.getElementById('stop-btn');
+    const loopBtn = document.getElementById('loop-btn');
+    const volumeSlider = document.getElementById('volume-slider');
+    const timeDisplay = document.getElementById('time-display');
+    const progressBar = document.getElementById('progress-bar');
+    const playerControls = document.getElementById('player-controls');
+    const playerPlaceholder = document.getElementById('player-placeholder');
+    const historyList = document.getElementById('history-list');
+    const reverbSlider = document.getElementById('reverb');
+    const reverbValue = document.getElementById('reverb-value');
+    const waveformCanvas = document.getElementById('waveform-canvas');
 
-  /**
-   * UI要素の初期化
-   */
-  initializeElements() {
-    this.elements = {
-      // 基本コントロール
-      genreSelect: document.getElementById('genre-select'),
-      moodSelect: document.getElementById('mood-select'),
-      descriptionInput: document.getElementById('description-input'),
-      tempoRange: document.getElementById('tempo-range'),
-      tempoValue: document.getElementById('tempo-value'),
-      durationRange: document.getElementById('duration-range'),
-      durationValue: document.getElementById('duration-value'),
-      complexitySelect: document.getElementById('complexity-select'),
-      
-      // プリセットボタン
-      presetButtons: document.querySelectorAll('.preset-btn'),
-      
-      // 詳細設定（アコーディオン）
-      advancedToggle: document.getElementById('advanced-toggle'),
-      advancedContent: document.getElementById('advanced-content'),
-      advancedIcon: document.getElementById('advanced-icon'),
-      instrumentSelection: document.getElementById('instrument-selection'),
-      keySelect: document.getElementById('key-select'),
-      scaleSelect: document.getElementById('scale-select'),
-      
-      // 生成・再生コントロール
-      generateMusic: document.getElementById('generate-music'),
-      playMusic: document.getElementById('play-music'),
-      pauseMusic: document.getElementById('pause-music'),
-      stopMusic: document.getElementById('stop-music'),
-      downloadMusic: document.getElementById('download-music'),
-      
-      // 表示エリア
-      generationStatus: document.getElementById('generation-status'),
-      waveformCanvas: document.getElementById('waveform-canvas'),
-      metadataDisplay: document.getElementById('metadata-display'),
-      playbackStatus: document.getElementById('playback-status'),
-      playbackProgress: document.getElementById('playback-progress'),
-      playbackTime: document.getElementById('playback-time'),
-      resultSection: document.getElementById('result-section'),
-      metadataArea: document.getElementById('metadata-area'),
-      resultKey: document.getElementById('result-key'),
-      resultTempo: document.getElementById('result-tempo'),
-      resultDuration: document.getElementById('result-duration'),
-      resultProgression: document.getElementById('result-progression'),
-      technicalDetails: document.getElementById('technical-details')
-    };
-  }
+    // --- SIMPLE ---
+    const genreSelect = document.getElementById('genre-select');
+    const moodSelect = document.getElementById('mood-select');
+    const naturalLanguageInput = document.getElementById('natural-language');
+    const tempoSimpleSlider = document.getElementById('tempo-simple-slider');
+    const tempoSimpleValue = document.getElementById('tempo-simple-value');
+    const lengthSelect = document.getElementById('length-select');
+    const complexitySelect = document.getElementById('complexity-select');
+    const loopToggle = document.getElementById('loop-toggle');
 
-  /**
-   * イベントリスナーの設定
-   */
-  setupEventListeners() {
-    // スライダーの値表示更新
-    if (this.elements.tempoRange) {
-      this.elements.tempoRange.addEventListener('input', (e) => {
-        if (this.elements.tempoValue) {
-          this.elements.tempoValue.textContent = `${e.target.value} BPM`;
-        }
-      });
-    }
 
-    if (this.elements.durationRange) {
-      this.elements.durationRange.addEventListener('input', (e) => {
-        if (this.elements.durationValue) {
-          const seconds = parseInt(e.target.value);
-          const minutes = Math.floor(seconds / 60);
-          const remainingSeconds = seconds % 60;
-          this.elements.durationValue.textContent = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-        }
-      });
-    }
+    // --- ADVANCED ---
+    const keySelect = document.getElementById('key');
+    const tempoSlider = document.getElementById('tempo');
+    const tempoValue = document.getElementById('tempo-value');
+    const melodyInstrumentSelect = document.getElementById('melody-instrument-select');
+    const chordInstrumentSelect = document.getElementById('chord-instrument-select');
+    const bassInstrumentSelect = document.getElementById('bass-instrument-select');
 
-    // プリセットボタン
-    this.elements.presetButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const preset = button.getAttribute('data-preset');
-        this.applyPreset(preset);
-      });
-    });
 
-    // 生成・再生ボタン
-    if (this.elements.generateMusic) {
-      this.elements.generateMusic.addEventListener('click', () => this.generateMusic());
-    }
+    let currentMode = 'simple';
+    let generationHistory = [];
+    let waveform = null;
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const loadingText = document.getElementById('loading-text');
 
-    if (this.elements.playMusic) {
-      this.elements.playMusic.addEventListener('click', () => this.playMusic());
-    }
-
-    if (this.elements.pauseMusic) {
-      this.elements.pauseMusic.addEventListener('click', () => this.pauseMusic());
-    }
-
-    if (this.elements.stopMusic) {
-      this.elements.stopMusic.addEventListener('click', () => this.stopMusic());
-    }
-
-    if (this.elements.downloadMusic) {
-      this.elements.downloadMusic.addEventListener('click', () => this.downloadMusic());
-    }
-  }
-
-  /**
-   * アコーディオンの設定
-   */
-  setupAccordion() {
-    if (this.elements.advancedToggle && this.elements.advancedContent) {
-      this.elements.advancedToggle.addEventListener('click', () => {
-        const isExpanded = this.elements.advancedToggle.getAttribute('aria-expanded') === 'true';
+    // --- Initial Loading ---
+    async function initializeApp() {
+        console.log('🚀 Initializing music generator app...');
         
-        this.elements.advancedToggle.setAttribute('aria-expanded', !isExpanded);
+        if (loadingOverlay) loadingOverlay.style.display = 'flex';
+        if (loadingText) loadingText.textContent = '楽器を読み込んでいます...';
         
-        if (isExpanded) {
-          this.elements.advancedContent.classList.add('hidden');
-        } else {
-          this.elements.advancedContent.classList.remove('hidden');
+        try {
+            // Wait for the SampleLibrary to be available
+            let attempts = 0;
+            while (typeof SampleLibrary === 'undefined' && attempts < 50) {
+              await new Promise(resolve => setTimeout(resolve, 100));
+              attempts++;
+            }
+            
+            if (typeof SampleLibrary === 'undefined') {
+              throw new Error('SampleLibrary failed to load after 5 seconds');
+            }
+            
+            console.log('✅ SampleLibrary is available, loading instruments...');
+            await MusicGeneratorEngine.loadInstruments();
+            console.log('✅ App initialization completed');
+            
+            if (loadingOverlay) loadingOverlay.style.display = 'none';
+        } catch (error) {
+            console.error("❌ Initialization failed:", error);
+            if (loadingText) {
+              loadingText.textContent = `初期化に失敗しました: ${error.message}`;
+              loadingText.style.color = '#ef4444';
+            }
+            // Still allow the app to continue with fallback instruments
+            setTimeout(() => {
+              if (loadingOverlay) loadingOverlay.style.display = 'none';
+            }, 3000);
         }
-      });
     }
-  }
 
-  /**
-   * 楽器選択UIの生成
-   */
-  generateInstrumentSelection() {
-    if (!this.elements.instrumentSelection) return;
 
-    const instruments = this.engine.getAvailableInstrumentsList();
-    const categories = {};
+    // --- Mode Toggling ---
+    function setMode(mode) {
+        currentMode = mode;
+        if (mode === 'simple') {
+            if (simpleModePanel) simpleModePanel.classList.remove('hidden');
+            if (advancedModePanel) advancedModePanel.classList.add('hidden');
+            if (simpleModeBtn) {
+                simpleModeBtn.classList.add('bg-white', 'shadow-md');
+                simpleModeBtn.classList.remove('text-gray-700');
+            }
+            if (advancedModeBtn) {
+                advancedModeBtn.classList.remove('bg-white', 'shadow-md');
+                advancedModeBtn.classList.add('text-gray-700');
+            }
+        } else { // advanced
+            if (simpleModePanel) simpleModePanel.classList.add('hidden');
+            if (advancedModePanel) advancedModePanel.classList.remove('hidden');
+            if (advancedModeBtn) {
+                advancedModeBtn.classList.add('bg-white', 'shadow-md');
+                advancedModeBtn.classList.remove('text-gray-700');
+            }
+            if (simpleModeBtn) {
+                simpleModeBtn.classList.remove('bg-white', 'shadow-md');
+                simpleModeBtn.classList.add('text-gray-700');
+            }
+        }
+        console.log(`Switched to ${mode} mode.`);
+    }
 
-    // カテゴリ別に分類
-    instruments.forEach(key => {
-      const instrument = this.engine.availableInstruments[key];
-      if (!categories[instrument.category]) {
-        categories[instrument.category] = [];
-      }
-      categories[instrument.category].push({key, ...instrument});
-    });
+    if (simpleModeBtn) {
+        simpleModeBtn.addEventListener('click', () => setMode('simple'));
+    }
+    if (advancedModeBtn) {
+        advancedModeBtn.addEventListener('click', () => setMode('advanced'));
+    }
 
-    // UI生成
-    this.elements.instrumentSelection.innerHTML = '';
-    
-    Object.entries(categories).forEach(([category, categoryInstruments]) => {
-      categoryInstruments.forEach(instrument => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'instrument-card p-3 rounded-lg border text-center transition-all cursor-pointer hover:bg-gray-50';
-        button.setAttribute('data-instrument', instrument.key);
-        button.innerHTML = `
-          <div class="text-sm font-medium">${instrument.name}</div>
-          <div class="text-xs text-gray-500 mt-1">${this.getCategoryName(category)}</div>
-        `;
-        
-        button.addEventListener('click', () => {
-          button.classList.toggle('selected');
+    // --- Event Listeners ---
+
+    if (reverbSlider) {
+        reverbSlider.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            MusicGeneratorEngine.setReverb(value);
+            if (reverbValue) {
+                reverbValue.textContent = value.toFixed(2);
+            }
         });
+    }
+
+    if (tempoSlider) {
+        tempoSlider.addEventListener('input', (e) => {
+            const value = parseInt(e.target.value, 10);
+            if (tempoValue) {
+                tempoValue.textContent = `${value}`;
+            }
+        });
+    }
+    
+    if (tempoSimpleSlider) {
+        tempoSimpleSlider.addEventListener('input', (e) => {
+            const value = parseInt(e.target.value, 10);
+            const labels = ['遅い', '普通', '速い'];
+            if (tempoSimpleValue) {
+                tempoSimpleValue.textContent = labels[value] || '普通';
+            }
+        });
+    }
+
+
+    // --- Generation ---
+    if (generateBtn) {
+        generateBtn.addEventListener('click', async () => {
+            try {
+                if (loadingIndicator) loadingIndicator.style.display = 'flex';
+                generateBtn.disabled = true;
+            
+                // Start Tone.js context
+                await Tone.start();
+                console.log('AudioContext started');
+
+                // Collect options
+                let options = {
+                    reverb: reverbSlider ? parseFloat(reverbSlider.value) : 0.1,
+                    isLooping: loopToggle ? loopToggle.checked : true,
+                };                // Get options from the current mode
+                if (currentMode === 'simple') {
+                    const mood = moodSelect ? moodSelect.value : 'happy';
+                    const genre = genreSelect ? genreSelect.value : 'pop';
+                    
+                    options = {
+                        ...options,
+                        genre: genre,
+                        mood: mood,
+                        keywords: naturalLanguageInput ? naturalLanguageInput.value : '',
+                        length: lengthSelect ? parseInt(lengthSelect.value, 10) : 16,
+                        complexity: complexitySelect ? complexitySelect.value : 'medium',
+                        instruments: { // Default instruments for simple mode
+                            melody: 'piano',
+                            chords: 'piano',
+                            bass: 'bass-electric',
+                        }
+                    };
+                    
+                    const tempoMap = ['slow', 'medium', 'fast'];
+                    const tempoName = tempoMap[tempoSimpleSlider ? tempoSimpleSlider.value : 1] || 'medium';
+                    const tempoRange = MusicGeneratorEngine.getTempoRange(tempoName);
+                    options.tempo = Math.floor(Math.random() * (tempoRange[1] - tempoRange[0])) + tempoRange[0];
         
-        this.elements.instrumentSelection.appendChild(button);
-      });
+                } else { // advanced mode
+                    options = {
+                        ...options,
+                        instruments: {
+                            melody: melodyInstrumentSelect ? melodyInstrumentSelect.value : 'piano',
+                            chords: chordInstrumentSelect ? chordInstrumentSelect.value : 'piano',
+                            bass: bassInstrumentSelect ? bassInstrumentSelect.value : 'bass-electric',
+                        },
+                        key: keySelect ? keySelect.value : 'C',
+                        tempo: tempoSlider ? parseInt(tempoSlider.value, 10) : 120,
+                        length: 16, // Default length for advanced mode
+                        complexity: 'medium', // Default complexity
+                    };
+                }
+
+                console.log('Generating with options:', options);
+    
+                // Generate music
+                const musicData = await MusicGeneratorEngine.generate(options);
+    
+                console.log('Generated music data:', musicData);
+    
+                // Play the generated music
+                MusicGeneratorEngine.playFromHistory(musicData);
+    
+                // Update UI for player
+                if (playerPlaceholder) playerPlaceholder.style.display = 'none';
+                if (playerControls) playerControls.style.display = 'flex';
+                updatePlayPauseButton(true);
+    
+                // Add to history
+                addToHistory(options, musicData);
+    
+            } catch (error) {
+                console.error("Generation failed:", error);
+                alert("音楽の生成に失敗しました。");
+            } finally {
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        });
+    }
+
+    // --- Player Controls ---
+    function updatePlayPauseButton(isPlaying) {
+        if (!playPauseBtn) return;
+        
+        if (isPlaying) {
+            playPauseBtn.innerHTML = `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>`; // Pause icon
+        } else {
+            playPauseBtn.innerHTML = `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.002v3.996a1 1 0 001.555.832l3.196-1.998a1 1 0 000-1.664L9.555 7.168z" clip-rule="evenodd"></path></svg>`; // Play icon
+        }
+    }
+
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            const transport = MusicGeneratorEngine.getTransport();
+            if (transport.state === 'started') {
+                MusicGeneratorEngine.pause();
+                updatePlayPauseButton(false);
+            } else {
+                MusicGeneratorEngine.play();
+                updatePlayPauseButton(true);
+            }
+        });
+    }
+
+    if (stopBtn) {
+        stopBtn.addEventListener('click', () => {
+            MusicGeneratorEngine.stop();
+            updatePlayPauseButton(false);
+        });
+    }
+
+    if (loopToggle) { // Use loopToggle for the event listener
+        loopToggle.addEventListener('change', () => { // Use 'change' for checkboxes
+            const transport = MusicGeneratorEngine.getTransport();
+            if (transport) {
+                transport.loop = loopToggle.checked;
+            }
+        });
+    }
+
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', (e) => {
+            // UI a bit more responsive by converting linear slider to dB
+            Tone.getDestination().volume.value = Tone.gainToDb(e.target.value);
+        });
+    }
+    
+    // --- Effects ---
+    // This is redundant, already handled above
+    // if (reverbSlider) {
+    //     reverbSlider.addEventListener('input', (e) => {
+    //         const value = parseFloat(e.target.value);
+    //         reverbValue.textContent = value.toFixed(2);
+    //         MusicGeneratorEngine.setReverb(value);
+    //     });
+    // }
+
+    // --- Download ---
+    // Note: Download buttons are not present in the HTML, these would need to be added
+    // if (downloadWavBtn) {
+    //     downloadWavBtn.addEventListener('click', async () => {
+    //         // Download WAV functionality
+    //     });
+    // }
+
+    // if (downloadMidiBtn) {
+    //     downloadMidiBtn.addEventListener('click', () => {
+    //         // Download MIDI functionality
+    //     });
+    // }
+
+
+    // --- History ---
+    function addToHistory(options, musicData) {
+        const historyItem = {
+            id: Date.now(),
+            options: JSON.parse(JSON.stringify(options)), // Deep copy
+            musicData: musicData,
+            timestamp: new Date().toLocaleTimeString()
+        };
+
+        generationHistory.unshift(historyItem); // Add to the beginning
+        if (generationHistory.length > 10) {
+            generationHistory.pop(); // Keep only the last 10
+        }
+        renderHistory();
+    }
+
+    function renderHistory() {
+        if (!historyList) return;
+        historyList.innerHTML = '';
+        if (generationHistory.length === 0) {
+            historyList.innerHTML = `<p class="text-gray-500 text-sm" data-translate="history_empty">まだ生成された音楽はありません。</p>`;
+            return;
+        }
+
+        generationHistory.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'p-3 rounded-lg border bg-gray-50/50 hover:bg-gray-100 transition-colors duration-200 flex justify-between items-center';
+            
+            const infoDiv = document.createElement('div');
+            const description = item.options.keywords || `${item.options.genre}/${item.options.mood}` || `${item.options.key} Key`;
+            infoDiv.innerHTML = `
+                <p class="font-semibold text-gray-700">${description}</p>
+                <p class="text-xs text-gray-500">${item.timestamp}</p>
+            `;
+
+            const button = document.createElement('button');
+            button.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664L9.555 7.168z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            button.className = 'p-1 rounded-full hover:bg-accent/20 text-gray-600 hover:text-accent';
+            button.title = 'この音楽を再生';
+            button.onclick = () => {
+                MusicGeneratorEngine.playFromHistory(item.musicData);
+                if(playerPlaceholder) playerPlaceholder.style.display = 'none';
+                if(playerControls) playerControls.style.display = 'flex';
+                updatePlayPauseButton(true);
+            };
+
+            li.appendChild(infoDiv);
+            li.appendChild(button);
+            historyList.appendChild(li);
+        });
+    }
+
+    function setupWaveform() {
+        if (!waveformCanvas) return;
+        waveform = new Tone.Waveform();
+        Tone.getDestination().connect(waveform);
+        const canvasCtx = waveformCanvas.getContext('2d');
+
+        function drawWaveform() {
+            requestAnimationFrame(drawWaveform);
+            const waveArray = waveform.getValue();
+            canvasCtx.fillStyle = 'rgb(243 244 246)'; // bg-gray-100
+            canvasCtx.fillRect(0, 0, waveformCanvas.width, waveformCanvas.height);
+            canvasCtx.lineWidth = 2;
+            canvasCtx.strokeStyle = 'rgb(79 70 229)'; // accent color
+
+            canvasCtx.beginPath();
+            const sliceWidth = waveformCanvas.width * 1.0 / waveArray.length;
+            let x = 0;
+
+            for (let i = 0; i < waveArray.length; i++) {
+                const v = waveArray[i] / 2.0; // Adjust amplitude
+                const y = (v * waveformCanvas.height / 2) + (waveformCanvas.height / 2);
+
+                if (i === 0) {
+                    canvasCtx.moveTo(x, y);
+                } else {
+                    canvasCtx.lineTo(x, y);
+                }
+                x += sliceWidth;
+            }
+            canvasCtx.lineTo(waveformCanvas.width, waveformCanvas.height / 2);
+            canvasCtx.stroke();
+        }
+        drawWaveform();
+    }
+
+    Tone.Transport.on('stop', () => {
+        updatePlayPauseButton(false);
+        if (progressBar) progressBar.style.width = '0%';
+        const duration = Tone.Time(Tone.Transport.loopEnd).toSeconds();
+        if (timeDisplay) timeDisplay.textContent = `0:00 / ${formatTime(duration)}`;
     });
-  }
+    Tone.Transport.on('pause', () => updatePlayPauseButton(false));
+    Tone.Transport.on('start', () => updatePlayPauseButton(true));
 
-  /**
-   * カテゴリ名の日本語変換
-   */
-  getCategoryName(category) {
-    const categoryNames = {
-      'keyboard': '鍵盤楽器',
-      'strings': '弦楽器',
-      'wind': '管楽器',
-      'percussion': '打楽器',
-      'bass': 'ベース'
-    };
-    return categoryNames[category] || category;
-  }
+    function updateProgress() {
+        requestAnimationFrame(updateProgress);
+        const transport = MusicGeneratorEngine.getTransport();
+        const progress = transport.progress;
+        const currentTime = transport.seconds;
+        const duration = Tone.Time(transport.loopEnd).toSeconds();
 
-  /**
-   * プリセットの適用
-   */
-  applyPreset(preset) {
-    const presets = {
-      'chill-pop': {
-        genre: 'pop',
-        mood: 'calm',
-        tempo: 100,
-        duration: 45,
-        complexity: 'normal',
-        description: 'ゆったりとしたポップスで、カフェのような雰囲気',
-        instruments: ['piano', 'guitar-acoustic', 'bass-electric']
-      },
-      'upbeat-rock': {
-        genre: 'rock',
-        mood: 'energetic',
-        tempo: 140,
-        duration: 60,
-        complexity: 'complex',
-        description: 'エネルギッシュなロック、ドライブにぴったり',
-        instruments: ['guitar-electric', 'bass-electric', 'piano']
-      },
-      'smooth-jazz': {
-        genre: 'jazz',
-        mood: 'romantic',
-        tempo: 90,
-        duration: 40,
-        complexity: 'complex',
-        description: 'スムースジャズ、夜のバーのような雰囲気',
-        instruments: ['piano', 'saxophone', 'bass-electric']
-      },
-      'classical-ensemble': {
-        genre: 'classical',
-        mood: 'calm',
-        tempo: 80,
-        duration: 90,
-        complexity: 'complex',
-        description: 'クラシック室内楽、上品で落ち着いた',
-        instruments: ['piano', 'violin', 'cello']
-      }
-    };
-
-    const presetData = presets[preset];
-    if (!presetData) return;
-
-    // 基本設定を適用
-    if (this.elements.genreSelect) this.elements.genreSelect.value = presetData.genre;
-    if (this.elements.moodSelect) this.elements.moodSelect.value = presetData.mood;
-    if (this.elements.tempoRange) {
-      this.elements.tempoRange.value = presetData.tempo;
-      if (this.elements.tempoValue) {
-        this.elements.tempoValue.textContent = `${presetData.tempo} BPM`;
-      }
-    }
-    if (this.elements.durationRange) {
-      this.elements.durationRange.value = presetData.duration;
-      if (this.elements.durationValue) {
-        const minutes = Math.floor(presetData.duration / 60);
-        const seconds = presetData.duration % 60;
-        this.elements.durationValue.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-      }
-    }
-    if (this.elements.complexitySelect) this.elements.complexitySelect.value = presetData.complexity;
-    if (this.elements.descriptionInput) this.elements.descriptionInput.value = presetData.description;
-
-    // 楽器選択をクリア後、プリセットの楽器を選択
-    this.clearInstrumentSelection();
-    presetData.instruments.forEach(instrumentKey => {
-      this.selectInstrument(instrumentKey);
-    });
-
-    console.log(`Applied preset: ${preset}`, presetData);
-  }
-
-  /**
-   * 楽器選択をクリア
-   */
-  clearInstrumentSelection() {
-    const buttons = this.elements.instrumentSelection?.querySelectorAll('.instrument-card');
-    buttons?.forEach(button => button.classList.remove('selected'));
-  }
-
-  /**
-   * 楽器を選択
-   */
-  selectInstrument(instrumentKey) {
-    const button = this.elements.instrumentSelection?.querySelector(`[data-instrument="${instrumentKey}"]`);
-    if (button) {
-      button.classList.add('selected');
-    }
-  }
-
-  /**
-   * 選択された楽器を取得
-   */
-  getSelectedInstruments() {
-    const selectedButtons = this.elements.instrumentSelection?.querySelectorAll('.instrument-card.selected');
-    if (!selectedButtons || selectedButtons.length === 0) {
-      return ['piano']; // デフォルト楽器
+        if (progressBar) progressBar.style.width = `${progress * 100}%`;
+        
+        if (timeDisplay) {
+            if (isFinite(currentTime) && isFinite(duration) && duration > 0) {
+                timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            } else {
+                const loopEndSeconds = Tone.Time(transport.loopEnd).toSeconds() || 0;
+                timeDisplay.textContent = `0:00 / ${formatTime(loopEndSeconds)}`;
+            }
+        }
     }
     
-    return Array.from(selectedButtons).map(button => 
-      button.getAttribute('data-instrument')
-    );
-  }
-
-  /**
-   * 現在の設定を取得
-   */
-  getCurrentSettings() {
-    return {
-      genre: this.elements.genreSelect?.value || 'pop',
-      mood: this.elements.moodSelect?.value || 'happy',
-      description: this.elements.descriptionInput?.value || '',
-      tempo: parseInt(this.elements.tempoRange?.value || '120'),
-      duration: parseInt(this.elements.durationRange?.value || '30'),
-      complexity: this.elements.complexitySelect?.value || 'normal',
-      key: this.elements.keySelect?.value || 'C',
-      scale: this.elements.scaleSelect?.value || 'major',
-      instruments: this.getSelectedInstruments()
-    };
-  }
-
-  /**
-   * ステータスメッセージの表示
-   */
-  showStatus(message, type = 'info') {
-    if (!this.elements.generationStatus) return;
-
-    this.elements.generationStatus.className = `mb-4 p-3 rounded-lg status ${type}`;
-    this.elements.generationStatus.textContent = message;
-    this.elements.generationStatus.classList.remove('hidden');
-  }
-
-  /**
-   * ステータスメッセージを隠す
-   */
-  hideStatus() {
-    if (this.elements.generationStatus) {
-      this.elements.generationStatus.classList.add('hidden');
-    }
-  }
-
-  /**
-   * 音楽生成
-   */
-  async generateMusic() {
-    try {
-      this.showStatus('音楽を生成しています...', 'info');
-      
-      // ボタンを無効化
-      if (this.elements.generateMusic) {
-        this.elements.generateMusic.disabled = true;
-        this.elements.generateMusic.querySelector('.loading-text').textContent = '生成中...';
-      }
-
-      const settings = this.getCurrentSettings();
-      console.log('Generating music with settings:', settings);
-
-      // 必要な楽器をオンデマンド読み込み
-      for (const instrumentKey of settings.instruments) {
-        await this.engine.loadInstrument(instrumentKey);
-      }
-
-      // 音楽生成
-      const result = await this.engine.generateMusic(settings);
-      
-      this.currentComposition = result;
-      this.showGenerationResult(result);
-      
-      // 再生ボタンを有効化
-      this.enablePlaybackControls(true);
-      
-      this.showStatus('音楽が生成されました！', 'success');
-      
-      console.log('Music generation completed:', result);
-
-    } catch (error) {
-      console.error('Music generation failed:', error);
-      this.showStatus(`エラー: ${error.message}`, 'error');
-    } finally {
-      // ボタンを復元
-      if (this.elements.generateMusic) {
-        this.elements.generateMusic.disabled = false;
-        this.elements.generateMusic.querySelector('.loading-text').textContent = '🎵 音楽を生成';
-      }
-    }
-  }
-
-  /**
-   * 生成結果の表示
-   */
-  showGenerationResult(result) {
-    // 波形表示
-    this.drawWaveform(result.waveform || []);
-    
-    // メタデータ表示
-    this.updateMetadata(result.metadata || {});
-    
-    // 結果セクションを表示
-    if (this.elements.resultSection) {
-      this.elements.resultSection.classList.remove('hidden');
-    }
-  }
-
-  /**
-   * 波形表示
-   */
-  drawWaveform(waveformData) {
-    if (!this.elements.waveformCanvas || !waveformData.length) return;
-
-    const canvas = this.elements.waveformCanvas;
-    const ctx = canvas.getContext('2d');
-    const width = canvas.width;
-    const height = canvas.height;
-
-    // キャンバスクリア
-    ctx.clearRect(0, 0, width, height);
-
-    // 波形描画
-    ctx.strokeStyle = '#4ADE80';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-
-    const step = width / waveformData.length;
-    waveformData.forEach((value, index) => {
-      const x = index * step;
-      const y = height / 2 + (value * height / 2);
-      
-      if (index === 0) {
-        ctx.moveTo(x, y);
-      } else {
-        ctx.lineTo(x, y);
-      }
-    });
-
-    ctx.stroke();
-  }
-
-  /**
-   * メタデータ更新
-   */
-  updateMetadata(metadata) {
-    if (this.elements.resultKey) this.elements.resultKey.textContent = metadata.key || '-';
-    if (this.elements.resultTempo) this.elements.resultTempo.textContent = metadata.tempo ? `${metadata.tempo} BPM` : '-';
-    if (this.elements.resultDuration) {
-      const duration = metadata.duration || 0;
-      const minutes = Math.floor(duration / 60);
-      const seconds = duration % 60;
-      this.elements.resultDuration.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    }
-    if (this.elements.resultProgression) this.elements.resultProgression.textContent = metadata.progression || '-';
-  }
-
-  /**
-   * 再生コントロールの有効/無効
-   */
-  enablePlaybackControls(enable) {
-    if (this.elements.playMusic) this.elements.playMusic.disabled = !enable;
-    if (this.elements.downloadMusic) this.elements.downloadMusic.disabled = !enable;
-  }
-
-  /**
-   * 音楽再生
-   */
-  async playMusic() {
-    if (!this.currentComposition) {
-      this.showStatus('再生する音楽がありません', 'warning');
-      return;
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${minutes}:${secs}`;
     }
 
-    try {
-      await this.engine.playMusic(this.currentComposition);
-      this.isPlaying = true;
-      
-      // 再生状態のUI更新
-      if (this.elements.playMusic) this.elements.playMusic.disabled = true;
-      if (this.elements.pauseMusic) this.elements.pauseMusic.disabled = false;
-      if (this.elements.stopMusic) this.elements.stopMusic.disabled = false;
-      
-      if (this.elements.playbackStatus) {
-        this.elements.playbackStatus.classList.remove('hidden');
-      }
-      
-      this.showStatus('再生中...', 'info');
-      
-    } catch (error) {
-      console.error('Playback failed:', error);
-      this.showStatus(`再生エラー: ${error.message}`, 'error');
-    }
-  }
+    updateProgress();
 
-  /**
-   * 音楽一時停止
-   */
-  pauseMusic() {
-    this.engine.stopMusic();
-    this.isPlaying = false;
-    
-    // UI更新
-    if (this.elements.playMusic) this.elements.playMusic.disabled = false;
-    if (this.elements.pauseMusic) this.elements.pauseMusic.disabled = true;
-    
-    this.showStatus('一時停止中', 'warning');
-  }
-
-  /**
-   * 音楽停止
-   */
-  stopMusic() {
-    this.engine.stopMusic();
-    this.isPlaying = false;
-    
-    // UI更新
-    if (this.elements.playMusic) this.elements.playMusic.disabled = false;
-    if (this.elements.pauseMusic) this.elements.pauseMusic.disabled = true;
-    if (this.elements.stopMusic) this.elements.stopMusic.disabled = true;
-    
-    if (this.elements.playbackStatus) {
-      this.elements.playbackStatus.classList.add('hidden');
+    // Initial setup
+    initializeApp(); // Call initialization function
+    setMode('simple');
+    if (volumeSlider) {
+        Tone.getDestination().volume.value = Tone.gainToDb(volumeSlider.value);
     }
-    
-    this.showStatus('停止しました', 'info');
-  }
-
-  /**
-   * 音楽ダウンロード
-   */
-  downloadMusic() {
-    if (!this.currentComposition) {
-      this.showStatus('ダウンロードする音楽がありません', 'warning');
-      return;
+    if (reverbSlider) {
+        MusicGeneratorEngine.setReverb(parseFloat(reverbSlider.value)); // Set initial reverb
     }
-
-    try {
-      const wavData = this.engine.exportToWav(this.currentComposition);
-      const blob = new Blob([wavData], { type: 'audio/wav' });
-      const url = URL.createObjectURL(blob);
-      
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `generated-music-${Date.now()}.wav`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      
-      this.showStatus('ダウンロードを開始しました', 'success');
-      
-    } catch (error) {
-      console.error('Download failed:', error);
-      this.showStatus(`ダウンロードエラー: ${error.message}`, 'error');
-    }
-  }
-
-  /**
-   * 翻訳読み込み
-   */
-  loadTranslations() {
-    if (typeof musicGeneratorTranslations !== 'undefined') {
-      this.translations = musicGeneratorTranslations;
-    }
-  }
-
-  /**
-   * 初期化
-   */
-  initialize() {
-    console.log('RealisticToneUI initialized');
-    
-    // 初期値設定
-    if (this.elements.tempoRange) {
-      this.elements.tempoRange.dispatchEvent(new Event('input'));
-    }
-    if (this.elements.durationRange) {
-      this.elements.durationRange.dispatchEvent(new Event('input'));
-    }
-  }
-}
-
-// グローバルに公開
-window.RealisticToneUI = RealisticToneUI;
+    renderHistory(); // Initial render
+    setupWaveform(); // Initialize the waveform visualizer
+});
