@@ -4,6 +4,10 @@ const MusicGeneratorEngine = (() => {
   console.log('🎵 Initializing Fixed MusicGeneratorEngine...');
   
   const reverb = new Tone.Reverb().toDestination();
+  // Lower initial volume
+  const masterVolume = new Tone.Volume(-12).toDestination();
+  reverb.connect(masterVolume);
+  
   let instruments = {};
   let lastGeneratedMusic = null;
   
@@ -34,29 +38,71 @@ const MusicGeneratorEngine = (() => {
   };
 
   // Instrument Management
-  function loadInstruments(instrumentsList) {
-    console.log('🎺 Loading instruments:', instrumentsList);
+  function loadInstruments(instrumentsList = null) {
+    console.log('🎺 Loading instruments from CDN:', instrumentsList);
+    
+    // Default instruments if none specified - CDN compatible
+    const defaultInstruments = ['piano', 'guitar-acoustic', 'violin', 'bass-electric'];
+    
+    const instrumentsToLoad = instrumentsList || defaultInstruments;
+    
     return new Promise((resolve, reject) => {
       if (!window.SampleLibrary) {
-        console.error('❌ SampleLibrary not found');
-        reject(new Error('SampleLibrary not available'));
+        console.warn('❌ SampleLibrary not found, creating fallback instruments');
+        createFallbackInstruments();
+        resolve(instruments);
         return;
       }
 
-      const samples = SampleLibrary.load(instrumentsList);
-      
-      Object.keys(samples).forEach(name => {
-        instruments[name] = samples[name];
-        instruments[name].connect(reverb);
-        console.log(`✅ Loaded instrument: ${name}`);
-      });
+      try {
+        // Use original CDN baseUrl
+        console.log('🔧 Setting SampleLibrary baseUrl to CDN: https://nbrosowsky.github.io/tonejs-instruments/samples/');
+        
+        const loadedInstruments = SampleLibrary.load({
+          instruments: instrumentsToLoad,
+          baseUrl: 'https://nbrosowsky.github.io/tonejs-instruments/samples/',
+          minify: true, // 音源ファイル数を削減
+          onload: () => {
+            console.log('✅ All instruments loaded successfully from CDN');
+          }
+        });
+        
+        // Store loaded instruments
+        Object.keys(loadedInstruments).forEach(name => {
+          instruments[name] = loadedInstruments[name];
+          instruments[name].connect(reverb);
+          console.log(`✅ Connected CDN instrument: ${name}`);
+        });
 
-      // Add a simple emergency synth as fallback
-      instruments.emergency = new Tone.PolySynth(Tone.Synth).connect(reverb);
-      console.log('✅ Emergency synth ready');
+        // Add emergency synth as fallback
+        instruments.emergency = new Tone.PolySynth(Tone.Synth).connect(reverb);
+        instruments.drums = new Tone.MembraneSynth().connect(reverb); // Simple drum fallback
+        
+        console.log('✅ Emergency instruments ready');
+        console.log('📊 Final instrument list:', Object.keys(instruments));
 
-      resolve(instruments);
+        resolve(instruments);
+        
+      } catch (error) {
+        console.error('❌ Error loading instruments from CDN:', error);
+        createFallbackInstruments();
+        resolve(instruments);
+      }
     });
+  }
+
+  // Create fallback instruments when SampleLibrary fails
+  function createFallbackInstruments() {
+    console.log('🔧 Creating fallback instruments...');
+    
+    instruments.piano = new Tone.PolySynth(Tone.Synth).connect(reverb);
+    instruments['guitar-acoustic'] = new Tone.PolySynth(Tone.Synth).connect(reverb);
+    instruments['bass-electric'] = new Tone.MonoSynth().connect(reverb);
+    instruments.violin = new Tone.PolySynth(Tone.Synth).connect(reverb);
+    instruments.drums = new Tone.MembraneSynth().connect(reverb);
+    instruments.emergency = new Tone.PolySynth(Tone.Synth).connect(reverb);
+    
+    console.log('✅ Fallback instruments created');
   }
 
   // Create proper chord progression with music theory
@@ -173,9 +219,9 @@ const MusicGeneratorEngine = (() => {
       return [];
     }
     
-    const noteDensity = { simple: 2, normal: 4, complex: 8 }[complexity] || 4;
+    const noteDensity = { simple: 2, normal: 3, complex: 4 }[complexity] || 3;
     let currentOctave = 5; // Higher octave for melody
-    let lastNoteIndex = 0; // Track position in scale
+    let lastNoteIndex = Math.floor(scaleNotes.length / 2); // Start from middle of scale
     
     console.log(`🎼 Scale notes:`, scaleNotes);
     
@@ -187,19 +233,24 @@ const MusicGeneratorEngine = (() => {
       for (let noteIndex = 0; noteIndex < noteDensity; noteIndex++) {
         // Calculate timing within the measure
         const subdivision = 4 / noteDensity;
-        const beat = Math.floor(noteIndex * subdivision);
+        const beat = noteIndex * subdivision;
         const timing = `${measureIndex}:${beat}:0`;
         
         let selectedNote;
         
-        // On strong beats (1 and 3), prefer chord tones
-        if ((noteIndex % 2 === 0) && chordTones.length > 0) {
-          selectedNote = chordTones[Math.floor(Math.random() * chordTones.length)];
+        // First note of measure should be chord tone
+        if (noteIndex === 0 && chordTones.length > 0) {
+          selectedNote = chordTones[0]; // Root of chord
         } else {
-          // For other beats, create stepwise motion
-          const stepDirection = Math.random() > 0.5 ? 1 : -1;
+          // Create more musical stepwise motion
+          let direction = Math.random() > 0.6 ? 1 : -1;
+          
+          // Bias toward moving back to center
+          if (lastNoteIndex > 5) direction = -1;
+          if (lastNoteIndex < 2) direction = 1;
+          
           const newIndex = Math.max(0, Math.min(scaleNotes.length - 1, 
-              lastNoteIndex + stepDirection));
+              lastNoteIndex + direction));
           
           selectedNote = scaleNotes[newIndex];
           lastNoteIndex = newIndex;
@@ -208,11 +259,8 @@ const MusicGeneratorEngine = (() => {
         // Add octave to note
         const fullNote = selectedNote + currentOctave;
         
-        // Determine note duration
-        let duration = '4n'; // Quarter note default
-        if (noteDensity === 8) {
-          duration = '8n'; // Eighth notes for complex melodies
-        }
+        // Better rhythm patterns
+        let duration = noteIndex === 0 ? '4n' : '8n';
         
         melody.push({
           time: timing,
@@ -317,11 +365,9 @@ const MusicGeneratorEngine = (() => {
       Tone.context.resume();
     }
     
-    // Stop any previous music
-    if (Tone.Transport.state === 'started') {
-      Tone.Transport.stop();
-      Tone.Transport.cancel();
-    }
+    // Stop and clear all previous music parts
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
 
     // Setup parameters
     const key = options.key || 'C';
@@ -360,20 +406,34 @@ const MusicGeneratorEngine = (() => {
     console.log('🎼 Scheduling music parts...');
 
     const safeGetInstrument = (instrumentRole, fallbackName = 'piano') => {
-      const requestedInstrument = options.instruments[instrumentRole];
-      if (instruments[requestedInstrument]) {
+      const requestedInstrument = options.instruments && options.instruments[instrumentRole];
+      
+      console.log(`🔍 Looking for ${instrumentRole} instrument: ${requestedInstrument}`);
+      console.log(`📊 Available instruments:`, Object.keys(instruments));
+      
+      if (requestedInstrument && instruments[requestedInstrument]) {
         console.log(`✅ Using ${instrumentRole}: ${requestedInstrument}`);
         return instruments[requestedInstrument];
       }
+      
       if (instruments[fallbackName]) {
-        console.log(`⚠️ Fallback ${instrumentRole}: ${fallbackName}`);
+        console.log(`⚠️ Fallback ${instrumentRole}: ${fallbackName} (${requestedInstrument} not available)`);
         return instruments[fallbackName];
       }
-      console.log(`❌ Emergency synth for ${instrumentRole}`);
-      return instruments.emergency || new Tone.PolySynth(Tone.Synth).connect(reverb);
+      
+      // Final fallback to emergency instruments
+      if (instruments.emergency) {
+        console.log(`❌ Emergency synth for ${instrumentRole}`);
+        return instruments.emergency;
+      }
+      
+      // Create emergency instrument if nothing else works
+      console.log(`🚨 Creating new emergency synth for ${instrumentRole}`);
+      const emergencyInstrument = new Tone.PolySynth(Tone.Synth).connect(reverb);
+      return emergencyInstrument;
     };
 
-    // Schedule parts
+    // Schedule parts with better instrument allocation
     new Tone.Part((time, note) => {
       const instrument = safeGetInstrument('chords', 'piano');
       if (instrument && note.notes) {
@@ -382,22 +442,23 @@ const MusicGeneratorEngine = (() => {
     }, chordPart).start(0);
 
     new Tone.Part((time, note) => {
-      const instrument = safeGetInstrument('melody', 'piano');
+      const instrument = safeGetInstrument('melody', 'violin');
       if (instrument && note.pitch) {
         instrument.triggerAttackRelease(note.pitch, note.duration, time);
       }
     }, melodyPart).start(0);
     
     new Tone.Part((time, note) => {
-      const instrument = safeGetInstrument('bass', 'piano');
+      const instrument = safeGetInstrument('bass', 'bass-electric');
       if (instrument && note.pitch) {
         instrument.triggerAttackRelease(note.pitch, note.duration, time);
       }
     }, bassPart).start(0);
 
     new Tone.Part((time, note) => {
-      if (instruments.drums && note.pitch) {
-        instruments.drums.triggerAttackRelease(note.pitch, note.duration, time);
+      const drumInstrument = instruments.drums || instruments.emergency;
+      if (drumInstrument && note.pitch) {
+        drumInstrument.triggerAttackRelease(note.pitch, note.duration, time);
       }
     }, drumPart).start(0);
 
@@ -439,6 +500,100 @@ const MusicGeneratorEngine = (() => {
     Tone.Transport.pause();
   }
 
+  function playFromHistory(musicData) {
+    console.log('▶️ Playing from history...');
+    
+    if (!musicData) {
+      console.error('❌ No music data provided to playFromHistory');
+      return;
+    }
+    
+    if (Tone.context.state !== 'running') {
+      console.log('🔊 Starting AudioContext...');
+      Tone.context.resume();
+    }
+    
+    // Stop and clear all previous music parts
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+    
+    console.log('🎼 Scheduling music from history...');
+    
+    // Set tempo and reverb from stored options
+    if (musicData.options) {
+      Tone.Transport.bpm.value = musicData.options.tempo || musicData.tempo || 120;
+      if (musicData.options.reverb !== undefined) {
+        reverb.wet.value = musicData.options.reverb;
+      }
+    }
+    
+    const safeGetInstrument = (instrumentRole, fallbackName = 'piano') => {
+      const requestedInstrument = musicData.options && musicData.options.instruments && musicData.options.instruments[instrumentRole];
+      
+      if (requestedInstrument && instruments[requestedInstrument]) {
+        return instruments[requestedInstrument];
+      }
+      
+      if (instruments[fallbackName]) {
+        return instruments[fallbackName];
+      }
+      
+      return instruments.emergency || new Tone.PolySynth(Tone.Synth).connect(reverb);
+    };
+
+    // Schedule chord part
+    if (musicData.chordPart && musicData.chordPart.length > 0) {
+      new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('chords', 'piano');
+        if (instrument && note.notes) {
+          instrument.triggerAttackRelease(note.notes, note.duration, time);
+        }
+      }, musicData.chordPart).start(0);
+    }
+
+    // Schedule melody part
+    if (musicData.melodyPart && musicData.melodyPart.length > 0) {
+      new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('melody', 'violin');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+      }, musicData.melodyPart).start(0);
+    }
+    
+    // Schedule bass part
+    if (musicData.bassPart && musicData.bassPart.length > 0) {
+      new Tone.Part((time, note) => {
+        const instrument = safeGetInstrument('bass', 'bass-electric');
+        if (instrument && note.pitch) {
+          instrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+      }, musicData.bassPart).start(0);
+    }
+
+    // Schedule drum part
+    if (musicData.drumPart && musicData.drumPart.length > 0) {
+      new Tone.Part((time, note) => {
+        const drumInstrument = instruments.drums || instruments.emergency;
+        if (drumInstrument && note.pitch) {
+          drumInstrument.triggerAttackRelease(note.pitch, note.duration, time);
+        }
+      }, musicData.drumPart).start(0);
+    }
+
+    // Set transport loop based on stored options
+    const isLooping = musicData.options && musicData.options.isLooping !== undefined ? musicData.options.isLooping : true;
+    const length = musicData.options && musicData.options.length ? musicData.options.length : 16;
+    
+    Tone.Transport.loop = isLooping;
+    Tone.Transport.loopStart = 0;
+    Tone.Transport.loopEnd = `${length}m`;
+
+    console.log('✅ Music from history scheduled. Ready to play manually.');
+    // Update lastGeneratedMusic to this data
+    lastGeneratedMusic = musicData;
+  }
+
   // Export public interface
   return {
     loadInstruments,
@@ -446,8 +601,24 @@ const MusicGeneratorEngine = (() => {
     play,
     stop,
     pause,
+    playFromHistory,
     getLastGenerated: () => lastGeneratedMusic,
     getInstruments: () => instruments,
+    getTransport: () => Tone.Transport,
+    setReverb: (value) => {
+      if (reverb) {
+        reverb.wet.value = value;
+        console.log(`🎛️ Reverb set to: ${value}`);
+      }
+    },
+    getTempoRange: (tempoName) => {
+      const tempos = {
+        slow: [60, 80],
+        medium: [90, 120], 
+        fast: [130, 160]
+      };
+      return tempos[tempoName] || tempos.medium;
+    },
     musicRulebook
   };
 })();
@@ -455,3 +626,14 @@ const MusicGeneratorEngine = (() => {
 // Make it globally available
 window.MusicGeneratorEngine = MusicGeneratorEngine;
 console.log('🎵 MusicGeneratorEngine loaded and ready!');
+
+// Auto-initialize with basic instruments
+(async () => {
+  try {
+    console.log('🎺 Auto-loading basic instruments...');
+    await MusicGeneratorEngine.loadInstruments();
+    console.log('✅ Basic instruments loaded successfully');
+  } catch (error) {
+    console.warn('⚠️ Auto-load failed, fallback instruments will be used:', error);
+  }
+})();

@@ -7,11 +7,12 @@
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google https://nbrosowsky.github.io;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google;
-    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io;
+    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io https://nbrosowsky.github.io;
+    media-src 'self' https://nbrosowsky.github.io;
     frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com;
     worker-src 'self' blob:;
     object-src 'none';
@@ -31,7 +32,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN - Development Only -->
+  <!-- TODO: Replace with production build for better performance -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -115,7 +117,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js"></script>
-  <script src="../tonejs-instruments/Tonejs-Instruments.js"></script>
+  <script src="https://nbrosowsky.github.io/tonejs-instruments/Tonejs-Instruments.js"></script>
   <script src="../js/common-utils.js"></script>
   <script src="../js/music-generator-translations.js"></script>    <script src="../js/music-generator-engine.js"></script>
   <script src="../js/music-generator-ui.js"></script>

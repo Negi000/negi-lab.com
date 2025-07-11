@@ -421,10 +421,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateProgress() {
         requestAnimationFrame(updateProgress);
-        const transport = MusicGeneratorEngine.getTransport();
-        const progress = transport.progress;
-        const currentTime = transport.seconds;
-        const duration = Tone.Time(transport.loopEnd).toSeconds();
+        
+        // Safely get transport
+        const transport = MusicGeneratorEngine.getTransport ? MusicGeneratorEngine.getTransport() : Tone.Transport;
+        
+        if (!transport) return;
+        
+        const progress = transport.progress || 0;
+        const currentTime = transport.seconds || 0;
+        const loopEnd = transport.loopEnd || '4m';
+        const duration = Tone.Time(loopEnd).toSeconds();
 
         if (progressBar) progressBar.style.width = `${progress * 100}%`;
         
@@ -432,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFinite(currentTime) && isFinite(duration) && duration > 0) {
                 timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
             } else {
-                const loopEndSeconds = Tone.Time(transport.loopEnd).toSeconds() || 0;
+                const loopEndSeconds = Tone.Time(loopEnd).toSeconds() || 0;
                 timeDisplay.textContent = `0:00 / ${formatTime(loopEndSeconds)}`;
             }
         }
