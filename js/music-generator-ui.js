@@ -293,8 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (volumeSlider) {
         volumeSlider.addEventListener('input', (e) => {
-            // UI a bit more responsive by converting linear slider to dB
-            Tone.getDestination().volume.value = Tone.gainToDb(e.target.value);
+            const value = parseInt(e.target.value);
+            if (window.MusicGeneratorEngine && window.MusicGeneratorEngine.setVolume) {
+                MusicGeneratorEngine.setVolume(value);
+            }
         });
     }
     
@@ -489,25 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('🔍 Current protocol:', window.location.protocol);
         console.log('🔍 Current URL:', window.location.href);
         
-        if (window.location.protocol === 'file:') {
-            console.warn('⚠️ CORS WARNING: Using file:// protocol will cause CORS errors!');
-            console.log('✅ SOLUTION: Please access via http://localhost:8000/tools/music-generator.html');
-            
-            // Show user-friendly warning
-            if (loadingText) {
-                loadingText.innerHTML = `
-                    <div style="color: #f59e0b; text-align: center;">
-                        <strong>⚠️ CORS エラーが発生します</strong><br>
-                        正しいURL: <br>
-                        <code style="background: #f3f4f6; padding: 2px 4px; border-radius: 4px;">
-                            http://localhost:8000/tools/music-generator.html
-                        </code><br>
-                        でアクセスしてください
-                    </div>
-                `;
-            }
-            return false;
-        }
+        // CORS warnings removed - using CDN now
         return true;
     }
 
