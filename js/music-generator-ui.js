@@ -49,6 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     async function initializeApp() {
         console.log('🚀 Initializing music generator app...');
         
+        // Check if using correct protocol
+        if (!checkProtocol()) {
+            return; // Stop initialization if using file:// protocol
+        }
+        
         if (loadingOverlay) loadingOverlay.style.display = 'flex';
         if (loadingText) loadingText.textContent = '楽器を読み込んでいます...';
         
@@ -65,6 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             console.log('✅ SampleLibrary is available, loading instruments...');
+            
+            // Initialize Tone.js context safely
+            if (Tone.context.state !== 'running') {
+                console.log('⏳ AudioContext is suspended, waiting for user interaction...');
+                if (loadingText) loadingText.textContent = 'クリックして音楽エンジンを開始してください';
+                // Don't start context automatically, wait for user interaction
+            }
+            
             await MusicGeneratorEngine.loadInstruments();
             console.log('✅ App initialization completed');
             
@@ -158,9 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loadingIndicator) loadingIndicator.style.display = 'flex';
                 generateBtn.disabled = true;
             
-                // Start Tone.js context
-                await Tone.start();
-                console.log('AudioContext started');
+                // Start Tone.js context (this requires user gesture)
+                if (Tone.context.state !== 'running') {
+                    console.log('🎵 Starting AudioContext...');
+                    await Tone.start();
+                    console.log('✅ AudioContext started');
+                } else {
+                    console.log('✅ AudioContext already running');
+                }
 
                 // Collect options
                 let options = {
@@ -439,4 +457,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     renderHistory(); // Initial render
     setupWaveform(); // Initialize the waveform visualizer
+
+    // --- Loading Overlay Click Handler ---
+    if (loadingOverlay) {
+        loadingOverlay.addEventListener('click', async () => {
+            if (Tone.context.state !== 'running') {
+                try {
+                    await Tone.start();
+                    console.log('✅ AudioContext started by user click');
+                    if (loadingText) loadingText.textContent = '楽器を読み込んでいます...';
+                    // Re-run initialization if needed
+                    if (typeof MusicGeneratorEngine !== 'undefined' && MusicGeneratorEngine.loadInstruments) {
+                        await MusicGeneratorEngine.loadInstruments();
+                    }
+                    if (loadingOverlay) loadingOverlay.style.display = 'none';
+                } catch (error) {
+                    console.error('Failed to start AudioContext:', error);
+                }
+            }
+        });
+    }
+
+    // --- Protocol Check ---
+    function checkProtocol() {
+        console.log('🔍 Current protocol:', window.location.protocol);
+        console.log('🔍 Current URL:', window.location.href);
+        
+        if (window.location.protocol === 'file:') {
+            console.warn('⚠️ CORS WARNING: Using file:// protocol will cause CORS errors!');
+            console.log('✅ SOLUTION: Please access via http://localhost:8000/tools/music-generator.html');
+            
+            // Show user-friendly warning
+            if (loadingText) {
+                loadingText.innerHTML = `
+                    <div style="color: #f59e0b; text-align: center;">
+                        <strong>⚠️ CORS エラーが発生します</strong><br>
+                        正しいURL: <br>
+                        <code style="background: #f3f4f6; padding: 2px 4px; border-radius: 4px;">
+                            http://localhost:8000/tools/music-generator.html
+                        </code><br>
+                        でアクセスしてください
+                    </div>
+                `;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    // Initial protocol check
+    checkProtocol();
 });
