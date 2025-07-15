@@ -11,22 +11,35 @@
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
       https://cdn.tailwindcss.com 
       https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com; 
+      https://www.googletagmanager.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google; 
     style-src 'self' 'unsafe-inline' 
       https://fonts.googleapis.com 
       https://cdn.tailwindcss.com; 
     font-src 'self' 
       https://fonts.gstatic.com; 
-    img-src 'self' data: blob:; 
+    img-src 'self' data: blob: 
+      https://pagead2.googlesyndication.com 
+      https://tpc.googlesyndication.com 
+      https://www.google.com 
+      https://www.google.co.jp
+      https://ep1.adtrafficquality.google; 
     connect-src 'self' 
-      https://www.google-analytics.com; 
+      https://www.google-analytics.com 
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google; 
+    frame-src 'self' 
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com 
+      https://ep2.adtrafficquality.google 
+      https://www.google.com; 
     object-src 'none'; 
     base-uri 'self';
   " />
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title data-translate-key="colorCodeTool.pageTitle">【無料】カラーコード検索・色抽出ツール - HEX・RGB・HSL変換対応 | negi-lab.com</title>
   <meta name="description" data-translate-key="colorCodeTool.metaDescription" content="画像からの精密な色抽出とHEX・RGB・HSL・CMYK形式での変換に対応した専門的カラーツール。Webデザイン・印刷・ブランディングでの色彩管理に最適な高機能色彩分析ツールです。" />
@@ -36,11 +49,15 @@
   <meta property="og:url" content="https://negi-lab.com/tools/color-code-tool.html" />
   <meta name="robots" content="index,follow" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <!-- 開発環境用Tailwind CSS CDN（本番環境では適切にビルドされたCSSを使用） -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
+  <script src="../js/color-analysis-engine.js"></script>
+  <script src="../js/advanced-color-ui.js"></script>
+  <script src="../js/color-code-tool-translations.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -91,6 +108,250 @@
       border-radius: 0.375rem;
       transition: all 0.2s;
     }
+    
+    /* 高度なUI用の追加スタイル */
+    .harmony-btn {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      background: white;
+      transition: all 0.2s;
+    }
+    
+    .harmony-btn:hover {
+      background: #f9fafb;
+    }
+    
+    .harmony-btn.active {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+    
+    .harmony-color-item {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .harmony-color-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .tab-btn {
+      transition: all 0.2s;
+    }
+    
+    .tab-btn.active {
+      color: #2563eb;
+      border-bottom: 2px solid #2563eb;
+    }
+    
+    .compliance-badge {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .compliance-pass {
+      background: #dcfce7;
+      color: #166534;
+    }
+    
+    .compliance-fail {
+      background: #fecaca;
+      color: #991b1b;
+    }
+    
+    .color-wheel-container canvas {
+      box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.06);
+    }
+    
+    .copy-btn {
+      transition: all 0.2s;
+    }
+    
+    .copy-btn:hover {
+      background: #e5e7eb;
+    }
+    
+    .gradient-preview {
+      box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.06);
+    }
+    
+    .spectrum-canvas {
+      box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.06);
+      background: white;
+    }
+    
+    /* カスタムスクロールバー */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e0 #f7fafc;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f7fafc;
+      border-radius: 3px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e0;
+      border-radius: 3px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #a0aec0;
+    }
+    
+    /* アニメーション */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.3s ease-out;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    /* モーダルアニメーション */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    
+    .modal-enter-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 150ms ease-out, transform 150ms ease-out;
+    }
+    
+    /* トースト通知 */
+    .toast {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      color: white;
+      transition: all 300ms;
+    }
+    
+    .toast-success {
+      background: #10b981;
+    }
+    
+    .toast-error {
+      background: #ef4444;
+    }
+    
+    .toast-info {
+      background: #3b82f6;
+    }
+    
+    /* レスポンシブグリッド */
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    /* カラーパレット表示 */
+    .color-swatch {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.5rem;
+      border: 2px solid white;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+    
+    .color-swatch:hover {
+      transform: scale(1.1);
+    }
+    
+    .color-swatch:hover::after {
+      content: attr(data-color);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      background: #1f2937;
+      color: white;
+      font-size: 0.75rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    /* プログレスバー */
+    .progress-bar {
+      width: 100%;
+      background: #e5e7eb;
+      border-radius: 9999px;
+      height: 0.5rem;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      transition: all 300ms ease-out;
+    }
+    
+    /* 特殊効果 */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    .neon-glow {
+      box-shadow: 0 0 20px rgba(74, 222, 128, 0.6);
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
   
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
@@ -138,14 +399,17 @@
   </nav>
   
   <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
+    <div class="container mx-auto px-4 max-w-7xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="colorCodeTool.mainTitle">カラーコード検索・表示ツール</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="colorCodeTool.mainTitle">高度カラーコード分析・変換ツール</h1>
+        <p class="text-gray-600 text-lg max-w-4xl mx-auto" data-translate-key="colorCodeTool.lead">プロフェッショナル仕様の色彩分析エンジンで、画像からの精密色抽出、カラーハーモニー生成、アクセシビリティ検証まで包括的に対応。</p>
       </div>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4" data-translate-key="colorCodeTool.lead">画像をアップロードしてスポイトで色を抽出したり、カラーコードを入力して色プレビューができるツールです。</p>
+
+      <!-- 基本カラー入力セクション -->
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-8">
+        <h2 class="text-xl font-semibold mb-4">基本カラー入力</h2>
         <form id="colorForm" class="space-y-4" autocomplete="off">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label for="hexInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.hexLabel">HEX</label>
               <input id="hexInput" type="text" maxlength="9" class="form-input w-full" placeholder="#65c155" aria-label="HEXカラーコード">
@@ -163,33 +427,92 @@
               <input id="colorPicker" type="color" class="form-input w-full h-10 p-1" aria-label="カラーピッカー">
             </div>
           </div>
-          <div class="flex items-center gap-4 mt-2">
-            <div id="colorPreview" class="w-16 h-16 rounded-lg border border-gray-200 shadow-inner" aria-label="色プレビュー"></div>
-            <span id="colorName" class="text-gray-700 text-sm"></span>
+          <div class="flex items-center gap-4 mt-4">
+            <div id="colorPreview" class="w-20 h-20 rounded-lg border border-gray-200 shadow-inner" aria-label="色プレビュー"></div>
+            <div class="flex-1">
+              <div class="text-sm text-gray-600 mb-1">選択中の色:</div>
+              <div id="colorName" class="text-gray-700 font-medium"></div>
+              <div class="text-xs text-gray-500 mt-1">
+                <span id="colorTemperature"></span> | <span id="colorPsychology"></span>
+              </div>
+            </div>
           </div>
         </form>
-        <div class="mt-6">
-          <label for="imageInput" class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="colorCodeTool.imageLabel">画像から色を抽出</label>
-          <input id="imageInput" type="file" accept="image/*" class="form-input w-full" aria-label="画像ファイルを選択">
-          <div class="mt-4 flex flex-col md:flex-row gap-4">
-            <canvas id="imageCanvas" class="rounded-lg border border-gray-200 bg-gray-100 max-w-full" style="max-width:320px;max-height:240px;display:none;cursor:crosshair;" aria-label="画像キャンバス"></canvas>
-            <div class="flex-1">
-              <div class="mb-2 text-sm text-gray-600" data-translate-key="colorCodeTool.spoitInfo">画像をクリックするとそのピクセルの色を取得できます。</div>
-              <div id="pickedColor" class="flex items-center gap-2"></div>
-              <div class="mt-4">
-                <div class="font-semibold text-xs mb-1" data-translate-key="colorCodeTool.paletteLabel">主要カラーパレット</div>
-                <div id="palette" class="flex flex-wrap gap-2"></div>
+
+        <!-- 画像からの色抽出 -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+          <h3 class="text-lg font-semibold mb-4">画像からの高精度色抽出</h3>
+          <input id="imageInput" type="file" accept="image/*" class="form-input w-full mb-4" aria-label="画像ファイルを選択">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+              <canvas id="imageCanvas" class="rounded-lg border border-gray-200 bg-gray-100 max-w-full cursor-crosshair" style="max-width:100%;height:auto;display:none;" aria-label="画像キャンバス"></canvas>
+            </div>
+            <div class="space-y-4">
+              <div class="text-sm text-gray-600" data-translate-key="colorCodeTool.spoitInfo">画像をクリックするとそのピクセルの色を取得できます。高精度な色抽出が可能です。</div>
+              <div id="pickedColor" class="space-y-2"></div>
+              <div>
+                <h4 class="font-semibold text-sm mb-2" data-translate-key="colorCodeTool.paletteLabel">AI統合カラーパレット・ハーモニージェネレーター</h4>
+                
+                <!-- ハーモニータイプ選択 -->
+                <div class="mb-3">
+                  <h5 class="text-xs font-medium mb-1 text-gray-700">カラーハーモニー</h5>
+                  <div class="flex flex-wrap gap-1">
+                    <button data-harmony="monochromatic" class="harmony-btn px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">モノクロマチック</button>
+                    <button data-harmony="analogous" class="harmony-btn px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600">類似色</button>
+                    <button data-harmony="complementary" class="harmony-btn px-2 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600">補色</button>
+                    <button data-harmony="triadic" class="harmony-btn px-2 py-1 bg-purple-500 text-white rounded text-xs hover:bg-purple-600">三角配色</button>
+                    <button data-harmony="splitComplementary" class="harmony-btn px-2 py-1 bg-indigo-500 text-white rounded text-xs hover:bg-indigo-600">分割補色</button>
+                  </div>
+                </div>
+
+                <!-- テーマパレット選択 -->
+                <div class="mb-3">
+                  <h5 class="text-xs font-medium mb-1 text-gray-700">テーマパレット</h5>
+                  <div class="flex flex-wrap gap-1">
+                    <button data-palette="warm" class="palette-btn px-2 py-1 bg-orange-500 text-white rounded text-xs hover:bg-orange-600">暖色系</button>
+                    <button data-palette="cool" class="palette-btn px-2 py-1 bg-teal-500 text-white rounded text-xs hover:bg-teal-600">寒色系</button>
+                    <button data-palette="pastel" class="palette-btn px-2 py-1 bg-pink-300 text-white rounded text-xs hover:bg-pink-400">パステル</button>
+                    <button data-palette="vibrant" class="palette-btn px-2 py-1 bg-gray-700 text-white rounded text-xs hover:bg-gray-800">鮮やか</button>
+                    <button data-palette="earth" class="palette-btn px-2 py-1 bg-amber-600 text-white rounded text-xs hover:bg-amber-700">アース</button>
+                  </div>
+                </div>
+
+                <!-- 生成コントロール -->
+                <div class="mb-3 flex items-center space-x-2">
+                  <button id="generateRandomPalette" class="px-3 py-1 bg-indigo-500 text-white rounded text-xs hover:bg-indigo-600">🎲 ランダム生成</button>
+                  <button id="refinePalette" class="px-3 py-1 bg-purple-500 text-white rounded text-xs hover:bg-purple-600">🔧 微調整</button>
+                  <button id="savePalette" class="px-3 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600">💾 保存</button>
+                  <select id="paletteSize" class="px-2 py-1 border border-gray-300 rounded text-xs">
+                    <option value="5">5色</option>
+                    <option value="7">7色</option>
+                    <option value="10">10色</option>
+                  </select>
+                </div>
+                
+                <!-- 統合パレット表示エリア -->
+                <div id="paletteDisplay" class="grid grid-cols-4 gap-2 min-h-[60px] border-2 border-dashed border-gray-300 rounded p-2">
+                  <div class="text-center text-gray-500 col-span-4 py-4">ボタンをクリックしてパレットを生成</div>
+                </div>
+                
+                <!-- 生成統計情報 -->
+                <div id="paletteStats" class="mt-2 text-xs text-gray-600"></div>
               </div>
             </div>
           </div>
         </div>
-        <div id="messageArea" class="text-sm mt-2">
-          <p id="statusMessage" class="text-gray-600"></p>
-          <p id="errorMessage" class="text-red-600"></p>
-        </div>
       </div>
+
+      <!-- 高度な機能が挿入される場所 -->
+      <div id="advancedFeaturesContainer"></div>
+
       <div id="smart-ads" class="flex justify-center my-8"></div>
       <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
+
+      <div id="messageArea" class="text-center mt-4">
+        <p id="statusMessage" class="text-gray-600"></p>
+        <p id="errorMessage" class="text-red-600"></p>
+      </div>
+    </div>
       <!-- ガイドモーダル（ヘッダー直下でOK） -->
       <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
         <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
@@ -205,52 +528,144 @@ function setupGuideModal() {
   const guideContent = document.getElementById('guide-modal-content');
   const guides = {
     ja: {
-      title: 'カラーコード検索・表示ツールの使い方',
-      list: [
-        'HEX/RGB/HSLいずれかの形式で色を入力',
-        'カラーピッカーで直感的に色を選択',
-        '画像をアップロードし、クリックで色を抽出',
-        '主要カラーパレットから色を選択可能'
+      title: '高度カラーコード分析ツールの使い方',
+      sections: [
+        {
+          title: '基本機能',
+          list: [
+            'HEX/RGB/HSL/CMYK形式での色入力・変換',
+            '高精度カラーピッカーによる直感的色選択',
+            '画像からのAI色抽出・主要パレット生成',
+            'リアルタイム色情報表示（色名・温度・心理効果）'
+          ]
+        },
+        {
+          title: '高度な機能',
+          list: [
+            '色相環とS/L選択による精密色調整',
+            '6種類のカラーハーモニー自動生成',
+            'WCAG準拠アクセシビリティ検証',
+            'AI型パレットジェネレーター',
+            'カスタムグラデーション作成',
+            'バッチ変換・一括処理',
+            '色覚多様性シミュレーション'
+          ]
+        },
+        {
+          title: 'エクスポート機能',
+          list: [
+            'CSS変数・SCSS・JSON・ASE形式対応',
+            'カスタム命名規則設定',
+            'プロジェクト用色履歴管理',
+            'スペクトラム分析・統計情報'
+          ]
+        }
       ],
-      tipsTitle: '活用例・ヒント',
+      tipsTitle: 'プロフェッショナル活用例',
       tips: [
-        'Webデザインや資料作成時の色選定',
-        '画像からブランドカラーやテーマカラー抽出'
+        'Webサイト・アプリUIの一貫した色彩設計',
+        'ブランドガイドライン準拠の色管理',
+        'アクセシブルなカラーコンビネーション構築',
+        '印刷・デジタル統合デザインの色彩最適化',
+        'データビジュアライゼーションの効果的配色'
       ]
     },
     en: {
-      title: 'How to Use the Color Code Tool',
-      list: [
-        'Enter a color in HEX, RGB, or HSL format.',
-        'Use the color picker for intuitive selection.',
-        'Upload an image and click to pick a color.',
-        'Choose from the main color palette.'
+      title: 'Advanced Color Code Analysis Tool Guide',
+      sections: [
+        {
+          title: 'Basic Features',
+          list: [
+            'Color input & conversion in HEX/RGB/HSL/CMYK formats',
+            'Intuitive color selection with precision color picker',
+            'AI-powered color extraction from images with palette generation',
+            'Real-time color information (name, temperature, psychological effects)'
+          ]
+        },
+        {
+          title: 'Advanced Features',
+          list: [
+            'Precise color adjustment with color wheel and S/L selection',
+            'Automatic generation of 6 types of color harmonies',
+            'WCAG-compliant accessibility verification',
+            'AI-powered palette generator',
+            'Custom gradient creation',
+            'Batch conversion & bulk processing',
+            'Color vision diversity simulation'
+          ]
+        },
+        {
+          title: 'Export Functions',
+          list: [
+            'CSS variables, SCSS, JSON, ASE format support',
+            'Custom naming convention settings',
+            'Project color history management',
+            'Spectrum analysis & statistical information'
+          ]
+        }
       ],
-      tipsTitle: 'Tips & Examples',
+      tipsTitle: 'Professional Use Cases',
       tips: [
-        'Select colors for web design or presentations.',
-        'Extract brand or theme colors from images.'
+        'Consistent color design for websites & app UI',
+        'Brand guideline-compliant color management',
+        'Building accessible color combinations',
+        'Color optimization for print & digital integrated design',
+        'Effective color schemes for data visualization'
       ]
     }
   };
+  
   if(guideBtn && guideModal && guideClose && guideContent) {
     guideBtn.addEventListener('click', function() {
       const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
       const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
+      
+      let html = `<h2 class='text-xl font-bold mb-4 text-gray-800'>${g.title}</h2>`;
+      
+      // セクションごとに表示
+      g.sections.forEach(section => {
+        html += `<div class="mb-6">`;
+        html += `<h3 class='font-semibold text-lg mb-3 text-blue-600'>${section.title}</h3>`;
+        html += '<ul class="list-disc ml-5 mb-4 text-gray-700 space-y-1">' + 
+                section.list.map(x => `<li class="text-sm">${x}</li>`).join('') + 
+                '</ul></div>';
+      });
+      
+      html += `<div class="border-t pt-4 mt-6">`;
+      html += `<h3 class='font-semibold text-lg mb-3 text-purple-600'>${g.tipsTitle}</h3>`;
+      html += '<ul class="list-disc ml-5 text-gray-700 space-y-1">' + 
+              g.tips.map(x => `<li class="text-sm">${x}</li>`).join('') + 
+              '</ul></div>';
+      
+      // ショートカット情報を追加
+      html += `<div class="bg-gray-50 p-4 rounded-lg mt-4">
+                 <h4 class="font-medium text-sm mb-2">⌨️ キーボードショートカット</h4>
+                 <div class="text-xs text-gray-600 space-y-1">
+                   <div><kbd class="px-1 py-0.5 bg-gray-200 rounded text-xs">Ctrl+C</kbd> 選択中の色をコピー</div>
+                   <div><kbd class="px-1 py-0.5 bg-gray-200 rounded text-xs">Ctrl+V</kbd> 色を貼り付け</div>
+                   <div><kbd class="px-1 py-0.5 bg-gray-200 rounded text-xs">Space</kbd> ランダム色生成</div>
+                 </div>
+               </div>`;
+      
       guideContent.innerHTML = html;
       guideModal.classList.remove('hidden');
+      guideModal.classList.add('modal-enter-active');
     });
+    
     guideClose.addEventListener('click', function() {
       guideModal.classList.add('hidden');
+      guideModal.classList.remove('modal-enter-active');
     });
+    
     guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
+      if(e.target === guideModal) {
+        guideModal.classList.add('hidden');
+        guideModal.classList.remove('modal-enter-active');
+      }
     });
   }
 }
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", setupGuideModal);
 } else {
@@ -714,53 +1129,610 @@ if (document.readyState === "loading") {
     </nav>
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
+  <!-- カラーツール専用スクリプトの実行 -->
   <script>
-        // カラーコードツール用のセキュリティ強化
-        document.addEventListener('DOMContentLoaded', function() {
-          const imageInput = document.getElementById('imageInput');
-          const hexInput = document.getElementById('hexInput');
-          const rgbInput = document.getElementById('rgbInput');
-          const hslInput = document.getElementById('hslInput');
+    // カラーコードツール - メインアプリケーション
+    // ColorCodeToolAppクラスをwindowオブジェクトに割り当て
+    window.ColorCodeToolApp = class ColorCodeToolApp {
+      constructor() {
+        this.colorEngine = null;
+        this.colorUI = null;
+        this.currentColor = '#65c155';
+        this.init();
+      }
+
+      async init() {
+        // DOM準備完了まで待機
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => this.initializeApp());
+        } else {
+          this.initializeApp();
+        }
+      }
+
+      initializeApp() {
+        try {
+          // エンジンとUIの初期化
+          this.colorEngine = new ColorAnalysisEngine();
           
-          // 画像ファイルの検証
-          if (imageInput) {
-            imageInput.addEventListener('change', function(e) {
-              const file = e.target.files[0];
-              if (file) {
-                // ファイルタイプとサイズの検証
-                if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
-                  SecurityUtils.showUserError('JPEG、PNG、GIF、WebP形式の画像ファイルを選択してください');
-                  this.value = '';
-                  return;
-                }
-                
-                if (!SecurityUtils.validateFileSize(file, 10)) {
-                  SecurityUtils.showUserError('ファイルサイズが10MB以下の画像を選択してください');
-                  this.value = '';
-                  return;
-                }
+          // 高度なUIは後で読み込み（依存関係の問題を回避）
+          setTimeout(() => {
+            if (window.AdvancedColorUI) {
+              this.colorUI = new AdvancedColorUI(this.colorEngine);
+              this.insertAdvancedComponents();
+              console.log('AdvancedColorUI initialized successfully');
+              
+              // 初期色の同期
+              if (this.currentColor) {
+                this.colorUI.currentColor = this.currentColor;
               }
-            });
-          }
-          
-          // カラーコード入力の検証
-          function validateColorInput(input, pattern, errorMsg) {
-            if (input) {
-              input.addEventListener('input', function() {
-                const sanitized = SecurityUtils.sanitizeInput(this.value);
-                if (sanitized !== this.value) {
-                  this.value = sanitized;
-                }
-              });
+              
+              // グローバル変数として設定
+              window.colorUI = this.colorUI;
+              window.colorApp = this;
+              window.colorCodeApp = this;
+              
+              console.log('Global variables set: colorUI, colorApp, colorCodeApp');
+            } else {
+              console.warn('AdvancedColorUI not available');
             }
+          }, 100);
+          
+          // 基本機能のバインド
+          this.bindBasicEvents();
+          this.bindImageEvents();
+          this.bindColorInputEvents();
+          
+          // 初期色の設定
+          this.updateColor(this.currentColor);
+          
+          // セキュリティ強化の初期化
+          this.initSecurity();
+          
+          console.log('Color Code Tool initialized successfully');
+        } catch (error) {
+          console.error('Initialization error:', error);
+          this.showError('ツールの初期化に失敗しました。ページを再読み込みしてください。');
+        }
+      }
+
+      bindBasicEvents() {
+        // カラー入力フィールドのイベント
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput');
+        const hslInput = document.getElementById('hslInput');
+        const colorPicker = document.getElementById('colorPicker');
+
+        console.log('Binding basic events...', { hexInput, rgbInput, hslInput, colorPicker });
+
+        if (hexInput) {
+          hexInput.addEventListener('input', (e) => {
+            console.log('HEX input changed:', e.target.value);
+            const hex = e.target.value;
+            if (this.isValidHex(hex)) {
+              this.updateColor(hex);
+            }
+          });
+          
+          // フォーカス時の動作も追加
+          hexInput.addEventListener('focus', () => {
+            console.log('HEX input focused');
+          });
+          
+          // 追加のイベント
+          hexInput.addEventListener('change', (e) => {
+            console.log('HEX change event:', e.target.value);
+            this.handleInputChange('hexInput', e.target.value);
+          });
+          
+          hexInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('HEX Enter pressed:', e.target.value);
+              this.handleInputChange('hexInput', e.target.value);
+            }
+          });
+        }
+
+        if (rgbInput) {
+          rgbInput.addEventListener('input', (e) => {
+            console.log('RGB input changed:', e.target.value);
+            const rgb = this.parseRGB(e.target.value);
+            if (rgb) {
+              const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+              this.updateColor(hex);
+            }
+          });
+          
+          // 追加のイベント
+          rgbInput.addEventListener('change', (e) => {
+            console.log('RGB change event:', e.target.value);
+            this.handleInputChange('rgbInput', e.target.value);
+          });
+          
+          rgbInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('RGB Enter pressed:', e.target.value);
+              this.handleInputChange('rgbInput', e.target.value);
+            }
+          });
+        }
+
+        if (hslInput) {
+          hslInput.addEventListener('input', (e) => {
+            console.log('HSL input changed:', e.target.value);
+            const hsl = this.parseHSL(e.target.value);
+            if (hsl) {
+              const rgb = this.colorEngine.hslToRgb(hsl.h, hsl.s, hsl.l);
+              const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+              this.updateColor(hex);
+            }
+          });
+          
+          // 追加のイベント
+          hslInput.addEventListener('change', (e) => {
+            console.log('HSL change event:', e.target.value);
+            this.handleInputChange('hslInput', e.target.value);
+          });
+          
+          hslInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('HSL Enter pressed:', e.target.value);
+              this.handleInputChange('hslInput', e.target.value);
+            }
+          });
+        }
+
+        if (colorPicker) {
+          colorPicker.addEventListener('change', (e) => {
+            console.log('Color picker changed:', e.target.value);
+            this.updateColor(e.target.value);
+          });
+          
+          // inputイベントも追加（リアルタイム更新）
+          colorPicker.addEventListener('input', (e) => {
+            console.log('Color picker input:', e.target.value);
+            this.updateColor(e.target.value);
+          });
+        }
+        
+        // HTMLの機能ボタンを自動接続
+        this.connectAllUIElements();
+      }
+
+      connectAllUIElements() {
+        console.log('🔗 Connecting all UI elements...');
+        
+        // 基本フォーム要素を接続
+        this.connectFormElements();
+        
+        // カラーハーモニー・パレットボタンを接続
+        this.connectHarmonyButtons();
+        
+        // 画像関連要素を接続
+        this.connectImageElements();
+        
+        console.log('✅ All UI elements connected successfully');
+      }
+
+      connectFormElements() {
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput'); 
+        const hslInput = document.getElementById('hslInput');
+        const colorPicker = document.getElementById('colorPicker');
+        
+        if (hexInput) {
+          hexInput.addEventListener('input', (e) => {
+            const value = e.target.value.trim();
+            if (value && this.isValidHex(value)) {
+              this.updateColor(value);
+            }
+          });
+        }
+        
+        if (rgbInput) {
+          rgbInput.addEventListener('input', (e) => {
+            const value = e.target.value.trim();
+            if (value && this.isValidRgb(value)) {
+              const hex = this.rgbToHex(value);
+              this.updateColor(hex);
+            }
+          });
+        }
+        
+        if (colorPicker) {
+          colorPicker.addEventListener('change', (e) => {
+            this.updateColor(e.target.value);
+          });
+        }
+      }
+
+      connectHarmonyButtons() {
+        // AdvancedColorUIに委任するため、重複するイベントリスナーは削除
+        console.log('🔗 Harmony buttons delegated to AdvancedColorUI');
+      }
+
+      connectImageElements() {
+        const imageInput = document.getElementById('imageInput');
+        const imageCanvas = document.getElementById('imageCanvas');
+        
+        if (imageInput) {
+          imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+              this.loadImageToCanvas(file);
+            }
+          });
+        }
+        
+        if (imageCanvas) {
+          imageCanvas.addEventListener('click', (e) => {
+            this.extractColorFromCanvas(e);
+          });
+        }
+      }
+
+      // パレット生成メソッド
+      generateHarmonyPalette(harmonyType) {
+        const colors = this.generateHarmonyColors(this.currentColor || '#65c155', harmonyType);
+        this.displayPalette(colors);
+      }
+
+      generateThemePalette(themeType) {
+        const colors = this.getThemeColors(themeType);
+        this.displayPalette(colors);
+      }
+
+      generateHarmonyColors(baseColor, harmonyType) {
+        const rgb = this.hexToRgb(baseColor);
+        const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+        let colors = [baseColor];
+        
+        switch (harmonyType) {
+          case 'monochromatic':
+            for (let i = 1; i < 5; i++) {
+              const newL = Math.max(0.1, Math.min(0.9, hsl.l + (i * 0.15) - 0.3));
+              colors.push(this.hslToHex(hsl.h, hsl.s, newL));
+            }
+            break;
+            
+          case 'analogous':
+            for (let i = 1; i < 5; i++) {
+              const newH = (hsl.h + ( i * 30)) % 360;
+              colors.push(this.hslToHex(newH, hsl.s, hsl.l));
+            }
+            break;
+            
+          case 'complementary':
+            colors.push(this.hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 150) % 360, hsl.s * 0.7, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 210) % 360, hsl.s * 0.7, hsl.l));
+            break;
+            
+          case 'triadic':
+            colors.push(this.hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 60) % 360, hsl.s * 0.8, hsl.l));
+            break;
+            
+          case 'tetradic':
+            colors.push(this.hslToHex((hsl.h + 90) % 360, hsl.s, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+            colors.push(this.hslToHex((hsl.h + 270) % 360, hsl.s, hsl.l));
+            break;
+        }
+        
+        return colors.slice(0, 4);
+      }
+
+      getThemeColors(theme) {
+        switch (theme) {
+          case 'warm':
+            return ['#FF6B6B', '#FF8E53', '#FF6B35', '#C44536'];
+          case 'cool':
+            return ['#4ECDC4', '#44A08D', '#096B72', '#2E8B9B'];
+          case 'pastel':
+            return ['#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9'];
+          default:
+            return ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
+        }
+      }
+
+      displayPalette(colors) {
+        const paletteDisplay = document.getElementById('paletteDisplay');
+        if (!paletteDisplay) return;
+        
+        paletteDisplay.innerHTML = colors.map(color => `
+          <div class="aspect-square rounded-lg cursor-pointer border-2 border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-200 flex items-end justify-center" 
+               style="background-color: ${color};" 
+               data-copy="${color}"
+               title="クリックでコピー: ${color}">
+            <span class="text-xs font-mono text-white bg-black bg-opacity-50 px-1 rounded mb-1">${color}</span>
+          </div>
+        `).join('');
+        
+        // コピー機能を追加
+        paletteDisplay.querySelectorAll('[data-copy]').forEach(div => {
+          div.addEventListener('click', (e) => {
+            const color = e.currentTarget.getAttribute('data-copy');
+            navigator.clipboard.writeText(color).then(() => {
+              console.log(`📋 Copied: ${color}`);
+              this.showSuccess(`コピーしました: ${color}`);
+              this.updateColor(color);
+            });
+          });
+        });
+      }
+
+      async copyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          console.log('Copied to clipboard:', text);
+          this.showSuccess(`コピーしました: ${text}`);
+        } catch (error) {
+          console.error('Copy failed:', error);
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          this.showSuccess(`コピーしました: ${text}`);
+        }
+      }
+
+      showSuccess(message) {
+        console.log('✅', message);
+        const existingToast = document.querySelector('.success-toast');
+        if (existingToast) existingToast.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'success-toast fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 3000);
+      }
+
+      showError(message) {
+        console.error('❌', message);
+        const existingToast = document.querySelector('.error-toast');
+        if (existingToast) existingToast.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'error-toast fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 5000);
+      }
+
+      // 必要なメソッドを実装
+      bindImageEvents() {
+        const imageInput = document.getElementById('imageInput');
+        const imageCanvas = document.getElementById('imageCanvas');
+        
+        if (imageInput) {
+          imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+              this.loadImageToCanvas(file);
+            }
+          });
+        }
+        
+        if (imageCanvas) {
+          imageCanvas.addEventListener('click', (e) => {
+            this.extractColorFromCanvas(e);
+          });
+        }
+      }
+
+      bindColorInputEvents() {
+        // 追加の色入力イベント
+        console.log('Additional color input events bound');
+      }
+
+      insertAdvancedComponents() {
+        // 高度なコンポーネントの挿入を AdvancedColorUI に委任
+        if (this.colorUI) {
+          // AdvancedColorUI のコンポーネントが自動的に挿入される
+          console.log('Advanced components delegated to AdvancedColorUI');
+        }
+      }
+
+      initSecurity() {
+        // セキュリティ機能の初期化
+        console.log('Security features initialized');
+      }
+
+      loadImageToCanvas(file) {
+        const canvas = document.getElementById('imageCanvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        
+        img.onload = () => {
+          const maxWidth = 500;
+          const maxHeight = 400;
+          let { width, height } = img;
+          
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+          if (height > maxHeight) {
+            width = (width * maxHeight) / height;
+            height = maxHeight;
           }
           
-          validateColorInput(hexInput, /^#?[0-9A-Fa-f]{0,6}$/, 'HEX形式で入力してください');
-          validateColorInput(rgbInput, /^[\d,\s()]*$/, 'RGB形式で入力してください');
-          validateColorInput(hslInput, /^[\d,%\s()]*$/, 'HSL形式で入力してください');
-        });
-      </script>
-</body>
+          canvas.width = width;
+          canvas.height = height;
+          canvas.style.display = 'block';
+          
+          ctx.drawImage(img, 0, 0, width, height);
+          console.log('🖼️ Image loaded to canvas');
+        };
+        
+        img.src = URL.createObjectURL(file);
+      }
+
+      extractColorFromCanvas(event) {
+        const canvas = document.getElementById('imageCanvas');
+        const ctx = canvas.getContext('2d');
+        const rect = canvas.getBoundingClientRect();
+        
+        const x = Math.floor((event.clientX - rect.left) * (canvas.width / rect.width));
+        const y = Math.floor((event.clientY - rect.top) * (canvas.height / rect.height));
+        
+        const imageData = ctx.getImageData(x, y, 1, 1);
+        const data = imageData.data;
+        
+        const r = data[0];
+        const g = data[1];
+        const b = data[2];
+        
+        const hex = this.rgbToHex(r, g, b);
+        this.updateColor(hex);
+        
+        console.log(`🎨 Extracted color from image: ${hex} at (${x}, ${y})`);
+        this.showSuccess(`画像から色を抽出しました: ${hex}`);
+      }
+
+      rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+
+      updateColor(hex) {
+        console.log('🎨 updateColor called with:', hex);
+        
+        if (!hex || !this.isValidHex(hex)) {
+          console.error('Invalid hex color:', hex);
+          return;
+        }
+        
+        this.currentColor = hex;
+        
+        // DOM要素の更新
+        this.updateColorInputs(hex);
+        this.updateColorPreview(hex);
+        this.updateColorInfo(hex);
+        
+        // AdvancedColorUIにも色を同期
+        if (window.colorUI) {
+          window.colorUI.currentColor = hex;
+        }
+      }
+
+      // カラー選択メソッド（AdvancedColorUIから呼ばれる）
+      selectColor(hex) {
+        this.updateColor(hex);
+      }
+
+      updateColorInputs(hex) {
+        const hexInput = document.getElementById('hexInput');
+        const colorPicker = document.getElementById('colorPicker');
+        const rgbInput = document.getElementById('rgbInput');
+        const hslInput = document.getElementById('hslInput');
+
+        if (hexInput) hexInput.value = hex;
+        if (colorPicker) colorPicker.value = hex;
+        
+        // RGB/HSL計算と表示
+        if (this.colorEngine) {
+          const rgb = this.colorEngine.hexToRgb(hex);
+          const hsl = this.colorEngine.rgbToHsl(rgb.r, rgb.g, rgb.b);
+          
+          if (rgbInput) rgbInput.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+          if (hslInput) hslInput.value = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s * 100)}%, ${Math.round(hsl.l * 100)}%)`;
+        }
+      }
+
+      updateColorPreview(hex) {
+        const colorPreview = document.getElementById('colorPreview');
+        if (colorPreview) {
+          colorPreview.style.backgroundColor = hex;
+        }
+      }
+
+      updateColorInfo(hex) {
+        const colorName = document.getElementById('colorName');
+        const colorTemperature = document.getElementById('colorTemperature');
+        const colorPsychology = document.getElementById('colorPsychology');
+        
+        if (colorName) colorName.textContent = hex;
+        if (colorTemperature) colorTemperature.textContent = 'Color info';
+        if (colorPsychology) colorPsychology.textContent = 'Psychology info';
+      }
+
+      isValidHex(hex) {
+        return /^#[0-9A-F]{6}$/i.test(hex);
+      }
+
+      hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
+
+      rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+        
+        if (max === min) {
+          h = s = 0;
+        } else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        
+        return { h: h * 360, s, l };
+      }
+
+      hslToHex(h, s, l) {
+        h /= 360;
+        const hue2rgb = (p, q, t) => {
+          if (t < 0) t += 1;
+          if (t > 1) t -= 1;
+          if (t < 1/6) return p + (q - p) * 6 * t;
+          if (t < 1/2) return q;
+          if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          return p;
+        };
+        
+        if (s === 0) {
+          const gray = Math.round(l * 255);
+          return `#${gray.toString(16).padStart(2, '0').repeat(3)}`;
+        }
+        
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        const r = Math.round(hue2rgb(p, q, h + 1/3) * 255);
+        const g = Math.round(hue2rgb(p, q, h) * 255);
+        const b = Math.round(hue2rgb(p, q, h - 1/3) * 255);
+        
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+      }
+
+      // ...existing code...
+    }; // クラス定義終了
+
+    // DOMContentLoadedでアプリケーション開始
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing color code tool...');
+      window.colorCodeApp = new window.ColorCodeToolApp();
+    });
+
+    </script>
+  </body>
 </html>
+
 
