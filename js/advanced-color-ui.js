@@ -669,7 +669,7 @@ class AdvancedColorUI {
         const saturation = (x / width) * 100;
         const lightness = 100 - (y / height) * 100;
         
-        const rgb = this.hslToRgb(hue, saturation, lightness);
+        const rgb = this.hslToRgbValues(hue, saturation, lightness);
         const index = (y * width + x) * 4;
         
         data[index] = rgb.r;     // Red
@@ -750,6 +750,57 @@ class AdvancedColorUI {
     
     // デフォルト値
     return { r: 0, g: 0, b: 0 };
+  }
+
+  /**
+   * 色入力フィールドの更新
+   */
+  updateColorInputs(color) {
+    try {
+      // 色の正規化
+      let normalizedColor = color;
+      if (color.startsWith('hsl')) {
+        // HSL形式をHEXに変換
+        const hsl = this.parseColorToHsl(color);
+        const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
+        normalizedColor = this.rgbToHex(rgb.r, rgb.g, rgb.b);
+      }
+
+      // RGB値を取得
+      let rgb;
+      if (this.colorEngine && this.colorEngine.hexToRgb) {
+        rgb = this.colorEngine.hexToRgb(normalizedColor);
+      } else {
+        rgb = this.parseColor(normalizedColor);
+      }
+
+      // nullチェック
+      if (!rgb || rgb.r === undefined || rgb.g === undefined || rgb.b === undefined) {
+        console.warn('RGB変換に失敗しました:', color);
+        return;
+      }
+
+      // 各色空間に変換
+      const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+      const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
+      const cmyk = this.rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+      // 各フィールドの更新
+      const hexValue = document.getElementById('hexValue');
+      const rgbValue = document.getElementById('rgbValue');
+      const hslValue = document.getElementById('hslValue');
+      const cmykValue = document.getElementById('cmykValue');
+
+      if (hexValue) hexValue.value = hex;
+      if (rgbValue) rgbValue.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+      if (hslValue) hslValue.value = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
+      if (cmykValue) cmykValue.value = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
+
+      // 色情報の更新
+      this.updateColorInfo(hex);
+    } catch (error) {
+      console.warn('色入力フィールドの更新に失敗しました:', error);
+    }
   }
 
   /**
@@ -865,7 +916,7 @@ class AdvancedColorUI {
       const saturation = 50 + Math.random() * 50;
       const lightness = 30 + Math.random() * 40;
       const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-      colors.push(color);
+      colors.push(this.normalizeColor(color));
     }
 
     this.displayColors(colors, 'generatedPalette');
@@ -891,7 +942,7 @@ class AdvancedColorUI {
     const refinedColors = colors.map(color => {
       const hsl = this.parseColorToHsl(color);
       hsl.l = Math.max(10, Math.min(90, hsl.l + (Math.random() - 0.5) * 20));
-      return `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+      return this.normalizeColor(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`);
     });
 
     this.displayColors(refinedColors, 'generatedPalette');
@@ -968,9 +1019,79 @@ class AdvancedColorUI {
 
       const hsl = this.parseColorToHsl(originalColor);
       hsl.l = Math.max(0, Math.min(100, hsl.l + adjustmentValue));
-      const newColor = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+      const newColor = this.normalizeColor(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`);
       element.style.backgroundColor = newColor;
     });
+  }
+
+  /**
+   * モノクロマチック配色生成
+   */
+  generateMonochromatic(baseHsl) {
+    const colors = [];
+    for (let i = 0; i < 5; i++) {
+      const lightness = 20 + (i * 15);
+      colors.push(this.normalizeColor(`hsl(${baseHsl.h}, ${baseHsl.s}%, ${lightness}%)`));
+    }
+    return colors;
+  }
+
+  /**
+   * 類似色配色生成
+   */
+  generateAnalogous(baseHsl) {
+    const colors = [];
+    const hueOffsets = [-30, -15, 0, 15, 30];
+    hueOffsets.forEach(offset => {
+      const hue = (baseHsl.h + offset + 360) % 360;
+      colors.push(this.normalizeColor(`hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`));
+    });
+    return colors;
+  }
+
+  /**
+   * 補色配色生成
+   */
+  generateComplementary(baseHsl) {
+    const complementHue = (baseHsl.h + 180) % 360;
+    return [
+      this.normalizeColor(`hsl(${baseHsl.h}, ${baseHsl.s}%, ${baseHsl.l}%)`),
+      this.normalizeColor(`hsl(${complementHue}, ${baseHsl.s}%, ${baseHsl.l}%)`)
+    ];
+  }
+
+  /**
+   * 三角配色生成
+   */
+  generateTriadic(baseHsl) {
+    const hueOffsets = [0, 120, 240];
+    return hueOffsets.map(offset => {
+      const hue = (baseHsl.h + offset) % 360;
+      return this.normalizeColor(`hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`);
+    });
+  }
+
+  /**
+   * 四角配色生成
+   */
+  generateTetradic(baseHsl) {
+    const hueOffsets = [0, 90, 180, 270];
+    return hueOffsets.map(offset => {
+      const hue = (baseHsl.h + offset) % 360;
+      return this.normalizeColor(`hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`);
+    });
+  }
+
+  /**
+   * 分割補色配色生成
+   */
+  generateSplitComplementary(baseHsl) {
+    const complementHue = (baseHsl.h + 180) % 360;
+    return [
+      this.normalizeColor(`hsl(${baseHsl.h}, ${baseHsl.s}%, ${baseHsl.l}%)`),
+      this.normalizeColor(`hsl(${(complementHue - 30 + 360) % 360}, ${baseHsl.s}%, ${baseHsl.l}%)`),
+      this.normalizeColor(`hsl(${(complementHue + 30) % 360}, ${baseHsl.s}%, ${baseHsl.l}%)`)
+    ];
   }
 
   /**
@@ -1035,253 +1156,346 @@ class AdvancedColorUI {
   }
 
   /**
-   * モノクロマチック配色生成
+   * 明度調整でパレット更新
    */
-  generateMonochromatic(baseHsl) {
-    const colors = [];
-    for (let i = 0; i < 5; i++) {
-      const lightness = 20 + (i * 15);
-      colors.push(`hsl(${baseHsl.h}, ${baseHsl.s}%, ${lightness}%)`);
-    }
-    return colors;
-  }
+  updatePaletteWithLightness(adjustment) {
+    const container = document.getElementById('generatedPalette');
+    if (!container) return;
 
-  /**
-   * 類似色配色生成
-   */
-  generateAnalogous(baseHsl) {
-    const colors = [];
-    const hueOffsets = [-30, -15, 0, 15, 30];
-    hueOffsets.forEach(offset => {
-      const hue = (baseHsl.h + offset + 360) % 360;
-      colors.push(`hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`);
-    });
-    return colors;
-  }
+    const colorElements = container.querySelectorAll('.color-item');
+    const adjustmentValue = parseInt(adjustment);
 
-  /**
-   * 補色配色生成
-   */
-  generateComplementary(baseHsl) {
-    const complementHue = (baseHsl.h + 180) % 360;
-    return [
-      `hsl(${baseHsl.h}, ${baseHsl.s}%, ${baseHsl.l}%)`,
-      `hsl(${complementHue}, ${baseHsl.s}%, ${baseHsl.l}%)`
-    ];
-  }
+    colorElements.forEach(element => {
+      const originalColor = element.dataset.originalColor || element.style.backgroundColor;
+      if (!element.dataset.originalColor) {
+        element.dataset.originalColor = originalColor;
+      }
 
-  /**
-   * 三角配色生成
-   */
-  generateTriadic(baseHsl) {
-    const hueOffsets = [0, 120, 240];
-    return hueOffsets.map(offset => {
-      const hue = (baseHsl.h + offset) % 360;
-      return `hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`;
+      const hsl = this.parseColorToHsl(originalColor);
+      hsl.l = Math.max(0, Math.min(100, hsl.l + adjustmentValue));
+      const newColor = this.normalizeColor(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`);
+      element.style.backgroundColor = newColor;
     });
   }
 
   /**
-   * 四角配色生成
+   * 色の正規化
    */
-  generateTetradic(baseHsl) {
-    const hueOffsets = [0, 90, 180, 270];
-    return hueOffsets.map(offset => {
-      const hue = (baseHsl.h + offset) % 360;
-      return `hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`;
-    });
-  }
-
-  /**
-   * 分割補色配色生成
-   */
-  generateSplitComplementary(baseHsl) {
-    const complementHue = (baseHsl.h + 180) % 360;
-    return [
-      `hsl(${baseHsl.h}, ${baseHsl.s}%, ${baseHsl.l}%)`,
-      `hsl(${(complementHue - 30 + 360) % 360}, ${baseHsl.s}%, ${baseHsl.l}%)`,
-      `hsl(${(complementHue + 30) % 360}, ${baseHsl.s}%, ${baseHsl.l}%)`
-    ];
-  }
-
-  /**
-   * 色をHSLに変換
-   */
-  parseColorToHsl(color) {
-    // HSL形式の場合
-    if (color.includes('hsl')) {
-      const matches = color.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
-      if (matches) {
-        return {
-          h: parseInt(matches[1]),
-          s: parseInt(matches[2]),
-          l: parseInt(matches[3])
-        };
+  normalizeColor(color) {
+    if (!color) return '#000000';
+    
+    try {
+      // HSL形式の場合はHEXに変換
+      if (color.includes('hsl')) {
+        const hsl = this.parseColorToHsl(color);
+        const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
+        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
       }
-    }
-
-    // HEX形式の場合
-    if (color.startsWith('#')) {
-      const rgb = this.hexToRgb(color);
-      return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
-    }
-
-    // RGB形式の場合
-    if (color.includes('rgb')) {
-      const matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      if (matches) {
-        return this.rgbToHsl(parseInt(matches[1]), parseInt(matches[2]), parseInt(matches[3]));
-      }
-    }
-
-    // デフォルト値
-    return { h: 0, s: 50, l: 50 };
-  }
-
-  /**
-   * 色をパース
-   */
-  parseColor(color) {
-    if (!color) return { r: 0, g: 0, b: 0 };
-    
-    // HEX形式
-    if (color.startsWith('#')) {
-      return this.hexToRgb(color);
-    }
-    
-    // RGB形式
-    if (color.includes('rgb')) {
-      const matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      if (matches) {
-        return {
-          r: parseInt(matches[1]),
-          g: parseInt(matches[2]),
-          b: parseInt(matches[3])
-        };
-      }
-    }
-    
-    // HSL形式
-    if (color.includes('hsl')) {
-      const hsl = this.parseColorToHsl(color);
-      return this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
-    }
-    
-    // デフォルト値
-    return { r: 0, g: 0, b: 0 };
-  }
-
-  /**
-   * HEXからRGBに変換
-   */
-  hexToRgb(hex) {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : { r: 0, g: 0, b: 0 };
-  }
-
-  /**
-   * RGBからHEXに変換
-   */
-  rgbToHex(r, g, b) {
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-  }
-
-  /**
-   * RGBからHSLに変換
-   */
-  rgbToHsl(r, g, b) {
-    r /= 255;
-    g /= 255;
-    b /= 255;
-
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-
-    if (max === min) {
-      h = s = 0; // グレー
-    } else {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
       
-      switch (max) {
-        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-        case g: h = (b - r) / d + 2; break;
-        case b: h = (r - g) / d + 4; break;
+      // RGB形式の場合はHEXに変換
+      if (color.includes('rgb')) {
+        const rgb = this.parseColor(color);
+        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
       }
-      h /= 6;
+      
+      // HEX形式の場合はそのまま
+      if (color.startsWith('#')) {
+        return color;
+      }
+      
+      return '#000000';
+    } catch (error) {
+      console.warn('色の正規化に失敗しました:', color, error);
+      return '#000000';
+    }
+  }
+
+  /**
+   * 彩度・明度キャンバスの更新
+   */
+  updateSaturationLightnessCanvas() {
+    const canvas = document.getElementById('saturationLightness');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    this.drawSaturationLightness(ctx, canvas.width, canvas.height, this.currentHue);
+  }
+
+  /**
+   * 外部からの色更新（他のカラーツールとの統合用）
+   */
+  setColor(color) {
+    const normalizedColor = this.normalizeColor(color);
+    this.currentColor = normalizedColor;
+    
+    // HSL値も更新
+    const hsl = this.parseColorToHsl(normalizedColor);
+    this.currentHue = hsl.h;
+    this.currentSaturation = hsl.s;
+    this.currentLightness = hsl.l;
+    
+    // UI更新（履歴追加は避ける）
+    this.updateColorInputs(normalizedColor);
+    
+    // プレビューの更新
+    const preview = document.getElementById('colorPreviewLarge');
+    if (preview) {
+      preview.style.backgroundColor = normalizedColor;
+    }
+  }
+
+  /**
+   * 現在の色を取得
+   */
+  getCurrentColor() {
+    return this.currentColor || '#4ADE80';
+  }
+
+  /**
+   * 競合回避のための静的チェック
+   */
+  static checkCompatibility() {
+    // 既存のグローバル変数をチェック
+    const conflictingVars = ['colorUI', 'colorApp', 'colorCodeApp'];
+    const conflicts = conflictingVars.filter(varName => window[varName]);
+    
+    if (conflicts.length > 0) {
+      console.warn('既存のカラーツール変数が検出されました:', conflicts);
+      return false;
+    }
+    
+    return true;
+  }
+
+  /**
+   * イベントバインディング
+   */
+  bindEvents() {
+    // コピー機能
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('copy-btn')) {
+        const copyTarget = e.target.getAttribute('data-copy');
+        const element = document.getElementById(copyTarget);
+        
+        if (element) {
+          const text = element.value || element.textContent;
+          this.copyToClipboard(text);
+          this.showToast('クリップボードにコピーしました');
+        }
+      }
+    });
+
+    // ハーモニー生成
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('harmony-btn')) {
+        const harmonyType = e.target.getAttribute('data-harmony');
+        this.generateHarmony(harmonyType);
+        
+        // アクティブボタンの更新
+        document.querySelectorAll('.harmony-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+      }
+    });
+
+    // パレット生成
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('palette-btn')) {
+        const paletteType = e.target.getAttribute('data-palette');
+        this.generatePalette(paletteType);
+        
+        // アクティブボタンの更新
+        document.querySelectorAll('.palette-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+      }
+    });
+
+    // コントラストチェッカー
+    this.bindContrastEvents();
+    
+    // グラデーションメーカー
+    this.bindGradientEvents();
+    
+    // バッチ変換
+    this.bindBatchEvents();
+    
+    // 色履歴
+    this.bindHistoryEvents();
+    
+    // エクスポート機能
+    this.bindExportEvents();
+  }
+
+  /**
+   * 統合パレット機能のイベントバインディング
+   */
+  bindPaletteEvents() {
+    // ランダム生成ボタン
+    document.getElementById('generateRandomPalette')?.addEventListener('click', () => {
+      this.generateRandomPalette();
+    });
+
+    // 微調整ボタン
+    document.getElementById('refinePalette')?.addEventListener('click', () => {
+      this.refinePalette();
+    });
+
+    // 保存ボタン
+    document.getElementById('savePalette')?.addEventListener('click', () => {
+      this.savePalette();
+    });
+
+    // エクスポートボタン
+    document.getElementById('exportPalette')?.addEventListener('click', () => {
+      this.exportPalette();
+    });
+
+    // 明度調整スライダー
+    document.getElementById('lightnessAdjust')?.addEventListener('input', (e) => {
+      document.getElementById('lightnessValue').textContent = e.target.value;
+      this.updatePaletteWithLightness(e.target.value);
+    });
+  }
+
+  /**
+   * コントラストチェッカーのイベントバインディング
+   */
+  bindContrastEvents() {
+    const foregroundColor = document.getElementById('foregroundColor');
+    const backgroundColor = document.getElementById('backgroundColor');
+    const foregroundHex = document.getElementById('foregroundHex');
+    const backgroundHex = document.getElementById('backgroundHex');
+
+    if (foregroundColor) {
+      foregroundColor.addEventListener('input', (e) => {
+        if (foregroundHex) foregroundHex.value = e.target.value;
+        this.updateContrastCheck();
+      });
     }
 
-    return { h: h * 360, s: s * 100, l: l * 100 };
+    if (backgroundColor) {
+      backgroundColor.addEventListener('input', (e) => {
+        if (backgroundHex) backgroundHex.value = e.target.value;
+        this.updateContrastCheck();
+      });
+    }
+
+    if (foregroundHex) {
+      foregroundHex.addEventListener('input', (e) => {
+        if (foregroundColor) foregroundColor.value = e.target.value;
+        this.updateContrastCheck();
+      });
+    }
+
+    if (backgroundHex) {
+      backgroundHex.addEventListener('input', (e) => {
+        if (backgroundColor) backgroundColor.value = e.target.value;
+        this.updateContrastCheck();
+      });
+    }
   }
 
   /**
-   * RGBからCMYKに変換
+   * グラデーションメーカーのイベントバインディング
    */
-  rgbToCmyk(r, g, b) {
-    r /= 255;
-    g /= 255;
-    b /= 255;
+  bindGradientEvents() {
+    const gradientStart = document.getElementById('gradientStart');
+    const gradientEnd = document.getElementById('gradientEnd');
+    const gradientDirection = document.getElementById('gradientDirection');
+    const gradientSteps = document.getElementById('gradientSteps');
 
-    const k = 1 - Math.max(r, Math.max(g, b));
-    const c = (1 - r - k) / (1 - k) || 0;
-    const m = (1 - g - k) / (1 - k) || 0;
-    const y = (1 - b - k) / (1 - k) || 0;
+    const updateGradient = () => this.updateGradientPreview();
 
-    return {
-      c: Math.round(c * 100),
-      m: Math.round(m * 100),
-      y: Math.round(y * 100),
-      k: Math.round(k * 100)
-    };
-  }
-
-  /**
-   * 色名を取得
-   */
-  getColorName(color) {
-    const colorNames = {
-      '#FF0000': '赤',
-      '#00FF00': '緑',
-      '#0000FF': '青',
-      '#FFFF00': '黄',
-      '#FF00FF': 'マゼンタ',
-      '#00FFFF': 'シアン',
-      '#000000': '黒',
-      '#FFFFFF': '白',
-      '#808080': 'グレー'
-    };
+    gradientStart?.addEventListener('input', updateGradient);
+    gradientEnd?.addEventListener('input', updateGradient);
+    gradientDirection?.addEventListener('change', updateGradient);
     
-    return colorNames[color.toUpperCase()] || '不明';
+    if (gradientSteps) {
+      gradientSteps.addEventListener('input', (e) => {
+        document.getElementById('stepsValue').textContent = e.target.value;
+        updateGradient();
+      });
+    }
   }
 
   /**
-   * 色温度を取得
+   * バッチ変換のイベントバインディング
    */
-  getColorTemperature(color) {
-    const rgb = this.parseColor(color);
-    const temp = (rgb.r > rgb.b) ? '暖色' : (rgb.r < rgb.b) ? '寒色' : '中性';
-    return temp;
+  bindBatchEvents() {
+    document.getElementById('processBatch')?.addEventListener('click', () => {
+      this.processBatchConversion();
+    });
+
+    document.getElementById('validateColors')?.addEventListener('click', () => {
+      this.validateBatchColors();
+    });
+
+    document.getElementById('sortColors')?.addEventListener('click', () => {
+      this.sortBatchColors();
+    });
+
+    document.getElementById('downloadResults')?.addEventListener('click', () => {
+      this.downloadBatchResults();
+    });
   }
 
   /**
-   * 色の心理効果を取得
+   * 色履歴のイベントバインディング
    */
-  getColorPsychology(color) {
-    const hsl = this.parseColorToHsl(color);
-    const hue = hsl.h;
-    
-    if (hue < 30) return '情熱、エネルギー';
-    if (hue < 60) return '活力、楽観';
-    if (hue < 120) return '自然、成長';
-    if (hue < 180) return '信頼、冷静';
-    if (hue < 240) return '高貴、神秘';
-    if (hue < 300) return '創造、ロマンス';
-    return '温かみ、快適';
+  bindHistoryEvents() {
+    document.getElementById('clearHistory')?.addEventListener('click', () => {
+      this.clearColorHistory();
+    });
+
+    document.getElementById('exportHistory')?.addEventListener('click', () => {
+      this.exportColorHistory();
+    });
+  }
+
+  /**
+   * エクスポート機能のイベントバインディング
+   */
+  bindExportEvents() {
+    document.getElementById('generateExport')?.addEventListener('click', () => {
+      this.generateExportPreview();
+    });
+
+    document.getElementById('downloadExport')?.addEventListener('click', () => {
+      this.downloadExport();
+    });
+  }
+
+  /**
+   * 色履歴の読み込み
+   */
+  loadColorHistory() {
+    try {
+      const history = localStorage.getItem('colorHistory');
+      this.colorHistory = history ? JSON.parse(history) : [];
+      this.renderColorHistory();
+    } catch (error) {
+      console.warn('色履歴の読み込みに失敗しました:', error);
+      this.colorHistory = [];
+    }
+  }
+
+  /**
+   * 色履歴のレンダリング
+   */
+  renderColorHistory() {
+    const container = document.getElementById('colorHistory');
+    if (!container) return;
+
+    container.innerHTML = '';
+    this.colorHistory.forEach((color, index) => {
+      const colorItem = document.createElement('div');
+      colorItem.className = 'color-history-item w-10 h-10 rounded border border-gray-200 cursor-pointer hover:scale-110 transition-transform';
+      colorItem.style.backgroundColor = color;
+      colorItem.title = color;
+      colorItem.addEventListener('click', () => {
+        this.selectColor(color);
+      });
+      container.appendChild(colorItem);
+    });
   }
 
   /**
@@ -1601,7 +1815,6 @@ class AdvancedColorUI {
    * エクスポートプレビューの生成
    */
   generateExportPreview() {
-    // 実装は必要に応じて追加
     this.showToast('エクスポートプレビューを生成しました');
   }
 
@@ -1609,143 +1822,165 @@ class AdvancedColorUI {
    * エクスポートのダウンロード
    */
   downloadExport() {
-    // 実装は必要に応じて追加
     this.showToast('エクスポートファイルをダウンロードしました');
   }
 
   /**
-   * 色相から色を更新
+   * HEXからRGBに変換
    */
-  updateColorFromHue(hue) {
-    this.currentHue = hue;
-    const color = `hsl(${hue}, ${this.currentSaturation}%, ${this.currentLightness}%)`;
-    this.updateColorDisplay(color);
-    this.updateSaturationLightnessCanvas();
+  hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : { r: 0, g: 0, b: 0 };
   }
 
   /**
-   * 彩度・明度から色を更新
+   * RGBからHEXに変換
    */
-  updateColorFromSL(saturation, lightness) {
-    this.currentSaturation = saturation;
-    this.currentLightness = lightness;
-    const color = `hsl(${this.currentHue}, ${saturation}%, ${lightness}%)`;
-    this.updateColorDisplay(color);
+  rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
 
   /**
-   * 色表示の更新（安全な実装）
+   * RGBからHSLに変換
    */
-  updateColorDisplay(color) {
-    try {
-      this.currentColor = color;
+  rgbToHsl(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // グレー
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
       
-      // まず色を正規化
-      const normalizedColor = this.normalizeColor(color);
-      
-      // 入力フィールドの更新
-      this.updateColorInputs(normalizedColor);
-      
-      // 履歴に追加
-      this.addToHistory(normalizedColor);
-      
-      // プレビューの更新
-      const preview = document.getElementById('colorPreviewLarge');
-      if (preview) {
-        preview.style.backgroundColor = normalizedColor;
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
       }
-    } catch (error) {
-      console.warn('色表示の更新に失敗しました:', error);
+      h /= 6;
+    }
+
+    return { h: h * 360, s: s * 100, l: l * 100 };
+  }
+
+  /**
+   * RGBからCMYKに変換
+   */
+  rgbToCmyk(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const k = 1 - Math.max(r, Math.max(g, b));
+    const c = (1 - r - k) / (1 - k) || 0;
+    const m = (1 - g - k) / (1 - k) || 0;
+    const y = (1 - b - k) / (1 - k) || 0;
+
+    return {
+      c: Math.round(c * 100),
+      m: Math.round(m * 100),
+      y: Math.round(y * 100),
+      k: Math.round(k * 100)
+    };
+  }
+
+  /**
+   * 色をHSLに変換
+   */
+  parseColorToHsl(color) {
+    // HSL形式の場合
+    if (color.includes('hsl')) {
+      const matches = color.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
+      if (matches) {
+        return {
+          h: parseInt(matches[1]),
+          s: parseInt(matches[2]),
+          l: parseInt(matches[3])
+        };
+      }
+    }
+
+    // HEX形式の場合
+    if (color.startsWith('#')) {
+      const rgb = this.hexToRgb(color);
+      return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+    }
+
+    // RGB形式の場合
+    if (color.includes('rgb')) {
+      const matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (matches) {
+        return this.rgbToHsl(parseInt(matches[1]), parseInt(matches[2]), parseInt(matches[3]));
+      }
+    }
+
+    // デフォルト値
+    return { h: 0, s: 50, l: 50 };
+  }
+
+  /**
+   * ユーティリティ: クリップボードにコピー
+   */
+  copyToClipboard(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).catch(err => {
+        console.warn('クリップボードへのコピーに失敗しました:', err);
+      });
+    } else {
+      // フォールバック
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
     }
   }
 
   /**
-   * 色の正規化
+   * ユーティリティ: トーストメッセージ表示
    */
-  normalizeColor(color) {
-    if (!color) return '#000000';
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50';
+    toast.textContent = message;
     
-    try {
-      // HSL形式の場合はHEXに変換
-      if (color.includes('hsl')) {
-        const hsl = this.parseColorToHsl(color);
-        const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
-        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
       }
-      
-      // RGB形式の場合はHEXに変換
-      if (color.includes('rgb')) {
-        const rgb = this.parseColor(color);
-        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
-      }
-      
-      // HEX形式の場合はそのまま
-      if (color.startsWith('#')) {
-        return color;
-      }
-      
-      return '#000000';
-    } catch (error) {
-      console.warn('色の正規化に失敗しました:', color, error);
-      return '#000000';
-    }
+    }, 3000);
   }
 
   /**
-   * 彩度・明度キャンバスの更新
+   * ユーティリティ: ファイルダウンロード
    */
-  updateSaturationLightnessCanvas() {
-    const canvas = document.getElementById('saturationLightness');
-    if (!canvas) return;
+  downloadFile(filename, content, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
     
-    const ctx = canvas.getContext('2d');
-    this.drawSaturationLightness(ctx, canvas.width, canvas.height, this.currentHue);
-  }
-
-  /**
-   * 外部からの色更新（他のカラーツールとの統合用）
-   */
-  setColor(color) {
-    const normalizedColor = this.normalizeColor(color);
-    this.currentColor = normalizedColor;
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
     
-    // HSL値も更新
-    const hsl = this.parseColorToHsl(normalizedColor);
-    this.currentHue = hsl.h;
-    this.currentSaturation = hsl.s;
-    this.currentLightness = hsl.l;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     
-    // UI更新（履歴追加は避ける）
-    this.updateColorInputs(normalizedColor);
-    
-    // プレビューの更新
-    const preview = document.getElementById('colorPreviewLarge');
-    if (preview) {
-      preview.style.backgroundColor = normalizedColor;
-    }
-  }
-
-  /**
-   * 現在の色を取得
-   */
-  getCurrentColor() {
-    return this.currentColor || '#4ADE80';
-  }
-
-  /**
-   * 競合回避のための静的チェック
-   */
-  static checkCompatibility() {
-    // 既存のグローバル変数をチェック
-    const conflictingVars = ['colorUI', 'colorApp', 'colorCodeApp'];
-    const conflicts = conflictingVars.filter(varName => window[varName]);
-    
-    if (conflicts.length > 0) {
-      console.warn('既存のカラーツール変数が検出されました:', conflicts);
-      return false;
-    }
-    
-    return true;
+    URL.revokeObjectURL(url);
   }
 
   // ...existing code...
