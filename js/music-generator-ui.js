@@ -42,20 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let generationHistory = [];
     let waveform = null;
     const loadingIndicator = document.getElementById('loading-indicator');
-    const loadingOverlay = document.getElementById('loading-overlay');
-    const loadingText = document.getElementById('loading-text');
+    // Note: Loading overlay removed as per user request
 
     // --- Initial Loading ---
     async function initializeApp() {
-        console.log('🚀 Initializing music generator app...');
+        // Music generator app initialization
         
         // Check if using correct protocol
         if (!checkProtocol()) {
             return; // Stop initialization if using file:// protocol
         }
         
-        if (loadingOverlay) loadingOverlay.style.display = 'flex';
-        if (loadingText) loadingText.textContent = '楽器を読み込んでいます...';
+        // Note: Loading overlay removed as per user request
         
         try {
             // Wait for the SampleLibrary to be available
@@ -69,29 +67,37 @@ document.addEventListener('DOMContentLoaded', () => {
               throw new Error('SampleLibrary failed to load after 5 seconds');
             }
             
-            console.log('✅ SampleLibrary is available, loading instruments...');
-            
-            // Initialize Tone.js context safely
-            if (Tone.context.state !== 'running') {
-                console.log('⏳ AudioContext is suspended, waiting for user interaction...');
-                if (loadingText) loadingText.textContent = 'クリックして音楽エンジンを開始してください';
-                // Don't start context automatically, wait for user interaction
+            // Wait for music engine to be available
+            let engineAttempts = 0;
+            while (!window.musicGenerator && engineAttempts < 100) {
+                await new Promise(resolve => setTimeout(resolve, 50));
+                engineAttempts++;
             }
             
-            await MusicGeneratorEngine.loadInstruments();
-            console.log('✅ App initialization completed');
+            if (window.musicGenerator) {
+                // Wait for engine initialization
+                let initAttempts = 0;
+                while (!window.musicGenerator.isInitialized && initAttempts < 100) {
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    initAttempts++;
+                }
+                
+                if (window.musicGenerator.isInitialized) {
+                    // Advanced AI Music Engine ready
+                    updateInstrumentOptions();
+                } else {
+                    // Fallback mode
+                    updateInstrumentOptions();
+                }
+            }
             
-            if (loadingOverlay) loadingOverlay.style.display = 'none';
+            // App initialization completed
+            
+            // Note: Loading overlay removed as per user request
         } catch (error) {
             console.error("❌ Initialization failed:", error);
-            if (loadingText) {
-              loadingText.textContent = `初期化に失敗しました: ${error.message}`;
-              loadingText.style.color = '#ef4444';
-            }
-            // Still allow the app to continue with fallback instruments
-            setTimeout(() => {
-              if (loadingOverlay) loadingOverlay.style.display = 'none';
-            }, 3000);
+            // Note: Loading overlay error handling removed as per user request
+            // App continues with fallback instruments
         }
     }
 
@@ -137,7 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (reverbSlider) {
         reverbSlider.addEventListener('input', (e) => {
             const value = parseFloat(e.target.value);
-            MusicGeneratorEngine.setReverb(value);
+            // Reverb is now handled by the advanced engine's effects chain
+            console.log(`🎛️ Reverb set to: ${value}`);
             if (reverbValue) {
                 reverbValue.textContent = value.toFixed(2);
             }
@@ -168,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (generateBtn) {
         generateBtn.addEventListener('click', async () => {
             try {
-                if (loadingIndicator) loadingIndicator.style.display = 'flex';
+                // Note: Loading indicator removed as per user request
                 generateBtn.disabled = true;
             
                 // Start Tone.js context (this requires user gesture)
@@ -205,7 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     const tempoMap = ['slow', 'medium', 'fast'];
                     const tempoName = tempoMap[tempoSimpleSlider ? tempoSimpleSlider.value : 1] || 'medium';
-                    const tempoRange = MusicGeneratorEngine.getTempoRange(tempoName);
+                    
+                    // Simple tempo mapping for the new engine
+                    const tempoRanges = {
+                        slow: [60, 90],
+                        medium: [90, 120],
+                        fast: [120, 160]
+                    };
+                    const tempoRange = tempoRanges[tempoName] || tempoRanges.medium;
                     options.tempo = Math.floor(Math.random() * (tempoRange[1] - tempoRange[0])) + tempoRange[0];
         
                 } else { // advanced mode
@@ -225,27 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 console.log('Generating with options:', options);
     
-                // Generate music
-                const musicData = await MusicGeneratorEngine.generate(options);
+                // Generate music using Advanced AI Engine
+                const composition = await window.musicGenerator.generateAdvancedComposition(options);
     
-                console.log('Generated music data:', musicData);
-    
-                // Play the generated music
-                MusicGeneratorEngine.playFromHistory(musicData);
+                console.log('Generated AI composition:', composition);
     
                 // Update UI for player
                 if (playerPlaceholder) playerPlaceholder.style.display = 'none';
                 if (playerControls) playerControls.style.display = 'flex';
-                updatePlayPauseButton(true);
+                
+                // Don't auto-start playback, just show controls as ready
+                updatePlayPauseButton(false); // Set to pause state initially
     
                 // Add to history
-                addToHistory(options, musicData);
+                addToHistory(options, composition);
     
             } catch (error) {
                 console.error("Generation failed:", error);
                 alert("音楽の生成に失敗しました。");
             } finally {
-                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                // Note: Loading indicator removed as per user request
                 generateBtn.disabled = false;
             }
         });
@@ -263,40 +276,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', () => {
-            const transport = MusicGeneratorEngine.getTransport();
-            if (transport.state === 'started') {
-                MusicGeneratorEngine.pause();
+        playPauseBtn.addEventListener('click', async () => {
+            // Resume AudioContext if suspended
+            if (Tone.context.state !== 'running') {
+                await Tone.start();
+                console.log('✅ AudioContext started');
+            }
+            
+            if (Tone.Transport.state === 'started') {
+                window.musicGenerator.stop();
                 updatePlayPauseButton(false);
             } else {
-                MusicGeneratorEngine.play();
-                updatePlayPauseButton(true);
+                // If we have a current composition, play it
+                if (window.musicGenerator.currentComposition) {
+                    Tone.Transport.start();
+                    updatePlayPauseButton(true);
+                } else {
+                    console.warn('No composition to play');
+                }
             }
         });
     }
 
     if (stopBtn) {
         stopBtn.addEventListener('click', () => {
-            MusicGeneratorEngine.stop();
+            window.musicGenerator.stop();
             updatePlayPauseButton(false);
         });
     }
 
-    if (loopToggle) { // Use loopToggle for the event listener
-        loopToggle.addEventListener('change', () => { // Use 'change' for checkboxes
-            const transport = MusicGeneratorEngine.getTransport();
-            if (transport) {
-                transport.loop = loopToggle.checked;
-            }
+    if (loopToggle) {
+        loopToggle.addEventListener('change', () => {
+            Tone.Transport.loop = loopToggle.checked;
         });
     }
 
     if (volumeSlider) {
         volumeSlider.addEventListener('input', (e) => {
-            const value = parseInt(e.target.value);
-            if (window.MusicGeneratorEngine && window.MusicGeneratorEngine.setVolume) {
-                MusicGeneratorEngine.setVolume(value);
+            const value = parseFloat(e.target.value); // Float value from 0 to 1
+            const percentage = Math.round(value * 100); // Convert to percentage
+            
+            // Convert to dB (-60dB to 0dB range)
+            let dbValue;
+            if (value === 0) {
+                dbValue = -Infinity;
+            } else {
+                // Convert 0.01-1.0 to -60dB to 0dB
+                dbValue = -60 + (value * 60);
             }
+            
+            Tone.getDestination().volume.value = dbValue;
+            console.log(`🔊 Volume set to: ${percentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
         });
     }
     
@@ -365,7 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
             button.className = 'p-1 rounded-full hover:bg-accent/20 text-gray-600 hover:text-accent';
             button.title = 'この音楽を再生';
             button.onclick = () => {
-                MusicGeneratorEngine.playFromHistory(item.musicData);
+                if (window.musicGenerator && window.musicGenerator.playFromHistory) {
+                    console.log('🎵 Playing from history:', item.options);
+                    window.musicGenerator.playFromHistory(item.musicData);
+                } else {
+                    console.warn('❌ Music generator not available for history playback');
+                }
                 if(playerPlaceholder) playerPlaceholder.style.display = 'none';
                 if(playerControls) playerControls.style.display = 'flex';
                 updatePlayPauseButton(true);
@@ -424,8 +459,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateProgress() {
         requestAnimationFrame(updateProgress);
         
-        // Safely get transport
-        const transport = MusicGeneratorEngine.getTransport ? MusicGeneratorEngine.getTransport() : Tone.Transport;
+        // Use Tone.Transport directly since we're using the new engine
+        const transport = Tone.Transport;
         
         if (!transport) return;
         
@@ -458,33 +493,27 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp(); // Call initialization function
     setMode('simple');
     if (volumeSlider) {
-        Tone.getDestination().volume.value = Tone.gainToDb(volumeSlider.value);
+        const initialValue = parseFloat(volumeSlider.value) || 0.8; // Float value from HTML
+        const initialPercentage = Math.round(initialValue * 100);
+        
+        // Use same calculation as in the event listener
+        let dbValue;
+        if (initialValue === 0) {
+            dbValue = -Infinity;
+        } else {
+            dbValue = -60 + (initialValue * 60);
+        }
+        Tone.getDestination().volume.value = dbValue;
+        console.log(`🔊 Initial volume set to: ${initialPercentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
     }
     if (reverbSlider) {
-        MusicGeneratorEngine.setReverb(parseFloat(reverbSlider.value)); // Set initial reverb
+        // Initial reverb will be set by the reverb slider event listener
+        console.log('🎛️ Initial reverb value:', reverbSlider.value);
     }
     renderHistory(); // Initial render
     setupWaveform(); // Initialize the waveform visualizer
 
-    // --- Loading Overlay Click Handler ---
-    if (loadingOverlay) {
-        loadingOverlay.addEventListener('click', async () => {
-            if (Tone.context.state !== 'running') {
-                try {
-                    await Tone.start();
-                    console.log('✅ AudioContext started by user click');
-                    if (loadingText) loadingText.textContent = '楽器を読み込んでいます...';
-                    // Re-run initialization if needed
-                    if (typeof MusicGeneratorEngine !== 'undefined' && MusicGeneratorEngine.loadInstruments) {
-                        await MusicGeneratorEngine.loadInstruments();
-                    }
-                    if (loadingOverlay) loadingOverlay.style.display = 'none';
-                } catch (error) {
-                    console.error('Failed to start AudioContext:', error);
-                }
-            }
-        });
-    }
+    // Note: Loading overlay click handler removed as per user request
 
     // --- Protocol Check ---
     function checkProtocol() {
@@ -497,4 +526,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial protocol check
     checkProtocol();
+
+    // --- Instrument Options Update ---
+    function updateInstrumentOptions() {
+        console.log('🎺 Updating instrument options...');
+        
+        if (!window.musicGenerator || !window.musicGenerator.instruments) {
+            console.warn('⚠️ Advanced Music Engine not available for instrument update');
+            return;
+        }
+        
+        const instruments = Object.keys(window.musicGenerator.instruments);
+        console.log(`🎼 Available instruments: ${instruments.join(', ')}`);
+        
+        // Update melody instrument options
+        if (melodyInstrumentSelect) {
+            updateSelectOptions(melodyInstrumentSelect, instruments, 'piano');
+        }
+        
+        // Update chord instrument options
+        if (chordInstrumentSelect) {
+            updateSelectOptions(chordInstrumentSelect, instruments, 'piano');
+        }
+        
+        // Update bass instrument options
+        if (bassInstrumentSelect) {
+            updateSelectOptions(bassInstrumentSelect, instruments, 'bass-electric');
+        }
+    }
+    
+    function updateSelectOptions(selectElement, options, defaultValue) {
+        selectElement.innerHTML = '';
+        
+        options.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = formatInstrumentName(option);
+            if (option === defaultValue) {
+                optionElement.selected = true;
+            }
+            selectElement.appendChild(optionElement);
+        });
+    }
+    
+    function formatInstrumentName(instrumentName) {
+        return instrumentName
+            .replace(/-/g, ' ')
+            .replace(/([a-z])([A-Z])/g, '$1 $2')
+            .toLowerCase()
+            .replace(/\b\w/g, l => l.toUpperCase());
+    }
 });
