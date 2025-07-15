@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+      https://cdn.tailwindcss.com 
+      https://pagead2.googlesyndication.com 
+      https://partner.googleadservices.com 
+      https://tpc.googlesyndication.com 
+      https://www.googletagservices.com 
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google; 
+    style-src 'self' 'unsafe-inline' 
+      https://fonts.googleapis.com 
+      https://cdn.tailwindcss.com; 
+    font-src 'self' 
+      https://fonts.gstatic.com; 
+    img-src 'self' data: blob:
+      https://pagead2.googlesyndication.com
+      https://tpc.googlesyndication.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google
+      https://www.google.com
+      https://www.google.co.jp;
+    connect-src 'self' 
+      https://www.google-analytics.com 
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google; 
+    frame-src 'self' 
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com 
+      https://ep2.adtrafficquality.google 
+      https://www.google.com;
+    fenced-frame-src 'self'
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com;
+    object-src 'none'; 
+    base-uri 'self';
+  " />
+  
+  <title>【無料】カラーコード検索・色抽出ツール - HEX・RGB・HSL変換対応 | negi-lab.com</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 外部ライブラリ -->
+  <script src="../js/color-analysis-engine.js"></script>
+  <script src="../js/advanced-color-ui.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  
+  <!-- メインコンテンツ -->
+  <main class="container mx-auto px-4 py-8">
+    
+    <!-- タイトル -->
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">高度カラーコード分析・変換ツール</h1>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        HEX・RGB・HSL・CMYK形式での色入力・変換に対応した専門的カラーツール
+      </p>
+    </header>
+
+    <!-- カラー入力フォーム -->
+    <section class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">カラー入力・変換</h2>
+        
+        <div id="colorForm" class="space-y-6">
+          <!-- HEX入力 -->
+          <div>
+            <label for="hexInput" class="block text-sm font-medium text-gray-700 mb-2">
+              HEX カラーコード
+            </label>
+            <input 
+              type="text" 
+              id="hexInput" 
+              class="form-input w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              placeholder="#FF5733"
+              value="#65c155"
+            >
+          </div>
+
+          <!-- RGB入力 -->
+          <div>
+            <label for="rgbInput" class="block text-sm font-medium text-gray-700 mb-2">
+              RGB カラーコード
+            </label>
+            <input 
+              type="text" 
+              id="rgbInput" 
+              class="form-input w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              placeholder="rgb(255, 87, 51)"
+            >
+          </div>
+
+          <!-- HSL入力 -->
+          <div>
+            <label for="hslInput" class="block text-sm font-medium text-gray-700 mb-2">
+              HSL カラーコード
+            </label>
+            <input 
+              type="text" 
+              id="hslInput" 
+              class="form-input w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              placeholder="hsl(14, 100%, 60%)"
+            >
+          </div>
+
+          <!-- カラーピッカー -->
+          <div>
+            <label for="colorPicker" class="block text-sm font-medium text-gray-700 mb-2">
+              カラーピッカー
+            </label>
+            <input 
+              type="color" 
+              id="colorPicker" 
+              class="form-input w-full h-10 p-1 rounded-md border-gray-300 shadow-sm"
+              value="#65c155"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- カラー情報表示 -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">カラー情報</h2>
+        <div id="colorInfo">
+          <!-- ここに色情報が表示されます -->
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    // 完全なColorCodeToolAppクラス定義
+    class ColorCodeToolApp {
+      constructor() {
+        this.currentColor = '#65c155';
+        this.colorEngine = null;
+        this.colorUI = null;
+        this.init();
+      }
+
+      async init() {
+        try {
+          console.log('Initializing Color Code Tool...');
+          await this.initializeEngines();
+          this.initializeApp();
+        } catch (error) {
+          console.error('Initialization failed:', error);
+          this.showError('ツールの初期化に失敗しました。ページを再読み込みしてください。');
+        }
+      }
+
+      async initializeEngines() {
+        // ColorAnalysisEngineの初期化
+        if (window.ColorAnalysisEngine) {
+          this.colorEngine = new window.ColorAnalysisEngine();
+          console.log('ColorAnalysisEngine initialized');
+        } else {
+          throw new Error('ColorAnalysisEngine not found');
+        }
+      }
+
+      initializeApp() {
+        try {
+          console.log('Setting up UI...');
+          
+          // 高度な機能の初期化とグローバル変数設定
+          setTimeout(() => {
+            if (window.AdvancedColorUI) {
+              this.colorUI = new AdvancedColorUI(this.colorEngine);
+              console.log('AdvancedColorUI initialized successfully');
+              
+              // グローバル変数として設定
+              window.colorUI = this.colorUI;
+              window.colorApp = this;
+              window.colorCodeApp = this;
+              
+              console.log('Global variables set: colorUI, colorApp, colorCodeApp');
+            } else {
+              console.warn('AdvancedColorUI not available');
+            }
+          }, 100);
+          
+          // 基本機能のバインド
+          this.bindBasicEvents();
+          
+          // 初期色の設定
+          this.updateColor(this.currentColor);
+          
+          console.log('Color Code Tool initialized successfully');
+        } catch (error) {
+          console.error('Initialization error:', error);
+          this.showError('ツールの初期化に失敗しました。ページを再読み込みしてください。');
+        }
+      }
+
+      bindBasicEvents() {
+        // カラー入力フィールドのイベント
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput');
+        const hslInput = document.getElementById('hslInput');
+        const colorPicker = document.getElementById('colorPicker');
+
+        console.log('Binding basic events...', { hexInput, rgbInput, hslInput, colorPicker });
+
+        if (hexInput) {
+          hexInput.addEventListener('input', (e) => {
+            console.log('HEX input changed:', e.target.value);
+            const hex = e.target.value;
+            if (this.isValidHex(hex)) {
+              this.updateColor(hex);
+            }
+          });
+          
+          hexInput.addEventListener('change', (e) => {
+            console.log('HEX change event:', e.target.value);
+            this.handleInputChange('hexInput', e.target.value);
+          });
+          
+          hexInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('HEX Enter pressed:', e.target.value);
+              this.handleInputChange('hexInput', e.target.value);
+            }
+          });
+        }
+
+        if (rgbInput) {
+          rgbInput.addEventListener('input', (e) => {
+            console.log('RGB input changed:', e.target.value);
+            const rgb = this.parseRGB(e.target.value);
+            if (rgb) {
+              const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+              this.updateColor(hex);
+            }
+          });
+          
+          rgbInput.addEventListener('change', (e) => {
+            console.log('RGB change event:', e.target.value);
+            this.handleInputChange('rgbInput', e.target.value);
+          });
+          
+          rgbInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('RGB Enter pressed:', e.target.value);
+              this.handleInputChange('rgbInput', e.target.value);
+            }
+          });
+        }
+
+        if (hslInput) {
+          hslInput.addEventListener('input', (e) => {
+            console.log('HSL input changed:', e.target.value);
+            const hsl = this.parseHSL(e.target.value);
+            if (hsl) {
+              const rgb = this.colorEngine.hslToRgb(hsl.h, hsl.s, hsl.l);
+              const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+              this.updateColor(hex);
+            }
+          });
+          
+          hslInput.addEventListener('change', (e) => {
+            console.log('HSL change event:', e.target.value);
+            this.handleInputChange('hslInput', e.target.value);
+          });
+          
+          hslInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              console.log('HSL Enter pressed:', e.target.value);
+              this.handleInputChange('hslInput', e.target.value);
+            }
+          });
+        }
+
+        if (colorPicker) {
+          colorPicker.addEventListener('change', (e) => {
+            console.log('Color picker changed:', e.target.value);
+            this.updateColor(e.target.value);
+          });
+          
+          colorPicker.addEventListener('input', (e) => {
+            console.log('Color picker input:', e.target.value);
+            this.updateColor(e.target.value);
+          });
+        }
+        
+        // テスト用ボタンを追加
+        this.addTestButtons();
+      }
+
+      addTestButtons() {
+        // テスト用のボタンエリアを追加
+        const testArea = document.createElement('div');
+        testArea.className = 'bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4';
+        testArea.innerHTML = `
+          <h4 class="font-medium text-yellow-800 mb-3">🧪 テスト・デバッグエリア</h4>
+          <div class="flex flex-wrap gap-2">
+            <button id="testRedButton" class="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600">赤色テスト</button>
+            <button id="testBlueButton" class="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">青色テスト</button>
+            <button id="testGreenButton" class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600">緑色テスト</button>
+            <button id="testRandomButton" class="px-3 py-1 bg-purple-500 text-white rounded text-sm hover:bg-purple-600">ランダム色</button>
+            <button id="debugButton" class="px-3 py-1 bg-gray-500 text-white rounded text-sm hover:bg-gray-600">デバッグ情報</button>
+            <button id="updateAllButton" class="px-3 py-1 bg-indigo-500 text-white rounded text-sm hover:bg-indigo-600">手動更新</button>
+          </div>
+        `;
+        
+        // colorFormの直後に挿入
+        const colorForm = document.getElementById('colorForm');
+        if (colorForm && colorForm.parentNode) {
+          colorForm.parentNode.insertBefore(testArea, colorForm.nextSibling);
+        }
+        
+        // ボタンイベントの設定
+        document.getElementById('testRedButton')?.addEventListener('click', () => {
+          console.log('Red button clicked');
+          this.updateColor('#FF0000');
+        });
+        
+        document.getElementById('testBlueButton')?.addEventListener('click', () => {
+          console.log('Blue button clicked');
+          this.updateColor('#0000FF');
+        });
+        
+        document.getElementById('testGreenButton')?.addEventListener('click', () => {
+          console.log('Green button clicked');
+          this.updateColor('#00FF00');
+        });
+        
+        document.getElementById('testRandomButton')?.addEventListener('click', () => {
+          console.log('Random button clicked');
+          const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+          this.updateColor(randomColor);
+        });
+        
+        document.getElementById('debugButton')?.addEventListener('click', () => {
+          console.log('Debug button clicked');
+          this.showDebugInfo();
+        });
+        
+        document.getElementById('updateAllButton')?.addEventListener('click', () => {
+          console.log('Update All button clicked');
+          this.manualUpdate();
+        });
+      }
+
+      showDebugInfo() {
+        console.log('=== デバッグ情報 ===');
+        console.log('ColorAnalysisEngine:', typeof window.ColorAnalysisEngine);
+        console.log('AdvancedColorUI:', typeof window.AdvancedColorUI);
+        
+        // DOM要素の確認
+        const elements = {
+          hexInput: document.getElementById('hexInput'),
+          rgbInput: document.getElementById('rgbInput'),
+          hslInput: document.getElementById('hslInput'),
+          colorPicker: document.getElementById('colorPicker'),
+          colorForm: document.getElementById('colorForm')
+        };
+        
+        console.log('DOM要素チェック:');
+        Object.entries(elements).forEach(([name, element]) => {
+          console.log(`${name}:`, element ? '✓存在' : '✗なし');
+        });
+        
+        console.log('現在の色値:', this.currentColor);
+        
+        alert(`デバッグ情報をコンソールに出力しました。
+要素確認: hexInput=${!!elements.hexInput}, rgbInput=${!!elements.rgbInput}
+エンジン: ColorAnalysisEngine=${typeof window.ColorAnalysisEngine}
+現在の色: ${this.currentColor}`);
+      }
+
+      handleInputChange(inputType, value) {
+        console.log(`🔄 handleInputChange: ${inputType} = "${value}"`);
+        
+        try {
+          switch(inputType) {
+            case 'hexInput':
+              if (this.isValidHex(value)) {
+                this.updateColor(value);
+              } else {
+                console.warn('Invalid HEX format:', value);
+              }
+              break;
+              
+            case 'rgbInput':
+              const rgb = this.parseRGB(value);
+              if (rgb) {
+                const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+                this.updateColor(hex);
+              } else {
+                console.warn('Invalid RGB format:', value);
+              }
+              break;
+              
+            case 'hslInput':
+              const hsl = this.parseHSL(value);
+              if (hsl) {
+                const rgb = this.colorEngine.hslToRgb(hsl.h, hsl.s, hsl.l);
+                const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
+                this.updateColor(hex);
+              } else {
+                console.warn('Invalid HSL format:', value);
+              }
+              break;
+              
+            default:
+              console.error('Unknown input type:', inputType);
+          }
+        } catch (error) {
+          console.error(`Error in handleInputChange(${inputType}):`, error);
+        }
+      }
+
+      manualUpdate() {
+        console.log('🔧 Manual update triggered');
+        
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput');
+        const hslInput = document.getElementById('hslInput');
+        
+        if (hexInput && hexInput.value) {
+          console.log('Updating from HEX input:', hexInput.value);
+          this.handleInputChange('hexInput', hexInput.value);
+        } else if (rgbInput && rgbInput.value) {
+          console.log('Updating from RGB input:', rgbInput.value);
+          this.handleInputChange('rgbInput', rgbInput.value);
+        } else if (hslInput && hslInput.value) {
+          console.log('Updating from HSL input:', hslInput.value);
+          this.handleInputChange('hslInput', hslInput.value);
+        } else {
+          console.log('No input values found, using current color:', this.currentColor);
+          this.updateColor(this.currentColor || '#65c155');
+        }
+      }
+
+      updateColor(hex) {
+        console.log('🎨 updateColor called with:', hex);
+        
+        this.currentColor = hex;
+        const rgb = this.colorEngine.hexToRgb(hex);
+        if (!rgb) {
+          console.error('Failed to convert hex to RGB:', hex);
+          return;
+        }
+
+        console.log('RGB conversion:', rgb);
+        const hsl = this.colorEngine.rgbToHsl(rgb.r, rgb.g, rgb.b);
+        const cmyk = this.colorEngine.rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+        // 基本UI更新
+        this.updateColorInputs(hex, rgb, hsl);
+        this.updateColorPreview(hex);
+        this.updateColorInfo(hex);
+
+        // 高度なUI更新
+        if (this.colorUI) {
+          try {
+            this.colorUI.selectColor(hex);
+            console.log('AdvancedColorUI updated successfully');
+          } catch (error) {
+            console.error('AdvancedColorUI update failed:', error);
+          }
+        } else {
+          console.log('AdvancedColorUI not initialized yet');
+        }
+      }
+
+      updateColorInputs(hex, rgb, hsl) {
+        const hexInput = document.getElementById('hexInput');
+        const rgbInput = document.getElementById('rgbInput');
+        const hslInput = document.getElementById('hslInput');
+        const colorPicker = document.getElementById('colorPicker');
+
+        if (hexInput) hexInput.value = hex;
+        if (rgbInput) rgbInput.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+        if (hslInput) hslInput.value = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s * 100)}%, ${Math.round(hsl.l * 100)}%)`;
+        if (colorPicker) colorPicker.value = hex;
+      }
+
+      updateColorPreview(hex) {
+        const previewElements = document.querySelectorAll('.color-preview, [data-color-preview]');
+        previewElements.forEach(element => {
+          element.style.backgroundColor = hex;
+        });
+      }
+
+      updateColorInfo(hex) {
+        const rgb = this.colorEngine.hexToRgb(hex);
+        const hsl = this.colorEngine.rgbToHsl(rgb.r, rgb.g, rgb.b);
+        const cmyk = this.colorEngine.rgbToCmyk(rgb.r, rgb.g, rgb.b);
+        
+        const infoElement = document.getElementById('colorInfo');
+        if (infoElement) {
+          infoElement.innerHTML = `
+            <div class="bg-white rounded-lg shadow-sm border p-4">
+              <div class="space-y-2">
+                <div class="flex justify-between">
+                  <span class="font-medium">HEX:</span>
+                  <span class="font-mono">${hex}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium">RGB:</span>
+                  <span class="font-mono">${rgb.r}, ${rgb.g}, ${rgb.b}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium">HSL:</span>
+                  <span class="font-mono">${Math.round(hsl.h)}°, ${Math.round(hsl.s * 100)}%, ${Math.round(hsl.l * 100)}%</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-medium">CMYK:</span>
+                  <span class="font-mono">${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // ヘルパーメソッド群
+      isValidHex(hex) {
+        return /^#[0-9A-F]{6}$/i.test(hex);
+      }
+
+      parseRGB(rgbString) {
+        const match = rgbString.match(/rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/);
+        if (match) {
+          return {
+            r: parseInt(match[1]),
+            g: parseInt(match[2]),
+            b: parseInt(match[3])
+          };
+        }
+        return null;
+      }
+
+      parseHSL(hslString) {
+        const match = hslString.match(/hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/);
+        if (match) {
+          return {
+            h: parseInt(match[1]),
+            s: parseInt(match[2]) / 100,
+            l: parseInt(match[3]) / 100
+          };
+        }
+        return null;
+      }
+
+      showError(message) {
+        console.error('❌', message);
+        const existingToast = document.querySelector('.error-toast');
+        if (existingToast) existingToast.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'error-toast fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 5000);
+      }
+    }
+
+    // DOMContentLoadedでアプリケーション開始
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing color code tool...');
+      window.colorCodeApp = new ColorCodeToolApp();
+    });
+  </script>
+</body>
+</html>
