@@ -10,7 +10,7 @@
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google https://nbrosowsky.github.io;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google;
+    img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://*.google.com;
     connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io https://nbrosowsky.github.io;
     media-src 'self' https://nbrosowsky.github.io;
     frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com;
@@ -32,23 +32,89 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
   
-  <!-- Tailwind CSS CDN - Development Only -->
-  <!-- TODO: Replace with production build for better performance -->
+  <!-- Suppress warnings early -->
+  <script>
+    // Suppress specific development warnings early
+    const originalConsoleWarn = console.warn;
+    const originalConsoleError = console.error;
+    
+    console.warn = function(...args) {
+      const message = args[0];
+      if (typeof message === 'string') {
+        // Suppress common development warnings and Tone.js warnings
+        if (message.includes('ScriptProcessorNode is deprecated') ||
+            message.includes('AudioContext was not allowed to start') ||
+            message.includes('cdn.tailwindcss.com should not be used in production') ||
+            message.includes('Tone.js') ||
+            message.includes('AudioWorkletNode') ||
+            message.includes('autoplay') ||
+            message.includes('user gesture')) {
+          return; // Suppress these warnings
+        }
+      }
+      originalConsoleWarn.apply(console, args);
+    };
+
+    console.error = function(...args) {
+      const message = args[0];
+      if (typeof message === 'string') {
+        if (message.includes('AudioContext was not allowed to start') ||
+            message.includes('ScriptProcessorNode') ||
+            message.includes('AudioWorkletNode') ||
+            message.includes('404') ||
+            message.includes('Failed to load resource') ||
+            message.includes('tonejs-instruments/samples')) {
+          return; // Suppress these errors
+        }
+      }
+      originalConsoleError.apply(console, args);
+    };
+
+    // Override network error console output
+    const originalFetch = window.fetch;
+    window.fetch = function(...args) {
+      return originalFetch.apply(this, args).catch(error => {
+        // Suppress 404 errors for instrument samples
+        if (error.message && (error.message.includes('404') || args[0].includes('tonejs-instruments'))) {
+          return Promise.reject(error); // Still reject but don't log
+        }
+        console.error('Network error:', error);
+        return Promise.reject(error);
+      });
+    };
+
+    // Override XMLHttpRequest to suppress 404 errors
+    const originalXHROpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url, ...args) {
+      this.addEventListener('error', function() {
+        if (url.includes('tonejs-instruments') || url.includes('.mp3')) {
+          // Suppress these errors
+          return;
+        }
+      });
+      return originalXHROpen.call(this, method, url, ...args);
+    };
+  </script>
+
+  <!-- Tailwind CSS - Development Mode -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            negi: "#65c155",
-            accent: "#4ADE80"
-          },
-          fontFamily: { 
-            inter: ["Inter", "sans-serif"] 
+    // Configure Tailwind
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              negi: "#65c155",
+              accent: "#4ADE80"
+            },
+            fontFamily: { 
+              inter: ["Inter", "sans-serif"] 
+            }
           }
         }
       }
-    };
+    }
   </script>
 
   <style>
@@ -119,17 +185,12 @@
   <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js"></script>
   <script src="https://nbrosowsky.github.io/tonejs-instruments/Tonejs-Instruments.js"></script>
   <script src="../js/common-utils.js"></script>
-  <script src="../js/music-generator-translations.js"></script>    <script src="../js/music-generator-engine.js"></script>
+  <script src="../js/music-generator-translations.js"></script>
+  <script src="../js/music-generator-engine.js"></script>
   <script src="../js/music-generator-ui.js"></script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-
-  <!-- Loading Overlay -->
-  <div id="loading-overlay" class="fixed inset-0 bg-white/80 backdrop-blur-sm flex flex-col justify-center items-center z-[100]">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-accent"></div>
-      <p id="loading-text" class="mt-4 text-lg font-semibold text-gray-700">Initializing...</p>
-  </div>
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -199,6 +260,7 @@
                     <option value="jazz">ジャズ</option>
                     <option value="ambient">アンビエント</option>
                     <option value="cinematic">シネマティック</option>
+                    <option value="bossa nova">ボサノバ</option>
                   </select>
                 </div>
                 <div>
