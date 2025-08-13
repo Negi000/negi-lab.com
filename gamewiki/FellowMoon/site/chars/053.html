@@ -33,6 +33,13 @@ img.portrait{max-width:260px;width:100%;border-radius:12px;background:#0003;bord
 .image-stage figure img{height:auto;max-height:760px;max-width:100%;}
 /* 立ち絵は他より少し小さめ */
 .tab-panel[data-tab-panel="tachi"] figure img{max-height:560px}
+/* ライトボックス */
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:2000;padding:1rem;backdrop-filter:blur(2px)}
+.lightbox-overlay.active{display:flex}
+.lightbox-stage{position:relative;max-width:100%;max-height:100%;overflow:hidden;touch-action:none;background:#0a0f14;border:1px solid #1f2a33;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.lightbox-stage img{display:block;max-width:90vw;max-height:85vh;user-select:none;pointer-events:none;transform-origin:center center;}
+.lightbox-close{position:absolute;top:6px;right:6px;background:#18242f;color:#cdd7e0;border:1px solid #2c3a46;border-radius:6px;padding:.4rem .6rem;font-size:.7rem;cursor:pointer}
+.lightbox-hint{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:.55rem;color:#89a;pointer-events:none;background:linear-gradient(180deg,transparent,#0006);padding:.4rem .3rem}
 /* ビューポートに入りきるよう制限 */
 @media (min-height:500px){
   .image-stage figure img{max-height:82vh}
@@ -51,7 +58,6 @@ img.skill-icon[src=""]{display:none}
 <header>
   <nav><a href="../index.html">一覧に戻る</a></nav>
   <h1>タチバナ <small style="font-size:.55em;font-weight:400;color:#9ab">橘</small></h1>
-  <!-- タグやID等は基本情報カード内に移設 -->
 </header>
 <main>
   <section class="top-layout">
@@ -71,9 +77,7 @@ img.skill-icon[src=""]{display:none}
           <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">実装Ver</th><td style="padding:4px 8px"></td></tr>
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">施設専攻</th><td style="padding:4px 8px"></td></tr>
           <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">施設効果</th><td style="padding:4px 8px"></td></tr>
-          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;vertical-align:top">タグ</th><td style="padding:4px 8px">
-            <span class="badges"><span>治療</span></span><span class="badges"><span>除去</span></span>
-          </td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;vertical-align:top">タグ</th><td style="padding:4px 8px"><span class="badges"><span>治療</span></span><span class="badges"><span>除去</span></span></td></tr>
         </tbody>
       </table>
       <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">専門探索</h3>
@@ -126,7 +130,7 @@ img.skill-icon[src=""]{display:none}
           </tbody>
         </table>
       </div>
-  <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">基本ステータス</h3>
+      <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">基本ステータス</h3>
       <table style="width:100%;border-collapse:collapse;font-size:.7rem">
         <thead><tr style="background:#16212b"><th style="text-align:left;padding:6px 8px">項目</th><th style="text-align:right;padding:6px 8px">初期値</th><th style="text-align:right;padding:6px 8px">最大値</th></tr></thead>
         <tbody>
@@ -138,7 +142,7 @@ img.skill-icon[src=""]{display:none}
         </tbody>
       </table>
     </div>
-  <div class="card">
+    <div class="card">
       <h2>キャラ画像</h2>
       <div class="tabs" data-tabs>
         <div class="tab-buttons" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 .6rem">
@@ -173,7 +177,7 @@ img.skill-icon[src=""]{display:none}
             </div>
             <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">タチバナは選択した敵に121%の特殊ダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" >
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="ダメージ判定">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
                 
@@ -199,7 +203,7 @@ img.skill-icon[src=""]{display:none}
             
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" openopen>
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="機会と混乱">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
                 
@@ -229,7 +233,7 @@ img.skill-icon[src=""]{display:none}
             
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" openopen>
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="運命の歪曲">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
                 
@@ -258,7 +262,7 @@ img.skill-icon[src=""]{display:none}
             <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">行動シーケンス終了時、タチバナは1名の味方にランダムに1個の効果を付与し、確率で大幅な能力値バフ効果またはデバフ効果を発動する。効果は1ターン持続する。バフ効果を付与する確率がより高い。</p>
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" open>
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="イカサマダイス">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
                 
@@ -284,7 +288,7 @@ img.skill-icon[src=""]{display:none}
             </div>
             <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">タチバナは目標の最大HP0-100%に基づき選択した味方を治療し、除去されず、抵抗できない持続ダメージ効果を1個付与する。この効果は2ターン持続し、毎ターン宿主に宿主の最大HP15%のダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" >
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：運命の歪曲">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
                 
@@ -358,7 +362,14 @@ img.skill-icon[src=""]{display:none}
     </div>
   </section>
 </main>
-<footer>Generated at 2025-08-12T21:32:26</footer>
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-stage" id="lightboxStage">
+      <img id="lightboxImg" src="" alt="preview">
+      <button class="lightbox-close" id="lightboxClose">閉じる</button>
+      <div class="lightbox-hint">ピンチ操作 / ドラッグ で拡大移動 / ダブルタップでリセット</div>
+    </div>
+  </div>
+<footer>Generated at 2025-08-13T13:01:43</footer>
 </body>
 <script>
 // 画像タブ切替
@@ -381,5 +392,63 @@ document.querySelectorAll('[data-tabs]').forEach(block=>{
   }
   activate(firstId || btns[0].getAttribute('data-tab-btn'));
 });
+// 画像クリック -> ライトボックス
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightboxImg');
+const lbClose = document.getElementById('lightboxClose');
+let scale=1, originX=0, originY=0, lastX=0, lastY=0, startDist=0, startScale=1; 
+function openLightbox(src){
+  lbImg.src = src; scale=1; originX=originY=lastX=lastY=0; applyTransform();
+  lb.classList.add('active');
+}
+function closeLightbox(){lb.classList.remove('active');}
+function applyTransform(){
+  lbImg.style.transform = `translate(${originX}px,${originY}px) scale(${scale})`;
+}
+document.addEventListener('click',e=>{
+  const img = e.target.closest('.image-stage img');
+  if(img){openLightbox(img.src);} 
+});
+lbClose.addEventListener('click',closeLightbox);
+lb.addEventListener('click',e=>{ if(e.target===lb) closeLightbox(); });
+// ホイールズーム (PC)
+lb.addEventListener('wheel',e=>{ if(!lb.classList.contains('active')) return; e.preventDefault(); const delta = e.deltaY>0? -0.1:0.1; scale = Math.min(6, Math.max(0.3, scale+delta)); applyTransform(); }, {passive:false});
+// ドラッグ移動
+let drag=false, sx=0, sy=0;
+lbImg.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sy=e.clientY;});
+window.addEventListener('mouseup',()=>drag=false);
+window.addEventListener('mousemove',e=>{ if(drag){originX += (e.clientX - sx); originY += (e.clientY - sy); sx=e.clientX; sy=e.clientY; applyTransform(); }});
+// タッチ (ピンチ + ドラッグ)
+lbImg.addEventListener('touchstart',e=>{
+  if(e.touches.length===1){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }
+  if(e.touches.length===2){
+    const [a,b]=e.touches; startDist = Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY); startScale=scale;
+  }
+},{passive:true});
+lbImg.addEventListener('touchmove',e=>{
+  if(e.touches.length===1){ const t=e.touches[0]; originX += t.clientX - sx; originY += t.clientY - sy; sx=t.clientX; sy=t.clientY; applyTransform(); }
+  else if(e.touches.length===2){ e.preventDefault(); const [a,b]=e.touches; const d = Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY); scale = Math.min(6, Math.max(0.3, startScale * d/startDist)); applyTransform(); }
+},{passive:false});
+lbImg.addEventListener('gesturestart',e=>e.preventDefault());
+// ダブルタップ/ダブルクリックでリセット
+let lastTap=0; function resetIfDouble(now){ if(now-lastTap<400){ scale=1; originX=originY=0; applyTransform(); } lastTap=now; }
+lbImg.addEventListener('dblclick',()=>{scale=1;originX=originY=0;applyTransform();});
+lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
+// スキルボーナス開閉状態 永続化（デフォルト閉じる）
+(()=>{
+  const KEY_PREFIX = 'skillBonusOpen:';
+  document.querySelectorAll('details.skill-bonus').forEach(d=>{
+    const name = d.getAttribute('data-skill-name')||'';
+    const key = KEY_PREFIX+name;
+    // 既存状態
+    const saved = localStorage.getItem(key);
+    if(saved !== '1'){
+      d.removeAttribute('open');
+    }
+    d.addEventListener('toggle',()=>{
+      if(d.open){localStorage.setItem(key,'1');}else{localStorage.removeItem(key);}
+    });
+  });
+})();
 </script>
 </html>
