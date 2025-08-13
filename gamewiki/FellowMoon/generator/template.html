@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>{{名前}} - キャラ詳細</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;line-height:1.5;margin:0;background:#101418;color:#eee;padding-bottom:4rem}
+header,main{max-width:1080px;margin:auto;padding:1.2rem}
+header h1{margin:.2rem 0 0;font-size:2rem;}
+.badges span{display:inline-block;background:#333;padding:.25rem .6rem;margin:.15rem .35rem .15rem 0;border-radius:999px;font-size:.7rem;letter-spacing:.5px}
+.top-layout{display:block}
+@media (min-width:960px){.top-layout{display:grid;grid-template-columns:2fr 3fr;gap:1.2rem;align-items:start}}
+.card{background:#182026;padding:1rem 1.1rem;border:1px solid #2a323c;border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,.4)}
+h2{font-size:1.1rem;margin:0 0 .6rem;border-left:4px solid #3a8bff;padding-left:.5rem}
+.table-like div{display:grid;grid-template-columns:8.5rem 1fr;gap:.25rem .75rem;font-size:.8rem;padding:.15rem 0}
+.table-like div:nth-child(odd){background:#141b22}
+small.muted{color:#999;font-size:.7rem}
+.skill{margin-bottom:.9rem}
+.skill h3{margin:.2rem 0;font-size:.95rem}
+.skill .tag{font-size:.65rem;background:#2d3b50;color:#d4e7ff;padding:2px 6px;border-radius:5px;margin-right:.4rem}
+.code{font-family:ui-monospace,monospace;font-size:.7rem;background:#0002;padding:2px 4px;border-radius:4px}
+img.portrait{max-width:260px;width:100%;border-radius:12px;background:#0003;border:1px solid #29323a}
+.images-wrap{display:flex;flex-wrap:wrap;gap:12px}
+.images-wrap figure{margin:0}
+.images-wrap img{max-height:100%;max-width:100%;border-radius:10px;border:1px solid #2a323c;background:#0003;object-fit:contain;padding:4px}
+/* 画像ステージ中央寄せ（等高レイアウト解除） */
+/* 等高を外し overflow や下カードとの重なりを防止 */
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px 12px 20px}
+.image-stage .images-wrap{width:100%;justify-content:center;align-items:center;display:flex;flex-wrap:wrap;gap:24px}
+.image-stage figure{display:flex;align-items:center;justify-content:center;margin:0;max-width:100%}
+/* デフォルト最大サイズ */
+.image-stage figure img{height:auto;max-height:760px;max-width:100%;}
+/* 立ち絵は他より少し小さめ */
+.tab-panel[data-tab-panel="tachi"] figure img{max-height:560px}
+/* ビューポートに入りきるよう制限 */
+@media (min-height:500px){
+  .image-stage figure img{max-height:82vh}
+  .tab-panel[data-tab-panel="tachi"] figure img{max-height:70vh}
+}
+footer{position:fixed;left:0;bottom:0;width:100%;background:#0b0e12;border-top:1px solid #222;padding:.4rem .8rem;font-size:.65rem;color:#999}
+nav a{color:#8bb9ff;text-decoration:none;margin-right:.75rem;font-size:.8rem}
+.search-box{margin: .5rem 0 1rem;}
+.search-box input{width:100%;padding:.6rem .75rem;font-size:.9rem;border:1px solid #2a323c;background:#141b20;color:#eee;border-radius:8px}
+.alert{background:#233044;padding:.6rem .8rem;border-left:4px solid #3a8bff;font-size:.75rem;margin:0 0 1rem;border-radius:4px;color:#c5d9f3}
+/* スキルアイコン: 空srcは非表示 */
+img.skill-icon[src=""]{display:none}
+</style>
+</head>
+<body>
+<header>
+  <nav><a href="../index.html">一覧に戻る</a></nav>
+  <h1>{{名前}} <small style="font-size:.55em;font-weight:400;color:#9ab">{{漢字}}</small></h1>
+  <!-- タグやID等は基本情報カード内に移設 -->
+</header>
+<main>
+  <section class="top-layout">
+    <div class="card">
+      <h2>基本情報</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:.72rem">
+        <tbody>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;width:7rem;font-weight:600">ID</th><td style="padding:4px 8px">{{ID}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">名前</th><td style="padding:4px 8px">{{名前}} ({{漢字}})</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">レア度</th><td style="padding:4px 8px">{{レア度}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">属性</th><td style="padding:4px 8px">{{属性}}</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">タイプ</th><td style="padding:4px 8px">{{タイプ}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">戦闘方法</th><td style="padding:4px 8px">{{戦闘方法}}</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">陣営</th><td style="padding:4px 8px">{{陣営}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">職業</th><td style="padding:4px 8px">{{職業}}</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">誕生日</th><td style="padding:4px 8px">{{誕生日}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">実装Ver</th><td style="padding:4px 8px">{{実装バージョン}}</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">施設専攻</th><td style="padding:4px 8px">{{施設専攻}}</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">施設効果</th><td style="padding:4px 8px">{{施設効果}}</td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;vertical-align:top">タグ</th><td style="padding:4px 8px">
+            {{#タグ}}<span class="badges"><span>{{.}}</span></span>{{/タグ}}
+          </td></tr>
+        </tbody>
+      </table>
+      <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">専門探索</h3>
+      <div style="overflow:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:.7rem;text-align:center">
+          <thead>
+            <tr style="background:#16212b">
+              {{#専門探索アイコン}}
+              <th style="padding:4px 2px;font-weight:600;min-width:60px">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                  <img src="{{パス}}" alt="{{名称}}" style="height:28px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                  <span style="display:none;color:#9ab">{{名称}}</span>
+                </div>
+              </th>
+              {{/専門探索アイコン}}
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#1a2732">{{#専門探索初期}}<td style="padding:6px 4px">{{.}}</td>{{/専門探索初期}}</tr>
+            <tr style="background:#121b22">{{#専門探索最大}}<td style="padding:6px 4px;font-weight:600;color:#d8f1ff">{{.}}</td>{{/専門探索最大}}</tr>
+            <tr><td colspan="5" style="padding:4px;font-size:.6rem;text-align:right;color:#789">上: 専門探索(初期値) / 下: 専門探索(最大値)</td></tr>
+          </tbody>
+        </table>
+      </div>
+  <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">基本ステータス</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:.7rem">
+        <thead><tr style="background:#16212b"><th style="text-align:left;padding:6px 8px">項目</th><th style="text-align:right;padding:6px 8px">初期値</th><th style="text-align:right;padding:6px 8px">最大値</th></tr></thead>
+        <tbody>
+          <tr style="background:#141d26"><td style="padding:4px 8px">HP</td><td style="padding:4px 8px;text-align:right">{{HP(初期値)}}</td><td style="padding:4px 8px;text-align:right">{{HP(最大値)}}</td></tr>
+          <tr style="background:#1a2530"><td style="padding:4px 8px">攻撃</td><td style="padding:4px 8px;text-align:right">{{攻撃(初期値)}}</td><td style="padding:4px 8px;text-align:right">{{攻撃(最大値)}}</td></tr>
+          <tr style="background:#141d26"><td style="padding:4px 8px">物理防御</td><td style="padding:4px 8px;text-align:right">{{物理防御(初期値)}}</td><td style="padding:4px 8px;text-align:right">{{物理防御(最大値)}}</td></tr>
+          <tr style="background:#1a2530"><td style="padding:4px 8px">特殊防御</td><td style="padding:4px 8px;text-align:right">{{特殊防御(初期値)}}</td><td style="padding:4px 8px;text-align:right">{{特殊防御(最大値)}}</td></tr>
+          <tr style="background:#141d26"><td style="padding:4px 8px">行動速度</td><td style="padding:4px 8px;text-align:right">{{行動速度(初期値)}}</td><td style="padding:4px 8px;text-align:right">{{行動速度(最大値)}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  <div class="card">
+      <h2>キャラ画像</h2>
+      <div class="tabs" data-tabs>
+        <div class="tab-buttons" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 .6rem">
+          {{#画像タブ}}
+          <button data-tab-btn="{{タブID}}" style="background:#23313d;color:#9ec5ff;border:1px solid #304556;padding:.35rem .65rem;border-radius:6px;font-size:.65rem;cursor:pointer">{{タブ名}} ({{枚数}})</button>
+          {{/画像タブ}}
+        </div>
+        {{#画像タブ}}
+        <div class="tab-panel image-stage" data-tab-panel="{{タブID}}" style="display:none">
+          <div class="images-wrap">
+            {{#画像列}}<figure><img src="{{.}}" alt="{{名前}}"></figure>{{/画像列}}
+          </div>
+        </div>
+        {{/画像タブ}}
+        <div style="font-size:.55rem;color:#789;margin-top:.6rem">立ち絵: fb / 認証絵: fb_awake / スキン: skin*</div>
+      </div>
+    </div>
+  </section>
+  <section class="card" style="margin-top:1.2rem">
+    <h2>スキル</h2>
+    <div style="display:flex;flex-direction:column;gap:1.1rem">
+    {{#スキル}}
+      <div class="skill" style="position:relative;padding:0 0 0.2rem">
+        <div style="display:flex;align-items:flex-start;gap:.75rem">
+          <img class="skill-icon" src="{{スキルアイコン}}" alt="{{スキル名}}" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
+          <div style="flex:1;min-width:0">
+            <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">{{スキル名}} <small class="tag">{{スキル}}</small> <small class="tag">TPLv {{TPLv変化}}</small></h3>
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+              <span style="opacity:.8">タグ:</span>
+              {{#スキルタグ配列}}<span class="badges"><span>{{.}}</span></span>{{/スキルタグ配列}}
+              {{^スキルタグ配列}}<span style="color:#567">(なし)</span>{{/スキルタグ配列}}
+            </div>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">{{スキル効果}}</p>
+            {{#スキルボーナス行}}
+            {{/スキルボーナス行}}
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" {{#スキルボーナス行}}open{{/スキルボーナス行}}>
+              <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+                {{#スキルボーナス行}}
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">{{段階}}</strong><br>{{内容}}</div>
+                {{/スキルボーナス行}}
+                {{^スキルボーナス行}}<div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>{{/スキルボーナス行}}
+              </div>
+            </details>
+          </div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
+      </div>
+    {{/スキル}}
+    </div>
+  </section>
+  <section class="card" style="margin-top:1.2rem">
+    <h2>階門</h2>
+    <div style="display:flex;flex-direction:column;gap:.6rem">
+      {{#階門}}
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+        <div style="width:46px;display:flex;justify-content:center;align-items:center">
+          <img src="{{アイコン}}" alt="{{名称}}" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
+        </div>
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+          <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">{{名称}}</div>
+          <div>{{説明}}</div>
+        </div>
+      </div>
+      {{/階門}}
+    </div>
+  </section>
+</main>
+<footer>Generated at {{生成日時}}</footer>
+</body>
+<script>
+// 画像タブ切替
+document.querySelectorAll('[data-tabs]').forEach(block=>{
+  const btns = block.querySelectorAll('[data-tab-btn]');
+  const panels = block.querySelectorAll('[data-tab-panel]');
+  if(!btns.length) return;
+  function activate(id){
+    panels.forEach(p=>p.style.display = p.getAttribute('data-tab-panel')===id?'block':'none');
+    btns.forEach(b=>{
+      if(b.getAttribute('data-tab-btn')===id){
+        b.style.background='#3a5570';b.style.color='#fff';
+      }else{b.style.background='#23313d';b.style.color='#9ec5ff';}
+    });
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>activate(b.getAttribute('data-tab-btn'))));
+  let firstId = null;
+  for(const p of panels){
+    if(p.querySelector('img')){firstId = p.getAttribute('data-tab-panel');break;}
+  }
+  activate(firstId || btns[0].getAttribute('data-tab-btn'));
+});
+</script>
+</html>
