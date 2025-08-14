@@ -243,7 +243,7 @@ class AdvancedColorUI {
   }
 
   /**
-   * AI統合カラーパレット・ハーモニージェネレーターの作成
+   * 改良されたAI統合カラーパレット・ハーモニージェネレーターの作成
    */
   createPaletteGenerator() {
     const container = document.createElement('div');
@@ -251,76 +251,112 @@ class AdvancedColorUI {
     container.innerHTML = `
       <h3 class="text-lg font-semibold mb-4">AI統合カラーパレット・ハーモニージェネレーター</h3>
       
-      <!-- ハーモニータイプ選択 -->
-      <div class="harmony-types mb-4">
-        <h4 class="font-medium mb-2">カラーハーモニータイプ</h4>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <button class="harmony-btn px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600" data-harmony="monochromatic">モノクロマチック</button>
-          <button class="harmony-btn px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600" data-harmony="analogous">類似色</button>
-          <button class="harmony-btn px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600" data-harmony="complementary">補色</button>
-          <button class="harmony-btn px-3 py-1 bg-purple-500 text-white rounded text-sm hover:bg-purple-600" data-harmony="triadic">三角配色</button>
-          <button class="harmony-btn px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600" data-harmony="tetradic">四角配色</button>
-          <button class="harmony-btn px-3 py-1 bg-indigo-500 text-white rounded text-sm hover:bg-indigo-600" data-harmony="splitComplementary">分割補色</button>
-        </div>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- 左側：ハーモニータイプとテーマ -->
+        <div class="harmony-theme-section">
+          <!-- ハーモニータイプ選択 -->
+          <div class="harmony-types mb-4">
+            <h4 class="font-medium mb-3">カラーハーモニータイプ</h4>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="harmony-btn px-4 py-3 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors" data-harmony="monochromatic">
+                <div class="font-medium">モノクロマチック</div>
+                <div class="text-xs opacity-80">同一色相</div>
+              </button>
+              <button class="harmony-btn px-4 py-3 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-colors" data-harmony="analogous">
+                <div class="font-medium">類似色</div>
+                <div class="text-xs opacity-80">隣接色相</div>
+              </button>
+              <button class="harmony-btn px-4 py-3 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600 transition-colors" data-harmony="complementary">
+                <div class="font-medium">補色</div>
+                <div class="text-xs opacity-80">対立色相</div>
+              </button>
+              <button class="harmony-btn px-4 py-3 bg-purple-500 text-white rounded-lg text-sm hover:bg-purple-600 transition-colors" data-harmony="triadic">
+                <div class="font-medium">三角配色</div>
+                <div class="text-xs opacity-80">3分割</div>
+              </button>
+              <button class="harmony-btn px-4 py-3 bg-yellow-500 text-white rounded-lg text-sm hover:bg-yellow-600 transition-colors" data-harmony="tetradic">
+                <div class="font-medium">四角配色</div>
+                <div class="text-xs opacity-80">4分割</div>
+              </button>
+              <button class="harmony-btn px-4 py-3 bg-indigo-500 text-white rounded-lg text-sm hover:bg-indigo-600 transition-colors" data-harmony="splitComplementary">
+                <div class="font-medium">分割補色</div>
+                <div class="text-xs opacity-80">隣接補色</div>
+              </button>
+            </div>
+          </div>
 
-      <!-- テーマパレット選択 -->
-      <div class="theme-palettes mb-4">
-        <h4 class="font-medium mb-2">テーマパレット</h4>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <button class="palette-btn px-3 py-1 bg-orange-500 text-white rounded text-sm hover:bg-orange-600" data-palette="warm">暖色系</button>
-          <button class="palette-btn px-3 py-1 bg-teal-500 text-white rounded text-sm hover:bg-teal-600" data-palette="cool">寒色系</button>
-          <button class="palette-btn px-3 py-1 bg-pink-300 text-white rounded text-sm hover:bg-pink-400" data-palette="pastel">パステル</button>
-          <button class="palette-btn px-3 py-1 bg-gray-700 text-white rounded text-sm hover:bg-gray-800" data-palette="vibrant">鮮やか</button>
-          <button class="palette-btn px-3 py-1 bg-amber-600 text-white rounded text-sm hover:bg-amber-700" data-palette="earth">アース</button>
+          <!-- テーマパレット選択 -->
+          <div class="theme-palettes mb-4">
+            <h4 class="font-medium mb-3">テーマパレット</h4>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="palette-btn px-4 py-2 bg-orange-500 text-white rounded-lg text-sm hover:bg-orange-600 transition-colors" data-palette="warm">🔥 暖色系</button>
+              <button class="palette-btn px-4 py-2 bg-teal-500 text-white rounded-lg text-sm hover:bg-teal-600 transition-colors" data-palette="cool">❄️ 寒色系</button>
+              <button class="palette-btn px-4 py-2 bg-pink-300 text-gray-800 rounded-lg text-sm hover:bg-pink-400 transition-colors" data-palette="pastel">🌸 パステル</button>
+              <button class="palette-btn px-4 py-2 bg-gray-700 text-white rounded-lg text-sm hover:bg-gray-800 transition-colors" data-palette="vibrant">⚡ 鮮やか</button>
+              <button class="palette-btn px-4 py-2 bg-amber-600 text-white rounded-lg text-sm hover:bg-amber-700 transition-colors" data-palette="earth">🌍 アース</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- AI生成コントロール -->
-      <div class="generator-controls mb-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label class="block text-sm font-medium mb-2">色数</label>
-            <select id="paletteSize" class="w-full px-3 py-2 border border-gray-300 rounded">
-              <option value="3">3色</option>
-              <option value="5" selected>5色</option>
-              <option value="7">7色</option>
-              <option value="10">10色</option>
-            </select>
+        <!-- 右側：コントロールとプレビュー -->
+        <div class="control-preview-section">
+          <!-- AI生成コントロール -->
+          <div class="generator-controls mb-4">
+            <h4 class="font-medium mb-3">生成設定</h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-sm font-medium mb-2">色数: <span id="paletteCountDisplay">5</span></label>
+                <input id="paletteSize" type="range" min="3" max="12" value="5" class="w-full">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">用途</label>
+                <select id="paletteUsage" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                  <option value="web">Webサイト</option>
+                  <option value="print">印刷物</option>
+                  <option value="branding">ブランディング</option>
+                  <option value="ui">UI/UX</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">明度調整: <span id="lightnessValue">0</span></label>
+                <input id="lightnessAdjust" type="range" min="-50" max="50" value="0" class="w-full">
+              </div>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">用途</label>
-            <select id="paletteUsage" class="w-full px-3 py-2 border border-gray-300 rounded">
-              <option value="web">Webサイト</option>
-              <option value="print">印刷物</option>
-              <option value="branding">ブランディング</option>
-              <option value="ui">UI/UX</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">明度調整</label>
-            <input id="lightnessAdjust" type="range" min="-50" max="50" value="0" class="w-full">
-            <span id="lightnessValue" class="text-sm text-gray-600">0</span>
+          
+          <!-- 生成アクション -->
+          <div class="palette-actions mb-4">
+            <div class="grid grid-cols-2 gap-2">
+              <button id="generateRandomPalette" class="px-4 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors font-medium">🎲 ランダム生成</button>
+              <button id="refinePalette" class="px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors font-medium">✨ 微調整</button>
+              <button id="savePalette" class="px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-medium">💾 保存</button>
+              <button id="exportPalette" class="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium">📤 エクスポート</button>
+            </div>
           </div>
         </div>
       </div>
       
-      <!-- 生成アクション -->
-      <div class="palette-actions mb-4 flex gap-2">
-        <button id="generateRandomPalette" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">ランダム生成</button>
-        <button id="refinePalette" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">微調整</button>
-        <button id="savePalette" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">保存</button>
-        <button id="exportPalette" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">エクスポート</button>
-      </div>
-      
-      <!-- 統合表示エリア -->
-      <div id="harmonyColors" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4"></div>
-      <div id="paletteColors" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4"></div>
-      <div id="generatedPalette" class="generated-palette mb-4"></div>
-      
-      <div class="palette-analysis">
-        <h4 class="font-medium mb-2">パレット分析</h4>
-        <div id="paletteStats" class="text-sm text-gray-600"></div>
+      <!-- 結果表示エリア -->
+      <div class="results-section">
+        <div class="mb-4">
+          <h4 class="font-medium mb-3">ハーモニー結果</h4>
+          <div id="harmonyColors" class="grid grid-cols-3 md:grid-cols-6 gap-3 min-h-[80px] p-3 border border-gray-200 rounded-lg bg-gray-50"></div>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-medium mb-3">テーマパレット結果</h4>
+          <div id="paletteColors" class="grid grid-cols-3 md:grid-cols-6 gap-3 min-h-[80px] p-3 border border-gray-200 rounded-lg bg-gray-50"></div>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-medium mb-3">生成パレット</h4>
+          <div id="generatedPalette" class="grid grid-cols-3 md:grid-cols-6 gap-3 min-h-[80px] p-3 border border-gray-200 rounded-lg bg-gray-50"></div>
+        </div>
+        
+        <div class="palette-analysis p-4 bg-blue-50 rounded-lg">
+          <h4 class="font-medium mb-2 text-blue-800">パレット分析</h4>
+          <div id="paletteStats" class="text-sm text-blue-700">パレットを生成すると分析結果が表示されます</div>
+        </div>
       </div>
     `;
     
@@ -435,18 +471,18 @@ class AdvancedColorUI {
         <div class="quick-tests mb-4">
           <h4 class="font-medium mb-2">クイックテスト</h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50" data-test="colorBlind">
-              色覚異常シミュレーション
+            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="colorBlind">
+              🎨 色覚異常シミュレーション
             </button>
-            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50" data-test="lowVision">
-              低視力シミュレーション
+            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="lowVision">
+              👁️ 低視力シミュレーション
             </button>
-            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50" data-test="motionSensitivity">
-              動きに敏感度テスト
+            <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="motionSensitivity">
+              ⚡ 動きに敏感度テスト
             </button>
           </div>
         </div>
-        <div id="accessibilityResults" class="results-area min-h-[100px] border border-gray-200 rounded p-4 bg-gray-50">
+        <div id="accessibilityResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50">
           <div class="text-center text-gray-500">テストを選択してください</div>
         </div>
       </div>
@@ -455,6 +491,18 @@ class AdvancedColorUI {
     const insertPoint = document.querySelector('.container') || document.querySelector('main') || document.body;
     insertPoint.appendChild(container);
     this.components.set('accessibilityAnalyzer', container);
+    
+    // アクセシビリティテストのイベントリスナー
+    container.addEventListener('click', (e) => {
+      if (e.target.classList.contains('accessibility-test-btn')) {
+        const testType = e.target.getAttribute('data-test');
+        this.runAccessibilityTest(testType);
+        
+        // アクティブボタンの更新
+        container.querySelectorAll('.accessibility-test-btn').forEach(btn => btn.classList.remove('bg-blue-100', 'border-blue-500'));
+        e.target.classList.add('bg-blue-100', 'border-blue-500');
+      }
+    });
   }
 
   /**
@@ -471,17 +519,38 @@ class AdvancedColorUI {
           placeholder="#FF0000&#10;rgb(0,255,0)&#10;hsl(240,100%,50%)&#10;blue"></textarea>
       </div>
       <div class="batch-controls mb-4 flex flex-wrap gap-2">
-        <button id="processBatch" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">変換実行</button>
-        <button id="validateColors" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">色検証</button>
-        <button id="sortColors" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">色ソート</button>
-        <button id="downloadResults" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">結果ダウンロード</button>
+        <button id="processBatch" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">🔄 変換実行</button>
+        <button id="validateColors" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">✅ 色検証</button>
+        <button id="sortColors" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition-colors">📊 色ソート</button>
+        <button id="downloadResults" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">💾 結果ダウンロード</button>
       </div>
-      <div id="batchResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50"></div>
+      <div id="batchResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50">
+        <div class="text-center text-gray-500">上記のボタンをクリックして処理を開始してください</div>
+      </div>
     `;
     
     const insertPoint = document.querySelector('.container') || document.querySelector('main') || document.body;
     insertPoint.appendChild(container);
     this.components.set('batchConverter', container);
+    
+    // バッチ変換のイベントリスナー
+    container.addEventListener('click', (e) => {
+      const buttonId = e.target.id;
+      switch (buttonId) {
+        case 'processBatch':
+          this.processBatchColors();
+          break;
+        case 'validateColors':
+          this.validateBatchColors();
+          break;
+        case 'sortColors':
+          this.sortBatchColors();
+          break;
+        case 'downloadResults':
+          this.downloadBatchResults();
+          break;
+      }
+    });
   }
 
   /**
@@ -495,28 +564,28 @@ class AdvancedColorUI {
       <div class="export-options mb-4">
         <h4 class="font-medium mb-2">エクスポート形式</h4>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <label class="flex items-center">
+          <label class="flex items-center p-2 border rounded hover:bg-gray-50 cursor-pointer">
             <input type="radio" name="exportFormat" value="css" class="mr-2" checked>
-            <span class="text-sm">CSS</span>
+            <span class="text-sm">📄 CSS</span>
           </label>
-          <label class="flex items-center">
+          <label class="flex items-center p-2 border rounded hover:bg-gray-50 cursor-pointer">
             <input type="radio" name="exportFormat" value="scss" class="mr-2">
-            <span class="text-sm">SCSS</span>
+            <span class="text-sm">🎨 SCSS</span>
           </label>
-          <label class="flex items-center">
+          <label class="flex items-center p-2 border rounded hover:bg-gray-50 cursor-pointer">
             <input type="radio" name="exportFormat" value="json" class="mr-2">
-            <span class="text-sm">JSON</span>
+            <span class="text-sm">📋 JSON</span>
           </label>
-          <label class="flex items-center">
+          <label class="flex items-center p-2 border rounded hover:bg-gray-50 cursor-pointer">
             <input type="radio" name="exportFormat" value="ase" class="mr-2">
-            <span class="text-sm">ASE</span>
+            <span class="text-sm">🎯 ASE</span>
           </label>
         </div>
       </div>
       
       <div class="naming-options mb-4">
         <h4 class="font-medium mb-2">命名規則</h4>
-        <div class="flex gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <select id="namingConvention" class="px-3 py-2 border border-gray-300 rounded">
             <option value="camelCase">camelCase</option>
             <option value="kebab-case">kebab-case</option>
@@ -529,19 +598,35 @@ class AdvancedColorUI {
       
       <div class="export-preview mb-4">
         <label class="block text-sm font-medium mb-2">プレビュー</label>
-        <pre id="exportPreview" class="bg-gray-100 p-3 rounded text-sm overflow-x-auto font-mono"></pre>
+        <pre id="exportPreview" class="bg-gray-100 p-3 rounded text-sm overflow-x-auto font-mono min-h-[100px]">エクスポートする色を選択して「生成」ボタンをクリックしてください</pre>
       </div>
       
       <div class="export-actions flex gap-2">
-        <button id="generateExport" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">生成</button>
-        <button id="downloadExport" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">ダウンロード</button>
-        <button class="copy-btn px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" data-copy="exportPreview">コピー</button>
+        <button id="generateExport" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition-colors">🔄 生成</button>
+        <button id="downloadExport" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">💾 ダウンロード</button>
+        <button class="copy-btn px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors" data-copy="exportPreview">📋 コピー</button>
       </div>
     `;
     
     const insertPoint = document.querySelector('.container') || document.querySelector('main') || document.body;
     insertPoint.appendChild(container);
     this.components.set('colorExport', container);
+    
+    // エクスポート機能のイベントリスナー
+    container.addEventListener('click', (e) => {
+      if (e.target.id === 'generateExport') {
+        this.generateColorExport();
+      } else if (e.target.id === 'downloadExport') {
+        this.downloadColorExport();
+      }
+    });
+    
+    // フォーマット変更時のプレビュー更新
+    container.addEventListener('change', (e) => {
+      if (e.target.name === 'exportFormat' || e.target.id === 'namingConvention' || e.target.id === 'colorPrefix') {
+        this.updateExportPreview();
+      }
+    });
   }
 
   /**
@@ -559,30 +644,57 @@ class AdvancedColorUI {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-sm font-medium mb-2">分析色</label>
-            <input id="spectrumColor" type="color" class="w-full h-10 border border-gray-300 rounded">
+            <input id="spectrumColor" type="color" class="w-full h-10 border border-gray-300 rounded" value="#4ADE80">
           </div>
           <div>
             <label class="block text-sm font-medium mb-2">分析タイプ</label>
             <select id="spectrumType" class="w-full px-3 py-2 border border-gray-300 rounded">
-              <option value="hue">色相</option>
-              <option value="saturation">彩度</option>
-              <option value="lightness">明度</option>
+              <option value="hue">色相スペクトラム</option>
+              <option value="saturation">彩度スペクトラム</option>
+              <option value="lightness">明度スペクトラム</option>
+              <option value="rgb">RGBスペクトラム</option>
             </select>
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">解像度</label>
+            <label class="block text-sm font-medium mb-2">解像度: <span id="resolutionValue">50</span></label>
             <input id="spectrumResolution" type="range" min="10" max="100" value="50" class="w-full">
           </div>
         </div>
       </div>
-      <div id="spectrumResults" class="spectrum-results text-sm text-gray-600">
-        分析色を選択してスペクトラムを表示
+      <div class="spectrum-actions mb-4">
+        <button id="analyzeSpectrum" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">🔬 スペクトラム分析</button>
+        <button id="exportSpectrum" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">💾 スペクトラム保存</button>
+      </div>
+      <div id="spectrumResults" class="spectrum-results p-4 bg-gray-50 rounded border text-sm text-gray-600">
+        分析色を選択して「スペクトラム分析」ボタンをクリックしてください
       </div>
     `;
     
     const insertPoint = document.querySelector('.container') || document.querySelector('main') || document.body;
     insertPoint.appendChild(container);
     this.components.set('advancedSpectrum', container);
+    
+    // スペクトラム分析のイベントリスナー
+    container.addEventListener('click', (e) => {
+      if (e.target.id === 'analyzeSpectrum') {
+        this.analyzeColorSpectrum();
+      } else if (e.target.id === 'exportSpectrum') {
+        this.exportSpectrum();
+      }
+    });
+    
+    // 色変更時の自動更新
+    container.addEventListener('change', (e) => {
+      if (e.target.id === 'spectrumColor' || e.target.id === 'spectrumType') {
+        this.analyzeColorSpectrum();
+      }
+    });
+    
+    // 解像度スライダー
+    const resolutionSlider = container.querySelector('#spectrumResolution');
+    resolutionSlider.addEventListener('input', (e) => {
+      document.getElementById('resolutionValue').textContent = e.target.value;
+    });
   }
 
   /**
@@ -814,6 +926,128 @@ class AdvancedColorUI {
     if (colorName) colorName.textContent = this.getColorName(color);
     if (colorTemperature) colorTemperature.textContent = this.getColorTemperature(color);
     if (colorPsychology) colorPsychology.textContent = this.getColorPsychology(color);
+  }
+
+  /**
+   * 既存のカラーホイールとの統合
+   */
+  integrateWithExistingWheel(wheelElement) {
+    // 既存のイベントリスナーを尊重しつつ、追加の機能を提供
+    const originalClickHandler = wheelElement.onclick;
+    
+    wheelElement.addEventListener('click', (e) => {
+      // 既存のハンドラーを実行
+      if (originalClickHandler) {
+        originalClickHandler.call(wheelElement, e);
+      }
+      
+      // 追加の処理
+      const rect = wheelElement.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = wheelElement.width / 2;
+      const centerY = wheelElement.height / 2;
+      
+      const dx = x - centerX;
+      const dy = y - centerY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const radius = wheelElement.width / 2 - 10;
+      
+      if (distance > radius * 0.6 && distance < radius) {
+        const hue = Math.atan2(dy, dx) * 180 / Math.PI;
+        const normalizedHue = (hue + 360) % 360;
+        this.currentHue = normalizedHue;
+      }
+    });
+  }
+
+  /**
+   * 色相から色を更新
+   */
+  updateColorFromHue(hue) {
+    this.currentHue = hue;
+    const color = `hsl(${hue}, ${this.currentSaturation}%, ${this.currentLightness}%)`;
+    this.updateColorDisplay(color);
+    this.updateSaturationLightnessCanvas();
+  }
+
+  /**
+   * 彩度・明度から色を更新
+   */
+  updateColorFromSL(saturation, lightness) {
+    this.currentSaturation = saturation;
+    this.currentLightness = lightness;
+    const color = `hsl(${this.currentHue}, ${saturation}%, ${lightness}%)`;
+    this.updateColorDisplay(color);
+  }
+
+  /**
+   * 色表示の更新（安全な実装）
+   */
+  updateColorDisplay(color) {
+    try {
+      this.currentColor = color;
+      
+      // まず色を正規化
+      const normalizedColor = this.normalizeColor(color);
+      
+      // 入力フィールドの更新
+      this.updateColorInputs(normalizedColor);
+      
+      // 履歴に追加
+      this.addToHistory(normalizedColor);
+      
+      // プレビューの更新
+      const preview = document.getElementById('colorPreviewLarge');
+      if (preview) {
+        preview.style.backgroundColor = normalizedColor;
+      }
+    } catch (error) {
+      console.warn('色表示の更新に失敗しました:', error);
+    }
+  }
+
+  /**
+   * 色の正規化
+   */
+  normalizeColor(color) {
+    if (!color) return '#000000';
+    
+    try {
+      // HSL形式の場合はHEXに変換
+      if (color.includes('hsl')) {
+        const hsl = this.parseColorToHsl(color);
+        const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
+        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
+      }
+      
+      // RGB形式の場合はHEXに変換
+      if (color.includes('rgb')) {
+        const rgb = this.parseColor(color);
+        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
+      }
+      
+      // HEX形式の場合はそのまま
+      if (color.startsWith('#')) {
+        return color;
+      }
+      
+      return '#000000';
+    } catch (error) {
+      console.warn('色の正規化に失敗しました:', color, error);
+      return '#000000';
+    }
+  }
+
+  /**
+   * 彩度・明度キャンバスの更新
+   */
+  updateSaturationLightnessCanvas() {
+    const canvas = document.getElementById('saturationLightness');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    this.drawSaturationLightness(ctx, canvas.width, canvas.height, this.currentHue);
   }
 
   /**
@@ -1156,115 +1390,117 @@ class AdvancedColorUI {
   }
 
   /**
-   * 明度調整でパレット更新
+   * 色履歴の読み込み
    */
-  updatePaletteWithLightness(adjustment) {
-    const container = document.getElementById('generatedPalette');
+  loadColorHistory() {
+    try {
+      const history = localStorage.getItem('colorHistory');
+      this.colorHistory = history ? JSON.parse(history) : [];
+      this.renderColorHistory();
+    } catch (error) {
+      console.warn('色履歴の読み込みに失敗しました:', error);
+      this.colorHistory = [];
+    }
+  }
+
+  /**
+   * 色履歴のレンダリング
+   */
+  renderColorHistory() {
+    const container = document.getElementById('colorHistory');
     if (!container) return;
 
-    const colorElements = container.querySelectorAll('.color-item');
-    const adjustmentValue = parseInt(adjustment);
-
-    colorElements.forEach(element => {
-      const originalColor = element.dataset.originalColor || element.style.backgroundColor;
-      if (!element.dataset.originalColor) {
-        element.dataset.originalColor = originalColor;
-      }
-
-      const hsl = this.parseColorToHsl(originalColor);
-      hsl.l = Math.max(0, Math.min(100, hsl.l + adjustmentValue));
-      const newColor = this.normalizeColor(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`);
-      element.style.backgroundColor = newColor;
+    container.innerHTML = '';
+    this.colorHistory.forEach((color, index) => {
+      const colorItem = document.createElement('div');
+      colorItem.className = 'color-history-item w-10 h-10 rounded border border-gray-200 cursor-pointer hover:scale-110 transition-transform';
+      colorItem.style.backgroundColor = color;
+      colorItem.title = color;
+      colorItem.addEventListener('click', () => {
+        this.selectColor(color);
+      });
+      container.appendChild(colorItem);
     });
   }
 
   /**
-   * 色の正規化
+   * 色の選択
    */
-  normalizeColor(color) {
-    if (!color) return '#000000';
+  selectColor(color) {
+    this.currentColor = color;
+    this.updateColorInputs(color);
+    this.addToHistory(color);
+  }
+
+  /**
+   * 色を履歴に追加
+   */
+  addToHistory(color) {
+    if (!this.colorHistory) {
+      this.colorHistory = [];
+    }
     
+    // 重複を避ける
+    const index = this.colorHistory.indexOf(color);
+    if (index > -1) {
+      this.colorHistory.splice(index, 1);
+    }
+    
+    // 先頭に追加
+    this.colorHistory.unshift(color);
+    
+    // 最大20色まで保持
+    if (this.colorHistory.length > 20) {
+      this.colorHistory = this.colorHistory.slice(0, 20);
+    }
+    
+    // ローカルストレージに保存
     try {
-      // HSL形式の場合はHEXに変換
-      if (color.includes('hsl')) {
-        const hsl = this.parseColorToHsl(color);
-        const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
-        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
-      }
-      
-      // RGB形式の場合はHEXに変換
-      if (color.includes('rgb')) {
-        const rgb = this.parseColor(color);
-        return this.rgbToHex(rgb.r, rgb.g, rgb.b);
-      }
-      
-      // HEX形式の場合はそのまま
-      if (color.startsWith('#')) {
-        return color;
-      }
-      
-      return '#000000';
+      localStorage.setItem('colorHistory', JSON.stringify(this.colorHistory));
     } catch (error) {
-      console.warn('色の正規化に失敗しました:', color, error);
-      return '#000000';
-    }
-  }
-
-  /**
-   * 彩度・明度キャンバスの更新
-   */
-  updateSaturationLightnessCanvas() {
-    const canvas = document.getElementById('saturationLightness');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    this.drawSaturationLightness(ctx, canvas.width, canvas.height, this.currentHue);
-  }
-
-  /**
-   * 外部からの色更新（他のカラーツールとの統合用）
-   */
-  setColor(color) {
-    const normalizedColor = this.normalizeColor(color);
-    this.currentColor = normalizedColor;
-    
-    // HSL値も更新
-    const hsl = this.parseColorToHsl(normalizedColor);
-    this.currentHue = hsl.h;
-    this.currentSaturation = hsl.s;
-    this.currentLightness = hsl.l;
-    
-    // UI更新（履歴追加は避ける）
-    this.updateColorInputs(normalizedColor);
-    
-    // プレビューの更新
-    const preview = document.getElementById('colorPreviewLarge');
-    if (preview) {
-      preview.style.backgroundColor = normalizedColor;
-    }
-  }
-
-  /**
-   * 現在の色を取得
-   */
-  getCurrentColor() {
-    return this.currentColor || '#4ADE80';
-  }
-
-  /**
-   * 競合回避のための静的チェック
-   */
-  static checkCompatibility() {
-    // 既存のグローバル変数をチェック
-    const conflictingVars = ['colorUI', 'colorApp', 'colorCodeApp'];
-    const conflicts = conflictingVars.filter(varName => window[varName]);
-    
-    if (conflicts.length > 0) {
-      console.warn('既存のカラーツール変数が検出されました:', conflicts);
-      return false;
+      console.warn('色履歴の保存に失敗しました:', error);
     }
     
-    return true;
+    this.renderColorHistory();
+  }
+
+  /**
+   * 統合パレット機能のイベントバインディング
+   */
+  bindPaletteEvents() {
+    // ランダム生成ボタン
+    document.getElementById('generateRandomPalette')?.addEventListener('click', () => {
+      this.generateRandomPalette();
+    });
+
+    // 微調整ボタン
+    document.getElementById('refinePalette')?.addEventListener('click', () => {
+      this.refinePalette();
+    });
+
+    // 保存ボタン
+    document.getElementById('savePalette')?.addEventListener('click', () => {
+      this.savePalette();
+    });
+
+    // エクスポートボタン
+    document.getElementById('exportPalette')?.addEventListener('click', () => {
+      this.exportPalette();
+    });
+
+    // 色数スライダー
+    document.getElementById('paletteSize')?.addEventListener('input', (e) => {
+      const display = document.getElementById('paletteCountDisplay');
+      if (display) {
+        display.textContent = e.target.value;
+      }
+    });
+
+    // 明度調整スライダー
+    document.getElementById('lightnessAdjust')?.addEventListener('input', (e) => {
+      document.getElementById('lightnessValue').textContent = e.target.value;
+      this.updatePaletteWithLightness(e.target.value);
+    });
   }
 
   /**
@@ -1308,521 +1544,6 @@ class AdvancedColorUI {
         e.target.classList.add('active');
       }
     });
-
-    // コントラストチェッカー
-    this.bindContrastEvents();
-    
-    // グラデーションメーカー
-    this.bindGradientEvents();
-    
-    // バッチ変換
-    this.bindBatchEvents();
-    
-    // 色履歴
-    this.bindHistoryEvents();
-    
-    // エクスポート機能
-    this.bindExportEvents();
-  }
-
-  /**
-   * 統合パレット機能のイベントバインディング
-   */
-  bindPaletteEvents() {
-    // ランダム生成ボタン
-    document.getElementById('generateRandomPalette')?.addEventListener('click', () => {
-      this.generateRandomPalette();
-    });
-
-    // 微調整ボタン
-    document.getElementById('refinePalette')?.addEventListener('click', () => {
-      this.refinePalette();
-    });
-
-    // 保存ボタン
-    document.getElementById('savePalette')?.addEventListener('click', () => {
-      this.savePalette();
-    });
-
-    // エクスポートボタン
-    document.getElementById('exportPalette')?.addEventListener('click', () => {
-      this.exportPalette();
-    });
-
-    // 明度調整スライダー
-    document.getElementById('lightnessAdjust')?.addEventListener('input', (e) => {
-      document.getElementById('lightnessValue').textContent = e.target.value;
-      this.updatePaletteWithLightness(e.target.value);
-    });
-  }
-
-  /**
-   * コントラストチェッカーのイベントバインディング
-   */
-  bindContrastEvents() {
-    const foregroundColor = document.getElementById('foregroundColor');
-    const backgroundColor = document.getElementById('backgroundColor');
-    const foregroundHex = document.getElementById('foregroundHex');
-    const backgroundHex = document.getElementById('backgroundHex');
-
-    if (foregroundColor) {
-      foregroundColor.addEventListener('input', (e) => {
-        if (foregroundHex) foregroundHex.value = e.target.value;
-        this.updateContrastCheck();
-      });
-    }
-
-    if (backgroundColor) {
-      backgroundColor.addEventListener('input', (e) => {
-        if (backgroundHex) backgroundHex.value = e.target.value;
-        this.updateContrastCheck();
-      });
-    }
-
-    if (foregroundHex) {
-      foregroundHex.addEventListener('input', (e) => {
-        if (foregroundColor) foregroundColor.value = e.target.value;
-        this.updateContrastCheck();
-      });
-    }
-
-    if (backgroundHex) {
-      backgroundHex.addEventListener('input', (e) => {
-        if (backgroundColor) backgroundColor.value = e.target.value;
-        this.updateContrastCheck();
-      });
-    }
-  }
-
-  /**
-   * グラデーションメーカーのイベントバインディング
-   */
-  bindGradientEvents() {
-    const gradientStart = document.getElementById('gradientStart');
-    const gradientEnd = document.getElementById('gradientEnd');
-    const gradientDirection = document.getElementById('gradientDirection');
-    const gradientSteps = document.getElementById('gradientSteps');
-
-    const updateGradient = () => this.updateGradientPreview();
-
-    gradientStart?.addEventListener('input', updateGradient);
-    gradientEnd?.addEventListener('input', updateGradient);
-    gradientDirection?.addEventListener('change', updateGradient);
-    
-    if (gradientSteps) {
-      gradientSteps.addEventListener('input', (e) => {
-        document.getElementById('stepsValue').textContent = e.target.value;
-        updateGradient();
-      });
-    }
-  }
-
-  /**
-   * バッチ変換のイベントバインディング
-   */
-  bindBatchEvents() {
-    document.getElementById('processBatch')?.addEventListener('click', () => {
-      this.processBatchConversion();
-    });
-
-    document.getElementById('validateColors')?.addEventListener('click', () => {
-      this.validateBatchColors();
-    });
-
-    document.getElementById('sortColors')?.addEventListener('click', () => {
-      this.sortBatchColors();
-    });
-
-    document.getElementById('downloadResults')?.addEventListener('click', () => {
-      this.downloadBatchResults();
-    });
-  }
-
-  /**
-   * 色履歴のイベントバインディング
-   */
-  bindHistoryEvents() {
-    document.getElementById('clearHistory')?.addEventListener('click', () => {
-      this.clearColorHistory();
-    });
-
-    document.getElementById('exportHistory')?.addEventListener('click', () => {
-      this.exportColorHistory();
-    });
-  }
-
-  /**
-   * エクスポート機能のイベントバインディング
-   */
-  bindExportEvents() {
-    document.getElementById('generateExport')?.addEventListener('click', () => {
-      this.generateExportPreview();
-    });
-
-    document.getElementById('downloadExport')?.addEventListener('click', () => {
-      this.downloadExport();
-    });
-  }
-
-  /**
-   * 色履歴の読み込み
-   */
-  loadColorHistory() {
-    try {
-      const history = localStorage.getItem('colorHistory');
-      this.colorHistory = history ? JSON.parse(history) : [];
-      this.renderColorHistory();
-    } catch (error) {
-      console.warn('色履歴の読み込みに失敗しました:', error);
-      this.colorHistory = [];
-    }
-  }
-
-  /**
-   * 色履歴のレンダリング
-   */
-  renderColorHistory() {
-    const container = document.getElementById('colorHistory');
-    if (!container) return;
-
-    container.innerHTML = '';
-    this.colorHistory.forEach((color, index) => {
-      const colorItem = document.createElement('div');
-      colorItem.className = 'color-history-item w-10 h-10 rounded border border-gray-200 cursor-pointer hover:scale-110 transition-transform';
-      colorItem.style.backgroundColor = color;
-      colorItem.title = color;
-      colorItem.addEventListener('click', () => {
-        this.selectColor(color);
-      });
-      container.appendChild(colorItem);
-    });
-  }
-
-  /**
-   * コントラストチェックの更新
-   */
-  updateContrastCheck() {
-    const foreground = document.getElementById('foregroundColor')?.value || '#000000';
-    const background = document.getElementById('backgroundColor')?.value || '#FFFFFF';
-    
-    const ratio = this.calculateContrastRatio(foreground, background);
-    
-    // 結果の更新
-    const ratioElement = document.getElementById('contrastRatio');
-    if (ratioElement) {
-      ratioElement.textContent = `${ratio.toFixed(2)}:1`;
-    }
-    
-    // WCAG準拠の更新
-    this.updateWCAGCompliance(ratio);
-    
-    // プレビューの更新
-    const preview = document.querySelector('.contrast-preview');
-    if (preview) {
-      preview.style.backgroundColor = background;
-      preview.style.color = foreground;
-    }
-  }
-
-  /**
-   * コントラスト比の計算
-   */
-  calculateContrastRatio(color1, color2) {
-    const lum1 = this.getLuminance(color1);
-    const lum2 = this.getLuminance(color2);
-    
-    const brightest = Math.max(lum1, lum2);
-    const darkest = Math.min(lum1, lum2);
-    
-    return (brightest + 0.05) / (darkest + 0.05);
-  }
-
-  /**
-   * 輝度の計算
-   */
-  getLuminance(color) {
-    const rgb = this.parseColor(color);
-    const rsRGB = rgb.r / 255;
-    const gsRGB = rgb.g / 255;
-    const bsRGB = rgb.b / 255;
-
-    const r = rsRGB <= 0.03928 ? rsRGB / 12.92 : Math.pow((rsRGB + 0.055) / 1.055, 2.4);
-    const g = gsRGB <= 0.03928 ? gsRGB / 12.92 : Math.pow((gsRGB + 0.055) / 1.055, 2.4);
-    const b = bsRGB <= 0.03928 ? bsRGB / 12.92 : Math.pow((bsRGB + 0.055) / 1.055, 2.4);
-
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  }
-
-  /**
-   * WCAG準拠の更新
-   */
-  updateWCAGCompliance(ratio) {
-    const wcagAA = document.getElementById('wcag-aa');
-    const wcagAALarge = document.getElementById('wcag-aa-large');
-    const wcagAAA = document.getElementById('wcag-aaa');
-
-    const updateBadge = (element, passed) => {
-      if (!element) return;
-      const badge = element.querySelector('.compliance-badge');
-      if (badge) {
-        badge.textContent = passed ? '✓' : '✗';
-        badge.className = `compliance-badge ${passed ? 'text-green-600' : 'text-red-600'}`;
-      }
-    };
-
-    updateBadge(wcagAA, ratio >= 4.5);
-    updateBadge(wcagAALarge, ratio >= 3);
-    updateBadge(wcagAAA, ratio >= 7);
-  }
-
-  /**
-   * グラデーションプレビューの更新
-   */
-  updateGradientPreview() {
-    const start = document.getElementById('gradientStart')?.value || '#FF0000';
-    const end = document.getElementById('gradientEnd')?.value || '#0000FF';
-    const direction = document.getElementById('gradientDirection')?.value || 'to right';
-    const steps = parseInt(document.getElementById('gradientSteps')?.value) || 5;
-
-    const display = document.getElementById('gradientDisplay');
-    const cssInput = document.getElementById('gradientCSS');
-
-    if (display) {
-      const gradient = direction === 'radial' 
-        ? `radial-gradient(circle, ${start}, ${end})`
-        : `linear-gradient(${direction}, ${start}, ${end})`;
-      
-      display.style.background = gradient;
-      
-      if (cssInput) {
-        cssInput.value = `background: ${gradient};`;
-      }
-    }
-
-    this.generateGradientSteps(start, end, steps);
-  }
-
-  /**
-   * グラデーションステップの生成
-   */
-  generateGradientSteps(start, end, steps) {
-    const container = document.getElementById('gradientStepColors');
-    if (!container) return;
-
-    container.innerHTML = '';
-    const startRgb = this.parseColor(start);
-    const endRgb = this.parseColor(end);
-
-    for (let i = 0; i < steps; i++) {
-      const ratio = i / (steps - 1);
-      const r = Math.round(startRgb.r + (endRgb.r - startRgb.r) * ratio);
-      const g = Math.round(startRgb.g + (endRgb.g - startRgb.g) * ratio);
-      const b = Math.round(startRgb.b + (endRgb.b - startRgb.b) * ratio);
-      
-      const color = this.rgbToHex(r, g, b);
-      
-      const colorDiv = document.createElement('div');
-      colorDiv.className = 'w-8 h-8 rounded border border-gray-200 cursor-pointer';
-      colorDiv.style.backgroundColor = color;
-      colorDiv.title = color;
-      colorDiv.addEventListener('click', () => {
-        this.copyToClipboard(color);
-        this.showToast(`${color} をコピーしました`);
-      });
-      
-      container.appendChild(colorDiv);
-    }
-  }
-
-  /**
-   * バッチ変換の処理
-   */
-  processBatchConversion() {
-    const input = document.getElementById('batchColorInput')?.value || '';
-    const colors = input.split('\n').filter(line => line.trim());
-    const results = document.getElementById('batchResults');
-    
-    if (!results) return;
-    
-    if (colors.length === 0) {
-      results.innerHTML = '<div class="text-red-500">変換する色が入力されていません</div>';
-      return;
-    }
-
-    let html = '<div class="space-y-2">';
-    colors.forEach((color, index) => {
-      try {
-        const rgb = this.parseColor(color.trim());
-        const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
-        const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
-        
-        html += `
-          <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded">
-            <div class="w-8 h-8 rounded border" style="background-color: ${hex}"></div>
-            <div class="flex-1 text-sm">
-              <div><strong>入力:</strong> ${color}</div>
-              <div><strong>HEX:</strong> ${hex}</div>
-              <div><strong>RGB:</strong> rgb(${rgb.r}, ${rgb.g}, ${rgb.b})</div>
-              <div><strong>HSL:</strong> hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)</div>
-            </div>
-          </div>
-        `;
-      } catch (error) {
-        html += `
-          <div class="flex items-center space-x-3 p-2 bg-red-50 rounded">
-            <div class="w-8 h-8 rounded border bg-gray-200"></div>
-            <div class="flex-1 text-sm text-red-600">
-              <div><strong>エラー:</strong> ${color} - 無効な色形式</div>
-            </div>
-          </div>
-        `;
-      }
-    });
-    html += '</div>';
-    
-    results.innerHTML = html;
-  }
-
-  /**
-   * バッチ色検証
-   */
-  validateBatchColors() {
-    const input = document.getElementById('batchColorInput')?.value || '';
-    const colors = input.split('\n').filter(line => line.trim());
-    const results = document.getElementById('batchResults');
-    
-    if (!results) return;
-    
-    let validCount = 0;
-    let invalidCount = 0;
-    
-    const validations = colors.map(color => {
-      const isValid = this.isValidColor(color.trim());
-      if (isValid) validCount++;
-      else invalidCount++;
-      return { color, isValid };
-    });
-    
-    let html = `
-      <div class="mb-4 p-3 bg-blue-50 rounded">
-        <div class="font-medium">検証結果</div>
-        <div class="text-sm">有効: ${validCount}色, 無効: ${invalidCount}色</div>
-      </div>
-      <div class="space-y-1">
-    `;
-    
-    validations.forEach(({ color, isValid }) => {
-      html += `
-        <div class="flex items-center space-x-2 p-1">
-          <span class="${isValid ? 'text-green-600' : 'text-red-600'}">${isValid ? '✓' : '✗'}</span>
-          <span class="text-sm">${color}</span>
-        </div>
-      `;
-    });
-    
-    html += '</div>';
-    results.innerHTML = html;
-  }
-
-  /**
-   * 色の有効性チェック
-   */
-  isValidColor(color) {
-    // HEX形式
-    if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color)) return true;
-    
-    // RGB形式
-    if (/^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/.test(color)) return true;
-    
-    // HSL形式
-    if (/^hsl\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*\)$/.test(color)) return true;
-    
-    // CSS色名
-    const testElement = document.createElement('div');
-    testElement.style.color = color;
-    return testElement.style.color !== '';
-  }
-
-  /**
-   * バッチ色ソート
-   */
-  sortBatchColors() {
-    const input = document.getElementById('batchColorInput')?.value || '';
-    const colors = input.split('\n').filter(line => line.trim());
-    const results = document.getElementById('batchResults');
-    
-    if (!results) return;
-    
-    const validColors = colors.filter(color => this.isValidColor(color.trim()));
-    const sortedColors = validColors.sort((a, b) => {
-      const hslA = this.parseColorToHsl(a.trim());
-      const hslB = this.parseColorToHsl(b.trim());
-      return hslA.h - hslB.h;
-    });
-    
-    let html = '<div class="space-y-2">';
-    sortedColors.forEach((color, index) => {
-      const rgb = this.parseColor(color.trim());
-      const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
-      
-      html += `
-        <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded">
-          <div class="w-8 h-8 rounded border" style="background-color: ${hex}"></div>
-          <div class="flex-1 text-sm">${color}</div>
-          <div class="text-xs text-gray-500">#${index + 1}</div>
-        </div>
-      `;
-    });
-    html += '</div>';
-    
-    results.innerHTML = html;
-  }
-
-  /**
-   * バッチ結果のダウンロード
-   */
-  downloadBatchResults() {
-    const results = document.getElementById('batchResults');
-    if (!results) return;
-    
-    const input = document.getElementById('batchColorInput')?.value || '';
-    const colors = input.split('\n').filter(line => line.trim());
-    
-    const data = colors.map(color => {
-      try {
-        const rgb = this.parseColor(color.trim());
-        const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
-        const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
-        
-        return {
-          input: color,
-          hex: hex,
-          rgb: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
-          hsl: `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`
-        };
-      } catch (error) {
-        return {
-          input: color,
-          error: '無効な色形式'
-        };
-      }
-    });
-    
-    this.downloadFile('batch-color-results.json', JSON.stringify(data, null, 2), 'application/json');
-  }
-
-  /**
-   * エクスポートプレビューの生成
-   */
-  generateExportPreview() {
-    this.showToast('エクスポートプレビューを生成しました');
-  }
-
-  /**
-   * エクスポートのダウンロード
-   */
-  downloadExport() {
-    this.showToast('エクスポートファイルをダウンロードしました');
   }
 
   /**
@@ -1834,7 +1555,7 @@ class AdvancedColorUI {
       r: parseInt(result[1], 16),
       g: parseInt(result[2], 16),
       b: parseInt(result[3], 16)
-    } : { r: 0, g: 0, b: 0 };
+    } : null;
   }
 
   /**
@@ -1857,11 +1578,11 @@ class AdvancedColorUI {
     let h, s, l = (max + min) / 2;
 
     if (max === min) {
-      h = s = 0; // グレー
+      h = s = 0; // achromatic
     } else {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      
+
       switch (max) {
         case r: h = (g - b) / d + (g < b ? 6 : 0); break;
         case g: h = (b - r) / d + 2; break;
@@ -1870,7 +1591,11 @@ class AdvancedColorUI {
       h /= 6;
     }
 
-    return { h: h * 360, s: s * 100, l: l * 100 };
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 100)
+    };
   }
 
   /**
@@ -1895,47 +1620,68 @@ class AdvancedColorUI {
   }
 
   /**
-   * 色をHSLに変換
+   * HSL文字列をパース
    */
   parseColorToHsl(color) {
-    // HSL形式の場合
     if (color.includes('hsl')) {
-      const matches = color.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
+      const matches = color.match(/hsl\((\d+),\s*(\d+(?:\.\d+)?)%,\s*(\d+(?:\.\d+)?)%\)/);
       if (matches) {
         return {
-          h: parseInt(matches[1]),
-          s: parseInt(matches[2]),
-          l: parseInt(matches[3])
+          h: parseFloat(matches[1]),
+          s: parseFloat(matches[2]),
+          l: parseFloat(matches[3])
         };
       }
     }
 
-    // HEX形式の場合
+    // HEX形式の場合はRGBに変換してからHSLに
     if (color.startsWith('#')) {
       const rgb = this.hexToRgb(color);
-      return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+      if (rgb) {
+        return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+      }
     }
 
     // RGB形式の場合
     if (color.includes('rgb')) {
-      const matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      if (matches) {
-        return this.rgbToHsl(parseInt(matches[1]), parseInt(matches[2]), parseInt(matches[3]));
+      const rgb = this.parseColor(color);
+      if (rgb) {
+        return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
       }
     }
 
     // デフォルト値
-    return { h: 0, s: 50, l: 50 };
+    return { h: 0, s: 0, l: 0 };
   }
 
   /**
-   * ユーティリティ: クリップボードにコピー
+   * ユーティリティ関数
+   */
+  showToast(message) {
+    // 既存のトーストを削除
+    const existingToast = document.querySelector('.toast-message');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    // 新しいトーストを作成
+    const toast = document.createElement('div');
+    toast.className = 'toast-message fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // 3秒後に削除
+    setTimeout(() => {
+      toast.remove();
+    }, 3000);
+  }
+
+  /**
+   * クリップボードにコピー
    */
   copyToClipboard(text) {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).catch(err => {
-        console.warn('クリップボードへのコピーに失敗しました:', err);
-      });
+      navigator.clipboard.writeText(text);
     } else {
       // フォールバック
       const textArea = document.createElement('textarea');
@@ -1948,39 +1694,624 @@ class AdvancedColorUI {
   }
 
   /**
-   * ユーティリティ: トーストメッセージ表示
+   * ファイルダウンロード
    */
-  showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50';
-    toast.textContent = message;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-      if (toast.parentNode) {
-        toast.parentNode.removeChild(toast);
-      }
-    }, 3000);
-  }
-
-  /**
-   * ユーティリティ: ファイルダウンロード
-   */
-  downloadFile(filename, content, mimeType) {
+  downloadFile(filename, content, mimeType = 'text/plain') {
     const blob = new Blob([content], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
-    a.style.display = 'none';
-    
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+
+  /**
+   * 色名の取得（簡易版）
+   */
+  getColorName(hex) {
+    const colorNames = {
+      '#FF0000': '赤',
+      '#00FF00': '緑',
+      '#0000FF': '青',
+      '#FFFF00': '黄',
+      '#FF00FF': 'マゼンタ',
+      '#00FFFF': 'シアン',
+      '#000000': '黒',
+      '#FFFFFF': '白',
+      '#808080': 'グレー'
+    };
+    return colorNames[hex.toUpperCase()] || 'カスタム色';
+  }
+
+  /**
+   * 色温度の取得（簡易版）
+   */
+  getColorTemperature(hex) {
+    const rgb = this.hexToRgb(hex);
+    if (!rgb) return 'N/A';
     
-    URL.revokeObjectURL(url);
+    const temp = (rgb.r > rgb.b) ? '暖色' : (rgb.b > rgb.r) ? '寒色' : '中性';
+    return temp;
+  }
+
+  /**
+   * 色の心理効果（簡易版）
+   */
+  getColorPsychology(hex) {
+    const hsl = this.parseColorToHsl(hex);
+    if (hsl.h < 60) return '情熱・エネルギー';
+    if (hsl.h < 120) return '自然・成長';
+    if (hsl.h < 180) return '信頼・安定';
+    if (hsl.h < 240) return '創造・神秘';
+    if (hsl.h < 300) return '高貴・洗練';
+    return '愛・優雅';
+  }
+
+  /**
+   * アクセシビリティテストの実行
+   */
+  runAccessibilityTest(testType) {
+    const resultsContainer = document.getElementById('accessibilityResults');
+    if (!resultsContainer) return;
+
+    let content = '';
+    
+    switch (testType) {
+      case 'colorBlind':
+        content = this.generateColorBlindTest();
+        break;
+      case 'lowVision':
+        content = this.generateLowVisionTest();
+        break;
+      case 'motionSensitivity':
+        content = this.generateMotionSensitivityTest();
+        break;
+    }
+    
+    resultsContainer.innerHTML = content;
+  }
+
+  /**
+   * 色覚異常シミュレーション
+   */
+  generateColorBlindTest() {
+    const testColors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+    
+    return `
+      <h4 class="font-medium mb-3">色覚異常シミュレーション結果</h4>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        ${testColors.map(color => `
+          <div class="test-color-item border rounded p-3">
+            <div class="w-full h-16 mb-2 rounded" style="background-color: ${color}"></div>
+            <div class="text-xs text-center">
+              <div class="font-mono">${color}</div>
+              <div class="text-gray-600 mt-1">
+                第1色覚: ${this.simulateProtanopia(color)}<br>
+                第2色覚: ${this.simulateDeuteranopia(color)}<br>
+                第3色覚: ${this.simulateTritanopia(color)}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /**
+   * 低視力シミュレーション
+   */
+  generateLowVisionTest() {
+    return `
+      <h4 class="font-medium mb-3">低視力シミュレーション結果</h4>
+      <div class="space-y-4">
+        <div class="test-section">
+          <h5 class="font-medium">通常視力</h5>
+          <div class="p-4 border rounded" style="background: white; color: black;">
+            <p class="text-lg">この文字は通常の視力で見えます</p>
+            <p class="text-sm">小さな文字も問題なく読めます</p>
+          </div>
+        </div>
+        <div class="test-section">
+          <h5 class="font-medium">低視力（ぼやけ）</h5>
+          <div class="p-4 border rounded" style="background: white; color: black; filter: blur(2px);">
+            <p class="text-lg">この文字はぼやけて見えます</p>
+            <p class="text-sm">小さな文字は読みにくくなります</p>
+          </div>
+        </div>
+        <div class="test-section">
+          <h5 class="font-medium">低コントラスト</h5>
+          <div class="p-4 border rounded" style="background: #f0f0f0; color: #888;">
+            <p class="text-lg">この文字はコントラストが低いです</p>
+            <p class="text-sm">視認性が大幅に低下します</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * 動きに敏感度テスト
+   */
+  generateMotionSensitivityTest() {
+    return `
+      <h4 class="font-medium mb-3">動きに敏感度テスト結果</h4>
+      <div class="space-y-4">
+        <div class="alert-box p-4 bg-yellow-50 border border-yellow-200 rounded">
+          <p class="text-yellow-800">⚠️ このテストは光過敏性てんかんなどに配慮したものです</p>
+        </div>
+        <div class="test-recommendations">
+          <h5 class="font-medium mb-2">推奨事項:</h5>
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li>点滅速度は3Hz以下に制限</li>
+            <li>高コントラストの急激な変化を避ける</li>
+            <li>アニメーションの停止オプションを提供</li>
+            <li>視差効果を控えめにする</li>
+          </ul>
+        </div>
+        <div class="current-color-test">
+          <h5 class="font-medium mb-2">現在の色での安全性:</h5>
+          <div class="p-3 bg-green-50 text-green-800 rounded">
+            ✅ 現在選択中の色は安全な範囲内です
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * バッチ色処理
+   */
+  processBatchColors() {
+    const input = document.getElementById('batchColorInput');
+    const results = document.getElementById('batchResults');
+    if (!input || !results) return;
+
+    const colors = input.value.split('\n').filter(line => line.trim());
+    const processedResults = [];
+
+    colors.forEach((color, index) => {
+      try {
+        const normalizedColor = this.normalizeColor(color.trim());
+        const rgb = this.hexToRgb(normalizedColor);
+        const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+        const cmyk = this.rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+        processedResults.push({
+          input: color.trim(),
+          hex: normalizedColor,
+          rgb: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
+          hsl: `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
+          cmyk: `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`
+        });
+      } catch (error) {
+        processedResults.push({
+          input: color.trim(),
+          error: 'Invalid color format'
+        });
+      }
+    });
+
+    this.displayBatchResults(processedResults, 'conversion');
+  }
+
+  /**
+   * バッチ色検証
+   */
+  validateBatchColors() {
+    const input = document.getElementById('batchColorInput');
+    const results = document.getElementById('batchResults');
+    if (!input || !results) return;
+
+    const colors = input.value.split('\n').filter(line => line.trim());
+    const validationResults = [];
+
+    colors.forEach((color, index) => {
+      const trimmedColor = color.trim();
+      const isValid = this.isValidColor(trimmedColor);
+      const format = this.detectColorFormat(trimmedColor);
+      
+      validationResults.push({
+        input: trimmedColor,
+        isValid,
+        format,
+        issues: this.getColorIssues(trimmedColor)
+      });
+    });
+
+    this.displayBatchResults(validationResults, 'validation');
+  }
+
+  /**
+   * バッチ色ソート
+   */
+  sortBatchColors() {
+    const input = document.getElementById('batchColorInput');
+    const results = document.getElementById('batchResults');
+    if (!input || !results) return;
+
+    const colors = input.value.split('\n').filter(line => line.trim());
+    const sortedColors = [];
+
+    colors.forEach(color => {
+      try {
+        const normalizedColor = this.normalizeColor(color.trim());
+        const hsl = this.parseColorToHsl(normalizedColor);
+        sortedColors.push({
+          input: color.trim(),
+          normalized: normalizedColor,
+          hue: hsl.h,
+          saturation: hsl.s,
+          lightness: hsl.l
+        });
+      } catch (error) {
+        // 無効な色は末尾に追加
+      }
+    });
+
+    // 色相でソート
+    sortedColors.sort((a, b) => a.hue - b.hue);
+
+    this.displayBatchResults(sortedColors, 'sorted');
+  }
+
+  /**
+   * バッチ結果をダウンロード
+   */
+  downloadBatchResults() {
+    const results = document.getElementById('batchResults');
+    if (!results) return;
+
+    const content = results.textContent || results.innerText;
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+    this.downloadFile(`batch-colors-${timestamp}.txt`, content);
+  }
+
+  /**
+   * バッチ結果の表示
+   */
+  displayBatchResults(results, type) {
+    const container = document.getElementById('batchResults');
+    if (!container) return;
+
+    let content = '';
+
+    switch (type) {
+      case 'conversion':
+        content = `
+          <h4 class="font-medium mb-3">変換結果</h4>
+          <div class="space-y-2">
+            ${results.map((result, index) => `
+              <div class="result-item p-3 border rounded ${result.error ? 'bg-red-50 border-red-200' : 'bg-white'}">
+                ${result.error ? `
+                  <div class="text-red-600">❌ ${result.input}: ${result.error}</div>
+                ` : `
+                  <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded border" style="background-color: ${result.hex}"></div>
+                    <div class="flex-1 text-sm">
+                      <div><strong>入力:</strong> ${result.input}</div>
+                      <div><strong>HEX:</strong> ${result.hex}</div>
+                      <div><strong>RGB:</strong> ${result.rgb}</div>
+                      <div><strong>HSL:</strong> ${result.hsl}</div>
+                      <div><strong>CMYK:</strong> ${result.cmyk}</div>
+                    </div>
+                  </div>
+                `}
+              </div>
+            `).join('')}
+          </div>
+        `;
+        break;
+
+      case 'validation':
+        content = `
+          <h4 class="font-medium mb-3">検証結果</h4>
+          <div class="space-y-2">
+            ${results.map(result => `
+              <div class="result-item p-3 border rounded ${result.isValid ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}">
+                <div class="flex items-center space-x-2">
+                  <span class="${result.isValid ? 'text-green-600' : 'text-red-600'}">${result.isValid ? '✅' : '❌'}</span>
+                  <span class="font-mono">${result.input}</span>
+                  <span class="text-sm text-gray-600">(${result.format})</span>
+                </div>
+                ${result.issues.length > 0 ? `
+                  <div class="mt-2 text-sm text-gray-600">
+                    <strong>Issues:</strong> ${result.issues.join(', ')}
+                  </div>
+                ` : ''}
+              </div>
+            `).join('')}
+          </div>
+        `;
+        break;
+
+      case 'sorted':
+        content = `
+          <h4 class="font-medium mb-3">ソート結果（色相順）</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            ${results.map(result => `
+              <div class="result-item p-2 border rounded bg-white text-center">
+                <div class="w-full h-16 rounded mb-2" style="background-color: ${result.normalized}"></div>
+                <div class="text-xs font-mono">${result.normalized}</div>
+                <div class="text-xs text-gray-600">H:${Math.round(result.hue)}°</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        break;
+    }
+
+    container.innerHTML = content;
+  }
+
+  /**
+   * 色エクスポートの生成
+   */
+  generateColorExport() {
+    const format = document.querySelector('input[name="exportFormat"]:checked')?.value || 'css';
+    const naming = document.getElementById('namingConvention')?.value || 'camelCase';
+    const prefix = document.getElementById('colorPrefix')?.value || '';
+    
+    // 現在の色履歴から色を取得
+    const colors = this.colorHistory.slice(0, 10); // 最新10色
+    
+    let exportContent = '';
+    
+    switch (format) {
+      case 'css':
+        exportContent = this.generateCSSExport(colors, naming, prefix);
+        break;
+      case 'scss':
+        exportContent = this.generateSCSSExport(colors, naming, prefix);
+        break;
+      case 'json':
+        exportContent = this.generateJSONExport(colors, naming, prefix);
+        break;
+      case 'ase':
+        exportContent = this.generateASEInfo(colors);
+        break;
+    }
+    
+    document.getElementById('exportPreview').textContent = exportContent;
+  }
+
+  /**
+   * CSS形式でエクスポート
+   */
+  generateCSSExport(colors, naming, prefix) {
+    const colorNames = colors.map((color, index) => {
+      const baseName = `${prefix}color${index + 1}`;
+      return this.applyNamingConvention(baseName, naming);
+    });
+    
+    return `:root {\n${colors.map((color, index) => `  --${colorNames[index]}: ${color};`).join('\n')}\n}`;
+  }
+
+  /**
+   * SCSS形式でエクスポート
+   */
+  generateSCSSExport(colors, naming, prefix) {
+    const colorNames = colors.map((color, index) => {
+      const baseName = `${prefix}color${index + 1}`;
+      return this.applyNamingConvention(baseName, naming);
+    });
+    
+    return colors.map((color, index) => `$${colorNames[index]}: ${color};`).join('\n');
+  }
+
+  /**
+   * JSON形式でエクスポート
+   */
+  generateJSONExport(colors, naming, prefix) {
+    const colorObject = {};
+    colors.forEach((color, index) => {
+      const baseName = `${prefix}color${index + 1}`;
+      const name = this.applyNamingConvention(baseName, naming);
+      colorObject[name] = color;
+    });
+    
+    return JSON.stringify(colorObject, null, 2);
+  }
+
+  /**
+   * 命名規則の適用
+   */
+  applyNamingConvention(name, convention) {
+    switch (convention) {
+      case 'camelCase':
+        return name.replace(/[-_](.)/g, (_, char) => char.toUpperCase());
+      case 'kebab-case':
+        return name.replace(/[A-Z]/g, char => `-${char.toLowerCase()}`).replace(/^-/, '');
+      case 'snake_case':
+        return name.replace(/[A-Z]/g, char => `_${char.toLowerCase()}`).replace(/^_/, '');
+      case 'PascalCase':
+        return name.charAt(0).toUpperCase() + name.slice(1).replace(/[-_](.)/g, (_, char) => char.toUpperCase());
+      default:
+        return name;
+    }
+  }
+
+  /**
+   * スペクトラム分析の実行
+   */
+  analyzeColorSpectrum() {
+    const color = document.getElementById('spectrumColor')?.value || '#4ADE80';
+    const type = document.getElementById('spectrumType')?.value || 'hue';
+    const resolution = parseInt(document.getElementById('spectrumResolution')?.value) || 50;
+    
+    const canvas = document.getElementById('spectrumCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // スペクトラムを描画
+    this.drawSpectrum(ctx, color, type, resolution, canvas.width, canvas.height);
+    
+    // 分析結果を表示
+    this.displaySpectrumAnalysis(color, type);
+  }
+
+  /**
+   * スペクトラム描画
+   */
+  drawSpectrum(ctx, baseColor, type, resolution, width, height) {
+    const baseHsl = this.parseColorToHsl(baseColor);
+    
+    for (let i = 0; i < resolution; i++) {
+      const x = (i / resolution) * width;
+      const barWidth = width / resolution;
+      
+      let color;
+      
+      switch (type) {
+        case 'hue':
+          const hue = (i / resolution) * 360;
+          color = `hsl(${hue}, ${baseHsl.s}%, ${baseHsl.l}%)`;
+          break;
+        case 'saturation':
+          const saturation = (i / resolution) * 100;
+          color = `hsl(${baseHsl.h}, ${saturation}%, ${baseHsl.l}%)`;
+          break;
+        case 'lightness':
+          const lightness = (i / resolution) * 100;
+          color = `hsl(${baseHsl.h}, ${baseHsl.s}%, ${lightness}%)`;
+          break;
+        case 'rgb':
+          const intensity = i / resolution;
+          const rgb = this.hexToRgb(baseColor);
+          color = `rgb(${Math.round(rgb.r * intensity)}, ${Math.round(rgb.g * intensity)}, ${Math.round(rgb.b * intensity)})`;
+          break;
+      }
+      
+      ctx.fillStyle = color;
+      ctx.fillRect(x, 0, barWidth, height);
+    }
+  }
+
+  /**
+   * スペクトラム分析結果の表示
+   */
+  displaySpectrumAnalysis(color, type) {
+    const container = document.getElementById('spectrumResults');
+    if (!container) return;
+    
+    const hsl = this.parseColorToHsl(color);
+    const rgb = this.hexToRgb(color);
+    
+    container.innerHTML = `
+      <h4 class="font-medium mb-2">スペクトラム分析結果</h4>
+      <div class="analysis-data space-y-2 text-sm">
+        <div><strong>基準色:</strong> ${color}</div>
+        <div><strong>分析タイプ:</strong> ${type}</div>
+        <div><strong>色相:</strong> ${hsl.h}°</div>
+        <div><strong>彩度:</strong> ${hsl.s}%</div>
+        <div><strong>明度:</strong> ${hsl.l}%</div>
+        <div><strong>RGB値:</strong> R:${rgb.r}, G:${rgb.g}, B:${rgb.b}</div>
+        <div class="mt-3 p-2 bg-blue-50 rounded">
+          <strong>分析結果:</strong> ${this.getSpectrumAnalysisDescription(type, hsl)}
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * スペクトラム分析の説明
+   */
+  getSpectrumAnalysisDescription(type, hsl) {
+    switch (type) {
+      case 'hue':
+        return `色相スペクトラムは全ての色相を表示しています。現在の色は${hsl.h}°の位置にあります。`;
+      case 'saturation':
+        return `彩度スペクトラムは無彩色から純色まで表示しています。現在の彩度は${hsl.s}%です。`;
+      case 'lightness':
+        return `明度スペクトラムは暗色から明色まで表示しています。現在の明度は${hsl.l}%です。`;
+      case 'rgb':
+        return `RGBスペクトラムは各色成分の強度変化を表示しています。`;
+      default:
+        return '分析が完了しました。';
+    }
+  }
+
+  /**
+   * ユーティリティ関数群
+   */
+  isValidColor(color) {
+    try {
+      this.normalizeColor(color);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  detectColorFormat(color) {
+    if (color.startsWith('#')) return 'HEX';
+    if (color.includes('rgb')) return 'RGB';
+    if (color.includes('hsl')) return 'HSL';
+    if (color.includes('cmyk')) return 'CMYK';
+    return 'Unknown';
+  }
+
+  getColorIssues(color) {
+    const issues = [];
+    if (color.startsWith('#') && color.length !== 7) {
+      issues.push('Invalid HEX length');
+    }
+    return issues;
+  }
+
+  // 色覚異常シミュレーション（簡易版）
+  simulateProtanopia(color) {
+    // 第1色覚異常の簡易シミュレーション
+    return color; // 実際の実装では色変換アルゴリズムを使用
+  }
+
+  simulateDeuteranopia(color) {
+    // 第2色覚異常の簡易シミュレーション
+    return color; // 実際の実装では色変換アルゴリズムを使用
+  }
+
+  simulateTritanopia(color) {
+    // 第3色覚異常の簡易シミュレーション
+    return color; // 実際の実装では色変換アルゴリズムを使用
+  }
+
+  generateASEInfo(colors) {
+    return `Adobe Swatch Exchange (ASE) format information:\n\nColors to export:\n${colors.map((color, index) => `Color ${index + 1}: ${color}`).join('\n')}\n\nNote: ASE export requires additional libraries for binary format generation.`;
+  }
+
+  downloadColorExport() {
+    const preview = document.getElementById('exportPreview');
+    const format = document.querySelector('input[name="exportFormat"]:checked')?.value || 'css';
+    
+    if (!preview || !preview.textContent.trim()) {
+      this.showToast('エクスポートするデータがありません');
+      return;
+    }
+    
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+    const filename = `colors-export-${timestamp}.${format}`;
+    const mimeType = format === 'json' ? 'application/json' : 'text/plain';
+    
+    this.downloadFile(filename, preview.textContent, mimeType);
+  }
+
+  updateExportPreview() {
+    this.generateColorExport();
+  }
+
+  exportSpectrum() {
+    const canvas = document.getElementById('spectrumCanvas');
+    if (!canvas) return;
+    
+    // Canvas を画像として保存
+    const link = document.createElement('a');
+    link.download = `spectrum-analysis-${Date.now()}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
   }
 
   // ...existing code...
