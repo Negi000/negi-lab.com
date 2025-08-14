@@ -6,10 +6,14 @@
  */
 
 // 状態管理
-let selectedFiles = [];
-let currentRotation = 0;
-let currentFilter = 'none';
-let results = [];
+// 注意: UIから直接参照・変更されるため、window公開時に参照が保たれるよう
+// プリミティブではなくオブジェクトプロパティとして公開します。
+const state = {
+    selectedFiles: [],
+    currentRotation: 0,
+    currentFilter: 'none',
+    results: []
+};
 
 // フォーマット変換ユーティリティ
 const FormatConverter = {
@@ -29,16 +33,16 @@ const FormatConverter = {
                     case 'image/tiff':
                         this.canvasToTIFF(canvas, quality).then(resolve).catch(reject);
                         break;
-                    case 'image/ktx':
+                    case 'application/ktx':
                         this.canvasToKTX(canvas, quality).then(resolve).catch(reject);
                         break;
-                    case 'image/ktx2':
+                    case 'application/ktx2':
                         this.canvasToKTX2(canvas, quality).then(resolve).catch(reject);
                         break;
-                    case 'image/tga':
+                    case 'image/x-targa':
                         this.canvasToTGA(canvas, quality).then(resolve).catch(reject);
                         break;
-                    case 'image/dds':
+                    case 'image/vnd-ms.dds':
                         this.canvasToDDS(canvas, quality).then(resolve).catch(reject);
                         break;
                     default:
@@ -221,8 +225,12 @@ const FormatConverter = {
 // Export for use in other modules
 window.ImageConverterCore = {
     FormatConverter,
-    selectedFiles,
-    currentRotation,
-    currentFilter,
-    results
+    get selectedFiles() { return state.selectedFiles; },
+    set selectedFiles(v) { state.selectedFiles = v; },
+    get currentRotation() { return state.currentRotation; },
+    set currentRotation(v) { state.currentRotation = v; },
+    get currentFilter() { return state.currentFilter; },
+    set currentFilter(v) { state.currentFilter = v; },
+    get results() { return state.results; },
+    set results(v) { state.results = v; }
 };

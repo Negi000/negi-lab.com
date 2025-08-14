@@ -5,6 +5,10 @@
 
 // Get translations from any available source
 function getTranslations() {
+  // QRコード生成ツール専用翻訳を最優先
+  if (window.qrGeneratorTranslations) {
+    return window.qrGeneratorTranslations;
+  }
   // Check for unit converter specific translations first
   if (window.unitConverterTranslations) {
     return window.unitConverterTranslations;
@@ -139,6 +143,16 @@ function initToolLanguageSwitch() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, initializing tool translation system...');
+
+  // If a dedicated translation system exists on the page, skip generic init to avoid conflicts/timeouts
+  if (
+    window.imageConverterTranslations ||
+    window.ImageConverterTranslationSystem ||
+    window.qrGeneratorTranslations // QRツール専用翻訳データがあるページではスキップ
+  ) {
+    console.log('Dedicated translation system detected; skipping generic translation initialization.');
+    return;
+  }
   
   // Wait for translations to load, then initialize
   const translationData = getTranslations();
@@ -154,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Translations loaded after timeout, initializing language switch');
         initToolLanguageSwitch();
       } else {
-        console.error('Translations failed to load after timeout');
+        console.warn('Generic translations not found; if a tool-specific system is present, this is expected.');
       }
     }, 100);
   }

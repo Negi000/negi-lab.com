@@ -1749,6 +1749,11 @@ class QRGenerator {
           dataURL = finalCanvas.toDataURL('image/webp');
           filename = 'qr-code.webp';
           break;
+        case 'svg':
+          // SVGはベクター生成関数を使用
+          this.downloadCreativeSVG();
+          console.log('✅ SVGダウンロード完了 (format switch)');
+          return;
         default:
           dataURL = finalCanvas.toDataURL('image/png');
           filename = 'qr-code.png';
