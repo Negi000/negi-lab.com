@@ -9,9 +9,14 @@
 window.ImageConverterUI = {
     elements: {},
     maxFileSize: 50 * 1024 * 1024, // 50MB
+    _initialized: false,
     
     // 初期化
     init: function() {
+        if (this._initialized) {
+            return;
+        }
+        this._initialized = true;
         this.cacheElements();
         this.bindEvents();
         if (window.ImageConverterPresets) {
@@ -20,6 +25,14 @@ window.ImageConverterUI = {
         this.initializeForm();
         this.checkFormatSupport();
         this.initializeTranslations();
+        // Core状態の存在保証
+        if (!window.ImageConverterCore) {
+            window.ImageConverterCore = {};
+        }
+        window.ImageConverterCore.selectedFiles = window.ImageConverterCore.selectedFiles || [];
+        window.ImageConverterCore.results = window.ImageConverterCore.results || [];
+        window.ImageConverterCore.currentRotation = window.ImageConverterCore.currentRotation || 0;
+        window.ImageConverterCore.currentFilter = window.ImageConverterCore.currentFilter || 'none';
     },
 
     // 翻訳システム初期化（既に初期化されている場合はスキップ）
@@ -213,6 +226,9 @@ window.ImageConverterUI = {
         }
 
         // 既存ファイルに追加
+        if (!Array.isArray(window.ImageConverterCore.selectedFiles)) {
+            window.ImageConverterCore.selectedFiles = [];
+        }
         window.ImageConverterCore.selectedFiles.push(...validFiles);
         this.updateFileList();
         this.showPreview(validFiles[0]);
@@ -287,7 +303,8 @@ window.ImageConverterUI = {
         this.elements.outputFormat.value = preset.format;
         
         if (this.elements.qualitySlider && preset.quality !== undefined) {
-            this.elements.qualitySlider.value = Math.round(preset.quality * 100);
+            const val = Math.max(0.1, Math.min(1, preset.quality));
+            this.elements.qualitySlider.value = val;
         }
         
         if (preset.maxWidth) {
@@ -310,7 +327,7 @@ window.ImageConverterUI = {
     // 品質表示更新
     updateQualityVisibility: function() {
         const format = this.elements.outputFormat.value;
-        const formatInfo = window.ImageConverterPresets.getFormatInfo(format);
+    const formatInfo = window.ImageConverterPresets?.getFormatInfo ? window.ImageConverterPresets.getFormatInfo(format) : null;
         
         if (formatInfo && formatInfo.supportsQuality) {
             this.elements.qualityContainer?.classList.remove('hidden');
@@ -322,13 +339,14 @@ window.ImageConverterUI = {
     // 品質値更新
     updateQualityValue: function() {
         if (this.elements.qualitySlider && this.elements.qualityValue) {
-            this.elements.qualityValue.textContent = this.elements.qualitySlider.value + '%';
+            const val = this.elements.qualitySlider.value;
+            this.elements.qualityValue.textContent = (parseFloat(val)).toFixed(2);
         }
     },
 
     // 回転設定
     setRotation: function(degrees) {
-        window.ImageConverterCore.currentRotation = degrees;
+    window.ImageConverterCore.currentRotation = degrees;
         
         // ボタンの状態更新
         document.querySelectorAll('[id^="rotate"]').forEach(btn => {
@@ -494,6 +512,7 @@ window.ImageConverterUI = {
             'image/x-sony-arw': 'arw',
             'image/x-adobe-dng': 'dng'
         };
+    return extensionMap[format] || 'bin';
     },
 
     // 単一ファイル処理
@@ -584,16 +603,18 @@ window.ImageConverterUI = {
 
     // 結果表示
     displayResults: function(results) {
-        window.ImageConverterCore.results = results;
-        const container = this.elements.resultsContainer;
-        container.innerHTML = '';
+        const data = results ?? window.ImageConverterCore.results ?? [];
+        window.ImageConverterCore.results = data;
+        const grid = this.elements.resultsGrid || this.elements.resultsContainer;
+        if (!grid) return;
+        grid.innerHTML = '';
         
-        results.forEach((result, index) => {
+        data.forEach((result, index) => {
             const resultItem = this.createResultItem(result, index);
-            container.appendChild(resultItem);
+            grid.appendChild(resultItem);
         });
         
-        container.classList.remove('hidden');
+        this.elements.resultContainer?.classList.remove('hidden');
         this.elements.downloadAllBtn?.classList.remove('hidden');
     },
 
@@ -660,9 +681,9 @@ window.ImageConverterUI = {
         window.ImageConverterCore.results = [];
         
         this.elements.fileList.innerHTML = '';
-        this.elements.resultsContainer.innerHTML = '';
-        this.elements.previewContainer.classList.add('hidden');
-        this.elements.resultsContainer.classList.add('hidden');
+    this.elements.resultsGrid && (this.elements.resultsGrid.innerHTML = '');
+    this.elements.previewContainer.classList.add('hidden');
+    this.elements.resultContainer?.classList.add('hidden');
         this.elements.downloadAllBtn?.classList.add('hidden');
         
         this.showStatus('すべてクリアしました。', 'info');
@@ -787,8 +808,10 @@ window.ImageConverterUI = {
     
     // 品質値取得
     getQualityValue: function() {
-        const qualitySlider = document.getElementById('qualityRange');
-        return qualitySlider ? parseFloat(qualitySlider.value) : 0.9;
+    const qualitySlider = document.getElementById('qualityRange');
+    // HTMLのmin/maxは0.1-1で指定。Canvasや一部フォーマットは0-1を期待。
+    const v = qualitySlider ? parseFloat(qualitySlider.value) : 0.9;
+    return Math.max(0.0, Math.min(1.0, v));
     },
     
     // 設定変更時のリアルタイム更新
