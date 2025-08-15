@@ -8,6 +8,25 @@
 // 日付計算ツール用翻訳データ
 window.dateCalculatorTranslations = {
     ja: {
+        // Namespaced keys used directly in HTML (dateCalculator.* and header/option)
+        dateCalculator: {
+            pageTitle: '【無料】日付計算ツール - 期間計算・日数計算・年齢計算 | negi-lab.com',
+            metaDescription: '高精度な日付・期間計算と年齢・勤続年数・記念日管理に対応した専門計算ツール。営業日計算・プロジェクト管理・人事業務での期間計算を効率化する実用的な日付計算ソリューションです。',
+            mainTitle: '日付計算ツール',
+            diffTitle: '2つの日付の差を計算',
+            start: '開始日',
+            end: '終了日',
+            calcDiff: '日数を計算',
+            addsubTitle: '日付の加算・減算',
+            base: '基準日',
+            days: '日数（±）',
+            calcAddSub: '日付を計算'
+        },
+        header: {
+            nav: { tools: 'ツール', wikis: 'ゲームWiki' }
+        },
+        option: { ja: '日本語', en: 'English' },
+
         // ページタイトル・メタ
         'pageTitle': '日付計算ツール - 期間計算・営業日計算・年齢計算 | negi-lab.com',
         'metaDescription': '日付間の期間計算、営業日計算、年齢計算、日付の加算減算、祝日判定など総合的な日付計算ツール。和暦・西暦対応、タイムゾーン考慮、カレンダー表示機能付き。',
@@ -222,6 +241,25 @@ window.dateCalculatorTranslations = {
     },
     
     en: {
+        // Namespaced keys used directly in HTML (dateCalculator.* and header/option)
+        dateCalculator: {
+            pageTitle: 'Free Date Calculator - Period, Days, Age | negi-lab.com',
+            metaDescription: 'High-precision date and period calculations with age, tenure, and anniversary tracking. Practical solution for business day calculations in project management and HR tasks.',
+            mainTitle: 'Date Calculator',
+            diffTitle: 'Calculate difference between two dates',
+            start: 'Start Date',
+            end: 'End Date',
+            calcDiff: 'Calculate Days',
+            addsubTitle: 'Add / Subtract Date',
+            base: 'Base Date',
+            days: 'Days (±)',
+            calcAddSub: 'Calculate Date'
+        },
+        header: {
+            nav: { tools: 'Tools', wikis: 'Game Wikis' }
+        },
+        option: { ja: '日本語', en: 'English' },
+
         // ページタイトル・メタ
         'pageTitle': 'Date Calculator - Period, Business Days, Age Calculation | negi-lab.com',
         'metaDescription': 'Comprehensive date calculation tool for period calculation, business days, age calculation, date addition/subtraction, holiday determination. Supports Japanese era, timezone, calendar display.',

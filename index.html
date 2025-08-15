@@ -76,15 +76,8 @@
   
   <!-- Portal-specific translations -->
   <script src="js/portal-translations.js"></script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
+  <!-- Consent-gated loader for GA/AdSense -->
+  <script src="js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
@@ -154,7 +147,6 @@
              data-ad-slot="2847561903"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </aside>
     </section>
 
@@ -185,7 +177,6 @@
                data-ad-slot="8374251609"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </aside>
 
         <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
@@ -354,7 +345,6 @@
                data-ad-slot="6142508973"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- 1 -->
@@ -461,7 +451,6 @@
          data-ad-slot="1593748260"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
   <!-- 独自性・免責事項セクション（全ツール・ポータル統一/短縮URLツール方式） -->
@@ -665,9 +654,7 @@
     });
   </script>
 
-  <!-- Google AdSense例（ABテストでA/B切替） -->
-  <div class="adsbygoogle ab-A" style="display:block" data-ad-client="ca-pub-xxxx" data-ad-slot="xxxx"></div>
-  <div class="adsbygoogle ab-B" style="display:none" data-ad-client="ca-pub-xxxx" data-ad-slot="yyyy"></div>
+  <!-- ABテスト用のダミー広告枠は審査中は無効化 -->
 
   <!-- SEO構造化データ（FAQ, パンくず, サイトリンク, HowTo, Review例） -->
   <script type="application/ld+json">
@@ -742,7 +729,16 @@
       accept.onclick = function() {
         localStorage.setItem('cookieConsent', 'accepted');
         banner.classList.add('hidden');
-        location.reload();
+        // Fire a site-wide consent accepted event for runtime initializers
+        try {
+          var evt = new Event('cookieConsentAccepted');
+          document.dispatchEvent(evt);
+        } catch (e) {
+          // IE fallback
+          var evtLegacy = document.createEvent('Event');
+          evtLegacy.initEvent('cookieConsentAccepted', true, true);
+          document.dispatchEvent(evtLegacy);
+        }
       };
     });
 

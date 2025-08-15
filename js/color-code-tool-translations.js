@@ -867,3 +867,8 @@ const colorCodeToolTranslations = {
     }
   }
 };
+
+// グローバルに公開（ツール共通翻訳エンジンからも参照可能に）
+if (typeof window !== 'undefined') {
+    window.colorCodeToolTranslations = colorCodeToolTranslations;
+}

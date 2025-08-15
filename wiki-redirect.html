@@ -82,10 +82,30 @@
       <a id="skipLink" href="#" class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-emerald-500 transition">今すぐWikiへ移動</a>
     </div>
   </main>
-  <!-- AmazonアフィリエイトCookie埋め込み -->
-  <img src="https://www.amazon.co.jp/assoc-redirect?tag=あなたのアソシエイトID-22" width="1" height="1" style="display:none" alt="Amazon Cookie" loading="eager">
-  <!-- 楽天アフィリエイトCookie埋め込み -->
-  <img src="https://hb.afl.rakuten.co.jp/hgc/あなたの楽天アフィリエイトID.gif" width="1" height="1" style="display:none" alt="Rakuten Cookie" loading="eager">
+  <!-- Affiliate cookies are injected only after explicit consent -->
+  <script>
+    (function(){
+      function injectAffiliatePixels(){
+        try {
+          var a = document.createElement('img');
+          a.src = 'https://www.amazon.co.jp/assoc-redirect?tag=あなたのアソシエイトID-22';
+          a.width = 1; a.height = 1; a.loading = 'eager'; a.alt = 'Amazon Cookie'; a.style.display = 'none';
+          document.body.appendChild(a);
+          var r = document.createElement('img');
+          r.src = 'https://hb.afl.rakuten.co.jp/hgc/あなたの楽天アフィリエイトID.gif';
+          r.width = 1; r.height = 1; r.loading = 'eager'; r.alt = 'Rakuten Cookie'; r.style.display = 'none';
+          document.body.appendChild(r);
+        } catch(_) {}
+      }
+      var consent = false;
+      try { consent = localStorage.getItem('cookieConsent') === 'accepted'; } catch(_) {}
+      if (consent) {
+        injectAffiliatePixels();
+      } else {
+        document.addEventListener('cookieConsentAccepted', injectAffiliatePixels, { once: true });
+      }
+    })();
+  </script>
   <script>
     // クエリから遷移先URL取得
     function getParam(name) {

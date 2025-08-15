@@ -38,8 +38,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -108,14 +108,7 @@
     }
   </style>
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
+  <script src="../js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -143,11 +136,11 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">ファビコン・OG画像ジェネレータ</li>
+        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="faviconOgGen.breadcrumbCurrent">ファビコン・OG画像ジェネレータ</li>
       </ol>
     </div>
   </nav>
@@ -158,39 +151,39 @@
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="faviconOgGen.mainTitle">ファビコン&OG画像ジェネレータ</h1>
       </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4">ファビコンやOGP画像を簡単に生成・ダウンロードできるツールです。WebサイトやSNS用のアイコン・サムネイル作成に。</p>
+        <p class="text-gray-700 mb-4" data-translate-key="faviconOgGen.lead">ファビコンやOGP画像を簡単に生成・ダウンロードできるツールです。WebサイトやSNS用のアイコン・サムネイル作成に。</p>
         <div class="space-y-4">
           <div>
-            <label class="block font-semibold mb-1">画像アップロード（任意）</label>
+            <label class="block font-semibold mb-1" data-translate-key="faviconOgGen.uploadOptional">画像アップロード（任意）</label>
             <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
             <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
           </div>
           <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold">テキスト（任意）</label>
-            <input type="text" id="textInput" maxlength="32" class="form-input flex-1 min-w-[120px]" placeholder="例: N" />
-            <label class="block font-semibold ml-2">背景色</label>
+            <label class="block font-semibold" data-translate-key="faviconOgGen.textOptional">テキスト（任意）</label>
+            <input type="text" id="textInput" maxlength="32" class="form-input flex-1 min-w-[120px]" data-translate-placeholder-key="faviconOgGen.textPlaceholder" placeholder="例: N" />
+            <label class="block font-semibold ml-2" data-translate-key="faviconOgGen.bgColor">背景色</label>
             <input type="color" id="bgColorInput" value="#4ADE80" class="form-input w-10 h-10 p-0 border-0" />
-            <label class="block font-semibold ml-2">文字色</label>
+            <label class="block font-semibold ml-2" data-translate-key="faviconOgGen.textColor">文字色</label>
             <input type="color" id="textColorInput" value="#ffffff" class="form-input w-10 h-10 p-0 border-0" />
           </div>
           <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold">サイズ</label>
+            <label class="block font-semibold" data-translate-key="faviconOgGen.size">サイズ</label>
             <select id="sizeSelect" class="form-input">
-              <option value="favicon">ファビコン(32x32)</option>
-              <option value="ogp">OGP(1200x630)</option>
-              <option value="icon180">iOSアイコン(180x180)</option>
-              <option value="icon192">Androidアイコン(192x192)</option>
-              <option value="custom">カスタム</option>
+              <option value="favicon" data-translate-key="faviconOgGen.size.favicon">ファビコン(32x32)</option>
+              <option value="ogp" data-translate-key="faviconOgGen.size.ogp">OGP(1200x630)</option>
+              <option value="icon180" data-translate-key="faviconOgGen.size.icon180">iOSアイコン(180x180)</option>
+              <option value="icon192" data-translate-key="faviconOgGen.size.icon192">Androidアイコン(192x192)</option>
+              <option value="custom" data-translate-key="faviconOgGen.size.custom">カスタム</option>
             </select>
             <input type="number" id="customWidth" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
             <span class="mx-1" id="customX" style="display:none;">×</span>
             <input type="number" id="customHeight" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
           </div>
-          <button id="generateBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold">画像生成＆プレビュー</button>
+          <button id="generateBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" data-translate-key="faviconOgGen.generate">画像生成＆プレビュー</button>
           <div id="resultContainer" class="mt-6 hidden">
-            <h2 class="text-base font-semibold mb-2">プレビュー＆ダウンロード</h2>
+            <h2 class="text-base font-semibold mb-2" data-translate-key="faviconOgGen.previewDownload">プレビュー＆ダウンロード</h2>
             <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
-            <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs">画像をダウンロード</a>
+            <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs" data-translate-key="faviconOgGen.download">画像をダウンロード</a>
           </div>
         </div>
       </div>
@@ -199,11 +192,11 @@
 
       <!-- 教育的ガイド -->
       <section class="mt-12 bg-white rounded-xl shadow-lg p-6 md:p-8" id="educational-guide">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 ファビコン・OGP画像作成の完全ガイド</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.sectionTitle">📚 ファビコン・OGP画像作成の完全ガイド</h2>
 
         <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">🎯 ファビコン・OGPとは</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.whatIs">🎯 ファビコン・OGPとは</h3>
             <div class="space-y-3 text-gray-700 text-sm">
               <p><strong>ファビコン（Favicon）</strong>は、ブラウザのタブやブックマークに表示される小さなアイコンです。Webサイトの顔として重要な役割を果たします。</p>
               <p><strong>OGP画像（Open Graph画像）</strong>は、SNSでシェアされた際に表示されるサムネイル画像で、クリック率向上に大きく影響します。</p>
@@ -212,7 +205,7 @@
           </div>
           
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">⚙️ 各サイズの用途</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.sizes">⚙️ 各サイズの用途</h3>
             <div class="space-y-2 text-gray-700 text-sm">
               <div class="bg-gray-50 p-3 rounded">
                 <strong>32×32px（ファビコン）</strong><br>
@@ -237,10 +230,10 @@
 
       <!-- 技術解説 -->
       <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">🔧 技術仕様と実装方法</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.techSpec">🔧 技術仕様と実装方法</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">HTML実装方法</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.htmlImpl">HTML実装方法</h3>
             <div class="bg-gray-100 p-4 rounded-lg text-sm">
               <code class="text-gray-800">
                 &lt;!-- ファビコン --&gt;<br>
@@ -255,7 +248,7 @@
           </div>
           
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">最適化のポイント</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.optimization">最適化のポイント</h3>
             <ul class="space-y-2 text-gray-700 text-sm">
               <li class="flex items-start"><span class="text-accent mr-2">✓</span>シンプルで識別しやすいデザイン</li>
               <li class="flex items-start"><span class="text-accent mr-2">✓</span>小さいサイズでも視認性を保つ</li>
@@ -270,7 +263,7 @@
 
       <!-- FAQ -->
       <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">❓ よくある質問（FAQ）</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.faq">❓ よくある質問（FAQ）</h2>
         <div class="space-y-4">
           <details class="border border-gray-200 rounded-lg p-4">
             <summary class="font-semibold cursor-pointer text-gray-800">ファビコンが表示されないのはなぜですか？</summary>
@@ -308,7 +301,7 @@
 <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
+  <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="cases.title">実際の活用事例</h2>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
           様々な業界・用途での実際のFavicon・OG画像生成活用事例をご紹介します。
         </p>
@@ -317,7 +310,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🚀</div>
-          <h3 class="text-lg font-semibold mb-3">スタートアップのブランド構築</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.startup.title">スタートアップのブランド構築</h3>
           <p class="text-gray-600 text-sm mb-4">
             テックスタートアップでは、統一感のあるFavicon・OG画像でブランド認知度を向上。
             SNSでのシェア時の視認性向上により、サイト流入数が45%増加。
@@ -332,7 +325,7 @@
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">💼</div>
-          <h3 class="text-lg font-semibold mb-3">企業サイトのプロフェッショナル化</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.corporate.title">企業サイトのプロフェッショナル化</h3>
           <p class="text-gray-600 text-sm mb-4">
             中小企業では、プロ品質のFavicon・OG画像で企業の信頼性を向上。
             お問い合わせ率25%向上、新規取引先開拓でも成果を実感。
@@ -347,7 +340,7 @@
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3">ECサイトでのSEO・UX改善</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.ec.title">ECサイトでのSEO・UX改善</h3>
           <p class="text-gray-600 text-sm mb-4">
             オンラインショップでは、商品カテゴリ別のFavicon・OG画像で差別化。
             検索結果での視認性向上により、オーガニック流入30%アップ。
@@ -362,7 +355,7 @@
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📝</div>
-          <h3 class="text-lg font-semibold mb-3">ブログ・メディアでの読者獲得</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.blog.title">ブログ・メディアでの読者獲得</h3>
           <p class="text-gray-600 text-sm mb-4">
             個人ブロガーでは、記事ごとに最適化されたOG画像でSNSでのシェア率を向上。
             月間PV数が3倍に増加し、収益化も加速。
@@ -377,7 +370,7 @@
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎓</div>
-          <h3 class="text-lg font-semibold mb-3">教育機関での情報発信強化</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.school.title">教育機関での情報発信強化</h3>
           <p class="text-gray-600 text-sm mb-4">
             専門学校では、学科別のFavicon・OG画像で各コースの魅力を視覚的にアピール。
             オープンキャンパス参加者数が40%増加。
@@ -392,7 +385,7 @@
         
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏥</div>
-          <h3 class="text-lg font-semibold mb-3">医療・サービス業での信頼構築</h3>
+          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.medical.title">医療・サービス業での信頼構築</h3>
           <p class="text-gray-600 text-sm mb-4">
             クリニックでは、清潔感のあるFavicon・OG画像で患者さんへの安心感を提供。
             オンライン予約率が35%向上し、患者満足度も改善。
@@ -408,14 +401,14 @@
 
       <div class="mt-12 text-center">
         <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたのサイトでもプロ品質の画像を作成しませんか？</h3>
+          <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate-key="cta.heading">あなたのサイトでもプロ品質の画像を作成しませんか？</h3>
           <p class="text-gray-600 text-sm mb-4">
             これらの事例を参考に、あなたの業界・用途に合わせたFavicon・OG画像活用を始めてみましょう。
             当ツールなら、プロ品質のサイト画像を簡単に生成できます。
           </p>
           <a href="#" onclick="document.querySelector('#textInput, #logoInput, [type=file]').focus(); return false;" 
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐFavicon・OG画像生成を始める
+            <span data-translate-key="cta.button">今すぐFavicon・OG画像生成を始める</span>
           </a>
         </div>
       </div>
@@ -423,26 +416,28 @@
   </section>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li data-translate-key="siteInfo.point1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
+      <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2025 negi-lab.com</p>
   </section>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
+  <!-- Translations and system -->
+  <script src="../js/tool-translation-system.js"></script>
+  <script src="../js/favicon-og-generator-translations.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       if(window.renderSmartAds)window.renderSmartAds('smart-ads');

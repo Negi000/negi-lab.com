@@ -4,15 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <!-- Content Security Policy (開発中は一時無効化) -->
-  <!--
+  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
     script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com
-      https://cdn.jsdelivr.net
-      https://pagead2.googlesyndication.com
-      https://www.googletagmanager.com; 
+      https://cdn.tailwindcss.com 
+      https://cdn.jsdelivr.net 
+      https://www.googletagmanager.com 
+      https://pagead2.googlesyndication.com; 
     style-src 'self' 'unsafe-inline' 
       https://fonts.googleapis.com 
       https://cdn.tailwindcss.com; 
@@ -20,12 +19,13 @@
       https://fonts.gstatic.com; 
     img-src 'self' data: blob:; 
     connect-src 'self' 
-      https://www.google-analytics.com
-      https://analytics.google.com; 
+      https://www.google-analytics.com; 
+    frame-src 
+      https://googleads.g.doubleclick.net 
+      https://tpc.googlesyndication.com; 
     object-src 'none'; 
     base-uri 'self';
   " />
-  -->
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -250,6 +250,9 @@
       </nav>
     </div>
   </header>
+
+  <!-- Consent-gated loader for GA/AdSense -->
+  <script src="../js/ads-consent-loader.js" defer></script>
 
   <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="パンくずリスト">
