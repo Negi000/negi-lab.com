@@ -55,6 +55,9 @@
   <!-- Security and Common Utilities -->
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
+  <!-- Portal/global translations and tool translation engine -->
+  <script src="../js/portal-translations.js"></script>
+  <script src="../js/tool-translation-system.js"></script>
   <script src="../js/color-analysis-engine.js"></script>
   <script src="../js/advanced-color-ui.js"></script>
   <script src="../js/color-code-tool-translations.js"></script>
@@ -354,16 +357,20 @@
     }
   </style>
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
+  <script src="../js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+  <script>
+    // 初期言語適用（ヘッダー/フッター含む共有UI）
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        var lang = (localStorage.getItem('selectedLanguage') || localStorage.getItem('negi-lab-language') || document.documentElement.lang || 'ja');
+        if (typeof window.applyPortalBaseTranslations === 'function') {
+          window.applyPortalBaseTranslations(lang);
+        }
+      } catch(e) { /* noop */ }
+    });
+  </script>
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
       <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
@@ -389,11 +396,11 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+  <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+  <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">カラーコードツール</li>
+  <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="tools.colorCodeTool.title">カラーコードツール</li>
       </ol>
     </div>
   </nav>
@@ -1121,13 +1128,13 @@ if (document.readyState === "loading") {
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>
   <!-- カラーツール専用スクリプトの実行 -->
   <script>

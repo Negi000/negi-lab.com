@@ -12,6 +12,7 @@ window.translations = {
     "meta.description": "プライバシー重視のブラウザ完結型ツール集。QRコード生成、画像変換、単位換算など、専門的な機能を誰でも簡単に利用できます。技術解説と実用ガイド付きで安心してお使いいただけます。",
 
     // Header & Navigation
+  "header.nav.home": "ホーム",
     "header.nav.tools": "ツール",
     "header.nav.wikis": "ゲームWiki",
     "header.guide": "ガイド",
@@ -149,6 +150,7 @@ window.translations = {
     "meta.description": "Privacy-focused browser-based tool collection. QR code generation, image conversion, unit conversion, and more specialized features that anyone can use easily. Complete with technical guides and practical tutorials for safe usage.",
 
     // Header & Navigation
+  "header.nav.home": "Home",
     "header.nav.tools": "Tools",
     "header.nav.wikis": "Game Wikis",
     "header.guide": "Guide",

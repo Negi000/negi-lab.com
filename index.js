@@ -41,18 +41,31 @@ function applyTranslations(lang) {
     }
   });
 
+  // Handle placeholders with data-translate-placeholder-key
+  const placeholderElements = document.querySelectorAll('[data-translate-placeholder-key]');
+  placeholderElements.forEach(element => {
+    const key = element.getAttribute('data-translate-placeholder-key');
+    if (translations[key]) {
+      element.setAttribute('placeholder', translations[key]);
+    } else {
+      console.warn(`Translation placeholder key not found: ${key}`);
+    }
+  });
+
   // Update document language
   document.documentElement.lang = lang;
   
-  // Update meta description
+  // Update meta description (prefer page-specific key if provided)
   const metaDescription = document.querySelector('meta[name="description"]');
-  if (metaDescription && translations['meta.description']) {
-    metaDescription.setAttribute('content', translations['meta.description']);
+  const metaKey = window.metaDescriptionTranslationKey || 'meta.description';
+  if (metaDescription && translations[metaKey]) {
+    metaDescription.setAttribute('content', translations[metaKey]);
   }
 
-  // Update page title
-  if (translations['page.title']) {
-    document.title = translations['page.title'];
+  // Update page title (prefer page-specific key if provided)
+  const titleKey = window.pageTitleTranslationKey || 'page.title';
+  if (translations[titleKey]) {
+    document.title = translations[titleKey];
   }
 
   // Update aria-label for guide close button
@@ -113,6 +126,19 @@ function initLanguageSwitch() {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded, initializing translation system...');
   
+  // If a tool-specific translation system/data is present, skip portal translation init
+  if (
+    window.qrGeneratorTranslations ||
+    window.dateCalculatorTranslations ||
+    window.imageConverterTranslations ||
+    window.ImageConverterTranslationSystem ||
+    window.dateCalculatorTranslationSystem ||
+    window.applyToolTranslations // generic tool translator present
+  ) {
+    console.log('Tool-specific translations detected; skipping portal translation initialization.');
+    return;
+  }
+
   // Wait for translations to load, then initialize
   if (window.translations) {
     console.log('Translations already loaded, initializing language switch');
@@ -125,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Translations loaded after timeout, initializing language switch');
         initLanguageSwitch();
       } else {
-        console.error('Translations failed to load after timeout');
+        console.info('Portal translations not found; likely a tool page using its own i18n. Skipping portal translation initialization.');
       }
     }, 100);
   }

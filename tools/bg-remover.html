@@ -43,8 +43,8 @@
           crossorigin="anonymous"></script>
   
   <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
   
   <!-- Tailwind Configuration -->
   <script>
@@ -110,13 +110,7 @@
     }
   </style>
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
+  <!-- Analytics are initialized centrally via ads-consent-loader.js with consent in production -->
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -144,11 +138,11 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">背景除去ツール</li>
+        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="bgRemover.breadcrumbCurrent">背景除去ツール</li>
       </ol>
     </div>
   </nav>
@@ -159,22 +153,22 @@
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="bgRemover.mainTitle">画像背景リムーバ&透過PNG生成ツール</h1>
       </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4">画像の背景を自動で削除し、透過PNG画像を生成できるツールです。人物・商品・ロゴ等の切り抜きに便利です。</p>
+        <p class="text-gray-700 mb-4" data-translate-key="bgRemover.lead">画像の背景を自動で削除し、透過PNG画像を生成できるツールです。人物・商品・ロゴ等の切り抜きに便利です。</p>
         <div class="space-y-4">
           <div>
-            <label class="block font-semibold mb-1">画像ファイルを選択</label>
+            <label class="block font-semibold mb-1" data-translate-key="bgRemover.selectImage">画像ファイルを選択</label>
             <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
             <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
           </div>
           <div id="previewContainer" class="hidden">
-            <h2 class="text-base font-semibold mb-2">オリジナル画像プレビュー</h2>
+            <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.originalPreview">オリジナル画像プレビュー</h2>
             <img id="originalPreview" src="#" alt="オリジナル画像" class="max-w-full max-h-64 rounded border mb-4" />
           </div>
-          <button id="removeBgBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled>背景を削除して透過PNG生成</button>
+          <button id="removeBgBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled data-translate-key="bgRemover.removeButton">背景を削除して透過PNG生成</button>
           <div id="resultContainer" class="mt-6 hidden">
-            <h2 class="text-base font-semibold mb-2">背景除去結果プレビュー</h2>
+            <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.resultPreview">背景除去結果プレビュー</h2>
             <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
-            <a id="downloadLink" href="#" download="bg-removed.png" class="text-accent underline text-xs">透過PNGをダウンロード</a>
+            <a id="downloadLink" href="#" download="bg-removed.png" class="text-accent underline text-xs" data-translate-key="bgRemover.download">透過PNGをダウンロード</a>
           </div>
         </div>
       </div>
@@ -321,7 +315,9 @@
     </nav>
     <div>&copy; 2025 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
+  <!-- Translations and system -->
+  <script src="../js/tool-translation-system.js"></script>
+  <script src="../js/bg-remover-translations.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       if(window.renderSmartAds)window.renderSmartAds('smart-ads');
@@ -472,6 +468,9 @@ if (document.readyState === "loading") {
   setupGuideModal();
 }
 </script>
+  
+  <!-- Centralized consent-gated Ads/Analytics loader -->
+  <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>
 
