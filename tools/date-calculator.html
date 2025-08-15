@@ -6,25 +6,14 @@
   
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com
-      https://googleads.g.doubleclick.net
-      https://ep1.adtrafficquality.google; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob:; 
-    connect-src 'self' 
-      https://www.google-analytics.com
-      https://ep1.adtrafficquality.google; 
-    frame-src 'self'
-      https://googleads.g.doubleclick.net; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://pagead2.googlesyndication.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://pagead2.googlesyndication.com https://tpc.googlesyndication.com;
+    connect-src 'self' https://www.google-analytics.com;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+    object-src 'none';
     base-uri 'self';
   " />
 
@@ -100,18 +89,10 @@
       cursor: not-allowed;
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <script src="../js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <!-- Amazonアソシエイト/楽天アフィリエイト Cookie埋め込み・imgタグ削除（ASP規約対策） -->
-  <!-- Google Analytics（gtag.js）全ページ用 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
@@ -138,11 +119,11 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+  <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+  <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">日付計算ツール</li>
+  <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="dateCalculator.mainTitle">日付計算ツール</li>
       </ol>
     </div>
   </nav>
@@ -160,7 +141,6 @@
              data-ad-slot="2847561903"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-8">
         <div class="mb-6 flex gap-4">
@@ -233,7 +213,6 @@
              data-ad-slot="8374251609"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
     </div>
   </main>
@@ -692,15 +671,15 @@
   
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
+  <script src="../index.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // タブ切り替えUI
@@ -955,12 +934,15 @@
       '02-23': '天皇誕生日。令和天皇の誕生日。'
     };
     // 外部JSONをfetchして上書き
-    fetch('./holidays-ja.json').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
-      if(Array.isArray(data)) holidays = data;
-    }).catch(()=>{/* フォールバック */});
-    fetch('./date-trivia-ja.json').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
-      if(typeof data === 'object') triviaData = data;
-    }).catch(()=>{/* フォールバック */});
+    // Skip fetch on file:// to avoid CORS; use inline fallback. Fetch only on http(s).
+    if (location.protocol === 'http:' || location.protocol === 'https:') {
+      fetch('./holidays-ja.json').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
+        if(Array.isArray(data)) holidays = data;
+      }).catch(()=>{/* フォールバック */});
+      fetch('./date-trivia-ja.json').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
+        if(typeof data === 'object') triviaData = data;
+      }).catch(()=>{/* フォールバック */});
+    }
     // --- 祝日・トリビア参照ロジックを修正 ---
     function isBusinessDay(dateStr) {
       const d = new Date(dateStr);
