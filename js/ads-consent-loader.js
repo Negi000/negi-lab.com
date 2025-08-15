@@ -7,6 +7,9 @@
   // Don't run on 404 or noindex pages
   var isNoIndex = !!document.querySelector('meta[name="robots"][content*="noindex"]');
   if (isNoIndex) return;
+  // Optional per-page disable flag for ads (GAは有効のまま)
+  var ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-ads-disabled')) || !!document.querySelector('meta[name="ads"][content="off"]');
+  var DEBUG = false; try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
 
   function loadScript(src, attrs){
     return new Promise(function(resolve,reject){
@@ -30,17 +33,56 @@
       .catch(function(e){ console.warn('GA load failed', e); });
   }
 
+  // Push a single ad slot safely (avoid duplicate push)
+  function pushAdSlot(el){
+    try {
+      if (!el || el.getAttribute('data-ads-pushed') === '1') return;
+      if (el.getAttribute('data-adsbygoogle-status')) { el.setAttribute('data-ads-pushed','1'); return; }
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      el.setAttribute('data-ads-pushed','1');
+      if (DEBUG) console.log('[ads-consent-loader] pushed slot', el);
+    } catch(e){ if (DEBUG) console.warn('Ad slot push failed', e); }
+  }
+
+  function pushAllSlots(){
+    try {
+      var slots = document.querySelectorAll('ins.adsbygoogle');
+      for (var i=0; i<slots.length; i++) pushAdSlot(slots[i]);
+    } catch(e){ if (DEBUG) console.warn('Push all slots failed', e); }
+  }
+
+  function startAdSlotObserver(){
+    if (window.__adSlotObserverStarted) return;
+    if (!('MutationObserver' in window)) return;
+    try {
+      var observer = new MutationObserver(function(mutations){
+        if (!window.__adsLoaded) return;
+        mutations.forEach(function(m){
+          for (var i=0; i<m.addedNodes.length; i++){
+            var node = m.addedNodes[i];
+            if (node.nodeType !== 1) continue;
+            if (node.matches && node.matches('ins.adsbygoogle')) {
+              pushAdSlot(node);
+            } else if (node.querySelectorAll) {
+              var found = node.querySelectorAll('ins.adsbygoogle');
+              for (var j=0; j<found.length; j++) pushAdSlot(found[j]);
+            }
+          }
+        });
+      });
+      observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+      window.__adSlotObserverStarted = true;
+      if (DEBUG) console.log('[ads-consent-loader] MutationObserver started');
+    } catch(e){ if (DEBUG) console.warn('Observer init failed', e); }
+  }
+
   function initAds(){
-    if (window.__adsLoaded) return;
+    if (window.__adsLoaded) { startAdSlotObserver(); pushAllSlots(); return; }
     window.__adsLoaded = true;
     loadScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386', { crossorigin: 'anonymous' })
       .then(function(){
-        try {
-          var slots = document.querySelectorAll('ins.adsbygoogle');
-          for (var i=0; i<slots.length; i++) {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-          }
-        } catch(e){ console.warn('Ads push failed', e); }
+        startAdSlotObserver();
+        pushAllSlots();
       })
       .catch(function(e){ console.warn('Ads load failed', e); });
   }
@@ -73,12 +115,19 @@
       banner.style.justifyContent = 'space-between';
       banner.style.gap = '8px';
 
-      var span = document.createElement('span');
-      span.textContent = text;
+  var span = document.createElement('span');
+  span.textContent = text + ' ';
       span.style.fontSize = '12px';
       span.style.color = '#374151';
       span.style.lineHeight = '1.4';
       span.style.flex = '1 1 auto';
+
+  var link = document.createElement('a');
+  link.href = '/privacy-policy-unified.html';
+  link.textContent = isJa ? 'プライバシーポリシー' : 'Privacy Policy';
+  link.style.textDecoration = 'underline';
+  link.style.color = '#2563EB';
+  link.style.marginLeft = '6px';
 
       var btn = document.createElement('button');
       btn.id = 'consent-accept';
@@ -106,7 +155,14 @@
         if (banner && banner.parentNode) banner.parentNode.removeChild(banner);
       });
 
-      banner.appendChild(span);
+  var textWrap = document.createElement('div');
+  textWrap.style.display = 'flex';
+  textWrap.style.alignItems = 'center';
+  textWrap.style.flex = '1 1 auto';
+  textWrap.appendChild(span);
+  textWrap.appendChild(link);
+
+  banner.appendChild(textWrap);
       banner.appendChild(btn);
       document.body.appendChild(banner);
     } catch(e){ /* no-op */ }
@@ -118,7 +174,8 @@
 
     if (ENV_OK && CONSENT_OK) {
       initGA();
-      if (hasAdSlot) initAds();
+      if (hasAdSlot && !ADS_DISABLED) initAds();
+      else if (!ADS_DISABLED) startAdSlotObserver();
     } else {
       // Provide a minimal consent UI if running on production and not on noindex pages
       if (ENV_OK && !isNoIndex && !CONSENT_OK) {
@@ -128,7 +185,7 @@
       document.addEventListener('cookieConsentAccepted', function(){
         if (ENV_OK) {
           initGA();
-          if (hasAdSlot) initAds();
+          if (!ADS_DISABLED) initAds();
         }
       }, { once: true });
     }
