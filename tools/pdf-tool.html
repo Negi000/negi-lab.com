@@ -7,24 +7,14 @@
   
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://cdn.jsdelivr.net 
-      https://pagead2.googlesyndication.com     </div>
-  </section>
-
-  
-    <!-- 迢ｬ閾ｪ諤ｧ繝ｻ驕句霧譁ｹ驥昴・蜈崎ｲｬ莠矩・-->www.googletagmanager.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob:; 
-    connect-src 'self' 
-      https://www.google-analytics.com; 
-    object-src 'none'; 
+    default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+  connect-src 'self' https://www.google-analytics.com;
+  frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+    object-src 'none';
     base-uri 'self';
   " />
   
@@ -99,13 +89,6 @@
     }
   </style>
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -939,6 +922,8 @@ if (document.readyState === "loading") {
         <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
       </section>
 </div>
+  <!-- Consent-gated Ads/Analytics Loader -->
+  <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>
 

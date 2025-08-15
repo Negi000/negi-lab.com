@@ -6,23 +6,19 @@
   
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data:; 
-    connect-src 'self'; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://pagead2.googlesyndication.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: https://pagead2.googlesyndication.com https://tpc.googlesyndication.com;
+    connect-src 'self' https://is.gd https://www.google-analytics.com;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+    object-src 'none';
     base-uri 'self';
   " />
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title data-translate-key="urlShortener.pageTitle">【無料】URL短縮ツール - 長いリンクを短縮・統計機能付き | negi-lab.com</title>
   <meta name="description" data-translate-key="urlShortener.metaDescription" content="長いURLを短く管理しやすいリンクに変換する無料ツール。クリック統計やアクセス解析機能を搭載し、SNSシェアやマーケティング活動に最適です。セキュリティ対策も万全の専門的URL短縮サービスです。" />
@@ -34,9 +30,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
+  <!-- Security and Common Utilities (use relative path to work on file:// and prod) -->
+  <script src="../js/security-utils.js"></script>
+  <script src="../js/common-utils.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -113,16 +109,8 @@
       background: #d1d5db;
     }
   </style>
-  <!-- Google Analytics（gtag.js）全ページ用 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9X3N0RY0H');
-  </script>
-  <!-- Google AdSense審査用コード -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+  <!-- Centralized consent-gated loader for GA/AdSense -->
+  <script src="../js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
@@ -152,11 +140,11 @@
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+  <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+  <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">URL短縮ツール</li>
+  <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="urlShortener.mainTitle">URL短縮ツール</li>
       </ol>
     </div>
   </nav>
@@ -175,7 +163,7 @@
              data-ad-slot="2847561903"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- push handled by ads-consent-loader.js after consent -->
       </div>
 
       <div class="max-w-xl mx-auto">
@@ -235,7 +223,7 @@
              data-ad-slot="8374251609"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- push handled by ads-consent-loader.js after consent -->
       </div>
     </div>
   
@@ -706,16 +694,32 @@
   
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>
 
-  <script type="module" src="../index.js" defer></script>
+  <!-- Load general portal translations first so index.js can apply them (no defer to ensure availability) -->
+  <script src="../js/portal-translations.js"></script>
+  <!-- Load page-specific translations -->
+  <script src="../js/url-shortener-translations.js"></script>
+  <script>
+    // Page-specific translation keys for title/meta if not present in portal translations
+    window.translations = window.translations || { ja: {}, en: {} };
+    window.translations.ja = Object.assign({}, window.translations.ja, {
+      'urlShortener.pageTitle': '【無料】URL短縮ツール - 長いリンクを短縮・統計機能付き | negi-lab.com',
+      'urlShortener.metaDescription': '長いURLを短く管理しやすいリンクに変換する無料ツール。クリック統計やアクセス解析機能を搭載し、SNSシェアやマーケティング活動に最適です。セキュリティ対策も万全の専門的URL短縮サービスです。'
+    });
+    window.translations.en = Object.assign({}, window.translations.en, {
+      'urlShortener.pageTitle': 'Free URL Shortener - Shorten long links with stats | negi-lab.com',
+      'urlShortener.metaDescription': 'Free tool to convert long URLs into short, manageable links. Includes click stats and analytics, ideal for SNS sharing and marketing. Security-conscious, professional URL shortening service.'
+    });
+  </script>
+  <script src="../index.js" defer></script>
   <script defer>
 function setupGuideModal() {
   const guideBtn = document.getElementById('guide-btn');
@@ -839,7 +843,7 @@ if (document.readyState === "loading") {
             clearMessages();
             
             // セキュアな入力値取得と検証
-            const longUrl = CommonUtils.getFormValue('longUrl', true, 2000);
+            const longUrl = CommonUtils.getFormValue('longUrlInput', true, 2000);
             if (!longUrl) {
                 return;
             }
@@ -853,7 +857,7 @@ if (document.readyState === "loading") {
             // 入力値をサニタイズ
             const sanitizedUrl = SecurityUtils.sanitizeInput(longUrl, 2000);
 
-            CommonUtils.showLoading('status-area', 'URLを短縮中...');
+            CommonUtils.showLoading('statusMessage', 'URLを短縮中...');
             shortenButton.disabled = true;
             resultContainer.classList.add('hidden');
 
