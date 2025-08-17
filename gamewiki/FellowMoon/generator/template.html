@@ -133,6 +133,29 @@ img.skill-icon[src=""]{display:none}
       </div>
     </div>
   </section>
+  {{#ロム候補セクション}}
+  <section class="card" style="margin-top:1.2rem">
+    <h2>ロム情報</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem">
+      {{#ロム候補}}
+      <div style="border:1px solid #253541;border-radius:10px;padding:.6rem .7rem;background:#15202a;flex:1 1 460px;min-width:320px">
+        <div style="display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem">
+          <div style="font-size:.8rem;color:#bcd;font-weight:700;min-width:3.2rem">{{ラベル}}</div>
+          <div style="font-size:.75rem;color:#9fb;opacity:.9">{{候補表示}}</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem .8rem">
+          {{#画像列}}
+          <figure style="margin:0">
+            <img src="{{src}}" alt="{{alt}}" style="max-width:220px;max-height:110px;object-fit:contain;border:1px solid #2a323c;border-radius:8px;background:#0d141a;padding:6px">
+          </figure>
+          {{/画像列}}
+        </div>
+      </div>
+      {{/ロム候補}}
+      {{^ロム候補}}<div style="font-size:.7rem;color:#678">（ロム候補情報なし）</div>{{/ロム候補}}
+    </div>
+  </section>
+  {{/ロム候補セクション}}
   <section class="card" style="margin-top:1.2rem">
     <h2>スキル</h2>
     <div style="display:flex;flex-direction:column;gap:1.1rem">
@@ -182,6 +205,17 @@ img.skill-icon[src=""]{display:none}
       {{/階門}}
     </div>
   </section>
+  {{#較正セクション}}
+  <section class="card" style="margin-top:1.2rem">
+    <h2>較正情報</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:.75rem">
+      <thead><tr style="background:#16212b"><th style="text-align:left;padding:6px 8px;width:11rem">項目</th><th style="text-align:left;padding:6px 8px">内容</th></tr></thead>
+      <tbody>
+        {{#較正配列}}<tr style="background:#1a2530"><td style="padding:6px 8px">{{項目}}</td><td style="padding:6px 8px;white-space:pre-wrap">{{値}}</td></tr>{{/較正配列}}
+      </tbody>
+    </table>
+  </section>
+  {{/較正セクション}}
 </main>
   <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-stage" id="lightboxStage">

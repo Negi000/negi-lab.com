@@ -9,6 +9,7 @@ TPL_CHAR = BASE / 'generator' / 'template.html'
 TPL_INDEX = BASE / 'generator' / 'index_template.html'
 IMG_CHAR_ROOT = BASE / 'キャラ素材'
 IMG_SKILL_ROOT = BASE / 'スキルアイコン'
+ROM_IMG_ROOT = BASE / 'ロム素材'
 EXPLORE_ICON_MAP = [
     ('交渉','icons/negotiation.png'),
     ('思考','icons/thinking.png'),
@@ -188,6 +189,82 @@ def build():
         explore_max = split_five(explore_max_raw)
         explore_icons = [{'名称': nm, 'パス': f'../assets/{pth}'} for nm, pth in EXPLORE_ICON_MAP]
 
+        # ロム情報 / 較正情報（任意）
+        rom_raw = payload.get('ロム情報', {}) or {}
+        cal_raw = payload.get('較正情報', {}) or {}
+        def dict_to_rows(d):
+            rows = []
+            if isinstance(d, dict):
+                for k, v in d.items():
+                    if v is None or v == '':
+                        continue
+                    rows.append({'項目': k, '値': v})
+            return rows
+        rom_rows = dict_to_rows(rom_raw)
+        cal_rows = dict_to_rows(cal_raw)
+
+        # ロム候補画像の算出
+        def rel_from_site(p: pathlib.Path):
+            return '../' + rel_path(p)
+
+        def find_rom_image(file_stem: str):
+            # file_stem 例: 'シャドウC4セット' / 'リングR2セット12'
+            p = ROM_IMG_ROOT / f'{file_stem}.png'
+            if p.exists():
+                return rel_from_site(p)
+            # 特例: クロニクル -> ｸﾛﾆｸﾙ（2セット系で差異あり）
+            alt_stem = file_stem.replace('クロニクル', 'ｸﾛﾆｸﾙ')
+            if alt_stem != file_stem:
+                p2 = ROM_IMG_ROOT / f'{alt_stem}.png'
+                if p2.exists():
+                    return rel_from_site(p2)
+            return ''
+
+        def parse_rom_candidates(rom_text: str):
+            if not rom_text:
+                return []
+            # 正規化（全角数字やコロンを半角に）
+            z2h = str.maketrans({'１':'1','２':'2','：':':'})
+            text = rom_text.translate(z2h)
+            # 候補1: xxx / 候補2: yyy のような行を抽出（行区切り対応）
+            lines = [ln.strip() for ln in re.split('[\n\r]+', text) if ln.strip()]
+            joined = ' '.join(lines)
+            matches = re.findall(r'候補\s*(1|2)\s*:\s*([^\n\r]+?)(?=\s*候補\s*\d\s*:|$)', joined)
+            results = []
+            for num, body in matches:
+                label = f'候補{num}'
+                body = body.strip()
+                display_text = body  # 表示用の原文
+                imgs = []
+                # 4セット: 単一名 + 4セット
+                if '4セット' in body:
+                    name = body.split('4セット')[0].strip()
+                    src = find_rom_image(f'{name}4セット')
+                    if src:
+                        imgs.append({'src': src, 'alt': f'{name}4セット'})
+                # 2セット: 「名前1、名前2 2セット」 or 「名前1、名前2」+明示2セット
+                elif '2セット' in body or '、' in body:
+                    # 末尾の「2セット」を取り除く
+                    base = body.replace('2セット', '').strip()
+                    parts = [p.strip() for p in base.split('、') if p.strip()]
+                    if len(parts) >= 1:
+                        name1 = parts[0]
+                        src1 = find_rom_image(f'{name1}2セット12')
+                        if src1:
+                            imgs.append({'src': src1, 'alt': f'{name1}2セット12'})
+                    if len(parts) >= 2:
+                        name2 = parts[1]
+                        src2 = find_rom_image(f'{name2}2セット34')
+                        if src2:
+                            imgs.append({'src': src2, 'alt': f'{name2}2セット34'})
+                if imgs or display_text:
+                    results.append({'ラベル': label, '候補表示': display_text, '画像列': imgs})
+            return results
+
+        rom_candidates = []
+        if isinstance(rom_raw, dict):
+            rom_candidates = parse_rom_candidates(rom_raw.get('推奨ロム', ''))
+
         char_data = {
             '生成日時': datetime.datetime.now().isoformat(timespec='seconds'),
             **{k: basic.get(k,'') for k in basic.keys()},
@@ -198,6 +275,11 @@ def build():
             '専門探索初期': explore_init,
             '専門探索最大': explore_max,
             '専門探索アイコン': explore_icons,
+            # 追加セクション（ロムは候補画像＋テキストに統一）
+            'ロム候補': rom_candidates,
+            'ロム候補セクション': [1] if rom_candidates else [],
+            '較正配列': cal_rows,
+            '較正セクション': [1] if cal_rows else [],
         }
         html = expand(tpl_char, char_data)
         (CHARS_DIR / f'{cid}.html').write_text(html, encoding='utf-8')
