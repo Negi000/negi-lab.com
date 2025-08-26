@@ -195,7 +195,7 @@
     try {
       var textLen = (document.body.innerText || '').length;
   if (DEBUG) console.log('[ads-consent-loader] page text length', textLen);
-  if (textLen < 3000) return; // too short for mid insertion
+  if (textLen < 1500) return; // threshold lowered from 3000 -> 1500 to increase dynamic ad chances
     } catch(_){}
 
     var variant = window.__adsVariant || 'A';
@@ -278,6 +278,7 @@
         startAdSlotObserver();
         pushAllSlots();
         observeLazySlots();
+        if (DEBUG) console.log('[ads-consent-loader] ads script loaded, current pushed', currentAdPushCount);
         try {
           var evt = new Event('adsReady');
           document.dispatchEvent(evt);
@@ -290,6 +291,18 @@
         }
       })
       .catch(function(e){ console.warn('Ads load failed', e); });
+
+    // Fail-safe: after 6s if ads script not present / no push happened, attempt a manual push of visible slots
+    setTimeout(function(){
+      if (!window.adsbygoogle || typeof window.adsbygoogle.push !== 'function') {
+        if (DEBUG) console.warn('[ads-consent-loader] adsbygoogle object missing after timeout');
+      }
+      if (currentAdPushCount === 0) {
+        if (DEBUG) console.warn('[ads-consent-loader] no ads pushed yet, forcing immediate attempt');
+        pushAllSlots();
+        observeLazySlots();
+      }
+    }, 6000);
   }
 
   // Minimal consent banner injection for pages without their own banner
