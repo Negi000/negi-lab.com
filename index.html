@@ -6,34 +6,44 @@
   
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com 
-      https://www.google-analytics.com 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com;    img-src 'self' data: blob: 
-      https://negi-lab.com 
-      https://pagead2.googlesyndication.com 
-      https://www.google-analytics.com 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com
+      https://www.google-analytics.com
       https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com
+      https://www.googletagservices.com
+      https://adservice.google.com;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob:
+      https://negi-lab.com
+      https://pagead2.googlesyndication.com
+      https://www.google-analytics.com
+      https://googleads.g.doubleclick.net
+      https://www.googletagservices.com
+      https://adservice.google.com
       https://www.amazon.co.jp
       https://hbb.afl.rakuten.co.jp;
-    connect-src 'self' 
-      https://www.google-analytics.com 
-      https://pagead2.googlesyndication.com; 
-    frame-src 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    object-src 'none'; 
+    connect-src 'self'
+      https://www.google-analytics.com
+      https://pagead2.googlesyndication.com
+      https://googleads.g.doubleclick.net
+      https://www.googletagservices.com
+      https://adservice.google.com;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com
+      https://www.googletagservices.com
+      https://adservice.google.com;
+    object-src 'none';
     base-uri 'self';
-  " />
+  "/>
   
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -77,6 +87,10 @@
   <!-- Portal-specific translations -->
   <script src="js/portal-translations.js"></script>
   <!-- Consent-gated loader for GA/AdSense -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net">
+  <link rel="preconnect" href="https://www.googletagservices.com">
+  <link rel="preconnect" href="https://adservice.google.com">
   <script src="js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
@@ -139,10 +153,10 @@
       </div>
 
       <!-- ヒーローセクション下：アドセンス（レスポンシブ） -->
-      <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
+    <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
   <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
   <ins class="adsbygoogle"
-       style="display:block"
+     style="display:block;min-height:250px"
        data-ad-client="ca-pub-1835873052239386"
        data-ad-slot="2847561903"
        data-ad-format="auto"
@@ -173,7 +187,7 @@
         <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
           <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
     <ins class="adsbygoogle"
-      style="display:block"
+      style="display:block;min-height:250px"
       data-ad-client="ca-pub-1835873052239386"
       data-ad-slot="8374251609"
       data-ad-format="auto"
@@ -343,7 +357,7 @@
         <div class="max-w-3xl mx-auto my-8">
           <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
           <ins class="adsbygoogle"
-               style="display:block"
+               style="display:block;min-height:250px"
                data-ad-client="ca-pub-1835873052239386"
                data-ad-slot="6142508973"
                data-ad-format="auto"
@@ -451,7 +465,7 @@
   <div class="max-w-3xl mx-auto my-8">
     <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
     <ins class="adsbygoogle"
-         style="display:block"
+         style="display:block;min-height:250px"
          data-ad-client="ca-pub-1835873052239386"
          data-ad-slot="1593748260"
          data-ad-format="auto"

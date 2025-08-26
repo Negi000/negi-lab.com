@@ -1,6 +1,17 @@
 (function(){
   // Simple consent + environment gated loader for GA & AdSense
-  var ENV_OK = typeof location !== 'undefined' && /(^|\.)negi-lab\.com$/i.test(location.hostname);
+  // Allow production domain + localhost for development preview.
+  var host = (typeof location !== 'undefined') ? location.hostname : '';
+  // Allow primary domain + related wiki domains + localhost
+  var ENV_OK = /(^|\.)negi-lab\.com$/i.test(host)
+    || /(^|\.)gamewiki\.jp$/i.test(host)
+    || /^(localhost|127\.0\.0\.1)$/.test(host);
+  // Manual override: add ?forceAds=1 to URL to force enable in any environment (for quick design QA)
+  try {
+    if(!ENV_OK && /[?&]forceAds=1/.test(location.search)) {
+      ENV_OK = true; host += ' (forced)';
+    }
+  } catch(_){}
   var CONSENT_OK = false;
   try { CONSENT_OK = localStorage.getItem('cookieConsent') === 'accepted'; } catch(_) {}
 
@@ -10,6 +21,7 @@
   // Optional per-page disable flag for ads (GAは有効のまま)
   var ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-ads-disabled')) || !!document.querySelector('meta[name="ads"][content="off"]');
   var DEBUG = false; try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
+  if (DEBUG) console.log('[ads-consent-loader] init', {host: host, ENV_OK: ENV_OK, CONSENT_OK: CONSENT_OK});
 
   function loadScript(src, attrs){
     return new Promise(function(resolve,reject){
@@ -34,6 +46,7 @@
   function initGA(){
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
+  if (DEBUG) console.log('[ads-consent-loader] loading GA');
     loadScript('https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H')
       .then(function(){
         window.dataLayer = window.dataLayer || [];
@@ -46,6 +59,7 @@
           GA_EVENT_QUEUE.forEach(function(item){ try { gtag('event', item.event, item.params || {}); } catch(_e){} });
           GA_EVENT_QUEUE.length = 0;
         }
+  if (DEBUG) console.log('[ads-consent-loader] GA ready');
       })
       .catch(function(e){ console.warn('GA load failed', e); });
   }
@@ -57,6 +71,7 @@
       // Lazy slot: defer until visible
       if (el.getAttribute('data-ad-lazy') === '1' && !isElementInViewport(el)) {
         // Will be handled by IntersectionObserver
+  if (DEBUG) console.log('[ads-consent-loader] defer lazy slot until viewport', el.getAttribute('data-ad-slot'));
         return;
       }
       if (adCapReached()) {
@@ -80,6 +95,7 @@
   function pushAllSlots(){
     try {
       var slots = document.querySelectorAll('ins.adsbygoogle');
+  if (DEBUG) console.log('[ads-consent-loader] found slots', slots.length);
       for (var i=0; i<slots.length; i++) pushAdSlot(slots[i]);
     } catch(e){ if (DEBUG) console.warn('Push all slots failed', e); }
   }
@@ -178,7 +194,8 @@
     // Skip short content pages
     try {
       var textLen = (document.body.innerText || '').length;
-      if (textLen < 3000) return; // too short for mid insertion
+  if (DEBUG) console.log('[ads-consent-loader] page text length', textLen);
+  if (textLen < 3000) return; // too short for mid insertion
     } catch(_){}
 
     var variant = window.__adsVariant || 'A';
