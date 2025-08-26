@@ -140,13 +140,14 @@
 
       <!-- ヒーローセクション下：アドセンス（レスポンシブ） -->
       <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1835873052239386"
-             data-ad-slot="2847561903"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+  <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1835873052239386"
+       data-ad-slot="2847561903"
+       data-ad-format="auto"
+       data-full-width-responsive="true"
+       aria-label="広告"></ins>
       </aside>
     </section>
 
@@ -171,12 +172,14 @@
         <!-- ツールセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
         <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
           <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1835873052239386"
-               data-ad-slot="8374251609"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-1835873052239386"
+      data-ad-slot="8374251609"
+      data-ad-format="auto"
+      data-ad-lazy="1"
+      data-full-width-responsive="true"
+      aria-label="広告"></ins>
         </aside>
 
         <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
@@ -344,7 +347,9 @@
                data-ad-client="ca-pub-1835873052239386"
                data-ad-slot="6142508973"
                data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+               data-ad-lazy="1"
+               data-full-width-responsive="true"
+               aria-label="広告"></ins>
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- 1 -->
@@ -450,7 +455,9 @@
          data-ad-client="ca-pub-1835873052239386"
          data-ad-slot="1593748260"
          data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+         data-ad-lazy="1"
+         data-full-width-responsive="true"
+         aria-label="広告"></ins>
   </div>
 
   <!-- 独自性・免責事項セクション（全ツール・ポータル統一/短縮URLツール方式） -->
@@ -474,6 +481,20 @@
     </nav>
     <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
   </footer>  <!-- パンくずリスト構造化データ（JSON-LD） -->
+  <!-- 動的挿入用追加広告プレースホルダ（初期は空） -->
+  <div id="dynamic-ad-containers" class="hidden">
+    <template id="dynamic-ad-template">
+      <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-format="auto"
+             data-full-width-responsive="true"
+             data-ad-lazy="1"></ins>
+      </aside>
+    </template>
+  </div>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -651,6 +672,64 @@
           }
         });
       });
+    });
+  </script>
+  <script>
+    // ユーザの初期エンゲージメント（滞在時間 & スクロール深度）を満たしたら中間広告を段階挿入
+    document.addEventListener('DOMContentLoaded', function(){
+      var engaged = false;
+      var inserted = 0;
+      var maxDynamic = 2; // 動的追加上限（UX維持のため）
+      var startTime = Date.now();
+      var scrollListenerAdded = false;
+
+      function tryInsert(){
+        if (inserted >= maxDynamic) return;
+        var seconds = (Date.now() - startTime)/1000;
+        var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
+        if (seconds > 20 && scrollDepth > 0.45) engaged = true; // 20秒 & 45%到達
+        if (!engaged) return;
+
+        var template = document.getElementById('dynamic-ad-template');
+        if (!template) return;
+        var clone = template.content.firstElementChild.cloneNode(true);
+        // ランダムな事前定義スロット（ヒートマップ見ながら差し替え可能）
+        var slots = ['7843001775','9898319477','4837564489'];
+        var slot = slots[inserted % slots.length];
+        var ins = clone.querySelector('ins.adsbygoogle');
+        if (ins) {
+          ins.setAttribute('data-ad-slot', slot);
+          // lazy属性は既に付与
+        }
+        // 挿入位置: ツールカードグリッドの直後または how-to-use セクション手前
+        var anchor = document.querySelector('#tools article');
+        if (anchor && inserted === 0) {
+            anchor.parentNode.insertBefore(clone, anchor.nextElementSibling);
+        } else {
+            var howTo = document.getElementById('how-to-use');
+            if (howTo) howTo.parentNode.insertBefore(clone, howTo);
+            else document.body.appendChild(clone);
+        }
+        inserted++;
+        if (window.__adsLoaded) {
+          // 即時 push (lazy 判定は内部で行われる)
+          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+        }
+        if (inserted >= maxDynamic) window.removeEventListener('scroll', onScroll, { passive: true });
+      }
+
+      function onScroll(){
+        tryInsert();
+      }
+
+      // スクロール監視
+      window.addEventListener('scroll', onScroll, { passive: true });
+      scrollListenerAdded = true;
+
+      // アドネットワーク準備後に一度試行
+      document.addEventListener('adsReady', tryInsert, { once: false });
+      // 30秒経過でもう一度試行
+      setTimeout(tryInsert, 30000);
     });
   </script>
 

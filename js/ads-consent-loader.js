@@ -19,6 +19,18 @@
     });
   }
 
+  // GA event queue (fire after GA ready)
+  var GA_EVENT_QUEUE = [];
+  function track(event, params){
+    try {
+      if (window.gtag) {
+        window.gtag('event', event, params || {});
+      } else {
+        GA_EVENT_QUEUE.push({event: event, params: params});
+      }
+    } catch(e){ /* no-op */ }
+  }
+
   function initGA(){
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
@@ -29,6 +41,11 @@
         window.gtag = gtag;
         gtag('js', new Date());
         gtag('config', 'G-N9X3N0RY0H');
+        // Flush queued events
+        if (GA_EVENT_QUEUE.length){
+          GA_EVENT_QUEUE.forEach(function(item){ try { gtag('event', item.event, item.params || {}); } catch(_e){} });
+          GA_EVENT_QUEUE.length = 0;
+        }
       })
       .catch(function(e){ console.warn('GA load failed', e); });
   }
@@ -37,10 +54,26 @@
   function pushAdSlot(el){
     try {
       if (!el || el.getAttribute('data-ads-pushed') === '1') return;
+      // Lazy slot: defer until visible
+      if (el.getAttribute('data-ad-lazy') === '1' && !isElementInViewport(el)) {
+        // Will be handled by IntersectionObserver
+        return;
+      }
+      if (adCapReached()) {
+        if (DEBUG) console.log('[ads-consent-loader] ad cap reached, skip push');
+        el.setAttribute('data-ads-pushed','cap');
+        return;
+      }
       if (el.getAttribute('data-adsbygoogle-status')) { el.setAttribute('data-ads-pushed','1'); return; }
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       el.setAttribute('data-ads-pushed','1');
       if (DEBUG) console.log('[ads-consent-loader] pushed slot', el);
+      incrementAdPushCount();
+      track('ad_slot_pushed', {
+        slot: el.getAttribute('data-ad-slot') || 'auto',
+        variant: window.__adsVariant || 'U',
+        position_index: currentAdPushCount
+      });
     } catch(e){ if (DEBUG) console.warn('Ad slot push failed', e); }
   }
 
@@ -69,11 +102,155 @@
             }
           }
         });
+        observeLazySlots();
       });
       observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
       window.__adSlotObserverStarted = true;
       if (DEBUG) console.log('[ads-consent-loader] MutationObserver started');
     } catch(e){ if (DEBUG) console.warn('Observer init failed', e); }
+  }
+
+  function isElementInViewport(el){
+    if (!el || !el.getBoundingClientRect) return false;
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top < vh * 0.95 && rect.bottom > 0; // 5% margin
+  }
+
+  function observeLazySlots(){
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: push immediately when ads loaded
+      var fallback = document.querySelectorAll('ins.adsbygoogle[data-ad-lazy="1"]:not([data-ads-pushed="1"])');
+      for (var i=0;i<fallback.length;i++) pushAdSlot(fallback[i]);
+      return;
+    }
+    if (!window.__lazyAdObserver) {
+      window.__lazyAdObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            window.__lazyAdObserver.unobserve(el);
+            pushAdSlot(el);
+            // Visibility track (first intersection)
+            track('ad_viewport_enter', {
+              slot: el.getAttribute('data-ad-slot') || 'auto',
+              variant: window.__adsVariant || 'U'
+            });
+          }
+        });
+      }, { root: null, rootMargin: '120px 0px 120px 0px', threshold: 0.1 });
+    }
+    var lazySlots = document.querySelectorAll('ins.adsbygoogle[data-ad-lazy="1"]:not([data-ads-pushed="1"])');
+    for (var k=0;k<lazySlots.length;k++) {
+      // If already in viewport, push now, else observe
+      if (isElementInViewport(lazySlots[k])) pushAdSlot(lazySlots[k]);
+      else window.__lazyAdObserver.observe(lazySlots[k]);
+    }
+  }
+
+  // Ad cap logic
+  var currentAdPushCount = 0;
+  function getAdCap(){
+    var w = (window.innerWidth || 1024);
+    return w < 768 ? 3 : 4; // mobile / desktop
+  }
+  function incrementAdPushCount(){ currentAdPushCount++; if (adCapReached()) track('ad_cap_reached', {count: currentAdPushCount, variant: window.__adsVariant || 'U'}); }
+  function adCapReached(){ return currentAdPushCount >= getAdCap(); }
+
+  // AB test variant assignment (A/B) stored in localStorage
+  (function assignVariant(){
+    try {
+      var v = localStorage.getItem('adsVariant');
+      if (!v || (v !== 'A' && v !== 'B')) {
+        v = Math.random() < 0.5 ? 'A' : 'B';
+        localStorage.setItem('adsVariant', v);
+      }
+      window.__adsVariant = v;
+    } catch(_) {
+      window.__adsVariant = 'U';
+    }
+  })();
+
+  // Central dynamic mid-content insertion fallback (if page hasn\'t defined its own)
+  function maybeInsertDynamicAds(){
+    if (!ENV_OK || adCapReached()) return;
+    if (document.querySelector('[data-dynamic-ads-managed="1"]')) return; // already managed
+    // Skip short content pages
+    try {
+      var textLen = (document.body.innerText || '').length;
+      if (textLen < 3000) return; // too short for mid insertion
+    } catch(_){}
+
+    var variant = window.__adsVariant || 'A';
+    var timeThreshold = variant === 'B' ? 15000 : 20000; // B faster
+    var depthThreshold = variant === 'B' ? 0.35 : 0.45;
+    var inserted = 0, maxDynamic = 2;
+    var startTime = Date.now();
+
+    function chooseAnchor(){
+      // Prefer first main section after 1st h2
+      var h2s = document.querySelectorAll('h2');
+      if (h2s.length > 1) return h2s[1];
+      return document.querySelector('main') || document.body;
+    }
+    var anchor = chooseAnchor();
+    if (!anchor) return;
+
+    var templateExists = document.getElementById('dynamic-ad-template');
+    function createAdNode(slotId){
+      var wrapper = document.createElement('aside');
+      wrapper.className = 'max-w-3xl mx-auto my-10';
+      wrapper.setAttribute('aria-label','スポンサー広告');
+      var label = document.createElement('div');
+      label.className = 'text-xs text-gray-400 mb-1';
+      label.textContent = 'スポンサーリンク';
+      var ins = document.createElement('ins');
+      ins.className = 'adsbygoogle';
+      ins.style.display = 'block';
+      ins.style.minHeight = '250px';
+      ins.setAttribute('data-ad-client','ca-pub-1835873052239386');
+      ins.setAttribute('data-ad-format','auto');
+      ins.setAttribute('data-full-width-responsive','true');
+      ins.setAttribute('data-ad-lazy','1');
+      if (slotId) ins.setAttribute('data-ad-slot', slotId);
+      wrapper.appendChild(label); wrapper.appendChild(ins);
+      return wrapper;
+    }
+
+    function tryInsert(){
+      if (inserted >= maxDynamic || adCapReached()) return;
+      var seconds = (Date.now() - startTime)/1000;
+      var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
+      if (seconds * 1000 < timeThreshold || scrollDepth < depthThreshold) return;
+      var slots = ['7843001775','9898319477','4837564489'];
+      var slot = slots[inserted % slots.length];
+      var node = createAdNode(slot);
+      anchor.parentNode.insertBefore(node, anchor.nextSibling);
+      inserted++;
+      track('ads_dynamic_insert', {slot: slot, index: inserted, variant: variant});
+      if (window.__adsLoaded) {
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(_){}
+      }
+      if (inserted >= maxDynamic) {
+        window.removeEventListener('scroll', onScroll, { passive: true });
+      }
+    }
+    function onScroll(){ tryInsert(); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // fallback timers
+    setTimeout(tryInsert, timeThreshold + 1000);
+    setTimeout(tryInsert, timeThreshold + 10000);
+    document.addEventListener('adsReady', tryInsert, { once: false });
+    document.body.setAttribute('data-dynamic-ads-managed','1');
+  }
+
+  // Inject base CSS once (CLS guards) if not present
+  function ensureBaseAdCSS(){
+    if (document.getElementById('ad-slot-base-style')) return;
+    var st = document.createElement('style');
+    st.id = 'ad-slot-base-style';
+    st.textContent = '.adsbygoogle{contain:content;} .ad-slot{display:block;min-height:250px;}';
+    document.head.appendChild(st);
   }
 
   function initAds(){
@@ -83,6 +260,17 @@
       .then(function(){
         startAdSlotObserver();
         pushAllSlots();
+        observeLazySlots();
+        try {
+          var evt = new Event('adsReady');
+          document.dispatchEvent(evt);
+        } catch(e){
+          try {
+            var evtLegacy = document.createEvent('Event');
+            evtLegacy.initEvent('adsReady', true, true);
+            document.dispatchEvent(evtLegacy);
+          } catch(_e){}
+        }
       })
       .catch(function(e){ console.warn('Ads load failed', e); });
   }
@@ -176,6 +364,8 @@
       initGA();
       if (hasAdSlot && !ADS_DISABLED) initAds();
       else if (!ADS_DISABLED) startAdSlotObserver();
+    ensureBaseAdCSS();
+    setTimeout(maybeInsertDynamicAds, 1500);
     } else {
       // Provide a minimal consent UI if running on production and not on noindex pages
       if (ENV_OK && !isNoIndex && !CONSENT_OK) {
@@ -186,6 +376,8 @@
         if (ENV_OK) {
           initGA();
           if (!ADS_DISABLED) initAds();
+      ensureBaseAdCSS();
+      setTimeout(maybeInsertDynamicAds, 1500);
         }
       }, { once: true });
     }
