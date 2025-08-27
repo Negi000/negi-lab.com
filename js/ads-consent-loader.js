@@ -198,10 +198,11 @@
   if (textLen < 1500) return; // threshold lowered from 3000 -> 1500 to increase dynamic ad chances
     } catch(_){}
 
-    var variant = window.__adsVariant || 'A';
-    var timeThreshold = variant === 'B' ? 15000 : 20000; // B faster
-    var depthThreshold = variant === 'B' ? 0.35 : 0.45;
-    var inserted = 0, maxDynamic = 2;
+  // ハイブリッド方針: 動的挿入は 1 枠に制限し条件を統一 (滞在 >=15s かつ scrollDepth >=0.45)
+  var variant = window.__adsVariant || 'A';
+  var timeThreshold = 15000; // 統一
+  var depthThreshold = 0.45; // 統一
+  var inserted = 0, maxDynamic = 1;
     var startTime = Date.now();
 
     function chooseAnchor(){
@@ -236,6 +237,11 @@
 
     function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
+      // 既に静的に 3 枠以上存在するなら追加しない (Top/Mid/Bottom 最適化)
+      try {
+        var existingStatic = document.querySelectorAll('ins.adsbygoogle').length;
+        if (existingStatic >= 3) return;
+      } catch(_){ }
       var seconds = (Date.now() - startTime)/1000;
       var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
       if (seconds * 1000 < timeThreshold || scrollDepth < depthThreshold) return;
@@ -254,9 +260,8 @@
     }
     function onScroll(){ tryInsert(); }
     window.addEventListener('scroll', onScroll, { passive: true });
-    // fallback timers
-    setTimeout(tryInsert, timeThreshold + 1000);
-    setTimeout(tryInsert, timeThreshold + 10000);
+  // fallback timer (一度のみ)
+  setTimeout(tryInsert, timeThreshold + 1000);
     document.addEventListener('adsReady', tryInsert, { once: false });
     document.body.setAttribute('data-dynamic-ads-managed','1');
   }
