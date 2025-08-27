@@ -68,11 +68,19 @@
   function pushAdSlot(el){
     try {
       if (!el || el.getAttribute('data-ads-pushed') === '1') return;
-      // Lazy slot: defer until visible
-      if (el.getAttribute('data-ad-lazy') === '1' && !isElementInViewport(el)) {
-        // Will be handled by IntersectionObserver
-  if (DEBUG) console.log('[ads-consent-loader] defer lazy slot until viewport', el.getAttribute('data-ad-slot'));
-        return;
+      // Lazy slot handling:
+      // A: 最初の1枠は即時表示ポリシーに変更。最初の lazy 枠なら強制 push。
+      if (el.getAttribute('data-ad-lazy') === '1') {
+        if (!window.__firstAdForced) {
+          window.__firstAdForced = true;
+          el.removeAttribute('data-ad-lazy');
+          if (DEBUG) console.log('[ads-consent-loader] force first ad immediate', el.getAttribute('data-ad-slot'));
+          // 続行して即時 push
+        } else if (!isElementInViewport(el)) {
+          // 2枠目以降は従来どおりビューポート進入まで遅延
+          if (DEBUG) console.log('[ads-consent-loader] defer lazy slot until viewport', el.getAttribute('data-ad-slot'));
+          return;
+        }
       }
       if (adCapReached()) {
         if (DEBUG) console.log('[ads-consent-loader] ad cap reached, skip push');
@@ -195,7 +203,7 @@
     try {
       var textLen = (document.body.innerText || '').length;
   if (DEBUG) console.log('[ads-consent-loader] page text length', textLen);
-  if (textLen < 1500) return; // threshold lowered from 3000 -> 1500 to increase dynamic ad chances
+  if (textLen < 1000) return; // threshold lowered from 3000 -> 1500 -> 1000 (A/B調整) to increase dynamic ad chances
     } catch(_){}
 
   // ハイブリッド方針: 動的挿入は 1 枠に制限し条件を統一 (滞在 >=15s かつ scrollDepth >=0.45)
