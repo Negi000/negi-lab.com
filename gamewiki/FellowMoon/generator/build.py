@@ -290,10 +290,11 @@ def build():
             'タグCSV': ' '.join(tags),
         })
 
-    # index
+    # index を chars/ ディレクトリに配置（ホームは build_home.py が生成）
+    (SITE_DIR / 'chars').mkdir(parents=True, exist_ok=True)
     idx_html = expand(tpl_index, {'一覧': index_items})
-    (SITE_DIR / 'index.html').write_text(idx_html, encoding='utf-8')
-    print(f'Generated {len(index_items)} characters.')
+    (SITE_DIR / 'chars' / 'index.html').write_text(idx_html, encoding='utf-8')
+    print(f'Generated {len(index_items)} characters (chars list).')
 
 if __name__ == '__main__':
     build()
