@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8" />
+<title>キャラ一覧</title><meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0e1216;color:#eee}header{padding:1rem 1.2rem}h1{margin:.2rem 0;font-size:1.6rem}main{max-width:1200px;margin:auto;padding:0 1.2rem 3rem}input{width:100%;padding:.7rem .9rem;font-size:.9rem;background:#182028;border:1px solid #26313c;border-radius:10px;color:#eee;margin:.4rem 0 1.2rem}ul{list-style:none;padding:0;margin:0;display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}li a{display:block;background:#182028;padding:.85rem .9rem .95rem;border:1px solid #23313c;border-radius:12px;color:#d5e7ff;text-decoration:none;font-size:.8rem;line-height:1.35;min-height:140px;position:relative}li a:hover{background:#1f2a33;border-color:#33526b}small{display:block;font-size:.6rem;color:#9ab;margin-top:.2rem;letter-spacing:.5px}.tag{display:inline-block;background:#2b3947;padding:2px 6px;border-radius:999px;font-size:.55rem;margin:.18rem .3rem .18rem 0;color:#9ec5ff;letter-spacing:.5px;}.stats{font-size:.55rem;opacity:.7;margin-top:.25rem;display:flex;flex-wrap:wrap;gap:4px}.stats span{background:#0003;padding:2px 4px;border-radius:4px}</style>
+</head><body>
+<header><h1>キャラ一覧</h1><input id="filter" placeholder="名前/タグ/陣営でフィルタ" /></header>
+<main>
+<ul id="list">
+
+  <li data-keywords="シロムクゲ 白槿 火力 制御 単独勢力">
+  <a href="001.html">
+      <strong>シロムクゲ</strong><small>白槿</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">制御</span></div>
+      <div class="stats">
+        <span>HP 3610</span><span>攻 1081</span><span>物防 3021</span><span>特防 1938</span><span>速 277</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="アカネ 茜 防護 弱体 超管局">
+  <a href="002.html">
+      <strong>アカネ</strong><small>茜</small>
+      <div class="tags"><span class="tag">防護</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 4985</span><span>攻 493</span><span>物防 1736</span><span>特防 3409</span><span>速 239</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ジョウテン 浄天 火力 範囲 生存 超管局">
+  <a href="003.html">
+      <strong>ジョウテン</strong><small>浄天</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5319</span><span>攻 1039</span><span>物防 2505</span><span>特防 3785</span><span>速 246</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ケイコウ 啓航 防護 除去 超管局">
+  <a href="004.html">
+      <strong>ケイコウ</strong><small>啓航</small>
+      <div class="tags"><span class="tag">防護</span><span class="tag">除去</span></div>
+      <div class="stats">
+        <span>HP 4745</span><span>攻 742</span><span>物防 3551</span><span>特防 2448</span><span>速 279</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="チンショウ 沈礁 火力 超管局">
+  <a href="005.html">
+      <strong>チンショウ</strong><small>沈礁</small>
+      <div class="tags"><span class="tag">火力</span></div>
+      <div class="stats">
+        <span>HP 3783</span><span>攻 1072</span><span>物防 2061</span><span>特防 3105</span><span>速 252</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="センシュウ 千秋 火力 範囲 新月">
+  <a href="006.html">
+      <strong>センシュウ</strong><small>千秋</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3783</span><span>攻 1081</span><span>物防 2020</span><span>特防 3058</span><span>速 255</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="シンリョウ 星涼 治療 強化 新月">
+  <a href="007.html">
+      <strong>シンリョウ</strong><small>星涼</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 4170</span><span>攻 646</span><span>物防 3051</span><span>特防 1867</span><span>速 217</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="チュウゲン 忠元 援護 生存 新月">
+  <a href="008.html">
+      <strong>チュウゲン</strong><small>忠元</small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4703</span><span>攻 466</span><span>物防 3391</span><span>特防 1846</span><span>速 247</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ミンソウ 鳴霜 火力 生存 新月">
+  <a href="009.html">
+      <strong>ミンソウ</strong><small>鳴霜</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 2895</span><span>攻 967</span><span>物防 2493</span><span>特防 1670</span><span>速 211</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="フライス  火力 範囲 強化 新月">
+  <a href="011.html">
+      <strong>フライス</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 3694</span><span>攻 1102</span><span>物防 3089</span><span>特防 2071</span><span>速 245</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カセイ 火青 火力 爆発 全聯堂">
+  <a href="012.html">
+      <strong>カセイ</strong><small>火青</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 3131</span><span>攻 863</span><span>物防 1701</span><span>特防 2453</span><span>速 253</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="リョクセツ 緑雪 治療 強化 全聯堂">
+  <a href="013.html">
+      <strong>リョクセツ</strong><small>緑雪</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 3848</span><span>攻 602</span><span>物防 1983</span><span>特防 2878</span><span>速 279</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ナンキョウ 楠乔 治療 制御 新月">
+  <a href="014.html">
+      <strong>ナンキョウ</strong><small>楠乔</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">制御</span></div>
+      <div class="stats">
+        <span>HP 4999</span><span>攻 805</span><span>物防 2519</span><span>特防 3660</span><span>速 216</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ハルチ 春遅 火力 強化 爆発 新月">
+  <a href="015.html">
+      <strong>ハルチ</strong><small>春遅</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">強化</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 3111</span><span>攻 850</span><span>物防 2579</span><span>特防 1695</span><span>速 252</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ホンバオ 紅袍 火力 弱体 生存 全聯堂">
+  <a href="016.html">
+      <strong>ホンバオ</strong><small>紅袍</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4201</span><span>攻 953</span><span>物防 3135</span><span>特防 2037</span><span>速 279</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ゴウシャ 恒沙 火力 範囲 超管局">
+  <a href="017.html">
+      <strong>ゴウシャ</strong><small>恒沙</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 4294</span><span>攻 1250</span><span>物防 2270</span><span>特防 3650</span><span>速 247</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ギョクロ 玉露 制御 生存 全聯堂">
+  <a href="018.html">
+      <strong>ギョクロ</strong><small>玉露</small>
+      <div class="tags"><span class="tag">制御</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4706</span><span>攻 473</span><span>物防 1702</span><span>特防 3035</span><span>速 289</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="レンシン 蓮心 火力 制御 範囲 全聯堂">
+  <a href="019.html">
+      <strong>レンシン</strong><small>蓮心</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">制御</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3666</span><span>攻 1063</span><span>物防 1959</span><span>特防 3058</span><span>速 277</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="トキヒ 時曦 火力 範囲 全聯堂">
+  <a href="020.html">
+      <strong>トキヒ</strong><small>時曦</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 4402</span><span>攻 1240</span><span>物防 2296</span><span>特防 3615</span><span>速 245</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="リュウセイ 龍井 火力 拡散 全聯堂">
+  <a href="021.html">
+      <strong>リュウセイ</strong><small>龍井</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">拡散</span></div>
+      <div class="stats">
+        <span>HP 4272</span><span>攻 1273</span><span>物防 3507</span><span>特防 2305</span><span>速 246</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="モクメン 沐棉 防護 単独勢力">
+  <a href="022.html">
+      <strong>モクメン</strong><small>沐棉</small>
+      <div class="tags"><span class="tag">防護</span></div>
+      <div class="stats">
+        <span>HP 5881</span><span>攻 619</span><span>物防 2310</span><span>特防 3783</span><span>速 247</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ロクユウ 鹿游 生存 強化 光耀会">
+  <a href="023.html">
+      <strong>ロクユウ</strong><small>鹿游</small>
+      <div class="tags"><span class="tag">生存</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 5705</span><span>攻 825</span><span>物防 2697</span><span>特防 4156</span><span>速 275</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カンナギ 巫 援護 生存 弱体 超管局">
+  <a href="024.html">
+      <strong>カンナギ</strong><small>巫</small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">生存</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 6441</span><span>攻 644</span><span>物防 4890</span><span>特防 2772</span><span>速 251</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="アサガオ 朝顔 治療 強化 超管局">
+  <a href="025.html">
+      <strong>アサガオ</strong><small>朝顔</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 4744</span><span>攻 749</span><span>物防 3600</span><span>特防 2399</span><span>速 276</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ハンシア 繁夏 火力 協撃 制御 超管局">
+  <a href="026.html">
+      <strong>ハンシア</strong><small>繁夏</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">協撃</span><span class="tag">制御</span></div>
+      <div class="stats">
+        <span>HP 4261</span><span>攻 931</span><span>物防 3172</span><span>特防 2027</span><span>速 283</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ゲツハク 月白 治療 強化 単独勢力">
+  <a href="027.html">
+      <strong>ゲツハク</strong><small>月白</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 5724</span><span>攻 843</span><span>物防 2780</span><span>特防 3862</span><span>速 280</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="キキ 騏驥 火力 弱体 範囲 超管局">
+  <a href="028.html">
+      <strong>キキ</strong><small>騏驥</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3763</span><span>攻 1040</span><span>物防 2040</span><span>特防 3021</span><span>速 278</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ダイヤ  分担 和祥義">
+  <a href="029.html">
+      <strong>ダイヤ</strong><small></small>
+      <div class="tags"><span class="tag">分担</span></div>
+      <div class="stats">
+        <span>HP 5267</span><span>攻 504</span><span>物防 3353</span><span>特防 1885</span><span>速 211</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ハート  火力 範囲 爆発 和祥義">
+  <a href="030.html">
+      <strong>ハート</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 3051</span><span>攻 1027</span><span>物防 2599</span><span>特防 1604</span><span>速 251</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="スペード  火力 範囲 和祥義">
+  <a href="031.html">
+      <strong>スペード</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3962</span><span>攻 1076</span><span>物防 2010</span><span>特防 3058</span><span>速 244</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="イングリッド  火力 範囲 光耀会">
+  <a href="032.html">
+      <strong>イングリッド</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3876</span><span>攻 1120</span><span>物防 3198</span><span>特防 2101</span><span>速 212</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カンリン 甘霖 援護 強化 生存 単独勢力">
+  <a href="033.html">
+      <strong>カンリン</strong><small>甘霖</small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">強化</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5870</span><span>攻 626</span><span>物防 2247</span><span>特防 3930</span><span>速 238</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ドウメイ 洞明 治療 強化 超管局">
+  <a href="034.html">
+      <strong>ドウメイ</strong><small>洞明</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 4705</span><span>攻 798</span><span>物防 2460</span><span>特防 3697</span><span>速 243</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="オンコウ 隠光 火力 弱体 生存 超管局">
+  <a href="035.html">
+      <strong>オンコウ</strong><small>隠光</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4202</span><span>攻 979</span><span>物防 3223</span><span>特防 2142</span><span>速 252</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="スズメ  火力 弱体 範囲 新月">
+  <a href="036.html">
+      <strong>スズメ</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3402</span><span>攻 757</span><span>物防 1659</span><span>特防 2583</span><span>速 284</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カラス  火力 爆発 超管局">
+  <a href="039.html">
+      <strong>カラス</strong><small></small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 4399</span><span>攻 1216</span><span>物防 3615</span><span>特防 2410</span><span>速 248</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ギンフ 銀鋒 援護 生存 全聯堂">
+  <a href="042.html">
+      <strong>ギンフ</strong><small>銀鋒</small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5849</span><span>攻 583</span><span>物防 4032</span><span>特防 2303</span><span>速 249</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ユウラン 幽蘭 火力 爆発 全聯堂">
+  <a href="043.html">
+      <strong>ユウラン</strong><small>幽蘭</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 3819</span><span>攻 1089</span><span>物防 3089</span><span>特防 1979</span><span>速 249</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ヨルキ 夜来 強化 全聯堂">
+  <a href="044.html">
+      <strong>ヨルキ</strong><small>夜来</small>
+      <div class="tags"><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 3892</span><span>攻 596</span><span>物防 2848</span><span>特防 1967</span><span>速 283</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="アオギリ 梧桐 火力 範囲 強化 単独勢力">
+  <a href="045.html">
+      <strong>アオギリ</strong><small>梧桐</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 4383</span><span>攻 1234</span><span>物防 2410</span><span>特防 3543</span><span>速 246</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="デンエイ 伝影 火力 反撃 全聯堂">
+  <a href="046.html">
+      <strong>デンエイ</strong><small>伝影</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">反撃</span></div>
+      <div class="stats">
+        <span>HP 5276</span><span>攻 1126</span><span>物防 2517</span><span>特防 3747</span><span>速 213</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カイ 槐 火力 範囲 単独勢力">
+  <a href="048.html">
+      <strong>カイ</strong><small>槐</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3256</span><span>攻 839</span><span>物防 1682</span><span>特防 2536</span><span>速 250</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="センウ 閃羽 火力 範囲 超管局">
+  <a href="049.html">
+      <strong>センウ</strong><small>閃羽</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 3743</span><span>攻 796</span><span>物防 1736</span><span>特防 2665</span><span>速 214</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カ 柯 弱体 援護 単独勢力">
+  <a href="050.html">
+      <strong>カ</strong><small>柯</small>
+      <div class="tags"><span class="tag">弱体</span><span class="tag">援護</span></div>
+      <div class="stats">
+        <span>HP 4960</span><span>攻 498</span><span>物防 1719</span><span>特防 3058</span><span>速 246</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="オンキ 音希 火力 爆発 燭火教">
+  <a href="051.html">
+      <strong>オンキ</strong><small>音希</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 4144</span><span>攻 1277</span><span>物防 3506</span><span>特防 2317</span><span>速 252</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ヤサ 弥砂 制御 生存 燭火教">
+  <a href="052.html">
+      <strong>ヤサ</strong><small>弥砂</small>
+      <div class="tags"><span class="tag">制御</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5473</span><span>攻 557</span><span>物防 4137</span><span>特防 2199</span><span>速 290</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="タチバナ 橘 治療 除去 単独勢力">
+  <a href="053.html">
+      <strong>タチバナ</strong><small>橘</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">除去</span></div>
+      <div class="stats">
+        <span>HP 3663</span><span>攻 559</span><span>物防 1753</span><span>特防 2672</span><span>速 218</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="テンセイ 天星 火力 範囲 爆発 単独勢力">
+  <a href="054.html">
+      <strong>テンセイ</strong><small>天星</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 3943</span><span>攻 1060</span><span>物防 2122</span><span>特防 3027</span><span>速 248</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="チャーシュー 叉燒 火力 爆発 範囲 超自然セブン">
+  <a href="055.html">
+      <strong>チャーシュー</strong><small>叉燒</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 2696</span><span>攻 739</span><span>物防 1445</span><span>特防 2188</span><span>速 280</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ツボミ 蕾 火力 強化 超自然セブン">
+  <a href="056.html">
+      <strong>ツボミ</strong><small>蕾</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 2774</span><span>攻 758</span><span>物防 2198</span><span>特防 1453</span><span>速 257</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="シンジュ 真珠 火力 強化 弱体 超自然セブン">
+  <a href="057.html">
+      <strong>シンジュ</strong><small>真珠</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">強化</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 2658</span><span>攻 754</span><span>物防 1416</span><span>特防 2144</span><span>速 281</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="サタデイ  援護 生存 超自然セブン">
+  <a href="058.html">
+      <strong>サタデイ</strong><small></small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4326</span><span>攻 450</span><span>物防 1503</span><span>特防 2722</span><span>速 245</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="コハル 小春 火力 超自然セブン">
+  <a href="059.html">
+      <strong>コハル</strong><small>小春</small>
+      <div class="tags"><span class="tag">火力</span></div>
+      <div class="stats">
+        <span>HP 2725</span><span>攻 761</span><span>物防 2222</span><span>特防 1489</span><span>速 253</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ブンケイ 文景 火力 弱体 超自然セブン">
+  <a href="060.html">
+      <strong>ブンケイ</strong><small>文景</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 2985</span><span>攻 660</span><span>物防 2267</span><span>特防 1468</span><span>速 293</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ユイ 結 範囲 弱体 単独勢力">
+  <a href="061.html">
+      <strong>ユイ</strong><small>結</small>
+      <div class="tags"><span class="tag">範囲</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 4738</span><span>攻 1055</span><span>物防 3895</span><span>特防 2337</span><span>速 281</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="セキエン 石燕 治療 強化 全聯堂">
+  <a href="062.html">
+      <strong>セキエン</strong><small>石燕</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 5168</span><span>攻 778</span><span>物防 3734</span><span>特防 2472</span><span>速 214</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="サイギンシ 砕銀子 火力 生存 全聯堂">
+  <a href="063.html">
+      <strong>サイギンシ</strong><small>砕銀子</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4384</span><span>攻 1200</span><span>物防 2457</span><span>特防 3597</span><span>速 254</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="タクメイ 琢明 火力 生存 光耀会">
+  <a href="064.html">
+      <strong>タクメイ</strong><small>琢明</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 4697</span><span>攻 1180</span><span>物防 2409</span><span>特防 3418</span><span>速 257</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="シカイ 刺灰 火力 範囲 爆発 単独勢力">
+  <a href="065.html">
+      <strong>シカイ</strong><small>刺灰</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 4541</span><span>攻 1240</span><span>物防 2387</span><span>特防 3418</span><span>速 243</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="レイケイ 荔倾 火力 生存 光耀会">
+  <a href="066.html">
+      <strong>レイケイ</strong><small>荔倾</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5073</span><span>攻 1077</span><span>物防 3710</span><span>特防 2394</span><span>速 258</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="カセン 家泉 治療 強化 単独勢力">
+  <a href="067.html">
+      <strong>カセン</strong><small>家泉</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 5048</span><span>攻 789</span><span>物防 3660</span><span>特防 2520</span><span>速 220</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ソイ 楚衣 治療 弱体 単独勢力">
+  <a href="068.html">
+      <strong>ソイ</strong><small>楚衣</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 5340</span><span>攻 843</span><span>物防 2835</span><span>特防 4162</span><span>速 282</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ケイシン 刑身 援護 生存 単独勢力">
+  <a href="069.html">
+      <strong>ケイシン</strong><small>刑身</small>
+      <div class="tags"><span class="tag">援護</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 6181</span><span>攻 626</span><span>物防 2174</span><span>特防 3705</span><span>速 237</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="キンケイ 金桂 防護 強化 全聯堂">
+  <a href="070.html">
+      <strong>キンケイ</strong><small>金桂</small>
+      <div class="tags"><span class="tag">防護</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 7239</span><span>攻 658</span><span>物防 4914</span><span>特防 2668</span><span>速 244</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ジョヒ 叙非 火力 拡散 単独勢力">
+  <a href="071.html">
+      <strong>ジョヒ</strong><small>叙非</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">拡散</span></div>
+      <div class="stats">
+        <span>HP 4314</span><span>攻 1261</span><span>物防 3543</span><span>特防 2363</span><span>速 242</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="フチシュン 不知春 火力 範囲 全聯堂">
+  <a href="072.html">
+      <strong>フチシュン</strong><small>不知春</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 4283</span><span>攻 1246</span><span>物防 3507</span><span>特防 2363</span><span>速 253</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="セッキョウ 折鏡 弱体 強化 単独勢力">
+  <a href="073.html">
+      <strong>セッキョウ</strong><small>折鏡</small>
+      <div class="tags"><span class="tag">弱体</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 4834</span><span>攻 1110</span><span>物防 3634</span><span>特防 2385</span><span>速 279</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="コクシュウ 刻舟 火力 範囲 弱体 超管局">
+  <a href="074.html">
+      <strong>コクシュウ</strong><small>刻舟</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 3939</span><span>攻 1049</span><span>物防 2120</span><span>特防 3060</span><span>速 251</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="モクヒ 默斐 火力 超管局">
+  <a href="075.html">
+      <strong>モクヒ</strong><small>默斐</small>
+      <div class="tags"><span class="tag">火力</span></div>
+      <div class="stats">
+        <span>HP 4446</span><span>攻 1275</span><span>物防 3622</span><span>特防 2457</span><span>速 216</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="アレフ 阿莱夫 治療 消散 強化 戯火教">
+  <a href="077.html">
+      <strong>アレフ</strong><small>阿莱夫</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">消散</span><span class="tag">強化</span></div>
+      <div class="stats">
+        <span>HP 5817</span><span>攻 816</span><span>物防 4071</span><span>特防 2698</span><span>速 277</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="コウシュ 巧手 弱体 援護 生存 単独勢力">
+  <a href="078.html">
+      <strong>コウシュ</strong><small>巧手</small>
+      <div class="tags"><span class="tag">弱体</span><span class="tag">援護</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 6932</span><span>攻 690</span><span>物防 2421</span><span>特防 4451</span><span>速 251</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="インカ 饮火 火力 弱体 光耀会">
+  <a href="079.html">
+      <strong>インカ</strong><small>饮火</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 4429</span><span>攻 1246</span><span>物防 2363</span><span>特防 3543</span><span>速 241</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ボウコ 忘湖 火力 弱体 生存 単独勢力">
+  <a href="080.html">
+      <strong>ボウコ</strong><small>忘湖</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">弱体</span><span class="tag">生存</span></div>
+      <div class="stats">
+        <span>HP 5218</span><span>攻 937</span><span>物防 3634</span><span>特防 2409</span><span>速 281</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="スイビン 翠鬓 火力 爆発 単独勢力">
+  <a href="081.html">
+      <strong>スイビン</strong><small>翠鬓</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 4401</span><span>攻 1264</span><span>物防 3505</span><span>特防 2340</span><span>速 239</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="マンデー 星期一 生存 分担 単独勢力">
+  <a href="082.html">
+      <strong>マンデー</strong><small>星期一</small>
+      <div class="tags"><span class="tag">生存</span><span class="tag">分担</span></div>
+      <div class="stats">
+        <span>HP 6734</span><span>攻 622</span><span>物防 4720</span><span>特防 2717</span><span>速 256</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="アヌビス 阿铋斯 火力 生存 弱体 単独勢力">
+  <a href="083.html">
+      <strong>アヌビス</strong><small>阿铋斯</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">生存</span><span class="tag">弱体</span></div>
+      <div class="stats">
+        <span>HP 4754</span><span>攻 1104</span><span>物防 2384</span><span>特防 3482</span><span>速 283</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ヤヌス 雅努斯 治療 強化 範囲 光耀会">
+  <a href="084.html">
+      <strong>ヤヌス</strong><small>雅努斯</small>
+      <div class="tags"><span class="tag">治療</span><span class="tag">強化</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 5733</span><span>攻 804</span><span>物防 2797</span><span>特防 3997</span><span>速 286</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ウジン 雨人 火力 爆発 単独勢力">
+  <a href="085.html">
+      <strong>ウジン</strong><small>雨人</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">爆発</span></div>
+      <div class="stats">
+        <span>HP 4217</span><span>攻 1300</span><span>物防 3292</span><span>特防 2352</span><span>速 249</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="ボウワク 纺惑 火力 範囲 独行势力">
+  <a href="087.html">
+      <strong>ボウワク</strong><small>纺惑</small>
+      <div class="tags"><span class="tag">火力</span><span class="tag">範囲</span></div>
+      <div class="stats">
+        <span>HP 4429</span><span>攻 1283</span><span>物防 2481</span><span>特防 3579</span><span>速 215</span>
+      </div>
+    </a>
+  </li>
+
+  <li data-keywords="セイケイ 青形  ">
+  <a href="088.html">
+      <strong>セイケイ</strong><small>青形</small>
+      <div class="tags"></div>
+      <div class="stats">
+        <span>HP 9</span><span>攻 </span><span>物防 </span><span>特防 </span><span>速 </span>
+      </div>
+    </a>
+  </li>
+
+</ul>
+<aside style="margin:2rem 0 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px" aria-label="スポンサーリンク フッター広告">
+ <div style="font-size:.55rem;letter-spacing:.5px;color:#8aa;margin:0 0 .35rem">スポンサーリンク</div>
+ <ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+</aside>
+</main>
+<script src="/js/ads-consent-loader.js" defer></script>
+<script>const f=document.getElementById('filter');const list=document.getElementById('list').children;f.addEventListener('input',()=>{const q=f.value.trim().toLowerCase();for(const li of list){if(!q){li.style.display='';continue;}const kw=li.getAttribute('data-keywords').toLowerCase();li.style.display=kw.includes(q)?'':'none';}});</script>
+</body></html>
