@@ -280,6 +280,8 @@ def build():
             'ロム候補セクション': [1] if rom_candidates else [],
             '較正配列': cal_rows,
             '較正セクション': [1] if cal_rows else [],
+            # 一覧ページ（同一 chars ディレクトリ内の index.html への相対リンク）
+            '一覧ページURL': 'index.html',
         }
         html = expand(tpl_char, char_data)
         (CHARS_DIR / f'{cid}.html').write_text(html, encoding='utf-8')
