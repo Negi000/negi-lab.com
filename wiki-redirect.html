@@ -75,7 +75,7 @@
     <h1 class="text-3xl font-bold mb-6">外部Wikiへリダイレクト中…</h1>
     <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-accent mx-auto mb-6" aria-label="読み込み中"></div>
     <div class="text-lg text-gray-700 mb-6">
-      Amazon・楽天アフィリエイトCookieを埋め込んでから目的のWikiへ自動遷移します。<br>
+      目的のWikiへ自動移動します。<br>
       5秒経っても遷移しない場合は下記ボタンを押してください。
     </div>
     <div class="mb-8">
@@ -88,11 +88,11 @@
       function injectAffiliatePixels(){
         try {
           var a = document.createElement('img');
-          a.src = 'https://www.amazon.co.jp/assoc-redirect?tag=あなたのアソシエイトID-22';
+          a.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22';
           a.width = 1; a.height = 1; a.loading = 'eager'; a.alt = 'Amazon Cookie'; a.style.display = 'none';
           document.body.appendChild(a);
           var r = document.createElement('img');
-          r.src = 'https://hb.afl.rakuten.co.jp/hgc/あなたの楽天アフィリエイトID.gif';
+          r.src = 'https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6';
           r.width = 1; r.height = 1; r.loading = 'eager'; r.alt = 'Rakuten Cookie'; r.style.display = 'none';
           document.body.appendChild(r);
         } catch(_) {}
