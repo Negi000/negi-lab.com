@@ -159,7 +159,7 @@ def build_search_index(raw_chars: dict, home_html: str):
         docs.append({
             'id': f'char-{cid}',
             'title': name + (f' / {eng}' if eng else ''),
-            'url': f'/gamewiki/FellowMoon/chars/{cid}.html',
+            'url': f'/gamewiki/FellowMoon/site/chars/{cid}.html',
             'tags': [t for t in [attr, typ, 'character'] if t],
             'body': body
         })
