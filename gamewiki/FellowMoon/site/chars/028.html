@@ -671,7 +671,7 @@ lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
     const q=document.getElementById('wikiSearchInput').value.trim();
     if(!q){return false;}
     // 検索ページへ遷移 (相対パス調整)
-    location.href='../search.html?q='+encodeURIComponent(q);
+    location.href='../../search.html?q='+encodeURIComponent(q);
     return false;
   };
   // パネル状態保持 (hash優先 -> localStorage) - デフォルト全閉

@@ -391,7 +391,7 @@ window.__DISPLAYS__ = JSON.parse('{{ディスプレイJSON}}');
     const q=document.getElementById('wikiSearchInput').value.trim();
     if(!q){return false;}
     // 本格検索ページへ遷移
-    location.href='/gamewiki/FellowMoon/search.html?q='+encodeURIComponent(q);
+    location.href='search.html?q='+encodeURIComponent(q);
     return false;
   };
   // パネル状態保持 (hash優先 -> localStorage)
