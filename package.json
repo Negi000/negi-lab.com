@@ -7,8 +7,9 @@
     "update": "powershell -ExecutionPolicy Bypass -File scripts/simple-consistency.ps1 -action update",
     "check": "npm run validate",
     "fix": "npm run update",
-    "dev": "npm run validate && npm run update",
-    "test": "npm run validate"
+    "dev": "npm run validate && npm run update && npm run build:search",
+    "test": "npm run validate",
+    "build:search": "node scripts/build-wiki-search-index.js"
   },
   "dependencies": {},
   "devDependencies": {},

@@ -103,6 +103,75 @@ def build_home():
     html = expand(tpl, data)
     (SITE_DIR / 'index.html').write_text(html, encoding='utf-8')
     print('Home generated.')
+    # ===== 検索インデックス生成 =====
+    try:
+        build_search_index(raw_chars, html)
+    except Exception as e:
+        print('Search index build failed:', e)
+
+def strip_html(raw: str) -> str:
+    # script/style除去 → タグ除去 → 空白整理
+    raw = re.sub(r'<script[\s\S]*?</script>', ' ', raw, flags=re.IGNORECASE)
+    raw = re.sub(r'<style[\s\S]*?</style>', ' ', raw, flags=re.IGNORECASE)
+    raw = re.sub(r'<!--.*?-->', ' ', raw, flags=re.DOTALL)
+    raw = re.sub(r'<[^>]+>', ' ', raw)
+    raw = re.sub(r'&nbsp;?', ' ', raw)
+    raw = re.sub(r'&amp;', '&', raw)
+    raw = re.sub(r'\s+', ' ', raw).strip()
+    return raw
+
+def flatten_character_payload(payload: dict) -> str:
+    parts = []
+    def rec(v):
+        if v is None:
+            return
+        if isinstance(v, dict):
+            for vv in v.values():
+                rec(vv)
+        elif isinstance(v, list):
+            for vv in v:
+                rec(vv)
+        else:
+            s = str(v).strip()
+            if s:
+                parts.append(s)
+    rec(payload)
+    return '\n'.join(parts)
+
+def build_search_index(raw_chars: dict, home_html: str):
+    docs = []
+    # トップページ
+    docs.append({
+        'id': 'home',
+        'title': 'トップ',
+        'url': '/gamewiki/FellowMoon/',
+        'tags': ['home'],
+        'body': strip_html(home_html)[:6000]
+    })
+    # キャラ
+    for cid, payload in raw_chars.items():
+        basic = (payload.get('基本情報') or {})
+        name = basic.get('名前') or cid
+        eng = basic.get('英名') or ''
+        attr = basic.get('属性') or ''
+        typ = basic.get('タイプ') or ''
+        body = flatten_character_payload(payload)[:6000]
+        docs.append({
+            'id': f'char-{cid}',
+            'title': name + (f' / {eng}' if eng else ''),
+            'url': f'/gamewiki/FellowMoon/chars/{cid}.html',
+            'tags': [t for t in [attr, typ, 'character'] if t],
+            'body': body
+        })
+    out = {
+        'generated': datetime.datetime.now().isoformat(timespec='seconds'),
+        'count': len(docs),
+        'docs': docs
+    }
+    # search.html と同階層 (BASE) に配置 → fetch('search-index.json') で取得可能
+    target = BASE / 'search-index.json'
+    target.write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
+    print('Search index generated. docs:', len(docs), '->', target)
 
 if __name__ == '__main__':
     build_home()
