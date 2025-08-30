@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>Wiki内検索 - 新月同行 Wiki</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+<link rel="preload" as="script" href="/js/wiki-search.js" />
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
+:root{--c-bgcard:#161e26;--c-border:#24303b;--w-wrap:1080px}
+header,main{position:relative;z-index:1}
+main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 4rem}
+.search-head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:1.2rem}
+.search-head h1{margin:0;font-size:clamp(1.4rem,4.4vw,2rem);font-weight:800;background:linear-gradient(90deg,#63b7ff,#9ad8ff);-webkit-background-clip:text;color:transparent}
+.search-bar{display:flex;gap:.6rem;flex-wrap:wrap}
+.search-bar input{flex:1 1 260px;background:#0f161c;border:1px solid #2d4251;color:#d5ecff;padding:.75rem .9rem;font-size:.9rem;border-radius:14px;transition:.25s}
+.search-bar input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+.search-bar button{background:#20303a;border:1px solid #335063;color:#cfe2ff;font-weight:600;padding:.75rem 1.1rem;border-radius:14px;font-size:.8rem;cursor:pointer;letter-spacing:.5px}
+.search-bar button:hover{background:#294353}
+.results-info{font-size:.7rem;color:#8aa0b1;margin:.3rem 0 .6rem}
+.results-grid{display:grid;gap:.85rem}
+.result-item{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:14px;padding:.85rem .95rem;position:relative;display:flex;flex-direction:column;gap:.45rem}
+.result-item h2{margin:0;font-size:.9rem;line-height:1.25;color:#cfe4ff}
+.result-item a{text-decoration:none;color:#63b7ff;font-weight:600}
+.result-snippet{font-size:.65rem;line-height:1.4;color:#9eb4c3}
+mark{background:#255b82;color:#fff;padding:0 2px;border-radius:3px}
+.empty{font-size:.7rem;color:#6d8797;margin-top:1.2rem}
+.loader{display:none;margin-top:1rem;font-size:.6rem;color:#6d8797}
+</style>
+</head>
+<body>
+<header class="wiki-header shadow-md sticky top-0 z-50 font-inter" style="background:#0f161c;border-bottom:1px solid #18222c">
+  <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
+    <a href="/gamewiki/FellowMoon/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">新月同行 Wiki</a>
+    <a href="/" class="ml-auto text-sm text-sky-300 hover:underline">negi-lab.com Top</a>
+  </div>
+</header>
+<main>
+  <div class="search-head">
+    <h1>Wiki内検索</h1>
+    <form id="searchForm" class="search-bar" role="search">
+      <input id="q" name="q" type="search" placeholder="キャラ名・属性・用語など" aria-label="検索語" />
+      <button type="submit">検索</button>
+    </form>
+    <div id="resultsInfo" class="results-info"></div>
+  </div>
+  <div id="results" class="results-grid" aria-live="polite" aria-busy="false"></div>
+  <div id="emptyState" class="empty" style="display:none">検索結果なし</div>
+  <div id="loader" class="loader">インデックス構築中...</div>
+</main>
+<script src="/js/wiki-search.js" defer></script>
+<script>
+(async function(){
+  const loader = document.getElementById('loader');
+  loader.style.display='block';
+  let indexData=null; let index=null;
+  try{
+    const res = await fetch('search-index.json',{cache:'no-store'});
+    if(res.ok){ indexData = await res.json(); }
+  }catch(e){ console.warn('search index load failed',e); }
+  if(indexData && Array.isArray(indexData.docs)){
+    index = WikiSearch.buildIndex(indexData.docs);
+  } else {
+    loader.textContent='インデックス読み込み失敗';
+    return;
+  }
+  loader.style.display='none';
+  function doSearch(q){
+    const resultsEl=document.getElementById('results');
+    const info=document.getElementById('resultsInfo');
+    const empty=document.getElementById('emptyState');
+    resultsEl.innerHTML='';
+    empty.style.display='none';
+    if(!q){ info.textContent='検索語を入力してください'; return; }
+    const res = WikiSearch.search(index, q, 80);
+    info.textContent = res.length + ' 件ヒット';
+    if(!res.length){ empty.style.display='block'; return; }
+    res.forEach(r=>{
+      const div=document.createElement('div');div.className='result-item';
+      const h=document.createElement('h2');
+      const a=document.createElement('a');a.href=r.url;a.textContent=r.title||'(no title)';h.appendChild(a);div.appendChild(h);
+      const snip=document.createElement('div');snip.className='result-snippet';
+      const body=r.body||''; const slice=body.slice(0,220);
+      snip.innerHTML = WikiSearch.highlight(slice, q);
+      div.appendChild(snip);
+      resultsEl.appendChild(div);
+    });
+  }
+  const params=new URLSearchParams(location.search);
+  const initQ=params.get('q')||''; if(initQ){ document.getElementById('q').value=initQ; doSearch(initQ); }
+  document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=document.getElementById('q').value.trim();history.replaceState(null,'',q?('?q='+encodeURIComponent(q)):'');doSearch(q);});
+})();
+</script>
+</body>
+</html>

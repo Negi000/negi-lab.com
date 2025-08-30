@@ -1,28 +1,271 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="UTF-8" />
-<title>キャラ一覧</title><meta name="viewport" content="width=device-width,initial-scale=1" />
-<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0e1216;color:#eee}header{padding:1rem 1.2rem}h1{margin:.2rem 0;font-size:1.6rem}main{max-width:1200px;margin:auto;padding:0 1.2rem 3rem}input{width:100%;padding:.7rem .9rem;font-size:.9rem;background:#182028;border:1px solid #26313c;border-radius:10px;color:#eee;margin:.4rem 0 1.2rem}ul{list-style:none;padding:0;margin:0;display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}li a{display:block;background:#182028;padding:.85rem .9rem .95rem;border:1px solid #23313c;border-radius:12px;color:#d5e7ff;text-decoration:none;font-size:.8rem;line-height:1.35;min-height:140px;position:relative}li a:hover{background:#1f2a33;border-color:#33526b}small{display:block;font-size:.6rem;color:#9ab;margin-top:.2rem;letter-spacing:.5px}.tag{display:inline-block;background:#2b3947;padding:2px 6px;border-radius:999px;font-size:.55rem;margin:.18rem .3rem .18rem 0;color:#9ec5ff;letter-spacing:.5px;}.stats{font-size:.55rem;opacity:.7;margin-top:.25rem;display:flex;flex-wrap:wrap;gap:4px}.stats span{background:#0003;padding:2px 4px;border-radius:4px}</style>
-</head><body>
-<header><h1>キャラ一覧</h1><input id="filter" placeholder="名前/タグ/陣営でフィルタ" /></header>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>キャラ図鑑 - 新月同行 Wiki</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0d1216" />
+<!-- Tailwind for shared header/footer styles -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
+:root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
+/* ===== 新 Wiki ヒーローヘッダー / メガナビ (スマホファースト) ===== */
+.wiki-hero{margin:0 0 1.4rem;position:relative}
+.wiki-hero-bar{display:flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#14212b,#1b2d38 55%,#14212b);border:1px solid #253542;padding:.85rem .95rem;border-radius:16px;position:relative;overflow:hidden}
+.wiki-hero-bar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(99,183,255,.25),transparent 60%);pointer-events:none}
+.wiki-hero-title{font-size:clamp(1.35rem,5.3vw,2.1rem);line-height:1.05;font-weight:800;letter-spacing:.5px;background:linear-gradient(92deg,#63b7ff,#9ad8ff 45%,#63b7ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 6px rgba(60,130,190,.25))}
+.wiki-search{margin-left:auto;display:flex;align-items:center;min-width:0;position:relative}
+.wiki-search input{background:#0f161c;border:1px solid #29404e;color:#d9edff;font-size:.75rem;padding:.55rem .75rem;border-radius:10px;width:170px;transition:.25s}
+.wiki-search input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+@media(min-width:520px){.wiki-search input{width:220px}}
+@media(min-width:900px){.wiki-search input{width:260px}}
+.wiki-cat-bar-wrapper{margin-top:.65rem}
+.wiki-cat-bar{display:flex;gap:.55rem;overflow-x:auto;padding:.4rem .15rem .15rem;scrollbar-width:none;-ms-overflow-style:none}
+.wiki-cat-bar::-webkit-scrollbar{display:none}
+.wiki-cat-btn{flex:0 0 auto;position:relative;background:#18232d;border:1px solid #243744;color:#cfe2ff;font-weight:600;font-size:.68rem;letter-spacing:.5px;padding:.55rem .85rem;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:.25s}
+.wiki-cat-btn:hover{background:#20303a;border-color:#335063}
+.wiki-cat-btn[aria-expanded="true"]{background:#254052;border-color:#3a627b;box-shadow:0 0 0 2px rgba(58,139,255,.25)}
+.wiki-cat-btn:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);margin-left:2px;transition:.3s}
+.wiki-cat-btn[aria-expanded="true"]:after{transform:rotate(-135deg) translateY(2px)}
+.wiki-acc-panels{position:relative;margin-top:.4rem}
+.wiki-acc-panel{border:1px solid #2e4250;background:#101a22;border-radius:14px;padding:.9rem .95rem;display:none;animation:accFade .35s ease;box-shadow:0 6px 22px -8px #000a}
+.wiki-acc-panel.open{display:block}
+@keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.wiki-acc-grid{display:grid;gap:.65rem;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+.wiki-acc-grid a:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(99,183,255,.12),transparent 55%);opacity:0;transition:.35s}
+.wiki-acc-grid a:hover{background:#1d2d37;border-color:#335063}
+.wiki-acc-grid a:hover:before{opacity:1}
+.wiki-acc-badge{display:inline-block;background:#254052;color:#9ed8ff;font-size:.55rem;padding:2px 6px;border-radius:8px;margin-left:auto;font-weight:600}
+@media(min-width:760px){.wiki-acc-grid a{font-size:.62rem}}
+/* ===== /新ヒーローヘッダー ===== */
+header,main,footer{position:relative;z-index:1}
+main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
+.section{margin:0 0 1.9rem}
+.section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
+.card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;padding:.85rem .85rem;position:relative}
+@media(min-width:760px){.card{padding:1rem .95rem}}
+.small{font-size:.65rem;color:#8aa0b1}
+/* キャラ一覧 */
+.filter-bar{margin:.9rem 0 1.2rem}
+.filter-bar input{width:100%;padding:.7rem .9rem;font-size:.9rem;background:#0f161c;border:1px solid #26313c;border-radius:10px;color:#d9edff;transition:.25s}
+.filter-bar input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+.char-grid{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.char-card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:14px;padding:.85rem .9rem .95rem;position:relative;transition:.25s;min-height:140px}
+.char-card:hover{background:#1c2831;border-color:#3a8bff;transform:translateY(-2px);box-shadow:0 8px 24px -6px rgba(58,139,255,.25)}
+.char-card a{text-decoration:none;color:inherit;display:block}
+.char-card h3{margin:0 0 .3rem;font-size:.85rem;font-weight:700;color:#d5e7ff;line-height:1.25}
+.char-card .name-sub{font-size:.6rem;color:#9ab;margin-bottom:.5rem;letter-spacing:.5px}
+.char-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin:.4rem 0}
+.char-tag{background:#2b3947;color:#9ec5ff;font-size:.55rem;padding:2px 6px;border-radius:6px;letter-spacing:.5px;font-weight:600}
+.char-stats{font-size:.55rem;color:#8aa0b1;margin-top:.5rem;display:flex;flex-wrap:wrap;gap:4px}
+.char-stats span{background:#182229;padding:2px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<!-- Header (mobile-first) -->
+<header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
+  <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
+    <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">negi-lab.com</a>
+    <button id="menuToggle" class="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-md border border-[#24303b] bg-[#18232d] text-[#cfe2ff] sm:hidden" aria-label="メニュー" aria-expanded="false">≡</button>
+    <nav id="mainNav" class="ml-auto hidden sm:block">
+      <ul class="flex flex-col sm:flex-row gap-3 sm:gap-6 font-medium text-base items-start sm:items-center py-3 sm:py-0" data-nav-list>
+        <li><a href="/#tools" class="nav-link">ツール</a></li>
+        <li><a href="/gamewiki/FellowMoon/" class="nav-link">新月同行Wiki</a></li>
+        <li><a href="/gamewiki/FellowMoon/chars/" class="nav-link">キャラ一覧</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<style>
+.wiki-header{background:#0f161c;border-bottom:1px solid #18222c}
+.wiki-header .nav-link{color:#cfe2ff;transition:color .25s}
+.wiki-header .nav-link:hover{color:#63b7ff}
+.wiki-header.open #mainNav{display:block}
+.wiki-header #mainNav{animation:navFade .25s ease}
+@keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+</style>
 <main>
-<ul id="list">
-{{#一覧}}
-  <li data-keywords="{{名前}} {{漢字}} {{タグCSV}} {{陣営}}">
-  <a href="{{ID}}.html">
-      <strong>{{名前}}</strong><small>{{漢字}}</small>
-      <div class="tags">{{#タグ}}<span class="tag">{{.}}</span>{{/タグ}}</div>
-      <div class="stats">
-        <span>HP {{HP(最大値)}}</span><span>攻 {{攻撃(最大値)}}</span><span>物防 {{物理防御(最大値)}}</span><span>特防 {{特殊防御(最大値)}}</span><span>速 {{行動速度(最大値)}}</span>
+  <section class="wiki-hero" data-wiki-header>
+    <div class="wiki-hero-bar">
+      <h1 class="wiki-hero-title" aria-label="新月同行 Wiki メインタイトル">新月同行 Wiki</h1>
+      <form class="wiki-search" role="search" onsubmit="return window.__wikiSearchSubmit && window.__wikiSearchSubmit(event)">
+        <input id="wikiSearchInput" type="search" placeholder="Wiki内検索..." aria-label="Wiki内検索" />
+      </form>
+    </div>
+    <div class="wiki-cat-bar-wrapper">
+      <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
+        <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
+        <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+        <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
+        <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">ゲームモード</button>
       </div>
-    </a>
-  </li>
-{{/一覧}}
-</ul>
-<aside style="margin:2rem 0 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px" aria-label="スポンサーリンク フッター広告">
- <div style="font-size:.55rem;letter-spacing:.5px;color:#8aa;margin:0 0 .35rem">スポンサーリンク</div>
- <ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-</aside>
+      <div class="wiki-acc-panels">
+        <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="./"><span>キャラ図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>ロム図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>スキン図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-tools" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ダメージ計算ツール</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="../#today"><span>誕生日カレンダー</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
+          </div>
+        </div>
+        <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ビルドガイド</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>ロム活用法</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>イベント一覧</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>PvP/高難度</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <h2>キャラ図鑑</h2>
+    <div class="filter-bar">
+      <input id="filter" placeholder="名前/タグ/陣営でフィルタ" />
+    </div>
+    <div class="char-grid" id="charGrid">
+      {{#一覧}}
+      <div class="char-card" data-keywords="{{名前}} {{漢字}} {{タグCSV}} {{陣営}}">
+        <a href="{{ID}}.html">
+          <h3>{{名前}}</h3>
+          <div class="name-sub">{{漢字}}</div>
+          <div class="char-tags">{{#タグ}}<span class="char-tag">{{.}}</span>{{/タグ}}</div>
+          <div class="char-stats">
+            <span>HP {{HP(最大値)}}</span><span>攻 {{攻撃(最大値)}}</span><span>物防 {{物理防御(最大値)}}</span><span>特防 {{特殊防御(最大値)}}</span><span>速 {{行動速度(最大値)}}</span>
+          </div>
+        </a>
+      </div>
+      {{/一覧}}
+    </div>
+  </section>
 </main>
+<footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
+  <nav class="mb-3">
+    <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+    <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+    <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+    <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+    <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  </nav>
+  <div class="text-xs text-gray-400 mb-2">新月同行 Wiki (仮) - Data oriented fan project (Unofficial)</div>
+  <div class="mt-2">&copy; 2025 negi-lab.com</div>
+</footer>
 <script src="/js/ads-consent-loader.js" defer></script>
-<script>const f=document.getElementById('filter');const list=document.getElementById('list').children;f.addEventListener('input',()=>{const q=f.value.trim().toLowerCase();for(const li of list){if(!q){li.style.display='';continue;}const kw=li.getAttribute('data-keywords').toLowerCase();li.style.display=kw.includes(q)?'':'none';}});</script>
-</body></html>
+<script>
+// 共通Wiki機能 (アコーディオン・検索・ナビ)
+(function(){
+  // モバイルナビ制御
+  (function(){
+    const header=document.querySelector('.wiki-header');
+    const btn=document.getElementById('menuToggle');
+    const nav=document.getElementById('mainNav');
+    if(!btn||!nav) return;
+    btn.addEventListener('click',()=>{
+      const open=header.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(open){ nav.classList.remove('hidden'); } else if(window.innerWidth < 640){ nav.classList.add('hidden'); }
+    });
+    window.addEventListener('resize',()=>{
+      if(window.innerWidth >= 640){ nav.classList.remove('hidden'); header.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      else if(!header.classList.contains('open')){ nav.classList.add('hidden'); }
+    });
+  })();
+  // アコーディオンカテゴリ (デフォルト閉)
+  (function(){
+    const buttons=[...document.querySelectorAll('.wiki-cat-btn')];
+    const panels={};
+    buttons.forEach(b=>{const id=b.dataset.panel; if(id){ panels[id]=document.getElementById(id); }});
+    function toggle(btn){
+      const id=btn.dataset.panel; const panel=panels[id]; if(!panel) return;
+      const open = btn.getAttribute('aria-expanded')==='true';
+      // すべて閉じる
+      buttons.forEach(x=>x.setAttribute('aria-expanded','false'));
+      Object.values(panels).forEach(p=>{p.classList.remove('open');p.setAttribute('aria-hidden','true');});
+      if(!open){
+        btn.setAttribute('aria-expanded','true');
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden','false');
+      }
+    }
+    buttons.forEach(btn=>btn.addEventListener('click',()=>toggle(btn)));
+    // キーボード操作
+    document.addEventListener('keydown',e=>{
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+      const idx=buttons.indexOf(document.activeElement);
+      if(idx<0) return; e.preventDefault();
+      let ni=idx;
+      if(e.key==='ArrowRight') ni=(idx+1)%buttons.length; else if(e.key==='ArrowLeft') ni=(idx-1+buttons.length)%buttons.length; else if(e.key==='Home') ni=0; else if(e.key==='End') ni=buttons.length-1;
+      buttons[ni].focus();
+    });
+  })();
+  // Wiki内検索
+  window.__wikiSearchSubmit=function(ev){
+    ev.preventDefault();
+    const q=document.getElementById('wikiSearchInput').value.trim();
+    if(!q){return false;}
+    // 検索ページへ遷移 (相対パス調整)
+    location.href='../search.html?q='+encodeURIComponent(q);
+    return false;
+  };
+  // パネル状態保持 (hash優先 -> localStorage) - デフォルト全閉
+  (function(){
+    const STORAGE_KEY='fellowmoon_wiki_panel';
+    function openById(id){
+      const btn=document.querySelector('.wiki-cat-btn[data-panel="'+id+'"]');
+      if(btn){ btn.click(); }
+    }
+    // ハッシュを監視 (#panel-tools など)
+    function fromHash(){
+      const h=location.hash.replace('#','');
+      if(h && /^panel-/.test(h)){ openById(h); return true; }
+      return false;
+    }
+    // ハッシュがある場合のみ開く（localStorageは使わない）
+    if(!fromHash()){
+      // デフォルトは全て閉じた状態 - 何もしない
+    }
+    window.addEventListener('hashchange',fromHash);
+    // クリック時にハッシュのみ更新
+    document.querySelectorAll('.wiki-cat-btn').forEach(b=>{
+      b.addEventListener('click',()=>{
+        if(b.getAttribute('aria-expanded')==='true'){
+          // 開いたときはハッシュ設定
+          history.replaceState(null,'','#'+b.dataset.panel);
+        }else{
+          // 閉じたときはハッシュ除去
+          if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+        }
+      });
+    });
+  })();
+})();
+// キャラリストフィルタ
+const filter=document.getElementById('filter');
+const cards=document.querySelectorAll('.char-card');
+filter.addEventListener('input',()=>{
+  const q=filter.value.trim().toLowerCase();
+  cards.forEach(card=>{
+    if(!q){card.style.display='';return;}
+    const kw=card.getAttribute('data-keywords').toLowerCase();
+    card.style.display=kw.includes(q)?'':'none';
+  });
+});
+</script>
+</body>
+</html>

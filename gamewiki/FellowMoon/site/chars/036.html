@@ -2,14 +2,51 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<title>スズメ - キャラ詳細</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>スズメ - キャラ詳細 - 新月同行 Wiki</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0d1216" />
+<!-- Tailwind for shared header/footer styles -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
 <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 <link rel="preconnect" href="https://googleads.g.doubleclick.net">
 <link rel="preconnect" href="https://www.googletagservices.com">
 <style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;line-height:1.5;margin:0;background:#101418;color:#eee;padding-bottom:4rem}
-header,main{max-width:1080px;margin:auto;padding:1.2rem}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;line-height:1.5;margin:0;background:#0d1216;color:#e6edf3;-webkit-font-smoothing:antialiased}
+:root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
+/* ===== 新 Wiki ヒーローヘッダー / メガナビ (スマホファースト) ===== */
+.wiki-hero{margin:0 0 1.4rem;position:relative}
+.wiki-hero-bar{display:flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#14212b,#1b2d38 55%,#14212b);border:1px solid #253542;padding:.85rem .95rem;border-radius:16px;position:relative;overflow:hidden}
+.wiki-hero-bar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(99,183,255,.25),transparent 60%);pointer-events:none}
+.wiki-hero-title{font-size:clamp(1.35rem,5.3vw,2.1rem);line-height:1.05;font-weight:800;letter-spacing:.5px;background:linear-gradient(92deg,#63b7ff,#9ad8ff 45%,#63b7ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 6px rgba(60,130,190,.25))}
+.wiki-search{margin-left:auto;display:flex;align-items:center;min-width:0;position:relative}
+.wiki-search input{background:#0f161c;border:1px solid #29404e;color:#d9edff;font-size:.75rem;padding:.55rem .75rem;border-radius:10px;width:170px;transition:.25s}
+.wiki-search input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+@media(min-width:520px){.wiki-search input{width:220px}}
+@media(min-width:900px){.wiki-search input{width:260px}}
+.wiki-cat-bar-wrapper{margin-top:.65rem}
+.wiki-cat-bar{display:flex;gap:.55rem;overflow-x:auto;padding:.4rem .15rem .15rem;scrollbar-width:none;-ms-overflow-style:none}
+.wiki-cat-bar::-webkit-scrollbar{display:none}
+.wiki-cat-btn{flex:0 0 auto;position:relative;background:#18232d;border:1px solid #243744;color:#cfe2ff;font-weight:600;font-size:.68rem;letter-spacing:.5px;padding:.55rem .85rem;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:.25s}
+.wiki-cat-btn:hover{background:#20303a;border-color:#335063}
+.wiki-cat-btn[aria-expanded="true"]{background:#254052;border-color:#3a627b;box-shadow:0 0 0 2px rgba(58,139,255,.25)}
+.wiki-cat-btn:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);margin-left:2px;transition:.3s}
+.wiki-cat-btn[aria-expanded="true"]:after{transform:rotate(-135deg) translateY(2px)}
+.wiki-acc-panels{position:relative;margin-top:.4rem}
+.wiki-acc-panel{border:1px solid #2e4250;background:#101a22;border-radius:14px;padding:.9rem .95rem;display:none;animation:accFade .35s ease;box-shadow:0 6px 22px -8px #000a}
+.wiki-acc-panel.open{display:block}
+@keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.wiki-acc-grid{display:grid;gap:.65rem;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+.wiki-acc-grid a:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(99,183,255,.12),transparent 55%);opacity:0;transition:.35s}
+.wiki-acc-grid a:hover{background:#1d2d37;border-color:#335063}
+.wiki-acc-grid a:hover:before{opacity:1}
+.wiki-acc-badge{display:inline-block;background:#254052;color:#9ed8ff;font-size:.55rem;padding:2px 6px;border-radius:8px;margin-left:auto;font-weight:600}
+@media(min-width:760px){.wiki-acc-grid a{font-size:.62rem}}
+/* ===== /新ヒーローヘッダー ===== */
+header,main,footer{position:relative;z-index:1}
+main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 header h1{margin:.2rem 0 0;font-size:2rem;}
 .badges span{display:inline-block;background:#333;padding:.25rem .6rem;margin:.15rem .35rem .15rem 0;border-radius:999px;font-size:.7rem;letter-spacing:.5px}
 .top-layout{display:block}
@@ -48,7 +85,6 @@ img.portrait{max-width:260px;width:100%;border-radius:12px;background:#0003;bord
   .image-stage figure img{max-height:82vh}
   .tab-panel[data-tab-panel="tachi"] figure img{max-height:70vh}
 }
-footer{position:fixed;left:0;bottom:0;width:100%;background:#0b0e12;border-top:1px solid #222;padding:.4rem .8rem;font-size:.65rem;color:#999}
 nav a{color:#8bb9ff;text-decoration:none;margin-right:.75rem;font-size:.8rem}
 .search-box{margin: .5rem 0 1rem;}
 .search-box input{width:100%;padding:.6rem .75rem;font-size:.9rem;border:1px solid #2a323c;background:#141b20;color:#eee;border-radius:8px}
@@ -62,12 +98,80 @@ img.skill-icon[src=""]{display:none}
 </style>
 </head>
 <body>
-<header>
-  <nav><a href="index.html">一覧に戻る</a></nav>
-  <h1>スズメ <small style="font-size:.55em;font-weight:400;color:#9ab"></small></h1>
+<!-- Header (mobile-first) -->
+<header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
+  <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
+    <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">negi-lab.com</a>
+    <button id="menuToggle" class="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-md border border-[#24303b] bg-[#18232d] text-[#cfe2ff] sm:hidden" aria-label="メニュー" aria-expanded="false">≡</button>
+    <nav id="mainNav" class="ml-auto hidden sm:block">
+      <ul class="flex flex-col sm:flex-row gap-3 sm:gap-6 font-medium text-base items-start sm:items-center py-3 sm:py-0" data-nav-list>
+        <li><a href="/#tools" class="nav-link">ツール</a></li>
+        <li><a href="/gamewiki/FellowMoon/" class="nav-link">新月同行Wiki</a></li>
+        <li><a href="/gamewiki/FellowMoon/chars/" class="nav-link">キャラ一覧</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
+<style>
+.wiki-header{background:#0f161c;border-bottom:1px solid #18222c}
+.wiki-header .nav-link{color:#cfe2ff;transition:color .25s}
+.wiki-header .nav-link:hover{color:#63b7ff}
+.wiki-header.open #mainNav{display:block}
+.wiki-header #mainNav{animation:navFade .25s ease}
+@keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+</style>
 <main>
-  <section class="top-layout">
+  <section class="wiki-hero" data-wiki-header>
+    <div class="wiki-hero-bar">
+      <h1 class="wiki-hero-title" aria-label="新月同行 Wiki メインタイトル">新月同行 Wiki</h1>
+      <form class="wiki-search" role="search" onsubmit="return window.__wikiSearchSubmit && window.__wikiSearchSubmit(event)">
+        <input id="wikiSearchInput" type="search" placeholder="Wiki内検索..." aria-label="Wiki内検索" />
+      </form>
+    </div>
+    <div class="wiki-cat-bar-wrapper">
+      <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
+        <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
+        <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+        <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
+        <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">ゲームモード</button>
+      </div>
+      <div class="wiki-acc-panels">
+        <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="../"><span>キャラ図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>ロム図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>スキン図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-tools" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ダメージ計算ツール</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="../#today"><span>誕生日カレンダー</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
+          </div>
+        </div>
+        <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ビルドガイド</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>ロム活用法</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>イベント一覧</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>PvP/高難度</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- キャラ詳細コンテンツ -->
+  <section class="char-detail">
+    <div style="margin-bottom:1rem">
+      <nav><a href="index.html" style="color:#63b7ff;text-decoration:none;font-size:.8rem">一覧に戻る</a></nav>
+    </div>
+    <h1 style="margin:.2rem 0 .9rem;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:#cfe4ff">スズメ <small style="font-size:.55em;font-weight:400;color:#9ab"></small></h1>
+    <section class="top-layout">
     <div class="card">
       <h2>基本情報</h2>
       <table style="width:100%;border-collapse:collapse;font-size:.72rem">
@@ -423,7 +527,6 @@ img.skill-icon[src=""]{display:none}
       <div class="lightbox-hint">ピンチ操作 / ドラッグ で拡大移動 / ダブルタップでリセット</div>
     </div>
   </div>
-<footer>Generated at 2025-08-29T21:20:13</footer>
 </body>
 <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
 <script>
@@ -505,5 +608,105 @@ lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
     });
   });
 })();
+// 共通Wiki機能 (アコーディオン・検索・ナビ)
+(function(){
+  // モバイルナビ制御
+  (function(){
+    const header=document.querySelector('.wiki-header');
+    const btn=document.getElementById('menuToggle');
+    const nav=document.getElementById('mainNav');
+    if(!btn||!nav) return;
+    btn.addEventListener('click',()=>{
+      const open=header.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(open){ nav.classList.remove('hidden'); } else if(window.innerWidth < 640){ nav.classList.add('hidden'); }
+    });
+    window.addEventListener('resize',()=>{
+      if(window.innerWidth >= 640){ nav.classList.remove('hidden'); header.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      else if(!header.classList.contains('open')){ nav.classList.add('hidden'); }
+    });
+  })();
+  // アコーディオンカテゴリ (デフォルト閉)
+  (function(){
+    const buttons=[...document.querySelectorAll('.wiki-cat-btn')];
+    const panels={};
+    buttons.forEach(b=>{const id=b.dataset.panel; if(id){ panels[id]=document.getElementById(id); }});
+    function toggle(btn){
+      const id=btn.dataset.panel; const panel=panels[id]; if(!panel) return;
+      const open = btn.getAttribute('aria-expanded')==='true';
+      // すべて閉じる
+      buttons.forEach(x=>x.setAttribute('aria-expanded','false'));
+      Object.values(panels).forEach(p=>{p.classList.remove('open');p.setAttribute('aria-hidden','true');});
+      if(!open){
+        btn.setAttribute('aria-expanded','true');
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden','false');
+      }
+    }
+    buttons.forEach(btn=>btn.addEventListener('click',()=>toggle(btn)));
+    // キーボード操作
+    document.addEventListener('keydown',e=>{
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+      const idx=buttons.indexOf(document.activeElement);
+      if(idx<0) return; e.preventDefault();
+      let ni=idx;
+      if(e.key==='ArrowRight') ni=(idx+1)%buttons.length; else if(e.key==='ArrowLeft') ni=(idx-1+buttons.length)%buttons.length; else if(e.key==='Home') ni=0; else if(e.key==='End') ni=buttons.length-1;
+      buttons[ni].focus();
+    });
+  })();
+  // Wiki内検索
+  window.__wikiSearchSubmit=function(ev){
+    ev.preventDefault();
+    const q=document.getElementById('wikiSearchInput').value.trim();
+    if(!q){return false;}
+    // 検索ページへ遷移 (相対パス調整)
+    location.href='../search.html?q='+encodeURIComponent(q);
+    return false;
+  };
+  // パネル状態保持 (hash優先 -> localStorage) - デフォルト全閉
+  (function(){
+    const STORAGE_KEY='fellowmoon_wiki_panel';
+    function openById(id){
+      const btn=document.querySelector('.wiki-cat-btn[data-panel="'+id+'"]');
+      if(btn){ btn.click(); }
+    }
+    // ハッシュを監視 (#panel-tools など)
+    function fromHash(){
+      const h=location.hash.replace('#','');
+      if(h && /^panel-/.test(h)){ openById(h); return true; }
+      return false;
+    }
+    // ハッシュがある場合のみ開く（localStorageは使わない）
+    if(!fromHash()){
+      // デフォルトは全て閉じた状態 - 何もしない
+    }
+    window.addEventListener('hashchange',fromHash);
+    // クリック時にハッシュのみ更新
+    document.querySelectorAll('.wiki-cat-btn').forEach(b=>{
+      b.addEventListener('click',()=>{
+        if(b.getAttribute('aria-expanded')==='true'){
+          // 開いたときはハッシュ設定
+          history.replaceState(null,'','#'+b.dataset.panel);
+        }else{
+          // 閉じたときはハッシュ除去
+          if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+        }
+      });
+    });
+  })();
+})();
 </script>
+<!-- Footer -->
+<footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
+  <nav class="mb-3">
+    <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+    <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+    <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+    <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+    <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  </nav>
+  <div class="text-xs text-gray-400 mb-2">新月同行 Wiki (仮) - Data oriented fan project (Unofficial)</div>
+  <div class="mt-2">&copy; 2025 negi-lab.com</div>
+</footer>
+</body>
 </html>
