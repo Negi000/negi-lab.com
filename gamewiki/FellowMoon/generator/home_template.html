@@ -408,8 +408,9 @@ window.__DISPLAYS__ = JSON.parse('{{ディスプレイJSON}}');
       return false;
     }
     if(!fromHash()){
-      const saved=localStorage.getItem(STORAGE_KEY);
-      if(saved){ openById(saved); }
+      // デフォルトは全て閉じた状態にする
+      // const saved=localStorage.getItem(STORAGE_KEY);
+      // if(saved){ openById(saved); }
     }
     window.addEventListener('hashchange',fromHash);
     // クリック時に保存
