@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
-<link rel="preload" as="script" href="../../js/wiki-search.js" />
+<link rel="preload" as="script" href="../js/wiki-search.js" />
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
 :root{--c-bgcard:#161e26;--c-border:#24303b;--w-wrap:1080px}
@@ -51,7 +51,7 @@ mark{background:#255b82;color:#fff;padding:0 2px;border-radius:3px}
   <div id="emptyState" class="empty" style="display:none">検索結果なし</div>
   <div id="loader" class="loader">インデックス構築中...</div>
 </main>
-<script src="../../js/wiki-search.js" defer></script>
+<script src="../js/wiki-search.js" defer></script>
 <script>
 (async function(){
   const loader = document.getElementById('loader');

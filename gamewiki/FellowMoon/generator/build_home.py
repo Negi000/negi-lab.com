@@ -159,7 +159,7 @@ def build_search_index(raw_chars: dict, home_html: str):
         docs.append({
             'id': f'char-{cid}',
             'title': name + (f' / {eng}' if eng else ''),
-            'url': f'/gamewiki/FellowMoon/site/chars/{cid}.html',
+            'url': f'chars/{cid}.html',
             'tags': [t for t in [attr, typ, 'character'] if t],
             'body': body
         })
@@ -168,8 +168,8 @@ def build_search_index(raw_chars: dict, home_html: str):
         'count': len(docs),
         'docs': docs
     }
-    # search.html と同階層 (BASE) に配置 → fetch('search-index.json') で取得可能
-    target = BASE / 'search-index.json'
+    # search.html と同階層 (SITE_DIR) に配置 → fetch('search-index.json') で取得可能
+    target = SITE_DIR / 'search-index.json'
     target.write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
     print('Search index generated. docs:', len(docs), '->', target)
 
