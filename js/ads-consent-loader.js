@@ -20,6 +20,9 @@
   if (isNoIndex) return;
   // Optional per-page disable flag for ads (GAは有効のまま)
   var ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-ads-disabled')) || !!document.querySelector('meta[name="ads"][content="off"]');
+  // Per-page flag to disable dynamic auto insertion while keeping static slots
+  var DYNAMIC_ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-no-dynamic-ads'))
+    || !!document.querySelector('meta[name="ads-dynamic"][content="off"]');
   var DEBUG = false; try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
   if (DEBUG) console.log('[ads-consent-loader] init', {host: host, ENV_OK: ENV_OK, CONSENT_OK: CONSENT_OK});
 
@@ -403,12 +406,12 @@
     // Lightweight heuristic: if there is at least one ad slot, we consider initializing ads when allowed
     var hasAdSlot = !!document.querySelector('ins.adsbygoogle');
 
-    if (ENV_OK && CONSENT_OK) {
+  if (ENV_OK && CONSENT_OK) {
       initGA();
       if (hasAdSlot && !ADS_DISABLED) initAds();
       else if (!ADS_DISABLED) startAdSlotObserver();
-    ensureBaseAdCSS();
-    setTimeout(maybeInsertDynamicAds, 1500);
+  ensureBaseAdCSS();
+  if (!DYNAMIC_ADS_DISABLED) setTimeout(maybeInsertDynamicAds, 1500);
     } else {
       // Provide a minimal consent UI if running on production and not on noindex pages
       if (ENV_OK && !isNoIndex && !CONSENT_OK) {
@@ -420,7 +423,7 @@
           initGA();
           if (!ADS_DISABLED) initAds();
       ensureBaseAdCSS();
-      setTimeout(maybeInsertDynamicAds, 1500);
+      if (!DYNAMIC_ADS_DISABLED) setTimeout(maybeInsertDynamicAds, 1500);
         }
       }, { once: true });
     }
