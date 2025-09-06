@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja" data-no-dynamic-ads>
+<head>
+  <meta charset="UTF-8" />
+  <title>ロム図鑑 | 新月同行 Wiki</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0d1216" />
+  <meta name="description" content="新月同行（Fellow Moon）のロム図鑑。セット効果と各ロムの最大ステータスを一覧・並び替えで確認できます。" />
+  <link rel="canonical" href="https://negi-lab.com/gamewiki/FellowMoon/site/roms/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ロム図鑑 | 新月同行 Wiki" />
+  <meta property="og:description" content="新月同行（Fellow Moon）のロム図鑑。セット効果と各ロムの最大ステータスを一覧・並び替えで確認できます。" />
+  <meta property="og:url" content="https://negi-lab.com/gamewiki/FellowMoon/site/roms/" />
+  <meta property="og:site_name" content="新月同行 Wiki" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
+    :root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
+    main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
+    .wiki-hero{margin:0 0 1.4rem;position:relative}
+    .wiki-hero-bar{display:flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#14212b,#1b2d38 55%,#14212b);border:1px solid #253542;padding:.85rem .95rem;border-radius:16px;position:relative;overflow:hidden}
+    .wiki-hero-bar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(99,183,255,.25),transparent 60%);pointer-events:none}
+    .wiki-hero-title{font-size:clamp(1.35rem,5.3vw,2.1rem);line-height:1.05;font-weight:800;letter-spacing:.5px;background:linear-gradient(92deg,#63b7ff,#9ad8ff 45%,#63b7ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 6px rgba(60,130,190,.25))}
+    .wiki-search{margin-left:auto;display:flex;align-items:center;min-width:0;position:relative}
+    .wiki-search input{background:#0f161c;border:1px solid #29404e;color:#d9edff;font-size:.75rem;padding:.55rem .75rem;border-radius:10px;width:170px;transition:.25s}
+    .wiki-search input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+    @media(min-width:520px){.wiki-search input{width:220px}}
+    @media(min-width:900px){.wiki-search input{width:260px}}
+    .wiki-cat-bar-wrapper{margin-top:.65rem}
+    .wiki-cat-bar{display:flex;gap:.55rem;overflow-x:auto;padding:.4rem .15rem .15rem;scrollbar-width:none;-ms-overflow-style:none}
+    .wiki-cat-bar::-webkit-scrollbar{display:none}
+    .wiki-cat-btn{flex:0 0 auto;position:relative;background:#18232d;border:1px solid #243744;color:#cfe2ff;font-weight:600;font-size:.68rem;letter-spacing:.5px;padding:.55rem .85rem;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:.25s}
+    .wiki-cat-btn:hover{background:#20303a;border-color:#335063}
+    .wiki-cat-btn[aria-expanded="true"]{background:#254052;border-color:#3a627b;box-shadow:0 0 0 2px rgba(58,139,255,.25)}
+    .wiki-cat-btn:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);margin-left:2px;transition:.3s}
+    .wiki-cat-btn[aria-expanded="true"]:after{transform:rotate(-135deg) translateY(2px)}
+    .wiki-acc-panels{position:relative;margin-top:.4rem}
+    .wiki-acc-panel{border:1px solid #2e4250;background:#101a22;border-radius:14px;padding:.9rem .95rem;display:none;animation:accFade .35s ease;box-shadow:0 6px 22px -8px #000a}
+    .wiki-acc-panel.open{display:block}
+    @keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+    .wiki-acc-grid{display:grid;gap:.65rem;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+    .wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+    .section{margin:0 0 1.9rem}
+    .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
+    .card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;padding:.85rem .85rem;position:relative}
+    .grid-roms{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .rom-card{background:#141c24;border:1px solid #23313c;border-radius:12px;padding:.6rem;text-align:center}
+    .rom-card img{width:100%;height:auto;border-radius:8px;background:#0c1217;border:1px solid #1c2a34}
+    .rom-card .name{font-size:.8rem;margin-top:.45rem}
+    table{width:100%;border-collapse:collapse;background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;overflow:hidden}
+    thead th{position:sticky;top:0;background:#16222b;border-bottom:1px solid #243744;padding:.5rem;font-size:.7rem;text-align:left}
+    tbody td{border-top:1px solid #1f2a33;padding:.5rem;font-size:.7rem}
+    .sort-btns{display:inline-flex;gap:4px;margin-left:.3rem}
+    .sort-btns button{background:#20303a;border:1px solid #324754;color:#cfe2ff;border-radius:6px;padding:2px 6px;font-size:.65rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    thead th, tbody td{word-break:break-word}
+
+    /* スマホファースト最適化 */
+    @media(max-width:640px){
+      .grid-roms{grid-template-columns:repeat(3,1fr);gap:8px}
+      .rom-card{padding:.5rem}
+      .rom-card .name{font-size:.72rem}
+      table{table-layout:fixed}
+      thead th, tbody td{padding:.4rem;font-size:.66rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
+    <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
+      <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">negi-lab.com</a>
+      <button id="menuToggle" class="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-md border border-[#24303b] bg-[#18232d] text-[#cfe2ff] sm:hidden" aria-label="メニュー" aria-expanded="false">≡</button>
+      <nav id="mainNav" class="ml-auto hidden sm:block">
+        <ul class="flex flex-col sm:flex-row gap-3 sm:gap-6 font-medium text-base items-start sm:items-center py-3 sm:py-0" data-nav-list>
+          <li><a href="../index.html" class="nav-link">新月同行Wiki</a></li>
+          <li><a href="../chars/index.html" class="nav-link">キャラ一覧</a></li>
+          <li><a href="index.html" class="nav-link">ロム図鑑</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <style>
+    .wiki-header{background:#0f161c;border-bottom:1px solid #18222c}
+    .wiki-header .nav-link{color:#cfe2ff;transition:color .25s}
+    .wiki-header .nav-link:hover{color:#63b7ff}
+    .wiki-header.open #mainNav{display:block}
+    .wiki-header #mainNav{animation:navFade .25s ease}
+    @keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  </style>
+
+  <main>
+    <section class="wiki-hero" data-wiki-header>
+      <div class="wiki-hero-bar">
+  <h1 class="wiki-hero-title" aria-label="新月同行 Wiki セクションタイトル">新月同行 Wiki</h1>
+        <form class="wiki-search" role="search" onsubmit="return window.__wikiSearchSubmit && window.__wikiSearchSubmit(event)">
+          <input id="wikiSearchInput" type="search" placeholder="Wiki内検索..." aria-label="Wiki内検索" />
+        </form>
+      </div>
+      <div class="wiki-cat-bar-wrapper">
+        <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
+          <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
+          <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+          <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
+          <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">ゲームモード</button>
+        </div>
+        <div class="wiki-acc-panels">
+          <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+            <div class="wiki-acc-grid">
+              <a href="../chars/index.html"><span>キャラ図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+              <a href="index.html"><span>ロム図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>スキン図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+            </div>
+          </div>
+          <div id="panel-tools" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+            <div class="wiki-acc-grid">
+              <a href="#" aria-disabled="true" onclick="return false"><span>ダメージ計算ツール</span><span class="wiki-acc-badge">予定</span></a>
+              <a href="../index.html#today"><span>誕生日カレンダー</span><span class="wiki-acc-badge">予定</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
+            </div>
+          </div>
+          <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+            <div class="wiki-acc-grid">
+              <a href="#" aria-disabled="true" onclick="return false"><span>ビルドガイド</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>ロム活用法</span><span class="wiki-acc-badge">準備中</span></a>
+            </div>
+          </div>
+          <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+            <div class="wiki-acc-grid">
+              <a href="#" aria-disabled="true" onclick="return false"><span>イベント一覧</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>PvP/高難度</span><span class="wiki-acc-badge">準備中</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roms-gallery">
+      <h2>ロム図鑑</h2>
+      <div class="grid-roms" id="romsGrid"></div>
+    </section>
+
+    <section class="section" id="roms-sets">
+      <h2>セット効果</h2>
+      <div class="card">
+  <div class="small" style="margin-bottom:.5rem">ヘッダーのボタンをタップすると「昇順 → 降順 → デフォルト」で切り替わります。</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名前 <button class="sort-toggle" data-key="名前" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>2セット効果 <button class="sort-toggle" data-key="2セット効果" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>4セット効果 <button class="sort-toggle" data-key="4セット効果" data-order="default" aria-label="並び替え">⇅</button></th>
+              </tr>
+            </thead>
+            <tbody id="romsSetsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roms-stats">
+      <h2>ロムステータス（最大値）</h2>
+      <div class="card">
+  <div class="small" style="margin-bottom:.5rem">ヘッダーのボタンをタップすると「昇順 → 降順 → デフォルト」で切り替わります。</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>名前 <button class="sort-toggle" data-key="名前" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>攻撃 <button class="sort-toggle" data-key="攻撃" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>HP <button class="sort-toggle" data-key="HP" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>物理防御1 <button class="sort-toggle" data-key="物理防御1" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>物理防御2 <button class="sort-toggle" data-key="物理防御2" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>特殊防御1 <button class="sort-toggle" data-key="特殊防御1" data-order="default" aria-label="並び替え">⇅</button></th>
+                <th>特殊防御2 <button class="sort-toggle" data-key="特殊防御2" data-order="default" aria-label="並び替え">⇅</button></th>
+              </tr>
+            </thead>
+            <tbody id="romsStatsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
+    <nav class="mb-3">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+  <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
+    <div id="build-meta" class="text-xs">Build: {{ビルド日時}}</div>
+    <div class="mt-2">&copy; 2025 negi-lab.com</div>
+  </footer>
+
+  <script>
+    // 埋め込みデータ
+    window.__ROMS_GRID__ = JSON.parse('{{ロム一覧JSON}}');
+    window.__ROMS_SETS__ = JSON.parse('{{ロムセット効果JSON}}');
+    window.__ROMS_STATS__ = JSON.parse('{{ロムステータスJSON}}');
+
+    // 検索遷移
+    window.__wikiSearchSubmit = function(ev){
+      ev.preventDefault();
+      var q = document.getElementById('wikiSearchInput').value.trim();
+      if(!q) return false;
+      location.href = '../search.html?q=' + encodeURIComponent(q);
+      return false;
+    };
+
+    // モバイルナビ
+    (function(){
+      var header=document.querySelector('.wiki-header');
+      var btn=document.getElementById('menuToggle');
+      var nav=document.getElementById('mainNav');
+      if(!btn||!nav) return;
+      btn.addEventListener('click',function(){
+        var open=header.classList.toggle('open');
+        btn.setAttribute('aria-expanded',open?'true':'false');
+        if(open){ nav.classList.remove('hidden'); } else if(window.innerWidth < 640){ nav.classList.add('hidden'); }
+      });
+      window.addEventListener('resize',function(){
+        if(window.innerWidth >= 640){ nav.classList.remove('hidden'); header.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+        else if(!header.classList.contains('open')){ nav.classList.add('hidden'); }
+      });
+    })();
+
+    // アコーディオン（デフォルト閉）
+    (function(){
+      var buttons=[].slice.call(document.querySelectorAll('.wiki-cat-btn'));
+      var panels={};
+      buttons.forEach(function(b){ var id=b.getAttribute('data-panel'); if(id){ panels[id]=document.getElementById(id); }});
+      function toggle(btn){
+        var id=btn.getAttribute('data-panel'); var panel=panels[id]; if(!panel) return;
+        var open = btn.getAttribute('aria-expanded')==='true';
+        buttons.forEach(function(x){x.setAttribute('aria-expanded','false')});
+        Object.values(panels).forEach(function(p){p.classList.remove('open');p.setAttribute('aria-hidden','true');});
+        if(!open){ btn.setAttribute('aria-expanded','true'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+      }
+      buttons.forEach(function(btn){ btn.addEventListener('click',function(){ toggle(btn); }); });
+    })();
+
+    // レンダリング
+    (function(){
+      // 図鑑: ID降順
+      var list = (window.__ROMS_GRID__||[]).slice().sort(function(a,b){ return b.ID_num - a.ID_num; });
+      var grid = document.getElementById('romsGrid');
+      list.forEach(function(it){
+        var card=document.createElement('div'); card.className='rom-card';
+        var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.png';
+        var name=document.createElement('div'); name.className='name'; name.textContent = it.ID + ' ' + it.名前;
+        card.appendChild(img); card.appendChild(name); grid.appendChild(card);
+      });
+
+      // テーブル描画共通
+      function renderTbody(tbody, rows, cols){
+        tbody.innerHTML='';
+        rows.forEach(function(r){
+          var tr=document.createElement('tr');
+          cols.forEach(function(k){
+            var td=document.createElement('td'); td.textContent = (r[k] != null ? r[k] : ''); tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      // セット効果: 既定はID昇順
+      var setsDefault = (window.__ROMS_SETS__||[]).slice().sort(function(a,b){ return a.ID_num - b.ID_num; });
+      var setsWork = setsDefault.slice();
+      var setsBody = document.getElementById('romsSetsBody');
+      var setsCols = ['名前','2セット効果','4セット効果'];
+      renderTbody(setsBody, setsWork, setsCols);
+      document.querySelectorAll('#roms-sets .sort-toggle').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-key');
+          var order = btn.getAttribute('data-order') || 'default';
+          // 次の順序: default -> asc -> desc -> default
+          var next = (order==='default') ? 'asc' : (order==='asc' ? 'desc' : 'default');
+          btn.setAttribute('data-order', next);
+          setsWork = setsDefault.slice();
+          if(next==='asc') setsWork.sort(function(a,b){ return String(a[key]).localeCompare(String(b[key]), 'ja'); });
+          else if(next==='desc') setsWork.sort(function(a,b){ return String(b[key]).localeCompare(String(a[key]), 'ja'); });
+          // default は setsDefault のまま
+          renderTbody(setsBody, setsWork, setsCols);
+        });
+      });
+
+      // ステータス: 既定はID昇順
+      var statsDefault = (window.__ROMS_STATS__||[]).slice().sort(function(a,b){ return a.ID_num - b.ID_num; });
+      var statsWork = statsDefault.slice();
+      var statsBody = document.getElementById('romsStatsBody');
+      var statsCols = ['名前','攻撃','HP','物理防御1','物理防御2','特殊防御1','特殊防御2'];
+      renderTbody(statsBody, statsWork, statsCols);
+      document.querySelectorAll('#roms-stats .sort-toggle').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-key');
+          var order = btn.getAttribute('data-order') || 'default';
+          var next = (order==='default') ? 'asc' : (order==='asc' ? 'desc' : 'default');
+          btn.setAttribute('data-order', next);
+          statsWork = statsDefault.slice();
+          if(next==='asc') statsWork.sort(function(a,b){ return (Number(a[key])||0) - (Number(b[key])||0); });
+          else if(next==='desc') statsWork.sort(function(a,b){ return (Number(b[key])||0) - (Number(a[key])||0); });
+          renderTbody(statsBody, statsWork, statsCols);
+        });
+      });
+    })();
+  </script>
+  <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+</body>
+</html>
