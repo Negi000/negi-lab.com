@@ -94,7 +94,11 @@ img.skill-icon[src=""]{display:none}
 /* Ad blocks (dark theme) */
 .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
 .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa; margin:0 0 .35rem}
-.ad-block ins.adsbygoogle{display:block;min-height:250px;width:100%}
+.ad-block ins.adsbygoogle{display:block;min-height:0;height:auto;width:100%}
+.ad-block[data-ad-empty="true"]{padding:.2rem .4rem;margin:.5rem 0;border-style:dashed;opacity:.75}
+.ad-block[data-ad-empty="true"] .ad-label{display:none}
+.ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
+.section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
 </style>
 </head>
 <body>
@@ -131,10 +135,10 @@ img.skill-icon[src=""]{display:none}
     </div>
     <div class="wiki-cat-bar-wrapper">
       <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
-        <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
-        <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
-        <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
-        <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">ゲームモード</button>
+  <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
+  <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+  <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">戦略行動</button>
+  <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
       </div>
       <div class="wiki-acc-panels">
         <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
@@ -151,16 +155,17 @@ img.skill-icon[src=""]{display:none}
             <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
           </div>
         </div>
-        <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
-          <div class="wiki-acc-grid">
-            <a href="#" aria-disabled="true" onclick="return false"><span>ビルドガイド</span><span class="wiki-acc-badge">準備中</span></a>
-            <a href="#" aria-disabled="true" onclick="return false"><span>ロム活用法</span><span class="wiki-acc-badge">準備中</span></a>
-          </div>
-        </div>
         <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
           <div class="wiki-acc-grid">
-            <a href="#" aria-disabled="true" onclick="return false"><span>イベント一覧</span><span class="wiki-acc-badge">準備中</span></a>
-            <a href="#" aria-disabled="true" onclick="return false"><span>PvP/高難度</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>ブルーホーム</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>険境復元</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>特派探索</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>世紀拘束塔</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>初心者ガイド</span><span class="wiki-acc-badge">準備中</span></a>
           </div>
         </div>
       </div>
@@ -544,6 +549,26 @@ img.skill-icon[src=""]{display:none}
   </div>
 </body>
 <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+<script>
+// 広告未表示時のスポンサー枠縮小
+(function(){
+  function watchAdBlock(block){
+    if(!block) return;
+    block.setAttribute('data-ad-empty','true');
+    var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
+    var ins = block.querySelector('ins.adsbygoogle');
+    if(!ins) return;
+    var filled = false;
+    var obs = new MutationObserver(function(){
+      if(filled) return;
+      if(ins.querySelector('iframe')){ filled=true; block.setAttribute('data-ad-empty','false'); if(section){ section.setAttribute('data-ad-empty','false'); } obs.disconnect(); }
+    });
+    obs.observe(ins,{childList:true,subtree:true});
+  // 遅延表示に対応: filled になるまで観測を継続
+  }
+  document.querySelectorAll('.ad-block').forEach(watchAdBlock);
+})();
+</script>
 <script>
 // 画像タブ切替
 document.querySelectorAll('[data-tabs]').forEach(block=>{

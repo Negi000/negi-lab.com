@@ -17,6 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net">
+  <link rel="preconnect" href="https://www.googletagservices.com">
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
     :root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
@@ -43,7 +46,11 @@
     .wiki-acc-panel.open{display:block}
     @keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
     .wiki-acc-grid{display:grid;gap:.65rem;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
-    .wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+  .wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+  .wiki-acc-grid a:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(99,183,255,.12),transparent 55%);opacity:0;transition:.35s}
+  .wiki-acc-grid a:hover{background:#1d2d37;border-color:#335063}
+  .wiki-acc-grid a:hover:before{opacity:1}
+  .wiki-acc-badge{display:inline-block;background:#254052;color:#9ed8ff;font-size:.55rem;padding:2px 6px;border-radius:8px;margin-left:auto;font-weight:600}
     .section{margin:0 0 1.9rem}
     .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
     .card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;padding:.85rem .85rem;position:relative}
@@ -67,6 +74,19 @@
       table{table-layout:fixed}
       thead th, tbody td{padding:.4rem;font-size:.66rem}
     }
+  @media(min-width:760px){.wiki-acc-grid a{font-size:.62rem}}
+
+  /* Ad blocks (dark theme, shared styleに準拠) */
+  .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
+  .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa;margin:0 0 .35rem}
+  /* 初期高さを極小化（広告未表示時に目立たないように） */
+  .ad-block ins.adsbygoogle{display:block;min-height:0;height:auto;width:100%}
+  /* 広告未表示判定時（JSでdata-ad-empty付与）: さらに圧縮 */
+  .ad-block[data-ad-empty="true"]{padding:.2rem .4rem;margin:.5rem 0;border-style:dashed;opacity:.75}
+  .ad-block[data-ad-empty="true"] .ad-label{display:none}
+  .ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
+  /* セクションの縦スペースも圧縮 */
+  .section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
   </style>
 </head>
 <body>
@@ -104,8 +124,8 @@
         <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
           <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
           <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+          <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">戦略行動</button>
           <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
-          <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">ゲームモード</button>
         </div>
         <div class="wiki-acc-panels">
           <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
@@ -122,20 +142,29 @@
               <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
             </div>
           </div>
-          <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
-            <div class="wiki-acc-grid">
-              <a href="#" aria-disabled="true" onclick="return false"><span>ビルドガイド</span><span class="wiki-acc-badge">準備中</span></a>
-              <a href="#" aria-disabled="true" onclick="return false"><span>ロム活用法</span><span class="wiki-acc-badge">準備中</span></a>
-            </div>
-          </div>
           <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
             <div class="wiki-acc-grid">
-              <a href="#" aria-disabled="true" onclick="return false"><span>イベント一覧</span><span class="wiki-acc-badge">準備中</span></a>
-              <a href="#" aria-disabled="true" onclick="return false"><span>PvP/高難度</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>ブルーホーム</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>険境復元</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>特派探索</span><span class="wiki-acc-badge">準備中</span></a>
+              <a href="#" aria-disabled="true" onclick="return false"><span>世紀拘束塔</span><span class="wiki-acc-badge">準備中</span></a>
+            </div>
+          </div>
+          <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+            <div class="wiki-acc-grid">
+              <a href="#" aria-disabled="true" onclick="return false"><span>初心者ガイド</span><span class="wiki-acc-badge">準備中</span></a>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ミドル広告: ヒーロー直下に配置（タイトルやアコーディオンと重ならないよう独立セクション） -->
+    <section class="section" id="ads-middle">
+      <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
+        <div class="ad-label">スポンサーリンク</div>
+  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+      </aside>
     </section>
 
     <section class="section" id="roms-gallery">
@@ -185,6 +214,14 @@
       </div>
     </section>
 
+    <!-- ボトム広告: フッター直前に配置 -->
+    <section class="section" id="ads-bottom">
+      <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
+        <div class="ad-label">スポンサーリンク</div>
+  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+      </aside>
+    </section>
+
   </main>
 
   <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
@@ -232,7 +269,7 @@
       });
     })();
 
-    // アコーディオン（デフォルト閉）
+    // アコーディオン（他ページと同様: デフォルト全閉・キーボード操作・ハッシュ同期）
     (function(){
       var buttons=[].slice.call(document.querySelectorAll('.wiki-cat-btn'));
       var panels={};
@@ -240,11 +277,53 @@
       function toggle(btn){
         var id=btn.getAttribute('data-panel'); var panel=panels[id]; if(!panel) return;
         var open = btn.getAttribute('aria-expanded')==='true';
+        // 全て閉じる
         buttons.forEach(function(x){x.setAttribute('aria-expanded','false')});
         Object.values(panels).forEach(function(p){p.classList.remove('open');p.setAttribute('aria-hidden','true');});
-        if(!open){ btn.setAttribute('aria-expanded','true'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+        // 開く
+        if(!open){
+          btn.setAttribute('aria-expanded','true');
+          panel.classList.add('open');
+          panel.setAttribute('aria-hidden','false');
+        }
       }
-      buttons.forEach(function(btn){ btn.addEventListener('click',function(){ toggle(btn); }); });
+      // クリックでトグル + ハッシュ更新/削除
+      buttons.forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var willOpen = btn.getAttribute('aria-expanded') !== 'true';
+          toggle(btn);
+          if(willOpen){
+            try{ history.replaceState(null,'','#'+btn.getAttribute('data-panel')); }catch(_){}
+          }else{
+            if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){} }
+          }
+        });
+      });
+      // キーボード操作（左右/Home/End）
+      document.addEventListener('keydown',function(e){
+        if(['ArrowLeft','ArrowRight','Home','End'].indexOf(e.key)===-1) return;
+        var idx = buttons.indexOf(document.activeElement);
+        if(idx < 0) return; e.preventDefault();
+        var ni = idx;
+        if(e.key==='ArrowRight') ni=(idx+1)%buttons.length;
+        else if(e.key==='ArrowLeft') ni=(idx-1+buttons.length)%buttons.length;
+        else if(e.key==='Home') ni=0; else if(e.key==='End') ni=buttons.length-1;
+        buttons[ni].focus();
+      });
+      // ハッシュによる初期オープンと変更監視
+      function openFromHash(){
+        var h=(location.hash||'').replace('#','');
+        if(h && /^panel-/.test(h)){
+          var target=document.querySelector('.wiki-cat-btn[data-panel="'+h+'"]');
+          if(target) toggle(target);
+          return true;
+        }
+        return false;
+      }
+      if(!openFromHash()){
+        // デフォルトは全閉（何もしない）
+      }
+      window.addEventListener('hashchange',openFromHash);
     })();
 
     // レンダリング
@@ -313,5 +392,30 @@
     })();
   </script>
   <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+  <script>
+    // 広告未表示時のスポンサー枠縮小: ins.adsbygoogle 内の iframe 出現を監視
+    (function(){
+      function watchAdBlock(block){
+        if(!block) return;
+        block.setAttribute('data-ad-empty','true');
+        var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
+        var ins = block.querySelector('ins.adsbygoogle');
+        if(!ins) return;
+        var filled = false;
+        var obs = new MutationObserver(function(){
+          if(filled) return;
+          if(ins.querySelector('iframe')){
+            filled = true;
+            block.setAttribute('data-ad-empty','false');
+            if(section){ section.setAttribute('data-ad-empty','false'); }
+            obs.disconnect();
+          }
+        });
+        obs.observe(ins, {childList:true, subtree:true});
+  // 遅延表示（ビューポート進入後ロード等）にも対応するため、filled になるまで監視を継続
+      }
+      document.querySelectorAll('.ad-block').forEach(watchAdBlock);
+    })();
+  </script>
 </body>
 </html>
