@@ -55,7 +55,7 @@
     .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
     .card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;padding:.85rem .85rem;position:relative}
     .grid-roms{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    .rom-card{background:#141c24;border:1px solid #23313c;border-radius:12px;padding:.6rem;text-align:center}
+  .rom-card{display:block;background:#141c24;border:1px solid #23313c;border-radius:12px;padding:.6rem;text-align:center;color:inherit;text-decoration:none}
     .rom-card img{width:100%;height:auto;border-radius:8px;background:#0c1217;border:1px solid #1c2a34}
     .rom-card .name{font-size:.8rem;margin-top:.45rem}
     table{width:100%;border-collapse:collapse;background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;overflow:hidden}
@@ -383,7 +383,7 @@
       var list = (window.__ROMS_GRID__||[]).slice().sort(function(a,b){ return b.ID_num - a.ID_num; });
       var grid = document.getElementById('romsGrid');
       list.forEach(function(it){
-        var card=document.createElement('div'); card.className='rom-card';
+        var card=document.createElement('a'); card.className='rom-card'; card.href = './' + it.ID + '.html'; card.setAttribute('aria-label', it.ID + ' ' + it.名前 + ' の詳細へ');
         var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.png';
         var name=document.createElement('div'); name.className='name'; name.textContent = it.ID + ' ' + it.名前;
         card.appendChild(img); card.appendChild(name); grid.appendChild(card);

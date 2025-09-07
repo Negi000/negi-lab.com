@@ -3,6 +3,7 @@ from html import escape
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
 CHAR_JSON = BASE / 'character.json'
+ROM_JSON = BASE / 'rom.json'
 SITE_DIR = BASE / 'site'
 TPL_HOME = BASE / 'generator' / 'home_template.html'
 SRC_WALL_DIR = BASE / '素材' / '壁紙'
@@ -22,6 +23,14 @@ def expand(template: str, data: dict):
 def read_characters():
     with CHAR_JSON.open(encoding='utf-8') as f:
         return json.load(f)
+
+def read_roms():
+    try:
+        with ROM_JSON.open(encoding='utf-8') as f:
+            raw = json.load(f)
+            return raw.get('roms', [])
+    except FileNotFoundError:
+        return []
 
 
 def collect_birthdays(raw_chars):
@@ -64,6 +73,7 @@ def stats_from_chars(raw_chars):
 def build_home():
     SITE_DIR.mkdir(parents=True, exist_ok=True)
     raw_chars = read_characters()
+    raw_roms = read_roms()
     tpl = TPL_HOME.read_text(encoding='utf-8')
 
     birthdays = collect_birthdays(raw_chars)
@@ -105,7 +115,7 @@ def build_home():
     print('Home generated.')
     # ===== 検索インデックス生成 =====
     try:
-        build_search_index(raw_chars, html)
+        build_search_index(raw_chars, raw_roms, html)
     except Exception as e:
         print('Search index build failed:', e)
 
@@ -138,7 +148,7 @@ def flatten_character_payload(payload: dict) -> str:
     rec(payload)
     return '\n'.join(parts)
 
-def build_search_index(raw_chars: dict, home_html: str):
+def build_search_index(raw_chars: dict, raw_roms: list, home_html: str):
     docs = []
     # トップページ
     docs.append({
@@ -161,6 +171,26 @@ def build_search_index(raw_chars: dict, home_html: str):
             'title': name + (f' / {eng}' if eng else ''),
             'url': f'chars/{cid}.html',
             'tags': [t for t in [attr, typ, 'character'] if t],
+            'body': body
+        })
+    # ロム
+    for rom in (raw_roms or []):
+        rid = str(rom.get('ID') or '').strip()
+        if not rid:
+            continue
+        name = str(rom.get('名前') or rid)
+        # タグ: rom + 部位名称（簡易）
+        part_names = []
+        for p in (rom.get('部位') or [])[:4]:
+            pn = str((p or {}).get('名称') or '').strip()
+            if pn:
+                part_names.append(pn)
+        body = flatten_character_payload(rom)[:6000]
+        docs.append({
+            'id': f'rom-{rid}',
+            'title': f'{rid} {name}',
+            'url': f'roms/{rid}.html',
+            'tags': [t for t in (['rom'] + part_names) if t],
             'body': body
         })
     out = {
