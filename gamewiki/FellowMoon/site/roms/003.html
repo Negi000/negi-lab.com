@@ -17,6 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net">
+  <link rel="preconnect" href="https://www.googletagservices.com">
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
     :root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
@@ -131,6 +134,15 @@
   .traits-heading{display:flex;align-items:center;gap:.5rem;margin:.1rem 0 .4rem}
   .traits-heading .line{flex:0 0 24px;height:2px;background:linear-gradient(90deg,#63b7ff,#ff7f1c);opacity:.9;border-radius:2px}
   .traits-title{margin:0;font-size:.95rem;font-weight:800;color:#eaf2ff;letter-spacing:.4px;padding:.24rem .7rem;border-radius:999px;background:linear-gradient(180deg,#0f171d,#0a1218 60%,#081017);border:1px solid #334753;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 1px 0 #000}
+
+  /* Ad blocks (dark theme) */
+  .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
+  .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa;margin:0 0 .35rem}
+  .ad-block ins.adsbygoogle{display:block;min-height:0;height:auto;width:100%}
+  .ad-block[data-ad-empty="true"]{padding:.2rem .4rem;margin:.5rem 0;border-style:dashed;opacity:.75}
+  .ad-block[data-ad-empty="true"] .ad-label{margin:0}
+  .ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
+  .section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
   </style>
 </head>
 <body>
@@ -202,6 +214,14 @@
         </div>
       </div>
     </section>
+
+      <!-- ミドル広告: ヒーロー直下に配置 -->
+      <section class="section" id="ads-middle">
+        <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
+          <div class="ad-label">スポンサーリンク</div>
+          <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+        </aside>
+      </section>
 
     <section class="section" id="rom-info">
       <h2 style="font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1">003 リングR</h2>
@@ -319,6 +339,14 @@
       </div>
     </section>
 
+      <!-- ボトム広告: フッター直前に配置 -->
+      <section class="section" id="ads-bottom">
+        <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
+          <div class="ad-label">スポンサーリンク</div>
+          <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+        </aside>
+      </section>
+
   </main>
 
   <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
@@ -330,7 +358,7 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
     <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-07T17:25:05</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-07T17:47:13</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 
@@ -451,6 +479,31 @@
       }
       applyMobileHeaderBreaks();
       var to; window.addEventListener('resize',function(){ clearTimeout(to); to=setTimeout(applyMobileHeaderBreaks,150); });
+    })();
+  </script>
+  <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+  <script>
+    // 広告未表示時のスポンサー枠縮小: ins.adsbygoogle 内の iframe 出現を監視
+    (function(){
+      function watchAdBlock(block){
+        if(!block) return;
+        block.setAttribute('data-ad-empty','true');
+        var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
+        var ins = block.querySelector('ins.adsbygoogle');
+        if(!ins) return;
+        var filled = false;
+        var obs = new MutationObserver(function(){
+          if(filled) return;
+          if(ins.querySelector('iframe')){
+            filled = true;
+            block.setAttribute('data-ad-empty','false');
+            if(section){ section.setAttribute('data-ad-empty','false'); }
+            obs.disconnect();
+          }
+        });
+        obs.observe(ins, {childList:true, subtree:true});
+      }
+      document.querySelectorAll('.ad-block').forEach(watchAdBlock);
     })();
   </script>
 </body>
