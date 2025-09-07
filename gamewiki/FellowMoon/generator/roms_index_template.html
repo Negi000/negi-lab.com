@@ -87,6 +87,37 @@
   .ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
   /* セクションの縦スペースも圧縮 */
   .section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
+  
+  /* 特性能力値セクション */
+  #roms-traits{position:relative;border:1px solid #23313c;border-radius:14px;overflow:hidden;background:#0f161c}
+  #roms-traits .bg{position:absolute;inset:0;background:url('../assets/roms/rom_bg3.png') center/cover no-repeat;opacity:.28;filter:grayscale(20%)}
+  #roms-traits .inner{position:relative;padding:1rem;background:linear-gradient(180deg,rgba(12,18,24,.65),rgba(12,18,24,.45));border-radius:12px}
+  /* セグメントトグル（ロム01/02・03/04） */
+  .traits-toggle{position:relative;display:grid;grid-template-columns:1fr 1fr;width:max(220px,36%);max-width:420px;background:#111922;border:1px solid #2a3b48;border-radius:999px;padding:4px;margin:.2rem 0 .9rem}
+  .traits-toggle .pair-btn{appearance:none;background:transparent;border:0;color:#cfe2ff;border-radius:999px;padding:.5rem 1.1rem;font-size:.9rem;font-weight:800;cursor:pointer;position:relative;z-index:1}
+  .traits-toggle .pair-btn[aria-pressed="false"]{color:#a9bfd4}
+  .traits-toggle .pair-btn[aria-pressed="true"]{color:#111}
+  .traits-toggle .seg-indicator{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#ff7f1c;transition:transform .2s ease}
+  /* スロットバー */
+  .slot-bar{display:flex;flex-wrap:wrap;gap:5px;margin:.3rem 0 1rem}
+  .slot-btn{border:1px solid #2a3b48;border-radius:8px;background:#16222b;padding:.16rem;cursor:pointer;box-shadow:0 4px 16px -10px #000}
+  .slot-btn img{display:block;height:28px;width:auto;filter:drop-shadow(0 1px 0 #000)}
+  .slot-btn[aria-pressed="true"]{background:#203544;border-color:#4a6a7f;box-shadow:0 0 0 3px rgba(99,183,255,.25), 0 8px 24px -12px #000}
+  /* グリッド行コンテナ */
+  .traits-grid{display:flex;flex-direction:column;gap:.8rem}
+  .traits-row{display:grid;gap:.55rem;background:rgba(22,34,43,.35);border:1px solid #273846;border-radius:12px;padding:.6rem}
+  .traits-row.top,.traits-row.bottom{grid-template-columns:repeat(4, minmax(44px, 1fr))}
+  .traits-row.mid{grid-template-columns:repeat(4, minmax(44px, 1fr))}
+  .traits-row.mid .traits-tile:nth-child(2){grid-column:span 2}
+  .traits-tile{background:transparent;border:0;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0;min-height:auto}
+  .traits-tile img{max-width:100%;max-height:64px;object-fit:contain;filter:drop-shadow(0 0 4px #0008)}
+  @media(min-width:760px){
+  .slot-btn img{height:34px}
+  .traits-row.top,.traits-row.bottom{grid-template-columns:repeat(4, 100px)}
+  .traits-row.mid{grid-template-columns:repeat(4, 100px)}
+  .traits-row.mid .traits-tile:nth-child(2){grid-column:span 2}
+    .traits-tile img{max-height:72px}
+  }
   </style>
 </head>
 <body>
@@ -211,6 +242,26 @@
             <tbody id="romsStatsBody"></tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <!-- 特性能力値 -->
+    <section class="section" id="roms-traits">
+      <div class="bg" aria-hidden="true"></div>
+      <div class="inner">
+        <h2>特性能力値</h2>
+        <div class="traits-toggle" role="tablist" aria-label="ロム切替">
+          <button type="button" class="pair-btn" data-pair="pair12" aria-pressed="true" role="tab">ロム01/02</button>
+          <button type="button" class="pair-btn" data-pair="pair34" aria-pressed="false" role="tab">ロム03/04</button>
+        </div>
+        <div class="slot-bar" role="tablist" aria-label="スロット選択">
+          <button type="button" class="slot-btn" data-slot="1" aria-pressed="true"><img alt="Slot 1" src="../assets/roms/rom_slot1.png"></button>
+          <button type="button" class="slot-btn" data-slot="2" aria-pressed="false"><img alt="Slot 2" src="../assets/roms/rom_slot2.png"></button>
+          <button type="button" class="slot-btn" data-slot="3" aria-pressed="false"><img alt="Slot 3" src="../assets/roms/rom_slot3.png"></button>
+          <button type="button" class="slot-btn" data-slot="4" aria-pressed="false"><img alt="Slot 4" src="../assets/roms/rom_slot4.png"></button>
+          <button type="button" class="slot-btn" data-slot="5" aria-pressed="false"><img alt="Slot 5" src="../assets/roms/rom_slot5.png"></button>
+        </div>
+        <div class="traits-grid" id="traitsGrid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -392,6 +443,113 @@
     })();
   </script>
   <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+  <script>
+    // 特性能力値: データと描画
+    (function(){
+      function asset(name){ return '../assets/roms/' + encodeURIComponent(name); }
+      var CENTER = 'rom_disply2.png';
+      var NAN = 'rom_nan.png';
+      var DATA = {
+        pair12: {
+          1: {
+            top:   [NAN,'HP.png','攻撃.png',NAN],
+            mid:   [NAN,CENTER,NAN],
+            bot:   [NAN,'攻撃%.png','HP%.png',NAN]
+          },
+          2: {
+            top:   [NAN,'HP%.png','物理防御.png',NAN],
+            mid:   ['行動速度.png',CENTER,'特殊防御.png'],
+            bot:   [NAN,'回復率.png','効果抵抗.png',NAN]
+          },
+          3: {
+            top:   [NAN,'攻撃%.png','会心率.png',NAN],
+            mid:   ['初期TPLv.png',CENTER,'会心ダメ.png'],
+            bot:   [NAN,'治療率.png','効果命中.png',NAN]
+          },
+          4: {
+            top:   ['HP%.png','会心率.png','会心ダメ.png',NAN],
+            mid:   ['行動速度.png',CENTER,'効果命中.png'],
+            bot:   [NAN,'回復率.png','治療率.png','効果抵抗.png']
+          },
+          5: {
+            top:   ['物理防御.png','特殊防御.png','会心率.png','効果命中.png'],
+            mid:   ['固有特性1.png',CENTER,'効果抵抗.png'],
+            bot:   ['固有特性2.png','初期TPLv.png','回復率.png','治療率.png']
+          }
+        },
+        pair34: {
+          1: {
+            top:   [NAN,'HP.png','攻撃.png',NAN],
+            mid:   [NAN,CENTER,NAN],
+            bot:   [NAN,'攻撃%.png','HP%.png',NAN]
+          },
+          2: {
+            top:   [NAN,'攻撃%.png','会心率.png',NAN],
+            mid:   ['初期TPLv.png',CENTER,'会心ダメ.png'],
+            bot:   [NAN,'治療率.png','効果命中.png',NAN]
+          },
+          3: {
+            top:   [NAN,'HP%.png','物理防御.png',NAN],
+            mid:   ['行動速度.png',CENTER,'特殊防御.png'],
+            bot:   [NAN,'回復率.png','効果抵抗.png',NAN]
+          },
+          4: {
+            top:   ['HP%.png','会心率.png','会心ダメ.png',NAN],
+            mid:   ['行動速度.png',CENTER,'効果命中.png'],
+            bot:   [NAN,'回復率.png','治療率.png','効果抵抗.png']
+          },
+          5: {
+            top:   ['物理防御.png','特殊防御.png','会心率.png','効果命中.png'],
+            mid:   ['固有特性1.png',CENTER,'効果抵抗.png'],
+            bot:   ['固有特性2.png','初期TPLv.png','回復率.png','治療率.png']
+          }
+        }
+      };
+
+      var state = { pair: 'pair12', slot: 1 };
+      var grid = document.getElementById('traitsGrid');
+      function tile(src){
+        var d=document.createElement('div'); d.className='traits-tile';
+        var img=document.createElement('img'); img.alt=src.replace('.png',''); img.src=asset(src);
+        d.appendChild(img);
+        return d;
+      }
+      function render(){
+        grid.innerHTML='';
+        var slotData = (DATA[state.pair]||{})[state.slot];
+        if(!slotData) return;
+        var top=document.createElement('div'); top.className='traits-row top';
+        slotData.top.forEach(function(name){ top.appendChild(tile(name)); });
+  var mid=document.createElement('div'); mid.className='traits-row mid';
+  slotData.mid.forEach(function(name){ mid.appendChild(tile(name)); });
+        var bot=document.createElement('div'); bot.className='traits-row bottom';
+        slotData.bot.forEach(function(name){ bot.appendChild(tile(name)); });
+        grid.appendChild(top); grid.appendChild(mid); grid.appendChild(bot);
+      }
+      function setPair(pair){
+        state.pair = pair; document.querySelectorAll('.pair-btn').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-pair')===pair?'true':'false'); });
+        // セグメントインジケータ移動
+        var seg = document.querySelector('.traits-toggle .seg-indicator');
+        if(seg){ seg.style.transform = (pair==='pair12') ? 'translateX(0)' : 'translateX(100%)'; }
+        render();
+      }
+      function setSlot(slot){
+        state.slot = slot; document.querySelectorAll('.slot-btn').forEach(function(b){ var on = (Number(b.getAttribute('data-slot'))===slot); b.setAttribute('aria-pressed', on?'true':'false'); var n=b.getAttribute('data-slot'); var img=b.querySelector('img'); img.src = on? ('../assets/roms/rom_slot_hover'+n+'.png') : ('../assets/roms/rom_slot'+n+'.png'); });
+        render();
+      }
+      document.querySelectorAll('.pair-btn').forEach(function(btn){ btn.addEventListener('click', function(){ setPair(btn.getAttribute('data-pair')); }); });
+      document.querySelectorAll('.slot-btn').forEach(function(btn){ btn.addEventListener('click', function(){ setSlot(Number(btn.getAttribute('data-slot'))); }); });
+      // 初期化: セグメント要素のインジケータ生成
+      (function(){
+        var wrap=document.querySelector('.traits-toggle');
+        if(wrap && !wrap.querySelector('.seg-indicator')){
+          var seg=document.createElement('div'); seg.className='seg-indicator'; wrap.appendChild(seg);
+        }
+      })();
+      // 既定: ロム01/02 + スロット1
+      setPair('pair12'); setSlot(1);
+    })();
+  </script>
   <script>
     // 広告未表示時のスポンサー枠縮小: ins.adsbygoogle 内の iframe 出現を監視
     (function(){
