@@ -61,16 +61,56 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .filter-bar{margin:.9rem 0 1.2rem}
 .filter-bar input{width:100%;padding:.7rem .9rem;font-size:.9rem;background:#0f161c;border:1px solid #26313c;border-radius:10px;color:#d9edff;transition:.25s}
 .filter-bar input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
-.char-grid{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-.char-card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:14px;padding:.85rem .9rem .95rem;position:relative;transition:.25s;min-height:140px}
+.char-grid{display:grid;gap:.6rem .10rem;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));justify-items:start;justify-content:start;align-items:start}
+.char-card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:14px;--pad-l:.6rem;--pad-r:.4rem;padding:.72rem var(--pad-r) .76rem var(--pad-l);position:relative;transition:.25s;min-height:220px;--char-icon:120px;--char-content:clamp(160px, calc(var(--char-icon) + 6px), 200px);width:100%;max-width:calc(var(--char-content) + var(--pad-l) + var(--pad-r));justify-self:start;margin-inline:0}
+/* スマホ時は3列化に合わせてカード幅を小さく */
+@media (max-width:420px){.char-card{--char-icon:96px;--char-content:120px;--pad-l:.5rem;--pad-r:.35rem}}
+@media (min-width:640px){.char-card{--char-icon:140px;--char-content:clamp(150px, calc(var(--char-icon) + 6px), 190px)}}
+@media (min-width:1024px){.char-card{--char-icon:160px;--char-content:clamp(160px, calc(var(--char-icon) + 6px), 200px)}}
+.char-content{max-width:var(--char-content);width:var(--char-content);margin:0}
 .char-card:hover{background:#1c2831;border-color:#3a8bff;transform:translateY(-2px);box-shadow:0 8px 24px -6px rgba(58,139,255,.25)}
 .char-card a{text-decoration:none;color:inherit;display:block}
 .char-card h3{margin:0 0 .3rem;font-size:.85rem;font-weight:700;color:#d5e7ff;line-height:1.25}
 .char-card .name-sub{font-size:.6rem;color:#9ab;margin-bottom:.5rem;letter-spacing:.5px}
-.char-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin:.4rem 0}
+.char-head{display:flex;align-items:center;gap:1rem;margin-bottom:.6rem}
+.char-icon-wrap{position:relative;width:72px;height:72px;flex:0 0 72px}
+.char-icon{width:100%;height:100%;border-radius:14px;background:#0f161c;border:1px solid #24303b;object-fit:cover;display:block}
+.char-id-badge{position:absolute;top:-8px;right:-8px;font-size:.62rem;background:#0f1a22;border:1px solid #33495a;color:#d7ebff;font-weight:700;padding:3px 8px;border-radius:9999px;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+@media (min-width:640px){
+  .char-icon-wrap{width:84px;height:84px;flex-basis:84px}
+}
+.char-tags{display:flex;flex-wrap:wrap;gap:.2rem;margin:.16rem 0}
 .char-tag{background:#2b3947;color:#9ec5ff;font-size:.55rem;padding:2px 6px;border-radius:6px;letter-spacing:.5px;font-weight:600}
-.char-stats{font-size:.55rem;color:#8aa0b1;margin-top:.5rem;display:flex;flex-wrap:wrap;gap:4px}
-.char-stats span{background:#182229;padding:2px 5px;border-radius:4px}
+.char-head-right{flex:1;min-width:0}
+.char-meta-row{display:flex;align-items:baseline;justify-content:flex-start;gap:.5rem;flex-wrap:wrap;margin-bottom:.28rem;text-align:left}
+.char-id-pill{display:inline-block;font-size:.62rem;background:#0f1a22;border:1px solid #33495a;color:#d7ebff;font-weight:700;padding:2px 8px;border-radius:9999px}
+.char-name{font-size:1rem;font-weight:800;color:#d5e7ff}
+.char-kanji{font-size:.7rem;color:#9ab}
+.char-icon-line{display:flex;align-items:center;justify-content:flex-start;margin:.24rem 0 .34rem}
+.char-icon-wrap{position:relative;width:var(--char-icon);height:var(--char-icon);flex:0 0 var(--char-icon)}
+.char-icon{width:100%;height:100%;border-radius:14px;background:#0f161c;border:1px solid #24303b;object-fit:cover;display:block}
+.char-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin:.16rem 0;justify-content:flex-start}
+/* スマートなステータス行 */
+.char-stats-line{display:flex;justify-content:flex-start;align-items:center;gap:.4rem .6rem;flex-wrap:wrap;font-size:.62rem;color:#bcd;margin:.12rem 0 0}
+.char-stats-line span{display:inline-flex;gap:.35rem;white-space:nowrap;padding:0}
+.char-stats-line b{color:#dbeaff;font-weight:700;letter-spacing:.2px}
+/* モバイルではタグ以外の文字を圧縮 */
+@media (max-width:520px){
+  .char-card{padding:.62rem var(--pad-r) .28rem var(--pad-l);max-width:100%;min-height:0}
+  .char-content{max-width:100%;width:100%}
+  .char-meta-row{gap:.2rem;margin-bottom:.14rem}
+  .char-id-pill{font-size:.5rem;padding:1px 5px;background:transparent;border-color:#2a3a46;color:#b8d5f5}
+  .char-name{font-size:.60rem}
+  .char-kanji{font-size:.55rem}
+  .char-icon-line{margin:.12rem 0 .06rem}
+  .char-tags{margin:.06rem 0}
+  .char-stats-line{font-size:.46rem;gap:0 .3rem;margin:.05rem 0 0}
+  .char-tag{font-size:.40rem;padding:1px 5px}
+}
+/* スマホ幅では確実に横3枚表示 */
+@media (max-width:520px){
+  .char-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 </style>
 </head>
 <body>
@@ -151,893 +191,1379 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
     </div>
     <div class="char-grid" id="charGrid">
       
-      <div class="char-card" data-keywords="シロムクゲ 白槿 火力 制御 単独勢力">
+      <div class="char-card" data-keywords="001 シロムクゲ 白槿 火力 制御 単独勢力">
         <a href="001.html">
-          <h3>シロムクゲ</h3>
-          <div class="name-sub">白槿</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">制御</span></div>
-          <div class="char-stats">
-            <span>HP 3610</span><span>攻 1081</span><span>物防 3021</span><span>特防 1938</span><span>速 277</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 001</span><span class="char-name">シロムクゲ</span><span class="char-kanji">白槿</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/白槿/001-icon.png" alt="シロムクゲ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">制御</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3610</b></span><span>攻<b>1081</b></span><span>物防<b>3021</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1938</b></span><span>速<b>277</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="アカネ 茜 防護 弱体 超管局">
+      <div class="char-card" data-keywords="002 アカネ 茜 防護 弱体 超管局">
         <a href="002.html">
-          <h3>アカネ</h3>
-          <div class="name-sub">茜</div>
-          <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 4985</span><span>攻 493</span><span>物防 1736</span><span>特防 3409</span><span>速 239</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 002</span><span class="char-name">アカネ</span><span class="char-kanji">茜</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/茜/002-icon.png" alt="アカネ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4985</b></span><span>攻<b>493</b></span><span>物防<b>1736</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3409</b></span><span>速<b>239</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ジョウテン 浄天 火力 範囲 生存 超管局">
+      <div class="char-card" data-keywords="003 ジョウテン 浄天 火力 範囲 生存 超管局">
         <a href="003.html">
-          <h3>ジョウテン</h3>
-          <div class="name-sub">浄天</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5319</span><span>攻 1039</span><span>物防 2505</span><span>特防 3785</span><span>速 246</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 003</span><span class="char-name">ジョウテン</span><span class="char-kanji">浄天</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/浄天/003-icon.png" alt="ジョウテン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5319</b></span><span>攻<b>1039</b></span><span>物防<b>2505</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3785</b></span><span>速<b>246</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ケイコウ 啓航 防護 除去 超管局">
+      <div class="char-card" data-keywords="004 ケイコウ 啓航 防護 除去 超管局">
         <a href="004.html">
-          <h3>ケイコウ</h3>
-          <div class="name-sub">啓航</div>
-          <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">除去</span></div>
-          <div class="char-stats">
-            <span>HP 4745</span><span>攻 742</span><span>物防 3551</span><span>特防 2448</span><span>速 279</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 004</span><span class="char-name">ケイコウ</span><span class="char-kanji">啓航</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/啓航/004-icon.png" alt="ケイコウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">除去</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4745</b></span><span>攻<b>742</b></span><span>物防<b>3551</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2448</b></span><span>速<b>279</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="チンショウ 沈礁 火力 超管局">
+      <div class="char-card" data-keywords="005 チンショウ 沈礁 火力 超管局">
         <a href="005.html">
-          <h3>チンショウ</h3>
-          <div class="name-sub">沈礁</div>
-          <div class="char-tags"><span class="char-tag">火力</span></div>
-          <div class="char-stats">
-            <span>HP 3783</span><span>攻 1072</span><span>物防 2061</span><span>特防 3105</span><span>速 252</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 005</span><span class="char-name">チンショウ</span><span class="char-kanji">沈礁</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/沈礁/005-icon.png" alt="チンショウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3783</b></span><span>攻<b>1072</b></span><span>物防<b>2061</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3105</b></span><span>速<b>252</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="センシュウ 千秋 火力 範囲 新月">
+      <div class="char-card" data-keywords="006 センシュウ 千秋 火力 範囲 新月">
         <a href="006.html">
-          <h3>センシュウ</h3>
-          <div class="name-sub">千秋</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3783</span><span>攻 1081</span><span>物防 2020</span><span>特防 3058</span><span>速 255</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 006</span><span class="char-name">センシュウ</span><span class="char-kanji">千秋</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/千秋/006-icon.png" alt="センシュウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3783</b></span><span>攻<b>1081</b></span><span>物防<b>2020</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3058</b></span><span>速<b>255</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="シンリョウ 星涼 治療 強化 新月">
+      <div class="char-card" data-keywords="007 シンリョウ 星涼 治療 強化 新月">
         <a href="007.html">
-          <h3>シンリョウ</h3>
-          <div class="name-sub">星涼</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 4170</span><span>攻 646</span><span>物防 3051</span><span>特防 1867</span><span>速 217</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 007</span><span class="char-name">シンリョウ</span><span class="char-kanji">星涼</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/星涼/007-icon.png" alt="シンリョウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4170</b></span><span>攻<b>646</b></span><span>物防<b>3051</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1867</b></span><span>速<b>217</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="チュウゲン 忠元 援護 生存 新月">
+      <div class="char-card" data-keywords="008 チュウゲン 忠元 援護 生存 新月">
         <a href="008.html">
-          <h3>チュウゲン</h3>
-          <div class="name-sub">忠元</div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4703</span><span>攻 466</span><span>物防 3391</span><span>特防 1846</span><span>速 247</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 008</span><span class="char-name">チュウゲン</span><span class="char-kanji">忠元</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/忠元/008-icon.png" alt="チュウゲン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4703</b></span><span>攻<b>466</b></span><span>物防<b>3391</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1846</b></span><span>速<b>247</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ミンソウ 鳴霜 火力 生存 新月">
+      <div class="char-card" data-keywords="009 ミンソウ 鳴霜 火力 生存 新月">
         <a href="009.html">
-          <h3>ミンソウ</h3>
-          <div class="name-sub">鳴霜</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 2895</span><span>攻 967</span><span>物防 2493</span><span>特防 1670</span><span>速 211</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 009</span><span class="char-name">ミンソウ</span><span class="char-kanji">鳴霜</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/鳴霜/009-icon.png" alt="ミンソウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2895</b></span><span>攻<b>967</b></span><span>物防<b>2493</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1670</b></span><span>速<b>211</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="フライス  火力 範囲 強化 新月">
+      <div class="char-card" data-keywords="011 フライス  火力 範囲 強化 新月">
         <a href="011.html">
-          <h3>フライス</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 3694</span><span>攻 1102</span><span>物防 3089</span><span>特防 2071</span><span>速 245</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 011</span><span class="char-name">フライス</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/フライス/011-icon.png" alt="フライス アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3694</b></span><span>攻<b>1102</b></span><span>物防<b>3089</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2071</b></span><span>速<b>245</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カセイ 火青 火力 爆発 全聯堂">
+      <div class="char-card" data-keywords="012 カセイ 火青 火力 爆発 全聯堂">
         <a href="012.html">
-          <h3>カセイ</h3>
-          <div class="name-sub">火青</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 3131</span><span>攻 863</span><span>物防 1701</span><span>特防 2453</span><span>速 253</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 012</span><span class="char-name">カセイ</span><span class="char-kanji">火青</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/火青/012-icon.png" alt="カセイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3131</b></span><span>攻<b>863</b></span><span>物防<b>1701</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2453</b></span><span>速<b>253</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="リョクセツ 緑雪 治療 強化 全聯堂">
+      <div class="char-card" data-keywords="013 リョクセツ 緑雪 治療 強化 全聯堂">
         <a href="013.html">
-          <h3>リョクセツ</h3>
-          <div class="name-sub">緑雪</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 3848</span><span>攻 602</span><span>物防 1983</span><span>特防 2878</span><span>速 279</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 013</span><span class="char-name">リョクセツ</span><span class="char-kanji">緑雪</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/緑雪/013-icon.png" alt="リョクセツ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3848</b></span><span>攻<b>602</b></span><span>物防<b>1983</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2878</b></span><span>速<b>279</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ナンキョウ 楠乔 治療 制御 新月">
+      <div class="char-card" data-keywords="014 ナンキョウ 楠乔 治療 制御 新月">
         <a href="014.html">
-          <h3>ナンキョウ</h3>
-          <div class="name-sub">楠乔</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">制御</span></div>
-          <div class="char-stats">
-            <span>HP 4999</span><span>攻 805</span><span>物防 2519</span><span>特防 3660</span><span>速 216</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 014</span><span class="char-name">ナンキョウ</span><span class="char-kanji">楠乔</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/楠乔/014-icon.png" alt="ナンキョウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">制御</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4999</b></span><span>攻<b>805</b></span><span>物防<b>2519</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3660</b></span><span>速<b>216</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ハルチ 春遅 火力 強化 爆発 新月">
+      <div class="char-card" data-keywords="015 ハルチ 春遅 火力 強化 爆発 新月">
         <a href="015.html">
-          <h3>ハルチ</h3>
-          <div class="name-sub">春遅</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 3111</span><span>攻 850</span><span>物防 2579</span><span>特防 1695</span><span>速 252</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 015</span><span class="char-name">ハルチ</span><span class="char-kanji">春遅</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/春遅/015-icon.png" alt="ハルチ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3111</b></span><span>攻<b>850</b></span><span>物防<b>2579</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1695</b></span><span>速<b>252</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ホンバオ 紅袍 火力 弱体 生存 全聯堂">
+      <div class="char-card" data-keywords="016 ホンバオ 紅袍 火力 弱体 生存 全聯堂">
         <a href="016.html">
-          <h3>ホンバオ</h3>
-          <div class="name-sub">紅袍</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4201</span><span>攻 953</span><span>物防 3135</span><span>特防 2037</span><span>速 279</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 016</span><span class="char-name">ホンバオ</span><span class="char-kanji">紅袍</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/紅袍/016-icon.png" alt="ホンバオ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4201</b></span><span>攻<b>953</b></span><span>物防<b>3135</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2037</b></span><span>速<b>279</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ゴウシャ 恒沙 火力 範囲 超管局">
+      <div class="char-card" data-keywords="017 ゴウシャ 恒沙 火力 範囲 超管局">
         <a href="017.html">
-          <h3>ゴウシャ</h3>
-          <div class="name-sub">恒沙</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 4294</span><span>攻 1250</span><span>物防 2270</span><span>特防 3650</span><span>速 247</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 017</span><span class="char-name">ゴウシャ</span><span class="char-kanji">恒沙</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/恒沙/017-icon.png" alt="ゴウシャ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4294</b></span><span>攻<b>1250</b></span><span>物防<b>2270</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3650</b></span><span>速<b>247</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ギョクロ 玉露 制御 生存 全聯堂">
+      <div class="char-card" data-keywords="018 ギョクロ 玉露 制御 生存 全聯堂">
         <a href="018.html">
-          <h3>ギョクロ</h3>
-          <div class="name-sub">玉露</div>
-          <div class="char-tags"><span class="char-tag">制御</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4706</span><span>攻 473</span><span>物防 1702</span><span>特防 3035</span><span>速 289</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 018</span><span class="char-name">ギョクロ</span><span class="char-kanji">玉露</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/玉露/018-icon.png" alt="ギョクロ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">制御</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4706</b></span><span>攻<b>473</b></span><span>物防<b>1702</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3035</b></span><span>速<b>289</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="レンシン 蓮心 火力 制御 範囲 全聯堂">
+      <div class="char-card" data-keywords="019 レンシン 蓮心 火力 制御 範囲 全聯堂">
         <a href="019.html">
-          <h3>レンシン</h3>
-          <div class="name-sub">蓮心</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">制御</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3666</span><span>攻 1063</span><span>物防 1959</span><span>特防 3058</span><span>速 277</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 019</span><span class="char-name">レンシン</span><span class="char-kanji">蓮心</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/蓮心/019-icon.png" alt="レンシン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">制御</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3666</b></span><span>攻<b>1063</b></span><span>物防<b>1959</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3058</b></span><span>速<b>277</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="トキヒ 時曦 火力 範囲 全聯堂">
+      <div class="char-card" data-keywords="020 トキヒ 時曦 火力 範囲 全聯堂">
         <a href="020.html">
-          <h3>トキヒ</h3>
-          <div class="name-sub">時曦</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 4402</span><span>攻 1240</span><span>物防 2296</span><span>特防 3615</span><span>速 245</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 020</span><span class="char-name">トキヒ</span><span class="char-kanji">時曦</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/時曦/020-icon.png" alt="トキヒ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4402</b></span><span>攻<b>1240</b></span><span>物防<b>2296</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3615</b></span><span>速<b>245</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="リュウセイ 龍井 火力 拡散 全聯堂">
+      <div class="char-card" data-keywords="021 リュウセイ 龍井 火力 拡散 全聯堂">
         <a href="021.html">
-          <h3>リュウセイ</h3>
-          <div class="name-sub">龍井</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">拡散</span></div>
-          <div class="char-stats">
-            <span>HP 4272</span><span>攻 1273</span><span>物防 3507</span><span>特防 2305</span><span>速 246</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 021</span><span class="char-name">リュウセイ</span><span class="char-kanji">龍井</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/龍井/021-icon.png" alt="リュウセイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">拡散</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4272</b></span><span>攻<b>1273</b></span><span>物防<b>3507</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2305</b></span><span>速<b>246</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="モクメン 沐棉 防護 単独勢力">
+      <div class="char-card" data-keywords="022 モクメン 沐綿 防護 単独勢力">
         <a href="022.html">
-          <h3>モクメン</h3>
-          <div class="name-sub">沐棉</div>
-          <div class="char-tags"><span class="char-tag">防護</span></div>
-          <div class="char-stats">
-            <span>HP 5881</span><span>攻 619</span><span>物防 2310</span><span>特防 3783</span><span>速 247</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 022</span><span class="char-name">モクメン</span><span class="char-kanji">沐綿</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/沐綿/022-icon.png" alt="モクメン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">防護</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5881</b></span><span>攻<b>619</b></span><span>物防<b>2310</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3783</b></span><span>速<b>247</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ロクユウ 鹿游 生存 強化 光耀会">
+      <div class="char-card" data-keywords="023 ロクユウ 鹿游 生存 強化 光耀会">
         <a href="023.html">
-          <h3>ロクユウ</h3>
-          <div class="name-sub">鹿游</div>
-          <div class="char-tags"><span class="char-tag">生存</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 5705</span><span>攻 825</span><span>物防 2697</span><span>特防 4156</span><span>速 275</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 023</span><span class="char-name">ロクユウ</span><span class="char-kanji">鹿游</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/鹿游/023-icon.png" alt="ロクユウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">生存</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5705</b></span><span>攻<b>825</b></span><span>物防<b>2697</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>4156</b></span><span>速<b>275</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カンナギ 巫 援護 生存 弱体 超管局">
+      <div class="char-card" data-keywords="024 カンナギ 巫 援護 生存 弱体 超管局">
         <a href="024.html">
-          <h3>カンナギ</h3>
-          <div class="name-sub">巫</div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 6441</span><span>攻 644</span><span>物防 4890</span><span>特防 2772</span><span>速 251</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 024</span><span class="char-name">カンナギ</span><span class="char-kanji">巫</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/巫/024-icon.png" alt="カンナギ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>6441</b></span><span>攻<b>644</b></span><span>物防<b>4890</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2772</b></span><span>速<b>251</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="アサガオ 朝顔 治療 強化 超管局">
+      <div class="char-card" data-keywords="025 アサガオ 朝顔 治療 強化 超管局">
         <a href="025.html">
-          <h3>アサガオ</h3>
-          <div class="name-sub">朝顔</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 4744</span><span>攻 749</span><span>物防 3600</span><span>特防 2399</span><span>速 276</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 025</span><span class="char-name">アサガオ</span><span class="char-kanji">朝顔</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/朝顔/025-icon.png" alt="アサガオ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4744</b></span><span>攻<b>749</b></span><span>物防<b>3600</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2399</b></span><span>速<b>276</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ハンシア 繁夏 火力 協撃 制御 超管局">
+      <div class="char-card" data-keywords="026 ハンシア 繁夏 火力 協撃 制御 超管局">
         <a href="026.html">
-          <h3>ハンシア</h3>
-          <div class="name-sub">繁夏</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">協撃</span><span class="char-tag">制御</span></div>
-          <div class="char-stats">
-            <span>HP 4261</span><span>攻 931</span><span>物防 3172</span><span>特防 2027</span><span>速 283</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 026</span><span class="char-name">ハンシア</span><span class="char-kanji">繁夏</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/繁夏/026-icon.png" alt="ハンシア アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">協撃</span><span class="char-tag">制御</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4261</b></span><span>攻<b>931</b></span><span>物防<b>3172</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2027</b></span><span>速<b>283</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ゲツハク 月白 治療 強化 単独勢力">
+      <div class="char-card" data-keywords="027 ゲツハク 月白 治療 強化 単独勢力">
         <a href="027.html">
-          <h3>ゲツハク</h3>
-          <div class="name-sub">月白</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 5724</span><span>攻 843</span><span>物防 2780</span><span>特防 3862</span><span>速 280</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 027</span><span class="char-name">ゲツハク</span><span class="char-kanji">月白</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/月白/027-icon.png" alt="ゲツハク アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5724</b></span><span>攻<b>843</b></span><span>物防<b>2780</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3862</b></span><span>速<b>280</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="キキ 騏驥 火力 弱体 範囲 超管局">
+      <div class="char-card" data-keywords="028 キキ 騏驥 火力 弱体 範囲 超管局">
         <a href="028.html">
-          <h3>キキ</h3>
-          <div class="name-sub">騏驥</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3763</span><span>攻 1040</span><span>物防 2040</span><span>特防 3021</span><span>速 278</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 028</span><span class="char-name">キキ</span><span class="char-kanji">騏驥</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/騏驥/028-icon.png" alt="キキ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3763</b></span><span>攻<b>1040</b></span><span>物防<b>2040</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3021</b></span><span>速<b>278</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ダイヤ  分担 和祥義">
+      <div class="char-card" data-keywords="029 ダイヤ  分担 和祥義">
         <a href="029.html">
-          <h3>ダイヤ</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">分担</span></div>
-          <div class="char-stats">
-            <span>HP 5267</span><span>攻 504</span><span>物防 3353</span><span>特防 1885</span><span>速 211</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 029</span><span class="char-name">ダイヤ</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/ダイヤ/029-icon.png" alt="ダイヤ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">分担</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5267</b></span><span>攻<b>504</b></span><span>物防<b>3353</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1885</b></span><span>速<b>211</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ハート  火力 範囲 爆発 和祥義">
+      <div class="char-card" data-keywords="030 ハート  火力 範囲 爆発 和祥義">
         <a href="030.html">
-          <h3>ハート</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 3051</span><span>攻 1027</span><span>物防 2599</span><span>特防 1604</span><span>速 251</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 030</span><span class="char-name">ハート</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/ハート/030-icon.png" alt="ハート アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3051</b></span><span>攻<b>1027</b></span><span>物防<b>2599</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1604</b></span><span>速<b>251</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="スペード  火力 範囲 和祥義">
+      <div class="char-card" data-keywords="031 スペード  火力 範囲 和祥義">
         <a href="031.html">
-          <h3>スペード</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3962</span><span>攻 1076</span><span>物防 2010</span><span>特防 3058</span><span>速 244</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 031</span><span class="char-name">スペード</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/スペード/031-icon.png" alt="スペード アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3962</b></span><span>攻<b>1076</b></span><span>物防<b>2010</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3058</b></span><span>速<b>244</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="イングリッド  火力 範囲 光耀会">
+      <div class="char-card" data-keywords="032 イングリット  火力 範囲 光耀会">
         <a href="032.html">
-          <h3>イングリッド</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3876</span><span>攻 1120</span><span>物防 3198</span><span>特防 2101</span><span>速 212</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 032</span><span class="char-name">イングリット</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/イングリット/032-icon.png" alt="イングリット アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3876</b></span><span>攻<b>1120</b></span><span>物防<b>3198</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2101</b></span><span>速<b>212</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カンリン 甘霖 援護 強化 生存 単独勢力">
+      <div class="char-card" data-keywords="033 カンリン 甘霖 援護 強化 生存 単独勢力">
         <a href="033.html">
-          <h3>カンリン</h3>
-          <div class="name-sub">甘霖</div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">強化</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5870</span><span>攻 626</span><span>物防 2247</span><span>特防 3930</span><span>速 238</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 033</span><span class="char-name">カンリン</span><span class="char-kanji">甘霖</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/甘霖/033-icon.png" alt="カンリン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">強化</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5870</b></span><span>攻<b>626</b></span><span>物防<b>2247</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3930</b></span><span>速<b>238</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ドウメイ 洞明 治療 強化 超管局">
+      <div class="char-card" data-keywords="034 ドウメイ 洞明 治療 強化 超管局">
         <a href="034.html">
-          <h3>ドウメイ</h3>
-          <div class="name-sub">洞明</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 4705</span><span>攻 798</span><span>物防 2460</span><span>特防 3697</span><span>速 243</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 034</span><span class="char-name">ドウメイ</span><span class="char-kanji">洞明</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/洞明/034-icon.png" alt="ドウメイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4705</b></span><span>攻<b>798</b></span><span>物防<b>2460</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3697</b></span><span>速<b>243</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="オンコウ 隠光 火力 弱体 生存 超管局">
+      <div class="char-card" data-keywords="035 オンコウ 隠光 火力 弱体 生存 超管局">
         <a href="035.html">
-          <h3>オンコウ</h3>
-          <div class="name-sub">隠光</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4202</span><span>攻 979</span><span>物防 3223</span><span>特防 2142</span><span>速 252</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 035</span><span class="char-name">オンコウ</span><span class="char-kanji">隠光</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/隠光/035-icon.png" alt="オンコウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4202</b></span><span>攻<b>979</b></span><span>物防<b>3223</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2142</b></span><span>速<b>252</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="スズメ  火力 弱体 範囲 新月">
+      <div class="char-card" data-keywords="036 スズメ  火力 弱体 範囲 新月">
         <a href="036.html">
-          <h3>スズメ</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3402</span><span>攻 757</span><span>物防 1659</span><span>特防 2583</span><span>速 284</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 036</span><span class="char-name">スズメ</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/スズメ/036-icon.png" alt="スズメ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3402</b></span><span>攻<b>757</b></span><span>物防<b>1659</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2583</b></span><span>速<b>284</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カラス  火力 爆発 超管局">
+      <div class="char-card" data-keywords="039 カラス  火力 爆発 超管局">
         <a href="039.html">
-          <h3>カラス</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 4399</span><span>攻 1216</span><span>物防 3615</span><span>特防 2410</span><span>速 248</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 039</span><span class="char-name">カラス</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/カラス/039-icon.png" alt="カラス アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4399</b></span><span>攻<b>1216</b></span><span>物防<b>3615</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2410</b></span><span>速<b>248</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ギンフ 銀鋒 援護 生存 全聯堂">
+      <div class="char-card" data-keywords="042 ギンフ 銀峰 援護 生存 全聯堂">
         <a href="042.html">
-          <h3>ギンフ</h3>
-          <div class="name-sub">銀鋒</div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5849</span><span>攻 583</span><span>物防 4032</span><span>特防 2303</span><span>速 249</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 042</span><span class="char-name">ギンフ</span><span class="char-kanji">銀峰</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/銀峰/042-icon.png" alt="ギンフ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5849</b></span><span>攻<b>583</b></span><span>物防<b>4032</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2303</b></span><span>速<b>249</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ユウラン 幽蘭 火力 爆発 全聯堂">
+      <div class="char-card" data-keywords="043 ユウラン 幽蘭 火力 爆発 全聯堂">
         <a href="043.html">
-          <h3>ユウラン</h3>
-          <div class="name-sub">幽蘭</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 3819</span><span>攻 1089</span><span>物防 3089</span><span>特防 1979</span><span>速 249</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 043</span><span class="char-name">ユウラン</span><span class="char-kanji">幽蘭</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/幽蘭/043-icon.png" alt="ユウラン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3819</b></span><span>攻<b>1089</b></span><span>物防<b>3089</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1979</b></span><span>速<b>249</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ヨルキ 夜来 強化 全聯堂">
+      <div class="char-card" data-keywords="044 ヨルキ 夜来 強化 全聯堂">
         <a href="044.html">
-          <h3>ヨルキ</h3>
-          <div class="name-sub">夜来</div>
-          <div class="char-tags"><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 3892</span><span>攻 596</span><span>物防 2848</span><span>特防 1967</span><span>速 283</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 044</span><span class="char-name">ヨルキ</span><span class="char-kanji">夜来</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/夜来/044-icon.png" alt="ヨルキ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3892</b></span><span>攻<b>596</b></span><span>物防<b>2848</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1967</b></span><span>速<b>283</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="アオギリ 梧桐 火力 範囲 強化 単独勢力">
+      <div class="char-card" data-keywords="045 アオギリ 梧桐 火力 範囲 強化 単独勢力">
         <a href="045.html">
-          <h3>アオギリ</h3>
-          <div class="name-sub">梧桐</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 4383</span><span>攻 1234</span><span>物防 2410</span><span>特防 3543</span><span>速 246</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 045</span><span class="char-name">アオギリ</span><span class="char-kanji">梧桐</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/梧桐/045-icon.png" alt="アオギリ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4383</b></span><span>攻<b>1234</b></span><span>物防<b>2410</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3543</b></span><span>速<b>246</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="デンエイ 伝影 火力 反撃 全聯堂">
+      <div class="char-card" data-keywords="046 デンエイ 伝影 火力 反撃 全聯堂">
         <a href="046.html">
-          <h3>デンエイ</h3>
-          <div class="name-sub">伝影</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">反撃</span></div>
-          <div class="char-stats">
-            <span>HP 5276</span><span>攻 1126</span><span>物防 2517</span><span>特防 3747</span><span>速 213</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 046</span><span class="char-name">デンエイ</span><span class="char-kanji">伝影</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/伝影/046-icon.png" alt="デンエイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">反撃</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5276</b></span><span>攻<b>1126</b></span><span>物防<b>2517</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3747</b></span><span>速<b>213</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カイ 槐 火力 範囲 単独勢力">
+      <div class="char-card" data-keywords="048 カイ 槐 火力 範囲 単独勢力">
         <a href="048.html">
-          <h3>カイ</h3>
-          <div class="name-sub">槐</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3256</span><span>攻 839</span><span>物防 1682</span><span>特防 2536</span><span>速 250</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 048</span><span class="char-name">カイ</span><span class="char-kanji">槐</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/槐/048-icon.png" alt="カイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3256</b></span><span>攻<b>839</b></span><span>物防<b>1682</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2536</b></span><span>速<b>250</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="センウ 閃羽 火力 範囲 超管局">
+      <div class="char-card" data-keywords="049 センウ 閃羽 火力 範囲 超管局">
         <a href="049.html">
-          <h3>センウ</h3>
-          <div class="name-sub">閃羽</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 3743</span><span>攻 796</span><span>物防 1736</span><span>特防 2665</span><span>速 214</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 049</span><span class="char-name">センウ</span><span class="char-kanji">閃羽</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/閃羽/049-icon.png" alt="センウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3743</b></span><span>攻<b>796</b></span><span>物防<b>1736</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2665</b></span><span>速<b>214</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カ 柯 弱体 援護 単独勢力">
+      <div class="char-card" data-keywords="050 カ 柯 弱体 援護 単独勢力">
         <a href="050.html">
-          <h3>カ</h3>
-          <div class="name-sub">柯</div>
-          <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">援護</span></div>
-          <div class="char-stats">
-            <span>HP 4960</span><span>攻 498</span><span>物防 1719</span><span>特防 3058</span><span>速 246</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 050</span><span class="char-name">カ</span><span class="char-kanji">柯</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/柯/050-icon.png" alt="カ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">援護</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4960</b></span><span>攻<b>498</b></span><span>物防<b>1719</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3058</b></span><span>速<b>246</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="オンキ 音希 火力 爆発 燭火教">
+      <div class="char-card" data-keywords="051 オンキ 音希 火力 爆発 燭火教">
         <a href="051.html">
-          <h3>オンキ</h3>
-          <div class="name-sub">音希</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 4144</span><span>攻 1277</span><span>物防 3506</span><span>特防 2317</span><span>速 252</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 051</span><span class="char-name">オンキ</span><span class="char-kanji">音希</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/音希/051-icon.png" alt="オンキ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4144</b></span><span>攻<b>1277</b></span><span>物防<b>3506</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2317</b></span><span>速<b>252</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ヤサ 弥砂 制御 生存 燭火教">
+      <div class="char-card" data-keywords="052 ヤサ 弥砂 制御 生存 燭火教">
         <a href="052.html">
-          <h3>ヤサ</h3>
-          <div class="name-sub">弥砂</div>
-          <div class="char-tags"><span class="char-tag">制御</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5473</span><span>攻 557</span><span>物防 4137</span><span>特防 2199</span><span>速 290</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 052</span><span class="char-name">ヤサ</span><span class="char-kanji">弥砂</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/弥砂/052-icon.png" alt="ヤサ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">制御</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5473</b></span><span>攻<b>557</b></span><span>物防<b>4137</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2199</b></span><span>速<b>290</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="タチバナ 橘 治療 除去 単独勢力">
+      <div class="char-card" data-keywords="053 タチバナ 橘 治療 除去 単独勢力">
         <a href="053.html">
-          <h3>タチバナ</h3>
-          <div class="name-sub">橘</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">除去</span></div>
-          <div class="char-stats">
-            <span>HP 3663</span><span>攻 559</span><span>物防 1753</span><span>特防 2672</span><span>速 218</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 053</span><span class="char-name">タチバナ</span><span class="char-kanji">橘</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/橘/053-icon.png" alt="タチバナ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">除去</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3663</b></span><span>攻<b>559</b></span><span>物防<b>1753</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2672</b></span><span>速<b>218</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="テンセイ 天星 火力 範囲 爆発 単独勢力">
+      <div class="char-card" data-keywords="054 テンセイ 天星 火力 範囲 爆発 単独勢力">
         <a href="054.html">
-          <h3>テンセイ</h3>
-          <div class="name-sub">天星</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 3943</span><span>攻 1060</span><span>物防 2122</span><span>特防 3027</span><span>速 248</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 054</span><span class="char-name">テンセイ</span><span class="char-kanji">天星</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/天星/054-icon.png" alt="テンセイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3943</b></span><span>攻<b>1060</b></span><span>物防<b>2122</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3027</b></span><span>速<b>248</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="チャーシュー 叉燒 火力 爆発 範囲 超自然セブン">
+      <div class="char-card" data-keywords="055 チャーシュー 叉燒 火力 爆発 範囲 超自然セブン">
         <a href="055.html">
-          <h3>チャーシュー</h3>
-          <div class="name-sub">叉燒</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 2696</span><span>攻 739</span><span>物防 1445</span><span>特防 2188</span><span>速 280</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 055</span><span class="char-name">チャーシュー</span><span class="char-kanji">叉燒</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/チャーシュー/055-icon.png" alt="チャーシュー アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2696</b></span><span>攻<b>739</b></span><span>物防<b>1445</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2188</b></span><span>速<b>280</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ツボミ 蕾 火力 強化 超自然セブン">
+      <div class="char-card" data-keywords="056 ツボミ 蕾 火力 強化 超自然セブン">
         <a href="056.html">
-          <h3>ツボミ</h3>
-          <div class="name-sub">蕾</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 2774</span><span>攻 758</span><span>物防 2198</span><span>特防 1453</span><span>速 257</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 056</span><span class="char-name">ツボミ</span><span class="char-kanji">蕾</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/蕾/056-icon.png" alt="ツボミ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2774</b></span><span>攻<b>758</b></span><span>物防<b>2198</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1453</b></span><span>速<b>257</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="シンジュ 真珠 火力 強化 弱体 超自然セブン">
+      <div class="char-card" data-keywords="057 シンジュ 真朱 火力 強化 弱体 超自然セブン">
         <a href="057.html">
-          <h3>シンジュ</h3>
-          <div class="name-sub">真珠</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 2658</span><span>攻 754</span><span>物防 1416</span><span>特防 2144</span><span>速 281</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 057</span><span class="char-name">シンジュ</span><span class="char-kanji">真朱</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/真朱/057-icon.png" alt="シンジュ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">強化</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2658</b></span><span>攻<b>754</b></span><span>物防<b>1416</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2144</b></span><span>速<b>281</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="サタデイ  援護 生存 超自然セブン">
+      <div class="char-card" data-keywords="058 サタデイ  援護 生存 超自然セブン">
         <a href="058.html">
-          <h3>サタデイ</h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4326</span><span>攻 450</span><span>物防 1503</span><span>特防 2722</span><span>速 245</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 058</span><span class="char-name">サタデイ</span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/サタデイ/058-icon.png" alt="サタデイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4326</b></span><span>攻<b>450</b></span><span>物防<b>1503</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2722</b></span><span>速<b>245</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="コハル 小春 火力 超自然セブン">
+      <div class="char-card" data-keywords="059 コハル 小春 火力 超自然セブン">
         <a href="059.html">
-          <h3>コハル</h3>
-          <div class="name-sub">小春</div>
-          <div class="char-tags"><span class="char-tag">火力</span></div>
-          <div class="char-stats">
-            <span>HP 2725</span><span>攻 761</span><span>物防 2222</span><span>特防 1489</span><span>速 253</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 059</span><span class="char-name">コハル</span><span class="char-kanji">小春</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/小春/059-icon.png" alt="コハル アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2725</b></span><span>攻<b>761</b></span><span>物防<b>2222</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1489</b></span><span>速<b>253</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ブンケイ 文景 火力 弱体 超自然セブン">
+      <div class="char-card" data-keywords="060 ブンケイ 文景 火力 弱体 超自然セブン">
         <a href="060.html">
-          <h3>ブンケイ</h3>
-          <div class="name-sub">文景</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 2985</span><span>攻 660</span><span>物防 2267</span><span>特防 1468</span><span>速 293</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 060</span><span class="char-name">ブンケイ</span><span class="char-kanji">文景</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/文景/060-icon.png" alt="ブンケイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>2985</b></span><span>攻<b>660</b></span><span>物防<b>2267</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>1468</b></span><span>速<b>293</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ユイ 結 範囲 弱体 単独勢力">
+      <div class="char-card" data-keywords="061 ユイ 結 範囲 弱体 単独勢力">
         <a href="061.html">
-          <h3>ユイ</h3>
-          <div class="name-sub">結</div>
-          <div class="char-tags"><span class="char-tag">範囲</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 4738</span><span>攻 1055</span><span>物防 3895</span><span>特防 2337</span><span>速 281</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 061</span><span class="char-name">ユイ</span><span class="char-kanji">結</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/結/061-icon.png" alt="ユイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">範囲</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4738</b></span><span>攻<b>1055</b></span><span>物防<b>3895</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2337</b></span><span>速<b>281</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="セキエン 石燕 治療 強化 全聯堂">
+      <div class="char-card" data-keywords="062 セキエン 石燕 治療 強化 全聯堂">
         <a href="062.html">
-          <h3>セキエン</h3>
-          <div class="name-sub">石燕</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 5168</span><span>攻 778</span><span>物防 3734</span><span>特防 2472</span><span>速 214</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 062</span><span class="char-name">セキエン</span><span class="char-kanji">石燕</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/石燕/062-icon.png" alt="セキエン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5168</b></span><span>攻<b>778</b></span><span>物防<b>3734</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2472</b></span><span>速<b>214</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="サイギンシ 砕銀子 火力 生存 全聯堂">
+      <div class="char-card" data-keywords="063 サイギンシ 碎銀子 火力 生存 全聯堂">
         <a href="063.html">
-          <h3>サイギンシ</h3>
-          <div class="name-sub">砕銀子</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4384</span><span>攻 1200</span><span>物防 2457</span><span>特防 3597</span><span>速 254</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 063</span><span class="char-name">サイギンシ</span><span class="char-kanji">碎銀子</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/碎銀子/063-icon.png" alt="サイギンシ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4384</b></span><span>攻<b>1200</b></span><span>物防<b>2457</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3597</b></span><span>速<b>254</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="タクメイ 琢明 火力 生存 光耀会">
+      <div class="char-card" data-keywords="064 タクメイ 琢明 火力 生存 光耀会">
         <a href="064.html">
-          <h3>タクメイ</h3>
-          <div class="name-sub">琢明</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 4697</span><span>攻 1180</span><span>物防 2409</span><span>特防 3418</span><span>速 257</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 064</span><span class="char-name">タクメイ</span><span class="char-kanji">琢明</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/琢明/064-icon.png" alt="タクメイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4697</b></span><span>攻<b>1180</b></span><span>物防<b>2409</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3418</b></span><span>速<b>257</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="シカイ 刺灰 火力 範囲 爆発 単独勢力">
+      <div class="char-card" data-keywords="065 シカイ 刺灰 火力 範囲 爆発 単独勢力">
         <a href="065.html">
-          <h3>シカイ</h3>
-          <div class="name-sub">刺灰</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 4541</span><span>攻 1240</span><span>物防 2387</span><span>特防 3418</span><span>速 243</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 065</span><span class="char-name">シカイ</span><span class="char-kanji">刺灰</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/刺灰/065-icon.png" alt="シカイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4541</b></span><span>攻<b>1240</b></span><span>物防<b>2387</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3418</b></span><span>速<b>243</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="レイケイ 荔倾 火力 生存 光耀会">
+      <div class="char-card" data-keywords="066 レイケイ 荔倾 火力 生存 光耀会">
         <a href="066.html">
-          <h3>レイケイ</h3>
-          <div class="name-sub">荔倾</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5073</span><span>攻 1077</span><span>物防 3710</span><span>特防 2394</span><span>速 258</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 066</span><span class="char-name">レイケイ</span><span class="char-kanji">荔倾</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/荔倾/066-icon.png" alt="レイケイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5073</b></span><span>攻<b>1077</b></span><span>物防<b>3710</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2394</b></span><span>速<b>258</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="カセン 家泉 治療 強化 単独勢力">
+      <div class="char-card" data-keywords="067 カセン 家泉 治療 強化 単独勢力">
         <a href="067.html">
-          <h3>カセン</h3>
-          <div class="name-sub">家泉</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 5048</span><span>攻 789</span><span>物防 3660</span><span>特防 2520</span><span>速 220</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 067</span><span class="char-name">カセン</span><span class="char-kanji">家泉</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/家泉/067-icon.png" alt="カセン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5048</b></span><span>攻<b>789</b></span><span>物防<b>3660</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2520</b></span><span>速<b>220</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ソイ 楚衣 治療 弱体 単独勢力">
+      <div class="char-card" data-keywords="068 ソイ 楚衣 治療 弱体 単独勢力">
         <a href="068.html">
-          <h3>ソイ</h3>
-          <div class="name-sub">楚衣</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 5340</span><span>攻 843</span><span>物防 2835</span><span>特防 4162</span><span>速 282</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 068</span><span class="char-name">ソイ</span><span class="char-kanji">楚衣</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/楚衣/068-icon.png" alt="ソイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5340</b></span><span>攻<b>843</b></span><span>物防<b>2835</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>4162</b></span><span>速<b>282</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ケイシン 刑身 援護 生存 単独勢力">
+      <div class="char-card" data-keywords="069 ケイシン 刑身 援護 生存 単独勢力">
         <a href="069.html">
-          <h3>ケイシン</h3>
-          <div class="name-sub">刑身</div>
-          <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 6181</span><span>攻 626</span><span>物防 2174</span><span>特防 3705</span><span>速 237</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 069</span><span class="char-name">ケイシン</span><span class="char-kanji">刑身</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/刑身/069-icon.png" alt="ケイシン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>6181</b></span><span>攻<b>626</b></span><span>物防<b>2174</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3705</b></span><span>速<b>237</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="キンケイ 金桂 防護 強化 全聯堂">
+      <div class="char-card" data-keywords="070 キンケイ 金桂 防護 強化 全聯堂">
         <a href="070.html">
-          <h3>キンケイ</h3>
-          <div class="name-sub">金桂</div>
-          <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 7239</span><span>攻 658</span><span>物防 4914</span><span>特防 2668</span><span>速 244</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 070</span><span class="char-name">キンケイ</span><span class="char-kanji">金桂</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/金桂/070-icon.png" alt="キンケイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">防護</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>7239</b></span><span>攻<b>658</b></span><span>物防<b>4914</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2668</b></span><span>速<b>244</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ジョヒ 叙非 火力 拡散 単独勢力">
+      <div class="char-card" data-keywords="071 ジョヒ 叙非 火力 拡散 単独勢力">
         <a href="071.html">
-          <h3>ジョヒ</h3>
-          <div class="name-sub">叙非</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">拡散</span></div>
-          <div class="char-stats">
-            <span>HP 4314</span><span>攻 1261</span><span>物防 3543</span><span>特防 2363</span><span>速 242</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 071</span><span class="char-name">ジョヒ</span><span class="char-kanji">叙非</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/叙非/071-icon.png" alt="ジョヒ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">拡散</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4314</b></span><span>攻<b>1261</b></span><span>物防<b>3543</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2363</b></span><span>速<b>242</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="フチシュン 不知春 火力 範囲 全聯堂">
+      <div class="char-card" data-keywords="072 フチシュン 不知春 火力 範囲 全聯堂">
         <a href="072.html">
-          <h3>フチシュン</h3>
-          <div class="name-sub">不知春</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 4283</span><span>攻 1246</span><span>物防 3507</span><span>特防 2363</span><span>速 253</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 072</span><span class="char-name">フチシュン</span><span class="char-kanji">不知春</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/不知春/072-icon.png" alt="フチシュン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4283</b></span><span>攻<b>1246</b></span><span>物防<b>3507</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2363</b></span><span>速<b>253</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="セッキョウ 折鏡 弱体 強化 単独勢力">
+      <div class="char-card" data-keywords="073 セッキョウ 折鏡 弱体 強化 単独勢力">
         <a href="073.html">
-          <h3>セッキョウ</h3>
-          <div class="name-sub">折鏡</div>
-          <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 4834</span><span>攻 1110</span><span>物防 3634</span><span>特防 2385</span><span>速 279</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 073</span><span class="char-name">セッキョウ</span><span class="char-kanji">折鏡</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/折鏡/073-icon.png" alt="セッキョウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4834</b></span><span>攻<b>1110</b></span><span>物防<b>3634</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2385</b></span><span>速<b>279</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="コクシュウ 刻舟 火力 範囲 弱体 超管局">
+      <div class="char-card" data-keywords="074 コクシュウ 刻舟 火力 範囲 弱体 超管局">
         <a href="074.html">
-          <h3>コクシュウ</h3>
-          <div class="name-sub">刻舟</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 3939</span><span>攻 1049</span><span>物防 2120</span><span>特防 3060</span><span>速 251</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 074</span><span class="char-name">コクシュウ</span><span class="char-kanji">刻舟</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/刻舟/074-icon.png" alt="コクシュウ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>3939</b></span><span>攻<b>1049</b></span><span>物防<b>2120</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3060</b></span><span>速<b>251</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="モクヒ 默斐 火力 超管局">
+      <div class="char-card" data-keywords="075 モクヒ 默斐 火力 超管局">
         <a href="075.html">
-          <h3>モクヒ</h3>
-          <div class="name-sub">默斐</div>
-          <div class="char-tags"><span class="char-tag">火力</span></div>
-          <div class="char-stats">
-            <span>HP 4446</span><span>攻 1275</span><span>物防 3622</span><span>特防 2457</span><span>速 216</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 075</span><span class="char-name">モクヒ</span><span class="char-kanji">默斐</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/默斐/075-icon.png" alt="モクヒ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4446</b></span><span>攻<b>1275</b></span><span>物防<b>3622</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2457</b></span><span>速<b>216</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="アレフ 阿莱夫 治療 消散 強化 戯火教">
+      <div class="char-card" data-keywords="077 アレフ 阿莱夫 治療 消散 強化 戯火教">
         <a href="077.html">
-          <h3>アレフ</h3>
-          <div class="name-sub">阿莱夫</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">消散</span><span class="char-tag">強化</span></div>
-          <div class="char-stats">
-            <span>HP 5817</span><span>攻 816</span><span>物防 4071</span><span>特防 2698</span><span>速 277</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 077</span><span class="char-name">アレフ</span><span class="char-kanji">阿莱夫</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/アレフ/077-icon.png" alt="アレフ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">消散</span><span class="char-tag">強化</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5817</b></span><span>攻<b>816</b></span><span>物防<b>4071</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2698</b></span><span>速<b>277</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="コウシュ 巧手 弱体 援護 生存 単独勢力">
+      <div class="char-card" data-keywords="078 コウシュ 巧手 弱体 援護 生存 単独勢力">
         <a href="078.html">
-          <h3>コウシュ</h3>
-          <div class="name-sub">巧手</div>
-          <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 6932</span><span>攻 690</span><span>物防 2421</span><span>特防 4451</span><span>速 251</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 078</span><span class="char-name">コウシュ</span><span class="char-kanji">巧手</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/巧手/078-icon.png" alt="コウシュ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">弱体</span><span class="char-tag">援護</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>6932</b></span><span>攻<b>690</b></span><span>物防<b>2421</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>4451</b></span><span>速<b>251</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="インカ 饮火 火力 弱体 光耀会">
+      <div class="char-card" data-keywords="079 インカ 饮火 火力 弱体 光耀会">
         <a href="079.html">
-          <h3>インカ</h3>
-          <div class="name-sub">饮火</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 4429</span><span>攻 1246</span><span>物防 2363</span><span>特防 3543</span><span>速 241</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 079</span><span class="char-name">インカ</span><span class="char-kanji">饮火</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/饮火/079-icon.png" alt="インカ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4429</b></span><span>攻<b>1246</b></span><span>物防<b>2363</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3543</b></span><span>速<b>241</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ボウコ 忘湖 火力 弱体 生存 単独勢力">
+      <div class="char-card" data-keywords="080 ボウコ 忘湖 火力 弱体 生存 単独勢力">
         <a href="080.html">
-          <h3>ボウコ</h3>
-          <div class="name-sub">忘湖</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5218</span><span>攻 937</span><span>物防 3634</span><span>特防 2409</span><span>速 281</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 080</span><span class="char-name">ボウコ</span><span class="char-kanji">忘湖</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/忘湖/080-icon.png" alt="ボウコ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5218</b></span><span>攻<b>937</b></span><span>物防<b>3634</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2409</b></span><span>速<b>281</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="スイビン 翠鬓 火力 爆発 単独勢力">
+      <div class="char-card" data-keywords="081 スイビン 翠鬓 火力 爆発 単独勢力">
         <a href="081.html">
-          <h3>スイビン</h3>
-          <div class="name-sub">翠鬓</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 4401</span><span>攻 1264</span><span>物防 3505</span><span>特防 2340</span><span>速 239</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 081</span><span class="char-name">スイビン</span><span class="char-kanji">翠鬓</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/翠鬓/081-icon.png" alt="スイビン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4401</b></span><span>攻<b>1264</b></span><span>物防<b>3505</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2340</b></span><span>速<b>239</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="マンデー 星期一 生存 分担 単独勢力">
+      <div class="char-card" data-keywords="082 マンデー 星期一 生存 分担 単独勢力">
         <a href="082.html">
-          <h3>マンデー</h3>
-          <div class="name-sub">星期一</div>
-          <div class="char-tags"><span class="char-tag">生存</span><span class="char-tag">分担</span></div>
-          <div class="char-stats">
-            <span>HP 6734</span><span>攻 622</span><span>物防 4720</span><span>特防 2717</span><span>速 256</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 082</span><span class="char-name">マンデー</span><span class="char-kanji">星期一</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/星期一/082-icon.png" alt="マンデー アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">生存</span><span class="char-tag">分担</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>6734</b></span><span>攻<b>622</b></span><span>物防<b>4720</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2717</b></span><span>速<b>256</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="アヌビス 阿铋斯 火力 生存 弱体 単独勢力">
+      <div class="char-card" data-keywords="083 アヌビス 阿铋斯 火力 生存 弱体 単独勢力">
         <a href="083.html">
-          <h3>アヌビス</h3>
-          <div class="name-sub">阿铋斯</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span><span class="char-tag">弱体</span></div>
-          <div class="char-stats">
-            <span>HP 4754</span><span>攻 1104</span><span>物防 2384</span><span>特防 3482</span><span>速 283</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 083</span><span class="char-name">アヌビス</span><span class="char-kanji">阿铋斯</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/阿铋斯/083-icon.png" alt="アヌビス アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">生存</span><span class="char-tag">弱体</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4754</b></span><span>攻<b>1104</b></span><span>物防<b>2384</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3482</b></span><span>速<b>283</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ヤヌス 雅努斯 治療 強化 範囲 光耀会">
+      <div class="char-card" data-keywords="084 ヤヌス 雅努斯 治療 強化 範囲 光耀会">
         <a href="084.html">
-          <h3>ヤヌス</h3>
-          <div class="name-sub">雅努斯</div>
-          <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 5733</span><span>攻 804</span><span>物防 2797</span><span>特防 3997</span><span>速 286</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 084</span><span class="char-name">ヤヌス</span><span class="char-kanji">雅努斯</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/雅努斯/084-icon.png" alt="ヤヌス アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">治療</span><span class="char-tag">強化</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5733</b></span><span>攻<b>804</b></span><span>物防<b>2797</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3997</b></span><span>速<b>286</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ウジン 雨人 火力 爆発 単独勢力">
+      <div class="char-card" data-keywords="085 ウジン 雨人 火力 爆発 単独勢力">
         <a href="085.html">
-          <h3>ウジン</h3>
-          <div class="name-sub">雨人</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
-          <div class="char-stats">
-            <span>HP 4217</span><span>攻 1300</span><span>物防 3292</span><span>特防 2352</span><span>速 249</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 085</span><span class="char-name">ウジン</span><span class="char-kanji">雨人</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/雨人/085-icon.png" alt="ウジン アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">爆発</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4217</b></span><span>攻<b>1300</b></span><span>物防<b>3292</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>2352</b></span><span>速<b>249</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="   ">
+      <div class="char-card" data-keywords="086    ">
         <a href="086.html">
-          <h3></h3>
-          <div class="name-sub"></div>
-          <div class="char-tags"></div>
-          <div class="char-stats">
-            <span>HP </span><span>攻 </span><span>物防 </span><span>特防 </span><span>速 </span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 086</span><span class="char-name"></span><span class="char-kanji"></span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="" alt=" アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b></b></span><span>攻<b></b></span><span>物防<b></b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b></b></span><span>速<b></b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="ボウワク 纺惑 火力 範囲 独行势力">
+      <div class="char-card" data-keywords="087 ボウワク 纺惑 火力 範囲 独行势力">
         <a href="087.html">
-          <h3>ボウワク</h3>
-          <div class="name-sub">纺惑</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
-          <div class="char-stats">
-            <span>HP 4429</span><span>攻 1283</span><span>物防 2481</span><span>特防 3579</span><span>速 215</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 087</span><span class="char-name">ボウワク</span><span class="char-kanji">纺惑</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/纺惑/087-icon.png" alt="ボウワク アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">範囲</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>4429</b></span><span>攻<b>1283</b></span><span>物防<b>2481</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3579</b></span><span>速<b>215</b></span></div>
           </div>
         </a>
       </div>
       
-      <div class="char-card" data-keywords="セイケイ 青形 火力 弱体 生存 超管局">
+      <div class="char-card" data-keywords="088 セイケイ 青形 火力 弱体 生存 超管局">
         <a href="088.html">
-          <h3>セイケイ</h3>
-          <div class="name-sub">青形</div>
-          <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
-          <div class="char-stats">
-            <span>HP 5287</span><span>攻 995</span><span>物防 2486</span><span>特防 3604</span><span>速 280</span>
+          <div class="char-content">
+            <!-- 1段目: ID / 名前 / 漢字 -->
+            <div class="char-meta-row"><span class="char-id-pill">ID 088</span><span class="char-name">セイケイ</span><span class="char-kanji">青形</span></div>
+            <!-- 2段目: アイコン -->
+            <div class="char-icon-line"><span class="char-icon-wrap"><img class="char-icon" src="../../キャラ素材/青形/088-icon.png" alt="セイケイ アイコン" onerror="this.style.display='none'"></span></div>
+            <!-- 3段目: タグ -->
+            <div class="char-tags"><span class="char-tag">火力</span><span class="char-tag">弱体</span><span class="char-tag">生存</span></div>
+            <!-- 4段目: ステータス 行1（スマート表示） -->
+            <div class="char-stats-line"><span>HP<b>5287</b></span><span>攻<b>995</b></span><span>物防<b>2486</b></span></div>
+            <!-- 5段目: ステータス 行2（スマート表示） -->
+            <div class="char-stats-line"><span>特防<b>3604</b></span><span>速<b>280</b></span></div>
           </div>
         </a>
       </div>

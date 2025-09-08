@@ -33,7 +33,12 @@ def read_characters():
 
 def rel_path(p: pathlib.Path):
     rel = os.path.relpath(p, SITE_DIR)
-    return rel.replace('..\\', '../').replace('..//', '../')
+    # URL 用に区切りをスラッシュへ正規化
+    rel = rel.replace('\\', '/').replace('..//', '../')
+    if rel.startswith('../'):
+        return rel
+    # 念のため先頭に ../ を補正するケースはここでは不要（呼び出し側で '../' を付与）
+    return rel
 
 
 def collect_image_tabs(char_kanji: str, char_name: str, char_id: str):
@@ -286,10 +291,22 @@ def build():
         html = expand(tpl_char, char_data)
         (CHARS_DIR / f'{cid}.html').write_text(html, encoding='utf-8')
 
+        # 一覧用アイコン探索: キャラ素材/<漢字 or 名前>/<ID>-icon.png
+        icon_rel = ''
+        for c in [kanji, name]:
+            if not c:
+                continue
+            icon_path = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
+            if icon_path.exists():
+                icon_rel = '../' + rel_path(icon_path)
+                break
+
         index_items.append({
             **{k: basic.get(k,'') for k in basic.keys()},
             'タグ': tags,
             'タグCSV': ' '.join(tags),
+            'アイコン': icon_rel,
+            'ID': cid,
         })
 
     # index を chars/ ディレクトリに配置（ホームは build_home.py が生成）
