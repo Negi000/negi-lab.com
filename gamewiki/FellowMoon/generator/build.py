@@ -7,6 +7,7 @@ SITE_DIR = BASE / 'site'
 CHARS_DIR = SITE_DIR / 'chars'
 TPL_CHAR = BASE / 'generator' / 'template.html'
 TPL_INDEX = BASE / 'generator' / 'index_template.html'
+TPL_CHAR_INDEX = BASE / 'generator' / 'character_index_template.html'
 IMG_CHAR_ROOT = BASE / 'キャラ素材'
 IMG_SKILL_ROOT = BASE / 'スキルアイコン'
 ROM_IMG_ROOT = BASE / 'ロム素材'
@@ -23,7 +24,11 @@ pattern = re.compile(r'{{([^{}#\/]+?)}}')
 
 
 def load_templates():
-    return TPL_CHAR.read_text(encoding='utf-8'), TPL_INDEX.read_text(encoding='utf-8')
+    return (
+        TPL_CHAR.read_text(encoding='utf-8'),
+        TPL_INDEX.read_text(encoding='utf-8'),
+        TPL_CHAR_INDEX.read_text(encoding='utf-8') if TPL_CHAR_INDEX.exists() else ''
+    )
 
 
 def read_characters():
@@ -114,11 +119,14 @@ def expand(template: str, data: dict):
 
 
 def build():
-    tpl_char, tpl_index = load_templates()
+    tpl_char, tpl_index, tpl_char_index = load_templates()
     raw_chars = read_characters()
     CHARS_DIR.mkdir(parents=True, exist_ok=True)
 
     index_items = []
+    list_items = []  # character.html 用
+    # フィルター候補の集合
+    rares, attrs, types, factions, tags_all, skill_tags_all, versions = set(), set(), set(), set(), set(), set(), set()
 
     for cid, payload in raw_chars.items():
         if not payload or '基本情報' not in payload:
@@ -291,29 +299,102 @@ def build():
         html = expand(tpl_char, char_data)
         (CHARS_DIR / f'{cid}.html').write_text(html, encoding='utf-8')
 
-        # 一覧用アイコン探索: キャラ素材/<漢字 or 名前>/<ID>-icon.png
+        # 一覧用アイコン探索: キャラ素材/<漢字 or 名前>/<ID>-icon.png と 覚醒アイコン
         icon_rel = ''
+        icon_awake_rel = ''
+        icon_path = None
         for c in [kanji, name]:
             if not c:
                 continue
-            icon_path = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
-            if icon_path.exists():
-                icon_rel = '../' + rel_path(icon_path)
+            p = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
+            if p.exists():
+                icon_path = p
+                icon_rel = '../' + rel_path(p)
+                # 覚醒アイコン
+                icon_awake_path = p.with_name(f'{cid}-icon_awake.png')
+                if icon_awake_path.exists():
+                    icon_awake_rel = '../' + rel_path(icon_awake_path)
                 break
 
+        basic_info_map = {k: basic.get(k,'') for k in basic.keys()}
+
         index_items.append({
-            **{k: basic.get(k,'') for k in basic.keys()},
+            **basic_info_map,
             'タグ': tags,
             'タグCSV': ' '.join(tags),
             'アイコン': icon_rel,
             'ID': cid,
         })
 
+        # キャラ一覧（カード）用のレコード
+        # レア度画像
+        star_img = SITE_DIR / 'assets' / 'icons' / f"star{basic.get('レア度','').strip()}.png"
+        star_rel = f"../assets/icons/star{basic.get('レア度','').strip()}.png" if star_img.exists() else ''
+        # 属性-タイプ 画像
+        attr = basic.get('属性','').strip()
+        typ = basic.get('タイプ','').strip()
+        attr_type_img = SITE_DIR / 'assets' / 'icons' / f"{attr}-{typ}.png"
+        attr_type_rel = f"../assets/icons/{attr}-{typ}.png" if attr_type_img.exists() else ''
+
+        # スキルタグ集約（/ 区切り -> 空白区切り CSV）
+        skill_tags = []
+        for sk in skills:
+            if sk.get('スキルタグ配列'):
+                skill_tags.extend(sk['スキルタグ配列'])
+        skill_tags = [t for t in (t.strip() for t in skill_tags) if t]
+        skill_tags_csv = ' '.join(sorted(set(skill_tags)))
+
+        list_items.append({
+            'ID': cid,
+            '名前': name,
+            'レア度': basic.get('レア度',''),
+            '属性': attr,
+            'タイプ': typ,
+            '陣営': basic.get('陣営',''),
+            '実装バージョン': basic.get('実装バージョン',''),
+            'タグCSV': ' '.join(tags),
+            'スキルタグCSV': skill_tags_csv,
+            'アイコン': icon_rel,
+            'アイコン覚醒': icon_awake_rel or icon_rel,
+            'レア度画像': star_rel,
+            '属性タイプ画像': attr_type_rel,
+        })
+
+        # フィルター候補の収集
+        if basic.get('レア度'): rares.add(basic.get('レア度'))
+        if attr: attrs.add(attr)
+        if typ: types.add(typ)
+        if basic.get('陣営'): factions.add(basic.get('陣営'))
+        for t in tags: tags_all.add(t)
+        for t in skill_tags: skill_tags_all.add(t)
+        if basic.get('実装バージョン'): versions.add(basic.get('実装バージョン'))
+
     # index を chars/ ディレクトリに配置（ホームは build_home.py が生成）
     (SITE_DIR / 'chars').mkdir(parents=True, exist_ok=True)
     idx_html = expand(tpl_index, {'一覧': index_items})
     (SITE_DIR / 'chars' / 'index.html').write_text(idx_html, encoding='utf-8')
     print(f'Generated {len(index_items)} characters (chars list).')
+
+    # character.html（カード + フィルター）
+    if tpl_char_index:
+        def sort_num_str(vals):
+            try:
+                return sorted(vals, key=lambda v: int(str(v)))
+            except Exception:
+                return sorted(vals)
+        ctx = {
+            '一覧': list_items,
+            'レア度一覧': sort_num_str(rares),
+            '属性一覧': sorted(attrs),
+            'タイプ一覧': sorted(types),
+            '陣営一覧': sorted(factions),
+            'タグ一覧': sorted(tags_all),
+            'スキルタグ一覧': sorted(skill_tags_all),
+            '実装バージョン一覧': sorted(versions),
+        }
+        html2 = expand(tpl_char_index, ctx)
+        (SITE_DIR / 'chars' / 'character.html').write_text(html2, encoding='utf-8')
+        print('Generated character.html (card view).')
 
 if __name__ == '__main__':
     build()
