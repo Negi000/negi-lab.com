@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>キャラ一覧 - 新月同行 Wiki</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0d1216" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80',orange:'#ff8c21'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
+:root{--c-accent:#3a8bff;--c-bgcard:#121a22;--c-border:#24303b;--w-wrap:1280px}
+.wiki-hero{margin:0 0 1.4rem;position:relative}
+.wiki-hero-bar{display:flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#14212b,#1b2d38 55%,#14212b);border:1px solid #253542;padding:.85rem .95rem;border-radius:16px;position:relative;overflow:hidden}
+.wiki-hero-bar:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(99,183,255,.25),transparent 60%);pointer-events:none}
+.wiki-hero-title{font-size:clamp(1.35rem,5.3vw,2.1rem);line-height:1.05;font-weight:800;letter-spacing:.5px;background:linear-gradient(92deg,#63b7ff,#9ad8ff 45%,#63b7ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 6px rgba(60,130,190,.25))}
+.wiki-search{margin-left:auto;display:flex;align-items:center;min-width:0;position:relative}
+.wiki-search input{background:#0f161c;border:1px solid #29404e;color:#d9edff;font-size:.75rem;padding:.55rem .75rem;border-radius:10px;width:170px;transition:.25s}
+.wiki-search input:focus{outline:none;border-color:#3a8bff;box-shadow:0 0 0 3px rgba(58,139,255,.25)}
+@media(min-width:520px){.wiki-search input{width:220px}}
+@media(min-width:900px){.wiki-search input{width:260px}}
+.wiki-cat-bar-wrapper{margin-top:.65rem}
+.wiki-cat-bar{display:flex;gap:.55rem;overflow-x:auto;padding:.4rem .15rem .15rem;scrollbar-width:none;-ms-overflow-style:none}
+.wiki-cat-bar::-webkit-scrollbar{display:none}
+.wiki-cat-btn{flex:0 0 auto;position:relative;background:#18232d;border:1px solid #243744;color:#cfe2ff;font-weight:600;font-size:.68rem;letter-spacing:.5px;padding:.55rem .85rem;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;transition:.25s}
+.wiki-cat-btn:hover{background:#20303a;border-color:#335063}
+.wiki-cat-btn[aria-expanded="true"]{background:#254052;border-color:#3a627b;box-shadow:0 0 0 2px rgba(58,139,255,.25)}
+.wiki-cat-btn:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);margin-left:2px;transition:.3s}
+.wiki-cat-btn[aria-expanded="true"]:after{transform:rotate(-135deg) translateY(2px)}
+.wiki-acc-panels{position:relative;margin-top:.4rem}
+.wiki-acc-panel{border:1px solid #2e4250;background:#101a22;border-radius:14px;padding:.9rem .95rem;display:none;animation:accFade .35s ease;box-shadow:0 6px 22px -8px #000a}
+.wiki-acc-panel.open{display:block}
+@keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.wiki-acc-grid{display:grid;gap:.65rem;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.wiki-acc-grid a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;background:#16222b;border:1px solid #243744;padding:.65rem .7rem;border-radius:10px;font-size:.64rem;font-weight:600;color:#c3e6ff;letter-spacing:.4px;position:relative;overflow:hidden}
+.wiki-acc-grid a:hover{background:#1d2d37;border-color:#335063}
+.wiki-acc-badge{display:inline-block;background:#254052;color:#9ed8ff;font-size:.55rem;padding:2px 6px;border-radius:8px;margin-left:auto;font-weight:600}
+header,main,footer{position:relative;z-index:1}
+main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
+.section{margin:0 0 1.9rem}
+.section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
+
+/* フィルター */
+.filters{display:grid;gap:.5rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:720px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1024px){.filters{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.filter-group{background:#101820;border:1px solid #22313c;border-radius:12px;padding:.6rem}
+.filter-title{font-size:.72rem;color:#cfe2ff;margin:0 0 .35rem;font-weight:700;letter-spacing:.4px}
+.filter-pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{padding:.28rem .6rem;border:1px solid #2b3b47;border-radius:999px;font-size:.68rem;color:#fff;cursor:pointer;user-select:none;background:#17222b;transition:.2s}
+.pill:hover{background:#1d2d36}
+.pill.active{background:#ff8c21;color:#000;border-color:#ff8c21}
+.filter-more{grid-column:1/-1}
+.filter-more .filter-group{padding:.2rem .6rem}
+.filter-more .filter-title{display:flex;align-items:center;gap:.4rem;cursor:pointer}
+.filter-more .filter-title:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);transition:.3s}
+.filter-more[aria-expanded="true"] .filter-title:after{transform:rotate(-135deg) translateY(2px)}
+.filter-more-content{display:none;padding:.4rem 0 0}
+.filter-more[aria-expanded="true"] .filter-more-content{display:block}
+
+/* カード */
+.cards{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));overflow:visible}
+/* ラッパー: 外側ホバー枠を見せるために相対配置＆余白確保 */
+.card-wrap{position:relative;isolation:isolate}
+.card-wrap:hover{z-index:100}
+.card{position:relative;display:block;width:94%;margin:10px auto 0;aspect-ratio:3/4;border-radius:25px;overflow:hidden;cursor:pointer;border:0;background:#0b1116;z-index:1}
+.card .bg{position:absolute;inset:0;background:url('../assets/icons/chrs_bg.png') center/cover no-repeat;opacity:.9;z-index:0}
+.card-wrap .hover{position:absolute;top:-6px;right:-10px;bottom:-10px;left:-7px;background:url('../assets/icons/chars_hover.png') center/100% 100% no-repeat;opacity:0;transition:.2s;pointer-events:none;z-index:0}
+.card-wrap:hover .hover{opacity:1}
+.card .icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:99%;height:auto;image-rendering:auto;z-index:1}
+/* レア度の帯を最下部に大きく配置 */
+.card .star{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);width:99%;height:auto;z-index:2;pointer-events:none}
+.card .attr{position:absolute;left:2px;top:-2px;width:40px;height:auto;z-index:3}
+.card .name{position:absolute;left:4%;right:4%;bottom:6px;color:#fff;font-weight:800;font-size:.9rem;text-align:center;text-shadow:0 1px 2px #000a,0 0 8px #000;z-index:5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:520px){
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+}
+</style>
+</head>
+<body>
+<header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
+  <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
+    <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">negi-lab.com</a>
+    <button id="menuToggle" class="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-md border border-[#24303b] bg-[#18232d] text-[#cfe2ff] sm:hidden" aria-label="メニュー" aria-expanded="false">≡</button>
+    <nav id="mainNav" class="ml-auto hidden sm:block">
+      <ul class="flex flex-col sm:flex-row gap-3 sm:gap-6 font-medium text-base items-start sm:items-center py-3 sm:py-0" data-nav-list>
+        <li><a href="/#tools" class="nav-link">ツール</a></li>
+        <li><a href="../index.html" class="nav-link">新月同行Wiki</a></li>
+        <li><a href="index.html" class="nav-link">キャラ図鑑</a></li>
+        <li><a href="character.html" class="nav-link">キャラ一覧</a></li>
+        <li><a href="../roms/index.html" class="nav-link">ロム図鑑</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<style>
+.wiki-header{background:#0f161c;border-bottom:1px solid #18222c}
+.wiki-header .nav-link{color:#cfe2ff;transition:color .25s}
+.wiki-header .nav-link:hover{color:#63b7ff}
+.wiki-header.open #mainNav{display:block}
+.wiki-header #mainNav{animation:navFade .25s ease}
+@keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+</style>
+
+<main>
+  <section class="wiki-hero" data-wiki-header>
+    <div class="wiki-hero-bar">
+      <h1 class="wiki-hero-title">新月同行 Wiki</h1>
+      <form class="wiki-search" role="search" onsubmit="return window.__wikiSearchSubmit && window.__wikiSearchSubmit(event)">
+        <input id="wikiSearchInput" type="search" placeholder="Wiki内検索..." aria-label="Wiki内検索" />
+      </form>
+    </div>
+    <div class="wiki-cat-bar-wrapper">
+      <div class="wiki-cat-bar" role="tablist" aria-label="Wiki カテゴリ">
+        <button class="wiki-cat-btn" data-panel="panel-dex" aria-expanded="false" role="tab">図鑑</button>
+        <button class="wiki-cat-btn" data-panel="panel-tools" aria-expanded="false" role="tab">ツール</button>
+        <button class="wiki-cat-btn" data-panel="panel-modes" aria-expanded="false" role="tab">戦略行動</button>
+        <button class="wiki-cat-btn" data-panel="panel-guides" aria-expanded="false" role="tab">ガイド</button>
+      </div>
+      <div class="wiki-acc-panels">
+        <div id="panel-dex" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="index.html"><span>キャラ図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+            <a href="character.html"><span>キャラ一覧</span><span class="wiki-acc-badge">LIVE</span></a>
+            <a href="../roms/index.html"><span>ロム図鑑</span><span class="wiki-acc-badge">LIVE</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>スキン図鑑</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-tools" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ダメージ計算ツール</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="../#today"><span>誕生日カレンダー</span><span class="wiki-acc-badge">予定</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>キャラ所持チェッカー</span><span class="wiki-acc-badge">予定</span></a>
+          </div>
+        </div>
+        <div id="panel-modes" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>ブルーホーム</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>険境復元</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>特派探索</span><span class="wiki-acc-badge">準備中</span></a>
+            <a href="#" aria-disabled="true" onclick="return false"><span>世紀拘束塔</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+        <div id="panel-guides" class="wiki-acc-panel" role="tabpanel" aria-hidden="true">
+          <div class="wiki-acc-grid">
+            <a href="#" aria-disabled="true" onclick="return false"><span>初心者ガイド</span><span class="wiki-acc-badge">準備中</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>キャラ一覧</h2>
+    <div class="filters" id="filters">
+      <div class="filter-group" data-group="rare">
+        <div class="filter-title">レア度</div>
+        <div class="filter-pills">
+          {{#レア度一覧}}<span class="pill" data-value="{{.}}">★{{.}}</span>{{/レア度一覧}}
+        </div>
+      </div>
+      <div class="filter-group" data-group="attr">
+        <div class="filter-title">属性</div>
+        <div class="filter-pills">
+          {{#属性一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/属性一覧}}
+        </div>
+      </div>
+      <div class="filter-group" data-group="type">
+        <div class="filter-title">タイプ</div>
+        <div class="filter-pills">
+          {{#タイプ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タイプ一覧}}
+        </div>
+      </div>
+      <div class="filter-group" data-group="faction">
+        <div class="filter-title">陣営</div>
+        <div class="filter-pills">
+          {{#陣営一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/陣営一覧}}
+        </div>
+      </div>
+      <div class="filter-more" id="moreFilters" aria-expanded="false">
+        <div class="filter-group">
+          <div class="filter-title" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
+          <div class="filter-more-content">
+            <div class="filter-group" data-group="tag">
+              <div class="filter-title">タグ</div>
+              <div class="filter-pills">{{#タグ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タグ一覧}}</div>
+            </div>
+            <div class="filter-group" data-group="skilltag">
+              <div class="filter-title">スキルタグ</div>
+              <div class="filter-pills">{{#スキルタグ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/スキルタグ一覧}}</div>
+            </div>
+            <div class="filter-group" data-group="ver">
+              <div class="filter-title">実装バージョン</div>
+              <div class="filter-pills">{{#実装バージョン一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/実装バージョン一覧}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards" id="cards">
+      {{#一覧}}
+      <div class="card-wrap" data-rare="{{レア度}}" data-attr="{{属性}}" data-type="{{タイプ}}" data-faction="{{陣営}}" data-tags="{{タグCSV}}" data-skilltags="{{スキルタグCSV}}" data-ver="{{実装バージョン}}">
+        <a class="card" href="{{ID}}.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="{{アイコン}}" data-normal="{{アイコン}}" data-awake="{{アイコン覚醒}}" alt="{{名前}} アイコン">
+          <img class="star" src="{{レア度画像}}" alt="★{{レア度}}">
+          <img class="attr" src="{{属性タイプ画像}}" alt="{{属性}}-{{タイプ}}">
+          <div class="name">{{名前}}</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      {{/一覧}}
+    </div>
+  </section>
+</main>
+
+<footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
+  <nav class="mb-3">
+    <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+    <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+    <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+    <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+    <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  </nav>
+  <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
+  <div class="mt-2">&copy; 2025 negi-lab.com</div>
+</footer>
+
+<script>
+// 広告など無し: 共通ナビと検索
+(function(){
+  const header=document.querySelector('.wiki-header');
+  const btn=document.getElementById('menuToggle');
+  const nav=document.getElementById('mainNav');
+  if(btn&&nav){
+    btn.addEventListener('click',()=>{const open=header.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');if(open){nav.classList.remove('hidden');}else if(window.innerWidth<640){nav.classList.add('hidden');}});
+    window.addEventListener('resize',()=>{if(window.innerWidth>=640){nav.classList.remove('hidden');header.classList.remove('open');btn.setAttribute('aria-expanded','false');}else if(!header.classList.contains('open')){nav.classList.add('hidden');}});
+  }
+  // カテゴリアコーディオン
+  (function(){
+    const buttons=[...document.querySelectorAll('.wiki-cat-btn')];
+    const panels={};
+    buttons.forEach(b=>{const id=b.dataset.panel; if(id){ panels[id]=document.getElementById(id); }});
+    function toggle(btn){const id=btn.dataset.panel; const panel=panels[id]; if(!panel) return; const open = btn.getAttribute('aria-expanded')==='true'; buttons.forEach(x=>x.setAttribute('aria-expanded','false')); Object.values(panels).forEach(p=>{p.classList.remove('open');p.setAttribute('aria-hidden','true');}); if(!open){btn.setAttribute('aria-expanded','true'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false');}}
+    buttons.forEach(btn=>btn.addEventListener('click',()=>toggle(btn)));
+  })();
+  window.__wikiSearchSubmit=function(ev){ev.preventDefault();const q=document.getElementById('wikiSearchInput').value.trim();if(!q){return false;}location.href='../search.html?q='+encodeURIComponent(q);return false;};
+})();
+
+// フィルター実装（AND across groups, OR within group）
+(function(){
+  const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), skilltag:new Set(), ver:new Set()};
+  const cards=[...document.querySelectorAll('.cards .card-wrap')];
+  const groups=[...document.querySelectorAll('.filter-group[data-group]')];
+  function apply(){
+    cards.forEach(el=>{
+      let visible=true;
+      const checks={
+        rare: el.dataset.rare, attr: el.dataset.attr, type: el.dataset.type, faction: el.dataset.faction,
+        tag: (el.dataset.tags||'').split(/\s+/).filter(Boolean),
+        skilltag: (el.dataset.skilltags||'').split(/\s+/).filter(Boolean),
+        ver: el.dataset.ver
+      };
+      for(const g of Object.keys(state)){
+        const sel=state[g]; if(sel.size===0) continue; // no constraint
+        if(g==='tag' || g==='skilltag'){
+          const arr=checks[g];
+          const ok = arr.some(v=>sel.has(v));
+          if(!ok){ visible=false; break; }
+        }else{
+          const v=String(checks[g]||'');
+          if(!sel.has(v)) { visible=false; break; }
+        }
+      }
+      el.style.display=visible?'':'none';
+    });
+  }
+  function togglePill(pill,group,value){
+    pill.classList.toggle('active');
+    const set=state[group];
+    if(pill.classList.contains('active')) set.add(value); else set.delete(value);
+    apply();
+  }
+  groups.forEach(g=>{
+    const group=g.dataset.group; if(!group) return;
+    g.querySelectorAll('.pill').forEach(p=>{
+      const v=p.getAttribute('data-value');
+      p.addEventListener('click',()=>togglePill(p,group,v));
+      // キーボード操作
+      p.tabIndex=0; p.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); p.click(); }});
+    });
+  });
+  // 詳細折りたたみ
+  (function(){
+    const box=document.getElementById('moreFilters');
+    const ttl=box?.querySelector('[data-toggle]');
+    ttl?.addEventListener('click',()=>{ const open=box.getAttribute('aria-expanded')==='true'; box.setAttribute('aria-expanded', open?'false':'true'); });
+  })();
+})();
+
+// アイコン切り替え（hover とモバイルのスワイプ）
+(function(){
+  const isTouch = matchMedia('(pointer:coarse)').matches;
+  function bind(el){
+    const img = el.querySelector('img.icon');
+    if(!img) return;
+    const normal=img.getAttribute('data-normal');
+    const awake=img.getAttribute('data-awake');
+    let hasAwake = !!awake;
+    if(awake){
+      const test=new Image();
+      test.onload=()=>{hasAwake=true;};
+      test.onerror=()=>{hasAwake=false;};
+      test.src=awake;
+    }
+    function toAwake(){ if(hasAwake) img.src=awake; }
+    function toNormal(){ img.src=normal; }
+    if(!isTouch){
+      el.addEventListener('mouseenter',toAwake);
+      el.addEventListener('mouseleave',toNormal);
+    }else{
+      let sx=0, sy=0;
+      el.addEventListener('touchstart',e=>{const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY;},{passive:true});
+      el.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; if(Math.abs(dx)>30 && Math.abs(dx)>Math.abs(dy)){ e.preventDefault(); if(img.src.endsWith(awake)) toNormal(); else toAwake(); }},{passive:false});
+    }
+  }
+  document.querySelectorAll('.card-wrap').forEach(bind);
+})();
+</script>
+</body>
+</html>
