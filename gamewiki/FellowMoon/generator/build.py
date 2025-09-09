@@ -382,12 +382,43 @@ def build():
                 return sorted(vals, key=lambda v: int(str(v)))
             except Exception:
                 return sorted(vals)
+        # 一覧表示順: レア度(数値) 降順 → 実装バージョン 降順（数値抽出してタプル比較）
+        def parse_version(v):
+            if not v:
+                return (0,)
+            nums = re.findall(r'\d+', str(v))
+            if not nums:
+                return (0,)
+            return tuple(int(n) for n in nums)
+        def rarity_int(d):
+            try:
+                return int(str(d.get('レア度') or 0))
+            except Exception:
+                return 0
+        sorted_list_items = sorted(
+            list_items,
+            key=lambda d: (
+                rarity_int(d),
+                parse_version(d.get('実装バージョン'))
+            ),
+            reverse=True
+        )
+        # 表示順カスタマイズ
+        def ordered(seq, desired):
+            seq_set = set(seq)
+            out = [x for x in desired if x in seq_set]
+            # 残りは元の並び(ソート)で
+            rest = [x for x in sorted(seq) if x not in desired]
+            return out + rest
+        attr_order = ['情','理','信','正','奇']
+        type_order = ['強攻型','特攻型','突撃型','補助型','防御型']
+        faction_order = ['新月','超管局','全聯堂','燭火教','光耀会','和祥義','単独勢力','超自然セブン']
         ctx = {
-            '一覧': list_items,
+            '一覧': sorted_list_items,
             'レア度一覧': sort_num_str(rares),
-            '属性一覧': sorted(attrs),
-            'タイプ一覧': sorted(types),
-            '陣営一覧': sorted(factions),
+            '属性一覧': ordered(attrs, attr_order),
+            'タイプ一覧': ordered(types, type_order),
+            '陣営一覧': ordered(factions, faction_order),
             'タグ一覧': sorted(tags_all),
             'スキルタグ一覧': sorted(skill_tags_all),
             '実装バージョン一覧': sorted(versions),

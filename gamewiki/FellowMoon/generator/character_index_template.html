@@ -42,17 +42,38 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
 
 /* フィルター */
-.filters{display:grid;gap:.5rem;grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(min-width:720px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:1024px){.filters{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.filter-group{background:#101820;border:1px solid #22313c;border-radius:12px;padding:.6rem}
+/* フィルター全体: 4行縦並び */
+.filters{display:flex;flex-direction:column;gap:.85rem;margin-bottom:1rem}
+.filters.collapsed .primary-filter-box,.filters.collapsed #moreFilters{display:none}
+.filters-header{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.filters-title{font-size:.8rem;font-weight:700;letter-spacing:.6px;color:#dbe7f3;line-height:1}
+.filter-actions{display:flex;align-items:center;gap:.55rem}
+.filter-toggle{background:transparent;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;transition:filter .25s,transform .25s;line-height:0}
+.filter-toggle img{height:48px;width:auto;display:block;image-rendering:auto}
+.filter-toggle:hover{filter:brightness(1.1)}
+.filter-toggle:focus{outline:2px solid #3a8bff;outline-offset:2px}
+.filter-reset{background:#272f35;border:1px solid #3a464e;color:#d8e2ea;font-size:.65rem;font-weight:600;padding:.55rem .95rem;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:.2s}
+.filter-reset:hover{background:#303a41}
+.filter-reset:active{transform:translateY(1px)}
+.filter-group{background:rgba(16,24,32,.6);backdrop-filter:blur(2px);border:1px solid #2a353f;border-radius:10px;padding:.7rem .7rem .75rem;position:relative}
+/* 4行を1枠にまとめた専用ボックス */
+.primary-filter-box{background:rgba(16,24,32,.6);backdrop-filter:blur(2px);border:1px solid #2a353f;border-radius:10px;padding:.85rem .95rem .9rem;display:flex;flex-direction:column;gap:1.05rem}
+.primary-filter-box .pf-row{display:flex;flex-direction:column;gap:.4rem}
+.primary-filter-box .pf-row:not(:last-child){padding-bottom:.55rem;border-bottom:1px solid #2a353f}
+.primary-filter-box .pf-row .filter-title:after{display:none}
+/* 既存の filter-group 背景は詳細フィルター専用に */
 .filter-title{font-size:.72rem;color:#cfe2ff;margin:0 0 .35rem;font-weight:700;letter-spacing:.4px}
 .filter-pills{display:flex;flex-wrap:wrap;gap:.35rem}
-.pill{padding:.28rem .6rem;border:1px solid #2b3b47;border-radius:999px;font-size:.68rem;color:#fff;cursor:pointer;user-select:none;background:#17222b;transition:.2s}
-.pill:hover{background:#1d2d36}
-.pill.active{background:#ff8c21;color:#000;border-color:#ff8c21}
+.pill{position:relative;display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .9rem .40rem .9rem;font-size:.7rem;font-weight:600;letter-spacing:.5px;color:#e5e7eb;cursor:pointer;user-select:none;min-width:86px;justify-content:flex-start;
+  background:#1a1f24 url('../assets/icons/button_b.png') center/100% 100% no-repeat;border:1px solid #3a3f44;border-radius:6px;transition:filter .18s,transform .18s,color .18s}
+.pill:hover{filter:brightness(1.08)}
+.pill.active{background:#262d33 url('../assets/icons/button_a.png') center/100% 100% no-repeat;color:#000;border-color:#ffb648;box-shadow:0 0 0 1px #ffb648,0 0 6px 1px #ffcf6a55}
+/* 属性フィルター（統一定義） */
+/* グループタイトルをゲーム風ライン化 */
+.filter-title{position:relative;padding-left:0;font-size:.72rem;font-weight:700;margin:0 0 .45rem;color:#f1f5f9;letter-spacing:.5px}
+.filter-title:after{content:'';position:absolute;left:0;right:0;bottom:-.35rem;height:1px;background:linear-gradient(90deg,#c8cfd6,#444c55 45%,#222a31)}
 .filter-more{grid-column:1/-1}
-.filter-more .filter-group{padding:.2rem .6rem}
+.filter-more .filter-group{padding:.45rem .6rem .6rem}
 .filter-more .filter-title{display:flex;align-items:center;gap:.4rem;cursor:pointer}
 .filter-more .filter-title:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);transition:.3s}
 .filter-more[aria-expanded="true"] .filter-title:after{transform:rotate(-135deg) translateY(2px)}
@@ -68,7 +89,12 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .card .bg{position:absolute;inset:0;background:url('../assets/icons/chrs_bg.png') center/cover no-repeat;opacity:.9;z-index:0}
 .card-wrap .hover{position:absolute;top:-6px;right:-10px;bottom:-10px;left:-7px;background:url('../assets/icons/chars_hover.png') center/100% 100% no-repeat;opacity:0;transition:.2s;pointer-events:none;z-index:0}
 .card-wrap:hover .hover{opacity:1}
-.card .icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:99%;height:auto;image-rendering:auto;z-index:1}
+.card-wrap.active .hover{opacity:1}
+@media(hover:none){
+  /* タッチ環境では擬似:hoverによる重複発光を抑止 */
+  .card-wrap:hover .hover{opacity:0}
+}
+.card .icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(var(--icon-scale,1));width:99%;height:auto;max-width:99%;max-height:99%;object-fit:contain;display:block;image-rendering:auto;z-index:1;transition:transform .18s ease}
 /* レア度の帯を最下部に大きく配置 */
 .card .star{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);width:99%;height:auto;z-index:2;pointer-events:none}
 .card .attr{position:absolute;left:2px;top:-2px;width:40px;height:auto;z-index:3}
@@ -76,6 +102,59 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 @media(max-width:520px){
   .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
 }
+/* ===== 追加オーバーライド: デザイン微調整 ===== */
+/* ボタン全体の高さを少し低く */
+.pill{padding:.34rem .82rem .32rem .82rem;font-size:.68rem}
+.pf-row[data-group="type"] .pill,.pf-row[data-group="faction"] .pill{padding-left:2.75rem}
+.pf-row[data-group="type"] .pill:before,.pf-row[data-group="faction"] .pill:before{left:1.45rem;width:1.15rem;height:1.15rem}
+/* 属性ダイヤ: 枠/影なし。:after -> :before へ置き換えしてラベルを後ろへ */
+.pf-row[data-group="attr"] .pill:after{content:none!important}
+.pf-row[data-group="attr"] .pill{padding-left:1.50rem;position:relative;justify-content:center;text-align:center}
+.pf-row[data-group="attr"] .pill:before{content:"";position:absolute;left:1.5rem;top:50%;width:.56rem;height:.56rem;transform:translateY(-50%) rotate(45deg);background:#666}
+.pf-row[data-group="attr"] .pill[data-value="情"]:before{background:#d96a60}
+.pf-row[data-group="attr"] .pill[data-value="理"]:before{background:#1e8dd3}
+.pf-row[data-group="attr"] .pill[data-value="信"]:before{background:#65c13f}
+.pf-row[data-group="attr"] .pill[data-value="正"]:before{background:#dfb31e}
+.pf-row[data-group="attr"] .pill[data-value="奇"]:before{background:#7f5cbb}
+.pf-row[data-group="attr"] .pill.active:before{box-shadow:0 0 4px 2px rgba(255,207,106,.45)}
+/* タイプ/陣営用アイコン表示スペース */
+.pf-row[data-group="type"] .pill,.pf-row[data-group="faction"] .pill{padding-left:2.2rem;position:relative}
+.pf-row[data-group="faction"] .pill{padding-left:2.55rem}
+/* 特定陣営アイコン位置微調整 */
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"]:before,
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{left:1.15rem}
+/* 超自然セブンのみさらに右余白調整 */
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]{padding-left:2.75rem}
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{left:1.30rem}
+/* レア度 ☆ 数字の位置微調整 */
+.rare-pill{display:inline-flex;gap:.35rem;padding-left:1.2rem;}
+.rare-pill::first-letter{margin-right:.05rem}
+/* 詳細フィルター内ラベル右寄せ */
+#moreFilters .pill{padding-left:1.15rem}
+/* 長めの陣営ラベルだけ少し小さく */
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"],
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]{font-size:.62rem;letter-spacing:.4px}
+.pf-row[data-group="type"] .pill:before,.pf-row[data-group="faction"] .pill:before{content:'';position:absolute;left:1.0rem;top:50%;width:1.2rem;height:1.2rem;transform:translateY(-50%);background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 0 2px #000)}
+.pf-row[data-group="type"] .pill[data-value="強攻型"]:before{background-image:url('../assets/icons/強攻型.png')}
+.pf-row[data-group="type"] .pill[data-value="特攻型"]:before{background-image:url('../assets/icons/特攻型.png')}
+.pf-row[data-group="type"] .pill[data-value="突撃型"]:before{background-image:url('../assets/icons/突撃型.png')}
+.pf-row[data-group="type"] .pill[data-value="補助型"]:before{background-image:url('../assets/icons/補助型.png')}
+.pf-row[data-group="type"] .pill[data-value="防御型"]:before{background-image:url('../assets/icons/防御型.png')}
+.pf-row[data-group="faction"] .pill[data-value="新月"]:before{background-image:url('../assets/icons/新月.png')}
+.pf-row[data-group="faction"] .pill[data-value="超管局"]:before{background-image:url('../assets/icons/超管局.png')}
+.pf-row[data-group="faction"] .pill[data-value="全聯堂"]:before{background-image:url('../assets/icons/全聯堂.png')}
+.pf-row[data-group="faction"] .pill[data-value="燭火教"]:before{background-image:url('../assets/icons/燭火教.png')}
+.pf-row[data-group="faction"] .pill[data-value="光耀会"]:before{background-image:url('../assets/icons/光耀会.png')}
+.pf-row[data-group="faction"] .pill[data-value="和祥義"]:before{background-image:url('../assets/icons/和祥義.png')}
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"]:before{background-image:url('../assets/icons/単独勢力.png')}
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{background-image:url('../assets/icons/超自然セブン.png')}
+/* 統合詳細フィルター */
+#moreFilters.detail-box{margin-top:.6rem}
+#moreFilters .detail-toggle{font-size:.7rem;font-weight:700;letter-spacing:.5px;color:#cfe2ff;cursor:pointer;display:flex;align-items:center;gap:.4rem;padding:.25rem 0}
+#moreFilters .detail-toggle:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);transition:.3s;margin-left:4px}
+#moreFilters[aria-expanded="true"] .detail-toggle:after{transform:rotate(-135deg) translateY(2px)}
+#moreFilters .filter-more-content{display:none;margin-top:.55rem}
+#moreFilters[aria-expanded="true"] .filter-more-content{display:block}
 </style>
 </head>
 <body>
@@ -154,43 +233,44 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
   <section class="section">
     <h2>キャラ一覧</h2>
     <div class="filters" id="filters">
-      <div class="filter-group" data-group="rare">
-        <div class="filter-title">レア度</div>
-        <div class="filter-pills">
-          {{#レア度一覧}}<span class="pill" data-value="{{.}}">★{{.}}</span>{{/レア度一覧}}
+      <div class="filters-header">
+        <div class="filters-title">フィルター</div>
+        <div class="filter-actions">
+          <button class="filter-toggle" id="filterToggle" aria-label="フィルターを折りたたむ" aria-expanded="true">
+            <img src="../assets/icons/filter_b.png" alt="フィルター切替" data-expanded="../assets/icons/filter_b.png" data-collapsed="../assets/icons/filter_a.png">
+          </button>
+          <button type="button" class="filter-reset" id="filterReset" aria-label="全フィルター解除">全解除</button>
         </div>
       </div>
-      <div class="filter-group" data-group="attr">
-        <div class="filter-title">属性</div>
-        <div class="filter-pills">
-          {{#属性一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/属性一覧}}
+      <div class="primary-filter-box">
+        <div class="pf-row" data-group="rare">
+          <div class="filter-title">レア度</div>
+          <div class="filter-pills">{{#レア度一覧}}<span class="pill rare-pill" data-value="{{.}}">☆{{.}}</span>{{/レア度一覧}}</div>
         </div>
-      </div>
-      <div class="filter-group" data-group="type">
-        <div class="filter-title">タイプ</div>
-        <div class="filter-pills">
-          {{#タイプ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タイプ一覧}}
+        <div class="pf-row" data-group="attr">
+          <div class="filter-title">属性</div>
+          <div class="filter-pills">{{#属性一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/属性一覧}}</div>
         </div>
-      </div>
-      <div class="filter-group" data-group="faction">
-        <div class="filter-title">陣営</div>
-        <div class="filter-pills">
-          {{#陣営一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/陣営一覧}}
+        <div class="pf-row" data-group="type">
+          <div class="filter-title">タイプ</div>
+          <div class="filter-pills">{{#タイプ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タイプ一覧}}</div>
         </div>
-      </div>
-      <div class="filter-more" id="moreFilters" aria-expanded="false">
-        <div class="filter-group">
-          <div class="filter-title" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
+        <div class="pf-row" data-group="faction">
+          <div class="filter-title">陣営</div>
+          <div class="filter-pills">{{#陣営一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/陣営一覧}}</div>
+        </div>
+        <div id="moreFilters" class="detail-box" aria-expanded="false">
+          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
           <div class="filter-more-content">
-            <div class="filter-group" data-group="tag">
+            <div class="pf-row" data-group="tag">
               <div class="filter-title">タグ</div>
               <div class="filter-pills">{{#タグ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タグ一覧}}</div>
             </div>
-            <div class="filter-group" data-group="skilltag">
+            <div class="pf-row" data-group="skilltag">
               <div class="filter-title">スキルタグ</div>
               <div class="filter-pills">{{#スキルタグ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/スキルタグ一覧}}</div>
             </div>
-            <div class="filter-group" data-group="ver">
+            <div class="pf-row" data-group="ver">
               <div class="filter-title">実装バージョン</div>
               <div class="filter-pills">{{#実装バージョン一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/実装バージョン一覧}}</div>
             </div>
@@ -253,7 +333,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 (function(){
   const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), skilltag:new Set(), ver:new Set()};
   const cards=[...document.querySelectorAll('.cards .card-wrap')];
-  const groups=[...document.querySelectorAll('.filter-group[data-group]')];
+  const groups=[...document.querySelectorAll('.filter-group[data-group], .pf-row[data-group]')];
   function apply(){
     cards.forEach(el=>{
       let visible=true;
@@ -292,11 +372,30 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       p.tabIndex=0; p.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); p.click(); }});
     });
   });
+  // 全解除
+  const resetBtn=document.getElementById('filterReset');
+  resetBtn?.addEventListener('click',()=>{
+    Object.values(state).forEach(set=>set.clear());
+    document.querySelectorAll('.pill.active').forEach(p=>p.classList.remove('active'));
+    apply();
+  });
+  // 折りたたみ
+  const toggleBtn=document.getElementById('filterToggle');
+  toggleBtn?.addEventListener('click',()=>{
+    const filters=document.getElementById('filters');
+    const collapsed=filters.classList.toggle('collapsed');
+    toggleBtn.setAttribute('aria-expanded',collapsed?'false':'true');
+    toggleBtn.setAttribute('aria-label',collapsed?'フィルターを展開':'フィルターを折りたたむ');
+    const img=toggleBtn.querySelector('img');
+    if(img){
+      img.src = collapsed ? img.getAttribute('data-collapsed') : img.getAttribute('data-expanded');
+    }
+  });
   // 詳細折りたたみ
   (function(){
-    const box=document.getElementById('moreFilters');
-    const ttl=box?.querySelector('[data-toggle]');
-    ttl?.addEventListener('click',()=>{ const open=box.getAttribute('aria-expanded')==='true'; box.setAttribute('aria-expanded', open?'false':'true'); });
+  const box=document.getElementById('moreFilters');
+  const ttl=box?.querySelector('[data-toggle]');
+  ttl?.addEventListener('click',()=>{ const open=box.getAttribute('aria-expanded')==='true'; box.setAttribute('aria-expanded', open?'false':'true'); });
   })();
 })();
 
@@ -315,15 +414,100 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       test.onerror=()=>{hasAwake=false;};
       test.src=awake;
     }
-    function toAwake(){ if(hasAwake) img.src=awake; }
-    function toNormal(){ img.src=normal; }
-    if(!isTouch){
-      el.addEventListener('mouseenter',toAwake);
-      el.addEventListener('mouseleave',toNormal);
+  function toAwake(){ if(hasAwake){ img.src=awake; } }
+  function toNormal(){ img.src=normal; }
+  if(!isTouch){
+      el.addEventListener('mouseenter',()=>{toAwake(); el.classList.add('active');});
+      el.addEventListener('mouseleave',()=>{toNormal(); el.classList.remove('active');});
     }else{
-      let sx=0, sy=0;
-      el.addEventListener('touchstart',e=>{const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY;},{passive:true});
-      el.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; if(Math.abs(dx)>30 && Math.abs(dx)>Math.abs(dy)){ e.preventDefault(); if(img.src.endsWith(awake)) toNormal(); else toAwake(); }},{passive:false});
+      let sx=0, sy=0; let scrolling=false; let touchMoved=false; const SWIPE_DIST=24; const TAP_DIST=18; const VSCROLL_CANCEL=22;
+      function deactivateOthers(){document.querySelectorAll('.card-wrap.active').forEach(o=>{ if(o!==el) o.classList.remove('active');});}
+      el.addEventListener('touchstart',e=>{
+        const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; scrolling=false; touchMoved=false;
+        deactivateOthers(); el.classList.add('active'); // 先に枠を必ず表示
+      },{passive:true});
+      el.addEventListener('touchmove',e=>{
+        const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; const adx=Math.abs(dx), ady=Math.abs(dy);
+        if(ady>VSCROLL_CANCEL && ady>adx){ // 縦スクロール意図
+          scrolling=true; el.classList.remove('active'); return; }
+        if(adx>6 || ady>6) touchMoved=true; // 微小ブレ除去
+      },{passive:true});
+      el.addEventListener('touchend',e=>{
+        if(scrolling){ return; }
+        const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; const adx=Math.abs(dx), ady=Math.abs(dy);
+        const horizontalSwipe = adx>SWIPE_DIST && adx>ady;
+        const distance = Math.hypot(dx,dy);
+        // スワイプまたはタップのどちらでもアイコンをトグル
+        if(horizontalSwipe || distance<=TAP_DIST){
+          // トグル実行
+          if(img.getAttribute('data-state')==='awake'){
+            toNormal(); img.setAttribute('data-state','normal');
+            // 通常に戻した時は枠も外したい場合は次行コメント解除: el.classList.remove('active');
+          }else{
+            toAwake(); img.setAttribute('data-state','awake');
+          }
+          deactivateOthers(); el.classList.add('active');
+          if(horizontalSwipe) e.preventDefault();
+        }else{
+          // 判定外 (斜め/小さく動いたが距離超過) → 枠だけ外す
+          el.classList.remove('active');
+        }
+      },{passive:false});
+    }
+
+    // 画像サイズ差自動補正: 覚醒と通常で主要ピクセル領域サイズを比較し倍率を算出
+    // 基本方針: 両画像をオフスクリーンに読み込み、透過周囲をトリムした実効領域の対角長 or 面積比でスケール
+    // 処理は最初の bind 時に一度だけ。差が 2% 未満なら無視。
+    if(awake && normal && awake!==normal){
+      Promise.all([normal,awake].map(src=>new Promise(res=>{const im=new Image(); im.crossOrigin='anonymous'; im.onload=()=>res(im); im.onerror=()=>res(null); im.src=src; }))).then(([nImg,aImg])=>{
+        if(!nImg||!aImg) return;
+        function effectiveBox(img){
+          const w=img.naturalWidth, h=img.naturalHeight;
+          // キャンバス作成
+            const canvas=document.createElement('canvas');
+            canvas.width=w; canvas.height=h;
+            const ctx=canvas.getContext('2d');
+            ctx.drawImage(img,0,0);
+            try{
+              const data=ctx.getImageData(0,0,w,h).data;
+              let minX=w, minY=h, maxX=-1, maxY=-1;
+              for(let y=0;y<h;y++){
+                for(let x=0;x<w;x++){
+                  const i=(y*w+x)*4;
+                  if(data[i+3]>10){ // アルファ閾値
+                    if(x<minX) minX=x;
+                    if(y<minY) minY=y;
+                    if(x>maxX) maxX=x;
+                    if(y>maxY) maxY=y;
+                  }
+                }
+              }
+              if(maxX<minX || maxY<minY){
+                return {w, h, boxW:w, boxH:h};
+              }
+              const boxW=maxX-minX+1, boxH=maxY-minY+1;
+              return {w, h, boxW, boxH};
+            }catch(e){
+              return {w, h, boxW:w, boxH:h};
+            }
+        }
+        const nb=effectiveBox(nImg), ab=effectiveBox(aImg);
+        if(!nb||!ab) return;
+        // 面積ベースで倍率逆算: 覚醒が小さく見える -> scale up
+        const nArea = nb.boxW*nb.boxH;
+        const aArea = ab.boxW*ab.boxH;
+        if(nArea>0 && aArea>0){
+          let ratio = Math.sqrt(nArea / aArea); // linear scale
+          if(Math.abs(1-ratio) < 0.02) return; // 2% 未満は無視
+          // 上限/下限制約: 0.85 ～ 1.18 程度
+          ratio = Math.min(1.18, Math.max(0.85, ratio));
+          // 通常画像を基準1とし、覚醒表示時にだけスケール変更したい -> hover で scale 切替
+          // 方法: ベースは通常比率を1にするため、img 要素自体は比率最小側に合わせておく
+          // ここでは覚醒の方が小さい時のみスケールアップ、逆に覚醒大きい場合は通常縮小
+          // 実装簡略: 常に --icon-scale を (n主面積の平方根)/(基準側) に設定し、切替後も統一
+          img.style.setProperty('--icon-scale', ratio.toFixed(3));
+        }
+      });
     }
   }
   document.querySelectorAll('.card-wrap').forEach(bind);

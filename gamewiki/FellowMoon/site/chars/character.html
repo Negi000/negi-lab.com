@@ -42,17 +42,38 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
 
 /* フィルター */
-.filters{display:grid;gap:.5rem;grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(min-width:720px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:1024px){.filters{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.filter-group{background:#101820;border:1px solid #22313c;border-radius:12px;padding:.6rem}
+/* フィルター全体: 4行縦並び */
+.filters{display:flex;flex-direction:column;gap:.85rem;margin-bottom:1rem}
+.filters.collapsed .primary-filter-box,.filters.collapsed #moreFilters{display:none}
+.filters-header{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.filters-title{font-size:.8rem;font-weight:700;letter-spacing:.6px;color:#dbe7f3;line-height:1}
+.filter-actions{display:flex;align-items:center;gap:.55rem}
+.filter-toggle{background:transparent;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;transition:filter .25s,transform .25s;line-height:0}
+.filter-toggle img{height:48px;width:auto;display:block;image-rendering:auto}
+.filter-toggle:hover{filter:brightness(1.1)}
+.filter-toggle:focus{outline:2px solid #3a8bff;outline-offset:2px}
+.filter-reset{background:#272f35;border:1px solid #3a464e;color:#d8e2ea;font-size:.65rem;font-weight:600;padding:.55rem .95rem;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:.2s}
+.filter-reset:hover{background:#303a41}
+.filter-reset:active{transform:translateY(1px)}
+.filter-group{background:rgba(16,24,32,.6);backdrop-filter:blur(2px);border:1px solid #2a353f;border-radius:10px;padding:.7rem .7rem .75rem;position:relative}
+/* 4行を1枠にまとめた専用ボックス */
+.primary-filter-box{background:rgba(16,24,32,.6);backdrop-filter:blur(2px);border:1px solid #2a353f;border-radius:10px;padding:.85rem .95rem .9rem;display:flex;flex-direction:column;gap:1.05rem}
+.primary-filter-box .pf-row{display:flex;flex-direction:column;gap:.4rem}
+.primary-filter-box .pf-row:not(:last-child){padding-bottom:.55rem;border-bottom:1px solid #2a353f}
+.primary-filter-box .pf-row .filter-title:after{display:none}
+/* 既存の filter-group 背景は詳細フィルター専用に */
 .filter-title{font-size:.72rem;color:#cfe2ff;margin:0 0 .35rem;font-weight:700;letter-spacing:.4px}
 .filter-pills{display:flex;flex-wrap:wrap;gap:.35rem}
-.pill{padding:.28rem .6rem;border:1px solid #2b3b47;border-radius:999px;font-size:.68rem;color:#fff;cursor:pointer;user-select:none;background:#17222b;transition:.2s}
-.pill:hover{background:#1d2d36}
-.pill.active{background:#ff8c21;color:#000;border-color:#ff8c21}
+.pill{position:relative;display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .9rem .40rem .9rem;font-size:.7rem;font-weight:600;letter-spacing:.5px;color:#e5e7eb;cursor:pointer;user-select:none;min-width:86px;justify-content:flex-start;
+  background:#1a1f24 url('../assets/icons/button_b.png') center/100% 100% no-repeat;border:1px solid #3a3f44;border-radius:6px;transition:filter .18s,transform .18s,color .18s}
+.pill:hover{filter:brightness(1.08)}
+.pill.active{background:#262d33 url('../assets/icons/button_a.png') center/100% 100% no-repeat;color:#000;border-color:#ffb648;box-shadow:0 0 0 1px #ffb648,0 0 6px 1px #ffcf6a55}
+/* 属性フィルター（統一定義） */
+/* グループタイトルをゲーム風ライン化 */
+.filter-title{position:relative;padding-left:0;font-size:.72rem;font-weight:700;margin:0 0 .45rem;color:#f1f5f9;letter-spacing:.5px}
+.filter-title:after{content:'';position:absolute;left:0;right:0;bottom:-.35rem;height:1px;background:linear-gradient(90deg,#c8cfd6,#444c55 45%,#222a31)}
 .filter-more{grid-column:1/-1}
-.filter-more .filter-group{padding:.2rem .6rem}
+.filter-more .filter-group{padding:.45rem .6rem .6rem}
 .filter-more .filter-title{display:flex;align-items:center;gap:.4rem;cursor:pointer}
 .filter-more .filter-title:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);transition:.3s}
 .filter-more[aria-expanded="true"] .filter-title:after{transform:rotate(-135deg) translateY(2px)}
@@ -68,7 +89,12 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .card .bg{position:absolute;inset:0;background:url('../assets/icons/chrs_bg.png') center/cover no-repeat;opacity:.9;z-index:0}
 .card-wrap .hover{position:absolute;top:-6px;right:-10px;bottom:-10px;left:-7px;background:url('../assets/icons/chars_hover.png') center/100% 100% no-repeat;opacity:0;transition:.2s;pointer-events:none;z-index:0}
 .card-wrap:hover .hover{opacity:1}
-.card .icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:99%;height:auto;image-rendering:auto;z-index:1}
+.card-wrap.active .hover{opacity:1}
+@media(hover:none){
+  /* タッチ環境では擬似:hoverによる重複発光を抑止 */
+  .card-wrap:hover .hover{opacity:0}
+}
+.card .icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(var(--icon-scale,1));width:99%;height:auto;max-width:99%;max-height:99%;object-fit:contain;display:block;image-rendering:auto;z-index:1;transition:transform .18s ease}
 /* レア度の帯を最下部に大きく配置 */
 .card .star{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);width:99%;height:auto;z-index:2;pointer-events:none}
 .card .attr{position:absolute;left:2px;top:-2px;width:40px;height:auto;z-index:3}
@@ -76,6 +102,59 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 @media(max-width:520px){
   .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
 }
+/* ===== 追加オーバーライド: デザイン微調整 ===== */
+/* ボタン全体の高さを少し低く */
+.pill{padding:.34rem .82rem .32rem .82rem;font-size:.68rem}
+.pf-row[data-group="type"] .pill,.pf-row[data-group="faction"] .pill{padding-left:2.75rem}
+.pf-row[data-group="type"] .pill:before,.pf-row[data-group="faction"] .pill:before{left:1.45rem;width:1.15rem;height:1.15rem}
+/* 属性ダイヤ: 枠/影なし。:after -> :before へ置き換えしてラベルを後ろへ */
+.pf-row[data-group="attr"] .pill:after{content:none!important}
+.pf-row[data-group="attr"] .pill{padding-left:1.50rem;position:relative;justify-content:center;text-align:center}
+.pf-row[data-group="attr"] .pill:before{content:"";position:absolute;left:1.5rem;top:50%;width:.56rem;height:.56rem;transform:translateY(-50%) rotate(45deg);background:#666}
+.pf-row[data-group="attr"] .pill[data-value="情"]:before{background:#d96a60}
+.pf-row[data-group="attr"] .pill[data-value="理"]:before{background:#1e8dd3}
+.pf-row[data-group="attr"] .pill[data-value="信"]:before{background:#65c13f}
+.pf-row[data-group="attr"] .pill[data-value="正"]:before{background:#dfb31e}
+.pf-row[data-group="attr"] .pill[data-value="奇"]:before{background:#7f5cbb}
+.pf-row[data-group="attr"] .pill.active:before{box-shadow:0 0 4px 2px rgba(255,207,106,.45)}
+/* タイプ/陣営用アイコン表示スペース */
+.pf-row[data-group="type"] .pill,.pf-row[data-group="faction"] .pill{padding-left:2.2rem;position:relative}
+.pf-row[data-group="faction"] .pill{padding-left:2.55rem}
+/* 特定陣営アイコン位置微調整 */
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"]:before,
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{left:1.15rem}
+/* 超自然セブンのみさらに右余白調整 */
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]{padding-left:2.75rem}
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{left:1.30rem}
+/* レア度 ☆ 数字の位置微調整 */
+.rare-pill{display:inline-flex;gap:.35rem;padding-left:1.2rem;}
+.rare-pill::first-letter{margin-right:.05rem}
+/* 詳細フィルター内ラベル右寄せ */
+#moreFilters .pill{padding-left:1.15rem}
+/* 長めの陣営ラベルだけ少し小さく */
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"],
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]{font-size:.62rem;letter-spacing:.4px}
+.pf-row[data-group="type"] .pill:before,.pf-row[data-group="faction"] .pill:before{content:'';position:absolute;left:1.0rem;top:50%;width:1.2rem;height:1.2rem;transform:translateY(-50%);background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 0 2px #000)}
+.pf-row[data-group="type"] .pill[data-value="強攻型"]:before{background-image:url('../assets/icons/強攻型.png')}
+.pf-row[data-group="type"] .pill[data-value="特攻型"]:before{background-image:url('../assets/icons/特攻型.png')}
+.pf-row[data-group="type"] .pill[data-value="突撃型"]:before{background-image:url('../assets/icons/突撃型.png')}
+.pf-row[data-group="type"] .pill[data-value="補助型"]:before{background-image:url('../assets/icons/補助型.png')}
+.pf-row[data-group="type"] .pill[data-value="防御型"]:before{background-image:url('../assets/icons/防御型.png')}
+.pf-row[data-group="faction"] .pill[data-value="新月"]:before{background-image:url('../assets/icons/新月.png')}
+.pf-row[data-group="faction"] .pill[data-value="超管局"]:before{background-image:url('../assets/icons/超管局.png')}
+.pf-row[data-group="faction"] .pill[data-value="全聯堂"]:before{background-image:url('../assets/icons/全聯堂.png')}
+.pf-row[data-group="faction"] .pill[data-value="燭火教"]:before{background-image:url('../assets/icons/燭火教.png')}
+.pf-row[data-group="faction"] .pill[data-value="光耀会"]:before{background-image:url('../assets/icons/光耀会.png')}
+.pf-row[data-group="faction"] .pill[data-value="和祥義"]:before{background-image:url('../assets/icons/和祥義.png')}
+.pf-row[data-group="faction"] .pill[data-value="単独勢力"]:before{background-image:url('../assets/icons/単独勢力.png')}
+.pf-row[data-group="faction"] .pill[data-value="超自然セブン"]:before{background-image:url('../assets/icons/超自然セブン.png')}
+/* 統合詳細フィルター */
+#moreFilters.detail-box{margin-top:.6rem}
+#moreFilters .detail-toggle{font-size:.7rem;font-weight:700;letter-spacing:.5px;color:#cfe2ff;cursor:pointer;display:flex;align-items:center;gap:.4rem;padding:.25rem 0}
+#moreFilters .detail-toggle:after{content:"";width:8px;height:8px;border-right:2px solid #7fbef5;border-bottom:2px solid #7fbef5;transform:rotate(45deg);transition:.3s;margin-left:4px}
+#moreFilters[aria-expanded="true"] .detail-toggle:after{transform:rotate(-135deg) translateY(2px)}
+#moreFilters .filter-more-content{display:none;margin-top:.55rem}
+#moreFilters[aria-expanded="true"] .filter-more-content{display:block}
 </style>
 </head>
 <body>
@@ -154,45 +233,46 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
   <section class="section">
     <h2>キャラ一覧</h2>
     <div class="filters" id="filters">
-      <div class="filter-group" data-group="rare">
-        <div class="filter-title">レア度</div>
-        <div class="filter-pills">
-          <span class="pill" data-value="3">★3</span><span class="pill" data-value="4">★4</span><span class="pill" data-value="5">★5</span><span class="pill" data-value="6">★6</span>
+      <div class="filters-header">
+        <div class="filters-title">フィルター</div>
+        <div class="filter-actions">
+          <button class="filter-toggle" id="filterToggle" aria-label="フィルターを折りたたむ" aria-expanded="true">
+            <img src="../assets/icons/filter_b.png" alt="フィルター切替" data-expanded="../assets/icons/filter_b.png" data-collapsed="../assets/icons/filter_a.png">
+          </button>
+          <button type="button" class="filter-reset" id="filterReset" aria-label="全フィルター解除">全解除</button>
         </div>
       </div>
-      <div class="filter-group" data-group="attr">
-        <div class="filter-title">属性</div>
-        <div class="filter-pills">
-          <span class="pill" data-value="信">信</span><span class="pill" data-value="奇">奇</span><span class="pill" data-value="情">情</span><span class="pill" data-value="正">正</span><span class="pill" data-value="理">理</span>
+      <div class="primary-filter-box">
+        <div class="pf-row" data-group="rare">
+          <div class="filter-title">レア度</div>
+          <div class="filter-pills"><span class="pill rare-pill" data-value="3">☆3</span><span class="pill rare-pill" data-value="4">☆4</span><span class="pill rare-pill" data-value="5">☆5</span><span class="pill rare-pill" data-value="6">☆6</span></div>
         </div>
-      </div>
-      <div class="filter-group" data-group="type">
-        <div class="filter-title">タイプ</div>
-        <div class="filter-pills">
-          <span class="pill" data-value="強攻型">強攻型</span><span class="pill" data-value="特攻型">特攻型</span><span class="pill" data-value="突撃型">突撃型</span><span class="pill" data-value="補助型">補助型</span><span class="pill" data-value="防御型">防御型</span>
+        <div class="pf-row" data-group="attr">
+          <div class="filter-title">属性</div>
+          <div class="filter-pills"><span class="pill" data-value="情">情</span><span class="pill" data-value="理">理</span><span class="pill" data-value="信">信</span><span class="pill" data-value="正">正</span><span class="pill" data-value="奇">奇</span></div>
         </div>
-      </div>
-      <div class="filter-group" data-group="faction">
-        <div class="filter-title">陣営</div>
-        <div class="filter-pills">
-          <span class="pill" data-value="光耀会">光耀会</span><span class="pill" data-value="全聯堂">全聯堂</span><span class="pill" data-value="単独勢力">単独勢力</span><span class="pill" data-value="和祥義">和祥義</span><span class="pill" data-value="戯火教">戯火教</span><span class="pill" data-value="新月">新月</span><span class="pill" data-value="燭火教">燭火教</span><span class="pill" data-value="独行势力">独行势力</span><span class="pill" data-value="超管局">超管局</span><span class="pill" data-value="超自然セブン">超自然セブン</span>
+        <div class="pf-row" data-group="type">
+          <div class="filter-title">タイプ</div>
+          <div class="filter-pills"><span class="pill" data-value="強攻型">強攻型</span><span class="pill" data-value="特攻型">特攻型</span><span class="pill" data-value="突撃型">突撃型</span><span class="pill" data-value="補助型">補助型</span><span class="pill" data-value="防御型">防御型</span></div>
         </div>
-      </div>
-      <div class="filter-more" id="moreFilters" aria-expanded="false">
-        <div class="filter-group">
-          <div class="filter-title" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
+        <div class="pf-row" data-group="faction">
+          <div class="filter-title">陣営</div>
+          <div class="filter-pills"><span class="pill" data-value="新月">新月</span><span class="pill" data-value="超管局">超管局</span><span class="pill" data-value="全聯堂">全聯堂</span><span class="pill" data-value="燭火教">燭火教</span><span class="pill" data-value="光耀会">光耀会</span><span class="pill" data-value="和祥義">和祥義</span><span class="pill" data-value="単独勢力">単独勢力</span><span class="pill" data-value="超自然セブン">超自然セブン</span></div>
+        </div>
+        <div id="moreFilters" class="detail-box" aria-expanded="false">
+          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
           <div class="filter-more-content">
-            <div class="filter-group" data-group="tag">
+            <div class="pf-row" data-group="tag">
               <div class="filter-title">タグ</div>
               <div class="filter-pills"><span class="pill" data-value="分担">分担</span><span class="pill" data-value="制御">制御</span><span class="pill" data-value="協撃">協撃</span><span class="pill" data-value="反撃">反撃</span><span class="pill" data-value="弱体">弱体</span><span class="pill" data-value="強化">強化</span><span class="pill" data-value="拡散">拡散</span><span class="pill" data-value="援護">援護</span><span class="pill" data-value="治療">治療</span><span class="pill" data-value="消散">消散</span><span class="pill" data-value="火力">火力</span><span class="pill" data-value="爆発">爆発</span><span class="pill" data-value="生存">生存</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="防護">防護</span><span class="pill" data-value="除去">除去</span></div>
             </div>
-            <div class="filter-group" data-group="skilltag">
+            <div class="pf-row" data-group="skilltag">
               <div class="filter-title">スキルタグ</div>
               <div class="filter-pills"><span class="pill" data-value="分担">分担</span><span class="pill" data-value="制御">制御</span><span class="pill" data-value="弱体">弱体</span><span class="pill" data-value="強化">強化</span><span class="pill" data-value="援護">援護</span><span class="pill" data-value="治療">治療</span><span class="pill" data-value="消散">消散</span><span class="pill" data-value="火力">火力</span><span class="pill" data-value="爆発">爆発</span><span class="pill" data-value="生存">生存</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="防護">防護</span></div>
             </div>
-            <div class="filter-group" data-group="ver">
+            <div class="pf-row" data-group="ver">
               <div class="filter-title">実装バージョン</div>
-              <div class="filter-pills"><span class="pill" data-value="1.0.0">1.0.0</span><span class="pill" data-value="1.0.1">1.0.1</span><span class="pill" data-value="1.0.2">1.0.2</span><span class="pill" data-value="1.0.3">1.0.3</span><span class="pill" data-value="1.1.2">1.1.2</span><span class="pill" data-value="1.2.0">1.2.0</span></div>
+              <div class="filter-pills"><span class="pill" data-value="1.0.0">1.0.0</span><span class="pill" data-value="1.0.1">1.0.1</span><span class="pill" data-value="1.0.2">1.0.2</span><span class="pill" data-value="1.0.3">1.0.3</span><span class="pill" data-value="1.1.0">1.1.0</span><span class="pill" data-value="1.1.1">1.1.1</span><span class="pill" data-value="1.1.2">1.1.2</span><span class="pill" data-value="1.2.0">1.2.0</span><span class="pill" data-value="1.2.1">1.2.1</span><span class="pill" data-value="1.2.2">1.2.2</span><span class="pill" data-value="1.3.0">1.3.0</span><span class="pill" data-value="1.3.1">1.3.1</span></div>
             </div>
           </div>
         </div>
@@ -201,24 +281,244 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 
     <div class="cards" id="cards">
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="強攻型" data-faction="単独勢力" data-tags="火力 制御" data-skilltags="制御 強化 火力" data-ver="1.0.0">
-        <a class="card" href="001.html">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.3.1">
+        <a class="card" href="087.html">
           <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/白槿/001-icon.png" data-normal="../../キャラ素材/白槿/001-icon.png" data-awake="../../キャラ素材/白槿/001-icon_awake.png" alt="シロムクゲ アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
-          <div class="name">シロムクゲ</div>
+          <img class="icon" src="../../キャラ素材/纺惑/087-icon.png" data-normal="../../キャラ素材/纺惑/087-icon.png" data-awake="../../キャラ素材/纺惑/087-icon_awake.png" alt="ボウワク アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-特攻型.png" alt="信-特攻型">
+          <div class="name">ボウワク</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="超管局" data-tags="防護 弱体" data-skilltags="弱体 火力 範囲 防護" data-ver="1.0.0">
-        <a class="card" href="002.html">
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="超管局" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.3.1">
+        <a class="card" href="088.html">
           <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/茜/002-icon.png" data-normal="../../キャラ素材/茜/002-icon.png" data-awake="../../キャラ素材/茜/002-icon_awake.png" alt="アカネ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/正-防御型.png" alt="正-防御型">
-          <div class="name">アカネ</div>
+          <img class="icon" src="../../キャラ素材/青形/088-icon.png" data-normal="../../キャラ素材/青形/088-icon.png" data-awake="../../キャラ素材/青形/088-icon_awake.png" alt="セイケイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/奇-突撃型.png" alt="奇-突撃型">
+          <div class="name">セイケイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="光耀会" data-tags="治療 強化 範囲" data-skilltags="強化 治療 火力 範囲" data-ver="1.3.0">
+        <a class="card" href="084.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/雅努斯/084-icon.png" data-normal="../../キャラ素材/雅努斯/084-icon.png" data-awake="../../キャラ素材/雅努斯/084-icon_awake.png" alt="ヤヌス アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/正-補助型.png" alt="正-補助型">
+          <div class="name">ヤヌス</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.3.0">
+        <a class="card" href="085.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/雨人/085-icon.png" data-normal="../../キャラ素材/雨人/085-icon.png" data-awake="../../キャラ素材/雨人/085-icon_awake.png" alt="ウジン アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-強攻型.png" alt="信-強攻型">
+          <div class="name">ウジン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 消散 火力 爆発" data-ver="1.2.2">
+        <a class="card" href="081.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/翠鬓/081-icon.png" data-normal="../../キャラ素材/翠鬓/081-icon.png" data-awake="../../キャラ素材/翠鬓/081-icon_awake.png" alt="スイビン アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-強攻型.png" alt="情-強攻型">
+          <div class="name">スイビン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="防御型" data-faction="単独勢力" data-tags="生存 分担" data-skilltags="分担 弱体 強化 治療 火力 生存 範囲" data-ver="1.2.2">
+        <a class="card" href="082.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/星期一/082-icon.png" data-normal="../../キャラ素材/星期一/082-icon.png" data-awake="../../キャラ素材/星期一/082-icon_awake.png" alt="マンデー アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-防御型.png" alt="信-防御型">
+          <div class="name">マンデー</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="突撃型" data-faction="単独勢力" data-tags="火力 生存 弱体" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.2">
+        <a class="card" href="083.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/阿铋斯/083-icon.png" data-normal="../../キャラ素材/阿铋斯/083-icon.png" data-awake="../../キャラ素材/阿铋斯/083-icon_awake.png" alt="アヌビス アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/正-突撃型.png" alt="正-突撃型">
+          <div class="name">アヌビス</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="単独勢力" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.1">
+        <a class="card" href="080.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/忘湖/080-icon.png" data-normal="../../キャラ素材/忘湖/080-icon.png" data-awake="../../キャラ素材/忘湖/080-icon_awake.png" alt="ボウコ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/奇-突撃型.png" alt="奇-突撃型">
+          <div class="name">ボウコ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.2.0">
+        <a class="card" href="020.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/時曦/020-icon.png" data-normal="../../キャラ素材/時曦/020-icon.png" data-awake="../../キャラ素材/時曦/020-icon_awake.png" alt="トキヒ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-特攻型.png" alt="理-特攻型">
+          <div class="name">トキヒ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="補助型" data-faction="光耀会" data-tags="生存 強化" data-skilltags="強化 生存" data-ver="1.2.0">
+        <a class="card" href="023.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/鹿游/023-icon.png" data-normal="../../キャラ素材/鹿游/023-icon.png" data-awake="../../キャラ素材/鹿游/023-icon_awake.png" alt="ロクユウ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-補助型.png" alt="情-補助型">
+          <div class="name">ロクユウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="弱体 援護 生存" data-skilltags="弱体 強化 援護 火力 生存 範囲" data-ver="1.1.2">
+        <a class="card" href="078.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/巧手/078-icon.png" data-normal="../../キャラ素材/巧手/078-icon.png" data-awake="../../キャラ素材/巧手/078-icon_awake.png" alt="コウシュ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-防御型.png" alt="情-防御型">
+          <div class="name">コウシュ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 弱体" data-skilltags="弱体 強化 火力 範囲" data-ver="1.1.2">
+        <a class="card" href="079.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/饮火/079-icon.png" data-normal="../../キャラ素材/饮火/079-icon.png" data-awake="../../キャラ素材/饮火/079-icon_awake.png" alt="インカ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-特攻型.png" alt="信-特攻型">
+          <div class="name">インカ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="強攻型" data-faction="単独勢力" data-tags="火力 拡散" data-skilltags="強化 火力 範囲" data-ver="1.1.1">
+        <a class="card" href="071.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/叙非/071-icon.png" data-normal="../../キャラ素材/叙非/071-icon.png" data-awake="../../キャラ素材/叙非/071-icon_awake.png" alt="ジョヒ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/正-強攻型.png" alt="正-強攻型">
+          <div class="name">ジョヒ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲 防護" data-ver="1.1.1">
+        <a class="card" href="072.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/不知春/072-icon.png" data-normal="../../キャラ素材/不知春/072-icon.png" data-awake="../../キャラ素材/不知春/072-icon_awake.png" alt="フチシュン アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-強攻型.png" alt="情-強攻型">
+          <div class="name">フチシュン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="補助型" data-faction="燭火教" data-tags="治療 消散 強化" data-skilltags="強化 治療 消散 火力 範囲" data-ver="1.1.1">
+        <a class="card" href="077.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/アレフ/077-icon.png" data-normal="../../キャラ素材/アレフ/077-icon.png" data-awake="../../キャラ素材/アレフ/077-icon_awake.png" alt="アレフ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-補助型.png" alt="理-補助型">
+          <div class="name">アレフ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="突撃型" data-faction="単独勢力" data-tags="弱体 強化" data-skilltags="弱体 強化 火力" data-ver="1.1.0">
+        <a class="card" href="073.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/折鏡/073-icon.png" data-normal="../../キャラ素材/折鏡/073-icon.png" data-awake="../../キャラ素材/折鏡/073-icon_awake.png" alt="セッキョウ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-突撃型.png" alt="信-突撃型">
+          <div class="name">セッキョウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="超管局" data-tags="火力" data-skilltags="弱体 火力 生存" data-ver="1.1.0">
+        <a class="card" href="075.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/默斐/075-icon.png" data-normal="../../キャラ素材/默斐/075-icon.png" data-awake="../../キャラ素材/默斐/075-icon_awake.png" alt="モクヒ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
+          <div class="name">モクヒ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="防御型" data-faction="全聯堂" data-tags="防護 強化" data-skilltags="強化 火力 生存 範囲 防護" data-ver="1.0.3">
+        <a class="card" href="070.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/金桂/070-icon.png" data-normal="../../キャラ素材/金桂/070-icon.png" data-awake="../../キャラ素材/金桂/070-icon_awake.png" alt="キンケイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/奇-防御型.png" alt="奇-防御型">
+          <div class="name">キンケイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 強化" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.2">
+        <a class="card" href="045.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/梧桐/045-icon.png" data-normal="../../キャラ素材/梧桐/045-icon.png" data-awake="../../キャラ素材/梧桐/045-icon_awake.png" alt="アオギリ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/奇-特攻型.png" alt="奇-特攻型">
+          <div class="name">アオギリ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="単独勢力" data-tags="治療 弱体" data-skilltags="弱体 強化 治療 火力 範囲" data-ver="1.0.2">
+        <a class="card" href="068.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/楚衣/068-icon.png" data-normal="../../キャラ素材/楚衣/068-icon.png" data-awake="../../キャラ素材/楚衣/068-icon_awake.png" alt="ソイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/正-補助型.png" alt="正-補助型">
+          <div class="name">ソイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.1">
+        <a class="card" href="065.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/刺灰/065-icon.png" data-normal="../../キャラ素材/刺灰/065-icon.png" data-awake="../../キャラ素材/刺灰/065-icon_awake.png" alt="シカイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
+          <div class="name">シカイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="強化 火力 生存" data-ver="1.0.1">
+        <a class="card" href="066.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/荔倾/066-icon.png" data-normal="../../キャラ素材/荔倾/066-icon.png" data-awake="../../キャラ素材/荔倾/066-icon_awake.png" alt="レイケイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
+          <div class="name">レイケイ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -230,6 +530,171 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star6.png" alt="★6">
           <img class="attr" src="../assets/icons/信-突撃型.png" alt="信-突撃型">
           <div class="name">ジョウテン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲" data-skilltags="弱体 火力 範囲" data-ver="1.0.0">
+        <a class="card" href="017.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/恒沙/017-icon.png" data-normal="../../キャラ素材/恒沙/017-icon.png" data-awake="../../キャラ素材/恒沙/017-icon_awake.png" alt="ゴウシャ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
+          <div class="name">ゴウシャ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 拡散" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+        <a class="card" href="021.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/龍井/021-icon.png" data-normal="../../キャラ素材/龍井/021-icon.png" data-awake="../../キャラ素材/龍井/021-icon_awake.png" alt="リュウセイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-強攻型.png" alt="信-強攻型">
+          <div class="name">リュウセイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="防御型" data-faction="超管局" data-tags="援護 生存 弱体" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
+        <a class="card" href="024.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/巫/024-icon.png" data-normal="../../キャラ素材/巫/024-icon.png" data-awake="../../キャラ素材/巫/024-icon_awake.png" alt="カンナギ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
+          <div class="name">カンナギ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+        <a class="card" href="027.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/月白/027-icon.png" data-normal="../../キャラ素材/月白/027-icon.png" data-awake="../../キャラ素材/月白/027-icon_awake.png" alt="ゲツハク アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-補助型.png" alt="信-補助型">
+          <div class="name">ゲツハク</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="超管局" data-tags="火力 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
+        <a class="card" href="039.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/カラス/039-icon.png" data-normal="../../キャラ素材/カラス/039-icon.png" data-awake="../../キャラ素材/カラス/039-icon_awake.png" alt="カラス アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-強攻型.png" alt="情-強攻型">
+          <div class="name">カラス</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 反撃" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
+        <a class="card" href="046.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/伝影/046-icon.png" data-normal="../../キャラ素材/伝影/046-icon.png" data-awake="../../キャラ素材/伝影/046-icon_awake.png" alt="デンエイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/情-突撃型.png" alt="情-突撃型">
+          <div class="name">デンエイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="燭火教" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+        <a class="card" href="051.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/音希/051-icon.png" data-normal="../../キャラ素材/音希/051-icon.png" data-awake="../../キャラ素材/音希/051-icon_awake.png" alt="オンキ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
+          <div class="name">オンキ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
+        <a class="card" href="063.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/碎銀子/063-icon.png" data-normal="../../キャラ素材/碎銀子/063-icon.png" data-awake="../../キャラ素材/碎銀子/063-icon_awake.png" alt="サイギンシ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-特攻型.png" alt="理-特攻型">
+          <div class="name">サイギンシ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
+        <a class="card" href="064.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/琢明/064-icon.png" data-normal="../../キャラ素材/琢明/064-icon.png" data-awake="../../キャラ素材/琢明/064-icon_awake.png" alt="タクメイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/信-特攻型.png" alt="信-特攻型">
+          <div class="name">タクメイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="単独勢力" data-tags="範囲 弱体" data-skilltags="弱体 火力 生存 範囲" data-ver="">
+        <a class="card" href="061.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/結/061-icon.png" data-normal="../../キャラ素材/結/061-icon.png" data-awake="../../キャラ素材/結/061-icon_awake.png" alt="ユイ アイコン">
+          <img class="star" src="../assets/icons/star6.png" alt="★6">
+          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
+          <div class="name">ユイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="補助型" data-faction="新月" data-tags="治療 制御" data-skilltags="制御 治療 火力 範囲" data-ver="1.1.2">
+        <a class="card" href="014.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/楠乔/014-icon.png" data-normal="../../キャラ素材/楠乔/014-icon.png" data-awake="../../キャラ素材/楠乔/014-icon_awake.png" alt="ナンキョウ アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/奇-補助型.png" alt="奇-補助型">
+          <div class="name">ナンキョウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲 弱体" data-skilltags="弱体 火力 範囲" data-ver="1.1.0">
+        <a class="card" href="074.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/刻舟/074-icon.png" data-normal="../../キャラ素材/刻舟/074-icon.png" data-awake="../../キャラ素材/刻舟/074-icon_awake.png" alt="コクシュウ アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/正-特攻型.png" alt="正-特攻型">
+          <div class="name">コクシュウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.2">
+        <a class="card" href="069.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/刑身/069-icon.png" data-normal="../../キャラ素材/刑身/069-icon.png" data-awake="../../キャラ素材/刑身/069-icon_awake.png" alt="ケイシン アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/情-防御型.png" alt="情-防御型">
+          <div class="name">ケイシン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力" data-ver="1.0.1">
+        <a class="card" href="067.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/家泉/067-icon.png" data-normal="../../キャラ素材/家泉/067-icon.png" data-awake="../../キャラ素材/家泉/067-icon_awake.png" alt="カセン アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/情-補助型.png" alt="情-補助型">
+          <div class="name">カセン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="強攻型" data-faction="単独勢力" data-tags="火力 制御" data-skilltags="制御 強化 火力" data-ver="1.0.0">
+        <a class="card" href="001.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/白槿/001-icon.png" data-normal="../../キャラ素材/白槿/001-icon.png" data-awake="../../キャラ素材/白槿/001-icon_awake.png" alt="シロムクゲ アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
+          <div class="name">シロムクゲ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -267,39 +732,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="信" data-type="補助型" data-faction="新月" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
-        <a class="card" href="007.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/星涼/007-icon.png" data-normal="../../キャラ素材/星涼/007-icon.png" data-awake="../../キャラ素材/星涼/007-icon_awake.png" alt="シンリョウ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/信-補助型.png" alt="信-補助型">
-          <div class="name">シンリョウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="防御型" data-faction="新月" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存" data-ver="1.0.0">
-        <a class="card" href="008.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/忠元/008-icon.png" data-normal="../../キャラ素材/忠元/008-icon.png" data-awake="../../キャラ素材/忠元/008-icon_awake.png" alt="チュウゲン アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
-          <div class="name">チュウゲン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="強攻型" data-faction="新月" data-tags="火力 生存" data-skilltags="弱体 火力 生存" data-ver="1.0.0">
-        <a class="card" href="009.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/鳴霜/009-icon.png" data-normal="../../キャラ素材/鳴霜/009-icon.png" data-awake="../../キャラ素材/鳴霜/009-icon_awake.png" alt="ミンソウ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
-          <div class="name">ミンソウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="5" data-attr="情" data-type="強攻型" data-faction="新月" data-tags="火力 範囲 強化" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="011.html">
           <div class="bg" aria-hidden="true"></div>
@@ -307,50 +739,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star5.png" alt="★5">
           <img class="attr" src="../assets/icons/情-強攻型.png" alt="情-強攻型">
           <div class="name">フライス</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="特攻型" data-faction="全聯堂" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
-        <a class="card" href="012.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/火青/012-icon.png" data-normal="../../キャラ素材/火青/012-icon.png" data-awake="../../キャラ素材/火青/012-icon_awake.png" alt="カセイ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
-          <div class="name">カセイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
-        <a class="card" href="013.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/緑雪/013-icon.png" data-normal="../../キャラ素材/緑雪/013-icon.png" data-awake="../../キャラ素材/緑雪/013-icon_awake.png" alt="リョクセツ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/理-補助型.png" alt="理-補助型">
-          <div class="name">リョクセツ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="補助型" data-faction="新月" data-tags="治療 制御" data-skilltags="制御 治療 火力 範囲" data-ver="1.1.2">
-        <a class="card" href="014.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/楠乔/014-icon.png" data-normal="../../キャラ素材/楠乔/014-icon.png" data-awake="../../キャラ素材/楠乔/014-icon_awake.png" alt="ナンキョウ アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/奇-補助型.png" alt="奇-補助型">
-          <div class="name">ナンキョウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="強攻型" data-faction="新月" data-tags="火力 強化 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
-        <a class="card" href="015.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/春遅/015-icon.png" data-normal="../../キャラ素材/春遅/015-icon.png" data-awake="../../キャラ素材/春遅/015-icon_awake.png" alt="ハルチ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/正-強攻型.png" alt="正-強攻型">
-          <div class="name">ハルチ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -366,28 +754,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲" data-skilltags="弱体 火力 範囲" data-ver="1.0.0">
-        <a class="card" href="017.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/恒沙/017-icon.png" data-normal="../../キャラ素材/恒沙/017-icon.png" data-awake="../../キャラ素材/恒沙/017-icon_awake.png" alt="ゴウシャ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
-          <div class="name">ゴウシャ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="全聯堂" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
-        <a class="card" href="018.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/玉露/018-icon.png" data-normal="../../キャラ素材/玉露/018-icon.png" data-awake="../../キャラ素材/玉露/018-icon_awake.png" alt="ギョクロ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/正-防御型.png" alt="正-防御型">
-          <div class="name">ギョクロ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="5" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 制御 範囲" data-skilltags="制御 強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="019.html">
           <div class="bg" aria-hidden="true"></div>
@@ -399,28 +765,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.2.0">
-        <a class="card" href="020.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/時曦/020-icon.png" data-normal="../../キャラ素材/時曦/020-icon.png" data-awake="../../キャラ素材/時曦/020-icon_awake.png" alt="トキヒ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-特攻型.png" alt="理-特攻型">
-          <div class="name">トキヒ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 拡散" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
-        <a class="card" href="021.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/龍井/021-icon.png" data-normal="../../キャラ素材/龍井/021-icon.png" data-awake="../../キャラ素材/龍井/021-icon_awake.png" alt="リュウセイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/信-強攻型.png" alt="信-強攻型">
-          <div class="name">リュウセイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="単独勢力" data-tags="防護" data-skilltags="弱体 火力 防護" data-ver="1.0.0">
         <a class="card" href="022.html">
           <div class="bg" aria-hidden="true"></div>
@@ -428,28 +772,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star5.png" alt="★5">
           <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
           <div class="name">モクメン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="補助型" data-faction="光耀会" data-tags="生存 強化" data-skilltags="強化 生存" data-ver="1.2.0">
-        <a class="card" href="023.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/鹿游/023-icon.png" data-normal="../../キャラ素材/鹿游/023-icon.png" data-awake="../../キャラ素材/鹿游/023-icon_awake.png" alt="ロクユウ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/情-補助型.png" alt="情-補助型">
-          <div class="name">ロクユウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="防御型" data-faction="超管局" data-tags="援護 生存 弱体" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
-        <a class="card" href="024.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/巫/024-icon.png" data-normal="../../キャラ素材/巫/024-icon.png" data-awake="../../キャラ素材/巫/024-icon_awake.png" alt="カンナギ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
-          <div class="name">カンナギ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -476,17 +798,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
-        <a class="card" href="027.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/月白/027-icon.png" data-normal="../../キャラ素材/月白/027-icon.png" data-awake="../../キャラ素材/月白/027-icon_awake.png" alt="ゲツハク アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/信-補助型.png" alt="信-補助型">
-          <div class="name">ゲツハク</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="5" data-attr="奇" data-type="特攻型" data-faction="超管局" data-tags="火力 弱体 範囲" data-skilltags="弱体 強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="028.html">
           <div class="bg" aria-hidden="true"></div>
@@ -494,28 +805,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star5.png" alt="★5">
           <img class="attr" src="../assets/icons/奇-特攻型.png" alt="奇-特攻型">
           <div class="name">キキ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="防御型" data-faction="和祥義" data-tags="分担" data-skilltags="分担 強化 火力 生存 範囲" data-ver="1.0.0">
-        <a class="card" href="029.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/ダイヤ/029-icon.png" data-normal="../../キャラ素材/ダイヤ/029-icon.png" data-awake="../../キャラ素材/ダイヤ/029-icon_awake.png" alt="ダイヤ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/情-防御型.png" alt="情-防御型">
-          <div class="name">ダイヤ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="4" data-attr="信" data-type="強攻型" data-faction="和祥義" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
-        <a class="card" href="030.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/ハート/030-icon.png" data-normal="../../キャラ素材/ハート/030-icon.png" data-awake="../../キャラ素材/ハート/030-icon_awake.png" alt="ハート アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/信-強攻型.png" alt="信-強攻型">
-          <div class="name">ハート</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -575,28 +864,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="突撃型" data-faction="新月" data-tags="火力 弱体 範囲" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
-        <a class="card" href="036.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/スズメ/036-icon.png" data-normal="../../キャラ素材/スズメ/036-icon.png" data-awake="../../キャラ素材/スズメ/036-icon_awake.png" alt="スズメ アイコン">
-          <img class="star" src="../assets/icons/star4.png" alt="★4">
-          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
-          <div class="name">スズメ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="超管局" data-tags="火力 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
-        <a class="card" href="039.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/カラス/039-icon.png" data-normal="../../キャラ素材/カラス/039-icon.png" data-awake="../../キャラ素材/カラス/039-icon_awake.png" alt="カラス アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/情-強攻型.png" alt="情-強攻型">
-          <div class="name">カラス</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="5" data-attr="信" data-type="防御型" data-faction="全聯堂" data-tags="援護 生存" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="042.html">
           <div class="bg" aria-hidden="true"></div>
@@ -619,6 +886,160 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="燭火教" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
+        <a class="card" href="052.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/弥砂/052-icon.png" data-normal="../../キャラ素材/弥砂/052-icon.png" data-awake="../../キャラ素材/弥砂/052-icon_awake.png" alt="ヤサ アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
+          <div class="name">ヤサ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
+        <a class="card" href="054.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/天星/054-icon.png" data-normal="../../キャラ素材/天星/054-icon.png" data-awake="../../キャラ素材/天星/054-icon_awake.png" alt="テンセイ アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/正-特攻型.png" alt="正-特攻型">
+          <div class="name">テンセイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
+        <a class="card" href="062.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/石燕/062-icon.png" data-normal="../../キャラ素材/石燕/062-icon.png" data-awake="../../キャラ素材/石燕/062-icon_awake.png" alt="セキエン アイコン">
+          <img class="star" src="../assets/icons/star5.png" alt="★5">
+          <img class="attr" src="../assets/icons/理-補助型.png" alt="理-補助型">
+          <div class="name">セキエン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="超管局" data-tags="防護 弱体" data-skilltags="弱体 火力 範囲 防護" data-ver="1.0.0">
+        <a class="card" href="002.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/茜/002-icon.png" data-normal="../../キャラ素材/茜/002-icon.png" data-awake="../../キャラ素材/茜/002-icon_awake.png" alt="アカネ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/正-防御型.png" alt="正-防御型">
+          <div class="name">アカネ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="信" data-type="補助型" data-faction="新月" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+        <a class="card" href="007.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/星涼/007-icon.png" data-normal="../../キャラ素材/星涼/007-icon.png" data-awake="../../キャラ素材/星涼/007-icon_awake.png" alt="シンリョウ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/信-補助型.png" alt="信-補助型">
+          <div class="name">シンリョウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="防御型" data-faction="新月" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存" data-ver="1.0.0">
+        <a class="card" href="008.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/忠元/008-icon.png" data-normal="../../キャラ素材/忠元/008-icon.png" data-awake="../../キャラ素材/忠元/008-icon_awake.png" alt="チュウゲン アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
+          <div class="name">チュウゲン</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="強攻型" data-faction="新月" data-tags="火力 生存" data-skilltags="弱体 火力 生存" data-ver="1.0.0">
+        <a class="card" href="009.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/鳴霜/009-icon.png" data-normal="../../キャラ素材/鳴霜/009-icon.png" data-awake="../../キャラ素材/鳴霜/009-icon_awake.png" alt="ミンソウ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
+          <div class="name">ミンソウ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="特攻型" data-faction="全聯堂" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+        <a class="card" href="012.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/火青/012-icon.png" data-normal="../../キャラ素材/火青/012-icon.png" data-awake="../../キャラ素材/火青/012-icon_awake.png" alt="カセイ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
+          <div class="name">カセイ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+        <a class="card" href="013.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/緑雪/013-icon.png" data-normal="../../キャラ素材/緑雪/013-icon.png" data-awake="../../キャラ素材/緑雪/013-icon_awake.png" alt="リョクセツ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/理-補助型.png" alt="理-補助型">
+          <div class="name">リョクセツ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="強攻型" data-faction="新月" data-tags="火力 強化 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+        <a class="card" href="015.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/春遅/015-icon.png" data-normal="../../キャラ素材/春遅/015-icon.png" data-awake="../../キャラ素材/春遅/015-icon_awake.png" alt="ハルチ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/正-強攻型.png" alt="正-強攻型">
+          <div class="name">ハルチ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="全聯堂" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
+        <a class="card" href="018.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/玉露/018-icon.png" data-normal="../../キャラ素材/玉露/018-icon.png" data-awake="../../キャラ素材/玉露/018-icon_awake.png" alt="ギョクロ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/正-防御型.png" alt="正-防御型">
+          <div class="name">ギョクロ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="防御型" data-faction="和祥義" data-tags="分担" data-skilltags="分担 強化 火力 生存 範囲" data-ver="1.0.0">
+        <a class="card" href="029.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/ダイヤ/029-icon.png" data-normal="../../キャラ素材/ダイヤ/029-icon.png" data-awake="../../キャラ素材/ダイヤ/029-icon_awake.png" alt="ダイヤ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/情-防御型.png" alt="情-防御型">
+          <div class="name">ダイヤ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="信" data-type="強攻型" data-faction="和祥義" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
+        <a class="card" href="030.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/ハート/030-icon.png" data-normal="../../キャラ素材/ハート/030-icon.png" data-awake="../../キャラ素材/ハート/030-icon_awake.png" alt="ハート アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/信-強攻型.png" alt="信-強攻型">
+          <div class="name">ハート</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="突撃型" data-faction="新月" data-tags="火力 弱体 範囲" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
+        <a class="card" href="036.html">
+          <div class="bg" aria-hidden="true"></div>
+          <img class="icon" src="../../キャラ素材/スズメ/036-icon.png" data-normal="../../キャラ素材/スズメ/036-icon.png" data-awake="../../キャラ素材/スズメ/036-icon_awake.png" alt="スズメ アイコン">
+          <img class="star" src="../assets/icons/star4.png" alt="★4">
+          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
+          <div class="name">スズメ</div>
+        </a>
+        <div class="hover" aria-hidden="true"></div>
+      </div>
+      
       <div class="card-wrap" data-rare="4" data-attr="情" data-type="補助型" data-faction="全聯堂" data-tags="強化" data-skilltags="強化 火力 生存" data-ver="1.0.0">
         <a class="card" href="044.html">
           <div class="bg" aria-hidden="true"></div>
@@ -626,28 +1047,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star4.png" alt="★4">
           <img class="attr" src="../assets/icons/情-補助型.png" alt="情-補助型">
           <div class="name">ヨルキ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 強化" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.2">
-        <a class="card" href="045.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/梧桐/045-icon.png" data-normal="../../キャラ素材/梧桐/045-icon.png" data-awake="../../キャラ素材/梧桐/045-icon_awake.png" alt="アオギリ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/奇-特攻型.png" alt="奇-特攻型">
-          <div class="name">アオギリ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 反撃" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
-        <a class="card" href="046.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/伝影/046-icon.png" data-normal="../../キャラ素材/伝影/046-icon.png" data-awake="../../キャラ素材/伝影/046-icon_awake.png" alt="デンエイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/情-突撃型.png" alt="情-突撃型">
-          <div class="name">デンエイ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -685,28 +1084,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="燭火教" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
-        <a class="card" href="051.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/音希/051-icon.png" data-normal="../../キャラ素材/音希/051-icon.png" data-awake="../../キャラ素材/音希/051-icon_awake.png" alt="オンキ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-強攻型.png" alt="理-強攻型">
-          <div class="name">オンキ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="燭火教" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
-        <a class="card" href="052.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/弥砂/052-icon.png" data-normal="../../キャラ素材/弥砂/052-icon.png" data-awake="../../キャラ素材/弥砂/052-icon_awake.png" alt="ヤサ アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/理-防御型.png" alt="理-防御型">
-          <div class="name">ヤサ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
       <div class="card-wrap" data-rare="3" data-attr="奇" data-type="補助型" data-faction="単独勢力" data-tags="治療 除去" data-skilltags="強化 治療 消散 火力" data-ver="1.0.0">
         <a class="card" href="053.html">
           <div class="bg" aria-hidden="true"></div>
@@ -714,17 +1091,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <img class="star" src="../assets/icons/star3.png" alt="★3">
           <img class="attr" src="../assets/icons/奇-補助型.png" alt="奇-補助型">
           <div class="name">タチバナ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
-        <a class="card" href="054.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/天星/054-icon.png" data-normal="../../キャラ素材/天星/054-icon.png" data-awake="../../キャラ素材/天星/054-icon_awake.png" alt="テンセイ アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/正-特攻型.png" alt="正-特攻型">
-          <div class="name">テンセイ</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -795,303 +1161,6 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="単独勢力" data-tags="範囲 弱体" data-skilltags="弱体 火力 生存 範囲" data-ver="">
-        <a class="card" href="061.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/結/061-icon.png" data-normal="../../キャラ素材/結/061-icon.png" data-awake="../../キャラ素材/結/061-icon_awake.png" alt="ユイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
-          <div class="name">ユイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
-        <a class="card" href="062.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/石燕/062-icon.png" data-normal="../../キャラ素材/石燕/062-icon.png" data-awake="../../キャラ素材/石燕/062-icon_awake.png" alt="セキエン アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/理-補助型.png" alt="理-補助型">
-          <div class="name">セキエン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
-        <a class="card" href="063.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/碎銀子/063-icon.png" data-normal="../../キャラ素材/碎銀子/063-icon.png" data-awake="../../キャラ素材/碎銀子/063-icon_awake.png" alt="サイギンシ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-特攻型.png" alt="理-特攻型">
-          <div class="name">サイギンシ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
-        <a class="card" href="064.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/琢明/064-icon.png" data-normal="../../キャラ素材/琢明/064-icon.png" data-awake="../../キャラ素材/琢明/064-icon_awake.png" alt="タクメイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/信-特攻型.png" alt="信-特攻型">
-          <div class="name">タクメイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.1">
-        <a class="card" href="065.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/刺灰/065-icon.png" data-normal="../../キャラ素材/刺灰/065-icon.png" data-awake="../../キャラ素材/刺灰/065-icon_awake.png" alt="シカイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/情-特攻型.png" alt="情-特攻型">
-          <div class="name">シカイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="強化 火力 生存" data-ver="1.0.1">
-        <a class="card" href="066.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/荔倾/066-icon.png" data-normal="../../キャラ素材/荔倾/066-icon.png" data-awake="../../キャラ素材/荔倾/066-icon_awake.png" alt="レイケイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/理-突撃型.png" alt="理-突撃型">
-          <div class="name">レイケイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力" data-ver="1.0.1">
-        <a class="card" href="067.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/家泉/067-icon.png" data-normal="../../キャラ素材/家泉/067-icon.png" data-awake="../../キャラ素材/家泉/067-icon_awake.png" alt="カセン アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/情-補助型.png" alt="情-補助型">
-          <div class="name">カセン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="単独勢力" data-tags="治療 弱体" data-skilltags="弱体 強化 治療 火力 範囲" data-ver="1.0.2">
-        <a class="card" href="068.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/楚衣/068-icon.png" data-normal="../../キャラ素材/楚衣/068-icon.png" data-awake="../../キャラ素材/楚衣/068-icon_awake.png" alt="ソイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/正-補助型.png" alt="正-補助型">
-          <div class="name">ソイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.2">
-        <a class="card" href="069.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/刑身/069-icon.png" data-normal="../../キャラ素材/刑身/069-icon.png" data-awake="../../キャラ素材/刑身/069-icon_awake.png" alt="ケイシン アイコン">
-          <img class="star" src="../assets/icons/star5.png" alt="★5">
-          <img class="attr" src="../assets/icons/情-防御型.png" alt="情-防御型">
-          <div class="name">ケイシン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="防御型" data-faction="全聯堂" data-tags="防護 強化" data-skilltags="強化 火力 生存 範囲 防護" data-ver="1.0.3">
-        <a class="card" href="070.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/金桂/070-icon.png" data-normal="../../キャラ素材/金桂/070-icon.png" data-awake="../../キャラ素材/金桂/070-icon_awake.png" alt="キンケイ アイコン">
-          <img class="star" src="../assets/icons/star6.png" alt="★6">
-          <img class="attr" src="../assets/icons/奇-防御型.png" alt="奇-防御型">
-          <div class="name">キンケイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="火力 拡散" data-skilltags="強化 火力 範囲" data-ver="">
-        <a class="card" href="071.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/叙非/071-icon.png" data-normal="../../キャラ素材/叙非/071-icon.png" data-awake="../../キャラ素材/叙非/071-icon_awake.png" alt="ジョヒ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">ジョヒ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲 防護" data-ver="">
-        <a class="card" href="072.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/不知春/072-icon.png" data-normal="../../キャラ素材/不知春/072-icon.png" data-awake="../../キャラ素材/不知春/072-icon_awake.png" alt="フチシュン アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">フチシュン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="弱体 強化" data-skilltags="弱体 強化 火力" data-ver="">
-        <a class="card" href="073.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/折鏡/073-icon.png" data-normal="../../キャラ素材/折鏡/073-icon.png" data-awake="../../キャラ素材/折鏡/073-icon_awake.png" alt="セッキョウ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">セッキョウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="超管局" data-tags="火力 範囲 弱体" data-skilltags="弱体 火力 範囲" data-ver="">
-        <a class="card" href="074.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/刻舟/074-icon.png" data-normal="../../キャラ素材/刻舟/074-icon.png" data-awake="../../キャラ素材/刻舟/074-icon_awake.png" alt="コクシュウ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">コクシュウ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="超管局" data-tags="火力" data-skilltags="弱体 火力 生存" data-ver="">
-        <a class="card" href="075.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/默斐/075-icon.png" data-normal="../../キャラ素材/默斐/075-icon.png" data-awake="../../キャラ素材/默斐/075-icon_awake.png" alt="モクヒ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">モクヒ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="戯火教" data-tags="治療 消散 強化" data-skilltags="強化 治療 消散 火力 範囲" data-ver="">
-        <a class="card" href="077.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/アレフ/077-icon.png" data-normal="../../キャラ素材/アレフ/077-icon.png" data-awake="../../キャラ素材/アレフ/077-icon_awake.png" alt="アレフ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">アレフ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="弱体 援護 生存" data-skilltags="弱体 強化 援護 火力 生存 範囲" data-ver="">
-        <a class="card" href="078.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/巧手/078-icon.png" data-normal="../../キャラ素材/巧手/078-icon.png" data-awake="../../キャラ素材/巧手/078-icon_awake.png" alt="コウシュ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">コウシュ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="光耀会" data-tags="火力 弱体" data-skilltags="弱体 強化 火力 範囲" data-ver="">
-        <a class="card" href="079.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/饮火/079-icon.png" data-normal="../../キャラ素材/饮火/079-icon.png" data-awake="../../キャラ素材/饮火/079-icon_awake.png" alt="インカ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">インカ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="">
-        <a class="card" href="080.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/忘湖/080-icon.png" data-normal="../../キャラ素材/忘湖/080-icon.png" data-awake="../../キャラ素材/忘湖/080-icon_awake.png" alt="ボウコ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">ボウコ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 消散 火力 爆発" data-ver="">
-        <a class="card" href="081.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/翠鬓/081-icon.png" data-normal="../../キャラ素材/翠鬓/081-icon.png" data-awake="../../キャラ素材/翠鬓/081-icon_awake.png" alt="スイビン アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">スイビン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="生存 分担" data-skilltags="分担 弱体 強化 治療 火力 生存 範囲" data-ver="">
-        <a class="card" href="082.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/星期一/082-icon.png" data-normal="../../キャラ素材/星期一/082-icon.png" data-awake="../../キャラ素材/星期一/082-icon_awake.png" alt="マンデー アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">マンデー</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="火力 生存 弱体" data-skilltags="弱体 強化 火力 生存" data-ver="">
-        <a class="card" href="083.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/阿铋斯/083-icon.png" data-normal="../../キャラ素材/阿铋斯/083-icon.png" data-awake="../../キャラ素材/阿铋斯/083-icon_awake.png" alt="アヌビス アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">アヌビス</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="光耀会" data-tags="治療 強化 範囲" data-skilltags="強化 治療 火力 範囲" data-ver="">
-        <a class="card" href="084.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/雅努斯/084-icon.png" data-normal="../../キャラ素材/雅努斯/084-icon.png" data-awake="../../キャラ素材/雅努斯/084-icon_awake.png" alt="ヤヌス アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">ヤヌス</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="">
-        <a class="card" href="085.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/雨人/085-icon.png" data-normal="../../キャラ素材/雨人/085-icon.png" data-awake="../../キャラ素材/雨人/085-icon_awake.png" alt="ウジン アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">ウジン</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="" data-tags="" data-skilltags="" data-ver="">
-        <a class="card" href="086.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="" data-normal="" data-awake="" alt=" アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name"></div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="独行势力" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="">
-        <a class="card" href="087.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/纺惑/087-icon.png" data-normal="../../キャラ素材/纺惑/087-icon.png" data-awake="../../キャラ素材/纺惑/087-icon_awake.png" alt="ボウワク アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">ボウワク</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
-      <div class="card-wrap" data-rare="" data-attr="" data-type="" data-faction="超管局" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="">
-        <a class="card" href="088.html">
-          <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/青形/088-icon.png" data-normal="../../キャラ素材/青形/088-icon.png" data-awake="../../キャラ素材/青形/088-icon_awake.png" alt="セイケイ アイコン">
-          <img class="star" src="" alt="★">
-          <img class="attr" src="" alt="-">
-          <div class="name">セイケイ</div>
-        </a>
-        <div class="hover" aria-hidden="true"></div>
-      </div>
-      
     </div>
   </section>
 </main>
@@ -1133,7 +1202,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 (function(){
   const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), skilltag:new Set(), ver:new Set()};
   const cards=[...document.querySelectorAll('.cards .card-wrap')];
-  const groups=[...document.querySelectorAll('.filter-group[data-group]')];
+  const groups=[...document.querySelectorAll('.filter-group[data-group], .pf-row[data-group]')];
   function apply(){
     cards.forEach(el=>{
       let visible=true;
@@ -1172,11 +1241,30 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       p.tabIndex=0; p.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); p.click(); }});
     });
   });
+  // 全解除
+  const resetBtn=document.getElementById('filterReset');
+  resetBtn?.addEventListener('click',()=>{
+    Object.values(state).forEach(set=>set.clear());
+    document.querySelectorAll('.pill.active').forEach(p=>p.classList.remove('active'));
+    apply();
+  });
+  // 折りたたみ
+  const toggleBtn=document.getElementById('filterToggle');
+  toggleBtn?.addEventListener('click',()=>{
+    const filters=document.getElementById('filters');
+    const collapsed=filters.classList.toggle('collapsed');
+    toggleBtn.setAttribute('aria-expanded',collapsed?'false':'true');
+    toggleBtn.setAttribute('aria-label',collapsed?'フィルターを展開':'フィルターを折りたたむ');
+    const img=toggleBtn.querySelector('img');
+    if(img){
+      img.src = collapsed ? img.getAttribute('data-collapsed') : img.getAttribute('data-expanded');
+    }
+  });
   // 詳細折りたたみ
   (function(){
-    const box=document.getElementById('moreFilters');
-    const ttl=box?.querySelector('[data-toggle]');
-    ttl?.addEventListener('click',()=>{ const open=box.getAttribute('aria-expanded')==='true'; box.setAttribute('aria-expanded', open?'false':'true'); });
+  const box=document.getElementById('moreFilters');
+  const ttl=box?.querySelector('[data-toggle]');
+  ttl?.addEventListener('click',()=>{ const open=box.getAttribute('aria-expanded')==='true'; box.setAttribute('aria-expanded', open?'false':'true'); });
   })();
 })();
 
@@ -1195,15 +1283,100 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       test.onerror=()=>{hasAwake=false;};
       test.src=awake;
     }
-    function toAwake(){ if(hasAwake) img.src=awake; }
-    function toNormal(){ img.src=normal; }
-    if(!isTouch){
-      el.addEventListener('mouseenter',toAwake);
-      el.addEventListener('mouseleave',toNormal);
+  function toAwake(){ if(hasAwake){ img.src=awake; } }
+  function toNormal(){ img.src=normal; }
+  if(!isTouch){
+      el.addEventListener('mouseenter',()=>{toAwake(); el.classList.add('active');});
+      el.addEventListener('mouseleave',()=>{toNormal(); el.classList.remove('active');});
     }else{
-      let sx=0, sy=0;
-      el.addEventListener('touchstart',e=>{const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY;},{passive:true});
-      el.addEventListener('touchend',e=>{const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; if(Math.abs(dx)>30 && Math.abs(dx)>Math.abs(dy)){ e.preventDefault(); if(img.src.endsWith(awake)) toNormal(); else toAwake(); }},{passive:false});
+      let sx=0, sy=0; let scrolling=false; let touchMoved=false; const SWIPE_DIST=24; const TAP_DIST=18; const VSCROLL_CANCEL=22;
+      function deactivateOthers(){document.querySelectorAll('.card-wrap.active').forEach(o=>{ if(o!==el) o.classList.remove('active');});}
+      el.addEventListener('touchstart',e=>{
+        const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; scrolling=false; touchMoved=false;
+        deactivateOthers(); el.classList.add('active'); // 先に枠を必ず表示
+      },{passive:true});
+      el.addEventListener('touchmove',e=>{
+        const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; const adx=Math.abs(dx), ady=Math.abs(dy);
+        if(ady>VSCROLL_CANCEL && ady>adx){ // 縦スクロール意図
+          scrolling=true; el.classList.remove('active'); return; }
+        if(adx>6 || ady>6) touchMoved=true; // 微小ブレ除去
+      },{passive:true});
+      el.addEventListener('touchend',e=>{
+        if(scrolling){ return; }
+        const t=e.changedTouches[0]; const dx=t.clientX-sx; const dy=t.clientY-sy; const adx=Math.abs(dx), ady=Math.abs(dy);
+        const horizontalSwipe = adx>SWIPE_DIST && adx>ady;
+        const distance = Math.hypot(dx,dy);
+        // スワイプまたはタップのどちらでもアイコンをトグル
+        if(horizontalSwipe || distance<=TAP_DIST){
+          // トグル実行
+          if(img.getAttribute('data-state')==='awake'){
+            toNormal(); img.setAttribute('data-state','normal');
+            // 通常に戻した時は枠も外したい場合は次行コメント解除: el.classList.remove('active');
+          }else{
+            toAwake(); img.setAttribute('data-state','awake');
+          }
+          deactivateOthers(); el.classList.add('active');
+          if(horizontalSwipe) e.preventDefault();
+        }else{
+          // 判定外 (斜め/小さく動いたが距離超過) → 枠だけ外す
+          el.classList.remove('active');
+        }
+      },{passive:false});
+    }
+
+    // 画像サイズ差自動補正: 覚醒と通常で主要ピクセル領域サイズを比較し倍率を算出
+    // 基本方針: 両画像をオフスクリーンに読み込み、透過周囲をトリムした実効領域の対角長 or 面積比でスケール
+    // 処理は最初の bind 時に一度だけ。差が 2% 未満なら無視。
+    if(awake && normal && awake!==normal){
+      Promise.all([normal,awake].map(src=>new Promise(res=>{const im=new Image(); im.crossOrigin='anonymous'; im.onload=()=>res(im); im.onerror=()=>res(null); im.src=src; }))).then(([nImg,aImg])=>{
+        if(!nImg||!aImg) return;
+        function effectiveBox(img){
+          const w=img.naturalWidth, h=img.naturalHeight;
+          // キャンバス作成
+            const canvas=document.createElement('canvas');
+            canvas.width=w; canvas.height=h;
+            const ctx=canvas.getContext('2d');
+            ctx.drawImage(img,0,0);
+            try{
+              const data=ctx.getImageData(0,0,w,h).data;
+              let minX=w, minY=h, maxX=-1, maxY=-1;
+              for(let y=0;y<h;y++){
+                for(let x=0;x<w;x++){
+                  const i=(y*w+x)*4;
+                  if(data[i+3]>10){ // アルファ閾値
+                    if(x<minX) minX=x;
+                    if(y<minY) minY=y;
+                    if(x>maxX) maxX=x;
+                    if(y>maxY) maxY=y;
+                  }
+                }
+              }
+              if(maxX<minX || maxY<minY){
+                return {w, h, boxW:w, boxH:h};
+              }
+              const boxW=maxX-minX+1, boxH=maxY-minY+1;
+              return {w, h, boxW, boxH};
+            }catch(e){
+              return {w, h, boxW:w, boxH:h};
+            }
+        }
+        const nb=effectiveBox(nImg), ab=effectiveBox(aImg);
+        if(!nb||!ab) return;
+        // 面積ベースで倍率逆算: 覚醒が小さく見える -> scale up
+        const nArea = nb.boxW*nb.boxH;
+        const aArea = ab.boxW*ab.boxH;
+        if(nArea>0 && aArea>0){
+          let ratio = Math.sqrt(nArea / aArea); // linear scale
+          if(Math.abs(1-ratio) < 0.02) return; // 2% 未満は無視
+          // 上限/下限制約: 0.85 ～ 1.18 程度
+          ratio = Math.min(1.18, Math.max(0.85, ratio));
+          // 通常画像を基準1とし、覚醒表示時にだけスケール変更したい -> hover で scale 切替
+          // 方法: ベースは通常比率を1にするため、img 要素自体は比率最小側に合わせておく
+          // ここでは覚醒の方が小さい時のみスケールアップ、逆に覚醒大きい場合は通常縮小
+          // 実装簡略: 常に --icon-scale を (n主面積の平方根)/(基準側) に設定し、切替後も統一
+          img.style.setProperty('--icon-scale', ratio.toFixed(3));
+        }
+      });
     }
   }
   document.querySelectorAll('.card-wrap').forEach(bind);
