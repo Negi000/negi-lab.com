@@ -382,7 +382,7 @@ def build():
                 return sorted(vals, key=lambda v: int(str(v)))
             except Exception:
                 return sorted(vals)
-        # 一覧表示順: レア度(数値) 降順 → 実装バージョン 降順（数値抽出してタプル比較）
+        # 一覧表示順: レア度(数値) 降順 → 実装バージョン 降順（数値抽出してタプル比較）→ ID 降順
         def parse_version(v):
             if not v:
                 return (0,)
@@ -395,11 +395,25 @@ def build():
                 return int(str(d.get('レア度') or 0))
             except Exception:
                 return 0
+        def id_int(d):
+            cid = d.get('ID') or ''
+            # 数字を抽出（複数あれば最後を採用）。なければ数値化を試行。
+            nums = re.findall(r'\d+', str(cid))
+            if nums:
+                try:
+                    return int(nums[-1])
+                except Exception:
+                    return 0
+            try:
+                return int(str(cid))
+            except Exception:
+                return 0
         sorted_list_items = sorted(
             list_items,
             key=lambda d: (
                 rarity_int(d),
-                parse_version(d.get('実装バージョン'))
+                parse_version(d.get('実装バージョン')),
+                id_int(d)
             ),
             reverse=True
         )
