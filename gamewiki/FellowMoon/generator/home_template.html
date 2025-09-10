@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" data-no-dynamic-ads>
+<html lang="ja" data-wiki-content="true">
 <head>
 <meta charset="UTF-8" />
 <title>新月同行 Wiki | Fellow Moon（新月同行）非公式データベースと攻略</title>
@@ -118,6 +118,17 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 .display-indicators{display:flex;flex-wrap:wrap;gap:4px;margin-top:.5rem}
 .display-indicators span{width:8px;height:8px;border-radius:50%;background:#2a3b46;transition:.3s}
 .display-indicators span.active{background:#63b7ff;box-shadow:0 0 4px #63b7ff}
+/* Rakutenウィジェット レスポンシブ */
+#rakuten-motion-widget{
+  width:300px;
+  height:250px;
+}
+@media (min-width:480px){
+  #rakuten-motion-widget{
+    width:468px;
+    height:160px;
+  }
+}
 </style>
 </head>
 <body>
@@ -191,11 +202,22 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
       </div>
     </div>
   </section>
+  
+  <!-- TOP広告 -->
+  <div class="ad-block" data-ad-empty="true">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6234639838467127"
+         data-ad-slot="4837564489"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
   <!-- ミドル広告をタイトル直下ではなくディスプレイの上に明示配置 -->
   <section class="section" id="ads-middle">
     <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
       <div class="ad-label">スポンサーリンク</div>
-  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  <ins class="adsbygoogle" data-ad-client="ca-pub-6234639838467127" data-ad-slot="9898319477" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
     </aside>
   </section>
 
@@ -269,11 +291,25 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
     </div>
   </section>
 
+  <!-- Rakutenアフィリエイト楽天モーションウィジェット -->
+  <div style="margin: 20px auto; text-align: center; background: #182028; padding: 15px; border-radius: 8px;">
+    <iframe id="rakuten-motion-widget" 
+            src="https://hb.afl.rakuten.co.jp/hgc/g00q0724.2bo11c45.g00q0724.2bo12179/?pc=https%3A%2F%2Fgrp03.id.rakuten.co.jp%2Frms%2Fnid%2Flogin%3FredirectURL%3Dhttps%253A%252F%252Fgrp03.id.rakuten.co.jp%252Frms%252Fnid%252Fvc%253F__event%253Dlogin%2526service_id%253D13%2526return_url%253D%25252Fhome&m=https%3A%2F%2Fgrp03.id.rakuten.co.jp%2Frms%2Fnid%2Fvc%3F__event%3Dlogin%26service_id%3D13%26return_url%3D%252Fhome" 
+            style="border: none; overflow: hidden; background: transparent;" 
+            scrolling="no" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            width="300" 
+            height="250">
+    </iframe>
+  </div>
+
   <!-- Bottom Ad -->
   <section class="section">
     <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
       <div class="ad-label">スポンサーリンク</div>
-  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  <ins class="adsbygoogle" data-ad-client="ca-pub-6234639838467127" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
     </aside>
   </section>
 </main>
@@ -291,24 +327,6 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
   <div class="mt-2">&copy; 2025 negi-lab.com</div>
 </footer>
 <script>
-// 広告未表示時のスポンサー枠縮小
-(function(){
-  function watchAdBlock(block){
-    if(!block) return;
-    block.setAttribute('data-ad-empty','true');
-    var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
-    var ins = block.querySelector('ins.adsbygoogle');
-    if(!ins) return;
-    var filled = false;
-    var obs = new MutationObserver(function(){
-      if(filled) return;
-      if(ins.querySelector('iframe')){ filled=true; block.setAttribute('data-ad-empty','false'); if(section){ section.setAttribute('data-ad-empty','false'); } obs.disconnect(); }
-    });
-    obs.observe(ins,{childList:true,subtree:true});
-  // 遅延表示に対応: filled になるまで観測を継続
-  }
-  document.querySelectorAll('.ad-block').forEach(watchAdBlock);
-})();
 // 埋め込みデータ (ビルド時に置換想定)
 window.__CHAR_BIRTHDAYS__ = JSON.parse('{{キャラ誕生日JSON}}');
 window.__ATTR_STATS__ = JSON.parse('{{属性統計JSON}}');
@@ -500,6 +518,6 @@ window.__DISPLAYS__ = JSON.parse('{{ディスプレイJSON}}');
   })();
 })();
 </script>
+<script src="/js/ads-consent-loader.js" defer></script>
 </body>
-<script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-wiki-content="true">
 <head>
 <meta charset="UTF-8" />
 <title>レイケイ - キャラ詳細 - 新月同行 Wiki</title>
@@ -99,6 +99,15 @@ img.skill-icon[src=""]{display:none}
 .ad-block[data-ad-empty="true"] .ad-label{margin:0}
 .ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
 .section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
+/* 楽天ウィジェット用スタイル */
+.ad-block div[style*="text-align:center"] {
+  overflow: hidden;
+  border-radius: 8px;
+}
+.ad-block iframe[src*="rakuten"] {
+  border-radius: 8px;
+  max-width: 100%;
+}
 </style>
 </head>
 <body>
@@ -172,6 +181,13 @@ img.skill-icon[src=""]{display:none}
       </div>
     </div>
   </section>
+  
+  <!-- Top Ad -->
+  <aside class="ad-block" aria-label="スポンサーリンク トップ広告">
+    <div class="ad-label">スポンサーリンク</div>
+    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  </aside>
+  
   <!-- キャラ詳細コンテンツ -->
   <section class="char-detail">
     <div style="margin-bottom:1rem">
@@ -331,6 +347,13 @@ img.skill-icon[src=""]{display:none}
       
     </div>
   </section>
+  
+  
+  <!-- Middle Ad -->
+  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
+    <div class="ad-label">スポンサーリンク</div>
+    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="9898319477" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  </aside>
   
   <section class="card" style="margin-top:1.2rem">
     <h2>スキル</h2>
@@ -533,6 +556,31 @@ img.skill-icon[src=""]{display:none}
     </div>
   </section>
   
+  <!-- 楽天モーションウィジェット -->
+  <aside class="ad-block" aria-label="楽天アフィリエイト">
+    <div class="ad-label">おすすめ商品</div>
+    <div style="text-align:center;overflow:hidden;">
+      <script type="text/javascript">
+        // レスポンシブ対応: 画面幅に応じてサイズ調整
+        var isMobile = window.innerWidth < 768;
+        rakuten_design = "slide";
+        rakuten_affiliateId = "4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01";
+        rakuten_items = "ctsmatch";
+        rakuten_genreId = "0";
+        rakuten_size = isMobile ? "300x250" : "468x160";
+        rakuten_target = "_blank";
+        rakuten_theme = "gray";
+        rakuten_border = "off";
+        rakuten_auto_mode = "on";
+        rakuten_genre_title = "off";
+        rakuten_recommend = "on";
+        rakuten_ts = "1757465595269";
+      </script>
+      <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+    </div>
+  </aside>
+  
+  
   <section class="card" style="margin-top:1.2rem">
     <h2>較正情報</h2>
     <table style="width:100%;border-collapse:collapse;font-size:.75rem">
@@ -546,7 +594,7 @@ img.skill-icon[src=""]{display:none}
   <!-- Bottom Ad -->
   <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
     <div class="ad-label">スポンサーリンク</div>
-    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
   </aside>
 </main>
   <div class="lightbox-overlay" id="lightbox">
@@ -558,26 +606,6 @@ img.skill-icon[src=""]{display:none}
   </div>
 </body>
 <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
-<script>
-// 広告未表示時のスポンサー枠縮小
-(function(){
-  function watchAdBlock(block){
-    if(!block) return;
-    block.setAttribute('data-ad-empty','true');
-    var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
-    var ins = block.querySelector('ins.adsbygoogle');
-    if(!ins) return;
-    var filled = false;
-    var obs = new MutationObserver(function(){
-      if(filled) return;
-      if(ins.querySelector('iframe')){ filled=true; block.setAttribute('data-ad-empty','false'); if(section){ section.setAttribute('data-ad-empty','false'); } obs.disconnect(); }
-    });
-    obs.observe(ins,{childList:true,subtree:true});
-  // 遅延表示に対応: filled になるまで観測を継続
-  }
-  document.querySelectorAll('.ad-block').forEach(watchAdBlock);
-})();
-</script>
 <script>
 // 画像タブ切替
 document.querySelectorAll('[data-tabs]').forEach(block=>{
