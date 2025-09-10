@@ -23,7 +23,7 @@
   // Per-page flag to disable dynamic auto insertion while keeping static slots
   var DYNAMIC_ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-no-dynamic-ads'))
     || !!document.querySelector('meta[name="ads-dynamic"][content="off"]');
-  var DEBUG = true; // デバッグ情報を有効化 try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
+  var DEBUG = false; // パフォーマンス最適化：デバッグ無効化 try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
   if (DEBUG) console.log('[ads-consent-loader] init', {host: host, ENV_OK: ENV_OK, CONSENT_OK: CONSENT_OK});
 
   function loadScript(src, attrs){
@@ -117,21 +117,30 @@
     try {
       var observer = new MutationObserver(function(mutations){
         if (!window.__adsLoaded) return;
+        // パフォーマンス最適化：バッチ処理とrequestAnimationFrame使用
+        var nodesToCheck = [];
         mutations.forEach(function(m){
           for (var i=0; i<m.addedNodes.length; i++){
             var node = m.addedNodes[i];
             if (node.nodeType !== 1) continue;
             if (node.matches && node.matches('ins.adsbygoogle')) {
-              pushAdSlot(node);
+              nodesToCheck.push(node);
             } else if (node.querySelectorAll) {
               var found = node.querySelectorAll('ins.adsbygoogle');
-              for (var j=0; j<found.length; j++) pushAdSlot(found[j]);
+              for (var j=0; j<found.length; j++) nodesToCheck.push(found[j]);
             }
           }
         });
-        observeLazySlots();
+        if (nodesToCheck.length > 0) {
+          requestAnimationFrame(function() {
+            nodesToCheck.forEach(function(node) { pushAdSlot(node); });
+            observeLazySlots();
+          });
+        }
       });
-      observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+      // パフォーマンス最適化：監視範囲を制限
+      var observeTarget = document.querySelector('main') || document.body || document.documentElement;
+      observer.observe(observeTarget, { childList: true, subtree: true });
       window.__adSlotObserverStarted = true;
       if (DEBUG) console.log('[ads-consent-loader] MutationObserver started');
     } catch(e){ if (DEBUG) console.warn('Observer init failed', e); }
@@ -470,7 +479,7 @@
                                     !adElement.closest('.ad-block, aside');
               
               if (isInMainContent) {
-                // メインコンテンツ内での縦長自動広告を検出・削除
+                // パフォーマンス最適化：遅延時間短縮
                 setTimeout(() => {
                   const height = adElement.offsetHeight;
                   const width = adElement.offsetWidth;
@@ -679,7 +688,7 @@
       if (hasAdSlot && !ADS_DISABLED) {
         initAds();
         // Wiki専用の高度な広告監視を初期化
-        setTimeout(initAdvancedAdMonitoring, 1000);
+        setTimeout(initAdvancedAdMonitoring, 500); // パフォーマンス最適化：1000ms→500ms
       }
       else if (!ADS_DISABLED) startAdSlotObserver();
       ensureBaseAdCSS();
