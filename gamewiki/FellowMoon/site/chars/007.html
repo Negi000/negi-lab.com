@@ -265,10 +265,8 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   <!-- Top Ad (PC/Mobile 切替) -->
   <aside class="ad-block" aria-label="スポンサーリンク トップ広告">
     <div class="ad-label">スポンサーリンク</div>
-    <!-- PC -->
-    <ins class="adsbygoogle ad-pc" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
-    <!-- Mobile -->
-    <ins class="adsbygoogle ad-sp" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="6430083800" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
+    <ins class="adsbygoogle ad-pc" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
+    <ins class="adsbygoogle ad-sp" data-ad-client="ca-pub-1835873052239386" data-ad-slot="6430083800" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
   </aside>
   
   <!-- キャラ詳細コンテンツ -->
@@ -649,12 +647,11 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   <!-- Bottom Ad (PC/Mobile 切替) -->
   <aside class="ad-block" aria-label="スポンサーリンク ボトム広告">
     <div class="ad-label">スポンサーリンク</div>
-    <!-- PC -->
-    <ins class="adsbygoogle ad-pc" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
-    <!-- Mobile -->
-    <ins class="adsbygoogle ad-sp" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="8916646342" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
+    <ins class="adsbygoogle ad-pc" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
+    <ins class="adsbygoogle ad-sp" data-ad-client="ca-pub-1835873052239386" data-ad-slot="8916646342" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
   </aside>
 </main>
+  <!-- Lightbox Overlay (footer より上に配置) -->
   <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-stage" id="lightboxStage">
       <img id="lightboxImg" src="" alt="preview">
@@ -662,8 +659,10 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
       <div class="lightbox-hint">ピンチ操作 / ドラッグ で拡大移動 / ダブルタップでリセット</div>
     </div>
   </div>
-</body>
-<script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+  <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
+  <script>
+// （既存スクリプトはそのまま下で読み込まれます）
+  </script>
 <script>
 // 画像タブ切替
 document.querySelectorAll('[data-tabs]').forEach(block=>{
@@ -832,16 +831,17 @@ lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
 })();
 </script>
 <!-- Footer -->
-<footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
-  <nav class="mb-3">
-    <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-    <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-    <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-    <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-    <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
-  </nav>
-  <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-  <div class="mt-2">&copy; 2025 negi-lab.com</div>
-</footer>
+  <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
+    <nav class="mb-3">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    </nav>
+    <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
+    <div class="mt-2">&copy; 2025 negi-lab.com</div>
+  </footer>
+  <!-- 余分な </body> を削除し単一に統一 -->
 </body>
 </html>
