@@ -258,16 +258,20 @@
       wrapper.className = 'max-w-3xl mx-auto my-10 dynamic-ad-container';
       wrapper.setAttribute('aria-label','スポンサー広告');
       wrapper.setAttribute('data-dynamic-ad', 'true');
+      wrapper.setAttribute('data-main-content-ad', 'true'); // メインコンテンツ内広告マーク
       var label = document.createElement('div');
       label.className = 'text-xs text-gray-400 mb-1';
       label.textContent = 'スポンサーリンク';
       var ins = document.createElement('ins');
       ins.className = 'adsbygoogle';
       ins.style.display = 'block';
-      ins.style.minHeight = '150px'; // 250px→150pxに縮小（縦長制限）
-      ins.style.maxHeight = '300px'; // 最大高さ制限を追加
+      ins.style.minHeight = '100px'; // 250px→100pxに縮小
+      ins.style.maxHeight = '200px'; // 最大高さ200px制限
+      ins.style.height = '200px'; // 固定高さで縦長防止
+      ins.style.overflow = 'hidden'; // はみ出し防止
       ins.setAttribute('data-ad-client','ca-pub-1835873052239386');
       ins.setAttribute('data-ad-format','rectangle'); // auto→rectangleに変更（縦長防止）
+      ins.setAttribute('data-ad-layout',''); // レスポンシブレイアウト無効化
       ins.setAttribute('data-full-width-responsive','true');
       ins.setAttribute('data-ad-lazy','1');
       // 縦長広告の明示的な禁止
@@ -394,6 +398,148 @@
   // Wiki専用：高度な広告状態監視システム
   function initAdvancedAdMonitoring(){
     if (DEBUG) console.log('[ads-consent-loader] initializing advanced ad monitoring for wiki');
+    
+    // 💡 Wiki コンテンツ保護を強化
+    const protectedSelectors = [
+      '[data-wiki-content="true"]',
+      '[data-no-dynamic-ads="true"]',
+      '.skill-section',
+      '.skill',
+      '.skill-bonus',
+      '.gate-section',
+      '.character-section',
+      '.rom-section',
+      '.card[data-wiki-content]',
+      'section.card',
+      '.content-section'
+    ];
+    
+    protectedSelectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        // 厳格な保護属性を設定
+        element.setAttribute('data-no-auto-ads', 'true');
+        element.setAttribute('data-ad-block', 'true');
+        element.style.setProperty('--google-ads-blocked', 'true');
+        
+        // 既存の広告要素を除去
+        const existingAds = element.querySelectorAll('.google-auto-placed, ins[class*="adsbygoogle"]');
+        existingAds.forEach(ad => {
+          ad.style.display = 'none';
+          ad.style.visibility = 'hidden';
+          ad.style.height = '0';
+          ad.style.margin = '0';
+          ad.style.padding = '0';
+          ad.remove();
+        });
+      });
+    });
+
+    // 💡 縦長広告対策：メインコンテンツエリアでの縦長広告完全禁止
+    const adObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            const ads = node.querySelectorAll ? node.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed') : [];
+            if (ads.length || (node.classList && (node.classList.contains('google-auto-placed') || node.tagName === 'INS'))) {
+              const adElement = ads.length ? ads[0] : node;
+              
+              // 保護されたエリア内の広告は完全削除
+              const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
+              if (parentProtected) {
+                adElement.remove();
+                return;
+              }
+              
+              // サイドレーン判定：aside要素またはサイドバー系クラス内の広告は制限しない
+              const isInSidebar = adElement.closest('aside, .sidebar, .side-panel, [class*="sidebar"], [class*="side"]');
+              if (isInSidebar) {
+                if (DEBUG) console.log('[ads-consent-loader] サイドレーン内の広告をスキップ');
+                return;
+              }
+              
+              // メインコンテンツエリア判定
+              const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout, [data-wiki-content]') && 
+                                    !adElement.closest('.ad-block, aside');
+              
+              if (isInMainContent) {
+                // メインコンテンツ内での縦長広告を検出・削除
+                setTimeout(() => {
+                  const height = adElement.offsetHeight;
+                  const width = adElement.offsetWidth;
+                  
+                  // 縦長広告判定：高さ200px以上、または高さが幅の1.5倍以上
+                  const isTallAd = height > 200 || (height > width * 1.5);
+                  
+                  if (isTallAd) {
+                    adElement.remove();
+                    console.warn('メインコンテンツ内の縦長広告を削除しました:', {
+                      height: height + 'px',
+                      width: width + 'px',
+                      location: 'main content'
+                    });
+                  }
+                }, 1000);
+              } else {
+                // サイドレーン以外の一般的な場所での高さ制限
+                adElement.style.maxHeight = '600px';
+                adElement.style.overflow = 'hidden';
+                
+                // 異常に高い広告を検出・制限
+                setTimeout(() => {
+                  const height = adElement.offsetHeight;
+                  if (height > 800) {
+                    adElement.style.height = '400px';
+                    adElement.style.maxHeight = '400px';
+                    console.warn('異常に高い広告を制限しました:', height, 'px → 400px');
+                  }
+                }, 1000);
+              }
+            }
+          }
+        });
+      });
+    });
+    
+    adObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // 既存の広告もチェック（初期化時）
+    setTimeout(() => {
+      const existingAds = document.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed');
+      existingAds.forEach(adElement => {
+        // 保護されたエリア内の広告は削除
+        const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
+        if (parentProtected) {
+          adElement.remove();
+          return;
+        }
+        
+        // サイドレーン判定
+        const isInSidebar = adElement.closest('aside, .sidebar, .side-panel, [class*="sidebar"], [class*="side"]');
+        if (isInSidebar) return;
+        
+        // メインコンテンツエリア判定
+        const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout') && 
+                              !adElement.closest('.ad-block, aside');
+        
+        if (isInMainContent) {
+          const height = adElement.offsetHeight;
+          const width = adElement.offsetWidth;
+          const isTallAd = height > 200 || (height > width * 1.5);
+          
+          if (isTallAd) {
+            adElement.remove();
+            console.warn('初期化時にメインコンテンツ内の縦長広告を削除:', {
+              height: height + 'px',
+              width: width + 'px'
+            });
+          }
+        }
+      });
+    }, 2000); // 2秒後に既存広告をチェック
     
     // 広告ブロック要素の状態を監視する関数
     function watchAdBlock(block){
