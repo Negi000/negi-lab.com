@@ -1,4 +1,27 @@
 (function(){
+  /* ======================================================
+   * ads-consent-loader.js (optimized incremental refactor)
+   * 改善ポイント追加版 (2025-09-10)
+   *  - 設定オブジェクト化 / GA 遅延ロード
+   *  - スクロールリスナー節約 (rAF + 1度だけ実行)
+   *  - 動的広告キャップをページテキスト長/画面幅で調整
+   *  - IntersectionObserver の rootMargin 調整 (過剰プリロード抑制)
+   *  - 高負荷 MutationObserver の不要実行回避 (Wiki判定)
+   *  - 既存挙動は後方互換を維持
+   * ====================================================== */
+
+  var CONFIG = {
+    lazyRootMargin: '220px 0px 220px 0px', // 300px→220px: 早すぎるプリロードを軽減
+    dynamicTimeThresholdMs: 3000,          // 既存値(コメント)を保持
+    dynamicScrollDepth: 0.15,
+    dynamicMaxDesktop: 12,
+    dynamicMaxMobile: 8,
+    baseDesktopCap: 8,
+    baseMobileCap: 5,                      // (旧) mobile:8 を段階増加へ
+    textLengthPerExtraSlot: 1400,          // 文字数に応じて追加スロット許容
+    gaIdleDelay: 3000,                     // 初期操作が無い場合の GA フォールバック遅延
+    enableAdaptiveCap: true
+  };
   // Simple consent + environment gated loader for GA & AdSense
   // Allow production domain + localhost for development preview.
   var host = (typeof location !== 'undefined') ? location.hostname : '';
@@ -49,7 +72,7 @@
   function initGA(){
     if (window.__gaLoaded) return;
     window.__gaLoaded = true;
-  if (DEBUG) console.log('[ads-consent-loader] loading GA');
+    if (DEBUG) console.log('[ads-consent-loader] loading GA');
     loadScript('https://www.googletagmanager.com/gtag/js?id=G-N9X3N0RY0H')
       .then(function(){
         window.dataLayer = window.dataLayer || [];
@@ -57,14 +80,25 @@
         window.gtag = gtag;
         gtag('js', new Date());
         gtag('config', 'G-N9X3N0RY0H');
-        // Flush queued events
         if (GA_EVENT_QUEUE.length){
           GA_EVENT_QUEUE.forEach(function(item){ try { gtag('event', item.event, item.params || {}); } catch(_e){} });
           GA_EVENT_QUEUE.length = 0;
         }
-  if (DEBUG) console.log('[ads-consent-loader] GA ready');
+        if (DEBUG) console.log('[ads-consent-loader] GA ready');
       })
       .catch(function(e){ console.warn('GA load failed', e); });
+  }
+
+  // 初期ユーザ操作または遅延で GA をロード (Largest Contentful Paint への影響低減)
+  function scheduleGALoad(){
+    if(!ENV_OK) return; // 不要環境では実行しない
+    if(window.__gaScheduled) return; window.__gaScheduled = true;
+    var fired = false;
+    function fire(){ if(fired) return; fired=true; initGA(); cleanup(); }
+    function cleanup(){ ['scroll','keydown','pointerdown','click','touchstart','visibilitychange'].forEach(function(ev){ window.removeEventListener(ev,firePassive,true); }); }
+    function firePassive(){ fire(); }
+    ['scroll','keydown','pointerdown','click','touchstart','visibilitychange'].forEach(function(ev){ window.addEventListener(ev, firePassive, {passive:true, capture:true}); });
+    setTimeout(fire, CONFIG.gaIdleDelay); // 3秒フォールバック
   }
 
   // Push a single ad slot safely (avoid duplicate push)
@@ -161,7 +195,7 @@
       return;
     }
     if (!window.__lazyAdObserver) {
-      window.__lazyAdObserver = new IntersectionObserver(function(entries){
+  window.__lazyAdObserver = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (entry.isIntersecting) {
             var el = entry.target;
@@ -174,7 +208,7 @@
             });
           }
         });
-      }, { root: null, rootMargin: '300px 0px 300px 0px', threshold: 0.01 }); // マージン120px→300px、閾値0.1→0.01に緩和
+  }, { root: null, rootMargin: CONFIG.lazyRootMargin, threshold: 0.01 });
     }
     var lazySlots = document.querySelectorAll('ins.adsbygoogle[data-ad-lazy="1"]:not([data-ads-pushed="1"])');
     for (var k=0;k<lazySlots.length;k++) {
@@ -186,9 +220,24 @@
 
   // Ad cap logic - 収益最適化：上限を大幅に緩和
   var currentAdPushCount = 0;
+  function computeAdaptiveCap(){
+    if(!CONFIG.enableAdaptiveCap) return (window.innerWidth||1024) < 768 ? CONFIG.dynamicMaxMobile : CONFIG.dynamicMaxDesktop;
+    var w = window.innerWidth||1024;
+    var textLen = window.__pageTextLen || 0;
+    var base = w < 768 ? CONFIG.baseMobileCap : CONFIG.baseDesktopCap;
+    if(textLen>0){
+      var extra = Math.floor(textLen / CONFIG.textLengthPerExtraSlot); // 1400文字ごとに+1
+      base += extra;
+    }
+    var maxCap = w < 768 ? CONFIG.dynamicMaxMobile : CONFIG.dynamicMaxDesktop;
+    if(base > maxCap) base = maxCap;
+    if(base < 1) base = 1;
+    return base;
+  }
   function getAdCap(){
-    var w = (window.innerWidth || 1024);
-    return w < 768 ? 8 : 12; // mobile: 3→8, desktop: 4→12に増加
+    if(typeof window.__dynamicAdCap === 'number') return window.__dynamicAdCap;
+    window.__dynamicAdCap = computeAdaptiveCap();
+    return window.__dynamicAdCap;
   }
   function incrementAdPushCount(){ currentAdPushCount++; if (adCapReached()) track('ad_cap_reached', {count: currentAdPushCount, variant: window.__adsVariant || 'U'}); }
   function adCapReached(){ return currentAdPushCount >= getAdCap(); }
@@ -311,7 +360,8 @@
       return true;
     }
 
-    function tryInsert(){
+  var scrollTicking = false; // rAF節約
+  function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
       
       // 設置広告が既にある場合の制限強化（楽天アフィリエイト除外）
@@ -354,8 +404,12 @@
         window.removeEventListener('scroll', onScroll, { passive: true });
       }
     }
-    function onScroll(){ tryInsert(); }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    function onScroll(){
+      if(scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(function(){ scrollTicking=false; tryInsert(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true, capture: false });
   // fallback timer (一度のみ)
   setTimeout(tryInsert, timeThreshold + 1000);
     document.addEventListener('adsReady', tryInsert, { once: false });
@@ -367,8 +421,63 @@
     if (document.getElementById('ad-slot-base-style')) return;
     var st = document.createElement('style');
     st.id = 'ad-slot-base-style';
-    st.textContent = '.adsbygoogle{contain:content;} .ad-slot{display:block;min-height:250px;}';
+    st.textContent = '.adsbygoogle{contain:content;} .ad-slot{display:block;min-height:250px;}' +
+      '.ad-block[data-ad-empty="true"]{position:relative}' +
+      '.ad-skeleton{animation:pulse 1.4s ease-in-out infinite; background:linear-gradient(90deg,#1a2530,#1f2e3a 50%,#1a2530);background-size:200% 100%;border:1px solid #23313c;border-radius:10px;height:110px;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#5d7486;letter-spacing:.5px}' +
+      '@keyframes pulse{0%{background-position:0 0}100%{background-position:-200% 0}}' +
+      '.rakuten-widget-placeholder{min-height:120px;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#678;background:#142028;border:1px dashed #2c3a46;border-radius:10px;position:relative;overflow:hidden}' +
+      '.rakuten-widget-placeholder[data-loading="1"]::after{content:"Loading…";opacity:.8}' +
+      '.rakuten-widget-placeholder[data-loaded="1"]{min-height:0;border:0;background:transparent;padding:0}';
     document.head.appendChild(st);
+  }
+
+  /* =============================
+     Rakuten widget lazy loader
+     ============================= */
+  function initRakutenLazy(){
+    var nodes = document.querySelectorAll('.rakuten-widget-placeholder[data-rakuten-widget]');
+    if(!nodes.length) return;
+    if(!('IntersectionObserver' in window)) {
+      // Fallback: immediate load
+      nodes.forEach(loadRakutenFor);
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          io.unobserve(entry.target);
+          loadRakutenFor(entry.target);
+        }
+      });
+    }, {root:null, rootMargin:'160px 0px', threshold:0.01});
+    nodes.forEach(function(n){ io.observe(n); });
+  }
+
+  function loadRakutenFor(placeholder){
+    if(placeholder.getAttribute('data-loaded')==='1') return;
+    placeholder.setAttribute('data-loading','1');
+    var design = placeholder.getAttribute('data-rakuten-widget') || 'slide';
+    var aff = placeholder.getAttribute('data-rakuten-affiliate');
+    var ts = placeholder.getAttribute('data-rakuten-ts');
+    var sizeMobile = placeholder.getAttribute('data-rakuten-size-mobile') || '300x250';
+    var sizeDesktop = placeholder.getAttribute('data-rakuten-size-desktop') || '468x160';
+    var scriptWrap = document.createElement('div');
+    // Inline config script
+    var cfg = document.createElement('script');
+    cfg.type = 'text/javascript';
+    cfg.text = 'rakuten_design="'+design+'";rakuten_affiliateId="'+aff+'";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size=(window.innerWidth<768?"'+sizeMobile+'":"'+sizeDesktop+'" );rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="'+ts+'";';
+    // External script
+    var ext = document.createElement('script');
+    ext.type='text/javascript';
+    ext.src='https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106';
+    ext.defer = true;
+    ext.onload = function(){
+      placeholder.setAttribute('data-loaded','1');
+      placeholder.removeAttribute('data-loading');
+    };
+    scriptWrap.appendChild(cfg);
+    scriptWrap.appendChild(ext);
+    placeholder.appendChild(scriptWrap);
   }
 
   function initAds(){
@@ -684,15 +793,26 @@
 
     // 収益最優先：環境チェックのみで広告を常時有効化
     if (ENV_OK) {
-      initGA();
+  scheduleGALoad(); // 即時ではなく遅延ロード
       if (hasAdSlot && !ADS_DISABLED) {
         initAds();
         // Wiki専用の高度な広告監視を初期化
-        setTimeout(initAdvancedAdMonitoring, 500); // パフォーマンス最適化：1000ms→500ms
+        // Wiki要素存在時のみ重い監視を開始
+        if(document.querySelector('[data-wiki-content="true"]')){
+          setTimeout(initAdvancedAdMonitoring, 600); // わずかに後ろへ (初期描画優先)
+        }
       }
       else if (!ADS_DISABLED) startAdSlotObserver();
       ensureBaseAdCSS();
       if (!DYNAMIC_ADS_DISABLED) setTimeout(maybeInsertDynamicAds, 500); // 1500ms→500msに短縮
+      // ページテキスト長を後から計測してキャップ再計算（初回挿入前に）
+      try {
+        window.__pageTextLen = (document.body.innerText||'').length;
+        window.__dynamicAdCap = computeAdaptiveCap();
+        if(DEBUG) console.log('[ads-consent-loader] adaptive ad cap', window.__dynamicAdCap, 'textLen', window.__pageTextLen);
+      } catch(_){ }
+  // 楽天ウィジェット遅延初期化
+  initRakutenLazy();
     }
   });
 })();

@@ -180,6 +180,14 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   border-radius: 8px;
   max-width: 100%;
 }
+/* PC / Mobile 切替用（900px以上をPC想定） */
+.ad-pc{display:none}
+@media(min-width:900px){.ad-pc{display:block}.ad-sp{display:none}}
+/* CLS低減: 広告プレースホルダ最小高さ & スケルトン */
+.ad-block ins.adsbygoogle{min-height:90px}
+.ad-block{position:relative}
+.ad-block .ad-skeleton{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#678;background:linear-gradient(90deg,#1a2430,#1d2c3a 55%,#1a2430);background-size:200% 100%;animation:adsk 1.4s linear infinite;border-radius:8px}
+@keyframes adsk{0%{background-position:0 0}100%{background-position:-200% 0}}
 </style>
 </head>
 <body>
@@ -254,10 +262,13 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     </div>
   </section>
   
-  <!-- Top Ad -->
+  <!-- Top Ad (PC/Mobile 切替) -->
   <aside class="ad-block" aria-label="スポンサーリンク トップ広告">
     <div class="ad-label">スポンサーリンク</div>
-    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+    <!-- PC -->
+    <ins class="adsbygoogle ad-pc" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
+    <!-- Mobile -->
+    <ins class="adsbygoogle ad-sp" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="6430083800" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
   </aside>
   
   <!-- キャラ詳細コンテンツ -->
@@ -572,21 +583,10 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   </section>
 
   <!-- Middle Ad (門階の上に配置) -->
-  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告" style="margin-top:1.2rem">
-    <div class="ad-label">スポンサーリンク</div>
-    <!-- 楽天モーションウィジェット (レスポンシブ) -->
-    <div class="rakuten-widget" style="margin:1rem auto;text-align:center;">
-      <script type="text/javascript">
-        (function() {
-          var width = window.innerWidth || document.documentElement.clientWidth;
-          var rwidget = document.createElement('div');
-          rwidget.innerHTML = width > 768 ? 
-            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="320" height="50" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>' :
-            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="300" height="250" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>';
-          document.currentScript.parentNode.appendChild(rwidget);
-        })();
-      </script>
-    </div>
+  <!-- Middle (楽天: 遅延プレースホルダ) -->
+  <aside class="ad-block" aria-label="楽天アフィリエイト ミドル" style="margin-top:1.2rem">
+    <div class="ad-label">おすすめ商品</div>
+    <div class="rakuten-widget-placeholder" data-rakuten-widget="slide" data-rakuten-affiliate="4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01" data-rakuten-ts="1757509067733" data-rakuten-size-mobile="300x250" data-rakuten-size-desktop="468x160"></div>
   </aside>
 
   <section class="card gate-section" style="margin-top:1.2rem" data-no-dynamic-ads="true">
@@ -649,29 +649,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     </div>
   </section>
   
-  <!-- 楽天モーションウィジェット -->
-  <aside class="ad-block" aria-label="楽天アフィリエイト">
-    <div class="ad-label">おすすめ商品</div>
-    <div style="text-align:center;overflow:hidden;">
-      <script type="text/javascript">
-        // レスポンシブ対応: 画面幅に応じてサイズ調整
-        var isMobile = window.innerWidth < 768;
-        rakuten_design = "slide";
-        rakuten_affiliateId = "4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01";
-        rakuten_items = "ctsmatch";
-        rakuten_genreId = "0";
-        rakuten_size = isMobile ? "300x250" : "468x160";
-        rakuten_target = "_blank";
-        rakuten_theme = "gray";
-        rakuten_border = "off";
-        rakuten_auto_mode = "on";
-        rakuten_genre_title = "off";
-        rakuten_recommend = "on";
-        rakuten_ts = "1757465595269";
-      </script>
-      <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106" defer></script>
-    </div>
-  </aside>
+  <!-- （重複していた楽天ブロック削除済） -->
   
   
   <section class="card" style="margin-top:1.2rem">
@@ -684,10 +662,13 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     </table>
   </section>
   
-  <!-- Bottom Ad -->
-  <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
+  <!-- Bottom Ad (PC/Mobile 切替) -->
+  <aside class="ad-block" aria-label="スポンサーリンク ボトム広告">
     <div class="ad-label">スポンサーリンク</div>
-    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+    <!-- PC -->
+    <ins class="adsbygoogle ad-pc" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
+    <!-- Mobile -->
+    <ins class="adsbygoogle ad-sp" style="display:block;min-height:90px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="8916646342" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
   </aside>
 </main>
   <div class="lightbox-overlay" id="lightbox">
