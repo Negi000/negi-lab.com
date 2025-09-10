@@ -91,6 +91,28 @@ nav a{color:#8bb9ff;text-decoration:none;margin-right:.75rem;font-size:.8rem}
 .alert{background:#233044;padding:.6rem .8rem;border-left:4px solid #3a8bff;font-size:.75rem;margin:0 0 1rem;border-radius:4px;color:#c5d9f3}
 /* スキルアイコン: 空srcは非表示 */
 img.skill-icon[src=""]{display:none}
+
+/* スキルセクション自動広告防止 */
+.skill-section[data-wiki-content],
+.skill-section[data-no-dynamic-ads],
+.skill[data-wiki-content],
+.skill-bonus[data-wiki-content] {
+  position: relative;
+}
+
+/* スキルセクション内での広告要素を非表示 */
+.skill-section .google-auto-placed,
+.skill-section ins[class*="adsbygoogle"],
+.skill .google-auto-placed,
+.skill ins[class*="adsbygoogle"],
+.skill-bonus .google-auto-placed,
+.skill-bonus ins[class*="adsbygoogle"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 /* Ad blocks (dark theme) */
 .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
 .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa; margin:0 0 .35rem}
@@ -341,31 +363,25 @@ img.skill-icon[src=""]{display:none}
   </section>
   
   
-  <!-- Middle Ad -->
-  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
-    <div class="ad-label">スポンサーリンク</div>
-    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="9898319477" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-  </aside>
-  
-  <section class="card" style="margin-top:1.2rem">
+  <section class="card skill-section" style="margin-top:1.2rem" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>スキル</h2>
-    <div style="display:flex;flex-direction:column;gap:1.1rem">
+    <div style="display:flex;flex-direction:column;gap:1.1rem" data-wiki-content="true">
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/槐/048-sk1.png" alt="零草木" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">零草木 <small class="tag">通常攻撃</small> <small class="tag">TPLv +8</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">カイは選択した敵に129%の特殊ダメージを与える。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">カイは選択した敵に129%の特殊ダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="零草木">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="零草木" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -375,21 +391,21 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/槐/048-sk2.png" alt="促西風" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">促西風 <small class="tag">戦術スキル</small> <small class="tag">TPLv -10</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">カイは選択した敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">カイは選択した敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="促西風">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="促西風" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -399,21 +415,21 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/槐/048-sk3.png" alt="降繁霜" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">降繁霜 <small class="tag">超限スキル</small> <small class="tag">TPLv -50</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">カイは選択可能な全ての敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">カイは選択可能な全ての敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="降繁霜">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="降繁霜" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -423,36 +439,36 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/槐/048-ps.png" alt="霽空霓虹" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">霽空霓虹 <small class="tag">天賦</small> <small class="tag">TPLv </small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>強化</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">戦闘開始時、単独勢力の味方の攻撃が10%、物理防御が15%、特殊防御が15%上昇する。効果は2ターン持続する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">戦闘開始時、単独勢力の味方の攻撃が10%、物理防御が15%、特殊防御が15%上昇する。効果は2ターン持続する。</p>
             
             
             
             
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="霽空霓虹">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="霽空霓虹" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">一重門</strong><br>【霽空霓虹】カイが敵に持続ダメージ効果を付与する時、持続時間が1ターン増加する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">一重門</strong><br>【霽空霓虹】カイが敵に持続ダメージ効果を付与する時、持続時間が1ターン増加する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">四重門</strong><br>【霽空霓虹】提供する攻撃が上昇し、物理防御と特殊防御上昇の持続時間が1ターン増加する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">四重門</strong><br>【霽空霓虹】提供する攻撃が上昇し、物理防御と特殊防御上昇の持続時間が1ターン増加する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">中級認証</strong><br>【霽空霓虹】自身が目標に持続ダメージ効果を付与した時、さらにTPLvを2獲得する。各スキルにつき、最大1回まで発動可能。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">中級認証</strong><br>【霽空霓虹】自身が目標に持続ダメージ効果を付与した時、さらにTPLvを2獲得する。各スキルにつき、最大1回まで発動可能。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">上級認証</strong><br>【霽空霓虹】フィールド上に単独勢力陣営の味方がいる場合、自身の効果命中が15%上昇する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">上級認証</strong><br>【霽空霓虹】フィールド上に単独勢力陣営の味方がいる場合、自身の効果命中が15%上昇する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">特級認証</strong><br>【霽空霓虹】カイが被ダメージ時、攻撃者が持続ダメージ効果を持つ場合、受けるダメージが10%低下する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">特級認証</strong><br>【霽空霓虹】カイが被ダメージ時、攻撃者が持続ダメージ効果を持つ場合、受けるダメージが10%低下する。</div>
                 
                 
               </div>
@@ -462,21 +478,21 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/槐/048-ss.png" alt="サポート：降繁霜" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">サポート：降繁霜 <small class="tag">サポート</small> <small class="tag">TPLv </small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">カイは選択可能な全ての敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">カイは選択可能な全ての敵に持続ダメージ効果を付与し、毎ターン宿主にカイの攻撃25%の持続ダメージを与える。効果は3ターン持続する。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：降繁霜">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：降繁霜" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -488,6 +504,25 @@ img.skill-icon[src=""]{display:none}
     
     </div>
   </section>
+
+  <!-- Middle Ad (門階の上に配置) -->
+  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告" style="margin-top:1.2rem">
+    <div class="ad-label">スポンサーリンク</div>
+    <!-- 楽天モーションウィジェット (レスポンシブ) -->
+    <div class="rakuten-widget" style="margin:1rem auto;text-align:center;">
+      <script type="text/javascript">
+        (function() {
+          var width = window.innerWidth || document.documentElement.clientWidth;
+          var rwidget = document.createElement('div');
+          rwidget.innerHTML = width > 768 ? 
+            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="320" height="50" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>' :
+            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="300" height="250" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>';
+          document.currentScript.parentNode.appendChild(rwidget);
+        })();
+      </script>
+    </div>
+  </aside>
+
   <section class="card" style="margin-top:1.2rem">
     <h2>階門</h2>
     <div style="display:flex;flex-direction:column;gap:.6rem">
