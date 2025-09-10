@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-wiki-content="true">
 <head>
 <meta charset="UTF-8" />
 <title>キャラ一覧 - 新月同行 Wiki</title>
@@ -155,10 +155,20 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 #moreFilters[aria-expanded="true"] .detail-toggle:after{transform:rotate(-135deg) translateY(2px)}
 #moreFilters .filter-more-content{display:none;margin-top:.55rem}
 #moreFilters[aria-expanded="true"] .filter-more-content{display:block}
+/* Ad blocks (dark theme) */
+.ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
+.ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa; margin:0 0 .35rem}
+.ad-block ins.adsbygoogle{display:block;min-height:0;height:auto;width:100%}
+.ad-block[data-ad-empty="true"]{padding:.2rem .4rem;margin:.5rem 0;border-style:dashed;opacity:.75}
+.ad-block[data-ad-empty="true"] .ad-label{margin:0}
+.ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
+.section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
 </style>
 </head>
 <body>
-<header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
+<!-- 広告読み込み -->
+<script src="/js/ads-consent-loader.js" defer></script>
+<!-- Header -->
   <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
     <a href="/" class="text-xl sm:text-2xl font-extrabold tracking-tight hover:opacity-80 transition" style="color:#63b7ff">negi-lab.com</a>
     <button id="menuToggle" class="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-md border border-[#24303b] bg-[#18232d] text-[#cfe2ff] sm:hidden" aria-label="メニュー" aria-expanded="false">≡</button>
@@ -230,6 +240,12 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
     </div>
   </section>
 
+  <!-- Top Ad -->
+  <aside class="ad-block" aria-label="スポンサーリンク トップ広告">
+    <div class="ad-label">スポンサーリンク</div>
+    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  </aside>
+
   <section class="section">
     <h2>キャラ一覧</h2>
     <div class="filters" id="filters">
@@ -294,6 +310,12 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       {{/一覧}}
     </div>
   </section>
+
+  <!-- Bottom Ad -->
+  <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
+    <div class="ad-label">スポンサーリンク</div>
+    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+  </aside>
 </main>
 
 <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">

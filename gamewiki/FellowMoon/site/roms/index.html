@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" data-no-dynamic-ads>
+<html lang="ja" data-wiki-content="true">
 <head>
   <meta charset="UTF-8" />
   <title>ロム図鑑 | 新月同行 Wiki</title>
@@ -118,6 +118,14 @@
   .traits-row.mid .traits-tile:nth-child(2){grid-column:span 2}
     .traits-tile img{max-height:72px}
   }
+  /* ダークテーマ広告ブロック */
+  .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
+  .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa; margin:0 0 .35rem}
+  .ad-block ins.adsbygoogle{display:block;min-height:0;height:auto;width:100%}
+  .ad-block[data-ad-empty="true"]{padding:.2rem .4rem;margin:.5rem 0;border-style:dashed;opacity:.75}
+  .ad-block[data-ad-empty="true"] .ad-label{margin:0}
+  .ad-block[data-ad-empty="true"] ins.adsbygoogle{min-height:0;height:0}
+  .section[data-ad-empty="true"]{margin:.3rem 0 .5rem}
   </style>
 </head>
 <body>
@@ -191,11 +199,11 @@
       </div>
     </section>
 
-    <!-- ミドル広告: ヒーロー直下に配置（タイトルやアコーディオンと重ならないよう独立セクション） -->
-    <section class="section" id="ads-middle">
-      <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
+    <!-- Top Ad: ヒーロー直下に配置 -->
+    <section class="section" id="ads-top">
+      <aside class="ad-block" aria-label="スポンサーリンク トップ広告">
         <div class="ad-label">スポンサーリンク</div>
-  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+        <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
       </aside>
     </section>
 
@@ -246,6 +254,14 @@
       </div>
     </section>
 
+    <!-- Middle Ad -->
+    <section class="section" id="ads-middle">
+      <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
+        <div class="ad-label">スポンサーリンク</div>
+        <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="9898319477" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+      </aside>
+    </section>
+
     <!-- 特性能力値 -->
     <section class="section" id="roms-traits">
       <div class="bg" aria-hidden="true"></div>
@@ -266,11 +282,11 @@
       </div>
     </section>
 
-    <!-- ボトム広告: フッター直前に配置 -->
+    <!-- Bottom Ad -->
     <section class="section" id="ads-bottom">
       <aside class="ad-block" aria-label="スポンサーリンク フッター広告">
         <div class="ad-label">スポンサーリンク</div>
-  <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+        <ins class="adsbygoogle" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
       </aside>
     </section>
 
@@ -285,7 +301,7 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
   <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-10T01:48:54</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-10T10:27:18</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 
@@ -551,30 +567,7 @@
       setPair('pair12'); setSlot(1);
     })();
   </script>
-  <script>
-    // 広告未表示時のスポンサー枠縮小: ins.adsbygoogle 内の iframe 出現を監視
-    (function(){
-      function watchAdBlock(block){
-        if(!block) return;
-        block.setAttribute('data-ad-empty','true');
-        var section = block.closest('.section'); if(section){ section.setAttribute('data-ad-empty','true'); }
-        var ins = block.querySelector('ins.adsbygoogle');
-        if(!ins) return;
-        var filled = false;
-        var obs = new MutationObserver(function(){
-          if(filled) return;
-          if(ins.querySelector('iframe')){
-            filled = true;
-            block.setAttribute('data-ad-empty','false');
-            if(section){ section.setAttribute('data-ad-empty','false'); }
-            obs.disconnect();
-          }
-        });
-        obs.observe(ins, {childList:true, subtree:true});
-  // 遅延表示（ビューポート進入後ロード等）にも対応するため、filled になるまで監視を継続
-      }
-      document.querySelectorAll('.ad-block').forEach(watchAdBlock);
-    })();
-  </script>
+  <!-- 広告読み込み -->
+  <script src="/js/ads-consent-loader.js" defer></script>
 </body>
 </html>

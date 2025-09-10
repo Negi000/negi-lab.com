@@ -1,0 +1,190 @@
+/* Wiki専用 広告表示状態の改良CSS */
+
+/* 広告ブロックの基本スタイリング */
+.ad-block {
+  margin: 1.2rem 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #23313c;
+  background: #182028;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 広告ラベル */
+.ad-block .ad-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.5px;
+  color: #8aa;
+  margin: 0 0 0.35rem;
+  opacity: 0.8;
+}
+
+/* AdSenseスロットの基本スタイル */
+.ad-block ins.adsbygoogle {
+  display: block;
+  min-height: 0;
+  height: auto;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* 広告未表示時の縮小スタイル（大幅改良） */
+.ad-block[data-ad-empty="true"] {
+  padding: 0.2rem 0.4rem;
+  margin: 0.5rem 0;
+  border-style: dashed;
+  border-color: #1a252f;
+  background: linear-gradient(135deg, #0f1419, #141b23);
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.ad-block[data-ad-empty="true"] .ad-label {
+  margin: 0;
+  font-size: 0.5rem;
+  color: #556;
+}
+
+.ad-block[data-ad-empty="true"] ins.adsbygoogle {
+  min-height: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* セクション全体の調整（広告未表示時） */
+.section[data-ad-empty="true"] {
+  margin: 0.3rem 0 0.5rem;
+}
+
+/* 広告表示完了時のスタイル */
+.ad-block[data-ad-empty="false"] {
+  border-color: #2a3d4a;
+  background: #1a2530;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ad-block[data-ad-empty="false"] .ad-label {
+  color: #9bb;
+  opacity: 1;
+}
+
+/* ローディング状態（広告読み込み中）の視覚効果 */
+.ad-block[data-ad-loading="true"] {
+  border-color: #334455;
+  background: linear-gradient(135deg, #1a2530, #1f2b38);
+}
+
+.ad-block[data-ad-loading="true"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3a8bff, transparent);
+  animation: adLoading 2s infinite;
+}
+
+@keyframes adLoading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* レスポンシブ対応：モバイルデバイスでの広告ブロック調整 */
+@media (max-width: 640px) {
+  .ad-block {
+    margin: 1rem 0;
+    padding: 0.5rem 0.6rem;
+    border-radius: 10px;
+  }
+  
+  .ad-block[data-ad-empty="true"] {
+    padding: 0.1rem 0.3rem;
+    margin: 0.3rem 0;
+  }
+  
+  .ad-block .ad-label {
+    font-size: 0.5rem;
+  }
+}
+
+/* 高密度レイアウト（タブレット）での調整 */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .ad-block {
+    margin: 1.1rem 0;
+  }
+}
+
+/* Wiki専用：コンテンツセクションと広告の調和 */
+.wiki-section + .ad-block {
+  margin-top: 1.5rem;
+}
+
+.ad-block + .wiki-section {
+  margin-top: 1.5rem;
+}
+
+/* キャラ詳細ページ専用調整 */
+.char-detail .ad-block {
+  margin: 1.5rem 0;
+}
+
+/* ROM詳細ページ専用調整 */
+.rom-detail .ad-block {
+  margin: 1.3rem 0;
+}
+
+/* 一覧ページでの広告ブロック調整 */
+.char-grid + .ad-block,
+.rom-grid + .ad-block {
+  margin-top: 2rem;
+}
+
+/* Rakutenアフィリエイトウィジェットの改良 */
+#rakuten-motion-widget {
+  width: 300px;
+  height: 250px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 480px) {
+  #rakuten-motion-widget {
+    width: 468px;
+    height: 160px;
+  }
+}
+
+/* 広告配置のガイドライン表示（開発用：本番では非表示） */
+.ad-placement-guide {
+  display: none;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 0.45rem;
+  color: #666;
+  background: #1a1a1a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+/* デバッグ用（localStorage.adsDebug = '1' 時のみ表示） */
+body[data-ads-debug="true"] .ad-placement-guide {
+  display: block;
+}
+
+body[data-ads-debug="true"] .ad-block {
+  position: relative;
+  border: 2px dashed #ff6b6b;
+}
+
+body[data-ads-debug="true"] .ad-block[data-ad-empty="true"] {
+  border-color: #ffa500;
+}
+
+body[data-ads-debug="true"] .ad-block[data-ad-empty="false"] {
+  border-color: #4ade80;
+}
