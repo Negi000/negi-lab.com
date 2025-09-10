@@ -221,8 +221,9 @@
     
     // 既存の設置広告が多数ある場合は動的広告を控える
     try {
-      var existingAds = document.querySelectorAll('ins.adsbygoogle, .ad-block').length;
-      if (existingAds >= 2) {
+      // 楽天アフィリエイトは除外してカウント
+      var existingAds = document.querySelectorAll('ins.adsbygoogle, .ad-block:not([aria-label*="楽天"]):not([aria-label*="アフィリエイト"])').length;
+      if (existingAds >= 3) { // 2→3に緩和（楽天除外により実質同じ）
         if (DEBUG) console.log('[ads-consent-loader] too many existing ads (' + existingAds + '), skipping dynamic insertion');
         document.body.setAttribute('data-dynamic-ads-managed','1');
         return;
@@ -282,9 +283,9 @@
       return wrapper;
     }
 
-    // 設置広告との距離をチェックする関数
+    // 設置広告との距離をチェックする関数（楽天アフィリエイト除外）
     function isSafeDistanceFromExistingAds(targetElement) {
-      var existingAds = document.querySelectorAll('.ad-block, ins.adsbygoogle, [data-dynamic-ad="true"]');
+      var existingAds = document.querySelectorAll('.ad-block:not([aria-label*="楽天"]):not([aria-label*="アフィリエイト"]), ins.adsbygoogle, [data-dynamic-ad="true"]');
       var minDistance = 800; // 最小距離（ピクセル）
       
       for (var i = 0; i < existingAds.length; i++) {
@@ -303,10 +304,10 @@
     function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
       
-      // 設置広告が既にある場合の制限強化
+      // 設置広告が既にある場合の制限強化（楽天アフィリエイト除外）
       try {
-        var existingStatic = document.querySelectorAll('ins.adsbygoogle, .ad-block').length;
-        if (existingStatic >= 2) {
+        var existingStatic = document.querySelectorAll('ins.adsbygoogle, .ad-block:not([aria-label*="楽天"]):not([aria-label*="アフィリエイト"])').length;
+        if (existingStatic >= 3) { // 2→3に緩和
           if (DEBUG) console.log('[ads-consent-loader] existing ads limit reached:', existingStatic);
           return;
         }
@@ -444,7 +445,13 @@
             if (ads.length || (node.classList && (node.classList.contains('google-auto-placed') || node.tagName === 'INS'))) {
               const adElement = ads.length ? ads[0] : node;
               
-              // 保護されたエリア内の広告は完全削除
+              // 設置型広告（data-ad-slot属性付き）は制限対象外
+              if (adElement.hasAttribute && adElement.hasAttribute('data-ad-slot')) {
+                if (DEBUG) console.log('[ads-consent-loader] 設置型広告を検出、制限をスキップ');
+                return;
+              }
+              
+              // 保護されたエリア内の自動広告は完全削除
               const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
               if (parentProtected) {
                 adElement.remove();
@@ -458,12 +465,12 @@
                 return;
               }
               
-              // メインコンテンツエリア判定
+              // メインコンテンツエリア判定（自動広告のみ対象）
               const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout, [data-wiki-content]') && 
                                     !adElement.closest('.ad-block, aside');
               
               if (isInMainContent) {
-                // メインコンテンツ内での縦長広告を検出・削除
+                // メインコンテンツ内での縦長自動広告を検出・削除
                 setTimeout(() => {
                   const height = adElement.offsetHeight;
                   const width = adElement.offsetWidth;
@@ -473,25 +480,26 @@
                   
                   if (isTallAd) {
                     adElement.remove();
-                    console.warn('メインコンテンツ内の縦長広告を削除しました:', {
+                    console.warn('メインコンテンツ内の縦長自動広告を削除しました:', {
                       height: height + 'px',
                       width: width + 'px',
-                      location: 'main content'
+                      location: 'main content',
+                      hasAdSlot: adElement.hasAttribute('data-ad-slot')
                     });
                   }
                 }, 1000);
               } else {
-                // サイドレーン以外の一般的な場所での高さ制限
+                // サイドレーン以外の一般的な場所での高さ制限（自動広告のみ）
                 adElement.style.maxHeight = '600px';
                 adElement.style.overflow = 'hidden';
                 
-                // 異常に高い広告を検出・制限
+                // 異常に高い自動広告を検出・制限
                 setTimeout(() => {
                   const height = adElement.offsetHeight;
                   if (height > 800) {
                     adElement.style.height = '400px';
                     adElement.style.maxHeight = '400px';
-                    console.warn('異常に高い広告を制限しました:', height, 'px → 400px');
+                    console.warn('異常に高い自動広告を制限しました:', height, 'px → 400px');
                   }
                 }, 1000);
               }
@@ -510,7 +518,13 @@
     setTimeout(() => {
       const existingAds = document.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed');
       existingAds.forEach(adElement => {
-        // 保護されたエリア内の広告は削除
+        // 設置型広告（data-ad-slot属性付き）は制限対象外
+        if (adElement.hasAttribute && adElement.hasAttribute('data-ad-slot')) {
+          if (DEBUG) console.log('[ads-consent-loader] 既存の設置型広告を検出、制限をスキップ');
+          return;
+        }
+        
+        // 保護されたエリア内の自動広告は削除
         const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
         if (parentProtected) {
           adElement.remove();
@@ -521,7 +535,7 @@
         const isInSidebar = adElement.closest('aside, .sidebar, .side-panel, [class*="sidebar"], [class*="side"]');
         if (isInSidebar) return;
         
-        // メインコンテンツエリア判定
+        // メインコンテンツエリア判定（自動広告のみ対象）
         const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout') && 
                               !adElement.closest('.ad-block, aside');
         
@@ -532,9 +546,10 @@
           
           if (isTallAd) {
             adElement.remove();
-            console.warn('初期化時にメインコンテンツ内の縦長広告を削除:', {
+            console.warn('初期化時にメインコンテンツ内の縦長自動広告を削除:', {
               height: height + 'px',
-              width: width + 'px'
+              width: width + 'px',
+              hasAdSlot: adElement.hasAttribute('data-ad-slot')
             });
           }
         }
