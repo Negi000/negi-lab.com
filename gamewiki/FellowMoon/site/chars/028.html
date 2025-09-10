@@ -141,7 +141,7 @@ img.skill-icon[src=""]{display:none}
   padding: 0 !important;
 }
 
-/* 縦長広告対策：メインコンテンツエリア専用制限 */
+/* 縦長広告対策：メインコンテンツエリア専用制限（自動広告のみ） */
 main ins[class*="adsbygoogle"]:not([data-ad-slot]),
 .main-content ins[class*="adsbygoogle"]:not([data-ad-slot]),
 section.card ins[class*="adsbygoogle"]:not([data-ad-slot]),
@@ -149,6 +149,13 @@ section.card ins[class*="adsbygoogle"]:not([data-ad-slot]),
 .top-layout ins[class*="adsbygoogle"]:not([data-ad-slot]) {
   max-height: 200px !important;
   overflow: hidden !important;
+}
+
+/* 設置型広告（data-ad-slot属性付き）は制限を適用しない */
+ins[class*="adsbygoogle"][data-ad-slot] {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* サイドレーン（aside要素）内の広告は制限を適用しない */
@@ -159,7 +166,7 @@ aside ins[class*="adsbygoogle"],
   overflow: visible !important;
 }
 
-/* 異常に高い広告の強制制限（サイドレーン以外） */
+/* 異常に高い自動広告の強制制限（設置型広告除外） */
 main ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]):not(aside ins),
 .main-content ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]),
 section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
