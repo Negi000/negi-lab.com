@@ -96,22 +96,75 @@ img.skill-icon[src=""]{display:none}
 .skill-section[data-wiki-content],
 .skill-section[data-no-dynamic-ads],
 .skill[data-wiki-content],
-.skill-bonus[data-wiki-content] {
+.skill-bonus[data-wiki-content],
+.gate-section[data-wiki-content],
+.gate-section[data-no-dynamic-ads] {
   position: relative;
 }
 
-/* スキルセクション内での広告要素を非表示 */
+/* スキル・階門セクション自動広告防止 */
+.skill-section[data-wiki-content],
+.skill-section[data-no-dynamic-ads],
+.skill[data-wiki-content],
+.skill-bonus[data-wiki-content],
+.gate-section[data-wiki-content],
+.gate-section[data-no-dynamic-ads],
+.character-section[data-wiki-content],
+.rom-section[data-wiki-content],
+.content-section[data-wiki-content] {
+  position: relative;
+}
+
+/* 全セクション内での広告要素を非表示 */
 .skill-section .google-auto-placed,
 .skill-section ins[class*="adsbygoogle"],
 .skill .google-auto-placed,
 .skill ins[class*="adsbygoogle"],
 .skill-bonus .google-auto-placed,
-.skill-bonus ins[class*="adsbygoogle"] {
+.skill-bonus ins[class*="adsbygoogle"],
+.gate-section .google-auto-placed,
+.gate-section ins[class*="adsbygoogle"],
+.character-section .google-auto-placed,
+.character-section ins[class*="adsbygoogle"],
+.rom-section .google-auto-placed,
+.rom-section ins[class*="adsbygoogle"],
+.content-section .google-auto-placed,
+.content-section ins[class*="adsbygoogle"],
+[data-wiki-content] .google-auto-placed,
+[data-wiki-content] ins[class*="adsbygoogle"],
+[data-no-dynamic-ads] .google-auto-placed,
+[data-no-dynamic-ads] ins[class*="adsbygoogle"] {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* 縦長広告対策：メインコンテンツエリア専用制限 */
+main ins[class*="adsbygoogle"]:not([data-ad-slot]),
+.main-content ins[class*="adsbygoogle"]:not([data-ad-slot]),
+section.card ins[class*="adsbygoogle"]:not([data-ad-slot]),
+.content-section ins[class*="adsbygoogle"]:not([data-ad-slot]),
+.top-layout ins[class*="adsbygoogle"]:not([data-ad-slot]) {
+  max-height: 200px !important;
+  overflow: hidden !important;
+}
+
+/* サイドレーン（aside要素）内の広告は制限を適用しない */
+aside ins[class*="adsbygoogle"],
+.sidebar ins[class*="adsbygoogle"],
+.side-panel ins[class*="adsbygoogle"] {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* 異常に高い広告の強制制限（サイドレーン以外） */
+main ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]):not(aside ins),
+.main-content ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]),
+section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
+  max-height: 150px !important;
+  height: 150px !important;
 }
 /* Ad blocks (dark theme) */
 .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
@@ -520,58 +573,58 @@ img.skill-icon[src=""]{display:none}
     </div>
   </aside>
 
-  <section class="card" style="margin-top:1.2rem">
+  <section class="card gate-section" style="margin-top:1.2rem" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>階門</h2>
-    <div style="display:flex;flex-direction:column;gap:.6rem">
+    <div style="display:flex;flex-direction:column;gap:.6rem" data-wiki-content="true">
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/1g.png" alt="一重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
-        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">一重門</div>
           <div>【歩み】スキルボーナスを解放
 【歩み】で付与する能力値デバフ効果の数が1～3個に増加する。</div>
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/2g.png" alt="二重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
-        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">二重門</div>
           <div>基本ステータス上昇を解放：HP+5.0%、攻撃+5.0%、物理防御+5.0%、特殊防御+5.0%</div>
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/3g.png" alt="三重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
-        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">三重門</div>
           <div>【連竿】スキル強化を解放
 戦闘開始時、出撃している正、奇属性の味方はキキの場内激励効果を受ける：正、奇属性の味方は攻撃が10%、物理防御が10%、特殊防御が10%上昇する。この激励効果はキキが退場すると無効となる。</div>
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/4g.png" alt="四重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
-        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">四重門</div>
           <div>【君次第ではない】スキルボーナスを解放
 【君次第ではない】無視する特殊防御、会心率、会心ダメージがさらに10%上昇する。</div>
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/5g.png" alt="五重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
-        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45">
+        <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">五重門</div>
           <div>基本ステータス上昇を解放：HP+12.0%、攻撃+12.0%、物理防御+12.0%、特殊防御+12.0%</div>
         </div>
