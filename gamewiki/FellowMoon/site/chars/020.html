@@ -91,6 +91,28 @@ nav a{color:#8bb9ff;text-decoration:none;margin-right:.75rem;font-size:.8rem}
 .alert{background:#233044;padding:.6rem .8rem;border-left:4px solid #3a8bff;font-size:.75rem;margin:0 0 1rem;border-radius:4px;color:#c5d9f3}
 /* スキルアイコン: 空srcは非表示 */
 img.skill-icon[src=""]{display:none}
+
+/* スキルセクション自動広告防止 */
+.skill-section[data-wiki-content],
+.skill-section[data-no-dynamic-ads],
+.skill[data-wiki-content],
+.skill-bonus[data-wiki-content] {
+  position: relative;
+}
+
+/* スキルセクション内での広告要素を非表示 */
+.skill-section .google-auto-placed,
+.skill-section ins[class*="adsbygoogle"],
+.skill .google-auto-placed,
+.skill ins[class*="adsbygoogle"],
+.skill-bonus .google-auto-placed,
+.skill-bonus ins[class*="adsbygoogle"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 /* Ad blocks (dark theme) */
 .ad-block{margin:1.2rem 0;padding:.6rem .8rem;border:1px solid #23313c;background:#182028;border-radius:12px}
 .ad-block .ad-label{font-size:.55rem;letter-spacing:.5px;color:#8aa; margin:0 0 .35rem}
@@ -345,31 +367,25 @@ img.skill-icon[src=""]{display:none}
   </section>
   
   
-  <!-- Middle Ad -->
-  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告">
-    <div class="ad-label">スポンサーリンク</div>
-    <ins class="adsbygoogle" style="min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="9898319477" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-  </aside>
-  
-  <section class="card" style="margin-top:1.2rem">
+  <section class="card skill-section" style="margin-top:1.2rem" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>スキル</h2>
-    <div style="display:flex;flex-direction:column;gap:1.1rem">
+    <div style="display:flex;flex-direction:column;gap:1.1rem" data-wiki-content="true">
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/時曦/020-sk1.png" alt="蝶翼飄零" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">蝶翼飄零 <small class="tag">通常攻撃</small> <small class="tag">TPLv +8</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">トキヒは敵全体に150%の特殊ダメージを与える。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">トキヒは敵全体に150%の特殊ダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="蝶翼飄零">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="蝶翼飄零" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -379,24 +395,24 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/時曦/020-sk2.png" alt="歆血為棘" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">歆血為棘 <small class="tag">戦術スキル</small> <small class="tag">TPLv +0</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>強化</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">トキヒは自身のTPLvを15獲得し、自身の会心率を5%、攻撃を10%上昇させる。効果は2ターン持続。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">トキヒは自身のTPLvを15獲得し、自身の会心率を5%、攻撃を10%上昇させる。効果は2ターン持続。</p>
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="歆血為棘">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="歆血為棘" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">一重門</strong><br>【歆血為棘】自身が【深界降臨】を使用するたびに、自身に&lt;血脈呼喚&gt;を1層付与する。上限5層。自身の個人ターン開始時、&lt;血脈呼喚&gt;を5層所持している場合、追加で【歆血為棘】を1回使用し、自身の&lt;血脈呼喚&gt;を5層消費する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">一重門</strong><br>【歆血為棘】自身が【深界降臨】を使用するたびに、自身に&lt;血脈呼喚&gt;を1層付与する。上限5層。自身の個人ターン開始時、&lt;血脈呼喚&gt;を5層所持している場合、追加で【歆血為棘】を1回使用し、自身の&lt;血脈呼喚&gt;を5層消費する。</div>
                 
                 
               </div>
@@ -406,27 +422,27 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/時曦/020-sk3.png" alt="深界降臨" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">深界降臨 <small class="tag">超限スキル</small> <small class="tag">TPLv -30</small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">トキヒは味方全体に現在HPの20%の追加ダメージを与え、今回の追加ダメージの75%に基づき被弾者に防護を付与し、2行動シーケンス持続する。その後、敵全体に163%の特殊ダメージを与える。会心ダメージを与えるたびに、自身はTPLvを1獲得する。スキル内で最大4回まで発動可能。能動的に【深界降臨】を使用する時、トキヒは&lt;破繭&gt;状態に入り、既に&lt;破繭&gt;状態の場合、&lt;蝶湧&gt;状態に入る。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">トキヒは味方全体に現在HPの20%の追加ダメージを与え、今回の追加ダメージの75%に基づき被弾者に防護を付与し、2行動シーケンス持続する。その後、敵全体に163%の特殊ダメージを与える。会心ダメージを与えるたびに、自身はTPLvを1獲得する。スキル内で最大4回まで発動可能。能動的に【深界降臨】を使用する時、トキヒは&lt;破繭&gt;状態に入り、既に&lt;破繭&gt;状態の場合、&lt;蝶湧&gt;状態に入る。</p>
             
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="深界降臨">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="深界降臨" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">四重門</strong><br>【深界降臨】超限スキルを発動する前、今回の行動シーケンス内の使用回数に基づき、自身の会心ダメージを5%/10%/20%、超限スキルダメージを2%/4%/8%上昇させる。効果は1ターン持続。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">四重門</strong><br>【深界降臨】超限スキルを発動する前、今回の行動シーケンス内の使用回数に基づき、自身の会心ダメージを5%/10%/20%、超限スキルダメージを2%/4%/8%上昇させる。効果は1ターン持続。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">上級認証</strong><br>【深界降臨】超限スキルを発動する前、今回の行動シーケンス内の使用回数に基づき、自身の攻撃を2%/4%/8%上昇させる。効果は1ターン持続。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">上級認証</strong><br>【深界降臨】超限スキルを発動する前、今回の行動シーケンス内の使用回数に基づき、自身の攻撃を2%/4%/8%上昇させる。効果は1ターン持続。</div>
                 
                 
               </div>
@@ -436,27 +452,27 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/時曦/020-ps.png" alt="深界上の血蝶" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">深界上の血蝶 <small class="tag">天賦</small> <small class="tag">TPLv </small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>強化</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">&lt;破繭&gt;状態では、トキヒは自身の会心率を5%、攻撃を10%上昇させ、自身の個人ターン終了前に、追加で超限スキルを1回発動し、自身のTPLvを30消費する。TPLvが0になった場合、&lt;破繭&gt;状態を解除する。&lt;蝶湧&gt;状態では、トキヒは自身の会心率を10%、攻撃を20%上昇させ、自身の個人ターン終了前に、追加で超限スキルを2回発動し、自身のTPLvを60消費する。TPLvが0になった場合、&lt;蝶湧&gt;状態を解除する。トキヒの最大TPLvは150に上昇する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">&lt;破繭&gt;状態では、トキヒは自身の会心率を5%、攻撃を10%上昇させ、自身の個人ターン終了前に、追加で超限スキルを1回発動し、自身のTPLvを30消費する。TPLvが0になった場合、&lt;破繭&gt;状態を解除する。&lt;蝶湧&gt;状態では、トキヒは自身の会心率を10%、攻撃を20%上昇させ、自身の個人ターン終了前に、追加で超限スキルを2回発動し、自身のTPLvを60消費する。TPLvが0になった場合、&lt;蝶湧&gt;状態を解除する。トキヒの最大TPLvは150に上昇する。</p>
             
             
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="深界上の血蝶">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="深界上の血蝶" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">中級認証</strong><br>【深界上の血蝶】各戦闘中、初めて&lt;破繭&gt;状態に入る時、自身のTPLvを5獲得する。初めて&lt;蝶湧&gt;状態に入る時、自身のTPLvを10獲得する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">中級認証</strong><br>【深界上の血蝶】各戦闘中、初めて&lt;破繭&gt;状態に入る時、自身のTPLvを5獲得する。初めて&lt;蝶湧&gt;状態に入る時、自身のTPLvを10獲得する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px"> <strong style="color:#9ec5ff">特級認証</strong><br>【深界上の血蝶】トキヒがダメージを与える時、&lt;破繭&gt;状態の場合、敵の特殊防御を10%無視する。&lt;蝶湧&gt;状態の場合、敵の特殊防御を15%無視する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">特級認証</strong><br>【深界上の血蝶】トキヒがダメージを与える時、&lt;破繭&gt;状態の場合、敵の特殊防御を10%無視する。&lt;蝶湧&gt;状態の場合、敵の特殊防御を15%無視する。</div>
                 
                 
               </div>
@@ -466,21 +482,21 @@ img.skill-icon[src=""]{display:none}
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem">
-        <div style="display:flex;align-items:flex-start;gap:.75rem">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+        <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/時曦/020-ss.png" alt="サポート：深界降臨" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
-          <div style="flex:1;min-width:0">
+          <div style="flex:1;min-width:0" data-wiki-content="true">
             <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">サポート：深界降臨 <small class="tag">サポート</small> <small class="tag">TPLv </small></h3>
-            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center">
+            <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem">トキヒは敵全体に420%の特殊ダメージを与える。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">トキヒは敵全体に420%の特殊ダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：深界降臨">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：深界降臨" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
-              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem">
+              <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
                 <div style="font-size:.6rem;color:#567">(ボーナス情報なし)</div>
               </div>
@@ -492,6 +508,25 @@ img.skill-icon[src=""]{display:none}
     
     </div>
   </section>
+
+  <!-- Middle Ad (門階の上に配置) -->
+  <aside class="ad-block" aria-label="スポンサーリンク ミドル広告" style="margin-top:1.2rem">
+    <div class="ad-label">スポンサーリンク</div>
+    <!-- 楽天モーションウィジェット (レスポンシブ) -->
+    <div class="rakuten-widget" style="margin:1rem auto;text-align:center;">
+      <script type="text/javascript">
+        (function() {
+          var width = window.innerWidth || document.documentElement.clientWidth;
+          var rwidget = document.createElement('div');
+          rwidget.innerHTML = width > 768 ? 
+            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="320" height="50" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>' :
+            '<div style="border: 2px solid #2a3642; border-radius: 10px; padding: 5px;background: #1c2530;"><a href="//af.moshimo.com/af/c/click?a_id=3977548&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fbooks.rakuten.co.jp%2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0259/000000016259.jpg" width="300" height="250" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3977548&p_id=54&pc_id=54&pl_id=616" width="1" height="1" style="border:none;"></div>';
+          document.currentScript.parentNode.appendChild(rwidget);
+        })();
+      </script>
+    </div>
+  </aside>
+
   <section class="card" style="margin-top:1.2rem">
     <h2>階門</h2>
     <div style="display:flex;flex-direction:column;gap:.6rem">
