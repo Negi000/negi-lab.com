@@ -15,6 +15,67 @@
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;line-height:1.5;margin:0;background:#0d1216;color:#e6edf3;-webkit-font-smoothing:antialiased}
 :root{--c-accent:#3a8bff;--c-bgcard:#161e26;--c-border:#24303b;--c-soft:#1c2731;--w-wrap:1280px}
+/* ===== サイドレーン（誕生日 & カウントダウン） ===== */
+.wiki-side-lane{display:none}
+@media(min-width:1180px){
+  .wiki-side-lane{position:fixed;z-index:40;top:70px;left:12px;width:250px;display:flex;flex-direction:column;gap:1rem;max-height:calc(100vh - 80px);overflow:auto;padding:4px 2px 18px}
+  main{margin-left:274px}
+}
+.side-box{background:#162129;border:1px solid #253541;border-radius:14px;padding:.8rem .85rem;box-shadow:0 4px 10px -4px #0009}
+.side-box h3{margin:.1rem 0 .55rem;font-size:.75rem;letter-spacing:.5px;font-weight:700;color:#b8d9ff;display:flex;align-items:center;gap:.35rem}
+.side-box h3 span.icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:#233541;border:1px solid #2e4658;border-radius:6px;font-size:.55rem;color:#8ec5ff}
+.birthday-list,.event-timer-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+.birthday-list li,.event-timer-list li{font-size:.68rem;line-height:1.3;background:#1c2a34;border:1px solid #284152;border-radius:8px;padding:.45rem .55rem;display:flex;flex-direction:column;gap:2px;position:relative}
+.birthday-list li.today{border-color:#3a8bff;background:#203344}
+.birthday-list a{color:#afe1ff;text-decoration:none;font-weight:600}
+.birthday-empty,.event-empty{font-size:.6rem;color:#678;padding:.2rem 0}
+.event-timer-list li strong{font-weight:600;color:#d2ecff}
+.timer-remaining{font-family:ui-monospace,monospace;font-size:.65rem;color:#9fe1b7;letter-spacing:.5px}
+.timer-ended{color:#f59f9f;font-size:.6rem;font-weight:600}
+.birthday-list li .thumb-row{display:flex;align-items:center;gap:.45rem}
+.birthday-thumb{width:88px;height:88px;border-radius:12px;overflow:hidden;flex:0 0 auto;position:relative;border:1px solid #2d4456;background:#0f1820}
+.birthday-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+/* グローバル誕生日バブル (ボックス右上外) */
+#sideBirthdays .birthday-bubble-global{position:absolute;top:-18px;right:-18px;width:46px;height:46px;pointer-events:none;animation:bubbleBlink 1s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(255,200,120,.7));z-index:10}
+@keyframes bubbleBlink{0%,60%{opacity:1;transform:scale(1)}70%{opacity:.35;transform:scale(.85)}100%{opacity:1;transform:scale(1)}}
+/* 誕生日テーマ (軽い祝賀演出) */
+body.birthday-day:before{content:"";position:fixed;inset:0;pointer-events:none;background:
+  radial-gradient(circle at 18% 12%,rgba(255,200,120,.09),transparent 60%),
+  radial-gradient(circle at 82% 78%,rgba(120,190,255,.08),transparent 65%);
+mix-blend-mode:screen;z-index:0}
+body.birthday-day .wiki-side-lane #sideBirthdays{background:linear-gradient(150deg,#1c2f3b,#214254 68%,#1c2f3b);box-shadow:0 0 0 1px #4ca9ff55,0 0 0 3px #ffa94d22,0 6px 20px -6px #000c;position:relative}
+body.birthday-day .wiki-side-lane #sideBirthdays:before{content:"";position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(120deg,#ffcf7d,#6fbfff,#ffcf7d);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.4;animation:birthGlow 6s linear infinite}
+@keyframes birthGlow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+body.birthday-day .birthday-list li.today{background:linear-gradient(135deg,#254055,#1e2f3c);border:1px solid #3a6c8d;box-shadow:0 0 0 1px #3a8bff55,0 0 12px -4px rgba(255,180,90,.55)}
+body.birthday-day .birthday-thumb{border:1px solid #3a6c8d;box-shadow:0 0 0 1px #3a8bff33,0 0 12px -4px rgba(255,180,90,.45)}
+/* 今日の誕生日行 レイアウト */
+.birthday-list li.today .today-row{display:flex;align-items:center;gap:1rem}
+.birthday-list li.today .today-meta{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.birthday-list li.today .today-meta a{font-size:.9rem;font-weight:700;line-height:1;color:#e9f6ff}
+.birthday-list li.today .today-meta time{font-size:.65rem;color:#b2cee0;letter-spacing:.5px}
+/* コンフェッティ */
+.birthday-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.birthday-confetti span{position:absolute;width:6px;height:6px;border-radius:2px;opacity:.9;animation:confettiFall linear infinite;will-change:transform}
+@keyframes confettiFall{0%{transform:translateY(-10%) rotate(0deg)}100%{transform:translateY(120vh) rotate(540deg)}}
+body.birthday-day .wiki-side-lane #sideBirthdays h3{color:#ffe2b5}
+body.birthday-day .wiki-header{border-bottom-color:#2a3d4d;box-shadow:0 0 0 1px #3a8bff33,0 2px 18px -8px rgba(255,200,120,.25)}
+body.birthday-day .wiki-hero-title{filter:drop-shadow(0 0 6px rgba(255,200,120,.25))}
+.birthday-list li time{font-size:.55rem;color:#9ab;letter-spacing:.5px}
+.next-birthdays{margin-top:.55rem;border-top:1px solid #273845;padding-top:.55rem}
+.next-birthdays h4{margin:0 0 .4rem;font-size:.6rem;font-weight:600;color:#89b;letter-spacing:.5px}
+.next-birthdays ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.3rem}
+.next-birthdays li{font-size:.6rem;color:#9ab;display:flex;justify-content:space-between;gap:.4rem}
+.next-birthdays li span.date{color:#7fb6ff;font-variant-numeric:tabular-nums}
+/* スクロールバー控えめ */
+@media(min-width:1180px){
+  .wiki-side-lane{scrollbar-width:thin;scrollbar-color:#2f475a #18252e}
+  .wiki-side-lane::-webkit-scrollbar{width:8px}
+  .wiki-side-lane::-webkit-scrollbar-track{background:#18252e;border-radius:10px}
+  .wiki-side-lane::-webkit-scrollbar-thumb{background:#2f475a;border-radius:10px}
+}
+/* モバイルで強制的に非表示 (広告やコンテンツとの干渉防止) */
+@media(max-width:1179px){.wiki-side-lane{display:none!important}}
+/* ===== /サイドレーン ===== */
 /* ===== 新 Wiki ヒーローヘッダー / メガナビ (スマホファースト) ===== */
 .wiki-hero{margin:0 0 1.4rem;position:relative}
 .wiki-hero-bar{display:flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,#14212b,#1b2d38 55%,#14212b);border:1px solid #253542;padding:.85rem .95rem;border-radius:16px;position:relative;overflow:hidden}
@@ -214,6 +275,24 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
 .wiki-header #mainNav{animation:navFade .25s ease}
 @keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
+  <!-- 左サイドレーン: 誕生日 & イベントカウントダウン -->
+  <aside class="wiki-side-lane" aria-label="サイド情報パネル">
+    <section class="side-box" id="sideBirthdays" aria-labelledby="sideBirthdaysTitle">
+  <h3 id="sideBirthdaysTitle"><span class="icon"><img data-side-asset="カレンダー.png" alt="カレンダー" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>今日の誕生日</h3>
+      <ul class="birthday-list" data-birthday-list></ul>
+      <div class="birthday-empty" data-birthday-empty style="display:none">今日の誕生日はありません</div>
+  <div class="birthday-empty" data-birthday-file-warn style="display:none;color:#f6b37b">file:// では読み込めません。ローカルサーバを起動してください。</div>
+      <div class="next-birthdays" data-next-birthdays style="display:none">
+        <h4>次の誕生日</h4>
+        <ul data-next-birthday-list></ul>
+      </div>
+    </section>
+    <section class="side-box" id="sideEvents" aria-labelledby="sideEventsTitle">
+  <h3 id="sideEventsTitle"><span class="icon"><img data-side-asset="イベント.png" alt="イベント" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>イベント/ガチャ</h3>
+      <ul class="event-timer-list" data-event-timer-list></ul>
+      <div class="event-empty" data-event-empty style="display:none">開催中イベントなし</div>
+    </section>
+  </aside>
 <main>
   <section class="wiki-hero" data-wiki-header>
     <div class="wiki-hero-bar">
@@ -723,7 +802,43 @@ let lastTap=0; function resetIfDouble(now){ if(now-lastTap<400){ scale=1; origin
 lbImg.addEventListener('dblclick',()=>{scale=1;originX=originY=0;applyTransform();});
 lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
 // スキルボーナス開閉状態 永続化（デフォルト閉じる）
+// ===== ルートパス自動検出 (グローバル) =====
+function __FM_computeBasePaths(){
+    const href = location.href.replace(/\\/g,'/');
+    const marker = 'gamewiki/FellowMoon/';
+    const idx = href.indexOf(marker);
+    if(idx>=0){
+      const root = href.substring(0, idx + marker.length); // 末尾含む
+      return {
+        root,               // .../gamewiki/FellowMoon/
+        site: root + 'site/',
+        assets: root + 'site/assets/left_side_lane/',
+        birthdayDir: root + 'site/assets/left_side_lane/誕生日/'
+      };
+    }
+    // フォールバック (相対)
+    return {
+      root: '',
+      site: 'site/',
+      assets: 'site/assets/left_side_lane/',
+      birthdayDir: 'site/assets/left_side_lane/誕生日/'
+    };
+}
+window.__FM_PATHS = window.__FM_PATHS || __FM_computeBasePaths();
+window.__FELLOWMOON_PATHS = window.__FM_PATHS;
 (()=>{
+  // サイドバー画像フォールバック
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelectorAll('img[data-side-asset]').forEach(img=>{
+      const file=img.getAttribute('data-side-asset');
+      const candidates=[
+  window.__FM_PATHS.assets + file,
+  window.__FM_PATHS.root + file, // 予備
+      ];
+      let idx=0; img.src=candidates[idx];
+      img.onerror=()=>{ if(idx < candidates.length-1){ idx++; img.src=candidates[idx]; } };
+    });
+  });
   const KEY_PREFIX = 'skillBonusOpen:';
   document.querySelectorAll('details.skill-bonus').forEach(d=>{
     const name = d.getAttribute('data-skill-name')||'';
@@ -824,6 +939,288 @@ lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
       });
     });
   })();
+})();
+</script>
+<script>
+// ===== サイドレーン: 誕生日 & イベントカウントダウン =====
+(()=>{
+  // --- 誕生日: character.json から取得 ---
+  async function loadBirthdayData(){
+    if(Array.isArray(window.__FELLOWMOON_BIRTHDAYS) && window.__FELLOWMOON_BIRTHDAYS.length){
+      return window.__FELLOWMOON_BIRTHDAYS; // 事前埋め込みがあれば優先
+    }
+    const cacheKey='fm_birthdays_cache_v1';
+    const cacheMetaKey='fm_birthdays_cache_v1_meta';
+    // JST 日付ユーティリティ (他ロジックと共有)
+    function nowJST(){
+      const now=new Date();
+      const utc=now.getTime()+now.getTimezoneOffset()*60000;
+      return new Date(utc+9*3600000);
+    }
+    window.__FM_GET_JST_DATE = nowJST; // 共有
+    function todayJSTKey(){ const j=nowJST(); return j.getFullYear()+ '-' + String(j.getMonth()+1).padStart(2,'0') + '-' + String(j.getDate()).padStart(2,'0'); }
+    const todayMeta = todayJSTKey();
+    const urlParams = new URLSearchParams(location.search);
+    const force = urlParams.has('refreshBirthdays') || urlParams.has('forceBirth');
+  let usedCache=false; // 関数内判定
+    try{
+      if(!force){
+        const metaRaw=localStorage.getItem(cacheMetaKey);
+        const cached = localStorage.getItem(cacheKey);
+        if(metaRaw){
+          const meta=JSON.parse(metaRaw);
+          if(meta && meta.day !== todayMeta){
+            // 日付変わったら破棄
+            localStorage.removeItem(cacheKey); localStorage.removeItem(cacheMetaKey);
+          }
+        }
+        if(cached){
+          const parsed=JSON.parse(cached);
+          if(Array.isArray(parsed) && parsed.length){
+            usedCache=true;
+            try{ window.__FM_BIRTHDAY_USED_CACHE = true; }catch(e){}
+            return parsed;
+          }
+        }
+      }
+    }catch(e){/* noop */}
+  const rootChar = window.__FM_PATHS.root + 'character.json';
+    const tryPaths=[
+      'character.json',
+      '../character.json',
+      '../../character.json',
+      rootChar
+    ];
+    const isFileProto = location.protocol === 'file:';
+    let json=null;
+    for(const p of tryPaths){
+      try{
+        if(isFileProto){
+          // file:// では fetch がCORSで失敗するためスキップ
+          if(p===tryPaths[tryPaths.length-1]) console.warn('[Birthday] file:// 環境では fetch できません。ローカルサーバを起動してください。');
+          continue;
+        }
+        const res=await fetch(p,{cache:'no-store'});
+        if(res.ok){ json=await res.json(); console.info('[Birthday] loaded',p); break; }
+      }catch(e){ console.debug('[Birthday] fetch error',p,e); }
+    }
+    if(!json){ return []; }
+    function toHalfWidth(numStr){
+      return numStr.replace(/[０-９]/g,ch=>String.fromCharCode(ch.charCodeAt(0)-0xFEE0));
+    }
+    function parseDate(str){ // "8月21日" / "08-21" / "8/21" / 全角数字
+      if(!str) return null;
+      str=str.trim();
+      str=toHalfWidth(str);
+      let m=str.match(/^(\d{1,2})月(\d{1,2})日$/);
+      if(!m) m=str.match(/^(\d{1,2})[\/-](\d{1,2})$/);
+      if(!m) return null; return m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0');
+    }
+    const out=[];
+    Object.keys(json).forEach(id=>{
+      const entry=json[id];
+      const info=entry && entry['基本情報'];
+      if(!info) return;
+      const bd=parseDate(info['誕生日']);
+      if(!bd) return;
+      // 詳細ページ推測: character-<ID>.html (存在しない場合は # )
+      const linkGuess = `character-${id}.html`;
+      out.push({ id, name: info['名前']||id, date: bd, link: linkGuess });
+    });
+    out.sort((a,b)=> a.date.localeCompare(b.date));
+  try{ localStorage.setItem(cacheKey, JSON.stringify(out)); localStorage.setItem(cacheMetaKey, JSON.stringify({day:todayMeta,ts:Date.now()})); }catch(e){/* ignore */}
+  // グローバルに使用キャッシュ情報を退避
+  try{ window.__FM_BIRTHDAY_USED_CACHE = usedCache; }catch(e){}
+  return out;
+  }
+  const eventData = window.__FELLOWMOON_EVENTS || [
+    // { title:'期間限定ガチャA', ends:'2025-09-25T14:59:59+09:00', link:'../gacha/eventA.html' }
+    // { title:'大型イベント', ends:'2025-09-20T03:59:59+09:00', link:'../event/big.html' }
+  ];
+  async function renderBirthdays(){
+    const birthdayData = await loadBirthdayData();
+    function resolveBirthdayThumb(id){
+      if(!id) return null;
+      // キャラIDは000形式だが、画像ファイルは 11 + ID (例: 001 -> 11001) との説明に従う
+      // 先頭ゼロを除去してから 11 を前置し 5桁化 (ID=001 → base=1 → 11001)
+      const num = parseInt(id,10); if(isNaN(num)) return null;
+      const file = '11'+String(num).padStart(3,'0');
+  const rel = window.__FM_PATHS.birthdayDir + `${file}.webp`;
+      return rel; // 存在チェックはせず 404時ブラウザに任せる
+    }
+  const todayJST = (window.__FM_GET_JST_DATE? window.__FM_GET_JST_DATE(): new Date());
+  const mm = String(todayJST.getMonth()+1).padStart(2,'0');
+  const dd = String(todayJST.getDate()).padStart(2,'0');
+    const todayKey = mm+'-'+dd;
+    const listEl = document.querySelector('[data-birthday-list]');
+    const emptyEl = document.querySelector('[data-birthday-empty]');
+    const nextWrap = document.querySelector('[data-next-birthdays]');
+    const nextList = document.querySelector('[data-next-birthday-list]');
+    if(!listEl) return;
+  let todays = birthdayData.filter(b=>b.date===todayKey);
+  const globalUsedCache = !!window.__FM_BIRTHDAY_USED_CACHE;
+  // デバッグ: 特定ID確認
+  const debug005 = birthdayData.find(b=>b.id==='005');
+  if(debug005){ console.info('[Birthday][debug] ID005 date=', debug005.date,' todayKey=',todayKey); }
+  // キャッシュを使っていて当日ヒット0件なら一度だけ強制再取得を試す
+  if(todays.length===0 && globalUsedCache){
+      console.info('[Birthday] cache miss for today, refetching without cache');
+      localStorage.removeItem('fm_birthdays_cache_v1');
+      localStorage.removeItem('fm_birthdays_cache_v1_meta');
+      const fresh = await loadBirthdayData();
+      todays = fresh.filter(b=>b.date===todayKey);
+    }
+    if(todays.length){
+      console.info('[Birthday] 今日対象', todays.map(t=>t.id));
+  console.info('[Birthday] JST today key', todayKey);
+      // 誕生日テーマ適用
+      document.body.classList.add('birthday-day');
+      // コンフェッティ生成（軽量 24個、10秒後自動削除）
+      (function(){
+        if(document.querySelector('.birthday-confetti')) return;
+        const holder=document.createElement('div');
+        holder.className='birthday-confetti';
+        const colors=['#ffcf7d','#ffa94d','#6fbfff','#9ad8ff','#ffd6a3'];
+        for(let i=0;i<24;i++){
+          const sp=document.createElement('span');
+          const delay=(Math.random()*4).toFixed(2)+'s';
+          const dur=(6+Math.random()*4).toFixed(2)+'s';
+            sp.style.left=(Math.random()*100).toFixed(2)+'%';
+            sp.style.background=colors[i%colors.length];
+            sp.style.animationDuration=dur; sp.style.animationDelay=delay;
+          holder.appendChild(sp);
+        }
+        const target=document.querySelector('#sideBirthdays');
+        if(target){ target.style.position='relative'; target.appendChild(holder); }
+        setTimeout(()=> holder.remove(),10000);
+      })();
+      todays.forEach(b=>{
+        const li=document.createElement('li');
+        li.className='today';
+        const thumbPath = resolveBirthdayThumb(b.id);
+        const bubbleCandidates=[
+          window.__FM_PATHS.assets + 'birthday_icon.png',
+          window.__FM_PATHS.root + 'birthday_icon.png'
+        ];
+        const bubbleInit=bubbleCandidates[0];
+        li.innerHTML = `
+          <div class="thumb-row">
+            <div class="birthday-thumb">${thumbPath?`<img data-thumb="${thumbPath}" src="${thumbPath}" alt="${b.name}" loading="lazy">`:''}
+              <img class="birthday-bubble" src="${bubbleInit}" alt="誕生日アイコン" loading="lazy">
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:.35rem;flex-wrap:wrap">
+                <a href="${b.link||'#'}" aria-label="${b.name} の詳細">${b.name}</a>
+              </div>
+              <time datetime="--${b.date}">${b.date}</time>
+            </div>
+          </div>`;
+        listEl.appendChild(li);
+        // bubble fallback
+        const bubbleImg=li.querySelector('.birthday-bubble');
+        if(bubbleImg){ let bi=0; bubbleImg.onerror=()=>{ if(bi < bubbleCandidates.length-1){ bi++; bubbleImg.src=bubbleCandidates[bi]; } }; }
+        // サムネフォールバック (存在しない時は非表示)
+        const thumbImg=li.querySelector('.birthday-thumb img[data-thumb]');
+        if(thumbImg){ thumbImg.onerror=()=>{ thumbImg.style.display='none'; }; }
+      });
+      // バブル 5秒後削除 (点滅継続→消える)
+        // グローバル吹き出し一枚
+        (function addGlobalBubble(){
+          const bubbleCandidates=[
+            window.__FM_PATHS.assets + 'birthday_icon.png',
+            window.__FM_PATHS.root + 'birthday_icon.png'
+          ];
+          const img=document.createElement('img');
+          img.className='birthday-bubble-global';
+          let bi=0; img.src=bubbleCandidates[0];
+          img.alt='誕生日'; img.loading='lazy';
+          img.onerror=()=>{ if(bi < bubbleCandidates.length-1){ bi++; img.src=bubbleCandidates[bi]; } };
+          const host=document.getElementById('sideBirthdays');
+          if(host){ host.appendChild(img); setTimeout(()=>img.remove(),5000); }
+        })();
+        todays.forEach(b=>{
+          const li=document.createElement('li');
+          li.className='today';
+          const thumbPath = resolveBirthdayThumb(b.id);
+          li.innerHTML = `
+            <div class="today-row">
+              <div class="birthday-thumb">${thumbPath?`<img data-thumb="${thumbPath}" src="${thumbPath}" alt="${b.name}" loading="lazy">`:''}</div>
+              <div class="today-meta">
+                <a href="${b.link||'#'}" aria-label="${b.name} の詳細">${b.name}</a>
+                <time datetime="--${b.date}">${b.date}</time>
+              </div>
+            </div>`;
+          listEl.appendChild(li);
+          const thumbImg=li.querySelector('.birthday-thumb img[data-thumb]');
+          if(thumbImg){ thumbImg.onerror=()=>{ thumbImg.style.display='none'; }; }
+        });
+    }else if(emptyEl){ emptyEl.style.display='block'; }
+    if(!todays.length && birthdayData.length===0 && location.protocol==='file:'){
+      const warn=document.querySelector('[data-birthday-file-warn]');
+      if(warn) warn.style.display='block';
+    }
+    // 次の誕生日 5件
+    const todayOrdinal = parseInt(mm+dd,10);
+    const upcoming = birthdayData
+      .map(b=>({
+        ...b,
+        nextDate: (()=>{ const ord = parseInt(b.date.replace('-',''),10); const yearOffset = ord < todayOrdinal ? 1 : 0; return new Date(today.getFullYear()+yearOffset+'-'+b.date+'T00:00:00'); })()
+      }))
+      .filter(b=>b.date!==todayKey)
+      .sort((a,b)=>a.nextDate - b.nextDate)
+      .slice(0,5);
+    if(upcoming.length && nextWrap){
+      nextWrap.style.display='block';
+      upcoming.forEach(b=>{
+        const m2 = String(b.nextDate.getMonth()+1).padStart(2,'0');
+        const d2 = String(b.nextDate.getDate()).padStart(2,'0');
+        const li=document.createElement('li');
+        li.innerHTML = `<span>${b.name}</span><span class=\"date\">${m2}/${d2}</span>`;
+        nextList.appendChild(li);
+      });
+    }
+  }
+  renderBirthdays();
+  // --- イベントカウントダウン ---
+  const eventListEl = document.querySelector('[data-event-timer-list]');
+  const eventEmptyEl = document.querySelector('[data-event-empty]');
+  function formatRemain(ms){
+    if(ms<=0) return '終了';
+    const totalSec = Math.floor(ms/1000);
+    const d = Math.floor(totalSec/86400);
+    const h = Math.floor((totalSec%86400)/3600);
+    const m = Math.floor((totalSec%3600)/60);
+    const s = totalSec%60;
+    if(d>3) return `${d}日 ${h}時間`;
+    if(d>0) return `${d}日 ${h}時間${m}分`;
+    if(h>0) return `${h}時間${m}分`;
+    if(m>0) return `${m}分${s}秒`;
+    return `${s}秒`;
+  }
+  const timerItems=[];
+  if(eventListEl){
+    if(eventData.length){
+      eventData.forEach(ev=>{
+        const li=document.createElement('li');
+        const end = new Date(ev.ends);
+        li.innerHTML = `<strong>${ev.link?`<a href="${ev.link}" style="color:#9ec5ff;text-decoration:none">${ev.title}</a>`:ev.title}</strong>
+          <span class="timer-remaining" data-end="${end.toISOString()}"></span>`;
+        eventListEl.appendChild(li);
+        timerItems.push(li.querySelector('[data-end]'));
+      });
+    }else{ eventEmptyEl && (eventEmptyEl.style.display='block'); }
+  }
+  function tick(){
+    const now=Date.now();
+    timerItems.forEach(el=>{
+      const end=new Date(el.getAttribute('data-end')).getTime();
+      const remain=end-now;
+      if(remain<=0){ el.textContent='終了'; el.classList.add('timer-ended'); }
+      else{ el.textContent = formatRemain(remain); }
+    });
+  }
+  tick();
+  setInterval(tick,1000);
 })();
 </script>
 <!-- Footer -->
