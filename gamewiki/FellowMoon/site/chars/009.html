@@ -115,25 +115,15 @@ img.skill-icon[src=""]{display:none}
   position: relative;
 }
 
-/* 全セクション内での広告要素を非表示 */
+/* 全セクション内での自動広告要素を非表示（設置型広告は除外） */
 .skill-section .google-auto-placed,
-.skill-section ins[class*="adsbygoogle"],
+.skill-section ins[class*="adsbygoogle"]:not([data-ad-slot]),
 .skill .google-auto-placed,
-.skill ins[class*="adsbygoogle"],
+.skill ins[class*="adsbygoogle"]:not([data-ad-slot]),
 .skill-bonus .google-auto-placed,
-.skill-bonus ins[class*="adsbygoogle"],
+.skill-bonus ins[class*="adsbygoogle"]:not([data-ad-slot]),
 .gate-section .google-auto-placed,
-.gate-section ins[class*="adsbygoogle"],
-.character-section .google-auto-placed,
-.character-section ins[class*="adsbygoogle"],
-.rom-section .google-auto-placed,
-.rom-section ins[class*="adsbygoogle"],
-.content-section .google-auto-placed,
-.content-section ins[class*="adsbygoogle"],
-[data-wiki-content] .google-auto-placed,
-[data-wiki-content] ins[class*="adsbygoogle"],
-[data-no-dynamic-ads] .google-auto-placed,
-[data-no-dynamic-ads] ins[class*="adsbygoogle"] {
+.gate-section ins[class*="adsbygoogle"]:not([data-ad-slot]) {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
@@ -439,11 +429,11 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   </section>
   
   
-  <section class="card skill-section" style="margin-top:1.2rem" data-wiki-content="true" data-no-dynamic-ads="true">
+  <section class="card skill-section" style="margin-top:1.2rem" data-no-dynamic-ads="true">
     <h2>スキル</h2>
-    <div style="display:flex;flex-direction:column;gap:1.1rem" data-wiki-content="true">
+    <div style="display:flex;flex-direction:column;gap:1.1rem" data-no-dynamic-ads="true">
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/鳴霜/009-sk1.png" alt="貫穿" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
@@ -467,7 +457,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/鳴霜/009-sk2.png" alt="釘輪飛旋" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
@@ -498,7 +488,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/鳴霜/009-sk3.png" alt="穿刺強襲" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
@@ -525,7 +515,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/鳴霜/009-ps.png" alt="規律粛正" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
@@ -556,7 +546,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         <div style="position:absolute;left:0;right:0;bottom:-.55rem;height:1px;background:linear-gradient(90deg,#233241,#31475c 40%,#233241)"></div>
       </div>
     
-      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-wiki-content="true">
+      <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
           <img class="skill-icon" src="../../スキルアイコン/鳴霜/009-ss.png" alt="サポート：穿刺強襲" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
@@ -601,11 +591,11 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     </div>
   </aside>
 
-  <section class="card gate-section" style="margin-top:1.2rem" data-wiki-content="true" data-no-dynamic-ads="true">
+  <section class="card gate-section" style="margin-top:1.2rem" data-no-dynamic-ads="true">
     <h2>階門</h2>
-    <div style="display:flex;flex-direction:column;gap:.6rem" data-wiki-content="true">
+    <div style="display:flex;flex-direction:column;gap:.6rem" data-no-dynamic-ads="true">
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/1g.png" alt="一重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
@@ -616,7 +606,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/2g.png" alt="二重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
@@ -626,7 +616,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/3g.png" alt="三重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
@@ -638,7 +628,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/4g.png" alt="四重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>
@@ -649,7 +639,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         </div>
       </div>
       
-      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-wiki-content="true">
+      <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
         <div style="width:46px;display:flex;justify-content:center;align-items:center">
           <img src="../assets/icons/5g.png" alt="五重門" style="max-width:100%;max-height:46px;object-fit:contain;filter:drop-shadow(0 0 2px #0006)">
         </div>

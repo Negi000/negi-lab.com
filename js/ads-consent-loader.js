@@ -23,7 +23,7 @@
   // Per-page flag to disable dynamic auto insertion while keeping static slots
   var DYNAMIC_ADS_DISABLED = (document.documentElement && document.documentElement.hasAttribute('data-no-dynamic-ads'))
     || !!document.querySelector('meta[name="ads-dynamic"][content="off"]');
-  var DEBUG = false; try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
+  var DEBUG = true; // デバッグ情報を有効化 try { DEBUG = localStorage.getItem('adsDebug') === '1'; } catch(_) {}
   if (DEBUG) console.log('[ads-consent-loader] init', {host: host, ENV_OK: ENV_OK, CONSENT_OK: CONSENT_OK});
 
   function loadScript(src, attrs){
@@ -205,7 +205,8 @@
     
     // Wiki専用：動的広告挿入の完全無効化
     // data-no-dynamic-ads属性またはwiki-専用クラスがある場合は動的挿入を行わない
-    if (DYNAMIC_ADS_DISABLED || document.querySelector('.wiki-hero, .wiki-header, [data-wiki-content="true"]')) {
+    // 注意：data-wiki-contentは設置型広告には影響しないように条件を調整
+    if (DYNAMIC_ADS_DISABLED || document.querySelector('.wiki-hero, .wiki-header')) {
       if (DEBUG) console.log('[ads-consent-loader] dynamic ads disabled for wiki content');
       document.body.setAttribute('data-dynamic-ads-managed','1');
       return;
@@ -418,13 +419,12 @@
     protectedSelectors.forEach(selector => {
       const elements = document.querySelectorAll(selector);
       elements.forEach(element => {
-        // 厳格な保護属性を設定
+        // 自動広告のみに保護属性を設定（設置型広告の動作は保持）
         element.setAttribute('data-no-auto-ads', 'true');
-        element.setAttribute('data-ad-block', 'true');
         element.style.setProperty('--google-ads-blocked', 'true');
         
-        // 既存の広告要素を除去
-        const existingAds = element.querySelectorAll('.google-auto-placed, ins[class*="adsbygoogle"]');
+        // 既存の自動広告要素を除去（設置型広告は保持）
+        const existingAds = element.querySelectorAll('.google-auto-placed, ins[class*="adsbygoogle"]:not([data-ad-slot])');
         existingAds.forEach(ad => {
           ad.style.display = 'none';
           ad.style.visibility = 'hidden';
@@ -451,9 +451,9 @@
                 return;
               }
               
-              // 保護されたエリア内の自動広告は完全削除
-              const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
-              if (parentProtected) {
+              // 保護されたエリア内の自動広告は完全削除（設置型広告は除外）
+              const parentProtected = adElement.closest('[data-no-dynamic-ads], .skill-section, .gate-section');
+              if (parentProtected && !adElement.hasAttribute('data-ad-slot')) {
                 adElement.remove();
                 return;
               }
@@ -524,9 +524,9 @@
           return;
         }
         
-        // 保護されたエリア内の自動広告は削除
-        const parentProtected = adElement.closest('[data-wiki-content], [data-no-dynamic-ads], .skill-section, .gate-section, .character-section, .rom-section');
-        if (parentProtected) {
+        // 保護されたエリア内の自動広告は削除（設置型広告は除外）
+        const parentProtected = adElement.closest('[data-no-dynamic-ads], .skill-section, .gate-section');
+        if (parentProtected && !adElement.hasAttribute('data-ad-slot')) {
           adElement.remove();
           return;
         }
