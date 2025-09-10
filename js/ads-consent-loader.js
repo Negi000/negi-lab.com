@@ -211,6 +211,24 @@
       return;
     }
     
+    // モバイルデバイスでは自動広告を無効化
+    var isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      if (DEBUG) console.log('[ads-consent-loader] dynamic ads disabled on mobile devices');
+      document.body.setAttribute('data-dynamic-ads-managed','1');
+      return;
+    }
+    
+    // 既存の設置広告が多数ある場合は動的広告を控える
+    try {
+      var existingAds = document.querySelectorAll('ins.adsbygoogle, .ad-block').length;
+      if (existingAds >= 2) {
+        if (DEBUG) console.log('[ads-consent-loader] too many existing ads (' + existingAds + '), skipping dynamic insertion');
+        document.body.setAttribute('data-dynamic-ads-managed','1');
+        return;
+      }
+    } catch(_){}
+    
     // Skip short content pages
     try {
       var textLen = (document.body.innerText || '').length;
@@ -222,7 +240,7 @@
   var variant = window.__adsVariant || 'A';
   var timeThreshold = 3000; // 15秒→3秒に短縮
   var depthThreshold = 0.15; // 45%→15%に緩和
-  var inserted = 0, maxDynamic = 3; // 1枠→3枠に増加
+  var inserted = 0, maxDynamic = 1; // 3枠→1枠に削減（くどさ回避）
     var startTime = Date.now();
 
     function chooseAnchor(){
@@ -237,37 +255,80 @@
     var templateExists = document.getElementById('dynamic-ad-template');
     function createAdNode(slotId){
       var wrapper = document.createElement('aside');
-      wrapper.className = 'max-w-3xl mx-auto my-10';
+      wrapper.className = 'max-w-3xl mx-auto my-10 dynamic-ad-container';
       wrapper.setAttribute('aria-label','スポンサー広告');
+      wrapper.setAttribute('data-dynamic-ad', 'true');
       var label = document.createElement('div');
       label.className = 'text-xs text-gray-400 mb-1';
       label.textContent = 'スポンサーリンク';
       var ins = document.createElement('ins');
       ins.className = 'adsbygoogle';
       ins.style.display = 'block';
-      ins.style.minHeight = '250px';
+      ins.style.minHeight = '150px'; // 250px→150pxに縮小（縦長制限）
+      ins.style.maxHeight = '300px'; // 最大高さ制限を追加
       ins.setAttribute('data-ad-client','ca-pub-1835873052239386');
-      ins.setAttribute('data-ad-format','auto');
+      ins.setAttribute('data-ad-format','rectangle'); // auto→rectangleに変更（縦長防止）
       ins.setAttribute('data-full-width-responsive','true');
       ins.setAttribute('data-ad-lazy','1');
+      // 縦長広告の明示的な禁止
+      ins.setAttribute('data-ad-layout', 'in-article');
+      ins.setAttribute('data-ad-layout-key', '-fb+5w+4e-db+86');
       if (slotId) ins.setAttribute('data-ad-slot', slotId);
       wrapper.appendChild(label); wrapper.appendChild(ins);
       return wrapper;
     }
 
+    // 設置広告との距離をチェックする関数
+    function isSafeDistanceFromExistingAds(targetElement) {
+      var existingAds = document.querySelectorAll('.ad-block, ins.adsbygoogle, [data-dynamic-ad="true"]');
+      var minDistance = 800; // 最小距離（ピクセル）
+      
+      for (var i = 0; i < existingAds.length; i++) {
+        var adRect = existingAds[i].getBoundingClientRect();
+        var targetRect = targetElement.getBoundingClientRect();
+        var distance = Math.abs(adRect.top - targetRect.top);
+        
+        if (distance < minDistance) {
+          if (DEBUG) console.log('[ads-consent-loader] too close to existing ad:', distance, 'px');
+          return false;
+        }
+      }
+      return true;
+    }
+
     function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
-      // 収益最適化：既存広告制限を緩和（3枠制限→6枠制限）
+      
+      // 設置広告が既にある場合の制限強化
       try {
-        var existingStatic = document.querySelectorAll('ins.adsbygoogle').length;
-        if (existingStatic >= 6) return; // 3→6に緩和
+        var existingStatic = document.querySelectorAll('ins.adsbygoogle, .ad-block').length;
+        if (existingStatic >= 2) {
+          if (DEBUG) console.log('[ads-consent-loader] existing ads limit reached:', existingStatic);
+          return;
+        }
       } catch(_){ }
+      
       var seconds = (Date.now() - startTime)/1000;
       var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
       if (seconds * 1000 < timeThreshold || scrollDepth < depthThreshold) return;
+      
       var slots = ['7843001775','9898319477','4837564489'];
       var slot = slots[inserted % slots.length];
       var node = createAdNode(slot);
+      
+      // 設置広告との距離チェック
+      var tempNode = document.createElement('div');
+      tempNode.style.position = 'absolute';
+      tempNode.style.visibility = 'hidden';
+      anchor.parentNode.insertBefore(tempNode, anchor.nextSibling);
+      
+      if (!isSafeDistanceFromExistingAds(tempNode)) {
+        anchor.parentNode.removeChild(tempNode);
+        if (DEBUG) console.log('[ads-consent-loader] skipping insertion due to proximity to existing ads');
+        return;
+      }
+      
+      anchor.parentNode.removeChild(tempNode);
       anchor.parentNode.insertBefore(node, anchor.nextSibling);
       inserted++;
       track('ads_dynamic_insert', {slot: slot, index: inserted, variant: variant});
@@ -397,7 +458,7 @@
     
     // 全ての広告ブロックを監視対象に追加
     function monitorAllAdBlocks(){
-      document.querySelectorAll('.ad-block, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]').forEach(watchAdBlock);
+      document.querySelectorAll('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]').forEach(watchAdBlock);
     }
     
     // 初期監視設定
@@ -408,11 +469,11 @@
       mutations.forEach(function(mutation){
         mutation.addedNodes.forEach(function(node){
           if(node.nodeType === 1) { // Element node
-            if(node.matches && node.matches('.ad-block, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]')) {
+            if(node.matches && node.matches('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]')) {
               watchAdBlock(node);
             }
             // 子要素もチェック
-            var adBlocks = node.querySelectorAll && node.querySelectorAll('.ad-block, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
+            var adBlocks = node.querySelectorAll && node.querySelectorAll('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
             if(adBlocks) adBlocks.forEach(watchAdBlock);
           }
         });
@@ -434,6 +495,22 @@
   document.addEventListener('DOMContentLoaded', function(){
     // Lightweight heuristic: if there is at least one ad slot, we consider initializing ads when allowed
     var hasAdSlot = !!document.querySelector('ins.adsbygoogle');
+
+    // モバイル検出の強化
+    var isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      document.body.setAttribute('data-mobile-device', 'true');
+      if (DEBUG) console.log('[ads-consent-loader] mobile device detected, dynamic ads will be disabled');
+    }
+
+    // デバッグ情報の表示
+    if (DEBUG) {
+      document.body.setAttribute('data-ads-debug', 'true');
+      console.log('[ads-consent-loader] debug mode enabled');
+      console.log('[ads-consent-loader] mobile device:', isMobile);
+      console.log('[ads-consent-loader] has ad slots:', hasAdSlot);
+      console.log('[ads-consent-loader] wiki content:', !!document.querySelector('[data-wiki-content="true"]'));
+    }
 
     // 収益最優先：環境チェックのみで広告を常時有効化
     if (ENV_OK) {

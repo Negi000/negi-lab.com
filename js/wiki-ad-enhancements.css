@@ -11,6 +11,36 @@
   position: relative;
 }
 
+/* 動的広告コンテナの特別スタイリング */
+.dynamic-ad-container {
+  margin: 2rem 0; /* 設置広告より大きなマージン */
+  padding: 0.8rem 1rem;
+  border: 1px solid #1a2832;
+  background: linear-gradient(135deg, #0f1419, #141b23);
+  border-radius: 14px;
+  position: relative;
+}
+
+.dynamic-ad-container::before {
+  content: "自動広告";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 0.45rem;
+  color: #666;
+  background: #1a1a1a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+/* モバイルでは動的広告を完全に隠す */
+@media (max-width: 768px) {
+  .dynamic-ad-container {
+    display: none !important;
+  }
+}
+
 /* 広告ラベル */
 .ad-block .ad-label {
   font-size: 0.55rem;
@@ -29,6 +59,19 @@
   transition: all 0.3s ease;
 }
 
+/* 動的広告の高さ制限 */
+.dynamic-ad-container ins.adsbygoogle {
+  max-height: 300px !important;
+  overflow: hidden;
+}
+
+/* 縦長広告の防止 */
+.dynamic-ad-container ins.adsbygoogle[data-ad-format="rectangle"] {
+  min-height: 150px;
+  max-height: 280px;
+  aspect-ratio: 2/1; /* 横長比率を強制 */
+}
+
 /* 広告未表示時の縮小スタイル（大幅改良） */
 .ad-block[data-ad-empty="true"] {
   padding: 0.2rem 0.4rem;
@@ -38,6 +81,12 @@
   background: linear-gradient(135deg, #0f1419, #141b23);
   opacity: 0.6;
   transform: scale(0.98);
+}
+
+.dynamic-ad-container[data-ad-empty="true"] {
+  margin: 0.3rem 0; /* 動的広告未表示時はさらに縮小 */
+  padding: 0.1rem 0.2rem;
+  opacity: 0.4;
 }
 
 .ad-block[data-ad-empty="true"] .ad-label {
@@ -62,6 +111,12 @@
   border-color: #2a3d4a;
   background: #1a2530;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dynamic-ad-container[data-ad-empty="false"] {
+  border-color: #2a3d4a;
+  background: linear-gradient(135deg, #1a2530, #1f2b38);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .ad-block[data-ad-empty="false"] .ad-label {
@@ -91,6 +146,16 @@
   100% { transform: translateX(100%); }
 }
 
+/* 設置広告と動的広告の距離確保 */
+.ad-block + .dynamic-ad-container,
+.dynamic-ad-container + .ad-block {
+  margin-top: 3rem; /* 大きな間隔を確保 */
+}
+
+.dynamic-ad-container + .dynamic-ad-container {
+  margin-top: 4rem; /* 動的広告同士はさらに大きな間隔 */
+}
+
 /* レスポンシブ対応：モバイルデバイスでの広告ブロック調整 */
 @media (max-width: 640px) {
   .ad-block {
@@ -107,12 +172,21 @@
   .ad-block .ad-label {
     font-size: 0.5rem;
   }
+  
+  /* モバイルでは動的広告を完全に無効化 */
+  .dynamic-ad-container {
+    display: none !important;
+  }
 }
 
 /* 高密度レイアウト（タブレット）での調整 */
 @media (min-width: 641px) and (max-width: 1024px) {
   .ad-block {
     margin: 1.1rem 0;
+  }
+  
+  .dynamic-ad-container {
+    margin: 1.8rem 0;
   }
 }
 
@@ -157,6 +231,38 @@
   }
 }
 
+/* 楽天ウィジェットの暗いマスク除去と表示改善 */
+.ad-block script[src*="rakuten"] + script {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* 楽天ウィジェット専用の背景とコンテナ調整 */
+.ad-block:has(script[src*="rakuten"]) {
+  background: #1a2530 !important;
+  border-color: #2a3d4a !important;
+  padding: 0.8rem 1rem !important;
+}
+
+/* 楽天ウィジェット内のすべての要素の表示を強制 */
+.ad-block script[src*="rakuten"] ~ * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+/* 楽天ウィジェットのiframe/div要素の表示強制 */
+.ad-block iframe[src*="rakuten"],
+.ad-block div[id*="rakuten"],
+.ad-block div[class*="rakuten"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  background: #fff !important;
+  border-radius: 6px;
+}
+
 /* 広告配置のガイドライン表示（開発用：本番では非表示） */
 .ad-placement-guide {
   display: none;
@@ -179,6 +285,10 @@ body[data-ads-debug="true"] .ad-placement-guide {
 body[data-ads-debug="true"] .ad-block {
   position: relative;
   border: 2px dashed #ff6b6b;
+}
+
+body[data-ads-debug="true"] .dynamic-ad-container {
+  border: 2px dashed #ffa500;
 }
 
 body[data-ads-debug="true"] .ad-block[data-ad-empty="true"] {
