@@ -9,7 +9,8 @@
     "fix": "npm run update",
     "dev": "npm run validate && npm run update && npm run build:search",
     "test": "npm run validate",
-    "build:search": "node scripts/build-wiki-search-index.js"
+    "build:search": "node scripts/build-wiki-search-index.js",
+    "serve": "node scripts/serve-static.js"
   },
   "dependencies": {},
   "devDependencies": {},
