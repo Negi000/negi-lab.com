@@ -14,11 +14,11 @@
     lazyRootMargin: '220px 0px 220px 0px', // 300px→220px: 早すぎるプリロードを軽減
     dynamicTimeThresholdMs: 3000,          // 既存値(コメント)を保持
     dynamicScrollDepth: 0.15,
-    dynamicMaxDesktop: 12,
-    dynamicMaxMobile: 8,
-    baseDesktopCap: 8,
-    baseMobileCap: 5,                      // (旧) mobile:8 を段階増加へ
-    textLengthPerExtraSlot: 1400,          // 文字数に応じて追加スロット許容
+    dynamicMaxDesktop: 10,                 // 12→10: 上限を適度に調整
+    dynamicMaxMobile: 7,                   // 8→7: モバイル上限を抑制
+    baseDesktopCap: 6,                     // 8→6: 基本広告数を減少
+    baseMobileCap: 3,                      // 5→3: モバイル基本数を大幅減少
+    textLengthPerExtraSlot: 500,          // 1400→2500: Wikiページ実測に基づく最適化
     gaIdleDelay: 3000,                     // 初期操作が無い場合の GA フォールバック遅延
     enableAdaptiveCap: true
   };
