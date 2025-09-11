@@ -37,8 +37,9 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto S
 .birthday-list li .thumb-row{display:flex;align-items:center;gap:.45rem}
 .birthday-thumb{width:88px;height:88px;border-radius:12px;overflow:hidden;flex:0 0 auto;position:relative;border:1px solid #2d4456;background:#0f1820}
 .birthday-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-/* グローバル誕生日バブル (ボックス右上外) */
-#sideBirthdays .birthday-bubble-global{position:absolute;top:-18px;right:-18px;width:46px;height:46px;pointer-events:none;animation:bubbleBlink 1s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(255,200,120,.7));z-index:10}
+/* 誕生日バブル (カード右上) */
+.birthday-list li{position:relative}
+.birthday-list li .birthday-bubble{position:absolute;top:-15px;right:-10px;width:40px;height:40px;pointer-events:none;animation:bubbleBlink 1s ease-in-out infinite;filter:drop-shadow(0 0 4px rgba(255,200,120,.7));z-index:5}
 @keyframes bubbleBlink{0%,60%{opacity:1;transform:scale(1)}70%{opacity:.35;transform:scale(.85)}100%{opacity:1;transform:scale(1)}}
 /* 誕生日テーマ (軽い祝賀演出) */
 body.birthday-day:before{content:"";position:fixed;inset:0;pointer-events:none;background:
@@ -55,10 +56,21 @@ body.birthday-day .birthday-thumb{border:1px solid #3a6c8d;box-shadow:0 0 0 1px 
 .birthday-list li.today .today-meta{display:flex;flex-direction:column;gap:.35rem;min-width:0}
 .birthday-list li.today .today-meta a{font-size:.9rem;font-weight:700;line-height:1;color:#e9f6ff}
 .birthday-list li.today .today-meta time{font-size:.65rem;color:#b2cee0;letter-spacing:.5px}
-/* コンフェッティ */
-.birthday-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.birthday-confetti span{position:absolute;width:6px;height:6px;border-radius:2px;opacity:.9;animation:confettiFall linear infinite;will-change:transform}
-@keyframes confettiFall{0%{transform:translateY(-10%) rotate(0deg)}100%{transform:translateY(120vh) rotate(540deg)}}
+/* 豪華な誕生日メッセージ */
+.birthday-message{position:absolute;top:0;left:-20px;z-index:1000;text-align:center;pointer-events:none;animation:birthdayMessageFade 8s ease-in-out}
+.birthday-text{font-size:1.5rem;font-weight:800;color:#fff;text-shadow:0 0 20px rgba(255,200,120,.8),0 0 40px rgba(255,200,120,.6);animation:birthdayTextBounce 2s ease-in-out infinite;margin-bottom:1rem;white-space:nowrap;}
+.birthday-sparkles{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
+.birthday-sparkles span{font-size:2rem;animation:sparkleFloat 3s ease-in-out infinite;opacity:0.9}
+.birthday-sparkles span:nth-child(1){animation-delay:0s}
+.birthday-sparkles span:nth-child(2){animation-delay:0.5s}
+.birthday-sparkles span:nth-child(3){animation-delay:1s}
+.birthday-sparkles span:nth-child(4){animation-delay:1.5s}
+.birthday-sparkles span:nth-child(5){animation-delay:2s}
+.birthday-confetti span{font-size:1.2rem;position:absolute;top:-10px;animation:birthdayConfettiFall 8s linear infinite;opacity:0.9;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;z-index:10}
+@keyframes birthdayConfettiFall{0%{transform:translateY(-100vh) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+@keyframes birthdayMessageFade{0%,10%{opacity:0;transform:scale(0.8)}15%,85%{opacity:1;transform:scale(1)}90%,100%{opacity:0;transform:scale(1.2)}}
+@keyframes birthdayTextBounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+@keyframes sparkleFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(180deg)}}
 body.birthday-day .wiki-side-lane #sideBirthdays h3{color:#ffe2b5}
 body.birthday-day .wiki-header{border-bottom-color:#2a3d4d;box-shadow:0 0 0 1px #3a8bff33,0 2px 18px -8px rgba(255,200,120,.25)}
 body.birthday-day .wiki-hero-title{filter:drop-shadow(0 0 6px rgba(255,200,120,.25))}
@@ -75,8 +87,35 @@ body.birthday-day .wiki-hero-title{filter:drop-shadow(0 0 6px rgba(255,200,120,.
   .wiki-side-lane::-webkit-scrollbar-track{background:#18252e;border-radius:10px}
   .wiki-side-lane::-webkit-scrollbar-thumb{background:#2f475a;border-radius:10px}
 }
-/* モバイルで強制的に非表示 (広告やコンテンツとの干渉防止) */
-@media(max-width:1179px){.wiki-side-lane{display:none!important}}
+/* モバイル表示: スライドパネル + FABトグル */
+@media(max-width:1179px){
+  .wiki-side-lane{position:fixed;top:56px;left:0;width:85%;max-width:360px;background:#111b23f2;border-right:1px solid #243541;backdrop-filter:blur(6px);padding:1rem .9rem 1.4rem;display:flex;flex-direction:column;gap:.95rem;transform:translateX(-105%);transition:transform .35s cubic-bezier(.4,.0,.2,1);height:calc(100vh - 56px);overflow:auto;z-index:1200;box-shadow:0 10px 32px -8px #000c,0 0 0 1px #24354180;border-top-right-radius:18px;border-bottom-right-radius:18px}
+  .wiki-side-lane.open{transform:translateX(0)}
+  .wiki-side-lane .side-box{width:100%;padding:.75rem .85rem;position:relative}
+  .side-lane-toggle{position:fixed;bottom:16px;left:16px;z-index:1300;width:54px;height:54px;border-radius:16px;background:linear-gradient(140deg,#172531,#1f3644);border:1px solid #2c4656;display:flex;align-items:center;justify-content:center;color:#cfe2ff;font-size:1.35rem;box-shadow:0 6px 18px -6px #000c,0 0 0 1px #2e4b5d80;cursor:pointer;transition:.3s}
+  .side-lane-toggle:hover{background:#203746}
+  .side-lane-toggle[aria-expanded="true"]{background:#2b4657;color:#fff;box-shadow:0 0 0 1px #3a8bff88,0 8px 26px -6px #000c}
+  .side-lane-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);z-index:1100;opacity:0;pointer-events:none;transition:.3s}
+  .side-lane-overlay.active{opacity:1;pointer-events:auto}
+  main{margin-left:0}
+  /* サイドボックス個別折り畳み */
+  .side-box h3{padding-right:28px;cursor:pointer;user-select:none}
+  .side-box h3 button.toggle-sec{all:unset;position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:6px;background:#1f2e38;border:1px solid #2c4250;display:flex;align-items:center;justify-content:center;font-size:.65rem;cursor:pointer;color:#9ec5ff;transition:.25s}
+  .side-box h3 button.toggle-sec:hover{background:#284052}
+  .side-box.collapsed{padding-bottom:.4rem}
+  .side-box.collapsed > *:not(h3){display:none!important}
+  .side-box h3 button.toggle-sec span{display:inline-block;transform:rotate(0deg);transition:.25s}
+  .side-box.collapsed h3 button.toggle-sec span{transform:rotate(-90deg)}
+  /* デイリーヒントツールチップ */
+  .side-lane-hint{position:fixed;bottom:82px;left:16px;z-index:1400;background:#1d2b36eb;border:1px solid #2e4858;color:#cfe2ff;padding:.6rem .7rem;font-size:.6rem;line-height:1.5;border-radius:10px;max-width:220px;box-shadow:0 8px 26px -8px #000c,0 0 0 1px #2e485880;animation:sideHintFade .35s ease;backdrop-filter:blur(4px)}
+  .side-lane-hint:after{content:"";position:absolute;bottom:-6px;left:14px;width:10px;height:10px;background:#1d2b36eb;border-left:1px solid #2e4858;border-bottom:1px solid #2e4858;transform:rotate(45deg)}
+  .side-lane-hint button{all:unset;cursor:pointer;color:#63b7ff;font-weight:600;font-size:.65rem;margin-left:.25rem}
+  @keyframes sideHintFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  /* 誕生日バッジ (初回/日次) */
+  .side-lane-toggle .birthday-ping{position:absolute;top:-6px;right:-6px;width:30px;height:30px;border-radius:12px;background:#1e3140;border:1px solid #3a8bff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px #3a8bff55,0 0 14px -2px #3a8bffaa;animation:bdPulse 2s ease-in-out infinite}
+  .side-lane-toggle .birthday-ping img{width:70%;height:70%;object-fit:contain;filter:drop-shadow(0 0 4px #3a8bffcc)}
+  @keyframes bdPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 1px #3a8bff55,0 0 14px -2px #3a8bffaa}50%{transform:scale(1.15);box-shadow:0 0 0 8px rgba(58,139,255,0),0 0 18px 0 #63b7ffcc}}
+}
 /* ===== /サイドレーン ===== */
 /* ===== 新 Wiki ヒーローヘッダー / メガナビ (スマホファースト) ===== */
 .wiki-hero{margin:0 0 1.4rem;position:relative}
@@ -295,6 +334,9 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
       <div class="event-empty" data-event-empty style="display:none">開催中イベントなし</div>
     </section>
   </aside>
+  <!-- モバイル用トグルボタン & オーバーレイ -->
+  <button class="side-lane-toggle" id="sideLaneToggle" aria-label="サイド情報" aria-expanded="false" aria-controls="sideBirthdays"><span aria-hidden="true">★</span></button>
+  <div class="side-lane-overlay" id="sideLaneOverlay" aria-hidden="true"></div>
 <main>
   <section class="wiki-hero" data-wiki-header>
     <div class="wiki-hero-bar">
@@ -958,6 +1000,86 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
     });
   })();
 })();
+// モバイル サイドレーン トグル & 折り畳み + フォーカストラップ + 日次ヒント + 誕生日バッジ
+(function(){
+  const lane=document.querySelector('.wiki-side-lane');
+  const btn=document.getElementById('sideLaneToggle');
+  const overlay=document.getElementById('sideLaneOverlay');
+  if(!lane||!btn||!overlay) return;
+  const LS_KEY_OPEN='fm_side_lane_open_v1';
+  const SEC_KEY_PREF='fm_side_sec_';
+  const HINT_KEY='fm_side_lane_hint_day';
+  const BIRTH_BADGE_KEY='fm_side_lane_birth_badge_day';
+  function todayKey(){ const d=new Date(); const utc=d.getTime()+d.getTimezoneOffset()*60000; const j=new Date(utc+9*3600000); return j.getFullYear()+('-'+String(j.getMonth()+1).padStart(2,'0'))+('-'+String(j.getDate()).padStart(2,'0')); }
+  function isMobile(){return window.innerWidth<1180;}
+  // フォーカストラップ
+  let lastFocused=null; let trapHandler=null;
+  function enableTrap(){
+    lastFocused=document.activeElement;
+    const selectors='a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])';
+    function cycle(e){
+      if(e.key==='Tab'){
+        const f=[...lane.querySelectorAll(selectors)]; if(!f.length) return;
+        const first=f[0], last=f[f.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      }else if(e.key==='Escape'){ close(); btn.focus(); }
+    }
+    trapHandler=cycle; document.addEventListener('keydown',cycle);
+    const f=[...lane.querySelectorAll(selectors)]; if(f.length){ f[0].focus(); }
+  }
+  function disableTrap(){ if(trapHandler){ document.removeEventListener('keydown',trapHandler); trapHandler=null; } if(lastFocused){ lastFocused.focus(); } }
+  function open(){ lane.classList.add('open'); btn.setAttribute('aria-expanded','true'); overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false'); localStorage.setItem(LS_KEY_OPEN,'1'); enableTrap(); }
+  function close(){ lane.classList.remove('open'); btn.setAttribute('aria-expanded','false'); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); localStorage.removeItem(LS_KEY_OPEN); disableTrap(); }
+  btn.addEventListener('click',()=>{ lane.classList.contains('open')?close():open(); });
+  overlay.addEventListener('click',close);
+  window.addEventListener('keydown',e=>{ if(e.key==='Escape' && lane.classList.contains('open')) close(); });
+  if(isMobile() && localStorage.getItem(LS_KEY_OPEN)==='1'){ open(); }
+  window.addEventListener('resize',()=>{ if(!isMobile()){ close(); } });
+  // セクション折り畳み
+  function enhanceSections(){
+    if(!isMobile()) return;
+    lane.querySelectorAll('.side-box').forEach(box=>{
+      if(box.querySelector('h3 button.toggle-sec')) return;
+      const h3=box.querySelector('h3'); if(!h3) return;
+      const id=box.id||h3.id||Math.random().toString(36).slice(2);
+      box.id = box.id || id;
+      const stKey=SEC_KEY_PREF+id;
+      const tBtn=document.createElement('button');
+      tBtn.className='toggle-sec'; tBtn.type='button'; tBtn.innerHTML='<span>▾</span>'; tBtn.setAttribute('aria-label',h3.textContent.trim()+' 折り畳み');
+      h3.style.position='relative'; h3.appendChild(tBtn);
+      const collapsed = localStorage.getItem(stKey)==='1'; if(collapsed) box.classList.add('collapsed');
+      tBtn.addEventListener('click',e=>{ e.stopPropagation(); box.classList.toggle('collapsed'); if(box.classList.contains('collapsed')){ localStorage.setItem(stKey,'1'); } else { localStorage.removeItem(stKey); } });
+      h3.addEventListener('click',e=>{ if(e.target===tBtn) return; tBtn.click(); });
+    });
+  }
+  enhanceSections();
+  window.addEventListener('resize',enhanceSections);
+  // デイリーヒント
+  function maybeShowHint(){
+    if(!isMobile()) return; const tk=todayKey(); if(localStorage.getItem(HINT_KEY)===tk) return;
+    const el=document.createElement('div'); el.className='side-lane-hint';
+    el.innerHTML='サイド情報 (誕生日 / イベント) はここから開けます <button type="button" data-close>OK</button>';
+    document.body.appendChild(el); const c=el.querySelector('[data-close]');
+    function dismiss(){ if(el.parentNode){ el.remove(); localStorage.setItem(HINT_KEY,tk); } }
+    c.addEventListener('click',dismiss); setTimeout(dismiss,8000);
+  }
+  maybeShowHint();
+  // 誕生日バッジ (当日誕生日あり & 日次初回)
+  function attachBirthdayBadge(){
+    if(!isMobile()) return; const tk=todayKey(); if(localStorage.getItem(BIRTH_BADGE_KEY)===tk) return;
+    let tries=0; const iv=setInterval(()=>{ tries++; if(tries>40){ clearInterval(iv); return; }
+      const items=document.querySelectorAll('.birthday-list li.today'); if(!items.length) return;
+      clearInterval(iv);
+      const badge=document.createElement('div'); badge.className='birthday-ping';
+      const img=document.createElement('img'); img.alt='誕生日あり'; img.loading='lazy'; img.src=(window.__FM_PATHS? window.__FM_PATHS.assets:'site/assets/left_side_lane/')+'birthday_icon.png'; badge.appendChild(img);
+      btn.appendChild(badge);
+      function clearBadge(){ if(badge.parentNode){ badge.remove(); localStorage.setItem(BIRTH_BADGE_KEY,tk); } }
+      btn.addEventListener('click',clearBadge,{once:true}); setTimeout(clearBadge,10000);
+    },250);
+  }
+  attachBirthdayBadge();
+})();
 </script>
 <script>
 // ===== サイドレーン: 誕生日 & イベントカウントダウン =====
@@ -1093,24 +1215,46 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
   console.info('[Birthday] JST today key', todayKey);
       // 誕生日テーマ適用
       document.body.classList.add('birthday-day');
-      // コンフェッティ生成（軽量 24個、10秒後自動削除）
+      // 豪華な誕生日メッセージ
+      (function(){
+        if(document.querySelector('.birthday-message')) return;
+        const message = document.createElement('div');
+        message.className = 'birthday-message';
+        const chars = ['🎉', ' ', 'H', 'a', 'p', 'p', 'y', ' ', 'B', 'i', 'r', 't', 'h', 'd', 'a', 'y', '!', ' ', '🎉'];
+        let archedText = '';
+        for(let i = 0; i < chars.length; i++) {
+          const angle = (i - (chars.length - 1) / 2) * 2; // アーチ角度調整
+          archedText += `<span style="display:inline-block;transform:rotate(${angle}deg);">${chars[i]}</span>`;
+        }
+        message.innerHTML = `
+          <div class="birthday-text">${archedText}</div>
+          <div class="birthday-sparkles">
+            <span>✨</span><span>🎂</span><span>🎈</span><span>🎁</span><span>⭐</span>
+          </div>
+        `;
+        document.querySelector('#sideBirthdays').appendChild(message);
+        setTimeout(() => message.remove(), 8000);
+      })();
+      // コンフェッティ生成（増量 36個、12秒後自動削除）
       (function(){
         if(document.querySelector('.birthday-confetti')) return;
         const holder=document.createElement('div');
         holder.className='birthday-confetti';
-        const colors=['#ffcf7d','#ffa94d','#6fbfff','#9ad8ff','#ffd6a3'];
-        for(let i=0;i<24;i++){
+        const colors=['#ffcf7d','#ffa94d','#6fbfff','#9ad8ff','#ffd6a3','#ff6b9d','#a855f7','#34d399'];
+        const emojis=['🎉','🎂','🎈','🎁','⭐','✨','💫','🌟'];
+        for(let i=0;i<36;i++){
           const sp=document.createElement('span');
-          const delay=(Math.random()*4).toFixed(2)+'s';
-          const dur=(6+Math.random()*4).toFixed(2)+'s';
-            sp.style.left=(Math.random()*100).toFixed(2)+'%';
-            sp.style.background=colors[i%colors.length];
-            sp.style.animationDuration=dur; sp.style.animationDelay=delay;
+          const delay=(Math.random()*6).toFixed(2)+'s';
+          const dur=(8+Math.random()*6).toFixed(2)+'s';
+          sp.style.left=(Math.random()*100).toFixed(2)+'%';
+          sp.style.background=colors[i%colors.length];
+          sp.style.animationDuration=dur; sp.style.animationDelay=delay;
+          if(Math.random()>0.7) sp.textContent = emojis[Math.floor(Math.random()*emojis.length)];
           holder.appendChild(sp);
         }
         const target=document.querySelector('#sideBirthdays');
         if(target){ target.style.position='relative'; target.appendChild(holder); }
-        setTimeout(()=> holder.remove(),10000);
+        setTimeout(()=> holder.remove(),12000);
       })();
       todays.forEach(b=>{
         const li=document.createElement('li');
@@ -1123,55 +1267,25 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
         const bubbleInit=bubbleCandidates[0];
         li.innerHTML = `
           <div class="thumb-row">
-            <div class="birthday-thumb">${thumbPath?`<img data-thumb="${thumbPath}" src="${thumbPath}" alt="${b.name}" loading="lazy">`:''}
-              <img class="birthday-bubble" src="${bubbleInit}" alt="誕生日アイコン" loading="lazy">
-            </div>
+            <div class="birthday-thumb">${thumbPath?`<img data-thumb="${thumbPath}" src="${thumbPath}" alt="${b.name}" loading="lazy">`:''}</div>
             <div style="flex:1;min-width:0">
               <div style="display:flex;align-items:center;gap:.35rem;flex-wrap:wrap">
                 <a href="${b.link||'#'}" aria-label="${b.name} の詳細">${b.name}</a>
               </div>
               <time datetime="--${b.date}">${b.date}</time>
             </div>
-          </div>`;
+          </div>
+          <img class="birthday-bubble" src="${bubbleInit}" alt="誕生日アイコン" loading="lazy">`;
         listEl.appendChild(li);
         // bubble fallback
         const bubbleImg=li.querySelector('.birthday-bubble');
         if(bubbleImg){ let bi=0; bubbleImg.onerror=()=>{ if(bi < bubbleCandidates.length-1){ bi++; bubbleImg.src=bubbleCandidates[bi]; } }; }
+        // 5秒後に吹き出しを削除
+        setTimeout(()=>{ if(bubbleImg) bubbleImg.remove(); }, 5000);
         // サムネフォールバック (存在しない時は非表示)
         const thumbImg=li.querySelector('.birthday-thumb img[data-thumb]');
         if(thumbImg){ thumbImg.onerror=()=>{ thumbImg.style.display='none'; }; }
       });
-      // バブル 5秒後削除 (点滅継続→消える)
-        // グローバル吹き出し一枚
-        (function addGlobalBubble(){
-          const bubbleCandidates=[
-            window.__FM_PATHS.assets + 'birthday_icon.png',
-            window.__FM_PATHS.root + 'birthday_icon.png'
-          ];
-          const img=document.createElement('img');
-          img.className='birthday-bubble-global';
-          let bi=0; img.src=bubbleCandidates[0];
-          img.alt='誕生日'; img.loading='lazy';
-          img.onerror=()=>{ if(bi < bubbleCandidates.length-1){ bi++; img.src=bubbleCandidates[bi]; } };
-          const host=document.getElementById('sideBirthdays');
-          if(host){ host.appendChild(img); setTimeout(()=>img.remove(),5000); }
-        })();
-        todays.forEach(b=>{
-          const li=document.createElement('li');
-          li.className='today';
-          const thumbPath = resolveBirthdayThumb(b.id);
-          li.innerHTML = `
-            <div class="today-row">
-              <div class="birthday-thumb">${thumbPath?`<img data-thumb="${thumbPath}" src="${thumbPath}" alt="${b.name}" loading="lazy">`:''}</div>
-              <div class="today-meta">
-                <a href="${b.link||'#'}" aria-label="${b.name} の詳細">${b.name}</a>
-                <time datetime="--${b.date}">${b.date}</time>
-              </div>
-            </div>`;
-          listEl.appendChild(li);
-          const thumbImg=li.querySelector('.birthday-thumb img[data-thumb]');
-          if(thumbImg){ thumbImg.onerror=()=>{ thumbImg.style.display='none'; }; }
-        });
     }else if(emptyEl){ emptyEl.style.display='block'; }
     if(!todays.length && birthdayData.length===0 && location.protocol==='file:'){
       const warn=document.querySelector('[data-birthday-file-warn]');
@@ -1182,7 +1296,7 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
     const upcoming = birthdayData
       .map(b=>({
         ...b,
-        nextDate: (()=>{ const ord = parseInt(b.date.replace('-',''),10); const yearOffset = ord < todayOrdinal ? 1 : 0; return new Date(today.getFullYear()+yearOffset+'-'+b.date+'T00:00:00'); })()
+        nextDate: (()=>{ const ord = parseInt(b.date.replace('-',''),10); const yearOffset = ord < todayOrdinal ? 1 : 0; return new Date(todayJST.getFullYear()+yearOffset+'-'+b.date+'T00:00:00'); })()
       }))
       .filter(b=>b.date!==todayKey)
       .sort((a,b)=>a.nextDate - b.nextDate)
