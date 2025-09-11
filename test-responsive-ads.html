@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レスポンシブ広告システム テスト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/js/responsive-ads.css">
+    <script src="/js/responsive-ads-controller.js"></script>
+    <script src="/js/ads-consent-loader.js"></script>
+    <style>
+        .test-section {
+            border: 2px dashed #3b82f6;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .test-info {
+            background: #1e40af;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+        .debug-info {
+            background: #374151;
+            color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <header class="bg-gray-800 py-4">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-2xl font-bold">レスポンシブ広告システム テスト</h1>
+            <p class="text-gray-400 mt-2">PC用・スマホ用広告の自動切り替えテスト</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <!-- デバッグ情報表示 -->
+        <div class="debug-info">
+            <h3 class="font-bold mb-2">🔍 デバッグ情報</h3>
+            <div id="debug-output">
+                <p>画面幅: <span id="screen-width">取得中...</span></p>
+                <p>デバイス判定: <span id="device-type">取得中...</span></p>
+                <p>ユーザーエージェント: <span id="user-agent">取得中...</span></p>
+                <p>適用クライアントID: <span id="client-id">取得中...</span></p>
+            </div>
+        </div>
+
+        <!-- TOP広告テスト -->
+        <section class="test-section">
+            <div class="test-info">
+                📱 TOP広告テスト - PC: 4837564489 / スマホ: 6430083800
+            </div>
+            <div class="ad-block">
+                <div class="ad-label">スポンサーリンク (TOP)</div>
+                <ins class="adsbygoogle ad-pc" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="4837564489" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+                <ins class="adsbygoogle ad-sp" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="6430083800" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+            </div>
+        </section>
+
+        <!-- サンプルコンテンツ -->
+        <section class="bg-gray-800 p-6 rounded-lg my-8">
+            <h2 class="text-xl font-bold mb-4">サンプルコンテンツ</h2>
+            <p class="mb-4">
+                このページでは、レスポンシブ広告システムの動作をテストできます。
+                画面幅を変更したり、モバイルデバイスでアクセスして広告の表示が
+                適切に切り替わることを確認してください。
+            </p>
+            <p class="mb-4">
+                PC用とスマホ用の広告が同時に表示される問題を解決し、
+                デバイスに応じて適切な広告のみが表示されるようになっています。
+            </p>
+            <div class="bg-gray-700 p-4 rounded mt-4">
+                <h3 class="font-bold mb-2">広告スロットID一覧</h3>
+                <ul class="text-sm space-y-1">
+                    <li><strong>スマホ用:</strong></li>
+                    <li>- ボトム: 8916646342</li>
+                    <li>- ミドル: 3205934910</li>
+                    <li>- トップ: 6430083800</li>
+                    <li><strong>PC用:</strong></li>
+                    <li>- ミドル: 9898319477</li>
+                    <li>- ボトム: 7843001775</li>
+                    <li>- トップ: 4837564489</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MIDDLE広告テスト -->
+        <section class="test-section">
+            <div class="test-info">
+                🖥️ MIDDLE広告テスト - PC: 9898319477 / スマホ: 3205934910
+            </div>
+            <div class="ad-block">
+                <div class="ad-label">スポンサーリンク (MIDDLE)</div>
+                <ins class="adsbygoogle ad-pc" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="9898319477" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+                <ins class="adsbygoogle ad-sp" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="3205934910" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+            </div>
+        </section>
+
+        <!-- 追加のサンプルコンテンツ -->
+        <section class="bg-gray-800 p-6 rounded-lg my-8">
+            <h2 class="text-xl font-bold mb-4">テスト手順</h2>
+            <ol class="list-decimal list-inside space-y-2 text-sm">
+                <li>PCブラウザでこのページを開き、PC用広告のみが表示されることを確認</li>
+                <li>ブラウザの開発者ツールでモバイル表示に切り替え、スマホ用広告のみが表示されることを確認</li>
+                <li>実際のモバイルデバイスでアクセスし、スマホ用広告のみが表示されることを確認</li>
+                <li>画面幅を変更した際に、適切な広告に切り替わることを確認</li>
+            </ol>
+        </section>
+
+        <!-- BOTTOM広告テスト -->
+        <section class="test-section">
+            <div class="test-info">
+                📱 BOTTOM広告テスト - PC: 7843001775 / スマホ: 8916646342
+            </div>
+            <div class="ad-block">
+                <div class="ad-label">スポンサーリンク (BOTTOM)</div>
+                <ins class="adsbygoogle ad-pc" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="7843001775" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+                <ins class="adsbygoogle ad-sp" 
+                     data-ad-client="ca-pub-1835873052239386" 
+                     data-ad-slot="8916646342" 
+                     data-ad-format="auto" 
+                     data-full-width-responsive="true" 
+                     data-ad-lazy="1"></ins>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 negi-lab.com レスポンシブ広告システム</p>
+        </div>
+    </footer>
+
+    <script>
+        // デバッグ情報の表示
+        function updateDebugInfo() {
+            document.getElementById('screen-width').textContent = window.innerWidth + 'px';
+            
+            if (window.ResponsiveAds) {
+                const isMobile = window.ResponsiveAds.isMobileDevice();
+                document.getElementById('device-type').textContent = isMobile ? 'モバイル' : 'PC';
+                document.getElementById('client-id').textContent = window.ResponsiveAds.AD_CLIENT;
+            } else {
+                document.getElementById('device-type').textContent = '未判定';
+                document.getElementById('client-id').textContent = '未設定';
+            }
+            
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+        }
+
+        // 初期表示
+        document.addEventListener('DOMContentLoaded', updateDebugInfo);
+        
+        // リサイズ時の更新
+        window.addEventListener('resize', updateDebugInfo);
+        
+        // 5秒後に再更新（システム初期化完了後）
+        setTimeout(updateDebugInfo, 5000);
+    </script>
+</body>
+</html>

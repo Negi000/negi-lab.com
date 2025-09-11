@@ -1,0 +1,163 @@
+/* 
+ * Responsive Ads Styles
+ * PC/モバイル環境での広告表示制御
+ * 2025-01-11 作成
+ */
+
+/* デバイス別の基本的な非表示制御 */
+@media (max-width: 768px) {
+  /* モバイル時：PC用広告を完全に非表示 */
+  .ad-pc {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  /* PC時：モバイル用広告を完全に非表示 */
+  .ad-sp {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+}
+
+/* JavaScript制御用の属性ベース制御 */
+body[data-device-type="mobile"] .ad-pc {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body[data-device-type="pc"] .ad-sp {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* アクティブな広告のスタイル */
+body[data-device-type="mobile"] .ad-sp,
+body[data-device-type="pc"] .ad-pc {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* 広告ブロックの重複防止 */
+.ad-block {
+  position: relative;
+}
+
+.ad-block:has(.ad-pc.ad-sp) {
+  /* 両方のクラスが存在する場合の警告スタイル */
+  border: 2px solid #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.ad-block:has(.ad-pc.ad-sp)::before {
+  content: "⚠️ 重複広告検出";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 12px;
+  color: #ff6b6b;
+  z-index: 1000;
+}
+
+/* 広告ラベルのスタイル改善 */
+.ad-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* レスポンシブ広告のサイズ制御 */
+.adsbygoogle {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* モバイル時の広告サイズ最適化 */
+@media (max-width: 768px) {
+  .adsbygoogle.ad-sp {
+    min-height: 250px;
+    max-height: 300px;
+  }
+}
+
+/* PC時の広告サイズ最適化 */
+@media (min-width: 769px) {
+  .adsbygoogle.ad-pc {
+    min-height: 90px;
+    max-height: 400px;
+  }
+}
+
+/* デバッグ用スタイル（開発時のみ使用） */
+body[data-ads-debug="true"] .ad-block {
+  border: 1px dashed #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+body[data-ads-debug="true"] .ad-block::after {
+  content: "Device: " attr(data-device-type) " | Width: " attr(data-screen-width) "px";
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 10px;
+  color: #3b82f6;
+  z-index: 1000;
+}
+
+/* 広告が正常にロードされた際のスタイル */
+.ad-block[data-ad-empty="false"] {
+  background-color: transparent;
+}
+
+.ad-block[data-ad-empty="true"] {
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-block[data-ad-empty="true"]::before {
+  content: "広告読み込み中...";
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 0.8rem;
+}
+
+/* アクセシビリティ向上 */
+.ad-block[aria-label] {
+  position: relative;
+}
+
+/* 広告ブロックの間隔調整 */
+.ad-block + .ad-block {
+  margin-top: 2rem;
+}
+
+/* セクション内の広告配置 */
+.section .ad-block {
+  margin: 1.5rem auto;
+  max-width: 728px; /* PC時の最大幅制限 */
+}
+
+@media (max-width: 768px) {
+  .section .ad-block {
+    max-width: 320px; /* モバイル時の最大幅制限 */
+  }
+}

@@ -270,8 +270,9 @@
       return;
     }
     
-    // モバイルデバイスでは自動広告を無効化
-    var isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    // レスポンシブ広告システムのデバイス判定を使用
+    var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+                   (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     if (isMobile) {
       if (DEBUG) console.log('[ads-consent-loader] dynamic ads disabled on mobile devices');
       document.body.setAttribute('data-dynamic-ads-managed','1');
@@ -314,6 +315,10 @@
 
     var templateExists = document.getElementById('dynamic-ad-template');
     function createAdNode(slotId){
+      // レスポンシブ広告システムを使用して適切なデバイス用広告を作成
+      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+                     (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      
       var wrapper = document.createElement('aside');
       wrapper.className = 'max-w-3xl mx-auto my-10 dynamic-ad-container';
       wrapper.setAttribute('aria-label','スポンサー広告');
@@ -322,18 +327,20 @@
       var label = document.createElement('div');
       label.className = 'text-xs text-gray-400 mb-1';
       label.textContent = 'スポンサーリンク';
+      
       var ins = document.createElement('ins');
-      ins.className = 'adsbygoogle';
+      ins.className = isMobile ? 'adsbygoogle ad-sp' : 'adsbygoogle ad-pc';
       ins.style.display = 'block';
       ins.style.minHeight = '100px'; // 250px→100pxに縮小
       ins.style.maxHeight = '200px'; // 最大高さ200px制限
       ins.style.height = '200px'; // 固定高さで縦長防止
       ins.style.overflow = 'hidden'; // はみ出し防止
-      ins.setAttribute('data-ad-client','ca-pub-1835873052239386');
+      ins.setAttribute('data-ad-client', window.ResponsiveAds ? window.ResponsiveAds.AD_CLIENT : 'ca-pub-1835873052239386');
       ins.setAttribute('data-ad-format','rectangle'); // auto→rectangleに変更（縦長防止）
       ins.setAttribute('data-ad-layout',''); // レスポンシブレイアウト無効化
       ins.setAttribute('data-full-width-responsive','true');
       ins.setAttribute('data-ad-lazy','1');
+      ins.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
       // 縦長広告の明示的な禁止
       ins.setAttribute('data-ad-layout', 'in-article');
       ins.setAttribute('data-ad-layout-key', '-fb+5w+4e-db+86');
@@ -360,7 +367,6 @@
       return true;
     }
 
-  var scrollTicking = false; // rAF節約
   function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
       
@@ -377,8 +383,21 @@
       var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
       if (seconds * 1000 < timeThreshold || scrollDepth < depthThreshold) return;
       
-      var slots = ['7843001775','9898319477','4837564489'];
-      var slot = slots[inserted % slots.length];
+      // レスポンシブ広告システムからスロットIDを取得
+      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+                     (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      
+      var slots, slot;
+      if (window.ResponsiveAds && window.ResponsiveAds.AD_SLOTS) {
+        var deviceSlots = isMobile ? window.ResponsiveAds.AD_SLOTS.mobile : window.ResponsiveAds.AD_SLOTS.pc;
+        slots = [deviceSlots.bottom, deviceSlots.middle, deviceSlots.top];
+        slot = slots[inserted % slots.length];
+      } else {
+        // フォールバック
+        slots = isMobile ? ['8916646342','3205934910','6430083800'] : ['7843001775','9898319477','4837564489'];
+        slot = slots[inserted % slots.length];
+      }
+      
       var node = createAdNode(slot);
       
       // 設置広告との距離チェック
@@ -396,7 +415,7 @@
       anchor.parentNode.removeChild(tempNode);
       anchor.parentNode.insertBefore(node, anchor.nextSibling);
       inserted++;
-      track('ads_dynamic_insert', {slot: slot, index: inserted, variant: variant});
+      track('ads_dynamic_insert', {slot: slot, index: inserted, variant: variant, device: isMobile ? 'mobile' : 'pc'});
       if (window.__adsLoaded) {
         try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(_){}
       }
@@ -404,6 +423,7 @@
         window.removeEventListener('scroll', onScroll, { passive: true });
       }
     }
+  var scrollTicking = false; // rAF節約
     function onScroll(){
       if(scrollTicking) return;
       scrollTicking = true;
