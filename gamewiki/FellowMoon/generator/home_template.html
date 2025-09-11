@@ -142,6 +142,9 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 </style>
 </head>
 <body>
+  <!-- サイドレーン共有スクリプト挿入 -->
+  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!document.querySelector('.wiki-side-lane')){console.warn('[SideLane] retry(home)');const s=document.createElement('script');s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry='+Date.now();s.defer=true;document.head.appendChild(s);} },1500);});</script>
 <!-- Header (mobile-first) -->
 <header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
   <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
