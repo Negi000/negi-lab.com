@@ -130,6 +130,21 @@ body.birthday-day #sideBirthdays:before{content:"";position:absolute;inset:0;bor
 #sideSupport a.kofi-inline-btn img{display:block;max-width:100%;height:auto}
 #sideSupport a.kofi-inline-btn:hover{background:#2d4761;border-color:#467090}
 #sideSupport a.kofi-inline-btn:active{transform:translateY(1px)}
+/* === v1.2 event simple list compact === */
+body.fm-ev-simple-collapsed #sideEvents .event-timer-list.fm-simple-collapsible{display:none}
+#sideEvents .ev-simple-toggle-wrap{margin:.2rem 0 .15rem;display:flex;justify-content:flex-end}
+#sideEvents .ev-simple-toggle{background:#1c2d37;border:1px solid #2e4657;color:#9ec5ff;font-size:.55rem;letter-spacing:.5px;font-weight:600;cursor:pointer;border-radius:8px;padding:4px 8px;display:inline-flex;align-items:center;gap:.35rem;transition:.25s}
+#sideEvents .ev-simple-toggle:hover{background:#254152;color:#d2ecff}
+#sideEvents .ev-simple-toggle:active{transform:translateY(1px)}
+#sideEvents .ev-simple-toggle svg{width:12px;height:12px;fill:currentColor;transition:.25s}
+body.fm-ev-simple-collapsed #sideEvents .ev-simple-toggle[data-state=open] {display:none}
+body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=closed] {display:none}
+/* accessibility focus */
+#sideEvents .ev-simple-toggle:focus-visible{outline:2px solid #3a8bff;outline-offset:2px}
+/* subtle animation */
+#sideEvents .event-timer-list.fm-simple-collapsible{animation:evListFade .3s ease}
+@keyframes evListFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+/* === end v1.2 === */
 `;
     const st=document.createElement('style'); st.id='fm-sidelane-css'; st.textContent=css; document.head.appendChild(st);
   }
@@ -465,7 +480,43 @@ body.birthday-day #sideBirthdays:before{content:"";position:absolute;inset:0;bor
     const sideBox=document.getElementById('sideEvents'); if(!sideBox) return; const bannerRoot=document.createElement('div'); bannerRoot.setAttribute('data-event-banners',''); sideBox.insertBefore(bannerRoot, list); const today=new Date(); const banners=(eventData||[]).map(ev=>{ const startJST=new Date(ev.start+'T07:00:00Z'); const endJST=new Date(ev.end+'T18:59:59Z'); return {...ev,startJST,endJST}; }); const active=banners.filter(b=> today>=b.startJST && today<=b.endJST); const upcoming=banners.filter(b=> today<b.startJST).sort((a,b)=>a.startJST-b.startJST).slice(0,2); function makeBanner(ev,state){ const wrap=document.createElement('div'); wrap.className='event-banner'; wrap.dataset.state=state; const badge= state==='active' ? '開催中':'予告'; let candidates=[]; const raw=ev.banner||''; const hasExt=/\.(png|jpe?g|webp)$/i.test(raw); const laneDir=PATHS.assets+'バナー/'; const laneDirRoot=PATHS.site+'assets/left_side_lane/バナー/'; function push(base,ext){ candidates.push(laneDir+base+ext,laneDirRoot+base+ext,PATHS.assets+base+ext, PATHS.root+base+ext); }
       if(!hasExt){ ['.webp','.png','.jpg'].forEach(ext=>push(raw,ext)); } else { const base=raw.replace(/\.(png|jpe?g|webp)$/i,''); if(/\.(png|jpe?g)$/i.test(raw)) push(base,'.webp'); candidates.push(laneDir+raw,laneDirRoot+raw,PATHS.assets+raw,PATHS.root+raw); if(/\.webp$/i.test(raw)) ['.png','.jpg'].forEach(ext=>push(base,ext)); }
   candidates=[...new Set(candidates)]; const imgSrc=candidates[0]; wrap.innerHTML=`<div class="badge-state">${badge}</div><img src="${imgSrc}" alt="${ev.name}" loading="lazy" data-banner><div class="event-timer"><img class="time-icon" alt="残り時間" loading="lazy" data-time-icon><div class="event-remaining" data-countdown data-start="${ev.startJST.toISOString()}" data-end="${ev.endJST.toISOString()}"></div></div>`; const bImg=wrap.querySelector('[data-banner]'); if(bImg){ let bi=0; bImg.onerror=()=>{ if(bi<candidates.length-1){ bi++; bImg.src=candidates[bi]; } }; } const tIcon=wrap.querySelector('[data-time-icon]'); if(tIcon){ const ic=[PATHS.assets+'time_icon.webp',PATHS.assets+'time_icon.png',PATHS.root+'time_icon.webp',PATHS.root+'time_icon.png']; let ii=0; tIcon.src=ic[ii]; tIcon.onerror=()=>{ if(ii<ic.length-1){ ii++; tIcon.src=ic[ii]; } }; } bannerRoot.appendChild(wrap); return wrap.querySelector('[data-countdown]'); }
-    const countdownTargets=[]; active.forEach(ev=> countdownTargets.push(makeBanner(ev,'active'))); if(!active.length) upcoming.slice(0,1).forEach(ev=> countdownTargets.push(makeBanner(ev,'upcoming'))); function renderCountdown(){ const now=Date.now(); countdownTargets.forEach(el=>{ if(!el) return; const end=new Date(el.getAttribute('data-end')).getTime(); const start=new Date(el.getAttribute('data-start')).getTime(); const parent=el.closest('.event-banner'); if(now<start) parent.dataset.state='upcoming'; else if(now>end){ parent.dataset.state='ended'; el.textContent='終了'; return; } const remain=end-now; const t=Math.max(0,Math.floor(remain/1000)); const d=Math.floor(t/86400),h=Math.floor((t%86400)/3600),m=Math.floor((t%3600)/60),s=t%60; el.innerHTML=`<span data-label="日">${d}</span><span data-label="時間">${h.toString().padStart(2,'0')}</span><span data-label="分">${m.toString().padStart(2,'0')}</span><span data-label="秒">${s.toString().padStart(2,'0')}</span>`; }); } renderCountdown(); setInterval(renderCountdown,1000);  })();
+    const countdownTargets=[]; active.forEach(ev=> countdownTargets.push(makeBanner(ev,'active'))); if(!active.length) upcoming.slice(0,1).forEach(ev=> countdownTargets.push(makeBanner(ev,'upcoming'))); function renderCountdown(){ const now=Date.now(); countdownTargets.forEach(el=>{ if(!el) return; const end=new Date(el.getAttribute('data-end')).getTime(); const start=new Date(el.getAttribute('data-start')).getTime(); const parent=el.closest('.event-banner'); if(now<start) parent.dataset.state='upcoming'; else if(now>end){ parent.dataset.state='ended'; el.textContent='終了'; return; } const remain=end-now; const t=Math.max(0,Math.floor(remain/1000)); const d=Math.floor(t/86400),h=Math.floor((t%86400)/3600),m=Math.floor((t%3600)/60),s=t%60; el.innerHTML=`<span data-label="日">${d}</span><span data-label="時間">${h.toString().padStart(2,'0')}</span><span data-label="分">${m.toString().padStart(2,'0')}</span><span data-label="秒">${s.toString().padStart(2,'0')}</span>`; }); } renderCountdown(); setInterval(renderCountdown,1000);
+
+    // === v1.2 simple event list collapsible (only affects the ul list, banners always visible) ===
+    (function(){
+      const SIMPLE_KEY='fm_ev_simple_open_v1';
+      // list already exists. mark collapsible
+      list.classList.add('fm-simple-collapsible');
+      // wrap toggle buttons after banners
+      const wrap=document.createElement('div');
+      wrap.className='ev-simple-toggle-wrap';
+      const btnOpen=document.createElement('button');
+      btnOpen.type='button'; btnOpen.className='ev-simple-toggle'; btnOpen.dataset.state='open'; btnOpen.setAttribute('aria-controls','evSimpleList'); btnOpen.setAttribute('aria-expanded','false'); btnOpen.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5 5 8.5l1.4-1.4L12 12.7l5.6-5.6L19 8.5z"/></svg>イベント一覧';
+      const btnClose=document.createElement('button');
+      btnClose.type='button'; btnClose.className='ev-simple-toggle'; btnClose.dataset.state='closed'; btnClose.setAttribute('aria-controls','evSimpleList'); btnClose.setAttribute('aria-expanded','true'); btnClose.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" style="transform:rotate(180deg)"><path d="M12 15.5 5 8.5l1.4-1.4L12 12.7l5.6-5.6L19 8.5z"/></svg>閉じる';
+      wrap.appendChild(btnOpen); wrap.appendChild(btnClose);
+      bannerRoot.after(wrap);
+      list.id='evSimpleList';
+      function applyState(open){
+        if(open){
+          document.body.classList.remove('fm-ev-simple-collapsed');
+          btnOpen.setAttribute('aria-expanded','true');
+          btnClose.setAttribute('aria-expanded','true');
+        }else{
+          document.body.classList.add('fm-ev-simple-collapsed');
+          btnOpen.setAttribute('aria-expanded','false');
+          btnClose.setAttribute('aria-expanded','false');
+        }
+      }
+      let saved=true; // default open? we want collapsed by default for vertical saving => set false
+      try{ const v=localStorage.getItem(SIMPLE_KEY); if(v==='0') saved=false; if(v==='1') saved=true; else if(v===null){ saved=false; } }catch(e){ saved=false; }
+      applyState(saved);
+      function toggle(to){ applyState(to); try{ localStorage.setItem(SIMPLE_KEY, to? '1':'0'); }catch(e){} }
+      btnOpen.addEventListener('click',()=> toggle(true));
+      btnClose.addEventListener('click',()=> toggle(false));
+    })();
+    // === end v1.2 ===
+  })();
 
   // ===== Support (OFUSE lazy) =====
   (function(){ const ofuseSel='[data-ofuse-widget-button]'; function loadOfuse(){ if(document.querySelector('script[data-ofuse-loaded]')) return; const s=document.createElement('script'); s.src='https://ofuse.me/assets/platform/widget.js'; s.async=true; s.charset='utf-8'; s.setAttribute('data-ofuse-loaded','1'); document.head.appendChild(s);} let loaded=false; function ensure(){ if(loaded) return; loaded=true; loadOfuse(); } ['scroll','pointerdown','keydown'].forEach(ev=>window.addEventListener(ev,ensure,{once:true,passive:true})); setTimeout(()=>{ if(document.querySelector(ofuseSel)){ const r=document.getElementById('sideSupport'); if(r){ const rect=r.getBoundingClientRect(); if(rect.top < innerHeight) ensure(); } } },1200); })();
