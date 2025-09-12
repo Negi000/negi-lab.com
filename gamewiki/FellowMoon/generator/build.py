@@ -47,9 +47,15 @@ def rel_path(p: pathlib.Path):
 
 
 def collect_image_tabs(char_kanji: str, char_name: str, char_id: str):
-    # 立ち絵: {id}-fb.png 及び {id}-fb-<任意>.png など "fb" 基本形で _awake や skin を含まないもの
-    # 認証絵: {id}-fb_awake*.png
-    # スキン: {id}-skin*.png
+    """キャラ画像タブを収集。
+    並び: 立ち絵(tachi) / 認証絵(ninsho) / 後ろ姿(bg) / スキン(skin)
+    後ろ姿パターン:
+      {id}-bg.png (単一)
+      {id}-bg_1.png, {id}-bg_2.png ... (形態別)
+      スキンあり複合: {id}-bg_skin1.png または {id}-bg_1_skin1.png のような派生
+    スキンパターン既存: {id}-skin*.png
+    表示は 1 枚切替 UI （テンプレ側で実装）を想定し、ここでは列配列をそのまま返す。
+    """
     candidates = [c for c in [char_kanji, char_name] if c]
     folder = None
     for c in candidates:
@@ -58,26 +64,43 @@ def collect_image_tabs(char_kanji: str, char_name: str, char_id: str):
             folder = d
             break
     tabs = []
-    if folder:
-        # まず全pngを取得して分類フィルタ
-        all_png = list(folder.glob(f'{char_id}-*.png'))
-        tachi = [p for p in all_png if '-fb' in p.stem and '_awake' not in p.stem and '-skin' not in p.stem]
-        ninsho = [p for p in all_png if '-fb_awake' in p.stem]
-        skins = [p for p in all_png if '-skin' in p.stem]
-        groups = [
-            ('tachi','立ち絵', sorted(tachi)),
-            ('ninsho','認証絵', sorted(ninsho)),
-            ('skin','スキン', sorted(skins)),
-        ]
-        for tid, label, imgs in groups:
-            if not imgs:
-                continue
-            tabs.append({
-                'タブID': tid,
-                'タブ名': label,
-                '画像列': ['../' + rel_path(p) for p in imgs],
-                '枚数': len(imgs)
-            })
+    if not folder:
+        return tabs
+
+    all_png = list(folder.glob(f'{char_id}-*.png'))
+    # 基本分類
+    tachi = [p for p in all_png if '-fb' in p.stem and '_awake' not in p.stem and '-skin' not in p.stem and '-bg' not in p.stem]
+    ninsho = [p for p in all_png if '-fb_awake' in p.stem]
+
+    # 後ろ姿: -bg*.png を抽出 (スキン複合含む)
+    back_raw = [p for p in all_png if '-bg' in p.stem]
+    # スキン (既存): -skin で fb / bg を含まない純スキン (ただし複合型 {id}-bg_skin1.png などは back_raw に含まれるため除外)
+    skins = [p for p in all_png if '-skin' in p.stem and '-bg' not in p.stem]
+
+    # 後ろ姿の並びを安定化: 数字や skin の番号順
+    def sort_key_bg(p: pathlib.Path):
+        # 例: id-bg_2_skin1 -> (2,1) / id-bg_skin1 -> (0,1) / id-bg -> (0,0)
+        stem = p.stem
+        m = re.findall(r'_?(\d+)', stem.split('-bg')[-1])  # -bg 以降の数字列
+        nums = tuple(int(x) for x in m) if m else (0,)
+        return nums, stem
+    back_sorted = sorted(back_raw, key=sort_key_bg)
+
+    groups = [
+        ('tachi','立ち絵', sorted(tachi)),
+        ('ninsho','認証絵', sorted(ninsho)),
+        ('back','後ろ姿', back_sorted),
+        ('skin','スキン', sorted(skins)),
+    ]
+    for tid, label, imgs in groups:
+        if not imgs:
+            continue
+        tabs.append({
+            'タブID': tid,
+            'タブ名': label,
+            '画像列': ['../' + rel_path(p) for p in imgs],
+            '枚数': len(imgs)
+        })
     return tabs
 
 
