@@ -32,7 +32,11 @@ function send(res, status, body, headers={}) {
 }
 
 const server = http.createServer((req,res)=>{
-  const urlPath = decodeURIComponent(req.url.split('?')[0]);
+  let urlPath = decodeURIComponent(req.url.split('?')[0]);
+  // VSCodeなどで /negi-lab.com/ をルートに含めた仮想パスで開こうとした時の互換プレフィックス除去
+  if(urlPath.startsWith('/negi-lab.com/')){
+    urlPath = urlPath.replace('/negi-lab.com','');
+  }
   let filePath = path.join(root, urlPath);
   if (urlPath.endsWith('/')) filePath = path.join(root, urlPath, 'index.html');
   // ルートマッピング (トップドメインの /gamewiki/... に対応)
