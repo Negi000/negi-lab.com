@@ -145,6 +145,14 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
   <!-- サイドレーン共有スクリプト挿入 -->
   <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
   <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!document.querySelector('.wiki-side-lane')){console.warn('[SideLane] retry(home)');const s=document.createElement('script');s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry='+Date.now();s.defer=true;document.head.appendChild(s);} },1500);});</script>
+  <!-- サイドレーン トグルボタン フォールバックCSS (他ページでは不要だが念のため冪等) -->
+  <style>
+    /* JS注入の @media(max-width:1179px) ブロックが何らかの理由で適用されなかった場合でも
+       トグルボタンがフロー末尾に埋もれず常に画面左下に表示されるようにするフォールバック。 */
+    .side-lane-toggle{position:fixed;bottom:16px;left:16px;z-index:1300;}
+    /* PC幅では本来表示しないため非表示 */
+    @media (min-width:1180px){.side-lane-toggle{display:none!important;}}
+  </style>
 <!-- Header (mobile-first) -->
 <header class="wiki-header shadow-md sticky top-0 z-50 font-inter">
   <div class="max-w-7xl mx-auto flex items-center px-3 sm:px-4 py-3 gap-4">
