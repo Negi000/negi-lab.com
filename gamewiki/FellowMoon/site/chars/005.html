@@ -769,6 +769,8 @@ let scale=1, originX=0, originY=0;
 function openLightbox(src){
   lbImg.src = src; scale=1; originX=0; originY=0; applyTransform();
   lb.classList.add('active');
+  // ネイティブブラウザの画像ドラッグを無効化
+  lbImg.setAttribute('draggable','false');
 }
 function closeLightbox(){
   lb.classList.remove('active');
@@ -996,6 +998,8 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
         if(!lb.classList.contains('active')) return;
         if(e.target===lbClose) return; // 閉じるボタンはパン/ピンチ開始しない
         if(e.button!==0) return; // 左のみ
+        // 画像ネイティブドラッグ抑止 (Firefox / Chromium 差異吸収)
+        e.preventDefault();
         stage.setPointerCapture(e.pointerId);
         activePointers.set(e.pointerId, pointerPos(e));
         startPanIfNeeded();
@@ -1018,6 +1022,8 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
       });
     }
     // 旧タッチ & マウス処理不要になったので残骸イベントは削除
+  // ネイティブ HTML5 drag イベント完全抑止
+  lbImg.addEventListener('dragstart',ev=>{ ev.preventDefault(); return false; });
     lbImg.addEventListener('gesturestart',e=>e.preventDefault());
     const STORAGE_KEY='fellowmoon_wiki_panel';
     function openById(id){
