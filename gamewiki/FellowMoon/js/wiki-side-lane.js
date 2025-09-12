@@ -29,6 +29,10 @@
   // ===== CSS 挿入 (既存テンプレCSSと同等の必要最低限) =====
   if(!document.getElementById('fm-sidelane-css')){
   const css = `/* injected side-lane (enhanced styling & scrollbar theme) */
+/* --- Added v1.1: base style for mobile toggle outside media query as fallback (in case media query CSS fails to load) --- */
+.side-lane-toggle{position:fixed;bottom:16px;left:16px;z-index:1300;width:54px;height:54px;border-radius:16px;background:linear-gradient(140deg,#172531,#1f3644);border:1px solid #2c4656;display:flex;align-items:center;justify-content:center;color:#cfe2ff;font-size:1.35rem;box-shadow:0 6px 18px -6px #000c,0 0 0 1px #2e4b5d80;cursor:pointer}
+.side-lane-toggle[aria-expanded=true]{background:#2b4657;color:#fff;box-shadow:0 0 0 1px #3a8bff88,0 8px 26px -6px #000c}
+@media(min-width:1180px){.side-lane-toggle{display:none!important}}
 .wiki-side-lane{display:none}
 @media(min-width:1180px){.wiki-side-lane{position:fixed;z-index:40;top:70px;left:12px;width:280px;display:flex;flex-direction:column;gap:1rem;max-height:calc(100vh - 80px);overflow:auto;padding:4px 4px 20px;scrollbar-width:thin;scrollbar-color:#31556a #142029}}
 .birthday-list-original-note{display:none}
