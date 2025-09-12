@@ -219,8 +219,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
 @keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
   <!-- サイドレーンは外部スクリプトで動的挿入 (絶対パスに修正) -->
-  <!-- cache-busting v=2 (runtime guard 1.1.1) -->
-  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2" defer id="fmSideLaneScript"></script>
+  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
   <script>
     // 初回ロード失敗時リトライ & デバッグ補助
     window.addEventListener('DOMContentLoaded',()=>{
@@ -229,7 +228,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
           const orig=document.getElementById('fmSideLaneScript');
           console.warn('[SideLane] 初期化未検出 -> フォールバック再読込');
           const s=document.createElement('script');
-          s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2&retry=' + Date.now();
+          s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry=' + Date.now();
           s.defer=true; document.head.appendChild(s);
         }
       },1500);
@@ -306,7 +305,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">レア度</th><td style="padding:4px 8px">5</td></tr>
           <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">属性</th><td style="padding:4px 8px">情</td></tr>
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">タイプ</th><td style="padding:4px 8px">防御型</td></tr>
-          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">戦闘方法</th><td style="padding:4px 8px">連定者</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">戦闘方法</th><td style="padding:4px 8px">被操者</td></tr>
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">陣営</th><td style="padding:4px 8px">単独勢力</td></tr>
           <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">職業</th><td style="padding:4px 8px">修行者</td></tr>
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">誕生日</th><td style="padding:4px 8px">7月25日</td></tr>
@@ -387,21 +386,50 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
           
           <button data-tab-btn="ninsho" style="background:#23313d;color:#9ec5ff;border:1px solid #304556;padding:.35rem .65rem;border-radius:6px;font-size:.65rem;cursor:pointer">認証絵 (1)</button>
           
+          <button data-tab-btn="back" style="background:#23313d;color:#9ec5ff;border:1px solid #304556;padding:.35rem .65rem;border-radius:6px;font-size:.65rem;cursor:pointer">後ろ姿 (1)</button>
+          
         </div>
         
-        <div class="tab-panel image-stage" data-tab-panel="tachi" style="display:none">
-          <div class="images-wrap">
-            <figure><img src="../../キャラ素材/刑身/069-fb.png" alt="ケイシン"></figure>
+        <div class="tab-panel image-stage" data-tab-panel="tachi" style="display:none" data-image-viewer>
+          <div class="single-image-stage" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%">
+            <div class="viewer-main" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:280px;width:100%;">
+              <button type="button" class="viewer-nav prev" aria-label="前の画像" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">◀</button>
+              <figure style="margin:0;max-width:100%;display:flex;align-items:center;justify-content:center"><img data-viewer-img src="" alt="ケイシン" style="max-height:70vh;max-width:100%;cursor:zoom-in"></figure>
+              <button type="button" class="viewer-nav next" aria-label="次の画像" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">▶</button>
+            </div>
+            <div class="thumb-strip" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:100%">
+              <button type="button" class="thumb-btn" data-src="../../キャラ素材/刑身/069-fb.png" style="background:#16222b;border:1px solid #283946;padding:2px;border-radius:6px;cursor:pointer"><img src="../../キャラ素材/刑身/069-fb.png" alt="thumb" style="height:70px;object-fit:contain;display:block"></button>
+            </div>
           </div>
         </div>
         
-        <div class="tab-panel image-stage" data-tab-panel="ninsho" style="display:none">
-          <div class="images-wrap">
-            <figure><img src="../../キャラ素材/刑身/069-fb_awake.png" alt="ケイシン"></figure>
+        <div class="tab-panel image-stage" data-tab-panel="ninsho" style="display:none" data-image-viewer>
+          <div class="single-image-stage" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%">
+            <div class="viewer-main" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:280px;width:100%;">
+              <button type="button" class="viewer-nav prev" aria-label="前の画像" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">◀</button>
+              <figure style="margin:0;max-width:100%;display:flex;align-items:center;justify-content:center"><img data-viewer-img src="" alt="ケイシン" style="max-height:70vh;max-width:100%;cursor:zoom-in"></figure>
+              <button type="button" class="viewer-nav next" aria-label="次の画像" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">▶</button>
+            </div>
+            <div class="thumb-strip" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:100%">
+              <button type="button" class="thumb-btn" data-src="../../キャラ素材/刑身/069-fb_awake.png" style="background:#16222b;border:1px solid #283946;padding:2px;border-radius:6px;cursor:pointer"><img src="../../キャラ素材/刑身/069-fb_awake.png" alt="thumb" style="height:70px;object-fit:contain;display:block"></button>
+            </div>
           </div>
         </div>
         
-        <div style="font-size:.55rem;color:#789;margin-top:.6rem">立ち絵: fb / 認証絵: fb_awake / スキン: skin*</div>
+        <div class="tab-panel image-stage" data-tab-panel="back" style="display:none" data-image-viewer>
+          <div class="single-image-stage" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%">
+            <div class="viewer-main" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:280px;width:100%;">
+              <button type="button" class="viewer-nav prev" aria-label="前の画像" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">◀</button>
+              <figure style="margin:0;max-width:100%;display:flex;align-items:center;justify-content:center"><img data-viewer-img src="" alt="ケイシン" style="max-height:70vh;max-width:100%;cursor:zoom-in"></figure>
+              <button type="button" class="viewer-nav next" aria-label="次の画像" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:#1b2832;border:1px solid #2e4554;color:#9ec5ff;font-size:.65rem;padding:.35rem .55rem;border-radius:6px;cursor:pointer;display:none">▶</button>
+            </div>
+            <div class="thumb-strip" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:100%">
+              <button type="button" class="thumb-btn" data-src="../../キャラ素材/刑身/069-bg.png" style="background:#16222b;border:1px solid #283946;padding:2px;border-radius:6px;cursor:pointer"><img src="../../キャラ素材/刑身/069-bg.png" alt="thumb" style="height:70px;object-fit:contain;display:block"></button>
+            </div>
+          </div>
+        </div>
+        
+        <div style="font-size:.55rem;color:#789;margin-top:.6rem">立ち絵: fb / 認証絵: fb_awake / 後ろ姿: bg / スキン: skin*</div>
       </div>
     </div>
   </section>
@@ -435,9 +463,9 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     
       <div class="skill" style="position:relative;padding:0 0 0.2rem" data-no-dynamic-ads="true">
         <div style="display:flex;align-items:flex-start;gap:.75rem" data-wiki-content="true">
-          <img class="skill-icon" src="../../スキルアイコン/刑身/069-sk1.png" alt="執染心身" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
+          <img class="skill-icon" src="../../スキルアイコン/刑身/069-sk1.png" alt="執染身心" style="width:54px;height:54px;object-fit:contain;border-radius:8px;background:#1c2530;border:1px solid #2a3642;padding:4px">
           <div style="flex:1;min-width:0" data-wiki-content="true">
-            <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">執染心身 <small class="tag">通常攻撃</small> <small class="tag">TPLv +8</small></h3>
+            <h3 style="display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.1rem 0 .2rem">執染身心 <small class="tag">通常攻撃</small> <small class="tag">TPLv +8</small></h3>
             <div style="font-size:.65rem;opacity:.85;margin:0 0 .35rem;letter-spacing:.5px;display:flex;flex-wrap:wrap;gap:.35rem .45rem;align-items:center" data-wiki-content="true">
               <span style="opacity:.8">タグ:</span>
               <span class="badges"><span>火力</span></span>
@@ -445,7 +473,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
             </div>
             <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンは選択した敵に143%の特殊ダメージを与える。</p>
             
-            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="執染心身" data-wiki-content="true">
+            <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="執染身心" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
@@ -467,7 +495,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
               <span class="badges"><span>生存</span></span><span class="badges"><span>強化</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンは自身の最大HPの20.0%に基づき自身を定量治療し、自身と両隣の味方の特殊防御を20%上昇させる。効果は2ターン持続。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンは自身最大HP20.0%に基づき自身に定量治療を行い、自身と両隣の味方の特殊防御を20%上昇させる。効果は2ターン持続。</p>
             
             <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="悪業流転" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
@@ -491,7 +519,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
               <span class="badges"><span>火力</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンは選択した敵に234%の特殊ダメージを与え、さらに目標に自身の特殊防御の2%×&lt;我執&gt;の層数分の追加ダメージを与え、自身が持つ&lt;我執&gt;を全て消与する。最大10層まで保有可能。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンは選択した敵に234%の特殊ダメージを与え、さらに目標に自身の特殊防御の2%×&lt;我執&gt;の層数の追加ダメージを与える。自身が持つ&lt;我執&gt;を除去する。ケイシンが被ダメージ時、自身に&lt;我執&gt;を1層追加する。最大10層スタック可能。</p>
             
             <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="心意混元" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
@@ -515,7 +543,8 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
               <span class="badges"><span>援護</span></span><span class="badges"><span>生存</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">味方が敵の単体攻撃を受けた時、ケイシンは25%の確率で被攻撃者を援護する。この効果は各行動シーケンスで最大2回まで発動可能。被ダメージを受けた味方のHPが50%未満の場合、援護の確率が25%上昇する。被ダメージを受けた味方のHPが30%未満の場合、援護の確率がさらに25%上昇する。援護を行う際、受けるダメージが40%減少する。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">味方が敵の単体攻撃を受けた時、ケイシンは25%の確率で被攻撃者を援護する。この効果は各行動シーケンス中に最大2回発動する。ダメージを受けた味方のHPが50%未満の場合、援護の確率が25%上昇し、HPが30%未満の場合、さらに援護の確率が25%上昇する。援護を行う際、受けるダメージが40%低下する。</p>
+            
             
             
             
@@ -525,13 +554,15 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
               <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.55rem" data-wiki-content="true">
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">一重門</strong><br>【衆生執系】ケイシンが提供する援護の確率がさらに15%上昇する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">一重門</strong><br>【衆生執系】ケイシンが援護する確率がさらに15%上昇する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">四重門</strong><br>【衆生執系】援護の回数が各行動シーケンスで最大4回に増加する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">四重門</strong><br>【衆生執系】援護の回数が各行動シーケンスで最大4回まで増加する。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">中級認証</strong><br>【衆生執系】個人ターン終了時、自身のHPが30%未満の場合、50%の確率で自身の最大HPの10%に基づき自身を定量治療する。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">中級認証</strong><br>【衆生執系】個人ターン終了時、自身のHPが30%未満の場合、50%の確率で自身最大HP10%に基づき自身に定量治療を行う。</div>
                 
-                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">特級認証</strong><br>【衆生執系】ケイシンが退場する時、HPが30%未満の味方のダメージ軽減を15%上昇させる。効果は3ターン持続。</div>
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">上級認証</strong><br>【衆生執系】被ダメージ時、自身のHPが30%未満の時、受けるダメージが10%低下する。</div>
+                
+                  <div style="padding:.45rem .55rem;background:#1c2a34;border:1px solid #2a3a47;border-radius:6px" data-wiki-content="true"> <strong style="color:#9ec5ff">特級認証</strong><br>【衆生執系】ケイシンが退場した時、HPが30%未満の味方の傷害低減を15%上昇させる。効果は3ターン持続する。</div>
                 
                 
               </div>
@@ -551,7 +582,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
               <span class="badges"><span>強化</span></span><span class="badges"><span>範囲</span></span>
               
             </div>
-            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンはHPが50%未満の味方のダメージ軽減を30%上昇させる。効果は2行動シーケンス持続。</p>
+            <p style="white-space:pre-wrap;font-size:.78rem;line-height:1.45;margin:.2rem 0 .5rem" data-wiki-content="true">ケイシンはHPが50%未満の味方の傷害軽減を30%上昇させる。効果は行動シーケンス２回持続する。</p>
             
             <details class="skill-bonus" style="background:#16202a;border:1px solid #22313d;border-radius:8px;padding:.45rem .6rem;font-size:.68rem" data-skill-name="サポート：逢凶用吉" data-wiki-content="true">
               <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;font-weight:600;color:#bcd"><span style="display:inline-block;width:.65rem;height:.65rem;background:#2a3b48;border-radius:3px;position:relative"><span style="position:absolute;inset:0;display:block;margin:auto;width:60%;height:2px;background:#8fb9ff;top:45%"></span><span style="position:absolute;inset:0;margin:auto;width:2px;height:60%;background:#8fb9ff;left:45%"></span></span>スキルボーナス</summary>
@@ -607,7 +638,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
         <div style="flex:1;min-width:0;font-size:.7rem;line-height:1.45" data-wiki-content="true">
           <div style="font-weight:600;color:#cfe2ff;margin:0 0 .25rem;font-size:.75rem">三重門</div>
           <div>【衆生執系】スキル強化を解放
-味方が敵の単体攻撃を受けた時、ケイシンは25%の確率で被攻撃者を援護する。この効果は各行動シーケンスで最大2回まで発動可能。被ダメージを受けた味方のHPが50%未満の場合、援護の確率が25%上昇する。被ダメージを受けた味方のHPが30%未満の場合、援護の確率がさらに25%上昇する。援護を行う際、所受の傷害が40%低下する。</div>
+味方が敵の単体攻撃を受けた時、ケイシンは25%の確率で被攻撃者を援護する。この効果は各行動シーケンス中に最大2回発動する。ダメージを受けた味方のHPが50%未満の場合、援護の確率が25%上昇し、HPが30%未満の場合、さらに援護の確率が25%上昇する。援護を行う際、受けるダメージが40%低下する。</div>
         </div>
       </div>
       
@@ -702,7 +733,7 @@ function applyTransform(){
   lbImg.style.transform = `translate(${originX}px,${originY}px) scale(${scale})`;
 }
 document.addEventListener('click',e=>{
-  const img = e.target.closest('.image-stage img');
+  const img = e.target.closest('[data-viewer-img]');
   if(img){openLightbox(img.src);} 
 });
 lbClose.addEventListener('click',closeLightbox);
@@ -730,6 +761,29 @@ lbImg.addEventListener('gesturestart',e=>e.preventDefault());
 let lastTap=0; function resetIfDouble(now){ if(now-lastTap<400){ scale=1; originX=originY=0; applyTransform(); } lastTap=now; }
 lbImg.addEventListener('dblclick',()=>{scale=1;originX=originY=0;applyTransform();});
 lbImg.addEventListener('touchend',()=>resetIfDouble(Date.now()));
+// 単一画像ビューア (前/次 & サムネ切替)
+document.querySelectorAll('[data-image-viewer]').forEach(panel=>{
+  const imgEl = panel.querySelector('[data-viewer-img]');
+  const thumbs = [...panel.querySelectorAll('.thumb-btn')];
+  const prevBtn = panel.querySelector('.viewer-nav.prev');
+  const nextBtn = panel.querySelector('.viewer-nav.next');
+  if(!imgEl || !thumbs.length) return;
+  let idx = 0;
+  function update(){
+    const active = thumbs[idx];
+    imgEl.src = active.getAttribute('data-src');
+    thumbs.forEach((t,i)=>{
+      if(i===idx){ t.style.borderColor='#3a8bff'; t.style.background='#203245'; t.style.opacity='1'; }
+      else { t.style.borderColor='#283946'; t.style.background='#16222b'; t.style.opacity='.6'; }
+    });
+    prevBtn && (prevBtn.style.display = idx>0? 'block':'none');
+    nextBtn && (nextBtn.style.display = idx<thumbs.length-1? 'block':'none');
+  }
+  thumbs.forEach((t,i)=> t.addEventListener('click',()=>{ idx=i; update(); }));
+  prevBtn && prevBtn.addEventListener('click',()=>{ if(idx>0){ idx--; update(); }});
+  nextBtn && nextBtn.addEventListener('click',()=>{ if(idx<thumbs.length-1){ idx++; update(); }});
+  update();
+});
 // スキルボーナス開閉状態 永続化（デフォルト閉じる）
 // ===== ルートパス自動検出 (グローバル) =====
 function __FM_computeBasePaths(){
