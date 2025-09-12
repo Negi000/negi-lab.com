@@ -145,6 +145,30 @@ body.birthday-day #sideBirthdays:before{content:"";position:absolute;inset:0;bor
   toggle.className='side-lane-toggle'; toggle.id='sideLaneToggle'; toggle.type='button'; toggle.setAttribute('aria-label','サイド情報'); toggle.setAttribute('aria-expanded','false'); toggle.innerHTML='<span aria-hidden="true">★</span>';
   const overlay = document.createElement('div'); overlay.className='side-lane-overlay'; overlay.id='sideLaneOverlay'; overlay.setAttribute('aria-hidden','true');
   document.body.appendChild(toggle); document.body.appendChild(overlay);
+  // ---- Runtime guard: ensure toggle is fixed (some mobile browsers may delay style application or trimmed CSS) ----
+  setTimeout(()=>{
+    try{
+      const cs = window.getComputedStyle(toggle);
+      // if position not fixed OR width==0 (not styled yet), enforce minimal inline fallback
+      if(cs.position !== 'fixed' || parseInt(cs.width,10) < 10){
+        toggle.style.position='fixed';
+        toggle.style.bottom='16px';
+        toggle.style.left='16px';
+        toggle.style.zIndex='1300';
+        toggle.style.width='54px';
+        toggle.style.height='54px';
+        toggle.style.borderRadius='16px';
+        toggle.style.background='linear-gradient(140deg,#172531,#1f3644)';
+        toggle.style.border='1px solid #2c4656';
+        toggle.style.display='flex';
+        toggle.style.alignItems='center';
+        toggle.style.justifyContent='center';
+        toggle.style.color='#cfe2ff';
+        toggle.style.fontSize='1.35rem';
+        toggle.style.boxShadow='0 6px 18px -6px #000c,0 0 0 1px #2e4b5d80';
+      }
+    }catch(e){}
+  }, 120);
   function setOpen(v){ if(v){ aside.classList.add('open'); toggle.setAttribute('aria-expanded','true'); overlay.classList.add('active'); } else { aside.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); overlay.classList.remove('active'); } }
   toggle.addEventListener('click',()=> setOpen(!aside.classList.contains('open')));
   overlay.addEventListener('click',()=> setOpen(false));

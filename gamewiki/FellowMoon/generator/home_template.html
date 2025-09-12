@@ -99,6 +99,9 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 .section h2{font-size:clamp(.9rem,3.5vw,1rem);margin:0 0 .9rem;border-left:4px solid var(--c-accent);padding-left:.55rem;line-height:1.1}
 .flex-row{display:flex;flex-direction:column;gap:1rem}
 @media(min-width:1020px){.flex-row{flex-direction:row}.flex-row > .col{flex:1}}
+.flex-row.responsive-grid{display:grid;grid-template-columns:1fr;align-items:stretch}
+@media(min-width:640px){.flex-row.responsive-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}}
+@media(min-width:960px){.flex-row.responsive-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}}
 .card{background:var(--c-bgcard);border:1px solid var(--c-border);border-radius:12px;padding:.85rem .85rem;position:relative}
 @media(min-width:760px){.card{padding:1rem .95rem}}
 .card h3{margin:.1rem 0 .6rem;font-size:.8rem;letter-spacing:.5px;color:#cfe4ff}
@@ -256,7 +259,7 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 
   <section class="section content-section" id="today" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>今日と近日</h2>
-    <div class="flex-row">
+  <div class="flex-row responsive-grid">
       <div class="col card" style="min-width:260px">
         <h3>今日の誕生日</h3>
         <div id="birthday-today" class="small">読み込み中...</div>
@@ -280,7 +283,7 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 
   <section class="section content-section" id="updates" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>更新・履歴</h2>
-    <div class="flex-row">
+  <div class="flex-row responsive-grid">
       <div class="col card" style="min-width:300px">
         <h3>最新アップデート</h3>
         <div class="small" id="latest-update">(未実装)</div>
@@ -303,7 +306,7 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 
   <section class="section" id="tools">
     <h2>ツール (予定)</h2>
-    <div class="flex-row">
+  <div class="flex-row responsive-grid">
       <div class="col card"><h3>ダメージ計算</h3><div class="small">キャラ基礎ステとスキル係数から期待ダメージを算出。</div></div>
       <div class="col card"><h3>誕生日カレンダー</h3><div class="small">キャラ JSON から日付集計して月表示。</div></div>
       <div class="col card"><h3>ロム構成シミュレータ</h3><div class="small">2セット+4セット効果を組合せ比較 (構想)。</div></div>
