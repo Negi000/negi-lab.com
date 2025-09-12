@@ -219,7 +219,8 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
 @keyframes navFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
   <!-- サイドレーンは外部スクリプトで動的挿入 (絶対パスに修正) -->
-  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
+  <!-- cache-busting v=2 (runtime guard 1.1.1) -->
+  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2" defer id="fmSideLaneScript"></script>
   <script>
     // 初回ロード失敗時リトライ & デバッグ補助
     window.addEventListener('DOMContentLoaded',()=>{
@@ -228,7 +229,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
           const orig=document.getElementById('fmSideLaneScript');
           console.warn('[SideLane] 初期化未検出 -> フォールバック再読込');
           const s=document.createElement('script');
-          s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry=' + Date.now();
+          s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2&retry=' + Date.now();
           s.defer=true; document.head.appendChild(s);
         }
       },1500);
