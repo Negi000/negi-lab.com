@@ -143,8 +143,9 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
 </head>
 <body>
   <!-- サイドレーン共有スクリプト挿入 -->
-  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
-  <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!document.querySelector('.wiki-side-lane')){console.warn('[SideLane] retry(home)');const s=document.createElement('script');s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry='+Date.now();s.defer=true;document.head.appendChild(s);} },1500);});</script>
+  <!-- cache-busting v=2 (side-lane base toggle fallback added) -->
+  <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2" defer id="fmSideLaneScript"></script>
+  <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!document.querySelector('.wiki-side-lane')){console.warn('[SideLane] retry(home)');const s=document.createElement('script');s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?v=2&retry='+Date.now();s.defer=true;document.head.appendChild(s);} },1500);});</script>
   <!-- サイドレーン トグルボタン フォールバックCSS (他ページでは不要だが念のため冪等) -->
   <style>
     /* JS注入の @media(max-width:1179px) ブロックが何らかの理由で適用されなかった場合でも
@@ -330,7 +331,7 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
     <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
   </nav>
   <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-  <div id="build-meta" class="text-xs">Build: 2025-09-12T12:28:05</div>
+  <div id="build-meta" class="text-xs">Build: 2025-09-12T13:03:27</div>
   <div class="mt-2">&copy; 2025 negi-lab.com</div>
 </footer>
 <script>
