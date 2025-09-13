@@ -137,8 +137,9 @@ body.fm-ev-simple-collapsed #sideEvents .event-timer-list.fm-simple-collapsible{
 #sideEvents .ev-simple-toggle:hover{background:#254152;color:#d2ecff}
 #sideEvents .ev-simple-toggle:active{transform:translateY(1px)}
 #sideEvents .ev-simple-toggle svg{width:12px;height:12px;fill:currentColor;transition:.25s}
-body.fm-ev-simple-collapsed #sideEvents .ev-simple-toggle[data-state=open] {display:none}
-body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=closed] {display:none}
+/* 表示条件の修正: 折りたたみ時は『開く』ボタンのみ / 展開時は『閉じる』ボタンのみ */
+body.fm-ev-simple-collapsed #sideEvents .ev-simple-toggle[data-state=closed]{display:none}
+body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=open]{display:none}
 /* accessibility focus */
 #sideEvents .ev-simple-toggle:focus-visible{outline:2px solid #3a8bff;outline-offset:2px}
 /* subtle animation */
@@ -484,10 +485,8 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=close
 
     // === v1.2 simple event list collapsible (only affects the ul list, banners always visible) ===
     (function(){
-      const SIMPLE_KEY='fm_ev_simple_open_v1';
-      // list already exists. mark collapsible
+      // デフォルト常に「閉じた状態」から開始し、リロードで毎回リセット（localStorage非使用）
       list.classList.add('fm-simple-collapsible');
-      // wrap toggle buttons after banners
       const wrap=document.createElement('div');
       wrap.className='ev-simple-toggle-wrap';
       const btnOpen=document.createElement('button');
@@ -502,18 +501,15 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=close
           document.body.classList.remove('fm-ev-simple-collapsed');
           btnOpen.setAttribute('aria-expanded','true');
           btnClose.setAttribute('aria-expanded','true');
-        }else{
+        } else {
           document.body.classList.add('fm-ev-simple-collapsed');
           btnOpen.setAttribute('aria-expanded','false');
           btnClose.setAttribute('aria-expanded','false');
         }
       }
-      let saved=true; // default open? we want collapsed by default for vertical saving => set false
-      try{ const v=localStorage.getItem(SIMPLE_KEY); if(v==='0') saved=false; if(v==='1') saved=true; else if(v===null){ saved=false; } }catch(e){ saved=false; }
-      applyState(saved);
-      function toggle(to){ applyState(to); try{ localStorage.setItem(SIMPLE_KEY, to? '1':'0'); }catch(e){} }
-      btnOpen.addEventListener('click',()=> toggle(true));
-      btnClose.addEventListener('click',()=> toggle(false));
+      applyState(false); // 強制閉じ状態で開始
+      btnOpen.addEventListener('click',()=> applyState(true));
+      btnClose.addEventListener('click',()=> applyState(false));
     })();
     // === end v1.2 ===
   })();
