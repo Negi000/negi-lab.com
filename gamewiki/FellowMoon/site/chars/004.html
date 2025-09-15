@@ -309,12 +309,16 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">陣営</th><td style="padding:4px 8px">超管局</td></tr>
           <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">職業</th><td style="padding:4px 8px">超管局 本部 特使</td></tr>
           <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">誕生日</th><td style="padding:4px 8px">8月21日</td></tr>
-          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">実装Ver</th><td style="padding:4px 8px">1.0.0</td></tr>
-          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">施設専攻</th><td style="padding:4px 8px"></td></tr>
-          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">施設効果</th><td style="padding:4px 8px"></td></tr>
-          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;vertical-align:top">タグ</th><td style="padding:4px 8px"><span class="badges"><span>防護</span></span><span class="badges"><span>除去</span></span></td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">CV</th><td style="padding:4px 8px"></td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">実装Ver</th><td style="padding:4px 8px">1.0.0</td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px">施設専攻</th><td style="padding:4px 8px"></td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px">施設効果</th><td style="padding:4px 8px"></td></tr>
+          <tr style="background:#1a2530"><th style="text-align:left;padding:4px 8px;vertical-align:top">タグ</th><td style="padding:4px 8px"><span class="badges"><span>防護</span></span><span class="badges"><span>除去</span></span></td></tr>
+          <tr style="background:#141d26"><th style="text-align:left;padding:4px 8px;vertical-align:top">攻撃タイプ</th><td style="padding:4px 8px"></td></tr>
         </tbody>
       </table>
+      <!-- JS 参照用メタデータ -->
+      <span id="charMeta" data-char-id="004" data-rarity="5" data-attr="情" hidden></span>
       <h3 style="font-size:.9rem;margin:1rem 0 .5rem;border-left:3px solid #3a8bff;padding-left:.5rem">専門探索</h3>
       <div style="overflow:auto">
         <table style="width:100%;border-collapse:collapse;font-size:.7rem;text-align:center">
@@ -433,6 +437,50 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
       </div>
     </div>
   </section>
+  <!-- ===== 必要強化素材 セクション (ROM情報の直前) ===== -->
+  <section id="upgrade-materials" class="card" style="margin-top:1.2rem" data-wiki-content>
+    <h2>必要強化素材</h2>
+    <p style="font-size:.6rem;color:#789;margin:.2rem 0 .8rem">各認証段階の最大レベル到達までに使う作戦教本総数と、その段階自体の解放素材コスト。</p>
+    <div class="um-tabs" role="tablist" aria-label="認証段階タブ" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 .8rem">
+      <button type="button" role="tab" aria-selected="true" class="um-tab-btn" data-um-tab="基本">基本認証</button>
+      <button type="button" role="tab" aria-selected="false" class="um-tab-btn" data-um-tab="中級">中級認証</button>
+      <button type="button" role="tab" aria-selected="false" class="um-tab-btn" data-um-tab="上級">上級認証</button>
+      <button type="button" role="tab" aria-selected="false" class="um-tab-btn" data-um-tab="特級">特級認証</button>
+    </div>
+    <div class="um-panels">
+      <div role="tabpanel" data-um-panel="基本" class="um-panel"></div>
+      <div role="tabpanel" data-um-panel="中級" class="um-panel" hidden></div>
+      <div role="tabpanel" data-um-panel="上級" class="um-panel" hidden></div>
+      <div role="tabpanel" data-um-panel="特級" class="um-panel" hidden></div>
+    </div>
+  <!-- 表示方針説明段落は削除（ユーザー要望） -->
+  </section>
+  <style>
+  /* 強化素材タブ */
+  #upgrade-materials .um-tab-btn{background:#23313d;color:#9ec5ff;border:1px solid #304556;padding:.4rem .7rem;font-size:.65rem;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:.35rem;font-weight:600;letter-spacing:.5px}
+  #upgrade-materials .um-tab-btn[aria-selected="true"]{background:#3a5570;color:#fff;border-color:#4e6a82}
+  #upgrade-materials .um-panel{font-size:.68rem;line-height:1.55;animation:fadeUM .25s ease}
+  #upgrade-materials .um-mats-grid{display:grid;gap:.45rem .8rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:.4rem 0 .2rem}
+  #upgrade-materials .um-box{background:#16222b;border:1px solid #283946;padding:.55rem .6rem;border-radius:8px;display:flex;flex-direction:column;gap:.35rem;position:relative}
+  #upgrade-materials .um-box h3{margin:0;font-size:.7rem;font-weight:600;color:#cfe2ff;display:flex;align-items:center;gap:.4rem}
+  #upgrade-materials .um-box h3 img{width:24px;height:24px;object-fit:contain;filter:drop-shadow(0 0 2px #0009)}
+  /* アイコン大型化 */
+  #upgrade-materials .um-box h3 img{width:42px;height:42px}
+  /* 追加拡大調整 */
+  #upgrade-materials .um-box h3 img{width:60px;height:60px}
+  #upgrade-materials table.um-mat-table th img{width:34px;height:34px}
+  #upgrade-materials .um-cost-item img{width:44px;height:44px}
+  #upgrade-materials .um-currency{display:flex;align-items:center;gap:4px;margin-top:.25rem;font-size:.62rem}
+  #upgrade-materials .um-currency img{width:26px;height:26px;object-fit:contain;border-radius:4px;background:#0f161c}
+  #upgrade-materials table.um-mat-table{width:100%;border-collapse:collapse;font-size:.62rem;margin:.1rem 0 .2rem}
+  #upgrade-materials table.um-mat-table th,#upgrade-materials table.um-mat-table td{padding:3px 6px;text-align:right;border-bottom:1px solid #20303a}
+  #upgrade-materials table.um-mat-table th:first-child,#upgrade-materials table.um-mat-table td:first-child{text-align:left}
+  #upgrade-materials .um-note{font-size:.55rem;color:#789;margin:.15rem 0 0;line-height:1.4}
+  #upgrade-materials .um-cost-items{display:flex;flex-wrap:wrap;gap:.45rem;margin:.3rem 0 .2rem}
+  #upgrade-materials .um-cost-item{display:flex;align-items:center;gap:.3rem;background:#1b2b35;border:1px solid #2d4250;padding:.3rem .45rem;border-radius:6px;font-size:.6rem}
+  #upgrade-materials .um-cost-item img{width:30px;height:30px;object-fit:contain;border-radius:4px;background:#0f161c}
+  @keyframes fadeUM{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+  </style>
   
   <section class="card" style="margin-top:1.2rem">
     <h2>ロム情報</h2>
@@ -612,7 +660,7 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
   </aside>
 
   <section class="card gate-section" style="margin-top:1.2rem" data-no-dynamic-ads="true">
-    <h2>階門</h2>
+    <h2>門階</h2>
     <div style="display:flex;flex-direction:column;gap:.6rem" data-no-dynamic-ads="true">
       
       <div style="display:flex;gap:.75rem;background:#182430;border:1px solid #253541;border-radius:8px;padding:.55rem .7rem;align-items:flex-start" data-no-dynamic-ads="true">
@@ -874,9 +922,7 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
   let pinchStartDist=0, pinchStartScale=1, pinchStartOriginX=0, pinchStartOriginY=0, pinchMidX=0, pinchMidY=0;
 
     function clamp(v,min,max){return v<min?min:v>max?max:v;}
-
     function pointerPos(e){return {x:e.clientX,y:e.clientY,id:e.pointerId};}
-
     const PAN_THRESHOLD=3; // px
     function updateFromPointers(){
       if(activePointers.size===1){ // パン（拡大していなくても許可 / UX改善）
@@ -907,7 +953,6 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
         }
       }
     }
-
     function startPanIfNeeded(){
       if(activePointers.size===1){
         const p=[...activePointers.values()][0];
@@ -921,7 +966,6 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
         pinchMidX = (pts[0].x + pts[1].x)/2; pinchMidY = (pts[0].y + pts[1].y)/2;
       }
     }
-
     // ホイールズーム（カーソル位置を基準）
     lb.addEventListener('wheel',e=>{
       if(!lb.classList.contains('active')) return; e.preventDefault();
@@ -936,7 +980,6 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
       originY += cy*(scale/prevScale - 1);
       applyTransform();
     }, {passive:false});
-
     // ダブルクリック / ダブルタップリセット
     function resetView(smooth=true){
       if(smooth){
@@ -955,7 +998,6 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
         else lastTapTime=now;
       }
     });
-
     if(window.PointerEvent){
       stage.addEventListener('pointerdown',e=>{
         if(!lb.classList.contains('active')) return;
@@ -1098,6 +1140,90 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
   }
   attachBirthdayBadge();
 })();
+</script>
+<script>
+// ===== 必要強化素材タブ描画 =====
+window.addEventListener('DOMContentLoaded',()=>{
+  const meta=document.getElementById('charMeta');
+  if(!meta) return;
+  const charId=meta.getAttribute('data-char-id');
+  const rarity=(meta.getAttribute('data-rarity')||'').trim();
+  const root=(window.__FM_PATHS&&window.__FM_PATHS.root)||''; // 例: .../gamewiki/FellowMoon/
+  const expUrl=root+'experience-data.json';
+  const charUrl=root+'character.json';
+  Promise.all([
+    fetch(expUrl).then(r=>r.json()).catch(()=>null),
+    fetch(charUrl).then(r=>r.json()).catch(()=>null)
+  ]).then(([expData,charData])=>{
+    if(!expData||!expData.stars) return;
+    let attribute='';
+    if(charData&&charData[charId]&&charData[charId].基本情報){attribute=charData[charId].基本情報.属性||'';}
+    if(!attribute){attribute=meta.getAttribute('data-attr')||'';}
+    const starData=expData.stars[rarity];
+    if(!starData) return;
+    const certs=['基本','中級','上級','特級'];
+    const bookXp=(expData.schemaInfo&&expData.schemaInfo.bookXp)||{};
+    const panels=document.querySelector('#upgrade-materials .um-panels');
+    function certIcon(cert){return root+'site/assets/icons/'+cert+'認証_icon.webp';}
+    function costItemIcon(item){return root+'site/assets/icons/'+item+'・'+attribute+'.webp';}
+    function materialsTable(mats,totalCurrency){
+      const fileNameAlias={ '中級作戦教本':'中級教本.webp' };
+      const rows=Object.entries(mats).map(([k,v])=>{
+        const file = fileNameAlias[k] || (k + '.webp');
+        const iconPath = root+'site/assets/icons/'+file;
+        const supplied = bookXp[k]? (v*bookXp[k]).toLocaleString():'-';
+  return `<tr><th style=\"display:flex;align-items:center;gap:6px\"><img src=\"${iconPath}\" alt=\"${k}\" style=\"width:34px;height:34px;object-fit:contain;border-radius:6px;background:#0f161c\" onerror=\"this.style.display='none'\">${k}</th><td>${v}</td><td>${supplied}</td></tr>`;
+      }).join('');
+  const currencyIconPath = root+'site/assets/icons/演算銀_icon.png';
+  const currencyRow = `<tr><th style=\"display:flex;align-items:center;gap:6px\"><img src=\"${root+'site/assets/icons/演算銀.webp'}\" alt=\"演算銀\" style=\"width:34px;height:34px;object-fit:contain;border-radius:6px;background:#0f161c\" onerror=\"this.style.display='none'\">演算銀</th><td colspan=\"2\" style=\"text-align:right;font-weight:600;color:#cfe2ff;\"><span style=\"display:inline-flex;align-items:center;gap:4px;white-space:nowrap\"><img src=\"${currencyIconPath}\" alt=\"演算銀\" style=\"width:16px;height:16px;object-fit:contain\" onerror=\"this.style.display='none'\"><span>${(totalCurrency||0).toLocaleString()}</span></span></td></tr>`;
+      return `<table class=\"um-mat-table\"><thead><tr><th>作戦教本 / 通貨</th><th>冊数</th><th>供給XP</th></tr></thead><tbody>${rows}${currencyRow}</tbody></table>`;
+    }
+    function buildPanel(cert){
+      const data=starData.certifications[cert];
+      if(!data) return '<div style="font-size:.6rem;color:#a77">データなし</div>';
+      const icon=`<img src="${certIcon(cert)}" alt="${cert}認証">`;
+      const currencyIcon=root+'site/assets/icons/演算銀.webp';
+  const matsHTML=`<div class="um-box"><h3>${icon}<span>${cert}認証: 最大必要作戦教本数</span></h3>${materialsTable(data.materialsTotal,data.totalCurrency)}<div class="um-note">必要XP(実): ${data.requiredExperience.toLocaleString()} / 教本供給XP: ${data.suppliedExperienceFromBooks.toLocaleString()} / 余剰: ${data.overkillExperience.toLocaleString()}</div></div>`;
+      let costHTML='';
+      if(data.unlockCost){
+        const items=data.unlockCost.items||{};
+        const itemsHTML=Object.entries(items).map(([name,count])=>{
+          const ip=costItemIcon(name);
+          return `<div class="um-cost-item"><img src="${ip}" alt="${name}(${attribute})" onerror="this.style.display='none'"><span>${name}<br><strong style=\"font-size:.7rem;color:#cfe2ff\">${count}</strong></span></div>`;
+        }).join('');
+  const currencyBadge = `<div class=\"um-cost-item\"><img src=\"${currencyIcon}\" alt=\"演算銀\" onerror=\"this.style.display='none'\"><span>演算銀<br><strong style=\\"font-size:.7rem;color:#cfe2ff\\">${(data.unlockCost.currency||0).toLocaleString()}</strong></span></div>`;
+  costHTML=`<div class=\"um-box\"><h3>${icon}<span>解放コスト (${cert}認証)</span></h3><div class=\"um-cost-items\">${itemsHTML}${currencyBadge}</div></div>`;
+      } else {
+        costHTML=`<div class="um-box"><h3>${icon}<span>解放コスト (${cert}認証)</span></h3><div style="font-size:.6rem;color:#789">初期開放 (追加素材なし)</div></div>`;
+      }
+      return `<div class="um-mats-grid">${matsHTML}${costHTML}</div>`;
+    }
+    certs.forEach(c=>{
+      const panel=panels.querySelector(`[data-um-panel="${c}"]`);
+      if(panel){panel.innerHTML=buildPanel(c);} });
+    // タブ動作
+    const buttons=document.querySelectorAll('#upgrade-materials .um-tab-btn');
+    // タブボタンへ認証アイコンを付与（重複防止）
+    buttons.forEach(btn=>{
+      if(btn.querySelector('img')) return;
+      const cert = btn.getAttribute('data-um-tab');
+      const img=document.createElement('img');
+      img.src=certIcon(cert);
+      img.alt=cert+'認証';
+      img.style.width='20px';
+      img.style.height='20px';
+      img.style.objectFit='contain';
+      img.style.filter='drop-shadow(0 0 2px #0008)';
+      btn.prepend(img);
+    });
+    function activate(tab){
+      buttons.forEach(b=>{const sel=b.getAttribute('data-um-tab')===tab; b.setAttribute('aria-selected',sel?'true':'false');});
+      certs.forEach(c=>{const p=panels.querySelector(`[data-um-panel="${c}"]`); if(p){p.hidden=(c!==tab);} });
+    }
+    buttons.forEach(b=> b.addEventListener('click',()=>activate(b.getAttribute('data-um-tab'))));
+    activate('基本');
+  });
+});
 </script>
 <!-- Footer -->
   <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">

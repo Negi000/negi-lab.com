@@ -158,6 +158,8 @@ def build():
         name = basic.get('名前', '')
         kanji = basic.get('漢字', '')
         tags = [t.strip() for t in basic.get('タグ', '').split('/') if t.strip()] if basic.get('タグ') else []
+        # 攻撃タイプ（タグと同様に / 区切りで複数想定）
+        attack_types = [t.strip() for t in basic.get('攻撃タイプ', '').split('/') if t.strip()] if basic.get('攻撃タイプ') else []
         skills_raw = payload.get('スキル情報', {})
 
         skills = []
@@ -305,6 +307,7 @@ def build():
             '生成日時': datetime.datetime.now().isoformat(timespec='seconds'),
             **{k: basic.get(k,'') for k in basic.keys()},
             'タグ': tags,
+            '攻撃タイプ': attack_types,
             'スキル': skills,
             '階門': kaimon_list,
             '画像タブ': image_tabs,
