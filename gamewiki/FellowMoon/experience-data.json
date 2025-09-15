@@ -1,0 +1,442 @@
+{
+  "schemaInfo": {
+    "description": "キャラ認証育成用データ（作戦教本ベース）",
+    "bookXp": {
+      "基本作戦教本": 500,
+      "初級作戦教本": 1000,
+      "中級作戦教本": 2000,
+      "上級作戦教本": 5000
+    },
+    "fieldDefinitions": {
+      "materialsTotal": "最大レベルまでに使用する作戦教本の総数",
+      "suppliedExperienceFromBooks": "作戦教本で供給される総経験値（= 各冊数×bookXp の合計）",
+      "requiredExperience": "レベル表( experiencePerLevel )を合計した実必要経験値",
+      "overkillExperience": "suppliedExperienceFromBooks - requiredExperience（端数・余剰）",
+      "totalCurrency": "最大レベルまでに消費する演算銀（表記値）",
+      "experiencePerLevel": "前レベル→このレベルに上げるために必要な経験値",
+      "unlockCost": "段階解放に必要な認証素材と演算銀（なければ null）"
+    },
+    "notes": [
+      "overkillExperience が 0 でない場合、その分だけ経験値が余る（端数処理上やむを得ないオーバーキル）",
+      "将来のシミュレーターでは requiredExperience と現在の累計取得経験値との差を、bookXp の組合せ問題として最小冊数で充足する計算を行える"
+    ]
+  },
+  "stars": {
+    "3": {
+      "certifications": {
+        "基本": {
+          "maxLevel": 20,
+          "materialsTotal": { "基本作戦教本": 2, "初級作戦教本": 0, "中級作戦教本": 1, "上級作戦教本": 9 },
+          "suppliedExperienceFromBooks": 48000,
+          "requiredExperience": 47965,
+          "overkillExperience": 35,
+          "totalCurrency": 1706,
+          "unlockCost": null,
+          "experiencePerLevel": [
+            { "level": 2, "xp": 330 }, { "level": 3, "xp": 460 }, { "level": 4, "xp": 590 },
+            { "level": 5, "xp": 720 }, { "level": 6, "xp": 850 }, { "level": 7, "xp": 980 },
+            { "level": 8, "xp": 1240 }, { "level": 9, "xp": 1500 }, { "level": 10, "xp": 1760 },
+            { "level": 11, "xp": 2020 }, { "level": 12, "xp": 2280 }, { "level": 13, "xp": 2740 },
+            { "level": 14, "xp": 3200 }, { "level": 15, "xp": 3660 }, { "level": 16, "xp": 4120 },
+            { "level": 17, "xp": 4580 }, { "level": 18, "xp": 5150 }, { "level": 19, "xp": 5630 },
+            { "level": 20, "xp": 6155 }
+          ]
+        },
+        "中級": {
+          "maxLevel": 30,
+          "materialsTotal": { "基本作戦教本": 2, "初級作戦教本": 0, "中級作戦教本": 0, "上級作戦教本": 44 },
+            "suppliedExperienceFromBooks": 221000,
+            "requiredExperience": 220985,
+            "overkillExperience": 15,
+            "totalCurrency": 13131,
+            "unlockCost": {
+              "items": { "中級認証": 4 },
+              "currency": 800
+            },
+            "experiencePerLevel": [
+              { "level": 2, "xp": 2000 }, { "level": 3, "xp": 2200 }, { "level": 4, "xp": 2400 },
+              { "level": 5, "xp": 2600 }, { "level": 6, "xp": 2800 }, { "level": 7, "xp": 3000 },
+              { "level": 8, "xp": 3395 }, { "level": 9, "xp": 3790 }, { "level": 10, "xp": 4185 },
+              { "level": 11, "xp": 4580 }, { "level": 12, "xp": 4975 }, { "level": 13, "xp": 5500 },
+              { "level": 14, "xp": 6025 }, { "level": 15, "xp": 6550 }, { "level": 16, "xp": 7075 },
+              { "level": 17, "xp": 7600 }, { "level": 18, "xp": 8160 }, { "level": 19, "xp": 8720 },
+              { "level": 20, "xp": 9280 }, { "level": 21, "xp": 9840 }, { "level": 22, "xp": 10400 },
+              { "level": 23, "xp": 11025 }, { "level": 24, "xp": 11650 }, { "level": 25, "xp": 12275 },
+              { "level": 26, "xp": 12900 }, { "level": 27, "xp": 13525 }, { "level": 28, "xp": 14185 },
+              { "level": 29, "xp": 14845 }, { "level": 30, "xp": 15505 }
+            ]
+        },
+        "上級": {
+          "maxLevel": 40,
+          "materialsTotal": { "基本作戦教本": 2, "初級作戦教本": 0, "中級作戦教本": 2, "上級作戦教本": 135 },
+          "suppliedExperienceFromBooks": 680000,
+          "requiredExperience": 679590,
+          "overkillExperience": 410,
+          "totalCurrency": 40385,
+          "unlockCost": {
+            "items": { "中級認証": 7, "上級認証": 4 },
+            "currency": 2300
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 9210 }, { "level": 3, "xp": 9470 }, { "level": 4, "xp": 9730 },
+            { "level": 5, "xp": 9990 }, { "level": 6, "xp": 10250 }, { "level": 7, "xp": 10510 },
+            { "level": 8, "xp": 10810 }, { "level": 9, "xp": 11110 }, { "level": 10, "xp": 11410 },
+            { "level": 11, "xp": 11710 }, { "level": 12, "xp": 12010 }, { "level": 13, "xp": 12370 },
+            { "level": 14, "xp": 12730 }, { "level": 15, "xp": 13090 }, { "level": 16, "xp": 13450 },
+            { "level": 17, "xp": 13810 }, { "level": 18, "xp": 14270 }, { "level": 19, "xp": 14730 },
+            { "level": 20, "xp": 15190 }, { "level": 21, "xp": 15650 }, { "level": 22, "xp": 16110 },
+            { "level": 23, "xp": 16735 }, { "level": 24, "xp": 17360 }, { "level": 25, "xp": 17985 },
+            { "level": 26, "xp": 18610 }, { "level": 27, "xp": 19235 }, { "level": 28, "xp": 20055 },
+            { "level": 29, "xp": 20875 }, { "level": 30, "xp": 21695 }, { "level": 31, "xp": 22515 },
+            { "level": 32, "xp": 23335 }, { "level": 33, "xp": 24355 }, { "level": 34, "xp": 25375 },
+            { "level": 35, "xp": 26395 }, { "level": 36, "xp": 27415 }, { "level": 37, "xp": 28435 },
+            { "level": 38, "xp": 29485 }, { "level": 39, "xp": 30535 }, { "level": 40, "xp": 31585 }
+          ]
+        },
+        "特級": {
+          "maxLevel": 50,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 384 },
+          "suppliedExperienceFromBooks": 1923500,
+          "requiredExperience": 1923250,
+          "overkillExperience": 250,
+          "totalCurrency": 115423,
+          "unlockCost": {
+            "items": { "中級認証": 8, "上級認証": 5, "特級認証": 3 },
+            "currency": 10400
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 23000 }, { "level": 3, "xp": 23330 }, { "level": 4, "xp": 23660 },
+            { "level": 5, "xp": 23990 }, { "level": 6, "xp": 24320 }, { "level": 7, "xp": 24650 },
+            { "level": 8, "xp": 25050 }, { "level": 9, "xp": 25450 }, { "level": 10, "xp": 25850 },
+            { "level": 11, "xp": 26250 }, { "level": 12, "xp": 26650 }, { "level": 13, "xp": 27145 },
+            { "level": 14, "xp": 27640 }, { "level": 15, "xp": 28135 }, { "level": 16, "xp": 28630 },
+            { "level": 17, "xp": 29125 }, { "level": 18, "xp": 29715 }, { "level": 19, "xp": 30305 },
+            { "level": 20, "xp": 30895 }, { "level": 21, "xp": 31485 }, { "level": 22, "xp": 32075 },
+            { "level": 23, "xp": 32735 }, { "level": 24, "xp": 33395 }, { "level": 25, "xp": 34055 },
+            { "level": 26, "xp": 34715 }, { "level": 27, "xp": 35375 }, { "level": 28, "xp": 36360 },
+            { "level": 29, "xp": 37345 }, { "level": 30, "xp": 38330 }, { "level": 31, "xp": 39315 },
+            { "level": 32, "xp": 40300 }, { "level": 33, "xp": 41615 }, { "level": 34, "xp": 42930 },
+            { "level": 35, "xp": 44245 }, { "level": 36, "xp": 45560 }, { "level": 37, "xp": 46875 },
+            { "level": 38, "xp": 48520 }, { "level": 39, "xp": 50165 }, { "level": 40, "xp": 51810 },
+            { "level": 41, "xp": 53455 }, { "level": 42, "xp": 55100 }, { "level": 43, "xp": 57070 },
+            { "level": 44, "xp": 59040 }, { "level": 45, "xp": 61010 }, { "level": 46, "xp": 62980 },
+            { "level": 47, "xp": 64950 }, { "level": 48, "xp": 67250 }, { "level": 49, "xp": 69550 },
+            { "level": 50, "xp": 71850 }
+          ]
+        }
+      }
+    },
+    "4": {
+      "certifications": {
+        "基本": {
+          "maxLevel": 20,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 10 },
+          "suppliedExperienceFromBooks": 53500,
+          "requiredExperience": 53265,
+          "overkillExperience": 235,
+          "totalCurrency": 1889,
+          "unlockCost": null,
+          "experiencePerLevel": [
+            { "level": 2, "xp": 365 }, { "level": 3, "xp": 510 }, { "level": 4, "xp": 655 },
+            { "level": 5, "xp": 800 }, { "level": 6, "xp": 945 }, { "level": 7, "xp": 1090 },
+            { "level": 8, "xp": 1380 }, { "level": 9, "xp": 1670 }, { "level": 10, "xp": 1960 },
+            { "level": 11, "xp": 2250 }, { "level": 12, "xp": 2540 }, { "level": 13, "xp": 3050 },
+            { "level": 14, "xp": 3560 }, { "level": 15, "xp": 4070 }, { "level": 16, "xp": 4580 },
+            { "level": 17, "xp": 5090 }, { "level": 18, "xp": 5670 }, { "level": 19, "xp": 6250 },
+            { "level": 20, "xp": 6830 }
+          ]
+        },
+        "中級": {
+          "maxLevel": 30,
+          "materialsTotal": { "基本作戦教本": 0, "初級作戦教本": 2, "中級作戦教本": 1, "上級作戦教本": 48 },
+          "suppliedExperienceFromBooks": 244000,
+          "requiredExperience": 243655,
+          "overkillExperience": 345,
+          "totalCurrency": 14480,
+          "unlockCost": {
+            "items": { "中級認証": 5 },
+            "currency": 1000
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 2200 }, { "level": 3, "xp": 2420 }, { "level": 4, "xp": 2640 },
+            { "level": 5, "xp": 2860 }, { "level": 6, "xp": 3080 }, { "level": 7, "xp": 3300 },
+            { "level": 8, "xp": 3735 }, { "level": 9, "xp": 4170 }, { "level": 10, "xp": 4605 },
+            { "level": 11, "xp": 5040 }, { "level": 12, "xp": 5475 }, { "level": 13, "xp": 6055 },
+            { "level": 14, "xp": 6635 }, { "level": 15, "xp": 7215 }, { "level": 16, "xp": 7795 },
+            { "level": 17, "xp": 8375 }, { "level": 18, "xp": 8995 }, { "level": 19, "xp": 9615 },
+            { "level": 20, "xp": 10235 }, { "level": 21, "xp": 10855 }, { "level": 22, "xp": 11475 },
+            { "level": 23, "xp": 12165 }, { "level": 24, "xp": 12855 }, { "level": 25, "xp": 13545 },
+            { "level": 26, "xp": 14235 }, { "level": 27, "xp": 14925 }, { "level": 28, "xp": 15655 },
+            { "level": 29, "xp": 16385 }, { "level": 30, "xp": 17115 }
+          ]
+        },
+        "上級": {
+          "maxLevel": 40,
+          "materialsTotal": { "基本作戦教本": 0, "初級作戦教本": 1, "中級作戦教本": 0, "上級作戦教本": 149 },
+          "suppliedExperienceFromBooks": 746000,
+          "requiredExperience": 745650,
+          "overkillExperience": 350,
+          "totalCurrency": 44311,
+          "unlockCost": {
+            "items": { "中級認証": 7, "上級認証": 5 },
+            "currency": 3700
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 10220 }, { "level": 3, "xp": 10510 }, { "level": 4, "xp": 10800 },
+            { "level": 5, "xp": 11090 }, { "level": 6, "xp": 11380 }, { "level": 7, "xp": 11670 },
+            { "level": 8, "xp": 12000 }, { "level": 9, "xp": 12330 }, { "level": 10, "xp": 12660 },
+            { "level": 11, "xp": 12990 }, { "level": 12, "xp": 13320 }, { "level": 13, "xp": 13720 },
+            { "level": 14, "xp": 14120 }, { "level": 15, "xp": 14520 }, { "level": 16, "xp": 14920 },
+            { "level": 17, "xp": 15320 }, { "level": 18, "xp": 15830 }, { "level": 19, "xp": 16340 },
+            { "level": 20, "xp": 16850 }, { "level": 21, "xp": 17360 }, { "level": 22, "xp": 17870 },
+            { "level": 23, "xp": 18460 }, { "level": 24, "xp": 19050 }, { "level": 25, "xp": 19640 },
+            { "level": 26, "xp": 20230 }, { "level": 27, "xp": 20820 }, { "level": 28, "xp": 21730 },
+            { "level": 29, "xp": 22640 }, { "level": 30, "xp": 23550 }, { "level": 31, "xp": 24460 },
+            { "level": 32, "xp": 25370 }, { "level": 33, "xp": 26500 }, { "level": 34, "xp": 27630 },
+            { "level": 35, "xp": 28760 }, { "level": 36, "xp": 29890 }, { "level": 37, "xp": 31020 },
+            { "level": 38, "xp": 32190 }, { "level": 39, "xp": 33360 }, { "level": 40, "xp": 34530 }
+          ]
+        },
+        "特級": {
+          "maxLevel": 50,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 0, "中級作戦教本": 2, "上級作戦教本": 426 },
+          "suppliedExperienceFromBooks": 2134500,
+          "requiredExperience": 2134375,
+          "overkillExperience": 125,
+          "totalCurrency": 128112,
+          "unlockCost": {
+            "items": { "中級認証": 9, "上級認証": 6, "特級認証": 4 },
+            "currency": 14000
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 25500 }, { "level": 3, "xp": 25915 }, { "level": 4, "xp": 26280 },
+            { "level": 5, "xp": 26645 }, { "level": 6, "xp": 27010 }, { "level": 7, "xp": 27375 },
+            { "level": 8, "xp": 27815 }, { "level": 9, "xp": 28255 }, { "level": 10, "xp": 28695 },
+            { "level": 11, "xp": 29135 }, { "level": 12, "xp": 29575 }, { "level": 13, "xp": 30125 },
+            { "level": 14, "xp": 30675 }, { "level": 15, "xp": 31225 }, { "level": 16, "xp": 31775 },
+            { "level": 17, "xp": 32325 }, { "level": 18, "xp": 32975 }, { "level": 19, "xp": 33625 },
+            { "level": 20, "xp": 34275 }, { "level": 21, "xp": 34925 }, { "level": 22, "xp": 35575 },
+            { "level": 23, "xp": 36305 }, { "level": 24, "xp": 37035 }, { "level": 25, "xp": 37765 },
+            { "level": 26, "xp": 38495 }, { "level": 27, "xp": 39225 }, { "level": 28, "xp": 40325 },
+            { "level": 29, "xp": 41425 }, { "level": 30, "xp": 42525 }, { "level": 31, "xp": 43625 },
+            { "level": 32, "xp": 44725 }, { "level": 33, "xp": 46185 }, { "level": 34, "xp": 47645 },
+            { "level": 35, "xp": 49105 }, { "level": 36, "xp": 50565 }, { "level": 37, "xp": 52025 },
+            { "level": 38, "xp": 53850 }, { "level": 39, "xp": 55675 }, { "level": 40, "xp": 57500 },
+            { "level": 41, "xp": 59325 }, { "level": 42, "xp": 61150 }, { "level": 43, "xp": 63340 },
+            { "level": 44, "xp": 65530 }, { "level": 45, "xp": 67720 }, { "level": 46, "xp": 69910 },
+            { "level": 47, "xp": 72100 }, { "level": 48, "xp": 74650 }, { "level": 49, "xp": 77200 },
+            { "level": 50, "xp": 79750 }
+          ]
+        }
+      }
+    },
+    "5": {
+      "certifications": {
+        "基本": {
+          "maxLevel": 20,
+          "materialsTotal": { "基本作戦教本": 0, "初級作戦教本": 2, "中級作戦教本": 0, "上級作戦教本": 12 },
+          "suppliedExperienceFromBooks": 62000,
+          "requiredExperience": 62000,
+          "overkillExperience": 0,
+          "totalCurrency": 2177,
+          "unlockCost": null,
+          "experiencePerLevel": [
+            { "level": 2, "xp": 420 }, { "level": 3, "xp": 590 }, { "level": 4, "xp": 760 },
+            { "level": 5, "xp": 930 }, { "level": 6, "xp": 1100 }, { "level": 7, "xp": 1270 },
+            { "level": 8, "xp": 1610 }, { "level": 9, "xp": 1950 }, { "level": 10, "xp": 2290 },
+            { "level": 11, "xp": 2630 }, { "level": 12, "xp": 2970 }, { "level": 13, "xp": 3560 },
+            { "level": 14, "xp": 4150 }, { "level": 15, "xp": 4740 }, { "level": 16, "xp": 5330 },
+            { "level": 17, "xp": 5920 }, { "level": 18, "xp": 6590 }, { "level": 19, "xp": 7260 },
+            { "level": 20, "xp": 7930 }
+          ]
+        },
+        "中級": {
+          "maxLevel": 30,
+          "materialsTotal": { "基本作戦教本": 0, "初級作戦教本": 1, "中級作戦教本": 0, "上級作戦教本": 56 },
+          "suppliedExperienceFromBooks": 281000,
+          "requiredExperience": 280570,
+          "overkillExperience": 430,
+          "totalCurrency": 16673,
+          "unlockCost": {
+            "items": { "中級認証": 6 },
+            "currency": 1500
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 2520 }, { "level": 3, "xp": 2770 }, { "level": 4, "xp": 3020 },
+            { "level": 5, "xp": 3270 }, { "level": 6, "xp": 3520 }, { "level": 7, "xp": 3770 },
+            { "level": 8, "xp": 4275 }, { "level": 9, "xp": 4780 }, { "level": 10, "xp": 5285 },
+            { "level": 11, "xp": 5790 }, { "level": 12, "xp": 6295 }, { "level": 13, "xp": 6965 },
+            { "level": 14, "xp": 7635 }, { "level": 15, "xp": 8305 }, { "level": 16, "xp": 8975 },
+            { "level": 17, "xp": 9645 }, { "level": 18, "xp": 10360 }, { "level": 19, "xp": 11075 },
+            { "level": 20, "xp": 11790 }, { "level": 21, "xp": 12505 }, { "level": 22, "xp": 13220 },
+            { "level": 23, "xp": 14020 }, { "level": 24, "xp": 14820 }, { "level": 25, "xp": 15620 },
+            { "level": 26, "xp": 16420 }, { "level": 27, "xp": 17220 }, { "level": 28, "xp": 18060 },
+            { "level": 29, "xp": 18900 }, { "level": 30, "xp": 19740 }
+          ]
+        },
+        "上級": {
+          "maxLevel": 40,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 167 },
+          "suppliedExperienceFromBooks": 838500,
+          "requiredExperience": 838375,
+          "overkillExperience": 125,
+          "totalCurrency": 49819,
+          "unlockCost": {
+            "items": { "中級認証": 9, "上級認証": 7 },
+            "currency": 6500
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 11000 }, { "level": 3, "xp": 11350 }, { "level": 4, "xp": 11700 },
+            { "level": 5, "xp": 12050 }, { "level": 6, "xp": 12400 }, { "level": 7, "xp": 12750 },
+            { "level": 8, "xp": 13125 }, { "level": 9, "xp": 13500 }, { "level": 10, "xp": 13875 },
+            { "level": 11, "xp": 14250 }, { "level": 12, "xp": 14625 }, { "level": 13, "xp": 15075 },
+            { "level": 14, "xp": 15525 }, { "level": 15, "xp": 15975 }, { "level": 16, "xp": 16425 },
+            { "level": 17, "xp": 16875 }, { "level": 18, "xp": 17455 }, { "level": 19, "xp": 18035 },
+            { "level": 20, "xp": 18615 }, { "level": 21, "xp": 19195 }, { "level": 22, "xp": 19775 },
+            { "level": 23, "xp": 20575 }, { "level": 24, "xp": 21375 }, { "level": 25, "xp": 22175 },
+            { "level": 26, "xp": 22975 }, { "level": 27, "xp": 23775 }, { "level": 28, "xp": 24825 },
+            { "level": 29, "xp": 25875 }, { "level": 30, "xp": 26925 }, { "level": 31, "xp": 27975 },
+            { "level": 32, "xp": 29025 }, { "level": 33, "xp": 30325 }, { "level": 34, "xp": 31625 },
+            { "level": 35, "xp": 32925 }, { "level": 36, "xp": 34225 }, { "level": 37, "xp": 35525 },
+            { "level": 38, "xp": 36875 }, { "level": 39, "xp": 38225 }, { "level": 40, "xp": 39575 }
+          ]
+        },
+        "特級": {
+          "maxLevel": 50,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 0, "中級作戦教本": 1, "上級作戦教本": 496 },
+          "suppliedExperienceFromBooks": 2482500,
+          "requiredExperience": 2482400,
+          "overkillExperience": 100,
+          "totalCurrency": 149021,
+          "unlockCost": {
+            "items": { "中級認証": 12, "上級認証": 10, "特級認証": 6 },
+            "currency": 22300
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 30000 }, { "level": 3, "xp": 30420 }, { "level": 4, "xp": 30840 },
+            { "level": 5, "xp": 31260 }, { "level": 6, "xp": 31680 }, { "level": 7, "xp": 32100 },
+            { "level": 8, "xp": 32600 }, { "level": 9, "xp": 33100 }, { "level": 10, "xp": 33600 },
+            { "level": 11, "xp": 34100 }, { "level": 12, "xp": 34600 }, { "level": 13, "xp": 35230 },
+            { "level": 14, "xp": 35860 }, { "level": 15, "xp": 36490 }, { "level": 16, "xp": 37120 },
+            { "level": 17, "xp": 37750 }, { "level": 18, "xp": 38500 }, { "level": 19, "xp": 39250 },
+            { "level": 20, "xp": 40000 }, { "level": 21, "xp": 40750 }, { "level": 22, "xp": 41500 },
+            { "level": 23, "xp": 42340 }, { "level": 24, "xp": 43180 }, { "level": 25, "xp": 44020 },
+            { "level": 26, "xp": 44860 }, { "level": 27, "xp": 45700 }, { "level": 28, "xp": 46950 },
+            { "level": 29, "xp": 48200 }, { "level": 30, "xp": 49450 }, { "level": 31, "xp": 50700 },
+            { "level": 32, "xp": 51950 }, { "level": 33, "xp": 53630 }, { "level": 34, "xp": 55310 },
+            { "level": 35, "xp": 56990 }, { "level": 36, "xp": 58670 }, { "level": 37, "xp": 60350 },
+            { "level": 38, "xp": 62450 }, { "level": 39, "xp": 64550 }, { "level": 40, "xp": 66650 },
+            { "level": 41, "xp": 68750 }, { "level": 42, "xp": 70850 }, { "level": 43, "xp": 73370 },
+            { "level": 44, "xp": 75890 }, { "level": 45, "xp": 78410 }, { "level": 46, "xp": 80930 },
+            { "level": 47, "xp": 83450 }, { "level": 48, "xp": 86400 }, { "level": 49, "xp": 89350 },
+            { "level": 50, "xp": 92300 }
+          ]
+        }
+      }
+    },
+    "6": {
+      "certifications": {
+        "基本": {
+          "maxLevel": 20,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 14 },
+          "suppliedExperienceFromBooks": 73500,
+          "requiredExperience": 73300,
+          "overkillExperience": 200,
+          "totalCurrency": 2629,
+          "unlockCost": null,
+          "experiencePerLevel": [
+            { "level": 2, "xp": 500 }, { "level": 3, "xp": 700 }, { "level": 4, "xp": 900 },
+            { "level": 5, "xp": 1100 }, { "level": 6, "xp": 1300 }, { "level": 7, "xp": 1500 },
+            { "level": 8, "xp": 1900 }, { "level": 9, "xp": 2300 }, { "level": 10, "xp": 2700 },
+            { "level": 11, "xp": 3100 }, { "level": 12, "xp": 3500 }, { "level": 13, "xp": 4200 },
+            { "level": 14, "xp": 4900 }, { "level": 15, "xp": 5600 }, { "level": 16, "xp": 6300 },
+            { "level": 17, "xp": 7000 }, { "level": 18, "xp": 7800 }, { "level": 19, "xp": 8600 },
+            { "level": 20, "xp": 9400 }
+          ]
+        },
+        "中級": {
+          "maxLevel": 30,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 0, "中級作戦教本": 1, "上級作戦教本": 78 },
+          "suppliedExperienceFromBooks": 392500,
+          "requiredExperience": 392250,
+          "overkillExperience": 250,
+          "totalCurrency": 23312,
+          "unlockCost": {
+            "items": { "中級認証": 8 },
+            "currency": 2100
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 5000 }, { "level": 3, "xp": 5300 }, { "level": 4, "xp": 5600 },
+            { "level": 5, "xp": 5900 }, { "level": 6, "xp": 6200 }, { "level": 7, "xp": 6500 },
+            { "level": 8, "xp": 7100 }, { "level": 9, "xp": 7700 }, { "level": 10, "xp": 8300 },
+            { "level": 11, "xp": 8900 }, { "level": 12, "xp": 9500 }, { "level": 13, "xp": 10300 },
+            { "level": 14, "xp": 11100 }, { "level": 15, "xp": 11900 }, { "level": 16, "xp": 12700 },
+            { "level": 17, "xp": 13500 }, { "level": 18, "xp": 14350 }, { "level": 19, "xp": 15200 },
+            { "level": 20, "xp": 16050 }, { "level": 21, "xp": 16900 }, { "level": 22, "xp": 17750 },
+            { "level": 23, "xp": 18700 }, { "level": 24, "xp": 19650 }, { "level": 25, "xp": 20600 },
+            { "level": 26, "xp": 21550 }, { "level": 27, "xp": 22500 }, { "level": 28, "xp": 23500 },
+            { "level": 29, "xp": 24500 }, { "level": 30, "xp": 25500 }
+          ]
+        },
+        "上級": {
+          "maxLevel": 40,
+          "materialsTotal": { "基本作戦教本": 2, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 206 },
+          "suppliedExperienceFromBooks": 1034000,
+          "requiredExperience": 1033600,
+          "overkillExperience": 400,
+          "totalCurrency": 61419,
+          "unlockCost": {
+            "items": { "中級認証": 12, "上級認証": 8 },
+            "currency": 11200
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 14000 }, { "level": 3, "xp": 14400 }, { "level": 4, "xp": 14800 },
+            { "level": 5, "xp": 15200 }, { "level": 6, "xp": 15600 }, { "level": 7, "xp": 16000 },
+            { "level": 8, "xp": 16450 }, { "level": 9, "xp": 16900 }, { "level": 10, "xp": 17350 },
+            { "level": 11, "xp": 17800 }, { "level": 12, "xp": 18250 }, { "level": 13, "xp": 18800 },
+            { "level": 14, "xp": 19350 }, { "level": 15, "xp": 19900 }, { "level": 16, "xp": 20450 },
+            { "level": 17, "xp": 21000 }, { "level": 18, "xp": 21700 }, { "level": 19, "xp": 22400 },
+            { "level": 20, "xp": 23100 }, { "level": 21, "xp": 23800 }, { "level": 22, "xp": 24500 },
+            { "level": 23, "xp": 25450 }, { "level": 24, "xp": 26400 }, { "level": 25, "xp": 27350 },
+            { "level": 26, "xp": 28300 }, { "level": 27, "xp": 29250 }, { "level": 28, "xp": 30500 },
+            { "level": 29, "xp": 31750 }, { "level": 30, "xp": 33000 }, { "level": 31, "xp": 34250 },
+            { "level": 32, "xp": 35500 }, { "level": 33, "xp": 37050 }, { "level": 34, "xp": 38600 },
+            { "level": 35, "xp": 40150 }, { "level": 36, "xp": 41700 }, { "level": 37, "xp": 43250 },
+            { "level": 38, "xp": 44850 }, { "level": 39, "xp": 46450 }, { "level": 40, "xp": 48050 }
+          ]
+        },
+        "特級": {
+          "maxLevel": 50,
+          "materialsTotal": { "基本作戦教本": 1, "初級作戦教本": 1, "中級作戦教本": 1, "上級作戦教本": 584 },
+          "suppliedExperienceFromBooks": 2923500,
+          "requiredExperience": 2923500,
+          "overkillExperience": 0,
+          "totalCurrency": 175451,
+          "unlockCost": {
+            "items": { "中級認証": 16, "上級認証": 12, "特級認証": 9 },
+            "currency": 29900
+          },
+          "experiencePerLevel": [
+            { "level": 2, "xp": 35000 }, { "level": 3, "xp": 35500 }, { "level": 4, "xp": 36000 },
+            { "level": 5, "xp": 36500 }, { "level": 6, "xp": 37000 }, { "level": 7, "xp": 37500 },
+            { "level": 8, "xp": 38100 }, { "level": 9, "xp": 38700 }, { "level": 10, "xp": 39300 },
+            { "level": 11, "xp": 39900 }, { "level": 12, "xp": 40500 }, { "level": 13, "xp": 41250 },
+            { "level": 14, "xp": 42000 }, { "level": 15, "xp": 42750 }, { "level": 16, "xp": 43500 },
+            { "level": 17, "xp": 44250 }, { "level": 18, "xp": 45150 }, { "level": 19, "xp": 46050 },
+            { "level": 20, "xp": 46950 }, { "level": 21, "xp": 47850 }, { "level": 22, "xp": 48750 },
+            { "level": 23, "xp": 49750 }, { "level": 24, "xp": 50750 }, { "level": 25, "xp": 51750 },
+            { "level": 26, "xp": 52750 }, { "level": 27, "xp": 53750 }, { "level": 28, "xp": 55250 },
+            { "level": 29, "xp": 56750 }, { "level": 30, "xp": 58250 }, { "level": 31, "xp": 59750 },
+            { "level": 32, "xp": 61250 }, { "level": 33, "xp": 63250 }, { "level": 34, "xp": 65250 },
+            { "level": 35, "xp": 67250 }, { "level": 36, "xp": 69250 }, { "level": 37, "xp": 71250 },
+            { "level": 38, "xp": 73750 }, { "level": 39, "xp": 76250 }, { "level": 40, "xp": 78750 },
+            { "level": 41, "xp": 81250 }, { "level": 42, "xp": 83750 }, { "level": 43, "xp": 86750 },
+            { "level": 44, "xp": 89750 }, { "level": 45, "xp": 92750 }, { "level": 46, "xp": 95750 },
+            { "level": 47, "xp": 98750 }, { "level": 48, "xp": 102250 }, { "level": 49, "xp": 105750 },
+            { "level": 50, "xp": 109250 }
+          ]
+        }
+      }
+    }
+  }
+}
