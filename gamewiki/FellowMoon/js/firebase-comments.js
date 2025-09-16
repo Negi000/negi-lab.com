@@ -59,6 +59,7 @@ const app = initializeApp(firebaseConfig);
 // ※ Enterprise Site Key は公開前提 (クライアントに埋め込む) だが不正利用を防ぐため Domain 制限必須
 const APP_CHECK_SITE_KEY = '6LcKi8srAAAAAFbinPBIWJKeuLJXaT6eOVPbLPbJ';
 let appCheckTokenValid = false;
+let anonymousDisabled = false; // 匿名ログイン機能がコンソール側で無効な場合 true
 try {
   initializeAppCheck(app, {
     // reCAPTCHA Enterprise 用プロバイダ
@@ -178,8 +179,17 @@ onAuthStateChanged(auth, user=>{
     const code = e && e.code;
     if(code === 'auth/operation-not-allowed' || code === 'auth/admin-restricted-operation'){
       setAuthInfo('匿名ログインが無効です。Google ログインをご利用ください。');
+      anonymousDisabled = true;
       // 匿名が無効なら Google ログインボタンを積極表示
       if(btnGoogle){ btnGoogle.style.display='inline-flex'; }
+      // 投稿フォームを一時的に使用不可 (Google ログイン後に自動で再び使える)
+      if(form){
+        const ta = form.querySelector('textarea[name="comment"]');
+        const nameInput = form.querySelector('input[name="displayName"]');
+        ta && (ta.disabled = true);
+        nameInput && (nameInput.disabled = true);
+        submitBtn && (submitBtn.disabled = true);
+      }
     } else if(code === 'auth/network-request-failed'){
       setAuthInfo('通信/拡張機能によるブロックで認証失敗');
     } else {
@@ -205,7 +215,18 @@ async function doLogout(){
   try {
     await signOut(auth);
     // 匿名サインインが無効な環境だと失敗するので try で握りつぶしつつ UI を更新
-    try { await signInAnonymously(auth); } catch(_e) { /* ignore if disabled */ }
+    if(!anonymousDisabled){
+      try { await signInAnonymously(auth); } catch(_e) { /* ignore if disabled */ }
+    } else {
+      setAuthInfo('ログアウトしました。匿名は無効なので Google ログインしてください。');
+      if(form){
+        const ta = form.querySelector('textarea[name="comment"]');
+        const nameInput = form.querySelector('input[name="displayName"]');
+        ta && (ta.disabled = true);
+        nameInput && (nameInput.disabled = true);
+        submitBtn && (submitBtn.disabled = true);
+      }
+    }
     setStatus('ログアウトしました', true);
   }catch(e){ console.error(e); setStatus('ログアウト処理中にエラー'); }
 }
