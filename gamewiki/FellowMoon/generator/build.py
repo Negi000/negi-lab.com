@@ -149,7 +149,9 @@ def build():
     index_items = []
     list_items = []  # character.html 用
     # フィルター候補の集合
-    rares, attrs, types, factions, tags_all, skill_tags_all, versions = set(), set(), set(), set(), set(), set(), set()
+    rares, attrs, types, factions, tags_all, attack_types_all, skill_tags_all, versions = (
+        set(), set(), set(), set(), set(), set(), set(), set()
+    )
 
     for cid, payload in raw_chars.items():
         if not payload or '基本情報' not in payload:
@@ -379,6 +381,7 @@ def build():
             '陣営': basic.get('陣営',''),
             '実装バージョン': basic.get('実装バージョン',''),
             'タグCSV': ' '.join(tags),
+            '攻撃タイプCSV': ' '.join(attack_types),
             'スキルタグCSV': skill_tags_csv,
             'アイコン': icon_rel,
             'アイコン覚醒': icon_awake_rel or icon_rel,
@@ -391,9 +394,14 @@ def build():
         if attr: attrs.add(attr)
         if typ: types.add(typ)
         if basic.get('陣営'): factions.add(basic.get('陣営'))
-        for t in tags: tags_all.add(t)
-        for t in skill_tags: skill_tags_all.add(t)
-        if basic.get('実装バージョン'): versions.add(basic.get('実装バージョン'))
+        for t in tags:
+            tags_all.add(t)
+        for t in skill_tags:
+            skill_tags_all.add(t)
+        for t in attack_types:
+            attack_types_all.add(t)
+        if basic.get('実装バージョン'):
+            versions.add(basic.get('実装バージョン'))
 
     # index を chars/ ディレクトリに配置（ホームは build_home.py が生成）
     (SITE_DIR / 'chars').mkdir(parents=True, exist_ok=True)
@@ -453,6 +461,7 @@ def build():
         attr_order = ['情','理','信','正','奇']
         type_order = ['強攻型','特攻型','突撃型','補助型','防御型']
         faction_order = ['新月','超管局','全聯堂','燭火教','光耀会','和祥義','単独勢力','超自然セブン']
+        attack_type_order = ['物理','特殊','単体','範囲','単発','多段']
         ctx = {
             '一覧': sorted_list_items,
             'レア度一覧': sort_num_str(rares),
@@ -460,6 +469,7 @@ def build():
             'タイプ一覧': ordered(types, type_order),
             '陣営一覧': ordered(factions, faction_order),
             'タグ一覧': sorted(tags_all),
+            '攻撃タイプ一覧': ordered(attack_types_all, attack_type_order),
             'スキルタグ一覧': sorted(skill_tags_all),
             '実装バージョン一覧': sorted(versions),
         }

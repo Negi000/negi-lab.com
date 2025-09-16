@@ -289,11 +289,15 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <div class="filter-pills"><span class="pill" data-value="新月">新月</span><span class="pill" data-value="超管局">超管局</span><span class="pill" data-value="全聯堂">全聯堂</span><span class="pill" data-value="燭火教">燭火教</span><span class="pill" data-value="光耀会">光耀会</span><span class="pill" data-value="和祥義">和祥義</span><span class="pill" data-value="単独勢力">単独勢力</span><span class="pill" data-value="超自然セブン">超自然セブン</span></div>
         </div>
         <div id="moreFilters" class="detail-box" aria-expanded="false">
-          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
+          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/攻撃タイプ/スキルタグ/実装バージョン）</div>
           <div class="filter-more-content">
             <div class="pf-row" data-group="tag">
               <div class="filter-title">タグ</div>
               <div class="filter-pills"><span class="pill" data-value="分担">分担</span><span class="pill" data-value="制御">制御</span><span class="pill" data-value="協撃">協撃</span><span class="pill" data-value="反撃">反撃</span><span class="pill" data-value="弱体">弱体</span><span class="pill" data-value="強化">強化</span><span class="pill" data-value="拡散">拡散</span><span class="pill" data-value="援護">援護</span><span class="pill" data-value="治療">治療</span><span class="pill" data-value="消散">消散</span><span class="pill" data-value="火力">火力</span><span class="pill" data-value="爆発">爆発</span><span class="pill" data-value="生存">生存</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="防護">防護</span><span class="pill" data-value="除去">除去</span></div>
+            </div>
+            <div class="pf-row" data-group="attacktype">
+              <div class="filter-title">攻撃タイプ</div>
+              <div class="filter-pills"><span class="pill" data-value="物理">物理</span><span class="pill" data-value="特殊">特殊</span><span class="pill" data-value="単体">単体</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="単発">単発</span><span class="pill" data-value="多段">多段</span></div>
             </div>
             <div class="pf-row" data-group="skilltag">
               <div class="filter-title">スキルタグ</div>
@@ -310,7 +314,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 
     <div class="cards" id="cards">
       
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="超管局" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.3.1">
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="超管局" data-tags="火力 弱体 生存" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.3.1">
         <a class="card" href="088.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/青形/088-icon.png" data-normal="../../キャラ素材/青形/088-icon.png" data-awake="../../キャラ素材/青形/088-icon_awake.png" alt="セイケイ アイコン">
@@ -321,7 +325,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.3.1">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="強化 火力 範囲" data-ver="1.3.1">
         <a class="card" href="087.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/纺惑/087-icon.png" data-normal="../../キャラ素材/纺惑/087-icon.png" data-awake="../../キャラ素材/纺惑/087-icon_awake.png" alt="ボウワク アイコン">
@@ -332,7 +336,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.3.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-attacktypes="物理 単体 範囲 単発 多段" data-skilltags="強化 火力 爆発" data-ver="1.3.0">
         <a class="card" href="085.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/雨人/085-icon.png" data-normal="../../キャラ素材/雨人/085-icon.png" data-awake="../../キャラ素材/雨人/085-icon_awake.png" alt="ウジン アイコン">
@@ -343,7 +347,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="光耀会" data-tags="治療 強化 範囲" data-skilltags="強化 治療 火力 範囲" data-ver="1.3.0">
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="光耀会" data-tags="治療 強化 範囲" data-attacktypes="特殊 単体 単発" data-skilltags="強化 治療 火力 範囲" data-ver="1.3.0">
         <a class="card" href="084.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/雅努斯/084-icon.png" data-normal="../../キャラ素材/雅努斯/084-icon.png" data-awake="../../キャラ素材/雅努斯/084-icon_awake.png" alt="ヤヌス アイコン">
@@ -354,7 +358,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="正" data-type="突撃型" data-faction="単独勢力" data-tags="火力 生存 弱体" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.2">
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="突撃型" data-faction="単独勢力" data-tags="火力 生存 弱体" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.2">
         <a class="card" href="083.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/阿铋斯/083-icon.png" data-normal="../../キャラ素材/阿铋斯/083-icon.png" data-awake="../../キャラ素材/阿铋斯/083-icon_awake.png" alt="アヌビス アイコン">
@@ -365,7 +369,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="防御型" data-faction="単独勢力" data-tags="生存 分担" data-skilltags="分担 弱体 強化 治療 火力 生存 範囲" data-ver="1.2.2">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="防御型" data-faction="単独勢力" data-tags="生存 分担" data-attacktypes="物理 単体 単発" data-skilltags="分担 弱体 強化 治療 火力 生存 範囲" data-ver="1.2.2">
         <a class="card" href="082.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/星期一/082-icon.png" data-normal="../../キャラ素材/星期一/082-icon.png" data-awake="../../キャラ素材/星期一/082-icon_awake.png" alt="マンデー アイコン">
@@ -376,7 +380,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-skilltags="強化 消散 火力 爆発" data-ver="1.2.2">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="単独勢力" data-tags="火力 爆発" data-attacktypes="物理 単体 単発 多段" data-skilltags="強化 消散 火力 爆発" data-ver="1.2.2">
         <a class="card" href="081.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/翠鬓/081-icon.png" data-normal="../../キャラ素材/翠鬓/081-icon.png" data-awake="../../キャラ素材/翠鬓/081-icon_awake.png" alt="スイビン アイコン">
@@ -387,7 +391,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="単独勢力" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.1">
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="突撃型" data-faction="単独勢力" data-tags="火力 弱体 生存" data-attacktypes="物理 単体 多段" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.1">
         <a class="card" href="080.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/忘湖/080-icon.png" data-normal="../../キャラ素材/忘湖/080-icon.png" data-awake="../../キャラ素材/忘湖/080-icon_awake.png" alt="ボウコ アイコン">
@@ -398,7 +402,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="補助型" data-faction="光耀会" data-tags="生存 強化" data-skilltags="強化 生存" data-ver="1.2.0">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="補助型" data-faction="光耀会" data-tags="生存 強化" data-attacktypes="特殊 単体 単発" data-skilltags="強化 生存" data-ver="1.2.0">
         <a class="card" href="023.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/鹿游/023-icon.png" data-normal="../../キャラ素材/鹿游/023-icon.png" data-awake="../../キャラ素材/鹿游/023-icon_awake.png" alt="ロクユウ アイコン">
@@ -409,7 +413,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.2.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 範囲" data-attacktypes="特殊 範囲 単発" data-skilltags="強化 火力 範囲" data-ver="1.2.0">
         <a class="card" href="020.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/時曦/020-icon.png" data-normal="../../キャラ素材/時曦/020-icon.png" data-awake="../../キャラ素材/時曦/020-icon_awake.png" alt="トキヒ アイコン">
@@ -420,7 +424,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 弱体" data-skilltags="弱体 強化 火力 範囲" data-ver="1.1.2">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 弱体" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 火力 範囲" data-ver="1.1.2">
         <a class="card" href="079.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/饮火/079-icon.png" data-normal="../../キャラ素材/饮火/079-icon.png" data-awake="../../キャラ素材/饮火/079-icon_awake.png" alt="インカ アイコン">
@@ -431,7 +435,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="弱体 援護 生存" data-skilltags="弱体 強化 援護 火力 生存 範囲" data-ver="1.1.2">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="弱体 援護 生存" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 援護 火力 生存 範囲" data-ver="1.1.2">
         <a class="card" href="078.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/巧手/078-icon.png" data-normal="../../キャラ素材/巧手/078-icon.png" data-awake="../../キャラ素材/巧手/078-icon_awake.png" alt="コウシュ アイコン">
@@ -442,7 +446,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="補助型" data-faction="燭火教" data-tags="治療 消散 強化" data-skilltags="強化 治療 消散 火力 範囲" data-ver="1.1.1">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="補助型" data-faction="燭火教" data-tags="治療 消散 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 消散 火力 範囲" data-ver="1.1.1">
         <a class="card" href="077.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/アレフ/077-icon.png" data-normal="../../キャラ素材/アレフ/077-icon.png" data-awake="../../キャラ素材/アレフ/077-icon_awake.png" alt="アレフ アイコン">
@@ -453,7 +457,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="全聯堂" data-tags="火力 範囲" data-skilltags="強化 火力 範囲 防護" data-ver="1.1.1">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="全聯堂" data-tags="火力 範囲" data-attacktypes="物理 単体 範囲 単発" data-skilltags="強化 火力 範囲 防護" data-ver="1.1.1">
         <a class="card" href="072.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/不知春/072-icon.png" data-normal="../../キャラ素材/不知春/072-icon.png" data-awake="../../キャラ素材/不知春/072-icon_awake.png" alt="フチシュン アイコン">
@@ -464,7 +468,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="正" data-type="強攻型" data-faction="単独勢力" data-tags="火力 拡散" data-skilltags="強化 火力 範囲" data-ver="1.1.1">
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="強攻型" data-faction="単独勢力" data-tags="火力 拡散" data-attacktypes="物理 単体 範囲 単発" data-skilltags="強化 火力 範囲" data-ver="1.1.1">
         <a class="card" href="071.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/叙非/071-icon.png" data-normal="../../キャラ素材/叙非/071-icon.png" data-awake="../../キャラ素材/叙非/071-icon_awake.png" alt="ジョヒ アイコン">
@@ -475,7 +479,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="超管局" data-tags="火力" data-skilltags="弱体 火力 生存" data-ver="1.1.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="超管局" data-tags="火力" data-attacktypes="物理 単体 単発" data-skilltags="弱体 火力 生存" data-ver="1.1.0">
         <a class="card" href="075.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/默斐/075-icon.png" data-normal="../../キャラ素材/默斐/075-icon.png" data-awake="../../キャラ素材/默斐/075-icon_awake.png" alt="モクヒ アイコン">
@@ -486,7 +490,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="突撃型" data-faction="単独勢力" data-tags="弱体 強化" data-skilltags="弱体 強化 火力" data-ver="1.1.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="突撃型" data-faction="単独勢力" data-tags="弱体 強化" data-attacktypes="物理 単体 単発" data-skilltags="弱体 強化 火力" data-ver="1.1.0">
         <a class="card" href="073.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/折鏡/073-icon.png" data-normal="../../キャラ素材/折鏡/073-icon.png" data-awake="../../キャラ素材/折鏡/073-icon_awake.png" alt="セッキョウ アイコン">
@@ -497,7 +501,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="防御型" data-faction="全聯堂" data-tags="防護 強化" data-skilltags="強化 火力 生存 範囲 防護" data-ver="1.0.3">
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="防御型" data-faction="全聯堂" data-tags="防護 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 火力 生存 範囲 防護" data-ver="1.0.3">
         <a class="card" href="070.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/金桂/070-icon.png" data-normal="../../キャラ素材/金桂/070-icon.png" data-awake="../../キャラ素材/金桂/070-icon_awake.png" alt="キンケイ アイコン">
@@ -508,7 +512,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="単独勢力" data-tags="治療 弱体" data-skilltags="弱体 強化 治療 火力 範囲" data-ver="1.0.2">
+      <div class="card-wrap" data-rare="6" data-attr="正" data-type="補助型" data-faction="単独勢力" data-tags="治療 弱体" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 治療 火力 範囲" data-ver="1.0.2">
         <a class="card" href="068.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/楚衣/068-icon.png" data-normal="../../キャラ素材/楚衣/068-icon.png" data-awake="../../キャラ素材/楚衣/068-icon_awake.png" alt="ソイ アイコン">
@@ -519,7 +523,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 強化" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.2">
+      <div class="card-wrap" data-rare="6" data-attr="奇" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 強化" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.2">
         <a class="card" href="045.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/梧桐/045-icon.png" data-normal="../../キャラ素材/梧桐/045-icon.png" data-awake="../../キャラ素材/梧桐/045-icon_awake.png" alt="アオギリ アイコン">
@@ -530,7 +534,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="強化 火力 生存" data-ver="1.0.1">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="光耀会" data-tags="火力 生存" data-attacktypes="物理 単体 単発" data-skilltags="強化 火力 生存" data-ver="1.0.1">
         <a class="card" href="066.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/荔倾/066-icon.png" data-normal="../../キャラ素材/荔倾/066-icon.png" data-awake="../../キャラ素材/荔倾/066-icon_awake.png" alt="レイケイ アイコン">
@@ -541,7 +545,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.1">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-attacktypes="特殊 単体 範囲 単発 多段" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.1">
         <a class="card" href="065.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/刺灰/065-icon.png" data-normal="../../キャラ素材/刺灰/065-icon.png" data-awake="../../キャラ素材/刺灰/065-icon_awake.png" alt="シカイ アイコン">
@@ -552,7 +556,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="特攻型" data-faction="光耀会" data-tags="火力 生存" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
         <a class="card" href="064.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/琢明/064-icon.png" data-normal="../../キャラ素材/琢明/064-icon.png" data-awake="../../キャラ素材/琢明/064-icon_awake.png" alt="タクメイ アイコン">
@@ -563,7 +567,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 生存" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 生存" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="063.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/碎銀子/063-icon.png" data-normal="../../キャラ素材/碎銀子/063-icon.png" data-awake="../../キャラ素材/碎銀子/063-icon_awake.png" alt="サイギンシ アイコン">
@@ -574,7 +578,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="単独勢力" data-tags="範囲 弱体" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="突撃型" data-faction="単独勢力" data-tags="範囲 弱体" data-attacktypes="物理 単体 範囲 単発 多段" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="061.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/結/061-icon.png" data-normal="../../キャラ素材/結/061-icon.png" data-awake="../../キャラ素材/結/061-icon_awake.png" alt="ユイ アイコン">
@@ -585,7 +589,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="燭火教" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="強攻型" data-faction="燭火教" data-tags="火力 爆発" data-attacktypes="物理 単体 単発 多段" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
         <a class="card" href="051.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/音希/051-icon.png" data-normal="../../キャラ素材/音希/051-icon.png" data-awake="../../キャラ素材/音希/051-icon_awake.png" alt="オンキ アイコン">
@@ -596,7 +600,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 反撃" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 反撃" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
         <a class="card" href="046.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/伝影/046-icon.png" data-normal="../../キャラ素材/伝影/046-icon.png" data-awake="../../キャラ素材/伝影/046-icon_awake.png" alt="デンエイ アイコン">
@@ -607,7 +611,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="超管局" data-tags="火力 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="強攻型" data-faction="超管局" data-tags="火力 爆発" data-attacktypes="物理 単体 範囲 単発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
         <a class="card" href="039.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/カラス/039-icon.png" data-normal="../../キャラ素材/カラス/039-icon.png" data-awake="../../キャラ素材/カラス/039-icon_awake.png" alt="カラス アイコン">
@@ -618,7 +622,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
         <a class="card" href="027.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/月白/027-icon.png" data-normal="../../キャラ素材/月白/027-icon.png" data-awake="../../キャラ素材/月白/027-icon_awake.png" alt="ゲツハク アイコン">
@@ -629,7 +633,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="理" data-type="防御型" data-faction="超管局" data-tags="援護 生存 弱体" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="理" data-type="防御型" data-faction="超管局" data-tags="援護 生存 弱体" data-attacktypes="物理 単体 単発" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="024.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/巫/024-icon.png" data-normal="../../キャラ素材/巫/024-icon.png" data-awake="../../キャラ素材/巫/024-icon_awake.png" alt="カンナギ アイコン">
@@ -640,7 +644,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 拡散" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 拡散" data-attacktypes="物理 単体 単発" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
         <a class="card" href="021.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/龍井/021-icon.png" data-normal="../../キャラ素材/龍井/021-icon.png" data-awake="../../キャラ素材/龍井/021-icon_awake.png" alt="リュウセイ アイコン">
@@ -651,7 +655,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲" data-skilltags="弱体 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="情" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲" data-attacktypes="特殊 単体 範囲 単発 多段" data-skilltags="弱体 火力 範囲" data-ver="1.0.0">
         <a class="card" href="017.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/恒沙/017-icon.png" data-normal="../../キャラ素材/恒沙/017-icon.png" data-awake="../../キャラ素材/恒沙/017-icon_awake.png" alt="ゴウシャ アイコン">
@@ -662,7 +666,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="6" data-attr="信" data-type="突撃型" data-faction="超管局" data-tags="火力 範囲 生存" data-skilltags="強化 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="6" data-attr="信" data-type="突撃型" data-faction="超管局" data-tags="火力 範囲 生存" data-attacktypes="特殊 単体 範囲 単発 多段" data-skilltags="強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="003.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/浄天/003-icon.png" data-normal="../../キャラ素材/浄天/003-icon.png" data-awake="../../キャラ素材/浄天/003-icon_awake.png" alt="ジョウテン アイコン">
@@ -673,7 +677,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="補助型" data-faction="新月" data-tags="治療 制御" data-skilltags="制御 治療 火力 範囲" data-ver="1.1.2">
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="補助型" data-faction="新月" data-tags="治療 制御" data-attacktypes="特殊 単体 単発" data-skilltags="制御 治療 火力 範囲" data-ver="1.1.2">
         <a class="card" href="014.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/楠乔/014-icon.png" data-normal="../../キャラ素材/楠乔/014-icon.png" data-awake="../../キャラ素材/楠乔/014-icon_awake.png" alt="ナンキョウ アイコン">
@@ -684,7 +688,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲 弱体" data-skilltags="弱体 火力 範囲" data-ver="1.1.0">
+      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="超管局" data-tags="火力 範囲 弱体" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 火力 範囲" data-ver="1.1.0">
         <a class="card" href="074.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/刻舟/074-icon.png" data-normal="../../キャラ素材/刻舟/074-icon.png" data-awake="../../キャラ素材/刻舟/074-icon_awake.png" alt="コクシュウ アイコン">
@@ -695,7 +699,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.2">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="防御型" data-faction="単独勢力" data-tags="援護 生存" data-attacktypes="特殊 単体 単発" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.2">
         <a class="card" href="069.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/刑身/069-icon.png" data-normal="../../キャラ素材/刑身/069-icon.png" data-awake="../../キャラ素材/刑身/069-icon_awake.png" alt="ケイシン アイコン">
@@ -706,7 +710,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-skilltags="強化 治療 火力" data-ver="1.0.1">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="単独勢力" data-tags="治療 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 火力" data-ver="1.0.1">
         <a class="card" href="067.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/家泉/067-icon.png" data-normal="../../キャラ素材/家泉/067-icon.png" data-awake="../../キャラ素材/家泉/067-icon_awake.png" alt="カセン アイコン">
@@ -717,7 +721,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
         <a class="card" href="062.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/石燕/062-icon.png" data-normal="../../キャラ素材/石燕/062-icon.png" data-awake="../../キャラ素材/石燕/062-icon_awake.png" alt="セキエン アイコン">
@@ -728,7 +732,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="正" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲 爆発" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 火力 爆発 範囲" data-ver="1.0.0">
         <a class="card" href="054.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/天星/054-icon.png" data-normal="../../キャラ素材/天星/054-icon.png" data-awake="../../キャラ素材/天星/054-icon_awake.png" alt="テンセイ アイコン">
@@ -739,7 +743,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="燭火教" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="燭火教" data-tags="制御 生存" data-attacktypes="物理 単体 単発" data-skilltags="制御 火力 生存" data-ver="1.0.0">
         <a class="card" href="052.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/弥砂/052-icon.png" data-normal="../../キャラ素材/弥砂/052-icon.png" data-awake="../../キャラ素材/弥砂/052-icon_awake.png" alt="ヤサ アイコン">
@@ -750,7 +754,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="信" data-type="強攻型" data-faction="全聯堂" data-tags="火力 爆発" data-attacktypes="物理 単体 単発 多段" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
         <a class="card" href="043.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/幽蘭/043-icon.png" data-normal="../../キャラ素材/幽蘭/043-icon.png" data-awake="../../キャラ素材/幽蘭/043-icon_awake.png" alt="ユウラン アイコン">
@@ -761,7 +765,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="信" data-type="防御型" data-faction="全聯堂" data-tags="援護 生存" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="信" data-type="防御型" data-faction="全聯堂" data-tags="援護 生存" data-attacktypes="物理 単体 範囲 単発" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="042.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/銀峰/042-icon.png" data-normal="../../キャラ素材/銀峰/042-icon.png" data-awake="../../キャラ素材/銀峰/042-icon_awake.png" alt="ギンフ アイコン">
@@ -772,7 +776,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="突撃型" data-faction="超管局" data-tags="火力 弱体 生存" data-skilltags="弱体 消散 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="突撃型" data-faction="超管局" data-tags="火力 弱体 生存" data-attacktypes="物理 単体 単発 多段" data-skilltags="弱体 消散 火力 生存" data-ver="1.0.0">
         <a class="card" href="035.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/隠光/035-icon.png" data-normal="../../キャラ素材/隠光/035-icon.png" data-awake="../../キャラ素材/隠光/035-icon_awake.png" alt="オンコウ アイコン">
@@ -783,7 +787,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="正" data-type="補助型" data-faction="超管局" data-tags="治療 強化" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="正" data-type="補助型" data-faction="超管局" data-tags="治療 強化" data-attacktypes="特殊 単体 単発" data-skilltags="強化 治療 火力 生存" data-ver="1.0.0">
         <a class="card" href="034.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/洞明/034-icon.png" data-normal="../../キャラ素材/洞明/034-icon.png" data-awake="../../キャラ素材/洞明/034-icon_awake.png" alt="ドウメイ アイコン">
@@ -794,7 +798,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="防御型" data-faction="単独勢力" data-tags="援護 強化 生存" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="防御型" data-faction="単独勢力" data-tags="援護 強化 生存" data-attacktypes="特殊 単体 単発" data-skilltags="強化 援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="033.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/甘霖/033-icon.png" data-normal="../../キャラ素材/甘霖/033-icon.png" data-awake="../../キャラ素材/甘霖/033-icon_awake.png" alt="カンリン アイコン">
@@ -805,7 +809,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="強攻型" data-faction="光耀会" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="強攻型" data-faction="光耀会" data-tags="火力 範囲" data-attacktypes="物理 範囲 単発" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="032.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/イングリット/032-icon.png" data-normal="../../キャラ素材/イングリット/032-icon.png" data-awake="../../キャラ素材/イングリット/032-icon_awake.png" alt="イングリット アイコン">
@@ -816,7 +820,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="信" data-type="特攻型" data-faction="和祥義" data-tags="火力 範囲" data-skilltags="火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="信" data-type="特攻型" data-faction="和祥義" data-tags="火力 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="火力 範囲" data-ver="1.0.0">
         <a class="card" href="031.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/スペード/031-icon.png" data-normal="../../キャラ素材/スペード/031-icon.png" data-awake="../../キャラ素材/スペード/031-icon_awake.png" alt="スペード アイコン">
@@ -827,7 +831,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="特攻型" data-faction="超管局" data-tags="火力 弱体 範囲" data-skilltags="弱体 強化 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="奇" data-type="特攻型" data-faction="超管局" data-tags="火力 弱体 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="028.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/騏驥/028-icon.png" data-normal="../../キャラ素材/騏驥/028-icon.png" data-awake="../../キャラ素材/騏驥/028-icon_awake.png" alt="キキ アイコン">
@@ -838,7 +842,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="信" data-type="突撃型" data-faction="超管局" data-tags="火力 協撃 制御" data-skilltags="制御 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="信" data-type="突撃型" data-faction="超管局" data-tags="火力 協撃 制御" data-attacktypes="物理 単体 単発" data-skilltags="制御 火力 生存" data-ver="1.0.0">
         <a class="card" href="026.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/繁夏/026-icon.png" data-normal="../../キャラ素材/繁夏/026-icon.png" data-awake="../../キャラ素材/繁夏/026-icon_awake.png" alt="ハンシア アイコン">
@@ -849,7 +853,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="信" data-type="補助型" data-faction="超管局" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="信" data-type="補助型" data-faction="超管局" data-tags="治療 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
         <a class="card" href="025.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/朝顔/025-icon.png" data-normal="../../キャラ素材/朝顔/025-icon.png" data-awake="../../キャラ素材/朝顔/025-icon_awake.png" alt="アサガオ アイコン">
@@ -860,7 +864,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="単独勢力" data-tags="防護" data-skilltags="弱体 火力 防護" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="防御型" data-faction="単独勢力" data-tags="防護" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 火力 防護" data-ver="1.0.0">
         <a class="card" href="022.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/沐綿/022-icon.png" data-normal="../../キャラ素材/沐綿/022-icon.png" data-awake="../../キャラ素材/沐綿/022-icon_awake.png" alt="モクメン アイコン">
@@ -871,7 +875,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 制御 範囲" data-skilltags="制御 強化 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="特攻型" data-faction="全聯堂" data-tags="火力 制御 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="制御 強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="019.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/蓮心/019-icon.png" data-normal="../../キャラ素材/蓮心/019-icon.png" data-awake="../../キャラ素材/蓮心/019-icon_awake.png" alt="レンシン アイコン">
@@ -882,7 +886,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 弱体 生存" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="突撃型" data-faction="全聯堂" data-tags="火力 弱体 生存" data-attacktypes="物理 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.0.0">
         <a class="card" href="016.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/紅袍/016-icon.png" data-normal="../../キャラ素材/紅袍/016-icon.png" data-awake="../../キャラ素材/紅袍/016-icon_awake.png" alt="ホンバオ アイコン">
@@ -893,7 +897,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="強攻型" data-faction="新月" data-tags="火力 範囲 強化" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="強攻型" data-faction="新月" data-tags="火力 範囲 強化" data-attacktypes="物理 単体 範囲 単発" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="011.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/フライス/011-icon.png" data-normal="../../キャラ素材/フライス/011-icon.png" data-awake="../../キャラ素材/フライス/011-icon_awake.png" alt="フライス アイコン">
@@ -904,7 +908,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="特攻型" data-faction="新月" data-tags="火力 範囲" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="特攻型" data-faction="新月" data-tags="火力 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="006.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/千秋/006-icon.png" data-normal="../../キャラ素材/千秋/006-icon.png" data-awake="../../キャラ素材/千秋/006-icon_awake.png" alt="センシュウ アイコン">
@@ -915,7 +919,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="特攻型" data-faction="超管局" data-tags="火力" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="特攻型" data-faction="超管局" data-tags="火力" data-attacktypes="特殊 単体 単発 多段" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
         <a class="card" href="005.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/沈礁/005-icon.png" data-normal="../../キャラ素材/沈礁/005-icon.png" data-awake="../../キャラ素材/沈礁/005-icon_awake.png" alt="チンショウ アイコン">
@@ -926,7 +930,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="超管局" data-tags="防護 除去" data-skilltags="治療 消散 火力 生存 範囲 防護" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="情" data-type="補助型" data-faction="超管局" data-tags="防護 除去" data-attacktypes="物理 単体 単発" data-skilltags="治療 消散 火力 生存 範囲 防護" data-ver="1.0.0">
         <a class="card" href="004.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/啓航/004-icon.png" data-normal="../../キャラ素材/啓航/004-icon.png" data-awake="../../キャラ素材/啓航/004-icon_awake.png" alt="ケイコウ アイコン">
@@ -937,7 +941,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="5" data-attr="理" data-type="強攻型" data-faction="単独勢力" data-tags="火力 制御" data-skilltags="制御 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="5" data-attr="理" data-type="強攻型" data-faction="単独勢力" data-tags="火力 制御" data-attacktypes="物理 単体 単発" data-skilltags="制御 強化 火力" data-ver="1.0.0">
         <a class="card" href="001.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/白槿/001-icon.png" data-normal="../../キャラ素材/白槿/001-icon.png" data-awake="../../キャラ素材/白槿/001-icon_awake.png" alt="シロムクゲ アイコン">
@@ -948,7 +952,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="奇" data-type="防御型" data-faction="単独勢力" data-tags="弱体 援護" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="奇" data-type="防御型" data-faction="単独勢力" data-tags="弱体 援護" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="050.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/柯/050-icon.png" data-normal="../../キャラ素材/柯/050-icon.png" data-awake="../../キャラ素材/柯/050-icon_awake.png" alt="カ アイコン">
@@ -959,7 +963,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="突撃型" data-faction="超管局" data-tags="火力 範囲" data-skilltags="火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="突撃型" data-faction="超管局" data-tags="火力 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="049.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/閃羽/049-icon.png" data-normal="../../キャラ素材/閃羽/049-icon.png" data-awake="../../キャラ素材/閃羽/049-icon_awake.png" alt="センウ アイコン">
@@ -970,7 +974,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="信" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="信" data-type="特攻型" data-faction="単独勢力" data-tags="火力 範囲" data-attacktypes="特殊 単体 単発" data-skilltags="強化 火力 範囲" data-ver="1.0.0">
         <a class="card" href="048.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/槐/048-icon.png" data-normal="../../キャラ素材/槐/048-icon.png" data-awake="../../キャラ素材/槐/048-icon_awake.png" alt="カイ アイコン">
@@ -981,7 +985,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="補助型" data-faction="全聯堂" data-tags="強化" data-skilltags="強化 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="補助型" data-faction="全聯堂" data-tags="強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 火力 生存" data-ver="1.0.0">
         <a class="card" href="044.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/夜来/044-icon.png" data-normal="../../キャラ素材/夜来/044-icon.png" data-awake="../../キャラ素材/夜来/044-icon_awake.png" alt="ヨルキ アイコン">
@@ -992,7 +996,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="突撃型" data-faction="新月" data-tags="火力 弱体 範囲" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="突撃型" data-faction="新月" data-tags="火力 弱体 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="弱体 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="036.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/スズメ/036-icon.png" data-normal="../../キャラ素材/スズメ/036-icon.png" data-awake="../../キャラ素材/スズメ/036-icon_awake.png" alt="スズメ アイコン">
@@ -1003,7 +1007,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="信" data-type="強攻型" data-faction="和祥義" data-tags="火力 範囲 爆発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="信" data-type="強攻型" data-faction="和祥義" data-tags="火力 範囲 爆発" data-attacktypes="物理 単体 範囲 単発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
         <a class="card" href="030.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/ハート/030-icon.png" data-normal="../../キャラ素材/ハート/030-icon.png" data-awake="../../キャラ素材/ハート/030-icon_awake.png" alt="ハート アイコン">
@@ -1014,7 +1018,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="防御型" data-faction="和祥義" data-tags="分担" data-skilltags="分担 強化 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="防御型" data-faction="和祥義" data-tags="分担" data-attacktypes="物理 単体 単発" data-skilltags="分担 強化 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="029.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/ダイヤ/029-icon.png" data-normal="../../キャラ素材/ダイヤ/029-icon.png" data-awake="../../キャラ素材/ダイヤ/029-icon_awake.png" alt="ダイヤ アイコン">
@@ -1025,7 +1029,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="全聯堂" data-tags="制御 生存" data-skilltags="制御 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="全聯堂" data-tags="制御 生存" data-attacktypes="特殊 単体 単発" data-skilltags="制御 火力 生存" data-ver="1.0.0">
         <a class="card" href="018.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/玉露/018-icon.png" data-normal="../../キャラ素材/玉露/018-icon.png" data-awake="../../キャラ素材/玉露/018-icon_awake.png" alt="ギョクロ アイコン">
@@ -1036,7 +1040,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="強攻型" data-faction="新月" data-tags="火力 強化 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="強攻型" data-faction="新月" data-tags="火力 強化 爆発" data-attacktypes="物理 単体 単発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
         <a class="card" href="015.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/春遅/015-icon.png" data-normal="../../キャラ素材/春遅/015-icon.png" data-awake="../../キャラ素材/春遅/015-icon_awake.png" alt="ハルチ アイコン">
@@ -1047,7 +1051,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="補助型" data-faction="全聯堂" data-tags="治療 強化" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
         <a class="card" href="013.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/緑雪/013-icon.png" data-normal="../../キャラ素材/緑雪/013-icon.png" data-awake="../../キャラ素材/緑雪/013-icon_awake.png" alt="リョクセツ アイコン">
@@ -1058,7 +1062,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="情" data-type="特攻型" data-faction="全聯堂" data-tags="火力 爆発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="情" data-type="特攻型" data-faction="全聯堂" data-tags="火力 爆発" data-attacktypes="特殊 単体 単発" data-skilltags="強化 火力 爆発" data-ver="1.0.0">
         <a class="card" href="012.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/火青/012-icon.png" data-normal="../../キャラ素材/火青/012-icon.png" data-awake="../../キャラ素材/火青/012-icon_awake.png" alt="カセイ アイコン">
@@ -1069,7 +1073,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="強攻型" data-faction="新月" data-tags="火力 生存" data-skilltags="弱体 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="強攻型" data-faction="新月" data-tags="火力 生存" data-attacktypes="物理 単体 単発" data-skilltags="弱体 火力 生存" data-ver="1.0.0">
         <a class="card" href="009.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/鳴霜/009-icon.png" data-normal="../../キャラ素材/鳴霜/009-icon.png" data-awake="../../キャラ素材/鳴霜/009-icon_awake.png" alt="ミンソウ アイコン">
@@ -1080,7 +1084,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="理" data-type="防御型" data-faction="新月" data-tags="援護 生存" data-skilltags="強化 援護 火力 生存" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="理" data-type="防御型" data-faction="新月" data-tags="援護 生存" data-attacktypes="物理 単体 単発" data-skilltags="強化 援護 火力 生存" data-ver="1.0.0">
         <a class="card" href="008.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/忠元/008-icon.png" data-normal="../../キャラ素材/忠元/008-icon.png" data-awake="../../キャラ素材/忠元/008-icon_awake.png" alt="チュウゲン アイコン">
@@ -1091,7 +1095,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="信" data-type="補助型" data-faction="新月" data-tags="治療 強化" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="信" data-type="補助型" data-faction="新月" data-tags="治療 強化" data-attacktypes="物理 単体 単発" data-skilltags="強化 治療 火力 範囲" data-ver="1.0.0">
         <a class="card" href="007.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/星涼/007-icon.png" data-normal="../../キャラ素材/星涼/007-icon.png" data-awake="../../キャラ素材/星涼/007-icon_awake.png" alt="シンリョウ アイコン">
@@ -1102,7 +1106,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="超管局" data-tags="防護 弱体" data-skilltags="弱体 火力 範囲 防護" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="4" data-attr="正" data-type="防御型" data-faction="超管局" data-tags="防護 弱体" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 火力 範囲 防護" data-ver="1.0.0">
         <a class="card" href="002.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/茜/002-icon.png" data-normal="../../キャラ素材/茜/002-icon.png" data-awake="../../キャラ素材/茜/002-icon_awake.png" alt="アカネ アイコン">
@@ -1113,7 +1117,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="正" data-type="突撃型" data-faction="超自然セブン" data-tags="火力 弱体" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="正" data-type="突撃型" data-faction="超自然セブン" data-tags="火力 弱体" data-attacktypes="物理 単体 単発" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
         <a class="card" href="060.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/文景/060-icon.png" data-normal="../../キャラ素材/文景/060-icon.png" data-awake="../../キャラ素材/文景/060-icon.png" alt="ブンケイ アイコン">
@@ -1124,7 +1128,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="情" data-type="強攻型" data-faction="超自然セブン" data-tags="火力" data-skilltags="強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="情" data-type="強攻型" data-faction="超自然セブン" data-tags="火力" data-attacktypes="物理 単体 単発" data-skilltags="強化 火力" data-ver="1.0.0">
         <a class="card" href="059.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/小春/059-icon.png" data-normal="../../キャラ素材/小春/059-icon.png" data-awake="../../キャラ素材/小春/059-icon.png" alt="コハル アイコン">
@@ -1135,7 +1139,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="情" data-type="防御型" data-faction="超自然セブン" data-tags="援護 生存" data-skilltags="援護 火力 生存 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="情" data-type="防御型" data-faction="超自然セブン" data-tags="援護 生存" data-attacktypes="特殊 単体 単発" data-skilltags="援護 火力 生存 範囲" data-ver="1.0.0">
         <a class="card" href="058.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/サタデイ/058-icon.png" data-normal="../../キャラ素材/サタデイ/058-icon.png" data-awake="../../キャラ素材/サタデイ/058-icon.png" alt="サタデイ アイコン">
@@ -1146,7 +1150,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="信" data-type="特攻型" data-faction="超自然セブン" data-tags="火力 強化 弱体" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="信" data-type="特攻型" data-faction="超自然セブン" data-tags="火力 強化 弱体" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
         <a class="card" href="057.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/真朱/057-icon.png" data-normal="../../キャラ素材/真朱/057-icon.png" data-awake="../../キャラ素材/真朱/057-icon.png" alt="シンジュ アイコン">
@@ -1157,7 +1161,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="奇" data-type="強攻型" data-faction="超自然セブン" data-tags="火力 強化" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="奇" data-type="強攻型" data-faction="超自然セブン" data-tags="火力 強化" data-attacktypes="物理 単体 単発" data-skilltags="弱体 強化 火力" data-ver="1.0.0">
         <a class="card" href="056.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/蕾/056-icon.png" data-normal="../../キャラ素材/蕾/056-icon.png" data-awake="../../キャラ素材/蕾/056-icon.png" alt="ツボミ アイコン">
@@ -1168,7 +1172,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="情" data-type="特攻型" data-faction="超自然セブン" data-tags="火力 爆発 範囲" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="情" data-type="特攻型" data-faction="超自然セブン" data-tags="火力 爆発 範囲" data-attacktypes="特殊 単体 範囲 単発" data-skilltags="強化 火力 爆発 範囲" data-ver="1.0.0">
         <a class="card" href="055.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/チャーシュー/055-icon.png" data-normal="../../キャラ素材/チャーシュー/055-icon.png" data-awake="../../キャラ素材/チャーシュー/055-icon.png" alt="チャーシュー アイコン">
@@ -1179,7 +1183,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         <div class="hover" aria-hidden="true"></div>
       </div>
       
-      <div class="card-wrap" data-rare="3" data-attr="奇" data-type="補助型" data-faction="単独勢力" data-tags="治療 除去" data-skilltags="強化 治療 消散 火力" data-ver="1.0.0">
+      <div class="card-wrap" data-rare="3" data-attr="奇" data-type="補助型" data-faction="単独勢力" data-tags="治療 除去" data-attacktypes="特殊 単体 単発" data-skilltags="強化 治療 消散 火力" data-ver="1.0.0">
         <a class="card" href="053.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="../../キャラ素材/橘/053-icon.png" data-normal="../../キャラ素材/橘/053-icon.png" data-awake="../../キャラ素材/橘/053-icon.png" alt="タチバナ アイコン">
@@ -1235,7 +1239,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 
 // フィルター実装（AND across groups, OR within group）
 (function(){
-  const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), skilltag:new Set(), ver:new Set()};
+  const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), attacktype:new Set(), skilltag:new Set(), ver:new Set()};
   const cards=[...document.querySelectorAll('.cards .card-wrap')];
   const groups=[...document.querySelectorAll('.filter-group[data-group], .pf-row[data-group]')];
   function apply(){
@@ -1243,13 +1247,14 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       let visible=true;
       const checks={
         rare: el.dataset.rare, attr: el.dataset.attr, type: el.dataset.type, faction: el.dataset.faction,
-        tag: (el.dataset.tags||'').split(/\s+/).filter(Boolean),
-        skilltag: (el.dataset.skilltags||'').split(/\s+/).filter(Boolean),
+  tag: (el.dataset.tags||'').split(/\s+/).filter(Boolean),
+  attacktype: (el.dataset.attacktypes||'').split(/\s+/).filter(Boolean),
+  skilltag: (el.dataset.skilltags||'').split(/\s+/).filter(Boolean),
         ver: el.dataset.ver
       };
       for(const g of Object.keys(state)){
         const sel=state[g]; if(sel.size===0) continue; // no constraint
-        if(g==='tag' || g==='skilltag'){
+  if(g==='tag' || g==='attacktype' || g==='skilltag'){
           const arr=checks[g];
           const ok = arr.some(v=>sel.has(v));
           if(!ok){ visible=false; break; }
