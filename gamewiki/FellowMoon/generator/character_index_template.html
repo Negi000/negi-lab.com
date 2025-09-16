@@ -289,11 +289,15 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <div class="filter-pills">{{#陣営一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/陣営一覧}}</div>
         </div>
         <div id="moreFilters" class="detail-box" aria-expanded="false">
-          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/スキルタグ/実装バージョン）</div>
+          <div class="detail-toggle" data-toggle>詳細フィルター（タグ/攻撃タイプ/スキルタグ/実装バージョン）</div>
           <div class="filter-more-content">
             <div class="pf-row" data-group="tag">
               <div class="filter-title">タグ</div>
               <div class="filter-pills">{{#タグ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/タグ一覧}}</div>
+            </div>
+            <div class="pf-row" data-group="attacktype">
+              <div class="filter-title">攻撃タイプ</div>
+              <div class="filter-pills">{{#攻撃タイプ一覧}}<span class="pill" data-value="{{.}}">{{.}}</span>{{/攻撃タイプ一覧}}</div>
             </div>
             <div class="pf-row" data-group="skilltag">
               <div class="filter-title">スキルタグ</div>
@@ -310,7 +314,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 
     <div class="cards" id="cards">
       {{#一覧}}
-      <div class="card-wrap" data-rare="{{レア度}}" data-attr="{{属性}}" data-type="{{タイプ}}" data-faction="{{陣営}}" data-tags="{{タグCSV}}" data-skilltags="{{スキルタグCSV}}" data-ver="{{実装バージョン}}">
+      <div class="card-wrap" data-rare="{{レア度}}" data-attr="{{属性}}" data-type="{{タイプ}}" data-faction="{{陣営}}" data-tags="{{タグCSV}}" data-attacktypes="{{攻撃タイプCSV}}" data-skilltags="{{スキルタグCSV}}" data-ver="{{実装バージョン}}">
         <a class="card" href="{{ID}}.html">
           <div class="bg" aria-hidden="true"></div>
           <img class="icon" src="{{アイコン}}" data-normal="{{アイコン}}" data-awake="{{アイコン覚醒}}" alt="{{名前}} アイコン">
@@ -366,7 +370,7 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 
 // フィルター実装（AND across groups, OR within group）
 (function(){
-  const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), skilltag:new Set(), ver:new Set()};
+  const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), attacktype:new Set(), skilltag:new Set(), ver:new Set()};
   const cards=[...document.querySelectorAll('.cards .card-wrap')];
   const groups=[...document.querySelectorAll('.filter-group[data-group], .pf-row[data-group]')];
   function apply(){
@@ -374,13 +378,14 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       let visible=true;
       const checks={
         rare: el.dataset.rare, attr: el.dataset.attr, type: el.dataset.type, faction: el.dataset.faction,
-        tag: (el.dataset.tags||'').split(/\s+/).filter(Boolean),
-        skilltag: (el.dataset.skilltags||'').split(/\s+/).filter(Boolean),
+  tag: (el.dataset.tags||'').split(/\s+/).filter(Boolean),
+  attacktype: (el.dataset.attacktypes||'').split(/\s+/).filter(Boolean),
+  skilltag: (el.dataset.skilltags||'').split(/\s+/).filter(Boolean),
         ver: el.dataset.ver
       };
       for(const g of Object.keys(state)){
         const sel=state[g]; if(sel.size===0) continue; // no constraint
-        if(g==='tag' || g==='skilltag'){
+  if(g==='tag' || g==='attacktype' || g==='skilltag'){
           const arr=checks[g];
           const ok = arr.some(v=>sel.has(v));
           if(!ok){ visible=false; break; }
