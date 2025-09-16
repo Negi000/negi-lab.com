@@ -1,4 +1,4 @@
-import json, datetime, pathlib, os, re
+import json, datetime, pathlib, os, re, tempfile
 from html import escape
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
@@ -193,6 +193,10 @@ def build_search_index(raw_chars: dict, raw_roms: list, home_html: str):
             'tags': [t for t in (['rom'] + part_names) if t],
             'body': body
         })
+    # 0 件は異常なので書き込まない
+    if not docs:
+        raise RuntimeError('No documents collected for search index')
+
     out = {
         'generated': datetime.datetime.now().isoformat(timespec='seconds'),
         'count': len(docs),
@@ -200,8 +204,24 @@ def build_search_index(raw_chars: dict, raw_roms: list, home_html: str):
     }
     # search.html と同階層 (SITE_DIR) に配置 → fetch('search-index.json') で取得可能
     target = SITE_DIR / 'search-index.json'
-    target.write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
-    print('Search index generated. docs:', len(docs), '->', target)
+
+    # アトミック書き込み: 一時ファイルへ書いてから rename
+    tmp_fd, tmp_path = tempfile.mkstemp(prefix='search-index-', suffix='.json', dir=str(SITE_DIR))
+    try:
+        with os.fdopen(tmp_fd, 'w', encoding='utf-8') as f:
+            json.dump(out, f, ensure_ascii=False)
+        # サイズ検証 (空ファイル防止)
+        if os.path.getsize(tmp_path) < 50:  # ある程度はデータがあるはず
+            raise RuntimeError('Search index file too small, aborting replace')
+        os.replace(tmp_path, target)
+    finally:
+        # 失敗時に一時ファイルが残っていれば削除
+        if os.path.exists(tmp_path) and not os.path.samefile(tmp_path, target):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
+    print('Search index generated. docs:', len(docs), '->', target, 'size:', target.stat().st_size, 'bytes')
 
 if __name__ == '__main__':
     build_home()

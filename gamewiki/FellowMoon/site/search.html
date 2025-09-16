@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 <script>window.tailwind=window.tailwind||{};window.tailwind.config={theme:{extend:{colors:{accent:'#4ADE80'},fontFamily:{inter:['Inter','sans-serif']}}}};</script>
-<script src="../js/wiki-search.js" defer></script>
+<!-- wiki-search.js 読み込み: 相対パスだと配置変更で 404 になるためルート絶対パスに修正 -->
+<script src="/js/wiki-search.js" defer onerror="console.error('wiki-search.js load failed')"></script>
 <style>
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;margin:0;background:#0d1216;color:#e6edf3;line-height:1.5;-webkit-font-smoothing:antialiased}
 :root{--c-bgcard:#161e26;--c-border:#24303b;--w-wrap:1080px}
@@ -77,9 +78,27 @@ mark{background:#255b82;color:#fff;padding:0 2px;border-radius:3px}
 </script>
 <script>
 (async function(){
+  // WikiSearch ロードフォールバック: 未定義ならユーザーに通知
+  function waitWikiSearch(maxWait=3000){
+    return new Promise(resolve=>{
+      if(window.WikiSearch) return resolve(true);
+      const start=Date.now();
+      const timer=setInterval(()=>{
+        if(window.WikiSearch){ clearInterval(timer); resolve(true); }
+        else if(Date.now()-start>maxWait){ clearInterval(timer); resolve(false); }
+      },100);
+    });
+  }
   const loader = document.getElementById('loader');
   loader.style.display='block';
   let indexData=null; let index=null;
+  const hasLib = await waitWikiSearch();
+  if(!hasLib){
+    loader.style.display='none';
+    const info = document.getElementById('resultsInfo');
+    info.textContent='検索ライブラリの読み込みに失敗しました (wiki-search.js)';
+    return;
+  }
   try{
     const res = await fetch('search-index.json',{cache:'no-store'});
     if(res.ok){ indexData = await res.json(); }
