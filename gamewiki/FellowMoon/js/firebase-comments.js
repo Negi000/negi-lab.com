@@ -20,7 +20,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js';
 import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js';
 import { getAuth, signInAnonymously, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app-check.js';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app-check.js';
 
 // ---- 設定 ----
 const firebaseConfig = {
@@ -51,15 +51,18 @@ const PAGE_ID = resolvePageId();
 
 // ---- 初期化 ----
 const app = initializeApp(firebaseConfig);
-// App Check (reCAPTCHA v3) - 必ず管理画面で site key を発行して置換してください
-// 環境変数化できない静的配信環境では『公開しても差し支えない key 』ですが Domain 制限を必須に
-// 発行された reCAPTCHA v3 (App Check) Site Key
-// 本番ドメインが Firebase コンソール App Check の Allowed Domains に含まれていることを確認
+// App Check (reCAPTCHA Enterprise) 版
+// 1) Firebase コンソール > App Check で reCAPTCHA Enterprise を選択し Site Key 発行
+// 2) Cloud Console で "reCAPTCHA Enterprise API" が有効化されていることを確認
+// 3) App Check の Allowed Domains に 本番 / 開発 ドメイン (localhost など) を列挙
+// 4) Auth > 許可ドメイン(Authorized domains) にも同じく追加 (Google ログイン 400 / unauthorized-domain 回避)
+// ※ Enterprise Site Key は公開前提 (クライアントに埋め込む) だが不正利用を防ぐため Domain 制限必須
 const APP_CHECK_SITE_KEY = '6LcKi8srAAAAAFbinPBIWJKeuLJXaT6eOVPbLPbJ';
 let appCheckTokenValid = false;
 try {
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(APP_CHECK_SITE_KEY),
+    // reCAPTCHA Enterprise 用プロバイダ
+    provider: new ReCaptchaEnterpriseProvider(APP_CHECK_SITE_KEY),
     isTokenAutoRefreshEnabled: true
   });
   // App Check JS SDK は内部的にトークンを管理するため、ここでは投稿時にも検査 (fallbackで flag) を行う
@@ -167,18 +170,24 @@ onAuthStateChanged(auth, user=>{
     setAuthInfo(user.isAnonymous? '匿名で投稿できます。':'Googleログイン中');
     attachListenersOnce();
     renderAuthState(user);
-  } else {
-    signInAnonymously(auth).catch(e=>{
-      console.error('anon auth error', e);
-      let msg = '匿名認証失敗';
-      if(e && e.code === 'auth/operation-not-allowed' || e.code === 'auth/admin-restricted-operation'){
-        msg = '匿名ログイン無効 (Firebase Console で Anonymous を有効化)';
-      } else if(e && e.code === 'auth/network-request-failed'){
-        msg = '通信エラー/拡張機能ブロック';
-      }
-      setAuthInfo(msg);
-    });
+    return;
   }
+  // 未ログイン → 匿名試行
+  signInAnonymously(auth).catch(e=>{
+    console.error('anon auth error', e);
+    const code = e && e.code;
+    if(code === 'auth/operation-not-allowed' || code === 'auth/admin-restricted-operation'){
+      setAuthInfo('匿名ログインが無効です。Google ログインをご利用ください。');
+      // 匿名が無効なら Google ログインボタンを積極表示
+      if(btnGoogle){ btnGoogle.style.display='inline-flex'; }
+    } else if(code === 'auth/network-request-failed'){
+      setAuthInfo('通信/拡張機能によるブロックで認証失敗');
+    } else {
+      setAuthInfo('匿名認証失敗: ' + (code||'不明'));
+    }
+    // 失敗しても Google ログインは利用可能
+    attachAuthButtonEvents();
+  });
 });
 
 // Googleログイン処理
@@ -195,9 +204,10 @@ async function doGoogleSignIn(){
 async function doLogout(){
   try {
     await signOut(auth);
-    await signInAnonymously(auth); // すぐ匿名へ戻す
+    // 匿名サインインが無効な環境だと失敗するので try で握りつぶしつつ UI を更新
+    try { await signInAnonymously(auth); } catch(_e) { /* ignore if disabled */ }
     setStatus('ログアウトしました', true);
-  }catch(e){ console.error(e); setStatus('ログアウト失敗'); }
+  }catch(e){ console.error(e); setStatus('ログアウト処理中にエラー'); }
 }
 function forceAnonMode(){
   // 実際には匿名再サインイン (既に匿名でなければ)
