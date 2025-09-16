@@ -559,6 +559,58 @@ section.card ins[class*="adsbygoogle"][style*="height"]:not([data-ad-slot]) {
     <ins class="adsbygoogle ad-pc" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (PC)"></ins>
     <ins class="adsbygoogle ad-sp" data-ad-client="ca-pub-1835873052239386" data-ad-slot="8916646342" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告 (Mobile)"></ins>
   </aside>
+  <!-- コメント欄 セクション (Firebase Firestore) -->
+  <section id="comments" class="card comment-section" style="margin-top:1.4rem" data-comments-root>
+    <h2>コメント</h2>
+    <div id="commentAuthBar" style="display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin:.2rem 0 .6rem;font-size:.6rem">
+      <span id="authStateLabel" style="color:#9ec5ff">状態取得中...</span>
+      <button id="btnGoogleSignIn" type="button" style="background:#25536d;border:1px solid #356d87;color:#d6f0ff;padding:.4rem .7rem;font-size:.63rem;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem">Googleでログイン</button>
+      <button id="btnForceAnon" type="button" style="background:#1d2831;border:1px solid #31424d;color:#bcd;padding:.4rem .7rem;font-size:.63rem;border-radius:6px;cursor:pointer;display:none">匿名に戻す</button>
+      <button id="btnLogout" type="button" style="background:#3a2c2c;border:1px solid #5a4040;color:#f2d3d3;padding:.4rem .7rem;font-size:.63rem;border-radius:6px;cursor:pointer;display:none">ログアウト</button>
+      <label style="display:inline-flex;align-items:center;gap:.3rem;margin-left:auto;font-size:.55rem;color:#89a"><input id="anonModeToggle" type="checkbox" style="margin:0"> 投稿名を匿名化</label>
+    </div>
+    <div id="commentInfo" style="font-size:.6rem;color:#789;margin:-.35rem 0 .6rem">読み込み中...</div>
+    <form id="commentForm" style="display:flex;flex-direction:column;gap:.55rem" autocomplete="off">
+      <div style="display:flex;flex-direction:column;gap:.35rem">
+        <input type="text" id="hp_field" name="hp_field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <label style="font-size:.65rem;color:#bcd;display:flex;flex-direction:column;gap:.25rem">名前 (任意 / 12文字以内)
+          <input type="text" name="displayName" maxlength="12" placeholder="匿名" style="background:#141d24;border:1px solid #24323c;color:#e6edf3;padding:.5rem .6rem;font-size:.7rem;border-radius:6px" />
+        </label>
+        <label style="font-size:.65rem;color:#bcd;display:flex;flex-direction:column;gap:.25rem">コメント (最大500文字)
+          <textarea name="comment" required maxlength="500" rows="4" placeholder="キャラについて自由にどうぞ" style="resize:vertical;min-height:120px;background:#141d24;border:1px solid #24323c;color:#e6edf3;padding:.6rem .7rem;font-size:.72rem;line-height:1.5;border-radius:8px" ></textarea>
+        </label>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:.55rem;color:#789">
+          <span id="commentLength">0 / 500</span>
+          <span>荒らし/不適切表現は削除されます</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+        <button type="submit" id="commentSubmit" style="background:#2d4f63;border:1px solid #40697c;color:#cfe9ff;font-size:.7rem;font-weight:600;padding:.55rem 1.1rem;border-radius:8px;cursor:pointer;letter-spacing:.5px" disabled>送信</button>
+        <button type="button" id="commentReload" style="background:#1d2831;border:1px solid #31424d;color:#9fc5dd;font-size:.65rem;padding:.5rem .9rem;border-radius:8px;cursor:pointer">再読み込み</button>
+        <span id="commentStatus" style="font-size:.6rem;color:#789"></span>
+      </div>
+    </form>
+    <div id="commentList" class="comment-list" style="margin:1rem 0 0;display:flex;flex-direction:column;gap:.65rem"></div>
+    <template id="commentItemTemplate">
+      <div class="comment-item" style="background:#151e25;border:1px solid #24323c;padding:.6rem .75rem;border-radius:10px;font-size:.7rem;line-height:1.45;position:relative">
+        <div class="c-head" style="display:flex;align-items:center;gap:.5rem;margin:0 0 .25rem">
+          <strong class="c-name" style="color:#9ec5ff;font-size:.68rem"></strong>
+          <time class="c-time" style="font-size:.55rem;color:#678"></time>
+        </div>
+        <div class="c-body" style="white-space:pre-wrap"></div>
+      </div>
+    </template>
+    <div id="noComments" style="display:none;font-size:.62rem;color:#567">まだコメントはありません。</div>
+    <details style="margin-top:1rem;font-size:.55rem;color:#789">
+      <summary style="cursor:pointer;color:#9ec5ff">利用上の注意</summary>
+      <ul style="margin:.4rem 0 .2rem;padding-left:1.1rem;line-height:1.4">
+        <li>最大 500 文字。連投防止のため 30 秒に 1 回まで。</li>
+        <li>不適切・スパム・個人情報は予告なく削除/制限。</li>
+        <li>Firebase (米国 Google) に匿名投稿として保存されます。</li>
+        <li>プライバシー: <a href="/privacy-policy-unified.html" target="_blank" style="color:#63b7ff">ポリシー</a> を参照。</li>
+      </ul>
+    </details>
+  </section>
 </main>
   <!-- Lightbox Overlay (footer より上に配置) -->
   <div class="lightbox-overlay" id="lightbox">
@@ -1046,6 +1098,8 @@ window.addEventListener('DOMContentLoaded',()=>{
   });
 });
 </script>
+<!-- Firebase コメント機能 モジュール -->
+<script type="module" src="/gamewiki/FellowMoon/js/firebase-comments.js" defer></script>
 <!-- Footer -->
   <footer class="bg-gray-800 text-gray-300 py-10 text-center text-sm font-inter mt-10">
     <nav class="mb-3">
