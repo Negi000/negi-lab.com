@@ -155,6 +155,24 @@
   </style>
 </head>
 <body>
+  <!-- JSON-LD Structured Data for ROM page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "013 ソーラーP | ロム詳細 | 新月同行 Wiki",
+    "url": "https://negi-lab.com/gamewiki/FellowMoon/site/roms/013.html",
+    "description": "ソーラーP の詳細情報（セット効果・部位ステータス・固有特性）",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "新月同行 Wiki", "item": "https://negi-lab.com/gamewiki/FellowMoon/site/"},
+        {"@type": "ListItem", "position": 2, "name": "ロム図鑑", "item": "https://negi-lab.com/gamewiki/FellowMoon/site/roms/"},
+        {"@type": "ListItem", "position": 3, "name": "ソーラーP", "item": "https://negi-lab.com/gamewiki/FellowMoon/site/roms/013.html"}
+      ]
+    }
+  }
+  </script>
   <!-- サイドレーン共有スクリプト挿入 -->
   <script src="/gamewiki/FellowMoon/js/wiki-side-lane.js" defer id="fmSideLaneScript"></script>
   <script>window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{if(!document.querySelector('.wiki-side-lane')){console.warn('[SideLane] retry(rom)');const s=document.createElement('script');s.src='/gamewiki/FellowMoon/js/wiki-side-lane.js?retry='+Date.now();s.defer=true;document.head.appendChild(s);} },1500);});</script>
@@ -381,7 +399,7 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
     <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-16T16:55:51</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-16T17:52:54</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 
