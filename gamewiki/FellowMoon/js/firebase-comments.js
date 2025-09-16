@@ -142,8 +142,8 @@ function renderAuthState(user){
     return;
   }
   const isAnon = user.isAnonymous || (anonToggle && anonToggle.checked);
-  const name = isAnon? '匿名' : (user.displayName || 'ユーザー');
-  if(authStateLabel) authStateLabel.textContent = `ログイン: ${name}`;
+  // Google アカウントの displayName は表示しない方針: 固定文言
+  if(authStateLabel) authStateLabel.textContent = isAnon? '匿名モード' : 'Googleログイン中';
   if(btnGoogle) btnGoogle.style.display = isAnon? 'inline-flex':'none';
   if(btnLogout) btnLogout.style.display = user.isAnonymous? 'none':'inline-flex';
   if(btnAnon) btnAnon.style.display = user.isAnonymous? 'none':'inline-flex';
@@ -177,7 +177,7 @@ infoEl && (infoEl.textContent = '認証初期化中...');
 // 未ログインであれば匿名にサインイン
 onAuthStateChanged(auth, user=>{
   if(user){
-    setAuthInfo(user.isAnonymous? '匿名で投稿できます。':'Googleログイン中');
+  setAuthInfo(user.isAnonymous? '匿名で投稿できます。':'Googleログイン中 (表示名は入力欄で指定)');
     attachListenersOnce();
     renderAuthState(user);
     // Google ログインユーザーの場合は AppCheck が失敗していても最低限投稿を許可する運用にしたいなら
@@ -370,14 +370,9 @@ if(form){
     setStatus('送信中...', true);
     try {
       const isForceAnon = (anonToggle && anonToggle.checked);
+      // Google ログイン displayName は使わず、入力欄優先。未入力なら '匿名'
       let nameCandidate = (nameEl.value||'').trim().slice(0,24);
-      if(!nameCandidate){
-        if(user && !user.isAnonymous && !isForceAnon){
-          nameCandidate = (user.displayName || 'ユーザー').slice(0,24);
-        } else {
-          nameCandidate = '匿名';
-        }
-      }
+      if(!nameCandidate){ nameCandidate = '匿名'; }
       const name = nameCandidate;
       // 簡易 NG ワードフィルタ (最低限) -> 伏字
       const NG = ['死ね','殺す','バカ'];
