@@ -20,7 +20,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js';
 import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, limit, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js';
 import { getAuth, signInAnonymously, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app-check.js';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app-check.js';
 
 // ---- 設定 ----
 const firebaseConfig = {
@@ -67,16 +67,19 @@ const DISABLE_ANONYMOUS_LOCALLY = true;
 
 // App Check トークン初期化フラグ。匿名ユーザーにのみ強制 (Google ログイン済みの場合は緩和可能)。
 let appCheckTokenValid = false;
+let appCheckInstance = null; // App Check インスタンス参照
 // 実際に匿名サインイン試行してエラーで無効判定になったら true
 let anonymousDisabled = false; // Firebase Console 側 disable を検出
 try {
-  initializeAppCheck(app, {
+  appCheckInstance = initializeAppCheck(app, {
     // reCAPTCHA Enterprise 用プロバイダ
     provider: new ReCaptchaEnterpriseProvider(APP_CHECK_SITE_KEY),
     isTokenAutoRefreshEnabled: true
   });
   // App Check JS SDK は内部的にトークンを管理するため、ここでは投稿時にも検査 (fallbackで flag) を行う
   appCheckTokenValid = true; // 初期化成功とみなす（実トークン失敗時 Firestore 書込がルールで拒否される）
+  // NOTE: Enterprise (invisible / score) はユーザーに CAPTCHA UI を出さずバックグラウンドでトークン生成。
+  // 「状態確認中」のまま visible CAPTCHA が現れないのは正常。Challenge 型を使う場合のみ別キーと明示実行が必要。
 } catch(e){
   console.warn('[comments] AppCheck init failed (fallback anon gating):', e);
 }
@@ -172,12 +175,13 @@ function startCountdown(){
 }
 
 // ---- 認証 ----
-infoEl && (infoEl.textContent = '認証初期化中...');
+// 初期状態: 保護機能 (App Check) + 認証の準備ステータス
+infoEl && (infoEl.textContent = '保護機能初期化中...');
 // まず現在の状態を捕捉 (セッションが残っている可能性)
 // 未ログインであれば匿名にサインイン
 onAuthStateChanged(auth, user=>{
   if(user){
-  setAuthInfo(user.isAnonymous? '匿名で投稿できます。':'Googleログイン中 (表示名は入力欄で指定)');
+  setAuthInfo(user.isAnonymous? '匿名投稿モード (現在は無効設定)':'Googleログイン中 (表示名は入力欄)');
     attachListenersOnce();
     renderAuthState(user);
     // Google ログインユーザーの場合は AppCheck が失敗していても最低限投稿を許可する運用にしたいなら
@@ -188,7 +192,7 @@ onAuthStateChanged(auth, user=>{
   // 未ログイン
   if(DISABLE_ANONYMOUS_LOCALLY){
     anonymousDisabled = true;
-    setAuthInfo('匿名投稿は無効です。Google ログインしてください。');
+  setAuthInfo('匿名投稿は無効です。Google でログインするとコメントできます。');
     // 入力一時無効化
     if(form){
       const ta = form.querySelector('textarea[name="comment"]');
@@ -205,7 +209,7 @@ onAuthStateChanged(auth, user=>{
     console.error('anon auth error', e);
     const code = e && e.code;
     if(code === 'auth/operation-not-allowed' || code === 'auth/admin-restricted-operation'){
-      setAuthInfo('匿名ログインが無効です。Google ログインをご利用ください。');
+  setAuthInfo('匿名投稿は現在停止中です。Google ログインをご利用ください。');
       anonymousDisabled = true;
       if(btnGoogle){ btnGoogle.style.display='inline-flex'; }
       if(form){
@@ -216,9 +220,9 @@ onAuthStateChanged(auth, user=>{
         submitBtn && (submitBtn.disabled = true);
       }
     } else if(code === 'auth/network-request-failed'){
-      setAuthInfo('通信/拡張機能によるブロックで認証失敗');
+  setAuthInfo('ネットワーク/拡張機能により認証失敗 (再読み込み)');
     } else {
-      setAuthInfo('匿名認証失敗: ' + (code||'不明'));
+  setAuthInfo('匿名認証失敗: ' + (code||'不明')); // 匿名無効時は実質影響なし
     }
     attachAuthButtonEvents();
   });
