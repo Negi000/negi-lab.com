@@ -58,8 +58,17 @@ const app = initializeApp(firebaseConfig);
 // 4) Auth > 許可ドメイン(Authorized domains) にも同じく追加 (Google ログイン 400 / unauthorized-domain 回避)
 // ※ Enterprise Site Key は公開前提 (クライアントに埋め込む) だが不正利用を防ぐため Domain 制限必須
 const APP_CHECK_SITE_KEY = '6LcKi8srAAAAAFbinPBIWJKeuLJXaT6eOVPbLPbJ';
+
+// ---- 動作ポリシーフラグ ----
+// 匿名ログインを「コード側でも」無効化したい場合 true にする。
+// 既に Firebase コンソールで Anonymous を disable 済みなら true 推奨。
+// true にすると signInAnonymously を呼ばず、未ログイン状態のまま Google ログインを促す。
+const DISABLE_ANONYMOUS_LOCALLY = true;
+
+// App Check トークン初期化フラグ。匿名ユーザーにのみ強制 (Google ログイン済みの場合は緩和可能)。
 let appCheckTokenValid = false;
-let anonymousDisabled = false; // 匿名ログイン機能がコンソール側で無効な場合 true
+// 実際に匿名サインイン試行してエラーで無効判定になったら true
+let anonymousDisabled = false; // Firebase Console 側 disable を検出
 try {
   initializeAppCheck(app, {
     // reCAPTCHA Enterprise 用プロバイダ
@@ -171,18 +180,34 @@ onAuthStateChanged(auth, user=>{
     setAuthInfo(user.isAnonymous? '匿名で投稿できます。':'Googleログイン中');
     attachListenersOnce();
     renderAuthState(user);
+    // Google ログインユーザーの場合は AppCheck が失敗していても最低限投稿を許可する運用にしたいなら
+    // appCheckTokenValid を緩和 (必要なら下行コメントアウト)
+    if(!user.isAnonymous) appCheckTokenValid = true;
     return;
   }
-  // 未ログイン → 匿名試行
+  // 未ログイン
+  if(DISABLE_ANONYMOUS_LOCALLY){
+    anonymousDisabled = true;
+    setAuthInfo('匿名投稿は無効です。Google ログインしてください。');
+    // 入力一時無効化
+    if(form){
+      const ta = form.querySelector('textarea[name="comment"]');
+      const nameInput = form.querySelector('input[name="displayName"]');
+      ta && (ta.disabled = true);
+      nameInput && (nameInput.disabled = true);
+      submitBtn && (submitBtn.disabled = true);
+    }
+    attachAuthButtonEvents();
+    return;
+  }
+  // 匿名許可方針なので試行
   signInAnonymously(auth).catch(e=>{
     console.error('anon auth error', e);
     const code = e && e.code;
     if(code === 'auth/operation-not-allowed' || code === 'auth/admin-restricted-operation'){
       setAuthInfo('匿名ログインが無効です。Google ログインをご利用ください。');
       anonymousDisabled = true;
-      // 匿名が無効なら Google ログインボタンを積極表示
       if(btnGoogle){ btnGoogle.style.display='inline-flex'; }
-      // 投稿フォームを一時的に使用不可 (Google ログイン後に自動で再び使える)
       if(form){
         const ta = form.querySelector('textarea[name="comment"]');
         const nameInput = form.querySelector('input[name="displayName"]');
@@ -195,7 +220,6 @@ onAuthStateChanged(auth, user=>{
     } else {
       setAuthInfo('匿名認証失敗: ' + (code||'不明'));
     }
-    // 失敗しても Google ログインは利用可能
     attachAuthButtonEvents();
   });
 });
@@ -326,6 +350,7 @@ if(form){
     // 1) App Check / Google ログインのいずれも無い & AppCheck失敗時は拒否
     const user = auth.currentUser;
     if(!user){ setStatus('認証未完了'); return; }
+    // 匿名ユーザーのみ App Check 成功を必須 (Google ログイン済みなら多少緩和)
     if(user.isAnonymous && !appCheckTokenValid){
       setStatus('reCAPTCHA 検証未完了 (後で再読み込み)'); return;
     }
