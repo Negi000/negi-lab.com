@@ -1,4 +1,5 @@
 import json, os, datetime, re, pathlib
+from urllib.parse import urljoin
 from html import escape
 
 BASE = pathlib.Path(__file__).resolve().parent.parent
@@ -305,11 +306,63 @@ def build():
         if isinstance(rom_raw, dict):
             rom_candidates = parse_rom_candidates(rom_raw.get('推奨ロム', ''))
 
+        # 一覧用アイコン探索（SEO/OGにも利用）
+        icon_rel = ''
+        icon_awake_rel = ''
+        for c in [kanji, name]:
+            if not c:
+                continue
+            p = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
+            if p.exists():
+                icon_rel = '../' + rel_path(p)
+                # 覚醒アイコン
+                icon_awake_path = p.with_name(f'{cid}-icon_awake.png'
+                )
+                if icon_awake_path.exists():
+                    icon_awake_rel = '../' + rel_path(icon_awake_path)
+                break
+
+        # SEO用フィールドの組み立て
+        # 説明は「名前（漢字） | レア度★/属性-タイプ/陣営」+ 代表スキル名やタグを短く。
+        primary_skill = ''
+        for sk in skills:
+            if sk.get('スキル名'):
+                primary_skill = sk['スキル名']
+                break
+        tag_line = ' / '.join(tags[:3]) if tags else ''
+        desc_parts = [
+            f"{name}（{kanji}）" if kanji else name,
+            f"★{basic.get('レア度','')}・{basic.get('属性','')}-{basic.get('タイプ','')}・{basic.get('陣営','')}"
+        ]
+        if primary_skill:
+            desc_parts.append(f"代表スキル: {primary_skill}")
+        if tag_line:
+            desc_parts.append(f"タグ: {tag_line}")
+        meta_desc = ' | '.join([p for p in desc_parts if p and p != ' | '])[:160]
+
+        # OG画像候補: 覚醒アイコン > 通常アイコン > favicon
+        og_image = ''
+        if icon_awake_rel:
+            og_image = icon_awake_rel
+        elif icon_rel:
+            og_image = icon_rel
+        else:
+            og_image = '/favicon.ico'
+
+        # OG画像の絶対URL（正規化）
+        if og_image.startswith('http'):
+            og_abs = og_image
+        elif og_image.startswith('/'):
+            og_abs = 'https://negi-lab.com' + og_image
+        else:
+            og_abs = urljoin('https://negi-lab.com/gamewiki/FellowMoon/site/chars/', og_image)
+
         char_data = {
             '生成日時': datetime.datetime.now().isoformat(timespec='seconds'),
             **{k: basic.get(k,'') for k in basic.keys()},
             'タグ': tags,
             '攻撃タイプ': attack_types,
+            '説明': meta_desc,
             'スキル': skills,
             '階門': kaimon_list,
             '画像タブ': image_tabs,
@@ -323,26 +376,14 @@ def build():
             '較正セクション': [1] if cal_rows else [],
             # 一覧ページ（同一 chars ディレクトリ内の character.html への相対リンク）
             '一覧ページURL': 'character.html',
+            'ページURL': f"https://negi-lab.com/gamewiki/FellowMoon/site/chars/{cid}.html",
+            'タグCSV': ' '.join(tags),
+            'OG画像': og_abs,
         }
         html = expand(tpl_char, char_data)
         (CHARS_DIR / f'{cid}.html').write_text(html, encoding='utf-8')
 
-        # 一覧用アイコン探索: キャラ素材/<漢字 or 名前>/<ID>-icon.png と 覚醒アイコン
-        icon_rel = ''
-        icon_awake_rel = ''
-        icon_path = None
-        for c in [kanji, name]:
-            if not c:
-                continue
-            p = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
-            if p.exists():
-                icon_path = p
-                icon_rel = '../' + rel_path(p)
-                # 覚醒アイコン
-                icon_awake_path = p.with_name(f'{cid}-icon_awake.png')
-                if icon_awake_path.exists():
-                    icon_awake_rel = '../' + rel_path(icon_awake_path)
-                break
+        # （上で算出した icon_rel/icon_awake_rel をこの後も使用）
 
         basic_info_map = {k: basic.get(k,'') for k in basic.keys()}
 

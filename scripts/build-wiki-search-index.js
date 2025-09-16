@@ -15,7 +15,9 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname,'..');
 const WIKI_ROOT = path.join(ROOT,'gamewiki','FellowMoon');
-const OUT_PATH = path.join(WIKI_ROOT,'search-index.json');
+// 生成物は search.html と同階層 (site/) に配置する
+const WIKI_SITE = path.join(WIKI_ROOT,'site');
+const OUT_PATH = path.join(WIKI_SITE,'search-index.json');
 const MAX_BODY = 6000; // bytes (approx chars)
 
 function walk(dir, exts, files=[]) {
@@ -55,11 +57,12 @@ function loadCharJsonSources(){
 function main(){
   const docs = [];
   // 1. HTML ページ走査
-  const htmlFiles = walk(WIKI_ROOT, ['.html']);
+  // site/ 配下のみを対象とする（公開されるパスと一致させる）
+  const htmlFiles = walk(WIKI_SITE, ['.html']);
   htmlFiles.forEach(f=>{
     if(path.basename(f).toLowerCase()==='search.html') return; // 検索ページ自身は除外
-    const rel = path.relative(WIKI_ROOT, f).replace(/\\/g,'/');
-    const url = '/gamewiki/FellowMoon/'+rel;
+    const rel = path.relative(WIKI_SITE, f).replace(/\\/g,'/');
+    const url = '/gamewiki/FellowMoon/site/'+rel;
     let raw='';
     try{ raw = fs.readFileSync(f,'utf8'); }catch(e){ return; }
     const titleMatch = raw.match(/<title>(.*?)<\/title>/i);
