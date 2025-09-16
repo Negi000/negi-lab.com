@@ -169,7 +169,14 @@ onAuthStateChanged(auth, user=>{
     renderAuthState(user);
   } else {
     signInAnonymously(auth).catch(e=>{
-      console.error('anon auth error', e); setAuthInfo('匿名認証失敗');
+      console.error('anon auth error', e);
+      let msg = '匿名認証失敗';
+      if(e && e.code === 'auth/operation-not-allowed' || e.code === 'auth/admin-restricted-operation'){
+        msg = '匿名ログイン無効 (Firebase Console で Anonymous を有効化)';
+      } else if(e && e.code === 'auth/network-request-failed'){
+        msg = '通信エラー/拡張機能ブロック';
+      }
+      setAuthInfo(msg);
     });
   }
 });
@@ -204,23 +211,37 @@ function forceAnonMode(){
 
 // attachListeners を一度だけ実行 (認証状態変化で複数回つかないよう保護)
 let listenersAttached=false;
-function attachListenersOnce(){
-  if(listenersAttached) return; listenersAttached=true; attachListeners();
-  // ボタンイベント
-  bindAuthElements();
-  btnGoogle && btnGoogle.addEventListener('click', e=>{ e.preventDefault(); doGoogleSignIn(); });
-  btnLogout && btnLogout.addEventListener('click', e=>{ e.preventDefault(); doLogout(); });
-  btnAnon && btnAnon.addEventListener('click', e=>{ e.preventDefault(); forceAnonMode(); });
-  // 匿名モードトグル (Googleログイン中のみ意味)
-  if(anonToggle){
+function attachAuthButtonEvents(){
+  // 既にバインド済みなら何もしない (複数回呼ばれても安全)
+  if(btnGoogle && !btnGoogle.__bound){
+    btnGoogle.addEventListener('click', e=>{ e.preventDefault(); doGoogleSignIn(); });
+    btnGoogle.__bound = true;
+  }
+  if(btnLogout && !btnLogout.__bound){
+    btnLogout.addEventListener('click', e=>{ e.preventDefault(); doLogout(); });
+    btnLogout.__bound = true;
+  }
+  if(btnAnon && !btnAnon.__bound){
+    btnAnon.addEventListener('click', e=>{ e.preventDefault(); forceAnonMode(); });
+    btnAnon.__bound = true;
+  }
+  if(anonToggle && !anonToggle.__bound){
     anonToggle.addEventListener('change', ()=>{
       const user = auth.currentUser;
       if(!user || user.isAnonymous){ return; }
-      // チェックON -> 匿名表示扱い (サーバーに匿名化せず表示名だけ匿名)
       renderAuthState(user);
     });
+    anonToggle.__bound = true;
   }
 }
+function attachListenersOnce(){
+  if(listenersAttached) return; listenersAttached=true; attachListeners();
+  bindAuthElements();
+  attachAuthButtonEvents();
+}
+
+// 初期ロード時点でボタンを即バインド (匿名認証が失敗しても Google ログインは押せる)
+attachAuthButtonEvents();
 
 // ---- Firestore リスナー ----
 let unsubscribe = null;
