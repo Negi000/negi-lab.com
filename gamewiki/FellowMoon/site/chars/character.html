@@ -83,6 +83,9 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
 /* グループタイトルをゲーム風ライン化 */
 .filter-title{position:relative;padding-left:0;font-size:.72rem;font-weight:700;margin:0 0 .45rem;color:#f1f5f9;letter-spacing:.5px}
 .filter-title:after{content:'';position:absolute;left:0;right:0;bottom:-.35rem;height:1px;background:linear-gradient(90deg,#c8cfd6,#444c55 45%,#222a31)}
+.mode-toggle{margin-left:.4rem;font-size:.55rem;letter-spacing:.5px;line-height:1;background:#23313b;border:1px solid #335063;color:#9ed8ff;padding:.18rem .45rem;border-radius:6px;cursor:pointer;font-weight:600;transition:.2s}
+.mode-toggle:hover{background:#2b3d49}
+.mode-toggle[data-mode="AND"]{background:#3a627b;border-color:#4e88a5;color:#fff}
 .filter-more{grid-column:1/-1}
 .filter-more .filter-group{padding:.45rem .6rem .6rem}
 .filter-more .filter-title{display:flex;align-items:center;gap:.4rem;cursor:pointer}
@@ -317,19 +320,19 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
           <div class="detail-toggle" data-toggle>詳細フィルター（タグ/攻撃タイプ/スキルタグ/実装バージョン）</div>
           <div class="filter-more-content">
             <div class="pf-row" data-group="tag">
-              <div class="filter-title">タグ</div>
+              <div class="filter-title">タグ <button type="button" class="mode-toggle" data-mode-target="tag" aria-label="タグの一致モード (現在: OR)" data-mode="OR">OR</button></div>
               <div class="filter-pills"><span class="pill" data-value="分担">分担</span><span class="pill" data-value="制御">制御</span><span class="pill" data-value="協撃">協撃</span><span class="pill" data-value="反撃">反撃</span><span class="pill" data-value="弱体">弱体</span><span class="pill" data-value="強化">強化</span><span class="pill" data-value="拡散">拡散</span><span class="pill" data-value="援護">援護</span><span class="pill" data-value="治療">治療</span><span class="pill" data-value="消散">消散</span><span class="pill" data-value="火力">火力</span><span class="pill" data-value="爆発">爆発</span><span class="pill" data-value="生存">生存</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="防護">防護</span><span class="pill" data-value="除去">除去</span></div>
             </div>
             <div class="pf-row" data-group="attacktype">
-              <div class="filter-title">攻撃タイプ</div>
+              <div class="filter-title">攻撃タイプ <button type="button" class="mode-toggle" data-mode-target="attacktype" aria-label="攻撃タイプの一致モード (現在: OR)" data-mode="OR">OR</button></div>
               <div class="filter-pills"><span class="pill" data-value="物理">物理</span><span class="pill" data-value="特殊">特殊</span><span class="pill" data-value="単体">単体</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="単発">単発</span><span class="pill" data-value="多段">多段</span></div>
             </div>
             <div class="pf-row" data-group="skilltag">
-              <div class="filter-title">スキルタグ</div>
+              <div class="filter-title">スキルタグ <button type="button" class="mode-toggle" data-mode-target="skilltag" aria-label="スキルタグの一致モード (現在: OR)" data-mode="OR">OR</button></div>
               <div class="filter-pills"><span class="pill" data-value="分担">分担</span><span class="pill" data-value="制御">制御</span><span class="pill" data-value="弱体">弱体</span><span class="pill" data-value="強化">強化</span><span class="pill" data-value="援護">援護</span><span class="pill" data-value="治療">治療</span><span class="pill" data-value="消散">消散</span><span class="pill" data-value="火力">火力</span><span class="pill" data-value="爆発">爆発</span><span class="pill" data-value="生存">生存</span><span class="pill" data-value="範囲">範囲</span><span class="pill" data-value="防護">防護</span></div>
             </div>
             <div class="pf-row" data-group="ver">
-              <div class="filter-title">実装バージョン</div>
+              <div class="filter-title">実装バージョン <button type="button" class="mode-toggle" data-mode-target="ver" aria-label="実装バージョンの一致モード (現在: OR)" data-mode="OR">OR</button></div>
               <div class="filter-pills"><span class="pill" data-value="1.0.0">1.0.0</span><span class="pill" data-value="1.0.1">1.0.1</span><span class="pill" data-value="1.0.2">1.0.2</span><span class="pill" data-value="1.0.3">1.0.3</span><span class="pill" data-value="1.1.0">1.1.0</span><span class="pill" data-value="1.1.1">1.1.1</span><span class="pill" data-value="1.1.2">1.1.2</span><span class="pill" data-value="1.2.0">1.2.0</span><span class="pill" data-value="1.2.1">1.2.1</span><span class="pill" data-value="1.2.2">1.2.2</span><span class="pill" data-value="1.3.0">1.3.0</span><span class="pill" data-value="1.3.1">1.3.1</span></div>
             </div>
           </div>
@@ -386,10 +389,10 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       <div class="card-wrap" data-rare="6" data-attr="正" data-type="突撃型" data-faction="単独勢力" data-tags="火力 生存 弱体" data-attacktypes="特殊 単体 単発" data-skilltags="弱体 強化 火力 生存" data-ver="1.2.2">
         <a class="card" href="083.html">
           <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="../../キャラ素材/阿铋斯/083-icon.png" data-normal="../../キャラ素材/阿铋斯/083-icon.png" data-awake="../../キャラ素材/阿铋斯/083-icon_awake.png" alt="アヌビス アイコン">
+          <img class="icon" src="../../キャラ素材/阿铋斯/083-icon.png" data-normal="../../キャラ素材/阿铋斯/083-icon.png" data-awake="../../キャラ素材/阿铋斯/083-icon_awake.png" alt="アビス アイコン">
           <img class="star" src="../assets/icons/star6.png" alt="★6">
           <img class="attr" src="../assets/icons/正-突撃型.png" alt="正-突撃型">
-          <div class="name">アヌビス</div>
+          <div class="name">アビス</div>
         </a>
         <div class="hover" aria-hidden="true"></div>
       </div>
@@ -1267,6 +1270,8 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
   const state={rare:new Set(), attr:new Set(), type:new Set(), faction:new Set(), tag:new Set(), attacktype:new Set(), skilltag:new Set(), ver:new Set()};
   const cards=[...document.querySelectorAll('.cards .card-wrap')];
   const groups=[...document.querySelectorAll('.filter-group[data-group], .pf-row[data-group]')];
+  // 各複数値グループのモード (現状 attacktype のみ UI 提供) OR / AND
+  const modes={ attacktype:'OR', tag:'OR', skilltag:'OR', ver:'OR' }; // ver は単一値フィールド。ANDにしても実質ヒット0になりやすいがUI統一のため含める。
   function apply(){
     cards.forEach(el=>{
       let visible=true;
@@ -1281,11 +1286,25 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
         const sel=state[g]; if(sel.size===0) continue; // no constraint
   if(g==='tag' || g==='attacktype' || g==='skilltag'){
           const arr=checks[g];
-          const ok = arr.some(v=>sel.has(v));
+          let ok;
+          if(modes[g]==='AND'){
+            // すべて含む必要がある (選択集合 sel の全要素が arr に存在)
+            ok = [...sel].every(v=>arr.includes(v));
+          }else{
+            // OR (既存挙動)
+            ok = arr.some(v=>sel.has(v));
+          }
           if(!ok){ visible=false; break; }
         }else{
           const v=String(checks[g]||'');
-          if(!sel.has(v)) { visible=false; break; }
+          if(sel.size>0){
+            if(modes[g]==='AND'){
+              // 単一値フィールドで AND は全選択を一つで満たせないため、実質 OR と同義 -> 1つでも一致なら可。
+              if(!sel.has(v)) { visible=false; break; }
+            }else{
+              if(!sel.has(v)) { visible=false; break; }
+            }
+          }
         }
       }
       el.style.display=visible?'':'none';
@@ -1312,6 +1331,19 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
     Object.values(state).forEach(set=>set.clear());
     document.querySelectorAll('.pill.active').forEach(p=>p.classList.remove('active'));
     apply();
+  });
+  // モードトグル (攻撃タイプ用)
+  document.querySelectorAll('.mode-toggle[data-mode-target]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const target=btn.getAttribute('data-mode-target');
+      const cur=modes[target]==='AND'?'AND':'OR';
+      const next= cur==='OR' ? 'AND' : 'OR';
+      modes[target]=next;
+      btn.textContent=next; // ボタン表示更新
+      btn.setAttribute('data-mode',next);
+      btn.setAttribute('aria-label',`${btn.textContent}モード: ${next==='AND'?'全て含む (AND)':'いずれか含む (OR)'}`);
+      apply();
+    });
   });
   // 折りたたみ
   const toggleBtn=document.getElementById('filterToggle');
