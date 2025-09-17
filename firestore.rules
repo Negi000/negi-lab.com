@@ -1,0 +1,69 @@
+rules_version = '2';
+// =============================================================
+// コメント機能 Firestore セキュリティルール (統一版)
+// Path: /pages/{pageId}/comments/{commentId}
+// クライアント送信フィールド (固定):
+//   name (<=24文字, 1文字以上)
+//   body (<=500文字, 1文字以上)
+//   created (timestamp: 過去/現在のみ) ※ serverTimestamp() 推奨
+//   hash (SHA-256 HEX 64文字 / 重複/改竄抑止用 簡易指紋)
+// ポリシー:
+//   - 読み取り: 公開
+//   - 作成: 認証済 (匿名含む) + 上記フィールド完全一致
+//   - 更新/削除: 原則禁止 (後述の管理者拡張コメント参照)
+// App Check:
+//   - Enforcement は Firebase Console 側で ON (ルールで検出不可)
+// 変更履歴:
+//   2025-09-16 初版最適化: future proof コメント追加
+// =============================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ------------------ 共通ヘルパー ------------------
+    function isValidName(n) {
+      return n is string && n.size() > 0 && n.size() <= 24;
+    }
+    function isValidBody(b) {
+      return b is string && b.size() > 0 && b.size() <= 500;
+    }
+    function isValidHash(h) {
+      return h is string && h.size() == 64;
+    }
+    function onlyAllowedKeys(data) {
+      return data.keys().hasOnly(['name','body','created','hash']);
+    }
+    function isCreateTimestampValid(ts) {
+      // 未来禁止。過去の制限を強めたければ >= request.time - duration.value(10,'minutes') などを追加
+      return ts is timestamp && ts <= request.time;
+    }
+    // 匿名禁止に切り替えたい場合は allow create の先頭で isNonAnonymous() を AND
+    function isNonAnonymous() {
+      return request.auth != null && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+    // 管理者判定 (後で Admin SDK で custom claims {admin:true} を付与)
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    // ------------------ コメントコレクション ------------------
+    match /pages/{pageId}/comments/{commentId} {
+      // 読み取りは全公開 (一覧・SEO向け)
+      allow read: if true;
+
+      // 作成: 認証済(匿名許可)。以下切替例:
+      //   匿名禁止にしたい: 条件の先頭に isNonAnonymous() && を追加
+      //   Google 限定にしたい: isNonAnonymous() && のみ + 他条件
+      allow create: if
+        request.auth != null &&
+        onlyAllowedKeys(request.resource.data) &&
+        isValidName(request.resource.data.name) &&
+        isValidBody(request.resource.data.body) &&
+        isValidHash(request.resource.data.hash) &&
+        isCreateTimestampValid(request.resource.data.created);
+
+      // 更新/削除禁止: コメントの改竄・なりすまし防止
+      // 将来: 管理者のみ削除許可する場合 → allow delete: if isAdmin(); (update は引き続き false)
+      allow update: if false;
+      allow delete: if false; // isAdmin() へ切替で運営削除対応
+    }
+  }
+}
