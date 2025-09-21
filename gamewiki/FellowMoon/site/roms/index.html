@@ -99,6 +99,7 @@
   
   /* 特性能力値セクション */
   #roms-traits{position:relative;border:1px solid #23313c;border-radius:14px;overflow:hidden;background:#0f161c}
+  /* 背景は既定を png にし、JSで webp が存在すれば差し替える（404対策） */
   #roms-traits .bg{position:absolute;inset:0;background:url('../assets/roms/rom_bg3.png') center/cover no-repeat;opacity:.28;filter:grayscale(20%)}
   #roms-traits .inner{position:relative;padding:1rem;background:linear-gradient(180deg,rgba(12,18,24,.65),rgba(12,18,24,.45));border-radius:12px}
   /* セグメントトグル（ロム01/02・03/04） */
@@ -285,11 +286,11 @@
           <button type="button" class="pair-btn" data-pair="pair34" aria-pressed="false" role="tab">ロム03/04</button>
         </div>
         <div class="slot-bar" role="tablist" aria-label="スロット選択">
-          <button type="button" class="slot-btn" data-slot="1" aria-pressed="true"><img alt="Slot 1" src="../assets/roms/rom_slot1.png"></button>
-          <button type="button" class="slot-btn" data-slot="2" aria-pressed="false"><img alt="Slot 2" src="../assets/roms/rom_slot2.png"></button>
-          <button type="button" class="slot-btn" data-slot="3" aria-pressed="false"><img alt="Slot 3" src="../assets/roms/rom_slot3.png"></button>
-          <button type="button" class="slot-btn" data-slot="4" aria-pressed="false"><img alt="Slot 4" src="../assets/roms/rom_slot4.png"></button>
-          <button type="button" class="slot-btn" data-slot="5" aria-pressed="false"><img alt="Slot 5" src="../assets/roms/rom_slot5.png"></button>
+          <button type="button" class="slot-btn" data-slot="1" aria-pressed="true"><img alt="Slot 1" src="../assets/roms/rom_slot1.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot1.png';"></button>
+          <button type="button" class="slot-btn" data-slot="2" aria-pressed="false"><img alt="Slot 2" src="../assets/roms/rom_slot2.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot2.png';"></button>
+          <button type="button" class="slot-btn" data-slot="3" aria-pressed="false"><img alt="Slot 3" src="../assets/roms/rom_slot3.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot3.png';"></button>
+          <button type="button" class="slot-btn" data-slot="4" aria-pressed="false"><img alt="Slot 4" src="../assets/roms/rom_slot4.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot4.png';"></button>
+          <button type="button" class="slot-btn" data-slot="5" aria-pressed="false"><img alt="Slot 5" src="../assets/roms/rom_slot5.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot5.png';"></button>
         </div>
         <div class="traits-grid" id="traitsGrid" aria-live="polite"></div>
       </div>
@@ -315,13 +316,13 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
   <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-21T17:32:23</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-21T18:55:10</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 
   <script>
     // 埋め込みデータ
-    window.__ROMS_GRID__ = JSON.parse('[{"ID": "001", "ID_num": 1, "名前": "シャドウC", "画像": "../assets/roms/シャドウC.png"}, {"ID": "002", "ID_num": 2, "名前": "スレイT", "画像": "../assets/roms/スレイT.png"}, {"ID": "003", "ID_num": 3, "名前": "リングR", "画像": "../assets/roms/リングR.png"}, {"ID": "004", "ID_num": 4, "名前": "エレクトM", "画像": "../assets/roms/エレクトM.png"}, {"ID": "005", "ID_num": 5, "名前": "エビルA", "画像": "../assets/roms/エビルA.png"}, {"ID": "006", "ID_num": 6, "名前": "フラッフィS", "画像": "../assets/roms/フラッフィS.png"}, {"ID": "007", "ID_num": 7, "名前": "リッパーD", "画像": "../assets/roms/リッパーD.png"}, {"ID": "008", "ID_num": 8, "名前": "ピンクK", "画像": "../assets/roms/ピンクK.png"}, {"ID": "009", "ID_num": 9, "名前": "ブラッドV", "画像": "../assets/roms/ブラッドV.png"}, {"ID": "010", "ID_num": 10, "名前": "ホラーY", "画像": "../assets/roms/ホラーY.png"}, {"ID": "011", "ID_num": 11, "名前": "アンダーB", "画像": "../assets/roms/アンダーB.png"}, {"ID": "012", "ID_num": 12, "名前": "メカコアZ", "画像": "../assets/roms/メカコアZ.png"}, {"ID": "013", "ID_num": 13, "名前": "ソーラーP", "画像": "../assets/roms/ソーラーP.png"}, {"ID": "014", "ID_num": 14, "名前": "クロニクルH", "画像": "../assets/roms/クロニクルH.png"}, {"ID": "015", "ID_num": 15, "名前": "ギャラクシーW", "画像": "../assets/roms/ギャラクシーW.png"}, {"ID": "016", "ID_num": 16, "名前": "フォートレスN", "画像": "../assets/roms/フォートレスN.png"}, {"ID": "017", "ID_num": 17, "名前": "カウンターF", "画像": "../assets/roms/カウンターF.png"}, {"ID": "018", "ID_num": 18, "名前": "キッチンO", "画像": "../assets/roms/キッチンO.png"}, {"ID": "019", "ID_num": 19, "名前": "クリームU", "画像": "../assets/roms/クリームU.png"}, {"ID": "020", "ID_num": 20, "名前": "クリスタルG", "画像": "../assets/roms/クリスタルG.png"}]');
+    window.__ROMS_GRID__ = JSON.parse('[{"ID": "001", "ID_num": 1, "名前": "シャドウC", "画像": "assets/roms/シャドウC.png"}, {"ID": "002", "ID_num": 2, "名前": "スレイT", "画像": "assets/roms/スレイT.png"}, {"ID": "003", "ID_num": 3, "名前": "リングR", "画像": "assets/roms/リングR.png"}, {"ID": "004", "ID_num": 4, "名前": "エレクトM", "画像": "assets/roms/エレクトM.png"}, {"ID": "005", "ID_num": 5, "名前": "エビルA", "画像": "assets/roms/エビルA.png"}, {"ID": "006", "ID_num": 6, "名前": "フラッフィS", "画像": "assets/roms/フラッフィS.png"}, {"ID": "007", "ID_num": 7, "名前": "リッパーD", "画像": "assets/roms/リッパーD.png"}, {"ID": "008", "ID_num": 8, "名前": "ピンクK", "画像": "assets/roms/ピンクK.png"}, {"ID": "009", "ID_num": 9, "名前": "ブラッドV", "画像": "assets/roms/ブラッドV.png"}, {"ID": "010", "ID_num": 10, "名前": "ホラーY", "画像": "assets/roms/ホラーY.png"}, {"ID": "011", "ID_num": 11, "名前": "アンダーB", "画像": "assets/roms/アンダーB.png"}, {"ID": "012", "ID_num": 12, "名前": "メカコアZ", "画像": "assets/roms/メカコアZ.png"}, {"ID": "013", "ID_num": 13, "名前": "ソーラーP", "画像": "assets/roms/ソーラーP.png"}, {"ID": "014", "ID_num": 14, "名前": "クロニクルH", "画像": "assets/roms/クロニクルH.png"}, {"ID": "015", "ID_num": 15, "名前": "ギャラクシーW", "画像": "assets/roms/ギャラクシーW.png"}, {"ID": "016", "ID_num": 16, "名前": "フォートレスN", "画像": "assets/roms/フォートレスN.png"}, {"ID": "017", "ID_num": 17, "名前": "カウンターF", "画像": "assets/roms/カウンターF.png"}, {"ID": "018", "ID_num": 18, "名前": "キッチンO", "画像": "assets/roms/キッチンO.png"}, {"ID": "019", "ID_num": 19, "名前": "クリームU", "画像": "assets/roms/クリームU.png"}, {"ID": "020", "ID_num": 20, "名前": "クリスタルG", "画像": "assets/roms/クリスタルG.png"}]');
     window.__ROMS_SETS__ = JSON.parse('[{"ID": "001", "ID_num": 1, "名前": "シャドウC", "2セット効果": "攻撃が20%上昇する。", "4セット効果": "超限スキルを発動した時、与えるダメージが15%上昇する。"}, {"ID": "002", "ID_num": 2, "名前": "スレイT", "2セット効果": "HPが20%上昇する", "4セット効果": "受けるダメージが8%低下し、被相性ダメージ時、受けるダメージが追加で8%低下する。"}, {"ID": "003", "ID_num": 3, "名前": "リングR", "2セット効果": "初期TPLvが10上昇する。", "4セット効果": "自身のHPが70%を超える時、与ダメージが15%上昇する。戦闘開始から3ターン、この上昇は倍になる。"}, {"ID": "004", "ID_num": 4, "名前": "エレクトM", "2セット効果": "攻撃が20%上昇する。", "4セット効果": "通常攻撃時、与えるダメージが20%上昇し、与ダメージの20%に基づき自身を定量治療する。"}, {"ID": "005", "ID_num": 5, "名前": "エビルA", "2セット効果": "攻撃が20%上昇する。", "4セット効果": "個人ターン外でダメージを与えた時、与えるダメージが30%上昇する。"}, {"ID": "006", "ID_num": 6, "名前": "フラッフィS", "2セット効果": "治療率が10%上昇する。", "4セット効果": "治療を行う時、治療対象のHPが50%未満の場合、自身の治療率が20%を上昇する。HPが30%未満の場合、治療率がさらに20%上昇する。"}, {"ID": "007", "ID_num": 7, "名前": "リッパーD", "2セット効果": "回復率が10%上昇する。", "4セット効果": "毎回自身が被ダメージ時、次に被治療の回復率が20%上昇する。この効果は最大5回までスタックする。"}, {"ID": "008", "ID_num": 8, "名前": "ピンクK", "2セット効果": "効果命中が10%上昇する。", "4セット効果": "自身が敵にデバフ効果を付与後、自身はTPLvを4獲得する。各スキルで最大4回まで発動する。"}, {"ID": "009", "ID_num": 9, "名前": "ブラッドV", "2セット効果": "会心率が16%上昇する。", "4セット効果": "会心時、与ダメージの30%に基づき自身を定量治療する。"}, {"ID": "010", "ID_num": 10, "名前": "ホラーY", "2セット効果": "効果命中が10%上昇する。", "4セット効果": "自身が敵にデバフ効果を付与後、自身は攻撃8%、会心率8%上昇する。この効果は2ターン持続する。各スキルで1回のみ発動する。"}, {"ID": "011", "ID_num": 11, "名前": "アンダーB", "2セット効果": "会心率が16%上昇する。", "4セット効果": "戦術スキルを使用してダメージを与えた時、自身の会心率が10%上昇する。効果は3ターン持続する。スキル毎に1回のみ発動する。戦術スキル発動後、自身の会心ダメージが30%上昇する。効果は3ターン持続する。このロムによる会心率上昇と会心ダメージ上昇の獲得は、同時に最大1層までしか存在できない。"}, {"ID": "012", "ID_num": 12, "名前": "メカコアZ", "2セット効果": "HPが20%上昇する。", "4セット効果": "各行動順で初めて被ダメージ時、受けるダメージが15%低下し、初めてデバフ効果を受ける時、自身の効果抵抗が30%上昇する。"}, {"ID": "013", "ID_num": 13, "名前": "ソーラーP", "2セット効果": "HPが20%上昇する。", "4セット効果": "援護に成功時、自身の最大HPの2.5%に基づき自身を定量治療する。"}, {"ID": "014", "ID_num": 14, "名前": "クロニクルH", "2セット効果": "治療率が10%上昇する。", "4セット効果": "味方を治療時、50%の確率で目標のデバフ効果を1つ除去する。"}, {"ID": "015", "ID_num": 15, "名前": "ギャラクシーW", "2セット効果": "攻撃が20%上昇する。", "4セット効果": "自身のHPが75%/50%/30%未満の時、与えるダメージが15%/20%/30%上昇する。"}, {"ID": "016", "ID_num": 16, "名前": "フォートレスN", "2セット効果": "HPが20%上昇する。", "4セット効果": "自身に防護を付与する時、その防護量が20%上昇する。"}, {"ID": "017", "ID_num": 17, "名前": "カウンターF", "2セット効果": "会心率が16%上昇する。", "4セット効果": "通常攻撃、戦術スキル、超限スキルを使用するたび、自身の会心率が5%、会心ダメージが5%上昇する。この効果は2ターン持続し、各行動シーケンスで最大3回まで発動できる。"}, {"ID": "018", "ID_num": 18, "名前": "キッチンO", "2セット効果": "初期TPLvが10上昇する。", "4セット効果": "超限スキルで味方にTPLvを付与した時、追加で自身のTPLvを10回復し、さらに自身の最大HPの5%の定量治療を行う。この効果の発動には3ターンのクールタイムがある。"}, {"ID": "019", "ID_num": 19, "名前": "クリームU", "2セット効果": "攻撃が20%上昇する。", "4セット効果": "自身が持続ダメージを付与する時、自身の効果命中が30%上昇し、与える持続ダメージ及び即時発動する持続ダメージが20%上昇する。"}, {"ID": "020", "ID_num": 20, "名前": "クリスタルG", "2セット効果": "HPが20%上昇する。", "4セット効果": "自身が受ける追加ダメージを15%軽減する。さらに、追加ダメージを受けた時、自身の最大HPの2.5%分の定量治療する。この治療効果は1ターンにつき1回まで発動可能。"}]');
     window.__ROMS_STATS__ = JSON.parse('[{"ID": "001", "ID_num": 1, "名前": "シャドウC", "攻撃": 234, "HP": 1526, "物理防御1": 509, "物理防御2": 509, "特殊防御1": 509, "特殊防御2": 509}, {"ID": "002", "ID_num": 2, "名前": "スレイT", "攻撃": 156, "HP": 1526, "物理防御1": 1018, "物理防御2": 509, "特殊防御1": 1018, "特殊防御2": 509}, {"ID": "003", "ID_num": 3, "名前": "リングR", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "004", "ID_num": 4, "名前": "エレクトM", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "005", "ID_num": 5, "名前": "エビルA", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "006", "ID_num": 6, "名前": "フラッフィS", "攻撃": 195, "HP": 1272, "物理防御1": 763, "物理防御2": 763, "特殊防御1": 763, "特殊防御2": 763}, {"ID": "007", "ID_num": 7, "名前": "リッパーD", "攻撃": 156, "HP": 1018, "物理防御1": 1018, "物理防御2": 1018, "特殊防御1": 1018, "特殊防御2": 1018}, {"ID": "008", "ID_num": 8, "名前": "ピンクK", "攻撃": 195, "HP": 1272, "物理防御1": 763, "物理防御2": 763, "特殊防御1": 763, "特殊防御2": 763}, {"ID": "009", "ID_num": 9, "名前": "ブラッドV", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "010", "ID_num": 10, "名前": "ホラーY", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "011", "ID_num": 11, "名前": "アンダーB", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "012", "ID_num": 12, "名前": "メカコアZ", "攻撃": 156, "HP": 1018, "物理防御1": 1018, "物理防御2": 1018, "特殊防御1": 1018, "特殊防御2": 1018}, {"ID": "013", "ID_num": 13, "名前": "ソーラーP", "攻撃": 156, "HP": 1526, "物理防御1": 1018, "物理防御2": 509, "特殊防御1": 1018, "特殊防御2": 509}, {"ID": "014", "ID_num": 14, "名前": "クロニクルH", "攻撃": 195, "HP": 1272, "物理防御1": 763, "物理防御2": 763, "特殊防御1": 763, "特殊防御2": 763}, {"ID": "015", "ID_num": 15, "名前": "ギャラクシーW", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "016", "ID_num": 16, "名前": "フォートレスN", "攻撃": 156, "HP": 1526, "物理防御1": 1018, "物理防御2": 509, "特殊防御1": 1018, "特殊防御2": 509}, {"ID": "017", "ID_num": 17, "名前": "カウンターF", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "018", "ID_num": 18, "名前": "キッチンO", "攻撃": 195, "HP": 1272, "物理防御1": 763, "物理防御2": 763, "特殊防御1": 763, "特殊防御2": 763}, {"ID": "019", "ID_num": 19, "名前": "クリームU", "攻撃": 234, "HP": 1272, "物理防御1": 509, "物理防御2": 763, "特殊防御1": 509, "特殊防御2": 763}, {"ID": "020", "ID_num": 20, "名前": "クリスタルG", "攻撃": 156, "HP": 1526, "物理防御1": 1018, "物理防御2": 509, "特殊防御1": 1018, "特殊防御2": 509}]');
 
@@ -414,8 +415,8 @@
       var list = (window.__ROMS_GRID__||[]).slice().sort(function(a,b){ return b.ID_num - a.ID_num; });
       var grid = document.getElementById('romsGrid');
       list.forEach(function(it){
-        var card=document.createElement('a'); card.className='rom-card'; card.href = './' + it.ID + '.html'; card.setAttribute('aria-label', it.ID + ' ' + it.名前 + ' の詳細へ');
-        var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.png';
+  var card=document.createElement('a'); card.className='rom-card'; card.href = './' + it.ID + '.html'; card.setAttribute('aria-label', it.ID + ' ' + it.名前 + ' の詳細へ');
+  var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.webp'; img.onerror=function(){ this.onerror=null; if(String(this.src).endsWith('rom_nan.webp')){ this.src='../assets/roms/rom_nan.png'; } };
         var name=document.createElement('div'); name.className='name'; name.textContent = it.ID + ' ' + it.名前;
         card.appendChild(img); card.appendChild(name); grid.appendChild(card);
       });
@@ -473,13 +474,27 @@
       });
     })();
   </script>
+
+  <!-- 背景のWebP優先切替（rom_bg3.webp が存在する場合のみ動的に適用） -->
+  <script>
+    (function(){
+      var bgEl = document.querySelector('#roms-traits .bg');
+      if(!bgEl) return;
+      var img = new Image();
+      img.onload = function(){
+        try { bgEl.style.backgroundImage = "url('"+img.src+"')"; } catch(_){ }
+      };
+      img.onerror = function(){};
+      img.src = '../assets/roms/rom_bg3.webp';
+    })();
+  </script>
   <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
   <script>
     // 特性能力値: データと描画
     (function(){
-      function asset(name){ return '../assets/roms/' + encodeURIComponent(name); }
-      var CENTER = 'rom_disply2.png';
-      var NAN = 'rom_nan.png';
+  function asset(name){ return '../assets/roms/' + encodeURIComponent(name); }
+  var CENTER = 'rom_disply2.webp';
+  var NAN = 'rom_nan.webp';
       var DATA = {
         pair12: {
           1: {
@@ -541,7 +556,14 @@
       var grid = document.getElementById('traitsGrid');
       function tile(src){
         var d=document.createElement('div'); d.className='traits-tile';
-        var img=document.createElement('img'); img.alt=src.replace('.png',''); img.src=asset(src);
+        var img=document.createElement('img');
+        var base = String(src||'');
+        // データは .png 名で管理しているため、まず webp を試し失敗時に png へ。
+        var webp = base.replace(/\.png$/i, '.webp');
+        var png = base;
+        img.alt = base.replace(/\.(png|webp)$/i,'');
+        img.src = asset(webp);
+        img.onerror = function(){ this.onerror=null; this.src = asset(png); };
         d.appendChild(img);
         return d;
       }
@@ -565,7 +587,15 @@
         render();
       }
       function setSlot(slot){
-        state.slot = slot; document.querySelectorAll('.slot-btn').forEach(function(b){ var on = (Number(b.getAttribute('data-slot'))===slot); b.setAttribute('aria-pressed', on?'true':'false'); var n=b.getAttribute('data-slot'); var img=b.querySelector('img'); img.src = on? ('../assets/roms/rom_slot_hover'+n+'.png') : ('../assets/roms/rom_slot'+n+'.png'); });
+        state.slot = slot; document.querySelectorAll('.slot-btn').forEach(function(b){
+          var on = (Number(b.getAttribute('data-slot'))===slot);
+          b.setAttribute('aria-pressed', on?'true':'false');
+          var n=b.getAttribute('data-slot');
+          var img=b.querySelector('img');
+          var base = on ? ('../assets/roms/rom_slot_hover'+n) : ('../assets/roms/rom_slot'+n);
+          img.onerror=function(){ this.onerror=null; this.src=base+'.png'; };
+          img.src = base + '.webp';
+        });
         render();
       }
       document.querySelectorAll('.pair-btn').forEach(function(btn){ btn.addEventListener('click', function(){ setPair(btn.getAttribute('data-pair')); }); });

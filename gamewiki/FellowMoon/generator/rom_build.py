@@ -83,17 +83,17 @@ def build_rom_pages():
         rid = str(rom.get('ID') or '').strip()
         name = str(rom.get('名前') or '').strip()
         parts = rom.get('部位') or []
-        # 各部位の画像は「名称.png」を想定
+        # 各部位の画像は「名称.webp/名称.png」対応（webp 優先）
         part_imgs = []
         part_names = []
         for i in range(4):
             if i < len(parts):
                 pn = str(parts[i].get('名称') or '').strip()
                 part_names.append(pn)
-                part_imgs.append(f"../assets/roms/{pn}.png")
+                part_imgs.append(f"../assets/roms/{pn}.webp")
             else:
                 part_names.append('')
-                part_imgs.append("../assets/roms/rom_nan.png")
+                part_imgs.append("../assets/roms/rom_nan.webp")
 
         stat_cards = '\n'.join(build_stat_card(p) for p in parts[:4])
         traits_rows = build_traits_rows(rom.get('固有特性'))

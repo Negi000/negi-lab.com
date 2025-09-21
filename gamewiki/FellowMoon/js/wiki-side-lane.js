@@ -154,7 +154,7 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=open]
   const aside = document.createElement('aside');
   aside.className='wiki-side-lane';
   aside.setAttribute('aria-label','サイド情報パネル');
-  aside.innerHTML = `\n    <section class="side-box" id="sideBirthdays" aria-labelledby="sideBirthdaysTitle">\n      <h3 id="sideBirthdaysTitle"><span class="icon"><img data-side-asset="カレンダー.png" alt="カレンダー" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>今日の誕生日<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="今日の誕生日 折りたたみ"></button></h3>\n      <ul class="birthday-list" data-birthday-list></ul>\n      <div class="birthday-empty" data-birthday-empty style="display:none">今日の誕生日はありません</div>\n      <div class="birthday-empty" data-birthday-file-warn style="display:none;color:#f6b37b">file:// では読み込めません。ローカルサーバを起動してください。</div>\n      <div class="next-birthdays" data-next-birthdays style="display:none">\n        <h4>次の誕生日</h4><ul data-next-birthday-list></ul>\n      </div>\n    </section>\n    <section class="side-box" id="sideEvents" aria-labelledby="sideEventsTitle">\n      <h3 id="sideEventsTitle"><span class="icon"><img data-side-asset="イベント.png" alt="イベント" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>イベント/ガチャ<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="イベント/ガチャ 折りたたみ"></button></h3>\n      <ul class="event-timer-list" data-event-timer-list></ul><div class="event-empty" data-event-empty style="display:none">開催中イベントなし</div>\n    </section>\n    <section class="side-box" id="sideSupport" aria-labelledby="sideSupportTitle">\n      <h3 id="sideSupportTitle"><span class="icon"><img data-side-asset="follow_icon.png" alt="応援" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>応援<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="応援 折りたたみ"></button></h3>\n      <p class="support-note">応援いただけると更新の励みになります。</p>\n      <div class="support-links">\n        <div class="ofuse-wrap"><h4>OFUSE</h4><a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" data-ofuse-style="rectangle">OFUSEで応援を送る</a></div>\n        <div class="kofi-wrap"><h4>Ko-fi</h4><a class="kofi-inline-btn" href="https://ko-fi.com/X8X11KVU5K" data-kofi-launch target="_blank" rel="noopener" aria-label="Support me on Ko-fi"><img data-kofi-img alt="Support me on Ko-fi" loading="lazy"></a></div>\n      </div>\n    </section>`;
+  aside.innerHTML = `\n    <section class="side-box" id="sideBirthdays" aria-labelledby="sideBirthdaysTitle">\n      <h3 id="sideBirthdaysTitle"><span class="icon"><img data-side-asset="カレンダー" alt="カレンダー" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>今日の誕生日<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="今日の誕生日 折りたたみ"></button></h3>\n      <ul class="birthday-list" data-birthday-list></ul>\n      <div class="birthday-empty" data-birthday-empty style="display:none">今日の誕生日はありません</div>\n      <div class="birthday-empty" data-birthday-file-warn style="display:none;color:#f6b37b">file:// では読み込めません。ローカルサーバを起動してください。</div>\n      <div class="next-birthdays" data-next-birthdays style="display:none">\n        <h4>次の誕生日</h4><ul data-next-birthday-list></ul>\n      </div>\n    </section>\n    <section class="side-box" id="sideEvents" aria-labelledby="sideEventsTitle">\n      <h3 id="sideEventsTitle"><span class="icon"><img data-side-asset="イベント" alt="イベント" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>イベント/ガチャ<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="イベント/ガチャ 折りたたみ"></button></h3>\n      <ul class="event-timer-list" data-event-timer-list></ul><div class="event-empty" data-event-empty style="display:none">開催中イベントなし</div>\n    </section>\n    <section class="side-box" id="sideSupport" aria-labelledby="sideSupportTitle">\n      <h3 id="sideSupportTitle"><span class="icon"><img data-side-asset="follow_icon" alt="応援" loading="lazy" style="width:100%;height:100%;object-fit:contain"></span>応援<button type="button" class="sl-collapse-btn" aria-expanded="true" aria-label="応援 折りたたみ"></button></h3>\n      <p class="support-note">応援いただけると更新の励みになります。</p>\n      <div class="support-links">\n        <div class="ofuse-wrap"><h4>OFUSE</h4><a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" data-ofuse-style="rectangle">OFUSEで応援を送る</a></div>\n        <div class="kofi-wrap"><h4>Ko-fi</h4><a class="kofi-inline-btn" href="https://ko-fi.com/X8X11KVU5K" data-kofi-launch target="_blank" rel="noopener" aria-label="Support me on Ko-fi"><img data-kofi-img alt="Support me on Ko-fi" loading="lazy"></a></div>\n      </div>\n    </section>`;
   document.body.appendChild(aside);
   // モバイルトグル/オーバーレイ
   const toggle = document.createElement('button');
@@ -263,24 +263,48 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=open]
   // ===== 画像フォールバック =====
   function applySideAssetFallback(){
     document.querySelectorAll('img[data-side-asset]').forEach(img=>{
-      const file=img.getAttribute('data-side-asset');
-      const candidates=[
-        PATHS.assets + file,
-        PATHS.assets + 'icons/' + file,
-        PATHS.assets + 'バナー/' + file,
-        PATHS.assets + '誕生日/' + file,
-        PATHS.root + 'assets/icons/' + file,
-        PATHS.root + file
+      const token = img.getAttribute('data-side-asset') || '';
+      // 拡張子判定（未指定なら拡張子可変で候補生成）
+      const hasExt = /\.[a-zA-Z0-9]+$/.test(token);
+      const base = hasExt ? token.replace(/\.[^.]+$/, '') : token; // 末尾拡張子のみ除去
+      let exts;
+      if(!hasExt){
+        exts = ['.webp','.png','.jpg','.jpeg','.gif'];
+      }else{
+        const lower = token.toLowerCase();
+        if(lower.endsWith('.png')) exts = ['.webp','.png'];
+        else if(lower.endsWith('.webp')) exts = ['.webp','.png'];
+        else if(lower.endsWith('.jpg')) exts = ['.webp','.jpg'];
+        else if(lower.endsWith('.jpeg')) exts = ['.webp','.jpeg'];
+        else if(lower.endsWith('.gif')) exts = ['.webp','.gif'];
+        else exts = [token.substring(token.lastIndexOf('.'))];
+      }
+      const prefixes = [
+        PATHS.assets,
+        PATHS.assets + 'icons/',
+        PATHS.assets + 'バナー/',
+        PATHS.assets + '誕生日/',
+        PATHS.root + 'assets/icons/',
+        PATHS.root
       ];
+      const candidates = [];
+      for(const pre of prefixes){
+        for(const ext of exts){
+          candidates.push(pre + base + ext);
+        }
+      }
+      if(candidates.length === 0) return;
       let i=0; img.src=candidates[i];
       img.onerror=()=>{ if(i<candidates.length-1){ i++; img.src=candidates[i]; } };
     });
-    // Ko-fi 画像
+    // Ko-fi 画像（WebP優先 → PNG）
     const kImg=document.querySelector('[data-kofi-img]');
     if(kImg){
-      const kFile='support_me_on_kofi_blue.png';
-      const ks=[PATHS.assets+kFile, PATHS.assets+'バナー/'+kFile, PATHS.root+kFile];
-      let j=0; kImg.src=ks[j]; kImg.onerror=()=>{ if(j<ks.length-1){ j++; kImg.src=ks[j]; } };
+      const kBase='support_me_on_kofi_blue';
+      const prefixes=[PATHS.assets, PATHS.assets+'バナー/', PATHS.root];
+      const kCandidates=[];
+      for(const pre of prefixes){ kCandidates.push(pre+kBase+'.webp', pre+kBase+'.png'); }
+      let j=0; if(kCandidates.length){ kImg.src=kCandidates[j]; kImg.onerror=()=>{ if(j<kCandidates.length-1){ j++; kImg.src=kCandidates[j]; } }; }
     }
   }
   applySideAssetFallback();

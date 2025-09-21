@@ -345,9 +345,9 @@ main{max-width:var(--w-wrap);margin:auto;padding:1.2rem .9rem 3rem}
       <div class="card-wrap" data-rare="{{レア度}}" data-attr="{{属性}}" data-type="{{タイプ}}" data-faction="{{陣営}}" data-tags="{{タグCSV}}" data-attacktypes="{{攻撃タイプCSV}}" data-skilltags="{{スキルタグCSV}}" data-ver="{{実装バージョン}}">
         <a class="card" href="{{ID}}.html">
           <div class="bg" aria-hidden="true"></div>
-          <img class="icon" src="{{アイコン}}" data-normal="{{アイコン}}" data-awake="{{アイコン覚醒}}" alt="{{名前}} アイコン">
-          <img class="star" src="{{レア度画像}}" alt="★{{レア度}}">
-          <img class="attr" src="{{属性タイプ画像}}" alt="{{属性}}-{{タイプ}}">
+          <img class="icon" src="{{アイコン}}" data-normal="{{アイコン}}" data-awake="{{アイコン覚醒}}" alt="{{名前}} アイコン" onerror="if(this.src.endsWith('.webp')){this.onerror=null;this.src=this.getAttribute('data-normal').replace(/\.webp$/i,'.png');}">
+          <img class="star" src="{{レア度画像}}" alt="★{{レア度}}" onerror="if(this.src.endsWith('.webp')){this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.png');}">
+          <img class="attr" src="{{属性タイプ画像}}" alt="{{属性}}-{{タイプ}}" onerror="if(this.src.endsWith('.webp')){this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.png');}">
           <div class="name">{{名前}}</div>
         </a>
         <div class="hover" aria-hidden="true"></div>

@@ -65,6 +65,15 @@ def build_roms_index():
     grid = []
     sets = []
     stats = []
+    def choose_rom_image_rel(rom_name: str):
+        # roms/index.html からの相対パスで assets を参照
+        # 優先順: webp -> png -> jpg -> jpeg -> gif
+        for ext in ('.webp', '.png', '.jpg', '.jpeg', '.gif'):
+            p = DEST_ROM_IMG / f"{rom_name}{ext}"
+            if p.exists():
+                return os.path.relpath(p, SITE_DIR).replace('\\','/')
+        # 見つからない場合は webp を試しつつ、クライアント側 onerror が png に落とす実装に依存
+        return f"../assets/roms/{rom_name}.webp"
     for rom in roms:
         rid = str(rom.get('ID') or '').strip()
         try:
@@ -75,8 +84,7 @@ def build_roms_index():
             except Exception:
                 rid_num = 0
         name = str(rom.get('名前') or '').strip()
-        # roms/index.html からの相対パスで assets を参照
-        img_rel = f"../assets/roms/{name}.png"
+        img_rel = choose_rom_image_rel(name)
         grid.append({
             'ID': rid,
             'ID_num': rid_num,
