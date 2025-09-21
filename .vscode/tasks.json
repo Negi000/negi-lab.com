@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Rebuild FellowMoon site",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-Command",
+				"python \"gamewiki/FellowMoon/generator/build.py\"; python \"gamewiki/FellowMoon/generator/build_home.py\"; python \"gamewiki/FellowMoon/generator/build_roms_index.py\""
+			],
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		}
+	]
+}

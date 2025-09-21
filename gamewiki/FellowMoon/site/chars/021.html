@@ -1239,7 +1239,11 @@ window.__FELLOWMOON_PATHS = window.__FM_PATHS;
       const items=document.querySelectorAll('.birthday-list li.today'); if(!items.length) return;
       clearInterval(iv);
       const badge=document.createElement('div'); badge.className='birthday-ping';
-      const img=document.createElement('img'); img.alt='誕生日あり'; img.loading='lazy'; img.src=(window.__FM_PATHS? window.__FM_PATHS.assets:'site/assets/left_side_lane/')+'birthday_icon.png'; badge.appendChild(img);
+  const img=document.createElement('img'); img.alt='誕生日あり'; img.loading='lazy';
+  const base=(window.__FM_PATHS? window.__FM_PATHS.assets:'site/assets/left_side_lane/');
+  const cand=[base+'birthday_icon.webp', base+'birthday_icon.png'];
+  let ci=0; img.src=cand[ci]; img.onerror=()=>{ if(ci<cand.length-1){ ci++; img.src=cand[ci]; } };
+  badge.appendChild(img);
       btn.appendChild(badge);
       function clearBadge(){ if(badge.parentNode){ badge.remove(); localStorage.setItem(BIRTH_BADGE_KEY,tk); } }
       btn.addEventListener('click',clearBadge,{once:true}); setTimeout(clearBadge,10000);

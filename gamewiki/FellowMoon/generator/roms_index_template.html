@@ -99,6 +99,7 @@
   
   /* 特性能力値セクション */
   #roms-traits{position:relative;border:1px solid #23313c;border-radius:14px;overflow:hidden;background:#0f161c}
+  /* 背景は既定を png にし、JSで webp が存在すれば差し替える（404対策） */
   #roms-traits .bg{position:absolute;inset:0;background:url('../assets/roms/rom_bg3.png') center/cover no-repeat;opacity:.28;filter:grayscale(20%)}
   #roms-traits .inner{position:relative;padding:1rem;background:linear-gradient(180deg,rgba(12,18,24,.65),rgba(12,18,24,.45));border-radius:12px}
   /* セグメントトグル（ロム01/02・03/04） */
@@ -285,11 +286,11 @@
           <button type="button" class="pair-btn" data-pair="pair34" aria-pressed="false" role="tab">ロム03/04</button>
         </div>
         <div class="slot-bar" role="tablist" aria-label="スロット選択">
-          <button type="button" class="slot-btn" data-slot="1" aria-pressed="true"><img alt="Slot 1" src="../assets/roms/rom_slot1.png"></button>
-          <button type="button" class="slot-btn" data-slot="2" aria-pressed="false"><img alt="Slot 2" src="../assets/roms/rom_slot2.png"></button>
-          <button type="button" class="slot-btn" data-slot="3" aria-pressed="false"><img alt="Slot 3" src="../assets/roms/rom_slot3.png"></button>
-          <button type="button" class="slot-btn" data-slot="4" aria-pressed="false"><img alt="Slot 4" src="../assets/roms/rom_slot4.png"></button>
-          <button type="button" class="slot-btn" data-slot="5" aria-pressed="false"><img alt="Slot 5" src="../assets/roms/rom_slot5.png"></button>
+          <button type="button" class="slot-btn" data-slot="1" aria-pressed="true"><img alt="Slot 1" src="../assets/roms/rom_slot1.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot1.png';"></button>
+          <button type="button" class="slot-btn" data-slot="2" aria-pressed="false"><img alt="Slot 2" src="../assets/roms/rom_slot2.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot2.png';"></button>
+          <button type="button" class="slot-btn" data-slot="3" aria-pressed="false"><img alt="Slot 3" src="../assets/roms/rom_slot3.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot3.png';"></button>
+          <button type="button" class="slot-btn" data-slot="4" aria-pressed="false"><img alt="Slot 4" src="../assets/roms/rom_slot4.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot4.png';"></button>
+          <button type="button" class="slot-btn" data-slot="5" aria-pressed="false"><img alt="Slot 5" src="../assets/roms/rom_slot5.webp" onerror="this.onerror=null;this.src='../assets/roms/rom_slot5.png';"></button>
         </div>
         <div class="traits-grid" id="traitsGrid" aria-live="polite"></div>
       </div>
@@ -414,8 +415,8 @@
       var list = (window.__ROMS_GRID__||[]).slice().sort(function(a,b){ return b.ID_num - a.ID_num; });
       var grid = document.getElementById('romsGrid');
       list.forEach(function(it){
-        var card=document.createElement('a'); card.className='rom-card'; card.href = './' + it.ID + '.html'; card.setAttribute('aria-label', it.ID + ' ' + it.名前 + ' の詳細へ');
-        var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.png';
+  var card=document.createElement('a'); card.className='rom-card'; card.href = './' + it.ID + '.html'; card.setAttribute('aria-label', it.ID + ' ' + it.名前 + ' の詳細へ');
+  var img=document.createElement('img'); img.alt=it.名前; img.src=it.画像 || '../assets/roms/rom_nan.webp'; img.onerror=function(){ this.onerror=null; if(String(this.src).endsWith('rom_nan.webp')){ this.src='../assets/roms/rom_nan.png'; } };
         var name=document.createElement('div'); name.className='name'; name.textContent = it.ID + ' ' + it.名前;
         card.appendChild(img); card.appendChild(name); grid.appendChild(card);
       });
@@ -473,13 +474,27 @@
       });
     })();
   </script>
+
+  <!-- 背景のWebP優先切替（rom_bg3.webp が存在する場合のみ動的に適用） -->
+  <script>
+    (function(){
+      var bgEl = document.querySelector('#roms-traits .bg');
+      if(!bgEl) return;
+      var img = new Image();
+      img.onload = function(){
+        try { bgEl.style.backgroundImage = "url('"+img.src+"')"; } catch(_){ }
+      };
+      img.onerror = function(){};
+      img.src = '../assets/roms/rom_bg3.webp';
+    })();
+  </script>
   <script src="https://negi-lab.com/js/ads-consent-loader.js" defer></script>
   <script>
     // 特性能力値: データと描画
     (function(){
-      function asset(name){ return '../assets/roms/' + encodeURIComponent(name); }
-      var CENTER = 'rom_disply2.png';
-      var NAN = 'rom_nan.png';
+  function asset(name){ return '../assets/roms/' + encodeURIComponent(name); }
+  var CENTER = 'rom_disply2.webp';
+  var NAN = 'rom_nan.webp';
       var DATA = {
         pair12: {
           1: {
@@ -541,7 +556,14 @@
       var grid = document.getElementById('traitsGrid');
       function tile(src){
         var d=document.createElement('div'); d.className='traits-tile';
-        var img=document.createElement('img'); img.alt=src.replace('.png',''); img.src=asset(src);
+        var img=document.createElement('img');
+        var base = String(src||'');
+        // データは .png 名で管理しているため、まず webp を試し失敗時に png へ。
+        var webp = base.replace(/\.png$/i, '.webp');
+        var png = base;
+        img.alt = base.replace(/\.(png|webp)$/i,'');
+        img.src = asset(webp);
+        img.onerror = function(){ this.onerror=null; this.src = asset(png); };
         d.appendChild(img);
         return d;
       }
@@ -565,7 +587,15 @@
         render();
       }
       function setSlot(slot){
-        state.slot = slot; document.querySelectorAll('.slot-btn').forEach(function(b){ var on = (Number(b.getAttribute('data-slot'))===slot); b.setAttribute('aria-pressed', on?'true':'false'); var n=b.getAttribute('data-slot'); var img=b.querySelector('img'); img.src = on? ('../assets/roms/rom_slot_hover'+n+'.png') : ('../assets/roms/rom_slot'+n+'.png'); });
+        state.slot = slot; document.querySelectorAll('.slot-btn').forEach(function(b){
+          var on = (Number(b.getAttribute('data-slot'))===slot);
+          b.setAttribute('aria-pressed', on?'true':'false');
+          var n=b.getAttribute('data-slot');
+          var img=b.querySelector('img');
+          var base = on ? ('../assets/roms/rom_slot_hover'+n) : ('../assets/roms/rom_slot'+n);
+          img.onerror=function(){ this.onerror=null; this.src=base+'.png'; };
+          img.src = base + '.webp';
+        });
         render();
       }
       document.querySelectorAll('.pair-btn').forEach(function(btn){ btn.addEventListener('click', function(){ setPair(btn.getAttribute('data-pair')); }); });

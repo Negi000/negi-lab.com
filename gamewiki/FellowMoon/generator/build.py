@@ -12,12 +12,14 @@ TPL_CHAR_INDEX = BASE / 'generator' / 'character_index_template.html'
 IMG_CHAR_ROOT = BASE / 'キャラ素材'
 IMG_SKILL_ROOT = BASE / 'スキルアイコン'
 ROM_IMG_ROOT = BASE / 'ロム素材'
+# 専門探索アイコンのベースパス（拡張子なし）
+# 実体は site/assets/icons/ 以下にあり、ビルド時に webp → png → jpg → jpeg → gif の順で解決する
 EXPLORE_ICON_MAP = [
-    ('交渉','icons/negotiation.png'),
-    ('思考','icons/thinking.png'),
-    ('情報','icons/info.png'),
-    ('技術','icons/tech.png'),
-    ('体力','icons/physical.png'),
+    ('交渉','icons/negotiation'),
+    ('思考','icons/thinking'),
+    ('情報','icons/info'),
+    ('技術','icons/tech'),
+    ('体力','icons/physical'),
 ]
 
 # 簡易 Mustache 風 {{key}} 置換実装
@@ -68,15 +70,18 @@ def collect_image_tabs(char_kanji: str, char_name: str, char_id: str):
     if not folder:
         return tabs
 
-    all_png = list(folder.glob(f'{char_id}-*.png'))
+    # 画像拡張子: webp を優先しつつ、png/jpg も許容
+    all_imgs = []
+    for ext in ('webp', 'png', 'jpg', 'jpeg'):
+        all_imgs.extend(folder.glob(f'{char_id}-*.{ext}'))
     # 基本分類
-    tachi = [p for p in all_png if '-fb' in p.stem and '_awake' not in p.stem and '-skin' not in p.stem and '-bg' not in p.stem]
-    ninsho = [p for p in all_png if '-fb_awake' in p.stem]
+    tachi = [p for p in all_imgs if '-fb' in p.stem and '_awake' not in p.stem and '-skin' not in p.stem and '-bg' not in p.stem]
+    ninsho = [p for p in all_imgs if '-fb_awake' in p.stem]
 
     # 後ろ姿: -bg*.png を抽出 (スキン複合含む)
-    back_raw = [p for p in all_png if '-bg' in p.stem]
+    back_raw = [p for p in all_imgs if '-bg' in p.stem]
     # スキン (既存): -skin で fb / bg を含まない純スキン (ただし複合型 {id}-bg_skin1.png などは back_raw に含まれるため除外)
-    skins = [p for p in all_png if '-skin' in p.stem and '-bg' not in p.stem]
+    skins = [p for p in all_imgs if '-skin' in p.stem and '-bg' not in p.stem]
 
     # 後ろ姿の並びを安定化: 数字や skin の番号順
     def sort_key_bg(p: pathlib.Path):
@@ -191,9 +196,12 @@ def build():
             icon_path = ''
             code = skill_file_map.get(sk_key)
             if code and skill_folder:
-                png = skill_folder / f'{cid}-{code}.png'
-                if png.exists():
-                    icon_path = '../' + rel_path(png)
+                # webp 優先、png/jpg フォールバック
+                for ext in ('webp','png','jpg','jpeg'):
+                    cand = skill_folder / f'{cid}-{code}.{ext}'
+                    if cand.exists():
+                        icon_path = '../' + rel_path(cand)
+                        break
             sk_tags = [t.strip() for t in sk.get('スキルタグ','').split('/') if t.strip()]
             skills.append({
                 'スキル名': sk.get('スキル名',''),
@@ -228,7 +236,22 @@ def build():
             return (arr + ['']*5)[:5]
         explore_init = split_five(explore_init_raw)
         explore_max = split_five(explore_max_raw)
-        explore_icons = [{'名称': nm, 'パス': f'../assets/{pth}'} for nm, pth in EXPLORE_ICON_MAP]
+        # 専門探索アイコン（webp優先で拡張子を解決）
+        explore_icons = []
+        for nm, stem in EXPLORE_ICON_MAP:
+            base_path = SITE_DIR / 'assets' / pathlib.Path(stem)
+            chosen = ''
+            for ext in ('webp','png','jpg','jpeg','gif'):
+                cand = base_path.with_suffix('.'+ext)
+                if cand.exists():
+                    # '../assets/icons/name.ext' 形式へ
+                    rel = f"../assets/{stem}.{ext}".replace('\\','/')
+                    chosen = rel
+                    break
+            if not chosen:
+                # 最低限のデフォルト（旧互換）
+                chosen = f"../assets/{stem}.png".replace('\\','/')
+            explore_icons.append({'名称': nm, 'パス': chosen})
 
         # ロム情報 / 較正情報（任意）
         rom_raw = payload.get('ロム情報', {}) or {}
@@ -250,15 +273,17 @@ def build():
 
         def find_rom_image(file_stem: str):
             # file_stem 例: 'シャドウC4セット' / 'リングR2セット12'
-            p = ROM_IMG_ROOT / f'{file_stem}.png'
-            if p.exists():
-                return rel_from_site(p)
+            for ext in ('webp','png','jpg','jpeg'):
+                p = ROM_IMG_ROOT / f'{file_stem}.{ext}'
+                if p.exists():
+                    return rel_from_site(p)
             # 特例: クロニクル -> ｸﾛﾆｸﾙ（2セット系で差異あり）
             alt_stem = file_stem.replace('クロニクル', 'ｸﾛﾆｸﾙ')
             if alt_stem != file_stem:
-                p2 = ROM_IMG_ROOT / f'{alt_stem}.png'
-                if p2.exists():
-                    return rel_from_site(p2)
+                for ext in ('webp','png','jpg','jpeg'):
+                    p2 = ROM_IMG_ROOT / f'{alt_stem}.{ext}'
+                    if p2.exists():
+                        return rel_from_site(p2)
             return ''
 
         def parse_rom_candidates(rom_text: str):
@@ -312,14 +337,25 @@ def build():
         for c in [kanji, name]:
             if not c:
                 continue
-            p = IMG_CHAR_ROOT / c / f'{cid}-icon.png'
-            if p.exists():
-                icon_rel = '../' + rel_path(p)
+            # アイコンは webp 優先、png/jpg フォールバック
+            icon_base = IMG_CHAR_ROOT / c / f'{cid}-icon'
+            found_icon = None
+            for ext in ('webp','png','jpg','jpeg'):
+                cand = icon_base.with_suffix('.'+ext)
+                if cand.exists():
+                    found_icon = cand
+                    break
+            if found_icon:
+                icon_rel = '../' + rel_path(found_icon)
                 # 覚醒アイコン
-                icon_awake_path = p.with_name(f'{cid}-icon_awake.png'
-                )
-                if icon_awake_path.exists():
-                    icon_awake_rel = '../' + rel_path(icon_awake_path)
+                found_awake = None
+                for ext in ('webp','png','jpg','jpeg'):
+                    cand = (IMG_CHAR_ROOT / c / f'{cid}-icon_awake').with_suffix('.'+ext)
+                    if cand.exists():
+                        found_awake = cand
+                        break
+                if found_awake:
+                    icon_awake_rel = '../' + rel_path(found_awake)
                 break
 
         # SEO用フィールドの組み立て
@@ -397,13 +433,23 @@ def build():
 
         # キャラ一覧（カード）用のレコード
         # レア度画像
-        star_img = SITE_DIR / 'assets' / 'icons' / f"star{basic.get('レア度','').strip()}.png"
-        star_rel = f"../assets/icons/star{basic.get('レア度','').strip()}.png" if star_img.exists() else ''
+        # レア度画像: webp 優先
+        star_rel = ''
+        for ext in ('webp','png','jpg','jpeg'):
+            star_img = SITE_DIR / 'assets' / 'icons' / f"star{basic.get('レア度','').strip()}.{ext}"
+            if star_img.exists():
+                star_rel = f"../assets/icons/star{basic.get('レア度','').strip()}.{ext}"
+                break
         # 属性-タイプ 画像
         attr = basic.get('属性','').strip()
         typ = basic.get('タイプ','').strip()
-        attr_type_img = SITE_DIR / 'assets' / 'icons' / f"{attr}-{typ}.png"
-        attr_type_rel = f"../assets/icons/{attr}-{typ}.png" if attr_type_img.exists() else ''
+        attr_type_rel = ''
+        if attr and typ:
+            for ext in ('webp','png','jpg','jpeg'):
+                attr_type_img = SITE_DIR / 'assets' / 'icons' / f"{attr}-{typ}.{ext}"
+                if attr_type_img.exists():
+                    attr_type_rel = f"../assets/icons/{attr}-{typ}.{ext}"
+                    break
 
         # スキルタグ集約（/ 区切り -> 空白区切り CSV）
         skill_tags = []
