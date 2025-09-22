@@ -236,12 +236,7 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
   </div>
 
   <!-- ミドル広告をタイトル直下ではなくディスプレイの上に明示配置 -->
-  <section class="section" id="ads-middle">
-    <aside class="ad-block" aria-label="楽天アフィリエイト ミドル">
-      <div class="ad-label">おすすめ商品</div>
-      <div class="rakuten-widget-placeholder" data-rakuten-widget="slide" data-rakuten-affiliate="4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01" data-rakuten-ts="1757509067733" data-rakuten-size-mobile="300x250" data-rakuten-size-desktop="468x160"></div>
-    </aside>
-  </section>
+  <!-- ミドル広告: ディスプレイの下に移動 -->
 
   <section class="section content-section" id="display-gallery" data-wiki-content="true" data-no-dynamic-ads="true">
     <h2>ディスプレイ</h2>
@@ -254,6 +249,14 @@ footer .inner{max-width:var(--w-wrap);margin:auto;display:flex;flex-direction:co
       </div>
       <div class="display-indicators" id="displayIndicators" aria-label="表示中画像インジケータ"></div>
     </div>
+  </section>
+
+  <!-- ミドル広告（ディスプレイ直下） -->
+  <section class="section" id="ads-middle">
+    <aside class="ad-block" aria-label="楽天アフィリエイト ミドル">
+      <div class="ad-label">おすすめ商品</div>
+      <div class="rakuten-widget-placeholder" data-rakuten-widget="slide" data-rakuten-affiliate="4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01" data-rakuten-ts="1757509067733" data-rakuten-size-mobile="300x250" data-rakuten-size-desktop="468x160"></div>
+    </aside>
   </section>
 
 
