@@ -263,12 +263,20 @@
         <!-- 左側: 基本情報 -->
         <div class="rom-card rom-left">
           <div class="rom-frame-wrap">
-            <img class="rom-frame" src="../assets/roms/rom.png" alt="rom frame"/>
+            <picture>
+              <source type="image/webp" srcset="../assets/roms/rom.webp">
+              <img class="rom-frame" src="../assets/roms/rom.png" alt="rom frame"/>
+            </picture>
             <div class="rom-caption">
               <div class="id-badge"><span class="id-prefix">ID</span><span class="id-num">008</span></div>
               <div class="name-wrap"><span class="plate-line"></span><div class="name-plate">ピンクK</div><span class="plate-line"></span></div>
             </div>
-            <div class="rom-screen"><img src="../assets/roms/ピンクK.png" alt="ピンクK 画像"/></div>
+            <div class="rom-screen">
+              <picture>
+                <source type="image/webp" srcset="../assets/roms/ピンクK.webp">
+                <img src="../assets/roms/ピンクK.png" alt="ピンクK 画像"/>
+              </picture>
+            </div>
           </div>
           <div class="rom-effects" style="margin-top:auto">
             <div class="row">
@@ -289,7 +297,10 @@
         <!-- 右側: 部位 + ステータス -->
         <div class="rom-card rom-right">
           <div class="bg4-wrap">
-            <img class="bg4" src="../assets/roms/rom_bg4.png" alt="部位フレーム"/>
+            <picture>
+              <source type="image/webp" srcset="../assets/roms/rom_bg4.webp">
+              <img class="bg4" src="../assets/roms/rom_bg4.png" alt="部位フレーム"/>
+            </picture>
             <div class="slot s1"><img src="../assets/roms/ピンクK01.png" alt="ピンクK01"/></div>
             <div class="slot s2"><img src="../assets/roms/ピンクK02.png" alt="ピンクK02"/></div>
             <div class="slot s3"><img src="../assets/roms/ピンクK03.png" alt="ピンクK03"/></div>
@@ -453,7 +464,7 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
     <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-21T17:32:27</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-22T11:46:30</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 

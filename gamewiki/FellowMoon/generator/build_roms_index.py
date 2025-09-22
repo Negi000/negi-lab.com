@@ -66,14 +66,22 @@ def build_roms_index():
     sets = []
     stats = []
     def choose_rom_image_rel(rom_name: str):
-        # roms/index.html からの相対パスで assets を参照
-        # 優先順: webp -> png -> jpg -> jpeg -> gif
+        """
+        roms/index.html（= SITE_DIR/"roms"）からの相対パスで assets を参照する。
+        優先順: .webp -> .png -> .jpg -> .jpeg -> .gif
+
+        注意: これまで SITE_DIR 基準で "assets/..." を返していたため、
+        roms/index.html から参照するとパスが "roms/assets/..." となり 404 になっていた。
+        正しくは SITE_DIR/"roms" を起点に相対化し、"../assets/..." を返す必要がある。
+        見つからない場合は空文字を返し、テンプレート側の既定プレースホルダと onerror フォールバックに任せる。
+        """
+        roms_dir = SITE_DIR / 'roms'
         for ext in ('.webp', '.png', '.jpg', '.jpeg', '.gif'):
             p = DEST_ROM_IMG / f"{rom_name}{ext}"
             if p.exists():
-                return os.path.relpath(p, SITE_DIR).replace('\\','/')
-        # 見つからない場合は webp を試しつつ、クライアント側 onerror が png に落とす実装に依存
-        return f"../assets/roms/{rom_name}.webp"
+                return os.path.relpath(p, roms_dir).replace('\\','/')
+        # 見つからない場合はテンプレート側の fallback（rom_nan.webp → onerror で png）に任せる
+        return ''
     for rom in roms:
         rid = str(rom.get('ID') or '').strip()
         try:

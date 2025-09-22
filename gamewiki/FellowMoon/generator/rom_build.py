@@ -38,6 +38,21 @@ def copy_rom_images():
             out.append(rel)
     return out
 
+def choose_asset_rel(name_base: str) -> str:
+    """
+    roms ページ（SITE_DIR/'roms'）からの相対パスで、与えられたベース名の
+    画像ファイルを優先順 (.webp, .png, .jpg, .jpeg, .gif) で探し、
+    見つかったものへのパスを返す。見つからない場合は rom_nan.png を返す。
+    """
+    roms_dir = SITE_DIR / 'roms'
+    for ext in ('.webp', '.png', '.jpg', '.jpeg', '.gif'):
+        p = DEST_ROM_IMG / f"{name_base}{ext}"
+        if p.exists():
+            return os.path.relpath(p, roms_dir).replace('\\','/')
+    # 最終フォールバック
+    fallback = DEST_ROM_IMG / 'rom_nan.png'
+    return os.path.relpath(fallback, roms_dir).replace('\\','/')
+
 def build_stat_card(part):
     # part: { 名称, 基本ステータス1, ステータス(初期値)1, ステータス(最大値)1, 基本ステータス2, ... }
     base1 = escape(str(part.get('基本ステータス1') or ''))
@@ -90,10 +105,10 @@ def build_rom_pages():
             if i < len(parts):
                 pn = str(parts[i].get('名称') or '').strip()
                 part_names.append(pn)
-                part_imgs.append(f"../assets/roms/{pn}.webp")
+                part_imgs.append(choose_asset_rel(pn))
             else:
                 part_names.append('')
-                part_imgs.append("../assets/roms/rom_nan.webp")
+                part_imgs.append(choose_asset_rel('rom_nan'))
 
         stat_cards = '\n'.join(build_stat_card(p) for p in parts[:4])
         traits_rows = build_traits_rows(rom.get('固有特性'))
