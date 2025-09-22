@@ -443,6 +443,8 @@
     st.id = 'ad-slot-base-style';
     st.textContent = '.adsbygoogle{contain:content;} .ad-slot{display:block;min-height:250px;}' +
       '.ad-block[data-ad-empty="true"]{position:relative}' +
+      // 空枠は完全に非表示（ユーザー要望）
+      '.ad-block[data-ad-empty="true"], section[data-ad-empty="true"], .dynamic-ad-container[data-ad-empty="true"], aside[aria-label*="広告"][data-ad-empty="true"], aside[aria-label*="スポンサー"][data-ad-empty="true"]{display:none !important;visibility:hidden !important;height:0 !important;margin:0 !important;padding:0 !important;border:0 !important;}' +
       '.ad-skeleton{animation:pulse 1.4s ease-in-out infinite; background:linear-gradient(90deg,#1a2530,#1f2e3a 50%,#1a2530);background-size:200% 100%;border:1px solid #23313c;border-radius:10px;height:110px;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#5d7486;letter-spacing:.5px}' +
       '@keyframes pulse{0%{background-position:0 0}100%{background-position:-200% 0}}' +
       '.rakuten-widget-placeholder{min-height:120px;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#678;background:#142028;border:1px dashed #2c3a46;border-radius:10px;position:relative;overflow:hidden}' +
@@ -494,10 +496,40 @@
     ext.onload = function(){
       placeholder.setAttribute('data-loaded','1');
       placeholder.removeAttribute('data-loading');
+      try {
+        // 親のスポンサー枠を可視状態に（監視ロジックでも検知するが、早期反映）
+        var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
+        if(blk){ blk.setAttribute('data-ad-empty','false'); blk.removeAttribute('hidden'); }
+        var sec = blk && blk.closest('.section');
+        if(sec){ sec.setAttribute('data-ad-empty','false'); sec.removeAttribute('hidden'); }
+      } catch(_){ }
+    };
+    ext.onerror = function(){
+      // 読み込み失敗時は親枠を非表示に
+      try {
+        placeholder.removeAttribute('data-loading');
+        var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
+        if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
+        var sec = blk && blk.closest('.section');
+        if(sec){ sec.setAttribute('data-ad-empty','true'); sec.setAttribute('hidden',''); }
+      } catch(_){ }
     };
     scriptWrap.appendChild(cfg);
     scriptWrap.appendChild(ext);
     placeholder.appendChild(scriptWrap);
+    // 7秒経過しても描画が無い場合は空扱い（安全側）
+    setTimeout(function(){
+      if(placeholder.getAttribute('data-loaded')==='1') return;
+      var hasIframe = !!placeholder.querySelector('iframe');
+      if(!hasIframe){
+        try{
+          var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
+          if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
+          var sec = blk && blk.closest('.section');
+          if(sec){ sec.setAttribute('data-ad-empty','true'); sec.setAttribute('hidden',''); }
+        }catch(_){ }
+      }
+    }, 7000);
   }
 
   function initAds(){
@@ -732,67 +764,73 @@
     // 広告ブロック要素の状態を監視する関数
     function watchAdBlock(block){
       if(!block) return;
+      // 子要素（例: ins.adsbygoogle や .rakuten-widget-placeholder）が直接渡ってきた場合は、親のラッパー要素に昇格させる
+      if (block.matches && (block.matches('ins.adsbygoogle') || block.matches('.rakuten-widget-placeholder'))) {
+        var parentWrap = block.closest('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
+        if (parentWrap) block = parentWrap; else return; // ラッパーが無ければ監視しない
+      }
       
       // 初期状態：広告未表示として設定
       block.setAttribute('data-ad-empty','true');
+      block.setAttribute('hidden','');
       var section = block.closest('.section, .card, .col');
-      if(section) section.setAttribute('data-ad-empty','true');
-      
+      if(section){ section.setAttribute('data-ad-empty','true'); section.setAttribute('hidden',''); }
+
       var ins = block.querySelector('ins.adsbygoogle');
-      if(!ins) return;
+      var rak = block.querySelector('.rakuten-widget-placeholder');
+      if(!ins && !rak) return;
       
       var filled = false;
       var checkTimeout = null;
-      
-      // MutationObserverで広告の動的な変化を監視
-      var obs = new MutationObserver(function(mutations){
+
+      function markFilled(){
         if(filled) return;
-        
-        clearTimeout(checkTimeout);
-        checkTimeout = setTimeout(function(){
-          // より厳密な広告表示チェック
-          var hasContent = ins.querySelector('iframe') || 
-                          ins.querySelector('[data-adsbygoogle-status]') ||
-                          ins.offsetHeight > 50 ||
-                          ins.childNodes.length > 0;
-          
-          if(hasContent) {
-            filled = true;
-            block.setAttribute('data-ad-empty','false');
-            if(section) section.setAttribute('data-ad-empty','false');
-            obs.disconnect();
-            if (DEBUG) console.log('[ads-consent-loader] ad filled:', block);
-          }
-        }, 300);
-      });
-      
-      // 広告要素とその子要素の変化を監視
-      obs.observe(ins, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['data-adsbygoogle-status', 'style']
-      });
-      
-      // フォールバック：5秒後にもう一度チェック
-      setTimeout(function(){
-        if(!filled) {
-          var hasContent = ins.querySelector('iframe') || 
-                          ins.querySelector('[data-adsbygoogle-status]') ||
-                          ins.offsetHeight > 50;
-          if(hasContent) {
-            filled = true;
-            block.setAttribute('data-ad-empty','false');
-            if(section) section.setAttribute('data-ad-empty','false');
-            obs.disconnect();
-          }
-        }
-      }, 5000);
+        filled = true;
+        block.setAttribute('data-ad-empty','false');
+        block.removeAttribute('hidden');
+        if(section){ section.setAttribute('data-ad-empty','false'); section.removeAttribute('hidden'); }
+        if (DEBUG) console.log('[ads-consent-loader] ad filled:', block);
+      }
+
+      // AdSense: MutationObserver で検知
+      if(ins){
+        var obsAds = new MutationObserver(function(){
+          if(filled) return;
+          clearTimeout(checkTimeout);
+          checkTimeout = setTimeout(function(){
+            var hasContent = ins.querySelector('iframe') ||
+                             ins.querySelector('[data-adsbygoogle-status]') ||
+                             ins.offsetHeight > 50 ||
+                             ins.childNodes.length > 0;
+            if(hasContent) markFilled();
+          }, 300);
+        });
+        obsAds.observe(ins, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-adsbygoogle-status','style'] });
+        // 5秒フォールバック
+        setTimeout(function(){ if(!filled){ var hc = ins.querySelector('iframe') || ins.querySelector('[data-adsbygoogle-status]') || ins.offsetHeight > 50; if(hc) markFilled(); } }, 5000);
+      }
+
+      // Rakuten: data-loaded or iframe出現で検知
+      if(rak){
+        var obsRak = new MutationObserver(function(){
+          if(filled) return;
+          clearTimeout(checkTimeout);
+          checkTimeout = setTimeout(function(){
+            var loaded = rak.getAttribute('data-loaded') === '1';
+            var hasIframe = !!rak.querySelector('iframe');
+            if(loaded || hasIframe) markFilled();
+          }, 300);
+        });
+        obsRak.observe(rak, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-loaded','style'] });
+        // 7秒フォールバック
+        setTimeout(function(){ if(!filled){ var loaded = rak.getAttribute('data-loaded')==='1'; var hasIframe = !!rak.querySelector('iframe'); if(loaded || hasIframe) markFilled(); } }, 7000);
+      }
     }
     
     // 全ての広告ブロックを監視対象に追加
     function monitorAllAdBlocks(){
-      document.querySelectorAll('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]').forEach(watchAdBlock);
+      // ラッパー要素のみに限定（子の ins.ad-pc/ad-sp などは除外）
+      document.querySelectorAll('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]').forEach(watchAdBlock);
     }
     
     // 初期監視設定
@@ -803,11 +841,12 @@
       mutations.forEach(function(mutation){
         mutation.addedNodes.forEach(function(node){
           if(node.nodeType === 1) { // Element node
-            if(node.matches && node.matches('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]')) {
+            // 監視対象はラッパー要素のみに限定
+            if(node.matches && node.matches('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]')) {
               watchAdBlock(node);
             }
             // 子要素もチェック
-            var adBlocks = node.querySelectorAll && node.querySelectorAll('.ad-block, .dynamic-ad-container, [class*="ad-"], aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
+            var adBlocks = node.querySelectorAll && node.querySelectorAll('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
             if(adBlocks) adBlocks.forEach(watchAdBlock);
           }
         });
