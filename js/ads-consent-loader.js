@@ -583,6 +583,24 @@
             if (ads.length || (node.classList && (node.classList.contains('google-auto-placed') || node.tagName === 'INS'))) {
               const adElement = ads.length ? ads[0] : node;
               
+              // 明示ホワイトリスト: アンカー/サイドレール系の自動広告は許可
+              try {
+                const isAutoAd = adElement.classList && adElement.classList.contains('google-auto-placed');
+                if (isAutoAd) {
+                  const cs = window.getComputedStyle(adElement);
+                  const posFixed = cs && cs.position === 'fixed';
+                  const right = cs && cs.right && cs.right !== 'auto' ? parseInt(cs.right, 10) : 9999;
+                  const left = cs && cs.left && cs.left !== 'auto' ? parseInt(cs.left, 10) : 9999;
+                  const nearEdge = posFixed && (right <= 48 || left <= 48);
+                  const reasonableSiderail = posFixed && nearEdge && (adElement.offsetHeight > 80) && (adElement.offsetWidth <= 400);
+                  const anchorStatus = adElement.getAttribute && adElement.getAttribute('data-anchor-status');
+                  if (reasonableSiderail || (anchorStatus && anchorStatus !== 'none')) {
+                    if (DEBUG) console.log('[ads-consent-loader] whitelist anchored/siderail auto ad');
+                    return; // 一切の制限を適用しない
+                  }
+                }
+              } catch(_) { /* no-op */ }
+              
               // 設置型広告（data-ad-slot属性付き）は制限対象外
               if (adElement.hasAttribute && adElement.hasAttribute('data-ad-slot')) {
                 if (DEBUG) console.log('[ads-consent-loader] 設置型広告を検出、制限をスキップ');
@@ -656,6 +674,23 @@
     setTimeout(() => {
       const existingAds = document.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed');
       existingAds.forEach(adElement => {
+        // 明示ホワイトリスト: アンカー/サイドレールの自動広告は常に許可
+        try {
+          const isAutoAd = adElement.classList && adElement.classList.contains('google-auto-placed');
+          if (isAutoAd) {
+            const cs = window.getComputedStyle(adElement);
+            const posFixed = cs && cs.position === 'fixed';
+            const right = cs && cs.right && cs.right !== 'auto' ? parseInt(cs.right, 10) : 9999;
+            const left = cs && cs.left && cs.left !== 'auto' ? parseInt(cs.left, 10) : 9999;
+            const nearEdge = posFixed && (right <= 48 || left <= 48);
+            const reasonableSiderail = posFixed && nearEdge && (adElement.offsetHeight > 80) && (adElement.offsetWidth <= 400);
+            const anchorStatus = adElement.getAttribute && adElement.getAttribute('data-anchor-status');
+            if (reasonableSiderail || (anchorStatus && anchorStatus !== 'none')) {
+              return; // この広告には一切の制限を適用しない
+            }
+          }
+        } catch(_) { /* no-op */ }
+
         // 設置型広告（data-ad-slot属性付き）は制限対象外
         if (adElement.hasAttribute && adElement.hasAttribute('data-ad-slot')) {
           if (DEBUG) console.log('[ads-consent-loader] 既存の設置型広告を検出、制限をスキップ');
