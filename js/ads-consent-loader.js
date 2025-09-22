@@ -443,8 +443,8 @@
     st.id = 'ad-slot-base-style';
     st.textContent = '.adsbygoogle{contain:content;} .ad-slot{display:block;min-height:250px;}' +
       '.ad-block[data-ad-empty="true"]{position:relative}' +
-      // 空枠は完全に非表示（ユーザー要望）
-      '.ad-block[data-ad-empty="true"], section[data-ad-empty="true"], .dynamic-ad-container[data-ad-empty="true"], aside[aria-label*="広告"][data-ad-empty="true"], aside[aria-label*="スポンサー"][data-ad-empty="true"]{display:none !important;visibility:hidden !important;height:0 !important;margin:0 !important;padding:0 !important;border:0 !important;}' +
+      // 空枠は完全に非表示（ユーザー要望）: ラッパー要素のみに限定
+      '.ad-block[data-ad-empty="true"], .dynamic-ad-container[data-ad-empty="true"], aside[aria-label*="広告"][data-ad-empty="true"], aside[aria-label*="スポンサー"][data-ad-empty="true"]{display:none !important;visibility:hidden !important;height:0 !important;margin:0 !important;padding:0 !important;border:0 !important;}' +
       '.ad-skeleton{animation:pulse 1.4s ease-in-out infinite; background:linear-gradient(90deg,#1a2530,#1f2e3a 50%,#1a2530);background-size:200% 100%;border:1px solid #23313c;border-radius:10px;height:110px;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#5d7486;letter-spacing:.5px}' +
       '@keyframes pulse{0%{background-position:0 0}100%{background-position:-200% 0}}' +
       '.rakuten-widget-placeholder{min-height:120px;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#678;background:#142028;border:1px dashed #2c3a46;border-radius:10px;position:relative;overflow:hidden}' +
@@ -500,8 +500,6 @@
         // 親のスポンサー枠を可視状態に（監視ロジックでも検知するが、早期反映）
         var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
         if(blk){ blk.setAttribute('data-ad-empty','false'); blk.removeAttribute('hidden'); }
-        var sec = blk && blk.closest('.section');
-        if(sec){ sec.setAttribute('data-ad-empty','false'); sec.removeAttribute('hidden'); }
       } catch(_){ }
     };
     ext.onerror = function(){
@@ -510,8 +508,6 @@
         placeholder.removeAttribute('data-loading');
         var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
         if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
-        var sec = blk && blk.closest('.section');
-        if(sec){ sec.setAttribute('data-ad-empty','true'); sec.setAttribute('hidden',''); }
       } catch(_){ }
     };
     scriptWrap.appendChild(cfg);
@@ -525,8 +521,6 @@
         try{
           var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
           if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
-          var sec = blk && blk.closest('.section');
-          if(sec){ sec.setAttribute('data-ad-empty','true'); sec.setAttribute('hidden',''); }
         }catch(_){ }
       }
     }, 7000);
@@ -773,8 +767,7 @@
       // 初期状態：広告未表示として設定
       block.setAttribute('data-ad-empty','true');
       block.setAttribute('hidden','');
-      var section = block.closest('.section, .card, .col');
-      if(section){ section.setAttribute('data-ad-empty','true'); section.setAttribute('hidden',''); }
+      // 親セクションは隠さない（コンテンツ全体が消えるのを防止）
 
       var ins = block.querySelector('ins.adsbygoogle');
       var rak = block.querySelector('.rakuten-widget-placeholder');
@@ -788,7 +781,6 @@
         filled = true;
         block.setAttribute('data-ad-empty','false');
         block.removeAttribute('hidden');
-        if(section){ section.setAttribute('data-ad-empty','false'); section.removeAttribute('hidden'); }
         if (DEBUG) console.log('[ads-consent-loader] ad filled:', block);
       }
 
