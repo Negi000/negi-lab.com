@@ -316,7 +316,7 @@
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
   <div class="text-xs text-gray-400 mb-2">新月同行 Wiki - Data oriented fan project (Unofficial)</div>
-    <div id="build-meta" class="text-xs">Build: 2025-09-22T11:46:25</div>
+    <div id="build-meta" class="text-xs">Build: 2025-09-22T11:54:47</div>
     <div class="mt-2">&copy; 2025 negi-lab.com</div>
   </footer>
 
@@ -557,11 +557,12 @@
       function tile(src){
         var d=document.createElement('div'); d.className='traits-tile';
         var img=document.createElement('img');
-        var base = String(src||'');
-        // データは .png 名で管理しているため、まず webp を試し失敗時に png へ。
-        var webp = base.replace(/\.png$/i, '.webp');
-        var png = base;
-        img.alt = base.replace(/\.(png|webp)$/i,'');
+        // 入力が .png or .webp いずれでも、まず webp を試し、失敗したら png に確実に落とす
+        var raw = String(src||'').trim();
+        var name = raw.replace(/\.(png|webp)$/i, ''); // 拡張子を剥がす
+        var webp = name + '.webp';
+        var png  = name + '.png';
+        img.alt = name;
         img.src = asset(webp);
         img.onerror = function(){ this.onerror=null; this.src = asset(png); };
         d.appendChild(img);
