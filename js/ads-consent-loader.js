@@ -507,7 +507,7 @@
       try {
         placeholder.removeAttribute('data-loading');
         var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
-        if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
+  if(blk){ blk.setAttribute('data-ad-empty','true'); }
       } catch(_){ }
     };
     scriptWrap.appendChild(cfg);
@@ -520,7 +520,7 @@
       if(!hasIframe){
         try{
           var blk = placeholder.closest('.ad-block, aside[aria-label*="楽天"], aside[aria-label*="スポンサー"]');
-          if(blk){ blk.setAttribute('data-ad-empty','true'); blk.setAttribute('hidden',''); }
+          if(blk){ blk.setAttribute('data-ad-empty','true'); }
         }catch(_){ }
       }
     }, 7000);
@@ -764,10 +764,8 @@
         if (parentWrap) block = parentWrap; else return; // ラッパーが無ければ監視しない
       }
       
-      // 初期状態：広告未表示として設定
-      block.setAttribute('data-ad-empty','true');
-      block.setAttribute('hidden','');
-      // 親セクションは隠さない（コンテンツ全体が消えるのを防止）
+      // 初期状態では非表示フラグを付けない（広告読み込み前に枠が消えるのを防止）
+      // 実際に「空」と判定された場合のみ data-ad-empty="true" を付与する
 
       var ins = block.querySelector('ins.adsbygoogle');
       var rak = block.querySelector('.rakuten-widget-placeholder');
@@ -780,7 +778,6 @@
         if(filled) return;
         filled = true;
         block.setAttribute('data-ad-empty','false');
-        block.removeAttribute('hidden');
         if (DEBUG) console.log('[ads-consent-loader] ad filled:', block);
       }
 
@@ -799,7 +796,7 @@
         });
         obsAds.observe(ins, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-adsbygoogle-status','style'] });
         // 5秒フォールバック
-        setTimeout(function(){ if(!filled){ var hc = ins.querySelector('iframe') || ins.querySelector('[data-adsbygoogle-status]') || ins.offsetHeight > 50; if(hc) markFilled(); } }, 5000);
+        setTimeout(function(){ if(!filled){ var hc = ins.querySelector('iframe') || ins.querySelector('[data-adsbygoogle-status]') || ins.offsetHeight > 50; if(hc) markFilled(); else { try { block.setAttribute('data-ad-empty','true'); } catch(_){} } } }, 5000);
       }
 
       // Rakuten: data-loaded or iframe出現で検知
@@ -815,7 +812,7 @@
         });
         obsRak.observe(rak, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-loaded','style'] });
         // 7秒フォールバック
-        setTimeout(function(){ if(!filled){ var loaded = rak.getAttribute('data-loaded')==='1'; var hasIframe = !!rak.querySelector('iframe'); if(loaded || hasIframe) markFilled(); } }, 7000);
+        setTimeout(function(){ if(!filled){ var loaded = rak.getAttribute('data-loaded')==='1'; var hasIframe = !!rak.querySelector('iframe'); if(loaded || hasIframe) markFilled(); else { try { block.setAttribute('data-ad-empty','true'); } catch(_){} } } }, 7000);
       }
     }
     
@@ -858,6 +855,12 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
+    // 防御的サニタイズ: 誤って main/section/body に hidden が残っていた場合は削除する
+    try {
+      ['body','main','section'].forEach(function(sel){
+        document.querySelectorAll(sel+'[hidden]').forEach(function(el){ el.removeAttribute('hidden'); });
+      });
+    } catch(_) {}
     // Lightweight heuristic: if there is at least one ad slot, we consider initializing ads when allowed
     var hasAdSlot = !!document.querySelector('ins.adsbygoogle');
 
