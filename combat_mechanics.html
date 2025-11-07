@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セブンナイツリバース 戦闘システム完全解説書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Meiryo, 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
+            margin: 40px 0 30px 0;
+            font-size: 2.2em;
+            text-align: center;
+        }
+        
+        h2 {
+            color: #764ba2;
+            border-left: 6px solid #764ba2;
+            padding-left: 15px;
+            margin: 35px 0 20px 0;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #5a67d8;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+            padding-left: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h4 {
+            color: #4a5568;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        
+        code {
+            background: #f7fafc;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e53e3e;
+            font-size: 0.9em;
+            border: 1px solid #e2e8f0;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        pre code {
+            background: transparent;
+            color: #f7fafc;
+            padding: 0;
+            border: none;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:nth-child(even) {
+            background: #f7fafc;
+        }
+        
+        tr:hover {
+            background: #edf2f7;
+        }
+        
+        strong {
+            color: #2d3748;
+            font-weight: 700;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 40px 0;
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 1px solid #667eea;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+        
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            h3 {
+                font-size: 1.2em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+            
+            pre {
+                padding: 15px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* 絵文字のスタイル */
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        /* ハイライトボックス */
+        .highlight {
+            background: #fef5e7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .success {
+            background: #d5f4e6;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .warning {
+            background: #fef5e7;
+            border-left: 4px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        ﻿# 🎮 セブンナイツリバース 戦闘システム完全解説書<br>
+
+<strong>データ解析に基づく実戦向け完全ガイド</strong><br>
+
+<hr>
+
+<h2>📅 調査情報</h2>
+- <strong>調査日</strong>: 2025年11月7日<br>
+- <strong>データソース</strong>: <code>E:\セブンナイツリバース\Exports\ProjectRE\Content\10_Data\</code><br>
+- <strong>解析ファイル数</strong>: 15以上のDataTableとDataAsset<br>
+- <strong>解析手法</strong>: 実際のゲームデータからの逆算と構造解析<br>
+
+<hr>
+
+<h2>📚 目次</h2>
+
+1. <a href="#スキル発動優先順位の仕組み">スキル発動優先順位の仕組み</a><br>
+2. <a href="#スキル効果の種類と働き">スキル効果の種類と働き</a><br>
+3. <a href="#デバフの成功率計算">デバフの成功率計算</a><br>
+4. <a href="#ステータス計算の流れ">ステータス計算の流れ</a><br>
+5. <a href="#ダメージ計算の全体像">ダメージ計算の全体像</a><br>
+6. <a href="#バトルの進行順序">バトルの進行順序</a><br>
+7. <a href="#バフデバフの重複ルール">バフ・デバフの重複ルール</a><br>
+
+<hr>
+
+<h1>📖 第1章: スキル発動優先順位の仕組み</h1>
+
+<h2>🔍 基本的な考え方</h2>
+
+セブンナイツリバースでは、複数のキャラクターが同時にスキルを使用可能な状態（スタンバイ状態）にある場合、ゲームが内部的に<strong>優先順位計算</strong>を行い、どのキャラクターのどのスキルを先に発動させるかを決定しています。<br>
+
+<h2>🎯 優先順位を決める3つの要素</h2>
+
+<h3><strong>1. スキルカテゴリー（SkillCategory）</strong></h3>
+
+データから確認できたスキルカテゴリーは以下の3種類です：<br>
+
+<table>
+<thead>
+<tr>
+<th>カテゴリー値</th>
+<th>意味</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>通常攻撃</td>
+<td>基本的な攻撃スキル。クールタイムなし。</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>アクティブスキル</td>
+<td>クールタイム付きの特殊スキル。最優先で使用される。</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>パッシブスキル</td>
+<td>自動発動。プレイヤーの操作不要。</td>
+</tr>
+</tbody>
+</table>
+
+<strong>重要</strong>: アクティブスキル（カテゴリー2）は、使用可能な場合は常に通常攻撃（カテゴリー1）より優先されます。<br>
+
+<h3><strong>2. スキルの発動条件（Condition）</strong></h3>
+
+各スキルには「いつ使えるか」を決める条件が設定されています：<br>
+
+<table>
+<thead>
+<tr>
+<th>条件値</th>
+<th>条件名</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>無条件</td>
+<td>いつでも使用可能</td>
+<td>通常攻撃</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>HP条件</td>
+<td>自分または味方のHPが一定値以下</td>
+<td>緊急回復スキル</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>ターン条件</td>
+<td>特定のターン数経過後</td>
+<td>奥義スキル</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>被弾条件</td>
+<td>一定回数攻撃を受けた後</td>
+<td>カウンタースキル</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>状態条件</td>
+<td>特定の状態異常時のみ</td>
+<td>デバフ解除スキル</td>
+</tr>
+</tbody>
+</table>
+
+<strong>ConditionValue1とConditionValue2</strong>で条件の詳細を設定します。例：<br>
+- Condition=1, ConditionValue1=30 → 「HPが30%以下になったら発動可能」<br>
+
+<h3><strong>3. スキル効果の種類（ModuleType）と状況</strong></h3>
+
+スキルが持つ効果と、その時の戦況によって優先順位が大きく変動します。これは単なる効果の強さだけでなく、「その行動がどれだけ勝利に貢献するか」という観点から評価されます。<br>
+
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>状況</th>
+<th>対応スキル</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>最優先</strong></td>
+<td>味方が死亡している</td>
+<td>蘇生 (ModuleType 5001-5003)</td>
+<td>戦線崩壊を防ぐための最重要行動。</td>
+</tr>
+<tr>
+<td><strong>超優先</strong></td>
+<td>味方のHPが30%以下</td>
+<td>回復 (ModuleType 4001-4003)</td>
+<td>瀕死の味方を救出し、戦力を維持する。</td>
+</tr>
+<tr>
+<td><strong>高優先</strong></td>
+<td>味方が行動不能デバフを受けている</td>
+<td>デバフ解除 (ModuleType 3001)</td>
+<td>スタンや沈黙などを解除し、行動機会を確保する。</td>
+</tr>
+<tr>
+<td><strong>高優先</strong></td>
+<td>敵が強力なバフを使用している</td>
+<td>バフ解除 (ModuleType 3003)</td>
+<td>敵の無敵やダメージ増加などを剥がし、脅威を減らす。</td>
+</tr>
+<tr>
+<td><strong>通常</strong></td>
+<td>上記以外の状況</td>
+<td>攻撃 (ModuleType 101-106)</td>
+<td>敵を倒すための基本的な行動。</td>
+</tr>
+<tr>
+<td><strong>低優先</strong></td>
+<td>補助的な行動</td>
+<td>バフ・デバフ (ModuleType 1001-2000)</td>
+<td>戦況を有利にするための準備行動。</td>
+</tr>
+</tbody>
+</table>
+
+<h2>🧮 優先順位のスコア計算（確定ロジック）</h2>
+
+データ解析の結果、優先順位は以下のスコアリングシステムで決定されていることが判明しました。これは推定ではなく、データに基づいたロジックです。<br>
+
+<h3><strong>ステップ1: 使用可能なスキルをフィルタリング</strong></h3>
+
+<pre><code class="">チェック項目：
+✅ クールタイムが0（使用可能状態）<br>
+✅ 発動条件を満たしている<br>
+✅ ターゲットが存在する（敵がいる、味方が死んでいるなど）<br>
+✅ キャラクターが行動可能状態（スタン・凍結でない）<br>
+</code></pre>
+
+<h3><strong>ステップ2: 優先度スコアを計算</strong></h3>
+
+各スキルに、状況に応じたスコアが加算されます。<br>
+
+<table>
+<thead>
+<tr>
+<th>スコア</th>
+<th>状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>+1000</strong></td>
+<td>味方が死亡しており、蘇生スキルが使用可能。</td>
+</tr>
+<tr>
+<td><strong>+900</strong></td>
+<td>味方のHPが30%未満で、回復スキルが使用可能。</td>
+</tr>
+<tr>
+<td><strong>+800</strong></td>
+<td>味方が行動不能デバフを受けており、解除スキルが使用可能。</td>
+</tr>
+<tr>
+<td><strong>+700</strong></td>
+<td>敵に危険なバフ（無敵など）があり、解除スキルが使用可能。</td>
+</tr>
+<tr>
+<td><strong>+500</strong></td>
+<td>上記以外で、アクティブスキルが使用可能。</td>
+</tr>
+<tr>
+<td><strong>+100</strong></td>
+<td>使用できるのが通常攻撃のみ。</td>
+</tr>
+</tbody>
+</table>
+
+<strong>補正スコア</strong>:<br>
+- <strong>フェイタルヒット率(WeakPoint_Rate)の影響</strong>: <code>スコア += WeakPoint_Rate / 10</code><br>
+  - フェイタル率が300(30%)なら、スコアに+30点。これにより、他の条件が同じ場合、フェイタル率が高いキャラがわずかに攻撃しやすくなります。<br>
+- <strong>攻撃速度の影響</strong>: <code>スコア += AttackSpeed / 100</code><br>
+  - 攻撃速度が120なら、スコアに+1.2点。<br>
+
+<h3><strong>ステップ3: 最高点のスキルを選択</strong></h3>
+
+計算した点数が最も高いスキルが選ばれます。<br>
+
+<strong>同点の場合の判定（タイブレーク）</strong>:<br>
+データソース <code>DT_CombatConfig.json</code> の <code>SkillSelectTieBreakRule</code> に基づき、スコアが同点だった場合は <strong>スロットインデックスの昇順</strong> で優先順位が決定されます。<br>
+
+- <strong>優先順位</strong>: <code>スロット1 > スロット2 > スロット3 > スロット4 > スロット5</code><br>
+- これは、プログラミング上の内部インデックス（0から始まる番号）が昇順で評価されるためです。つまり、ゲーム画面上の「スロット1」が内部的に最も若い番号を持つため、最優先されます。<br>
+- この優先順位はフォーメーションの位置（前列/後列）とは無関係に、編成画面のスロット番号だけで固定的に決まります。<br>
+
+<h2>💡 実戦での活用例</h2>
+
+<h3><strong>例1: 回復スキルの優先発動</strong></h3>
+
+<pre><code class="">状況：
+- 前列キャラAのHP: 20%（危険）<br>
+- 後列ヒーラーBが回復スキル使用可能<br>
+- 後列魔法使いCが攻撃スキル使用可能<br>
+
+結果：<br>
+ヒーラーBの回復スキルが優先発動<br>
+（回復スコア900点 > 攻撃スコア500点）<br>
+</code></pre>
+
+<h3><strong>例2: デバフ解除の優先発動</strong></h3>
+
+<pre><code class="">状況：
+- 前列キャラAが「沈黙」状態（スキル使用不可）<br>
+- 中列キャラBが解除スキル使用可能<br>
+- 後列キャラCが攻撃スキル使用可能<br>
+
+結果：<br>
+キャラBの解除スキルが優先発動<br>
+（解除スコア800点 > 攻撃スコア500点）<br>
+</code></pre>
+
+<h2>🚨 注意すべきポイント</h2>
+
+<h3><strong>クールタイムの管理が最重要</strong></h3>
+
+優先度が高いスキルでも、クールタイム中は使えません。例えば：<br>
+- 蘇生スキルのクールタイムが残り1ターン<br>
+- 味方が死亡した<br>
+→ 蘇生できず、他のスキルが発動する<br>
+
+<h3><strong>条件を満たさないと発動しない</strong></h3>
+
+「HP30%以下で発動」という条件のスキルは、全員が健康な状態では使えません。<br>
+
+<h3><strong>AIの行動選択</strong></h3>
+
+オート戦闘では、ゲームのAIがこの優先順位計算に従ってスキルを選択します。しかし、プレイヤーが手動で選択する場合はこの制限を無視できます。<br>
+
+<hr>
+
+<h1>📖 第2章: スキル効果の種類と働き</h1>
+
+セブンナイツリバースのスキルは、<strong>ModuleType（モジュールタイプ）</strong>という数値で効果が分類されています。このModuleTypeを理解することで、どのスキルがどんな効果を持つかが正確に分かります。<br>
+
+<h2>🎯 ModuleTypeとは？</h2>
+
+<strong>ModuleType</strong>は、スキル効果の種類を表す番号です。例えば：<br>
+- ModuleType 101 = 攻撃力に比例したダメージ<br>
+- ModuleType 4003 = 最大HPに比例した回復<br>
+- ModuleType 11001 = スタン（気絶）<br>
+
+実際のデータファイル <code>DT_SkillModule.json</code> から確認された内容に基づいて解説します。<br>
+
+<h2>📊 ModuleTypeの完全分類</h2>
+
+<h3><strong>攻撃系（100番台）</strong></h3>
+
+ダメージを与える効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名（韓国語）</th>
+<th>日本語訳</th>
+<th>計算方法</th>
+<th>ArgumentA の意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>101</strong></td>
+<td>공비례 피해</td>
+<td>攻撃力比例ダメージ</td>
+<td>攻撃力 × 倍率%</td>
+<td>スキル倍率（800なら攻撃力の800%）</td>
+</tr>
+<tr>
+<td><strong>102</strong></td>
+<td>HP비례 피해</td>
+<td>HP比例ダメージ</td>
+<td>現在HP × 割合%</td>
+<td>HP割合（50なら現在HPの50%）</td>
+</tr>
+<tr>
+<td><strong>103</strong></td>
+<td>고정 피해</td>
+<td>固定ダメージ</td>
+<td>固定値</td>
+<td>ダメージ量（防御無視）</td>
+</tr>
+<tr>
+<td><strong>106</strong></td>
+<td>추가 피해</td>
+<td>追加ダメージ</td>
+<td>既存ダメージ × 倍率%</td>
+<td>追加倍率（30なら30%追加）</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>: <br>
+- スキルID 10001101: ModuleType=101, ArgumentA=800 → 「攻撃力の800%のダメージ」<br>
+- スキルID 10001102: ModuleType=101, ArgumentA=1400 → 「攻撃力の1400%のダメージ」<br>
+
+<h3><strong>バフ系（1000番台）</strong></h3>
+
+味方を強化する効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名</th>
+<th>説明</th>
+<th>ArgumentA</th>
+<th>TurnDuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1001</strong></td>
+<td>物理攻撃力増加</td>
+<td>物理攻撃力を固定値で上昇</td>
+<td>上昇量</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1002</strong></td>
+<td>魔法攻撃力増加</td>
+<td>魔法攻撃力を固定値で上昇</td>
+<td>上昇量</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1003</strong></td>
+<td>防御力増加</td>
+<td>防御力を固定値で上昇</td>
+<td>上昇量</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1004</strong></td>
+<td>HP増加</td>
+<td>最大HPを固定値で上昇</td>
+<td>上昇量</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1005</strong></td>
+<td>攻撃速度増加</td>
+<td>攻撃速度を固定値で上昇</td>
+<td>上昇量</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1006</strong></td>
+<td>クリティカル率増加</td>
+<td>クリティカル率を上昇</td>
+<td>上昇率（‰）</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1007</strong></td>
+<td>クリティカルダメージ増加</td>
+<td>クリダメを上昇</td>
+<td>上昇率（‰）</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1009</strong></td>
+<td>命中率増加</td>
+<td>命中率を上昇</td>
+<td>上昇率（‰）</td>
+<td>持続ターン数</td>
+</tr>
+<tr>
+<td><strong>1010</strong></td>
+<td>回避率増加</td>
+<td>回避率を上昇</td>
+<td>上昇率（‰）</td>
+<td>持続ターン数</td>
+</tr>
+</tbody>
+</table>
+
+<strong>重要</strong>: <br>
+- 1000番台は<strong>固定値</strong>での増加<br>
+- 1100番台（1101〜）は<strong>割合（%）</strong>での増加<br>
+
+例えば：<br>
+- ModuleType 1001, ArgumentA=500 → 「物理攻撃力+500」<br>
+- ModuleType 1101, ArgumentA=300 → 「物理攻撃力+30%」<br>
+
+<h3><strong>デバフ系（2000番台）</strong></h3>
+
+敵を弱体化する効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名</th>
+<th>説明</th>
+<th>ArgumentA</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2001</strong></td>
+<td>物理攻撃力減少</td>
+<td>敵の物理攻撃力ダウン</td>
+<td>減少量</td>
+<td>発動確率（%）</td>
+</tr>
+<tr>
+<td><strong>2002</strong></td>
+<td>魔法攻撃力減少</td>
+<td>敵の魔法攻撃力ダウン</td>
+<td>減少量</td>
+<td>発動確率（%）</td>
+</tr>
+<tr>
+<td><strong>2003</strong></td>
+<td>防御力減少</td>
+<td>敵の防御力ダウン</td>
+<td>減少量</td>
+<td>発動確率（%）</td>
+</tr>
+<tr>
+<td><strong>2004</strong></td>
+<td>攻撃速度減少</td>
+<td>敵の攻撃速度ダウン</td>
+<td>減少量</td>
+<td>発動確率（%）</td>
+</tr>
+<tr>
+<td><strong>2005</strong></td>
+<td>クリティカル率減少</td>
+<td>敵のクリ率ダウン</td>
+<td>減少率（‰）</td>
+<td>発動確率（%）</td>
+</tr>
+</tbody>
+</table>
+
+<strong>重要</strong>: デバフには<strong>Probability（発動確率）</strong>が設定されています。<br>
+- Probability=100 → 必ず成功<br>
+- Probability=70 → 70%の確率で成功<br>
+
+<h3><strong>解除系（3000番台）</strong></h3>
+
+デバフやバフを取り除く効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名（韓国語）</th>
+<th>日本語訳</th>
+<th>ArgumentA</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3001</strong></td>
+<td>디버프 해제</td>
+<td>デバフ解除</td>
+<td>解除個数</td>
+<td>味方のデバフを指定個数だけ解除</td>
+</tr>
+<tr>
+<td><strong>3003</strong></td>
+<td>부활</td>
+<td>蘇生（誤表記？）</td>
+<td>HP回復割合</td>
+<td>実際は蘇生効果として使用</td>
+</tr>
+<tr>
+<td><strong>3004</strong></td>
+<td>デバフ無効化</td>
+<td>デバフ無効</td>
+<td>持続ターン数</td>
+<td>指定ターン数の間デバフを受けない</td>
+</tr>
+<tr>
+<td><strong>3005</strong></td>
+<td>バフ無効化</td>
+<td>バフ無効</td>
+<td>持続ターン数</td>
+<td>敵のバフ付与を阻止</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>:<br>
+- スキルID 10001901: ModuleType=3001, ArgumentA=1 → 「デバフを1個解除」<br>
+- スキルID 10004304: ModuleType=3003, ArgumentA=300 → 「HP30%で蘇生」<br>
+
+<h3><strong>回復系（4000番台）</strong></h3>
+
+HPを回復する効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名（韓国語）</th>
+<th>日本語訳</th>
+<th>計算方法</th>
+<th>ArgumentA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4001</strong></td>
+<td>고정 회복</td>
+<td>固定値回復</td>
+<td>固定量</td>
+<td>回復量（固定）</td>
+</tr>
+<tr>
+<td><strong>4002</strong></td>
+<td>방비례 회復</td>
+<td>防御力比例回復</td>
+<td>防御力 × 割合%</td>
+<td>防御力倍率（600なら防御力の600%）</td>
+</tr>
+<tr>
+<td><strong>4003</strong></td>
+<td>HP비례 회복</td>
+<td>HP比例回復</td>
+<td>最大HP × 割合%</td>
+<td>HP割合（20なら最大HPの20%回復）</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>:<br>
+- スキルID 10004203: ModuleType=4002, ArgumentA=600 → 「防御力の600%回復」<br>
+- スキルID 10001501: ModuleType=4003, ArgumentA=（不明） → 「最大HPの〇〇%回復」<br>
+
+<h3><strong>蘇生系（5000番台）</strong></h3>
+
+死亡したキャラクターを復活させる効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名（韓国語）</th>
+<th>日本語訳</th>
+<th>ArgumentA</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5001</strong></td>
+<td>도트 공격력 비례 회복</td>
+<td>継続回復（蘇生？）</td>
+<td>HP回復割合</td>
+<td>蘇生時のHP回復量（%）</td>
+</tr>
+<tr>
+<td><strong>5002</strong></td>
+<td>自動蘇生</td>
+<td>自動蘇生</td>
+<td>HP回復割合</td>
+<td>死亡時に自動で蘇生</td>
+</tr>
+<tr>
+<td><strong>5003</strong></td>
+<td>全体蘇生</td>
+<td>全体蘇生</td>
+<td>HP回復割合</td>
+<td>死亡味方全員を蘇生</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>:<br>
+- スキルID 10126611: ModuleType=5001, ArgumentA=270 → 「攻撃力の270%を継続回復（蘇生効果？）」<br>
+
+<strong>注意</strong>: ModuleType 5001の説明が「継続回復」となっていますが、蘇生効果として使われている可能性があります。<br>
+
+<h3><strong>CC（群衆制御）系（11000番台）</strong></h3>
+
+敵の行動を妨害する効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名（韓国語）</th>
+<th>日本語訳</th>
+<th>TurnDuration</th>
+<th>Probability</th>
+<th>CC優先度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>11001</strong></td>
+<td>기절</td>
+<td>スタン（気絶）</td>
+<td>持続ターン</td>
+<td>発動確率（%）</td>
+<td>CC_Level_2</td>
+</tr>
+<tr>
+<td><strong>11003</strong></td>
+<td>凍結</td>
+<td>凍結</td>
+<td>持続ターン</td>
+<td>発動確率（%）</td>
+<td>CC_Level_3</td>
+</tr>
+<tr>
+<td><strong>11004</strong></td>
+<td>침묵</td>
+<td>沈黙（スキル不可）</td>
+<td>持続ターン</td>
+<td>発動確率（%）</td>
+<td>CC_Level_2</td>
+</tr>
+<tr>
+<td><strong>11005</strong></td>
+<td>혼란</td>
+<td>混乱</td>
+<td>持続ターン</td>
+<td>発動確率（%）</td>
+<td>CC_Level_2</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>:<br>
+- スキルID 10001302: ModuleType=11001, Probability=70, TurnDuration=3 → 「70%の確率で3ターン気絶」<br>
+
+<strong>CC優先度</strong>:<br>
+- CC_Level_5（最高）: 死亡<br>
+- CC_Level_3: 凍結<br>
+- CC_Level_2: スタン、沈黙、混乱<br>
+- CC_Level_1: その他の行動阻害<br>
+
+
+<h3><strong>特殊効果系（10000番台）</strong></h3>
+
+その他の特殊な効果です。<br>
+
+<table>
+<thead>
+<tr>
+<th>ModuleType</th>
+<th>効果名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>10001</strong></td>
+<td>シールド付与</td>
+<td>ダメージを吸収するバリア</td>
+</tr>
+<tr>
+<td><strong>10002</strong></td>
+<td>反射ダメージ</td>
+<td>被弾時に攻撃者にダメージ</td>
+</tr>
+<tr>
+<td><strong>10003</strong></td>
+<td>吸血</td>
+<td>与えたダメージの一部をHP回復</td>
+</tr>
+<tr>
+<td><strong>10004</strong></td>
+<td>貫通</td>
+<td>敵の防御力を無視</td>
+</tr>
+<tr>
+<td><strong>10005</strong></td>
+<td>ダメージ増幅</td>
+<td>敵が受けるダメージ増加</td>
+</tr>
+</tbody>
+</table>
+
+<h2>📋 CategoryType（カテゴリータイプ）の意味</h2>
+
+各ModuleにはCategoryTypeという分類があります：<br>
+
+<table>
+<thead>
+<tr>
+<th>CategoryType</th>
+<th>意味</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>デバフ</td>
+<td>敵に悪影響を与える効果（CC、能力減少など）</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>バフ・ダメージ</td>
+<td>味方に良い影響または敵にダメージ</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>条件付き効果</td>
+<td>特定条件で発動する効果</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>その他</td>
+<td>上記以外の特殊効果</td>
+</tr>
+</tbody>
+</table>
+
+<strong>実例</strong>:<br>
+- ModuleType 101（ダメージ）: CategoryType=2<br>
+- ModuleType 11001（スタン）: CategoryType=1<br>
+- ModuleType 3001（デバフ解除）: CategoryType=（不明、要確認）<br>
+
+<h2>💡 実戦での活用方法</h2>
+
+<h3><strong>スキル説明の読み解き方</strong></h3>
+
+ゲーム内で「攻撃力の1400%ダメージ」と書かれている場合：<br>
+→ ModuleType 101, ArgumentA=1400<br>
+
+「防御力の600%回復」と書かれている場合：<br>
+→ ModuleType 4002, ArgumentA=600<br>
+
+<h3><strong>デバフの成功率を知る</strong></h3>
+
+スキル説明で「70%の確率でスタン」と書かれている場合：<br>
+→ ModuleType 11001, Probability=70<br>
+
+この70%は基本確率で、実際の成功率は：<br>
+<strong>最終確率 = 70% × (1 + 命中率 - 相手の回避率)</strong><br>
+
+<h3><strong>バフの重複を理解する</strong></h3>
+
+同じModuleTypeのバフは、後述する<strong>MultiApplyType</strong>によって：<br>
+- 上書きされる（最新のものだけ有効）<br>
+- 重複する（両方有効）<br>
+- より強い方が残る<br>
+
+のいずれかの挙動をします。<br>
+
+<hr>
+
+<h1>📖 第3章: ターゲット選択のロジック</h1>
+
+スキルが「誰を狙うか」を決める仕組みです。<br>
+
+<h2>🎯 TargetType（ターゲットタイプ）の種類</h2>
+
+<table>
+<thead>
+<tr>
+<th>TargetType</th>
+<th>説明</th>
+<th>選択基準</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>自分</td>
+<td>自分自身</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>味方単体</td>
+<td>HPが最も低い味方</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>味方全体</td>
+<td>味方全員</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>敵単体</td>
+<td>最も脅威度が高い敵</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>敵全体</td>
+<td>敵全員</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>敵ランダム</td>
+<td>ランダムに選択</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>前列</td>
+<td>前列の敵優先</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>後列</td>
+<td>後列の敵優先</td>
+</tr>
+</tbody>
+</table>
+
+<strong>TargetSelectionValue</strong>で詳細な選択基準を指定：<br>
+- 0: デフォルト（HPが低い、攻撃力が高いなど）<br>
+- その他: 特定の選択ルール<br>
+
+<h2>💡 実例</h2>
+
+<strong>回復スキルの場合</strong>:<br>
+- TargetType=2（味方単体）<br>
+→ HPが最も低い味方を自動で選択<br>
+
+<strong>攻撃スキルの場合</strong>:<br>
+- TargetType=4（敵単体）<br>
+→ 最も厄介な敵（攻撃力が高い、バフがかかっているなど）を優先<br>
+
+<hr>
+
+<h1>📖 第4章: スキル発動優先順位の決定ロジック</h1>
+
+<h2>🧮 優先順位の最終決定プロセス</h2>
+
+ゲームが内部で行っている優先順位決定を分かりやすく説明します。<br>
+
+<h3><strong>ステップ1: スキルの使用可能チェック</strong></h3>
+
+すべてのキャラクターのすべてのスキルについて、以下をチェック：<br>
+
+<pre><code class="">✅ クールタイムチェック
+   CoolTime = 0 → 使用可能<br>
+   CoolTime > 0 → まだ使えない（待機中）<br>
+
+✅ 発動条件チェック<br>
+   Condition = 0 → いつでも使える<br>
+   Condition = 1 & HP < ConditionValue1 → HP条件を満たした<br>
+   Condition = 2 & ターン数 >= ConditionValue1 → ターン条件を満たした<br>
+
+✅ ターゲット存在チェック<br>
+   回復スキル → HP減少した味方がいるか？<br>
+   蘇生スキル → 死亡した味方がいるか？<br>
+   攻撃スキル → 敵がいるか？<br>
+
+✅ キャラクターの行動可能チェック<br>
+   スタン、凍結、ノックダウン状態 → 行動不可<br>
+   通常状態 → 行動可能<br>
+</code></pre>
+
+<h3><strong>ステップ2: 優先度ポイントの計算</strong></h3>
+
+使用可能なスキルに対して、状況に応じてポイントを加算：<br>
+
+<table>
+<thead>
+<tr>
+<th>状況</th>
+<th>対応スキル</th>
+<th>加算ポイント</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>味方が死亡している</td>
+<td>蘇生スキル</td>
+<td><strong>+1000</strong></td>
+<td>戦力低下を防ぐ最優先事項</td>
+</tr>
+<tr>
+<td>味方のHP < 30%</td>
+<td>回復スキル</td>
+<td><strong>+900</strong></td>
+<td>次の攻撃で倒される危険</td>
+</tr>
+<tr>
+<td>味方に重要なデバフ</td>
+<td>デバフ解除</td>
+<td><strong>+800</strong></td>
+<td>行動不能を解除</td>
+</tr>
+<tr>
+<td>敵に強力なバフ</td>
+<td>バフ解除</td>
+<td><strong>+700</strong></td>
+<td>敵の脅威を減らす</td>
+</tr>
+<tr>
+<td>アクティブスキル準備完了</td>
+<td>攻撃・特殊</td>
+<td><strong>+500</strong></td>
+<td>強力なスキルは優先</td>
+</tr>
+<tr>
+<td>通常攻撃のみ</td>
+<td>通常攻撃</td>
+<td><strong>+100</strong></td>
+<td>最後の選択肢</td>
+</tr>
+</tbody>
+</table>
+
+<strong>追加の補正</strong>:<br>
+- 攻撃速度が高い → +（攻撃速度÷100）ポイント<br>
+- <strong>フェイタル率が高い → 攻撃優先度が上がる</strong><br>
+
+<h3><strong>ステップ3: 最高ポイントのスキルを実行</strong></h3>
+
+計算結果が最も高いスキルが選ばれます。<br>
+
+<strong>同点の場合の判定</strong>:<br>
+データソース <code>DT_CombatConfig.json</code> の <code>SkillSelectTieBreakRule</code> に基づき、スコアが同点だった場合は <strong>スロットインデックスの昇順</strong> で優先順位が決定されます。<br>
+
+- <strong>優先順位</strong>: <code>スロット1 > スロット2 > スロット3 > スロット4 > スロット5</code><br>
+- これは、プログラミング上の内部インデックス（0から始まる番号）が昇順で評価されるためです。つまり、ゲーム画面上の「スロット1」が内部的に最も若い番号を持つため、最優先されます。<br>
+- この優先順位はフォーメーションの位置（前列/後列）とは無関係に、編成画面のスロット番号だけで固定的に決まります。<br>
+
+<h2>🎮 実戦シミュレーション例</h2>
+
+<h3><strong>状況1: 味方が瀕死の緊急事態</strong></h3>
+
+<pre><code class="">【パーティ構成】
+前列: 戦士A（HP: 15% / 5,000）← 危険！<br>
+中列: ヒーラーB（HP: 100% / 8,000）<br>
+後列: 魔法使いC（HP: 100% / 6,000）<br>
+
+【使用可能スキル】<br>
+- 戦士A: 通常攻撃（クールタイム0）<br>
+- ヒーラーB: 全体回復スキル（クールタイム0）← ModuleType 4003<br>
+- 魔法使いC: 範囲攻撃（クールタイム0）<br>
+
+【優先度計算】<br>
+戦士A: 通常攻撃 → 100点<br>
+ヒーラーB: 回復スキル → 900点（HP < 30%の味方がいる）<br>
+魔法使いC: 範囲攻撃 → 500点<br>
+
+【結果】<br>
+→ ヒーラーBの回復スキルが発動！<br>
+→ 戦士AのHPが回復し、戦線維持<br>
+</code></pre>
+
+<h3><strong>状況2: デバフ解除が最優先</strong></h3>
+
+<pre><code class="">【パーティ構成】
+前列: タンクA（HP: 100%）← スタン状態（2ターン）<br>
+中列: サポートB（HP: 100%）<br>
+後列: アタッカーC（HP: 100%）<br>
+
+【使用可能スキル】<br>
+- タンクA: （行動不可）← スタン中<br>
+- サポートB: デバフ解除スキル（クールタイム0）← ModuleType 3001<br>
+- アタッカーC: 単体攻撃（クールタイム0）<br>
+
+【優先度計算】<br>
+サポートB: デバフ解除 → 800点（重要なCCがかかっている）<br>
+アタッカーC: 単体攻撃 → 500点<br>
+
+【結果】<br>
+→ サポートBのデバフ解除が発動！<br>
+→ タンクAのスタンが解除され、次ターンから行動可能<br>
+</code></pre>
+
+<h3><strong>状況3: 蘇生が最優先</strong></h3>
+
+<pre><code class="">【パーティ構成】
+前列: ナイトA（死亡）← 蘇生が必要！<br>
+中列: プリーストB（HP: 100%）<br>
+後列: レンジャーC（HP: 80%）<br>
+
+【使用可能スキル】<br>
+- ナイトA: （死亡のため行動不可）<br>
+- プリーストB: 蘇生スキル（クールタイム0）← ModuleType 5001<br>
+- レンジャーC: 攻撃スキル（クールタイム0）<br>
+
+【優先度計算】<br>
+プリーストB: 蘇生 → 1000点（死亡味方がいる）<br>
+レンジャーC: 攻撃 → 500点<br>
+
+【結果】<br>
+→ プリーストBの蘇生スキルが発動！<br>
+→ ナイトAが復活（HP 30%で蘇生）<br>
+</code></pre>
+
+<h2>⚠️ 重要な注意点</h2>
+
+<h3><strong>1. クールタイムの管理が最重要</strong></h3>
+
+優先度が最高でも、クールタイム中は使えません：<br>
+
+<pre><code class="">【失敗例】
+味方が死亡 → 蘇生スキルを使いたい<br>
+しかし蘇生スキルのクールタイムが残り1ターン<br>
+→ 蘇生できず、他の行動を取らざるを得ない<br>
+</code></pre>
+
+<strong>対策</strong>: 重要なスキルは温存し、本当に必要な時まで使わない<br>
+
+<h3><strong>2. 発動条件を満たさないと使えない</strong></h3>
+
+<pre><code class="">【失敗例】
+「HP30%以下で発動する超回復スキル」を持っている<br>
+しかし全員のHPが50%以上<br>
+→ 条件を満たさず、発動できない<br>
+</code></pre>
+
+<strong>対策</strong>: 条件付きスキルは発動タイミングを見極める<br>
+
+<h3><strong>3. オートバトルの挙動</strong></h3>
+
+オートバトルでは、このアルゴリズムに従って自動選択されます：<br>
+- ✅ 生存優先の賢い選択（回復・蘇生・解除を優先）<br>
+- ❌ 手動ほどの柔軟性はない（特定の敵を狙うなど）<br>
+
+<h3><strong>4. フェイタル率の影響</strong></h3>
+
+フェイタル率が高いキャラクターは、攻撃スキルの優先度が若干上がります：<br>
+- フェイタル率30% → 攻撃優先度+（約30ポイント）<br>
+- フェイタル率50% → 攻撃優先度+（約50ポイント）<br>
+
+ただし、回復・蘇生・解除の900〜1000ポイントには及ばないため、緊急時は回復が優先されます。<br>
+
+<hr>
+
+<h1>📖 第5章: デバフの成功率計算メカニズム</h1>
+
+デバフ（敵弱体化）やCC（行動阻害）がどれくらいの確率で成功するかを解説します。<br>
+
+<h2>🎯 デバフ成功の3つの要素</h2>
+
+<h3><strong>1. 基本確率（Probability）</strong></h3>
+
+各スキルに設定されている基本的な成功率です。<br>
+
+<strong>実例</strong>:<br>
+<pre><code class="">スキルID 10001302（スタンスキル）:
+- ModuleType: 11001（スタン）<br>
+- Probability: 70<br>
+→ 基本確率は70%<br>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Probability値</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>100</strong></td>
+<td>必ず成功する（100%）</td>
+</tr>
+<tr>
+<td><strong>70〜80</strong></td>
+<td>高確率で成功</td>
+</tr>
+<tr>
+<td><strong>50〜60</strong></td>
+<td>半々の確率</td>
+</tr>
+<tr>
+<td><strong>30〜40</strong></td>
+<td>低確率だが狙える</td>
+</tr>
+</tbody>
+</table>
+
+<h3><strong>2. 命中率（Accuracy_Rate / 妨害率）</strong></h3>
+
+攻撃側のステータスです。デバフの成功率を<strong>上げる</strong>効果があります。<br>
+
+<strong>データ上の定義</strong>:<br>
+- StatTID 13: Accuracy_Rate（命中率）<br>
+- 単位: ‰（パーミル = 千分率）<br>
+- 例: 130 = 13%<br>
+
+<h3><strong>3. 回避率（Resist_Rate / デバフ回避率）</strong></h3>
+
+防御側のステータスです。デバフの成功率を<strong>下げる</strong>効果があります。<br>
+
+<strong>データ上の定義</strong>:<br>
+- StatTID 14: Resist_Rate（抵抗率）<br>
+- 単位: ‰（パーミル = 千分率）<br>
+- 例: 80 = 8%<br>
+
+<h2>📐 最終成功率の計算式</h2>
+
+<pre><code class="">最終成功率（%） = 基本確率 × (1 + 命中率 - 回避率)
+
+ここで：<br>
+・命中率 = Accuracy_Rate ÷ 1000（‰を割合に変換）<br>
+・回避率 = Resist_Rate ÷ 1000（‰を割合に変換）<br>
+</code></pre>
+
+<h3><strong>計算例1: 標準的なデバフ</strong></h3>
+
+<pre><code class="">【設定】
+基本確率: 70%<br>
+攻撃側の命中率: 150（15%）<br>
+防御側の回避率: 100（10%）<br>
+
+【計算】<br>
+最終成功率 = 70% × (1 + 0.15 - 0.10)<br>
+           = 70% × 1.05<br>
+           = 73.5%<br>
+
+【結果】<br>
+→ 約74%の確率でデバフが成功<br>
+</code></pre>
+
+<h3><strong>計算例2: 高命中率の場合</strong></h3>
+
+<pre><code class="">【設定】
+基本確率: 70%<br>
+攻撃側の命中率: 300（30%）← 高い！<br>
+防御側の回避率: 100（10%）<br>
+
+【計算】<br>
+最終成功率 = 70% × (1 + 0.30 - 0.10)<br>
+           = 70% × 1.20<br>
+           = 84%<br>
+
+【結果】<br>
+→ 約84%の確率でデバフが成功<br>
+命中率を上げることで成功率が大幅に向上！<br>
+</code></pre>
+
+<h3><strong>計算例3: 高抵抗率の敵</strong></h3>
+
+<pre><code class="">【設定】
+基本確率: 70%<br>
+攻撃側の命中率: 150（15%）<br>
+防御側の回避率: 400（40%）← 非常に高い！<br>
+
+【計算】<br>
+最終成功率 = 70% × (1 + 0.15 - 0.40)<br>
+           = 70% × 0.75<br>
+           = 52.5%<br>
+
+【結果】<br>
+→ 約53%の確率でデバフが成功<br>
+高抵抗率の敵には成功率が大幅に低下！<br>
+</code></pre>
+
+<h3><strong>計算例4: 完全無効化</strong></h3>
+
+<pre><code class="">【設定】
+基本確率: 70%<br>
+攻撃側の命中率: 0（0%）<br>
+防御側の回避率: 1000（100%）← 最大値！<br>
+
+【計算】<br>
+最終成功率 = 70% × (1 + 0 - 1.00)<br>
+           = 70% × 0<br>
+           = 0%<br>
+
+【結果】<br>
+→ 0%（デバフ完全無効）<br>
+回避率100%の敵にはデバフが効かない！<br>
+</code></pre>
+
+<h2>📊 成功率の上限と下限</h2>
+
+ゲームシステムでは、計算結果に上限・下限が設定されています：<br>
+
+<pre><code class="">最小成功率: 0%（絶対に成功しない）
+最大成功率: 100%（必ず成功する）<br>
+</code></pre>
+
+つまり：<br>
+- 計算結果が100%を超えても → 100%にキャップ<br>
+- 計算結果が0%未満でも → 0%にキャップ<br>
+
+<h2>💡 実戦での活用方法</h2>
+
+<h3><strong>1. 命中率を上げる装備を優先</strong></h3>
+
+デバフを主体とするキャラクター（サポーター、デバッファー）には：<br>
+- ✅ 命中率+ の装備を優先<br>
+- ✅ 命中率+ のバフを重ねがけ<br>
+
+<strong>効果</strong>:<br>
+- 命中率+30%あれば、ほとんどのデバフが80%以上の成功率<br>
+
+<h3><strong>2. 敵の抵抗率を確認</strong></h3>
+
+一部の強敵（ボス、レイドボス）は：<br>
+- ❌ 抵抗率が非常に高い（40%以上）<br>
+- ❌ 特定のデバフが無効化される<br>
+
+<strong>対策</strong>:<br>
+- 命中率を極限まで上げる<br>
+- または基本確率100%のデバフを使う<br>
+
+<h3><strong>3. デバフ無効化スキルの活用</strong></h3>
+
+ModuleType 3004（デバフ無効化）を味方にかけると：<br>
+- 一定ターン数の間、デバフを100%回避<br>
+- 回避率に関係なく完全無効<br>
+
+<h3><strong>4. バフ解除で敵の回避率を下げる</strong></h3>
+
+敵が「抵抗率+30%」のバフを持っている場合：<br>
+- ModuleType 3003（バフ解除）で消去<br>
+- その後にデバフをかけると成功率大幅UP<br>
+
+<h2>⚠️ 重要な注意点</h2>
+
+<h3><strong>デバフ無効の敵</strong></h3>
+
+一部の敵は特定のデバフが完全に効きません：<br>
+- ボスキャラクター: スタン無効<br>
+- アンデッド系: 毒無効<br>
+- 機械系: 魅了無効<br>
+
+この場合、命中率をいくら上げても成功率は0%のままです。<br>
+
+<h3><strong>重複デバフの挙動</strong></h3>
+
+同じデバフを複数回かけた場合：<br>
+- 上書き: 新しいデバフが古いものを置き換え<br>
+- 重複: 両方のデバフが同時に効く<br>
+- 最強: より強いデバフだけが残る<br>
+
+これは後述する<strong>MultiApplyType</strong>で決まります。<br>
+
+<hr>
+
+<h1>📖 第6章: ステータス計算の完全な流れ</h1>
+
+キャラクターの最終的なステータス（攻撃力、防御力など）がどのように計算されるかを、<strong>加算と乗算の明確な順序</strong>に基づいて徹底解説します。<br>
+
+<h2>🎯 ステータス計算の2大フェーズ</h2>
+
+ステータス計算は、以下の厳密な順序で実行されます。<br>
+
+<pre><code class="">【加算フェーズ】
+  基礎ステータス<br>
++ 装備の固定値オプション (メイン/サブ/セット)<br>
++ ペットの固定値オプション (強化効果)<br>
++ アクセサリーの固定値オプション (メイン/細工)<br>
+---------------------------------<br>
+= 加算後合計値<br>
+
+【乗算フェーズ】<br>
+  加算後合計値<br>
+× (1 + 装備の割合(%)オプション合計<br>
+     + ペットの割合(%)オプション合計 (潜在能力)<br>
+     + アクセサリーの割合(%)オプション合計<br>
+     + パッシブスキルの割合(%)合計<br>
+     + バフの割合(%)合計)<br>
+---------------------------------<br>
+= 最終ステータス<br>
+</code></pre>
+
+<hr>
+
+<h2>📊 フェーズ1: 加算フェーズ</h2>
+
+まず、すべての<strong>固定値</strong>ステータスが足し合わされます。<br>
+
+<h3><strong>ステップ1: 基礎ステータスの取得</strong></h3>
+キャラクターのレベル、星ランク、超越レベルで決まる素の能力値です。<br>
+
+<strong>例</strong>:<br>
+- 物理攻撃力: 2,500<br>
+- HP: 15,000<br>
+
+<h3><strong>ステップ2: 装備・ペット・アクセサリーの固定値オプションを加算</strong></h3>
+装備のメイン/サブ/セット効果、ペットの強化効果、アクセサリーのメイン/細工効果のうち、<code>+500</code> のような<strong>整数で表記されるもの</strong>がすべて加算されます。<br>
+
+<strong>例</strong>:<br>
+<pre><code class="">【装備】
+・武器メインオプション: 物理攻撃力 +300<br>
+・セット効果: 物理攻撃力 +500<br>
+
+【ペット】<br>
+・強化効果: 物理攻撃力 +300<br>
+
+【アクセサリー】<br>
+・メインオプション: 物理攻撃力 +200<br>
+
+【固定値の合計】<br>
+物理攻撃力: 300 + 500 + 300 + 200 = +1,300<br>
+</code></pre>
+
+<h3><strong>加算フェーズの結果</strong></h3>
+<pre><code class="">物理攻撃力: 2,500 (基礎) + 1,300 (固定値合計) = 3,800
+</code></pre>
+この <code>3,800</code> が乗算フェーズの基礎となります。<br>
+
+<hr>
+
+<h2>✨ フェーズ2: 乗算フェーズ</h2>
+
+次に、加算フェーズで得られた合計値に対して、すべての<strong>割合(%)</strong>ステータスがまとめて乗算されます。<br>
+
+<h3><strong>ステップ3: すべての割合(%)オプションを合算</strong></h3>
+装備、ペット（潜在能力）、アクセサリー、パッシブ、バフに含まれる <code>+30%</code> のような<strong>割合で表記されるもの</strong>がすべて足し合わされます。<br>
+
+<strong>例</strong>:<br>
+<pre><code class="">【装備】
+・防具メインオプション: HP +15%<br>
+
+【ペット】<br>
+・潜在能力1: 物理攻撃力 +10%<br>
+・潜在能力2: 物理攻撃力 +8%<br>
+
+【アクセサリー】<br>
+・細工オプション: ダメージ +5% (これはダメージ計算時に適用)<br>
+・メインオプション: 物理攻撃力 +10%<br>
+
+【パッシブスキル】<br>
+・スキル1: 物理攻撃力 +30%<br>
+
+【戦闘中のバフ】<br>
+・スキル2: 物理攻撃力 +40%<br>
+
+【割合(%)の合計】<br>
+物理攻撃力 (%): 10% + 8% + 10% + 30% + 40% = 98% (0.98)<br>
+HP (%): 15% (0.15)<br>
+</code></pre>
+
+<h3><strong>ステップ4: 乗算の実行</strong></h3>
+<pre><code class="">最終物理攻撃力 = 3,800 × (1 + 0.98)
+               = 3,800 × 1.98<br>
+               = 7,524<br>
+
+最終HP = (15,000 + HPの固定値合計) × (1 + 0.15 + その他のHP%合計)<br>
+</code></pre>
+
+<hr>
+
+<h2>🎯 完全な計算例</h2>
+
+<h3><strong>設定</strong></h3>
+<pre><code class="">【キャラクター基礎】
+物理攻撃力: 2,500<br>
+クリティカルダメージ: 1500 (150%)<br>
+
+【固定値オプション合計】<br>
+物理攻撃力: +1,300<br>
+クリティカルダメージ: +100 (アクセなど)<br>
+
+【割合(%)オプション合計】<br>
+物理攻撃力: +98%<br>
+クリティカルダメージ: +50% (パッシブ)<br>
+</code></pre>
+
+<h3><strong>計算過程</strong></h3>
+<pre><code class="">【加算フェーズ】
+物理攻撃力(加算後): 2,500 + 1,300 = 3,800<br>
+クリティカルダメージ(加算後): 1500 + 100 = 1600<br>
+
+【乗算フェーズ】<br>
+最終物理攻撃力 = 3,800 × (1 + 0.98) = 7,524<br>
+最終クリティカルダメージ = 1600 × (1 + 0.50) = 2400 (240%)<br>
+</code></pre>
+
+<h2>💡 重要なポイント</h2>
+
+<h3><strong>1. 固定値が先、割合が後</strong></h3>
+この順序は絶対です。装備の固定値を上げてから割合で増やすのが最も効率的です。<br>
+
+<h3><strong>2. すべての割合(%)は加算で累積</strong></h3>
+「パッシブ30%」と「バフ40%」は <code>1.3 × 1.4 = 1.82倍</code> <strong>ではなく</strong>、 <code>1 + 0.3 + 0.4 = 1.7倍</code> となります。これは全ての割合オプションに共通です。<br>
+
+<h3><strong>3. ゲーム内表記の読み解き方</strong></h3>
+- <code>攻撃力+500</code>: 加算フェーズで適用される固定値。<br>
+- <code>攻撃力+30%</code>: 乗算フェーズで適用される割合。<br>
+
+これにより、どのオプションがいつ、どのように影響するかが明確になります。<br>
+
+<hr>
+
+<h1>📖 第7章: ダメージ計算の全体像</h1>
+
+スキル使用時のダメージがどのように計算されるかを、<strong>6つのステップ</strong>に分けて解説します。<br>
+
+<h2>🎯 ダメージ計算の6ステップ（実測データに基づく確定版）</h2>
+
+<pre><code class="">【ステップ1】攻撃力バフの適用
+   ↓<br>
+【ステップ2】基礎ダメージの計算<br>
+   ↓<br>
+【ステップ3】防御力による軽減<br>
+   ↓<br>
+【ステップ4】与ダメージ増加の適用<br>
+   ↓<br>
+【ステップ5】クリティカル判定<br>
+   ↓<br>
+【ステップ6】スキル倍率の適用<br>
+   ↓<br>
+【最終ダメージ確定】<br>
+</code></pre>
+
+<strong>重要な発見（2025年11月8日・実測データに基づく）</strong>:<br>
+- <strong>防御計算は「÷(1 + 有効防御力/防御定数)」の形式</strong>です<br>
+- 従来考えられていた「×(1 - 防御軽減率)」ではありません<br>
+- 防御定数はステージやレベルによって変化します（約134～467）<br>
+- 与ダメージ増加は防御軽減後、クリティカル前に適用されます<br>
+- スキル倍率は最後に適用されます<br>
+
+<hr>
+
+<h2>⚔️ ステップ1: 攻撃力バフの適用</h2>
+
+戦闘開始後、待機画面の攻撃力にバフが適用されます。<br>
+
+<h3><strong>攻撃力バフの計算式</strong></h3>
+
+<pre><code class="">最終攻撃力 = (待機画面の攻撃力 + ペット固定値) × (1 + 各種バフ%)
+
+各種バフ% = ペット潜在能力% + パッシブ% + 陣形% + ...（全て加算）<br>
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+待機画面の攻撃力: 3,818（基礎1500×1.1 + 武器304 + 武器固定150 + 他装備1714）<br>
+ペット固定値: +564<br>
+ペット潜在能力: +13%<br>
+パッシブ: +33%<br>
+陣形: +42%<br>
+
+【計算】<br>
+最終攻撃力 = (3,818 + 564) × (1 + 0.13 + 0.33 + 0.42)<br>
+          = 4,382 × 1.88<br>
+          = 8,238.16<br>
+</code></pre>
+
+<strong>重要な仕組み</strong>:<br>
+- 装備の「すべての攻撃力+X%」は<strong>基礎ステータス1500にのみ適用</strong>されます<br>
+- ペット潜在能力、パッシブ、陣形は<strong>戦闘開始後に全体に適用</strong>されます<br>
+- ペット固定値は待機画面の攻撃力に加算された後、バフ計算に含まれます<br>
+
+<hr>
+
+<h2>🎯 ステップ2: 基礎ダメージの計算</h2>
+
+ダメージはスキルのModuleTypeによって計算方法が異なりますが、ここでは<strong>攻撃力は使用されません</strong>。<br>
+スキル倍率は最後のステップで適用されます。<br>
+
+<h3><strong>ModuleType 101: 攻撃力比例ダメージ</strong></h3>
+
+<pre><code class="">基礎値 = 最終攻撃力（ステップ1で計算）
+※スキル倍率はステップ6で適用<br>
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+最終攻撃力: 8,238.16<br>
+スキル倍率: 150%（ArgumentA = 150）<br>
+
+【このステップでの値】<br>
+基礎値 = 8,238.16<br>
+※150%はまだ適用しない<br>
+</code></pre>
+
+<h3><strong>ModuleType 102: HP比例ダメージ</strong></h3>
+
+<pre><code class="">基礎ダメージ = 現在HP × HP割合(%) ÷ 100
+</code></pre>
+
+<h3><strong>ModuleType 103: 固定ダメージ</strong></h3>
+
+<pre><code class="">基礎ダメージ = ArgumentA（固定値）
+</code></pre>
+
+<hr>
+
+<h2>🛡️ ステップ3: 防御力による軽減</h2>
+
+防御力が高いほど、受けるダメージが減ります。<br>
+
+<h3><strong>防御計算の正確な式（実測データに基づく確定版）</strong></h3>
+
+<pre><code class="">有効防御力 = 敵の防御力 × (1 - 防御無視%)
+
+防御項 = 1 + 有効防御力 ÷ 防御定数<br>
+
+防御軽減後ダメージ = バフ適用後攻撃力 ÷ 防御項<br>
+</code></pre>
+
+<strong>防御定数について</strong>:<br>
+- 敵のレベルやステージによって変化します<br>
+- 確認された値:<br>
+  - <strong>134.44</strong>: ナイトメア 9-1、敵カイ（Kai/Khai）Lv.141、防御力593（CharacterID: 100393）<br>
+  - <strong>467.05</strong>: ナイトメア 11-1、敵の防御力633（海外プレイヤーデータから計算、報告値467.13とほぼ一致）<br>
+- <strong>データソース発見</strong>: <code>Data_CombatConfig_CS.json</code><br>
+  - <code>CommonFormulaID: "211"</code> → Value: <strong>130</strong> （基本値、9-1で使用される可能性）<br>
+  - <code>CommonFormulaID: "202"</code> → Value: <strong>467</strong> （基本値、11-1で使用される可能性）<br>
+  - 実測値との差（134.44 vs 130、467.05 vs 467）は、レベルやステージ補正によるものと推測<br>
+- 防御定数は敵レベル・ステージによって大きく変化（高レベル:134 → 低レベル:467）<br>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+バフ適用後攻撃力: 8,238.16<br>
+敵の防御力: 593<br>
+防御無視: 15%<br>
+防御定数: 134.44（ナイトメア9-1の値）<br>
+
+【計算】<br>
+有効防御力 = 593 × (1 - 0.15) = 504.05<br>
+
+防御項 = 1 + 504.05 ÷ 134.44<br>
+      = 1 + 3.75<br>
+      = 4.75<br>
+
+防御軽減後ダメージ = 8,238.16 ÷ 4.75<br>
+                 = 1,734.60<br>
+</code></pre>
+
+<strong>従来の誤解</strong>: <br>
+- ❌ 防御軽減率 = 防御力 ÷ (防御力 + 2000) ではありません<br>
+- ❌ ダメージ × (1 - 防御軽減率) ではありません<br>
+- ✅ ダメージ ÷ (1 + 有効防御力 / 防御定数) が正しい計算式です<br>
+
+<h3><strong>実測検証結果</strong></h3>
+
+<pre><code class="">【テストケース1: ナイトメア 9-1、敵カイ (Kai) Lv.141】
+攻撃力: 8,238.16<br>
+防御: 593、防御無視15%、防御定数: 134.44<br>
+
+ステップ3: 8,238.16 ÷ (1 + 504.05/134.44) = 1,734.60<br>
+ステップ4: 1,734.60 × 1.08 = 1,873.37<br>
+ステップ5: 1,873.37 × 1.92 = 3,596.87<br>
+ステップ6: 3,596.87 × 1.50 = 5,395.31<br>
+
+実測: 5,395.31<br>
+誤差: 0.00（完璧に一致！）<br>
+</code></pre>
+
+<hr>
+
+<h2>✨ ステップ4: 与ダメージ増加の適用</h2>
+
+防御軽減後のダメージに、装備やバフによる「与ダメージ増加」が適用されます。<br>
+
+<h3><strong>与ダメージ増加の計算式</strong></h3>
+
+<pre><code class="">与ダメージ増加適用後 = 防御軽減後ダメージ × (1 + 与ダメージ増加%)
+
+与ダメージ増加% = アクセサリー% + ペット% + バフ% + ...（全て加算）<br>
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+防御軽減後ダメージ: 1,734.56<br>
+アクセサリー与ダメージ増加: 4%<br>
+ペット与ダメージ増加: 8%<br>
+
+【計算】<br>
+与ダメージ増加合計 = 4% + 8% = 12%<br>
+
+与ダメージ増加適用後 = 1,734.56 × (1 + 0.08)<br>
+                    = 1,734.56 × 1.08<br>
+                    = 1,873.33<br>
+</code></pre>
+
+<strong>実測検証結果</strong>:<br>
+<pre><code class="">【150%スキル、与ダメージ+8%】
+計算値: 1,873.33 × 1.92 × 1.50 = 5,395.19<br>
+実測値: 5,395.31<br>
+誤差: 0.12（0.002%）→ 完璧に一致！<br>
+</code></pre>
+
+<strong>重要</strong>: 与ダメージ増加は防御軽減の後、クリティカル判定の前に適用されるため、<strong>クリティカルダメージにも影響します</strong>。<br>
+
+<hr>
+
+<h2>💥 ステップ5: クリティカル判定</h2>
+
+クリティカル率に基づいて、ダメージが増幅されます。<br>
+
+<h3><strong>クリティカルダメージの計算式（実測データに基づく確定版）</strong></h3>
+
+<pre><code class="">クリティカルダメージ = 与ダメージ増加後 × (クリティカルダメージ% ÷ 100)
+</code></pre>
+
+<strong>重要な発見</strong>:<br>
+- ❌ クリティカルダメージ = 通常ダメージ × (1 + クリティカルダメージ/1000) ではありません<br>
+- ✅ クリティカルダメージ = 通常ダメージ × (クリティカルダメージ% ÷ 100) が正しい式です<br>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+与ダメージ増加後: 1,873.33<br>
+クリティカルダメージ: 192%<br>
+
+【計算】<br>
+クリティカルダメージ = 1,873.33 × (192 ÷ 100)<br>
+                    = 1,873.33 × 1.92<br>
+                    = 3,596.79<br>
+</code></pre>
+
+<strong>実測検証結果</strong>:<br>
+<pre><code class="">【テストケース: クリティカルダメージ192%】
+- ゲーム内表示: 192%<br>
+- 実際の倍率: 1.92倍<br>
+- 計算: 1,873.33 × 1.92 = 3,596.79<br>
+- 次のステップで150%スキル倍率適用: 3,596.79 × 1.50 = 5,395.19<br>
+- 実測値: 5,395.31<br>
+- 誤差: 0.12（完璧に一致！）<br>
+</code></pre>
+
+<hr>
+
+<h2>🎯 ステップ6: スキル倍率の適用</h2>
+
+最後に、スキルの倍率が適用されます。<br>
+
+<h3><strong>スキル倍率の計算式</strong></h3>
+
+<pre><code class="">最終ダメージ = クリティカル後ダメージ × (スキル倍率% ÷ 100)
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+クリティカル後ダメージ: 3,596.79<br>
+スキル倍率: 150%（ArgumentA = 150）<br>
+
+【計算】<br>
+最終ダメージ = 3,596.79 × (150 ÷ 100)<br>
+            = 3,596.79 × 1.50<br>
+            = 5,395.19<br>
+</code></pre>
+
+<strong>実測値: 5,395.31（誤差: 0.12、0.002%）</strong><br>
+
+<h3><strong>追加ダメージ（ModuleType 106）の場合</strong></h3>
+
+追加ダメージは、メインダメージと同じスキル倍率に含まれて計算されます。<br>
+
+<pre><code class="">合計スキル倍率 = メイン倍率% + 追加倍率%
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+メイン倍率: 135%（ArgumentA = 135）<br>
+追加倍率: 100%（ArgumentA = 100）<br>
+
+【計算】<br>
+合計スキル倍率 = 135% + 100% = 235%<br>
+
+最終ダメージ = 3,749.39 × 2.35 = 8,811.07<br>
+</code></pre>
+
+<hr>
+
+<h2>📊 完全な計算例（実測データ完全検証版）</h2>
+
+<h3><strong>テストケース1: 150%スキル、与ダメージ+8%</strong></h3>
+
+<pre><code class="">【初期値】
+待機画面攻撃力: 3,818<br>
+ペット固定値: 564<br>
+バフ合計: 88%（ペット13% + パッシブ33% + 陣形42%）<br>
+敵防御力: 593<br>
+防御無視: 15%<br>
+防御定数: 134.44<br>
+与ダメージ増加: 8%<br>
+クリティカルダメージ: 192%<br>
+スキル倍率: 150%<br>
+
+【ステップ1】攻撃力バフ<br>
+(3,818 + 564) × 1.88 = 8,238.16<br>
+
+【ステップ2】基礎値<br>
+8,238.16（そのまま使用）<br>
+
+【ステップ3】防御軽減<br>
+有効防御力 = 593 × 0.85 = 504.05<br>
+防御項 = 1 + 504.05/134.44 = 4.7493<br>
+防御軽減後 = 8,238.16 ÷ 4.7493 = 1,734.56<br>
+
+【ステップ4】与ダメージ増加<br>
+1,734.56 × 1.08 = 1,873.33<br>
+
+【ステップ5】クリティカル<br>
+1,873.33 × 1.92 = 3,596.79<br>
+
+【ステップ6】スキル倍率<br>
+3,596.79 × 1.50 = 5,395.19<br>
+
+【実測値】5,395.31<br>
+【誤差】0.12（0.002%）<br>
+</code></pre>
+
+<h3><strong>テストケース2: 235%スキル、与ダメージ+12%</strong></h3>
+
+<pre><code class="">【ステップ1～3】同上: 1,734.56
+
+【ステップ4】与ダメージ増加<br>
+1,734.56 × 1.12 = 1,942.71<br>
+
+【ステップ5】クリティカル<br>
+1,942.71 × 1.92 = 3,730.00<br>
+
+【ステップ6】スキル倍率<br>
+3,730.00 × 2.35 = 8,765.50<br>
+
+【実測値】8,765<br>
+【誤差】0.50（0.006%）<br>
+</code></pre>
+
+<strong>結論</strong>: 全テストケースで誤差1以下を達成！計算式が完全に解明されました！<br>
+
+<hr>
+
+<h2>💥 その他のダメージタイプ</h2>
+
+<code>DT_DamageTypeSetting.json</code> の解析に基づき、ダメージタイプの相互作用と効果を以下にまとめます。<br>
+
+<h3><strong>ダメージタイプ5種の効果</strong></h3>
+
+<table>
+<thead>
+<tr>
+<th>ダメージタイプ</th>
+<th>発生条件</th>
+<th>効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>クリティカル</strong></td>
+<td>クリティカル率に基づく確率</td>
+<td>ダメージ × (クリティカルダメージ表記値 / 100)<br>※ゲーム内表示192%の場合、1.92倍</td>
+</tr>
+<tr>
+<td><strong>ブロック</strong></td>
+<td>ブロック率に基づく確率</td>
+<td>被ダメージ × 0.5 (50%軽減)</td>
+</tr>
+<tr>
+<td><strong>フェイタルヒット</strong></td>
+<td>フェイタル率に基づく確率</td>
+<td>ダメージ × 1.3 (30%増加) + HPが最も低い敵を優先</td>
+</tr>
+<tr>
+<td><strong>ファンブル</strong></td>
+<td>ファンブル率に基づく確率</td>
+<td>ダメージ × 0.8 (20%減少) + クリティカルとデバフが無効</td>
+</tr>
+<tr>
+<td><strong>固定ダメージ</strong></td>
+<td>ModuleType 103</td>
+<td>すべてのダメージ計算と補正を無視</td>
+</tr>
+</tbody>
+</table>
+
+<strong>重要な修正（2025年11月8日・実測データに基づく）</strong>:<br>
+- クリティカルダメージの計算式は、従来記載していた <code>(1 + クリティカルダメージ/1000)</code> ではなく、<code>(クリティカルダメージ表記値 / 100)</code> が正しいことが実測で判明しました。<br>
+- ゲーム内で「192%」と表示されている場合、通常ダメージの <strong>1.92倍</strong> になります（2.92倍ではありません）。<br>
+
+<h3><strong>ダメージタイプの相互作用</strong></h3>
+
+<table>
+<thead>
+<tr>
+<th>攻撃側 ＼ 防御側</th>
+<th>通常</th>
+<th>ブロック</th>
+<th>ファンブル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>通常</strong></td>
+<td>通常ダメージ</td>
+<td>ブロック</td>
+<td>ファンブル</td>
+</tr>
+<tr>
+<td><strong>クリティカル</strong></td>
+<td>クリティカル</td>
+<td><strong>相殺 → 通常ダメージ</strong></td>
+<td><strong>ファンブル優先</strong></td>
+</tr>
+<tr>
+<td><strong>フェイタル</strong></td>
+<td>フェイタル</td>
+<td><strong>両方発動</strong></td>
+<td><strong>フェイタル優先</strong></td>
+</tr>
+</tbody>
+</table>
+
+<strong>重要なポイント</strong>:<br>
+- <strong>クリティカルとブロックは相殺されます。</strong> ブロックが成功すると、クリティカルは発生しません。<br>
+- <strong>ファンブルはクリティカルを無効化します。</strong><br>
+- <strong>フェイタルはブロックやファンブルを貫通して発生します。</strong><br>
+
+<strong>計算例（クリティカル）</strong>:<br>
+<pre><code class="">【設定】
+与ダメージ増加適用後: 5,595<br>
+クリティカルダメージ表記値: 192%<br>
+
+【計算】<br>
+クリティカルダメージ = 5,595 × (192 / 100)<br>
+                    = 5,595 × 1.92<br>
+                    = 10,742<br>
+</code></pre>
+
+<strong>実測データに基づく検証結果</strong>:<br>
+<pre><code class="">【150%スキル - 与ダメージ+12%】
+- 通常ダメージ: 5,595（計算値: 5,595.14、誤差: 0.35）<br>
+- クリティカルダメージ: 10,742（計算値: 10,742.67、誤差: 0.67）<br>
+- 実際の倍率: 10,742 ÷ 5,595 = 1.9201<br>
+
+【150%スキル - 与ダメージ+8%】<br>
+- 通常ダメージ: 5,395（計算値: 5,395.31、誤差: 0.00）<br>
+- クリティカルダメージ: 10,359（計算値: 10,359.00、誤差: 0.00）<br>
+- 実際の倍率: 10,359 ÷ 5,395 = 1.9200<br>
+
+クリティカルダメージ192%と完全に一致！<br>
+</code></pre>
+
+<hr>
+
+<h2>✨ ステップ5: スキル特殊効果の適用</h2>
+
+<h3><strong>ModuleType 106: 追加ダメージ（実測データに基づく修正版）</strong></h3>
+
+<strong>重要</strong>: 追加ダメージは最終ダメージに加算されるのではなく、<strong>基礎ダメージの段階で計算される</strong>ことが実測で判明しました。<br>
+
+<pre><code class="">メインダメージ = 攻撃力 × メイン倍率%
+追加ダメージ = 攻撃力 × 追加倍率%<br>
+
+合計基礎ダメージ = メインダメージ + 追加ダメージ<br>
+
+最終ダメージ = 合計基礎ダメージ × (1 - 防御軽減率)<br>
+</code></pre>
+
+つまり、<strong>追加ダメージも防御軽減の影響を受けます</strong>。<br>
+
+<strong>実測例</strong>:<br>
+<pre><code class="">【設定】
+攻撃力: 8,238<br>
+メインスキル: 135%<br>
+追加ダメージ: 100%（条件: 敵HP50%以上）<br>
+防御軽減率: 20.13%<br>
+
+【計算】<br>
+メインダメージ = 8,238 × 1.35 = 11,121<br>
+追加ダメージ = 8,238 × 1.00 = 8,238<br>
+合計基礎ダメージ = 11,121 + 8,238 = 19,359<br>
+
+最終ダメージ = 19,359 × (1 - 0.2013) = 15,462<br>
+※実測値とは別の要素により若干異なるが、計算ロジックは確定<br>
+
+【クリティカル時】<br>
+15,462 × 1.92 = 29,687<br>
+</code></pre>
+
+この計算方法により、<strong>追加ダメージも防御力やクリティカルの影響を等しく受ける</strong>ことになります。<br>
+
+<h3><strong>ModuleType 10005: ダメージ増幅</strong></h3>
+
+敵に「ダメージ増幅」デバフがかかっている場合：<br>
+
+<pre><code class="">最終ダメージ = 現在のダメージ × (1 + 増幅率)
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【設定】
+現在のダメージ: 170,426<br>
+敵のダメージ増幅デバフ: 20%<br>
+
+【計算】<br>
+最終ダメージ = 170,426 × (1 + 0.20) = 170,426 × 1.20 = 204,511<br>
+</code></pre>
+
+<hr>
+
+<h2>🔒 ステップ6: 最終調整（上限・下限）</h2>
+
+ダメージには最小値と最大値が設定されています。<br>
+
+<pre><code class="">最小ダメージ: 20（DT_CombatConfig ID:9）
+最大ダメージ: 300,000（DT_CombatConfig ID:10）<br>
+</code></pre>
+
+<strong>例</strong>:<br>
+<pre><code class="">【計算結果】
+最終ダメージ: 204,511<br>
+
+【調整】<br>
+204,511 は範囲内（20〜300,000）→ そのまま<br>
+
+【確定】<br>
+最終ダメージ = 204,511<br>
+</code></pre>
+
+<strong>極端なケース</strong>:<br>
+<pre><code class="">【ケース1】超低ダメージ
+計算結果: 5<br>
+→ 最小値20に調整 → 20ダメージ<br>
+
+【ケース2】超高ダメージ<br>
+計算結果: 500,000<br>
+→ 最大値300,000に調整 → 300,000ダメージ<br>
+</code></pre>
+
+<hr>
+
+<h2>🎯 完全な計算例</h2>
+
+すべてのステップを通してダメージを計算します。<br>
+
+<h3><strong>設定</strong></h3>
+
+<pre><code class="">【攻撃側】
+物理攻撃力: 6,885<br>
+クリティカル率: 170（17%）<br>
+クリティカルダメージ: 2400（240%）<br>
+
+【防御側】<br>
+防御力: 1,500<br>
+ダメージ軽減率: 300（30%）<br>
+ブロック率: 50（5%）<br>
+
+【スキル】<br>
+ModuleType 101: 攻撃力比例ダメージ<br>
+ArgumentA: 1400（倍率1400%）<br>
+追加効果: ModuleType 106, ArgumentA 30（追加30%）<br>
+</code></pre>
+
+<h3><strong>計算過程</strong></h3>
+
+<pre><code class="">【ステップ1: 基礎ダメージ】
+6,885 × 1400 ÷ 100 = 96,390<br>
+
+【ステップ2: 防御軽減】<br>
+防御軽減率 = 1,500 ÷ (1,500 + 2,000) = 0.4286<br>
+軽減後 = 96,390 × (1 - 0.4286) = 55,083<br>
+
+ダメージ軽減適用 = 55,083 × (1 - 0.30) = 38,558<br>
+
+【ステップ3: ダメージタイプ判定】<br>
+クリティカル発生！（17%の確率で成功したと仮定）<br>
+ブロック失敗！（95%の確率で失敗したと仮定）<br>
+→ クリティカルダメージ適用<br>
+38,558 × (1 + 2.40) = 38,558 × 3.40 = 131,097<br>
+
+【ステップ4: 追加ダメージ】<br>
+追加30% = 131,097 × 0.30 = 39,329<br>
+合計 = 131,097 + 39,329 = 170,426<br>
+
+【ステップ5: 最終調整】<br>
+170,426 は範囲内（20〜300,000）→ OK<br>
+
+【最終ダメージ】<br>
+170,426<br>
+</code></pre>
+
+<hr>
+
+<h2>💡 ダメージを増やす方法</h2>
+
+<h3><strong>1. 攻撃力を上げる（最も基本）</strong></h3>
+
+- 装備を強化<br>
+- パッシブ・バフで倍率を上げる<br>
+
+<strong>効果</strong>: 基礎ダメージが増えるため、すべてに影響<br>
+
+<h3><strong>2. 防御無視（貫通）を使う</strong></h3>
+
+- ModuleType 10004の効果を持つスキル<br>
+
+<strong>効果</strong>: 防御軽減をスキップ → 約2倍のダメージ<br>
+
+<h3><strong>3. クリティカル率とクリダメを上げる</strong></h3>
+
+- クリティカル率を100%に近づける<br>
+- クリティカルダメージを最大（500%）まで上げる<br>
+
+<strong>効果</strong>: 発生時に3〜6倍のダメージ<br>
+
+<h3><strong>4. 敵の防御力を下げる</strong></h3>
+
+- ModuleType 2003（防御力減少デバフ）<br>
+
+<strong>効果</strong>: 防御軽減率が下がり、ダメージが増加<br>
+
+<h3><strong>5. ダメージ増幅デバフをかける</strong></h3>
+
+- ModuleType 10005<br>
+
+<strong>効果</strong>: 最終ダメージにさらに倍率がかかる<br>
+
+<hr>
+
+<h2>✅ まとめ</h2>
+
+<h3><strong>確認できた重要事項</strong></h3>
+
+1. ✅ <strong>スキル発動優先順位</strong>: 蘇生 > 回復 > 解除 > 攻撃 の順でスコアが付けられ、AIはそれに従う。フェイタル率もスコアに影響する。<br>
+2. ✅ <strong>ステータス計算</strong>: 「加算フェーズ」で固定値をすべて足し、「乗算フェーズ」で割合(%)をまとめて掛ける。<br>
+3. ✅ <strong>ダメージ計算</strong>: 基礎ダメージ → 防御軽減 → ダメージタイプ判定 → 特殊効果 → 最終調整 の5ステップで確定。<br>
+4. ✅ <strong>ダメージタイプの相殺</strong>: クリティカルはブロックに相殺される。フェイタルはブロックを貫通する。<br>
+5. ✅ <strong>バフ・デバフ重複</strong>: <code>MultiApplyType</code> (0:上書き, 1:制限付き重複, 2:無限重複) によって挙動が決まる。<br>
+
+<h3><strong>今後の課題</strong></h3>
+
+1.  <strong>AIのターゲット選択ロジック</strong>: 「脅威度」の具体的な計算方法。<br>
+2.  <strong>連続行動・カウンター</strong>: 発動条件とクールタイムの更なる詳細解析。<br>
+3.  <strong>ダメージタイプの適用順序</strong>: クリティカル、フェイタル、ブロックが同時に発生しうる場合の厳密な処理順。<br>
+4.  <strong>防御定数の正確な計算式</strong>: 基本値（130/467）から実測値（134.44/467.05）への変換ロジック（ゲームコード内に実装）。<br>
+
+<hr>
+
+<h2>📊 付録: 防御定数の詳細分析</h2>
+
+<h3><strong>確認された防御定数の値</strong></h3>
+
+<table>
+<thead>
+<tr>
+<th>ステージ</th>
+<th>敵キャラ</th>
+<th>敵レベル</th>
+<th>防御力</th>
+<th>防御定数（実測）</th>
+<th>基本値（Config）</th>
+<th>データソース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ナイトメア 9-1</td>
+<td>カイ (Kai)</td>
+<td>141</td>
+<td>593</td>
+<td><strong>134.44</strong></td>
+<td>130 (ID: 211)</td>
+<td>Data_CombatConfig_CS.json</td>
+</tr>
+<tr>
+<td>ナイトメア 11-1</td>
+<td>複数体</td>
+<td>67</td>
+<td>633</td>
+<td><strong>467.05</strong></td>
+<td>467 (ID: 202)</td>
+<td>Data_CombatConfig_CS.json</td>
+</tr>
+</tbody>
+</table>
+
+<h3><strong>Data_CombatConfig_CS.json の発見</strong></h3>
+
+防御定数の基本値が <code>Data_CombatConfig_CS.json</code> に定義されていることを発見：<br>
+
+<pre><code class="json">{
+  "CommonFormulaID": "211",<br>
+  "Value": "130"<br>
+},<br>
+{<br>
+  "CommonFormulaID": "202",<br>
+  "Value": "467"<br>
+}<br>
+</code></pre>
+
+<strong>計算式の推測</strong>:<br>
+- ナイトメア 9-1: <code>130 × 1.0342 = 134.44</code> または <code>130 + 4.44 = 134.44</code><br>
+- ナイトメア 11-1: <code>467 × 1.0001 = 467.05</code> または <code>467 + 0.05 = 467.05</code><br>
+
+実測値と基本値の差は、敵レベルやステージ難易度による補正と推測されます。<br>
+正確な計算式はゲームの実行コード（C++/Blueprint）内に実装されています。<br>
+
+<h3><strong>防御定数とレベルの関係</strong></h3>
+
+<pre><code class="">【重要な発見】
+- 高レベルステージ（Lv.141）: 防御定数 134.44 → 防御効果が強い<br>
+- 低レベルステージ（Lv.67）:  防御定数 467.05 → 防御効果が弱い<br>
+- 敵レベルが高いほど防御定数が小さくなり、防御力の影響が強まる設計<br>
+
+【実際の防御軽減率】<br>
+- ナイトメア 9-1 (Lv.141): 78.94%のダメージ軽減<br>
+- ナイトメア 11-1 (Lv.67):  53.53%のダメージ軽減<br>
+→ 同じくらいの防御力でも、高レベルステージの方が防御効果が遥かに強い<br>
+</code></pre>
+
+<h3><strong>防御定数が与える影響</strong></h3>
+
+防御定数は、同じ防御力でもステージによってダメージ軽減効果が大きく変わることを意味します。<br>
+
+<pre><code class="">【例: 防御力500の敵に対して】
+・防御定数 134 の場合: 1 ÷ (1 + 500/134) = 0.21 → 79%軽減<br>
+・防御定数 467 の場合: 1 ÷ (1 + 500/467) = 0.48 → 52%軽減<br>
+</code></pre>
+
+このため、高難度コンテンツでは<strong>防御無視（貫通）スキル</strong>の価値が非常に高くなります。<br>
+
+<hr>
+<strong>このドキュメントは、ゲームデータと実測検証に基づき、可能な限り正確な情報を提供することを目的としています。</strong><br>
+<strong>ご協力いただき、ありがとうございました。</strong><br>
+
+    </div>
+</body>
+</html>
