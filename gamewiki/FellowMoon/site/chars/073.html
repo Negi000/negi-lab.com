@@ -926,22 +926,7 @@ function __FM_computeBasePaths(){
 window.__FM_PATHS = window.__FM_PATHS || __FM_computeBasePaths();
 window.__FELLOWMOON_PATHS = window.__FM_PATHS;
 (()=>{
-  // サイドバー画像フォールバック
-  document.addEventListener('DOMContentLoaded',()=>{
-    document.querySelectorAll('img[data-side-asset]').forEach(img=>{
-      const file=img.getAttribute('data-side-asset');
-      const candidates=[
-        window.__FM_PATHS.assets + file,
-        window.__FM_PATHS.assets + 'icons/' + file,
-  window.__FM_PATHS.assets + 'バナー/' + file,
-  window.__FM_PATHS.assets + '誕生日/' + file,
-        window.__FM_PATHS.root + 'assets/icons/' + file,
-        window.__FM_PATHS.root + file, // 予備
-      ];
-      let idx=0; img.src=candidates[idx];
-      img.onerror=()=>{ if(idx < candidates.length-1){ idx++; img.src=candidates[idx]; } };
-    });
-  });
+  // サイドバー画像フォールバック処理は wiki-side-lane.js に移譲（重複削除）
   const KEY_PREFIX = 'skillBonusOpen:';
   document.querySelectorAll('details.skill-bonus').forEach(d=>{
     const name = d.getAttribute('data-skill-name')||'';
