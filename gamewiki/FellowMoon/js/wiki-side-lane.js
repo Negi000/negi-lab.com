@@ -269,14 +269,14 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=open]
       const base = hasExt ? token.replace(/\.[^.]+$/, '') : token; // 末尾拡張子のみ除去
       let exts;
       if(!hasExt){
-        exts = ['.webp','.png','.jpg','.jpeg','.gif'];
+        exts = ['.png','.webp','.jpg','.jpeg','.gif'];
       }else{
         const lower = token.toLowerCase();
-        if(lower.endsWith('.png')) exts = ['.webp','.png'];
+        if(lower.endsWith('.png')) exts = ['.png','.webp'];
         else if(lower.endsWith('.webp')) exts = ['.webp','.png'];
-        else if(lower.endsWith('.jpg')) exts = ['.webp','.jpg'];
-        else if(lower.endsWith('.jpeg')) exts = ['.webp','.jpeg'];
-        else if(lower.endsWith('.gif')) exts = ['.webp','.gif'];
+        else if(lower.endsWith('.jpg')) exts = ['.jpg','.webp'];
+        else if(lower.endsWith('.jpeg')) exts = ['.jpeg','.webp'];
+        else if(lower.endsWith('.gif')) exts = ['.gif','.webp'];
         else exts = [token.substring(token.lastIndexOf('.'))];
       }
       const prefixes = [
@@ -284,6 +284,7 @@ body:not(.fm-ev-simple-collapsed) #sideEvents .ev-simple-toggle[data-state=open]
         PATHS.assets + 'icons/',
         PATHS.assets + 'バナー/',
         PATHS.assets + '誕生日/',
+        PATHS.root + 'assets/left_side_lane/',
         PATHS.root + 'assets/icons/',
         PATHS.root
       ];
