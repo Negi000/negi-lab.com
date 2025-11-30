@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒険 - セブンナイツ リバース Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="adventure.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/icon/rogo.png" alt="7K:Re Wiki">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="characters.html">キャラクター</a></li>
+                <li><a href="adventure.html" class="active">冒険</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="adventure-main">
+        <!-- 大陸名表示エリア -->
+        <div class="continent-title-area">
+            <div class="continent-title-bg">
+                <img src="images/icon/LandMarks/Atl_Worldmap_02_Sprite_13.png" alt="">
+            </div>
+            <h1 id="continent-name" class="continent-title">アスド大陸</h1>
+        </div>
+
+        <!-- 大陸切り替えエリア -->
+        <div class="continent-selector">
+            <div id="continent-buttons" class="continent-buttons">
+                <!-- JSで生成 -->
+            </div>
+        </div>
+
+        <!-- 難易度切り替え -->
+        <div class="difficulty-toggle">
+            <button class="difficulty-btn active" data-difficulty="0">ノーマル</button>
+            <button class="difficulty-btn" data-difficulty="1">ナイトメア</button>
+        </div>
+
+        <!-- ランドマークグリッド -->
+        <section class="landmarks-section">
+            <div id="landmarks-grid" class="landmarks-grid">
+                <!-- JSで生成 -->
+            </div>
+        </section>
+
+        <!-- ステージ詳細モーダル -->
+        <div id="stage-modal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-header">
+                    <img id="modal-landmark-img" src="" alt="">
+                    <div class="modal-title-area">
+                        <h2 id="modal-landmark-name"></h2>
+                        <p id="modal-landmark-info"></p>
+                    </div>
+                </div>
+                <div class="stages-list" id="modal-stages-list">
+                    <!-- ステージリスト -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ステージ詳細モーダル -->
+        <div id="stage-detail-modal" class="modal">
+            <div class="modal-content stage-detail-content">
+                <button class="modal-close">&times;</button>
+                <div class="stage-detail-header">
+                    <h2 id="stage-detail-title"></h2>
+                    <div class="stage-info-row">
+                        <span class="stage-info-item"><span class="info-label">スタミナ:</span> <span id="stage-stamina"></span></span>
+                        <span class="stage-info-item"><span class="info-label">EXP:</span> <span id="stage-exp"></span></span>
+                        <span class="stage-info-item"><span class="info-label">★ターン:</span> <span id="stage-star-turn"></span></span>
+                    </div>
+                </div>
+                
+                <div class="stage-detail-body">
+                    <!-- 敵情報 -->
+                    <section class="detail-section">
+                        <h3>出現する敵</h3>
+                        <div id="stage-enemies" class="enemies-grid">
+                            <!-- 敵リスト -->
+                        </div>
+                    </section>
+
+                    <!-- 報酬 -->
+                    <section class="detail-section">
+                        <h3>報酬</h3>
+                        <button id="toggle-rewards-btn" class="toggle-rewards-btn">ドロップ率を表示</button>
+                        <div id="stage-rewards" class="rewards-grid">
+                            <!-- 報酬リスト -->
+                        </div>
+                        <div id="rewards-detail" class="rewards-detail hidden">
+                            <!-- 詳細ドロップ率 -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Seven Knights Re:Birth Unofficial Wiki</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="adventure.js"></script>
+</body>
+</html>
