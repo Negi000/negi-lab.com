@@ -1,0 +1,733 @@
+/* Adventure Page Styles */
+
+.adventure-main {
+    padding: 1rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Continent Title Area */
+.continent-title-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+}
+
+.continent-title-bg {
+    position: absolute;
+    width: 350px;
+    height: auto;
+}
+
+.continent-title-bg img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.continent-title {
+    position: relative;
+    z-index: 1;
+    font-size: 1.8rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 0.5rem 2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* Continent Selector */
+.continent-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.continent-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.continent-btn {
+    position: relative;
+    width: 80px;
+    height: 83px;  /* 非アクティブ比率 149:154 に合わせる */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+/* アクティブ時は大きいサイズ */
+.continent-btn.active {
+    width: 93px;
+    height: 93px;  /* アクティブは正方形 173:173 */
+}
+
+.continent-btn-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.continent-btn-icon {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* アクティブ時のアイコン位置とサイズ */
+.continent-btn.active .continent-btn-icon {
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+.continent-btn:hover {
+    transform: scale(1.1);
+}
+
+.continent-btn:hover .continent-btn-icon {
+    filter: brightness(1.2);
+}
+
+.continent-btn.active .continent-btn-bg {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.continent-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.continent-btn.disabled:hover {
+    transform: none;
+}
+
+.continent-btn-label {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.continent-btn:hover .continent-btn-label,
+.continent-btn.active .continent-btn-label {
+    opacity: 1;
+}
+
+.continent-btn.active .continent-btn-label {
+    color: var(--accent-gold);
+}
+
+/* Difficulty Toggle */
+.difficulty-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--bg-panel);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.difficulty-btn {
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-sub);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.difficulty-btn.active {
+    background: linear-gradient(135deg, var(--accent-red-dark), var(--accent-red));
+    border-color: var(--accent-red);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(230, 0, 18, 0.4);
+}
+
+.difficulty-btn[data-difficulty="1"].active {
+    background: linear-gradient(135deg, #4a1a6b, #8b2fc9);
+    border-color: #8b2fc9;
+    box-shadow: 0 0 15px rgba(139, 47, 201, 0.4);
+}
+
+/* Landmarks Section */
+.landmarks-section {
+    padding: 1rem;
+}
+
+.landmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Landmark Card */
+.landmark-card {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+    aspect-ratio: 1;
+}
+
+.landmark-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+.landmark-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.landmark-card:hover .landmark-card-image {
+    transform: scale(1.1);
+}
+
+.landmark-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+}
+
+.landmark-card-name {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px #000;
+    margin-bottom: 0.25rem;
+}
+
+.landmark-card-stages {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.landmark-card-number {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--accent-gold);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--bg-panel);
+    border-radius: 16px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--accent-red);
+}
+
+.modal-header {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
+}
+
+#modal-landmark-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--accent-gold);
+}
+
+.modal-title-area {
+    flex: 1;
+}
+
+.modal-title-area h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.modal-title-area p {
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Stages List */
+.stages-list {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+}
+
+.stage-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 0.5rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stage-btn:hover {
+    border-color: var(--accent-gold);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.stage-btn.boss {
+    border-color: var(--accent-red-dark);
+    background: rgba(230, 0, 18, 0.1);
+}
+
+.stage-btn.boss:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 15px rgba(230, 0, 18, 0.3);
+}
+
+.stage-number {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.stage-label {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+}
+
+/* Stage Detail Modal */
+.stage-detail-content {
+    max-width: 700px;
+}
+
+.stage-detail-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(180deg, rgba(230, 0, 18, 0.1) 0%, transparent 100%);
+}
+
+.stage-detail-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.stage-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.stage-info-item {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+.info-label {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.stage-detail-body {
+    padding: 1.5rem;
+}
+
+.detail-section {
+    margin-bottom: 2rem;
+}
+
+.detail-section h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Enemies Grid */
+.enemies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.enemy-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.enemy-card.boss {
+    border-color: var(--accent-red-dark);
+    background: linear-gradient(135deg, rgba(230, 0, 18, 0.1) 0%, var(--bg-card) 100%);
+}
+
+.enemy-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.enemy-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.enemy-name {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.enemy-level {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+/* Rewards */
+.toggle-rewards-btn {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.toggle-rewards-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.toggle-rewards-btn.active {
+    background: var(--accent-gold);
+    color: #000;
+}
+
+.rewards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.reward-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.reward-item .reward-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.rewards-detail {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.rewards-detail.hidden {
+    display: none;
+}
+
+.rewards-detail h4 {
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.75rem;
+}
+
+.reward-detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+}
+
+.reward-detail-item:last-child {
+    border-bottom: none;
+}
+
+.reward-detail-name {
+    color: var(--text-main);
+}
+
+.reward-detail-rate {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .adventure-main {
+        padding: 1rem;
+    }
+    
+    .landmarks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+    
+    .modal {
+        padding: 1rem;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #modal-landmark-img {
+        margin: 0 auto;
+    }
+    
+    .stages-list {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .stage-btn {
+        padding: 0.75rem 0.25rem;
+    }
+    
+    .stage-number {
+        font-size: 1rem;
+    }
+    
+    .difficulty-toggle {
+        gap: 0.5rem;
+    }
+    
+    .difficulty-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landmarks-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stages-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========================================
+   Nightmare Mode Styles
+   ナイトメアモード時のおどろおどろしい雰囲気
+   ======================================== */
+
+.adventure-main.nightmare-mode {
+    position: relative;
+}
+
+/* 全体の紫がかった暗い雰囲気 */
+.adventure-main.nightmare-mode::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, transparent 0%, rgba(30, 0, 50, 0.4) 100%),
+        linear-gradient(180deg, rgba(60, 0, 80, 0.2) 0%, rgba(20, 0, 40, 0.3) 100%);
+    pointer-events: none;
+    z-index: -1;
+    animation: nightmarePulse 4s ease-in-out infinite;
+}
+
+@keyframes nightmarePulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* タイトルの色変更 */
+.adventure-main.nightmare-mode .continent-title {
+    color: #e0c0ff;
+    text-shadow: 0 0 15px rgba(180, 100, 255, 0.8), 0 0 30px rgba(120, 0, 200, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.adventure-main.nightmare-mode .continent-title-bg img {
+    filter: drop-shadow(0 0 15px rgba(150, 50, 255, 0.5)) hue-rotate(260deg) saturate(1.3);
+}
+
+/* ランドマークカードの変化 */
+.adventure-main.nightmare-mode .landmark-card {
+    box-shadow: 0 0 20px rgba(100, 0, 150, 0.3), inset 0 0 30px rgba(80, 0, 120, 0.2);
+    border-color: rgba(150, 80, 200, 0.4);
+}
+
+.adventure-main.nightmare-mode .landmark-card:hover {
+    box-shadow: 0 0 30px rgba(150, 50, 255, 0.5), inset 0 0 40px rgba(100, 0, 150, 0.3);
+    border-color: rgba(180, 100, 255, 0.6);
+}
+
+.adventure-main.nightmare-mode .landmark-card-overlay {
+    background: linear-gradient(to top, rgba(40, 0, 60, 0.95) 0%, rgba(60, 0, 90, 0.7) 50%, transparent 100%);
+}
+
+.adventure-main.nightmare-mode .landmark-card-name {
+    color: #d0a0ff;
+    text-shadow: 0 0 8px rgba(180, 100, 255, 0.6);
+}
+
+.adventure-main.nightmare-mode .landmark-card-number {
+    background: linear-gradient(135deg, #6a0dad, #4a0080);
+    box-shadow: 0 0 10px rgba(150, 50, 255, 0.5);
+}
+
+/* 難易度ボタンのナイトメア強調 */
+.adventure-main.nightmare-mode .difficulty-btn.active {
+    background: linear-gradient(135deg, #6a0dad, #4a0080);
+    box-shadow: 0 0 15px rgba(150, 50, 255, 0.6);
+}
+
+/* 霧のようなエフェクト */
+.adventure-main.nightmare-mode .landmarks-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(100, 0, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(80, 0, 120, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: fogDrift 8s ease-in-out infinite alternate;
+}
+
+@keyframes fogDrift {
+    0% { transform: translateX(-10px) translateY(5px); }
+    100% { transform: translateX(10px) translateY(-5px); }
+}
+
+.adventure-main.nightmare-mode .landmarks-grid {
+    position: relative;
+}
+
+/* モーダルもナイトメア風に */
+.adventure-main.nightmare-mode ~ .modal .modal-content,
+body:has(.adventure-main.nightmare-mode) .modal .modal-content {
+    background: linear-gradient(135deg, #1a0825 0%, #0d0015 100%);
+    border-color: rgba(150, 80, 200, 0.4);
+    box-shadow: 0 0 40px rgba(100, 0, 150, 0.4);
+}
