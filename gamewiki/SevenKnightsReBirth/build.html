@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビルド - セブンナイツ リバース Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="build.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="characters.html">キャラクター</a></li>
+                <li><a href="build.html" class="active">ビルド</a></li>
+                <li><a href="adventure.html">冒険</a></li>
+                <li><a href="raid.html">レイド</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="build-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <span class="title-icon">⚔️</span>
+                    装備ビルドガイド
+                </h1>
+                <p class="page-subtitle">希少以上のキャラクター装備推奨</p>
+            </div>
+
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="search-input" class="filter-label">キャラ検索</label>
+                        <input type="text" id="search-input" placeholder="キャラ名で検索...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="rarity-filter" class="filter-label">レアリティ</label>
+                        <select id="rarity-filter">
+                            <option value="">全レアリティ</option>
+                            <option value="希少">希少</option>
+                            <option value="伝説">伝説</option>
+                            <option value="伝説+">伝説+</option>
+                            <option value="伝説++">伝説++</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="role-filter" class="filter-label">タイプ</label>
+                        <select id="role-filter">
+                            <option value="">全タイプ</option>
+                            <option value="攻撃型">攻撃型</option>
+                            <option value="万能型">万能型</option>
+                            <option value="防御型">防御型</option>
+                            <option value="支援型">支援型</option>
+                            <option value="魔法型">魔法型</option>
+                        </select>
+                    </div>
+                    <button class="filter-reset-btn" onclick="resetFilters()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                            <path d="M3 3v5h5"/>
+                        </svg>
+                        リセット
+                    </button>
+                </div>
+                <div class="results-info">
+                    <span id="results-count">0 キャラクター</span>
+                </div>
+            </section>
+
+            <!-- Build Cards Container -->
+            <div id="build-container" class="build-container">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>ビルドデータを読み込み中...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Build Detail Modal -->
+    <div id="build-modal" class="build-modal">
+        <div class="modal-overlay" onclick="closeBuildModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBuildModal()">×</button>
+            <div id="modal-body">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 セブンナイツ リバース 非公式Wiki</p>
+        <p class="disclaimer">このサイトはファンによる非公式サイトです。</p>
+    </footer>
+
+    <script src="build.js"></script>
+</body>
+</html>

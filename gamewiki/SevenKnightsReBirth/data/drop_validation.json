@@ -1,0 +1,122 @@
+{
+  "inputs": {
+    "DT_StageReward": "E:\\セブンナイツリバース\\Exports\\ProjectRE\\Content\\10_Data\\DataTable\\GameData\\DT_StageReward.json",
+    "DT_RewardDetailGroup": "E:\\セブンナイツリバース\\Exports\\ProjectRE\\Content\\10_Data\\DataTable\\GameData\\DT_RewardDetailGroup.json",
+    "expected": {
+      "probability_max_raw": 1000000,
+      "ratio_note": "Ratio はグループ内の重み(Weight)として扱われることがあるため、固定合計は仮定しない"
+    }
+  },
+  "summary": {
+    "stage_reward_active_rows": 8862,
+    "reward_detail_rows": 324,
+    "probability_raw": {
+      "count": 8862,
+      "min": 1,
+      "max": 1000000
+    },
+    "probability_raw_nonzero": {
+      "count": 8862,
+      "min": 1,
+      "max": 1000000
+    },
+    "ratio_groups": {
+      "count": 14,
+      "nonpositive_rows": 0
+    },
+    "first_reward_rows": 2,
+    "duplicates_in_stage_rewards": 0
+  },
+  "ratio_group_totals_top": [
+    {
+      "reward_detail_group_id": 3004,
+      "rows": 32,
+      "ratio_sum_raw": 1000000000
+    },
+    {
+      "reward_detail_group_id": 3005,
+      "rows": 32,
+      "ratio_sum_raw": 1000000000
+    },
+    {
+      "reward_detail_group_id": 3006,
+      "rows": 32,
+      "ratio_sum_raw": 1000000000
+    },
+    {
+      "reward_detail_group_id": 1044,
+      "rows": 48,
+      "ratio_sum_raw": 100000000
+    },
+    {
+      "reward_detail_group_id": 10121001,
+      "rows": 1,
+      "ratio_sum_raw": 10000000
+    },
+    {
+      "reward_detail_group_id": 10321001,
+      "rows": 1,
+      "ratio_sum_raw": 10000000
+    },
+    {
+      "reward_detail_group_id": 1004,
+      "rows": 67,
+      "ratio_sum_raw": 10000000
+    },
+    {
+      "reward_detail_group_id": 1003,
+      "rows": 45,
+      "ratio_sum_raw": 4500000
+    },
+    {
+      "reward_detail_group_id": 1002,
+      "rows": 30,
+      "ratio_sum_raw": 3000000
+    },
+    {
+      "reward_detail_group_id": 1001,
+      "rows": 12,
+      "ratio_sum_raw": 1200000
+    },
+    {
+      "reward_detail_group_id": 2001,
+      "rows": 6,
+      "ratio_sum_raw": 600000
+    },
+    {
+      "reward_detail_group_id": 2002,
+      "rows": 6,
+      "ratio_sum_raw": 600000
+    },
+    {
+      "reward_detail_group_id": 2003,
+      "rows": 6,
+      "ratio_sum_raw": 600000
+    },
+    {
+      "reward_detail_group_id": 2004,
+      "rows": 6,
+      "ratio_sum_raw": 600000
+    }
+  ],
+  "ratio_nonpositive_rows_top": [],
+  "probability_out_of_range_top": [],
+  "missing_detail_group_top": [],
+  "first_reward_rows": [
+    {
+      "stage_id": 100001,
+      "unique_id": 14,
+      "reward_detail_group_id": 10121001,
+      "reward_id": 0,
+      "probability_raw": 1
+    },
+    {
+      "stage_id": 100002,
+      "unique_id": 28,
+      "reward_detail_group_id": 10321001,
+      "reward_id": 0,
+      "probability_raw": 1
+    }
+  ],
+  "duplicates_top": []
+}

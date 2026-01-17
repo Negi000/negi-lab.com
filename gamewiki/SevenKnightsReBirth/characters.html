@@ -8,11 +8,14 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo"><img src="images/icon/rogo.png" alt="7K:Re Wiki"></a>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
         <nav>
             <ul>
                 <li><a href="index.html">ホーム</a></li>
                 <li><a href="characters.html" class="active">キャラクター</a></li>
+                <li><a href="build.html">ビルド</a></li>
+                <li><a href="adventure.html">冒険</a></li>
+                <li><a href="raid.html">レイド</a></li>
             </ul>
         </nav>
         <button class="mobile-menu-btn" aria-label="メニュー">
@@ -24,7 +27,7 @@
         <section class="page-header">
             <div class="container">
                 <h1 class="page-title">キャラクター一覧</h1>
-                <p class="page-subtitle">全 131 体のキャラクターを収録</p>
+                <p class="page-subtitle">全 143 体のキャラクターを収録</p>
             </div>
         </section>
 
@@ -63,6 +66,12 @@
                         <option value="伝説">伝説</option>
 
                         </select>
+                    </div>
+                    <div class="filter-group filter-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="show-unreleased">
+                            <span class="checkbox-text">未実装を表示</span>
+                        </label>
                     </div>
                     <button class="filter-reset-btn" onclick="resetFilters()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

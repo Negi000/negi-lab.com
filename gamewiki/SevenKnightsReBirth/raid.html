@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レイド - セブンナイツ:リバース Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="raid.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/icon/rogo.webp" alt="7K:Re Wiki">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="characters.html">キャラクター</a></li>
+                <li><a href="build.html">ビルド</a></li>
+                <li><a href="adventure.html">冒険</a></li>
+                <li><a href="raid.html" class="active">レイド</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="raid-main">
+        <!-- レイドタイプセレクター -->
+        <section class="raid-type-selector">
+            <div class="raid-type-tabs">
+                <button class="raid-type-tab active" data-type="normal">
+                    <span class="tab-icon">⚔️</span>
+                    <span class="tab-label">レイド</span>
+                </button>
+                <button class="raid-type-tab" data-type="world">
+                    <span class="tab-icon">🌍</span>
+                    <span class="tab-label">ワールドレイド</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 通常レイドセクション -->
+        <section id="normal-raid-section" class="raid-section">
+            <!-- ボスセレクター -->
+            <div class="boss-selector">
+                <div class="boss-cards" id="boss-cards">
+                    <!-- JSで生成 -->
+                </div>
+            </div>
+
+            <!-- ボス詳細エリア -->
+            <div class="boss-detail-area" id="boss-detail-area">
+                <div class="boss-info">
+                    <div class="boss-portrait">
+                        <img id="boss-portrait-img" src="" alt="">
+                    </div>
+                    <div class="boss-text">
+                        <h2 id="boss-name" class="boss-name"></h2>
+                        <p id="boss-story" class="boss-story"></p>
+                        <div class="boss-solution">
+                            <h3>攻略ヒント</h3>
+                            <p id="boss-solution-text"></p>
+                        </div>
+                        <div class="boss-skills-section">
+                            <h3>ボススキル</h3>
+                            <div class="boss-skills" id="boss-skills">
+                                <!-- JSで生成 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 難易度セレクター -->
+                <div class="difficulty-selector">
+                    <h3>難易度選択</h3>
+                    <div class="difficulty-grid" id="difficulty-grid">
+                        <!-- JSで生成 -->
+                    </div>
+                </div>
+
+                <!-- ステージ詳細 -->
+                <div class="stage-detail" id="stage-detail">
+                    <div class="stage-header">
+                        <h3 id="stage-title">難易度 1</h3>
+                        <div class="stage-basic-info">
+                            <span class="info-item"><span class="info-label">消費スタミナ</span><span id="stage-stamina">6</span></span>
+                            <span class="info-item"><span class="info-label">アカウント経験値</span><span id="stage-account-exp">60</span></span>
+                            <span class="info-item"><span class="info-label">英雄経験値</span><span id="stage-hero-exp">600</span></span>
+                        </div>
+                    </div>
+
+                    <!-- 敵ステータス -->
+                    <div class="enemy-stats-section">
+                        <h4>ボスステータス</h4>
+                        <div class="enemy-stats" id="enemy-stats">
+                            <!-- JSで生成 -->
+                        </div>
+                    </div>
+
+                    <!-- サブオプション確率 -->
+                    <div class="sub-option-section" id="sub-option-section">
+                        <h4>装備サブオプション確率</h4>
+                        <div class="sub-option-probs" id="sub-option-probs">
+                            <!-- JSで生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 報酬 -->
+                    <div class="rewards-section">
+                        <h4>獲得可能報酬</h4>
+                        <div class="rewards-grid" id="rewards-grid">
+                            <!-- JSで生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ワールドレイドセクション -->
+        <section id="world-raid-section" class="raid-section hidden">
+            <div class="world-raid-notice">
+                <p>⚠️ ワールドレイドは期間限定コンテンツです</p>
+            </div>
+            
+            <div class="world-boss-cards" id="world-boss-cards">
+                <!-- JSで生成 -->
+            </div>
+
+            <div class="world-raid-detail" id="world-raid-detail">
+                <!-- JSで生成 -->
+            </div>
+        </section>
+
+        <!-- サブオプション確率一覧 -->
+        <section class="sub-option-table-section">
+            <h3>サブオプション確率一覧（難易度11～15）</h3>
+            <table class="sub-option-table">
+                <thead>
+                    <tr>
+                        <th>難易度</th>
+                        <th>4オプション</th>
+                        <th>3オプション</th>
+                        <th>2オプション</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>11段階</td>
+                        <td class="prob-4op">6%</td>
+                        <td class="prob-3op">39%</td>
+                        <td class="prob-2op">55%</td>
+                    </tr>
+                    <tr>
+                        <td>12段階</td>
+                        <td class="prob-4op">7%</td>
+                        <td class="prob-3op">53%</td>
+                        <td class="prob-2op">40%</td>
+                    </tr>
+                    <tr>
+                        <td>13段階</td>
+                        <td class="prob-4op">8%</td>
+                        <td class="prob-3op">67%</td>
+                        <td class="prob-2op">25%</td>
+                    </tr>
+                    <tr>
+                        <td>14段階</td>
+                        <td class="prob-4op">9%</td>
+                        <td class="prob-3op">81%</td>
+                        <td class="prob-2op">10%</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>15段階</td>
+                        <td class="prob-4op">10%</td>
+                        <td class="prob-3op">90%</td>
+                        <td class="prob-2op">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note">※ 難易度1～10ではサブオプション確定なし（基本値）</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Seven Knights Re:Birth Wiki - 非公式ファンサイト</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="raid.js"></script>
+</body>
+</html>

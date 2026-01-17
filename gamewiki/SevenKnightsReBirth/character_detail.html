@@ -6,70 +6,178 @@
     <title>キャラクター詳細 - セブンナイツ リバース Wiki</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="detail-page">
     <header>
-        <a href="index.html" class="logo"><img src="images/icon/rogo.png" alt="7K:Re Wiki"></a>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
         <nav>
             <ul>
                 <li><a href="index.html">ホーム</a></li>
                 <li><a href="characters.html">キャラクター</a></li>
+                <li><a href="build.html">ビルド</a></li>
+                <li><a href="adventure.html">冒険</a></li>
+                <li><a href="raid.html">レイド</a></li>
             </ul>
         </nav>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
     </header>
 
-    <main class="container">
-        <div class="detail-container">
-            <div class="detail-header">
-                <a href="characters.html" class="back-link">← キャラクター一覧に戻る</a>
-                <h1 id="char-name-title">読み込み中...</h1>
-                <p id="char-subname" class="char-subname"></p>
-                <div id="rarity-selector" class="rarity-selector"></div>
+    <main class="detail-main">
+        <!-- ポートレートギャラリー (左側固定) -->
+        <aside class="portrait-gallery">
+            <div class="portrait-wrapper">
+                <img id="portrait-img" src="" alt="Portrait" class="portrait-main-img" onclick="openFullscreen()">
+                <div class="portrait-zoom-hint">クリックで拡大</div>
             </div>
+            <div class="portrait-controls">
+                <select id="portrait-variant-select" class="portrait-select"></select>
+                <div id="portrait-obtain-method" class="portrait-obtain-info"></div>
+            </div>
+            <div class="portrait-thumbnails" id="portrait-thumbnails"></div>
+        </aside>
 
-            <div class="detail-content">
-                <div class="detail-left">
-                    <div class="portrait-container">
-                        <img id="portrait-img" src="" alt="Portrait" class="portrait-img">
+        <!-- メインコンテンツ (右側) -->
+        <div class="detail-content-area">
+            <!-- キャラクターヘッダー -->
+            <section class="char-header-card">
+                <a href="characters.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    キャラクター一覧
+                </a>
+                <div class="char-title-row">
+                    <h1 id="char-name-title">読み込み中...</h1>
+                    <p id="char-subname" class="char-subname"></p>
+                </div>
+                <div id="rarity-selector" class="rarity-tabs"></div>
+            </section>
+
+            <!-- 基本情報 -->
+            <section class="info-card">
+                <h2 class="card-title">
+                    <span class="title-icon">📋</span>基本情報
+                </h2>
+                <div id="basic-info-grid" class="basic-info-grid"></div>
+            </section>
+
+            <!-- 戦闘ステータス（統合タブ） -->
+            <section class="info-card combat-stats-card">
+                <h2 class="card-title">
+                    <span class="title-icon">⚔️</span>戦闘ステータス
+                </h2>
+                <div class="combat-tabs">
+                    <button class="combat-tab active" data-tab="base">基礎値</button>
+                    <button class="combat-tab" data-tab="growth">成長</button>
+                    <button class="combat-tab" data-tab="reinforce">強化</button>
+                    <button class="combat-tab" data-tab="potential">潜在能力</button>
+                </div>
+                
+                <!-- 基礎値タブ -->
+                <div class="combat-panel active" id="panel-base">
+                    <div id="stats-grid" class="stats-display-grid"></div>
+                </div>
+                
+                <!-- 成長タブ -->
+                <div class="combat-panel" id="panel-growth">
+                    <div class="growth-compare">
+                        <div class="growth-card lv1">
+                            <div class="growth-level">Lv.1</div>
+                            <div id="lv1-stats" class="growth-stats"></div>
+                        </div>
+                        <div class="growth-arrow">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                        <div class="growth-card lv30">
+                            <div class="growth-level">Lv.30</div>
+                            <div id="lv30-stats" class="growth-stats"></div>
+                        </div>
+                    </div>
+                    <div class="exp-display">
+                        <span class="exp-icon">📊</span>
+                        <span class="exp-text">必要経験値合計</span>
+                        <span id="total-exp" class="exp-amount">—</span>
                     </div>
                 </div>
-
-                <div class="detail-right">
-                    <section class="detail-section">
-                        <h2 class="section-title">基本情報</h2>
-                        <div id="basic-info-grid" class="info-grid"></div>
-                    </section>
-
-                    <section class="detail-section">
-                        <h2 class="section-title">ステータス</h2>
-                        <div id="stats-grid" class="stats-grid"></div>
-                    </section>
+                
+                <!-- 強化タブ -->
+                <div class="combat-panel" id="panel-reinforce">
+                    <div class="reinforce-level-bar">
+                        <button class="reinforce-btn" data-level="0">+0</button>
+                        <button class="reinforce-btn" data-level="1">+1</button>
+                        <button class="reinforce-btn" data-level="2">+2</button>
+                        <button class="reinforce-btn" data-level="3">+3</button>
+                        <button class="reinforce-btn" data-level="4">+4</button>
+                        <button class="reinforce-btn active" data-level="5">+5</button>
+                    </div>
+                    <div id="reinforce-stats" class="reinforce-stats-grid"></div>
+                    <div id="reinforce-cost" class="reinforce-cost-display"></div>
                 </div>
-            </div>
-
-            <section class="detail-section full-width">
-                <h2 class="section-title">スキル</h2>
-                <div id="skills-container" class="skills-container"></div>
+                
+                <!-- 潜在能力タブ -->
+                <div class="combat-panel" id="panel-potential">
+                    <div id="potential-container" class="potential-display">
+                        <p class="potential-placeholder">潜在能力解放データは現在利用できません</p>
+                    </div>
+                </div>
             </section>
 
-            <section class="detail-section full-width">
-                <h2 class="section-title">超越解放効果</h2>
-                <div id="transcendence-container" class="transcendence-container"></div>
+            <!-- スキル -->
+            <section class="info-card">
+                <h2 class="card-title">
+                    <span class="title-icon">✨</span>スキル
+                </h2>
+                <div id="skills-container" class="skills-grid"></div>
             </section>
 
-            <section class="detail-section full-width">
-                <h2 class="section-title">フレーバーテキスト</h2>
-                <div id="flavor-text" class="profile-text"></div>
+            <!-- 超越解放効果 -->
+            <section class="info-card">
+                <h2 class="card-title">
+                    <span class="title-icon">🌟</span>超越解放効果
+                </h2>
+                <div id="transcendence-container" class="transcendence-list"></div>
             </section>
 
-            <section class="detail-section full-width">
-                <h2 class="section-title">ストーリー</h2>
-                <div id="story-text" class="profile-text"></div>
+            <!-- フレーバー＆ストーリー -->
+            <section class="info-card">
+                <h2 class="card-title">
+                    <span class="title-icon">📖</span>プロフィール
+                </h2>
+                <div class="profile-tabs">
+                    <button class="profile-tab active" data-tab="flavor">フレーバー</button>
+                    <button class="profile-tab" data-tab="story">ストーリー</button>
+                </div>
+                <div class="profile-panel active" id="profile-flavor">
+                    <div id="flavor-text" class="profile-text-content"></div>
+                </div>
+                <div class="profile-panel" id="profile-story">
+                    <div id="story-text" class="profile-text-content"></div>
+                </div>
             </section>
         </div>
     </main>
 
+    <!-- ポートレート全画面オーバーレイ -->
+    <div id="portrait-fullscreen" class="portrait-fullscreen" onclick="closeFullscreen()">
+        <img id="portrait-fullscreen-img" src="" alt="Portrait">
+        <button class="fullscreen-close">&times;</button>
+        <div class="fullscreen-nav">
+            <button class="nav-btn prev" onclick="event.stopPropagation(); navigatePortrait(-1)">&#10094;</button>
+            <button class="nav-btn next" onclick="event.stopPropagation(); navigatePortrait(1)">&#10095;</button>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2024 Seven Knights Re:Birth Unofficial Wiki</p>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">7K:Re Wiki</p>
+                <p class="footer-disclaimer">このサイトは非公式のファンサイトです。</p>
+                <p class="footer-copyright">© 2024 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
