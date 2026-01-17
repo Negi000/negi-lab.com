@@ -90,7 +90,7 @@ function initBossCards() {
         
         card.innerHTML = `
             <img class="boss-card-image" src="${imageUrl}" alt="${boss.name}" 
-                 onerror="this.src='https://placehold.co/200x120/1a1a1a/ffd700?text=${encodeURIComponent(boss.name)}'">
+                 onerror="handleImageError(this)">
             <div class="boss-card-name">${boss.name}</div>
         `;
         
@@ -168,7 +168,7 @@ function updateBossSkills(boss) {
     
     skillsContainer.innerHTML = boss.skills.map(skill => {
         const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.png` : '';
-        const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="this.style.display='none'">` : '';
+        const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="handleImageError(this)">` : '';
         const descHtml = skill.desc ? `<span class="skill-desc">${skill.desc}</span>` : '';
         const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">CT: ${skill.cooltime}秒</span>` : '';
         

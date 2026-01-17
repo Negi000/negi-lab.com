@@ -176,7 +176,7 @@ function renderLandmarks() {
             <img class="landmark-card-image" 
                  src="images/icon/LandMarks/${landmark.image}" 
                  alt="${landmark.name}"
-                 onerror="this.src='https://placehold.co/200x200/1a1a1a/ffd700?text=${landmark.id}'">
+                 onerror="handleImageError(this)">
             <div class="landmark-card-overlay">
                 <span class="landmark-card-name">${landmark.name}</span>
                 <span class="landmark-card-stages">${landmark.stages.length}ステージ</span>
@@ -246,7 +246,7 @@ function openStageDetailModal(stage, landmark) {
             enemyCard.innerHTML = `
                 <div class="enemy-icon">
                     <img class="enemy-icon-img" src="${iconPath}" alt="${monsterName}" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                         onerror="handleImageError(this)">
                     <span class="enemy-icon-fallback" style="display:none;">${monster.is_boss ? '👹' : '👾'}</span>
                 </div>
                 <div class="enemy-info">

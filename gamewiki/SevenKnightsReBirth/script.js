@@ -379,7 +379,7 @@ async function initCharacterList() {
             
             badgeHtml = `
                 <div class="card-badge-container">
-                    <img src="${assets.badge}" class="card-badge" alt="badge" loading="lazy" decoding="async">
+                    <img src="${assets.badge}" class="card-badge" alt="badge" loading="lazy" decoding="async" onerror="handleImageError(this)">
                     <div class="badge-glow" style="animation-delay: ${delay}s"></div>
                 </div>
             `;
@@ -392,14 +392,14 @@ async function initCharacterList() {
 
         card.innerHTML = `
             <div class="character-card-visual">
-                <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async">
+                <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async" onerror="handleImageError(this)">
                 <div class="card-icon-mask">
-                    <img src="${iconPath}" onerror="this.src='https://placehold.co/150x150/1a1a1a/e60012?text=No+Image'" class="card-icon" alt="${char.name}" loading="lazy" decoding="async">
+                    <img src="${iconPath}" class="card-icon" alt="${char.name}" loading="lazy" decoding="async" onerror="handleImageError(this)">
                 </div>
                 ${badgeHtml}
                 ${unreleasedBadgeHtml}
-                <img src="${typeIconPath}" class="card-type-icon" alt="${char.role}" loading="lazy" decoding="async" onerror="this.style.display='none'">
-                <img src="${starIconPath}" class="card-star-icon" alt="${maxStar}星" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                <img src="${typeIconPath}" class="card-type-icon" alt="${char.role}" loading="lazy" decoding="async" onerror="handleImageError(this)">
+                <img src="${starIconPath}" class="card-star-icon" alt="${maxStar}星" loading="lazy" decoding="async" onerror="handleImageError(this)">
                 <div class="card-name-overlay">
                     <span class="card-name-text">${char.name}</span>
                 </div>
