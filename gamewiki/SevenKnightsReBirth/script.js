@@ -1,6 +1,41 @@
 // Global config
 const DATA_BASE_PATH = 'data/';
 
+// 画像フォーマット対応: webp優先、pngフォールバック
+const IMAGE_EXT = '.webp';
+const IMAGE_FALLBACK_EXT = '.png';
+
+// 画像パスを生成（拡張子を自動付与）
+function getImagePath(basePath, filename) {
+    // 既に拡張子がある場合はそのまま返す
+    if (/\.(webp|png|jpg|jpeg|gif|svg)$/i.test(filename)) {
+        return basePath + filename;
+    }
+    return basePath + filename + IMAGE_EXT;
+}
+
+// 画像読み込み失敗時のフォールバック処理
+function handleImageError(img) {
+    const src = img.src;
+    // webpで失敗した場合、pngに切り替え
+    if (src.endsWith('.webp')) {
+        const pngSrc = src.replace(/\.webp$/, '.png');
+        img.src = pngSrc;
+        return;
+    }
+    // それ以外の場合はプレースホルダー
+    if (!src.includes('placehold.co')) {
+        img.src = 'https://placehold.co/150x150/1a1a1a/e60012?text=No+Image';
+    }
+}
+
+// グローバルエラーハンドラを設定
+document.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') {
+        handleImageError(e.target);
+    }
+}, true);
+
 // 用語辞書（ツールチップ表示用）
 const SKILL_GLOSSARY = {
     '権能': 'HPが0になるダメージを受けた時、HPが1の状態で1回のみ生存。ラウンドごとに1回のみ発動。',
@@ -300,14 +335,14 @@ async function initCharacterList() {
         // 伝説+: 通常の伝説バッジ (SPBG01)
         // 伝説++: 特別な伝説バッジ (SPBG03)
         if (char.rarity === '伝説++') {
-            badge = 'Atl_UI-List_SPBG03.webp';
+            badge = 'Atl_UI-List_SPBG03.png';
         } else if (char.rarity === '伝説+') {
-            badge = 'Atl_UI-List_SPBG01.webp';
+            badge = 'Atl_UI-List_SPBG01.png';
         }
         // 伝説（無印）はバッジなし
 
         return {
-            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.webp`,
+            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.png`,
             badge: badge ? `images/icon/${badge}` : null
         };
     }
@@ -321,15 +356,15 @@ async function initCharacterList() {
         card.onclick = () => window.location.href = `character_detail.html?id=${char.id}`;
         
         const assets = getRarityAssets(char);
-        const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.webp`;
+        const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.png`;
         
-        // タイプアイコン (RoleIcon_{roleId}.webp)
+        // タイプアイコン (RoleIcon_{roleId}.png)
         const roleId = char.roleId || '0';
-        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.webp`;
+        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.png`;
         
-        // 星アイコン (Atl_Symbol_Star_M{star}.webp) - 3～6のみ
+        // 星アイコン (Atl_Symbol_Star_M{star}.png) - 3～6のみ
         const maxStar = char.star || '3';
-        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.webp`;
+        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.png`;
         
         let badgeHtml = '';
         if (assets.badge) {
@@ -1054,7 +1089,7 @@ async function updatePortrait(char, versions) {
 
     const fallback = () => {
         // 旧仕様のファイル名にも一応フォールバック
-        portraitImg.src = `images/portrait/${char.基本情報.ID}.webp`;
+        portraitImg.src = `images/portrait/${char.基本情報.ID}.png`;
         portraitImg.onerror = () => {
             portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
         };

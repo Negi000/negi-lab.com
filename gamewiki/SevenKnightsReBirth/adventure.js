@@ -1,4 +1,16 @@
 // Adventure Page JavaScript
+
+// 画像フォーマット対応: webp優先、pngフォールバック
+function handleImageError(img) {
+    const src = img.src;
+    if (src.endsWith('.webp')) {
+        img.src = src.replace(/\.webp$/, '.png');
+    }
+}
+document.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') handleImageError(e.target);
+}, true);
+
 let adventureData = null;
 let currentDifficulty = 0;
 let currentContinent = 1;
@@ -46,7 +58,7 @@ function initContinentSelector() {
         const continent = continents[i] || {
             id: i,
             name: i === 3 ? '???大陸' : `大陸${i}`,
-            icon: `Atl_WorldArea_01_Area0${i}.webp`
+            icon: `Atl_WorldArea_01_Area0${i}.png`
         };
         
         // この大陸にランドマークがあるかチェック
@@ -59,8 +71,8 @@ function initContinentSelector() {
         
         // アクティブな大陸かどうかで背景画像を切り替え
         const bgImage = i === currentContinent 
-            ? 'Atl_Worldmap_01_Sprite_21.webp' 
-            : 'Atl_Worldmap_02_Sprite_4.webp';
+            ? 'Atl_Worldmap_01_Sprite_21.png' 
+            : 'Atl_Worldmap_02_Sprite_4.png';
         
         btn.innerHTML = `
             <img class="continent-btn-bg" src="images/icon/LandMarks/${bgImage}" alt="">
@@ -92,8 +104,8 @@ function selectContinent(continentId) {
         const bgImg = btn.querySelector('.continent-btn-bg');
         if (bgImg) {
             bgImg.src = isActive 
-                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.webp'
-                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.webp';
+                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.png'
+                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.png';
         }
     });
     
@@ -558,7 +570,7 @@ function getMonsterName(monsterId) {
 }
 
 function getMonsterIconPath(monsterId) {
-    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.webp`;
+    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.png`;
     return `images/icon/Card/${file}`;
 }
 
