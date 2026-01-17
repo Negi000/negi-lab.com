@@ -1,4 +1,16 @@
 // Raid Page JavaScript
+
+// 画像フォーマット対応: webp優先、pngフォールバック
+function handleImageError(img) {
+    const src = img.src;
+    if (src.endsWith('.webp')) {
+        img.src = src.replace(/\.webp$/, '.png');
+    }
+}
+document.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') handleImageError(e.target);
+}, true);
+
 let raidData = null;
 let currentBoss = 1;
 let currentDifficulty = 1;
@@ -90,9 +102,9 @@ function getBossImageUrl(bossKey) {
     // 実際のボス画像があればそのパスを返す
     // なければプレースホルダー
     const imageMap = {
-        'Briliant': 'images/icon/Raid/Atl_Account_Contents_BG_Briliant.webp',
-        'Devourer': 'images/icon/Raid/Atl_Account_Contents_BG_Devourer.webp',
-        'NiuMowang': 'images/icon/Raid/Atl_Account_Contents_BG_NiuMowang.webp'
+        'Briliant': 'images/icon/Raid/Atl_Account_Contents_BG_Briliant.png',
+        'Devourer': 'images/icon/Raid/Atl_Account_Contents_BG_Devourer.png',
+        'NiuMowang': 'images/icon/Raid/Atl_Account_Contents_BG_NiuMowang.png'
     };
     return imageMap[bossKey] || `https://placehold.co/200x120/1a1a1a/ffd700?text=${bossKey}`;
 }
@@ -153,7 +165,7 @@ function updateBossSkills(boss) {
     };
     
     skillsContainer.innerHTML = boss.skills.map(skill => {
-        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.webp` : '';
+        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.png` : '';
         const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="this.style.display='none'">` : '';
         const descHtml = skill.desc ? `<span class="skill-desc">${skill.desc}</span>` : '';
         const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">CT: ${skill.cooltime}秒</span>` : '';
