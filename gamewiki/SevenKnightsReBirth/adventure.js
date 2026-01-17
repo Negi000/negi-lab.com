@@ -1,18 +1,4 @@
 // Adventure Page JavaScript
-
-// 画像フォーマット対応: pngで失敗したらwebpを試す
-function handleImageError(img) {
-    const src = img.src;
-    if (src.endsWith('.png')) {
-        img.src = src.replace(/\.png$/, '.webp');
-    } else if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
-        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
-    }
-}
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') handleImageError(e.target);
-}, true);
-
 let adventureData = null;
 let currentDifficulty = 0;
 let currentContinent = 1;
@@ -60,7 +46,7 @@ function initContinentSelector() {
         const continent = continents[i] || {
             id: i,
             name: i === 3 ? '???大陸' : `大陸${i}`,
-            icon: `Atl_WorldArea_01_Area0${i}.png`
+            icon: `Atl_WorldArea_01_Area0${i}.webp`
         };
         
         // この大陸にランドマークがあるかチェック
@@ -73,8 +59,8 @@ function initContinentSelector() {
         
         // アクティブな大陸かどうかで背景画像を切り替え
         const bgImage = i === currentContinent 
-            ? 'Atl_Worldmap_01_Sprite_21.png' 
-            : 'Atl_Worldmap_02_Sprite_4.png';
+            ? 'Atl_Worldmap_01_Sprite_21.webp' 
+            : 'Atl_Worldmap_02_Sprite_4.webp';
         
         btn.innerHTML = `
             <img class="continent-btn-bg" src="images/icon/LandMarks/${bgImage}" alt="">
@@ -106,8 +92,8 @@ function selectContinent(continentId) {
         const bgImg = btn.querySelector('.continent-btn-bg');
         if (bgImg) {
             bgImg.src = isActive 
-                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.png'
-                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.png';
+                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.webp'
+                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.webp';
         }
     });
     
@@ -176,7 +162,7 @@ function renderLandmarks() {
             <img class="landmark-card-image" 
                  src="images/icon/LandMarks/${landmark.image}" 
                  alt="${landmark.name}"
-                 onerror="handleImageError(this)">
+                 onerror="this.style.display='none'">
             <div class="landmark-card-overlay">
                 <span class="landmark-card-name">${landmark.name}</span>
                 <span class="landmark-card-stages">${landmark.stages.length}ステージ</span>
@@ -246,7 +232,7 @@ function openStageDetailModal(stage, landmark) {
             enemyCard.innerHTML = `
                 <div class="enemy-icon">
                     <img class="enemy-icon-img" src="${iconPath}" alt="${monsterName}" 
-                         onerror="handleImageError(this)">
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <span class="enemy-icon-fallback" style="display:none;">${monster.is_boss ? '👹' : '👾'}</span>
                 </div>
                 <div class="enemy-info">
@@ -572,7 +558,7 @@ function getMonsterName(monsterId) {
 }
 
 function getMonsterIconPath(monsterId) {
-    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.png`;
+    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.webp`;
     return `images/icon/Card/${file}`;
 }
 

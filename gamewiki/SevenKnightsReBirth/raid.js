@@ -1,18 +1,4 @@
 // Raid Page JavaScript
-
-// 画像フォーマット対応: pngで失敗したらwebpを試す
-function handleImageError(img) {
-    const src = img.src;
-    if (src.endsWith('.png')) {
-        img.src = src.replace(/\.png$/, '.webp');
-    } else if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
-        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
-    }
-}
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') handleImageError(e.target);
-}, true);
-
 let raidData = null;
 let currentBoss = 1;
 let currentDifficulty = 1;
@@ -90,7 +76,7 @@ function initBossCards() {
         
         card.innerHTML = `
             <img class="boss-card-image" src="${imageUrl}" alt="${boss.name}" 
-                 onerror="handleImageError(this)">
+                 onerror="this.style.display='none'">
             <div class="boss-card-name">${boss.name}</div>
         `;
         
@@ -104,9 +90,9 @@ function getBossImageUrl(bossKey) {
     // 実際のボス画像があればそのパスを返す
     // なければプレースホルダー
     const imageMap = {
-        'Briliant': 'images/icon/Raid/Atl_Account_Contents_BG_Briliant.png',
-        'Devourer': 'images/icon/Raid/Atl_Account_Contents_BG_Devourer.png',
-        'NiuMowang': 'images/icon/Raid/Atl_Account_Contents_BG_NiuMowang.png'
+        'Briliant': 'images/icon/Raid/Atl_Account_Contents_BG_Briliant.webp',
+        'Devourer': 'images/icon/Raid/Atl_Account_Contents_BG_Devourer.webp',
+        'NiuMowang': 'images/icon/Raid/Atl_Account_Contents_BG_NiuMowang.webp'
     };
     return imageMap[bossKey] || `https://placehold.co/200x120/1a1a1a/ffd700?text=${bossKey}`;
 }
@@ -167,8 +153,8 @@ function updateBossSkills(boss) {
     };
     
     skillsContainer.innerHTML = boss.skills.map(skill => {
-        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.png` : '';
-        const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="handleImageError(this)">` : '';
+        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.webp` : '';
+        const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="this.style.display='none'">` : '';
         const descHtml = skill.desc ? `<span class="skill-desc">${skill.desc}</span>` : '';
         const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">CT: ${skill.cooltime}秒</span>` : '';
         

@@ -3,19 +3,6 @@
  * キャラクター装備ビルドガイド
  */
 
-// 画像フォーマット対応: pngで失敗したらwebpを試す
-function handleImageError(img) {
-    const src = img.src;
-    if (src.endsWith('.png')) {
-        img.src = src.replace(/\.png$/, '.webp');
-    } else if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
-        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
-    }
-}
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') handleImageError(e.target);
-}, true);
-
 document.addEventListener('DOMContentLoaded', async () => {
     const buildContainer = document.getElementById('build-container');
     const searchInput = document.getElementById('search-input');
@@ -74,9 +61,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="build-card" onclick="openBuildModal('${char.id}')">
                 <div class="build-card-header">
                     <div class="build-card-icon">
-                        <img src="images/icon/Atl_UI-List_GradeBG${bgNum}.png" class="rarity-bg" alt="" onerror="handleImageError(this)">
-                        <img src="images/icon/Card/Tex_HeroIcon_${char.id}Card.png" class="char-icon" alt="${char.name}"
-                             onerror="handleImageError(this)">
+                        <img src="images/icon/Atl_UI-List_GradeBG${bgNum}.webp" class="rarity-bg" alt="">
+                        <img src="images/icon/Card/Tex_HeroIcon_${char.id}Card.webp" class="char-icon" alt="${char.name}"
+                             onerror="this.src='https://placehold.co/70x70/1a1a1a/666?text=?'">
                     </div>
                     <div class="build-card-info">
                         <div class="build-card-name">${char.name}</div>
@@ -292,10 +279,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         modalBody.innerHTML = `
             <div class="modal-header">
                 <div class="modal-char-icon">
-                    <img src="images/icon/Atl_UI-List_GradeBG${bgNum}.png" class="rarity-bg" alt="" onerror="handleImageError(this)">
-                    <img src="images/icon/Card/Tex_HeroIcon_${char.id}Card.png" class="char-icon" alt="${char.name}"
+                    <img src="images/icon/Atl_UI-List_GradeBG${bgNum}.webp" class="rarity-bg" alt="">
+                    <img src="images/icon/Card/Tex_HeroIcon_${char.id}Card.webp" class="char-icon" alt="${char.name}"
                          style="position:relative"
-                         onerror="handleImageError(this)">
+                         onerror="this.src='https://placehold.co/100x100/1a1a1a/666?text=?'">
                 </div>
                 <div class="modal-char-info">
                     <h2>${char.name}</h2>
