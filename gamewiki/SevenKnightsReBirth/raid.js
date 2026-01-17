@@ -153,7 +153,7 @@ function updateBossSkills(boss) {
     };
     
     skillsContainer.innerHTML = boss.skills.map(skill => {
-        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.webp` : '';
+        const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.png` : '';
         const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="this.style.display='none'">` : '';
         const descHtml = skill.desc ? `<span class="skill-desc">${skill.desc}</span>` : '';
         const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">CT: ${skill.cooltime}秒</span>` : '';
