@@ -46,7 +46,7 @@ function initContinentSelector() {
         const continent = continents[i] || {
             id: i,
             name: i === 3 ? '???大陸' : `大陸${i}`,
-            icon: `Atl_WorldArea_01_Area0${i}.png`
+            icon: `Atl_WorldArea_01_Area0${i}.webp`
         };
         
         // この大陸にランドマークがあるかチェック
