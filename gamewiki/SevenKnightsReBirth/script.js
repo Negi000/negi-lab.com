@@ -1,9 +1,9 @@
 // Global config
 const DATA_BASE_PATH = 'data/';
 
-// 画像フォーマット対応: webp優先、pngフォールバック
-const IMAGE_EXT = '.webp';
-const IMAGE_FALLBACK_EXT = '.png';
+// 画像フォーマット対応: pngで失敗したらwebpを試す
+const IMAGE_EXT = '.png';
+const IMAGE_FALLBACK_EXT = '.webp';
 
 // 画像パスを生成（拡張子を自動付与）
 function getImagePath(basePath, filename) {
@@ -17,10 +17,14 @@ function getImagePath(basePath, filename) {
 // 画像読み込み失敗時のフォールバック処理
 function handleImageError(img) {
     const src = img.src;
-    // webpで失敗した場合、pngに切り替え
-    if (src.endsWith('.webp')) {
-        const pngSrc = src.replace(/\.webp$/, '.png');
-        img.src = pngSrc;
+    // pngで失敗した場合、webpに切り替え
+    if (src.endsWith('.png')) {
+        img.src = src.replace(/\.png$/, '.webp');
+        return;
+    }
+    // jpgで失敗した場合、webpに切り替え
+    if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
+        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
         return;
     }
     // それ以外の場合はプレースホルダー

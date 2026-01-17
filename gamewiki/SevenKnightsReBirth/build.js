@@ -3,11 +3,13 @@
  * キャラクター装備ビルドガイド
  */
 
-// 画像フォーマット対応: webp優先、pngフォールバック
+// 画像フォーマット対応: pngで失敗したらwebpを試す
 function handleImageError(img) {
     const src = img.src;
-    if (src.endsWith('.webp')) {
-        img.src = src.replace(/\.webp$/, '.png');
+    if (src.endsWith('.png')) {
+        img.src = src.replace(/\.png$/, '.webp');
+    } else if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
+        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
     }
 }
 document.addEventListener('error', function(e) {
