@@ -1,45 +1,6 @@
 // Global config
 const DATA_BASE_PATH = 'data/';
 
-// 画像フォーマット対応: pngで失敗したらwebpを試す
-const IMAGE_EXT = '.png';
-const IMAGE_FALLBACK_EXT = '.webp';
-
-// 画像パスを生成（拡張子を自動付与）
-function getImagePath(basePath, filename) {
-    // 既に拡張子がある場合はそのまま返す
-    if (/\.(webp|png|jpg|jpeg|gif|svg)$/i.test(filename)) {
-        return basePath + filename;
-    }
-    return basePath + filename + IMAGE_EXT;
-}
-
-// 画像読み込み失敗時のフォールバック処理
-function handleImageError(img) {
-    const src = img.src;
-    // pngで失敗した場合、webpに切り替え
-    if (src.endsWith('.png')) {
-        img.src = src.replace(/\.png$/, '.webp');
-        return;
-    }
-    // jpgで失敗した場合、webpに切り替え
-    if (src.endsWith('.jpg') || src.endsWith('.jpeg')) {
-        img.src = src.replace(/\.(jpg|jpeg)$/, '.webp');
-        return;
-    }
-    // それ以外の場合はプレースホルダー
-    if (!src.includes('placehold.co')) {
-        img.src = 'https://placehold.co/150x150/1a1a1a/e60012?text=No+Image';
-    }
-}
-
-// グローバルエラーハンドラを設定
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') {
-        handleImageError(e.target);
-    }
-}, true);
-
 // 用語辞書（ツールチップ表示用）
 const SKILL_GLOSSARY = {
     '権能': 'HPが0になるダメージを受けた時、HPが1の状態で1回のみ生存。ラウンドごとに1回のみ発動。',
@@ -339,14 +300,14 @@ async function initCharacterList() {
         // 伝説+: 通常の伝説バッジ (SPBG01)
         // 伝説++: 特別な伝説バッジ (SPBG03)
         if (char.rarity === '伝説++') {
-            badge = 'Atl_UI-List_SPBG03.png';
+            badge = 'Atl_UI-List_SPBG03.webp';
         } else if (char.rarity === '伝説+') {
-            badge = 'Atl_UI-List_SPBG01.png';
+            badge = 'Atl_UI-List_SPBG01.webp';
         }
         // 伝説（無印）はバッジなし
 
         return {
-            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.png`,
+            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.webp`,
             badge: badge ? `images/icon/${badge}` : null
         };
     }
@@ -360,15 +321,15 @@ async function initCharacterList() {
         card.onclick = () => window.location.href = `character_detail.html?id=${char.id}`;
         
         const assets = getRarityAssets(char);
-        const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.png`;
+        const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.webp`;
         
-        // タイプアイコン (RoleIcon_{roleId}.png)
+        // タイプアイコン (RoleIcon_{roleId}.webp)
         const roleId = char.roleId || '0';
-        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.png`;
+        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.webp`;
         
-        // 星アイコン (Atl_Symbol_Star_M{star}.png) - 3～6のみ
+        // 星アイコン (Atl_Symbol_Star_M{star}.webp) - 3～6のみ
         const maxStar = char.star || '3';
-        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.png`;
+        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.webp`;
         
         let badgeHtml = '';
         if (assets.badge) {
@@ -379,7 +340,7 @@ async function initCharacterList() {
             
             badgeHtml = `
                 <div class="card-badge-container">
-                    <img src="${assets.badge}" class="card-badge" alt="badge" loading="lazy" decoding="async" onerror="handleImageError(this)">
+                    <img src="${assets.badge}" class="card-badge" alt="badge" loading="lazy" decoding="async">
                     <div class="badge-glow" style="animation-delay: ${delay}s"></div>
                 </div>
             `;
@@ -392,14 +353,14 @@ async function initCharacterList() {
 
         card.innerHTML = `
             <div class="character-card-visual">
-                <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async" onerror="handleImageError(this)">
+                <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async">
                 <div class="card-icon-mask">
-                    <img src="${iconPath}" class="card-icon" alt="${char.name}" loading="lazy" decoding="async" onerror="handleImageError(this)">
+                    <img src="${iconPath}" class="card-icon" alt="${char.name}" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/150x150/1a1a1a/e60012?text=No+Image'">
                 </div>
                 ${badgeHtml}
                 ${unreleasedBadgeHtml}
-                <img src="${typeIconPath}" class="card-type-icon" alt="${char.role}" loading="lazy" decoding="async" onerror="handleImageError(this)">
-                <img src="${starIconPath}" class="card-star-icon" alt="${maxStar}星" loading="lazy" decoding="async" onerror="handleImageError(this)">
+                <img src="${typeIconPath}" class="card-type-icon" alt="${char.role}" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                <img src="${starIconPath}" class="card-star-icon" alt="${maxStar}星" loading="lazy" decoding="async" onerror="this.style.display='none'">
                 <div class="card-name-overlay">
                     <span class="card-name-text">${char.name}</span>
                 </div>
@@ -1093,7 +1054,7 @@ async function updatePortrait(char, versions) {
 
     const fallback = () => {
         // 旧仕様のファイル名にも一応フォールバック
-        portraitImg.src = `images/portrait/${char.基本情報.ID}.png`;
+        portraitImg.src = `images/portrait/${char.基本情報.ID}.webp`;
         portraitImg.onerror = () => {
             portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
         };
