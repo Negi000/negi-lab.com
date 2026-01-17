@@ -92,8 +92,8 @@ function selectContinent(continentId) {
         const bgImg = btn.querySelector('.continent-btn-bg');
         if (bgImg) {
             bgImg.src = isActive 
-                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.png'
-                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.png';
+                ? 'images/icon/LandMarks/Atl_Worldmap_01_Sprite_21.webp'
+                : 'images/icon/LandMarks/Atl_Worldmap_02_Sprite_4.webp';
         }
     });
     
@@ -227,10 +227,16 @@ function openStageDetailModal(stage, landmark) {
         stage.monsters.forEach(monster => {
             const enemyCard = document.createElement('div');
             enemyCard.className = 'enemy-card' + (monster.is_boss ? ' boss' : '');
+            const monsterName = getMonsterName(monster.id);
+            const iconPath = getMonsterIconPath(monster.id);
             enemyCard.innerHTML = `
-                <div class="enemy-icon">${monster.is_boss ? '👹' : '👾'}</div>
+                <div class="enemy-icon">
+                    <img class="enemy-icon-img" src="${iconPath}" alt="${monsterName}" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="enemy-icon-fallback" style="display:none;">${monster.is_boss ? '👹' : '👾'}</span>
+                </div>
                 <div class="enemy-info">
-                    <span class="enemy-name">モンスター #${monster.id}</span>
+                    <span class="enemy-name">${monsterName}</span>
                     <span class="enemy-level">Lv.${monster.level}</span>
                 </div>
             `;
@@ -251,16 +257,37 @@ function openStageDetailModal(stage, landmark) {
     toggleBtn.classList.remove('active');
     
     if (stage.rewards && stage.rewards.length > 0) {
+        // 同名グループの重複を判定（まず「人間が読む表示名」で数える）
+        const groupNameCount = new Map();
+        stage.rewards.forEach(r => {
+            const isFirst = !!r.first_reward;
+            const isGroup = !isFirst && !r.reward_id && r.detail_group_id;
+            if (!isGroup) return;
+            const name = getRewardGroupDisplayNameRaw(r.stage_show_reward_group_id, r.detail_group_id);
+            groupNameCount.set(name, (groupNameCount.get(name) || 0) + 1);
+        });
+
         // 報酬アイテム表示
         stage.rewards.forEach(reward => {
-            if (reward.probability > 0) {
+            const isFirst = !!reward.first_reward;
+            if (isFirst || reward.probability > 0) {
                 const rewardItem = document.createElement('div');
                 rewardItem.className = 'reward-item';
                 
-                const rewardName = getRewardName(reward.reward_id, reward.detail_group_id);
+                const isGroup = !isFirst && !reward.reward_id && reward.detail_group_id;
+                let rewardName;
+                if (isFirst) {
+                    rewardName = `初回報酬: ${getFirstRewardDisplayName(reward)}`;
+                } else if (isGroup) {
+                    rewardName = getRewardGroupDisplayName(reward.stage_show_reward_group_id, reward.detail_group_id, groupNameCount);
+                } else {
+                    rewardName = getRewardName(reward.reward_id, reward.detail_group_id, reward.stage_show_reward_group_id);
+                }
+
+                const probLabel = isFirst ? '初回' : formatPercent(reward.probability);
                 rewardItem.innerHTML = `
                     <span>${rewardName}</span>
-                    <span style="color: var(--text-sub);">(${reward.probability.toFixed(2)}%)</span>
+                    <span style="color: var(--text-sub);">(${probLabel})</span>
                 `;
                 rewardsGrid.appendChild(rewardItem);
             }
@@ -268,26 +295,97 @@ function openStageDetailModal(stage, landmark) {
         
         // 詳細報酬（ドロップ率）
         let hasDetails = false;
+        // 先頭にコントロール（全開/全閉）を作る
+        const controls = document.createElement('div');
+        controls.className = 'reward-detail-controls';
+        controls.innerHTML = `
+            <button type="button" class="reward-detail-control" data-action="open">すべて開く</button>
+            <button type="button" class="reward-detail-control" data-action="close">すべて閉じる</button>
+            <span class="reward-detail-note">※「ステージ内」=ステージでその報酬を獲得する確率 / 「グループ内」=そのグループ内での割合</span>
+        `;
+        rewardsDetail.appendChild(controls);
+
         stage.rewards.forEach(reward => {
-            if (reward.detail_group_id && adventureData.reward_details[reward.detail_group_id]) {
+            const detailKey = String(reward.detail_group_id || '');
+            if (reward.detail_group_id && adventureData.reward_details[detailKey]) {
                 hasDetails = true;
-                const details = adventureData.reward_details[reward.detail_group_id];
+                const details = adventureData.reward_details[detailKey];
+                const isFirst = !!reward.first_reward;
                 
-                const groupDiv = document.createElement('div');
-                groupDiv.innerHTML = `<h4>グループ ${reward.detail_group_id} (${reward.probability.toFixed(2)}%)</h4>`;
-                
-                details.forEach(detail => {
+                const groupDetails = document.createElement('details');
+                groupDetails.className = 'reward-detail-group';
+                groupDetails.dataset.detailGroupId = String(reward.detail_group_id);
+
+                const groupName = isFirst
+                    ? '初回報酬'
+                    : getRewardGroupDisplayName(reward.stage_show_reward_group_id, reward.detail_group_id, groupNameCount);
+                const probLabel = isFirst ? '初回' : formatPercent(reward.probability);
+
+                const sumWithin = details.reduce((acc, d) => acc + (Number(d.ratio) || 0), 0);
+                const sumDiff = Math.abs(sumWithin - 100);
+                const sumClass = sumDiff <= 0.05 ? 'ok' : 'warn';
+
+                // デバッグ用の参照情報は画面に出さず、titleに閉じ込める
+                const rawName = getRewardGroupName(reward.stage_show_reward_group_id, reward.detail_group_id);
+                const metaName = getDetailGroupLabel(reward.detail_group_id);
+                const titleLines = [];
+                if (rawName && metaName && rawName !== metaName) titleLines.push(`表示カテゴリ: ${rawName}`);
+                titleLines.push(`参照ID: 表示${reward.stage_show_reward_group_id || 0} / 内訳${reward.detail_group_id}`);
+
+                const summary = document.createElement('summary');
+                summary.className = 'reward-detail-summary';
+                if (titleLines.length) summary.setAttribute('title', titleLines.join('\n'));
+
+                const sumHtml = (sumDiff <= 0.05)
+                    ? ''
+                    : `<span class="reward-detail-summary-sum ${sumClass}">内訳合計 ${formatPercent(sumWithin)}</span>`;
+                summary.innerHTML = `
+                    <span class="reward-detail-summary-title">${groupName}</span>
+                    <span class="reward-detail-summary-meta">
+                        <span class="reward-detail-summary-prob">ステージ内 ${probLabel}</span>
+                        ${sumHtml}
+                    </span>
+                `;
+                groupDetails.appendChild(summary);
+
+                // ヘッダ行
+                const header = document.createElement('div');
+                header.className = 'reward-detail-header';
+                header.innerHTML = `
+                    <span class="reward-detail-name">アイテム</span>
+                    <span class="reward-detail-overall">ステージ内</span>
+                    <span class="reward-detail-within">グループ内</span>
+                `;
+                groupDetails.appendChild(header);
+
+                // 詳細行（内訳降順）
+                const sorted = [...details].sort((a, b) => (Number(b.ratio) || 0) - (Number(a.ratio) || 0));
+                sorted.forEach(detail => {
                     const detailItem = document.createElement('div');
                     detailItem.className = 'reward-detail-item';
+                    const itemName = getItemName(detail.reward_id);
+                    const withinLabel = formatPercent(detail.ratio);
+                    const overallPct = isFirst ? null : (reward.probability * (Number(detail.ratio) || 0) / 100);
+                    const overallLabel = isFirst ? '初回' : formatPercent(overallPct);
                     detailItem.innerHTML = `
-                        <span class="reward-detail-name">アイテム #${detail.reward_id}</span>
-                        <span class="reward-detail-rate">${detail.ratio.toFixed(2)}%</span>
+                        <span class="reward-detail-name">${itemName}</span>
+                        <span class="reward-detail-overall">${overallLabel}</span>
+                        <span class="reward-detail-within">${withinLabel}</span>
                     `;
-                    groupDiv.appendChild(detailItem);
+                    groupDetails.appendChild(detailItem);
                 });
-                
-                rewardsDetail.appendChild(groupDiv);
+
+                rewardsDetail.appendChild(groupDetails);
             }
+        });
+
+        // コントロールのイベント
+        controls.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-action]');
+            if (!btn) return;
+            const action = btn.dataset.action;
+            const list = rewardsDetail.querySelectorAll('details.reward-detail-group');
+            list.forEach(d => d.open = (action === 'open'));
         });
         
         // 詳細がある場合のみボタンを有効化
@@ -313,23 +411,155 @@ function openStageDetailModal(stage, landmark) {
     modal.classList.add('active');
 }
 
-// 報酬名取得（仮）
-function getRewardName(rewardId, detailGroupId) {
-    // 既知のIDをマッピング
-    const rewardNames = {
-        502: 'ゴールド',
-        // 他のIDを追加可能
-    };
-    
-    if (rewardId && rewardNames[rewardId]) {
-        return rewardNames[rewardId];
+function formatPercent(pct) {
+    const n = Number(pct);
+    if (!Number.isFinite(n)) return '-';
+
+    const abs = Math.abs(n);
+    if (abs === 0) return '0%';
+    if (abs < 0.01) return `${n.toFixed(4)}%`;
+    if (abs < 0.1) return `${n.toFixed(3)}%`;
+    return `${n.toFixed(2)}%`;
+}
+
+function getFirstRewardDisplayName(reward) {
+    const detailKey = String(reward?.detail_group_id || '');
+    const details = adventureData?.reward_details?.[detailKey];
+    if (Array.isArray(details) && details.length === 1 && details[0]?.reward_id) {
+        return getItemName(details[0].reward_id);
     }
-    
-    if (detailGroupId) {
-        return `報酬グループ ${detailGroupId}`;
+    // どうしても分からない場合は従来の表示にフォールバック
+    return getRewardName(reward.reward_id, reward.detail_group_id, reward.stage_show_reward_group_id);
+}
+
+function lookupDict(dict, id) {
+    if (!dict) return null;
+    const key = String(id);
+    return dict[key] ?? null;
+}
+
+function resolveItemIdVariants(itemId) {
+    const n = Number(itemId);
+    if (!Number.isFinite(n)) return [itemId];
+    // 例: 10111001 -> 10111000（末尾のバリエーションを吸収）
+    const base100 = Math.floor(n / 100) * 100;
+    const base10 = Math.floor(n / 10) * 10;
+    const variants = [n];
+    if (base100 !== n) variants.push(base100);
+    if (base10 !== n && base10 !== base100) variants.push(base10);
+    return variants;
+}
+
+function getRewardGroupName(stageShowRewardGroupId, detailGroupId) {
+    const g = lookupDict(adventureData?.stage_show_reward_groups, stageShowRewardGroupId);
+    if (g && typeof g === 'object' && g.name) return g.name;
+    // stage_show_reward_groupsは {id:{name,desc,icon}} の形だが、JSONから読むとキーは文字列
+    const g2 = adventureData?.stage_show_reward_groups?.[String(stageShowRewardGroupId)];
+    if (g2?.name) return g2.name;
+    return `報酬グループ ${detailGroupId}`;
+}
+
+function getDetailGroupMeta(detailGroupId) {
+    return adventureData?.reward_detail_group_meta?.[String(detailGroupId)] ?? null;
+}
+
+function getDetailGroupLabel(detailGroupId) {
+    const meta = getDetailGroupMeta(detailGroupId);
+    if (!meta) return null;
+    if (meta.suggested_name) return meta.suggested_name;
+
+    const kind = meta.kind;
+    const hasStarRaw = meta.star_min !== null && meta.star_min !== undefined && meta.star_max !== null && meta.star_max !== undefined;
+    const min = hasStarRaw ? Number(meta.star_min) : Number.NaN;
+    const max = hasStarRaw ? Number(meta.star_max) : Number.NaN;
+    const hasStar = Number.isFinite(min) && Number.isFinite(max);
+
+    if (kind === 'pc' && hasStar) {
+        if (min === max) return `★${min}キャラ`;
+        return `★${min}～${max}キャラ`;
     }
-    
+    if (kind === 'equip' && hasStar) {
+        const types = Array.isArray(meta.equip_item_types) ? meta.equip_item_types : [];
+        const isAccessory = types.includes(104);
+        const suffix = isAccessory ? 'アクセサリー' : '装備';
+        if (min === max) return `★${min}${suffix}`;
+        return `★${min}～${max}${suffix}`;
+    }
+    return null;
+}
+
+function getRewardGroupDisplayNameRaw(stageShowRewardGroupId, detailGroupId) {
+    // まずはデータ内容から推定（★別など）
+    const metaName = getDetailGroupLabel(detailGroupId);
+    if (metaName) return metaName;
+    // 推定できない場合はゲーム側の「表示用グループ名」を使う
+    return getRewardGroupName(stageShowRewardGroupId, detailGroupId);
+}
+
+function getRewardGroupDisplayName(stageShowRewardGroupId, detailGroupId, nameCountMap) {
+    const base = getRewardGroupDisplayNameRaw(stageShowRewardGroupId, detailGroupId);
+    const n = nameCountMap ? (nameCountMap.get(base) || 0) : 0;
+    if (n > 1) {
+        // どうしても同名になる場合だけ、最小限に識別子を付ける
+        return `${base}（グループ#${detailGroupId}）`;
+    }
+    return base;
+}
+
+// 報酬名取得
+function getRewardName(rewardId, detailGroupId, stageShowRewardGroupId) {
+    // RewardID=0 かつ detailGroupId がある場合は「報酬グループ（表示名）」
+    if (!rewardId && detailGroupId) {
+        return getRewardGroupName(stageShowRewardGroupId, detailGroupId);
+    }
+
+    // 通貨IDの場合
+    const currencyName = lookupDict(adventureData?.currency_names, rewardId);
+    if (currencyName) return currencyName;
+
+    // アイテムIDの場合（末尾違いの吸収あり）
+    const variants = resolveItemIdVariants(rewardId);
+    for (const v of variants) {
+        const itemName = lookupDict(adventureData?.item_names, v);
+        if (itemName) return itemName;
+    }
+
+    // モンスター/キャラクターIDの場合（報酬としてキャラがドロップする場合）
+    const monsterName = lookupDict(adventureData?.monster_names, rewardId);
+    if (monsterName) return monsterName;
+
     return `アイテム #${rewardId || '?'}`;
+}
+
+// アイテム名取得
+function getItemName(itemId) {
+    // 通貨
+    const currencyName = lookupDict(adventureData?.currency_names, itemId);
+    if (currencyName) return currencyName;
+
+    // アイテム（末尾違いの吸収あり）
+    const variants = resolveItemIdVariants(itemId);
+    for (const v of variants) {
+        const itemName = lookupDict(adventureData?.item_names, v);
+        if (itemName) return itemName;
+    }
+
+    // モンスター/キャラクター
+    const monsterName = lookupDict(adventureData?.monster_names, itemId);
+    if (monsterName) return monsterName;
+
+    return `アイテム #${itemId}`;
+}
+
+// モンスター名取得
+function getMonsterName(monsterId) {
+    const name = lookupDict(adventureData?.monster_names, monsterId);
+    return name || `モンスター #${monsterId}`;
+}
+
+function getMonsterIconPath(monsterId) {
+    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.png`;
+    return `images/icon/Card/${file}`;
 }
 
 // モーダル初期化
