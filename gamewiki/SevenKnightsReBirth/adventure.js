@@ -59,8 +59,8 @@ function initContinentSelector() {
         
         // アクティブな大陸かどうかで背景画像を切り替え
         const bgImage = i === currentContinent 
-            ? 'Atl_Worldmap_01_Sprite_21.png' 
-            : 'Atl_Worldmap_02_Sprite_4.png';
+            ? 'Atl_Worldmap_01_Sprite_21.webp' 
+            : 'Atl_Worldmap_02_Sprite_4.webp';
         
         btn.innerHTML = `
             <img class="continent-btn-bg" src="images/icon/LandMarks/${bgImage}" alt="">
@@ -558,7 +558,7 @@ function getMonsterName(monsterId) {
 }
 
 function getMonsterIconPath(monsterId) {
-    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.png`;
+    const file = lookupDict(adventureData?.monster_icons, monsterId) || `Tex_HeroIcon_${monsterId}Card.webp`;
     return `images/icon/Card/${file}`;
 }
 
