@@ -307,7 +307,7 @@ async function initCharacterList() {
         // 伝説（無印）はバッジなし
 
         return {
-            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.png`,
+            bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.webp`,
             badge: badge ? `images/icon/${badge}` : null
         };
     }
@@ -323,13 +323,13 @@ async function initCharacterList() {
         const assets = getRarityAssets(char);
         const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.webp`;
         
-        // タイプアイコン (RoleIcon_{roleId}.png)
+        // タイプアイコン (RoleIcon_{roleId}.webp)
         const roleId = char.roleId || '0';
-        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.png`;
+        const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.webp`;
         
-        // 星アイコン (Atl_Symbol_Star_M{star}.png) - 3～6のみ
+        // 星アイコン (Atl_Symbol_Star_M{star}.webp) - 3～6のみ
         const maxStar = char.star || '3';
-        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.png`;
+        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.webp`;
         
         let badgeHtml = '';
         if (assets.badge) {
@@ -1054,7 +1054,7 @@ async function updatePortrait(char, versions) {
 
     const fallback = () => {
         // 旧仕様のファイル名にも一応フォールバック
-        portraitImg.src = `images/portrait/${char.基本情報.ID}.png`;
+        portraitImg.src = `images/portrait/${char.基本情報.ID}.webp`;
         portraitImg.onerror = () => {
             portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
         };
