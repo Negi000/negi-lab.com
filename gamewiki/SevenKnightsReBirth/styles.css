@@ -4026,3 +4026,132 @@ footer {
         padding: 10px 12px;
     }
 }
+
+/* Credits Section */
+.credits-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(20, 20, 20, 0.5) 50%, transparent 100%);
+}
+
+.credits-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.credit-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px 32px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.credit-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: var(--shadow-hover), var(--glow-gold);
+    transform: translateY(-4px);
+}
+
+.credit-icon-link {
+    display: block;
+    flex-shrink: 0;
+}
+
+.credit-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-gold);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.credit-icon-link:hover .credit-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.credit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.credit-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.credit-role {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin: 0;
+}
+
+.credit-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.credit-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.credit-link.youtube {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff4444;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.credit-link.youtube:hover {
+    background: rgba(255, 0, 0, 0.25);
+    color: #ff6666;
+    border-color: rgba(255, 0, 0, 0.5);
+}
+
+.credit-link.spreadsheet {
+    background: rgba(52, 168, 83, 0.15);
+    color: #34a853;
+    border: 1px solid rgba(52, 168, 83, 0.3);
+}
+
+.credit-link.spreadsheet:hover {
+    background: rgba(52, 168, 83, 0.25);
+    color: #4caf50;
+    border-color: rgba(52, 168, 83, 0.5);
+}
+
+@media (max-width: 768px) {
+    .credit-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+    
+    .credit-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .credit-icon {
+        width: 100px;
+        height: 100px;
+    }
+}
