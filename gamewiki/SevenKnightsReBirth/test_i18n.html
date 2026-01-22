@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n Test</title>
+    <script src="i18n.js"></script>
+</head>
+<body>
+    <h1>i18n Test Page</h1>
+    <p>URL: <span id="url"></span></p>
+    <p>Current Lang: <span id="lang">loading...</span></p>
+    <p>I18N_READY: <span id="ready">loading...</span></p>
+    <p>Data Path: <span id="path">loading...</span></p>
+    
+    <h2>Test fetch from data/en/character_list.json:</h2>
+    <pre id="data">loading...</pre>
+    
+    <script>
+        document.getElementById('url').textContent = window.location.href;
+        
+        // Wait for i18n
+        function checkI18n() {
+            document.getElementById('ready').textContent = typeof I18N_READY !== 'undefined' ? I18N_READY : 'undefined';
+            
+            if (typeof getLang === 'function') {
+                document.getElementById('lang').textContent = getLang();
+            } else {
+                document.getElementById('lang').textContent = 'getLang not available';
+            }
+            
+            if (typeof I18N_READY !== 'undefined' && I18N_READY) {
+                const lang = getLang();
+                document.getElementById('path').textContent = `data/${lang}/character_list.json`;
+                
+                fetch(`data/${lang}/character_list.json`)
+                    .then(r => r.json())
+                    .then(data => {
+                        document.getElementById('data').textContent = JSON.stringify(data.slice(0, 3), null, 2);
+                    })
+                    .catch(e => {
+                        document.getElementById('data').textContent = 'Error: ' + e.message;
+                    });
+            } else {
+                setTimeout(checkI18n, 100);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkI18n, 100);
+        });
+    </script>
+</body>
+</html>

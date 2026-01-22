@@ -65,7 +65,7 @@ header {
     border-bottom: 1px solid var(--accent-red-dark);
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
     align-items: center;
     position: sticky;
     top: 0;
@@ -87,6 +87,10 @@ header {
 .logo:hover img {
     transform: scale(1.05);
     filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+nav {
+    margin-left: auto;
 }
 
 nav ul {
@@ -1926,11 +1930,58 @@ footer {
 }
 
 .footer-logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 900;
-    color: var(--accent-gold);
     margin: 0 0 1rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    font-family: 'Segoe UI', 'Arial Black', sans-serif;
+}
+
+/* Seven - ゴールド */
+.footer-logo .logo-seven {
+    color: #d4a84b;
+    text-shadow: 
+        1px 1px 0 #8b6914,
+        2px 2px 0 rgba(0, 0, 0, 0.3);
+    font-style: italic;
+}
+
+/* Knights - 赤黒グラデーション */
+.footer-logo .logo-knights {
+    background: linear-gradient(180deg, #c9302c 0%, #8b0000 50%, #1a1a1a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.5));
+}
+
+/* Re:Birth - 赤いアクセント */
+.footer-logo .logo-rebirth {
+    color: #e60012;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 
+        0 0 10px rgba(230, 0, 18, 0.5),
+        1px 1px 0 #8b0000;
     letter-spacing: 0.1em;
+}
+
+/* Wiki - ゴールド */
+.footer-logo .logo-wiki {
+    color: #d4a84b;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-shadow: 
+        1px 1px 0 #8b6914,
+        0 0 5px rgba(212, 168, 75, 0.3);
 }
 
 .footer-disclaimer {
@@ -4165,5 +4216,114 @@ footer {
     .credit-icon {
         width: 100px;
         height: 100px;
+    }
+}
+
+/* ===== Support Links (Ko-fi / OFUSE) ===== */
+.header-support-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.support-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.kofi-btn {
+    background: linear-gradient(135deg, #ff5e5b 0%, #ff9966 100%);
+    color: #fff;
+    border: none;
+}
+
+.kofi-btn:hover {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e5b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 94, 91, 0.4);
+    color: #fff;
+}
+
+.kofi-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.ofuse-btn {
+    background: linear-gradient(135deg, #72a4f2 0%, #5c7cfa 100%);
+    color: #fff;
+    border: none;
+}
+
+.ofuse-btn:hover {
+    background: linear-gradient(135deg, #5c7cfa 0%, #72a4f2 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 164, 242, 0.4);
+    color: #fff;
+}
+
+/* Mobile responsive for support links */
+@media (max-width: 768px) {
+    .header-support-links {
+        display: none;
+    }
+}
+
+/* ===== Language Selector ===== */
+.language-selector-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.language-selector {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    cursor: pointer !important;
+    transition: all 0.3s;
+    min-width: 100px;
+}
+
+.language-selector:hover {
+    border-color: var(--accent-gold);
+    box-shadow: var(--glow-gold);
+}
+
+.language-selector:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.language-selector option {
+    background: var(--bg-panel);
+    color: var(--text-main);
+    padding: 8px;
+}
+
+@media (max-width: 768px) {
+    .language-selector-wrapper {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .language-selector {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        min-width: 70px;
     }
 }
