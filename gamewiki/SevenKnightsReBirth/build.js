@@ -3,7 +3,31 @@
  * キャラクター装備ビルドガイド
  */
 
+// 言語別データ読み込み（フォールバック対応）
+async function loadLocalizedData(filename) {
+    const lang = typeof getLang === 'function' ? getLang() : 'ja';
+    try {
+        // まず言語別ディレクトリを試す
+        const res = await fetch(`data/${lang}/${filename}`);
+        if (res.ok) return await res.json();
+    } catch (e) {
+        console.log(`[build] Fallback to root data for ${filename}`);
+    }
+    // フォールバック: ルートディレクトリ
+    const res = await fetch(`data/${filename}`);
+    return await res.json();
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    // i18nの準備完了を待つ
+    if (typeof onI18nReady === 'function') {
+        onI18nReady(initBuildPage);
+    } else {
+        initBuildPage();
+    }
+});
+
+async function initBuildPage() {
     const buildContainer = document.getElementById('build-container');
     const searchInput = document.getElementById('search-input');
     const rarityFilter = document.getElementById('rarity-filter');
@@ -14,8 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Load build data
     try {
-        const response = await fetch('data/build.json');
-        buildData = await response.json();
+        buildData = await loadLocalizedData('build.json');
         renderBuildCards(buildData);
     } catch (error) {
         console.error('Failed to load build data:', error);
@@ -28,34 +51,75 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Render build cards
     function renderBuildCards(data) {
+        const tr = typeof t === 'function' ? t : (k) => k;
         if (data.length === 0) {
             buildContainer.innerHTML = `
                 <div class="loading-spinner">
-                    <p>該当するキャラクターが見つかりません</p>
+                    <p>${tr('common.noResults')}</p>
                 </div>
             `;
-            resultsCount.textContent = '0 キャラクター';
+            resultsCount.textContent = `0 ${tr('build.characters')}`;
             return;
         }
         
         buildContainer.innerHTML = data.map(char => createBuildCard(char)).join('');
-        resultsCount.textContent = `${data.length} キャラクター`;
+        resultsCount.textContent = `${data.length} ${tr('build.characters')}`;
     }
     
     // Create build card HTML
     function createBuildCard(char) {
+        // レアリティのマッピング（英語→背景画像）
         const rarityBgMap = {
-            '希少': '03',
-            '伝説': '04',
-            '伝説+': '04',
-            '伝説++': '04'
+            '希少': '03', 'epic': '03',
+            '伝説': '04', 'legendary': '04',
+            '伝説+': '04', 'legendary+': '04',
+            '伝説++': '04', 'legendary++': '04'
         };
         const bgNum = rarityBgMap[char.rarity] || '03';
+        
+        // レアリティ翻訳
+        const rarityTranslate = (rarity) => {
+            if (typeof t !== 'function') return rarity;
+            const key = 'rarity.' + rarity.toLowerCase().replace('+', '').replace('+', '');
+            const translated = t(key);
+            return translated !== key ? translated : rarity;
+        };
+        
+        // ロール翻訳（IDまたはテキスト）
+        const roleTranslate = (role) => {
+            if (typeof t !== 'function') return role;
+            const roleIdMap = {
+                '1': 'role.attack',
+                '2': 'role.defense',
+                '3': 'role.support',
+                '4': 'role.magic',
+                '5': 'role.universal'
+            };
+            // IDの場合
+            if (roleIdMap[role]) {
+                return t(roleIdMap[role]);
+            }
+            // テキストの場合（日本語など）
+            const roleTextMap = {
+                '攻撃型': 'role.attack',
+                '防御型': 'role.defense',
+                '支援型': 'role.support',
+                '魔法型': 'role.magic',
+                '万能型': 'role.universal'
+            };
+            if (roleTextMap[role]) {
+                return t(roleTextMap[role]);
+            }
+            return role;
+        };
         
         // Count non-empty builds
         const buildCount = char.builds.filter(b => b.name && b.name.trim() !== '').length;
         
-        const rarityClass = char.rarity === '希少' ? 'rare' : '';
+        const rarityClass = (char.rarity === '希少' || char.rarity === 'epic') ? 'rare' : '';
+        
+        const displayRarity = rarityTranslate(char.rarity);
+        const displayRole = roleTranslate(char.role);
         
         return `
             <div class="build-card" onclick="openBuildModal('${char.id}')">
@@ -69,8 +133,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="build-card-name">${char.name}</div>
                         <div class="build-card-subname">${char.subname || ''}</div>
                         <div class="build-card-tags">
-                            <span class="build-tag rarity ${rarityClass}">${char.rarity}</span>
-                            <span class="build-tag role">${char.role}</span>
+                            <span class="build-tag rarity ${rarityClass}">${displayRarity}</span>
+                            <span class="build-tag role">${displayRole}</span>
                         </div>
                     </div>
                 </div>
@@ -146,6 +210,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const modal = document.getElementById('build-modal');
         const modalBody = document.getElementById('modal-body');
         
+        // 翻訳関数
+        const tr = typeof t === 'function' ? t : (k) => k;
+        
         const rarityBgMap = {
             '希少': '03',
             '伝説': '04',
@@ -157,12 +224,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Create tabs
         const tabsHtml = char.builds.map((build, index) => {
             const isEmpty = !build.name || build.name.trim() === '';
-            const label = build.name || `ビルド${index + 1}`;
+            const label = build.name || tr('build.buildNumber').replace('{num}', index + 1);
             return `
                 <button class="build-tab ${index === 0 ? 'active' : ''} ${isEmpty ? 'empty' : ''}" 
                         onclick="switchBuildTab(${index})"
-                        ${isEmpty ? 'title="未登録"' : ''}>
-                    ${label || `ビルド${index + 1}`}
+                        ${isEmpty ? `title="${tr('build.notRegistered')}"` : ''}>
+                    ${label}
                 </button>
             `;
         }).join('');
@@ -174,7 +241,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="build-content ${index === 0 ? 'active' : ''}" data-build-index="${index}">
                         <div class="no-build">
                             <div class="no-build-icon">📝</div>
-                            <p>このビルドはまだ登録されていません</p>
+                            <p>${tr('build.notRegisteredMessage')}</p>
                         </div>
                     </div>
                 `;
@@ -184,24 +251,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="build-content ${index === 0 ? 'active' : ''}" data-build-index="${index}">
                     <!-- Weapons -->
                     <div class="build-section">
-                        <h3 class="build-section-title">⚔️ 武器</h3>
+                        <h3 class="build-section-title">⚔️ ${tr('build.weapon')}</h3>
                         <div class="equipment-grid">
                             <div class="equipment-item">
-                                <div class="equipment-label">武器1</div>
+                                <div class="equipment-label">${tr('build.weapon1')}</div>
                                 <div class="equipment-name">${build.weapon1.type || '-'}</div>
                                 <div class="equipment-ops">
                                     ${build.weapon1.mainOp1 ? `<div class="equipment-op">${build.weapon1.mainOp1}</div>` : ''}
                                     ${build.weapon1.mainOp2 ? `<div class="equipment-op">${build.weapon1.mainOp2}</div>` : ''}
-                                    ${!build.weapon1.mainOp1 && !build.weapon1.mainOp2 ? '<div class="equipment-empty">未設定</div>' : ''}
+                                    ${!build.weapon1.mainOp1 && !build.weapon1.mainOp2 ? `<div class="equipment-empty">${tr('build.notSet')}</div>` : ''}
                                 </div>
                             </div>
                             <div class="equipment-item">
-                                <div class="equipment-label">武器2</div>
+                                <div class="equipment-label">${tr('build.weapon2')}</div>
                                 <div class="equipment-name">${build.weapon2.type || '-'}</div>
                                 <div class="equipment-ops">
                                     ${build.weapon2.mainOp1 ? `<div class="equipment-op">${build.weapon2.mainOp1}</div>` : ''}
                                     ${build.weapon2.mainOp2 ? `<div class="equipment-op">${build.weapon2.mainOp2}</div>` : ''}
-                                    ${!build.weapon2.mainOp1 && !build.weapon2.mainOp2 ? '<div class="equipment-empty">未設定</div>' : ''}
+                                    ${!build.weapon2.mainOp1 && !build.weapon2.mainOp2 ? `<div class="equipment-empty">${tr('build.notSet')}</div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -209,24 +276,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                     
                     <!-- Armor -->
                     <div class="build-section">
-                        <h3 class="build-section-title">🛡️ 防具</h3>
+                        <h3 class="build-section-title">🛡️ ${tr('build.armor')}</h3>
                         <div class="equipment-grid">
                             <div class="equipment-item">
-                                <div class="equipment-label">防具1</div>
+                                <div class="equipment-label">${tr('build.armor1')}</div>
                                 <div class="equipment-name">${build.armor1.type || '-'}</div>
                                 <div class="equipment-ops">
                                     ${build.armor1.mainOp1 ? `<div class="equipment-op">${build.armor1.mainOp1}</div>` : ''}
                                     ${build.armor1.mainOp2 ? `<div class="equipment-op">${build.armor1.mainOp2}</div>` : ''}
-                                    ${!build.armor1.mainOp1 && !build.armor1.mainOp2 ? '<div class="equipment-empty">未設定</div>' : ''}
+                                    ${!build.armor1.mainOp1 && !build.armor1.mainOp2 ? `<div class="equipment-empty">${tr('build.notSet')}</div>` : ''}
                                 </div>
                             </div>
                             <div class="equipment-item">
-                                <div class="equipment-label">防具2</div>
+                                <div class="equipment-label">${tr('build.armor2')}</div>
                                 <div class="equipment-name">${build.armor2.type || '-'}</div>
                                 <div class="equipment-ops">
                                     ${build.armor2.mainOp1 ? `<div class="equipment-op">${build.armor2.mainOp1}</div>` : ''}
                                     ${build.armor2.mainOp2 ? `<div class="equipment-op">${build.armor2.mainOp2}</div>` : ''}
-                                    ${!build.armor2.mainOp1 && !build.armor2.mainOp2 ? '<div class="equipment-empty">未設定</div>' : ''}
+                                    ${!build.armor2.mainOp1 && !build.armor2.mainOp2 ? `<div class="equipment-empty">${tr('build.notSet')}</div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -234,14 +301,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     
                     <!-- Ring -->
                     <div class="build-section">
-                        <h3 class="build-section-title">💍 リング</h3>
+                        <h3 class="build-section-title">💍 ${tr('build.ring')}</h3>
                         <div class="ring-grid">
                             <div class="ring-item">
-                                <div class="ring-label">スペシャル</div>
+                                <div class="ring-label">${tr('build.ringSpecial')}</div>
                                 <div class="ring-value">${build.ring.special || '-'}</div>
                             </div>
                             <div class="ring-item">
-                                <div class="ring-label">ステータスブースト</div>
+                                <div class="ring-label">${tr('build.ringStatBoost')}</div>
                                 <div class="ring-value">${build.ring.statBoost || '-'}</div>
                             </div>
                             <div class="ring-item">
@@ -266,10 +333,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     
                     <!-- Transcendence -->
                     <div class="build-section">
-                        <h3 class="build-section-title">✨ 超越</h3>
+                        <h3 class="build-section-title">✨ ${tr('build.transcendence')}</h3>
                         <div class="transcendence-box">
-                            <div class="transcendence-label">🌟 4段階解放効果</div>
-                            <div class="transcendence-value">${build.transcendence4 || '未設定'}</div>
+                            <div class="transcendence-label">🌟 ${tr('build.transcendence4')}</div>
+                            <div class="transcendence-value">${build.transcendence4 || tr('build.notSet')}</div>
                         </div>
                     </div>
                 </div>
@@ -333,4 +400,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             closeBuildModal();
         }
     });
-});
+}

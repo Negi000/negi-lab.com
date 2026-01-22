@@ -5,6 +5,20 @@ let currentDifficulty = 1;
 let currentRaidType = 'normal';
 let currentWorldBoss = null;
 
+// 言語別データ読み込み（フォールバック対応）
+async function loadLocalizedData(filename) {
+    const lang = typeof getLang === 'function' ? getLang() : 'ja';
+    try {
+        // まず言語別ディレクトリを試す
+        const res = await fetch(`data/${lang}/${filename}`);
+        if (res.ok) return await res.json();
+    } catch (e) {
+        console.log(`[raid] Fallback to root data for ${filename}`);
+    }
+    // フォールバック: ルートディレクトリ
+    return await fetchJson(`data/${filename}`);
+}
+
 // 数値フォーマット（普通の数字表記）
 function formatNumber(num) {
     return num.toLocaleString();
@@ -14,8 +28,17 @@ function formatNumber(num) {
 document.addEventListener('DOMContentLoaded', async () => {
     if (!document.querySelector('.raid-main')) return;
     
+    // i18nの準備完了を待つ
+    if (typeof onI18nReady === 'function') {
+        onI18nReady(initRaidPage);
+    } else {
+        initRaidPage();
+    }
+});
+
+async function initRaidPage() {
     try {
-        raidData = await fetchJson('data/raid.json');
+        raidData = await loadLocalizedData('raid.json');
         
         initRaidTypeTabs();
         initBossCards();
@@ -27,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Error loading raid data:', error);
     }
-});
+}
 
 // レイドタイプタブ初期化
 function initRaidTypeTabs() {
@@ -144,26 +167,32 @@ function updateBossSkills(boss) {
     const skillsContainer = document.getElementById('boss-skills');
     if (!skillsContainer || !boss.skills) return;
     
-    const skillTypeNames = {
-        1: '通常攻撃',
-        2: 'スキル1',
-        3: 'スキル2',
-        4: 'スキル3',
-        5: 'スキル4'
+    // 翻訳関数（i18n.jsのt関数を使用）
+    const tr = typeof t === 'function' ? t : (k) => k;
+    
+    const getSkillTypeName = (type) => {
+        const typeMap = {
+            1: tr('skill.normalAttack'),
+            2: tr('skill.skill1'),
+            3: tr('skill.skill2'),
+            4: tr('skill.skill3'),
+            5: tr('skill.skill4')
+        };
+        return typeMap[type] || tr('skill.unknown');
     };
     
     skillsContainer.innerHTML = boss.skills.map(skill => {
         const iconUrl = skill.icon ? `images/icon/SkillIcon_PC/${skill.icon}.webp` : '';
         const iconHtml = iconUrl ? `<img class="skill-icon" src="${iconUrl}" alt="${skill.name}" onerror="this.style.display='none'">` : '';
         const descHtml = skill.desc ? `<span class="skill-desc">${skill.desc}</span>` : '';
-        const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">CT: ${skill.cooltime}秒</span>` : '';
+        const coolHtml = skill.cooltime > 0 ? `<span class="skill-cooltime">${tr('raid.ctSeconds').replace('{value}', skill.cooltime)}</span>` : '';
         
         return `
         <div class="boss-skill-item">
             ${iconHtml}
             <div class="skill-info">
                 <div class="skill-header">
-                    <span class="skill-type">${skillTypeNames[skill.type] || 'スキル'}</span>
+                    <span class="skill-type">${getSkillTypeName(skill.type)}</span>
                     <span class="skill-name">${skill.name}</span>
                     ${coolHtml}
                 </div>
@@ -213,7 +242,8 @@ function updateStageDetail() {
     if (!stage) return;
     
     // タイトル
-    document.getElementById('stage-title').textContent = `難易度 ${currentDifficulty}`;
+    const tr = typeof t === 'function' ? t : (k) => k;
+    document.getElementById('stage-title').textContent = `${tr('raid.difficultyLevel')} ${currentDifficulty}`;
     
     // 基本情報
     document.getElementById('stage-stamina').textContent = stage.stamina;
@@ -229,15 +259,17 @@ function updateStageDetail() {
     
     if (stage.sub_options && stage.sub_options.length > 0) {
         subOptSection.style.display = 'block';
+        const tr = typeof t === 'function' ? t : (k) => k;
         subOptProbs.innerHTML = stage.sub_options.map(opt => `
             <div class="sub-option-item">
-                <span class="sub-option-count">${opt.count}オプション</span>
+                <span class="sub-option-count">${tr('raid.optionCount').replace('{count}', opt.count)}</span>
                 <span class="sub-option-prob">${opt.probability.toFixed(1)}%</span>
             </div>
         `).join('');
     } else {
         subOptSection.style.display = 'block';
-        subOptProbs.innerHTML = '<span class="sub-option-none">サブオプション確定なし（基本値）</span>';
+        const tr = typeof t === 'function' ? t : (k) => k;
+        subOptProbs.innerHTML = `<span class="sub-option-none">${tr('raid.noSubOptions')}</span>`;
     }
     
     // 報酬
@@ -266,44 +298,47 @@ function updateEnemyStats(stage) {
     const container = document.getElementById('enemy-stats');
     if (!container) return;
     
+    // 翻訳関数
+    const tr = typeof t === 'function' ? t : (k) => k;
+    
     // ボス情報
     const boss = stage.boss;
     if (!boss || !boss.stats) {
-        container.innerHTML = '<p class="no-data">敵情報なし</p>';
+        container.innerHTML = `<p class="no-data">${tr('raid.noEnemyInfo')}</p>`;
         return;
     }
     
     const bossStats = boss.stats;
-    const attackType = bossStats.magical_attack > bossStats.physical_attack ? '魔法' : '物理';
+    const attackType = bossStats.magical_attack > bossStats.physical_attack ? tr('raid.magical') : tr('raid.physical');
     const mainAttack = Math.max(bossStats.physical_attack, bossStats.magical_attack);
     
     let html = `
         <div class="enemy-section">
-            <h4 class="enemy-title">ボス: ${boss.name}</h4>
+            <h4 class="enemy-title">${tr('raid.boss')}: ${boss.name}</h4>
             <div class="enemy-level">Lv.${boss.level}</div>
             <div class="enemy-stats-grid">
                 <div class="stat-item">
-                    <span class="stat-label">HP</span>
+                    <span class="stat-label">${tr('stats.hp')}</span>
                     <span class="stat-value">${formatNumber(bossStats.hp)}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">攻撃力 (${attackType})</span>
+                    <span class="stat-label">${tr('raid.attackPower')} (${attackType})</span>
                     <span class="stat-value">${formatNumber(mainAttack)}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">防御力</span>
+                    <span class="stat-label">${tr('stats.defense')}</span>
                     <span class="stat-value">${formatNumber(bossStats.defence)}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">攻撃速度</span>
+                    <span class="stat-label">${tr('raid.attackSpeed')}</span>
                     <span class="stat-value">${bossStats.attack_speed}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">クリティカル</span>
+                    <span class="stat-label">${tr('raid.critical')}</span>
                     <span class="stat-value">${bossStats.critical}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">命中率</span>
+                    <span class="stat-label">${tr('raid.accuracy')}</span>
                     <span class="stat-value">${bossStats.accuracy_rate}</span>
                 </div>
             </div>
@@ -312,11 +347,11 @@ function updateEnemyStats(stage) {
     
     // 取り巻き情報
     if (stage.minions && stage.minions.length > 0) {
-        html += '<div class="minions-section"><h4 class="minions-title">取り巻き</h4>';
+        html += `<div class="minions-section"><h4 class="minions-title">${tr('raid.minions')}</h4>`;
         
         stage.minions.forEach(minion => {
             const minionStats = minion.stats;
-            const minionAttackType = minionStats.magical_attack > minionStats.physical_attack ? '魔法' : '物理';
+            const minionAttackType = minionStats.magical_attack > minionStats.physical_attack ? tr('raid.magical') : tr('raid.physical');
             const minionMainAttack = Math.max(minionStats.physical_attack, minionStats.magical_attack);
             
             html += `
@@ -324,9 +359,9 @@ function updateEnemyStats(stage) {
                     <div class="minion-name">${minion.name}</div>
                     <div class="minion-level">Lv.${minion.level}</div>
                     <div class="minion-stats">
-                        HP: ${formatNumber(minionStats.hp)} / 
-                        攻撃: ${formatNumber(minionMainAttack)} (${minionAttackType}) / 
-                        防御: ${formatNumber(minionStats.defence)}
+                        ${tr('stats.hp')}: ${formatNumber(minionStats.hp)} / 
+                        ${tr('raid.attack')}: ${formatNumber(minionMainAttack)} (${minionAttackType}) / 
+                        ${tr('raid.defense')}: ${formatNumber(minionStats.defence)}
                     </div>
                 </div>
             `;
@@ -365,6 +400,9 @@ function createRewardItem(reward, isFixed) {
     const div = document.createElement('div');
     div.className = 'reward-item' + (isFixed ? ' reward-fixed' : '');
     
+    // 翻訳関数
+    const tr = typeof t === 'function' ? t : (k) => k;
+    
     // 星レーティングによる装飾クラス
     if (reward.star >= 6) {
         div.classList.add('reward-star-6');
@@ -399,7 +437,7 @@ function createRewardItem(reward, isFixed) {
             <div class="reward-detail">
                 ${amountText ? `<span class="reward-amount">${amountText}</span>` : ''}
                 ${probText ? `<span class="reward-prob">${probText}</span>` : ''}
-                ${isFixed ? '<span class="reward-fixed-badge">確定</span>' : ''}
+                ${isFixed ? `<span class="reward-fixed-badge">${tr('raid.fixed')}</span>` : ''}
             </div>
         </div>
     `;
@@ -417,10 +455,14 @@ function getRewardIcon(reward) {
     if (reward.reward_id === 310000001) return '🔮'; // 混沌のエッセンス
     if (reward.reward_id === 311000001) return '💜'; // 忘却のエッセンス
     
-    // 装備タイプ別
-    if (reward.item_type === '武器') return '⚔️';
-    if (reward.item_type === '防具') return '🛡️';
-    if (reward.item_type === '素材') return '📦';
+    // 装備タイプ別（item_typeは言語依存しないようにする）
+    const itemType = reward.item_type;
+    // 武器
+    if (['武器', 'Weapon', '무기', '武器', 'อาวุธ'].includes(itemType)) return '⚔️';
+    // 防具
+    if (['防具', 'Armor', '방어구', '盔甲', '护甲', '護甲', 'เกราะ'].includes(itemType)) return '🛡️';
+    // 素材
+    if (['素材', 'Material', '소재', '素材', '材料', 'วัสดุ'].includes(itemType)) return '📦';
     
     return '📦';
 }
@@ -440,7 +482,7 @@ function initWorldBossCards() {
         card.innerHTML = `
             <div class="world-boss-name">${worldRaid.name}</div>
             <div class="world-boss-info">
-                消費スタミナ: ${worldRaid.stamina} | 経験値: ${worldRaid.account_exp}
+                ${(typeof t === 'function' ? t : (k) => k)('raid.staminaCost').replace('{value}', worldRaid.stamina)} | ${(typeof t === 'function' ? t : (k) => k)('raid.accountExp')}: ${worldRaid.account_exp}
             </div>
         `;
         
@@ -473,12 +515,15 @@ function updateWorldRaidDetail(stageId) {
     
     if (!container || !worldRaid) return;
     
+    // 翻訳関数
+    const tr = typeof t === 'function' ? t : (k) => k;
+    
     // スキル情報
     let skillsHtml = '';
     if (worldRaid.skills && worldRaid.skills.length > 0) {
         skillsHtml = `
             <div class="world-raid-skills">
-                <h4>スキル</h4>
+                <h4>${tr('raid.skills')}</h4>
                 <div class="skill-list">
                     ${worldRaid.skills.map(skill => `
                         <span class="skill-tag">${skill.name}</span>
@@ -497,22 +542,22 @@ function updateWorldRaidDetail(stageId) {
             
             let statsHtml = '';
             if (bossStats) {
-                const attackType = bossStats.magical_attack > bossStats.physical_attack ? '魔法' : '物理';
+                const attackType = bossStats.magical_attack > bossStats.physical_attack ? tr('raid.magical') : tr('raid.physical');
                 const mainAttack = Math.max(bossStats.physical_attack, bossStats.magical_attack);
                 statsHtml = `
                     <div class="round-stats">
-                        <span>HP: ${formatNumber(bossStats.hp)}</span>
-                        <span>攻撃(${attackType}): ${formatNumber(mainAttack)}</span>
-                        <span>防御: ${formatNumber(bossStats.defence)}</span>
+                        <span>${tr('stats.hp')}: ${formatNumber(bossStats.hp)}</span>
+                        <span>${tr('raid.attack')}(${attackType}): ${formatNumber(mainAttack)}</span>
+                        <span>${tr('raid.defense')}: ${formatNumber(bossStats.defence)}</span>
                     </div>
                 `;
             }
             
             return `
                 <div class="world-round">
-                    <h4>ラウンド ${round.round}</h4>
-                    <p>ターン制限: ${round.turn_limit}ターン</p>
-                    <p>敵数: ${round.enemies.length}体</p>
+                    <h4>${tr('raid.round').replace('{value}', round.round)}</h4>
+                    <p>${tr('raid.turnLimit').replace('{value}', round.turn_limit)}</p>
+                    <p>${tr('raid.enemyCount').replace('{value}', round.enemies.length)}</p>
                     ${statsHtml}
                 </div>
             `;
@@ -525,7 +570,7 @@ function updateWorldRaidDetail(stageId) {
     if (worldRaid.clear_rewards && worldRaid.clear_rewards.length > 0) {
         rewardsHtml += `
             <div class="world-raid-rewards">
-                <h4>クリア報酬</h4>
+                <h4>${tr('raid.clearRewards')}</h4>
                 <div class="rewards-list">
                     ${worldRaid.clear_rewards.map(r => `
                         <div class="reward-tag">
@@ -541,10 +586,10 @@ function updateWorldRaidDetail(stageId) {
         const rankNames = {1: 'S', 2: 'A', 3: 'B', 4: 'C', 5: 'D'};
         rewardsHtml += `
             <div class="world-raid-rewards">
-                <h4>ランク報酬</h4>
+                <h4>${tr('raid.rankRewards')}</h4>
                 ${worldRaid.rank_rewards.map(rankData => `
                     <div class="rank-reward-group">
-                        <span class="rank-label">ランク${rankNames[rankData.rank] || rankData.rank}:</span>
+                        <span class="rank-label">${tr('raid.rank').replace('{value}', rankNames[rankData.rank] || rankData.rank)}:</span>
                         ${rankData.rewards.map(r => `
                             <span class="reward-tag">${r.name} ×${formatNumber(r.amount)}</span>
                         `).join('')}
@@ -555,15 +600,15 @@ function updateWorldRaidDetail(stageId) {
     }
     
     // 攻撃タイプ表示
-    const attackTypeText = worldRaid.attack_type === 'magical' ? '魔法攻撃' : '物理攻撃';
+    const attackTypeText = worldRaid.attack_type === 'magical' ? tr('raid.magicalAttack') : tr('raid.physicalAttack');
     
     container.innerHTML = `
         <div class="world-raid-info">
             <h3>${worldRaid.name}</h3>
             <div class="world-raid-type">${attackTypeText}</div>
             <div class="world-raid-stats">
-                <span>消費スタミナ: ${worldRaid.stamina}</span>
-                <span>アカウント経験値: ${worldRaid.account_exp}</span>
+                <span>${tr('raid.staminaCost').replace('{value}', worldRaid.stamina)}</span>
+                <span>${tr('raid.accountExpValue').replace('{value}', worldRaid.account_exp)}</span>
             </div>
             ${skillsHtml}
             <div class="world-rounds">

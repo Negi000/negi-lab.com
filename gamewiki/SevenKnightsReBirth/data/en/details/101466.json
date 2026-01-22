@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101466",
+      "name": "Pallanus",
+      "subname": "Destroyed Glory",
+      "affiliation": "Dark Knights",
+      "flavor": "When the world plunged into chaos after the monsters' invasion, the king ordered Pallanus to end the war quickly. However, the explosion destroyed the world along with the monsters.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10146601",
+        "name": "",
+        "desc": "Single Enemy\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 50% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals damage equal to 100% of Physical Attack 1 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - All Allies\n - Heals HP equal to 17% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Single Enemy\n - Adds Effect: Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 50% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014601.webp"
+      },
+      "Skill 1": {
+        "id": "10146602",
+        "name": "Formidable Strike",
+        "desc": "All Enemies\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 100% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals Piercing damage equal to 57% of Physical Attack 2 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 24% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 67% of Physical Attack.\n超越6段階達成効果\n - All Enemies\n - Adds Effect: Additional 100% Weakness Hit Chance.",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014602.webp"
+      },
+      "Skill 2": {
+        "id": "10146603",
+        "name": "Operation: Annihilation",
+        "desc": "すべての敵\n - [マーカー：エネルゲイアの砲火][確率100%]1回重複[最大3回]\n - 物理攻撃力の155%のダメージを1回与える\n自身\n - マーカー2重複以上時：与ダメージの32%分HP回復\n - マーカー3重複以上時：防御力無視65%\nスキル強化効果\n - ダメージ上昇：物理攻撃力の180%になる\n超越6段階達成効果\nすべての敵\n - ダメージ追加：クリティカル発生時、物理攻撃力の80%の追加ダメージを与える",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014603.webp"
+      },
+      "Passive": {
+        "id": "10146604",
+        "name": "Commander's Strength",
+        "desc": "自身\n - 攻撃力比例被ダメージ減少上昇[常時]\n - [マーカー：エネルゲイアの砲火]3重複時、権能発動(戦闘中1回発動)\n現在のHPが最も高い敵\n - 権能発動時、HP交換\nスキル強化効果\n - 効果上昇：攻撃力比例被ダメージ減少上昇の効果が22%になる\n自身\n - 効果追加：権能発動時、すべてのダメージ無効化[被撃3回]\n超越2段階達成効果\n自身\n - 効果追加：行動不能遮断[3ターン継続]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014604.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Increases All Attack by 12%.",
+      "transcend_2": "Increases All Attack by 6%.",
+      "transcend_3": "Increases HP by 18%.",
+      "transcend_4": "Increases Damage Taken Reduction by 10%.",
+      "transcend_5": "Increases All Attack by 12%.",
+      "transcend_6": "Increases All Attack by 6%.",
+      "transcend_7": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_8": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_9": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_10": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_11": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_12": "Increases All Attack, Defense, and HP by 2%."
+    },
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "11 / 01",
+      "age": "32",
+      "height": "176",
+      "weight": "68",
+      "constellation": "Scorpio",
+      "likes": "Platin, Colt, protein rich food, order, honor, self praise.",
+      "dislikes": "Failure, Seven Knights, Mercure, greasy food, chaos, evil, refusing orders, going astray",
+      "story": "When the world plunged into chaos after the monsters' invasion, the king ordered Pallanus to end the war quickly. However, the explosion destroyed the world along with the monsters."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101465",
+      "name": "Pallanus",
+      "subname": "Young Commander",
+      "affiliation": "Dark Knights",
+      "flavor": "With her extraordinary intelligence and physical capabilities, Pallanus made herself known as soon as she joined the royal army. Favored by the king who recognized her talents, she became a commander despite her young age.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10146501",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 90% of Physical Attack 1 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - All Allies\n - Heals HP equal to 17% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 90% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014601.webp"
+      },
+      "Skill 1": {
+        "id": "10146502",
+        "name": "Formidable Strike",
+        "desc": "All Enemies\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 100% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals Piercing damage equal to 52% of Physical Attack 2 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 21% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 52% of Physical Attack.",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014602.webp"
+      },
+      "Skill 2": {
+        "id": "10146503",
+        "name": "Operation: Annihilation",
+        "desc": "All Enemies\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 100% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals damage equal to 70% of Physical Attack 2 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - All Allies\n - Heals HP equal to 21% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 70% of Physical Attack.",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014603.webp"
+      },
+      "Passive": {
+        "id": "10146504",
+        "name": "Commander's Strength",
+        "desc": "Self\n - Attack-Based Reduced Damage Taken Boost [Always Active]\n - Grants Guts. [Once per Battle]\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - All Allies\n - Grants All Debuff Removal when HP falls to 30% or lower. [1 Time(s) per Battle]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014604.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "11 / 01",
+      "age": "32",
+      "height": "176",
+      "weight": "68",
+      "constellation": "Scorpio",
+      "likes": "Platin, Colt, protein rich food, order, honor, self praise.",
+      "dislikes": "Failure, Seven Knights, Mercure, greasy food, chaos, evil, refusing orders, going astray",
+      "story": "With her extraordinary intelligence and physical capabilities, Pallanus made herself known as soon as she joined the royal army. Favored by the king who recognized her talents, she became a commander despite her young age."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101464",
+      "name": "Pallanus",
+      "subname": "General's Daughter",
+      "affiliation": "Dark Knights",
+      "flavor": "Born the daughter of an honorable general, Pallanus was despised by her own father who wanted a son. But she showed great strength from a young age and grew up like a son, training in martial arts.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10146401",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 80% of Physical Attack 1 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - All Allies\n - Heals HP equal to 17% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 80% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014601.webp"
+      },
+      "Skill 1": {
+        "id": "10146402",
+        "name": "Formidable Strike",
+        "desc": "All Enemies\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 100% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals Piercing damage equal to 47% of Physical Attack 2 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - 100% chance to inflict Buff Duration Reduction. [Reduced by: 1 Turn(s)]\n - All Allies\n - Heals HP equal to 18% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 47% of Physical Attack.",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014602.webp"
+      },
+      "Skill 2": {
+        "id": "10146403",
+        "name": "Operation: Annihilation",
+        "desc": "All Enemies\n - Starting battles with at least 1 of both Defense and Support hero(es) on your team has a 100% chance to inflict 1 stack(s) of [Mark: Energia's Saturation]. [Max: 2 Stack(s)]\n - Deals damage equal to 65% of Physical Attack 2 time(s).\n - Converts to Defense-Ignoring damage if the target has at least 2 stack(s) of [Mark: Energia's Saturation].\n - All Allies\n - Heals HP equal to 18% of damage dealt if the target has at least 1 stack(s) of [Mark: Energia's Saturation].\nスキル強化効果\n - Increases Damage: To 65% of Physical Attack.",
+        "cooltime": "⏱️ CT: 96秒",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014603.webp"
+      },
+      "Passive": {
+        "id": "10146404",
+        "name": "Commander's Strength",
+        "desc": "Self\n - Attack-Based Reduced Damage Taken Boost [Always Active]\n - Grants Guts. [Once per Battle]\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - All Allies\n - Grants All Debuff Removal when HP falls to 30% or lower. [1 Time(s) per Battle]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014604.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "11 / 01",
+      "age": "32",
+      "height": "176",
+      "weight": "68",
+      "constellation": "Scorpio",
+      "likes": "Platin, Colt, protein rich food, order, honor, self praise.",
+      "dislikes": "Failure, Seven Knights, Mercure, greasy food, chaos, evil, refusing orders, going astray",
+      "story": "Born the daughter of an honorable general, Pallanus was despised by her own father who wanted a son. But she showed great strength from a young age and grew up like a son, training in martial arts."
+    }
+  }
+]

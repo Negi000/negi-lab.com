@@ -1,5 +1,186 @@
 // Global config
-const DATA_BASE_PATH = 'data/';
+// 多言語対応: i18n.jsが読み込まれている場合は動的パスを使用
+function getDataBasePath() {
+    // i18n.js がロードされていて、getLang() が使える場合
+    if (typeof getLang === 'function') {
+        const lang = getLang();
+        console.log('[script.js] getDataBasePath: lang =', lang);
+        return `data/${lang}/`;
+    }
+    // フォールバック: 日本語データ
+    console.log('[script.js] getDataBasePath: fallback to ja');
+    return 'data/ja/';
+}
+
+// 多言語対応: 詳細データへのアクセサ（日本語/英語キー名の違いを吸収）
+function getCharAccessor(char) {
+    const lang = typeof getLang === 'function' ? getLang() : 'ja';
+    const isJa = lang === 'ja';
+    
+    // データセクションへのアクセス
+    const basicInfo = char.基本情報 || char.basicInfo || {};
+    const stats = char.ステータス || char.stats || {};
+    const growth = char.成長データ || char.growth || {};
+    const skills = char.スキル情報 || char.skills || {};
+    const transcendence = char.超越解放効果 || char.transcendence || {};
+    const profile = char.プロフィール || char.profile || {};
+    const experience = char.経験値 || char.experience || {};
+    const potential = char.潜在能力解放 || char.potential || {};
+    
+    // 役割ID→役割名のマッピング
+    const roleMap = {
+        '1': isJa ? '攻撃型' : 'Attack',
+        '2': isJa ? '支援型' : 'Support',
+        '3': isJa ? '防御型' : 'Defense',
+        '4': isJa ? '魔法型' : 'Magic',
+        '5': isJa ? '万能型' : 'Universal'
+    };
+    
+    // 射程マッピング
+    const rangeMap = {
+        '1': isJa ? '近距離' : 'Melee',
+        '2': isJa ? '遠距離' : 'Ranged'
+    };
+    
+    // レアリティ名の翻訳（multilangデータは全言語で英語キーを使用）
+    const rarityTranslate = (val) => {
+        if (!val) return '';
+        const valLower = val.toLowerCase();
+        if (isJa) {
+            // 日本語表示用
+            const jaMap = {
+                'common': '一般', 'rare': '上級', 'epic': '希少',
+                'legendary': '伝説', 'legendary+': '伝説+', 'legendary++': '伝説++'
+            };
+            return jaMap[valLower] || val;
+        }
+        // 英語表示用（キャピタライズ）
+        const enMap = {
+            'common': 'Common', 'rare': 'Rare', 'epic': 'Epic',
+            'legendary': 'Legendary', 'legendary+': 'Legendary+', 'legendary++': 'Legendary++'
+        };
+        return enMap[valLower] || val;
+    };
+    
+    // 武器タイプのマッピング
+    const weaponTypeMap = {
+        '101': isJa ? '物理武器' : 'Physical Weapon',
+        '201': isJa ? '魔法武器' : 'Magical Weapon'
+    };
+    
+    // 武器タイプの翻訳
+    const getWeaponType = () => {
+        const raw = basicInfo.武器タイプ || basicInfo.weaponType || '';
+        return weaponTypeMap[raw] || raw;
+    };
+    
+    return {
+        // 基本情報
+        id: basicInfo.ID || basicInfo.id || '',
+        name: basicInfo.名前 || basicInfo.name || '',
+        subname: basicInfo.サブネーム || basicInfo.subname || '',
+        affiliation: basicInfo.所属 || basicInfo.affiliation || '',
+        flavor: basicInfo.フレーバーテキスト || basicInfo.flavor || '',
+        rarity: rarityTranslate(basicInfo.レアリティ || basicInfo.rarity) || '',
+        star: basicInfo.星 || basicInfo.star || '',
+        maxStar: basicInfo.最大星 || basicInfo.maxStar || '',
+        role: basicInfo.タイプ || roleMap[basicInfo.role] || basicInfo.role || '',
+        roleId: basicInfo.タイプID || basicInfo.role || '',
+        range: basicInfo.射程 || rangeMap[basicInfo.range] || basicInfo.range || '',
+        weaponType: getWeaponType(),
+        
+        // ステータス（キー名は言語で異なる）
+        stats,
+        getStatKeys: () => isJa 
+            ? ['物理攻撃力', '魔法攻撃力', '防御力', 'HP', '敏捷性', 'クリティカル率', '与クリティカルダメージ', 'フェイタルヒット率', 'ブロック率', '被ダメージ減少', 'デバフ回避妨害率', 'デバフ回避率']
+            : ['Physical Attack', 'Magical Attack', 'Defense', 'HP', 'Speed', 'Critical Rate'],
+        getPercentKeys: () => isJa
+            ? new Set(['クリティカル率', '与クリティカルダメージ', 'フェイタルヒット率', 'ブロック率', '被ダメージ減少', 'デバフ回避妨害率', 'デバフ回避率'])
+            : new Set(['Critical Rate']),
+        
+        // 成長データ
+        growth,
+        attackType: growth.攻撃力タイプ || growth.attackType || '',
+        level1: growth.レベル1 || growth.level1 || {},
+        level30: growth.レベル30 || growth.level30 || {},
+        levelUpBonus: growth.レベルアップ上昇値 || growth.levelUpBonus || {},
+        reinforceBonus: growth.強化上昇値 || growth.reinforceBonus || {},
+        reinforceStages: growth.強化段階別 || growth.reinforceStages || {},
+        
+        // 経験値
+        maxLevelExp: experience.最大レベル累計 || experience.maxLevelTotal || 0,
+        
+        // 潜在能力
+        potential,
+        
+        // スキル（multilangデータは全言語で (Trans) サフィックスを使用）
+        skills,
+        getSkillOrder: () => {
+            const skillOrders = {
+                'ja': ['通常攻撃', '通常攻撃 (Trans)', 'スキル1', 'スキル1 (Trans)', 'スキル2', 'スキル2 (Trans)', 'パッシブ', 'パッシブ (Trans)'],
+                'en': ['Normal Attack', 'Normal Attack (Trans)', 'Skill 1', 'Skill 1 (Trans)', 'Skill 2', 'Skill 2 (Trans)', 'Passive', 'Passive (Trans)'],
+                'ko': ['일반 공격', '일반 공격 (Trans)', '스킬 1', '스킬 1 (Trans)', '스킬 2', '스킬 2 (Trans)', '패시브', '패시브 (Trans)'],
+                'zh-Hans': ['普通攻击', '普通攻击 (Trans)', '技能1', '技能1 (Trans)', '技能2', '技能2 (Trans)', '被动', '被动 (Trans)'],
+                'zh-Hant': ['普通攻擊', '普通攻擊 (Trans)', '技能1', '技能1 (Trans)', '技能2', '技能2 (Trans)', '被動', '被動 (Trans)'],
+                'th': ['โจมตีปกติ', 'โจมตีปกติ (Trans)', 'สกิล 1', 'สกิล 1 (Trans)', 'สกิล 2', 'สกิล 2 (Trans)', 'พาสซีฟ', 'พาสซีฟ (Trans)']
+            };
+            return skillOrders[lang] || skillOrders['en'];
+        },
+        isTransformedSkill: (skillType) => skillType.includes('(Trans)'),
+        getSkillTypeLabel: (type) => {
+            if (isJa) return type;
+            const map = {
+                'Normal Attack': '通常攻撃', 'Skill 1': 'スキル1', 'Skill 2': 'スキル2', 'Passive': 'パッシブ'
+            };
+            return map[type] || type;
+        },
+        
+        // 超越解放効果
+        transcendence,
+        
+        // プロフィール
+        story: profile.ストーリー || profile.story || '',
+        
+        // ラベル翻訳用
+        labels: {
+            id: 'ID',
+            rarity: isJa ? 'レアリティ' : 'Rarity',
+            star: isJa ? '星' : 'Star',
+            affiliation: isJa ? '所属' : 'Affiliation',
+            role: isJa ? 'タイプ' : 'Type',
+            range: isJa ? '射程' : 'Range',
+            weapon: isJa ? '武器' : 'Weapon',
+            noFlavor: isJa ? 'フレーバーテキストはありません。' : 'No flavor text available.',
+            noStory: isJa ? 'ストーリーはありません。' : 'No story available.',
+            noTranscendence: isJa ? '超越解放効果はありません' : 'No transcendence effects.',
+        },
+        
+        // 原データへのアクセス
+        raw: char,
+        isJa
+    };
+}
+
+// i18n初期化を待つPromise（シンプルなポーリング方式）
+function waitForI18n() {
+    return new Promise((resolve) => {
+        const checkReady = () => {
+            // I18N_READY が true になるまで待つ
+            if (typeof I18N_READY !== 'undefined' && I18N_READY === true) {
+                const lang = typeof getLang === 'function' ? getLang() : 'unknown';
+                console.log('[script.js] i18n ready! lang =', lang);
+                resolve();
+            } else {
+                // 50ms後に再チェック
+                setTimeout(checkReady, 50);
+            }
+        };
+        checkReady();
+    });
+}
+
+// 後方互換性のため、定数も残す（ただし関数を優先）
+const DATA_BASE_PATH = 'data/ja/';
 
 // 用語辞書（ツールチップ表示用）
 const SKILL_GLOSSARY = {
@@ -53,7 +234,8 @@ let PORTRAIT_INDEX = null;
 async function loadPortraitIndex() {
     if (PORTRAIT_INDEX) return PORTRAIT_INDEX;
     try {
-        const idx = await fetchJson(`${DATA_BASE_PATH}portrait_index.json`);
+        // portrait_index.json は言語非依存なので data/ から直接読み込む
+        const idx = await fetchJson('data/portrait_index.json');
         PORTRAIT_INDEX = idx;
         return PORTRAIT_INDEX;
     } catch (e) {
@@ -242,6 +424,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize hero slideshow
     initHeroSlideshow();
     
+    // i18n初期化を待つ（多言語対応）
+    await waitForI18n();
+    
     try {
         // Determine current page and run appropriate logic
         const path = window.location.pathname;
@@ -262,7 +447,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadMetaData() {
     try {
-        const meta = await fetchJson(`${DATA_BASE_PATH}meta.json`);
+        const meta = await fetchJson(`${getDataBasePath()}meta.json`);
         console.log('Data last updated:', meta.last_updated);
     } catch (e) {
         console.warn('Meta data not found');
@@ -278,7 +463,12 @@ async function initCharacterList() {
     if (!grid) return;
 
     // Load lightweight list
-    const characterList = await fetchJson(`${DATA_BASE_PATH}character_list.json`);
+    let characterList = await fetchJson(`${getDataBasePath()}character_list.json`);
+    
+    // 言語別リストから未実装フラグを直接取得（各言語のcharacter_list.jsonにunreleasedフラグが含まれている場合）
+    // マージ処理は不要になったためコメントアウト
+    // 未実装キャラは generate_wiki_data.py および generate_wiki_data_multilang.py で
+    // character_list.json 生成時に unreleased: true が設定される
     
     // State for pagination/filtering
     let currentFilteredList = [];
@@ -289,22 +479,27 @@ async function initCharacterList() {
         let bgNum = '01'; // Default Normal
         let badge = null;
 
-        // 背景色の決定（伝説系は全て同じ背景）
-        if (char.rarity === '一般') bgNum = '01';
-        else if (char.rarity === '上級') bgNum = '02';
-        else if (char.rarity === '希少') bgNum = '03';
-        else if (char.rarity === '伝説' || char.rarity === '伝説+' || char.rarity === '伝説++') bgNum = '04';
+        // 背景色の決定（英語キー対応）
+        // common=一般(01), rare=上級(02), epic=希少(03), legendary/legendary+/legendary++=伝説系(04)
+        const rarity = (char.rarity || '').toLowerCase();
+        if (rarity === 'common' || rarity === '一般') {
+            bgNum = '01';
+        } else if (rarity === 'rare' || rarity === '上級') {
+            bgNum = '02';
+        } else if (rarity === 'epic' || rarity === '希少') {
+            bgNum = '03';
+        } else if (rarity === 'legendary' || rarity === 'legendary+' || rarity === 'legendary++' ||
+                   rarity === '伝説' || rarity === '伝説+' || rarity === '伝説++') {
+            bgNum = '04';
+        }
         
-        // バッジの決定（伝説系のみ）
-        // 伝説: バッジなし
-        // 伝説+: 通常の伝説バッジ (SPBG01)
-        // 伝説++: 特別な伝説バッジ (SPBG03)
-        if (char.rarity === '伝説++') {
+        // バッジの決定（伝説+系のみ）
+        if (rarity === 'legendary++' || rarity === '伝説++') {
             badge = 'Atl_UI-List_SPBG03.webp';
-        } else if (char.rarity === '伝説+') {
+        } else if (rarity === 'legendary+' || rarity === '伝説+') {
             badge = 'Atl_UI-List_SPBG01.webp';
         }
-        // 伝説（無印）はバッジなし
+        // epic/legendary（無印）はバッジなし
 
         return {
             bg: `images/icon/Atl_UI-List_GradeBG${bgNum}.webp`,
@@ -318,13 +513,19 @@ async function initCharacterList() {
         if (char.unreleased) {
             card.classList.add('unreleased');
         }
-        card.onclick = () => window.location.href = `character_detail.html?id=${char.id}`;
+        // 言語パラメータを引き継ぐ（現在のURLパラメータを保持）
+        const currentParams = new URLSearchParams(window.location.search);
+        const langParam = currentParams.get('lang');
+        const detailUrl = langParam 
+            ? `character_detail.html?id=${char.id}&lang=${langParam}`
+            : `character_detail.html?id=${char.id}`;
+        card.onclick = () => window.location.href = detailUrl;
         
         const assets = getRarityAssets(char);
         const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.webp`;
         
-        // タイプアイコン (RoleIcon_{roleId}.webp)
-        const roleId = char.roleId || '0';
+        // タイプアイコン (RoleIcon_{roleId}.webp) - roleIdがない場合はroleを使用
+        const roleId = String(char.roleId || char.role || '0');
         const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.webp`;
         
         // 星アイコン (Atl_Symbol_Star_M{star}.webp) - 3～6のみ
@@ -348,7 +549,7 @@ async function initCharacterList() {
         
         // 未実装バッジ
         const unreleasedBadgeHtml = char.unreleased 
-            ? '<div class="unreleased-badge">未実装</div>' 
+            ? `<div class="unreleased-badge" data-i18n="char.unreleased">${t('char.unreleased')}</div>` 
             : '';
 
         card.innerHTML = `
@@ -388,6 +589,17 @@ async function initCharacterList() {
         }
     }
 
+    // 日本語レアリティ名から英語キーへのマッピング
+    const rarityKeyMap = {
+        '一般': 'common',
+        '上級': 'rare',
+        '希少': 'epic',
+        '伝説': 'legendary',
+        '伝説+': 'legendary+',
+        '伝説++': 'legendary++',
+        '不明': 'unknown'
+    };
+
     function updateFilter() {
         const filterText = searchInput.value.toLowerCase();
         const filterRole = roleFilter.value;
@@ -406,15 +618,23 @@ async function initCharacterList() {
             if (char.unreleased && !showUnreleased) return false;
             
             const nameMatch = char.name.toLowerCase().includes(filterText);
-            const roleMatch = filterRole === '' || char.role === filterRole;
-            const rarityMatch = filterRarity === '' || char.rarity === filterRarity;
+            // roleは日本語データではroleId（数値）、多言語データではrole（数値）を使用
+            const charRoleId = char.roleId || char.role;
+            const roleMatch = filterRole === '' || charRoleId === filterRole;
+            // rarityは日本語データでは日本語名なのでマッピングが必要
+            const charRarityKey = rarityKeyMap[char.rarity] || char.rarity;
+            const rarityMatch = filterRarity === '' || charRarityKey === filterRarity;
             return nameMatch && roleMatch && rarityMatch;
         });
 
-        // Update results count
+        // Update results count with i18n
         const resultsInfo = document.getElementById('results-count');
         if (resultsInfo) {
-            resultsInfo.textContent = `${currentFilteredList.length} 件のキャラクター`;
+            if (typeof t === 'function') {
+                resultsInfo.textContent = t('characters.resultsCount', { count: currentFilteredList.length });
+            } else {
+                resultsInfo.textContent = `${currentFilteredList.length} 件のキャラクター`;
+            }
         }
 
         // Reset display
@@ -483,7 +703,7 @@ async function initCharacterDetail() {
 
     try {
         // Load specific character data
-        const versions = await fetchJson(`${DATA_BASE_PATH}details/${charId}.json`);
+        const versions = await fetchJson(`${getDataBasePath()}details/${charId}.json`);
         
         if (!versions || versions.length === 0) {
             throw new Error('Character data is empty');
@@ -498,19 +718,23 @@ async function initCharacterDetail() {
 }
 
 function renderDetail(char, versions) {
+    // アクセサを使用（日本語/英語キー名の違いを吸収）
+    const a = getCharAccessor(char);
+    
     // Update Page Title
-    document.title = `${char.基本情報.名前} - セブンナイツ リバース Wiki`;
-    document.getElementById('char-name-title').textContent = char.基本情報.名前;
-    document.getElementById('char-subname').textContent = char.基本情報.サブネーム || '';
+    document.title = `${a.name} - セブンナイツ リバース Wiki`;
+    document.getElementById('char-name-title').textContent = a.name;
+    document.getElementById('char-subname').textContent = a.subname || '';
 
     // Rarity Selector
     const rarityContainer = document.getElementById('rarity-selector');
     rarityContainer.innerHTML = '';
     versions.forEach(v => {
+        const va = getCharAccessor(v);
         const btn = document.createElement('button');
-        const isCurrent = v.基本情報.ID === char.基本情報.ID;
+        const isCurrent = va.id === a.id;
         btn.className = `rarity-btn ${isCurrent ? 'active' : ''}`;
-        btn.textContent = `★${v.基本情報.星} ${v.基本情報.レアリティ}`;
+        btn.textContent = `★${va.star} ${va.rarity}`;
         btn.onclick = () => renderDetail(v, versions);
         rarityContainer.appendChild(btn);
     });
@@ -521,13 +745,13 @@ function renderDetail(char, versions) {
     // Basic Info
     const basicInfoGrid = document.getElementById('basic-info-grid');
     const basicInfoItems = [
-        { label: 'ID', value: char.基本情報.ID ?? '' },
-        { label: 'レアリティ', value: char.基本情報.レアリティ ?? '' },
-        { label: '星', value: `★${char.基本情報.星 ?? ''} / ★${char.基本情報.最大星 ?? ''}` },
-        { label: '所属', value: char.基本情報.所属 ?? '' },
-        { label: 'タイプ', value: char.基本情報.タイプ ?? '' },
-        { label: '射程', value: char.基本情報.射程 ?? '' },
-        { label: '武器', value: char.基本情報.武器タイプ ?? '' },
+        { label: a.labels.id, value: a.id },
+        { label: a.labels.rarity, value: a.rarity },
+        { label: a.labels.star, value: `★${a.star} / ★${a.maxStar}` },
+        { label: a.labels.affiliation, value: a.affiliation },
+        { label: a.labels.role, value: a.role },
+        { label: a.labels.range, value: a.range },
+        { label: a.labels.weapon, value: a.weaponType },
     ];
     basicInfoGrid.innerHTML = basicInfoItems.map(item => `
         <div class="basic-info-item">
@@ -540,30 +764,8 @@ function renderDetail(char, versions) {
     const statsGrid = document.getElementById('stats-grid');
     statsGrid.innerHTML = '';
 
-    const STAT_ORDER = [
-        '物理攻撃力',
-        '魔法攻撃力',
-        '防御力',
-        'HP',
-        '敏捷性',
-        'クリティカル率',
-        '与クリティカルダメージ',
-        'フェイタルヒット率',
-        'ブロック率',
-        '被ダメージ減少',
-        'デバフ回避妨害率',
-        'デバフ回避率'
-    ];
-
-    const PERCENT_KEYS = new Set([
-        'クリティカル率',
-        '与クリティカルダメージ',
-        'フェイタルヒット率',
-        'ブロック率',
-        '被ダメージ減少',
-        'デバフ回避妨害率',
-        'デバフ回避率'
-    ]);
+    const STAT_ORDER = a.getStatKeys();
+    const PERCENT_KEYS = a.getPercentKeys();
 
     function toNumber(v) {
         if (v === null || v === undefined || v === '') return null;
@@ -585,7 +787,7 @@ function renderDetail(char, versions) {
         return String(n);
     }
 
-    const stats = char.ステータス || {};
+    const stats = a.stats;
     STAT_ORDER.forEach(key => {
         const raw = stats[key];
         const valueText = formatStatValue(key, raw);
@@ -601,20 +803,20 @@ function renderDetail(char, versions) {
     const skillsContainer = document.getElementById('skills-container');
     skillsContainer.innerHTML = '';
     
-    const skillOrder = [
-        '通常攻撃', '通常攻撃（変化）',
-        'スキル1', 'スキル1（変化）',
-        'スキル2', 'スキル2（変化）',
-        'パッシブ', 'パッシブ（変化）'
-    ];
+    const skillOrder = a.getSkillOrder();
+    const skillsData = a.skills;
     skillOrder.forEach(skillType => {
-        const skill = char.スキル情報[skillType];
+        const skill = skillsData[skillType];
         if (skill && (skill.name || skill.desc)) {
             const descHtml = skill.desc ? applyGlossaryTooltips(skill.desc) : 'No description';
-            const isTransformed = skillType.includes('（変化）');
-            const displayType = isTransformed ? skillType.replace('（変化）', '') : skillType;
+            const isTransformed = a.isTransformedSkill(skillType);
+            // 表示用タイプ名（変化マーカーを除去）
+            const displayType = a.isJa 
+                ? (isTransformed ? skillType.replace('（変化）', '') : skillType)
+                : (isTransformed ? skillType.replace(' (Trans)', '') : skillType);
             const transformClass = isTransformed ? ' transformed' : '';
             const titleText = skill.name ? skill.name : displayType;
+            const transformLabel = a.isJa ? ' (変化)' : ' (Trans)';
             
             skillsContainer.innerHTML += `
                 <div class="skill-card-new${transformClass}">
@@ -624,7 +826,7 @@ function renderDetail(char, versions) {
                     <div class="skill-info">
                         <div class="skill-header-new">
                             <span class="skill-name-new">${titleText}</span>
-                            <span class="skill-type-badge${isTransformed ? ' transform' : ''}">${displayType}${isTransformed ? ' (変化)' : ''}</span>
+                            <span class="skill-type-badge${isTransformed ? ' transform' : ''}">${displayType}${isTransformed ? transformLabel : ''}</span>
                             ${skill.cooltime ? `<span class="skill-ct-badge">${skill.cooltime}</span>` : ''}
                         </div>
                         <div class="skill-desc-new">${descHtml}</div>
@@ -638,16 +840,17 @@ function renderDetail(char, versions) {
     const transcendenceContainer = document.getElementById('transcendence-container');
     if (transcendenceContainer) {
         transcendenceContainer.innerHTML = '';
-        const transcendence = char.超越解放効果;
+        const transcendence = a.transcendence;
         if (transcendence && Object.keys(transcendence).length > 0) {
             let transcendenceHtml = '';
             for (const [key, value] of Object.entries(transcendence)) {
                 if (value) {
                     const stageMatch = key.match(/(\d+)/);
                     const stageNum = stageMatch ? stageMatch[1] : '';
+                    const stageLabel = a.isJa ? `超越${stageNum}段階` : `Transcendence ${stageNum}`;
                     transcendenceHtml += `
                         <div class="trans-item">
-                            <span class="trans-stage">超越${stageNum}段階</span>
+                            <span class="trans-stage">${stageLabel}</span>
                             <span class="trans-effect">${value}</span>
                         </div>
                     `;
@@ -655,7 +858,7 @@ function renderDetail(char, versions) {
             }
             transcendenceContainer.innerHTML = transcendenceHtml || '<p class="no-data">超越解放効果はありません</p>';
         } else {
-            transcendenceContainer.innerHTML = '<p class="no-data">超越解放効果はありません</p>';
+            transcendenceContainer.innerHTML = `<p class="no-data">${a.labels.noTranscendence}</p>`;
         }
     }
 
@@ -664,21 +867,20 @@ function renderDetail(char, versions) {
     const storyTextEl = document.getElementById('story-text');
     
     if (flavorTextEl) {
-        flavorTextEl.textContent = char.基本情報?.フレーバーテキスト ? char.基本情報.フレーバーテキスト.replace(/\\n/g, '\n') : 'フレーバーテキストはありません。';
+        flavorTextEl.textContent = a.flavor ? a.flavor.replace(/\\n/g, '\n') : a.labels.noFlavor;
     }
     if (storyTextEl) {
-        const story = char.プロフィール?.ストーリー;
-        storyTextEl.textContent = story && story !== '-' ? story.replace(/\\n/g, '\n') : 'ストーリーはありません。';
+        storyTextEl.textContent = a.story && a.story !== '-' ? a.story.replace(/\\n/g, '\n') : a.labels.noStory;
     }
     
-    // Growth Data (成長データ)
-    renderGrowthData(char);
+    // Growth Data (成長データ) - アクセサを渡す
+    renderGrowthData(char, a);
     
     // Reinforcement Data (強化段階) - 新デザイン
-    renderReinforcementDataNew(char);
+    renderReinforcementDataNew(char, a);
     
     // Potential Data (潜在能力解放) - 新デザイン
-    renderPotentialDataNew(char);
+    renderPotentialDataNew(char, a);
     
     // タブの初期化
     initCombatTabs();
@@ -686,60 +888,66 @@ function renderDetail(char, versions) {
 }
 
 // 成長データ表示
-function renderGrowthData(char) {
-    const growthData = char.成長データ;
-    if (!growthData) return;
+function renderGrowthData(char, accessor) {
+    const a = accessor || getCharAccessor(char);
+    const growthData = a.growth;
+    if (!growthData || Object.keys(growthData).length === 0) return;
     
     const lv1Stats = document.getElementById('lv1-stats');
     const lv30Stats = document.getElementById('lv30-stats');
     const totalExpEl = document.getElementById('total-exp');
     
-    if (lv1Stats && growthData.レベル1) {
-        const attackType = growthData.攻撃力タイプ;
+    const attackType = a.attackType;
+    const defenseKey = a.isJa ? '防御力' : 'Defense';
+    const hpKey = 'HP';
+    
+    if (lv1Stats && a.level1) {
+        const lv1Data = a.level1;
         lv1Stats.innerHTML = `
             <div class="growth-stat-row">
                 <span class="name">${attackType}</span>
-                <span class="val">${growthData.レベル1[attackType]?.toLocaleString() ?? 0}</span>
+                <span class="val">${lv1Data[attackType]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">防御力</span>
-                <span class="val">${growthData.レベル1['防御力']?.toLocaleString() ?? 0}</span>
+                <span class="name">${defenseKey}</span>
+                <span class="val">${lv1Data[defenseKey]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">HP</span>
-                <span class="val">${growthData.レベル1['HP']?.toLocaleString() ?? 0}</span>
+                <span class="name">${hpKey}</span>
+                <span class="val">${lv1Data[hpKey]?.toLocaleString() ?? 0}</span>
             </div>
         `;
     }
     
-    if (lv30Stats && growthData.レベル30) {
-        const attackType = growthData.攻撃力タイプ;
+    if (lv30Stats && a.level30) {
+        const lv30Data = a.level30;
         lv30Stats.innerHTML = `
             <div class="growth-stat-row">
                 <span class="name">${attackType}</span>
-                <span class="val">${growthData.レベル30[attackType]?.toLocaleString() ?? 0}</span>
+                <span class="val">${lv30Data[attackType]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">防御力</span>
-                <span class="val">${growthData.レベル30['防御力']?.toLocaleString() ?? 0}</span>
+                <span class="name">${defenseKey}</span>
+                <span class="val">${lv30Data[defenseKey]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">HP</span>
-                <span class="val">${growthData.レベル30['HP']?.toLocaleString() ?? 0}</span>
+                <span class="name">${hpKey}</span>
+                <span class="val">${lv30Data[hpKey]?.toLocaleString() ?? 0}</span>
             </div>
         `;
     }
     
     // 経験値
-    if (totalExpEl && char.経験値) {
-        totalExpEl.textContent = char.経験値.最大レベル累計?.toLocaleString() ?? '—';
+    if (totalExpEl && a.maxLevelExp) {
+        totalExpEl.textContent = a.maxLevelExp?.toLocaleString() ?? '—';
     }
 }
 
 // 強化段階データ表示 - 新デザイン
-function renderReinforcementDataNew(char) {
-    const growthData = char.成長データ;
-    if (!growthData) return;
+function renderReinforcementDataNew(char, accessor) {
+    const a = accessor || getCharAccessor(char);
+    const growthData = a.growth;
+    if (!growthData || Object.keys(growthData).length === 0) return;
     
     const reinforceStats = document.getElementById('reinforce-stats');
     const reinforceCost = document.getElementById('reinforce-cost');
@@ -747,9 +955,11 @@ function renderReinforcementDataNew(char) {
     
     if (!reinforceStats || buttons.length === 0) return;
     
-    const attackType = growthData.攻撃力タイプ;
-    const reinforceData = growthData.強化段階別;
-    const costData = growthData.強化コスト || [];
+    const attackType = a.attackType;
+    const defenseKey = a.isJa ? '防御力' : 'Defense';
+    const hpKey = 'HP';
+    const reinforceData = a.reinforceStages;
+    const costData = (a.isJa ? growthData.強化コスト : growthData.reinforceCosts) || [];
     
     function updateReinforceDisplay(level) {
         const levelKey = `+${level}`;
@@ -762,12 +972,12 @@ function renderReinforcementDataNew(char) {
                     <div class="reinforce-stat-value">${stats[attackType]?.toLocaleString() ?? 0}</div>
                 </div>
                 <div class="reinforce-stat-card">
-                    <div class="reinforce-stat-name">防御力</div>
-                    <div class="reinforce-stat-value">${stats['防御力']?.toLocaleString() ?? 0}</div>
+                    <div class="reinforce-stat-name">${defenseKey}</div>
+                    <div class="reinforce-stat-value">${stats[defenseKey]?.toLocaleString() ?? 0}</div>
                 </div>
                 <div class="reinforce-stat-card">
-                    <div class="reinforce-stat-name">HP</div>
-                    <div class="reinforce-stat-value">${stats['HP']?.toLocaleString() ?? 0}</div>
+                    <div class="reinforce-stat-name">${hpKey}</div>
+                    <div class="reinforce-stat-value">${stats[hpKey]?.toLocaleString() ?? 0}</div>
                 </div>
             `;
         }
@@ -775,15 +985,19 @@ function renderReinforcementDataNew(char) {
         // 強化コスト表示
         if (reinforceCost && costData.length > 0) {
             const levelNum = parseInt(level, 10);
-            const cost = costData.find(c => c.段階 === levelNum);
+            const stageKey = a.isJa ? '段階' : 'stage';
+            const costKey = a.isJa ? 'コスト' : 'cost';
+            const goldLabel = a.isJa ? 'ゴールド' : 'Gold';
+            const maxLabel = a.isJa ? '最大強化' : 'Max Level';
+            const cost = costData.find(c => c[stageKey] === levelNum);
             if (cost) {
                 reinforceCost.innerHTML = `
                     <span class="cost-icon">💰</span>
                     <span>+${levelNum} → +${levelNum + 1}:</span>
-                    <span class="cost-val">${cost.コスト?.toLocaleString() ?? 0} ゴールド</span>
+                    <span class="cost-val">${cost[costKey]?.toLocaleString() ?? 0} ${goldLabel}</span>
                 `;
             } else {
-                reinforceCost.innerHTML = `<span class="cost-val">最大強化</span>`;
+                reinforceCost.innerHTML = `<span class="cost-val">${maxLabel}</span>`;
             }
         }
         
@@ -809,16 +1023,20 @@ let potentialStateNew = {
     data: null
 };
 
-function renderPotentialDataNew(char) {
+function renderPotentialDataNew(char, accessor) {
+    const a = accessor || getCharAccessor(char);
     const potentialContainer = document.getElementById('potential-container');
     if (!potentialContainer) return;
     
-    const potentialData = char.潜在能力解放;
+    const potentialData = a.potential;
+    const typesData = a.isJa ? potentialData?.タイプ別 : potentialData?.types;
     
-    if (!potentialData || !potentialData.available || !potentialData.タイプ別 || Object.keys(potentialData.タイプ別).length === 0) {
+    const noDataMsg = a.isJa ? '潜在能力解放データは現在利用できません' : 'Potential release data is not available';
+    
+    if (!potentialData || !potentialData.available || !typesData || Object.keys(typesData).length === 0) {
         potentialContainer.innerHTML = `
             <p class="potential-placeholder">
-                ${potentialData?.message || '潜在能力解放データは現在利用できません'}
+                ${potentialData?.message || noDataMsg}
             </p>
         `;
         return;
@@ -826,6 +1044,7 @@ function renderPotentialDataNew(char) {
     
     potentialStateNew.data = potentialData;
     potentialStateNew.level = 0;
+    potentialStateNew.isJa = a.isJa;
     
     renderPotentialUINew();
 }
@@ -1051,10 +1270,14 @@ async function updatePortrait(char, versions) {
     const portraitImg = document.getElementById('portrait-img');
     const select = document.getElementById('portrait-variant-select');
     if (!portraitImg || !select) return;
+    
+    // アクセサを使用してIDを取得
+    const a = getCharAccessor(char);
+    const charId = a.id;
 
     const fallback = () => {
         // 旧仕様のファイル名にも一応フォールバック
-        portraitImg.src = `images/portrait/${char.基本情報.ID}.webp`;
+        portraitImg.src = `images/portrait/${charId}.webp`;
         portraitImg.onerror = () => {
             portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
         };
@@ -1065,7 +1288,10 @@ async function updatePortrait(char, versions) {
 
     // 同名キャラのバリエーションIDも含めて候補を集める
     const candidateIds = Array.from(new Set(
-        [char?.基本情報?.ID, ...(versions || []).map(v => v?.基本情報?.ID)].filter(Boolean)
+        [charId, ...(versions || []).map(v => {
+            const va = getCharAccessor(v);
+            return va.id;
+        })].filter(Boolean)
     ));
 
     const entries = [];

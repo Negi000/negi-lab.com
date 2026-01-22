@@ -3,22 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ビルド - セブンナイツ リバース Wiki</title>
+    <title data-i18n="nav.build">ビルド - セブンナイツ リバース Wiki</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-touch-icon.webp">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Seven Knights Re:Birth Build Guide - Character builds, equipment recommendations, and skill configurations. セブンナイツリバース ビルド攻略。">
+    <meta name="keywords" content="Seven Knights Re:Birth, Build, ビルド, equipment, 装備, skills, スキル, guide, 攻略, configuration">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Build Guide - Seven Knights Re:Birth Wiki">
+    <meta property="og:description" content="Complete build guide for all characters.">
+    <meta property="og:url" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html">
+    <meta property="og:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+    <meta property="og:site_name" content="Seven Knights Re:Birth Wiki">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html?lang=ko">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Build Guide - Seven Knights Re:Birth Wiki",
+        "description": "Complete build guide for all characters.",
+        "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/build.html",
+        "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th"]
+    }
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+    
+    <!-- Ko-fi Widget -->
+    <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+    
+    <!-- OFUSE Widget -->
+    <script async src="https://ofuse.me/assets/platform/widget.js" charset="utf-8"></script>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="build.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
     <header>
         <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
         <nav>
             <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="characters.html">キャラクター</a></li>
-                <li><a href="build.html" class="active">ビルド</a></li>
-                <li><a href="adventure.html">冒険</a></li>
-                <li><a href="raid.html">レイド</a></li>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build.html" class="active" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
             </ul>
         </nav>
+        <div class="header-support-links">
+            <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
+                <img src="https://storage.ko-fi.com/cdn/cup-border.webp" alt="Ko-fi" class="kofi-icon">
+                <span>Ko-fi</span>
+            </a>
+            <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
+                <span>OFUSE</span>
+            </a>
+        </div>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
         <button class="mobile-menu-btn" aria-label="メニュー">
             <span></span><span></span><span></span>
         </button>
@@ -30,37 +92,37 @@
             <div class="page-header">
                 <h1 class="page-title">
                     <span class="title-icon">⚔️</span>
-                    装備ビルドガイド
+                    <span data-i18n="build.title">装備ビルドガイド</span>
                 </h1>
-                <p class="page-subtitle">希少以上のキャラクター装備推奨</p>
+                <p class="page-subtitle" data-i18n="build.subtitle">希少以上のキャラクター装備推奨</p>
             </div>
 
             <!-- Filter Section -->
             <section class="filter-section">
                 <div class="filter-controls">
                     <div class="filter-group">
-                        <label for="search-input" class="filter-label">キャラ検索</label>
-                        <input type="text" id="search-input" placeholder="キャラ名で検索...">
+                        <label for="search-input" class="filter-label" data-i18n="build.search">キャラ検索</label>
+                        <input type="text" id="search-input" data-i18n-placeholder="build.search.placeholder" placeholder="キャラ名で検索...">
                     </div>
                     <div class="filter-group">
-                        <label for="rarity-filter" class="filter-label">レアリティ</label>
+                        <label for="rarity-filter" class="filter-label" data-i18n="filter.rarity">レアリティ</label>
                         <select id="rarity-filter">
-                            <option value="">全レアリティ</option>
-                            <option value="希少">希少</option>
-                            <option value="伝説">伝説</option>
-                            <option value="伝説+">伝説+</option>
-                            <option value="伝説++">伝説++</option>
+                            <option value="" data-i18n="filter.rarity.all">全レアリティ</option>
+                            <option value="希少" data-i18n="rarity.epic">希少</option>
+                            <option value="伝説" data-i18n="rarity.legendary">伝説</option>
+                            <option value="伝説+" data-i18n="rarity.legendary+">伝説+</option>
+                            <option value="伝説++" data-i18n="rarity.legendary++">伝説++</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label for="role-filter" class="filter-label">タイプ</label>
+                        <label for="role-filter" class="filter-label" data-i18n="filter.role">タイプ</label>
                         <select id="role-filter">
-                            <option value="">全タイプ</option>
-                            <option value="攻撃型">攻撃型</option>
-                            <option value="万能型">万能型</option>
-                            <option value="防御型">防御型</option>
-                            <option value="支援型">支援型</option>
-                            <option value="魔法型">魔法型</option>
+                            <option value="" data-i18n="filter.role.all">全タイプ</option>
+                            <option value="攻撃型" data-i18n="role.attack">攻撃型</option>
+                            <option value="万能型" data-i18n="role.universal">万能型</option>
+                            <option value="防御型" data-i18n="role.defense">防御型</option>
+                            <option value="支援型" data-i18n="role.support">支援型</option>
+                            <option value="魔法型" data-i18n="role.magic">魔法型</option>
                         </select>
                     </div>
                     <button class="filter-reset-btn" onclick="resetFilters()">
@@ -68,11 +130,11 @@
                             <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
                             <path d="M3 3v5h5"/>
                         </svg>
-                        リセット
+                        <span data-i18n="filter.reset">リセット</span>
                     </button>
                 </div>
                 <div class="results-info">
-                    <span id="results-count">0 キャラクター</span>
+                    <span id="results-count">0 <span data-i18n="filter.results">キャラクター</span></span>
                 </div>
             </section>
 
@@ -80,7 +142,7 @@
             <div id="build-container" class="build-container">
                 <div class="loading-spinner">
                     <div class="spinner"></div>
-                    <p>ビルドデータを読み込み中...</p>
+                    <p data-i18n="build.loading">ビルドデータを読み込み中...</p>
                 </div>
             </div>
         </div>
@@ -98,8 +160,18 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 セブンナイツ リバース 非公式Wiki</p>
-        <p class="disclaimer">このサイトはファンによる非公式サイトです。</p>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
     </footer>
 
     <script src="build.js"></script>

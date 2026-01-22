@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レイド - セブンナイツ:リバース Wiki</title>
+    <title data-i18n="nav.raid">レイド - セブンナイツ:リバース Wiki</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-touch-icon.webp">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Seven Knights Re:Birth Raid Guide - Boss strategies, skill patterns, and equipment drop rates. セブンナイツリバース レイド攻略・装備ドロップ率。">
+    <meta name="keywords" content="Seven Knights Re:Birth, Raid, レイド, boss, ボス, equipment, 装備, drop rate, ドロップ率, guide, 攻略">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Raid Guide - Seven Knights Re:Birth Wiki">
+    <meta property="og:description" content="Complete raid boss guide with skill patterns and equipment drop rates.">
+    <meta property="og:url" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html">
+    <meta property="og:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+    <meta property="og:site_name" content="Seven Knights Re:Birth Wiki">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html?lang=ko">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Raid Guide - Seven Knights Re:Birth Wiki",
+        "description": "Complete raid boss guide with skill patterns and equipment drop rates.",
+        "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/raid.html",
+        "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th"]
+    }
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+    
+    <!-- Ko-fi Widget -->
+    <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+    
+    <!-- OFUSE Widget -->
+    <script async src="https://ofuse.me/assets/platform/widget.js" charset="utf-8"></script>
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="raid.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
     <header>
@@ -14,13 +64,25 @@
         </a>
         <nav>
             <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="characters.html">キャラクター</a></li>
-                <li><a href="build.html">ビルド</a></li>
-                <li><a href="adventure.html">冒険</a></li>
-                <li><a href="raid.html" class="active">レイド</a></li>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build.html" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" class="active" data-i18n="nav.raid">レイド</a></li>
             </ul>
         </nav>
+        <div class="header-support-links">
+            <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
+                <img src="https://storage.ko-fi.com/cdn/cup-border.webp" alt="Ko-fi" class="kofi-icon">
+                <span>Ko-fi</span>
+            </a>
+            <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
+                <span>OFUSE</span>
+            </a>
+        </div>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
         <button class="mobile-menu-btn" aria-label="メニュー">
             <span></span><span></span><span></span>
         </button>
@@ -32,11 +94,11 @@
             <div class="raid-type-tabs">
                 <button class="raid-type-tab active" data-type="normal">
                     <span class="tab-icon">⚔️</span>
-                    <span class="tab-label">レイド</span>
+                    <span class="tab-label" data-i18n="raid.title">レイド</span>
                 </button>
                 <button class="raid-type-tab" data-type="world">
                     <span class="tab-icon">🌍</span>
-                    <span class="tab-label">ワールドレイド</span>
+                    <span class="tab-label" data-i18n="raid.world">ワールドレイド</span>
                 </button>
             </div>
         </section>
@@ -60,11 +122,11 @@
                         <h2 id="boss-name" class="boss-name"></h2>
                         <p id="boss-story" class="boss-story"></p>
                         <div class="boss-solution">
-                            <h3>攻略ヒント</h3>
+                            <h3 data-i18n="raid.hint">攻略ヒント</h3>
                             <p id="boss-solution-text"></p>
                         </div>
                         <div class="boss-skills-section">
-                            <h3>ボススキル</h3>
+                            <h3 data-i18n="raid.bossSkills">ボススキル</h3>
                             <div class="boss-skills" id="boss-skills">
                                 <!-- JSで生成 -->
                             </div>
@@ -74,7 +136,7 @@
 
                 <!-- 難易度セレクター -->
                 <div class="difficulty-selector">
-                    <h3>難易度選択</h3>
+                    <h3 data-i18n="raid.difficultySelect">難易度選択</h3>
                     <div class="difficulty-grid" id="difficulty-grid">
                         <!-- JSで生成 -->
                     </div>
@@ -85,15 +147,15 @@
                     <div class="stage-header">
                         <h3 id="stage-title">難易度 1</h3>
                         <div class="stage-basic-info">
-                            <span class="info-item"><span class="info-label">消費スタミナ</span><span id="stage-stamina">6</span></span>
-                            <span class="info-item"><span class="info-label">アカウント経験値</span><span id="stage-account-exp">60</span></span>
-                            <span class="info-item"><span class="info-label">英雄経験値</span><span id="stage-hero-exp">600</span></span>
+                            <span class="info-item"><span class="info-label" data-i18n="raid.stamina">消費スタミナ</span><span id="stage-stamina">6</span></span>
+                            <span class="info-item"><span class="info-label" data-i18n="raid.accountExp">アカウント経験値</span><span id="stage-account-exp">60</span></span>
+                            <span class="info-item"><span class="info-label" data-i18n="raid.heroExp">英雄経験値</span><span id="stage-hero-exp">600</span></span>
                         </div>
                     </div>
 
                     <!-- 敵ステータス -->
                     <div class="enemy-stats-section">
-                        <h4>ボスステータス</h4>
+                        <h4 data-i18n="raid.bossStats">ボスステータス</h4>
                         <div class="enemy-stats" id="enemy-stats">
                             <!-- JSで生成 -->
                         </div>
@@ -101,7 +163,7 @@
 
                     <!-- サブオプション確率 -->
                     <div class="sub-option-section" id="sub-option-section">
-                        <h4>装備サブオプション確率</h4>
+                        <h4 data-i18n="raid.subOptionProb">装備サブオプション確率</h4>
                         <div class="sub-option-probs" id="sub-option-probs">
                             <!-- JSで生成 -->
                         </div>
@@ -109,7 +171,7 @@
 
                     <!-- 報酬 -->
                     <div class="rewards-section">
-                        <h4>獲得可能報酬</h4>
+                        <h4 data-i18n="raid.rewards">獲得可能報酬</h4>
                         <div class="rewards-grid" id="rewards-grid">
                             <!-- JSで生成 -->
                         </div>
@@ -121,7 +183,7 @@
         <!-- ワールドレイドセクション -->
         <section id="world-raid-section" class="raid-section hidden">
             <div class="world-raid-notice">
-                <p>⚠️ ワールドレイドは期間限定コンテンツです</p>
+                <p data-i18n="raid.worldNotice">⚠️ ワールドレイドは期間限定コンテンツです</p>
             </div>
             
             <div class="world-boss-cards" id="world-boss-cards">
@@ -135,55 +197,66 @@
 
         <!-- サブオプション確率一覧 -->
         <section class="sub-option-table-section">
-            <h3>サブオプション確率一覧（難易度11～15）</h3>
+            <h3 data-i18n="raid.subOptionTable">サブオプション確率一覧（難易度11～15）</h3>
             <table class="sub-option-table">
                 <thead>
                     <tr>
-                        <th>難易度</th>
-                        <th>4オプション</th>
-                        <th>3オプション</th>
-                        <th>2オプション</th>
+                        <th data-i18n="raid.difficulty">難易度</th>
+                        <th data-i18n="raid.4options">4オプション</th>
+                        <th data-i18n="raid.3options">3オプション</th>
+                        <th data-i18n="raid.2options">2オプション</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>11段階</td>
+                        <td data-i18n="raid.level11">11段階</td>
                         <td class="prob-4op">6%</td>
                         <td class="prob-3op">39%</td>
                         <td class="prob-2op">55%</td>
                     </tr>
                     <tr>
-                        <td>12段階</td>
+                        <td data-i18n="raid.level12">12段階</td>
                         <td class="prob-4op">7%</td>
                         <td class="prob-3op">53%</td>
                         <td class="prob-2op">40%</td>
                     </tr>
                     <tr>
-                        <td>13段階</td>
+                        <td data-i18n="raid.level13">13段階</td>
                         <td class="prob-4op">8%</td>
                         <td class="prob-3op">67%</td>
                         <td class="prob-2op">25%</td>
                     </tr>
                     <tr>
-                        <td>14段階</td>
+                        <td data-i18n="raid.level14">14段階</td>
                         <td class="prob-4op">9%</td>
                         <td class="prob-3op">81%</td>
                         <td class="prob-2op">10%</td>
                     </tr>
                     <tr class="highlight-row">
-                        <td>15段階</td>
+                        <td data-i18n="raid.level15">15段階</td>
                         <td class="prob-4op">10%</td>
                         <td class="prob-3op">90%</td>
                         <td class="prob-2op">-</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="table-note">※ 難易度1～10ではサブオプション確定なし（基本値）</p>
+            <p class="table-note" data-i18n="raid.tableNote">※ 難易度1～10ではサブオプション確定なし（基本値）</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Seven Knights Re:Birth Wiki - 非公式ファンサイト</p>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

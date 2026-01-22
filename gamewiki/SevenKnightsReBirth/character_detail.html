@@ -4,20 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>キャラクター詳細 - セブンナイツ リバース Wiki</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-touch-icon.webp">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Seven Knights Re:Birth Wiki - Unofficial fan database for character stats, skills, builds, adventure guides, and raid strategies. セブンナイツリバース攻略Wiki。">
+    <meta name="keywords" content="Seven Knights Re:Birth, セブンナイツリバース, 7K ReBirth, Wiki, ウィキ, 攻略, guide, database, characters, キャラクター, skills, スキル, builds, ビルド, raid, レイド, adventure, 冒険, Netmarble">
+    <meta name="author" content="Seven Knights Re:Birth Wiki">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="キャラクター詳細 - セブンナイツ リバース Wiki">
+    <meta property="og:description" content="Seven Knights Re:Birth Wiki - Unofficial fan database for character stats, skills, builds, adventure guides, and raid strategies. セブンナイツリバース攻略Wiki。">
+    <meta property="og:url" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/">
+    <meta property="og:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+    <meta property="og:site_name" content="Seven Knights Re:Birth Wiki">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="th_TH">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="キャラクター詳細 - セブンナイツ リバース Wiki">
+    <meta name="twitter:description" content="Seven Knights Re:Birth Wiki - Unofficial fan database for character stats, skills, builds, adventure guides, and raid strategies. セブンナイツリバース攻略Wiki。">
+    <meta name="twitter:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+    
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=zh-Hans">
+    <link rel="alternate" hreflang="zh-Hant" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=zh-Hant">
+    <link rel="alternate" hreflang="th" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/?lang=th">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "WebPage", "name": "キャラクター詳細 - セブンナイツ リバース Wiki", "description": "Seven Knights Re:Birth Wiki - Unofficial fan database for character stats, skills, builds, adventure guides, and raid strategies. セブンナイツリバース攻略Wiki。", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/", "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th"], "isPartOf": {"@type": "WebSite", "name": "Seven Knights Re:Birth Wiki", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/", "potentialAction": {"@type": "SearchAction", "target": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/characters.html?search={search_term_string}", "query-input": "required name=search_term_string"}}, "publisher": {"@type": "Organization", "name": "Seven Knights Re:Birth Wiki", "logo": {"@type": "ImageObject", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp"}}}
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+    
+    <!-- Ko-fi Widget -->
+    <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+    
+    <!-- OFUSE Widget -->
+    <script async src="https://ofuse.me/assets/platform/widget.js" charset="utf-8"></script>
+    
     <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
+    
 </head>
 <body class="detail-page">
     <header>
         <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
         <nav>
             <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="characters.html">キャラクター</a></li>
-                <li><a href="build.html">ビルド</a></li>
-                <li><a href="adventure.html">冒険</a></li>
-                <li><a href="raid.html">レイド</a></li>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build.html" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
             </ul>
         </nav>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
         <button class="mobile-menu-btn" aria-label="メニュー">
             <span></span><span></span><span></span>
         </button>
@@ -28,7 +91,7 @@
         <aside class="portrait-gallery">
             <div class="portrait-wrapper">
                 <img id="portrait-img" src="" alt="Portrait" class="portrait-main-img" onclick="openFullscreen()">
-                <div class="portrait-zoom-hint">クリックで拡大</div>
+                <div class="portrait-zoom-hint" data-i18n="detail.clickToEnlarge">クリックで拡大</div>
             </div>
             <div class="portrait-controls">
                 <select id="portrait-variant-select" class="portrait-select"></select>
@@ -45,7 +108,7 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
-                    キャラクター一覧
+                    <span data-i18n="nav.characters">キャラクター一覧</span>
                 </a>
                 <div class="char-title-row">
                     <h1 id="char-name-title">読み込み中...</h1>
@@ -57,7 +120,7 @@
             <!-- 基本情報 -->
             <section class="info-card">
                 <h2 class="card-title">
-                    <span class="title-icon">📋</span>基本情報
+                    <span class="title-icon">📋</span><span data-i18n="detail.basicInfo">基本情報</span>
                 </h2>
                 <div id="basic-info-grid" class="basic-info-grid"></div>
             </section>
@@ -65,13 +128,13 @@
             <!-- 戦闘ステータス（統合タブ） -->
             <section class="info-card combat-stats-card">
                 <h2 class="card-title">
-                    <span class="title-icon">⚔️</span>戦闘ステータス
+                    <span class="title-icon">⚔️</span><span data-i18n="detail.combatStats">戦闘ステータス</span>
                 </h2>
                 <div class="combat-tabs">
-                    <button class="combat-tab active" data-tab="base">基礎値</button>
-                    <button class="combat-tab" data-tab="growth">成長</button>
-                    <button class="combat-tab" data-tab="reinforce">強化</button>
-                    <button class="combat-tab" data-tab="potential">潜在能力</button>
+                    <button class="combat-tab active" data-tab="base" data-i18n="detail.tab.base">基礎値</button>
+                    <button class="combat-tab" data-tab="growth" data-i18n="detail.tab.growth">成長</button>
+                    <button class="combat-tab" data-tab="reinforce" data-i18n="detail.tab.reinforce">強化</button>
+                    <button class="combat-tab" data-tab="potential" data-i18n="detail.tab.potential">潜在能力</button>
                 </div>
                 
                 <!-- 基礎値タブ -->
@@ -98,7 +161,7 @@
                     </div>
                     <div class="exp-display">
                         <span class="exp-icon">📊</span>
-                        <span class="exp-text">必要経験値合計</span>
+                        <span class="exp-text" data-i18n="detail.expRequired">必要経験値合計</span>
                         <span id="total-exp" class="exp-amount">—</span>
                     </div>
                 </div>
@@ -120,7 +183,7 @@
                 <!-- 潜在能力タブ -->
                 <div class="combat-panel" id="panel-potential">
                     <div id="potential-container" class="potential-display">
-                        <p class="potential-placeholder">潜在能力解放データは現在利用できません</p>
+                        <p class="potential-placeholder" data-i18n="detail.potentialUnavailable">潜在能力解放データは現在利用できません</p>
                     </div>
                 </div>
             </section>
@@ -128,7 +191,7 @@
             <!-- スキル -->
             <section class="info-card">
                 <h2 class="card-title">
-                    <span class="title-icon">✨</span>スキル
+                    <span class="title-icon">✨</span><span data-i18n="detail.skills">スキル</span>
                 </h2>
                 <div id="skills-container" class="skills-grid"></div>
             </section>
@@ -136,7 +199,7 @@
             <!-- 超越解放効果 -->
             <section class="info-card">
                 <h2 class="card-title">
-                    <span class="title-icon">🌟</span>超越解放効果
+                    <span class="title-icon">🌟</span><span data-i18n="detail.transcendence">超越解放効果</span>
                 </h2>
                 <div id="transcendence-container" class="transcendence-list"></div>
             </section>
@@ -144,11 +207,11 @@
             <!-- フレーバー＆ストーリー -->
             <section class="info-card">
                 <h2 class="card-title">
-                    <span class="title-icon">📖</span>プロフィール
+                    <span class="title-icon">📖</span><span data-i18n="detail.profile">プロフィール</span>
                 </h2>
                 <div class="profile-tabs">
-                    <button class="profile-tab active" data-tab="flavor">フレーバー</button>
-                    <button class="profile-tab" data-tab="story">ストーリー</button>
+                    <button class="profile-tab active" data-tab="flavor" data-i18n="detail.tab.flavor">フレーバー</button>
+                    <button class="profile-tab" data-tab="story" data-i18n="detail.tab.story">ストーリー</button>
                 </div>
                 <div class="profile-panel active" id="profile-flavor">
                     <div id="flavor-text" class="profile-text-content"></div>
@@ -173,13 +236,19 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p class="footer-logo">7K:Re Wiki</p>
-                <p class="footer-disclaimer">このサイトは非公式のファンサイトです。</p>
-                <p class="footer-copyright">© 2024 Seven Knights Re:Birth Unofficial Wiki</p>
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    
 </body>
 </html>
