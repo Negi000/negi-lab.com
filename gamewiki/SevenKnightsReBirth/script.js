@@ -1574,3 +1574,51 @@ document.addEventListener('click', (e) => {
         container.remove();
     }, 1200); // Slightly longer for fade out
 });
+
+// ===== Lazy Load Image Fade-in =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loaded class to images when they finish loading
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+            img.addEventListener('error', () => {
+                img.classList.add('loaded'); // Still show even on error
+            });
+        }
+    });
+    
+    // Observe new images added dynamically
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1) {
+                    const imgs = node.querySelectorAll ? 
+                        node.querySelectorAll('img[loading="lazy"]') : [];
+                    imgs.forEach(img => {
+                        if (img.complete) {
+                            img.classList.add('loaded');
+                        } else {
+                            img.addEventListener('load', () => img.classList.add('loaded'));
+                            img.addEventListener('error', () => img.classList.add('loaded'));
+                        }
+                    });
+                    // Check if node itself is an image
+                    if (node.tagName === 'IMG' && node.loading === 'lazy') {
+                        if (node.complete) {
+                            node.classList.add('loaded');
+                        } else {
+                            node.addEventListener('load', () => node.classList.add('loaded'));
+                            node.addEventListener('error', () => node.classList.add('loaded'));
+                        }
+                    }
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+});

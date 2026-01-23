@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Seven Knights Re:Birth Wiki</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--accent-red);
+            text-shadow: 0 0 30px rgba(230, 0, 18, 0.5);
+            margin: 0;
+            line-height: 1;
+        }
+        .error-title {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin: 1rem 0;
+        }
+        .error-message {
+            color: var(--text-sub);
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .error-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .error-btn-primary {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+        }
+        .error-btn-primary:hover {
+            background: #ff1a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(230, 0, 18, 0.4);
+        }
+        .error-btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .error-btn-secondary:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/icon/rogo.webp" alt="Seven Knights Re:Birth Wiki" loading="lazy">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="error-container">
+        <p class="error-code">404</p>
+        <h1 class="error-title">ページが見つかりません</h1>
+        <p class="error-message">
+            お探しのページは存在しないか、移動した可能性があります。<br>
+            URLを確認するか、以下のリンクからお探しください。
+        </p>
+        <div class="error-actions">
+            <a href="index.html" class="error-btn error-btn-primary">ホームに戻る</a>
+            <a href="characters.html" class="error-btn error-btn-secondary">キャラクター一覧</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Seven Knights Re:Birth Wiki - Unofficial Fan Site</p>
+    </footer>
+
+    <script src="i18n.js"></script>
+</body>
+</html>
