@@ -13,6 +13,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-touch-icon.webp">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e60012">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="Seven Knights Re:Birth Wiki - Unofficial fan database for character stats, skills, builds, adventure guides, and raid strategies. セブンナイツリバース攻略Wiki。">
     <meta name="keywords" content="Seven Knights Re:Birth, セブンナイツリバース, 7K ReBirth, Wiki, ウィキ, 攻略, guide, database, characters, キャラクター, skills, スキル, builds, ビルド, raid, レイド, adventure, 冒険, Netmarble">
@@ -65,6 +71,17 @@
     <link rel="stylesheet" href="styles.css">
     <script src="i18n.js"></script>
     
+    
+    <!-- Service Worker Registration -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('[PWA] Service Worker registered'))
+                .catch(err => console.log('[PWA] Service Worker registration failed:', err));
+        });
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -76,11 +93,23 @@
                 <li><a href="build.html" data-i18n="nav.build">ビルド</a></li>
                 <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
                 <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
+                <!-- Mobile Support Links (inside nav for mobile menu) -->
+                <li class="mobile-nav-support">
+                    <div class="mobile-support-links active">
+                        <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                            <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                            <span>Ko-fi</span>
+                        </a>
+                        <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                            <span>OFUSEで応援</span>
+                        </a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div class="header-support-links">
             <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
-                <img src="https://storage.ko-fi.com/cdn/cup-border.webp" alt="Ko-fi" class="kofi-icon">
+                <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
                 <span>Ko-fi</span>
             </a>
             <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
@@ -174,7 +203,7 @@
                     
                 <a href="character_detail.html?id=100496" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100496Card.webp" alt="ノックス" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100496Card.webp" alt="ノックス" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=ノックス'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">ノックス</span>
@@ -183,7 +212,7 @@
                 </a>
                 <a href="character_detail.html?id=100696" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100696Card.webp" alt="勇翔" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100696Card.webp" alt="勇翔" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=勇翔'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">勇翔</span>
@@ -192,7 +221,7 @@
                 </a>
                 <a href="character_detail.html?id=100706" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100706Card.webp" alt="誠龍" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100706Card.webp" alt="誠龍" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=誠龍'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">誠龍</span>
@@ -201,7 +230,7 @@
                 </a>
                 <a href="character_detail.html?id=100726" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100726Card.webp" alt="リナ" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100726Card.webp" alt="リナ" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=リナ'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">リナ</span>
@@ -210,7 +239,7 @@
                 </a>
                 <a href="character_detail.html?id=100816" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100816Card.webp" alt="ベリカ" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100816Card.webp" alt="ベリカ" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=ベリカ'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">ベリカ</span>
@@ -219,7 +248,7 @@
                 </a>
                 <a href="character_detail.html?id=100846" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100846Card.webp" alt="ルリ" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100846Card.webp" alt="ルリ" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=ルリ'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">ルリ</span>
@@ -228,7 +257,7 @@
                 </a>
                 <a href="character_detail.html?id=100856" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100856Card.webp" alt="ニア" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100856Card.webp" alt="ニア" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=ニア'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">ニア</span>
@@ -237,7 +266,7 @@
                 </a>
                 <a href="character_detail.html?id=100866" class="hero-card">
                     <div class="hero-card-glow"></div>
-                    <img src="images/icon/Card/Tex_HeroIcon_100866Card.webp" alt="エスパーダ" 
+                    <img src="images/icon/Card/Tex_HeroIcon_100866Card.webp" alt="エスパーダ" loading="lazy"
                          onerror="this.src='https://placehold.co/150x150/1a1a1a/ffd700?text=エスパーダ'">
                     <div class="hero-card-info">
                         <span class="hero-card-name">エスパーダ</span>
@@ -269,7 +298,7 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">📅</div>
-                        <div class="stat-value">2026-01-23</div>
+                        <div class="stat-value">2026-01-24</div>
                         <div class="stat-label" data-i18n="home.stats.updated">最終更新</div>
                     </div>
                 </div>
@@ -358,11 +387,81 @@
                     <span class="logo-rebirth">Re:Birth</span>
                     <span class="logo-wiki">Wiki</span>
                 </p>
+                <!-- Footer Support Links (visible on mobile) -->
+                <div class="footer-support-links">
+                    <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                        <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                        <span>Ko-fi</span>
+                    </a>
+                    <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                        <span>OFUSEで応援</span>
+                    </a>
+                </div>
                 <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
                 <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top & Cache Reload Buttons -->
+    <button id="scroll-to-top" class="utility-btn scroll-top-btn" aria-label="トップに戻る" title="トップに戻る">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+    <button id="cache-reload" class="utility-btn cache-reload-btn" aria-label="キャッシュをクリアして更新" title="キャッシュをクリアして更新">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+        </svg>
+    </button>
+
+    <script>
+    // Scroll to Top Button
+    (function() {
+        const scrollBtn = document.getElementById('scroll-to-top');
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                scrollBtn.classList.toggle('visible', window.scrollY > 300);
+            });
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    })();
+
+    // Cache Reload Button
+    (function() {
+        const reloadBtn = document.getElementById('cache-reload');
+        if (reloadBtn) {
+            reloadBtn.addEventListener('click', async () => {
+                reloadBtn.classList.add('spinning');
+                try {
+                    // Service Workerにキャッシュクリアをリクエスト
+                    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                        const messageChannel = new MessageChannel();
+                        messageChannel.port1.onmessage = (event) => {
+                            if (event.data.success) {
+                                location.reload(true);
+                            }
+                        };
+                        navigator.serviceWorker.controller.postMessage(
+                            { type: 'CLEAR_CACHE' },
+                            [messageChannel.port2]
+                        );
+                        // タイムアウト後にリロード
+                        setTimeout(() => location.reload(true), 1000);
+                    } else {
+                        // Service Workerがない場合は強制リロード
+                        location.reload(true);
+                    }
+                } catch (e) {
+                    console.error('Cache clear failed:', e);
+                    location.reload(true);
+                }
+            });
+        }
+    })();
+    </script>
 
     <script src="script.js"></script>
     

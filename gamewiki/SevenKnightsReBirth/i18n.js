@@ -20,6 +20,88 @@ let I18N_READY = false;
 let I18N_READY_CALLBACKS = [];
 
 /**
+ * ブラウザの言語設定からサポートされている言語を検出
+ * @returns {string|null} 検出された言語コード、またはnull
+ */
+function detectBrowserLanguage() {
+    // サポートされている言語コードのマッピング
+    const languageMap = {
+        'ja': 'ja',
+        'ja-JP': 'ja',
+        'en': 'en',
+        'en-US': 'en',
+        'en-GB': 'en',
+        'en-AU': 'en',
+        'ko': 'ko',
+        'ko-KR': 'ko',
+        'zh': 'zh-Hans',      // 簡体字をデフォルト
+        'zh-CN': 'zh-Hans',
+        'zh-SG': 'zh-Hans',
+        'zh-Hans': 'zh-Hans',
+        'zh-TW': 'zh-Hant',
+        'zh-HK': 'zh-Hant',
+        'zh-Hant': 'zh-Hant',
+        'th': 'th',
+        'th-TH': 'th'
+    };
+    
+    // navigator.languages (優先順位付きリスト) または navigator.language を使用
+    const browserLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
+    
+    for (const lang of browserLanguages) {
+        // 完全一致を最初にチェック
+        if (languageMap[lang]) {
+            return languageMap[lang];
+        }
+        // 言語コードの最初の部分（例: 'en-US' → 'en'）でチェック
+        const baseLang = lang.split('-')[0];
+        if (languageMap[baseLang]) {
+            return languageMap[baseLang];
+        }
+    }
+    
+    return null; // マッチしない場合はデフォルトに任せる
+}
+
+/**
+ * SEOメタタグを言語に応じて動的に更新
+ * @param {string} lang - 言語コード
+ */
+function updateSEOMetaTags(lang) {
+    // 言語コードからOpen Graph localeへのマッピング
+    const localeMap = {
+        'ja': 'ja_JP',
+        'en': 'en_US',
+        'ko': 'ko_KR',
+        'zh-Hans': 'zh_CN',
+        'zh-Hant': 'zh_TW',
+        'th': 'th_TH'
+    };
+    
+    const locale = localeMap[lang] || 'ja_JP';
+    
+    // og:locale を更新
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) {
+        ogLocale.setAttribute('content', locale);
+    }
+    
+    // canonical URL を言語パラメータ付きで更新
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+        const baseUrl = canonical.href.split('?')[0];
+        canonical.href = lang === 'ja' ? baseUrl : `${baseUrl}?lang=${lang}`;
+    }
+    
+    // og:url も更新
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+        const baseUrl = ogUrl.content.split('?')[0];
+        ogUrl.setAttribute('content', lang === 'ja' ? baseUrl : `${baseUrl}?lang=${lang}`);
+    }
+}
+
+/**
  * 初期化（ページ読み込み時に自動実行）
  */
 async function initI18n() {
@@ -38,8 +120,11 @@ async function initI18n() {
         const urlLang = urlParams.get('lang');
         const storedLang = localStorage.getItem('wiki_lang');
         
-        // 優先順位: URL > localStorage > デフォルト
-        let targetLang = urlLang || storedLang || I18N_LANGUAGES.default;
+        // ブラウザの言語設定を検出
+        const browserLang = detectBrowserLanguage();
+        
+        // 優先順位: URL > localStorage > ブラウザ言語 > デフォルト
+        let targetLang = urlLang || storedLang || browserLang || I18N_LANGUAGES.default;
         
         // 有効な言語かチェック
         const validLang = I18N_LANGUAGES.languages.find(
@@ -54,6 +139,9 @@ async function initI18n() {
         
         // HTML lang属性を更新
         document.documentElement.lang = targetLang;
+        
+        // SEOメタタグを言語に合わせて更新
+        updateSEOMetaTags(targetLang);
         
         // 準備完了
         I18N_READY = true;
