@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100586",
+      "name": "Dellons",
+      "subname": "Ölümün Hükümdarı",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Dellons akıl sağlığını yeniden kazandı ve uzun süredir sahipsiz olan Karanlık Mezarlık'ın hükümdarı oldu. Tüm ölülerin, Azrail'in emrini beklediği söylenir.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10058601",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %100 kadar hasar verir 1 kez.\n - Fiziksel Saldırının %120 kadar hasar verir 1 kez.\n - 45% şansla Sessizlik uygulama. [Süre: 1 Tur]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 120% kadarına.\n - Etki Ekler: 45% şansla Sessizlik uygular. [Süre: 1 Tur(lar)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005801.webp"
+      },
+      "Skill 1": {
+        "id": "10058602",
+        "name": "Ölüm Darbesi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının %115 kadar hasar verir 1 kez.\n - Fiziksel Saldırının %135 kadar hasar verir 1 kez.\n - 50% şansla Sessizlik uygulama. [Süre: 2 Tur]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 135% kadarına.\n - Şans Artışı: Sessizlik şansı 60% olur.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005803.webp"
+      },
+      "Skill 2": {
+        "id": "10058603",
+        "name": "Azrail'in Gelişi",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %119 kadar hasar verir 5 kez.\n - Fiziksel Saldırının %158 kadar hasar verir 5 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 158% kadarına.\nTranscend Lv.2 Effect\n - Etki Ekler: Bu yetenekten gelen hasarla bir düşmanı yendiğinizde 100% güçle tekrar etkinleşir.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005802.webp"
+      },
+      "Passive": {
+        "id": "10058604",
+        "name": "Perdenin Ötesinde",
+        "desc": "Tüm Müttefikler\n - Fiziksel Hasar Artışı sağlar. [Her Zaman Aktif]\n - Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\n - Tüm Hasar İptali sağlar. [4 Vuruş]\nSkill Enhancement Effect\n - Etkileri Artırır: Fiziksel Hasar Artışı 20% olarak.\n - Yığınları Artırır: Tüm Hasar İptal yığınları 4 olarak artar.\nTranscend Lv.6 Effect\n - Kendi\n - Etkisi Ekler: Bir müttefik savaşta düştüğünde Tüm Hasar İptali. [Süre: 1 Vuruş]\n - Etki Ekler: Bir müttefik savaşta düştüğünde 39% Fiziksel Saldırı Artışı. [Süre: 2 Tur]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005804.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Tüm Saldırıyı %12 artırır.",
+      "transcend_2": "Tüm Saldırıyı %6 artırır.",
+      "transcend_3": "HP'yi %18 artırır.",
+      "transcend_4": "Kritik Oranını %18 artırır.",
+      "transcend_5": "Tüm Saldırıyı %12 artırır.",
+      "transcend_6": "Tüm Saldırıyı %6 artırır.",
+      "transcend_7": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_8": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_9": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_10": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_11": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_12": "Tüm Saldırı, Savunma ve HP'yi %2 artırır."
+    },
+    "profile": {
+      "cv": "関 智一",
+      "species": "Ölümsüz",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "01 / 05",
+      "age": "0",
+      "height": "185",
+      "weight": "90",
+      "constellation": "Taurus",
+      "likes": "Prenses Claudia, tavuk çorbası, salata, kırmızı şarap, kaos, kötülük, adaletsizlik, kar",
+      "dislikes": "Gümüş (Silverswords nedeniyle), Yedi Şövalye, soğan, sarımsak, düzen, nezaket, adalet",
+      "story": "Dellons akıl sağlığını yeniden kazandı ve uzun süredir sahipsiz olan Karanlık Mezarlık'ın hükümdarı oldu. Tüm ölülerin, Azrail'in emrini beklediği söylenir."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100585",
+      "name": "Dellons",
+      "subname": "Ölümün Yargıcı",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Dellons, Karanlık Mezarlık boyunca yoluna çıkan her şeyi öldürerek Grim Reaper'a dönüşümünü tamamladı.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10058501",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %90 kadar hasar verir 1 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 90% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005801.webp"
+      },
+      "Skill 1": {
+        "id": "10058502",
+        "name": "Ölüm Darbesi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının %105 kadar hasar verir 1 kez.\n - 45% şansla Sessizlik uygulama. [Süre: 2 Tur]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 105% kadarına.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005803.webp"
+      },
+      "Skill 2": {
+        "id": "10058503",
+        "name": "Azrail'in Gelişi",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %107 kadar hasar verir 5 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 107% kadarına.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005802.webp"
+      },
+      "Passive": {
+        "id": "10058504",
+        "name": "Perdenin Ötesinde",
+        "desc": "Tüm Müttefikler\n - Fiziksel Hasar Artışı sağlar. [Her Zaman Aktif]\n - Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\nSkill Enhancement Effect\n - Etkileri Artırır: Fiziksel Hasar Artışı 13% olarak.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "関 智一",
+      "species": "Ölümsüz",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "01 / 05",
+      "age": "0",
+      "height": "185",
+      "weight": "90",
+      "constellation": "Taurus",
+      "likes": "Prenses Claudia, tavuk çorbası, salata, kırmızı şarap, kaos, kötülük, adaletsizlik, kar",
+      "dislikes": "Gümüş (Silverswords nedeniyle), Yedi Şövalye, soğan, sarımsak, düzen, nezaket, adalet",
+      "story": "Dellons, Karanlık Mezarlık boyunca yoluna çıkan her şeyi öldürerek Grim Reaper'a dönüşümünü tamamladı."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100584",
+      "name": "Dellons",
+      "subname": "Azrail",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Kara Şövalye Dellons'un nasıl Azrail olduğu bilinmiyor. Zarar vermekteki tereddüdüne bakılırsa, belki de henüz tam bir Reaper değil.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10058401",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %80 kadar hasar verir 1 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 80% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005801.webp"
+      },
+      "Skill 1": {
+        "id": "10058402",
+        "name": "Ölüm Darbesi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının %95 kadar hasar verir 1 kez.\n - 40% şansla Sessizlik uygulama. [Süre: 2 Tur]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 95% kadarına.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005803.webp"
+      },
+      "Skill 2": {
+        "id": "10058403",
+        "name": "Azrail'in Gelişi",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının %96 kadar hasar verir 5 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 96% kadarına.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005802.webp"
+      },
+      "Passive": {
+        "id": "10058404",
+        "name": "Perdenin Ötesinde",
+        "desc": "Tüm Müttefikler\n - Fiziksel Hasar Artışı sağlar. [Her Zaman Aktif]\n - Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\nSkill Enhancement Effect\n - Etkileri Artırır: Fiziksel Hasar Artışı 10% olarak.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "関 智一",
+      "species": "Ölümsüz",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "01 / 05",
+      "age": "0",
+      "height": "185",
+      "weight": "90",
+      "constellation": "Taurus",
+      "likes": "Prenses Claudia, tavuk çorbası, salata, kırmızı şarap, kaos, kötülük, adaletsizlik, kar",
+      "dislikes": "Gümüş (Silverswords nedeniyle), Yedi Şövalye, soğan, sarımsak, düzen, nezaket, adalet",
+      "story": "Kara Şövalye Dellons'un nasıl Azrail olduğu bilinmiyor. Zarar vermekteki tereddüdüne bakılırsa, belki de henüz tam bir Reaper değil."
+    }
+  }
+]

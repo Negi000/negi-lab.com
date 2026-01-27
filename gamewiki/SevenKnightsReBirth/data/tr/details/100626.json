@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100626",
+      "name": "Spike",
+      "subname": "Kar Fırtınası Zorbası",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Spike, dünyayı acı soğukla kaplamayı planlayan kendi kendini yetiştirmiş bir zorbadır. Spike'ı durdurabilecek tek şey, donmuş kalbini çözmektir.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10062601",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 50% kadarı artı büyü yapanın Maksimum HP'sinin 12% kadarı 1 kez hasar verir.\n - 3 Müttefik\n - Temel saldırıyı 2 kez kullandığınızda 1 Debuff Kaldırma sağlar.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 65% ve büyü yapanın Maksimum HP'sinin 15% kadarına çıkar.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006201.webp"
+      },
+      "Skill 1": {
+        "id": "10062602",
+        "name": "Donmuş Darbe",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 65% ve büyü yapanın Maksimum HP'sinin 15% kadarını 1 kez hasar verir.\n - 60% şansla Donma etkisi uygular. [Süre: 3 Tur]\n - Ana Beceri Hedefi ile Aynı Satırdaki Düşmanlar\nSkill Enhancement Effect\n - Ana Beceri Hedefi ile Aynı Satırdaki Düşmanlar\n - Hasar Artışı: Fiziksel Saldırının 75% ve büyü yapanın Maksimum HP'sinin 18% kadarına çıkar.\n - Şans Artışı: Dondurma şansı 70% olur.\nTranscend Lv.6 Effect\n - Kendi\n - Şifa Ekler: Maksimum HP'nin 40% kadarını HP olarak iyileştirir.",
+        "cooltime": "⏱️ CT: 72s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006202.webp"
+      },
+      "Skill 2": {
+        "id": "10062603",
+        "name": "Buz Depremi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 32% ve büyü yapanın Maksimum HP'sinin 8% kadarını 2 kez hasar verir.\n - Her saldırının 40% Dondurma etkisi bırakma şansı vardır. [Süre: 2 Tur(lar)]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 40% ve büyü yapanın Maksimum HP'sinin 9% kadarına çıkar.\n - Şans Artışı: Dondurma şansı 50% olur.\nTranscend Lv.6 Effect\n - Kendi\n - Şifa Ekler: Maksimum HP'nin 40% kadarını HP olarak iyileştirir.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006203.webp"
+      },
+      "Passive": {
+        "id": "10062604",
+        "name": "Buzun Kalbi",
+        "desc": "Kendi\n - Maksimum HP'ye Dayalı Saldırı Artışı sağlar. [Her Zaman Aktif]\n - [Dondur] etkisi altındaki hedeflere, büyü yapanın Max HP'sinin %15 kadarına eşit ek hasar verir.\n - Tüm Müttefikler\n - Etkili Vuruş Oranı Artışı sağlar. [Her Zaman Aktif]\n - Etki Direnci Artışı sağlar. [Her Zaman Aktif]\nSkill Enhancement Effect\n - Etkileri Artırır: Maksimum HP Tabanlı Saldırı maksimumu 1320 olur.\n - Etkileri Artırır: Etki Vuruş Oranı 34% artırılır.\nTranscend Lv.2 Effect\n - Kendi\n - Etki Ekler: Guts. [Savaş başına bir kez]\n - Şifa Ekler: Guts tetiklendiğinde Maksimum HP'nin 60% kadarını iyileştirir.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006204.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Savunmayı %12 artırır.",
+      "transcend_2": "Savunmayı %6 artırır.",
+      "transcend_3": "HP'yi %18 artırır.",
+      "transcend_4": "Alınan Hasar Azaltımını %10 artırır.",
+      "transcend_5": "Savunmayı %12 artırır.",
+      "transcend_6": "Savunmayı %6 artırır.",
+      "transcend_7": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_8": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_9": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_10": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_11": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_12": "Tüm Saldırı, Savunma ve HP'yi %2 artırır."
+    },
+    "profile": {
+      "cv": "伊藤 健太郎",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "15 / 11",
+      "age": "25",
+      "height": "195",
+      "weight": "100",
+      "constellation": "Akrep",
+      "likes": "Lania, Jave, geyik eti güveci, hamburgerler, huzur, sessizlik, okuma, balık tutma, egzersiz",
+      "dislikes": "Lania, donmuş meyve, düzensizlik, gürültü, küçük detaylı makineler",
+      "story": "Spike, dünyayı acı soğukla kaplamayı planlayan kendi kendini yetiştirmiş bir zorbadır. Spike'ı durdurabilecek tek şey, donmuş kalbini çözmektir."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100625",
+      "name": "Spike",
+      "subname": "Kar Fırtınası Judgment",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Spike, en zorlu ortamlarda acımasız bir berserkerin becerilerini öğrenmiş ve Blizzard Ovası'nı diyarın en güçlü toprakları yapmak için çalışmaktadır. Soğuğun gerçek bir ustası haline gelmiştir.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10062501",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 45% kadarı artı büyü yapanın Maksimum HP'sinin 11% kadarı 1 kez hasar verir.\n - 3 Müttefik\n - Temel saldırıyı 2 kez kullandığınızda 1 Debuff Kaldırma sağlar.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 45% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006201.webp"
+      },
+      "Skill 1": {
+        "id": "10062502",
+        "name": "Donmuş Darbe",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 60% ve büyü yapanın Maksimum HP'sinin 14% kadarını 1 kez hasar verir.\n - 60% şansla Donma etkisi uygular. [Süre: 3 Tur]\n - Ana Beceri Hedefi ile Aynı Satırdaki Düşmanlar\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 175% kadarına.",
+        "cooltime": "⏱️ CT: 72s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006202.webp"
+      },
+      "Skill 2": {
+        "id": "10062503",
+        "name": "Buz Depremi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 30% ve büyü yapanın Maksimum HP'sinin 7% kadarını 2 kez hasar verir.\n - Her saldırının 35% Dondurma etkisi bırakma şansı vardır. [Süre: 2 Tur(lar)]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 30% kadarına.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006203.webp"
+      },
+      "Passive": {
+        "id": "10062504",
+        "name": "Buzun Kalbi",
+        "desc": "Kendi\n - Maksimum HP'ye Dayalı Saldırı Artışı sağlar. [Her Zaman Aktif]\n - [Dondur] etkisi altındaki hedeflere, büyü yapanın Max HP'sinin %15 kadarına eşit ek hasar verir.\n - Tüm Müttefikler\n - Etkili Vuruş Oranı Artışı sağlar. [Her Zaman Aktif]\n - Etki Direnci Artışı sağlar. [Her Zaman Aktif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "伊藤 健太郎",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "15 / 11",
+      "age": "25",
+      "height": "195",
+      "weight": "100",
+      "constellation": "Akrep",
+      "likes": "Lania, Jave, geyik eti güveci, hamburgerler, huzur, sessizlik, okuma, balık tutma, egzersiz",
+      "dislikes": "Lania, donmuş meyve, düzensizlik, gürültü, küçük detaylı makineler",
+      "story": "Spike, en zorlu ortamlarda acımasız bir berserkerin becerilerini öğrenmiş ve Blizzard Ovası'nı diyarın en güçlü toprakları yapmak için çalışmaktadır. Soğuğun gerçek bir ustası haline gelmiştir."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100624",
+      "name": "Spike",
+      "subname": "Kar Fırtınası Berserker",
+      "affiliation": "Yedi Şövalye",
+      "flavor": "Doğrulanmamış söylentilere göre Spike, Kraliçe Lania'nın oğlu. O, güçlü buz saldırıları yapan Buzun Kalbi'ne sahip bir berserker.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10062401",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 40% kadarı artı büyü yapanın Maksimum HP'sinin 10% kadarı 1 kez hasar verir.\n - 3 Müttefik\n - Temel saldırıyı 2 kez kullandığınızda 1 Debuff Kaldırma sağlar.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 40% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006201.webp"
+      },
+      "Skill 1": {
+        "id": "10062402",
+        "name": "Donmuş Darbe",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 55% ve büyü yapanın Maksimum HP'sinin 13% kadarını 1 kez hasar verir.\n - 50% şansla Donma etkisi uygular. [Süre: 3 Tur]\n - Ana Beceri Hedefi ile Aynı Satırdaki Düşmanlar\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 160% kadarına.",
+        "cooltime": "⏱️ CT: 72s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006202.webp"
+      },
+      "Skill 2": {
+        "id": "10062403",
+        "name": "Buz Depremi",
+        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 28% ve büyü yapanın Maksimum HP'sinin 6% kadarını 2 kez hasar verir.\n - Her saldırının 35% Dondurma etkisi bırakma şansı vardır. [Süre: 2 Tur(lar)]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 28% kadarına.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006203.webp"
+      },
+      "Passive": {
+        "id": "10062404",
+        "name": "Buzun Kalbi",
+        "desc": "Kendi\n - Maksimum HP'ye Dayalı Saldırı Artışı sağlar. [Her Zaman Aktif]\n - [Dondur] etkisi altındaki hedeflere, büyü yapanın Max HP'sinin %15 kadarına eşit ek hasar verir.\n - Tüm Müttefikler\n - Etkili Vuruş Oranı Artışı sağlar. [Her Zaman Aktif]\n - Etki Direnci Artışı sağlar. [Her Zaman Aktif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "伊藤 健太郎",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "15 / 11",
+      "age": "25",
+      "height": "195",
+      "weight": "100",
+      "constellation": "Akrep",
+      "likes": "Lania, Jave, geyik eti güveci, hamburgerler, huzur, sessizlik, okuma, balık tutma, egzersiz",
+      "dislikes": "Lania, donmuş meyve, düzensizlik, gürültü, küçük detaylı makineler",
+      "story": "Doğrulanmamış söylentilere göre Spike, Kraliçe Lania'nın oğlu. O, güçlü buz saldırıları yapan Buzun Kalbi'ne sahip bir berserker."
+    }
+  }
+]

@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "239",
-      "魔法攻擊力": "0",
-      "防禦力": "92",
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
       "HP": "535",
-      "敏捷": "29",
-      "暴擊率": "50"
+      "Speed": "29",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 239,
-        "防禦力": 92,
+        "Physical Attack": 239,
+        "Defense": 92,
         "HP": 535
       },
       "level30": {
-        "物理攻擊力": 1080,
-        "防禦力": 411,
+        "Physical Attack": 1080,
+        "Defense": 411,
         "HP": 2391
       },
       "levelUpBonus": {
-        "物理攻擊力": 29,
-        "防禦力": 11,
+        "Physical Attack": 29,
+        "Defense": 11,
         "HP": 64
       },
       "reinforceBonus": {
-        "物理攻擊力": 84,
-        "防禦力": 32,
+        "Physical Attack": 84,
+        "Defense": 32,
         "HP": 187
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 1080,
-          "防禦力": 411,
+          "Physical Attack": 1080,
+          "Defense": 411,
           "HP": 2391
         },
         "+1": {
-          "物理攻擊力": 1164,
-          "防禦力": 443,
+          "Physical Attack": 1164,
+          "Defense": 443,
           "HP": 2578
         },
         "+2": {
-          "物理攻擊力": 1248,
-          "防禦力": 475,
+          "Physical Attack": 1248,
+          "Defense": 475,
           "HP": 2765
         },
         "+3": {
-          "物理攻擊力": 1332,
-          "防禦力": 507,
+          "Physical Attack": 1332,
+          "Defense": 507,
           "HP": 2952
         },
         "+4": {
-          "物理攻擊力": 1416,
-          "防禦力": 539,
+          "Physical Attack": 1416,
+          "Defense": 539,
           "HP": 3139
         },
         "+5": {
-          "物理攻擊力": 1500,
-          "防禦力": 571,
+          "Physical Attack": 1500,
+          "Defense": 571,
           "HP": 3326
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10052601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力100%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的130%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的130%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005201.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10052602",
         "name": "黑風斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力130%的1次穿透傷害［額外套用暴擊機率30%］\nスキル強化効果\n - 傷害量上升：物理攻擊力的170%\n超越6段階達成効果\n - 效果上升：額外套用暴擊機率100%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力130%的1次穿透傷害［額外套用暴擊機率30%］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的170%\nTranscend Lv.6 Effect\n - 效果上升：額外套用暴擊機率100%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005202.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10052603",
         "name": "黑翼萬月斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力65%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少2回合［100%機率］\nスキル強化効果\n - 傷害量上升：物理攻擊力的85%\n超越6段階達成効果\n - 效果上升：額外套用暴擊機率100%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力65%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少2回合［100%機率］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的85%\nTranscend Lv.6 Effect\n - 效果上升：額外套用暴擊機率100%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005203.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10052604",
         "name": "黑烏鴉之眼",
-        "desc": "自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以不死狀態復活［持續2回合］（每戰鬥發動1次）\n - 發動不死時，物理攻擊力增加［持續2回合］\nスキル強化効果\n - 添加效果：發動不死時，物理攻擊力增加39%［持續2回合］\n超越2段階達成効果\n - 添加效果：發動不死時，技能冷卻時間重置",
+        "desc": "自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以不死狀態復活［持續2回合］（每戰鬥發動1次）\n - 發動不死時，物理攻擊力增加［持續2回合］\nSkill Enhancement Effect\n - 添加效果：發動不死時，物理攻擊力增加39%［持續2回合］\nTranscend Lv.2 Effect\n - 添加效果：發動不死時，技能冷卻時間重置",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005204.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "171",
-      "魔法攻擊力": "0",
-      "防禦力": "66",
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
       "HP": "382",
-      "敏捷": "26",
-      "暴擊率": "50"
+      "Speed": "26",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 171,
-        "防禦力": 66,
+        "Physical Attack": 171,
+        "Defense": 66,
         "HP": 382
       },
       "level30": {
-        "物理攻擊力": 780,
-        "防禦力": 298,
+        "Physical Attack": 780,
+        "Defense": 298,
         "HP": 1716
       },
       "levelUpBonus": {
-        "物理攻擊力": 21,
-        "防禦力": 8,
+        "Physical Attack": 21,
+        "Defense": 8,
         "HP": 46
       },
       "reinforceBonus": {
-        "物理攻擊力": 60,
-        "防禦力": 22,
+        "Physical Attack": 60,
+        "Defense": 22,
         "HP": 134
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 780,
-          "防禦力": 298,
+          "Physical Attack": 780,
+          "Defense": 298,
           "HP": 1716
         },
         "+1": {
-          "物理攻擊力": 840,
-          "防禦力": 320,
+          "Physical Attack": 840,
+          "Defense": 320,
           "HP": 1850
         },
         "+2": {
-          "物理攻擊力": 900,
-          "防禦力": 342,
+          "Physical Attack": 900,
+          "Defense": 342,
           "HP": 1984
         },
         "+3": {
-          "物理攻擊力": 960,
-          "防禦力": 364,
+          "Physical Attack": 960,
+          "Defense": 364,
           "HP": 2118
         },
         "+4": {
-          "物理攻擊力": 1020,
-          "防禦力": 386,
+          "Physical Attack": 1020,
+          "Defense": 386,
           "HP": 2252
         },
         "+5": {
-          "物理攻擊力": 1080,
-          "防禦力": 408,
+          "Physical Attack": 1080,
+          "Defense": 408,
           "HP": 2386
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10052501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力90%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的90%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力90%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005201.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10052502",
         "name": "黑風斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力120%的1次穿透傷害［額外套用暴擊機率30%］\nスキル強化効果\n - 效果上升：暴擊機率增加30%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力120%的1次穿透傷害［額外套用暴擊機率30%］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加30%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005202.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10052503",
         "name": "黑翼萬月斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力60%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少1回合［100%機率］\nスキル強化効果\n - 效果上升：暴擊機率增加30%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力60%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少1回合［100%機率］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加30%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005203.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10052504",
         "name": "黑烏鴉之眼",
         "desc": "自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以不死狀態復活［持續2回合］（每戰鬥發動1次）",
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "122",
-      "魔法攻擊力": "0",
-      "防禦力": "47",
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
       "HP": "273",
-      "敏捷": "23",
-      "暴擊率": "50"
+      "Speed": "23",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 122,
-        "防禦力": 47,
+        "Physical Attack": 122,
+        "Defense": 47,
         "HP": 273
       },
       "level30": {
-        "物理攻擊力": 557,
-        "防禦力": 221,
+        "Physical Attack": 557,
+        "Defense": 221,
         "HP": 1230
       },
       "levelUpBonus": {
-        "物理攻擊力": 15,
-        "防禦力": 6,
+        "Physical Attack": 15,
+        "Defense": 6,
         "HP": 33
       },
       "reinforceBonus": {
-        "物理攻擊力": 43,
-        "防禦力": 15,
+        "Physical Attack": 43,
+        "Defense": 15,
         "HP": 96
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 557,
-          "防禦力": 221,
+          "Physical Attack": 557,
+          "Defense": 221,
           "HP": 1230
         },
         "+1": {
-          "物理攻擊力": 600,
-          "防禦力": 236,
+          "Physical Attack": 600,
+          "Defense": 236,
           "HP": 1326
         },
         "+2": {
-          "物理攻擊力": 643,
-          "防禦力": 251,
+          "Physical Attack": 643,
+          "Defense": 251,
           "HP": 1422
         },
         "+3": {
-          "物理攻擊力": 686,
-          "防禦力": 266,
+          "Physical Attack": 686,
+          "Defense": 266,
           "HP": 1518
         },
         "+4": {
-          "物理攻擊力": 729,
-          "防禦力": 281,
+          "Physical Attack": 729,
+          "Defense": 281,
           "HP": 1614
         },
         "+5": {
-          "物理攻擊力": 772,
-          "防禦力": 296,
+          "Physical Attack": 772,
+          "Defense": 296,
           "HP": 1710
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10052401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力80%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的80%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力80%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005201.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10052402",
         "name": "黑風斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力110%的1次穿透傷害［額外套用暴擊機率30%］\nスキル強化効果\n - 效果上升：暴擊機率增加30%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力110%的1次穿透傷害［額外套用暴擊機率30%］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加30%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005202.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10052403",
         "name": "黑翼萬月斬",
-        "desc": "所有敵軍\n - 相當於物理攻擊力55%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少1回合［100%機率］\nスキル強化効果\n - 效果上升：暴擊機率增加30%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "所有敵軍\n - 相當於物理攻擊力55%的2次傷害［額外套用暴擊機率30%］\n - 對象的回合制Buff減少1回合［100%機率］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加30%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005203.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10052404",
         "name": "黑烏鴉之眼",
         "desc": "自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以不死狀態復活［持續2回合］（每戰鬥發動1次）",

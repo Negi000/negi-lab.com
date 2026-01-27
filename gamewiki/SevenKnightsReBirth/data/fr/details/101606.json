@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101606",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_6",
+      "affiliation": "Héros des Trois Royaumes",
+      "flavor": "On dit même que la lune rougit devant la beauté de Diaochan et cache son visage dans les nuages, lui donnant le Pseudo de Lune Rougissante.",
+      "rarity": "legendary",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Allié aux PV actuels les plus bas (sauf soi-même)\n - Soigne les PV équivalents à 6 % des PV max du lanceur\n - Soigne les PV équivalents à 7 % des PV max du lanceur\nSkill Enhancement Effect\n - Augmente la guérison : le montant de récupération de PV devient égal à 7 % des PV max du lanceur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160602",
+        "name": "En avant, marche",
+        "desc": "3 alliés\n - Soigne les PV équivalents à 25 % des PV max du lanceur\n - Soigne les PV équivalents à 29 % des PV max du lanceur\nSkill Enhancement Effect\n - Augmente la guérison : le montant de récupération de PV devient égal à 29 % des PV max du lanceur.\nTranscend Lv.2 Effect\n - 2 Alliés (Excluding Self)\n - Ajoute un effet : Réinitialise le temps de recharge de compétences si le type de cible est Attaque ou Magie.",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160603",
+        "name": "Chanson de protection",
+        "desc": "2 Alliés (Excluant Soi-même)\n - Confère Augmentation des dégâts de coup critique [Durée : 4 tour(s)]\n - Confère Augmentation de toute attaque [Durée : 4 tour(s)]\n - 3 ennemis\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - A 85 % de chances d'infliger Sommeil [Durée : 2 tour(s)]\n - A 100 % de chances d'infliger Sommeil [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse de taux : Chances Sommeil 100 %\n - 2 Alliés (Excluding Self)\n - Ajout d'effet : Augmentation de toute attaque 30 % [Durée : 4 tour(s)]\nTranscend Lv.6 Effect\n - Ajout d'effet : 100 % de chances d'infliger Réduction de soins reçus78 % [Durée : 3 tour(s)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160604",
+        "name": "Le Sourire de la Lune Rougissante",
+        "desc": "Soi-même\n - Augmentation du taux de réussite des effets basée sur les PV Max [Toujours actif]\n - Confère Barrière équivalente à 39 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Confère Barrière équivalente à 45 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - 2 Alliés (Excluant Soi-même)\n - *Accorde les effets suivants si le type de cible est Attaque ou Magie.\n - Confère une Barrière égale à 20 % des PV max du lanceur lors de l'utilisation d'une attaque de base 1 fois. [Durée : 2 tour(s)]\n - Confère une Barrière égale à 22 % des PV max du lanceur lors de l'utilisation d'une attaque de base 1 fois. [Durée : 2 tour(s)]\n - Confère Immunité au Contrôle de foule lors de l'utilisation d'une attaque basique 1 fois. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Soi-même\n - Gain d'effet : Absorption de la Barrière correspond à 45 % des PV max\n - 2 Alliés (Excluding Self)\n - Gain d'effet : Absorption de la Barrière correspond à 22 % des PV max",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente la défense de 12 %.",
+      "transcend_2": "Augmente la défense de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente la Réduction des dégâts subis de 10 %.",
+      "transcend_5": "Augmente la défense de 12 %.",
+      "transcend_6": "Augmente la défense de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Humain",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Gémeaux",
+      "likes": "Lu Bu, bons instruments, poésie, calligraphie, peinture, belles choses, fruits",
+      "dislikes": "agression, lâcheté, tyrannie, suralimentation",
+      "story": "On dit même que la lune rougit devant la beauté de Diaochan et cache son visage dans les nuages, lui donnant le Pseudo de Lune Rougissante."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101605",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_5",
+      "affiliation": "Héros des Trois Royaumes",
+      "flavor": "La beauté saisissante et l'esprit charmant de Diaochan la rendaient populaire auprès des hommes. On dit qu'elle est encore plus belle la nuit, ce qui lui a valu le surnom de Clair de Lune.",
+      "rarity": "legendary",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
+      "HP": "510",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 126,
+        "Defense": 77,
+        "HP": 510
+      },
+      "level30": {
+        "Magical Attack": 561,
+        "Defense": 338,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 9,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Magical Attack": 44,
+        "Defense": 27,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 561,
+          "Defense": 338,
+          "HP": 2279
+        },
+        "+1": {
+          "Magical Attack": 605,
+          "Defense": 365,
+          "HP": 2458
+        },
+        "+2": {
+          "Magical Attack": 649,
+          "Defense": 392,
+          "HP": 2637
+        },
+        "+3": {
+          "Magical Attack": 693,
+          "Defense": 419,
+          "HP": 2816
+        },
+        "+4": {
+          "Magical Attack": 737,
+          "Defense": 446,
+          "HP": 2995
+        },
+        "+5": {
+          "Magical Attack": 781,
+          "Defense": 473,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ MAG 1 fois.\n - Allié aux PV actuels les plus bas (sauf soi-même)\n - Soigne les PV équivalents à 5 % des PV max du lanceur\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160502",
+        "name": "En avant, marche",
+        "desc": "3 alliés\n - Soigne les PV équivalents à 23 % des PV max du lanceur",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160503",
+        "name": "Chanson de protection",
+        "desc": "2 Alliés (Excluant Soi-même)\n - Confère Augmentation des dégâts de coup critique [Durée : 4 tour(s)]\n - 3 ennemis\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - A 75 % de chances d'infliger Sommeil [Durée : 2 tour(s)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160504",
+        "name": "Le Sourire de la Lune Rougissante",
+        "desc": "Soi-même\n - Augmentation du taux de réussite des effets basée sur les PV Max [Toujours actif]\n - Confère Barrière équivalente à 35 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - 2 Alliés (Excluant Soi-même)\n - *Accorde les effets suivants si le type de cible est Attaque ou Magie.\n - Confère une Barrière égale à 18 % des PV max du lanceur lors de l'utilisation d'une attaque de base 1 fois. [Durée : 2 tour(s)]\n - Confère Immunité au Contrôle de foule lors de l'utilisation d'une attaque basique 1 fois. [Durée : 2 Tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Humain",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Gémeaux",
+      "likes": "Lu Bu, bons instruments, poésie, calligraphie, peinture, belles choses, fruits",
+      "dislikes": "agression, lâcheté, tyrannie, suralimentation",
+      "story": "La beauté saisissante et l'esprit charmant de Diaochan la rendaient populaire auprès des hommes. On dit qu'elle est encore plus belle la nuit, ce qui lui a valu le surnom de Clair de Lune."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101604",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_4",
+      "affiliation": "Héros des Trois Royaumes",
+      "flavor": "Diaochan était à l'origine une servante au service d'un seigneur dans un petit village. Un jour, des bandits attaquèrent le village et l'incendièrent ; elle s'en sortit de justesse.",
+      "rarity": "legendary",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
+      "HP": "364",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 90,
+        "Defense": 55,
+        "HP": 364
+      },
+      "level30": {
+        "Magical Attack": 409,
+        "Defense": 229,
+        "HP": 1640
+      },
+      "levelUpBonus": {
+        "Magical Attack": 11,
+        "Defense": 6,
+        "HP": 44
+      },
+      "reinforceBonus": {
+        "Magical Attack": 30,
+        "Defense": 20,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 409,
+          "Defense": 229,
+          "HP": 1640
+        },
+        "+1": {
+          "Magical Attack": 439,
+          "Defense": 249,
+          "HP": 1767
+        },
+        "+2": {
+          "Magical Attack": 469,
+          "Defense": 269,
+          "HP": 1894
+        },
+        "+3": {
+          "Magical Attack": 499,
+          "Defense": 289,
+          "HP": 2021
+        },
+        "+4": {
+          "Magical Attack": 529,
+          "Defense": 309,
+          "HP": 2148
+        },
+        "+5": {
+          "Magical Attack": 559,
+          "Defense": 329,
+          "HP": 2275
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ MAG 1 fois.\n - Allié aux PV actuels les plus bas (sauf soi-même)\n - Soigne les PV équivalents à 4 % des PV max du lanceur\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160402",
+        "name": "En avant, marche",
+        "desc": "3 alliés\n - Soigne les PV équivalents à 21 % des PV max du lanceur",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160403",
+        "name": "Chanson de protection",
+        "desc": "2 Alliés (Excluant Soi-même)\n - Confère Augmentation des dégâts de coup critique [Durée : 4 tour(s)]\n - 3 ennemis\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\n - A 75 % de chances d'infliger Sommeil [Durée : 2 tour(s)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160404",
+        "name": "Le Sourire de la Lune Rougissante",
+        "desc": "Soi-même\n - Augmentation du taux de réussite des effets basée sur les PV Max [Toujours actif]\n - Confère Barrière équivalente à 31 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - 2 Alliés (Excluant Soi-même)\n - *Accorde les effets suivants si le type de cible est Attaque ou Magie.\n - Confère une Barrière égale à 15 % des PV max du lanceur lors de l'utilisation d'une attaque de base 1 fois. [Durée : 2 tour(s)]\n - Confère Immunité au Contrôle de foule lors de l'utilisation d'une attaque basique 1 fois. [Durée : 2 Tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Humain",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Gémeaux",
+      "likes": "Lu Bu, bons instruments, poésie, calligraphie, peinture, belles choses, fruits",
+      "dislikes": "agression, lâcheté, tyrannie, suralimentation",
+      "story": "Diaochan était à l'origine une servante au service d'un seigneur dans un petit village. Un jour, des bandits attaquèrent le village et l'incendièrent ; elle s'en sortit de justesse."
+    }
+  }
+]

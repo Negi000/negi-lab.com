@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100906",
+      "name": "Chancellor",
+      "subname": "Commander of the Guards",
+      "affiliation": "Terra",
+      "flavor": "Setelah menangkap semua mata-mata yang menyusup ke istana sendirian, dia diangkat menjadi ketua pengawal kerajaan. Mata-mata yang ditangkapnya mengatakan bahwa dia tampak seperti iblis ketika mengalahkan mereka semua sambil tersenyum.",
+      "rarity": "legendary",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090601",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 50% dari P. ATK dan 60% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 60% dari P. ATK dan 70% dari DEF.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090602",
+        "name": "Pulverize",
+        "desc": "Satu Musuh (Berdasarkan jumlah buff tertinggi)\n - Menghapus Buff sebanyak 3. [Rate: 100%]\n - DEF menurun. [Rate: 100%] [Durasi: 5 turn]\n - Memberikan Damage sebesar 120% dari P. ATK dan 135% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 145% dari P. ATK dan 165% dari DEF.\n - Meningkatkan Efek: Penurunan DEF menjadi 44%.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090603",
+        "name": "Earthsplitter",
+        "desc": "3 musuh (Baris belakang lebih dulu)\n - Memberikan Damage sebesar 75% dari P. ATK dan 85% dari DEF sebanyak 1x.\n - Missed Rate meningkat. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 85% dari P. ATK dan 100% dari DEF.\n - Meningkatkan Efek: Peningkatan Missed Rate menjadi 60%.\nTranscend Lv.2 Effect\n - Menambahkan Efek: Penurunan Semua ATK sebesar 24% [Rate: 100%] [Durasi: 3 turn]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090604",
+        "name": "Intimidating Presence",
+        "desc": "Diri Sendiri\n - Memulihkan HP sebesar 165% dari DEF caster saat HP diri sendiri berjumlah 50% atau kurang. (Aktif 1x per battle)\n - Semua Musuh\n - Damage menurun. [Selalu Aktif]\n - 3 Musuh\n - Memberikan Fixed Damage sebesar 1285 sebanyak 1x saat semua serangan diri sendiri aktif sebanyak 3x.\n - Memberikan Fixed Damage sebesar 1930 sebanyak 1x saat semua serangan diri sendiri aktif sebanyak 3x.\nSkill Enhancement Effect\n - Meningkatkan Efek: Penurunan Damage menjadi 13%.\n - Meningkatkan Damage: Menjadi 1930 dari Fixed Damage.\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambahkan Efek: Kebal Semua Damage saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 2 turn] (Aktif 1x per battle)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Meningkatkan DEF sebesar 12%.",
+      "transcend_2": "Meningkatkan DEF sebesar 6%.",
+      "transcend_3": "Meningkatkan HP sebesar 18%.",
+      "transcend_4": "Meningkatkan Penurunan Damage Diterima sebesar 10%.",
+      "transcend_5": "Meningkatkan DEF sebesar 12%.",
+      "transcend_6": "Meningkatkan DEF sebesar 6%.",
+      "transcend_7": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_8": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_9": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_10": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_11": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_12": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%."
+    },
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Scorpio",
+      "likes": "Aragon, Rook, jiwa kesatria, kehormatan, kesatria, olahraga, daging, minuman anggur putih, latihan pedang, kupu-kupu, orang yang memiliki keyakinan",
+      "dislikes": "Kris, sikap pengecut, penistaan, monyet, rokok",
+      "story": "Setelah menangkap semua mata-mata yang menyusup ke istana sendirian, dia diangkat menjadi ketua pengawal kerajaan. Mata-mata yang ditangkapnya mengatakan bahwa dia tampak seperti iblis ketika mengalahkan mereka semua sambil tersenyum."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100905",
+      "name": "Chancellor",
+      "subname": "Guard Captain",
+      "affiliation": "Terra",
+      "flavor": "Dia bertemu Rook untuk pertama kalinya ketika menjabat sebagai kapten penjaga kerajaan. Terinspirasi oleh Rook yang berjiwa kesatria, Chancellor berlatih lebih keras lagi.",
+      "rarity": "legendary",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090501",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 45% dari P. ATK dan 55% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 45% dari P. ATK.\n - Meningkatkan Damage: Menjadi 55% dari M. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090502",
+        "name": "Pulverize",
+        "desc": "Satu Musuh (Berdasarkan jumlah buff tertinggi)\n - Menghapus Buff sebanyak 2. [Rate: 100%]\n - DEF menurun. [Rate: 100%] [Durasi: 5 turn]\n - Memberikan Damage sebesar 105% dari P. ATK dan 125% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 105% dari P. ATK.\n - Meningkatkan Damage: Menjadi 125% dari M. ATK.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090503",
+        "name": "Earthsplitter",
+        "desc": "3 musuh (Baris belakang lebih dulu)\n - Memberikan Damage sebesar 65% dari P. ATK dan 75% dari DEF sebanyak 1x.\n - Missed Rate meningkat. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 65% dari P. ATK.\n - Meningkatkan Damage: Menjadi 75% dari M. ATK.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090504",
+        "name": "Intimidating Presence",
+        "desc": "Diri Sendiri\n - Memulihkan HP sebesar 150% dari DEF caster saat HP diri sendiri berjumlah 50% atau kurang. (Aktif 1x per battle)\n - Semua Musuh\n - Damage menurun. [Selalu Aktif]\n - 3 Musuh\n - Memberikan Fixed Damage sebesar 930 sebanyak 1x saat semua serangan diri sendiri aktif sebanyak 3x.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Scorpio",
+      "likes": "Aragon, Rook, jiwa kesatria, kehormatan, kesatria, olahraga, daging, minuman anggur putih, latihan pedang, kupu-kupu, orang yang memiliki keyakinan",
+      "dislikes": "Kris, sikap pengecut, penistaan, monyet, rokok",
+      "story": "Dia bertemu Rook untuk pertama kalinya ketika menjabat sebagai kapten penjaga kerajaan. Terinspirasi oleh Rook yang berjiwa kesatria, Chancellor berlatih lebih keras lagi."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100904",
+      "name": "Chancellor",
+      "subname": "Militia Captain",
+      "affiliation": "Terra",
+      "flavor": "Awalnya Chancellor menjadi seorang prajurit karena rasa hormatnya terhadap Knox, tetapi sejak Knox jatuh ke jalan yang salah, rasa hormatnya terhadap Knox hilang dan dia bersumpah untuk menjadi seorang prajurit sejati.",
+      "rarity": "legendary",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090401",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 40% dari P. ATK dan 50% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 40% dari P. ATK.\n - Meningkatkan Damage: Menjadi 50% dari M. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090402",
+        "name": "Pulverize",
+        "desc": "Satu Musuh (Berdasarkan jumlah buff tertinggi)\n - Menghapus Buff sebanyak 1. [Rate: 100%]\n - DEF menurun. [Rate: 100%] [Durasi: 5 turn]\n - Memberikan Damage sebesar 95% dari P. ATK dan 110% dari DEF sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari P. ATK.\n - Meningkatkan Damage: Menjadi 110% dari M. ATK.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090403",
+        "name": "Earthsplitter",
+        "desc": "3 musuh (Baris belakang lebih dulu)\n - Memberikan Damage sebesar 60% dari P. ATK dan 70% dari DEF sebanyak 1x.\n - Missed Rate meningkat. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 60% dari P. ATK.\n - Meningkatkan Damage: Menjadi 70% dari M. ATK.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090404",
+        "name": "Intimidating Presence",
+        "desc": "Diri Sendiri\n - Memulihkan HP sebesar 135% dari DEF caster saat HP diri sendiri berjumlah 50% atau kurang. (Aktif 1x per battle)\n - Semua Musuh\n - Damage menurun. [Selalu Aktif]\n - 3 Musuh\n - Memberikan Fixed Damage sebesar 635 sebanyak 1x saat semua serangan diri sendiri aktif sebanyak 3x.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Scorpio",
+      "likes": "Aragon, Rook, jiwa kesatria, kehormatan, kesatria, olahraga, daging, minuman anggur putih, latihan pedang, kupu-kupu, orang yang memiliki keyakinan",
+      "dislikes": "Kris, sikap pengecut, penistaan, monyet, rokok",
+      "story": "Awalnya Chancellor menjadi seorang prajurit karena rasa hormatnya terhadap Knox, tetapi sejak Knox jatuh ke jalan yang salah, rasa hormatnya terhadap Knox hilang dan dia bersumpah untuk menjadi seorang prajurit sejati."
+    }
+  }
+]

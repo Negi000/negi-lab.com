@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100806",
+      "name": "Люси",
+      "subname": "Экзотический спиритуалист",
+      "affiliation": "Авантюристы",
+      "flavor": "Люси достигла мастерства в духовных силах, утешая множество заблудших душ. Люди называют её Экзотической Спиритуалисткой из-за её редкого умения.",
+      "rarity": "epic",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "165",
+      "Defense": "104",
+      "HP": "680",
+      "Speed": "16",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 165,
+        "Defense": 104,
+        "HP": 680
+      },
+      "level30": {
+        "Magical Attack": 745,
+        "Defense": 452,
+        "HP": 3058
+      },
+      "levelUpBonus": {
+        "Magical Attack": 20,
+        "Defense": 12,
+        "HP": 82
+      },
+      "reinforceBonus": {
+        "Magical Attack": 58,
+        "Defense": 36,
+        "HP": 238
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 745,
+          "Defense": 452,
+          "HP": 3058
+        },
+        "+1": {
+          "Magical Attack": 803,
+          "Defense": 488,
+          "HP": 3296
+        },
+        "+2": {
+          "Magical Attack": 861,
+          "Defense": 524,
+          "HP": 3534
+        },
+        "+3": {
+          "Magical Attack": 919,
+          "Defense": 560,
+          "HP": 3772
+        },
+        "+4": {
+          "Magical Attack": 977,
+          "Defense": 596,
+          "HP": 4010
+        },
+        "+5": {
+          "Magical Attack": 1035,
+          "Defense": 632,
+          "HP": 4248
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10080601",
+        "name": "",
+        "desc": "Одиночный враг\n - Наносит урон, равный 50% от магической атаки плюс 60% от защиты 1 раз(а).\n - 100% шанс наложить Снижение физической атаки. [Длительность: 2 ход(а)]\nSkill Enhancement Effect\n - Увеличивает эффект: Снижение физической атаки до 11%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008001.webp"
+      },
+      "Skill 1": {
+        "id": "10080602",
+        "name": "Загадочный танец",
+        "desc": "Все союзники\n - Восстанавливает Здоровье, равное 100% защиты заклинателя.\nSkill Enhancement Effect\n - Увеличивает исцеление: величина восстановления HP становится 120% от защиты.\nTranscend Lv.6 Effect\n - Союзники заднего ряда (магический тип)\n - Добавляет эффект: Снижение перезарядки навыка на 15с.",
+        "cooltime": "⏱️ CT: 95s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008002.webp"
+      },
+      "Skill 2": {
+        "id": "10080603",
+        "name": "Божественный танец",
+        "desc": "Все союзники\n - Предоставляет 2 снятие дебаффа(ов).\n - Предоставляет Увеличение защиты. [Длительность: 3 ход(а/ов)]\n - Может быть использовано только в том случае, если у союзника есть снимаемый бафф.\nSkill Enhancement Effect\n - Увеличивает эффект: Повышение защиты до 22%.\nTranscend Lv.2 Effect\n - Увеличение эффекта: количество снятия ослаблений становится 3.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008003.webp"
+      },
+      "Passive": {
+        "id": "10080604",
+        "name": "Духовная сила",
+        "desc": "Все союзники\n - Предоставляет иммунитет к яду. [Длительность: 2 ход(а)]\n - Предоставляет иммунитет к яду при использовании базовой атаки 1 раз(а). [Длительность: 2 ход(а)]\n - Себя\n - Восстанавливает Здоровье, равное 92% от Защиты заклинателя при активации навыка 1 раз(а).\nSkill Enhancement Effect\n - Себя\n - Добавляет исцеление: Восстанавливает Здоровье, равное 92% от защиты при активации навыка 1 раз(а).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Увеличивает защиту на 9%.",
+      "transcend_2": "Увеличивает защиту на 4,5%.",
+      "transcend_3": "Увеличивает Здоровье на 14%.",
+      "transcend_4": "Увеличивает сокращение получаемого урона на 7%.",
+      "transcend_5": "Увеличивает защиту на 9%.",
+      "transcend_6": "Увеличивает защиту на 4,5%.",
+      "transcend_7": "Увеличивает всю атаку, защиту и здоровье на 2%.",
+      "transcend_8": "Увеличивает всю атаку, защиту и здоровье на 2%.",
+      "transcend_9": "Увеличивает всю атаку, защиту и здоровье на 2%.",
+      "transcend_10": "Увеличивает всю атаку, защиту и здоровье на 2%.",
+      "transcend_11": "Увеличивает всю атаку, защиту и здоровье на 2%.",
+      "transcend_12": "Увеличивает всю атаку, защиту и здоровье на 2%."
+    },
+    "profile": {
+      "cv": "三輪夏紀",
+      "species": "Человек",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "17 / 04",
+      "age": "19",
+      "height": "169",
+      "weight": "52",
+      "constellation": "Овен",
+      "likes": "Юи, песни, танцы, клубника, арбузы, паэлья",
+      "dislikes": "Насилие, злые души, ложь",
+      "story": "Люси достигла мастерства в духовных силах, утешая множество заблудших душ. Люди называют её Экзотической Спиритуалисткой из-за её редкого умения."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100805",
+      "name": "Люси",
+      "subname": "Духовная сила",
+      "affiliation": "Авантюристы",
+      "flavor": "Люси утешает потерянные и проклятые души своим прекрасным танцем и успокаивающими ритуалами.",
+      "rarity": "epic",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "118",
+      "Defense": "74",
+      "HP": "486",
+      "Speed": "14",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 118,
+        "Defense": 74,
+        "HP": 486
+      },
+      "level30": {
+        "Magical Attack": 524,
+        "Defense": 335,
+        "HP": 2168
+      },
+      "levelUpBonus": {
+        "Magical Attack": 14,
+        "Defense": 9,
+        "HP": 58
+      },
+      "reinforceBonus": {
+        "Magical Attack": 41,
+        "Defense": 26,
+        "HP": 170
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 524,
+          "Defense": 335,
+          "HP": 2168
+        },
+        "+1": {
+          "Magical Attack": 565,
+          "Defense": 361,
+          "HP": 2338
+        },
+        "+2": {
+          "Magical Attack": 606,
+          "Defense": 387,
+          "HP": 2508
+        },
+        "+3": {
+          "Magical Attack": 647,
+          "Defense": 413,
+          "HP": 2678
+        },
+        "+4": {
+          "Magical Attack": 688,
+          "Defense": 439,
+          "HP": 2848
+        },
+        "+5": {
+          "Magical Attack": 729,
+          "Defense": 465,
+          "HP": 3018
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10080501",
+        "name": "",
+        "desc": "Одиночный враг\n - Наносит урон, равный 45% от магической атаки плюс 55% от защиты 1 раз(а).\n - 100% шанс наложить Снижение физической атаки. [Длительность: 2 ход(а)]\nSkill Enhancement Effect\n - Увеличивает урон: до 45% от физической атаки.\n - Увеличивает урон: до 55% от магической атаки.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008001.webp"
+      },
+      "Skill 1": {
+        "id": "10080502",
+        "name": "Загадочный танец",
+        "desc": "Все союзники\n - Восстанавливает Здоровье, равное 95% защиты заклинателя.",
+        "cooltime": "⏱️ CT: 95s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008002.webp"
+      },
+      "Skill 2": {
+        "id": "10080503",
+        "name": "Божественный танец",
+        "desc": "Все союзники\n - Предоставляет Увеличение защиты. [Длительность: 3 ход(а/ов)]\n - Может быть использовано только в том случае, если у союзника есть снимаемый бафф.\nSkill Enhancement Effect\n - Предоставляет 1 снятие дебаффа(ов).\n - Увеличивает эффект: Снижение защиты до 13%.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008003.webp"
+      },
+      "Passive": {
+        "id": "10080504",
+        "name": "Духовная сила",
+        "desc": "Все союзники\n - Предоставляет иммунитет к яду. [Длительность: 2 ход(а)]\n - Предоставляет иммунитет к яду при использовании базовой атаки 1 раз(а). [Длительность: 2 ход(а)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三輪夏紀",
+      "species": "Человек",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "17 / 04",
+      "age": "19",
+      "height": "169",
+      "weight": "52",
+      "constellation": "Овен",
+      "likes": "Юи, песни, танцы, клубника, арбузы, паэлья",
+      "dislikes": "Насилие, злые души, ложь",
+      "story": "Люси утешает потерянные и проклятые души своим прекрасным танцем и успокаивающими ритуалами."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100804",
+      "name": "Люси",
+      "subname": "Танцор",
+      "affiliation": "Авантюристы",
+      "flavor": "Живой характер Люси подчеркивается ее талантом к танцам. У нее также есть духовные способности, и она знает, как призывать богов.",
+      "rarity": "epic",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "84",
+      "Defense": "53",
+      "HP": "347",
+      "Speed": "12",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 84,
+        "Defense": 53,
+        "HP": 347
+      },
+      "level30": {
+        "Magical Attack": 374,
+        "Defense": 227,
+        "HP": 1565
+      },
+      "levelUpBonus": {
+        "Magical Attack": 10,
+        "Defense": 6,
+        "HP": 42
+      },
+      "reinforceBonus": {
+        "Magical Attack": 29,
+        "Defense": 19,
+        "HP": 120
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 374,
+          "Defense": 227,
+          "HP": 1565
+        },
+        "+1": {
+          "Magical Attack": 403,
+          "Defense": 246,
+          "HP": 1685
+        },
+        "+2": {
+          "Magical Attack": 432,
+          "Defense": 265,
+          "HP": 1805
+        },
+        "+3": {
+          "Magical Attack": 461,
+          "Defense": 284,
+          "HP": 1925
+        },
+        "+4": {
+          "Magical Attack": 490,
+          "Defense": 303,
+          "HP": 2045
+        },
+        "+5": {
+          "Magical Attack": 519,
+          "Defense": 322,
+          "HP": 2165
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10080401",
+        "name": "",
+        "desc": "Одиночный враг\n - Наносит урон, равный 40% от магической атаки плюс 50% от защиты 1 раз(а).\n - 100% шанс наложить Снижение физической атаки. [Длительность: 2 ход(а)]\nSkill Enhancement Effect\n - Увеличивает урон: до 40% от физической атаки.\n - Увеличивает урон: до 50% от магической атаки.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008001.webp"
+      },
+      "Skill 1": {
+        "id": "10080402",
+        "name": "Загадочный танец",
+        "desc": "Все союзники\n - Восстанавливает Здоровье, равное 85% защиты заклинателя.",
+        "cooltime": "⏱️ CT: 95s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008002.webp"
+      },
+      "Skill 2": {
+        "id": "10080403",
+        "name": "Божественный танец",
+        "desc": "Все союзники\n - Предоставляет Увеличение защиты. [Длительность: 3 ход(а/ов)]\n - Может быть использовано только в том случае, если у союзника есть снимаемый бафф.\nSkill Enhancement Effect\n - Предоставляет 1 снятие дебаффа(ов).\n - Увеличивает эффект: Снижение защиты до 11%.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008003.webp"
+      },
+      "Passive": {
+        "id": "10080404",
+        "name": "Духовная сила",
+        "desc": "Все союзники\n - Предоставляет иммунитет к яду. [Длительность: 2 ход(а)]\n - Предоставляет иммунитет к яду при использовании базовой атаки 1 раз(а). [Длительность: 2 ход(а)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三輪夏紀",
+      "species": "Человек",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "17 / 04",
+      "age": "19",
+      "height": "169",
+      "weight": "52",
+      "constellation": "Овен",
+      "likes": "Юи, песни, танцы, клубника, арбузы, паэлья",
+      "dislikes": "Насилие, злые души, ложь",
+      "story": "Живой характер Люси подчеркивается ее талантом к танцам. У нее также есть духовные способности, и она знает, как призывать богов."
+    }
+  }
+]

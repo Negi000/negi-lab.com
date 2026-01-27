@@ -1,0 +1,480 @@
+[
+  {
+    "basicInfo": {
+      "id": "101436",
+      "name": "Kyle",
+      "subname": "Traqueur nocturne",
+      "affiliation": "Ancien Quatre Seigneurs",
+      "flavor": "Ayant accepté une mission d’une personne inconnue, Kyle commence à traquer les Corbeaux nocturnes.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 130 % de l'ATQ PHY 1 fois.\n - Inflige une attaque supplémentaire avec des dégâts égaux à 130 % de 1 l'ATQ PHY lors de l'utilisation d'une attaque basique 2 fois.\n - Ennemi unique (Yeux des méritants)\n - 30 % de chance d'accorder 1 Suppression de bonus lors d'une attaque supplémentaire.\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143602",
+        "name": "Répression en chaîne",
+        "desc": "4 ennemis\n - Inflige des dégâts égaux à 60 % de l'ATQ PHY plus 8 % des PV Max de la cible 2 fois. (L'Augmentation de dégâts accordée est limitée à 50 % des PV perdus de la cible.) (Les dégâts basés sur les PV sont limités à 75 % de l'Attaque du lanceur)\n - Inflige des dégâts égaux à 72 % de l'ATQ PHY plus 10 % des PV Max de la cible 2 fois. (L'Augmentation de dégâts accordée est limitée à 50 % des PV perdus de la cible.) (Les dégâts basés sur les PV sont limités à 75 % de l'Attaque du lanceur)\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 65 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 72 % de l'ATQ PHY, 10 % des PV max de la cible\nTranscend Lv.6 Effect\n - Ajout d'effet : Défense ignorée",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143603",
+        "name": "Tombeau entravé",
+        "desc": "4 ennemis\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts perçants équivalents à 70 % de l'ATQ PHY 2 fois\n - Inflige des dégâts perçants équivalents à 90 % de l'ATQ PHY 2 fois\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 65 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY\nTranscend Lv.6 Effect\n - Ajout d'effet : Défense ignorée",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143604",
+        "name": "Effet de chaîne",
+        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Au début du Combat, si au moins 3 Héros d'Attaque sont dans votre équipe, accorde Annulation des dégâts pour Tout. [Se termine après : Avoir pris 3 coup(s)]\n - Au début du Combat, si au moins 3 Héros d'Attaque sont dans votre équipe, accorde Annulation des dégâts pour Tout. [Se termine après : Avoir pris 4 coup(s)]\n - Ennemi à l'ATQ la plus élevée\n - Confère Yeux des méritants. [Toujours actif]\n - Tous les ennemis\n - Inflige des dégâts ignorant la Défense égaux à 23 % des PV Max de la cible 1 fois lors de l'utilisation de toute attaque 2 fois. (Dégâts basés sur les PV limités à 100 % de l'Attaque du lanceur.)\n - Inflige des dégâts ignorant la Défense égaux à 32 % des PV Max de la cible 1 fois lors de l'utilisation de toute attaque 2 fois. (Dégâts basés sur les PV limités à 100 % de l'Attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse de cumuls : Annulation de tous les dégâts passe à 4 fois\n - Augmente les dégâts : À 32 % des PV Max de la cible.\nTranscend Lv.2 Effect\n - Soi-même\n - Ajoute un effet : Accorde l'Annulation des dégâts lorsque les PV tombent à 70 % ou moins. [Se termine après : avoir subi 3 coup(s)] (Une fois par Combat) (Si déployé dans une équipe avec 3 Héros d'Attaque ou plus)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143634",
+        "name": "Effet de chaîne",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 130 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le Taux de coup critique de 18 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Sagittaire",
+      "likes": "Teo, les forts, toutes sortes d'alcool, force, stimulation, excitation, diverses armes",
+      "dislikes": "Teo, riz blanc, les faibles, ennui, combat à mains nues",
+      "story": "Ayant accepté une mission d’une personne inconnue, Kyle commence à traquer les Corbeaux nocturnes."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101435",
+      "name": "Kyle",
+      "subname": "Quatre Seigneurs",
+      "affiliation": "Ancien Quatre Seigneurs",
+      "flavor": "Kyle tenta d’assassiner Teo, mais après trois jours de combat acharné où ils s’infligèrent de graves blessures, ils mirent fin au combat. Kyle laissa à Teo une coupure sur la joue.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\n - Inflige une attaque supplémentaire avec des dégâts égaux à 115 % de 1 l'ATQ PHY lors de l'utilisation d'une attaque basique 2 fois.\n - Ennemi unique (Yeux des méritants)\n - 30 % de chance d'accorder 1 Suppression de bonus lors d'une attaque supplémentaire.\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143502",
+        "name": "Répression en chaîne",
+        "desc": "4 ennemis\n - Inflige des dégâts égaux à 55 % de l'ATQ PHY plus 6 % des PV Max de la cible 2 fois. (L'Augmentation de dégâts accordée est limitée à 50 % des PV perdus de la cible.) (Les dégâts basés sur les PV sont limités à 75 % de l'Attaque du lanceur)\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 55 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 55 % de l'ATQ PHY\n - Hausse des dégâts : 6 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143503",
+        "name": "Tombeau entravé",
+        "desc": "4 ennemis\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts perçants équivalents à 62 % de l'ATQ PHY 2 fois\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 55 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 62 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143504",
+        "name": "Effet de chaîne",
+        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Au début du Combat, si au moins 3 Héros d'Attaque sont dans votre équipe, accorde Annulation des dégâts pour Tout. [Se termine après : Avoir pris 3 coup(s)]\n - Ennemi à l'ATQ la plus élevée\n - Confère Yeux des méritants. [Toujours actif]\n - Tous les ennemis\n - Inflige des dégâts ignorant la Défense égaux à 19 % des PV Max de la cible 1 fois lors de l'utilisation de toute attaque 2 fois. (Dégâts basés sur les PV limités à 100 % de l'Attaque du lanceur.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 21%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143534",
+        "name": "Effet de chaîne",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 115 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 115 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Sagittaire",
+      "likes": "Teo, les forts, toutes sortes d'alcool, force, stimulation, excitation, diverses armes",
+      "dislikes": "Teo, riz blanc, les faibles, ennui, combat à mains nues",
+      "story": "Kyle tenta d’assassiner Teo, mais après trois jours de combat acharné où ils s’infligèrent de graves blessures, ils mirent fin au combat. Kyle laissa à Teo une coupure sur la joue."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101434",
+      "name": "Kyle",
+      "subname": "Tueur de Faucheur",
+      "affiliation": "Ancien Quatre Seigneurs",
+      "flavor": "D’origine inconnue, il réussit à assassiner un membre du Clan de l'Ombre surnommé le Faucheur. Sa renommée se répandit à travers le monde, faisant de lui le meilleur assassin.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\n - Inflige une attaque supplémentaire avec des dégâts égaux à 105 % de 1 l'ATQ PHY lors de l'utilisation d'une attaque basique 2 fois.\n - Ennemi unique (Yeux des méritants)\n - 30 % de chance d'accorder 1 Suppression de bonus lors d'une attaque supplémentaire.\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143402",
+        "name": "Répression en chaîne",
+        "desc": "4 ennemis\n - Inflige des dégâts égaux à 50 % de l'ATQ PHY plus 4 % des PV Max de la cible 2 fois. (L'Augmentation de dégâts accordée est limitée à 50 % des PV perdus de la cible.) (Les dégâts basés sur les PV sont limités à 75 % de l'Attaque du lanceur)\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 50 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 50 % de l'ATQ PHY\n - Hausse des dégâts : 4 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143403",
+        "name": "Tombeau entravé",
+        "desc": "4 ennemis\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts perçants équivalents à 57 % de l'ATQ PHY 2 fois\n - Ennemi unique (Yeux des méritants)\n - Inflige des dégâts supplémentaires égaux à 50 % de l'ATQ PHY\nSkill Enhancement Effect\n - Hausse des dégâts : 57 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143404",
+        "name": "Effet de chaîne",
+        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Au début du Combat, si au moins 3 Héros d'Attaque sont dans votre équipe, accorde Annulation des dégâts pour Tout. [Se termine après : Avoir pris 3 coup(s)]\n - Ennemi à l'ATQ la plus élevée\n - Confère Yeux des méritants. [Toujours actif]\n - Tous les ennemis\n - Inflige des dégâts ignorant la Défense égaux à 14 % des PV Max de la cible 1 fois lors de l'utilisation de toute attaque 2 fois. (Dégâts basés sur les PV limités à 75 % de l'Attaque du lanceur.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 15%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143434",
+        "name": "Effet de chaîne",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 105 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 105 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Sagittaire",
+      "likes": "Teo, les forts, toutes sortes d'alcool, force, stimulation, excitation, diverses armes",
+      "dislikes": "Teo, riz blanc, les faibles, ennui, combat à mains nues",
+      "story": "D’origine inconnue, il réussit à assassiner un membre du Clan de l'Ombre surnommé le Faucheur. Sa renommée se répandit à travers le monde, faisant de lui le meilleur assassin."
+    }
+  }
+]

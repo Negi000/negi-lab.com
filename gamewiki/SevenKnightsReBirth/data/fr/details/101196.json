@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101196",
+      "name": "Gelidus",
+      "subname": "Homme fort du froid mordant",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Bien que Gelidus ait réussi à obtenir les Éclats de destruction, la malédiction de la destruction a éveillé la Folie de Gelidus, le poussant à se déchaîner. Finalement, il a été scellé grâce aux efforts combinés de Teo, Orly et Silvesta.",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 50 % de l'ATQ PHY, 60 % de la DÉF 1 fois\n - 45 % de chance d'infliger Froid Extrême. [Durée : 1 Tour(s)]\n - Inflige des dégâts équivalents à 60 % de l'ATQ PHY, 70 % de la DÉF 1 fois\n - 50 % de chance d'infliger Froid Extrême. [Durée : 1 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 60 % de l'ATQ PHY, 70 % de la DÉF\n - Augmente la chance : la chance de Froid Extrême devient 50 %.\nTranscend Lv.6 Effect\n - Nombre de cibles à 3 Ennemis avec Froid Extrême.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119602",
+        "name": "Souvenirs du monarque",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 65 % de l'ATQ PHY, 70 % de la DÉF 1 fois\n - 60 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\n - Inflige des dégâts perçants équivalents à 75 % de l'ATQ PHY, 85 % de la DÉF 1 fois\n - 70 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY, 85 % de la DÉF\n - Augmente la chance : la chance de Froid Extrême devient 70 %.",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119603",
+        "name": "Monarque éthéré",
+        "desc": "Tous les ennemis\n - Inflige des dégâts ignorant la défense équivalents à 30 % de l'ATQ PHY, 33 % de la DÉF 2 fois.\n - Inflige des dégâts ignorant la défense équivalents à 35 % de l'ATQ PHY, 38 % de la DÉF 2 fois.\n - 60 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\n - 70 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 35 % de l'ATQ PHY, 38 % de la DÉF\n - Augmente la chance : la chance de Froid Extrême devient 70 %.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119604",
+        "name": "Bénédiction de la Reine des glaces",
+        "desc": "Soi-même\n - Lorsque vous commencez des combats avec au moins 3 héros Universel(s) dans votre équipe, la chute des PV à 50 % ou moins soignera les PV équivalents à 165 % de la Défense du lanceur. [2 fois par Combat]\n - Confère Résistance [Toujours actif]\n - Confère une Augmentation du taux de parades basée sur la Défense. [Toujours actif]\n - Tous les ennemis\n - Inflige Réduction du taux d'application des effets [Toujours actif]\n - 3 ennemis\n - Inflige des dégâts égaux à 60 % de l'ATQ PHY et 65 % de la Défense 1 fois lors de l'utilisation de n'importe quelle attaque 2 fois.\n - Utiliser n'importe quelle attaque 2 fois a 75 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Augmente l'effet : le taux de parades basé sur la défense Max devient 33 %.\nTranscend Lv.2 Effect\n - Augmente l'effet : la réduction de la probabilité d'effet devient 26 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente la défense de 12 %.",
+      "transcend_2": "Augmente la défense de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente la Réduction des dégâts subis de 10 %.",
+      "transcend_5": "Augmente la défense de 12 %.",
+      "transcend_6": "Augmente la défense de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Lion",
+      "likes": "Lania, Spike, Viande, Tout ce qui est cuisiné par Lania, Les gens forts, Les gens qui relèvent le défi",
+      "dislikes": "Herbe, Légumes, Perdants, Gens timides",
+      "story": "Bien que Gelidus ait réussi à obtenir les Éclats de destruction, la malédiction de la destruction a éveillé la Folie de Gelidus, le poussant à se déchaîner. Finalement, il a été scellé grâce aux efforts combinés de Teo, Orly et Silvesta."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101195",
+      "name": "Gelidus",
+      "subname": "Combattant de guerre invaincu",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Sur l'ordre du seigneur, Gelidus partit en voyage pour collecter les Éclats de destruction. Au cours de cette quête, il rencontra la reine Lania et tomba amoureux d'elle.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 45 % de l'ATQ PHY, 55 % de la DÉF 1 fois\n - 40 % de chance d'infliger Froid Extrême. [Durée : 1 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 45 % de l'ATQ PHY\n - Hausse des dégâts : 55 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119502",
+        "name": "Souvenirs du monarque",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 60 % de l'ATQ PHY, 65 % de la DÉF 1 fois\n - 50 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 60 % de l'ATQ PHY\n - Hausse des dégâts : 65 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119503",
+        "name": "Monarque éthéré",
+        "desc": "Tous les ennemis\n - Inflige des dégâts ignorant la défense équivalents à 28 % de l'ATQ PHY, 30 % de la DÉF 2 fois.\n - 50 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 28 % de l'ATQ PHY\n - Hausse des dégâts : 30 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119504",
+        "name": "Bénédiction de la Reine des glaces",
+        "desc": "Soi-même\n - Lorsque vous commencez des combats avec au moins 3 héros Universel(s) dans votre équipe, la chute des PV à 50 % ou moins soignera les PV équivalents à 150 % de la Défense du lanceur. [2 fois par Combat]\n - Confère Résistance [Toujours actif]\n - Confère une Augmentation du taux de parades basée sur la Défense. [Toujours actif]\n - Tous les ennemis\n - Inflige Réduction du taux d'application des effets [Toujours actif]\n - 3 ennemis\n - Inflige des dégâts égaux à 55 % de l'ATQ PHY et 60 % de la Défense 1 fois lors de l'utilisation de n'importe quelle attaque 2 fois.\n - Utiliser n'importe quelle attaque 2 fois a 65 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 55 % de l'ATQ PHY\n - Hausse des dégâts : 60 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Lion",
+      "likes": "Lania, Spike, Viande, Tout ce qui est cuisiné par Lania, Les gens forts, Les gens qui relèvent le défi",
+      "dislikes": "Herbe, Légumes, Perdants, Gens timides",
+      "story": "Sur l'ordre du seigneur, Gelidus partit en voyage pour collecter les Éclats de destruction. Au cours de cette quête, il rencontra la reine Lania et tomba amoureux d'elle."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101194",
+      "name": "Gelidus",
+      "subname": "Combattant Infâme",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Dès son jeune Âge, Gelidus possédait des capacités physiques extraordinaires bien au-delà des limites humaines. Sa grande force et sa prouesse physique attirèrent l'attention du seigneur local, et il servit sous le seigneur en tant que guerrier.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 40 % de l'ATQ PHY, 50 % de la DÉF 1 fois\n - 40 % de chance d'infliger Froid Extrême. [Durée : 1 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 40 % de l'ATQ PHY\n - Hausse des dégâts : 50 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119402",
+        "name": "Souvenirs du monarque",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 50 % de l'ATQ PHY, 60 % de la DÉF 1 fois\n - 50 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 50 % de l'ATQ PHY\n - Hausse des dégâts : 60 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119403",
+        "name": "Monarque éthéré",
+        "desc": "Tous les ennemis\n - Inflige des dégâts ignorant la défense équivalents à 25 % de l'ATQ PHY, 28 % de la DÉF 2 fois.\n - 50 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 25 % de l'ATQ PHY\n - Hausse des dégâts : 28 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119404",
+        "name": "Bénédiction de la Reine des glaces",
+        "desc": "Soi-même\n - Lorsque vous commencez des combats avec au moins 3 héros Universel(s) dans votre équipe, la chute des PV à 50 % ou moins soignera les PV équivalents à 135 % de la Défense du lanceur. [2 fois par Combat]\n - Confère Résistance [Toujours actif]\n - Confère une Augmentation du taux de parades basée sur la Défense. [Toujours actif]\n - Tous les ennemis\n - Inflige Réduction du taux d'application des effets [Toujours actif]\n - 3 ennemis\n - Inflige des dégâts égaux à 50 % de l'ATQ PHY et 55 % de la Défense 1 fois lors de l'utilisation de n'importe quelle attaque 2 fois.\n - Utiliser n'importe quelle attaque 2 fois a 65 % de chance d'infliger Froid Extrême. [Durée : 2 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 50 % de l'ATQ PHY\n - Hausse des dégâts : 55 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Lion",
+      "likes": "Lania, Spike, Viande, Tout ce qui est cuisiné par Lania, Les gens forts, Les gens qui relèvent le défi",
+      "dislikes": "Herbe, Légumes, Perdants, Gens timides",
+      "story": "Dès son jeune Âge, Gelidus possédait des capacités physiques extraordinaires bien au-delà des limites humaines. Sa grande force et sa prouesse physique attirèrent l'attention du seigneur local, et il servit sous le seigneur en tant que guerrier."
+    }
+  }
+]

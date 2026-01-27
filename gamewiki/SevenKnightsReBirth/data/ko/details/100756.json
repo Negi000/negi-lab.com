@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "108",
-      "마법 공격력": "0",
-      "방어력": "129",
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "129",
       "HP": "735",
-      "민첩성": "16",
-      "크리티컬 확률": "50"
+      "Speed": "16",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 108,
-        "방어력": 129,
+        "Physical Attack": 108,
+        "Defense": 129,
         "HP": 735
       },
       "level30": {
-        "물리 공격력": 514,
-        "방어력": 593,
+        "Physical Attack": 514,
+        "Defense": 593,
         "HP": 3287
       },
       "levelUpBonus": {
-        "물리 공격력": 14,
-        "방어력": 16,
+        "Physical Attack": 14,
+        "Defense": 16,
         "HP": 88
       },
       "reinforceBonus": {
-        "물리 공격력": 38,
-        "방어력": 45,
+        "Physical Attack": 38,
+        "Defense": 45,
         "HP": 257
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 514,
-          "방어력": 593,
+          "Physical Attack": 514,
+          "Defense": 593,
           "HP": 3287
         },
         "+1": {
-          "물리 공격력": 552,
-          "방어력": 638,
+          "Physical Attack": 552,
+          "Defense": 638,
           "HP": 3544
         },
         "+2": {
-          "물리 공격력": 590,
-          "방어력": 683,
+          "Physical Attack": 590,
+          "Defense": 683,
           "HP": 3801
         },
         "+3": {
-          "물리 공격력": 628,
-          "방어력": 728,
+          "Physical Attack": 628,
+          "Defense": 728,
           "HP": 4058
         },
         "+4": {
-          "물리 공격력": 666,
-          "방어력": 773,
+          "Physical Attack": 666,
+          "Defense": 773,
           "HP": 4315
         },
         "+5": {
-          "물리 공격력": 704,
-          "방어력": 818,
+          "Physical Attack": 704,
+          "Defense": 818,
           "HP": 4572
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10075601",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 50%, 방어력의 60%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 60%, 방어력의 70%",
+        "desc": "단일 적군\n - 물리 공격력의 50%, 방어력의 60%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%, 방어력의 70%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10075602",
         "name": "연속 공격",
-        "desc": "단일 적군\n - 물리 공격력의 145%, 방어력의 165%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\n - 기절 [85% 확률] [4턴 지속]\nスキル強化効果\n - 턴 상승 : 기절 [4턴 지속]\n超越2段階達成効果\n - 피해량 상승 : 물리 공격력의 170% 방어력의 200%\n - 확률 상승 : 기절 확률 100%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 145%, 방어력의 165%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\n - 기절 [85% 확률] [4턴 지속]\nSkill Enhancement Effect\n - 턴 상승 : 기절 [4턴 지속]\nTranscend Lv.2 Effect\n - 피해량 상승 : 물리 공격력의 170% 방어력의 200%\n - 확률 상승 : 기절 확률 100%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10075603",
         "name": "균형의 방패",
-        "desc": "모든 아군\n - 시전자 방어력의 110%만큼 보호막 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 보호막 흡수량이 방어력의 130%\n超越6段階達成効果\n - 효과 추가 : 막기 확률 증가 21% [3턴 지속]",
-        "cooltime": "⏱️ CT: 114秒",
+        "desc": "모든 아군\n - 시전자 방어력의 110%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 보호막 흡수량이 방어력의 130%\nTranscend Lv.6 Effect\n - 효과 추가 : 막기 확률 증가 21% [3턴 지속]",
+        "cooltime": "⏱️ CT: 114s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10075604",
         "name": "의지",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 방어력 증가 18%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 증가 18%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007504.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "77",
-      "마법 공격력": "0",
-      "방어력": "92",
+      "Physical Attack": "77",
+      "Magical Attack": "0",
+      "Defense": "92",
       "HP": "525",
-      "민첩성": "14",
-      "크리티컬 확률": "50"
+      "Speed": "14",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 77,
-        "방어력": 92,
+        "Physical Attack": 77,
+        "Defense": 92,
         "HP": 525
       },
       "level30": {
-        "물리 공격력": 338,
-        "방어력": 440,
+        "Physical Attack": 338,
+        "Defense": 440,
         "HP": 2352
       },
       "levelUpBonus": {
-        "물리 공격력": 9,
-        "방어력": 12,
+        "Physical Attack": 9,
+        "Defense": 12,
         "HP": 63
       },
       "reinforceBonus": {
-        "물리 공격력": 27,
-        "방어력": 33,
+        "Physical Attack": 27,
+        "Defense": 33,
         "HP": 184
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 338,
-          "방어력": 440,
+          "Physical Attack": 338,
+          "Defense": 440,
           "HP": 2352
         },
         "+1": {
-          "물리 공격력": 365,
-          "방어력": 473,
+          "Physical Attack": 365,
+          "Defense": 473,
           "HP": 2536
         },
         "+2": {
-          "물리 공격력": 392,
-          "방어력": 506,
+          "Physical Attack": 392,
+          "Defense": 506,
           "HP": 2720
         },
         "+3": {
-          "물리 공격력": 419,
-          "방어력": 539,
+          "Physical Attack": 419,
+          "Defense": 539,
           "HP": 2904
         },
         "+4": {
-          "물리 공격력": 446,
-          "방어력": 572,
+          "Physical Attack": 446,
+          "Defense": 572,
           "HP": 3088
         },
         "+5": {
-          "물리 공격력": 473,
-          "방어력": 605,
+          "Physical Attack": 473,
+          "Defense": 605,
           "HP": 3272
         }
       },
@@ -263,31 +263,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10075501",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 45%, 방어력의 55%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 45%\n - 피해량 상승 : 마법 공격력의 55%",
+        "desc": "단일 적군\n - 물리 공격력의 45%, 방어력의 55%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 45%\n - 피해량 상승 : 마법 공격력의 55%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10075502",
         "name": "연속 공격",
-        "desc": "단일 적군\n - 물리 공격력의 130%, 방어력의 150%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 130%\n - 피해량 상승 : 마법 공격력의 150%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 130%, 방어력의 150%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 130%\n - 피해량 상승 : 마법 공격력의 150%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10075503",
         "name": "균형의 방패",
         "desc": "모든 아군\n - 시전자 방어력의 100%만큼 보호막 [2턴 지속]",
-        "cooltime": "⏱️ CT: 114秒",
+        "cooltime": "⏱️ CT: 114s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10075504",
         "name": "의지",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 방어력 감소 11%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 11%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007504.webp"
       }
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "55",
-      "마법 공격력": "0",
-      "방어력": "66",
+      "Physical Attack": "55",
+      "Magical Attack": "0",
+      "Defense": "66",
       "HP": "375",
-      "민첩성": "12",
-      "크리티컬 확률": "50"
+      "Speed": "12",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 55,
-        "방어력": 66,
+        "Physical Attack": 55,
+        "Defense": 66,
         "HP": 375
       },
       "level30": {
-        "물리 공격력": 229,
-        "방어력": 298,
+        "Physical Attack": 229,
+        "Defense": 298,
         "HP": 1680
       },
       "levelUpBonus": {
-        "물리 공격력": 6,
-        "방어력": 8,
+        "Physical Attack": 6,
+        "Defense": 8,
         "HP": 45
       },
       "reinforceBonus": {
-        "물리 공격력": 20,
-        "방어력": 24,
+        "Physical Attack": 20,
+        "Defense": 24,
         "HP": 131
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 229,
-          "방어력": 298,
+          "Physical Attack": 229,
+          "Defense": 298,
           "HP": 1680
         },
         "+1": {
-          "물리 공격력": 249,
-          "방어력": 322,
+          "Physical Attack": 249,
+          "Defense": 322,
           "HP": 1811
         },
         "+2": {
-          "물리 공격력": 269,
-          "방어력": 346,
+          "Physical Attack": 269,
+          "Defense": 346,
           "HP": 1942
         },
         "+3": {
-          "물리 공격력": 289,
-          "방어력": 370,
+          "Physical Attack": 289,
+          "Defense": 370,
           "HP": 2073
         },
         "+4": {
-          "물리 공격력": 309,
-          "방어력": 394,
+          "Physical Attack": 309,
+          "Defense": 394,
           "HP": 2204
         },
         "+5": {
-          "물리 공격력": 329,
-          "방어력": 418,
+          "Physical Attack": 329,
+          "Defense": 418,
           "HP": 2335
         }
       },
@@ -411,31 +411,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10075401",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 40%, 방어력의 50%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 40%\n - 피해량 상승 : 마법 공격력의 50%",
+        "desc": "단일 적군\n - 물리 공격력의 40%, 방어력의 50%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 40%\n - 피해량 상승 : 마법 공격력의 50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10075402",
         "name": "연속 공격",
-        "desc": "단일 적군\n - 물리 공격력의 115%, 방어력의 135%만큼 1회 피해\n - 기절 [70% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 115%\n - 피해량 상승 : 마법 공격력의 135%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 115%, 방어력의 135%만큼 1회 피해\n - 기절 [70% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 115%\n - 피해량 상승 : 마법 공격력의 135%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10075403",
         "name": "균형의 방패",
         "desc": "모든 아군\n - 시전자 방어력의 90%만큼 보호막 [2턴 지속]",
-        "cooltime": "⏱️ CT: 114秒",
+        "cooltime": "⏱️ CT: 114s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10075404",
         "name": "의지",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 방어력 감소 8%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 기절 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 기절 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 8%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007504.webp"
       }

@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101446",
+      "name": "Aquila",
+      "subname": "Exécuteur Final",
+      "affiliation": "Corbeaux nocturnes",
+      "flavor": "Aquila est la dernière demi-démon des Croisés de la Sainte Croix et c'est elle qui a formé la plupart de ses membres. Elle a échappé au piège de Bai Jiao avec l'aide des Corbeaux nocturnes, mais est entrée en hibernation à cause de ses blessures.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 50 % de l'ATQ PHY, 12 % des PV max du lanceur 1 fois\n - Inflige des dégâts équivalents à 60 % de l'ATQ PHY, 14 % des PV max du lanceur 1 fois\n - Allié aux PV actuels les plus bas (sauf soi-même)\n - Confère Barrière équivalente à 8 % des PV max du lanceur [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 60 % de l'ATQ PHY, 14 % des PV max du lanceur\n - Allié avec le PV actuel le plus bas (sauf soi-même)\n - Ajoute un effet : Confère une Barrière égale à 8 % des PV Max du lanceur. [Durée : 2 tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144602",
+        "name": "Tempête impitoyable",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 15 % de l'ATQ PHY, 4 % des PV max du lanceur 2 fois\n - 60 % chance que la Réduction de tour de Mort devienne 1 tour(s) pendant chaque attaque.\n - 70 % chance que la Réduction de tour de Mort devienne 1 tour(s) pendant chaque attaque.\n - 100 % de chances d'infliger une Réduction du taux d'attaque de point faible. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Augmente la chance : la chance de réduction du tour de Mort devient 70 %.\n - Gain d'effet : Réduction de taux d'attaque de point faible 30 %",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144603",
+        "name": "Cape des ténèbres",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 35 % de l'ATQ PHY, 9 % des PV max du lanceur 1 fois\n - A 35 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - A 40 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse de taux : Chances de Mort 40 %\n - Ajout d'effet : Taux de réduction de lien 10 %",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144604",
+        "name": "Berger des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige Réduction de résistance aux effets [Toujours actif]\n - Soi-même\n - Soigne les PV équivalents à 34 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [1 fois par combat]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de résistance aux effets 34 %\nTranscend Lv.2 Effect\n - Hausse de cumuls : Soin de PV (2 fois par combat)\nTranscend Lv.6 Effect\n - Soi-même\n - Ajoute un effet : 10s de baisse du tps de recharge des compétences lorsqu'un ennemi tombe au combat.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente la défense de 12 %.",
+      "transcend_2": "Augmente la défense de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente la Réduction des dégâts subis de 10 %.",
+      "transcend_5": "Augmente la défense de 12 %.",
+      "transcend_6": "Augmente la défense de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Demi-démon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorne",
+      "likes": "Karl Heron, les Croisés de la Sainte Croix, les Corbeaux nocturnes, amandes grillées, discipline, plante de l'enfer",
+      "dislikes": "Bai Jiao, Dellons, ragoût, chaos, démons",
+      "story": "Aquila est la dernière demi-démon des Croisés de la Sainte Croix et c'est elle qui a formé la plupart de ses membres. Elle a échappé au piège de Bai Jiao avec l'aide des Corbeaux nocturnes, mais est entrée en hibernation à cause de ses blessures."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101445",
+      "name": "Aquila",
+      "subname": "Capitaine des Croisés de la croix sainte",
+      "affiliation": "Corbeaux nocturnes",
+      "flavor": "Après son dernier combat, accablée par la culpabilité de ne pas avoir pu protéger tout le monde, Aquila jura d'exterminer tous les démons. Avec d'autres demi-démons, elle forma les premiers Croisés de la Sainte Croix et prit sa place en tant que leur commandante.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "83",
+      "Magical Attack": "0",
+      "Defense": "96",
+      "HP": "552",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 83,
+        "Defense": 96,
+        "HP": 552
+      },
+      "level30": {
+        "Physical Attack": 373,
+        "Defense": 473,
+        "HP": 2466
+      },
+      "levelUpBonus": {
+        "Physical Attack": 10,
+        "Defense": 13,
+        "HP": 66
+      },
+      "reinforceBonus": {
+        "Physical Attack": 28,
+        "Defense": 34,
+        "HP": 193
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 373,
+          "Defense": 473,
+          "HP": 2466
+        },
+        "+1": {
+          "Physical Attack": 401,
+          "Defense": 507,
+          "HP": 2659
+        },
+        "+2": {
+          "Physical Attack": 429,
+          "Defense": 541,
+          "HP": 2852
+        },
+        "+3": {
+          "Physical Attack": 457,
+          "Defense": 575,
+          "HP": 3045
+        },
+        "+4": {
+          "Physical Attack": 485,
+          "Defense": 609,
+          "HP": 3238
+        },
+        "+5": {
+          "Physical Attack": 513,
+          "Defense": 643,
+          "HP": 3431
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 45 % de l'ATQ PHY, 11 % des PV max du lanceur 1 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 45 % de l'ATQ PHY\n - Hausse des dégâts : 11 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144502",
+        "name": "Tempête impitoyable",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 13 % de l'ATQ PHY, 3 % des PV max du lanceur 2 fois\n - 60 % chance que la Réduction de tour de Mort devienne 1 tour(s) pendant chaque attaque.\n - 100 % de chances d'infliger une Réduction du taux d'attaque de point faible. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 13 % de l'ATQ PHY\n - Hausse des dégâts : 3 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144503",
+        "name": "Cape des ténèbres",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 35 % de l'ATQ PHY, 8 % des PV max du lanceur 1 fois\n - A 35 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 35 % de l'ATQ PHY\n - Hausse des dégâts : 8 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144504",
+        "name": "Berger des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige Réduction de résistance aux effets [Toujours actif]\n - Soi-même\n - Soigne les PV équivalents à 31 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [1 fois par combat]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Demi-démon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorne",
+      "likes": "Karl Heron, les Croisés de la Sainte Croix, les Corbeaux nocturnes, amandes grillées, discipline, plante de l'enfer",
+      "dislikes": "Bai Jiao, Dellons, ragoût, chaos, démons",
+      "story": "Après son dernier combat, accablée par la culpabilité de ne pas avoir pu protéger tout le monde, Aquila jura d'exterminer tous les démons. Avec d'autres demi-démons, elle forma les premiers Croisés de la Sainte Croix et prit sa place en tant que leur commandante."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101444",
+      "name": "Aquila",
+      "subname": "Massacreuse",
+      "affiliation": "Corbeaux nocturnes",
+      "flavor": "Née à moitié elfe et à moitié démon, Aquila a mené l'alliance humaine dans la guerre contre les démons. Sur le front, l’alliance humaine la surnomme la déesse de la victoire, tandis que les démons l’appellent la massacreuse.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "59",
+      "Magical Attack": "0",
+      "Defense": "68",
+      "HP": "394",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 59,
+        "Defense": 68,
+        "HP": 394
+      },
+      "level30": {
+        "Physical Attack": 262,
+        "Defense": 329,
+        "HP": 1757
+      },
+      "levelUpBonus": {
+        "Physical Attack": 7,
+        "Defense": 9,
+        "HP": 47
+      },
+      "reinforceBonus": {
+        "Physical Attack": 21,
+        "Defense": 24,
+        "HP": 138
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 262,
+          "Defense": 329,
+          "HP": 1757
+        },
+        "+1": {
+          "Physical Attack": 283,
+          "Defense": 353,
+          "HP": 1895
+        },
+        "+2": {
+          "Physical Attack": 304,
+          "Defense": 377,
+          "HP": 2033
+        },
+        "+3": {
+          "Physical Attack": 325,
+          "Defense": 401,
+          "HP": 2171
+        },
+        "+4": {
+          "Physical Attack": 346,
+          "Defense": 425,
+          "HP": 2309
+        },
+        "+5": {
+          "Physical Attack": 367,
+          "Defense": 449,
+          "HP": 2447
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 40 % de l'ATQ PHY, 10 % des PV max du lanceur 1 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 40 % de l'ATQ PHY\n - Hausse des dégâts : 10 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144402",
+        "name": "Tempête impitoyable",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 12 % de l'ATQ PHY, 3 % des PV max du lanceur 2 fois\n - 60 % chance que la Réduction de tour de Mort devienne 1 tour(s) pendant chaque attaque.\n - 100 % de chances d'infliger une Réduction du taux d'attaque de point faible. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 12 % de l'ATQ PHY\n - Hausse des dégâts : 3 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144403",
+        "name": "Cape des ténèbres",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 30 % de l'ATQ PHY, 7 % des PV max du lanceur 1 fois\n - A 30 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 30 % de l'ATQ PHY\n - Hausse des dégâts : 7 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144404",
+        "name": "Berger des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige Réduction de résistance aux effets [Toujours actif]\n - Soi-même\n - Soigne les PV équivalents à 28 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [1 fois par combat]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Demi-démon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorne",
+      "likes": "Karl Heron, les Croisés de la Sainte Croix, les Corbeaux nocturnes, amandes grillées, discipline, plante de l'enfer",
+      "dislikes": "Bai Jiao, Dellons, ragoût, chaos, démons",
+      "story": "Née à moitié elfe et à moitié démon, Aquila a mené l'alliance humaine dans la guerre contre les démons. Sur le front, l’alliance humaine la surnomme la déesse de la victoire, tandis que les démons l’appellent la massacreuse."
+    }
+  }
+]

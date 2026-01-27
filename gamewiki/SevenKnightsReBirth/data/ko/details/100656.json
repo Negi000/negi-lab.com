@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "221",
-      "방어력": "88",
+      "Physical Attack": "0",
+      "Magical Attack": "221",
+      "Defense": "88",
       "HP": "510",
-      "민첩성": "25",
-      "크리티컬 확률": "50"
+      "Speed": "25",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 221,
-        "방어력": 88,
+        "Magical Attack": 221,
+        "Defense": 88,
         "HP": 510
       },
       "level30": {
-        "마법 공격력": 1004,
-        "방어력": 378,
+        "Magical Attack": 1004,
+        "Defense": 378,
         "HP": 2279
       },
       "levelUpBonus": {
-        "마법 공격력": 27,
-        "방어력": 10,
+        "Magical Attack": 27,
+        "Defense": 10,
         "HP": 61
       },
       "reinforceBonus": {
-        "마법 공격력": 77,
-        "방어력": 31,
+        "Magical Attack": 77,
+        "Defense": 31,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 1004,
-          "방어력": 378,
+          "Magical Attack": 1004,
+          "Defense": 378,
           "HP": 2279
         },
         "+1": {
-          "마법 공격력": 1081,
-          "방어력": 409,
+          "Magical Attack": 1081,
+          "Defense": 409,
           "HP": 2458
         },
         "+2": {
-          "마법 공격력": 1158,
-          "방어력": 440,
+          "Magical Attack": 1158,
+          "Defense": 440,
           "HP": 2637
         },
         "+3": {
-          "마법 공격력": 1235,
-          "방어력": 471,
+          "Magical Attack": 1235,
+          "Defense": 471,
           "HP": 2816
         },
         "+4": {
-          "마법 공격력": 1312,
-          "방어력": 502,
+          "Magical Attack": 1312,
+          "Defense": 502,
           "HP": 2995
         },
         "+5": {
-          "마법 공격력": 1389,
-          "방어력": 533,
+          "Magical Attack": 1389,
+          "Defense": 533,
           "HP": 3174
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10065601",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 120%",
+        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10065602",
         "name": "빛의 심판",
-        "desc": "적군 3명\n - 마법 공격력의 120%만큼 1회 피해\n - 실명 [75% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 145%\n超越6段階達成効果\n - 효과 추가 : 빗나감 확률 증가 44% [100% 확률] [3턴 지속]",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 120%만큼 1회 피해\n - 실명 [75% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 145%\nTranscend Lv.6 Effect\n - 효과 추가 : 빗나감 확률 증가 44% [100% 확률] [3턴 지속]",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10065603",
         "name": "눈부신 빛",
-        "desc": "적군 3명\n - 마법 공격력의 120%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 145%\n超越2段階達成効果\n - 효과 상승 : 방어력 감소 24%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 120%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 145%\nTranscend Lv.2 Effect\n - 효과 상승 : 방어력 감소 24%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10065604",
         "name": "신의 은총",
-        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 마법 피해량 증가 15%",
+        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 15%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006504.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "158",
-      "방어력": "63",
+      "Physical Attack": "0",
+      "Magical Attack": "158",
+      "Defense": "63",
       "HP": "364",
-      "민첩성": "22",
-      "크리티컬 확률": "50"
+      "Speed": "22",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 158,
-        "방어력": 63,
+        "Magical Attack": 158,
+        "Defense": 63,
         "HP": 364
       },
       "level30": {
-        "마법 공격력": 738,
-        "방어력": 266,
+        "Magical Attack": 738,
+        "Defense": 266,
         "HP": 1611
       },
       "levelUpBonus": {
-        "마법 공격력": 20,
-        "방어력": 7,
+        "Magical Attack": 20,
+        "Defense": 7,
         "HP": 43
       },
       "reinforceBonus": {
-        "마법 공격력": 55,
-        "방어력": 22,
+        "Magical Attack": 55,
+        "Defense": 22,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 738,
-          "방어력": 266,
+          "Magical Attack": 738,
+          "Defense": 266,
           "HP": 1611
         },
         "+1": {
-          "마법 공격력": 793,
-          "방어력": 288,
+          "Magical Attack": 793,
+          "Defense": 288,
           "HP": 1738
         },
         "+2": {
-          "마법 공격력": 848,
-          "방어력": 310,
+          "Magical Attack": 848,
+          "Defense": 310,
           "HP": 1865
         },
         "+3": {
-          "마법 공격력": 903,
-          "방어력": 332,
+          "Magical Attack": 903,
+          "Defense": 332,
           "HP": 1992
         },
         "+4": {
-          "마법 공격력": 958,
-          "방어력": 354,
+          "Magical Attack": 958,
+          "Defense": 354,
           "HP": 2119
         },
         "+5": {
-          "마법 공격력": 1013,
-          "방어력": 376,
+          "Magical Attack": 1013,
+          "Defense": 376,
           "HP": 2246
         }
       },
@@ -263,31 +263,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10065501",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 90%",
+        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10065502",
         "name": "빛의 심판",
-        "desc": "적군 3명\n - 마법 공격력의 110%만큼 1회 피해\n - 실명 [65% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 110%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 110%만큼 1회 피해\n - 실명 [65% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 110%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10065503",
         "name": "눈부신 빛",
-        "desc": "적군 3명\n - 마법 공격력의 110%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 110%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 110%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 110%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10065504",
         "name": "신의 은총",
-        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 마법 피해량 증가 10%",
+        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 10%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006504.webp"
       }
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "113",
-      "방어력": "45",
+      "Physical Attack": "0",
+      "Magical Attack": "113",
+      "Defense": "45",
       "HP": "260",
-      "민첩성": "19",
-      "크리티컬 확률": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 113,
-        "방어력": 45,
+        "Magical Attack": 113,
+        "Defense": 45,
         "HP": 260
       },
       "level30": {
-        "마법 공격력": 519,
-        "방어력": 190,
+        "Magical Attack": 519,
+        "Defense": 190,
         "HP": 1159
       },
       "levelUpBonus": {
-        "마법 공격력": 14,
-        "방어력": 5,
+        "Magical Attack": 14,
+        "Defense": 5,
         "HP": 31
       },
       "reinforceBonus": {
-        "마법 공격력": 40,
-        "방어력": 16,
+        "Magical Attack": 40,
+        "Defense": 16,
         "HP": 90
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 519,
-          "방어력": 190,
+          "Magical Attack": 519,
+          "Defense": 190,
           "HP": 1159
         },
         "+1": {
-          "마법 공격력": 559,
-          "방어력": 206,
+          "Magical Attack": 559,
+          "Defense": 206,
           "HP": 1249
         },
         "+2": {
-          "마법 공격력": 599,
-          "방어력": 222,
+          "Magical Attack": 599,
+          "Defense": 222,
           "HP": 1339
         },
         "+3": {
-          "마법 공격력": 639,
-          "방어력": 238,
+          "Magical Attack": 639,
+          "Defense": 238,
           "HP": 1429
         },
         "+4": {
-          "마법 공격력": 679,
-          "방어력": 254,
+          "Magical Attack": 679,
+          "Defense": 254,
           "HP": 1519
         },
         "+5": {
-          "마법 공격력": 719,
-          "방어력": 270,
+          "Magical Attack": 719,
+          "Defense": 270,
           "HP": 1609
         }
       },
@@ -411,31 +411,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10065401",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10065402",
         "name": "빛의 심판",
-        "desc": "적군 3명\n - 마법 공격력의 100%만큼 1회 피해\n - 실명 [65% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 100%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 100%만큼 1회 피해\n - 실명 [65% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10065403",
         "name": "눈부신 빛",
-        "desc": "적군 3명\n - 마법 공격력의 100%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 100%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 마법 공격력의 100%만큼 1회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10065404",
         "name": "신의 은총",
-        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nスキル強化効果\n - 효과 상승 : 마법 피해량 증가 8%",
+        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 마법 피해량 증가 [상시]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 8%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006504.webp"
       }

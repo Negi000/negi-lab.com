@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101446",
+      "name": "Aquila",
+      "subname": "Letzter Henker",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "Aquila ist der letzte Halbdämon bei den Heiligen Kreuzkreuzfahrern und hat die meisten ihrer Mitglieder ausgebildet. Sie entkam Bai Jiaos Falle mit Hilfe der Nachtkrähen, ging aber aufgrund ihrer Verletzungen in den Winterschlaf.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 12 % der maximalen TP des Zaubernden 1 Mal.\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 14 % der maximalen TP des Zaubernden 1 Mal.\n - Verbündeter mit den niedrigsten aktuellen TP (ohne sich selbst)\n - Gewährt einen Schild, der 8 % der maximalen TP des Zaubernden entspricht. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs plus 14 % des maximalen TP des Zaubernden.\n - Verbündeter mit den niedrigsten aktuellen TP (Selbst ausgeschlossen)\n - Fügt Effekt hinzu: Gewährt ein Schild in Höhe von 8 % der Max. TP des Zaubernden. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144602",
+        "name": "Gnadenloser Sturm",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 15 % des physischen Angriffs plus 4 % der maximalen TP des Zaubernden 2 Mal.\n - 60 % Chance, dass Soforttod-Rundenreduktion während jedes Angriffs zu 1 Runde(n) wird.\n - 70 % Chance, dass Soforttod-Rundenreduktion während jedes Angriffs zu 1 Runde(n) wird.\n - 100 % Chance, um Schwachstellenangriff-Verringerung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht Chance: Soforttod-Turn-Reduktionschance wird zu 70 %.\n - Erhöhter Effekt: Schwachstellenangriff-Verringerung auf 30 %.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144603",
+        "name": "Pechschwarzer Vorhang",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 35 % des physischen Angriffs plus 9 % der maximalen TP des Zaubernden 1 Mal.\n - 35 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\n - 40 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\n - Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht Chance: Soforttodeschance wird zu 40 %.\n - Fügt Effekt hinzu: Verknüpfen-Verringerung von 10 %.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144604",
+        "name": "Führer der Dunkelheit",
+        "desc": "Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]\n - Selbst\n - Heilt TP in Höhe von 34 % des maximalen TP des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]\nSkill Enhancement Effect\n - Erhöhter Effekt: Effektwiderstand-Verringerung auf 34 %.\nTranscend Lv.2 Effect\n - Erhöht Stapel: Heilt TP. [2 Mal pro Kampf]\nTranscend Lv.6 Effect\n - Selbst\n - Fügt Effekt hinzu: 10s Abklingzeit verringert, wenn ein Feind im Kampf fällt.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht die Verteidigung um 12 %.",
+      "transcend_2": "Erhöht die Verteidigung um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht die Verteidigung um 12 %.",
+      "transcend_6": "Erhöht die Verteidigung um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Halbdämon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Steinbock",
+      "likes": "Karl Heron, Kreuzritter, Nachtkrähen, geröstete Mandeln, Ordnung, Höllenkraut",
+      "dislikes": "Bai Jiao, Dellons, Eintopf, Chaos, Dämonen",
+      "story": "Aquila ist der letzte Halbdämon bei den Heiligen Kreuzkreuzfahrern und hat die meisten ihrer Mitglieder ausgebildet. Sie entkam Bai Jiaos Falle mit Hilfe der Nachtkrähen, ging aber aufgrund ihrer Verletzungen in den Winterschlaf."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101445",
+      "name": "Aquila",
+      "subname": "Kommandant der Heiligen Kreuzritter",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "Nach ihrem letzten Kampf, belastet von der Schuld, nicht alle beschützen zu können, schwor Aquila, alle Dämonen auszurotten. Gemeinsam mit anderen Halbdämonen gründete sie die ersten Heiligen Kreuz Kreuzfahrer und nahm ihren Platz als deren Kommandantin ein.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "83",
+      "Magical Attack": "0",
+      "Defense": "96",
+      "HP": "552",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 83,
+        "Defense": 96,
+        "HP": 552
+      },
+      "level30": {
+        "Physical Attack": 373,
+        "Defense": 473,
+        "HP": 2466
+      },
+      "levelUpBonus": {
+        "Physical Attack": 10,
+        "Defense": 13,
+        "HP": 66
+      },
+      "reinforceBonus": {
+        "Physical Attack": 28,
+        "Defense": 34,
+        "HP": 193
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 373,
+          "Defense": 473,
+          "HP": 2466
+        },
+        "+1": {
+          "Physical Attack": 401,
+          "Defense": 507,
+          "HP": 2659
+        },
+        "+2": {
+          "Physical Attack": 429,
+          "Defense": 541,
+          "HP": 2852
+        },
+        "+3": {
+          "Physical Attack": 457,
+          "Defense": 575,
+          "HP": 3045
+        },
+        "+4": {
+          "Physical Attack": 485,
+          "Defense": 609,
+          "HP": 3238
+        },
+        "+5": {
+          "Physical Attack": 513,
+          "Defense": 643,
+          "HP": 3431
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 45 % des physischen Angriffs plus 11 % der maximalen TP des Zaubernden 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 11 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144502",
+        "name": "Gnadenloser Sturm",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 13 % des physischen Angriffs plus 3 % der maximalen TP des Zaubernden 2 Mal.\n - 60 % Chance, dass Soforttod-Rundenreduktion während jedes Angriffs zu 1 Runde(n) wird.\n - 100 % Chance, um Schwachstellenangriff-Verringerung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 13 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 3 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144503",
+        "name": "Pechschwarzer Vorhang",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 35 % des physischen Angriffs plus 8 % der maximalen TP des Zaubernden 1 Mal.\n - 35 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\n - Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 35 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 8 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144504",
+        "name": "Führer der Dunkelheit",
+        "desc": "Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]\n - Selbst\n - Heilt TP in Höhe von 31 % des maximalen TP des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Halbdämon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Steinbock",
+      "likes": "Karl Heron, Kreuzritter, Nachtkrähen, geröstete Mandeln, Ordnung, Höllenkraut",
+      "dislikes": "Bai Jiao, Dellons, Eintopf, Chaos, Dämonen",
+      "story": "Nach ihrem letzten Kampf, belastet von der Schuld, nicht alle beschützen zu können, schwor Aquila, alle Dämonen auszurotten. Gemeinsam mit anderen Halbdämonen gründete sie die ersten Heiligen Kreuz Kreuzfahrer und nahm ihren Platz als deren Kommandantin ein."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101444",
+      "name": "Aquila",
+      "subname": "Massenmörder",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "Geboren als Halbelfe und Halbdämonin, führte Aquila die menschliche Allianz im Krieg gegen die Dämonen. An den Frontlinien kämpfend, war sie die Göttin des Sieges für die Menschen. Für die Dämonen war sie eine brutale Massenmörderin.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "59",
+      "Magical Attack": "0",
+      "Defense": "68",
+      "HP": "394",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 59,
+        "Defense": 68,
+        "HP": 394
+      },
+      "level30": {
+        "Physical Attack": 262,
+        "Defense": 329,
+        "HP": 1757
+      },
+      "levelUpBonus": {
+        "Physical Attack": 7,
+        "Defense": 9,
+        "HP": 47
+      },
+      "reinforceBonus": {
+        "Physical Attack": 21,
+        "Defense": 24,
+        "HP": 138
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 262,
+          "Defense": 329,
+          "HP": 1757
+        },
+        "+1": {
+          "Physical Attack": 283,
+          "Defense": 353,
+          "HP": 1895
+        },
+        "+2": {
+          "Physical Attack": 304,
+          "Defense": 377,
+          "HP": 2033
+        },
+        "+3": {
+          "Physical Attack": 325,
+          "Defense": 401,
+          "HP": 2171
+        },
+        "+4": {
+          "Physical Attack": 346,
+          "Defense": 425,
+          "HP": 2309
+        },
+        "+5": {
+          "Physical Attack": 367,
+          "Defense": 449,
+          "HP": 2447
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 40 % des physischen Angriffs plus 10 % der maximalen TP des Zaubernden 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 40 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 10 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144402",
+        "name": "Gnadenloser Sturm",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 12 % des physischen Angriffs plus 3 % der maximalen TP des Zaubernden 2 Mal.\n - 60 % Chance, dass Soforttod-Rundenreduktion während jedes Angriffs zu 1 Runde(n) wird.\n - 100 % Chance, um Schwachstellenangriff-Verringerung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 12 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 3 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144403",
+        "name": "Pechschwarzer Vorhang",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 30 % des physischen Angriffs plus 7 % der maximalen TP des Zaubernden 1 Mal.\n - 30 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\n - Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 30 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 7 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144404",
+        "name": "Führer der Dunkelheit",
+        "desc": "Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]\n - Selbst\n - Heilt TP in Höhe von 28 % des maximalen TP des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Halbdämon",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Steinbock",
+      "likes": "Karl Heron, Kreuzritter, Nachtkrähen, geröstete Mandeln, Ordnung, Höllenkraut",
+      "dislikes": "Bai Jiao, Dellons, Eintopf, Chaos, Dämonen",
+      "story": "Geboren als Halbelfe und Halbdämonin, führte Aquila die menschliche Allianz im Krieg gegen die Dämonen. An den Frontlinien kämpfend, war sie die Göttin des Sieges für die Menschen. Für die Dämonen war sie eine brutale Massenmörderin."
+    }
+  }
+]

@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100596",
+      "name": "Eileene",
+      "subname": "Kaiserin von Fodina",
+      "affiliation": "Sieben Ritter",
+      "flavor": "Eileene ist bekannt geworden für ihre herausragende Führung und Stärke und bestieg den Thron als Kaiserin von Fodina. Jetzt steht ihr Plan zur Erweiterung der Mine des Schweigens kurz vor der Ausführung.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 45 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.\n - Verursacht zusätzlichen Schaden in Höhe von 55 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 55 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059602",
+        "name": "Zorn des Donnergotts",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 113 % des physischen Angriffs 3 Mal.\n - Verursacht Schaden in Höhe von 136 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\n - Jeder Angriff hat eine 45 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 136 % des physischen Angriffs.\n - Erhöht die Chance: Blitzschlag-Chance wird zu 45 %.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059603",
+        "name": "Himmlischer Blitz",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 62 % des physischen Angriffs 2 Mal.\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Erhöht die Chance: Blitzschlag-Chance wird zu 40 %.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059604",
+        "name": "Fodinas Zorn",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 80 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Wiederbelebt mit 100 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 25 %.\n - Erhöhter Effekt: TP, die bei Wiederbelebung gewonnen werden, werden zu 100 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Effekt-Trefferquote um 24 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "20 / 09",
+      "age": "27",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Jungfrau",
+      "likes": "Jave, Rachel, Spaghetti Alfredo, Käse, Early Adopter, Welpen, Vögel",
+      "dislikes": "Dellons, Baguette, um den heißen Brei herumreden, Frösche, Fledermäuse",
+      "story": "Eileene ist bekannt geworden für ihre herausragende Führung und Stärke und bestieg den Thron als Kaiserin von Fodina. Jetzt steht ihr Plan zur Erweiterung der Mine des Schweigens kurz vor der Ausführung."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100595",
+      "name": "Eileene",
+      "subname": "Oberbefehlshaber",
+      "affiliation": "Sieben Ritter",
+      "flavor": "Eileene erwarb den Titel der Oberbefehlshaberin durch ihre zunehmende Stärke und hervorragende Führung. Sie plant, die Mine des Schweigens zu erweitern.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 40 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059502",
+        "name": "Zorn des Donnergotts",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 101 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 101 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059503",
+        "name": "Himmlischer Blitz",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 57 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 57 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059504",
+        "name": "Fodinas Zorn",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 60 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "20 / 09",
+      "age": "27",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Jungfrau",
+      "likes": "Jave, Rachel, Spaghetti Alfredo, Käse, Early Adopter, Welpen, Vögel",
+      "dislikes": "Dellons, Baguette, um den heißen Brei herumreden, Frösche, Fledermäuse",
+      "story": "Eileene erwarb den Titel der Oberbefehlshaberin durch ihre zunehmende Stärke und hervorragende Führung. Sie plant, die Mine des Schweigens zu erweitern."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100594",
+      "name": "Eileene",
+      "subname": "Kommandant",
+      "affiliation": "Sieben Ritter",
+      "flavor": "Unabhängig von Rasse oder Geschlecht bestimmt Stärke alles in der Mine des Schweigens. Eileene ist keine Ausnahme von dieser Regel.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 35 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059402",
+        "name": "Zorn des Donnergotts",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 91 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 91 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059403",
+        "name": "Himmlischer Blitz",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 52 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 20 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 52 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059404",
+        "name": "Fodinas Zorn",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 40 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "20 / 09",
+      "age": "27",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Jungfrau",
+      "likes": "Jave, Rachel, Spaghetti Alfredo, Käse, Early Adopter, Welpen, Vögel",
+      "dislikes": "Dellons, Baguette, um den heißen Brei herumreden, Frösche, Fledermäuse",
+      "story": "Unabhängig von Rasse oder Geschlecht bestimmt Stärke alles in der Mine des Schweigens. Eileene ist keine Ausnahme von dieser Regel."
+    }
+  }
+]

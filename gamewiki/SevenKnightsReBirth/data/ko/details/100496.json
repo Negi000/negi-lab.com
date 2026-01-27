@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "116",
-      "마법 공격력": "0",
-      "방어력": "135",
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
       "HP": "773",
-      "민첩성": "19",
-      "크리티컬 확률": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 116,
-        "방어력": 135,
+        "Physical Attack": 116,
+        "Defense": 135,
         "HP": 773
       },
       "level30": {
-        "물리 공격력": 522,
-        "방어력": 657,
+        "Physical Attack": 522,
+        "Defense": 657,
         "HP": 3470
       },
       "levelUpBonus": {
-        "물리 공격력": 14,
-        "방어력": 18,
+        "Physical Attack": 14,
+        "Defense": 18,
         "HP": 93
       },
       "reinforceBonus": {
-        "물리 공격력": 41,
-        "방어력": 47,
+        "Physical Attack": 41,
+        "Defense": 47,
         "HP": 271
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 522,
-          "방어력": 657,
+          "Physical Attack": 522,
+          "Defense": 657,
           "HP": 3470
         },
         "+1": {
-          "물리 공격력": 563,
-          "방어력": 704,
+          "Physical Attack": 563,
+          "Defense": 704,
           "HP": 3741
         },
         "+2": {
-          "물리 공격력": 604,
-          "방어력": 751,
+          "Physical Attack": 604,
+          "Defense": 751,
           "HP": 4012
         },
         "+3": {
-          "물리 공격력": 645,
-          "방어력": 798,
+          "Physical Attack": 645,
+          "Defense": 798,
           "HP": 4283
         },
         "+4": {
-          "물리 공격력": 686,
-          "방어력": 845,
+          "Physical Attack": 686,
+          "Defense": 845,
           "HP": 4554
         },
         "+5": {
-          "물리 공격력": 727,
-          "방어력": 892,
+          "Physical Attack": 727,
+          "Defense": 892,
           "HP": 4825
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10049601",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 50%, 시전자 최대 생명력의 12%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 60%, 시전자 최대 생명력의 14%",
+        "desc": "단일 적군\n - 물리 공격력의 50%, 시전자 최대 생명력의 12%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%, 시전자 최대 생명력의 14%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10049602",
         "name": "지옥의 방패",
-        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 지속 회복 [2턴 지속]\nスキル強化効果\n - 회복량 상승 : 지속 회복량이 시전자 생명력의 20%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 지속 회복 [2턴 지속]\nSkill Enhancement Effect\n - 회복량 상승 : 지속 회복량이 시전자 생명력의 20%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10049603",
         "name": "지옥의 일격",
-        "desc": "적군 3명\n - 물리 공격력의 80%, 시전자 최대 생명력의 19%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [35% 확률] [3턴 지속]\nスキル強化効果\n - 확률 상승 : 즉사 확률 40%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 물리 공격력의 80%, 시전자 최대 생명력의 19%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [35% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 확률 상승 : 즉사 확률 40%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10049604",
         "name": "지옥의 기사",
-        "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 39%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\nスキル強化効果\n - 효과 상승 : 보호막 흡수량이 최대 생명력의 45%\n超越2段階達成効果\n - 모든 적군\n - 효과 추가 : 효과 저항 감소 34% [상시]\n超越6段階達成効果\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력 39%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 39%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\nSkill Enhancement Effect\n - 효과 상승 : 보호막 흡수량이 최대 생명력의 45%\nTranscend Lv.2 Effect\n - 모든 적군\n - 효과 추가 : 효과 저항 감소 34% [상시]\nTranscend Lv.6 Effect\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력 39%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "83",
-      "마법 공격력": "0",
-      "방어력": "96",
+      "Physical Attack": "83",
+      "Magical Attack": "0",
+      "Defense": "96",
       "HP": "552",
-      "민첩성": "17",
-      "크리티컬 확률": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 83,
-        "방어력": 96,
+        "Physical Attack": 83,
+        "Defense": 96,
         "HP": 552
       },
       "level30": {
-        "물리 공격력": 373,
-        "방어력": 473,
+        "Physical Attack": 373,
+        "Defense": 473,
         "HP": 2466
       },
       "levelUpBonus": {
-        "물리 공격력": 10,
-        "방어력": 13,
+        "Physical Attack": 10,
+        "Defense": 13,
         "HP": 66
       },
       "reinforceBonus": {
-        "물리 공격력": 28,
-        "방어력": 34,
+        "Physical Attack": 28,
+        "Defense": 34,
         "HP": 193
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 373,
-          "방어력": 473,
+          "Physical Attack": 373,
+          "Defense": 473,
           "HP": 2466
         },
         "+1": {
-          "물리 공격력": 401,
-          "방어력": 507,
+          "Physical Attack": 401,
+          "Defense": 507,
           "HP": 2659
         },
         "+2": {
-          "물리 공격력": 429,
-          "방어력": 541,
+          "Physical Attack": 429,
+          "Defense": 541,
           "HP": 2852
         },
         "+3": {
-          "물리 공격력": 457,
-          "방어력": 575,
+          "Physical Attack": 457,
+          "Defense": 575,
           "HP": 3045
         },
         "+4": {
-          "물리 공격력": 485,
-          "방어력": 609,
+          "Physical Attack": 485,
+          "Defense": 609,
           "HP": 3238
         },
         "+5": {
-          "물리 공격력": 513,
-          "방어력": 643,
+          "Physical Attack": 513,
+          "Defense": 643,
           "HP": 3431
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10049501",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 45%, 시전자 최대 생명력의 11%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 45%",
+        "desc": "단일 적군\n - 물리 공격력의 45%, 시전자 최대 생명력의 11%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 45%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10049502",
         "name": "지옥의 방패",
         "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 지속 회복 [2턴 지속]",
-        "cooltime": "⏱️ CT: 96秒",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10049503",
         "name": "지옥의 일격",
-        "desc": "적군 3명\n - 물리 공격력의 70%, 시전자 최대 생명력의 17%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [35% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 70%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 물리 공격력의 70%, 시전자 최대 생명력의 17%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [35% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 70%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10049504",
         "name": "지옥의 기사",
         "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 35%만큼 보호막 [3턴 지속] (라운드당 1회 발동)",
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "59",
-      "마법 공격력": "0",
-      "방어력": "68",
+      "Physical Attack": "59",
+      "Magical Attack": "0",
+      "Defense": "68",
       "HP": "394",
-      "민첩성": "15",
-      "크리티컬 확률": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 59,
-        "방어력": 68,
+        "Physical Attack": 59,
+        "Defense": 68,
         "HP": 394
       },
       "level30": {
-        "물리 공격력": 262,
-        "방어력": 329,
+        "Physical Attack": 262,
+        "Defense": 329,
         "HP": 1757
       },
       "levelUpBonus": {
-        "물리 공격력": 7,
-        "방어력": 9,
+        "Physical Attack": 7,
+        "Defense": 9,
         "HP": 47
       },
       "reinforceBonus": {
-        "물리 공격력": 21,
-        "방어력": 24,
+        "Physical Attack": 21,
+        "Defense": 24,
         "HP": 138
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 262,
-          "방어력": 329,
+          "Physical Attack": 262,
+          "Defense": 329,
           "HP": 1757
         },
         "+1": {
-          "물리 공격력": 283,
-          "방어력": 353,
+          "Physical Attack": 283,
+          "Defense": 353,
           "HP": 1895
         },
         "+2": {
-          "물리 공격력": 304,
-          "방어력": 377,
+          "Physical Attack": 304,
+          "Defense": 377,
           "HP": 2033
         },
         "+3": {
-          "물리 공격력": 325,
-          "방어력": 401,
+          "Physical Attack": 325,
+          "Defense": 401,
           "HP": 2171
         },
         "+4": {
-          "물리 공격력": 346,
-          "방어력": 425,
+          "Physical Attack": 346,
+          "Defense": 425,
           "HP": 2309
         },
         "+5": {
-          "물리 공격력": 367,
-          "방어력": 449,
+          "Physical Attack": 367,
+          "Defense": 449,
           "HP": 2447
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10049401",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 40%, 시전자 최대 생명력의 10%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 40%",
+        "desc": "단일 적군\n - 물리 공격력의 40%, 시전자 최대 생명력의 10%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 40%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10049402",
         "name": "지옥의 방패",
         "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 지속 회복 [2턴 지속]",
-        "cooltime": "⏱️ CT: 96秒",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10049403",
         "name": "지옥의 일격",
-        "desc": "적군 3명\n - 물리 공격력의 65%, 시전자 최대 생명력의 16%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [30% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 65%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명\n - 물리 공격력의 65%, 시전자 최대 생명력의 16%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [30% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10049404",
         "name": "지옥의 기사",
         "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 31%만큼 보호막 [3턴 지속] (라운드당 1회 발동)",

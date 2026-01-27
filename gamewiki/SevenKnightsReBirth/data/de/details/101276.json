@@ -1,0 +1,480 @@
+[
+  {
+    "basicInfo": {
+      "id": "101276",
+      "name": "Elysia",
+      "subname": "Revolutionärer Kommandant",
+      "affiliation": "Luminose Revolutionäre",
+      "flavor": "Elysia erfährt von Baron Lune, dass sie die achte Prinzessin ist und beginnt eine Revolution für das Wohl von Terra.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10127601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012701.webp"
+      },
+      "Skill 1": {
+        "id": "10127602",
+        "name": "Heiliges Licht",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\n - Verursacht festen Schaden in Höhe von 775 1 Mal.\n - Verursacht festen Schaden in Höhe von 1285 1 Mal.\n - 50 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - 60 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht Schaden: Zu 1285 garantierter Schaden.\n - Erhöht die Chance: Schweigen-Chance wird zu 60 %.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012702.webp"
+      },
+      "Skill 2": {
+        "id": "10127603",
+        "name": "Sternenfall",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 115 % des physischen Angriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 115 % des physischen Angriffs.\n - Erhöhter Effekt: Verfehlchance-Erhöhung auf 48 %.\nTranscend Lv.6 Effect\n - Erhöht den Effekt: Verringerung der Buff-Dauer auf 3 Runde(n).",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012703.webp"
+      },
+      "Passive": {
+        "id": "10127604",
+        "name": "Revolutionsführer",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Selbst\n - Gewährt einen Schild, der 160 % des physischen Angriffs des Zaubernden entspricht. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Alle Verbündeten\n - Gewährt 2 Debuff entfernen bei Aktivierung einer Fähigkeit 1 Mal.\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 24 %.\nTranscend Lv.2 Effect\n - Selbst\n - Fügt Heilung hinzu: Heilt TP in Höhe von 165 % des physischen Angriffs des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10127614",
+        "name": "Revolutionsführer",
+        "desc": "4 Verbündete\nSkill Enhancement Effect\n - Gewährt 2 Debuff-Entfernung(en).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "伊藤 静",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "08 / 08",
+      "age": "17",
+      "height": "158",
+      "weight": "46",
+      "constellation": "Löwe",
+      "likes": "Rudy, Kyrielle, Ryan, Träume, Frieden, Gut gepflegter Bauernhof, Suppe mit herzhaften Fleischstücken",
+      "dislikes": "Rudy, Der König, Die Königin, Aufgeben, Kampfverpflegung, Krieg, Adel",
+      "story": "Elysia erfährt von Baron Lune, dass sie die achte Prinzessin ist und beginnt eine Revolution für das Wohl von Terra."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101275",
+      "name": "Elysia",
+      "subname": "Knappe",
+      "affiliation": "Luminose Revolutionäre",
+      "flavor": "Elysia ist sehr gesellig, hat viele Freunde, und ihre Schwertkunst wird von niemandem in ihrer Schule übertroffen. Sie verehrt die Göttin des Lichts und bewundert den Ritter des Lichts.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10127501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012701.webp"
+      },
+      "Skill 1": {
+        "id": "10127502",
+        "name": "Heiliges Licht",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 1 Mal.\n - Verursacht festen Schaden in Höhe von 510 1 Mal.\n - 45 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\n - Erhöht Schaden: Zu 51 garantierter Schaden.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012702.webp"
+      },
+      "Skill 2": {
+        "id": "10127503",
+        "name": "Sternenfall",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012703.webp"
+      },
+      "Passive": {
+        "id": "10127504",
+        "name": "Revolutionsführer",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Selbst\n - Gewährt einen Schild, der 145 % des physischen Angriffs des Zaubernden entspricht. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Alle Verbündeten\n - Gewährt 2 Debuff entfernen bei Aktivierung einer Fähigkeit 1 Mal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10127514",
+        "name": "Revolutionsführer",
+        "desc": "4 Verbündete\nSkill Enhancement Effect\n - Gewährt 2 Debuff-Entfernung(en).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "伊藤 静",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "08 / 08",
+      "age": "17",
+      "height": "158",
+      "weight": "46",
+      "constellation": "Löwe",
+      "likes": "Rudy, Kyrielle, Ryan, Träume, Frieden, Gut gepflegter Bauernhof, Suppe mit herzhaften Fleischstücken",
+      "dislikes": "Rudy, Der König, Die Königin, Aufgeben, Kampfverpflegung, Krieg, Adel",
+      "story": "Elysia ist sehr gesellig, hat viele Freunde, und ihre Schwertkunst wird von niemandem in ihrer Schule übertroffen. Sie verehrt die Göttin des Lichts und bewundert den Ritter des Lichts."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101274",
+      "name": "Elysia",
+      "subname": "Barons Tochter",
+      "affiliation": "Luminose Revolutionäre",
+      "flavor": "Elysias Mutter starb bei der Geburt, und sie wurde als Kind gebrandmarkt, das seine eigene Mutter getötet und verlassen hat. Baron Lune nahm sie auf und zog sie als seine eigene Tochter groß. Sie weiß nicht, dass sie adoptiert ist.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10127401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012701.webp"
+      },
+      "Skill 1": {
+        "id": "10127402",
+        "name": "Heiliges Licht",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 65 % des physischen Angriffs 1 Mal.\n - Verursacht festen Schaden in Höhe von 305 1 Mal.\n - 40 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 65 % des physischen Angriffs.\n - Erhöht Schaden: Zu 30.5 garantierter Schaden.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012702.webp"
+      },
+      "Skill 2": {
+        "id": "10127403",
+        "name": "Sternenfall",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012703.webp"
+      },
+      "Passive": {
+        "id": "10127404",
+        "name": "Revolutionsführer",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Selbst\n - Gewährt einen Schild, der 130 % des physischen Angriffs des Zaubernden entspricht. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 1 Runde(n)] [Einmal pro Kampf]\n - Alle Verbündeten\n - Gewährt 1 Debuff entfernen bei Aktivierung einer Fähigkeit 1 Mal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10127414",
+        "name": "Revolutionsführer",
+        "desc": "4 Verbündete\nSkill Enhancement Effect\n - Gewährt 1 Debuff-Entfernung(en).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "伊藤 静",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "08 / 08",
+      "age": "17",
+      "height": "158",
+      "weight": "46",
+      "constellation": "Löwe",
+      "likes": "Rudy, Kyrielle, Ryan, Träume, Frieden, Gut gepflegter Bauernhof, Suppe mit herzhaften Fleischstücken",
+      "dislikes": "Rudy, Der König, Die Königin, Aufgeben, Kampfverpflegung, Krieg, Adel",
+      "story": "Elysias Mutter starb bei der Geburt, und sie wurde als Kind gebrandmarkt, das seine eigene Mutter getötet und verlassen hat. Baron Lune nahm sie auf und zog sie als seine eigene Tochter groß. Sie weiß nicht, dass sie adoptiert ist."
+    }
+  }
+]

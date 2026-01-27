@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101216",
+      "name": "Fai",
+      "subname": "Flamme du désert",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Encerclée par l'armée des Beastkins dans le désert, Fai utilisa le pouvoir des flammes pour embraser ses ennemis. Voyant le désert en flammes, les habitants commencèrent à surnommer la région le « Désert Ardent ».",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10121601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 130 % de l'ATQ PHY 1 fois.\n - 3 ennemis\n - A 35 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012101.webp"
+      },
+      "Skill 1": {
+        "id": "10121602",
+        "name": "Lance d'Agnia",
+        "desc": "Tous les ennemis\n - Chaque attaque a 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Chaque attaque a 70 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 57 % de l'ATQ PHY 2 fois.\n - A 100 % de chances d'infliger Réduction de défense [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Ajout d'effet : 100 % de chances d'infliger Réduction de DÉF de 29 % [Durée : 3 tour(s)]\n - Hausse de taux : Chances de Brûlure 70 %",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012102.webp"
+      },
+      "Skill 2": {
+        "id": "10121603",
+        "name": "Performance du dragon ardent",
+        "desc": "Un seul ennemi\n - Inflige 3 Suppression de Buff(s). [100% de chance]\n - A 100 % de chances d'infliger Brûlure [Durée : 3 tour(s)]\n - Inflige des dégâts équivalents à 340 % de l'ATQ PHY, 20 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 300% de l’attaque du lanceur.)\n - Inflige des dégâts équivalents à 410 % de l'ATQ PHY, 26 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 450% de l’attaque du lanceur.)\n - Exécution instantanée d'un ennemi avec 24 % de PV ou moins\n - Ennemis dans la même rangée que la cible principale de la compétence\n - A 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 125 % de l'ATQ PHY, 14 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 150% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 410 % de l'ATQ PHY, 26 % des PV max de la cible\nTranscend Lv.2 Effect\n - Gain d'effet : Condition d'Exécution 30 % des PV\nTranscend Lv.6 Effect\n - Ajoute Effet : L'exécution cible les ennemis qui partagent une rangée avec la cible.",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012103.webp"
+      },
+      "Passive": {
+        "id": "10121604",
+        "name": "Flammes jaillissantes",
+        "desc": "Tous les ennemis\n - Inflige Vulnérabilité physique [Toujours actif]\n - Soi-même\n - Se réanime avec 80 % de PV en cas de mort (1 fois par combat)\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\n - Confère Barrière équivalente à 135 % de l'ATQ PHY lors de la réanimation [Durée : 3 tour(s)] (1 fois  par combat)\n - Inflige des dégâts supplémentaires équivalents à 70 % de l'ATQ PHY contre les cibles affectées par [Brûlure]\nSkill Enhancement Effect\n - Gain d'effet : Vulnérabilité physique 20 %\n - Gain d'effet : PV 100 % lors de la réanimation",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012104.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le Taux de coup critique de 18 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "吉住 絵里加",
+      "species": "Elfe",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "06 / 01",
+      "age": "0",
+      "height": "164",
+      "weight": "54",
+      "constellation": "Capricorne",
+      "likes": "Camarades sur le champ de bataille, Rachel, honneur, autorité, force, monde paisible, poisson grillé",
+      "dislikes": "Orcs, beastkin, Balack, personnes lâches, faiblesse",
+      "story": "Encerclée par l'armée des Beastkins dans le désert, Fai utilisa le pouvoir des flammes pour embraser ses ennemis. Voyant le désert en flammes, les habitants commencèrent à surnommer la région le « Désert Ardent »."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101215",
+      "name": "Fai",
+      "subname": "Chevaleresse de la flamme",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Fai apporte de nouvelles victoires au royaume humain qui avait perdu bataille après bataille contre les armées des Beastkins. Lors de chaque bataille, elle brandit toujours une grande bannière rouge et mène les soldats en première ligne.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10121501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\n - 3 ennemis\n - A 30 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012101.webp"
+      },
+      "Skill 1": {
+        "id": "10121502",
+        "name": "Lance d'Agnia",
+        "desc": "Tous les ennemis\n - Chaque attaque a 55 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 52 % de l'ATQ PHY 2 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 52 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012102.webp"
+      },
+      "Skill 2": {
+        "id": "10121503",
+        "name": "Performance du dragon ardent",
+        "desc": "Un seul ennemi\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - A 100 % de chances d'infliger Brûlure [Durée : 3 tour(s)]\n - Inflige des dégâts équivalents à 305 % de l'ATQ PHY, 16 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 300% de l’attaque du lanceur.)\n - Exécution instantanée d'un ennemi avec 18 % de PV ou moins\n - Ennemis dans la même rangée que la cible principale de la compétence\n - A 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 115 % de l'ATQ PHY, 11 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 150% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 305 % de l'ATQ PHY\n - Hausse des dégâts : 16 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012103.webp"
+      },
+      "Passive": {
+        "id": "10121504",
+        "name": "Flammes jaillissantes",
+        "desc": "Tous les ennemis\n - Inflige Vulnérabilité physique [Toujours actif]\n - Soi-même\n - Se réanime avec 60 % de PV en cas de mort (1 fois par combat)\n - Confère Barrière équivalente à 125 % de l'ATQ PHY lors de la réanimation [Durée : 3 tour(s)] (1 fois  par combat)\n - Inflige des dégâts supplémentaires équivalents à 70 % de l'ATQ PHY contre les cibles affectées par [Brûlure]\nSkill Enhancement Effect\n - Gain d'effet : Vulnérabilité physique 13 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "吉住 絵里加",
+      "species": "Elfe",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "06 / 01",
+      "age": "0",
+      "height": "164",
+      "weight": "54",
+      "constellation": "Capricorne",
+      "likes": "Camarades sur le champ de bataille, Rachel, honneur, autorité, force, monde paisible, poisson grillé",
+      "dislikes": "Orcs, beastkin, Balack, personnes lâches, faiblesse",
+      "story": "Fai apporte de nouvelles victoires au royaume humain qui avait perdu bataille après bataille contre les armées des Beastkins. Lors de chaque bataille, elle brandit toujours une grande bannière rouge et mène les soldats en première ligne."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101214",
+      "name": "Fai",
+      "subname": "Début de la légende",
+      "affiliation": "Ancien Seven Knights",
+      "flavor": "Il y a longtemps, une guerre prolongée entre les anciens humains et les Beastkins a fait rage sur le territoire sud. Fai, issue d’une noble famille de chevaliers du sud, montra très tôt un talent remarquable pour le maniement de la lance et devint chevaleresse du royaume.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10121401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\n - 3 ennemis\n - A 25 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012101.webp"
+      },
+      "Skill 1": {
+        "id": "10121402",
+        "name": "Lance d'Agnia",
+        "desc": "Tous les ennemis\n - Chaque attaque a 50 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 47 % de l'ATQ PHY 2 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 47 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012102.webp"
+      },
+      "Skill 2": {
+        "id": "10121403",
+        "name": "Performance du dragon ardent",
+        "desc": "Un seul ennemi\n - Inflige 1 Suppression de Buff(s). [100% de chance]\n - A 85 % de chances d'infliger Brûlure [Durée : 3 tour(s)]\n - Inflige des dégâts équivalents à 275 % de l'ATQ PHY, 13 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 300% de l’attaque du lanceur.)\n - Exécution instantanée d'un ennemi avec 12 % de PV ou moins\n - Ennemis dans la même rangée que la cible principale de la compétence\n - A 55 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Inflige des dégâts équivalents à 105 % de l'ATQ PHY, 9 % des PV max de la cible 1 fois (Les dégâts proportionnels aux PV sont limités à 150% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 275 % de l'ATQ PHY\n - Hausse des dégâts : 13 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012103.webp"
+      },
+      "Passive": {
+        "id": "10121404",
+        "name": "Flammes jaillissantes",
+        "desc": "Tous les ennemis\n - Inflige Vulnérabilité physique [Toujours actif]\n - Soi-même\n - Se réanime avec 40 % de PV en cas de mort (1 fois par combat)\n - Confère Barrière équivalente à 110 % de l'ATQ PHY lors de la réanimation [Durée : 2 tour(s)] (1 fois  par combat)\n - Inflige des dégâts supplémentaires équivalents à 70 % de l'ATQ PHY contre les cibles affectées par [Brûlure]\nSkill Enhancement Effect\n - Gain d'effet : Vulnérabilité physique 10 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "吉住 絵里加",
+      "species": "Elfe",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "06 / 01",
+      "age": "0",
+      "height": "164",
+      "weight": "54",
+      "constellation": "Capricorne",
+      "likes": "Camarades sur le champ de bataille, Rachel, honneur, autorité, force, monde paisible, poisson grillé",
+      "dislikes": "Orcs, beastkin, Balack, personnes lâches, faiblesse",
+      "story": "Il y a longtemps, une guerre prolongée entre les anciens humains et les Beastkins a fait rage sur le territoire sud. Fai, issue d’une noble famille de chevaliers du sud, montra très tôt un talent remarquable pour le maniement de la lance et devint chevaleresse du royaume."
+    }
+  }
+]

@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101226",
+      "name": "Rosie",
+      "subname": "Einsiedler-Paladin",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Rosie kann sich nicht von den Geistern derer befreien, die sie in der Vergangenheit getötet hat. Sie beschließt, ihren Namen und Titel aufzugeben und tritt in ein Kloster ein, um sich zu erlösen.",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10122601",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 30 % des Magieangriffs plus 7 % der maximalen TP des Zaubernden 1 Mal.\n - 100 % Chance, Effektwiderstandsreduktion zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Fügt Effekt hinzu: 100 % Chance, 16 % Effektwiderstand-Verringerung zu verursachen. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012201.webp"
+      },
+      "Skill 1": {
+        "id": "10122602",
+        "name": "Urteil des Mondscheins",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 30 % des Magieangriffs plus 7 % der maximalen TP des Zaubernden 2 Mal.\n - Verursacht Schaden in Höhe von 37 % des Magieangriffs plus 10 % der maximalen TP des Zaubernden 2 Mal.\n - 25 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\n - 35 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 37 % des Magieangriffs plus 10 % der maximalen TP des Zaubernden.\n - Erhöht Chance: Soforttodeschance wird zu 35 %.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012202.webp"
+      },
+      "Skill 2": {
+        "id": "10122603",
+        "name": "Heiliges Gebet",
+        "desc": "2 Verbündete\n - Wiederbeleben von gefallenen Ziel(en) mit 40 % TP.\n - Wiederbeleben von gefallenen Ziel(en) mit 55 % TP.\n - Gewährt Mut bei Wiederbelebung. [Dauer: 2 Runde(n)]\n - Alle Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\nSkill Enhancement Effect\n - Erhöhter Effekt: TP, die bei Wiederbelebung gewonnen werden, werden zu 55 %.\n - 2 Verbündete\n - Fügt Effekt hinzu: Mut bei Wiederbelebung. [Dauer: 2 Runde(n)]\nTranscend Lv.6 Effect\n - Ändert die Anzahl der Ziele: Zu allen Verbündeten",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012203.webp"
+      },
+      "Passive": {
+        "id": "10122604",
+        "name": "Segen der Toten",
+        "desc": "Selbst\n - Gewährt Verteidigungs-Erhöhung basierend auf maximalem TP. [Immer aktiv]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 3 Runde(n)] [Einmal pro Kampf]\n - Verbündete (Verteidigungs- und Universaltyp)\n - Gewährt Effekt-Wahrscheinlichkeits-Erhöhung. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöht die Runden: Die Dauer der Immunität gegen allen Schaden wird zu 3 Runde(n).\nTranscend Lv.2 Effect\n - Erhöhter Effekt: Effektwahrscheinlichkeits-Erhöhung auf 26 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012204.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht die Verteidigung um 12 %.",
+      "transcend_2": "Erhöht die Verteidigung um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht die Verteidigung um 12 %.",
+      "transcend_6": "Erhöht die Verteidigung um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "岡本 美歌",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "30 / 09",
+      "age": "0",
+      "height": "167",
+      "weight": "52",
+      "constellation": "Waage",
+      "likes": "Göttin Elena, Mönche, Wahrheit, angemessen sein, beten, Meditation",
+      "dislikes": "Dellons, List, Korruption, alles, was mit Dellons zu tun hat",
+      "story": "Rosie kann sich nicht von den Geistern derer befreien, die sie in der Vergangenheit getötet hat. Sie beschließt, ihren Namen und Titel aufzugeben und tritt in ein Kloster ein, um sich zu erlösen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101225",
+      "name": "Rosie",
+      "subname": "Ritterjungfrau des Schutzes",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Rosie stieg zur Position eines Sieben Ritters auf, indem sie die Wahrheit hinter dem Tod von Prinzessin Claudia aufdeckte und Dellons tötete. Sie schützt die Menschen und bewacht die Ländereien als Sieben Ritter.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
+      "HP": "510",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 126,
+        "Defense": 77,
+        "HP": 510
+      },
+      "level30": {
+        "Magical Attack": 561,
+        "Defense": 338,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 9,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Magical Attack": 44,
+        "Defense": 27,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 561,
+          "Defense": 338,
+          "HP": 2279
+        },
+        "+1": {
+          "Magical Attack": 605,
+          "Defense": 365,
+          "HP": 2458
+        },
+        "+2": {
+          "Magical Attack": 649,
+          "Defense": 392,
+          "HP": 2637
+        },
+        "+3": {
+          "Magical Attack": 693,
+          "Defense": 419,
+          "HP": 2816
+        },
+        "+4": {
+          "Magical Attack": 737,
+          "Defense": 446,
+          "HP": 2995
+        },
+        "+5": {
+          "Magical Attack": 781,
+          "Defense": 473,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10122501",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 25 % des Magieangriffs plus 6 % der maximalen TP des Zaubernden 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 6 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012201.webp"
+      },
+      "Skill 1": {
+        "id": "10122502",
+        "name": "Urteil des Mondscheins",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 27 % des Magieangriffs plus 6 % der maximalen TP des Zaubernden 2 Mal.\n - 25 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 27 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 6 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012202.webp"
+      },
+      "Skill 2": {
+        "id": "10122503",
+        "name": "Heiliges Gebet",
+        "desc": "2 Verbündete\n - Wiederbeleben von gefallenen Ziel(en) mit 30 % TP.\n - Alle Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012203.webp"
+      },
+      "Passive": {
+        "id": "10122504",
+        "name": "Segen der Toten",
+        "desc": "Selbst\n - Gewährt Verteidigungs-Erhöhung basierend auf maximalem TP. [Immer aktiv]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Verbündete (Verteidigungs- und Universaltyp)\n - Gewährt Effekt-Wahrscheinlichkeits-Erhöhung. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "岡本 美歌",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "30 / 09",
+      "age": "0",
+      "height": "167",
+      "weight": "52",
+      "constellation": "Waage",
+      "likes": "Göttin Elena, Mönche, Wahrheit, angemessen sein, beten, Meditation",
+      "dislikes": "Dellons, List, Korruption, alles, was mit Dellons zu tun hat",
+      "story": "Rosie stieg zur Position eines Sieben Ritters auf, indem sie die Wahrheit hinter dem Tod von Prinzessin Claudia aufdeckte und Dellons tötete. Sie schützt die Menschen und bewacht die Ländereien als Sieben Ritter."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101224",
+      "name": "Rosie",
+      "subname": "Schattenritter",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Rosie übernimmt die ganze Drecksarbeit für ihre Familie. Obwohl sie es nie genießt, Leben zu nehmen, tut sie, was sie für das Wohl ihrer Familie tun muss. Sie betet jeden Tag zur Göttin Elena, um für ihre Sünden zu büßen.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
+      "HP": "364",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 90,
+        "Defense": 55,
+        "HP": 364
+      },
+      "level30": {
+        "Magical Attack": 409,
+        "Defense": 229,
+        "HP": 1640
+      },
+      "levelUpBonus": {
+        "Magical Attack": 11,
+        "Defense": 6,
+        "HP": 44
+      },
+      "reinforceBonus": {
+        "Magical Attack": 30,
+        "Defense": 20,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 409,
+          "Defense": 229,
+          "HP": 1640
+        },
+        "+1": {
+          "Magical Attack": 439,
+          "Defense": 249,
+          "HP": 1767
+        },
+        "+2": {
+          "Magical Attack": 469,
+          "Defense": 269,
+          "HP": 1894
+        },
+        "+3": {
+          "Magical Attack": 499,
+          "Defense": 289,
+          "HP": 2021
+        },
+        "+4": {
+          "Magical Attack": 529,
+          "Defense": 309,
+          "HP": 2148
+        },
+        "+5": {
+          "Magical Attack": 559,
+          "Defense": 329,
+          "HP": 2275
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10122401",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 25 % des Magieangriffs plus 5 % der maximalen TP des Zaubernden 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 5 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012201.webp"
+      },
+      "Skill 1": {
+        "id": "10122402",
+        "name": "Urteil des Mondscheins",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 25 % des Magieangriffs plus 5 % der maximalen TP des Zaubernden 2 Mal.\n - 20 % Chance, Soforttod zuzufügen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 5 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012202.webp"
+      },
+      "Skill 2": {
+        "id": "10122403",
+        "name": "Heiliges Gebet",
+        "desc": "2 Verbündete\n - Wiederbeleben von gefallenen Ziel(en) mit 20 % TP.\n - Alle Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012203.webp"
+      },
+      "Passive": {
+        "id": "10122404",
+        "name": "Segen der Toten",
+        "desc": "Selbst\n - Gewährt Verteidigungs-Erhöhung basierend auf maximalem TP. [Immer aktiv]\n - Gewährt Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Verbündete (Verteidigungs- und Universaltyp)\n - Gewährt Effekt-Wahrscheinlichkeits-Erhöhung. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "岡本 美歌",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "30 / 09",
+      "age": "0",
+      "height": "167",
+      "weight": "52",
+      "constellation": "Waage",
+      "likes": "Göttin Elena, Mönche, Wahrheit, angemessen sein, beten, Meditation",
+      "dislikes": "Dellons, List, Korruption, alles, was mit Dellons zu tun hat",
+      "story": "Rosie übernimmt die ganze Drecksarbeit für ihre Familie. Obwohl sie es nie genießt, Leben zu nehmen, tut sie, was sie für das Wohl ihrer Familie tun muss. Sie betet jeden Tag zur Göttin Elena, um für ihre Sünden zu büßen."
+    }
+  }
+]

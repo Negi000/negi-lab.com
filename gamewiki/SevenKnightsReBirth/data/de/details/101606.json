@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101606",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_6",
+      "affiliation": "Helden der Drei Königreiche",
+      "flavor": "Es wird gesagt, dass selbst der Mond bei Diaochans Schönheit errötet und sein Gesicht in den Wolken verbirgt, was ihr den Spitznamen Errötender Mond gibt.",
+      "rarity": "legendary",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des Magieangriffs 1 Mal.\n - Verbündeter mit den niedrigsten aktuellen TP (ohne sich selbst)\n - Heilt TP in Höhe von 6 % der maximalen TP des Zaubernden.\n - Heilt TP in Höhe von 7 % der maximalen TP des Zaubernden.\nSkill Enhancement Effect\n - Erhöht Heilung: TP-Wiederherstellungsmenge wird gleich 7 % der maximalen TP des Zaubernden.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160602",
+        "name": "Vorwärts marschieren",
+        "desc": "3 Verbündete\n - Heilt TP in Höhe von 25 % der maximalen TP des Zaubernden.\n - Heilt TP in Höhe von 29 % der maximalen TP des Zaubernden.\nSkill Enhancement Effect\n - Erhöht Heilung: TP-Wiederherstellungsmenge wird gleich 29 % der maximalen TP des Zaubernden.\nTranscend Lv.2 Effect\n - 2 Verbündete (Excluding Self)\n - Fügt Effekt hinzu: Setzt Abklingzeit der Fähigkeit zurück, wenn der Zieltyp Angriff oder Magie ist.",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160603",
+        "name": "Lied des Schutzes",
+        "desc": "2 Verbündete (ohne sich selbst)\n - Gewährt Krit. Schaden-Erhöhung. [Dauer: 4 Runde(n)]\n - Gewährt Alle Angriffs-Erhöhung. [Dauer: 4 Runde(n)]\n - 3 Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 85 % Chance, Schlaf zu verursachen. [Dauer: 2 Runde(n)]\n - 100 % Chance, Schlaf zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht die Chance: Schlafchance wird zu 100 %.\n - 2 Verbündete (Excluding Self)\n - Fügt Effekt hinzu: 30 % Volle AK-Erhöhung. [Dauer: 4 Runde(n)]\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: 100 % Chance, 78 % Gewährte Heilungs-Verringerung zu verursachen. [Dauer: 3 Runde(n)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160604",
+        "name": "Das Lächeln des errötenden Mondes",
+        "desc": "Selbst\n - Max.\\n\\nTP-basierte Effekttreffer-Erhöhung [Immer aktiv]\n - Gewährt einen Schild in Höhe von 39 % der maximalen TP des Zaubernden. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - Gewährt einen Schild in Höhe von 45 % der maximalen TP des Zaubernden. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - 2 Verbündete (ohne sich selbst)\n - *Gewährt die folgenden Effekte, wenn der Zieltyp Angriff oder Magie ist.\n - Gewährt eine Barriere in Höhe von 20 % der maximalen TP des Zaubernden, wenn ein Standardangriff 1 Mal verwendet wird. [Dauer: 2 Runde(n)]\n - Gewährt eine Barriere in Höhe von 22 % der maximalen TP des Zaubernden, wenn ein Standardangriff 1 Mal verwendet wird. [Dauer: 2 Runde(n)]\n - Gewährt Immunität gegen Massenkontrolle beim Einsatz eines Basisangriffs 1 Mal. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Selbst\n - Erhöhter Effekt: Schildabsorption wird zu 45 % der maximalen TP.\n - 2 Verbündete (Excluding Self)\n - Erhöhter Effekt: Schildabsorption wird zu 22 % der maximalen TP.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht die Verteidigung um 12 %.",
+      "transcend_2": "Erhöht die Verteidigung um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht die Verteidigung um 12 %.",
+      "transcend_6": "Erhöht die Verteidigung um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Zwilling",
+      "likes": "Lu Bu, gute Instrumente, Poesie, Kalligraphie, Malerei, schöne Dinge, Obst",
+      "dislikes": "Aggression, Feigheit, Tyrannei, übermäßiges Essen",
+      "story": "Es wird gesagt, dass selbst der Mond bei Diaochans Schönheit errötet und sein Gesicht in den Wolken verbirgt, was ihr den Spitznamen Errötender Mond gibt."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101605",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_5",
+      "affiliation": "Helden der Drei Königreiche",
+      "flavor": "Diaochans auffallende Schönheit und ihr charmanter Witz machten sie bei Männern beliebt. Es wird gesagt, dass sie nachts noch schöner ist, was ihr den Spitznamen Mondlicht einbrachte.",
+      "rarity": "legendary",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
+      "HP": "510",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 126,
+        "Defense": 77,
+        "HP": 510
+      },
+      "level30": {
+        "Magical Attack": 561,
+        "Defense": 338,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 9,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Magical Attack": 44,
+        "Defense": 27,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 561,
+          "Defense": 338,
+          "HP": 2279
+        },
+        "+1": {
+          "Magical Attack": 605,
+          "Defense": 365,
+          "HP": 2458
+        },
+        "+2": {
+          "Magical Attack": 649,
+          "Defense": 392,
+          "HP": 2637
+        },
+        "+3": {
+          "Magical Attack": 693,
+          "Defense": 419,
+          "HP": 2816
+        },
+        "+4": {
+          "Magical Attack": 737,
+          "Defense": 446,
+          "HP": 2995
+        },
+        "+5": {
+          "Magical Attack": 781,
+          "Defense": 473,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des Magieangriffs 1 Mal.\n - Verbündeter mit den niedrigsten aktuellen TP (ohne sich selbst)\n - Heilt TP in Höhe von 5 % der maximalen TP des Zaubernden.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160502",
+        "name": "Vorwärts marschieren",
+        "desc": "3 Verbündete\n - Heilt TP in Höhe von 23 % der maximalen TP des Zaubernden.",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160503",
+        "name": "Lied des Schutzes",
+        "desc": "2 Verbündete (ohne sich selbst)\n - Gewährt Krit. Schaden-Erhöhung. [Dauer: 4 Runde(n)]\n - 3 Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 75 % Chance, Schlaf zu verursachen. [Dauer: 2 Runde(n)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160504",
+        "name": "Das Lächeln des errötenden Mondes",
+        "desc": "Selbst\n - Max.\\n\\nTP-basierte Effekttreffer-Erhöhung [Immer aktiv]\n - Gewährt einen Schild in Höhe von 35 % der maximalen TP des Zaubernden. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - 2 Verbündete (ohne sich selbst)\n - *Gewährt die folgenden Effekte, wenn der Zieltyp Angriff oder Magie ist.\n - Gewährt eine Barriere in Höhe von 18 % der maximalen TP des Zaubernden, wenn ein Standardangriff 1 Mal verwendet wird. [Dauer: 2 Runde(n)]\n - Gewährt Immunität gegen Massenkontrolle beim Einsatz eines Basisangriffs 1 Mal. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Zwilling",
+      "likes": "Lu Bu, gute Instrumente, Poesie, Kalligraphie, Malerei, schöne Dinge, Obst",
+      "dislikes": "Aggression, Feigheit, Tyrannei, übermäßiges Essen",
+      "story": "Diaochans auffallende Schönheit und ihr charmanter Witz machten sie bei Männern beliebt. Es wird gesagt, dass sie nachts noch schöner ist, was ihr den Spitznamen Mondlicht einbrachte."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101604",
+      "name": "Diaochan",
+      "subname": "PCTable.PcSubName_Diaochan_4",
+      "affiliation": "Helden der Drei Königreiche",
+      "flavor": "Diaochan war ursprünglich eine Dienerin, die einem Herrn in einem kleinen Dorf diente. Eines Tages griffen Banditen das Dorf an, setzten es in Brand, und sie entkam nur knapp mit ihrem Leben.",
+      "rarity": "legendary",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
+      "HP": "364",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 90,
+        "Defense": 55,
+        "HP": 364
+      },
+      "level30": {
+        "Magical Attack": 409,
+        "Defense": 229,
+        "HP": 1640
+      },
+      "levelUpBonus": {
+        "Magical Attack": 11,
+        "Defense": 6,
+        "HP": 44
+      },
+      "reinforceBonus": {
+        "Magical Attack": 30,
+        "Defense": 20,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 409,
+          "Defense": 229,
+          "HP": 1640
+        },
+        "+1": {
+          "Magical Attack": 439,
+          "Defense": 249,
+          "HP": 1767
+        },
+        "+2": {
+          "Magical Attack": 469,
+          "Defense": 269,
+          "HP": 1894
+        },
+        "+3": {
+          "Magical Attack": 499,
+          "Defense": 289,
+          "HP": 2021
+        },
+        "+4": {
+          "Magical Attack": 529,
+          "Defense": 309,
+          "HP": 2148
+        },
+        "+5": {
+          "Magical Attack": 559,
+          "Defense": 329,
+          "HP": 2275
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10160401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des Magieangriffs 1 Mal.\n - Verbündeter mit den niedrigsten aktuellen TP (ohne sich selbst)\n - Heilt TP in Höhe von 4 % der maximalen TP des Zaubernden.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016001.webp"
+      },
+      "Skill 1": {
+        "id": "10160402",
+        "name": "Vorwärts marschieren",
+        "desc": "3 Verbündete\n - Heilt TP in Höhe von 21 % der maximalen TP des Zaubernden.",
+        "cooltime": "⏱️ CT: 85s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016002.webp"
+      },
+      "Skill 2": {
+        "id": "10160403",
+        "name": "Lied des Schutzes",
+        "desc": "2 Verbündete (ohne sich selbst)\n - Gewährt Krit. Schaden-Erhöhung. [Dauer: 4 Runde(n)]\n - 3 Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - 75 % Chance, Schlaf zu verursachen. [Dauer: 2 Runde(n)]",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016003.webp"
+      },
+      "Passive": {
+        "id": "10160404",
+        "name": "Das Lächeln des errötenden Mondes",
+        "desc": "Selbst\n - Max.\\n\\nTP-basierte Effekttreffer-Erhöhung [Immer aktiv]\n - Gewährt einen Schild in Höhe von 31 % der maximalen TP des Zaubernden. [Dauer: 3 Runde(n)] [Einmal pro Runde]\n - 2 Verbündete (ohne sich selbst)\n - *Gewährt die folgenden Effekte, wenn der Zieltyp Angriff oder Magie ist.\n - Gewährt eine Barriere in Höhe von 15 % der maximalen TP des Zaubernden, wenn ein Standardangriff 1 Mal verwendet wird. [Dauer: 2 Runde(n)]\n - Gewährt Immunität gegen Massenkontrolle beim Einsatz eines Basisangriffs 1 Mal. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "仙台 エリ",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "29 / 05",
+      "age": "25",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Zwilling",
+      "likes": "Lu Bu, gute Instrumente, Poesie, Kalligraphie, Malerei, schöne Dinge, Obst",
+      "dislikes": "Aggression, Feigheit, Tyrannei, übermäßiges Essen",
+      "story": "Diaochan war ursprünglich eine Dienerin, die einem Herrn in einem kleinen Dorf diente. Eines Tages griffen Banditen das Dorf an, setzten es in Brand, und sie entkam nur knapp mit ihrem Leben."
+    }
+  }
+]

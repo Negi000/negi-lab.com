@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "176",
-      "防御力": "108",
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
       "HP": "714",
-      "敏捷": "19",
-      "暴击率": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 176,
-        "防御力": 108,
+        "Magical Attack": 176,
+        "Defense": 108,
         "HP": 714
       },
       "level30": {
-        "魔法攻击力": 785,
-        "防御力": 485,
+        "Magical Attack": 785,
+        "Defense": 485,
         "HP": 3208
       },
       "levelUpBonus": {
-        "魔法攻击力": 21,
-        "防御力": 13,
+        "Magical Attack": 21,
+        "Defense": 13,
         "HP": 86
       },
       "reinforceBonus": {
-        "魔法攻击力": 62,
-        "防御力": 38,
+        "Magical Attack": 62,
+        "Defense": 38,
         "HP": 250
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 785,
-          "防御力": 485,
+          "Magical Attack": 785,
+          "Defense": 485,
           "HP": 3208
         },
         "+1": {
-          "魔法攻击力": 847,
-          "防御力": 523,
+          "Magical Attack": 847,
+          "Defense": 523,
           "HP": 3458
         },
         "+2": {
-          "魔法攻击力": 909,
-          "防御力": 561,
+          "Magical Attack": 909,
+          "Defense": 561,
           "HP": 3708
         },
         "+3": {
-          "魔法攻击力": 971,
-          "防御力": 599,
+          "Magical Attack": 971,
+          "Defense": 599,
           "HP": 3958
         },
         "+4": {
-          "魔法攻击力": 1033,
-          "防御力": 637,
+          "Magical Attack": 1033,
+          "Defense": 637,
           "HP": 4208
         },
         "+5": {
-          "魔法攻击力": 1095,
-          "防御力": 675,
+          "Magical Attack": 1095,
+          "Defense": 675,
           "HP": 4458
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10054601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力50%、防御力60%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nスキル強化効果\n - 伤害量提升：提升至魔法攻击力的65%、防御力的75%\n - 效果提升：所有攻击力减少9%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力50%、防御力60%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的65%、防御力的75%\n - 效果提升：所有攻击力减少9%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005401.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10054602",
         "name": "异界之光",
-        "desc": "全体敌军\n - 2次相当于魔法攻击力42%、防御力47%的伤害\n - 自己\n - 按照伤害量的32%恢复生命力\nスキル強化効果\n - 伤害量提升：提升至魔法攻击力的50%、防御力的55%\n - 效果提升：生命力恢复量提升至伤害量的43%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "全体敌军\n - 2次相当于魔法攻击力42%、防御力47%的伤害\n - 自己\n - 按照伤害量的32%恢复生命力\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的50%、防御力的55%\n - 效果提升：生命力恢复量提升至伤害量的43%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005403.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10054603",
         "name": "代理裁决",
-        "desc": "2名敌军（按增益多的排序）\n - 解除2个增益 [100%的概率]\n - 生命力转换 25%\nスキル強化効果\n - 效果提升：生命力转换25%",
-        "cooltime": "⏱️ CT: 91秒",
+        "desc": "2名敌军（按增益多的排序）\n - 解除2个增益 [100%的概率]\n - 生命力转换 25%\nSkill Enhancement Effect\n - 效果提升：生命力转换25%",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005402.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10054604",
         "name": "奈斯特拉的庇佑",
-        "desc": "自己\n - 自身生命力达到50%以下时按照施展者防御力的165%恢复生命力（每场战斗发动2次）\n - 全体敌军\n - 自身被敌人的攻击命中4次时，造成1次相当于1100的固定伤害\nスキル強化効果\n - 恢复量提升：生命力恢复量提升至防御力的190%\n超越2段階達成効果\n - 次数提升：生命力恢复（每场战斗发动3次）\n超越6段階達成効果\n - 伤害量提升：固定伤害提升至1485",
+        "desc": "自己\n - 自身生命力达到50%以下时按照施展者防御力的165%恢复生命力（每场战斗发动2次）\n - 全体敌军\n - 自身被敌人的攻击命中4次时，造成1次相当于1100的固定伤害\nSkill Enhancement Effect\n - 恢复量提升：生命力恢复量提升至防御力的190%\nTranscend Lv.2 Effect\n - 次数提升：生命力恢复（每场战斗发动3次）\nTranscend Lv.6 Effect\n - 伤害量提升：固定伤害提升至1485",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005404.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "126",
-      "防御力": "77",
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
       "HP": "510",
-      "敏捷": "17",
-      "暴击率": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 126,
-        "防御力": 77,
+        "Magical Attack": 126,
+        "Defense": 77,
         "HP": 510
       },
       "level30": {
-        "魔法攻击力": 561,
-        "防御力": 338,
+        "Magical Attack": 561,
+        "Defense": 338,
         "HP": 2279
       },
       "levelUpBonus": {
-        "魔法攻击力": 15,
-        "防御力": 9,
+        "Magical Attack": 15,
+        "Defense": 9,
         "HP": 61
       },
       "reinforceBonus": {
-        "魔法攻击力": 44,
-        "防御力": 27,
+        "Magical Attack": 44,
+        "Defense": 27,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 561,
-          "防御力": 338,
+          "Magical Attack": 561,
+          "Defense": 338,
           "HP": 2279
         },
         "+1": {
-          "魔法攻击力": 605,
-          "防御力": 365,
+          "Magical Attack": 605,
+          "Defense": 365,
           "HP": 2458
         },
         "+2": {
-          "魔法攻击力": 649,
-          "防御力": 392,
+          "Magical Attack": 649,
+          "Defense": 392,
           "HP": 2637
         },
         "+3": {
-          "魔法攻击力": 693,
-          "防御力": 419,
+          "Magical Attack": 693,
+          "Defense": 419,
           "HP": 2816
         },
         "+4": {
-          "魔法攻击力": 737,
-          "防御力": 446,
+          "Magical Attack": 737,
+          "Defense": 446,
           "HP": 2995
         },
         "+5": {
-          "魔法攻击力": 781,
-          "防御力": 473,
+          "Magical Attack": 781,
+          "Defense": 473,
           "HP": 3174
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10054501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力45%、防御力55%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的55%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力45%、防御力55%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的55%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005401.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10054502",
         "name": "异界之光",
-        "desc": "全体敌军\n - 2次相当于魔法攻击力37%、防御力42%的伤害\n - 自己\n - 按照伤害量的28%恢复生命力\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的37%\n - 伤害量提升：提升至魔法攻击力的42%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "全体敌军\n - 2次相当于魔法攻击力37%、防御力42%的伤害\n - 自己\n - 按照伤害量的28%恢复生命力\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的37%\n - 伤害量提升：提升至魔法攻击力的42%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005403.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10054503",
         "name": "代理裁决",
         "desc": "2名敌军（按增益多的排序）\n - 解除2个增益 [100%的概率]\n - 生命力转换 42%",
-        "cooltime": "⏱️ CT: 91秒",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005402.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10054504",
         "name": "奈斯特拉的庇佑",
         "desc": "自己\n - 自身生命力达到50%以下时按照施展者防御力的150%恢复生命力（每场战斗发动2次）\n - 全体敌军\n - 自身被敌人的攻击命中4次时，造成1次相当于775的固定伤害",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "90",
-      "防御力": "55",
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
       "HP": "364",
-      "敏捷": "15",
-      "暴击率": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 90,
-        "防御力": 55,
+        "Magical Attack": 90,
+        "Defense": 55,
         "HP": 364
       },
       "level30": {
-        "魔法攻击力": 409,
-        "防御力": 229,
+        "Magical Attack": 409,
+        "Defense": 229,
         "HP": 1640
       },
       "levelUpBonus": {
-        "魔法攻击力": 11,
-        "防御力": 6,
+        "Magical Attack": 11,
+        "Defense": 6,
         "HP": 44
       },
       "reinforceBonus": {
-        "魔法攻击力": 30,
-        "防御力": 20,
+        "Magical Attack": 30,
+        "Defense": 20,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 409,
-          "防御力": 229,
+          "Magical Attack": 409,
+          "Defense": 229,
           "HP": 1640
         },
         "+1": {
-          "魔法攻击力": 439,
-          "防御力": 249,
+          "Magical Attack": 439,
+          "Defense": 249,
           "HP": 1767
         },
         "+2": {
-          "魔法攻击力": 469,
-          "防御力": 269,
+          "Magical Attack": 469,
+          "Defense": 269,
           "HP": 1894
         },
         "+3": {
-          "魔法攻击力": 499,
-          "防御力": 289,
+          "Magical Attack": 499,
+          "Defense": 289,
           "HP": 2021
         },
         "+4": {
-          "魔法攻击力": 529,
-          "防御力": 309,
+          "Magical Attack": 529,
+          "Defense": 309,
           "HP": 2148
         },
         "+5": {
-          "魔法攻击力": 559,
-          "防御力": 329,
+          "Magical Attack": 559,
+          "Defense": 329,
           "HP": 2275
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10054401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力40%、防御力50%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的50%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力40%、防御力50%的伤害\n - 所有攻击力减少 [100%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005401.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10054402",
         "name": "异界之光",
-        "desc": "全体敌军\n - 2次相当于魔法攻击力35%、防御力40%的伤害\n - 自己\n - 按照伤害量的24%恢复生命力\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的35%\n - 伤害量提升：提升至魔法攻击力的40%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "全体敌军\n - 2次相当于魔法攻击力35%、防御力40%的伤害\n - 自己\n - 按照伤害量的24%恢复生命力\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的35%\n - 伤害量提升：提升至魔法攻击力的40%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005403.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10054403",
         "name": "代理裁决",
         "desc": "2名敌军（按增益多的排序）\n - 解除1个增益 [100%的概率]\n - 生命力转换 55%",
-        "cooltime": "⏱️ CT: 91秒",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005402.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10054404",
         "name": "奈斯特拉的庇佑",
         "desc": "自己\n - 自身生命力达到50%以下时按照施展者防御力的135%恢复生命力（每场战斗发动2次）\n - 全体敌军\n - 自身被敌人的攻击命中4次时，造成1次相当于510的固定伤害",
