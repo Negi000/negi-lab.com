@@ -59,6 +59,22 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // 広告・アナリティクス関連はキャッシュしない（常にネットワークから取得）
+  const noCachePatterns = [
+    'pagead2.googlesyndication.com',
+    'googleads.g.doubleclick.net',
+    'adservice.google',
+    'google-analytics.com',
+    'googletagmanager.com',
+    'ko-fi.com',
+    'ofuse.me'
+  ];
+  
+  if (noCachePatterns.some(pattern => event.request.url.includes(pattern))) {
+    // 広告はキャッシュせずネットワークから直接取得
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
       .then((response) => {
