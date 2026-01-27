@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "176",
-      "防禦力": "108",
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
       "HP": "714",
-      "敏捷": "19",
-      "暴擊率": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 176,
-        "防禦力": 108,
+        "Magical Attack": 176,
+        "Defense": 108,
         "HP": 714
       },
       "level30": {
-        "魔法攻擊力": 785,
-        "防禦力": 485,
+        "Magical Attack": 785,
+        "Defense": 485,
         "HP": 3208
       },
       "levelUpBonus": {
-        "魔法攻擊力": 21,
-        "防禦力": 13,
+        "Magical Attack": 21,
+        "Defense": 13,
         "HP": 86
       },
       "reinforceBonus": {
-        "魔法攻擊力": 62,
-        "防禦力": 38,
+        "Magical Attack": 62,
+        "Defense": 38,
         "HP": 250
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 785,
-          "防禦力": 485,
+          "Magical Attack": 785,
+          "Defense": 485,
           "HP": 3208
         },
         "+1": {
-          "魔法攻擊力": 847,
-          "防禦力": 523,
+          "Magical Attack": 847,
+          "Defense": 523,
           "HP": 3458
         },
         "+2": {
-          "魔法攻擊力": 909,
-          "防禦力": 561,
+          "Magical Attack": 909,
+          "Defense": 561,
           "HP": 3708
         },
         "+3": {
-          "魔法攻擊力": 971,
-          "防禦力": 599,
+          "Magical Attack": 971,
+          "Defense": 599,
           "HP": 3958
         },
         "+4": {
-          "魔法攻擊力": 1033,
-          "防禦力": 637,
+          "Magical Attack": 1033,
+          "Defense": 637,
           "HP": 4208
         },
         "+5": {
-          "魔法攻擊力": 1095,
-          "防禦力": 675,
+          "Magical Attack": 1095,
+          "Defense": 675,
           "HP": 4458
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10110601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力50%、防禦力60%的1次傷害\n - 傷害量減少［100%機率］［持續2回合］\nスキル強化効果\n - 添加效果：傷害量減少6%［100%機率］［持續2回合］",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力50%、防禦力60%的1次傷害\n - 傷害量減少［100%機率］［持續2回合］\nSkill Enhancement Effect\n - 添加效果：傷害量減少6%［100%機率］［持續2回合］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10110602",
         "name": "裝備強化",
-        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nスキル強化効果\n - 效果上升：BOSS對象傷害量增加40%\n - 效果上升：弱點攻擊機率增加54%\n超越6段階達成効果\n - 變更對象數量：攻擊力最高的我軍2名",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nSkill Enhancement Effect\n - 效果上升：BOSS對象傷害量增加40%\n - 效果上升：弱點攻擊機率增加54%\nTranscend Lv.6 Effect\n - 變更對象數量：攻擊力最高的我軍2名",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10110603",
         "name": "跳躍攻擊",
-        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除2個［100%機率］\n - 相當於魔法攻擊力100%、防禦力115%的1次無視防禦傷害\nスキル強化効果\n - 傷害量上升：魔法攻擊力的115%、防禦力的135%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除2個［100%機率］\n - 相當於魔法攻擊力100%、防禦力115%的1次無視防禦傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的115%、防禦力的135%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10110604",
         "name": "鐵匠的強化",
-        "desc": "所有敵軍\n - 防禦力減少［常態］\nスキル強化効果\n - 效果上升：防禦力減少24%\n超越2段階達成効果\n - ［所有我軍］\n - 添加效果：5人攻擊技削減20%［常態］",
+        "desc": "所有敵軍\n - 防禦力減少［常態］\nSkill Enhancement Effect\n - 效果上升：防禦力減少24%\nTranscend Lv.2 Effect\n - ［所有我軍］\n - 添加效果：5人攻擊技削減20%［常態］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011004.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "126",
-      "防禦力": "77",
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
       "HP": "510",
-      "敏捷": "17",
-      "暴擊率": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 126,
-        "防禦力": 77,
+        "Magical Attack": 126,
+        "Defense": 77,
         "HP": 510
       },
       "level30": {
-        "魔法攻擊力": 561,
-        "防禦力": 338,
+        "Magical Attack": 561,
+        "Defense": 338,
         "HP": 2279
       },
       "levelUpBonus": {
-        "魔法攻擊力": 15,
-        "防禦力": 9,
+        "Magical Attack": 15,
+        "Defense": 9,
         "HP": 61
       },
       "reinforceBonus": {
-        "魔法攻擊力": 44,
-        "防禦力": 27,
+        "Magical Attack": 44,
+        "Defense": 27,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 561,
-          "防禦力": 338,
+          "Magical Attack": 561,
+          "Defense": 338,
           "HP": 2279
         },
         "+1": {
-          "魔法攻擊力": 605,
-          "防禦力": 365,
+          "Magical Attack": 605,
+          "Defense": 365,
           "HP": 2458
         },
         "+2": {
-          "魔法攻擊力": 649,
-          "防禦力": 392,
+          "Magical Attack": 649,
+          "Defense": 392,
           "HP": 2637
         },
         "+3": {
-          "魔法攻擊力": 693,
-          "防禦力": 419,
+          "Magical Attack": 693,
+          "Defense": 419,
           "HP": 2816
         },
         "+4": {
-          "魔法攻擊力": 737,
-          "防禦力": 446,
+          "Magical Attack": 737,
+          "Defense": 446,
           "HP": 2995
         },
         "+5": {
-          "魔法攻擊力": 781,
-          "防禦力": 473,
+          "Magical Attack": 781,
+          "Defense": 473,
           "HP": 3174
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10110501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力45%、防禦力55%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的45%\n - 傷害量上升：魔法攻擊力的55%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力45%、防禦力55%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的45%\n - 傷害量上升：魔法攻擊力的55%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10110502",
         "name": "裝備強化",
-        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nスキル強化効果\n - 效果上升：弱點攻擊機率增加34%",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nSkill Enhancement Effect\n - 效果上升：弱點攻擊機率增加34%",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10110503",
         "name": "跳躍攻擊",
-        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除2個［100%機率］\n - 相當於魔法攻擊力90%、防禦力100%的1次無視防禦傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的90%\n - 傷害量上升：魔法攻擊力的100%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除2個［100%機率］\n - 相當於魔法攻擊力90%、防禦力100%的1次無視防禦傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%\n - 傷害量上升：魔法攻擊力的100%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10110504",
         "name": "鐵匠的強化",
         "desc": "所有敵軍\n - 防禦力減少［常態］",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "90",
-      "防禦力": "55",
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
       "HP": "364",
-      "敏捷": "15",
-      "暴擊率": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 90,
-        "防禦力": 55,
+        "Magical Attack": 90,
+        "Defense": 55,
         "HP": 364
       },
       "level30": {
-        "魔法攻擊力": 409,
-        "防禦力": 229,
+        "Magical Attack": 409,
+        "Defense": 229,
         "HP": 1640
       },
       "levelUpBonus": {
-        "魔法攻擊力": 11,
-        "防禦力": 6,
+        "Magical Attack": 11,
+        "Defense": 6,
         "HP": 44
       },
       "reinforceBonus": {
-        "魔法攻擊力": 30,
-        "防禦力": 20,
+        "Magical Attack": 30,
+        "Defense": 20,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 409,
-          "防禦力": 229,
+          "Magical Attack": 409,
+          "Defense": 229,
           "HP": 1640
         },
         "+1": {
-          "魔法攻擊力": 439,
-          "防禦力": 249,
+          "Magical Attack": 439,
+          "Defense": 249,
           "HP": 1767
         },
         "+2": {
-          "魔法攻擊力": 469,
-          "防禦力": 269,
+          "Magical Attack": 469,
+          "Defense": 269,
           "HP": 1894
         },
         "+3": {
-          "魔法攻擊力": 499,
-          "防禦力": 289,
+          "Magical Attack": 499,
+          "Defense": 289,
           "HP": 2021
         },
         "+4": {
-          "魔法攻擊力": 529,
-          "防禦力": 309,
+          "Magical Attack": 529,
+          "Defense": 309,
           "HP": 2148
         },
         "+5": {
-          "魔法攻擊力": 559,
-          "防禦力": 329,
+          "Magical Attack": 559,
+          "Defense": 329,
           "HP": 2275
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10110401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力40%、防禦力50%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的40%\n - 傷害量上升：魔法攻擊力的50%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力40%、防禦力50%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的40%\n - 傷害量上升：魔法攻擊力的50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10110402",
         "name": "裝備強化",
-        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nスキル強化効果\n - 效果上升：弱點攻擊機率增加25%",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "攻擊力最高的我軍\n - 以BOSS為對象傷害量增加［持續5回合］\n - 弱點攻擊機率增加［持續5回合］\nSkill Enhancement Effect\n - 效果上升：弱點攻擊機率增加25%",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10110403",
         "name": "跳躍攻擊",
-        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除1個［100%機率］\n - 相當於魔法攻擊力80%、防禦力95%的1次無視防禦傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的80%\n - 傷害量上升：魔法攻擊力的95%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "敵軍3名（按Buff多的順序）\n - Buff解除1個［100%機率］\n - 相當於魔法攻擊力80%、防禦力95%的1次無視防禦傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%\n - 傷害量上升：魔法攻擊力的95%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10110404",
         "name": "鐵匠的強化",
         "desc": "所有敵軍\n - 防禦力減少［常態］",

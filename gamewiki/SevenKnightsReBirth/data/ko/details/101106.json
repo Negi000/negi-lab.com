@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "176",
-      "방어력": "108",
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
       "HP": "714",
-      "민첩성": "19",
-      "크리티컬 확률": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 176,
-        "방어력": 108,
+        "Magical Attack": 176,
+        "Defense": 108,
         "HP": 714
       },
       "level30": {
-        "마법 공격력": 785,
-        "방어력": 485,
+        "Magical Attack": 785,
+        "Defense": 485,
         "HP": 3208
       },
       "levelUpBonus": {
-        "마법 공격력": 21,
-        "방어력": 13,
+        "Magical Attack": 21,
+        "Defense": 13,
         "HP": 86
       },
       "reinforceBonus": {
-        "마법 공격력": 62,
-        "방어력": 38,
+        "Magical Attack": 62,
+        "Defense": 38,
         "HP": 250
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 785,
-          "방어력": 485,
+          "Magical Attack": 785,
+          "Defense": 485,
           "HP": 3208
         },
         "+1": {
-          "마법 공격력": 847,
-          "방어력": 523,
+          "Magical Attack": 847,
+          "Defense": 523,
           "HP": 3458
         },
         "+2": {
-          "마법 공격력": 909,
-          "방어력": 561,
+          "Magical Attack": 909,
+          "Defense": 561,
           "HP": 3708
         },
         "+3": {
-          "마법 공격력": 971,
-          "방어력": 599,
+          "Magical Attack": 971,
+          "Defense": 599,
           "HP": 3958
         },
         "+4": {
-          "마법 공격력": 1033,
-          "방어력": 637,
+          "Magical Attack": 1033,
+          "Defense": 637,
           "HP": 4208
         },
         "+5": {
-          "마법 공격력": 1095,
-          "방어력": 675,
+          "Magical Attack": 1095,
+          "Defense": 675,
           "HP": 4458
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10110601",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 50%, 방어력의 60%만큼 1회 피해\n - 피해량 감소 [100% 확률] [2턴 지속]\nスキル強化効果\n - 효과 추가 : 피해량 감소 6% [100% 확률] [2턴 지속]",
+        "desc": "단일 적군\n - 마법 공격력의 50%, 방어력의 60%만큼 1회 피해\n - 피해량 감소 [100% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 효과 추가 : 피해량 감소 6% [100% 확률] [2턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10110602",
         "name": "장비 강화",
-        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nスキル強化効果\n - 효과 상승 : 보스 대상 피해량 증가 40%\n - 효과 상승 : 약점 공격 확률 증가 54%\n超越6段階達成効果\n - 대상 수 변경 : 공격력이 가장 높은 아군 2명",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 보스 대상 피해량 증가 40%\n - 효과 상승 : 약점 공격 확률 증가 54%\nTranscend Lv.6 Effect\n - 대상 수 변경 : 공격력이 가장 높은 아군 2명",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10110603",
         "name": "리프 어택",
-        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 2개 [100% 확률]\n - 마법 공격력의 100%, 방어력의 115%만큼 1회 방어 무시 피해\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 115%, 방어력의 135%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 2개 [100% 확률]\n - 마법 공격력의 100%, 방어력의 115%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 115%, 방어력의 135%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10110604",
         "name": "대장장이의 강화",
-        "desc": "모든 적군\n - 방어력 감소 [상시]\nスキル強化効果\n - 효과 상승 : 방어력 감소 24%\n超越2段階達成効果\n - 모든 아군\n - 효과 추가 : 5인 공격기 감쇄 20% [상시]",
+        "desc": "모든 적군\n - 방어력 감소 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 24%\nTranscend Lv.2 Effect\n - 모든 아군\n - 효과 추가 : 5인 공격기 감쇄 20% [상시]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011004.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "126",
-      "방어력": "77",
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
       "HP": "510",
-      "민첩성": "17",
-      "크리티컬 확률": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 126,
-        "방어력": 77,
+        "Magical Attack": 126,
+        "Defense": 77,
         "HP": 510
       },
       "level30": {
-        "마법 공격력": 561,
-        "방어력": 338,
+        "Magical Attack": 561,
+        "Defense": 338,
         "HP": 2279
       },
       "levelUpBonus": {
-        "마법 공격력": 15,
-        "방어력": 9,
+        "Magical Attack": 15,
+        "Defense": 9,
         "HP": 61
       },
       "reinforceBonus": {
-        "마법 공격력": 44,
-        "방어력": 27,
+        "Magical Attack": 44,
+        "Defense": 27,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 561,
-          "방어력": 338,
+          "Magical Attack": 561,
+          "Defense": 338,
           "HP": 2279
         },
         "+1": {
-          "마법 공격력": 605,
-          "방어력": 365,
+          "Magical Attack": 605,
+          "Defense": 365,
           "HP": 2458
         },
         "+2": {
-          "마법 공격력": 649,
-          "방어력": 392,
+          "Magical Attack": 649,
+          "Defense": 392,
           "HP": 2637
         },
         "+3": {
-          "마법 공격력": 693,
-          "방어력": 419,
+          "Magical Attack": 693,
+          "Defense": 419,
           "HP": 2816
         },
         "+4": {
-          "마법 공격력": 737,
-          "방어력": 446,
+          "Magical Attack": 737,
+          "Defense": 446,
           "HP": 2995
         },
         "+5": {
-          "마법 공격력": 781,
-          "방어력": 473,
+          "Magical Attack": 781,
+          "Defense": 473,
           "HP": 3174
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10110501",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 45%, 방어력의 55%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 45%\n - 피해량 상승 : 마법 공격력의 55%",
+        "desc": "단일 적군\n - 마법 공격력의 45%, 방어력의 55%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 45%\n - 피해량 상승 : 마법 공격력의 55%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10110502",
         "name": "장비 강화",
-        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nスキル強化効果\n - 효과 상승 : 약점 공격 확률 증가 34%",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 약점 공격 확률 증가 34%",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10110503",
         "name": "리프 어택",
-        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 2개 [100% 확률]\n - 마법 공격력의 90%, 방어력의 100%만큼 1회 방어 무시 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 90%\n - 피해량 상승 : 마법 공격력의 100%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 2개 [100% 확률]\n - 마법 공격력의 90%, 방어력의 100%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%\n - 피해량 상승 : 마법 공격력의 100%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10110504",
         "name": "대장장이의 강화",
         "desc": "모든 적군\n - 방어력 감소 [상시]",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "90",
-      "방어력": "55",
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
       "HP": "364",
-      "민첩성": "15",
-      "크리티컬 확률": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 90,
-        "방어력": 55,
+        "Magical Attack": 90,
+        "Defense": 55,
         "HP": 364
       },
       "level30": {
-        "마법 공격력": 409,
-        "방어력": 229,
+        "Magical Attack": 409,
+        "Defense": 229,
         "HP": 1640
       },
       "levelUpBonus": {
-        "마법 공격력": 11,
-        "방어력": 6,
+        "Magical Attack": 11,
+        "Defense": 6,
         "HP": 44
       },
       "reinforceBonus": {
-        "마법 공격력": 30,
-        "방어력": 20,
+        "Magical Attack": 30,
+        "Defense": 20,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 409,
-          "방어력": 229,
+          "Magical Attack": 409,
+          "Defense": 229,
           "HP": 1640
         },
         "+1": {
-          "마법 공격력": 439,
-          "방어력": 249,
+          "Magical Attack": 439,
+          "Defense": 249,
           "HP": 1767
         },
         "+2": {
-          "마법 공격력": 469,
-          "방어력": 269,
+          "Magical Attack": 469,
+          "Defense": 269,
           "HP": 1894
         },
         "+3": {
-          "마법 공격력": 499,
-          "방어력": 289,
+          "Magical Attack": 499,
+          "Defense": 289,
           "HP": 2021
         },
         "+4": {
-          "마법 공격력": 529,
-          "방어력": 309,
+          "Magical Attack": 529,
+          "Defense": 309,
           "HP": 2148
         },
         "+5": {
-          "마법 공격력": 559,
-          "방어력": 329,
+          "Magical Attack": 559,
+          "Defense": 329,
           "HP": 2275
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10110401",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 40%, 방어력의 50%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 40%\n - 피해량 상승 : 마법 공격력의 50%",
+        "desc": "단일 적군\n - 마법 공격력의 40%, 방어력의 50%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 40%\n - 피해량 상승 : 마법 공격력의 50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011001.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10110402",
         "name": "장비 강화",
-        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nスキル強化効果\n - 효과 상승 : 약점 공격 확률 증가 25%",
-        "cooltime": "⏱️ CT: 120秒",
+        "desc": "공격력이 가장 높은 아군\n - 보스 대상 피해량 증가 [5턴 지속]\n - 약점 공격 확률 증가 [5턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 약점 공격 확률 증가 25%",
+        "cooltime": "⏱️ CT: 120s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011002.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10110403",
         "name": "리프 어택",
-        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 1개 [100% 확률]\n - 마법 공격력의 80%, 방어력의 95%만큼 1회 방어 무시 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 80%\n - 피해량 상승 : 마법 공격력의 95%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 버프 해제 1개 [100% 확률]\n - 마법 공격력의 80%, 방어력의 95%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%\n - 피해량 상승 : 마법 공격력의 95%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011003.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10110404",
         "name": "대장장이의 강화",
         "desc": "모든 적군\n - 방어력 감소 [상시]",

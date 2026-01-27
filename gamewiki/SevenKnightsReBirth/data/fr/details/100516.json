@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100516",
+      "name": "Ace",
+      "subname": "Maître de l'Épée de chef",
+      "affiliation": "Quatre Seigneurs",
+      "flavor": "Lors d’un combat, Ace fut assommé par un ennemi. Juste au moment où cet ennemi allait abattre son épée, il fut fendu en deux et tomba. La rumeur dit qu'à cet instant, Ace entendit la voix de l’épée et devint son véritable maître.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10051601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 130 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005101.webp"
+      },
+      "Skill 1": {
+        "id": "10051602",
+        "name": "Frappe de lune",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts ignorant la défense équivalents à 70 % de l'ATQ PHY 2 fois\n - Inflige des dégâts ignorant la défense équivalents à 85 % de l'ATQ PHY 2 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 85 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : 100 % de chances d'infliger Réduction de soins reçus56 % [Durée : 3 tour(s)]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005102.webp"
+      },
+      "Skill 2": {
+        "id": "10051603",
+        "name": "Coupures à foison",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 140 % de l'ATQ PHY 1 fois.\n - A 100 % de chances d'infliger Vulnérabilité physique [Durée : 3 tour(s)]\n - A 100 % de chances d'infliger une Réduction de taux de parades [Durée : 3 tour(s)]\n - 3 alliés\n - Confère 2 Suppression(s) de malus\nSkill Enhancement Effect\n - Gain d'effet : Réduction de taux de parades 33 %\n - 3 alliés\n - Ajout d'effet : 2 Suppression(s) de malus",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005103.webp"
+      },
+      "Passive": {
+        "id": "10051604",
+        "name": "Ordre suprême",
+        "desc": "Tous les ennemis\n - Inflige Réduction de défense [Toujours actif]\n - Inflige Réduction des soins reçus [Toujours actif]\n - Soi-même\n - Confère Pouvoir (1 fois par combat)\n - Confère Barrière équivalente à 135 % de l'ATQ PHY du lanceur à l'activation de Pouvoir [Durée : 3 tour(s)]\n - Confère Barrière équivalente à 155 % de l'ATQ PHY du lanceur à l'activation de Pouvoir [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 24 %\n - Augmente l'effet : l'absorption de la Barrière devient égale à 155 % de l'ATQ PHY.\nTranscend Lv.6 Effect\n - Soi-même\n - Ajout d'effet : Augmentation de taux de réussite des effets 64 % [Toujours actif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005104.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le Taux de coup critique de 18 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "鈴木 裕斗",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "02 / 02",
+      "age": "18",
+      "height": "174",
+      "weight": "68",
+      "constellation": "Verseau",
+      "likes": "Daisy, Teo, œufs, légumes marinés, politesse, paix, force ultime, jeu de Go",
+      "dislikes": "Waki, Bai Jiao, viande de lapin, impolitesse, faiblesse, guerre, cafards",
+      "story": "Lors d’un combat, Ace fut assommé par un ennemi. Juste au moment où cet ennemi allait abattre son épée, il fut fendu en deux et tomba. La rumeur dit qu'à cet instant, Ace entendit la voix de l’épée et devint son véritable maître."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100515",
+      "name": "Ace",
+      "subname": "Commandant",
+      "affiliation": "Quatre Seigneurs",
+      "flavor": "Devenu familier avec sa position de seigneur, Ace a créé une armée qu'il commande en première ligne.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10051501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005101.webp"
+      },
+      "Skill 1": {
+        "id": "10051502",
+        "name": "Frappe de lune",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\n - Inflige des dégâts ignorant la défense équivalents à 57 % de l'ATQ PHY 2 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 57 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005102.webp"
+      },
+      "Skill 2": {
+        "id": "10051503",
+        "name": "Coupures à foison",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 125 % de l'ATQ PHY 1 fois.\n - A 100 % de chances d'infliger Vulnérabilité physique [Durée : 3 tour(s)]\n - A 100 % de chances d'infliger une Réduction de taux de parades [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 125 % de l'ATQ PHY\n - Gain d'effet : Vulnérabilité physique 13 %",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005103.webp"
+      },
+      "Passive": {
+        "id": "10051504",
+        "name": "Ordre suprême",
+        "desc": "Tous les ennemis\n - Inflige Réduction de défense [Toujours actif]\n - Inflige Réduction des soins reçus [Toujours actif]\n - Soi-même\n - Confère Pouvoir (1 fois par combat)\n - Confère Barrière équivalente à 125 % de l'ATQ PHY du lanceur à l'activation de Pouvoir [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de soins reçus 36 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "鈴木 裕斗",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "02 / 02",
+      "age": "18",
+      "height": "174",
+      "weight": "68",
+      "constellation": "Verseau",
+      "likes": "Daisy, Teo, œufs, légumes marinés, politesse, paix, force ultime, jeu de Go",
+      "dislikes": "Waki, Bai Jiao, viande de lapin, impolitesse, faiblesse, guerre, cafards",
+      "story": "Devenu familier avec sa position de seigneur, Ace a créé une armée qu'il commande en première ligne."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100514",
+      "name": "Ace",
+      "subname": "Jeune seigneur",
+      "affiliation": "Quatre Seigneurs",
+      "flavor": "Ace est devenu un seigneur après la mort de ses parents. Il possède désormais l'Épée de chef, un héritage familial dont les blessures ne guérissent jamais une fois infligées, mais il ne sait pas encore bien la manier.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10051401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005101.webp"
+      },
+      "Skill 1": {
+        "id": "10051402",
+        "name": "Frappe de lune",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\n - Inflige des dégâts ignorant la défense équivalents à 52 % de l'ATQ PHY 2 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 52 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005102.webp"
+      },
+      "Skill 2": {
+        "id": "10051403",
+        "name": "Coupures à foison",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 115 % de l'ATQ PHY 1 fois.\n - A 100 % de chances d'infliger Vulnérabilité physique [Durée : 3 tour(s)]\n - A 100 % de chances d'infliger une Réduction de taux de parades [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 115 % de l'ATQ PHY\n - Gain d'effet : Vulnérabilité physique 10 %",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005103.webp"
+      },
+      "Passive": {
+        "id": "10051404",
+        "name": "Ordre suprême",
+        "desc": "Tous les ennemis\n - Inflige Réduction de défense [Toujours actif]\n - Inflige Réduction des soins reçus [Toujours actif]\n - Soi-même\n - Confère Pouvoir (1 fois par combat)\n - Confère Barrière équivalente à 110 % de l'ATQ PHY du lanceur à l'activation de Pouvoir [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de soins reçus 28 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "鈴木 裕斗",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "02 / 02",
+      "age": "18",
+      "height": "174",
+      "weight": "68",
+      "constellation": "Verseau",
+      "likes": "Daisy, Teo, œufs, légumes marinés, politesse, paix, force ultime, jeu de Go",
+      "dislikes": "Waki, Bai Jiao, viande de lapin, impolitesse, faiblesse, guerre, cafards",
+      "story": "Ace est devenu un seigneur après la mort de ses parents. Il possède désormais l'Épée de chef, un héritage familial dont les blessures ne guérissent jamais une fois infligées, mais il ne sait pas encore bien la manier."
+    }
+  }
+]

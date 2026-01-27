@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100906",
+      "name": "Kanzler",
+      "subname": "Kommandant der Wachen",
+      "affiliation": "Terra",
+      "flavor": "Nachdem er mehrere Spione eigenhändig gefangen genommen hatte, wurde der Kanzler zum Anführer der königlichen Wachen befördert. Die Spione behaupten, dass sie in jener Nacht gegen einen Teufel gekämpft haben.",
+      "rarity": "legendary",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 60 % der Verteidigung 1 Mal.\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs plus 70 % der Verteidigung.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090602",
+        "name": "Zerstören",
+        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - Verursacht 3 Buff-Entfernung(en). [100% Chance]\n - 100 % Chance, Verteidigungsreduzierung zu verursachen. [Dauer: 5 Runde(n)]\n - Verursacht Schaden in Höhe von 120 % des physischen Angriffs plus 135 % der Verteidigung 1 Mal.\n - Verursacht Schaden in Höhe von 145 % des physischen Angriffs plus 165 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 145 % des physischen Angriffs plus 165 % der Verteidigung.\n - Erhöhter Effekt: VK-Verringerung auf 44 %.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090603",
+        "name": "Bodenzerstörung",
+        "desc": "3 Gegner (Zuerst hintere Reihe)\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - Verursacht Schaden in Höhe von 85 % des physischen Angriffs plus 100 % der Verteidigung 1 Mal.\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 85 % des physischen Angriffs plus 100 % der Verteidigung.\n - Erhöhter Effekt: Verfehlchance-Erhöhung auf 60 %.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: 100 % Chance, 24 % Volle AK-Verringerung zu verursachen. [Dauer: 3 Runde(n)]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090604",
+        "name": "Druck",
+        "desc": "Selbst\n - Heilt TP in Höhe von 165 % der Verteidigung des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]\n - Alle Feinde\n - Verursacht Schadensreduzierung. [Immer aktiv]\n - 3 Feinde\n - Verursacht 1285 festen Schaden 1 Mal bei jedem Angriff 3 Mal.\n - Verursacht 1930 festen Schaden 1 Mal bei jedem Angriff 3 Mal.\nSkill Enhancement Effect\n - Erhöhter Effekt: Schaden-Verringerung auf 13 %.\n - Erhöht Schaden: Zu 1930 garantierter Schaden.\nTranscend Lv.6 Effect\n - Selbst\n - Fügt Effekt hinzu: Immunität gegen allen Schaden, wenn TP auf 50 % oder niedriger fallen. [Dauer: 2 Runde(n)] [Einmal pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht die Verteidigung um 12 %.",
+      "transcend_2": "Erhöht die Verteidigung um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht die Verteidigung um 12 %.",
+      "transcend_6": "Erhöht die Verteidigung um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Skorpion",
+      "likes": "Aragon, Rook, Ritterlichkeit, Ehre, Ritter, Übung, Fleisch, Weißwein, Schwertkampftraining, Schmetterlinge, Menschen mit Überzeugung",
+      "dislikes": "Kris, Feigheit, Unehre, Affen, Zigaretten",
+      "story": "Nachdem er mehrere Spione eigenhändig gefangen genommen hatte, wurde der Kanzler zum Anführer der königlichen Wachen befördert. Die Spione behaupten, dass sie in jener Nacht gegen einen Teufel gekämpft haben."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100905",
+      "name": "Kanzler",
+      "subname": "Wachkapitän",
+      "affiliation": "Terra",
+      "flavor": "Kanzler traf Rook zum ersten Mal, als er Hauptmann der Wache wurde. Rooks Anwesenheit erinnerte ihn daran, was ein wahrer Soldat sein sollte, und inspirierte ihn, fleißig zu trainieren.",
+      "rarity": "legendary",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 45 % des physischen Angriffs plus 55 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 55 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090502",
+        "name": "Zerstören",
+        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\n - 100 % Chance, Verteidigungsreduzierung zu verursachen. [Dauer: 5 Runde(n)]\n - Verursacht Schaden in Höhe von 105 % des physischen Angriffs plus 125 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 105 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 125 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090503",
+        "name": "Bodenzerstörung",
+        "desc": "3 Gegner (Zuerst hintere Reihe)\n - Verursacht Schaden in Höhe von 65 % des physischen Angriffs plus 75 % der Verteidigung 1 Mal.\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 65 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 75 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090504",
+        "name": "Druck",
+        "desc": "Selbst\n - Heilt TP in Höhe von 150 % der Verteidigung des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]\n - Alle Feinde\n - Verursacht Schadensreduzierung. [Immer aktiv]\n - 3 Feinde\n - Verursacht 930 festen Schaden 1 Mal bei jedem Angriff 3 Mal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Skorpion",
+      "likes": "Aragon, Rook, Ritterlichkeit, Ehre, Ritter, Übung, Fleisch, Weißwein, Schwertkampftraining, Schmetterlinge, Menschen mit Überzeugung",
+      "dislikes": "Kris, Feigheit, Unehre, Affen, Zigaretten",
+      "story": "Kanzler traf Rook zum ersten Mal, als er Hauptmann der Wache wurde. Rooks Anwesenheit erinnerte ihn daran, was ein wahrer Soldat sein sollte, und inspirierte ihn, fleißig zu trainieren."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100904",
+      "name": "Kanzler",
+      "subname": "Milizhauptmann",
+      "affiliation": "Terra",
+      "flavor": "Der Kanzler wurde aus Respekt vor Knox Soldat, aber nach Knox' Korruption verwandelte sich seine Bewunderung in Hass. Er schwor, als wahrer Soldat zu leben und niemals dem Bösen zu verfallen.",
+      "rarity": "legendary",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10090401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 40 % des physischen Angriffs plus 50 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 40 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 50 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009001.webp"
+      },
+      "Skill 1": {
+        "id": "10090402",
+        "name": "Zerstören",
+        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - Verursacht 1 Buff-Entfernung(en). [100% Chance]\n - 100 % Chance, Verteidigungsreduzierung zu verursachen. [Dauer: 5 Runde(n)]\n - Verursacht Schaden in Höhe von 95 % des physischen Angriffs plus 110 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 95 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 110 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009002.webp"
+      },
+      "Skill 2": {
+        "id": "10090403",
+        "name": "Bodenzerstörung",
+        "desc": "3 Gegner (Zuerst hintere Reihe)\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\n - 100 % Chance, erhöhte Verfehlenswahrscheinlichkeit zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 70 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009003.webp"
+      },
+      "Passive": {
+        "id": "10090404",
+        "name": "Druck",
+        "desc": "Selbst\n - Heilt TP in Höhe von 135 % der Verteidigung des Zaubernden, wenn die TP auf 50 % oder weniger fallen. [1 Mal pro Kampf]\n - Alle Feinde\n - Verursacht Schadensreduzierung. [Immer aktiv]\n - 3 Feinde\n - Verursacht 635 festen Schaden 1 Mal bei jedem Angriff 3 Mal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 正秀",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "11 / 11",
+      "age": "27",
+      "height": "192",
+      "weight": "99",
+      "constellation": "Skorpion",
+      "likes": "Aragon, Rook, Ritterlichkeit, Ehre, Ritter, Übung, Fleisch, Weißwein, Schwertkampftraining, Schmetterlinge, Menschen mit Überzeugung",
+      "dislikes": "Kris, Feigheit, Unehre, Affen, Zigaretten",
+      "story": "Der Kanzler wurde aus Respekt vor Knox Soldat, aber nach Knox' Korruption verwandelte sich seine Bewunderung in Hass. Er schwor, als wahrer Soldat zu leben und niemals dem Bösen zu verfallen."
+    }
+  }
+]

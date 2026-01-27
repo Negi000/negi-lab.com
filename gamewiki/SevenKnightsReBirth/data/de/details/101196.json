@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101196",
+      "name": "Gelidus",
+      "subname": "Starker Mann der bitteren Kälte",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Obwohl Gelidus es geschafft hat, die Splitter der Zerstörung zu erlangen, erweckte der Fluch der Zerstörung Gelidus‘ Wahnsinn St. 1, was ihn dazu brachte, Amok zu laufen. Letztendlich wurde er durch die vereinten Kräfte von Teo, Orly und Silvesta versiegelt.",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 60 % der Verteidigung 1 Mal.\n - 45 % Chance, Extreme Chill zu verursachen. [Dauer: 1 Runde(n)]\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\n - 50 % Chance, Extreme Chill zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs plus 70 % der Verteidigung.\n - Erhöht Chance: Extreme Chill-Chance wird zu 50 %.\nTranscend Lv.6 Effect\n - Ändert die Anzahl der Ziele: Zu 3 Feinde mit extremem Frost.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119602",
+        "name": "Erinnerungen des Monarchen",
+        "desc": "Alle Feinde\n - Verursacht Durchdringungsschaden in Höhe von 65 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\n - 60 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\n - Verursacht Durchdringungsschaden in Höhe von 75 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - 70 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs plus 85 % der Verteidigung.\n - Erhöht Chance: Extreme Chill-Chance wird zu 70 %.",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119603",
+        "name": "Ätherischer Monarch",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsignorierenden Schaden in Höhe von 30 % des physischen Angriffs plus 33 % der Verteidigung 2 Mal.\n - Verursacht Verteidigungsignorierenden Schaden in Höhe von 35 % des physischen Angriffs plus 38 % der Verteidigung 2 Mal.\n - 60 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\n - 70 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 35 % des physischen Angriffs plus 38 % der Verteidigung.\n - Erhöht Chance: Extreme Chill-Chance wird zu 70 %.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119604",
+        "name": "Segen der Eiskönigin",
+        "desc": "Selbst\n - Wenn du Kämpfe mit mindestens 3 Universell Held(en) in deinem Team beginnst, wird das TP, das auf 50 % oder niedriger fällt, um TP in Höhe von 165 % der Verteidigung des Zaubernden heilen. [2 Mal pro Kampf]\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - Gewährt eine Verteidigungsbasierte Blockraten-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Verursacht Effektwahrscheinlichkeitsreduktion. [Immer aktiv]\n - 3 Feinde\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs und 65 % der Verteidigung 1 Mal, wenn ein Angriff 2 Mal verwendet wird.\n - Jeder Angriff 2 Mal hat eine 75 % Chance, Extreme Kälte zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht Effekt: Verteidigungsbasierte Blockrate Max.\\nwird zu 33 %.\nTranscend Lv.2 Effect\n - Erhöht Effekt: Effektwahrscheinlichkeitsverringerung wird zu 26 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht die Verteidigung um 12 %.",
+      "transcend_2": "Erhöht die Verteidigung um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Schadensverringerung um 10 %.",
+      "transcend_5": "Erhöht die Verteidigung um 12 %.",
+      "transcend_6": "Erhöht die Verteidigung um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Löwe",
+      "likes": "Lania, Spike, Fleisch, Alles, was von Lania gekocht wird, Starke Menschen, Menschen, die sich der Herausforderung stellen",
+      "dislikes": "Gras, Gemüse, Verlierer, Schüchterne Menschen",
+      "story": "Obwohl Gelidus es geschafft hat, die Splitter der Zerstörung zu erlangen, erweckte der Fluch der Zerstörung Gelidus‘ Wahnsinn St. 1, was ihn dazu brachte, Amok zu laufen. Letztendlich wurde er durch die vereinten Kräfte von Teo, Orly und Silvesta versiegelt."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101195",
+      "name": "Gelidus",
+      "subname": "Unbesiegter Krieger",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Auf Befehl des Herrn brach Gelidus zu einer Reise auf, um die Splitter der Zerstörung zu sammeln. Während dieser Quest traf er Königin Lania und verliebte sich in sie.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 45 % des physischen Angriffs plus 55 % der Verteidigung 1 Mal.\n - 40 % Chance, Extreme Chill zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 55 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119502",
+        "name": "Erinnerungen des Monarchen",
+        "desc": "Alle Feinde\n - Verursacht Durchdringungsschaden in Höhe von 60 % des physischen Angriffs plus 65 % der Verteidigung 1 Mal.\n - 50 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 65 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119503",
+        "name": "Ätherischer Monarch",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsignorierenden Schaden in Höhe von 28 % des physischen Angriffs plus 30 % der Verteidigung 2 Mal.\n - 50 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 28 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 30 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119504",
+        "name": "Segen der Eiskönigin",
+        "desc": "Selbst\n - Wenn du Kämpfe mit mindestens 3 Universell Held(en) in deinem Team beginnst, wird das TP, das auf 50 % oder niedriger fällt, um TP in Höhe von 150 % der Verteidigung des Zaubernden heilen. [2 Mal pro Kampf]\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - Gewährt eine Verteidigungsbasierte Blockraten-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Verursacht Effektwahrscheinlichkeitsreduktion. [Immer aktiv]\n - 3 Feinde\n - Verursacht Schaden in Höhe von 55 % des physischen Angriffs und 60 % der Verteidigung 1 Mal, wenn ein Angriff 2 Mal verwendet wird.\n - Jeder Angriff 2 Mal hat eine 65 % Chance, Extreme Kälte zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 55 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 60 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Löwe",
+      "likes": "Lania, Spike, Fleisch, Alles, was von Lania gekocht wird, Starke Menschen, Menschen, die sich der Herausforderung stellen",
+      "dislikes": "Gras, Gemüse, Verlierer, Schüchterne Menschen",
+      "story": "Auf Befehl des Herrn brach Gelidus zu einer Reise auf, um die Splitter der Zerstörung zu sammeln. Während dieser Quest traf er Königin Lania und verliebte sich in sie."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101194",
+      "name": "Gelidus",
+      "subname": "Berüchtigter Kämpfer",
+      "affiliation": "Sieben Ritter von damals",
+      "flavor": "Schon in jungen Jahren besaß Gelidus ungeheure körperliche Fähigkeiten, die weit über die menschlichen Grenzen hinausgingen. Seine enorme Stärke und körperliche Kraft erregten die Aufmerksamkeit des örtlichen Herrschers, und er diente ihm als Krieger.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10119401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 40 % des physischen Angriffs plus 50 % der Verteidigung 1 Mal.\n - 40 % Chance, Extreme Chill zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 40 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 50 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011901.webp"
+      },
+      "Skill 1": {
+        "id": "10119402",
+        "name": "Erinnerungen des Monarchen",
+        "desc": "Alle Feinde\n - Verursacht Durchdringungsschaden in Höhe von 50 % des physischen Angriffs plus 60 % der Verteidigung 1 Mal.\n - 50 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 50 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 60 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 75s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011902.webp"
+      },
+      "Skill 2": {
+        "id": "10119403",
+        "name": "Ätherischer Monarch",
+        "desc": "Alle Feinde\n - Verursacht Verteidigungsignorierenden Schaden in Höhe von 25 % des physischen Angriffs plus 28 % der Verteidigung 2 Mal.\n - 50 % Chance, Extreme Chill zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 28 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011903.webp"
+      },
+      "Passive": {
+        "id": "10119404",
+        "name": "Segen der Eiskönigin",
+        "desc": "Selbst\n - Wenn du Kämpfe mit mindestens 3 Universell Held(en) in deinem Team beginnst, wird das TP, das auf 50 % oder niedriger fällt, um TP in Höhe von 135 % der Verteidigung des Zaubernden heilen. [2 Mal pro Kampf]\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - Gewährt eine Verteidigungsbasierte Blockraten-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Verursacht Effektwahrscheinlichkeitsreduktion. [Immer aktiv]\n - 3 Feinde\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs und 55 % der Verteidigung 1 Mal, wenn ein Angriff 2 Mal verwendet wird.\n - Jeder Angriff 2 Mal hat eine 65 % Chance, Extreme Kälte zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 50 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 55 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "安元 洋貴",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 08",
+      "age": "35",
+      "height": "182",
+      "weight": "78",
+      "constellation": "Löwe",
+      "likes": "Lania, Spike, Fleisch, Alles, was von Lania gekocht wird, Starke Menschen, Menschen, die sich der Herausforderung stellen",
+      "dislikes": "Gras, Gemüse, Verlierer, Schüchterne Menschen",
+      "story": "Schon in jungen Jahren besaß Gelidus ungeheure körperliche Fähigkeiten, die weit über die menschlichen Grenzen hinausgingen. Seine enorme Stärke und körperliche Kraft erregten die Aufmerksamkeit des örtlichen Herrschers, und er diente ihm als Krieger."
+    }
+  }
+]

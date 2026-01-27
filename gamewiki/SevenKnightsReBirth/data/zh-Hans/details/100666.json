@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "108",
-      "魔法攻击力": "0",
-      "防御力": "129",
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "129",
       "HP": "735",
-      "敏捷": "16",
-      "暴击率": "50"
+      "Speed": "16",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 108,
-        "防御力": 129,
+        "Physical Attack": 108,
+        "Defense": 129,
         "HP": 735
       },
       "level30": {
-        "物理攻击力": 514,
-        "防御力": 593,
+        "Physical Attack": 514,
+        "Defense": 593,
         "HP": 3287
       },
       "levelUpBonus": {
-        "物理攻击力": 14,
-        "防御力": 16,
+        "Physical Attack": 14,
+        "Defense": 16,
         "HP": 88
       },
       "reinforceBonus": {
-        "物理攻击力": 38,
-        "防御力": 45,
+        "Physical Attack": 38,
+        "Defense": 45,
         "HP": 257
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 514,
-          "防御力": 593,
+          "Physical Attack": 514,
+          "Defense": 593,
           "HP": 3287
         },
         "+1": {
-          "物理攻击力": 552,
-          "防御力": 638,
+          "Physical Attack": 552,
+          "Defense": 638,
           "HP": 3544
         },
         "+2": {
-          "物理攻击力": 590,
-          "防御力": 683,
+          "Physical Attack": 590,
+          "Defense": 683,
           "HP": 3801
         },
         "+3": {
-          "物理攻击力": 628,
-          "防御力": 728,
+          "Physical Attack": 628,
+          "Defense": 728,
           "HP": 4058
         },
         "+4": {
-          "物理攻击力": 666,
-          "防御力": 773,
+          "Physical Attack": 666,
+          "Defense": 773,
           "HP": 4315
         },
         "+5": {
-          "物理攻击力": 704,
-          "防御力": 818,
+          "Physical Attack": 704,
+          "Defense": 818,
           "HP": 4572
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10066601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力50%、防御力60%的伤害\n - 单一敌军\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的60%、防御力的70%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力50%、防御力60%的伤害\n - 单一敌军\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的60%、防御力的70%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10066602",
         "name": "天空之光",
-        "desc": "全体敌军\n - 1次相当于物理攻击力50%、防御力55%的伤害\n - 全体我军\n - 解除1个减益\n - 解除2个减益\nスキル強化効果\n - 效果提升：解除的减益提升至2个\n超越2段階達成効果\n - 全体敌军\n - 额外效果：闪避概率增加40% [100%的概率] [持续3回合]",
-        "cooltime": "⏱️ CT: 80秒",
+        "desc": "全体敌军\n - 1次相当于物理攻击力50%、防御力55%的伤害\n - 全体我军\n - 解除1个减益\n - 解除2个减益\nSkill Enhancement Effect\n - 效果提升：解除的减益提升至2个\nTranscend Lv.2 Effect\n - 全体敌军\n - 额外效果：闪避概率增加40% [100%的概率] [持续3回合]",
+        "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10066603",
         "name": "天空之盾",
-        "desc": "自己\n - 魔法伤害免疫 [持续2回合]\n - 挑衅 [持续2回合]\n - 魔法伤害免疫 [持续3回合]\nスキル強化効果\n - 回合提升：魔法伤害免疫 [持续3回合]",
-        "cooltime": "⏱️ CT: 66秒",
+        "desc": "自己\n - 魔法伤害免疫 [持续2回合]\n - 挑衅 [持续2回合]\n - 魔法伤害免疫 [持续3回合]\nSkill Enhancement Effect\n - 回合提升：魔法伤害免疫 [持续3回合]",
+        "cooltime": "⏱️ CT: 66s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10066604",
         "name": "瓦尔基里的潜力",
-        "desc": "当前生命力最低的我军\n - 自身被敌人的攻击命中5次时按照施展者防御力的30%恢复生命力\n - 自己\n - 防御力增加 [长期]\nスキル強化効果\n - 恢复量提升：生命力恢复量提升至防御力的35%\n超越6段階達成効果\n - 变更目标数：当前生命力最低的2名我军",
+        "desc": "当前生命力最低的我军\n - 自身被敌人的攻击命中5次时按照施展者防御力的30%恢复生命力\n - 自己\n - 防御力增加 [长期]\nSkill Enhancement Effect\n - 恢复量提升：生命力恢复量提升至防御力的35%\nTranscend Lv.6 Effect\n - 变更目标数：当前生命力最低的2名我军",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "77",
-      "魔法攻击力": "0",
-      "防御力": "92",
+      "Physical Attack": "77",
+      "Magical Attack": "0",
+      "Defense": "92",
       "HP": "525",
-      "敏捷": "14",
-      "暴击率": "50"
+      "Speed": "14",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 77,
-        "防御力": 92,
+        "Physical Attack": 77,
+        "Defense": 92,
         "HP": 525
       },
       "level30": {
-        "物理攻击力": 338,
-        "防御力": 440,
+        "Physical Attack": 338,
+        "Defense": 440,
         "HP": 2352
       },
       "levelUpBonus": {
-        "物理攻击力": 9,
-        "防御力": 12,
+        "Physical Attack": 9,
+        "Defense": 12,
         "HP": 63
       },
       "reinforceBonus": {
-        "物理攻击力": 27,
-        "防御力": 33,
+        "Physical Attack": 27,
+        "Defense": 33,
         "HP": 184
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 338,
-          "防御力": 440,
+          "Physical Attack": 338,
+          "Defense": 440,
           "HP": 2352
         },
         "+1": {
-          "物理攻击力": 365,
-          "防御力": 473,
+          "Physical Attack": 365,
+          "Defense": 473,
           "HP": 2536
         },
         "+2": {
-          "物理攻击力": 392,
-          "防御力": 506,
+          "Physical Attack": 392,
+          "Defense": 506,
           "HP": 2720
         },
         "+3": {
-          "物理攻击力": 419,
-          "防御力": 539,
+          "Physical Attack": 419,
+          "Defense": 539,
           "HP": 2904
         },
         "+4": {
-          "物理攻击力": 446,
-          "防御力": 572,
+          "Physical Attack": 446,
+          "Defense": 572,
           "HP": 3088
         },
         "+5": {
-          "物理攻击力": 473,
-          "防御力": 605,
+          "Physical Attack": 473,
+          "Defense": 605,
           "HP": 3272
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10066501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力45%、防御力55%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的55%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力45%、防御力55%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的55%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10066502",
         "name": "天空之光",
-        "desc": "全体敌军\n - 1次相当于物理攻击力45%、防御力50%的伤害\n - 全体我军\n - 解除1个减益\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的50%",
-        "cooltime": "⏱️ CT: 80秒",
+        "desc": "全体敌军\n - 1次相当于物理攻击力45%、防御力50%的伤害\n - 全体我军\n - 解除1个减益\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的45%\n - 伤害量提升：提升至魔法攻击力的50%",
+        "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10066503",
         "name": "天空之盾",
         "desc": "自己\n - 魔法伤害免疫 [持续2回合]\n - 挑衅 [持续2回合]",
-        "cooltime": "⏱️ CT: 66秒",
+        "cooltime": "⏱️ CT: 66s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10066504",
         "name": "瓦尔基里的潜力",
         "desc": "当前生命力最低的我军\n - 自身被敌人的攻击命中5次时按照施展者防御力的25%恢复生命力\n - 自己\n - 防御力增加 [长期]",
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "55",
-      "魔法攻击力": "0",
-      "防御力": "66",
+      "Physical Attack": "55",
+      "Magical Attack": "0",
+      "Defense": "66",
       "HP": "375",
-      "敏捷": "12",
-      "暴击率": "50"
+      "Speed": "12",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 55,
-        "防御力": 66,
+        "Physical Attack": 55,
+        "Defense": 66,
         "HP": 375
       },
       "level30": {
-        "物理攻击力": 229,
-        "防御力": 298,
+        "Physical Attack": 229,
+        "Defense": 298,
         "HP": 1680
       },
       "levelUpBonus": {
-        "物理攻击力": 6,
-        "防御力": 8,
+        "Physical Attack": 6,
+        "Defense": 8,
         "HP": 45
       },
       "reinforceBonus": {
-        "物理攻击力": 20,
-        "防御力": 24,
+        "Physical Attack": 20,
+        "Defense": 24,
         "HP": 131
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 229,
-          "防御力": 298,
+          "Physical Attack": 229,
+          "Defense": 298,
           "HP": 1680
         },
         "+1": {
-          "物理攻击力": 249,
-          "防御力": 322,
+          "Physical Attack": 249,
+          "Defense": 322,
           "HP": 1811
         },
         "+2": {
-          "物理攻击力": 269,
-          "防御力": 346,
+          "Physical Attack": 269,
+          "Defense": 346,
           "HP": 1942
         },
         "+3": {
-          "物理攻击力": 289,
-          "防御力": 370,
+          "Physical Attack": 289,
+          "Defense": 370,
           "HP": 2073
         },
         "+4": {
-          "物理攻击力": 309,
-          "防御力": 394,
+          "Physical Attack": 309,
+          "Defense": 394,
           "HP": 2204
         },
         "+5": {
-          "物理攻击力": 329,
-          "防御力": 418,
+          "Physical Attack": 329,
+          "Defense": 418,
           "HP": 2335
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10066401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力40%、防御力50%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的50%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力40%、防御力50%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10066402",
         "name": "天空之光",
-        "desc": "全体敌军\n - 1次相当于物理攻击力40%、防御力45%的伤害\n - 全体我军\n - 解除1个减益\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的45%",
-        "cooltime": "⏱️ CT: 80秒",
+        "desc": "全体敌军\n - 1次相当于物理攻击力40%、防御力45%的伤害\n - 全体我军\n - 解除1个减益\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的40%\n - 伤害量提升：提升至魔法攻击力的45%",
+        "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10066403",
         "name": "天空之盾",
         "desc": "自己\n - 魔法伤害免疫 [持续2回合]\n - 挑衅 [持续2回合]",
-        "cooltime": "⏱️ CT: 66秒",
+        "cooltime": "⏱️ CT: 66s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10066404",
         "name": "瓦尔基里的潜力",
         "desc": "当前生命力最低的我军\n - 自身被敌人的攻击命中5次时按照施展者防御力的25%恢复生命力\n - 自己\n - 防御力增加 [长期]",

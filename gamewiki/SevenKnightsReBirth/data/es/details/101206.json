@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101206",
+      "name": "Melia",
+      "subname": "Dragón de Cristal del Destino",
+      "affiliation": "Seven Knights (antiguos)",
+      "flavor": "Cuando estalló la guerra por el Poder de la Destrucción, los dragones se distanciaron de los humanos. Pero debido a su afecto por los niños humanos, Melia no se escondió para poder mantenerse en contacto y pasar tiempo con ellos.",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "237",
+      "HP": "1160",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 237,
+        "HP": 1160
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 1165,
+        "HP": 5220
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 32,
+        "HP": 140
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 83,
+        "HP": 407
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 1165,
+          "HP": 5220
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 1248,
+          "HP": 5627
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 1331,
+          "HP": 6034
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 1414,
+          "HP": 6441
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 1497,
+          "HP": 6848
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 1580,
+          "HP": 7255
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120601",
+        "name": "",
+        "desc": "2 enemigos\n - Inflige daño de un 30% del ATQ mágico y 35% de la DEF 1 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 30 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: 35 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\nSkill Enhancement Effect\n - Aumenta la probabilidad: La probabilidad de Crystal Cluster se convierte en 35 %.\nTranscend Lv.6 Effect\n - Aumenta el efecto: El conteo de golpes del grupo de cristales se convierte en 5.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120602",
+        "name": "Espejo de dragón de cristal",
+        "desc": "Todos los enemigos\n - Inflige daño de un 30% del ATQ mágico y 32% de la DEF 2 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 50 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: 65 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\n - 100 % de probabilidad de infligir Resonancia de Cristal. [Reducido por: 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumenta la probabilidad: La probabilidad de Crystal Cluster se convierte en 65 %.\nTranscend Lv.6 Effect\n - Aumenta el efecto: El conteo de golpes del grupo de cristales se convierte en 5.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120603",
+        "name": "Aliento cristalino",
+        "desc": "Todos los enemigos\n - Inflige daño de un 30% del ATQ mágico y 32% de la DEF 2 vez/veces.\n - Aumento de probabilidad de fallo [Prob.: 100%] [Duración: 3 turno(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: Cada atacante tiene un 35 % de probabilidad de infligir Racimo de Cristal. [Termina después de: Recibir 4 Golpe(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: Cada atacante tiene un 45 % de probabilidad de infligir Racimo de Cristal. [Termina después de: Recibir 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de fallo 48%.\n - Aumenta la probabilidad: La probabilidad de Crystal Cluster se convierte en 45 %.\nTranscend Lv.2 Effect\n - A sí mismo\n - Efecto adicional: Provocación [Duración: 2 turno(s)]",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120604",
+        "name": "Escama de cristal brillante",
+        "desc": "A sí mismo\n - Otorga Mejora física - Dragón de cristal. [Siempre activo]\n - Revive con un 80% de los PS al caer derrotado. [1 vez por batalla]\n - [Mágico Afinidad - 4 Objetivo(s)]: Otorga Inmunidad a Control de masas. [Duración: 3 Turno(s)]\n - Todos los enemigos\n - Vulnerabilidad mágica. [Permanente]\n - Todos los aliados mágicos\n - [Mágico Afinidad - 5 Objetivo(s)]: Realizar cualquier ataque 1 vez/veces otorga un Escudo igual al 45 % de la Defensivo del lanzador. [Duración: 2 Turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Al revivir, 100% de PS.\n - Aumento de efecto: Vulnerabilidad mágica 20%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_2": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_3": "Aumentan los PS en un 18%.",
+      "transcend_4": "Aumenta el Acierto de efecto en un 24%.",
+      "transcend_5": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_6": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_7": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_8": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_9": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_10": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_11": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_12": "Aumentan Todos los ATQ, DEF y los PS en un 2%."
+    },
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Dragón",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Acuario",
+      "likes": "Wieser, Cualquier comida dulce, Ropa bonita, Joyas, especialmente cristales",
+      "dislikes": "Jave, Cualquier comida amarga, Cualquier cosa sucia, Mentiras, Cuando las cosas no van como se supone que deben ir.",
+      "story": "Cuando estalló la guerra por el Poder de la Destrucción, los dragones se distanciaron de los humanos. Pero debido a su afecto por los niños humanos, Melia no se escondió para poder mantenerse en contacto y pasar tiempo con ellos."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101205",
+      "name": "Melia",
+      "subname": "Heredero de la autoridad del Dragón",
+      "affiliation": "Seven Knights (antiguos)",
+      "flavor": "Wieser comenzó a entrenar a Melia para prepararla para heredar la Autoridad del Dragón. Ella se destacó, superando fácilmente las pruebas necesarias para convertirse en la futura guardiana.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "168",
+      "HP": "828",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 168,
+        "HP": 828
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 835,
+        "HP": 3699
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 23,
+        "HP": 99
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 60,
+        "HP": 290
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 835,
+          "HP": 3699
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 895,
+          "HP": 3989
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 955,
+          "HP": 4279
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 1015,
+          "HP": 4569
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 1075,
+          "HP": 4859
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 1135,
+          "HP": 5149
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120501",
+        "name": "",
+        "desc": "2 enemigos\n - Inflige daño de un 25% del ATQ mágico y 30% de la DEF 1 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 30 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 25% del ATQ físico.\n - Aumento de daño: 30% del ATQ mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120502",
+        "name": "Espejo de dragón de cristal",
+        "desc": "Todos los enemigos\n - Inflige daño de un 27% del ATQ mágico y 30% de la DEF 2 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 50 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\n - 100 % de probabilidad de infligir Resonancia de Cristal. [Reducido por: 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 27% del ATQ físico.\n - Aumento de daño: 30% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120503",
+        "name": "Aliento cristalino",
+        "desc": "Todos los enemigos\n - Inflige daño de un 27% del ATQ mágico y 30% de la DEF 2 vez/veces.\n - Aumento de probabilidad de fallo [Prob.: 100%] [Duración: 3 turno(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: Cada atacante tiene un 35 % de probabilidad de infligir Racimo de Cristal. [Termina después de: Recibir 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 27% del ATQ físico.\n - Aumento de daño: 30% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120504",
+        "name": "Escama de cristal brillante",
+        "desc": "A sí mismo\n - Otorga Mejora física - Dragón de cristal. [Siempre activo]\n - Revive con un 60% de los PS al caer derrotado. [1 vez por batalla]\n - [Mágico Afinidad - 4 Objetivo(s)]: Otorga Inmunidad a Control de masas. [Duración: 3 Turno(s)]\n - Todos los enemigos\n - Vulnerabilidad mágica. [Permanente]\n - Todos los aliados mágicos\n - [Mágico Afinidad - 5 Objetivo(s)]: Realizar cualquier ataque 1 vez/veces otorga un Escudo igual al 40 % de la Defensivo del lanzador. [Duración: 2 Turno(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Dragón",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Acuario",
+      "likes": "Wieser, Cualquier comida dulce, Ropa bonita, Joyas, especialmente cristales",
+      "dislikes": "Jave, Cualquier comida amarga, Cualquier cosa sucia, Mentiras, Cuando las cosas no van como se supone que deben ir.",
+      "story": "Wieser comenzó a entrenar a Melia para prepararla para heredar la Autoridad del Dragón. Ella se destacó, superando fácilmente las pruebas necesarias para convertirse en la futura guardiana."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101204",
+      "name": "Melia",
+      "subname": "Abuelo del Guardián",
+      "affiliation": "Seven Knights (antiguos)",
+      "flavor": "Cuando Melia perdió a sus padres a los malvados dragones del pasado, ella aún no había nacido. Después de su nacimiento, fue criada bajo el cuidado de Wieser y creció con un profundo afecto por Gaia.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "119",
+      "HP": "591",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 119,
+        "HP": 591
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 583,
+        "HP": 2650
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 16,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 42,
+        "HP": 207
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 583,
+          "HP": 2650
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 625,
+          "HP": 2857
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 667,
+          "HP": 3064
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 709,
+          "HP": 3271
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 751,
+          "HP": 3478
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 793,
+          "HP": 3685
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120401",
+        "name": "",
+        "desc": "2 enemigos\n - Inflige daño de un 25% del ATQ mágico y 25% de la DEF 1 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 25 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 25% del ATQ físico.\n - Aumento de daño: 25% del ATQ mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120402",
+        "name": "Espejo de dragón de cristal",
+        "desc": "Todos los enemigos\n - Inflige daño de un 25% del ATQ mágico y 27% de la DEF 2 vez/veces.\n - [Mágico Afinidad - 3 Objetivo(s)]: 45 % posibilidad de infligir Racimo de Cristal. [Termina después de: Recibir 6 Golpe(s)]\n - 100 % de probabilidad de infligir Resonancia de Cristal. [Reducido por: 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 25% del ATQ físico.\n - Aumento de daño: 27% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120403",
+        "name": "Aliento cristalino",
+        "desc": "Todos los enemigos\n - Inflige daño de un 25% del ATQ mágico y 27% de la DEF 2 vez/veces.\n - Aumento de probabilidad de fallo [Prob.: 100%] [Duración: 3 turno(s)]\n - [Mágico Afinidad - 3 Objetivo(s)]: Cada atacante tiene un 30 % de probabilidad de infligir Racimo de Cristal. [Termina después de: Recibir 4 Golpe(s)]\nSkill Enhancement Effect\n - Aumento de daño: 25% del ATQ físico.\n - Aumento de daño: 27% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120404",
+        "name": "Escama de cristal brillante",
+        "desc": "A sí mismo\n - Otorga Mejora física - Dragón de cristal. [Siempre activo]\n - Revive con un 40% de los PS al caer derrotado. [1 vez por batalla]\n - [Mágico Afinidad - 4 Objetivo(s)]: Otorga Inmunidad a Control de masas. [Duración: 3 Turno(s)]\n - Todos los enemigos\n - Vulnerabilidad mágica. [Permanente]\n - Todos los aliados mágicos\n - [Mágico Afinidad - 5 Objetivo(s)]: Realizar cualquier ataque 1 vez/veces otorga un Escudo igual al 35 % de la Defensivo del lanzador. [Duración: 2 Turno(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Dragón",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Acuario",
+      "likes": "Wieser, Cualquier comida dulce, Ropa bonita, Joyas, especialmente cristales",
+      "dislikes": "Jave, Cualquier comida amarga, Cualquier cosa sucia, Mentiras, Cuando las cosas no van como se supone que deben ir.",
+      "story": "Cuando Melia perdió a sus padres a los malvados dragones del pasado, ella aún no había nacido. Después de su nacimiento, fue criada bajo el cuidado de Wieser y creció con un profundo afecto por Gaia."
+    }
+  }
+]

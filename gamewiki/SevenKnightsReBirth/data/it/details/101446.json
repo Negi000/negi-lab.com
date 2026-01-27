@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101446",
+      "name": "Aquila",
+      "subname": "Esecutore Finale",
+      "affiliation": "NIGHT CROW",
+      "flavor": "Aquila è l'ultimo mezzo-demone nei Crociati della Santa Croce e ha insegnato alla maggior parte dei suoi membri. È sfuggita alla trappola di Bai Jiao con l'aiuto dei Night Crow, ma è entrata in ibernazione a causa delle sue ferite.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144601",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 50% dell'attacco fisico più il 12% dei PV massimi dell'incantatore 1 volta/e\n - Concede una Barriera pari al 8% dei PV massimi dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 60% dell'attacco fisico più 14% dei PV massimi dell'incantatore\n - Alleato con i PV attuali più bassi (escludendo se stesso)\n - Aggiunge effetto: Concede una Barriera pari al 8% dei PV Massimo dell'incantatore. [Durata: 2 Turno(i)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144602",
+        "name": "Tempesta spietata",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 15% dell'attacco fisico più il 4% dei PV massimi dell'incantatore 2 volta/e\n - 60% di probabilità che Riduzione del turno di Morte immediata diventi 1 turno/i durante ogni attacco.\n - 100% di probabilità di infliggere Riduzione probabilità di attacco al punto debole. [Durata: 3 Turno/i]\nSkill Enhancement Effect\n - Aumenta la probabilità: la probabilità di riduzione del turno di Morte diventa 70%.\n - Rafforzamento effetto: Probabilità di attacco al punto debole ▼30%",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144603",
+        "name": "Manto dell'oscurità",
+        "desc": "3 nemici\n - Infligge danni pari al 35% dell'attacco fisico più il 9% dei PV massimi dell'incantatore 1 volta/e\n - Può infliggere Morte immediata [Probabilità: 35%] [Durata: 3 turno/i]\n - Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento probabilità: Probabilità di Morte immediata 40%\n - Effetto extra: Percentuale di riduzione Collegamento 10%",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144604",
+        "name": "Pastore oscuro",
+        "desc": "Tutti i nemici\n - Infligge Resistenza agli effetti ▼ [Sempre attivo]\n - Sé\n - Cura PV pari al 34% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]\nSkill Enhancement Effect\n - Rafforzamento effetto: Resistenza agli effetti ▼34%\nTranscend Lv.2 Effect\n - Estensione usi: Cura PV [2 volta/e per battaglia]\nTranscend Lv.6 Effect\n - Se stesso\n - Aggiunge Effetto: 10s Ricarica - quando un nemico cade in battaglia.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta la difesa del 12%.",
+      "transcend_2": "Aumenta la difesa del 6%.",
+      "transcend_3": "Aumenta i PV del 18%.",
+      "transcend_4": "Aumenta la riduzione dei danni subiti del 10%.",
+      "transcend_5": "Aumenta la difesa del 12%.",
+      "transcend_6": "Aumenta la difesa del 6%.",
+      "transcend_7": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_8": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_9": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_10": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_11": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_12": "Aumenta tutti gli attacchi, la difesa e i PV del 2%."
+    },
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Mezzo Demone",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorno",
+      "likes": "Karl Heron, i Crociati della Sacra Croce, Night Crow, mandorle tostate, ordine, erba infernale",
+      "dislikes": "Bai Jiao, Dellons, stufato, caos, demoni",
+      "story": "Aquila è l'ultimo mezzo-demone nei Crociati della Santa Croce e ha insegnato alla maggior parte dei suoi membri. È sfuggita alla trappola di Bai Jiao con l'aiuto dei Night Crow, ma è entrata in ibernazione a causa delle sue ferite."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101445",
+      "name": "Aquila",
+      "subname": "Capitano dei Crociati della Santa Croce",
+      "affiliation": "NIGHT CROW",
+      "flavor": "Dopo la sua battaglia finale, gravata dal senso di colpa per non essere riuscita a proteggere tutti, Aquila giurò di sterminare tutti i demoni. Insieme ad altri mezzidemoni, formò i primi Crociati della Santa Croce e prese il suo posto come loro comandante.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "83",
+      "Magical Attack": "0",
+      "Defense": "96",
+      "HP": "552",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 83,
+        "Defense": 96,
+        "HP": 552
+      },
+      "level30": {
+        "Physical Attack": 373,
+        "Defense": 473,
+        "HP": 2466
+      },
+      "levelUpBonus": {
+        "Physical Attack": 10,
+        "Defense": 13,
+        "HP": 66
+      },
+      "reinforceBonus": {
+        "Physical Attack": 28,
+        "Defense": 34,
+        "HP": 193
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 373,
+          "Defense": 473,
+          "HP": 2466
+        },
+        "+1": {
+          "Physical Attack": 401,
+          "Defense": 507,
+          "HP": 2659
+        },
+        "+2": {
+          "Physical Attack": 429,
+          "Defense": 541,
+          "HP": 2852
+        },
+        "+3": {
+          "Physical Attack": 457,
+          "Defense": 575,
+          "HP": 3045
+        },
+        "+4": {
+          "Physical Attack": 485,
+          "Defense": 609,
+          "HP": 3238
+        },
+        "+5": {
+          "Physical Attack": 513,
+          "Defense": 643,
+          "HP": 3431
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144501",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 45% dell'attacco fisico più il 11% dei PV massimi dell'incantatore 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 45% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144502",
+        "name": "Tempesta spietata",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 13% dell'attacco fisico più il 3% dei PV massimi dell'incantatore 2 volta/e\n - 60% di probabilità che Riduzione del turno di Morte immediata diventi 1 turno/i durante ogni attacco.\n - 100% di probabilità di infliggere Riduzione probabilità di attacco al punto debole. [Durata: 3 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 13% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144503",
+        "name": "Manto dell'oscurità",
+        "desc": "3 nemici\n - Infligge danni pari al 35% dell'attacco fisico più il 8% dei PV massimi dell'incantatore 1 volta/e\n - Può infliggere Morte immediata [Probabilità: 35%] [Durata: 3 turno/i]\n - Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 35% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144504",
+        "name": "Pastore oscuro",
+        "desc": "Tutti i nemici\n - Infligge Resistenza agli effetti ▼ [Sempre attivo]\n - Sé\n - Cura PV pari al 31% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Mezzo Demone",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorno",
+      "likes": "Karl Heron, i Crociati della Sacra Croce, Night Crow, mandorle tostate, ordine, erba infernale",
+      "dislikes": "Bai Jiao, Dellons, stufato, caos, demoni",
+      "story": "Dopo la sua battaglia finale, gravata dal senso di colpa per non essere riuscita a proteggere tutti, Aquila giurò di sterminare tutti i demoni. Insieme ad altri mezzidemoni, formò i primi Crociati della Santa Croce e prese il suo posto come loro comandante."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101444",
+      "name": "Aquila",
+      "subname": "Sterminatrice",
+      "affiliation": "NIGHT CROW",
+      "flavor": "Nata per metà elfa e per metà demone, Aquila guidò l'alleanza umana nella guerra contro i demoni. Combattendo in prima linea, era la Dea della Vittoria per gli umani. Per i demoni, era una brutale Sterminatrice.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "59",
+      "Magical Attack": "0",
+      "Defense": "68",
+      "HP": "394",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 59,
+        "Defense": 68,
+        "HP": 394
+      },
+      "level30": {
+        "Physical Attack": 262,
+        "Defense": 329,
+        "HP": 1757
+      },
+      "levelUpBonus": {
+        "Physical Attack": 7,
+        "Defense": 9,
+        "HP": 47
+      },
+      "reinforceBonus": {
+        "Physical Attack": 21,
+        "Defense": 24,
+        "HP": 138
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 262,
+          "Defense": 329,
+          "HP": 1757
+        },
+        "+1": {
+          "Physical Attack": 283,
+          "Defense": 353,
+          "HP": 1895
+        },
+        "+2": {
+          "Physical Attack": 304,
+          "Defense": 377,
+          "HP": 2033
+        },
+        "+3": {
+          "Physical Attack": 325,
+          "Defense": 401,
+          "HP": 2171
+        },
+        "+4": {
+          "Physical Attack": 346,
+          "Defense": 425,
+          "HP": 2309
+        },
+        "+5": {
+          "Physical Attack": 367,
+          "Defense": 449,
+          "HP": 2447
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10144401",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 40% dell'attacco fisico più il 10% dei PV massimi dell'incantatore 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 40% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
+      },
+      "Skill 1": {
+        "id": "10144402",
+        "name": "Tempesta spietata",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 12% dell'attacco fisico più il 3% dei PV massimi dell'incantatore 2 volta/e\n - 60% di probabilità che Riduzione del turno di Morte immediata diventi 1 turno/i durante ogni attacco.\n - 100% di probabilità di infliggere Riduzione probabilità di attacco al punto debole. [Durata: 3 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 12% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014402.webp"
+      },
+      "Skill 2": {
+        "id": "10144403",
+        "name": "Manto dell'oscurità",
+        "desc": "3 nemici\n - Infligge danni pari al 30% dell'attacco fisico più il 7% dei PV massimi dell'incantatore 1 volta/e\n - Può infliggere Morte immediata [Probabilità: 30%] [Durata: 3 turno/i]\n - Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 30% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014403.webp"
+      },
+      "Passive": {
+        "id": "10144404",
+        "name": "Pastore oscuro",
+        "desc": "Tutti i nemici\n - Infligge Resistenza agli effetti ▼ [Sempre attivo]\n - Sé\n - Cura PV pari al 28% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "八巻 アンナ",
+      "species": "Mezzo Demone",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "15 / 01",
+      "age": "80",
+      "height": "170",
+      "weight": "56",
+      "constellation": "Capricorno",
+      "likes": "Karl Heron, i Crociati della Sacra Croce, Night Crow, mandorle tostate, ordine, erba infernale",
+      "dislikes": "Bai Jiao, Dellons, stufato, caos, demoni",
+      "story": "Nata per metà elfa e per metà demone, Aquila guidò l'alleanza umana nella guerra contro i demoni. Combattendo in prima linea, era la Dea della Vittoria per gli umani. Per i demoni, era una brutale Sterminatrice."
+    }
+  }
+]

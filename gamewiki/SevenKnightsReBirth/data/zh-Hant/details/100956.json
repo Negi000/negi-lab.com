@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "176",
-      "防禦力": "108",
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
       "HP": "714",
-      "敏捷": "19",
-      "暴擊率": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 176,
-        "防禦力": 108,
+        "Magical Attack": 176,
+        "Defense": 108,
         "HP": 714
       },
       "level30": {
-        "魔法攻擊力": 785,
-        "防禦力": 485,
+        "Magical Attack": 785,
+        "Defense": 485,
         "HP": 3208
       },
       "levelUpBonus": {
-        "魔法攻擊力": 21,
-        "防禦力": 13,
+        "Magical Attack": 21,
+        "Defense": 13,
         "HP": 86
       },
       "reinforceBonus": {
-        "魔法攻擊力": 62,
-        "防禦力": 38,
+        "Magical Attack": 62,
+        "Defense": 38,
         "HP": 250
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 785,
-          "防禦力": 485,
+          "Magical Attack": 785,
+          "Defense": 485,
           "HP": 3208
         },
         "+1": {
-          "魔法攻擊力": 847,
-          "防禦力": 523,
+          "Magical Attack": 847,
+          "Defense": 523,
           "HP": 3458
         },
         "+2": {
-          "魔法攻擊力": 909,
-          "防禦力": 561,
+          "Magical Attack": 909,
+          "Defense": 561,
           "HP": 3708
         },
         "+3": {
-          "魔法攻擊力": 971,
-          "防禦力": 599,
+          "Magical Attack": 971,
+          "Defense": 599,
           "HP": 3958
         },
         "+4": {
-          "魔法攻擊力": 1033,
-          "防禦力": 637,
+          "Magical Attack": 1033,
+          "Defense": 637,
           "HP": 4208
         },
         "+5": {
-          "魔法攻擊力": 1095,
-          "防禦力": 675,
+          "Magical Attack": 1095,
+          "Defense": 675,
           "HP": 4458
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10095601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\nスキル強化効果\n - 傷害量上升：魔法攻擊力的120%\n超越2段階達成効果\n - ［目前生命力最低的我軍（不包含自身）］\n - 添加效果：持續恢復15%［持續1回合］",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的120%\nTranscend Lv.2 Effect\n - ［目前生命力最低的我軍（不包含自身）］\n - 添加效果：持續恢復15%［持續1回合］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009501.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10095602",
         "name": "秘密之門",
-        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nスキル強化効果\n - 效果上升：防禦力增加39%\n超越6段階達成効果\n - 添加效果：受到的恢復量增加36%［持續3回合］",
-        "cooltime": "⏱️ CT: 104秒",
+        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nSkill Enhancement Effect\n - 效果上升：防禦力增加39%\nTranscend Lv.6 Effect\n - 添加效果：受到的恢復量增加36%［持續3回合］",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009502.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10095603",
         "name": "我的卡片？",
-        "desc": "所有我軍\n - 恢復相當於施展者最大生命力29%的生命力\nスキル強化効果\n - 恢復量上升：生命力恢復量為施展者最大生命力的33%",
-        "cooltime": "⏱️ CT: 109秒",
+        "desc": "所有我軍\n - 恢復相當於施展者最大生命力29%的生命力\nSkill Enhancement Effect\n - 恢復量上升：生命力恢復量為施展者最大生命力的33%",
+        "cooltime": "⏱️ CT: 109s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009503.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10095604",
         "name": "我！你！浪漫～",
-        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n - 防禦力增加［持續2回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力9%的生命力\nスキル強化効果\n - 回合上升：防禦力增加［持續2回合］\n - 恢復量上升：生命力恢復量為施展者最大生命力的10%",
+        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n - 防禦力增加［持續2回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力9%的生命力\nSkill Enhancement Effect\n - 回合上升：防禦力增加［持續2回合］\n - 恢復量上升：生命力恢復量為施展者最大生命力的10%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009504.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "126",
-      "防禦力": "77",
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
       "HP": "510",
-      "敏捷": "17",
-      "暴擊率": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 126,
-        "防禦力": 77,
+        "Magical Attack": 126,
+        "Defense": 77,
         "HP": 510
       },
       "level30": {
-        "魔法攻擊力": 561,
-        "防禦力": 338,
+        "Magical Attack": 561,
+        "Defense": 338,
         "HP": 2279
       },
       "levelUpBonus": {
-        "魔法攻擊力": 15,
-        "防禦力": 9,
+        "Magical Attack": 15,
+        "Defense": 9,
         "HP": 61
       },
       "reinforceBonus": {
-        "魔法攻擊力": 44,
-        "防禦力": 27,
+        "Magical Attack": 44,
+        "Defense": 27,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 561,
-          "防禦力": 338,
+          "Magical Attack": 561,
+          "Defense": 338,
           "HP": 2279
         },
         "+1": {
-          "魔法攻擊力": 605,
-          "防禦力": 365,
+          "Magical Attack": 605,
+          "Defense": 365,
           "HP": 2458
         },
         "+2": {
-          "魔法攻擊力": 649,
-          "防禦力": 392,
+          "Magical Attack": 649,
+          "Defense": 392,
           "HP": 2637
         },
         "+3": {
-          "魔法攻擊力": 693,
-          "防禦力": 419,
+          "Magical Attack": 693,
+          "Defense": 419,
           "HP": 2816
         },
         "+4": {
-          "魔法攻擊力": 737,
-          "防禦力": 446,
+          "Magical Attack": 737,
+          "Defense": 446,
           "HP": 2995
         },
         "+5": {
-          "魔法攻擊力": 781,
-          "防禦力": 473,
+          "Magical Attack": 781,
+          "Defense": 473,
           "HP": 3174
         }
       },
@@ -263,31 +263,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10095501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力90%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的90%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力90%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009501.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10095502",
         "name": "秘密之門",
-        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nスキル強化効果\n - 效果上升：防禦力減少22%",
-        "cooltime": "⏱️ CT: 104秒",
+        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nSkill Enhancement Effect\n - 效果上升：防禦力減少22%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009502.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10095503",
         "name": "我的卡片？",
         "desc": "所有我軍\n - 恢復相當於施展者最大生命力26%的生命力",
-        "cooltime": "⏱️ CT: 109秒",
+        "cooltime": "⏱️ CT: 109s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009503.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10095504",
         "name": "我！你！浪漫～",
-        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力8%的生命力\nスキル強化効果\n - 效果上升：防禦力減少22%",
+        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力8%的生命力\nSkill Enhancement Effect\n - 效果上升：防禦力減少22%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009504.webp"
       }
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻擊力": "0",
-      "魔法攻擊力": "90",
-      "防禦力": "55",
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
       "HP": "364",
-      "敏捷": "15",
-      "暴擊率": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻擊力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻擊力": 90,
-        "防禦力": 55,
+        "Magical Attack": 90,
+        "Defense": 55,
         "HP": 364
       },
       "level30": {
-        "魔法攻擊力": 409,
-        "防禦力": 229,
+        "Magical Attack": 409,
+        "Defense": 229,
         "HP": 1640
       },
       "levelUpBonus": {
-        "魔法攻擊力": 11,
-        "防禦力": 6,
+        "Magical Attack": 11,
+        "Defense": 6,
         "HP": 44
       },
       "reinforceBonus": {
-        "魔法攻擊力": 30,
-        "防禦力": 20,
+        "Magical Attack": 30,
+        "Defense": 20,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻擊力": 409,
-          "防禦力": 229,
+          "Magical Attack": 409,
+          "Defense": 229,
           "HP": 1640
         },
         "+1": {
-          "魔法攻擊力": 439,
-          "防禦力": 249,
+          "Magical Attack": 439,
+          "Defense": 249,
           "HP": 1767
         },
         "+2": {
-          "魔法攻擊力": 469,
-          "防禦力": 269,
+          "Magical Attack": 469,
+          "Defense": 269,
           "HP": 1894
         },
         "+3": {
-          "魔法攻擊力": 499,
-          "防禦力": 289,
+          "Magical Attack": 499,
+          "Defense": 289,
           "HP": 2021
         },
         "+4": {
-          "魔法攻擊力": 529,
-          "防禦力": 309,
+          "Magical Attack": 529,
+          "Defense": 309,
           "HP": 2148
         },
         "+5": {
-          "魔法攻擊力": 559,
-          "防禦力": 329,
+          "Magical Attack": 559,
+          "Defense": 329,
           "HP": 2275
         }
       },
@@ -411,31 +411,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10095401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力80%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的80%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力80%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009501.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10095402",
         "name": "秘密之門",
-        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nスキル強化効果\n - 效果上升：防禦力減少15%",
-        "cooltime": "⏱️ CT: 104秒",
+        "desc": "所有我軍\n - 防禦力增加［持續3回合］\n - 持續恢復［持續2回合］\nSkill Enhancement Effect\n - 效果上升：防禦力減少15%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009502.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10095403",
         "name": "我的卡片？",
         "desc": "所有我軍\n - 恢復相當於施展者最大生命力23%的生命力",
-        "cooltime": "⏱️ CT: 109秒",
+        "cooltime": "⏱️ CT: 109s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009503.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10095404",
         "name": "我！你！浪漫～",
-        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力7%的生命力\nスキル強化効果\n - 效果上升：防禦力減少15%",
+        "desc": "所有我軍\n - 防禦力增加［持續1回合］\n自身\n - 自身被敵人的攻擊命中時，有25%的機率恢復相當於施展者最大生命力7%的生命力\nSkill Enhancement Effect\n - 效果上升：防禦力減少15%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1009504.webp"
       }

@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100576",
+      "name": "Kris",
+      "subname": "Seigneur de l'Enfer",
+      "affiliation": "Seven Knights",
+      "flavor": "Au fil des années, Kris, surnommé le Cœur Noir, est devenu le Seigneur de l'Enfer et semble maintenant se préparer à envahir les terres de Terra.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10057601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ PHY 1 fois.\n - A 20 % de chances d'infliger Mort [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ PHY\n - Ajout d'effet : 20 % chances d'infliger Mort [Durée : 3 tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005701.webp"
+      },
+      "Skill 1": {
+        "id": "10057602",
+        "name": "Attaque des ténèbres",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 305 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 370 % de l'ATQ PHY 1 fois.\n - A 50 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - A 60 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 135 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 370 % de l'ATQ PHY\n - Hausse de taux : Chances de Mort 60 %\nTranscend Lv.6 Effect\n - Ajout d'effet : 30 % chances d'infliger Mort [Durée : 3 tour(s)]",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005702.webp"
+      },
+      "Skill 2": {
+        "id": "10057603",
+        "name": "Murmure des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 115 % de l'ATQ PHY 1 fois.\n - A 25 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - A 30 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 135 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 115 % de l'ATQ PHY\n - Hausse de taux : Chances de Mort 30 %",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005703.webp"
+      },
+      "Passive": {
+        "id": "10057604",
+        "name": "Drain d'âme",
+        "desc": "Soi-même\n - Confère Barrière équivalente à 160 % de l'ATQ PHY du lanceur [Durée : 3 tour(s)]\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Se réanime avec Immortalité en cas de mort [Durée : 3 tour(s)] (1 fois par combat)\n - Tous les alliés\n - Soigne les PV égaux à 20 % de l'Attaque Physique du lanceur lorsque un ennemi tombe au combat.\nSkill Enhancement Effect\n - Augmente les tours : la durée d'Immortalité devient 3 tour(s).\nTranscend Lv.2 Effect\n - Soi-même\n - Ajout d'effet : Réinitialisation du temps de recharge de la compétence à l’activation de l’Immortalité",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le taux de réussite des effets de 24 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "森川 智之",
+      "species": "Elfe",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "05 / 08",
+      "age": "26",
+      "height": "182",
+      "weight": "72",
+      "constellation": "Lion",
+      "likes": "Rudy, titre de Chevalier de la lumière, subordonnés, algues séchées, kombu, raisins, oranges, force, compétence, discipline, armes bien forgées",
+      "dislikes": "Faibles, nobles faibles, la nourriture fumée, le désordre, les idées démodées",
+      "story": "Un chevalier d'élite du Royaume de Terra issu d'une famille noble. Il a traversé une vie d'entraînement rigoureux pour devenir l'un des chevaliers les plus forts du royaume aux côtés de Rudy."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100575",
+      "name": "Kris",
+      "subname": "Cœur noir",
+      "affiliation": "Seven Knights",
+      "flavor": "Plutôt que d’être consumé par le pouvoir démoniaque, Kris en prit le contrôle. Les démons le vénèrent désormais et l’appellent le « Cœur Noir ».",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10057501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005701.webp"
+      },
+      "Skill 1": {
+        "id": "10057502",
+        "name": "Attaque des ténèbres",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 275 % de l'ATQ PHY 1 fois.\n - A 50 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 125 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 275 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005702.webp"
+      },
+      "Skill 2": {
+        "id": "10057503",
+        "name": "Murmure des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\n - A 25 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 125 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005703.webp"
+      },
+      "Passive": {
+        "id": "10057504",
+        "name": "Drain d'âme",
+        "desc": "Soi-même\n - Confère Barrière équivalente à 145 % de l'ATQ PHY du lanceur [Durée : 3 tour(s)]\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Tous les alliés\n - Soigne les PV égaux à 18 % de l'Attaque Physique du lanceur lorsque un ennemi tombe au combat.\nSkill Enhancement Effect\n - Augmente l'effet : l'absorption de la Barrière devient égale à 145 % de l'ATQ PHY.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "森川 智之",
+      "species": "Elfe",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "05 / 08",
+      "age": "26",
+      "height": "182",
+      "weight": "72",
+      "constellation": "Lion",
+      "likes": "Rudy, titre de Chevalier de la lumière, subordonnés, algues séchées, kombu, raisins, oranges, force, compétence, discipline, armes bien forgées",
+      "dislikes": "Faibles, nobles faibles, la nourriture fumée, le désordre, les idées démodées",
+      "story": "Un chevalier d'élite du Royaume de Terra issu d'une famille noble. Il a traversé une vie d'entraînement rigoureux pour devenir l'un des chevaliers les plus forts du royaume aux côtés de Rudy."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100574",
+      "name": "Kris",
+      "subname": "Emprise noire",
+      "affiliation": "Seven Knights",
+      "flavor": "Kris, autrefois un chevalier au service de la lumière aux côtés de Rudy, s’est tourné vers les pouvoirs démoniaques après avoir perdu contre lui le titre de Chevalier de la Lumière.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10057401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005701.webp"
+      },
+      "Skill 1": {
+        "id": "10057402",
+        "name": "Attaque des ténèbres",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 250 % de l'ATQ PHY 1 fois.\n - A 40 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 110 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 250 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005702.webp"
+      },
+      "Skill 2": {
+        "id": "10057403",
+        "name": "Murmure des ténèbres",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\n - A 20 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Soi-même\n - Confère une barrière égale à 110 % de l'ATQ PHY en battant un ennemi avec cette compétence. [Durée : 3 Tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 80s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005703.webp"
+      },
+      "Passive": {
+        "id": "10057404",
+        "name": "Drain d'âme",
+        "desc": "Soi-même\n - Confère Barrière équivalente à 130 % de l'ATQ PHY du lanceur [Durée : 3 tour(s)]\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Tous les alliés\n - Soigne les PV égaux à 15 % de l'Attaque Physique du lanceur lorsque un ennemi tombe au combat.\nSkill Enhancement Effect\n - Augmente l'effet : l'absorption de la Barrière devient égale à 130 % de l'ATQ PHY.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "森川 智之",
+      "species": "Elfe",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "05 / 08",
+      "age": "26",
+      "height": "182",
+      "weight": "72",
+      "constellation": "Lion",
+      "likes": "Rudy, titre de Chevalier de la lumière, subordonnés, algues séchées, kombu, raisins, oranges, force, compétence, discipline, armes bien forgées",
+      "dislikes": "Faibles, nobles faibles, la nourriture fumée, le désordre, les idées démodées",
+      "story": "Un chevalier d'élite du Royaume de Terra issu d'une famille noble. Il a traversé une vie d'entraînement rigoureux pour devenir l'un des chevaliers les plus forts du royaume aux côtés de Rudy."
+    }
+  }
+]

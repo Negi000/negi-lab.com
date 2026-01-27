@@ -1,0 +1,480 @@
+[
+  {
+    "basicInfo": {
+      "id": "101406",
+      "name": "Amelia",
+      "subname": "Héroe",
+      "affiliation": "Maestros Ocultos",
+      "flavor": "Después de ser herido por un villano poderoso, Hyperman buscó a Amelia. Le confió el traje que había desarrollado y quería que ella se convirtiera en el nuevo símbolo de esperanza. Honrando su voluntad, Amelia partió para encontrar al villano.",
+      "rarity": "legendary",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10140601",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ físico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
+      },
+      "Skill 1": {
+        "id": "10140602",
+        "name": "¡Bloqueado!",
+        "desc": "3 enemigos\n - Inflige daño de un 60% del ATQ físico 1 vez/veces.\n - 60 % de probabilidad de infligir Conmoción. [Duración: 2 turno(s)]\n - A sí mismo\n - Genera un Escudo de un 55% del ATQ físico del lanzador. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 70% del ATQ físico.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
+      },
+      "Skill 2": {
+        "id": "10140603",
+        "name": "¡Salvar la situación!",
+        "desc": "Enemigo con la Defensa más Alta\n - Causa Bloqueo de Curación. [Prob.: 100%] [Duración: 4 turno(s)]\n - Inflige daño de un 135% del ATQ físico 2 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 165% del ATQ físico.\nTranscend Lv.2 Effect\n - Cambia el número de objetivos: 2 enemigos con la defensa más alta.\nTranscend Lv.6 Effect\n - Efecto adicional: Alteración de PS 55%.",
+        "cooltime": "⏱️ CT: 45s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
+      },
+      "Passive": {
+        "id": "10140604",
+        "name": "Nanotraje avanzado",
+        "desc": "A sí mismo\n - Aumento de Acierto de efecto [Permanente]\n - Revive con un 55% de los PS al caer derrotado. [1 vez por batalla]\n - 2 Aliados (Excluyendo a uno mismo)\n - Otorga una Barrera igual al 90 % del Ataque Físico del lanzador al caer en batalla. [Duración: 2 Turno(s)] [2 Vez/Veces por Batalla]\n - Otorga 3 Eliminación de Perjuicio(s) al caer en batalla. [2 vez/veces por batalla]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de Acierto de efecto 49%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10140614",
+        "name": "Nanotraje avanzado",
+        "desc": "2 aliados\nSkill Enhancement Effect\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 90 % del ATQ físico.\n - Eliminación de desventaja x3.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_2": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_3": "Aumentan los PS en un 18%.",
+      "transcend_4": "Aumenta la prob. de golpe crítico en un 18%.",
+      "transcend_5": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_6": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_7": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_8": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_9": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_10": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_11": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_12": "Aumentan Todos los ATQ, DEF y los PS en un 2%."
+    },
+    "profile": {
+      "cv": "沼倉 愛美",
+      "species": "Humano",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 08",
+      "age": "17",
+      "height": "173",
+      "weight": "54",
+      "constellation": "Leo",
+      "likes": "Cómics, héroes, Hyperman, Robin, justicia, esperanza, la gente",
+      "dislikes": "Mago de la Noche, villanos, maldad, cobardía, desesperación",
+      "story": "Después de ser herido por un villano poderoso, Hyperman buscó a Amelia. Le confió el traje que había desarrollado y quería que ella se convirtiera en el nuevo símbolo de esperanza. Honrando su voluntad, Amelia partió para encontrar al villano."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101405",
+      "name": "Amelia",
+      "subname": "Compañera",
+      "affiliation": "Maestros Ocultos",
+      "flavor": "Amelia conoció a Hyperman por primera vez durante un incendio en su escuela. Se mantuvieron en contacto después, y, inspirada por sus palabras, soñó con ser como él. Con la escuela cerrada por el incendio, decidió convertirse en la compañera de Hyperman.",
+      "rarity": "legendary",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10140501",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 90% del ATQ físico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 90% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
+      },
+      "Skill 1": {
+        "id": "10140502",
+        "name": "¡Bloqueado!",
+        "desc": "3 enemigos\n - Inflige daño de un 50% del ATQ físico 1 vez/veces.\n - 60 % de probabilidad de infligir Conmoción. [Duración: 2 turno(s)]\n - A sí mismo\n - Genera un Escudo de un 50% del ATQ físico del lanzador. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 50% del ATQ físico.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
+      },
+      "Skill 2": {
+        "id": "10140503",
+        "name": "¡Salvar la situación!",
+        "desc": "Enemigo con la Defensa más Alta\n - Causa Bloqueo de Curación. [Prob.: 100%] [Duración: 4 turno(s)]\n - Inflige daño de un 122% del ATQ físico 2 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 122% del ATQ físico.",
+        "cooltime": "⏱️ CT: 45s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
+      },
+      "Passive": {
+        "id": "10140504",
+        "name": "Nanotraje avanzado",
+        "desc": "A sí mismo\n - Aumento de Acierto de efecto [Permanente]\n - Revive con un 40% de los PS al caer derrotado. [1 vez por batalla]\n - 2 Aliados (Excluyendo a uno mismo)\n - Otorga una Barrera igual al 80 % del Ataque Físico del lanzador al caer en batalla. [Duración: 2 Turno(s)] [2 Vez/Veces por Batalla]\n - Otorga 3 Eliminación de Perjuicio(s) al caer en batalla. [2 vez/veces por batalla]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de Acierto de efecto 31%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10140514",
+        "name": "Nanotraje avanzado",
+        "desc": "2 aliados\nSkill Enhancement Effect\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 80 % del ATQ físico.\n - Eliminación de desventaja x3.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "沼倉 愛美",
+      "species": "Humano",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 08",
+      "age": "17",
+      "height": "173",
+      "weight": "54",
+      "constellation": "Leo",
+      "likes": "Cómics, héroes, Hyperman, Robin, justicia, esperanza, la gente",
+      "dislikes": "Mago de la Noche, villanos, maldad, cobardía, desesperación",
+      "story": "Amelia conoció a Hyperman por primera vez durante un incendio en su escuela. Se mantuvieron en contacto después, y, inspirada por sus palabras, soñó con ser como él. Con la escuela cerrada por el incendio, decidió convertirse en la compañera de Hyperman."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101404",
+      "name": "Amelia",
+      "subname": "Chica Tímida",
+      "affiliation": "Maestros Ocultos",
+      "flavor": "Amelia fue inusualmente fuerte desde su nacimiento. Debido a un incidente en su infancia, es tímida y dudosa para usar su poder.",
+      "rarity": "legendary",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10140401",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 80% del ATQ físico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 80% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
+      },
+      "Skill 1": {
+        "id": "10140402",
+        "name": "¡Bloqueado!",
+        "desc": "3 enemigos\n - Inflige daño de un 45% del ATQ físico 1 vez/veces.\n - 55 % de probabilidad de infligir Conmoción. [Duración: 2 turno(s)]\n - A sí mismo\n - Genera un Escudo de un 45% del ATQ físico del lanzador. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 45% del ATQ físico.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
+      },
+      "Skill 2": {
+        "id": "10140403",
+        "name": "¡Salvar la situación!",
+        "desc": "Enemigo con la Defensa más Alta\n - Causa Bloqueo de Curación. [Prob.: 100%] [Duración: 4 turno(s)]\n - Inflige daño de un 110% del ATQ físico 2 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 110% del ATQ físico.",
+        "cooltime": "⏱️ CT: 45s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
+      },
+      "Passive": {
+        "id": "10140404",
+        "name": "Nanotraje avanzado",
+        "desc": "A sí mismo\n - Aumento de Acierto de efecto [Permanente]\n - Revive con un 25% de los PS al caer derrotado. [1 vez por batalla]\n - 2 Aliados (Excluyendo a uno mismo)\n - Otorga una Barrera igual al 70 % del Ataque Físico del lanzador al caer en batalla. [Duración: 2 Turno(s)] [2 Vez/Veces por Batalla]\n - Otorga 3 Eliminación de Perjuicio(s) al caer en batalla. [2 vez/veces por batalla]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de Acierto de efecto 22%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10140414",
+        "name": "Nanotraje avanzado",
+        "desc": "2 aliados\nSkill Enhancement Effect\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 70 % del ATQ físico.\n - Eliminación de desventaja x3.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "沼倉 愛美",
+      "species": "Humano",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 08",
+      "age": "17",
+      "height": "173",
+      "weight": "54",
+      "constellation": "Leo",
+      "likes": "Cómics, héroes, Hyperman, Robin, justicia, esperanza, la gente",
+      "dislikes": "Mago de la Noche, villanos, maldad, cobardía, desesperación",
+      "story": "Amelia fue inusualmente fuerte desde su nacimiento. Debido a un incidente en su infancia, es tímida y dudosa para usar su poder."
+    }
+  }
+]

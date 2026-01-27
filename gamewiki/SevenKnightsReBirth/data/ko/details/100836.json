@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "165",
-      "방어력": "104",
+      "Physical Attack": "0",
+      "Magical Attack": "165",
+      "Defense": "104",
       "HP": "680",
-      "민첩성": "16",
-      "크리티컬 확률": "50"
+      "Speed": "16",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 165,
-        "방어력": 104,
+        "Magical Attack": 165,
+        "Defense": 104,
         "HP": 680
       },
       "level30": {
-        "마법 공격력": 745,
-        "방어력": 452,
+        "Magical Attack": 745,
+        "Defense": 452,
         "HP": 3058
       },
       "levelUpBonus": {
-        "마법 공격력": 20,
-        "방어력": 12,
+        "Magical Attack": 20,
+        "Defense": 12,
         "HP": 82
       },
       "reinforceBonus": {
-        "마법 공격력": 58,
-        "방어력": 36,
+        "Magical Attack": 58,
+        "Defense": 36,
         "HP": 238
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 745,
-          "방어력": 452,
+          "Magical Attack": 745,
+          "Defense": 452,
           "HP": 3058
         },
         "+1": {
-          "마법 공격력": 803,
-          "방어력": 488,
+          "Magical Attack": 803,
+          "Defense": 488,
           "HP": 3296
         },
         "+2": {
-          "마법 공격력": 861,
-          "방어력": 524,
+          "Magical Attack": 861,
+          "Defense": 524,
           "HP": 3534
         },
         "+3": {
-          "마법 공격력": 919,
-          "방어력": 560,
+          "Magical Attack": 919,
+          "Defense": 560,
           "HP": 3772
         },
         "+4": {
-          "마법 공격력": 977,
-          "방어력": 596,
+          "Magical Attack": 977,
+          "Defense": 596,
           "HP": 4010
         },
         "+5": {
-          "마법 공격력": 1035,
-          "방어력": 632,
+          "Magical Attack": 1035,
+          "Defense": 632,
           "HP": 4248
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10083601",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nスキル強化効果\n - 효과 상승 : 마법 공격력 감소 11%",
+        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 마법 공격력 감소 11%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008301.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10083602",
         "name": "축복의 선율",
-        "desc": "모든 아군\n - 지속 회복 [2턴 지속]\n - 지속 회복 [3턴 지속]\nスキル強化効果\n - 턴 상승 : 지속 회복 [3턴 지속]\n超越2段階達成効果\n - 효과 추가 : 물리 피해량 증가 19% [3턴 지속]\n超越6段階達成効果\n - 효과 상승 : 물리 피해량 증가 24%",
-        "cooltime": "⏱️ CT: 124秒",
+        "desc": "모든 아군\n - 지속 회복 [2턴 지속]\n - 지속 회복 [3턴 지속]\nSkill Enhancement Effect\n - 턴 상승 : 지속 회복 [3턴 지속]\nTranscend Lv.2 Effect\n - 효과 추가 : 물리 피해량 증가 19% [3턴 지속]\nTranscend Lv.6 Effect\n - 효과 상승 : 물리 피해량 증가 24%",
+        "cooltime": "⏱️ CT: 124s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008302.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10083603",
         "name": "전장의 선율",
-        "desc": "아군 2명\n - 사망한 대상을 생명력 35%로 부활\nスキル強化効果\n - 효과 상승 : 부활 시 생명력 45%",
-        "cooltime": "⏱️ CT: 112秒",
+        "desc": "아군 2명\n - 사망한 대상을 생명력 35%로 부활\nSkill Enhancement Effect\n - 효과 상승 : 부활 시 생명력 45%",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008303.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10083604",
         "name": "전장의 마에스트로",
-        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\n - 자신\n - 자신의 스킬 1회 발동 시 시전자 최대 생명력의 22% 만큼 생명력 회복\nスキル強化効果\n - 자신\n - 회복 추가 : 자신의 스킬 1회 발동 시 최대 생명력의 22%만큼 생명력 회복",
+        "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]\n - 자신\n - 자신의 스킬 1회 발동 시 시전자 최대 생명력의 22% 만큼 생명력 회복\nSkill Enhancement Effect\n - 자신\n - 회복 추가 : 자신의 스킬 1회 발동 시 최대 생명력의 22%만큼 생명력 회복",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008304.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "118",
-      "방어력": "74",
+      "Physical Attack": "0",
+      "Magical Attack": "118",
+      "Defense": "74",
       "HP": "486",
-      "민첩성": "14",
-      "크리티컬 확률": "50"
+      "Speed": "14",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 118,
-        "방어력": 74,
+        "Magical Attack": 118,
+        "Defense": 74,
         "HP": 486
       },
       "level30": {
-        "마법 공격력": 524,
-        "방어력": 335,
+        "Magical Attack": 524,
+        "Defense": 335,
         "HP": 2168
       },
       "levelUpBonus": {
-        "마법 공격력": 14,
-        "방어력": 9,
+        "Magical Attack": 14,
+        "Defense": 9,
         "HP": 58
       },
       "reinforceBonus": {
-        "마법 공격력": 41,
-        "방어력": 26,
+        "Magical Attack": 41,
+        "Defense": 26,
         "HP": 170
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 524,
-          "방어력": 335,
+          "Magical Attack": 524,
+          "Defense": 335,
           "HP": 2168
         },
         "+1": {
-          "마법 공격력": 565,
-          "방어력": 361,
+          "Magical Attack": 565,
+          "Defense": 361,
           "HP": 2338
         },
         "+2": {
-          "마법 공격력": 606,
-          "방어력": 387,
+          "Magical Attack": 606,
+          "Defense": 387,
           "HP": 2508
         },
         "+3": {
-          "마법 공격력": 647,
-          "방어력": 413,
+          "Magical Attack": 647,
+          "Defense": 413,
           "HP": 2678
         },
         "+4": {
-          "마법 공격력": 688,
-          "방어력": 439,
+          "Magical Attack": 688,
+          "Defense": 439,
           "HP": 2848
         },
         "+5": {
-          "마법 공격력": 729,
-          "방어력": 465,
+          "Magical Attack": 729,
+          "Defense": 465,
           "HP": 3018
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10083501",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 90%",
+        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008301.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10083502",
         "name": "축복의 선율",
         "desc": "모든 아군\n - 지속 회복 [2턴 지속]",
-        "cooltime": "⏱️ CT: 124秒",
+        "cooltime": "⏱️ CT: 124s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008302.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10083503",
         "name": "전장의 선율",
         "desc": "아군 2명\n - 사망한 대상을 생명력 25%로 부활",
-        "cooltime": "⏱️ CT: 112秒",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008303.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10083504",
         "name": "전장의 마에스트로",
         "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "84",
-      "방어력": "53",
+      "Physical Attack": "0",
+      "Magical Attack": "84",
+      "Defense": "53",
       "HP": "347",
-      "민첩성": "12",
-      "크리티컬 확률": "50"
+      "Speed": "12",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 84,
-        "방어력": 53,
+        "Magical Attack": 84,
+        "Defense": 53,
         "HP": 347
       },
       "level30": {
-        "마법 공격력": 374,
-        "방어력": 227,
+        "Magical Attack": 374,
+        "Defense": 227,
         "HP": 1565
       },
       "levelUpBonus": {
-        "마법 공격력": 10,
-        "방어력": 6,
+        "Magical Attack": 10,
+        "Defense": 6,
         "HP": 42
       },
       "reinforceBonus": {
-        "마법 공격력": 29,
-        "방어력": 19,
+        "Magical Attack": 29,
+        "Defense": 19,
         "HP": 120
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 374,
-          "방어력": 227,
+          "Magical Attack": 374,
+          "Defense": 227,
           "HP": 1565
         },
         "+1": {
-          "마법 공격력": 403,
-          "방어력": 246,
+          "Magical Attack": 403,
+          "Defense": 246,
           "HP": 1685
         },
         "+2": {
-          "마법 공격력": 432,
-          "방어력": 265,
+          "Magical Attack": 432,
+          "Defense": 265,
           "HP": 1805
         },
         "+3": {
-          "마법 공격력": 461,
-          "방어력": 284,
+          "Magical Attack": 461,
+          "Defense": 284,
           "HP": 1925
         },
         "+4": {
-          "마법 공격력": 490,
-          "방어력": 303,
+          "Magical Attack": 490,
+          "Defense": 303,
           "HP": 2045
         },
         "+5": {
-          "마법 공격력": 519,
-          "방어력": 322,
+          "Magical Attack": 519,
+          "Defense": 322,
           "HP": 2165
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10083401",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\n - 마법 공격력 감소 [100% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008301.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10083402",
         "name": "축복의 선율",
         "desc": "모든 아군\n - 지속 회복 [2턴 지속]",
-        "cooltime": "⏱️ CT: 124秒",
+        "cooltime": "⏱️ CT: 124s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008302.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10083403",
         "name": "전장의 선율",
         "desc": "아군 2명\n - 사망한 대상을 생명력 15%로 부활",
-        "cooltime": "⏱️ CT: 112秒",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008303.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10083404",
         "name": "전장의 마에스트로",
         "desc": "모든 아군\n - 화상 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 화상 면역 [2턴 지속]",

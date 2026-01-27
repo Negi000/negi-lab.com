@@ -1765,8 +1765,16 @@ footer {
 }
 
 .filter-group {
-    flex: 1;
-    min-width: 150px;
+    flex: 1 1 180px;
+}
+
+.filter-group.search-group {
+    flex: 1 1 180px;
+}
+
+.filter-group.filter-checkbox,
+.filter-group.filter-reset {
+    flex: 0 0 auto;
 }
 
 .filter-label {
@@ -1794,6 +1802,7 @@ footer {
 .filter-bar input,
 .filter-bar select {
     width: 100%;
+    box-sizing: border-box;
     padding: 0.85rem 1rem;
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-color);
@@ -1833,6 +1842,8 @@ footer {
     color: var(--text-sub);
     font-size: 0.85rem;
     transition: all 0.3s;
+    flex-shrink: 0;
+    align-self: flex-end;
 }
 
 .filter-reset-btn:hover {
@@ -2159,20 +2170,6 @@ footer {
     
     .quick-link-card {
         padding: 1.5rem 1rem;
-    }
-    
-    /* Filter Bar */
-    .filter-bar {
-        padding: 1rem;
-    }
-    
-    .filter-group {
-        min-width: 100%;
-    }
-    
-    .filter-reset-btn {
-        width: 100%;
-        justify-content: center;
     }
     
     /* Character Grid */
@@ -3784,10 +3781,20 @@ footer {
 .skill-header-new {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 0.6rem;
     gap: 0.5rem;
     flex-wrap: wrap;
+}
+
+.skill-header-new .skill-name-new {
+    margin-right: auto;
+}
+
+.skill-header-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
 }
 
 .skill-name-new {
@@ -3824,6 +3831,74 @@ footer {
     white-space: pre-wrap;
 }
 
+/* スキル効果ボックス（強化・超越共通） */
+.skill-effect-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.skill-effect-box.enhance {
+    background: rgba(46, 139, 87, 0.15);
+    border: 1px solid rgba(46, 139, 87, 0.4);
+}
+
+.skill-effect-box.transcend {
+    background: rgba(138, 43, 226, 0.15);
+    border: 1px solid rgba(138, 43, 226, 0.4);
+}
+
+.skill-effect-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.skill-effect-label {
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.skill-effect-box.enhance .skill-effect-label {
+    color: #5fd38d;
+}
+
+.skill-effect-box.transcend .skill-effect-label {
+    color: #da70d6;
+}
+
+.skill-effect-content {
+    color: rgba(255, 255, 255, 0.95);
+    white-space: pre-wrap;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* スキル効果ボックス レスポンシブ */
+@media (max-width: 768px) {
+    .skill-effect-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .skill-effect-header {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    
+    .skill-effect-content {
+        padding-left: 0;
+    }
+}
+
 /* 超越解放効果 */
 .transcendence-list {
     display: flex;
@@ -3844,6 +3919,13 @@ footer {
 
 .trans-item:hover {
     border-color: rgba(255, 215, 0, 0.2);
+}
+
+.trans-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .trans-stage {
@@ -4411,15 +4493,40 @@ footer {
 }
 
 /* ===== Improved Mobile Filter Bar ===== */
-@media (max-width: 768px) {
+/* タブレット: 2列レイアウト */
+@media (max-width: 1024px) {
     .filter-bar {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
         padding: 1rem;
     }
     
     .filter-group {
+        flex: none;
         width: 100%;
+    }
+    
+    .filter-group.search-group {
+        grid-column: 1 / -1; /* 検索バーは全幅 */
+    }
+    
+    .filter-group.filter-checkbox {
+        justify-content: flex-start;
+    }
+    
+    .filter-reset-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* モバイル: 1列レイアウト */
+@media (max-width: 600px) {
+    .filter-bar {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0.75rem;
     }
     
     .filter-group select,
@@ -4429,13 +4536,31 @@ footer {
         font-size: 16px; /* Prevent iOS zoom */
     }
     
-    .filter-checkbox {
-        padding: 0.5rem 0;
+    /* 検索欄は虫眼鏡アイコン分の左パディングを確保 */
+    .filter-group input#search-input,
+    .search-wrapper input {
+        padding-left: 2.75rem;
+    }
+    
+    .filter-group.filter-checkbox {
+        padding: 0.25rem 0;
+    }
+    
+    .checkbox-label {
+        width: 100%;
+        justify-content: center;
     }
     
     .filter-reset-btn {
         width: 100%;
         padding: 0.75rem;
+    }
+    
+    /* セレクトボックスのドロップダウン表示改善 */
+    .filter-bar select {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

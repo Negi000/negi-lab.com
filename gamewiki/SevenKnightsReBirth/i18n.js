@@ -75,10 +75,64 @@ function updateSEOMetaTags(lang) {
         'ko': 'ko_KR',
         'zh-Hans': 'zh_CN',
         'zh-Hant': 'zh_TW',
-        'th': 'th_TH'
+        'th': 'th_TH',
+        'de': 'de_DE',
+        'es': 'es_ES',
+        'fr': 'fr_FR',
+        'id': 'id_ID',
+        'it': 'it_IT',
+        'ms': 'ms_MY',
+        'nl': 'nl_NL',
+        'pt': 'pt_BR',
+        'ru': 'ru_RU',
+        'tr': 'tr_TR'
     };
     
     const locale = localeMap[lang] || 'ja_JP';
+    
+    // ui.jsonから翻訳を取得
+    const siteTitle = I18N_UI?.['site.title']?.[lang] || I18N_UI?.['site.title']?.['en'] || 'Seven Knights Re:Birth Wiki';
+    const seoDescription = I18N_UI?.['seo.description']?.[lang] || I18N_UI?.['seo.description']?.['en'] || '';
+    const seoKeywords = I18N_UI?.['seo.keywords']?.[lang] || I18N_UI?.['seo.keywords']?.['en'] || '';
+    
+    // ページタイトルを更新
+    document.title = siteTitle;
+    
+    // meta description を更新
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && seoDescription) {
+        metaDesc.setAttribute('content', seoDescription);
+    }
+    
+    // meta keywords を更新
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords && seoKeywords) {
+        metaKeywords.setAttribute('content', seoKeywords);
+    }
+    
+    // og:title を更新
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+        ogTitle.setAttribute('content', siteTitle);
+    }
+    
+    // og:description を更新
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && seoDescription) {
+        ogDesc.setAttribute('content', seoDescription);
+    }
+    
+    // twitter:title を更新
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+        twitterTitle.setAttribute('content', siteTitle);
+    }
+    
+    // twitter:description を更新
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc && seoDescription) {
+        twitterDesc.setAttribute('content', seoDescription);
+    }
     
     // og:locale を更新
     const ogLocale = document.querySelector('meta[property="og:locale"]');

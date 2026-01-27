@@ -1,0 +1,522 @@
+[
+  {
+    "basicInfo": {
+      "id": "101476",
+      "name": "Sun Wukong",
+      "subname": "Buda de Lucha Victorioso",
+      "affiliation": "Cuatro Señores",
+      "flavor": "Después de ser sellado y encarcelado dentro de las Montañas de Mármol por sus muchos delitos, Sun Wukong fue finalmente liberado por el monje Sanzang. Después, se unió al viaje de Sanzang, ganando reconocimiento por sus hazañas y proezas y se hizo conocido como el Buda Luchador Victorioso.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "211",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Magical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Magical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Magical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Magical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Magical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Magical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Magical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Magical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147601",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\n - Causa Petrificación. [Prob.: 30%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 130% del ATQ mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147605",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño equivalente al 60 % del ATQ mágico 2 vez/veces. [Adicional 50% Prob. de golpe crítico]\n - Inflige daño equivalente al 75 % del ATQ mágico 2 vez/veces. [Adicional 50% Prob. de golpe crítico]\n - Causa Petrificación. [Prob.: 30%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 75% del ATQ mágico.\nTranscend Lv.6 Effect\n - Aumento de efecto: 100% adicional de Probabilidad de golpe crítico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147602",
+        "name": "Megapértiga",
+        "desc": "3 enemigos\n - Inflige daño de un 53% del ATQ mágico 3 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 62% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147606",
+        "name": "Megapértiga: Espectro",
+        "desc": "3 enemigos\n - Aumento de daño de un 10% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la Defensivo igual al 86 % del ATQ mágico más 6 % del Máximo PS del objetivo 3 vez/veces. (Daño basado en PS limitado al 100 % del Atacante del lanzador) [50% adicional de Prob. de golpe crítico]\n - Inflige daño que ignora la Defensivo igual al 102 % del ATQ mágico más 7 % del Máximo PS del objetivo 3 vez/veces. (Daño basado en PS limitado al 100 % del Atacante del lanzador) [50% adicional de Prob. de golpe crítico]\nSkill Enhancement Effect\n - Aumento de daño: 102% del ATQ mágico y 7% de los PS MÁX del objetivo.\nTranscend Lv.6 Effect\n - Aumento de efecto: 100% adicional de Probabilidad de golpe crítico.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147603",
+        "name": "Golpe de imagen partida",
+        "desc": "3 enemigos\n - Inflige daño de un 43% del ATQ mágico 3 vez/veces.\n - Causa Petrificación. [Prob.: 40%] [Duración: 2 turno(s)]\n - Todos los aliados\n - Atenuación. [Duración: 3 turno(s)]\n - A sí mismo\n - Otorga Clon. [Duración: 5 Turno(s)]\n - Inmunidad a control de masas. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Atenuación 15%.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147607",
+        "name": "Golpe de imagen partida: Specter",
+        "desc": "Todos los enemigos\n - Reducción de prob. de bloqueo [Prob.: 100%] [Duración: 3 turno(s)]\n - Aumento de daño de un 5% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la DEF 3 vez/veces de un 68% del ATQ mágico. [50% adicional de Probabilidad de golpe crítico]\nSkill Enhancement Effect\n - Aumento de daño: 82% del ATQ mágico.\n - Aumento de efecto: Reducción de prob. de bloqueo 33%.\nTranscend Lv.6 Effect\n - Aumento de efecto: 100% adicional de Probabilidad de golpe crítico.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147604",
+        "name": "Avatar final",
+        "desc": "A sí mismo\n - Autoridad [1 vez por batalla]\n - Genera un Escudo de un 135% del ATQ mágico del lanzador al activar Autoridad. [Duración: 3 turno(s)]\n - Aumento de DEF según ATQ. [Permanente]\n - Reduce la recarga de habilidades en 10s al ser golpeado por un ataque enemigo.\n - Todos los aliados\n - Cura los PS en un 35% del ATQ mágico del lanzador al usar una habilidad 1 vez/veces.\nSkill Enhancement Effect\n - Aumenta el efecto: la absorción del Escudo se vuelve igual a 155 % del Magic Attack|ATQ mágico.\n - Incrementa la curación: Curación de PS de un 45% del ATQ mágico.\nTranscend Lv.2 Effect\n - Todos los aliados\n - Añade Curación: Cura PS igual a 95 % del ATQ mágico del lanzador cuando los PS caen a 50 % o menos. [1 vez/veces por Batalla]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_2": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_3": "Aumentan los PS en un 18%.",
+      "transcend_4": "Aumenta la Reducción de daño recibido en un 10%.",
+      "transcend_5": "Aumenta Todos los ATQ en un 12%.",
+      "transcend_6": "Aumenta Todos los ATQ en un 6%.",
+      "transcend_7": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_8": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_9": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_10": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_11": "Aumentan Todos los ATQ, DEF y los PS en un 2%.",
+      "transcend_12": "Aumentan Todos los ATQ, DEF y los PS en un 2%."
+    },
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Piscis",
+      "likes": "Sanzang, Xuanzang, Duraznos, Licor, Libertad de espíritu, Aguas termales, Natación, Estimulación",
+      "dislikes": "Pascal, Dellons, Freyja, fideos recién hechos, Opresión, Irresponsabilidad, cuevas oscuras, El Circlet Dorado",
+      "story": "Después de ser sellado y encarcelado dentro de las Montañas de Mármol por sus muchos delitos, Sun Wukong fue finalmente liberado por el monje Sanzang. Después, se unió al viaje de Sanzang, ganando reconocimiento por sus hazañas y proezas y se hizo conocido como el Buda Luchador Victorioso."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101475",
+      "name": "Sun Wukong",
+      "subname": "Gran Sabio Igual al Cielo",
+      "affiliation": "Cuatro Señores",
+      "flavor": "Después de causar caos en el Reino Celestial, el Emperador de Jade nombró a Sun Wukong para el papel de \\\"Maestro de Establo\\\" para mantenerlo bajo control. Pero al enterarse de esto, causó más estragos y posteriormente se le otorgó otro título: \\\"Gran Sabio Igual al Cielo.\\",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "151",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Magical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Magical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Magical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Magical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Magical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Magical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Magical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Magical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147501",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 90% del ATQ mágico 1 vez/veces.\n - Causa Petrificación. [Prob.: 30%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 90% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147505",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño equivalente al 55 % del ATQ mágico 2 vez/veces. [Adicional 50% Prob. de golpe crítico]\n - Causa Petrificación. [Prob.: 30%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147502",
+        "name": "Megapértiga",
+        "desc": "3 enemigos\n - Inflige daño de un 48% del ATQ mágico 3 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 48% del ATQ físico.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147506",
+        "name": "Megapértiga: Espectro",
+        "desc": "3 enemigos\n - Aumento de daño de un 10% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la Defensivo igual al 78 % del ATQ mágico más 4 % del Máximo PS del objetivo 3 vez/veces. (Daño basado en PS limitado al 50 % del Atacante del lanzador) [50% adicional de Prob. de golpe crítico]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147503",
+        "name": "Golpe de imagen partida",
+        "desc": "3 enemigos\n - Inflige daño de un 38% del ATQ mágico 3 vez/veces.\n - Causa Petrificación. [Prob.: 40%] [Duración: 2 turno(s)]\n - Todos los aliados\n - Atenuación. [Duración: 3 turno(s)]\n - A sí mismo\n - Otorga Clon. [Duración: 5 Turno(s)]\n - Inmunidad a control de masas. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 38% del ATQ físico.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147507",
+        "name": "Golpe de imagen partida: Specter",
+        "desc": "Todos los enemigos\n - Reducción de prob. de bloqueo [Prob.: 100%] [Duración: 3 turno(s)]\n - Aumento de daño de un 5% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la DEF 3 vez/veces de un 63% del ATQ mágico. [50% adicional de Probabilidad de golpe crítico]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147504",
+        "name": "Avatar final",
+        "desc": "A sí mismo\n - Autoridad [1 vez por batalla]\n - Genera un Escudo de un 125% del ATQ mágico del lanzador al activar Autoridad. [Duración: 3 turno(s)]\n - Aumento de DEF según ATQ. [Permanente]\n - Reduce la recarga de habilidades en 9s al ser golpeado por un ataque enemigo.\n - Todos los aliados\n - Cura los PS en un 30% del ATQ mágico del lanzador al usar una habilidad 1 vez/veces.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Piscis",
+      "likes": "Sanzang, Xuanzang, Duraznos, Licor, Libertad de espíritu, Aguas termales, Natación, Estimulación",
+      "dislikes": "Pascal, Dellons, Freyja, fideos recién hechos, Opresión, Irresponsabilidad, cuevas oscuras, El Circlet Dorado",
+      "story": "Después de causar caos en el Reino Celestial, el Emperador de Jade nombró a Sun Wukong para el papel de \\\"Maestro de Establo\\\" para mantenerlo bajo control. Pero al enterarse de esto, causó más estragos y posteriormente se le otorgó otro título: \\\"Gran Sabio Igual al Cielo.\\"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101474",
+      "name": "Sun Wukong",
+      "subname": "Rey Mono Guapo",
+      "affiliation": "Cuatro Señores",
+      "flavor": "Sun Wukong es un mono nacido de piedra de las rocas de la Montaña de Flores y Frutas. Poseía capacidades físicas extraordinarias desde su nacimiento, y rápidamente sometió a las criaturas de la montaña y se declaró rey.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "108",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Magical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Magical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Magical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Magical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Magical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Magical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Magical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Magical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147401",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 80% del ATQ mágico 1 vez/veces.\n - Causa Petrificación. [Prob.: 25%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 80% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147405",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño equivalente al 50 % del ATQ mágico 2 vez/veces. [Adicional 50% Prob. de golpe crítico]\n - Causa Petrificación. [Prob.: 25%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147402",
+        "name": "Megapértiga",
+        "desc": "3 enemigos\n - Inflige daño de un 42% del ATQ mágico 3 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 42% del ATQ físico.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147406",
+        "name": "Megapértiga: Espectro",
+        "desc": "3 enemigos\n - Aumento de daño de un 10% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la Defensivo igual al 68 % del ATQ mágico más 3 % del Máximo PS del objetivo 3 vez/veces. (Daño basado en PS limitado al 50 % del Atacante del lanzador) [50% adicional de Prob. de golpe crítico]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147403",
+        "name": "Golpe de imagen partida",
+        "desc": "3 enemigos\n - Inflige daño de un 35% del ATQ mágico 3 vez/veces.\n - Causa Petrificación. [Prob.: 30%] [Duración: 2 turno(s)]\n - Todos los aliados\n - Atenuación. [Duración: 3 turno(s)]\n - A sí mismo\n - Otorga Clon. [Duración: 5 Turno(s)]\n - Inmunidad a control de masas. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 35% del ATQ físico.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147407",
+        "name": "Golpe de imagen partida: Specter",
+        "desc": "Todos los enemigos\n - Reducción de prob. de bloqueo [Prob.: 100%] [Duración: 3 turno(s)]\n - Aumento de daño de un 5% cada vez que se reduce 1 objetivo.\n - Inflige daño que ignora la DEF 3 vez/veces de un 56% del ATQ mágico. [50% adicional de Probabilidad de golpe crítico]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 50%.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147404",
+        "name": "Avatar final",
+        "desc": "A sí mismo\n - Autoridad [1 vez por batalla]\n - Genera un Escudo de un 110% del ATQ mágico del lanzador al activar Autoridad. [Duración: 3 turno(s)]\n - Aumento de DEF según ATQ. [Permanente]\n - Reduce la recarga de habilidades en 8s al ser golpeado por un ataque enemigo.\n - Todos los aliados\n - Cura los PS en un 25% del ATQ mágico del lanzador al usar una habilidad 1 vez/veces.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Piscis",
+      "likes": "Sanzang, Xuanzang, Duraznos, Licor, Libertad de espíritu, Aguas termales, Natación, Estimulación",
+      "dislikes": "Pascal, Dellons, Freyja, fideos recién hechos, Opresión, Irresponsabilidad, cuevas oscuras, El Circlet Dorado",
+      "story": "Sun Wukong es un mono nacido de piedra de las rocas de la Montaña de Flores y Frutas. Poseía capacidades físicas extraordinarias desde su nacimiento, y rápidamente sometió a las criaturas de la montaña y se declaró rey."
+    }
+  }
+]

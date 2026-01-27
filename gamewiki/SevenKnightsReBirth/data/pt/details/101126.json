@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101126",
+      "name": "Mercure",
+      "subname": "Cavaleiro Sombrio do Caos",
+      "affiliation": "Cavaleiros das Trevas",
+      "flavor": "Quando a guerra irrompeu devido a uma invasão de monstros, Mercure entrou na guerra para experimentar usando a magia sombria que havia aprendido. Ele foi nomeado cavaleiro após fazer contribuições significativas no esforço de guerra.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10112601",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - Se pelo menos 3 herói(s) de Magia estiver(em) na sua equipe no início da batalha, há uma chance de 45% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Mágico.\n - Aumenta Chance: A chance de Refluxo Mágico se torna 50%.\nTranscend Lv.6 Effect\n - Altera Efeito: Altera o Dano de Refluxo Mágico para 15% e altera o número de alvos para 4.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011201.webp"
+      },
+      "Skill 1": {
+        "id": "10112602",
+        "name": "Saque Sombrio",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 60% do ATQ Mágico 1x.\n - 45% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\n - Todos os Aliados Mágicos\n - Concede uma Barreira igual a 40% do ATQ Mágico do conjurador. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 70% do ATQ Mágico.\n - Aumenta Chance: A chance de Atordoamento se torna 55%.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011202.webp"
+      },
+      "Skill 2": {
+        "id": "10112603",
+        "name": "Experimentos Proibidos",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 52% do ATQ Mágico 2x.\n - Se houver pelo menos 3 herói(s) Mágico(s) na sua equipe no início da batalha, cada ataque tem uma chance de 40% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\n - 100% de chance de infligir Redução de Cura Recebida. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 60% do ATQ Mágico.\n - Aumenta Chance: A chance de Refluxo Mágico se torna 50%.\nTranscend Lv.6 Effect\n - Altera Efeito: Altera o Dano de Refluxo Mágico para 15% e altera o número de alvos para 4.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011203.webp"
+      },
+      "Passive": {
+        "id": "10112604",
+        "name": "Mago Corrompido",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Todos os Inimigos\n - Inflige Redução de RES Efeito. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: O limite da Bênção torna-se 25% do HP MÁX.\nTranscend Lv.2 Effect\n - 3 Inimigos\n - Adiciona Efeito: Se houver pelo menos 3 herói(s) Mágico(s) na sua equipe no início da batalha, realizar qualquer ataque 3 vez(es) tem uma chance de 100% de infligir Refluxo Mágico. [Duração: 1 Turno(s)]\nTranscend Lv.6 Effect\n - Altera Efeito: Altera o Dano de Refluxo Mágico para 15% e altera o número de alvos para 4.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011204.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta Todos ATQ em 12%.",
+      "transcend_2": "Aumenta Todos ATQ em 6%.",
+      "transcend_3": "Aumenta o HP em 18%.",
+      "transcend_4": "Aumenta a Precisão de Efeito em 24%.",
+      "transcend_5": "Aumenta Todos ATQ em 12%.",
+      "transcend_6": "Aumenta Todos ATQ em 6%.",
+      "transcend_7": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_8": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_9": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_10": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_11": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_12": "Aumenta Todos ATQ, DEF e HP em 2%."
+    },
+    "profile": {
+      "cv": "子安 武人",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "03 / 06",
+      "age": "28",
+      "height": "187",
+      "weight": "82",
+      "constellation": "Gêmeos",
+      "likes": "Ele mesmo, seu mestre, caviar, caos, magia sombria, experimentos, desafios, coisas novas",
+      "dislikes": "Sua família, leite, todos os atributos da ordem, magia da luz, regras, ética",
+      "story": "Quando a guerra irrompeu devido a uma invasão de monstros, Mercure entrou na guerra para experimentar usando a magia sombria que havia aprendido. Ele foi nomeado cavaleiro após fazer contribuições significativas no esforço de guerra."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101125",
+      "name": "Mercure",
+      "subname": "Mago Sombrio",
+      "affiliation": "Cavaleiros das Trevas",
+      "flavor": "Depois que sua família descobriu que ele havia aprendido magia sombria, eles exilaram Mercure. Ele começou a viver como um andarilho com seu mestre e se apropriou de toda a magia sombria.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10112501",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 90% do ATQ Mágico 1x.\n - Se pelo menos 3 herói(s) de Magia estiver(em) na sua equipe no início da batalha, há uma chance de 40% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 90% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011201.webp"
+      },
+      "Skill 1": {
+        "id": "10112502",
+        "name": "Saque Sombrio",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 55% do ATQ Mágico 1x.\n - 45% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\n - Todos os Aliados Mágicos\n - Concede uma Barreira igual a 35% do ATQ Mágico do conjurador. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 55% do ATQ Físico.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011202.webp"
+      },
+      "Skill 2": {
+        "id": "10112503",
+        "name": "Experimentos Proibidos",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 47% do ATQ Mágico 2x.\n - Se houver pelo menos 3 herói(s) Mágico(s) na sua equipe no início da batalha, cada ataque tem uma chance de 35% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\n - 100% de chance de infligir Redução de Cura Recebida. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 47% do ATQ Físico.\n - Aumenta Efeito: Redução de Cura Recebida para 36%.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011203.webp"
+      },
+      "Passive": {
+        "id": "10112504",
+        "name": "Mago Corrompido",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Todos os Inimigos\n - Inflige Redução de RES Efeito. [Sempre Ativo]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "子安 武人",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "03 / 06",
+      "age": "28",
+      "height": "187",
+      "weight": "82",
+      "constellation": "Gêmeos",
+      "likes": "Ele mesmo, seu mestre, caviar, caos, magia sombria, experimentos, desafios, coisas novas",
+      "dislikes": "Sua família, leite, todos os atributos da ordem, magia da luz, regras, ética",
+      "story": "Depois que sua família descobriu que ele havia aprendido magia sombria, eles exilaram Mercure. Ele começou a viver como um andarilho com seu mestre e se apropriou de toda a magia sombria."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101124",
+      "name": "Mercure",
+      "subname": "Herege da Magia da Luz",
+      "affiliation": "Cavaleiros das Trevas",
+      "flavor": "Mercure nasceu em uma família instruída em magia da luz, mas ele estava entediado com as regras rígidas da magia da luz. Enquanto estava em uma crise, ele encontrou um mago sombrio e secretamente começou a treinar sob sua orientação.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10112401",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 80% do ATQ Mágico 1x.\n - Se pelo menos 3 herói(s) de Magia estiver(em) na sua equipe no início da batalha, há uma chance de 40% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 80% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011201.webp"
+      },
+      "Skill 1": {
+        "id": "10112402",
+        "name": "Saque Sombrio",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 50% do ATQ Mágico 1x.\n - 35% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\n - Todos os Aliados Mágicos\n - Concede uma Barreira igual a 30% do ATQ Mágico do conjurador. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 50% do ATQ Físico.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011202.webp"
+      },
+      "Skill 2": {
+        "id": "10112403",
+        "name": "Experimentos Proibidos",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 42% do ATQ Mágico 2x.\n - Se houver pelo menos 3 herói(s) Mágico(s) na sua equipe no início da batalha, cada ataque tem uma chance de 35% de infligir Refluxo Mágico. [Duração: 2 Turno(s)]\n - 100% de chance de infligir Redução de Cura Recebida. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 42% do ATQ Físico.\n - Aumenta Efeito: Redução de Cura Recebida para 28%.",
+        "cooltime": "⏱️ CT: 88s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011203.webp"
+      },
+      "Passive": {
+        "id": "10112404",
+        "name": "Mago Corrompido",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Todos os Inimigos\n - Inflige Redução de RES Efeito. [Sempre Ativo]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011204.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "子安 武人",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "03 / 06",
+      "age": "28",
+      "height": "187",
+      "weight": "82",
+      "constellation": "Gêmeos",
+      "likes": "Ele mesmo, seu mestre, caviar, caos, magia sombria, experimentos, desafios, coisas novas",
+      "dislikes": "Sua família, leite, todos os atributos da ordem, magia da luz, regras, ética",
+      "story": "Mercure nasceu em uma família instruída em magia da luz, mas ele estava entediado com as regras rígidas da magia da luz. Enquanto estava em uma crise, ele encontrou um mago sombrio e secretamente começou a treinar sob sua orientação."
+    }
+  }
+]

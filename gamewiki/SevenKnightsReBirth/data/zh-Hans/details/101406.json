@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "239",
-      "魔法攻击力": "0",
-      "防御力": "92",
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
       "HP": "535",
-      "敏捷": "29",
-      "暴击率": "50"
+      "Speed": "29",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 239,
-        "防御力": 92,
+        "Physical Attack": 239,
+        "Defense": 92,
         "HP": 535
       },
       "level30": {
-        "物理攻击力": 1080,
-        "防御力": 411,
+        "Physical Attack": 1080,
+        "Defense": 411,
         "HP": 2391
       },
       "levelUpBonus": {
-        "物理攻击力": 29,
-        "防御力": 11,
+        "Physical Attack": 29,
+        "Defense": 11,
         "HP": 64
       },
       "reinforceBonus": {
-        "物理攻击力": 84,
-        "防御力": 32,
+        "Physical Attack": 84,
+        "Defense": 32,
         "HP": 187
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 1080,
-          "防御力": 411,
+          "Physical Attack": 1080,
+          "Defense": 411,
           "HP": 2391
         },
         "+1": {
-          "物理攻击力": 1164,
-          "防御力": 443,
+          "Physical Attack": 1164,
+          "Defense": 443,
           "HP": 2578
         },
         "+2": {
-          "物理攻击力": 1248,
-          "防御力": 475,
+          "Physical Attack": 1248,
+          "Defense": 475,
           "HP": 2765
         },
         "+3": {
-          "物理攻击力": 1332,
-          "防御力": 507,
+          "Physical Attack": 1332,
+          "Defense": 507,
           "HP": 2952
         },
         "+4": {
-          "物理攻击力": 1416,
-          "防御力": 539,
+          "Physical Attack": 1416,
+          "Defense": 539,
           "HP": 3139
         },
         "+5": {
-          "物理攻击力": 1500,
-          "防御力": 571,
+          "Physical Attack": 1500,
+          "Defense": 571,
           "HP": 3326
         }
       },
@@ -102,38 +102,38 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10140601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的120%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10140602",
         "name": "禁止通行",
-        "desc": "3名敌人\n - 1次相当于物理攻击力60%的伤害\n - 震荡[60%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力55%的护盾 [持续3回合]\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的70%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "3名敌人\n - 1次相当于物理攻击力60%的伤害\n - 震荡[60%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力55%的护盾 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的70%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10140603",
         "name": "应对危机",
-        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力135%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的165%\n超越2段階達成効果\n - 变更目标数：2名防御力最高的敌军\n超越6段階達成効果\n - 额外效果：生命力转换55%",
-        "cooltime": "⏱️ CT: 45秒",
+        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力135%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的165%\nTranscend Lv.2 Effect\n - 变更目标数：2名防御力最高的敌军\nTranscend Lv.6 Effect\n - 额外效果：生命力转换55%",
+        "cooltime": "⏱️ CT: 45s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10140604",
         "name": "尖端纳米服",
-        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的55%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力90%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nスキル強化効果\n - 效果提升：效果命中增加49%",
+        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的55%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力90%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nSkill Enhancement Effect\n - 效果提升：效果命中增加49%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       },
-      "被动 (Trans)": {
+      "Passive (Trans)": {
         "id": "10140614",
         "name": "尖端纳米服",
-        "desc": "2名我军\nスキル強化効果\n - 效果提升：护盾吸收量为物理攻击力的90%\n - 解除3个减益",
+        "desc": "2名我军\nSkill Enhancement Effect\n - 效果提升：护盾吸收量为物理攻击力的90%\n - 解除3个减益",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       }
@@ -182,64 +182,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "171",
-      "魔法攻击力": "0",
-      "防御力": "66",
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
       "HP": "382",
-      "敏捷": "26",
-      "暴击率": "50"
+      "Speed": "26",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 171,
-        "防御力": 66,
+        "Physical Attack": 171,
+        "Defense": 66,
         "HP": 382
       },
       "level30": {
-        "物理攻击力": 780,
-        "防御力": 298,
+        "Physical Attack": 780,
+        "Defense": 298,
         "HP": 1716
       },
       "levelUpBonus": {
-        "物理攻击力": 21,
-        "防御力": 8,
+        "Physical Attack": 21,
+        "Defense": 8,
         "HP": 46
       },
       "reinforceBonus": {
-        "物理攻击力": 60,
-        "防御力": 22,
+        "Physical Attack": 60,
+        "Defense": 22,
         "HP": 134
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 780,
-          "防御力": 298,
+          "Physical Attack": 780,
+          "Defense": 298,
           "HP": 1716
         },
         "+1": {
-          "物理攻击力": 840,
-          "防御力": 320,
+          "Physical Attack": 840,
+          "Defense": 320,
           "HP": 1850
         },
         "+2": {
-          "物理攻击力": 900,
-          "防御力": 342,
+          "Physical Attack": 900,
+          "Defense": 342,
           "HP": 1984
         },
         "+3": {
-          "物理攻击力": 960,
-          "防御力": 364,
+          "Physical Attack": 960,
+          "Defense": 364,
           "HP": 2118
         },
         "+4": {
-          "物理攻击力": 1020,
-          "防御力": 386,
+          "Physical Attack": 1020,
+          "Defense": 386,
           "HP": 2252
         },
         "+5": {
-          "物理攻击力": 1080,
-          "防御力": 408,
+          "Physical Attack": 1080,
+          "Defense": 408,
           "HP": 2386
         }
       },
@@ -270,38 +270,38 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10140501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力90%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的90%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力90%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10140502",
         "name": "禁止通行",
-        "desc": "3名敌人\n - 1次相当于物理攻击力50%的伤害\n - 震荡[60%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力50%的护盾 [持续3回合]\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的50%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "3名敌人\n - 1次相当于物理攻击力50%的伤害\n - 震荡[60%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力50%的护盾 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的50%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10140503",
         "name": "应对危机",
-        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力122%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的122%",
-        "cooltime": "⏱️ CT: 45秒",
+        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力122%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的122%",
+        "cooltime": "⏱️ CT: 45s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10140504",
         "name": "尖端纳米服",
-        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力80%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nスキル強化効果\n - 效果提升：效果命中增加31%",
+        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力80%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nSkill Enhancement Effect\n - 效果提升：效果命中增加31%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       },
-      "被动 (Trans)": {
+      "Passive (Trans)": {
         "id": "10140514",
         "name": "尖端纳米服",
-        "desc": "2名我军\nスキル強化効果\n - 效果提升：护盾吸收量为物理攻击力的80%\n - 解除3个减益",
+        "desc": "2名我军\nSkill Enhancement Effect\n - 效果提升：护盾吸收量为物理攻击力的80%\n - 解除3个减益",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       }
@@ -337,64 +337,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻击力": "122",
-      "魔法攻击力": "0",
-      "防御力": "47",
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
       "HP": "273",
-      "敏捷": "23",
-      "暴击率": "50"
+      "Speed": "23",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻击力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻击力": 122,
-        "防御力": 47,
+        "Physical Attack": 122,
+        "Defense": 47,
         "HP": 273
       },
       "level30": {
-        "物理攻击力": 557,
-        "防御力": 221,
+        "Physical Attack": 557,
+        "Defense": 221,
         "HP": 1230
       },
       "levelUpBonus": {
-        "物理攻击力": 15,
-        "防御力": 6,
+        "Physical Attack": 15,
+        "Defense": 6,
         "HP": 33
       },
       "reinforceBonus": {
-        "物理攻击力": 43,
-        "防御力": 15,
+        "Physical Attack": 43,
+        "Defense": 15,
         "HP": 96
       },
       "reinforceStages": {
         "+0": {
-          "物理攻击力": 557,
-          "防御力": 221,
+          "Physical Attack": 557,
+          "Defense": 221,
           "HP": 1230
         },
         "+1": {
-          "物理攻击力": 600,
-          "防御力": 236,
+          "Physical Attack": 600,
+          "Defense": 236,
           "HP": 1326
         },
         "+2": {
-          "物理攻击力": 643,
-          "防御力": 251,
+          "Physical Attack": 643,
+          "Defense": 251,
           "HP": 1422
         },
         "+3": {
-          "物理攻击力": 686,
-          "防御力": 266,
+          "Physical Attack": 686,
+          "Defense": 266,
           "HP": 1518
         },
         "+4": {
-          "物理攻击力": 729,
-          "防御力": 281,
+          "Physical Attack": 729,
+          "Defense": 281,
           "HP": 1614
         },
         "+5": {
-          "物理攻击力": 772,
-          "防御力": 296,
+          "Physical Attack": 772,
+          "Defense": 296,
           "HP": 1710
         }
       },
@@ -425,38 +425,38 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10140401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力80%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的80%",
+        "desc": "单一敌军\n - 1次相当于物理攻击力80%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014001.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10140402",
         "name": "禁止通行",
-        "desc": "3名敌人\n - 1次相当于物理攻击力45%的伤害\n - 震荡[55%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力45%的护盾 [持续3回合]\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的45%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "3名敌人\n - 1次相当于物理攻击力45%的伤害\n - 震荡[55%的概率] [持续2回合]\n - 自己\n - 赋予相当于施展者物理攻击力45%的护盾 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的45%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014002.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10140403",
         "name": "应对危机",
-        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力110%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的110%",
-        "cooltime": "⏱️ CT: 45秒",
+        "desc": "防御力最高的敌军\n - 无法恢复 [100%的概率] [持续4回合]\n - 2次相当于物理攻击力110%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的110%",
+        "cooltime": "⏱️ CT: 45s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014003.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10140404",
         "name": "尖端纳米服",
-        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的25%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力70%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nスキル強化効果\n - 效果提升：效果命中增加22%",
+        "desc": "自己\n - 效果命中增加 [长期]\n - 死亡时以生命力的25%复活（每场战斗发动1次）\n - 2名友军（自身除外）\n - 自身死亡时赋予相当于施展者物理攻击力70%的护盾[持续2回合]（每场战斗发动2次）\n - 自身死亡时解除3个减益 （每场战斗发动2次）\nSkill Enhancement Effect\n - 效果提升：效果命中增加22%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       },
-      "被动 (Trans)": {
+      "Passive (Trans)": {
         "id": "10140414",
         "name": "尖端纳米服",
-        "desc": "2名我军\nスキル強化効果\n - 效果提升：护盾吸收量为物理攻击力的70%\n - 解除3个减益",
+        "desc": "2名我军\nSkill Enhancement Effect\n - 效果提升：护盾吸收量为物理攻击力的70%\n - 解除3个减益",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014004.webp"
       }

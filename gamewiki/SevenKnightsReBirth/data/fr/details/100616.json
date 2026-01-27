@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "100616",
+      "name": "Jave",
+      "subname": "Gardien des dragons",
+      "affiliation": "Seven Knights",
+      "flavor": "Au fil des longues années, Jave est devenu le seigneur et le gardien des vastes ruines du dragon.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10061601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ PHY 1 fois.\n - A 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - A 50 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ PHY\n - Hausse de taux : Chances de Brûlure 50 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006101.webp"
+      },
+      "Skill 1": {
+        "id": "10061602",
+        "name": "Attaque furieuse",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 115 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 150 % de l'ATQ PHY 1 fois.\n - Confère Augmentation de dégâts de 15 % à  chaque fois que le nombre de cibles est réduit de 1\n - A 45 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 150 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006102.webp"
+      },
+      "Skill 2": {
+        "id": "10061603",
+        "name": "Fureur du dragon",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 70 % de l'ATQ PHY 2 fois\n - Inflige des dégâts perçants équivalents à 80 % de l'ATQ PHY 2 fois\n - Confère Augmentation de dégâts de 8 % à  chaque fois que le nombre de cibles est réduit de 1\n - Chaque attaque a 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - Chaque attaque a 55 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY\n - Hausse de taux : Chances de Brûlure 55 %",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006103.webp"
+      },
+      "Passive": {
+        "id": "10061604",
+        "name": "Armure de vengeance",
+        "desc": "Soi-même\n - Confère Augmentation de DÉF proportionnelle à l’ATQ [Toujours actif]\n - A 38 % chance de Contre-attaque [Toujours actif]\n - 3 ennemis lors de la contre-attaque\n - Inflige des dégâts équivalents à 40 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 50 % de l'ATQ PHY 1 fois.\n - A 35 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\n - A 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Valeur maximum d’Augmentation de DÉF proportionnelle à l’ATQ 1375\n - Hausse des dégâts de contre-attaque : ATQ PHY 50%\n - Hausse de taux : Chances de Brûlure 40 %\nTranscend Lv.2 Effect\n - Soi-même\n - Ajout d'effet : Immunité au Contrôle de foule [Durée : 3 tour(s)]\nTranscend Lv.6 Effect\n - Effet de changement : Brûlure passe à [Flamme du dragon], infligeant des dégâts équivalents à 120 % de l'attaque à chaque tour",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006104.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente la Réduction des dégâts subis de 10 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "土岐 隼一",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "25 / 10",
+      "age": "23",
+      "height": "178",
+      "weight": "72",
+      "constellation": "Scorpion",
+      "likes": "Spike, Rudy, Evan, hamburgers, saucisses, gens bienveillants, glaçon",
+      "dislikes": "Dellons, salade, personnes maléfiques, ennemis, ennui",
+      "story": "Au fil des longues années, Jave est devenu le seigneur et le gardien des vastes ruines du dragon."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100615",
+      "name": "Jave",
+      "subname": "Chevalier dragon ancien",
+      "affiliation": "Seven Knights",
+      "flavor": "Protégé par son gardien, Jave a appris la langue humaine, la magie et bien d’autres choses. Il vit avec les dragons et veille sur leurs ruines.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10061501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\n - A 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006101.webp"
+      },
+      "Skill 1": {
+        "id": "10061502",
+        "name": "Attaque furieuse",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 105 % de l'ATQ PHY 1 fois.\n - Confère Augmentation de dégâts de 15 % à  chaque fois que le nombre de cibles est réduit de 1\n - A 45 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 105 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006102.webp"
+      },
+      "Skill 2": {
+        "id": "10061503",
+        "name": "Fureur du dragon",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 62 % de l'ATQ PHY 2 fois\n - Confère Augmentation de dégâts de 8 % à  chaque fois que le nombre de cibles est réduit de 1\n - Chaque attaque a 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 62 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006103.webp"
+      },
+      "Passive": {
+        "id": "10061504",
+        "name": "Armure de vengeance",
+        "desc": "Soi-même\n - Confère Augmentation de DÉF proportionnelle à l’ATQ [Toujours actif]\n - A 29 % chance de Contre-attaque [Toujours actif]\n - 3 ennemis lors de la contre-attaque\n - Inflige des dégâts équivalents à 35 % de l'ATQ PHY 1 fois.\n - A 30 % de chances d'infliger Brûlure [Durée : 2 tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "土岐 隼一",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "25 / 10",
+      "age": "23",
+      "height": "178",
+      "weight": "72",
+      "constellation": "Scorpion",
+      "likes": "Spike, Rudy, Evan, hamburgers, saucisses, gens bienveillants, glaçon",
+      "dislikes": "Dellons, salade, personnes maléfiques, ennemis, ennui",
+      "story": "Protégé par son gardien, Jave a appris la langue humaine, la magie et bien d’autres choses. Il vit avec les dragons et veille sur leurs ruines."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100614",
+      "name": "Jave",
+      "subname": "Chevalier dragon",
+      "affiliation": "Seven Knights",
+      "flavor": "Jave, abandonné dans les Ruines des dragons sans connaître ses parents, aurait grandi sous la protection du gardien des lieux.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10061401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\n - A 35 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006101.webp"
+      },
+      "Skill 1": {
+        "id": "10061402",
+        "name": "Attaque furieuse",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 95 % de l'ATQ PHY 1 fois.\n - Confère Augmentation de dégâts de 15 % à  chaque fois que le nombre de cibles est réduit de 1\n - A 35 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006102.webp"
+      },
+      "Skill 2": {
+        "id": "10061403",
+        "name": "Fureur du dragon",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 57 % de l'ATQ PHY 2 fois\n - Confère Augmentation de dégâts de 8 % à  chaque fois que le nombre de cibles est réduit de 1\n - Chaque attaque a 40 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 57 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006103.webp"
+      },
+      "Passive": {
+        "id": "10061404",
+        "name": "Armure de vengeance",
+        "desc": "Soi-même\n - Confère Augmentation de DÉF proportionnelle à l’ATQ [Toujours actif]\n - A 24 % chance de Contre-attaque [Toujours actif]\n - 3 ennemis lors de la contre-attaque\n - Inflige des dégâts équivalents à 30 % de l'ATQ PHY 1 fois.\n - A 25 % de chances d'infliger Brûlure [Durée : 2 tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "土岐 隼一",
+      "species": "Humain",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "25 / 10",
+      "age": "23",
+      "height": "178",
+      "weight": "72",
+      "constellation": "Scorpion",
+      "likes": "Spike, Rudy, Evan, hamburgers, saucisses, gens bienveillants, glaçon",
+      "dislikes": "Dellons, salade, personnes maléfiques, ennemis, ennui",
+      "story": "Jave, abandonné dans les Ruines des dragons sans connaître ses parents, aurait grandi sous la protection du gardien des lieux."
+    }
+  }
+]

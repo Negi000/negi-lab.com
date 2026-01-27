@@ -1,0 +1,522 @@
+[
+  {
+    "basicInfo": {
+      "id": "101476",
+      "name": "Sun Wukong",
+      "subname": "Buddha Combattente Vittorioso",
+      "affiliation": "Quattro Lord",
+      "flavor": "Dopo essere stato sigillato e imprigionato nelle Montagne di Marmo per i suoi numerosi misfatti, Sun Wukong fu infine liberato dal monaco Sanzang. Successivamente, si unì al viaggio di Sanzang, guadagnando riconoscimento per le sue imprese e exploit e divenne noto come il Buddha Combattente Vittorioso.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "211",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Magical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Magical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Magical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Magical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Magical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Magical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Magical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Magical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147601",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\n - 30% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 130% dell'attacco magico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147605",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 60% dell'Attacco magico 2 volta(e). [Probabilità di critico aggiuntiva del 50% Crit Rate]\n - 30% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 75% dell'attacco magico\nTranscend Lv.6 Effect\n - Rafforzamento effetto: Applicazione aggiuntiva del 100% alla probabilità di critico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147602",
+        "name": "Asta gigante",
+        "desc": "3 nemici\n - Infligge danni pari al 53% dell'attacco magico 3 volta/e\nSkill Enhancement Effect\n - Incremento danno: 62% dell'attacco magico",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147606",
+        "name": "Asta gigante: Spettro",
+        "desc": "3 nemici\n - Concede Danni ▲ fino al 10% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni che ignorano la Difesa pari al 86% dell'Attacco magico più il 6% dei PV Massimo del bersaglio 3 volta(e). (Danni basati sui PV limitati al 100% dell'Attacco dell'incantatore) [Probabilità di critico aggiuntiva del 50%]\nSkill Enhancement Effect\n - Incremento danno: 102% dell'attacco magico più 7% dei PV massimi del bersaglio\nTranscend Lv.6 Effect\n - Rafforzamento effetto: Applicazione aggiuntiva del 100% alla probabilità di critico",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147603",
+        "name": "Assalto dello sdoppiamento",
+        "desc": "3 nemici\n - Infligge danni pari al 43% dell'attacco magico 3 volta/e\n - 40% di probabilità di infliggere Pietrificazione [Durata: 2 turno/i]\n - Tutti gli alleati\n - Concede Attenuazione [Durata: 3 turno/i]\n - Sé\n - Concede Clone. [Durata: 5 Turno/i]\n - Immunità a Controllo [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Effetto Attenuazione 15%",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147607",
+        "name": "Assalto dello sdoppiamento: Specter",
+        "desc": "Tutti i nemici\n - 100% di probabilità di infliggere Probabilità di parata ▼ [Durata: 3 turno/i]\n - Concede Danni ▲ fino al 5% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni ignora difesa pari al 68% dell'attacco magico 3 volta/e [Applicazione aggiuntiva del 50% della probabilità di critico]\nSkill Enhancement Effect\n - Incremento danno: 82% dell'attacco magico\n - Rafforzamento effetto: Probabilità di parata ▼33%\nTranscend Lv.6 Effect\n - Rafforzamento effetto: Applicazione aggiuntiva del 100% alla probabilità di critico",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147604",
+        "name": "Avatar finale",
+        "desc": "Sé\n - Concede Potere [Una volta per battaglia]\n - Concede una Barriera pari al 135% dell'attacco magico dell'incantatore all'attivazione di Potere [Durata: 3 turno/i]\n - Concede Difesa proporzionale all'attacco ▲ [Sempre attivo]\n - Riduce la ricarica delle abilità di 10s quando si viene colpiti da un attacco nemico.\n - Tutti gli alleati\n - Cura PV pari al 35% dell'attacco magico dell'incantatore dopo aver attivato un'abilità 1 volta/e\nSkill Enhancement Effect\n - Aumenta Effetto: l'assorbimento della Barriera diventa pari al 155% dell'Attacco magico.\n - Miglioramento cura: La quantità di PV curati è pari al 45% dell'attacco magico\nTranscend Lv.2 Effect\n - Tutti gli alleati\n - Aggiunge Guarigione: Cura i PV pari al 95% dell'Attacco magico dell'incantatore quando i PV scendono al 50% o meno. [1 Volta(e) per Battaglia]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta tutti gli attacchi del 12%.",
+      "transcend_2": "Aumenta tutti gli attacchi del 6%.",
+      "transcend_3": "Aumenta i PV del 18%.",
+      "transcend_4": "Aumenta la riduzione dei danni subiti del 10%.",
+      "transcend_5": "Aumenta tutti gli attacchi del 12%.",
+      "transcend_6": "Aumenta tutti gli attacchi del 6%.",
+      "transcend_7": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_8": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_9": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_10": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_11": "Aumenta tutti gli attacchi, la difesa e i PV del 2%.",
+      "transcend_12": "Aumenta tutti gli attacchi, la difesa e i PV del 2%."
+    },
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Pesci",
+      "likes": "Sanzang, Xuanzang, Pesche, Liquore, Spirito libero, Sorgenti termali, Nuoto, Stimolazione",
+      "dislikes": "Pascal, Dellons, Freyja, Tagliatelle fumanti, Oppressione, Irresponsabilità, Grotte oscure, Il Circolo d'Oro",
+      "story": "Dopo essere stato sigillato e imprigionato nelle Montagne di Marmo per i suoi numerosi misfatti, Sun Wukong fu infine liberato dal monaco Sanzang. Successivamente, si unì al viaggio di Sanzang, guadagnando riconoscimento per le sue imprese e exploit e divenne noto come il Buddha Combattente Vittorioso."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101475",
+      "name": "Sun Wukong",
+      "subname": "Grande Saggio Pari del Cielo",
+      "affiliation": "Quattro Lord",
+      "flavor": "Dopo aver causato caos nel Regno Celeste, Imperatore di Giada ha nominato Sun Wukong al ruolo di \\\"Maestro delle Scuderie\\\" per tenerlo sotto controllo. Ma dopo aver appreso questo, ha causato ulteriori disordini e gli è stato successivamente assegnato un altro titolo: \\\"Grande Saggio Pari al Cielo.\\",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "151",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Magical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Magical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Magical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Magical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Magical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Magical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Magical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Magical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147501",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 90% dell'attacco magico 1 volta/e\n - 30% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147505",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 55% dell'Attacco magico 2 volta(e). [Probabilità di critico aggiuntiva del 50% Crit Rate]\n - 30% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147502",
+        "name": "Asta gigante",
+        "desc": "3 nemici\n - Infligge danni pari al 48% dell'attacco magico 3 volta/e\nSkill Enhancement Effect\n - Incremento danno: 48% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147506",
+        "name": "Asta gigante: Spettro",
+        "desc": "3 nemici\n - Concede Danni ▲ fino al 10% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni che ignorano la Difesa pari al 78% dell'Attacco magico più il 4% dei PV Massimo del bersaglio 3 volta(e). (Danni basati sui PV limitati al 50% dell'Attacco dell'incantatore) [Probabilità di critico aggiuntiva del 50%]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147503",
+        "name": "Assalto dello sdoppiamento",
+        "desc": "3 nemici\n - Infligge danni pari al 38% dell'attacco magico 3 volta/e\n - 40% di probabilità di infliggere Pietrificazione [Durata: 2 turno/i]\n - Tutti gli alleati\n - Concede Attenuazione [Durata: 3 turno/i]\n - Sé\n - Concede Clone. [Durata: 5 Turno/i]\n - Immunità a Controllo [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 38% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147507",
+        "name": "Assalto dello sdoppiamento: Specter",
+        "desc": "Tutti i nemici\n - 100% di probabilità di infliggere Probabilità di parata ▼ [Durata: 3 turno/i]\n - Concede Danni ▲ fino al 5% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni ignora difesa pari al 63% dell'attacco magico 3 volta/e [Applicazione aggiuntiva del 50% della probabilità di critico]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147504",
+        "name": "Avatar finale",
+        "desc": "Sé\n - Concede Potere [Una volta per battaglia]\n - Concede una Barriera pari al 125% dell'attacco magico dell'incantatore all'attivazione di Potere [Durata: 3 turno/i]\n - Concede Difesa proporzionale all'attacco ▲ [Sempre attivo]\n - Riduce la ricarica delle abilità di 9s quando si viene colpiti da un attacco nemico.\n - Tutti gli alleati\n - Cura PV pari al 30% dell'attacco magico dell'incantatore dopo aver attivato un'abilità 1 volta/e",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Pesci",
+      "likes": "Sanzang, Xuanzang, Pesche, Liquore, Spirito libero, Sorgenti termali, Nuoto, Stimolazione",
+      "dislikes": "Pascal, Dellons, Freyja, Tagliatelle fumanti, Oppressione, Irresponsabilità, Grotte oscure, Il Circolo d'Oro",
+      "story": "Dopo aver causato caos nel Regno Celeste, Imperatore di Giada ha nominato Sun Wukong al ruolo di \\\"Maestro delle Scuderie\\\" per tenerlo sotto controllo. Ma dopo aver appreso questo, ha causato ulteriori disordini e gli è stato successivamente assegnato un altro titolo: \\\"Grande Saggio Pari al Cielo.\\"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101474",
+      "name": "Sun Wukong",
+      "subname": "Bello Re Scimmia",
+      "affiliation": "Quattro Lord",
+      "flavor": "Sun Wukong è una scimmia nata dalla pietra dalle rocce della Montagna dei Fiori e dei Frutti. Possedeva straordinarie capacità fisiche sin dalla nascita e rapidamente sottomise le creature della montagna, dichiarandosi re.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "108",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Magical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Magical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Magical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Magical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Magical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Magical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Magical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Magical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147401",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 80% dell'attacco magico 1 volta/e\n - 25% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147405",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 50% dell'Attacco magico 2 volta(e). [Probabilità di critico aggiuntiva del 50% Crit Rate]\n - 25% di probabilità di infliggere Pietrificazione [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Skill 1": {
+        "id": "10147402",
+        "name": "Asta gigante",
+        "desc": "3 nemici\n - Infligge danni pari al 42% dell'attacco magico 3 volta/e\nSkill Enhancement Effect\n - Incremento danno: 42% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147406",
+        "name": "Asta gigante: Spettro",
+        "desc": "3 nemici\n - Concede Danni ▲ fino al 10% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni che ignorano la Difesa pari al 68% dell'Attacco magico più il 3% dei PV Massimo del bersaglio 3 volta(e). (Danni basati sui PV limitati al 50% dell'Attacco dell'incantatore) [Probabilità di critico aggiuntiva del 50%]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "⏱️ CT: 84s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147403",
+        "name": "Assalto dello sdoppiamento",
+        "desc": "3 nemici\n - Infligge danni pari al 35% dell'attacco magico 3 volta/e\n - 30% di probabilità di infliggere Pietrificazione [Durata: 2 turno/i]\n - Tutti gli alleati\n - Concede Attenuazione [Durata: 3 turno/i]\n - Sé\n - Concede Clone. [Durata: 5 Turno/i]\n - Immunità a Controllo [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 35% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Skill 2 (Trans)": {
+        "id": "10147407",
+        "name": "Assalto dello sdoppiamento: Specter",
+        "desc": "Tutti i nemici\n - 100% di probabilità di infliggere Probabilità di parata ▼ [Durata: 3 turno/i]\n - Concede Danni ▲ fino al 5% ogni volta che il numero di bersagli viene ridotto di 1\n - Infligge danni ignora difesa pari al 56% dell'attacco magico 3 volta/e [Applicazione aggiuntiva del 50% della probabilità di critico]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲50%",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014707.webp"
+      },
+      "Passive": {
+        "id": "10147404",
+        "name": "Avatar finale",
+        "desc": "Sé\n - Concede Potere [Una volta per battaglia]\n - Concede una Barriera pari al 110% dell'attacco magico dell'incantatore all'attivazione di Potere [Durata: 3 turno/i]\n - Concede Difesa proporzionale all'attacco ▲ [Sempre attivo]\n - Riduce la ricarica delle abilità di 8s quando si viene colpiti da un attacco nemico.\n - Tutti gli alleati\n - Cura PV pari al 25% dell'attacco magico dell'incantatore dopo aver attivato un'abilità 1 volta/e",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "Yokai",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "Pesci",
+      "likes": "Sanzang, Xuanzang, Pesche, Liquore, Spirito libero, Sorgenti termali, Nuoto, Stimolazione",
+      "dislikes": "Pascal, Dellons, Freyja, Tagliatelle fumanti, Oppressione, Irresponsabilità, Grotte oscure, Il Circolo d'Oro",
+      "story": "Sun Wukong è una scimmia nata dalla pietra dalle rocce della Montagna dei Fiori e dei Frutti. Possedeva straordinarie capacità fisiche sin dalla nascita e rapidamente sottomise le creature della montagna, dichiarandosi re."
+    }
+  }
+]

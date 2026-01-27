@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "239",
-      "방어력": "92",
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
       "HP": "535",
-      "민첩성": "29",
-      "크리티컬 확률": "50"
+      "Speed": "29",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 239,
-        "방어력": 92,
+        "Magical Attack": 239,
+        "Defense": 92,
         "HP": 535
       },
       "level30": {
-        "마법 공격력": 1080,
-        "방어력": 411,
+        "Magical Attack": 1080,
+        "Defense": 411,
         "HP": 2391
       },
       "levelUpBonus": {
-        "마법 공격력": 29,
-        "방어력": 11,
+        "Magical Attack": 29,
+        "Defense": 11,
         "HP": 64
       },
       "reinforceBonus": {
-        "마법 공격력": 84,
-        "방어력": 32,
+        "Magical Attack": 84,
+        "Defense": 32,
         "HP": 187
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 1080,
-          "방어력": 411,
+          "Magical Attack": 1080,
+          "Defense": 411,
           "HP": 2391
         },
         "+1": {
-          "마법 공격력": 1164,
-          "방어력": 443,
+          "Magical Attack": 1164,
+          "Defense": 443,
           "HP": 2578
         },
         "+2": {
-          "마법 공격력": 1248,
-          "방어력": 475,
+          "Magical Attack": 1248,
+          "Defense": 475,
           "HP": 2765
         },
         "+3": {
-          "마법 공격력": 1332,
-          "방어력": 507,
+          "Magical Attack": 1332,
+          "Defense": 507,
           "HP": 2952
         },
         "+4": {
-          "마법 공격력": 1416,
-          "방어력": 539,
+          "Magical Attack": 1416,
+          "Defense": 539,
           "HP": 3139
         },
         "+5": {
-          "마법 공격력": 1500,
-          "방어력": 571,
+          "Magical Attack": 1500,
+          "Defense": 571,
           "HP": 3326
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10125601",
         "name": "",
-        "desc": "적군 2명\n - 마법 공격력의 55%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 70%",
+        "desc": "적군 2명\n - 마법 공격력의 55%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 70%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10125602",
         "name": "천상의 심판",
-        "desc": "모든 적군\n - 마법 공격력의 65%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 77%\n - 효과 상승 : 방어력 감소 29%",
-        "cooltime": "⏱️ CT: 84秒",
+        "desc": "모든 적군\n - 마법 공격력의 65%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 77%\n - 효과 상승 : 방어력 감소 29%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10125603",
         "name": "최고 판결",
-        "desc": "모든 적군\n - 영멸 [60% 확률] [2턴 지속]\n - 마법 공격력의 70%만큼 2회 피해\nスキル強化効果\n - 피해량 상승 : 마법 공격력의 80%\n - 확률 상승 : 영멸 확률 70%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "모든 적군\n - 영멸 [60% 확률] [2턴 지속]\n - 마법 공격력의 70%만큼 2회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 80%\n - 확률 상승 : 영멸 확률 70%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10125604",
         "name": "신의 저울",
-        "desc": "자신\n - 협공 [25% 확률] [상시]\n - 모든 피해 무효화 [피격 2회]\n - 사망 시 불사 상태로 부활 [2턴 지속] (전투당 1회 발동)\n - 사망 시 불사 상태로 부활 [3턴 지속] (전투당 1회 발동)\n - 협공 발동 시 적군 3명\n - 마법 공격력의 40%, 대상 최대 생명력의 7%만큼 1회 피해 (생명력 비례 피해는 시전자 공격력의 300% 제한)\nスキル強化効果\n - 턴 상승 : 불사 [3턴 지속]\n - 협공 피해량 상승 : 마법 공격력 50%, 대상 최대 생명력의 9%\n超越2段階達成効果\n - 확률 상승 : 협공 확률 35%\n超越6段階達成効果\n - 자신\n - 효과 추가 : 불사 발동 시 행동 제어 면역 [3턴 지속]",
+        "desc": "자신\n - 협공 [25% 확률] [상시]\n - 모든 피해 무효화 [피격 2회]\n - 사망 시 불사 상태로 부활 [2턴 지속] (전투당 1회 발동)\n - 사망 시 불사 상태로 부활 [3턴 지속] (전투당 1회 발동)\n - 협공 발동 시 적군 3명\n - 마법 공격력의 40%, 대상 최대 생명력의 7%만큼 1회 피해 (생명력 비례 피해는 시전자 공격력의 300% 제한)\nSkill Enhancement Effect\n - 턴 상승 : 불사 [3턴 지속]\n - 협공 피해량 상승 : 마법 공격력 50%, 대상 최대 생명력의 9%\nTranscend Lv.2 Effect\n - 확률 상승 : 협공 확률 35%\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 불사 발동 시 행동 제어 면역 [3턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012504.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "171",
-      "방어력": "66",
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
       "HP": "382",
-      "민첩성": "26",
-      "크리티컬 확률": "50"
+      "Speed": "26",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 171,
-        "방어력": 66,
+        "Magical Attack": 171,
+        "Defense": 66,
         "HP": 382
       },
       "level30": {
-        "마법 공격력": 780,
-        "방어력": 298,
+        "Magical Attack": 780,
+        "Defense": 298,
         "HP": 1716
       },
       "levelUpBonus": {
-        "마법 공격력": 21,
-        "방어력": 8,
+        "Magical Attack": 21,
+        "Defense": 8,
         "HP": 46
       },
       "reinforceBonus": {
-        "마법 공격력": 60,
-        "방어력": 22,
+        "Magical Attack": 60,
+        "Defense": 22,
         "HP": 134
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 780,
-          "방어력": 298,
+          "Magical Attack": 780,
+          "Defense": 298,
           "HP": 1716
         },
         "+1": {
-          "마법 공격력": 840,
-          "방어력": 320,
+          "Magical Attack": 840,
+          "Defense": 320,
           "HP": 1850
         },
         "+2": {
-          "마법 공격력": 900,
-          "방어력": 342,
+          "Magical Attack": 900,
+          "Defense": 342,
           "HP": 1984
         },
         "+3": {
-          "마법 공격력": 960,
-          "방어력": 364,
+          "Magical Attack": 960,
+          "Defense": 364,
           "HP": 2118
         },
         "+4": {
-          "마법 공격력": 1020,
-          "방어력": 386,
+          "Magical Attack": 1020,
+          "Defense": 386,
           "HP": 2252
         },
         "+5": {
-          "마법 공격력": 1080,
-          "방어력": 408,
+          "Magical Attack": 1080,
+          "Defense": 408,
           "HP": 2386
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10125501",
         "name": "",
-        "desc": "적군 2명\n - 마법 공격력의 50%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 50%",
+        "desc": "적군 2명\n - 마법 공격력의 50%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10125502",
         "name": "천상의 심판",
-        "desc": "모든 적군\n - 마법 공격력의 60%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 60%",
-        "cooltime": "⏱️ CT: 84秒",
+        "desc": "모든 적군\n - 마법 공격력의 60%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10125503",
         "name": "최고 판결",
-        "desc": "모든 적군\n - 영멸 [50% 확률] [2턴 지속]\n - 마법 공격력의 62%만큼 2회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 62%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "모든 적군\n - 영멸 [50% 확률] [2턴 지속]\n - 마법 공격력의 62%만큼 2회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 62%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10125504",
         "name": "신의 저울",
         "desc": "자신\n - 협공 [18% 확률] [상시]\n - 모든 피해 무효화 [피격 2회]\n - 사망 시 불사 상태로 부활 [2턴 지속] (전투당 1회 발동)\n - 협공 발동 시 적군 3명\n - 마법 공격력의 35%, 대상 최대 생명력의 7%만큼 1회 피해 (생명력 비례 피해는 시전자 공격력의 300% 제한)",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "물리 공격력": "0",
-      "마법 공격력": "122",
-      "방어력": "47",
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
       "HP": "273",
-      "민첩성": "23",
-      "크리티컬 확률": "50"
+      "Speed": "23",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "마법 공격력",
+      "attackType": "Magical Attack",
       "level1": {
-        "마법 공격력": 122,
-        "방어력": 47,
+        "Magical Attack": 122,
+        "Defense": 47,
         "HP": 273
       },
       "level30": {
-        "마법 공격력": 557,
-        "방어력": 221,
+        "Magical Attack": 557,
+        "Defense": 221,
         "HP": 1230
       },
       "levelUpBonus": {
-        "마법 공격력": 15,
-        "방어력": 6,
+        "Magical Attack": 15,
+        "Defense": 6,
         "HP": 33
       },
       "reinforceBonus": {
-        "마법 공격력": 43,
-        "방어력": 15,
+        "Magical Attack": 43,
+        "Defense": 15,
         "HP": 96
       },
       "reinforceStages": {
         "+0": {
-          "마법 공격력": 557,
-          "방어력": 221,
+          "Magical Attack": 557,
+          "Defense": 221,
           "HP": 1230
         },
         "+1": {
-          "마법 공격력": 600,
-          "방어력": 236,
+          "Magical Attack": 600,
+          "Defense": 236,
           "HP": 1326
         },
         "+2": {
-          "마법 공격력": 643,
-          "방어력": 251,
+          "Magical Attack": 643,
+          "Defense": 251,
           "HP": 1422
         },
         "+3": {
-          "마법 공격력": 686,
-          "방어력": 266,
+          "Magical Attack": 686,
+          "Defense": 266,
           "HP": 1518
         },
         "+4": {
-          "마법 공격력": 729,
-          "방어력": 281,
+          "Magical Attack": 729,
+          "Defense": 281,
           "HP": 1614
         },
         "+5": {
-          "마법 공격력": 772,
-          "방어력": 296,
+          "Magical Attack": 772,
+          "Defense": 296,
           "HP": 1710
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10125401",
         "name": "",
-        "desc": "적군 2명\n - 마법 공격력의 45%만큼 1회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 45%",
+        "desc": "적군 2명\n - 마법 공격력의 45%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 45%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012501.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10125402",
         "name": "천상의 심판",
-        "desc": "모든 적군\n - 마법 공격력의 55%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 55%",
-        "cooltime": "⏱️ CT: 84秒",
+        "desc": "모든 적군\n - 마법 공격력의 55%만큼 2회 피해\n - 방어력 감소 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 55%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012502.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10125403",
         "name": "최고 판결",
-        "desc": "모든 적군\n - 영멸 [50% 확률] [2턴 지속]\n - 마법 공격력의 57%만큼 2회 피해\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 57%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "모든 적군\n - 영멸 [50% 확률] [2턴 지속]\n - 마법 공격력의 57%만큼 2회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 57%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012503.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10125404",
         "name": "신의 저울",
         "desc": "자신\n - 협공 [15% 확률] [상시]\n - 모든 피해 무효화 [피격 2회]\n - 사망 시 불사 상태로 부활 [2턴 지속] (전투당 1회 발동)\n - 협공 발동 시 적군 3명\n - 마법 공격력의 30%, 대상 최대 생명력의 7%만큼 1회 피해 (생명력 비례 피해는 시전자 공격력의 300% 제한)",

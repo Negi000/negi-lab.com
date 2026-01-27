@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "116",
-      "魔法攻擊力": "0",
-      "防禦力": "135",
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
       "HP": "773",
-      "敏捷": "19",
-      "暴擊率": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 116,
-        "防禦力": 135,
+        "Physical Attack": 116,
+        "Defense": 135,
         "HP": 773
       },
       "level30": {
-        "物理攻擊力": 522,
-        "防禦力": 657,
+        "Physical Attack": 522,
+        "Defense": 657,
         "HP": 3470
       },
       "levelUpBonus": {
-        "物理攻擊力": 14,
-        "防禦力": 18,
+        "Physical Attack": 14,
+        "Defense": 18,
         "HP": 93
       },
       "reinforceBonus": {
-        "物理攻擊力": 41,
-        "防禦力": 47,
+        "Physical Attack": 41,
+        "Defense": 47,
         "HP": 271
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 522,
-          "防禦力": 657,
+          "Physical Attack": 522,
+          "Defense": 657,
           "HP": 3470
         },
         "+1": {
-          "物理攻擊力": 563,
-          "防禦力": 704,
+          "Physical Attack": 563,
+          "Defense": 704,
           "HP": 3741
         },
         "+2": {
-          "物理攻擊力": 604,
-          "防禦力": 751,
+          "Physical Attack": 604,
+          "Defense": 751,
           "HP": 4012
         },
         "+3": {
-          "物理攻擊力": 645,
-          "防禦力": 798,
+          "Physical Attack": 645,
+          "Defense": 798,
           "HP": 4283
         },
         "+4": {
-          "物理攻擊力": 686,
-          "防禦力": 845,
+          "Physical Attack": 686,
+          "Defense": 845,
           "HP": 4554
         },
         "+5": {
-          "物理攻擊力": 727,
-          "防禦力": 892,
+          "Physical Attack": 727,
+          "Defense": 892,
           "HP": 4825
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10049601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力50%、施展者最大生命力12%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的60%、施展者最大生命力的14%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力50%、施展者最大生命力12%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的60%、施展者最大生命力的14%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10049602",
         "name": "地獄之盾",
-        "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 挑釁［持續2回合］\n - 我軍3名\n - 持續恢復［持續2回合］\nスキル強化効果\n - 恢復量上升：持續恢復量為施展者生命力的20%",
-        "cooltime": "⏱️ CT: 96秒",
+        "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 挑釁［持續2回合］\n - 我軍3名\n - 持續恢復［持續2回合］\nSkill Enhancement Effect\n - 恢復量上升：持續恢復量為施展者生命力的20%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10049603",
         "name": "地獄的一擊",
-        "desc": "敵軍3名\n - 相當於物理攻擊力80%、施展者最大生命力19%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［35%機率］［持續3回合］\nスキル強化効果\n - 機率上升：即死機率40%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "敵軍3名\n - 相當於物理攻擊力80%、施展者最大生命力19%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［35%機率］［持續3回合］\nSkill Enhancement Effect\n - 機率上升：即死機率40%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10049604",
         "name": "地獄騎士",
-        "desc": "所有我軍\n - 即死效果套用機率增加［常態］\n自身\n - 相當於施展者最大生命力39%的防護罩［持續3回合］（每回合發動1次）\nスキル強化効果\n - 效果上升：防護罩吸收量為最大生命力的45%\n超越2段階達成効果\n - ［所有敵軍］\n - 添加效果：效果抵抗減少34%［常態］\n超越6段階達成効果\n - 添加效果：當自身的生命力達到50%以下時，產生相當於施展者最大生命力39%的防護罩［持續3回合］（每戰鬥發動1次）",
+        "desc": "所有我軍\n - 即死效果套用機率增加［常態］\n自身\n - 相當於施展者最大生命力39%的防護罩［持續3回合］（每回合發動1次）\nSkill Enhancement Effect\n - 效果上升：防護罩吸收量為最大生命力的45%\nTranscend Lv.2 Effect\n - ［所有敵軍］\n - 添加效果：效果抵抗減少34%［常態］\nTranscend Lv.6 Effect\n - 添加效果：當自身的生命力達到50%以下時，產生相當於施展者最大生命力39%的防護罩［持續3回合］（每戰鬥發動1次）",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "83",
-      "魔法攻擊力": "0",
-      "防禦力": "96",
+      "Physical Attack": "83",
+      "Magical Attack": "0",
+      "Defense": "96",
       "HP": "552",
-      "敏捷": "17",
-      "暴擊率": "50"
+      "Speed": "17",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 83,
-        "防禦力": 96,
+        "Physical Attack": 83,
+        "Defense": 96,
         "HP": 552
       },
       "level30": {
-        "物理攻擊力": 373,
-        "防禦力": 473,
+        "Physical Attack": 373,
+        "Defense": 473,
         "HP": 2466
       },
       "levelUpBonus": {
-        "物理攻擊力": 10,
-        "防禦力": 13,
+        "Physical Attack": 10,
+        "Defense": 13,
         "HP": 66
       },
       "reinforceBonus": {
-        "物理攻擊力": 28,
-        "防禦力": 34,
+        "Physical Attack": 28,
+        "Defense": 34,
         "HP": 193
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 373,
-          "防禦力": 473,
+          "Physical Attack": 373,
+          "Defense": 473,
           "HP": 2466
         },
         "+1": {
-          "物理攻擊力": 401,
-          "防禦力": 507,
+          "Physical Attack": 401,
+          "Defense": 507,
           "HP": 2659
         },
         "+2": {
-          "物理攻擊力": 429,
-          "防禦力": 541,
+          "Physical Attack": 429,
+          "Defense": 541,
           "HP": 2852
         },
         "+3": {
-          "物理攻擊力": 457,
-          "防禦力": 575,
+          "Physical Attack": 457,
+          "Defense": 575,
           "HP": 3045
         },
         "+4": {
-          "物理攻擊力": 485,
-          "防禦力": 609,
+          "Physical Attack": 485,
+          "Defense": 609,
           "HP": 3238
         },
         "+5": {
-          "物理攻擊力": 513,
-          "防禦力": 643,
+          "Physical Attack": 513,
+          "Defense": 643,
           "HP": 3431
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10049501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力45%、施展者最大生命力11%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的45%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力45%、施展者最大生命力11%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的45%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10049502",
         "name": "地獄之盾",
         "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 挑釁［持續2回合］\n - 我軍3名\n - 持續恢復［持續2回合］",
-        "cooltime": "⏱️ CT: 96秒",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10049503",
         "name": "地獄的一擊",
-        "desc": "敵軍3名\n - 相當於物理攻擊力70%、施展者最大生命力17%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［35%機率］［持續3回合］\nスキル強化効果\n - 傷害量上升：物理攻擊力的70%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "敵軍3名\n - 相當於物理攻擊力70%、施展者最大生命力17%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［35%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的70%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10049504",
         "name": "地獄騎士",
         "desc": "所有我軍\n - 即死效果套用機率增加［常態］\n自身\n - 相當於施展者最大生命力35%的防護罩［持續3回合］（每回合發動1次）",
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "物理攻擊力": "59",
-      "魔法攻擊力": "0",
-      "防禦力": "68",
+      "Physical Attack": "59",
+      "Magical Attack": "0",
+      "Defense": "68",
       "HP": "394",
-      "敏捷": "15",
-      "暴擊率": "50"
+      "Speed": "15",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "物理攻擊力",
+      "attackType": "Physical Attack",
       "level1": {
-        "物理攻擊力": 59,
-        "防禦力": 68,
+        "Physical Attack": 59,
+        "Defense": 68,
         "HP": 394
       },
       "level30": {
-        "物理攻擊力": 262,
-        "防禦力": 329,
+        "Physical Attack": 262,
+        "Defense": 329,
         "HP": 1757
       },
       "levelUpBonus": {
-        "物理攻擊力": 7,
-        "防禦力": 9,
+        "Physical Attack": 7,
+        "Defense": 9,
         "HP": 47
       },
       "reinforceBonus": {
-        "物理攻擊力": 21,
-        "防禦力": 24,
+        "Physical Attack": 21,
+        "Defense": 24,
         "HP": 138
       },
       "reinforceStages": {
         "+0": {
-          "物理攻擊力": 262,
-          "防禦力": 329,
+          "Physical Attack": 262,
+          "Defense": 329,
           "HP": 1757
         },
         "+1": {
-          "物理攻擊力": 283,
-          "防禦力": 353,
+          "Physical Attack": 283,
+          "Defense": 353,
           "HP": 1895
         },
         "+2": {
-          "物理攻擊力": 304,
-          "防禦力": 377,
+          "Physical Attack": 304,
+          "Defense": 377,
           "HP": 2033
         },
         "+3": {
-          "物理攻擊力": 325,
-          "防禦力": 401,
+          "Physical Attack": 325,
+          "Defense": 401,
           "HP": 2171
         },
         "+4": {
-          "物理攻擊力": 346,
-          "防禦力": 425,
+          "Physical Attack": 346,
+          "Defense": 425,
           "HP": 2309
         },
         "+5": {
-          "物理攻擊力": 367,
-          "防禦力": 449,
+          "Physical Attack": 367,
+          "Defense": 449,
           "HP": 2447
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻擊": {
+      "Normal Attack": {
         "id": "10049401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力40%、施展者最大生命力10%的1次傷害\nスキル強化効果\n - 傷害量上升：物理攻擊力的40%",
+        "desc": "單一敵軍\n - 相當於物理攻擊力40%、施展者最大生命力10%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的40%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10049402",
         "name": "地獄之盾",
         "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 挑釁［持續2回合］\n - 我軍3名\n - 持續恢復［持續2回合］",
-        "cooltime": "⏱️ CT: 96秒",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10049403",
         "name": "地獄的一擊",
-        "desc": "敵軍3名\n - 相當於物理攻擊力65%、施展者最大生命力16%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［30%機率］［持續3回合］\nスキル強化効果\n - 傷害量上升：物理攻擊力的65%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "敵軍3名\n - 相當於物理攻擊力65%、施展者最大生命力16%的1次傷害\n - 效果抵抗減少［100%機率］［持續3回合］\n - 即死［30%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的65%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
       },
-      "被動": {
+      "Passive": {
         "id": "10049404",
         "name": "地獄騎士",
         "desc": "所有我軍\n - 即死效果套用機率增加［常態］\n自身\n - 相當於施展者最大生命力31%的防護罩［持續3回合］（每回合發動1次）",

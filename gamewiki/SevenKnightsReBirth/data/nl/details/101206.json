@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101206",
+      "name": "Melia",
+      "subname": "Kristallen Draak van het Lot",
+      "affiliation": "Zeven Ridders van Oud",
+      "flavor": "Toen de oorlog uitbrak over de Kracht van Vernietiging, distantieerden de draken zich van de mensen. Maar vanwege haar voorliefde voor menselijke kinderen verborg Melia zich niet, zodat ze in contact kon blijven en tijd met hen kon doorbrengen.",
+      "rarity": "legendary++",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "237",
+      "HP": "1160",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 237,
+        "HP": 1160
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 1165,
+        "HP": 5220
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 32,
+        "HP": 140
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 83,
+        "HP": 407
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 1165,
+          "HP": 5220
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 1248,
+          "HP": 5627
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 1331,
+          "HP": 6034
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 1414,
+          "HP": 6441
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 1497,
+          "HP": 6848
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 1580,
+          "HP": 7255
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120601",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 30% van Magische Aanval plus 35% van Verdediging 1 keer.\n - [Magie Binden - 3 Doel(en)]: 30% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\nSkill Enhancement Effect\n - Verhoogt kans: Kristalklusterkans wordt 35%.\nTranscend Lv.6 Effect\n - Verhoogt effect: Het aantal treffers van Crystal Cluster wordt 5.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120602",
+        "name": "Kristallen drakenspiegels",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 30% van Magische Aanval plus 32% van Verdediging 2 keer.\n - [Magie Binden - 3 Doel(en)]: 50% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\n - 100% kans om Kristalresonantie te veroorzaken. [Verminderd met: 4 treffer(s)]\nSkill Enhancement Effect\n - Verhoogt kans: Kristalklusterkans wordt 65%.\nTranscend Lv.6 Effect\n - Verhoogt effect: Het aantal treffers van Crystal Cluster wordt 5.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120603",
+        "name": "Kristallijne adem",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 30% van Magische Aanval plus 32% van Verdediging 2 keer.\n - 100% kans om Verhoogde Mis Kans te veroorzaken. [Duur: 3 Beurt(en)]\n - [Magie Binden - 3 Doel(en)]: Elke aanval heeft een 35% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 4 Treffers]\nSkill Enhancement Effect\n - Verhoogt effect: Verhoogde kans op missen tot 48%.\n - Verhoogt kans: Kristalklusterkans wordt 45%.\nTranscend Lv.2 Effect\n - Zelf\n - Voegt effect toe: Uitdagen. [Duur: 2 Beurt(en)]",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120604",
+        "name": "Glinsterende kristallen schubben",
+        "desc": "Zelf\n - Verleent Fysieke Versterking - Kristal Draak. [Altijd Actief]\n - Herleeft met 80% HP na te zijn gevallen in de strijd. [Eén keer per gevecht]\n - [Magie Binden - 4 Doelwit(ten)]: Verleent Immuniteit tegen Crowd Control. [Duur: 3 Beurt(en)]\n - Alle vijanden\n - Veroorzaakt Magische Kwetsbaarheid. [Altijd Actief]\n - Alle Magische Bondgenoten\n - [Magie Binden - 5 Doel(en)]: Het uitvoeren van een aanval 1 keer verleent een Barrière gelijk aan 45% van de Verdediging van de caster. [Duur: 2 Beurt(en)]\nSkill Enhancement Effect\n - Verhoogt effect: HP verkregen bij wederopstanding wordt 100%.\n - Verhoogt effect: Magische kwetsbaarheid tot 20%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Verhoogt alle aanval met 12%.",
+      "transcend_2": "Verhoogt alle aanval met 6%.",
+      "transcend_3": "Verhoogt HP met 18%.",
+      "transcend_4": "Verhoogt de Effect Hit Rate met 24%.",
+      "transcend_5": "Verhoogt alle aanval met 12%.",
+      "transcend_6": "Verhoogt alle aanval met 6%.",
+      "transcend_7": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_8": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_9": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_10": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_11": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_12": "Verhoogt alle aanval, verdediging en HP met 2%."
+    },
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Draak",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Waterman",
+      "likes": "Wieser, Alle zoete etenswaren, Mooie kleren, Juwelen, vooral kristallen",
+      "dislikes": "Jave, Alle bittere etenswaren, Alles wat vies is, Leugens, Wanneer dingen niet gaan zoals ze zouden moeten.",
+      "story": "Toen de oorlog uitbrak over de Kracht van Vernietiging, distantieerden de draken zich van de mensen. Maar vanwege haar voorliefde voor menselijke kinderen verborg Melia zich niet, zodat ze in contact kon blijven en tijd met hen kon doorbrengen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101205",
+      "name": "Melia",
+      "subname": "Erfgenaam van de Autoriteit van de Draak",
+      "affiliation": "Zeven Ridders van Oud",
+      "flavor": "Wieser begon Melia te trainen om haar voor te bereiden op de erfgenamen van de Draak. Ze excelleerde en doorstond moeiteloos de nodige beproevingen om de toekomstige beschermvrouwe te worden.",
+      "rarity": "legendary++",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "168",
+      "HP": "828",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 168,
+        "HP": 828
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 835,
+        "HP": 3699
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 23,
+        "HP": 99
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 60,
+        "HP": 290
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 835,
+          "HP": 3699
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 895,
+          "HP": 3989
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 955,
+          "HP": 4279
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 1015,
+          "HP": 4569
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 1075,
+          "HP": 4859
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 1135,
+          "HP": 5149
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120501",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval plus 30% van Verdediging 1 keer.\n - [Magie Binden - 3 Doel(en)]: 30% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.\n - Verhoogt schade: Tot 30% van magische aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120502",
+        "name": "Kristallen drakenspiegels",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 27% van Magische Aanval plus 30% van Verdediging 2 keer.\n - [Magie Binden - 3 Doel(en)]: 50% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\n - 100% kans om Kristalresonantie te veroorzaken. [Verminderd met: 4 treffer(s)]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 27% van fysieke aanval.\n - Verhoogt schade: Tot 30% van magische aanval.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120503",
+        "name": "Kristallijne adem",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 27% van Magische Aanval plus 30% van Verdediging 2 keer.\n - 100% kans om Verhoogde Mis Kans te veroorzaken. [Duur: 3 Beurt(en)]\n - [Magie Binden - 3 Doel(en)]: Elke aanval heeft een 35% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 4 Treffers]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 27% van fysieke aanval.\n - Verhoogt schade: Tot 30% van magische aanval.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120504",
+        "name": "Glinsterende kristallen schubben",
+        "desc": "Zelf\n - Verleent Fysieke Versterking - Kristal Draak. [Altijd Actief]\n - Herleeft met 60% HP na te zijn gevallen in de strijd. [Eén keer per gevecht]\n - [Magie Binden - 4 Doelwit(ten)]: Verleent Immuniteit tegen Crowd Control. [Duur: 3 Beurt(en)]\n - Alle vijanden\n - Veroorzaakt Magische Kwetsbaarheid. [Altijd Actief]\n - Alle Magische Bondgenoten\n - [Magie Binden - 5 Doel(en)]: Het uitvoeren van een aanval 1 keer verleent een Barrière gelijk aan 40% van de Verdediging van de caster. [Duur: 2 Beurt(en)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Draak",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Waterman",
+      "likes": "Wieser, Alle zoete etenswaren, Mooie kleren, Juwelen, vooral kristallen",
+      "dislikes": "Jave, Alle bittere etenswaren, Alles wat vies is, Leugens, Wanneer dingen niet gaan zoals ze zouden moeten.",
+      "story": "Wieser begon Melia te trainen om haar voor te bereiden op de erfgenamen van de Draak. Ze excelleerde en doorstond moeiteloos de nodige beproevingen om de toekomstige beschermvrouwe te worden."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101204",
+      "name": "Melia",
+      "subname": "Grootvader van de Bewaker",
+      "affiliation": "Zeven Ridders van Oud",
+      "flavor": "Toen Melia haar ouders verloor aan de kwaadaardige draken van het verleden, was ze nog niet eens geboren. Na haar geboorte werd ze opgevoed onder de hoede van Wieser en groeide ze op met een diepe genegenheid voor Gaia.",
+      "rarity": "legendary++",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "119",
+      "HP": "591",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 119,
+        "HP": 591
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 583,
+        "HP": 2650
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 16,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 42,
+        "HP": 207
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 583,
+          "HP": 2650
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 625,
+          "HP": 2857
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 667,
+          "HP": 3064
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 709,
+          "HP": 3271
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 751,
+          "HP": 3478
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 793,
+          "HP": 3685
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10120401",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval plus 25% van Verdediging 1 keer.\n - [Magie Binden - 3 Doel(en)]: 25% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.\n - Verhoogt schade: Tot 25% van magische aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012001.webp"
+      },
+      "Skill 1": {
+        "id": "10120402",
+        "name": "Kristallen drakenspiegels",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval plus 27% van Verdediging 2 keer.\n - [Magie Binden - 3 Doel(en)]: 45% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 6 Treffer(s)]\n - 100% kans om Kristalresonantie te veroorzaken. [Verminderd met: 4 treffer(s)]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.\n - Verhoogt schade: Tot 27% van magische aanval.",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012002.webp"
+      },
+      "Skill 2": {
+        "id": "10120403",
+        "name": "Kristallijne adem",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval plus 27% van Verdediging 2 keer.\n - 100% kans om Verhoogde Mis Kans te veroorzaken. [Duur: 3 Beurt(en)]\n - [Magie Binden - 3 Doel(en)]: Elke aanval heeft een 30% kans om Kristalkluster te veroorzaken. [Eindigt na: Ontvangen van 4 Treffers]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.\n - Verhoogt schade: Tot 27% van magische aanval.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012003.webp"
+      },
+      "Passive": {
+        "id": "10120404",
+        "name": "Glinsterende kristallen schubben",
+        "desc": "Zelf\n - Verleent Fysieke Versterking - Kristal Draak. [Altijd Actief]\n - Herleeft met 40% HP na te zijn gevallen in de strijd. [Eén keer per gevecht]\n - [Magie Binden - 4 Doelwit(ten)]: Verleent Immuniteit tegen Crowd Control. [Duur: 3 Beurt(en)]\n - Alle vijanden\n - Veroorzaakt Magische Kwetsbaarheid. [Altijd Actief]\n - Alle Magische Bondgenoten\n - [Magie Binden - 5 Doel(en)]: Het uitvoeren van een aanval 1 keer verleent een Barrière gelijk aan 35% van de Verdediging van de caster. [Duur: 2 Beurt(en)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1012004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "真田 アサミ",
+      "species": "Draak",
+      "gender": "2",
+      "bloodType": "2",
+      "birthday": "21 / 01",
+      "age": "0",
+      "height": "168",
+      "weight": "56",
+      "constellation": "Waterman",
+      "likes": "Wieser, Alle zoete etenswaren, Mooie kleren, Juwelen, vooral kristallen",
+      "dislikes": "Jave, Alle bittere etenswaren, Alles wat vies is, Leugens, Wanneer dingen niet gaan zoals ze zouden moeten.",
+      "story": "Toen Melia haar ouders verloor aan de kwaadaardige draken van het verleden, was ze nog niet eens geboren. Na haar geboorte werd ze opgevoed onder de hoede van Wieser en groeide ze op met een diepe genegenheid voor Gaia."
+    }
+  }
+]

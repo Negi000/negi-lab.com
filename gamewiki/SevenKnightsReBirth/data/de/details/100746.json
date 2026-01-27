@@ -1,0 +1,480 @@
+[
+  {
+    "basicInfo": {
+      "id": "100746",
+      "name": "Jupy",
+      "subname": "All-Durchdringender Pfeil",
+      "affiliation": "Evan-Expedition",
+      "flavor": "Jupys Pfeile können wie eine Kugel durch alles hindurchdringen. Ihr Spitzname stammt von ihrer Freundin, der legendären Jägerin Snipper.",
+      "rarity": "epic",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "2",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "221",
+      "Magical Attack": "0",
+      "Defense": "88",
+      "HP": "510",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 221,
+        "Defense": 88,
+        "HP": 510
+      },
+      "level30": {
+        "Physical Attack": 1004,
+        "Defense": 378,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Physical Attack": 27,
+        "Defense": 10,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Physical Attack": 77,
+        "Defense": 31,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1004,
+          "Defense": 378,
+          "HP": 2279
+        },
+        "+1": {
+          "Physical Attack": 1081,
+          "Defense": 409,
+          "HP": 2458
+        },
+        "+2": {
+          "Physical Attack": 1158,
+          "Defense": 440,
+          "HP": 2637
+        },
+        "+3": {
+          "Physical Attack": 1235,
+          "Defense": 471,
+          "HP": 2816
+        },
+        "+4": {
+          "Physical Attack": 1312,
+          "Defense": 502,
+          "HP": 2995
+        },
+        "+5": {
+          "Physical Attack": 1389,
+          "Defense": 533,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10074601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 120 % des physischen Angriffs 1 Mal.\n - 40 % Chance, Gift zuzufügen. [Dauer: 2 Runde(n)]\n - 50 % Chance, Gift zuzufügen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 120 % des physischen Angriffs.\n - Erhöht Chance: Vergiften-Chance wird zu 50 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007401.webp"
+      },
+      "Skill 1": {
+        "id": "10074602",
+        "name": "Gezielter Schuss",
+        "desc": "Selbst\n - Gewährt Scharfschützenhaltung. [Dauer: 6 Runde(n)]\n - Gewährt Krit. Trefferraten-Erhöhung. [Dauer: 6 Runde(n)]\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 45 %.\n - Erhöht den Schaden: Auf 440 % des physischen Angriffs.\nTranscend Lv.6 Effect\n - Erhöht Runden: Scharfschützenhaltung dauert 12 Runde(n).\n - Erhöht die Runden: Die Dauer der Krit.\\n-Trefferraten-Erhöhung wird zu 12 Runde(n).",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007403.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10074605",
+        "name": "Scharfschützenhaltung",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 370 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 440 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 370 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 440 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007402.webp"
+      },
+      "Skill 2": {
+        "id": "10074603",
+        "name": "Mehrfachangriff",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 315 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 375 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 155 % des physischen Angriffs, während in der [Scharfschützenhaltung].\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 375 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Erhöht den Schaden: Auf 185 % des physischen Angriffs, während in [Sniping Stance].",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007405.webp"
+      },
+      "Passive": {
+        "id": "10074604",
+        "name": "Falkenauge",
+        "desc": "Selbst\n - Gewährt Krit. Schaden-Erhöhung. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: Krit. Schaden-Erhöhung auf 40 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007404.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 9 %.",
+      "transcend_2": "Erhöht alle Angriffe um 4,5 %.",
+      "transcend_3": "Erhöht die TP um 14 %.",
+      "transcend_4": "Erhöht die Krit. Trefferrate um 14 %.",
+      "transcend_5": "Erhöht alle Angriffe um 9 %.",
+      "transcend_6": "Erhöht alle Angriffe um 4,5 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "本多 真梨子",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "08 / 11",
+      "age": "0",
+      "height": "169",
+      "weight": "47",
+      "constellation": "Skorpion",
+      "likes": "Alle Evan-Expeditionen, Karon, Äpfel, Trauben, Eicheln, Kastanien, Süßwasserfische, Abenteuer, Freiheit, Verantwortung, Süßwasserfische, Musikinstrumente spielen",
+      "dislikes": "Nashi-Birnen, Wassermelonen, Fisch, Unterdrückung, Gewalt, Verantwortungslosigkeit, Bootfahren",
+      "story": "Jupys Pfeile können wie eine Kugel durch alles hindurchdringen. Ihr Spitzname stammt von ihrer Freundin, der legendären Jägerin Snipper."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100745",
+      "name": "Jupy",
+      "subname": "Meisterschütze",
+      "affiliation": "Evan-Expedition",
+      "flavor": "Jupy entdeckte, dass sie Augen wie ein Falke hatte, als sie mehr Erfahrung sammelte. Sie kann ein Ziel selbst aus großer Entfernung genau zwischen die Augen treffen.",
+      "rarity": "epic",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "2",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "158",
+      "Magical Attack": "0",
+      "Defense": "63",
+      "HP": "364",
+      "Speed": "22",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 158,
+        "Defense": 63,
+        "HP": 364
+      },
+      "level30": {
+        "Physical Attack": 738,
+        "Defense": 266,
+        "HP": 1611
+      },
+      "levelUpBonus": {
+        "Physical Attack": 20,
+        "Defense": 7,
+        "HP": 43
+      },
+      "reinforceBonus": {
+        "Physical Attack": 55,
+        "Defense": 22,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 738,
+          "Defense": 266,
+          "HP": 1611
+        },
+        "+1": {
+          "Physical Attack": 793,
+          "Defense": 288,
+          "HP": 1738
+        },
+        "+2": {
+          "Physical Attack": 848,
+          "Defense": 310,
+          "HP": 1865
+        },
+        "+3": {
+          "Physical Attack": 903,
+          "Defense": 332,
+          "HP": 1992
+        },
+        "+4": {
+          "Physical Attack": 958,
+          "Defense": 354,
+          "HP": 2119
+        },
+        "+5": {
+          "Physical Attack": 1013,
+          "Defense": 376,
+          "HP": 2246
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10074501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\n - 40 % Chance, Gift zuzufügen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007401.webp"
+      },
+      "Skill 1": {
+        "id": "10074502",
+        "name": "Gezielter Schuss",
+        "desc": "Selbst\n - Gewährt Scharfschützenhaltung. [Dauer: 6 Runde(n)]\n - Gewährt Krit. Trefferraten-Erhöhung. [Dauer: 6 Runde(n)]\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 29 %.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007403.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10074505",
+        "name": "Scharfschützenhaltung",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 330 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 330 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007402.webp"
+      },
+      "Skill 2": {
+        "id": "10074503",
+        "name": "Mehrfachangriff",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 280 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 140 % des physischen Angriffs, während in der [Scharfschützenhaltung].\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 280 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007405.webp"
+      },
+      "Passive": {
+        "id": "10074504",
+        "name": "Falkenauge",
+        "desc": "Selbst\n - Gewährt Krit. Schaden-Erhöhung. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: Krit. Schaden-Erhöhung auf 25 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本多 真梨子",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "08 / 11",
+      "age": "0",
+      "height": "169",
+      "weight": "47",
+      "constellation": "Skorpion",
+      "likes": "Alle Evan-Expeditionen, Karon, Äpfel, Trauben, Eicheln, Kastanien, Süßwasserfische, Abenteuer, Freiheit, Verantwortung, Süßwasserfische, Musikinstrumente spielen",
+      "dislikes": "Nashi-Birnen, Wassermelonen, Fisch, Unterdrückung, Gewalt, Verantwortungslosigkeit, Bootfahren",
+      "story": "Jupy entdeckte, dass sie Augen wie ein Falke hatte, als sie mehr Erfahrung sammelte. Sie kann ein Ziel selbst aus großer Entfernung genau zwischen die Augen treffen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100744",
+      "name": "Jupy",
+      "subname": "Scharfschütze",
+      "affiliation": "Evan-Expedition",
+      "flavor": "Jupy ist eine schelmische junge Bogenschützin, die die Kunst des Pfeileauflegens von ihrem Vater gelernt hat. Sie ist bekannt für ihr außergewöhnliches Talent und ihre Präzision mit dem Bogen.",
+      "rarity": "epic",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "2",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "113",
+      "Magical Attack": "0",
+      "Defense": "45",
+      "HP": "260",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 113,
+        "Defense": 45,
+        "HP": 260
+      },
+      "level30": {
+        "Physical Attack": 519,
+        "Defense": 190,
+        "HP": 1159
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 5,
+        "HP": 31
+      },
+      "reinforceBonus": {
+        "Physical Attack": 40,
+        "Defense": 16,
+        "HP": 90
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 519,
+          "Defense": 190,
+          "HP": 1159
+        },
+        "+1": {
+          "Physical Attack": 559,
+          "Defense": 206,
+          "HP": 1249
+        },
+        "+2": {
+          "Physical Attack": 599,
+          "Defense": 222,
+          "HP": 1339
+        },
+        "+3": {
+          "Physical Attack": 639,
+          "Defense": 238,
+          "HP": 1429
+        },
+        "+4": {
+          "Physical Attack": 679,
+          "Defense": 254,
+          "HP": 1519
+        },
+        "+5": {
+          "Physical Attack": 719,
+          "Defense": 270,
+          "HP": 1609
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10074401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\n - 35 % Chance, Gift zuzufügen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007401.webp"
+      },
+      "Skill 1": {
+        "id": "10074402",
+        "name": "Gezielter Schuss",
+        "desc": "Selbst\n - Gewährt Scharfschützenhaltung. [Dauer: 6 Runde(n)]\n - Gewährt Krit. Trefferraten-Erhöhung. [Dauer: 6 Runde(n)]\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 21 %.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007403.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10074405",
+        "name": "Scharfschützenhaltung",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 300 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 300 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007402.webp"
+      },
+      "Skill 2": {
+        "id": "10074403",
+        "name": "Mehrfachangriff",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 255 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 125 % des physischen Angriffs, während in der [Scharfschützenhaltung].\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 255 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007405.webp"
+      },
+      "Passive": {
+        "id": "10074404",
+        "name": "Falkenauge",
+        "desc": "Selbst\n - Gewährt Krit. Schaden-Erhöhung. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: Krit. Schaden-Erhöhung auf 19 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007404.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本多 真梨子",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "08 / 11",
+      "age": "0",
+      "height": "169",
+      "weight": "47",
+      "constellation": "Skorpion",
+      "likes": "Alle Evan-Expeditionen, Karon, Äpfel, Trauben, Eicheln, Kastanien, Süßwasserfische, Abenteuer, Freiheit, Verantwortung, Süßwasserfische, Musikinstrumente spielen",
+      "dislikes": "Nashi-Birnen, Wassermelonen, Fisch, Unterdrückung, Gewalt, Verantwortungslosigkeit, Bootfahren",
+      "story": "Jupy ist eine schelmische junge Bogenschützin, die die Kunst des Pfeileauflegens von ihrem Vater gelernt hat. Sie ist bekannt für ihr außergewöhnliches Talent und ihre Präzision mit dem Bogen."
+    }
+  }
+]

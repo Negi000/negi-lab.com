@@ -14,64 +14,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "239",
-      "防御力": "92",
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
       "HP": "535",
-      "敏捷": "29",
-      "暴击率": "50"
+      "Speed": "29",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 239,
-        "防御力": 92,
+        "Magical Attack": 239,
+        "Defense": 92,
         "HP": 535
       },
       "level30": {
-        "魔法攻击力": 1080,
-        "防御力": 411,
+        "Magical Attack": 1080,
+        "Defense": 411,
         "HP": 2391
       },
       "levelUpBonus": {
-        "魔法攻击力": 29,
-        "防御力": 11,
+        "Magical Attack": 29,
+        "Defense": 11,
         "HP": 64
       },
       "reinforceBonus": {
-        "魔法攻击力": 84,
-        "防御力": 32,
+        "Magical Attack": 84,
+        "Defense": 32,
         "HP": 187
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 1080,
-          "防御力": 411,
+          "Magical Attack": 1080,
+          "Defense": 411,
           "HP": 2391
         },
         "+1": {
-          "魔法攻击力": 1164,
-          "防御力": 443,
+          "Magical Attack": 1164,
+          "Defense": 443,
           "HP": 2578
         },
         "+2": {
-          "魔法攻击力": 1248,
-          "防御力": 475,
+          "Magical Attack": 1248,
+          "Defense": 475,
           "HP": 2765
         },
         "+3": {
-          "魔法攻击力": 1332,
-          "防御力": 507,
+          "Magical Attack": 1332,
+          "Defense": 507,
           "HP": 2952
         },
         "+4": {
-          "魔法攻击力": 1416,
-          "防御力": 539,
+          "Magical Attack": 1416,
+          "Defense": 539,
           "HP": 3139
         },
         "+5": {
-          "魔法攻击力": 1500,
-          "防御力": 571,
+          "Magical Attack": 1500,
+          "Defense": 571,
           "HP": 3326
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10117601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力100%的伤害\nスキル強化効果\n - 伤害量提升：提升至魔法攻击力的120%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011701.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10117602",
         "name": "飞火扇",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力270%的伤害\n - 1次相当于对象最大生命力20%的伤害（与生命力成比例的伤害不超过施展者攻击力的350%）\nスキル強化効果\n - 伤害量提升：提升至魔法攻击力的330%\n超越6段階達成効果\n - 伤害量提升：对象最大生命力的26%（与生命力成比例的伤害不超过施展者攻击力的700%）",
-        "cooltime": "⏱️ CT: 72秒",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力270%的伤害\n - 1次相当于对象最大生命力20%的伤害（与生命力成比例的伤害不超过施展者攻击力的350%）\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的330%\nTranscend Lv.6 Effect\n - 伤害量提升：对象最大生命力的26%（与生命力成比例的伤害不超过施展者攻击力的700%）",
+        "cooltime": "⏱️ CT: 72s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011702.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10117603",
         "name": "火蝴蝶",
-        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力130%的伤害\nスキル強化効果\n - 效果提升：魔法攻击力增加33%\n - 伤害量提升：提升至魔法攻击力的155%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力130%的伤害\nSkill Enhancement Effect\n - 效果提升：魔法攻击力增加33%\n - 伤害量提升：提升至魔法攻击力的155%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011703.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10117604",
         "name": "敏捷",
-        "desc": "全体我军\n - 石化免疫 [持续2回合]\n - 发动1次自身的普通攻击时赋予石化免疫[持续2回合]\n - 2名攻击力最高的友军\n - 魔法攻击力增加 [长期]\nスキル強化効果\n - 效果提升：魔法攻击力增加27%\n超越2段階達成効果\n - 全体我军\n - 额外效果：发动2次自身的技能时赋予相当于魔法攻击力55%的护盾 [持续2回合]",
+        "desc": "全体我军\n - 石化免疫 [持续2回合]\n - 发动1次自身的普通攻击时赋予石化免疫[持续2回合]\n - 2名攻击力最高的友军\n - 魔法攻击力增加 [长期]\nSkill Enhancement Effect\n - 效果提升：魔法攻击力增加27%\nTranscend Lv.2 Effect\n - 全体我军\n - 额外效果：发动2次自身的技能时赋予相当于魔法攻击力55%的护盾 [持续2回合]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011704.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "171",
-      "防御力": "66",
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
       "HP": "382",
-      "敏捷": "26",
-      "暴击率": "50"
+      "Speed": "26",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 171,
-        "防御力": 66,
+        "Magical Attack": 171,
+        "Defense": 66,
         "HP": 382
       },
       "level30": {
-        "魔法攻击力": 780,
-        "防御力": 298,
+        "Magical Attack": 780,
+        "Defense": 298,
         "HP": 1716
       },
       "levelUpBonus": {
-        "魔法攻击力": 21,
-        "防御力": 8,
+        "Magical Attack": 21,
+        "Defense": 8,
         "HP": 46
       },
       "reinforceBonus": {
-        "魔法攻击力": 60,
-        "防御力": 22,
+        "Magical Attack": 60,
+        "Defense": 22,
         "HP": 134
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 780,
-          "防御力": 298,
+          "Magical Attack": 780,
+          "Defense": 298,
           "HP": 1716
         },
         "+1": {
-          "魔法攻击力": 840,
-          "防御力": 320,
+          "Magical Attack": 840,
+          "Defense": 320,
           "HP": 1850
         },
         "+2": {
-          "魔法攻击力": 900,
-          "防御力": 342,
+          "Magical Attack": 900,
+          "Defense": 342,
           "HP": 1984
         },
         "+3": {
-          "魔法攻击力": 960,
-          "防御力": 364,
+          "Magical Attack": 960,
+          "Defense": 364,
           "HP": 2118
         },
         "+4": {
-          "魔法攻击力": 1020,
-          "防御力": 386,
+          "Magical Attack": 1020,
+          "Defense": 386,
           "HP": 2252
         },
         "+5": {
-          "魔法攻击力": 1080,
-          "防御力": 408,
+          "Magical Attack": 1080,
+          "Defense": 408,
           "HP": 2386
         }
       },
@@ -263,28 +263,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10117501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力90%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的90%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力90%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011701.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10117502",
         "name": "飞火扇",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力245%的伤害\n - 1次相当于对象最大生命力16%的伤害（与生命力成比例的伤害不超过施展者攻击力的300%）\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的245%",
-        "cooltime": "⏱️ CT: 72秒",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力245%的伤害\n - 1次相当于对象最大生命力16%的伤害（与生命力成比例的伤害不超过施展者攻击力的300%）\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的245%",
+        "cooltime": "⏱️ CT: 72s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011702.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10117503",
         "name": "火蝴蝶",
-        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力120%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的120%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力120%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的120%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011703.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10117504",
         "name": "敏捷",
         "desc": "全体我军\n - 石化免疫 [持续2回合]\n - 发动1次自身的普通攻击时赋予石化免疫[持续2回合]\n - 2名攻击力最高的友军\n - 魔法攻击力增加 [长期]",
@@ -323,64 +323,64 @@
       "weaponType": "102"
     },
     "stats": {
-      "物理攻击力": "0",
-      "魔法攻击力": "122",
-      "防御力": "47",
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
       "HP": "273",
-      "敏捷": "23",
-      "暴击率": "50"
+      "Speed": "23",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "魔法攻击力",
+      "attackType": "Magical Attack",
       "level1": {
-        "魔法攻击力": 122,
-        "防御力": 47,
+        "Magical Attack": 122,
+        "Defense": 47,
         "HP": 273
       },
       "level30": {
-        "魔法攻击力": 557,
-        "防御力": 221,
+        "Magical Attack": 557,
+        "Defense": 221,
         "HP": 1230
       },
       "levelUpBonus": {
-        "魔法攻击力": 15,
-        "防御力": 6,
+        "Magical Attack": 15,
+        "Defense": 6,
         "HP": 33
       },
       "reinforceBonus": {
-        "魔法攻击力": 43,
-        "防御力": 15,
+        "Magical Attack": 43,
+        "Defense": 15,
         "HP": 96
       },
       "reinforceStages": {
         "+0": {
-          "魔法攻击力": 557,
-          "防御力": 221,
+          "Magical Attack": 557,
+          "Defense": 221,
           "HP": 1230
         },
         "+1": {
-          "魔法攻击力": 600,
-          "防御力": 236,
+          "Magical Attack": 600,
+          "Defense": 236,
           "HP": 1326
         },
         "+2": {
-          "魔法攻击力": 643,
-          "防御力": 251,
+          "Magical Attack": 643,
+          "Defense": 251,
           "HP": 1422
         },
         "+3": {
-          "魔法攻击力": 686,
-          "防御力": 266,
+          "Magical Attack": 686,
+          "Defense": 266,
           "HP": 1518
         },
         "+4": {
-          "魔法攻击力": 729,
-          "防御力": 281,
+          "Magical Attack": 729,
+          "Defense": 281,
           "HP": 1614
         },
         "+5": {
-          "魔法攻击力": 772,
-          "防御力": 296,
+          "Magical Attack": 772,
+          "Defense": 296,
           "HP": 1710
         }
       },
@@ -411,28 +411,28 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "普通攻击": {
+      "Normal Attack": {
         "id": "10117401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力80%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的80%",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力80%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011701.webp"
       },
-      "技能1": {
+      "Skill 1": {
         "id": "10117402",
         "name": "飞火扇",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力220%的伤害\n - 1次相当于对象最大生命力13%的伤害（与生命力成比例的伤害不超过施展者攻击力的150%）\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的220%",
-        "cooltime": "⏱️ CT: 72秒",
+        "desc": "单一敌军\n - 1次相当于魔法攻击力220%的伤害\n - 1次相当于对象最大生命力13%的伤害（与生命力成比例的伤害不超过施展者攻击力的150%）\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的220%",
+        "cooltime": "⏱️ CT: 72s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011702.webp"
       },
-      "技能2": {
+      "Skill 2": {
         "id": "10117403",
         "name": "火蝴蝶",
-        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力110%的伤害\nスキル強化効果\n - 伤害量提升：提升至物理攻击力的110%",
-        "cooltime": "⏱️ CT: 88秒",
+        "desc": "全体我军\n - 魔法攻击力增加 [持续3回合]\n - 全体敌军\n - 解除1个增益 [100%的概率]\n - 1次相当于魔法攻击力110%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的110%",
+        "cooltime": "⏱️ CT: 88s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1011703.webp"
       },
-      "被动": {
+      "Passive": {
         "id": "10117404",
         "name": "敏捷",
         "desc": "全体我军\n - 石化免疫 [持续2回合]\n - 发动1次自身的普通攻击时赋予石化免疫[持续2回合]\n - 2名攻击力最高的友军\n - 魔法攻击力增加 [长期]",

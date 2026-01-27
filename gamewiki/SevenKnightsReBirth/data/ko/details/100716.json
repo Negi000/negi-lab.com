@@ -14,64 +14,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "221",
-      "마법 공격력": "0",
-      "방어력": "88",
+      "Physical Attack": "221",
+      "Magical Attack": "0",
+      "Defense": "88",
       "HP": "510",
-      "민첩성": "25",
-      "크리티컬 확률": "50"
+      "Speed": "25",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 221,
-        "방어력": 88,
+        "Physical Attack": 221,
+        "Defense": 88,
         "HP": 510
       },
       "level30": {
-        "물리 공격력": 1004,
-        "방어력": 378,
+        "Physical Attack": 1004,
+        "Defense": 378,
         "HP": 2279
       },
       "levelUpBonus": {
-        "물리 공격력": 27,
-        "방어력": 10,
+        "Physical Attack": 27,
+        "Defense": 10,
         "HP": 61
       },
       "reinforceBonus": {
-        "물리 공격력": 77,
-        "방어력": 31,
+        "Physical Attack": 77,
+        "Defense": 31,
         "HP": 179
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 1004,
-          "방어력": 378,
+          "Physical Attack": 1004,
+          "Defense": 378,
           "HP": 2279
         },
         "+1": {
-          "물리 공격력": 1081,
-          "방어력": 409,
+          "Physical Attack": 1081,
+          "Defense": 409,
           "HP": 2458
         },
         "+2": {
-          "물리 공격력": 1158,
-          "방어력": 440,
+          "Physical Attack": 1158,
+          "Defense": 440,
           "HP": 2637
         },
         "+3": {
-          "물리 공격력": 1235,
-          "방어력": 471,
+          "Physical Attack": 1235,
+          "Defense": 471,
           "HP": 2816
         },
         "+4": {
-          "물리 공격력": 1312,
-          "방어력": 502,
+          "Physical Attack": 1312,
+          "Defense": 502,
           "HP": 2995
         },
         "+5": {
-          "물리 공격력": 1389,
-          "방어력": 533,
+          "Physical Attack": 1389,
+          "Defense": 533,
           "HP": 3174
         }
       },
@@ -102,31 +102,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10071601",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\n - 출혈 [40% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 120%",
+        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\n - 출혈 [40% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007101.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10071602",
         "name": "심장 쏘기",
-        "desc": "단일 적군\n - 물리 공격력의 315%만큼 1회 피해\n - 출혈 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 375%\n超越6段階達成効果\n - 효과 추가 : 턴제 버프 감소 3턴 [100% 확률]",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 315%만큼 1회 피해\n - 출혈 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 375%\nTranscend Lv.6 Effect\n - 효과 추가 : 턴제 버프 감소 3턴 [100% 확률]",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007102.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10071603",
         "name": "매 날리기",
-        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 120%만큼 1회 피해\n - 버프 해제 2개 [100% 확률]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 145%\n超越2段階達成効果\n - 피해량 추가 : 피해 대상이 1명 줄어들 때마다 대상에게 주는 피해량이 15% 증가",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 120%만큼 1회 피해\n - 버프 해제 2개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 145%\nTranscend Lv.2 Effect\n - 피해량 추가 : 피해 대상이 1명 줄어들 때마다 대상에게 주는 피해량이 15% 증가",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007103.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10071604",
         "name": "정찰",
-        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nスキル強化効果\n - 효과 상승 : 5인 공격기 감쇄 15%\n - 효과 상승 : 효과 적중 증가 40%",
+        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 5인 공격기 감쇄 15%\n - 효과 상승 : 효과 적중 증가 40%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007104.webp"
       }
@@ -175,64 +175,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "158",
-      "마법 공격력": "0",
-      "방어력": "63",
+      "Physical Attack": "158",
+      "Magical Attack": "0",
+      "Defense": "63",
       "HP": "364",
-      "민첩성": "22",
-      "크리티컬 확률": "50"
+      "Speed": "22",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 158,
-        "방어력": 63,
+        "Physical Attack": 158,
+        "Defense": 63,
         "HP": 364
       },
       "level30": {
-        "물리 공격력": 738,
-        "방어력": 266,
+        "Physical Attack": 738,
+        "Defense": 266,
         "HP": 1611
       },
       "levelUpBonus": {
-        "물리 공격력": 20,
-        "방어력": 7,
+        "Physical Attack": 20,
+        "Defense": 7,
         "HP": 43
       },
       "reinforceBonus": {
-        "물리 공격력": 55,
-        "방어력": 22,
+        "Physical Attack": 55,
+        "Defense": 22,
         "HP": 127
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 738,
-          "방어력": 266,
+          "Physical Attack": 738,
+          "Defense": 266,
           "HP": 1611
         },
         "+1": {
-          "물리 공격력": 793,
-          "방어력": 288,
+          "Physical Attack": 793,
+          "Defense": 288,
           "HP": 1738
         },
         "+2": {
-          "물리 공격력": 848,
-          "방어력": 310,
+          "Physical Attack": 848,
+          "Defense": 310,
           "HP": 1865
         },
         "+3": {
-          "물리 공격력": 903,
-          "방어력": 332,
+          "Physical Attack": 903,
+          "Defense": 332,
           "HP": 1992
         },
         "+4": {
-          "물리 공격력": 958,
-          "방어력": 354,
+          "Physical Attack": 958,
+          "Defense": 354,
           "HP": 2119
         },
         "+5": {
-          "물리 공격력": 1013,
-          "방어력": 376,
+          "Physical Attack": 1013,
+          "Defense": 376,
           "HP": 2246
         }
       },
@@ -263,31 +263,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10071501",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 90%만큼 1회 피해\n - 출혈 [40% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 90%",
+        "desc": "단일 적군\n - 물리 공격력의 90%만큼 1회 피해\n - 출혈 [40% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007101.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10071502",
         "name": "심장 쏘기",
-        "desc": "단일 적군\n - 물리 공격력의 280%만큼 1회 피해\n - 출혈 [100% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 280%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 280%만큼 1회 피해\n - 출혈 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 280%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007102.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10071503",
         "name": "매 날리기",
-        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 110%만큼 1회 피해\n - 버프 해제 1개 [100% 확률]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 110%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 110%만큼 1회 피해\n - 버프 해제 1개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 110%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007103.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10071504",
         "name": "정찰",
-        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nスキル強化効果\n - 효과 상승 : 5인 공격기 감쇄 10%",
+        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 5인 공격기 감쇄 10%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007104.webp"
       }
@@ -323,64 +323,64 @@
       "weaponType": "101"
     },
     "stats": {
-      "물리 공격력": "113",
-      "마법 공격력": "0",
-      "방어력": "45",
+      "Physical Attack": "113",
+      "Magical Attack": "0",
+      "Defense": "45",
       "HP": "260",
-      "민첩성": "19",
-      "크리티컬 확률": "50"
+      "Speed": "19",
+      "Critical Rate": "50"
     },
     "growth": {
-      "attackType": "물리 공격력",
+      "attackType": "Physical Attack",
       "level1": {
-        "물리 공격력": 113,
-        "방어력": 45,
+        "Physical Attack": 113,
+        "Defense": 45,
         "HP": 260
       },
       "level30": {
-        "물리 공격력": 519,
-        "방어력": 190,
+        "Physical Attack": 519,
+        "Defense": 190,
         "HP": 1159
       },
       "levelUpBonus": {
-        "물리 공격력": 14,
-        "방어력": 5,
+        "Physical Attack": 14,
+        "Defense": 5,
         "HP": 31
       },
       "reinforceBonus": {
-        "물리 공격력": 40,
-        "방어력": 16,
+        "Physical Attack": 40,
+        "Defense": 16,
         "HP": 90
       },
       "reinforceStages": {
         "+0": {
-          "물리 공격력": 519,
-          "방어력": 190,
+          "Physical Attack": 519,
+          "Defense": 190,
           "HP": 1159
         },
         "+1": {
-          "물리 공격력": 559,
-          "방어력": 206,
+          "Physical Attack": 559,
+          "Defense": 206,
           "HP": 1249
         },
         "+2": {
-          "물리 공격력": 599,
-          "방어력": 222,
+          "Physical Attack": 599,
+          "Defense": 222,
           "HP": 1339
         },
         "+3": {
-          "물리 공격력": 639,
-          "방어력": 238,
+          "Physical Attack": 639,
+          "Defense": 238,
           "HP": 1429
         },
         "+4": {
-          "물리 공격력": 679,
-          "방어력": 254,
+          "Physical Attack": 679,
+          "Defense": 254,
           "HP": 1519
         },
         "+5": {
-          "물리 공격력": 719,
-          "방어력": 270,
+          "Physical Attack": 719,
+          "Defense": 270,
           "HP": 1609
         }
       },
@@ -411,31 +411,31 @@
       "maxLevelTotal": 123900
     },
     "skills": {
-      "일반 공격": {
+      "Normal Attack": {
         "id": "10071401",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 80%만큼 1회 피해\n - 출혈 [35% 확률] [2턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "단일 적군\n - 물리 공격력의 80%만큼 1회 피해\n - 출혈 [35% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007101.webp"
       },
-      "스킬 1": {
+      "Skill 1": {
         "id": "10071402",
         "name": "심장 쏘기",
-        "desc": "단일 적군\n - 물리 공격력의 255%만큼 1회 피해\n - 출혈 [85% 확률] [3턴 지속]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 255%",
-        "cooltime": "⏱️ CT: 60秒",
+        "desc": "단일 적군\n - 물리 공격력의 255%만큼 1회 피해\n - 출혈 [85% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 255%",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007102.webp"
       },
-      "스킬 2": {
+      "Skill 2": {
         "id": "10071403",
         "name": "매 날리기",
-        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 100%만큼 1회 피해\n - 버프 해제 1개 [100% 확률]\nスキル強化効果\n - 피해량 상승 : 물리 공격력의 100%",
-        "cooltime": "⏱️ CT: 70秒",
+        "desc": "적군 3명(버프가 많은 순)\n - 물리 공격력의 100%만큼 1회 피해\n - 버프 해제 1개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007103.webp"
       },
-      "패시브": {
+      "Passive": {
         "id": "10071404",
         "name": "정찰",
-        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nスキル強化効果\n - 효과 상승 : 5인 공격기 감쇄 8%",
+        "desc": "모든 아군\n - 5인 공격기 감쇄 [상시]\n - 자신\n - 효과 적중 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 5인 공격기 감쇄 8%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1007104.webp"
       }

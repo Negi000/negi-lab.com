@@ -1,0 +1,480 @@
+[
+  {
+    "basicInfo": {
+      "id": "101436",
+      "name": "Kyle",
+      "subname": "Nachtjäger",
+      "affiliation": "Vier Meister von damals",
+      "flavor": "Nachdem er eine Mission von einer unbekannten Person übernommen hat, beginnt Kyle, die Nachtkrähen zu verfolgen.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\n - Verursacht einen zusätzlichen Angriff mit einem Schaden, der 130 % des 1 physischen Angriffs entspricht, wenn ein Basisangriff 2 Mal verwendet wird.\n - Einzelner Feind (Augen der Starken)\n - 30 % Chance, 1 Buff entfernen zu gewähren, wenn ein zusätzlicher Angriff ausgeführt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143602",
+        "name": "Kettenunterdrückung",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 8 % der Max. TP des Ziels 2 Mal. (Die gewährte Schadens-Erhöhung ist auf 50 % der verlorenen TP des Ziels begrenzt.) (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.)\n - Verursacht Schaden in Höhe von 72 % des physischen Angriffs plus 10 % der Max. TP des Ziels 2 Mal. (Die gewährte Schadens-Erhöhung ist auf 50 % der verlorenen TP des Ziels begrenzt.) (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.)\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 65 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 72 % des physischen Angriffs plus 10 % des maximalen TP des Ziels.\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Verteidigung ignorieren",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143603",
+        "name": "Grab der Finsternis",
+        "desc": "4 Feinde\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\n - Verursacht durchdringenden Schaden in Höhe von 70 % des physischen Angriffs 2 Mal.\n - Verursacht durchdringenden Schaden in Höhe von 90 % des physischen Angriffs 2 Mal.\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 65 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Verteidigung ignorieren",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143604",
+        "name": "Ketteneffekt",
+        "desc": "Selbst\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Zu Beginn des Kampfes, wenn sich mindestens 3 Angriff Held(en) in deinem Team befinden, gewährt Alle Schadensaufhebung. [Endet nach: Erhalt von 3 Treffer(n)]\n - Zu Beginn des Kampfes, wenn sich mindestens 3 Angriff Held(en) in deinem Team befinden, gewährt Alle Schadensaufhebung. [Endet nach: Erhalt von 4 Treffer(n)]\n - Feind mit dem höchsten Angriff\n - Gewährt Augen der Starken. [Immer aktiv]\n - Alle Feinde\n - Verursacht Verteidigung-Ignorierenden Schaden in Höhe von 23 % der Max. TP des Ziels 1 Mal, wenn ein Angriff 2 Mal eingesetzt wird. (TP-basierter Schaden ist auf 100 % des Angriffs des Zaubernden begrenzt.)\n - Verursacht Verteidigung-Ignorierenden Schaden in Höhe von 32 % der Max. TP des Ziels 1 Mal, wenn ein Angriff 2 Mal eingesetzt wird. (TP-basierter Schaden ist auf 100 % des Angriffs des Zaubernden begrenzt.)\nSkill Enhancement Effect\n - Erhöht Stapel: Alle Schadensannullierungsstapel erhöhen sich auf 4.\n - Erhöht den Schaden: Auf 32 % der Max. TP des Ziels.\nTranscend Lv.2 Effect\n - Selbst\n - Fügt Effekt hinzu: Gewährt Schadensaufhebung, wenn die TP auf 70 % oder niedriger fallen. [Endet nach: Erhalt von 3 Treffer(n)] (Einmal pro Kampf) (Wenn in einem Team mit 3 oder mehr Angriff Helden eingesetzt)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143634",
+        "name": "Ketteneffekt",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Krit. Trefferrate um 18 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Schütze",
+      "likes": "Teo, der Starke, alle Arten von Alkohol, Stärke, Stimulation, Aufregung, verschiedene Waffen",
+      "dislikes": "Teo, weißer Reis, die Schwachen, Langeweile, Nahkampf",
+      "story": "Nachdem er eine Mission von einer unbekannten Person übernommen hat, beginnt Kyle, die Nachtkrähen zu verfolgen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101435",
+      "name": "Kyle",
+      "subname": "Vier Meister",
+      "affiliation": "Vier Meister von damals",
+      "flavor": "Kyle versuchte, Teo zu ermorden, aber nach drei Tagen ununterbrochenen Kampfes und dem Zufügen schwerer Verletzungen hielten sie den Kampf an. Kyle fügte Teo den Schnitt an seiner Wange zu.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\n - Verursacht einen zusätzlichen Angriff mit einem Schaden, der 115 % des 1 physischen Angriffs entspricht, wenn ein Basisangriff 2 Mal verwendet wird.\n - Einzelner Feind (Augen der Starken)\n - 30 % Chance, 1 Buff entfernen zu gewähren, wenn ein zusätzlicher Angriff ausgeführt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143502",
+        "name": "Kettenunterdrückung",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 55 % des physischen Angriffs plus 6 % der Max. TP des Ziels 2 Mal. (Die gewährte Schadens-Erhöhung ist auf 50 % der verlorenen TP des Ziels begrenzt.) (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.)\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 55 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 55 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 6 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143503",
+        "name": "Grab der Finsternis",
+        "desc": "4 Feinde\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\n - Verursacht durchdringenden Schaden in Höhe von 62 % des physischen Angriffs 2 Mal.\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 55 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 62 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143504",
+        "name": "Ketteneffekt",
+        "desc": "Selbst\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Zu Beginn des Kampfes, wenn sich mindestens 3 Angriff Held(en) in deinem Team befinden, gewährt Alle Schadensaufhebung. [Endet nach: Erhalt von 3 Treffer(n)]\n - Feind mit dem höchsten Angriff\n - Gewährt Augen der Starken. [Immer aktiv]\n - Alle Feinde\n - Verursacht Verteidigung-Ignorierenden Schaden in Höhe von 19 % der Max. TP des Ziels 1 Mal, wenn ein Angriff 2 Mal eingesetzt wird. (TP-basierter Schaden ist auf 100 % des Angriffs des Zaubernden begrenzt.)\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 21 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143534",
+        "name": "Ketteneffekt",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 115 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 115 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Schütze",
+      "likes": "Teo, der Starke, alle Arten von Alkohol, Stärke, Stimulation, Aufregung, verschiedene Waffen",
+      "dislikes": "Teo, weißer Reis, die Schwachen, Langeweile, Nahkampf",
+      "story": "Kyle versuchte, Teo zu ermorden, aber nach drei Tagen ununterbrochenen Kampfes und dem Zufügen schwerer Verletzungen hielten sie den Kampf an. Kyle fügte Teo den Schnitt an seiner Wange zu."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101434",
+      "name": "Kyle",
+      "subname": "Rächer-Massenmörder",
+      "affiliation": "Vier Meister von damals",
+      "flavor": "Kyles Herkunft ist nicht bekannt. Er hat erfolgreich den Anführer des Schattenclans, Deathbringer, getötet und sich damit einen Ruf als größter Assassine erworben.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10143401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\n - Verursacht einen zusätzlichen Angriff mit einem Schaden, der 105 % des 1 physischen Angriffs entspricht, wenn ein Basisangriff 2 Mal verwendet wird.\n - Einzelner Feind (Augen der Starken)\n - 30 % Chance, 1 Buff entfernen zu gewähren, wenn ein zusätzlicher Angriff ausgeführt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014301.webp"
+      },
+      "Skill 1": {
+        "id": "10143402",
+        "name": "Kettenunterdrückung",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 4 % der Max. TP des Ziels 2 Mal. (Die gewährte Schadens-Erhöhung ist auf 50 % der verlorenen TP des Ziels begrenzt.) (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.)\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 50 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 50 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 4 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 90s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014302.webp"
+      },
+      "Skill 2": {
+        "id": "10143403",
+        "name": "Grab der Finsternis",
+        "desc": "4 Feinde\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\n - Verursacht durchdringenden Schaden in Höhe von 57 % des physischen Angriffs 2 Mal.\n - Einzelner Feind (Augen der Starken)\n - Verursacht zusätzlichen Schaden in Höhe von 50 % des Physischen Angriffs\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 57 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 94s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014303.webp"
+      },
+      "Passive": {
+        "id": "10143404",
+        "name": "Ketteneffekt",
+        "desc": "Selbst\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Zu Beginn des Kampfes, wenn sich mindestens 3 Angriff Held(en) in deinem Team befinden, gewährt Alle Schadensaufhebung. [Endet nach: Erhalt von 3 Treffer(n)]\n - Feind mit dem höchsten Angriff\n - Gewährt Augen der Starken. [Immer aktiv]\n - Alle Feinde\n - Verursacht Verteidigung-Ignorierenden Schaden in Höhe von 14 % der Max. TP des Ziels 1 Mal, wenn ein Angriff 2 Mal eingesetzt wird. (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.)\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 15 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      },
+      "Passive (Trans)": {
+        "id": "10143434",
+        "name": "Ketteneffekt",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 105 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 105 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014304.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "川原 慶久",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "22 / 11",
+      "age": "32",
+      "height": "184",
+      "weight": "73",
+      "constellation": "Schütze",
+      "likes": "Teo, der Starke, alle Arten von Alkohol, Stärke, Stimulation, Aufregung, verschiedene Waffen",
+      "dislikes": "Teo, weißer Reis, die Schwachen, Langeweile, Nahkampf",
+      "story": "Kyles Herkunft ist nicht bekannt. Er hat erfolgreich den Anführer des Schattenclans, Deathbringer, getötet und sich damit einen Ruf als größter Assassine erworben."
+    }
+  }
+]

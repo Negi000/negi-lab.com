@@ -30,9 +30,9 @@ function getCharAccessor(char) {
     // 役割ID→役割名のマッピング
     const roleMap = {
         '1': isJa ? '攻撃型' : 'Attack',
-        '2': isJa ? '支援型' : 'Support',
+        '2': isJa ? '魔法型' : 'Magic',
         '3': isJa ? '防御型' : 'Defense',
-        '4': isJa ? '魔法型' : 'Magic',
+        '4': isJa ? '支援型' : 'Support',
         '5': isJa ? '万能型' : 'Universal'
     };
     
@@ -89,7 +89,7 @@ function getCharAccessor(char) {
         range: basicInfo.射程 || rangeMap[basicInfo.range] || basicInfo.range || '',
         weaponType: getWeaponType(),
         
-        // ステータス（キー名は言語で異なる）
+        // ステータス（日本語は日本語キー、その他は英語キー）
         stats,
         getStatKeys: () => isJa 
             ? ['物理攻撃力', '魔法攻撃力', '防御力', 'HP', '敏捷性', 'クリティカル率', '与クリティカルダメージ', 'フェイタルヒット率', 'ブロック率', '被ダメージ減少', 'デバフ回避妨害率', 'デバフ回避率']
@@ -97,6 +97,26 @@ function getCharAccessor(char) {
         getPercentKeys: () => isJa
             ? new Set(['クリティカル率', '与クリティカルダメージ', 'フェイタルヒット率', 'ブロック率', '被ダメージ減少', 'デバフ回避妨害率', 'デバフ回避率'])
             : new Set(['Critical Rate']),
+        
+        // スタッツラベルの翻訳マップ（JSONキー→表示ラベル）
+        getStatLabel: (key) => {
+            if (typeof t !== 'function') return key;
+            const statKeyMap = {
+                'Physical Attack': 'stats.physicalAttack',
+                'Magical Attack': 'stats.magicalAttack',
+                'Defense': 'stats.defense',
+                'HP': 'stats.hp',
+                'Speed': 'stats.speed',
+                'Critical Rate': 'stats.critRate',
+                '物理攻撃力': 'stats.physicalAttack',
+                '魔法攻撃力': 'stats.magicalAttack',
+                '防御力': 'stats.defense',
+                '敏捷性': 'stats.speed',
+                'クリティカル率': 'stats.critRate'
+            };
+            const i18nKey = statKeyMap[key];
+            return i18nKey ? t(i18nKey) : key;
+        },
         
         // 成長データ
         growth,
@@ -127,12 +147,33 @@ function getCharAccessor(char) {
             return skillOrders[lang] || skillOrders['en'];
         },
         isTransformedSkill: (skillType) => skillType.includes('(Trans)'),
+        // スキルタイプラベルの翻訳（JSONキー→表示ラベル）
         getSkillTypeLabel: (type) => {
-            if (isJa) return type;
-            const map = {
-                'Normal Attack': '通常攻撃', 'Skill 1': 'スキル1', 'Skill 2': 'スキル2', 'Passive': 'パッシブ'
+            // Trans付きの場合は分離
+            const isTrans = type.includes('(Trans)');
+            const baseType = type.replace(' (Trans)', '');
+            
+            // i18nキーマップ
+            const skillKeyMap = {
+                'Normal Attack': 'skill.normalAttack',
+                'Skill 1': 'skill.skill1',
+                'Skill 2': 'skill.skill2',
+                'Passive': 'skill.passive',
+                '通常攻撃': 'skill.normalAttack',
+                'スキル1': 'skill.skill1',
+                'スキル2': 'skill.skill2',
+                'パッシブ': 'skill.passive'
             };
-            return map[type] || type;
+            
+            let label = baseType;
+            if (typeof t === 'function') {
+                const i18nKey = skillKeyMap[baseType];
+                if (i18nKey) {
+                    label = t(i18nKey);
+                }
+            }
+            
+            return isTrans ? label + ' (Trans)' : label;
         },
         
         // 超越解放効果
@@ -141,18 +182,18 @@ function getCharAccessor(char) {
         // プロフィール
         story: profile.ストーリー || profile.story || '',
         
-        // ラベル翻訳用
+        // ラベル翻訳用（t関数が使える場合は使用、なければフォールバック）
         labels: {
             id: 'ID',
-            rarity: isJa ? 'レアリティ' : 'Rarity',
-            star: isJa ? '星' : 'Star',
-            affiliation: isJa ? '所属' : 'Affiliation',
-            role: isJa ? 'タイプ' : 'Type',
-            range: isJa ? '射程' : 'Range',
-            weapon: isJa ? '武器' : 'Weapon',
-            noFlavor: isJa ? 'フレーバーテキストはありません。' : 'No flavor text available.',
-            noStory: isJa ? 'ストーリーはありません。' : 'No story available.',
-            noTranscendence: isJa ? '超越解放効果はありません' : 'No transcendence effects.',
+            rarity: typeof t === 'function' ? t('detail.rarity') : (isJa ? 'レアリティ' : 'Rarity'),
+            star: typeof t === 'function' ? t('detail.star') : (isJa ? '星' : 'Star'),
+            affiliation: typeof t === 'function' ? t('detail.affiliation') : (isJa ? '所属' : 'Affiliation'),
+            role: typeof t === 'function' ? t('detail.type') : (isJa ? 'タイプ' : 'Type'),
+            range: typeof t === 'function' ? t('detail.range') : (isJa ? '射程' : 'Range'),
+            weapon: typeof t === 'function' ? t('detail.weapon') : (isJa ? '武器' : 'Weapon'),
+            noFlavor: typeof t === 'function' ? t('skill.noFlavor') : (isJa ? 'フレーバーテキストはありません。' : 'No flavor text available.'),
+            noStory: typeof t === 'function' ? t('skill.noStory') : (isJa ? 'ストーリーはありません。' : 'No story available.'),
+            noTranscendence: typeof t === 'function' ? t('skill.noTranscendence') : (isJa ? '超越解放効果はありません' : 'No transcendence effects.'),
         },
         
         // 原データへのアクセス
@@ -183,65 +224,70 @@ function waitForI18n() {
 const DATA_BASE_PATH = 'data/ja/';
 
 // 用語辞書（ツールチップ表示用）
-const SKILL_GLOSSARY = {
-    '権能': 'HPが0になるダメージを受けた時、HPが1の状態で1回のみ生存。ラウンドごとに1回のみ発動。',
-    'シールド': 'ダメージを受ける時、シールド耐久力がHPより優先して減少し、ダメージを吸収する。',
-    '不死': '戦闘不能時にHP1で復活。バフが続く限り戦闘不能にならない。ただしHP回復不可。',
-    'HP交換': '自分と対象の現在HPを入れ替える。シールドやダメージ遮断の影響を受けない。',
-    'HP転換': '対象のHPを指定割合で即時変換。シールドやダメージ遮断の影響を受けない。',
-    '祝福': '戦闘不能時、HPを回復して復活する効果。',
-    '防御無視': '対象の防御力を無視してダメージを与える。',
-    '貫通': '対象の防御力を一部無視してダメージを与える。固定割合の防御力を無視。',
-    '挟撃': '味方が攻撃した時、一定確率で追加攻撃を行う。',
-    '反撃': '攻撃を受けた時、一定確率で反撃を行う。',
-    'マーカー：エネルゲイアの砲火': '<div class="tt-title">マーカー効果（2スタック発動）</div><div class="tt-effect"><span class="tt-target">対象</span>バフ持続1ターン減少</div><div class="tt-effect"><span class="tt-target">自身</span>最大HPの10%回復</div>',
-    'マーカー': '対象に付与される特殊な印。重複回数に応じて追加効果が発動する。',
-    '行動不能遮断': '気絶・石化・麻痺・睡眠・凍結などの行動不能状態を無効化。',
-    '行動不能': '気絶・石化・麻痺・睡眠・凍結など、キャラが行動できない状態の総称。',
-    'ダメージ遮断': '指定ターン数の間、受けるダメージを0にする。',
-    'ダメージ無効化': '指定回数の攻撃によるダメージを0にする。',
-    'デバフ回避妨害率': 'デバフの命中率を上昇させるステータス。高いほどデバフが通りやすい。',
-    'デバフ回避率': 'デバフを回避する確率。高いほどデバフを受けにくい。',
-    'フェイタルヒット': '残りHP割合が低い敵を優先攻撃し、ダメージが30%上昇する効果。',
-    '出血': '毎ターン、スキル使用者の攻撃力60%の貫通ダメージ。最大5重複で効果上昇。',
-    '火傷': '毎ターン、スキル使用者の攻撃力80%のダメージを受ける。',
-    '毒': '毎ターン、対象の最大HPの6%のダメージを受ける（上限：攻撃力の150%）。',
-    '即死': '3ターン後に戦闘不能。重複付与で即時戦闘不能。',
-    '気絶': '行動不能になる状態異常。',
-    '石化': '行動不能になる状態異常。',
-    '麻痺': '行動不能になり、ブロック率が0%になる。',
-    '感電': '行動不能になり、攻撃を受けると追加ダメージ（攻撃力40%）を受ける。',
-    '睡眠': '行動不能になる状態異常。攻撃を受けると解除される。',
-    '沈黙': 'アクティブスキルを使用できなくなる。',
-    '暗闇': '命中率が減少する状態異常。',
-    '挑発': '敵の攻撃対象に自分が常に含まれるようになる。',
-    'バフ継続ターン短縮': '対象のバフの残りターン数を減少させる。',
-    'デバフ解除': '対象のデバフを指定個数解除する。',
-    'バフ解除': '対象のバフを指定個数解除する。',
-    'クールタイム短縮': 'スキルのクールタイムを減少させる。',
-    '継続回復': '毎ターンHPを回復する効果。',
-    '吸血': '与えたダメージの一定割合をHPとして回復する。',
-    '復活': '戦闘不能になった時、HPを回復して復活する。',
-    '被回復量減少': '回復効果で受けるHP回復量を減少させるデバフ。',
-    '与ダメージ減少': '与えるダメージを減少させるデバフ。',
-    '物理衰弱': '受ける物理ダメージが増加するデバフ。',
-    '魔法衰弱': '受ける魔法ダメージが増加するデバフ。'
-};
+// Multilingual Skill Glossary - loaded from i18n/glossary.json
+let SKILL_GLOSSARY_DATA = null;
 
-// Portrait index cache
+async function loadSkillGlossary() {
+    if (SKILL_GLOSSARY_DATA) return SKILL_GLOSSARY_DATA;
+    try {
+        SKILL_GLOSSARY_DATA = await fetchJson('i18n/glossary.json');
+        return SKILL_GLOSSARY_DATA;
+    } catch (e) {
+        console.warn('Failed to load glossary:', e);
+        SKILL_GLOSSARY_DATA = { terms: [] };
+        return SKILL_GLOSSARY_DATA;
+    }
+}
+
+// Get glossary for current language
+// Returns { keyword: description } for current language
+function getGlossary() {
+    if (!SKILL_GLOSSARY_DATA || !SKILL_GLOSSARY_DATA.terms) return {};
+    const lang = (typeof getLang === 'function') ? getLang() : 'ja';
+    const result = {};
+    for (const term of SKILL_GLOSSARY_DATA.terms) {
+        // 日本語以外は英語にフォールバック
+        const fallbackLang = lang === 'ja' ? 'ja' : 'en';
+        const keyword = term.keywords?.[lang] || term.keywords?.[fallbackLang];
+        const description = term.descriptions?.[lang] || term.descriptions?.[fallbackLang];
+        if (keyword && description) {
+            result[keyword] = description;
+        }
+    }
+    return result;
+}
+
+// Portrait index cache (言語ごとにキャッシュ)
 let PORTRAIT_INDEX = null;
+let PORTRAIT_INDEX_LANG = null;
 
 async function loadPortraitIndex() {
-    if (PORTRAIT_INDEX) return PORTRAIT_INDEX;
+    const currentLang = (typeof getLang === 'function') ? getLang() : 'ja';
+    
+    // 言語が変わった場合はキャッシュをクリア
+    if (PORTRAIT_INDEX && PORTRAIT_INDEX_LANG === currentLang) {
+        return PORTRAIT_INDEX;
+    }
+    
     try {
-        // portrait_index.json は言語非依存なので data/ から直接読み込む
-        const idx = await fetchJson('data/portrait_index.json');
+        // 言語別のportrait_index.jsonを読み込む
+        const idx = await fetchJson(`data/${currentLang}/portrait_index.json`);
         PORTRAIT_INDEX = idx;
+        PORTRAIT_INDEX_LANG = currentLang;
         return PORTRAIT_INDEX;
     } catch (e) {
-        // portrait_index.json が無くてもページ自体は動くようにする
-        PORTRAIT_INDEX = { by_id: {} };
-        return PORTRAIT_INDEX;
+        // フォールバック: ルートのportrait_index.json
+        try {
+            const idx = await fetchJson('data/portrait_index.json');
+            PORTRAIT_INDEX = idx;
+            PORTRAIT_INDEX_LANG = currentLang;
+            return PORTRAIT_INDEX;
+        } catch (e2) {
+            // portrait_index.json が無くてもページ自体は動くようにする
+            PORTRAIT_INDEX = { by_id: {} };
+            PORTRAIT_INDEX_LANG = currentLang;
+            return PORTRAIT_INDEX;
+        }
     }
 }
 
@@ -264,8 +310,15 @@ async function fetchJson(path) {
 function applyGlossaryTooltips(text) {
     if (!text) return '';
     
+    // Get glossary for current language
+    const glossary = getGlossary();
+    if (Object.keys(glossary).length === 0) {
+        // Glossary not loaded yet, return text as-is with line breaks
+        return text.replace(/\n/g, '<br>');
+    }
+    
     // 用語を長い順にソート（部分マッチを避けるため）
-    const sortedTerms = Object.keys(SKILL_GLOSSARY).sort((a, b) => b.length - a.length);
+    const sortedTerms = Object.keys(glossary).sort((a, b) => b.length - a.length);
     
     // 各用語の出現位置を検出
     const matches = [];
@@ -289,7 +342,7 @@ function applyGlossaryTooltips(text) {
                     start: idx,
                     end: idx + term.length,
                     term: term,
-                    tooltip: SKILL_GLOSSARY[term]
+                    tooltip: glossary[term]
                 });
             }
             searchStart = idx + 1;
@@ -426,6 +479,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // i18n初期化を待つ（多言語対応）
     await waitForI18n();
+    
+    // Load skill glossary for tooltips
+    await loadSkillGlossary();
     
     try {
         // Determine current page and run appropriate logic
@@ -641,11 +697,11 @@ async function initCharacterList() {
         grid.innerHTML = '';
         displayedCount = 0;
         
-        // Append sentinel for infinite scroll
-        grid.appendChild(sentinel);
-        
         // Load first batch
         appendItems();
+        
+        // Append sentinel for infinite scroll (after items)
+        grid.appendChild(sentinel);
     }
 
     // Infinite Scroll Sentinel
@@ -653,6 +709,7 @@ async function initCharacterList() {
     sentinel.id = 'scroll-sentinel';
     sentinel.style.height = '20px';
     sentinel.style.width = '100%';
+    sentinel.style.gridColumn = '1 / -1'; // スパンして全幅を使用（グリッドセルを占有しない）
 
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && displayedCount < currentFilteredList.length) {
@@ -791,9 +848,10 @@ function renderDetail(char, versions) {
     STAT_ORDER.forEach(key => {
         const raw = stats[key];
         const valueText = formatStatValue(key, raw);
+        const label = a.getStatLabel ? a.getStatLabel(key) : key;
         statsGrid.innerHTML += `
             <div class="stat-item">
-                <span class="label">${key}</span>
+                <span class="label">${label}</span>
                 <span class="value">${valueText}</span>
             </div>
         `;
@@ -803,12 +861,109 @@ function renderDetail(char, versions) {
     const skillsContainer = document.getElementById('skills-container');
     skillsContainer.innerHTML = '';
     
+    // スキル説明文からスキル強化効果・超越効果を分離してフォーマット
+    function formatSkillDesc(desc) {
+        if (!desc) return 'No description';
+        
+        // 各セクションを分離
+        const lines = desc.split('\n');
+        let mainDesc = [];
+        let enhanceEffect = [];
+        let transcendEffects = []; // {stage: number, lines: []}
+        let currentSection = 'main';
+        let currentTranscendStage = null;
+        
+        for (const line of lines) {
+            if (line.includes('スキル強化効果') || line.includes('Skill Enhancement')) {
+                currentSection = 'enhance';
+                continue;
+            }
+            
+            // 超越段階達成効果をパース（例：超越2段階達成効果、超越6段階達成効果）
+            const transcendMatch = line.match(/超越(\d+)段階達成効果/);
+            if (transcendMatch) {
+                currentSection = 'transcend';
+                currentTranscendStage = parseInt(transcendMatch[1]);
+                transcendEffects.push({ stage: currentTranscendStage, lines: [] });
+                continue;
+            }
+            
+            if (currentSection === 'main') {
+                mainDesc.push(line);
+            } else if (currentSection === 'enhance') {
+                enhanceEffect.push(line);
+            } else if (currentSection === 'transcend' && transcendEffects.length > 0) {
+                transcendEffects[transcendEffects.length - 1].lines.push(line);
+            }
+        }
+        
+        let html = applyGlossaryTooltips(mainDesc.join('\n'));
+        
+        // 翻訳ヘルパー
+        const enhanceLabel = typeof t === 'function' ? t('skill.enhanceEffect') : 'スキル強化効果';
+        
+        // スキル強化効果ボックス
+        if (enhanceEffect.length > 0) {
+            const enhanceHtml = applyGlossaryTooltips(enhanceEffect.join('\n'));
+            html += `<div class="skill-effect-box enhance">
+                <img src="images/icon/Tooltip_TargetIcon_04.webp" class="skill-effect-icon" alt="">
+                <span class="skill-effect-label">${enhanceLabel}</span>
+                <span class="skill-effect-content">${enhanceHtml}</span>
+            </div>`;
+        }
+        
+        // 超越達成効果ボックス（各段階ごと）
+        for (const te of transcendEffects) {
+            if (te.lines.length > 0) {
+                const teHtml = applyGlossaryTooltips(te.lines.join('\n'));
+                const iconNum = String(te.stage).padStart(2, '0');
+                const transcendLabel = typeof t === 'function' 
+                    ? t('skill.transcendEffect', { stage: te.stage }) 
+                    : `超越${te.stage}段階達成効果`;
+                html += `<div class="skill-effect-box transcend">
+                    <img src="images/icon/Tex_Transcendence_${iconNum}.webp" class="skill-effect-icon" alt="">
+                    <span class="skill-effect-label">${transcendLabel}</span>
+                    <span class="skill-effect-content">${teHtml}</span>
+                </div>`;
+            }
+        }
+        
+        return html;
+    }
+    
+    // 変化スキルが有効かどうかをチェック（通常スキルと内容が大きく異なる場合のみ表示）
+    function isValidTransformSkill(skillType, skill, skillsData) {
+        if (!skillType.includes('(Trans)') && !skillType.includes('（変化）')) return true;
+        
+        // 対応する通常スキルを取得
+        const normalType = skillType.replace(' (Trans)', '').replace('（変化）', '');
+        const normalSkill = skillsData[normalType];
+        
+        if (!normalSkill) return true; // 通常スキルがない場合は表示
+        
+        // 変化スキルの説明が極端に短い場合（ダミーデータの可能性）はスキップ
+        const transDescLength = (skill.desc || '').length;
+        const normalDescLength = (normalSkill.desc || '').length;
+        
+        // 変化スキルの説明が通常スキルの25%未満の場合はダミーとみなす
+        if (transDescLength < normalDescLength * 0.25 && transDescLength < 100) {
+            return false;
+        }
+        
+        return true;
+    }
+    
     const skillOrder = a.getSkillOrder();
     const skillsData = a.skills;
     skillOrder.forEach(skillType => {
         const skill = skillsData[skillType];
         if (skill && (skill.name || skill.desc)) {
-            const descHtml = skill.desc ? applyGlossaryTooltips(skill.desc) : 'No description';
+            // 変化スキルが有効かチェック
+            if (!isValidTransformSkill(skillType, skill, skillsData)) {
+                return; // 無効な変化スキルはスキップ
+            }
+            
+            const descHtml = formatSkillDesc(skill.desc);
             const isTransformed = a.isTransformedSkill(skillType);
             // 表示用タイプ名（変化マーカーを除去）
             const displayType = a.isJa 
@@ -818,6 +973,11 @@ function renderDetail(char, versions) {
             const titleText = skill.name ? skill.name : displayType;
             const transformLabel = a.isJa ? ' (変化)' : ' (Trans)';
             
+            // クールタイム表示の多言語対応
+            const ctLabel = skill.cooltime 
+                ? (typeof t === 'function' ? t('skill.cooltime', { value: skill.cooltime.replace(/[^0-9]/g, '') }) : skill.cooltime)
+                : '';
+            
             skillsContainer.innerHTML += `
                 <div class="skill-card-new${transformClass}">
                     <div class="skill-icon-wrapper">
@@ -826,8 +986,10 @@ function renderDetail(char, versions) {
                     <div class="skill-info">
                         <div class="skill-header-new">
                             <span class="skill-name-new">${titleText}</span>
-                            <span class="skill-type-badge${isTransformed ? ' transform' : ''}">${displayType}${isTransformed ? transformLabel : ''}</span>
-                            ${skill.cooltime ? `<span class="skill-ct-badge">${skill.cooltime}</span>` : ''}
+                            <div class="skill-header-badges">
+                                <span class="skill-type-badge${isTransformed ? ' transform' : ''}">${displayType}${isTransformed ? transformLabel : ''}</span>
+                                ${ctLabel ? `<span class="skill-ct-badge">${ctLabel}</span>` : ''}
+                            </div>
                         </div>
                         <div class="skill-desc-new">${descHtml}</div>
                     </div>
@@ -846,11 +1008,13 @@ function renderDetail(char, versions) {
             for (const [key, value] of Object.entries(transcendence)) {
                 if (value) {
                     const stageMatch = key.match(/(\d+)/);
-                    const stageNum = stageMatch ? stageMatch[1] : '';
-                    const stageLabel = a.isJa ? `超越${stageNum}段階` : `Transcendence ${stageNum}`;
+                    const stageNum = stageMatch ? stageMatch[1] : '1';
+                    // 2桁の数字にパディング（01〜12）
+                    const iconNum = stageNum.padStart(2, '0');
+                    const iconPath = `images/icon/Tex_Transcendence_${iconNum}.webp`;
                     transcendenceHtml += `
                         <div class="trans-item">
-                            <span class="trans-stage">${stageLabel}</span>
+                            <img src="${iconPath}" class="trans-icon" alt="超越${stageNum}" onerror="this.style.display='none'">
                             <span class="trans-effect">${value}</span>
                         </div>
                     `;
@@ -901,19 +1065,24 @@ function renderGrowthData(char, accessor) {
     const defenseKey = a.isJa ? '防御力' : 'Defense';
     const hpKey = 'HP';
     
+    // 表示用ラベル（i18n対応）
+    const attackLabel = a.getStatLabel ? a.getStatLabel(attackType) : attackType;
+    const defenseLabel = a.getStatLabel ? a.getStatLabel(defenseKey) : defenseKey;
+    const hpLabel = a.getStatLabel ? a.getStatLabel(hpKey) : hpKey;
+    
     if (lv1Stats && a.level1) {
         const lv1Data = a.level1;
         lv1Stats.innerHTML = `
             <div class="growth-stat-row">
-                <span class="name">${attackType}</span>
+                <span class="name">${attackLabel}</span>
                 <span class="val">${lv1Data[attackType]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">${defenseKey}</span>
+                <span class="name">${defenseLabel}</span>
                 <span class="val">${lv1Data[defenseKey]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">${hpKey}</span>
+                <span class="name">${hpLabel}</span>
                 <span class="val">${lv1Data[hpKey]?.toLocaleString() ?? 0}</span>
             </div>
         `;
@@ -923,15 +1092,15 @@ function renderGrowthData(char, accessor) {
         const lv30Data = a.level30;
         lv30Stats.innerHTML = `
             <div class="growth-stat-row">
-                <span class="name">${attackType}</span>
+                <span class="name">${attackLabel}</span>
                 <span class="val">${lv30Data[attackType]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">${defenseKey}</span>
+                <span class="name">${defenseLabel}</span>
                 <span class="val">${lv30Data[defenseKey]?.toLocaleString() ?? 0}</span>
             </div>
             <div class="growth-stat-row">
-                <span class="name">${hpKey}</span>
+                <span class="name">${hpLabel}</span>
                 <span class="val">${lv30Data[hpKey]?.toLocaleString() ?? 0}</span>
             </div>
         `;
@@ -961,6 +1130,11 @@ function renderReinforcementDataNew(char, accessor) {
     const reinforceData = a.reinforceStages;
     const costData = (a.isJa ? growthData.強化コスト : growthData.reinforceCosts) || [];
     
+    // 表示用ラベル（i18n対応）
+    const attackLabel = a.getStatLabel ? a.getStatLabel(attackType) : attackType;
+    const defenseLabel = a.getStatLabel ? a.getStatLabel(defenseKey) : defenseKey;
+    const hpLabel = a.getStatLabel ? a.getStatLabel(hpKey) : hpKey;
+    
     function updateReinforceDisplay(level) {
         const levelKey = `+${level}`;
         const stats = reinforceData?.[levelKey];
@@ -968,15 +1142,15 @@ function renderReinforcementDataNew(char, accessor) {
         if (stats) {
             reinforceStats.innerHTML = `
                 <div class="reinforce-stat-card">
-                    <div class="reinforce-stat-name">${attackType}</div>
+                    <div class="reinforce-stat-name">${attackLabel}</div>
                     <div class="reinforce-stat-value">${stats[attackType]?.toLocaleString() ?? 0}</div>
                 </div>
                 <div class="reinforce-stat-card">
-                    <div class="reinforce-stat-name">${defenseKey}</div>
+                    <div class="reinforce-stat-name">${defenseLabel}</div>
                     <div class="reinforce-stat-value">${stats[defenseKey]?.toLocaleString() ?? 0}</div>
                 </div>
                 <div class="reinforce-stat-card">
-                    <div class="reinforce-stat-name">${hpKey}</div>
+                    <div class="reinforce-stat-name">${hpLabel}</div>
                     <div class="reinforce-stat-value">${stats[hpKey]?.toLocaleString() ?? 0}</div>
                 </div>
             `;
@@ -1360,26 +1534,41 @@ async function updatePortrait(char, versions) {
         return `${a.source} ${a.kind}`.localeCompare(`${b.source} ${b.kind}`);
     });
 
-    // 表示名マッピング
-    const SOURCE_LABELS = {
-        'SKRE': 'セブンナイツ RE',
-        'SK1': 'セブンナイツ 初代',
-        'SKRV': 'セブンナイツ RV',
-        'SKTW': 'セブンナイツ TW',
-        'Costume': 'コスチューム',
-        'spine': 'デフォルト',
-        'ROOT': 'その他'
+    // 表示名マッピング（多言語対応）
+    const getSourceLabel = (source) => {
+        const keyMap = {
+            'SKRE': 'portrait.source.skre',
+            'SK1': 'portrait.source.sk1',
+            'SK2': 'portrait.source.sk2',
+            'SKRV': 'portrait.source.skre',
+            'SKTW': 'portrait.source.skre',
+            'Costume': 'portrait.kind.costumeIcon',
+            'spine': 'portrait.source.spine',
+            'ROOT': 'portrait.source.spine'
+        };
+        const key = keyMap[source];
+        if (key && typeof t === 'function') {
+            return t(key);
+        }
+        return source;
     };
-    const KIND_LABELS = {
-        'HeroIcon': 'イラスト',
-        'CostumeIcon': 'コスチューム',
-        'Spine': 'Spine'
+    const getKindLabel = (kind) => {
+        const keyMap = {
+            'HeroIcon': 'portrait.kind.heroIcon',
+            'CostumeIcon': 'portrait.kind.costumeIcon',
+            'Spine': 'portrait.kind.default'
+        };
+        const key = keyMap[kind];
+        if (key && typeof t === 'function') {
+            return t(key);
+        }
+        return kind;
     };
 
     for (const g of sortedGroups) {
         const optgroup = document.createElement('optgroup');
-        const sourceLabel = SOURCE_LABELS[g.source] || g.source;
-        const kindLabel = KIND_LABELS[g.kind] || g.kind;
+        const sourceLabel = getSourceLabel(g.source);
+        const kindLabel = getKindLabel(g.kind);
         optgroup.label = `${sourceLabel} / ${kindLabel}`;
         g.items.forEach((e) => {
             const opt = document.createElement('option');
@@ -1393,7 +1582,7 @@ async function updatePortrait(char, versions) {
             if (String(e.kind).toLowerCase() === 'spine') {
                 // Spine: コスチューム名または「デフォルト」
                 if (e.variant === null || e.variant === undefined || e.variant === '') {
-                    displayName = 'デフォルト';
+                    displayName = typeof t === 'function' ? t('portrait.kind.default') : 'デフォルト';
                 } else {
                     displayName = e.variant;
                 }
