@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セナチェス確率計算 - セブンナイツ リバース Wiki</title>
+    
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e60012">
+    <meta name="description" content="セナチェス確率計算ツール - ウィッシュリストキャラがどのマスに隠れているか確率を計算。Seven Knights Re:Birth セブンナイツリバース攻略Wiki。">
+    <meta name="keywords" content="SenaChess, セナチェス, 確率計算, probability calculator, Seven Knights Re:Birth, セブンナイツリバース, wishlist, ウィッシュリスト">
+    
+    <!-- 多言語対応 hreflang -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=zh-Hans">
+    <link rel="alternate" hreflang="zh-Hant" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=zh-Hant">
+    <link rel="alternate" hreflang="th" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=th">
+    <link rel="alternate" hreflang="de" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=de">
+    <link rel="alternate" hreflang="es" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=es">
+    <link rel="alternate" hreflang="fr" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=fr">
+    <link rel="alternate" hreflang="id" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=id">
+    <link rel="alternate" hreflang="it" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=it">
+    <link rel="alternate" hreflang="ms" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ms">
+    <link rel="alternate" hreflang="nl" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=nl">
+    <link rel="alternate" hreflang="pt" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=pt">
+    <link rel="alternate" hreflang="ru" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ru">
+    <link rel="alternate" hreflang="tr" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=tr">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html">
+    
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SenaChess Probability Calculator",
+        "description": "Calculate the probability of finding your wishlist character in Seven Knights Re:Birth SenaChess mini-game.",
+        "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th", "de", "es", "fr", "id", "it", "ms", "nl", "pt", "ru", "tr"],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Seven Knights Re:Birth Wiki",
+            "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/"
+        }
+    }
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="senachess.css">
+    <script src="i18n.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build.html" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
+                <!-- Mobile Support Links (inside nav for mobile menu) -->
+                <li class="mobile-nav-support">
+                    <div class="mobile-support-links active">
+                        <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                            <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                            <span>Ko-fi</span>
+                        </a>
+                        <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                            <span>OFUSEで応援</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-support-links">
+            <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
+                <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                <span>Ko-fi</span>
+            </a>
+            <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
+                <span>OFUSE</span>
+            </a>
+        </div>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    
+    <main class="senachess-page">
+        <h1 class="page-title"><img src="images/SenaChess/Atl_Lobby_05_Sprite_13.webp" alt="" class="title-icon-img" style="height:1.2em;vertical-align:middle;margin-right:0.3em;"><span data-i18n="senachess.title">セナチェス確率計算</span></h1>
+        
+        <div class="senachess-layout">
+            <!-- 左: チェス盤 -->
+            <div class="board-area">
+                <div class="senachess-board">
+                    <!-- 土台フレーム -->
+                    <div class="board-frame">
+                        <div class="frame-tl"></div>
+                        <div class="frame-tr"></div>
+                        <div class="frame-bl"></div>
+                        <div class="frame-br"></div>
+                    </div>
+                    <!-- マスグリッド -->
+                    <div class="tiles-wrapper">
+                        <div class="tiles-grid" id="tilesGrid"></div>
+                        <div class="tiles-mask"></div>
+                    </div>
+                </div>
+                
+                <div class="board-controls">
+                    <button id="resetBtn" class="btn-ctrl" data-i18n="senachess.reset">リセット</button>
+                    <label class="btn-ctrl btn-upload">
+                        <span data-i18n="senachess.importScreenshot">スクショ取込</span>
+                        <input type="file" id="screenshotInput" accept="image/*" hidden>
+                    </label>
+                </div>
+                
+                <div class="mode-toggle-container">
+                    <span class="mode-label" id="labelEqual" data-i18n="senachess.modeEqual">均等</span>
+                    <label class="mode-switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="mode-slider"></span>
+                    </label>
+                    <span class="mode-label" id="labelExpect" data-i18n="senachess.modeExpectation">期待値</span>
+                </div>
+                
+                <div class="legend-bar">
+                    <span><span class="dot white"></span><span data-i18n="senachess.unopened">未開封</span></span>
+                    <span><span class="dot opened"></span><span data-i18n="senachess.opened">開封済</span></span>
+                    <span><span class="dot wish"></span><span data-i18n="senachess.wish">ウィッシュ</span></span>
+                </div>
+            </div>
+            
+            <!-- 右: 情報パネル -->
+            <div class="info-panel">
+                <div class="wish-card">
+                    <div class="wish-portrait" id="wishPortrait">
+                        <span>?</span>
+                    </div>
+                    <div class="wish-info">
+                        <div class="wish-title" data-i18n="senachess.wishlistCharacter">ウィッシュリストキャラ</div>
+                        <div class="wish-status" id="wishStatus" data-i18n="senachess.searching">探索中...</div>
+                    </div>
+                </div>
+                
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <span data-i18n="senachess.totalDraws">合計召喚回数</span>
+                        <span class="progress-nums"><span id="drawCount">0</span>/80</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="progressBar"></div>
+                        <div class="progress-mark" style="left:75%">60</div>
+                        <div class="progress-mark" style="left:100%">80</div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card highlight">
+                        <div class="stat-label" data-i18n="senachess.nextTileProb">次の1マスで発見</div>
+                        <div class="stat-value" id="nextProb">1.25%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" data-i18n="senachess.remainingTiles">残りマス</div>
+                        <div class="stat-value" id="remaining">80</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" data-i18n="senachess.expectedDraws">期待回数</div>
+                        <div class="stat-value" id="expected">40.5回</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" data-i18n="senachess.remainingCost">残り全開封コスト</div>
+                        <div class="stat-value stat-value-with-icon">
+                            <img src="images/SenaChess/Currency_500.webp" class="cost-icon" alt="">
+                            <span id="cost">11,700</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bonus-row">
+                    <div class="bonus-item" id="bonus60">
+                        <img src="images/SenaChess/Tex_ItemIcon_302000001.webp" class="bonus-reward-icon" alt="">
+                        <span class="bonus-label" data-i18n="senachess.bonus60">60回報酬</span>
+                        <span class="bonus-need" id="need60">あと60回</span>
+                    </div>
+                    <div class="bonus-item" id="bonus80">
+                        <img src="images/SenaChess/Tex_ItemIcon_302000002.webp" class="bonus-reward-icon" alt="">
+                        <span class="bonus-label" data-i18n="senachess.bonus80">80回報酬</span>
+                        <span class="bonus-need" id="need80">あと80回</span>
+                    </div>
+                </div>
+                
+                <div class="advice-box" id="adviceBox">
+                    <span class="advice-icon"></span>
+                    <span id="adviceText">各マスの確率は均等。どこを選んでも同じ確率です！</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="efficiency-box">
+            <div class="efficiency-header">
+                <span class="efficiency-title" data-i18n="senachess.efficientOpening">効率的な開け方</span>
+                <span class="efficiency-period">
+                    <span data-i18n="senachess.remaining">残り</span><input type="number" id="daysLeft" min="1" max="28" value="21" class="days-input"><span data-i18n="senachess.days">日</span>
+                </span>
+            </div>
+            <div class="period-info" id="periodInfo"></div>
+            <div class="efficiency-advice" id="efficiencyAdvice">
+                計算中...
+            </div>
+            <div class="efficiency-detail" id="efficiencyDetail"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <div class="footer-support-links">
+                    <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                        <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                        <span>Ko-fi</span>
+                    </a>
+                    <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                        <span>OFUSEで応援</span>
+                    </a>
+                </div>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- スクショ解析用の隠しキャンバス -->
+    <canvas id="analysisCanvas" style="display:none"></canvas>
+    
+    <script src="senachess.js"></script>
+</body>
+</html>

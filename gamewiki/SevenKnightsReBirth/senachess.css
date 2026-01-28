@@ -1,0 +1,748 @@
+/* セナチェス - ゲーム風デザイン */
+
+.senachess-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* 背景画像はページ全体に固定配置 */
+.senachess-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/SenaChess/Tex_SenachessBGA01.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffd700, #ff9500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* レイアウト */
+.senachess-layout {
+    display: grid;
+    grid-template-columns: auto 300px;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .senachess-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====== チェス盤エリア ====== */
+.board-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.senachess-board {
+    position: relative;
+    /* 土台のサイズ（マス領域より大きく） */
+    width: 640px;
+    height: 570px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+@media (max-width: 1100px) {
+    .senachess-board {
+        width: 560px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 800px) {
+    .senachess-board {
+        width: 480px;
+        height: 430px;
+    }
+}
+
+@media (max-width: 600px) {
+    .senachess-board {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 640/570;
+    }
+}
+
+/* 土台フレーム（4パーツ） */
+.board-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.frame-tl, .frame-tr, .frame-bl, .frame-br {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-image: url('images/SenaChess/Atl_SenaChess_01.webp');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.frame-tl {
+    top: 0; left: 0;
+}
+.frame-tr {
+    top: 0; right: 0;
+    transform: scaleX(-1);
+}
+.frame-bl {
+    bottom: 0; left: 0;
+    transform: scaleY(-1);
+}
+.frame-br {
+    bottom: 0; right: 0;
+    transform: scale(-1, -1);
+}
+
+/* マス部分 - 固定サイズで中央配置 */
+.tiles-wrapper {
+    position: absolute;
+    /* マス領域は固定サイズで中央配置 */
+    width: 530px;
+    height: 424px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+@media (max-width: 1100px) {
+    .tiles-wrapper {
+        width: 470px;
+        height: 376px;
+    }
+}
+
+@media (max-width: 800px) {
+    .tiles-wrapper {
+        width: 400px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tiles-wrapper {
+        width: 85%;
+        height: auto;
+        aspect-ratio: 10/8;
+    }
+}
+
+.tiles-grid {
+    display: grid;
+    /* 10列x8行、各マス正方形 */
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 100%;
+    height: 100%;
+    gap: 0;
+    background: transparent;
+}
+
+/* 個々のマス */
+.tile {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: bold;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tile.white {
+    background-image: url('images/SenaChess/Atl_SenaChess_04.webp');
+    background-color: #ddd0b8;
+}
+.tile.red {
+    background-image: url('images/SenaChess/Atl_SenaChess_05.webp');
+    background-color: #703535;
+}
+
+.tile:hover {
+    transform: scale(1.08);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* 開封済みマス */
+.tile.opened {
+    background-color: #2a2530 !important;
+    background-image: none !important;
+}
+.tile.opened::after {
+    content: '✓';
+    position: absolute;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.5);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ウィッシュ発見マス */
+.tile.wish {
+    background-image: linear-gradient(135deg, #ffd700, #ff8c00) !important;
+    animation: wishPulse 1.5s infinite;
+    box-shadow: 0 0 15px 5px rgba(255,215,0,0.6);
+}
+.tile.wish::after {
+    content: '★';
+    position: absolute;
+    font-size: 1.4rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff6600, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes wishPulse {
+    0%, 100% { box-shadow: 0 0 10px 2px rgba(255,215,0,0.6); }
+    50% { box-shadow: 0 0 20px 8px rgba(255,215,0,0.4); }
+}
+
+/* ヒートマップ表示 */
+.tile .prob-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.5);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-weight: bold;
+    z-index: 5;
+    background: var(--heat-color, transparent);
+}
+.tile:not(.opened):not(.wish) .prob-overlay {
+    opacity: 1;
+}
+.tile.opened .prob-overlay,
+.tile.wish .prob-overlay {
+    display: none;
+}
+
+/* マスク模様（汚れ） */
+.tiles-mask {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/SenaChess/Atl_SenaChess_12.webp');
+    background-size: 100% 100%;
+    background-position: center;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.25;
+    mix-blend-mode: multiply;
+}
+
+/* コントロール */
+.board-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.btn-ctrl {
+    padding: 0.6rem 1rem;
+    background: linear-gradient(180deg, #3a3a50, #252535);
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+.btn-ctrl:hover {
+    background: linear-gradient(180deg, #4a4a60, #353545);
+    border-color: #ffd700;
+    color: #ffd700;
+}
+.btn-upload {
+    cursor: pointer;
+}
+
+/* モード切替トグルスイッチ */
+.mode-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.mode-label {
+    font-size: 0.85rem;
+    color: #888;
+    transition: color 0.3s;
+    min-width: 3rem;
+}
+.mode-label#labelEqual {
+    text-align: right;
+}
+.mode-label#labelExpect {
+    text-align: left;
+}
+.mode-label.active {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.mode-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.mode-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.mode-slider {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #3a3a50, #252535);
+    border: 1px solid #555;
+    border-radius: 13px;
+    transition: all 0.3s;
+}
+
+.mode-slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    bottom: 2px;
+    background: linear-gradient(135deg, #ccc, #888);
+    border-radius: 50%;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.mode-switch input:checked + .mode-slider {
+    background: linear-gradient(180deg, #5a4a80, #3a2a60);
+    border-color: #8a7faf;
+}
+
+.mode-switch input:checked + .mode-slider::before {
+    transform: translateX(24px);
+    background: linear-gradient(135deg, #ffd700, #ff9500);
+}
+
+/* 凡例 */
+.legend-bar {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+.legend-bar span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
+.dot.white {
+    background: linear-gradient(135deg, #f5e6d3, #d4c4b0);
+    border: 1px solid #a89880;
+}
+.dot.opened {
+    background: linear-gradient(135deg, #666, #444);
+    border: 1px solid #333;
+}
+.dot.wish {
+    background: linear-gradient(135deg, #ffd700, #ff9500);
+    border: 1px solid #cc7700;
+}
+
+/* ====== 右側情報パネル ====== */
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ウィッシュカード */
+.wish-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1e1e30, #2a2a40);
+    border-radius: 12px;
+    border: 1px solid #444;
+}
+.wish-portrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #333, #222);
+    border: 3px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #666;
+}
+.wish-portrait.found {
+    border-color: #27ae60;
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+    color: #fff;
+}
+.wish-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wish-title {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+.wish-status {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+.wish-status.found {
+    color: #27ae60;
+}
+
+/* 進捗カード */
+.progress-card {
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.progress-nums {
+    font-weight: bold;
+    color: #ffd700;
+}
+.progress-track {
+    position: relative;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    overflow: visible;
+}
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+    border-radius: 10px;
+    transition: width 0.3s;
+    width: 0%;
+}
+.progress-mark {
+    position: absolute;
+    top: -18px;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #888;
+}
+
+/* ステータスグリッド */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.stat-card {
+    padding: 0.75rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+.stat-card.highlight {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, #2a2520, #1a1a25);
+}
+.stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+.stat-card.highlight .stat-value {
+    color: #ffd700;
+    font-size: 1.4rem;
+}
+
+/* ボーナス */
+.bonus-row {
+    display: flex;
+    gap: 0.75rem;
+}
+.bonus-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 0.8rem;
+}
+.bonus-item.achieved {
+    border-color: #27ae60;
+    background: linear-gradient(135deg, #1a2e1a, #1a1a25);
+}
+.bonus-reward-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 0.25rem;
+}
+.bonus-label {
+    color: #888;
+    font-size: 0.7rem;
+}
+.bonus-need {
+    color: #f39c12;
+    font-weight: bold;
+}
+.bonus-item.achieved .bonus-need {
+    color: #27ae60;
+}
+
+/* アドバイス */
+.advice-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a2535, #1a1a30);
+    border-radius: 10px;
+    border: 1px solid #3498db;
+}
+.advice-icon {
+    width: 20px;
+    height: 20px;
+    background: #f1c40f;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+}
+.advice-icon::after {
+    content: 'i';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #1a1a25;
+    font-style: italic;
+}
+#adviceText {
+    font-size: 0.9rem;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+/* 仕様詳細・ガイド */
+.spec-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+.spec-box summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--accent-gold);
+}
+.spec-box ul {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.5rem;
+}
+.spec-box li {
+    margin-bottom: 0.4rem;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+.spec-box strong {
+    color: #ffd700;
+}
+
+.guide-content {
+    margin-top: 1rem;
+}
+.guide-content h4 {
+    color: #5bc0de;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.5rem 0;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #3a3a50;
+}
+.guide-content h4:first-child {
+    margin-top: 0;
+}
+.guide-content ul {
+    margin: 0;
+}
+
+/* 効率アドバイスボックス */
+.efficiency-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #1a2535, #1a1a30);
+    border-radius: 10px;
+    border: 1px solid #3498db;
+    position: relative;
+    z-index: 1;
+}
+
+.efficiency-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.efficiency-title {
+    font-weight: bold;
+    color: #5bc0de;
+    font-size: 0.95rem;
+}
+
+.efficiency-period {
+    font-size: 0.85rem;
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.days-input {
+    width: 2.5rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #f39c12;
+    border-radius: 4px;
+    color: #f39c12;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.1rem 0.2rem;
+}
+.days-input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.period-info {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.efficiency-advice {
+    font-size: 1.1rem;
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.efficiency-detail {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+.efficiency-detail strong {
+    color: #5bc0de;
+}
+
+/* コスト表示（ルビーアイコン付き） */
+.stat-value-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+.cost-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+    .info-panel {
+        order: -1;
+    }
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-card {
+        padding: 0.5rem;
+    }
+    .stat-label {
+        font-size: 0.65rem;
+    }
+    .stat-value {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

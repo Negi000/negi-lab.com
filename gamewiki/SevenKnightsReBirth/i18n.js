@@ -383,6 +383,9 @@ function localizeUrl(url) {
 // ページ読み込み時に初期化
 document.addEventListener('DOMContentLoaded', initI18n);
 
+// グローバル公開（直接アクセス用）
+window.onI18nReady = onI18nReady;
+
 // グローバル公開
 window.i18n = {
     t,
