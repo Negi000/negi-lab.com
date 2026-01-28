@@ -95,6 +95,12 @@
         document.getElementById('screenshotInput').addEventListener('change', handleScreenshot);
         document.getElementById('modeToggle').addEventListener('change', toggleDisplayMode);
         
+        // ボード範囲選択モーダルのイベント
+        const cancelBtn = document.getElementById('boardSelectCancel');
+        const confirmBtn = document.getElementById('boardSelectConfirm');
+        if (cancelBtn) cancelBtn.addEventListener('click', closeBoardSelectModal);
+        if (confirmBtn) confirmBtn.addEventListener('click', confirmBoardSelection);
+        
         // 残り日数変更時の再計算
         const daysInput = document.getElementById('daysLeft');
         if (daysInput) {
@@ -630,6 +636,10 @@
     }
     
     // ===== スクリーンショット解析 =====
+    let pendingImage = null;
+    let boardSelectPoints = [];
+    let canvasScale = 1;
+    
     function handleScreenshot(e) {
         const file = e.target.files[0];
         if (!file) return;
@@ -638,7 +648,7 @@
         reader.onload = function(ev) {
             const img = new Image();
             img.onload = function() {
-                analyzeScreenshot(img);
+                showBoardSelectModal(img);
             };
             img.src = ev.target.result;
         };
@@ -648,146 +658,181 @@
         e.target.value = '';
     }
     
-    function analyzeScreenshot(img) {
-        const canvas = document.getElementById('analysisCanvas');
+    function showBoardSelectModal(img) {
+        pendingImage = img;
+        boardSelectPoints = [];
+        
+        const modal = document.getElementById('boardSelectModal');
+        const canvas = document.getElementById('boardSelectCanvas');
+        const overlay = document.getElementById('boardSelectOverlay');
+        const confirmBtn = document.getElementById('boardSelectConfirm');
+        const statusEl = document.getElementById('boardSelectStatus');
+        
+        // 画像をキャンバスに描画（画面に収まるようにスケール）
+        const maxW = window.innerWidth * 0.9;
+        const maxH = window.innerHeight * 0.7;
+        canvasScale = Math.min(maxW / img.width, maxH / img.height, 1);
+        
+        canvas.width = img.width * canvasScale;
+        canvas.height = img.height * canvasScale;
+        
         const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // オーバーレイのサイズをキャンバスに合わせる
+        overlay.style.width = canvas.width + 'px';
+        overlay.style.height = canvas.height + 'px';
+        overlay.innerHTML = '';
+        
+        confirmBtn.disabled = true;
+        statusEl.textContent = safeT('senachess.selectPoint1') || '① ボードの左上をクリック';
+        
+        modal.style.display = 'flex';
+        
+        // クリックイベント
+        canvas.onclick = function(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / canvasScale;
+            const y = (e.clientY - rect.top) / canvasScale;
+            
+            if (boardSelectPoints.length < 2) {
+                boardSelectPoints.push({ x, y });
+                addMarker(overlay, e.clientX - rect.left, e.clientY - rect.top);
+                
+                if (boardSelectPoints.length === 1) {
+                    statusEl.textContent = safeT('senachess.selectPoint2') || '② ボードの右下をクリック';
+                } else if (boardSelectPoints.length === 2) {
+                    // 選択範囲を描画
+                    drawSelectionRect(overlay);
+                    confirmBtn.disabled = false;
+                    statusEl.textContent = safeT('senachess.selectionComplete') || '選択完了！解析ボタンを押してください';
+                }
+            }
+        };
+    }
+    
+    function addMarker(overlay, x, y) {
+        const marker = document.createElement('div');
+        marker.className = 'board-select-marker';
+        marker.style.left = x + 'px';
+        marker.style.top = y + 'px';
+        overlay.appendChild(marker);
+    }
+    
+    function drawSelectionRect(overlay) {
+        const p1 = boardSelectPoints[0];
+        const p2 = boardSelectPoints[1];
+        
+        const left = Math.min(p1.x, p2.x) * canvasScale;
+        const top = Math.min(p1.y, p2.y) * canvasScale;
+        const width = Math.abs(p2.x - p1.x) * canvasScale;
+        const height = Math.abs(p2.y - p1.y) * canvasScale;
+        
+        const rect = document.createElement('div');
+        rect.className = 'board-select-rect';
+        rect.style.left = left + 'px';
+        rect.style.top = top + 'px';
+        rect.style.width = width + 'px';
+        rect.style.height = height + 'px';
+        overlay.appendChild(rect);
+    }
+    
+    function closeBoardSelectModal() {
+        const modal = document.getElementById('boardSelectModal');
+        modal.style.display = 'none';
+        pendingImage = null;
+        boardSelectPoints = [];
+    }
+    
+    function confirmBoardSelection() {
+        if (!pendingImage || boardSelectPoints.length !== 2) return;
+        
+        const p1 = boardSelectPoints[0];
+        const p2 = boardSelectPoints[1];
+        
+        const boardRect = {
+            x: Math.min(p1.x, p2.x),
+            y: Math.min(p1.y, p2.y),
+            w: Math.abs(p2.x - p1.x),
+            h: Math.abs(p2.y - p1.y)
+        };
+        
+        // pendingImageを保存してからモーダルを閉じる
+        const img = pendingImage;
+        closeBoardSelectModal();
+        analyzeWithBoardRect(img, boardRect);
+    }
+    
+    function analyzeWithBoardRect(img, boardRect) {
+        const canvas = document.getElementById('analysisCanvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
         
         canvas.width = img.width;
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
         
-        // チェス盤の領域を検出（ゲーム画面のレイアウトに合わせて調整）
-        // フレーム装飾を除いた内側のマス領域を正確に指定
-        const aspectRatio = img.width / img.height;
-        
-        let boardRect;
-        if (aspectRatio > 1.6) {
-            // ワイドスクリーン（16:9等）- 右側に情報パネル
-            // フレーム装飾を除いた内側のマス領域を正確に指定
-            // 下部のフレームが厚いので、bottomを少し上げる
-            const boardLeft = img.width * 0.098;
-            const boardTop = img.height * 0.115;
-            const boardRight = img.width * 0.595;
-            const boardBottom = img.height * 0.875;
-            boardRect = { 
-                x: boardLeft, 
-                y: boardTop, 
-                w: boardRight - boardLeft, 
-                h: boardBottom - boardTop 
-            };
-        } else if (aspectRatio > 1.3) {
-            // 横長（情報パネル小さめ）
-            const boardLeft = img.width * 0.085;
-            const boardTop = img.height * 0.11;
-            const boardRight = img.width * 0.715;
-            const boardBottom = img.height * 0.88;
-            boardRect = { 
-                x: boardLeft, 
-                y: boardTop, 
-                w: boardRight - boardLeft, 
-                h: boardBottom - boardTop 
-            };
-        } else if (aspectRatio > 1.0) {
-            // やや横長
-            const boardLeft = img.width * 0.08;
-            const boardTop = img.height * 0.08;
-            const boardRight = img.width * 0.92;
-            const boardBottom = img.height * 0.92;
-            boardRect = { 
-                x: boardLeft, 
-                y: boardTop, 
-                w: boardRight - boardLeft, 
-                h: boardBottom - boardTop 
-            };
-        } else {
-            // 縦長または正方形
-            const margin = img.width * 0.08;
-            boardRect = { 
-                x: margin, 
-                y: margin * 1.5, 
-                w: img.width - margin * 2, 
-                h: (img.width - margin * 2) * 0.8
-            };
-        }
+        console.log('Image:', img.width, 'x', img.height);
+        console.log('User selected board:', boardRect);
         
         const tileW = boardRect.w / COLS;
         const tileH = boardRect.h / ROWS;
         
-        console.log('Image:', img.width, 'x', img.height, 'Aspect:', aspectRatio.toFixed(2));
-        console.log('Board:', boardRect);
         console.log('Tile:', tileW.toFixed(1), 'x', tileH.toFixed(1));
-        
-        // 未開封マスを検出する方式（開封済みは様々な色だが、未開封は固定色）
-        // 白マス（未開封）: RGB(240,218,181) 前後のクリーム色
-        // 赤マス（未開封）: RGB(141,65,65) 前後のワイン色
-        // ※汚れマスクで色が暗くなっている部分もある
         
         const closedTiles = new Set();
         
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
                 const idx = row * COLS + col;
-                
-                // マス中央のピクセルをサンプリング
-                const cx = boardRect.x + col * tileW + tileW / 2;
-                const cy = boardRect.y + row * tileH + tileH / 2;
-                
-                // 3x3グリッドでサンプリング（中央付近）
-                const samples = [];
-                for (let dy = -0.15; dy <= 0.15; dy += 0.15) {
-                    for (let dx = -0.15; dx <= 0.15; dx += 0.15) {
-                        samples.push(getPixel(ctx, cx + dx * tileW, cy + dy * tileH));
-                    }
-                }
-                
-                const avg = averageColor(samples);
                 const isWhiteTile = (row + col) % 2 === 0;
                 
-                // 未開封マスかどうかを判定（色が固定）
+                // マスの左上座標
+                const tileX = boardRect.x + col * tileW;
+                const tileY = boardRect.y + row * tileH;
+                
+                // マスの4つの角をサンプリング（キャラアイコンを避ける）
+                const cornerOffset = 0.12;
+                const cornerSamples = [
+                    getPixel(ctx, tileX + tileW * cornerOffset, tileY + tileH * cornerOffset),
+                    getPixel(ctx, tileX + tileW * (1 - cornerOffset), tileY + tileH * cornerOffset),
+                    getPixel(ctx, tileX + tileW * cornerOffset, tileY + tileH * (1 - cornerOffset)),
+                    getPixel(ctx, tileX + tileW * (1 - cornerOffset), tileY + tileH * (1 - cornerOffset))
+                ];
+                
+                const cornerAvg = averageColor(cornerSamples);
+                const brightness = getBrightness(cornerAvg);
+                
                 let isClosed = false;
                 
                 if (isWhiteTile) {
                     // 白マス（未開封）: クリーム/ベージュ色
-                    // RGB(230-250, 210-235, 170-200) が基本、汚れで暗くなる場合も
+                    // RGB(213,207,189)など、明るい暖色系
                     const isCreamy = 
-                        avg.r >= 180 && avg.r <= 255 &&
-                        avg.g >= 160 && avg.g <= 250 &&
-                        avg.b >= 130 && avg.b <= 220 &&
-                        avg.r >= avg.g - 10 &&
-                        avg.g >= avg.b &&
-                        (avg.r - avg.b) >= 20 &&
-                        (avg.r - avg.b) <= 100;
+                        brightness >= 150 &&
+                        cornerAvg.r >= 170 &&
+                        cornerAvg.r >= cornerAvg.g - 5 &&
+                        cornerAvg.g >= cornerAvg.b - 5 &&
+                        (cornerAvg.r - cornerAvg.b) >= 15;
                     
-                    // キャラアイコンは彩度が高い or 暗い or 色相が違う
-                    const saturation = getSaturation(avg);
-                    const brightness = getBrightness(avg);
-                    
-                    isClosed = isCreamy && saturation < 50 && brightness > 140;
+                    isClosed = isCreamy;
                 } else {
-                    // 赤マス（未開封）: ワイン/ダークレッド色
-                    // RGB(125-145, 50-65, 50-65) が基本
-                    // キャラアイコン（茶色系）と区別するため、GとBが近いことを確認
+                    // 赤マス（未開封）: ワインレッド
                     const isWineRed = 
-                        avg.r >= 115 && avg.r <= 155 &&
-                        avg.g >= 45 && avg.g <= 75 &&
-                        avg.b >= 45 && avg.b <= 75 &&
-                        avg.r >= avg.g * 1.8 &&  // RがGの1.8倍以上
-                        avg.r >= avg.b * 1.8 &&  // RがBの1.8倍以上
-                        Math.abs(avg.g - avg.b) <= 15; // GとBが非常に近い
+                        cornerAvg.r >= 100 &&
+                        cornerAvg.r >= cornerAvg.g * 1.5 &&
+                        cornerAvg.r >= cornerAvg.b * 1.5 &&
+                        Math.abs(cornerAvg.g - cornerAvg.b) <= 25;
                     
-                    // 彩度チェック：ワイン赤は特定の彩度範囲
-                    const saturation = getSaturation(avg);
-                    
-                    isClosed = isWineRed && saturation >= 35 && saturation <= 65;
+                    isClosed = isWineRed;
                 }
                 
                 if (isClosed) {
                     closedTiles.add(idx);
                 }
                 
-                // デバッグ: 最初の数マスの色情報をログ
-                if (idx < 20 || idx >= 60) {
-                    console.log(`Tile ${idx} (${isWhiteTile ? 'W' : 'R'}): RGB(${avg.r.toFixed(0)},${avg.g.toFixed(0)},${avg.b.toFixed(0)}) -> ${isClosed ? 'CLOSED' : 'OPEN'}`);
+                // デバッグ
+                if (idx < 10 || idx >= 70) {
+                    console.log(`Tile ${idx} (${isWhiteTile ? 'W' : 'R'}): RGB(${cornerAvg.r.toFixed(0)},${cornerAvg.g.toFixed(0)},${cornerAvg.b.toFixed(0)}) -> ${isClosed ? 'CLOSED' : 'OPEN'}`);
                 }
             }
         }
@@ -818,7 +863,8 @@
         saveState();
         updateStats();
         
-        alert(`解析完了！\n開封済み: ${openedTiles.size}マス\n未開封: ${closedTiles.size}マス\n\n※ 誤検出はマスをクリックして修正できます。`);
+        alert(safeT('senachess.analyzeComplete', { opened: openedTiles.size, closed: closedTiles.size }) || 
+              `解析完了！\n開封済み: ${openedTiles.size}マス\n未開封: ${closedTiles.size}マス\n\n※ 誤検出はマスをクリックして修正できます。`);
     }
     
     function getPixel(ctx, x, y) {
