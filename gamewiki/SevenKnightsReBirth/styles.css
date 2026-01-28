@@ -1520,6 +1520,35 @@ footer {
     color: var(--accent-gold);
 }
 
+.game-mode-card.highlight-new {
+    position: relative;
+    border-color: rgba(39, 174, 96, 0.5);
+    background: linear-gradient(145deg, rgba(30, 40, 35, 0.9) 0%, rgba(20, 30, 25, 0.95) 100%);
+}
+
+.game-mode-card.highlight-new:hover {
+    border-color: #2ecc71;
+    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), 0 0 20px rgba(39, 174, 96, 0.2);
+}
+
+.new-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 8px;
+    animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 /* Featured Section */
 .featured-section {
     padding: 4rem 0;
