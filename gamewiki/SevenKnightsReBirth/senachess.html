@@ -250,6 +250,24 @@
     <!-- スクショ解析用の隠しキャンバス -->
     <canvas id="analysisCanvas" style="display:none"></canvas>
     
+    <!-- ボード範囲選択モーダル -->
+    <div id="boardSelectModal" class="board-select-modal" style="display:none">
+        <div class="board-select-content">
+            <div class="board-select-header">
+                <span id="boardSelectInstruction" data-i18n="senachess.selectBoardInstruction">ボードの左上と右下の角をクリックしてください</span>
+                <button id="boardSelectCancel" class="btn-cancel">✕</button>
+            </div>
+            <div class="board-select-canvas-wrapper">
+                <canvas id="boardSelectCanvas"></canvas>
+                <div id="boardSelectOverlay"></div>
+            </div>
+            <div class="board-select-footer">
+                <span id="boardSelectStatus"></span>
+                <button id="boardSelectConfirm" class="btn-ctrl" disabled data-i18n="senachess.analyze">解析</button>
+            </div>
+        </div>
+    </div>
+    
     <script src="senachess.js"></script>
 </body>
 </html>
