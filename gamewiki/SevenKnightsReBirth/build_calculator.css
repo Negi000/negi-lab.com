@@ -1,0 +1,1074 @@
+/* ========================================
+   Build Calculator - Page Specific Styles
+   ======================================== */
+
+/* Page Layout */
+.calculator-page {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 100%);
+}
+
+.calculator-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 40px;
+}
+
+/* Page Header */
+.page-header-card {
+    background: linear-gradient(135deg, rgba(230, 0, 18, 0.15) 0%, rgba(230, 0, 18, 0.05) 100%);
+    border: 1px solid rgba(230, 0, 18, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.page-header-card h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 0 10px 0;
+    text-shadow: 0 2px 10px rgba(230, 0, 18, 0.5);
+}
+
+.page-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Calculator Container */
+.calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Calculator Cards */
+.calc-card {
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.calc-card .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calc-card .title-icon {
+    font-size: 1.3rem;
+}
+
+.card-hint {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0 0 16px 0;
+}
+
+/* Character Selection */
+.character-select-card {
+    grid-column: 1 / -1;
+}
+
+.character-select-wrapper {
+    margin-bottom: 16px;
+}
+
+.calc-select {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calc-select:hover {
+    border-color: rgba(230, 0, 18, 0.5);
+}
+
+.calc-select:focus {
+    outline: none;
+    border-color: #e60012;
+    box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.2);
+}
+
+.calc-select option {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+/* Selected Character Info */
+.selected-character-info {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.selected-character-info.hidden {
+    display: none;
+}
+
+.char-info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.char-portrait-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.char-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.char-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.char-subname {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.char-meta {
+    font-size: 0.85rem;
+    color: rgba(230, 0, 18, 0.9);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    color: #4ecdc4;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Target Stats Input */
+.target-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.target-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.target-stat-row label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.target-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.target-input:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.target-input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+}
+
+.target-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Calculate Button */
+.calc-button {
+    width: 100%;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #e60012 0%, #ff4757 100%);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.calc-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 0, 18, 0.4);
+}
+
+.calc-button:active {
+    transform: translateY(0);
+}
+
+/* Equipment Slots */
+.equipment-slots-card {
+    grid-column: 1 / -1;
+}
+
+.equipment-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+}
+
+.equip-slot {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.equip-slot:hover {
+    border-color: rgba(230, 0, 18, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.equip-slot h3 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.equip-type-select,
+.main-option-select {
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.equip-type-select option,
+.main-option-select option {
+    background: #1a1a2e;
+}
+
+.equip-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accessory-slot {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.accessory-slot h3 {
+    color: #ffd700;
+}
+
+/* Card Subtitle */
+.card-subtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+/* Set Selector */
+.set-select,
+.initial-subs-select {
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.set-select {
+    background: linear-gradient(135deg, rgba(230, 0, 18, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+    border-color: rgba(230, 0, 18, 0.3);
+}
+
+.initial-subs-select {
+    background: rgba(78, 205, 196, 0.1);
+    border-color: rgba(78, 205, 196, 0.2);
+    font-size: 0.8rem;
+}
+
+.set-select option,
+.initial-subs-select option {
+    background: #1a1a2e;
+}
+
+/* Result Summary */
+.result-summary {
+    margin-bottom: 24px;
+}
+
+.result-summary h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Result Breakdown */
+.result-breakdown {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-breakdown h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+}
+
+.result-note {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    margin: 0 0 16px 0;
+}
+
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.breakdown-item span:first-child {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breakdown-item span:last-child {
+    color: #4ecdc4;
+    font-weight: 600;
+}
+
+/* Results Section */
+.results-card,
+.required-stats-card {
+    grid-column: 1 / -1;
+}
+
+.results-card.hidden,
+.required-stats-card.hidden {
+    display: none;
+}
+
+.results-content {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.result-value {
+    font-weight: 700;
+}
+
+.result-value.positive {
+    color: #4ecdc4;
+}
+
+.result-value.negative {
+    color: #ff6b6b;
+}
+
+.result-value.neutral {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.required-stats-note {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 6px;
+    border-left: 3px solid #ffd700;
+}
+
+.required-stats-note p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 4px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+    }
+
+    .equipment-slots-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-main {
+        padding: 80px 16px 30px;
+    }
+
+    .page-header-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid,
+    .target-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equipment-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .equip-slot {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .equipment-slots-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .char-info-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .char-portrait-thumb {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calc-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.results-card:not(.hidden),
+.required-stats-card:not(.hidden) {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ========================================
+   Equipment Slot Lock Toggle
+   ======================================== */
+/* ========================================
+   Equipment Slot Lock Toggle
+   ======================================== */
+.equipment-slot {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.equipment-slot:hover {
+    border-color: rgba(230, 0, 18, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.equipment-slot.locked {
+    border-color: rgba(78, 205, 196, 0.5);
+    background: rgba(78, 205, 196, 0.1);
+}
+
+.slot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.slot-header h3 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.lock-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+.lock-toggle input {
+    display: none;
+}
+
+.lock-icon {
+    font-size: 0;
+    /* Hide text content */
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.lock-icon::before {
+    content: '🔓';
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.lock-toggle input:checked+.lock-icon::before {
+    content: '🔒';
+    color: #4ecdc4;
+}
+
+.slot-note {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    margin: 8px 0 0 0;
+    text-align: center;
+}
+
+/* New Option Styles */
+.option-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    margin: 8px 0 4px;
+}
+
+.sub-options-container {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sub-option-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    width: 100%;
+    /* Ensure row stays within container */
+}
+
+.sub-option-select {
+    flex: 1;
+    /* Let it take available space */
+    width: 0;
+    /* Allow shrinking */
+    padding: 6px 4px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.75rem;
+    /* Slightly smaller text */
+    text-overflow: ellipsis;
+    /* Handle long text */
+}
+
+.sub-value-select {
+    flex: 0 0 50px;
+    /* Fixed width for value selector */
+    padding: 6px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #4ecdc4;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.sub-total-display {
+    text-align: right;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+.sub-total-display.valid {
+    color: #4ecdc4;
+}
+
+.sub-total-display.invalid {
+    color: #ff6b6b;
+}
+
+.sub-option-select option,
+.sub-value-select option {
+    background: #1a1a2e;
+}
+
+/* Enhancement Limit Selector in Target Stats */
+.limit-control-row {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+    /* Align to right */
+    flex-wrap: wrap;
+}
+
+.limit-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.limit-select {
+    padding: 6px 12px;
+    background: #2d3748;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.limit-select:hover {
+    border-color: #4ecdc4;
+}
+
+/* Ensure Target Stats Inputs don't overlap */
+.target-input {
+    width: 100%;
+    box-sizing: border-box;
+    /* Critical for padding calculation */
+}
+
+/* ========================================
+   Combination Results Grid
+   ======================================== */
+.combinations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.combo-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.combo-card:hover {
+    border-color: rgba(230, 0, 18, 0.3);
+    transform: translateY(-2px);
+}
+
+.combo-card.meets-all {
+    border-color: rgba(78, 205, 196, 0.5);
+    background: rgba(78, 205, 196, 0.05);
+}
+
+.combo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.combo-header h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.combo-score {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.combo-score.success {
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ecdc4;
+}
+
+.combo-score.partial {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+}
+
+.combo-sets {
+    margin-bottom: 12px;
+}
+
+.set-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(230, 0, 18, 0.3) 0%, rgba(230, 0, 18, 0.1) 100%);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #fff;
+    border: 1px solid rgba(230, 0, 18, 0.3);
+}
+
+.combo-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+
+.combo-stats .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.combo-stats .stat-row span:first-child {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.combo-stats .stat-row.met span:last-child {
+    color: #4ecdc4;
+}
+
+.combo-stats .stat-row.unmet span:last-child {
+    color: #ff6b6b;
+}
+
+.combo-details {
+    margin-top: 12px;
+}
+
+.combo-details summary {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    padding: 8px 0;
+    outline: none;
+}
+
+.combo-details summary:hover {
+    color: #fff;
+}
+
+.details-content {
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin-top: 8px;
+}
+
+.slot-details {
+    display: grid;
+    gap: 10px;
+}
+
+.slot-detail {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.slot-detail strong {
+    display: block;
+    color: #fff;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.slot-detail .main-ops,
+.slot-detail .sub-ops {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments for combination cards */
+@media (max-width: 768px) {
+    .combinations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Full Stats Display in Results
+   ======================================== */
+.combo-stats-full {
+    margin-bottom: 12px;
+}
+
+.combo-stats-full h5 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+}
+
+.stats-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+}
+
+.stats-grid-compact .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* --- Algorithm Toggle Switch --- */
+.algo-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4a5568;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #e53e3e;
+    /* Red accent */
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #e53e3e;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* --- Improved Equipment Details (Card Style) --- */
+.details-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.slot-detail {
+    background: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slot-detail-header {
+    background: #1a202c;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #4a5568;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slot-name {
+    font-weight: bold;
+    color: #edf2f7;
+    font-size: 0.95rem;
+}
+
+.slot-main-op {
+    font-size: 0.85rem;
+    color: #feb2b2;
+    /* Light red */
+    font-weight: 600;
+}
+
+.slot-body {
+    padding: 0.75rem 1rem;
+}
+
+.sub-op-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+}
+
+.sub-op-row:last-child {
+    border-bottom: none;
+}
+
+.sub-op-name {
+    color: #cbd5e0;
+}
+
+.sub-op-val {
+    font-family: 'Consolas', monospace;
+    color: #90cdf4;
+    /* Light blue */
+    font-weight: bold;
+}
+
+.enhance-count {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 1px 4px;
+    border-radius: 4px;
+    margin-left: 6px;
+    background: #4a5568;
+    color: #e2e8f0;
+}
+
+.enhance-count.active {
+    background: #c53030;
+    /* Active red */
+    color: white;
+}
