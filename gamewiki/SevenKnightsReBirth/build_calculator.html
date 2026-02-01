@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装備ビルド計算機 - セブンナイツ リバース Wiki</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-touch-icon.webp">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e60012">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Seven Knights Re:Birth 装備ビルド計算機 - 目標ステータスから必要な装備オプションを逆算。装備厳選を効率化するツール。">
+    <meta name="keywords" content="Seven Knights Re:Birth, セブンナイツリバース, 装備, ビルド, 計算機, 厳選, equipment, build calculator">
+    <meta name="author" content="Seven Knights Re:Birth Wiki">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="装備ビルド計算機 - セブンナイツ リバース Wiki">
+    <meta property="og:description" content="目標ステータスから必要な装備オプションを逆算。装備厳選を効率化するツール。">
+    <meta property="og:url" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html">
+    <meta property="og:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+    <meta property="og:site_name" content="Seven Knights Re:Birth Wiki">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="th_TH">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="装備ビルド計算機 - セブンナイツ リバース Wiki">
+    <meta name="twitter:description" content="目標ステータスから必要な装備オプションを逆算。装備厳選を効率化するツール。">
+    <meta name="twitter:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp">
+
+    <!-- Language Alternates for SEO -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=zh-Hans">
+    <link rel="alternate" hreflang="zh-Hant" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=zh-Hant">
+    <link rel="alternate" hreflang="th" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html?lang=th">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "WebPage", "name": "装備ビルド計算機 - セブンナイツ リバース Wiki", "description": "Seven Knights Re:Birth 装備ビルド計算機 - 目標ステータスから必要な装備オプションを逆算。装備厳選を効率化するツール。", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/build_calculator.html", "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th"], "isPartOf": {"@type": "WebSite", "name": "Seven Knights Re:Birth Wiki", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/", "potentialAction": {"@type": "SearchAction", "target": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/characters.html?search={search_term_string}", "query-input": "required name=search_term_string"}}, "publisher": {"@type": "Organization", "name": "Seven Knights Re:Birth Wiki", "logo": {"@type": "ImageObject", "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/rogo.webp"}}}
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+
+    <!-- Ko-fi Widget -->
+    <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+
+    <!-- OFUSE Widget -->
+    <script async src="https://ofuse.me/assets/platform/widget.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
+    <link rel="stylesheet" href="build_calculator.css?v=20260202_1">
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('[PWA] Service Worker registered'))
+                    .catch(err => console.log('[PWA] Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</head>
+
+<body class="calculator-page">
+    <header>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build_calculator.html" class="active" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
+                <!-- Mobile Support Links (inside nav for mobile menu) -->
+                <li class="mobile-nav-support">
+                    <div class="mobile-support-links active">
+                        <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                            <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                            <span>Ko-fi</span>
+                        </a>
+                        <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                            <span>OFUSEで応援</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-support-links">
+            <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
+                <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                <span>Ko-fi</span>
+            </a>
+            <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
+                <span>OFUSE</span>
+            </a>
+        </div>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="calculator-main">
+        <!-- Page Header -->
+        <section class="page-header-card">
+            <h1>🔧 装備ビルド計算機</h1>
+            <p class="page-description">目標ステータスに到達するために必要な装備オプションを逆算します。</p>
+        </section>
+
+        <div class="calculator-container">
+            <!-- Character Selection -->
+            <section class="calc-card character-select-card">
+                <h2 class="card-title">
+                    <span class="title-icon">👤</span>キャラクター選択
+                </h2>
+                <div class="character-select-wrapper">
+                    <select id="character-select" class="calc-select">
+                        <option value="">-- キャラクターを選択 --</option>
+                    </select>
+                </div>
+                <div id="selected-character-info" class="selected-character-info hidden">
+                    <div class="char-info-header">
+                        <img id="char-portrait" src="" alt="" class="char-portrait-thumb">
+                        <div class="char-info-text">
+                            <span id="char-name" class="char-name"></span>
+                            <span id="char-subname" class="char-subname"></span>
+                            <span id="char-meta" class="char-meta"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transcendence-select-wrapper" style="margin-top: 1rem;">
+                    <label for="transcendence-level" style="font-weight: 600; margin-right: 0.5rem;">⭐ 超越段階:</label>
+                    <select id="transcendence-level" class="calc-select" style="width: auto; min-width: 120px;">
+                    </select>
+                    <span id="transcendence-bonus" class="transcendence-bonus"
+                        style="margin-left: 0.5rem; font-size: 0.85rem; opacity: 0.75;"></span>
+                </div>
+            </section>
+
+            <!-- Base Stats (Lv30+5) -->
+            <section class="calc-card base-stats-card">
+                <h2 class="card-title">
+                    <span class="title-icon">📊</span>基礎ステータス (Lv.30 +5)
+                </h2>
+                <div id="base-stats-grid" class="stats-grid">
+                    <div class="stat-row">
+                        <span class="stat-label">物理攻撃力</span>
+                        <span id="base-patk" class="stat-value">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">魔法攻撃力</span>
+                        <span id="base-matk" class="stat-value">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">防御力</span>
+                        <span id="base-def" class="stat-value">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">HP</span>
+                        <span id="base-hp" class="stat-value">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">敏捷性</span>
+                        <span id="base-speed" class="stat-value">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">クリティカル率</span>
+                        <span id="base-crit" class="stat-value">5%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">与クリティカルダメージ</span>
+                        <span id="base-critdmg" class="stat-value">150%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">フェイタルヒット率</span>
+                        <span id="base-weakpoint" class="stat-value">5%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">ブロック率</span>
+                        <span id="base-block" class="stat-value">0%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">デバフ回避妨害率</span>
+                        <span id="base-debuffhit" class="stat-value">0%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">デバフ回避率</span>
+                        <span id="base-debuffresist" class="stat-value">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Target Stats Input -->
+            <section class="calc-card target-stats-card">
+                <h2 class="card-title">
+                    <span class="title-icon">🎯</span>目標ステータス
+                </h2>
+                <p class="card-hint">装備込みで達成したいステータスを入力してください</p>
+                <div class="limit-control-row">
+                    <span class="limit-label">サブオプション強化許容:</span>
+                    <select id="enhancement-limit" class="limit-select">
+                        <option value="2">+2まで (簡単)</option>
+                        <option value="3" selected>+3まで (推奨)</option>
+                        <option value="4">+4まで (高難易度)</option>
+                        <option value="5">+5まで (理論値)</option>
+                    </select>
+                </div>
+                <div class="target-stats-grid">
+                    <div class="target-stat-row">
+                        <label for="target-patk">物理攻撃力</label>
+                        <input type="number" id="target-patk" class="target-input" placeholder="0">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-matk">魔法攻撃力</label>
+                        <input type="number" id="target-matk" class="target-input" placeholder="0">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-def">防御力</label>
+                        <input type="number" id="target-def" class="target-input" placeholder="0">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-hp">HP</label>
+                        <input type="number" id="target-hp" class="target-input" placeholder="0">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-speed">敏捷性</label>
+                        <input type="number" id="target-speed" class="target-input" placeholder="0">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-crit">クリティカル率 (%)</label>
+                        <input type="number" id="target-crit" class="target-input" placeholder="0" min="0" max="100">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-critdmg">クリダメ (%)</label>
+                        <input type="number" id="target-critdmg" class="target-input" placeholder="0" min="0" max="500">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-weakpoint">フェイタルヒット率 (%)</label>
+                        <input type="number" id="target-weakpoint" class="target-input" placeholder="0" min="0"
+                            max="100">
+                    </div>
+                    <div class="target-stat-row">
+                        <label for="target-debuffhit">デバフ回避妨害率 (%)</label>
+                        <input type="number" id="target-debuffhit" class="target-input" placeholder="0" min="0"
+                            max="100">
+                    </div>
+                </div>
+                <button id="calculate-btn" class="calc-button">
+                    <span>🔍</span> 必要装備を計算
+                </button>
+            </section>
+
+            <!-- Equipment Slots -->
+            <section class="calc-card equipment-slots-card">
+                <h2 class="card-title">
+                    <span class="title-icon">⚔️</span>装備スロット設定
+                    <span class="card-subtitle">（★6レイド装備 +15強化想定）</span>
+                </h2>
+                <p class="card-hint">サブオプション: +15強化50回強化（全サブオプション合計）</p>
+                <div class="equipment-slots-grid">
+                    <!-- Weapon 1 -->
+                    <div class="equipment-slot" data-slot="weapon1">
+                        <div class="slot-header">
+                            <h3>⚔️ 武器1</h3>
+                            <label class="lock-toggle">
+                                <input type="checkbox" class="slot-lock-toggle" data-slot="weapon1">
+                                <span class="lock-icon">🔓</span>
+                            </label>
+                        </div>
+                        <select class="set-select" data-slot="weapon1">
+                            <option value="">セット選択</option>
+                        </select>
+                        <div class="equip-options">
+                            <label class="option-label">メイン</label>
+                            <select class="main-option-select" data-slot="weapon1" data-type="weapon" data-opt="1">
+                                <option value="">メインOP選択</option>
+                            </select>
+
+                            <div class="sub-options-container" data-slot="weapon1">
+                                <label class="option-label">サブ (合計+5まで)</label>
+                                <!-- Sub Option 1 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="0">
+                                        <option value="">サブOP1</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="0">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 2 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="1">
+                                        <option value="">サブOP2</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="1">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 3 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="2">
+                                        <option value="">サブOP3</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="2">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 4 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="3">
+                                        <option value="">サブOP4</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="3">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <div class="sub-total-display">合計: +<span>0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Weapon 2 -->
+                    <div class="equipment-slot" data-slot="weapon2">
+                        <div class="slot-header">
+                            <h3>⚔️ 武器2</h3>
+                            <label class="lock-toggle">
+                                <input type="checkbox" class="slot-lock-toggle" data-slot="weapon2">
+                                <span class="lock-icon">🔓</span>
+                            </label>
+                        </div>
+                        <select class="set-select" data-slot="weapon2">
+                            <option value="">セット選択</option>
+                        </select>
+                        <div class="equip-options">
+                            <label class="option-label">メイン</label>
+                            <select class="main-option-select" data-slot="weapon2" data-type="weapon" data-opt="1">
+                                <option value="">メインOP選択</option>
+                            </select>
+
+                            <div class="sub-options-container" data-slot="weapon2">
+                                <label class="option-label">サブ (合計+5まで)</label>
+                                <!-- Sub Option 1 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="0">
+                                        <option value="">サブOP1</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="0">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 2 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="1">
+                                        <option value="">サブOP2</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="1">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 3 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="2">
+                                        <option value="">サブOP3</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="2">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 4 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="3">
+                                        <option value="">サブOP4</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="3">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <div class="sub-total-display">合計: +<span>0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Armor 1 -->
+                    <div class="equipment-slot" data-slot="armor1">
+                        <div class="slot-header">
+                            <h3>🛡️ 防具1</h3>
+                            <label class="lock-toggle">
+                                <input type="checkbox" class="slot-lock-toggle" data-slot="armor1">
+                                <span class="lock-icon">🔓</span>
+                            </label>
+                        </div>
+                        <select class="set-select" data-slot="armor1">
+                            <option value="">セット選択</option>
+                        </select>
+                        <div class="equip-options">
+                            <label class="option-label">メイン</label>
+                            <select class="main-option-select" data-slot="armor1" data-type="armor" data-opt="1">
+                                <option value="">メインOP選択</option>
+                            </select>
+
+                            <div class="sub-options-container" data-slot="armor1">
+                                <label class="option-label">サブ (合計+5まで)</label>
+                                <!-- Sub Option 1 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="0">
+                                        <option value="">サブOP1</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="0">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 2 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="1">
+                                        <option value="">サブOP2</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="1">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 3 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="2">
+                                        <option value="">サブOP3</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="2">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 4 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="3">
+                                        <option value="">サブOP4</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="3">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <div class="sub-total-display">合計: +<span>0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Armor 2 -->
+                    <div class="equipment-slot" data-slot="armor2">
+                        <div class="slot-header">
+                            <h3>🛡️ 防具2</h3>
+                            <label class="lock-toggle">
+                                <input type="checkbox" class="slot-lock-toggle" data-slot="armor2">
+                                <span class="lock-icon">🔓</span>
+                            </label>
+                        </div>
+                        <select class="set-select" data-slot="armor2">
+                            <option value="">セット選択</option>
+                        </select>
+                        <div class="equip-options">
+                            <label class="option-label">メイン</label>
+                            <select class="main-option-select" data-slot="armor2" data-type="armor" data-opt="1">
+                                <option value="">メインOP選択</option>
+                            </select>
+
+                            <div class="sub-options-container" data-slot="armor2">
+                                <label class="option-label">サブ (合計+5まで)</label>
+                                <!-- Sub Option 1 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="0">
+                                        <option value="">サブOP1</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="0">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 2 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="1">
+                                        <option value="">サブOP2</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="1">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 3 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="2">
+                                        <option value="">サブOP3</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="2">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <!-- Sub Option 4 -->
+                                <div class="sub-option-row">
+                                    <select class="sub-option-select" data-index="3">
+                                        <option value="">サブOP4</option>
+                                    </select>
+                                    <select class="sub-value-select" data-index="3">
+                                        <option value="0">+0</option>
+                                        <option value="1">+1</option>
+                                        <option value="2">+2</option>
+                                        <option value="3">+3</option>
+                                        <option value="4">+4</option>
+                                        <option value="5">+5</option>
+                                    </select>
+                                </div>
+                                <div class="sub-total-display">合計: +<span>0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accessory -->
+                    <div class="equipment-slot accessory-slot" data-slot="accessory">
+                        <div class="slot-header">
+                            <h3>💍 アクセサリー</h3>
+                            <label class="lock-toggle">
+                                <input type="checkbox" class="slot-lock-toggle" data-slot="accessory">
+                                <span class="lock-icon">🔓</span>
+                            </label>
+                        </div>
+                        <div class="equip-options">
+                            <select class="main-option-select" data-slot="accessory" data-opt="special">
+                                <option value="">特殊効果（将来実装）</option>
+                            </select>
+                        </div>
+                        <p class="slot-note">※ アクセサリーは現在計算対象外</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Calculation Results -->
+            <section class="calc-card results-card hidden" id="results-section">
+                <h2 class="card-title">
+                    <span class="title-icon">📋</span>計算結果
+                </h2>
+                <div id="results-content" class="results-content">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Required Stats from Equipment -->
+            <section class="calc-card required-stats-card hidden" id="required-stats-section">
+                <h2 class="card-title">
+                    <span class="title-icon">📈</span>装備から必要なステータス
+                </h2>
+                <div id="required-stats-grid" class="stats-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <div class="required-stats-note">
+                    <p>※ 上記は6星レイド装備（+15強化）基準での概算です</p>
+                    <p>※ サブオプション厳選で調整してください</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <!-- Footer Support Links (visible on mobile) -->
+                <div class="footer-support-links">
+                    <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                        <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                        <span>Ko-fi</span>
+                    </a>
+                    <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                        <span>OFUSEで応援</span>
+                    </a>
+                </div>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top & Cache Reload Buttons -->
+    <button id="scroll-to-top" class="utility-btn scroll-top-btn" aria-label="トップに戻る" title="トップに戻る">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+    <button id="cache-reload" class="utility-btn cache-reload-btn" aria-label="キャッシュをクリアして更新" title="キャッシュをクリアして更新">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+        </svg>
+    </button>
+
+    <script>
+    // Scroll to Top Button
+    (function() {
+        const scrollBtn = document.getElementById('scroll-to-top');
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                scrollBtn.classList.toggle('visible', window.scrollY > 300);
+            });
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    })();
+
+    // Cache Reload Button
+    (function() {
+        const reloadBtn = document.getElementById('cache-reload');
+        if (reloadBtn) {
+            reloadBtn.addEventListener('click', async () => {
+                reloadBtn.classList.add('spinning');
+                try {
+                    // Service Workerにキャッシュクリアをリクエスト
+                    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                        const messageChannel = new MessageChannel();
+                        messageChannel.port1.onmessage = (event) => {
+                            if (event.data.success) {
+                                location.reload(true);
+                            }
+                        };
+                        navigator.serviceWorker.controller.postMessage(
+                            { type: 'CLEAR_CACHE' },
+                            [messageChannel.port2]
+                        );
+                        // タイムアウト後にリロード
+                        setTimeout(() => location.reload(true), 1000);
+                    } else {
+                        // Service Workerがない場合は強制リロード
+                        location.reload(true);
+                    }
+                } catch (e) {
+                    console.error('Cache clear failed:', e);
+                    location.reload(true);
+                }
+            });
+        }
+    })();
+    </script>
+
+    <script src="script.js"></script>
+    <script src="build_calculator.js?v=20260202_1"></script>
+</body>
+
+</html>

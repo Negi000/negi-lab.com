@@ -3,7 +3,7 @@
  * PWA対応 + キャッシュ管理
  */
 
-const CACHE_NAME = 'sk-rebirth-wiki-v1';
+const CACHE_NAME = 'sk-rebirth-wiki-v2';
 const CACHE_VERSION = Date.now(); // ビルド時に更新される
 
 // キャッシュするリソース
@@ -11,8 +11,11 @@ const CACHE_URLS = [
   './',
   './index.html',
   './characters.html',
+  './build_calculator.html',
   './styles.css',
+  './build_calculator.css',
   './script.js',
+  './build_calculator.js',
   './i18n.js',
   './i18n/languages.json',
   './i18n/ui.json',
@@ -69,7 +72,7 @@ self.addEventListener('fetch', (event) => {
     'ko-fi.com',
     'ofuse.me'
   ];
-  
+
   if (noCachePatterns.some(pattern => event.request.url.includes(pattern))) {
     // 広告はキャッシュせずネットワークから直接取得
     return;
