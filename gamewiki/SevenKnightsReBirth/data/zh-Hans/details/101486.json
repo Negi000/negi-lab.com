@@ -11,8 +11,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "239",
@@ -106,28 +105,28 @@
       "Normal Attack": {
         "id": "10148601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\n - 眩晕 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 额外效果：眩晕[30%的概率] [持续2回合]",
+        "desc": "2名敌人\n - 1次相当于物理攻击力80%的伤害\n - 伤害对象每减少1名，伤害量增加40%\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的100%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148602",
-        "name": "",
-        "desc": "全体敌军\n - 3次相当于物理攻击力225%的伤害\n - 解除1个增益 [100%的概率]\n - 眩晕 [60%的概率] [持续2回合]\nSkill Enhancement Effect\n - 额外效果：眩晕[60%的概率] [持续2回合]",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "血雨腥风",
+        "desc": "全体敌军\n - 2次相当于物理攻击力57%的伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力25%的额外伤害\n - 眩晕 [45%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的67%\n - 概率提升：概率概率提升至55%\nTranscend Lv.2 Effect\n - 额外效果：防御力减少29% [100%的概率] [持续3回合]\nTranscend Lv.6 Effect\n - 我军（自己、后排优先1名）\n - 追加恢复：按照物理攻击力的40%恢复生命力\n - 额外效果：无视防御效率增加10% [持续3回合]",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148603",
-        "name": "",
-        "desc": "全体敌军\n - 2次相当于物理攻击力295%的无视防御伤害\n - 技能冷却时间增加19秒 [60%的概率]\n - 友军（攻击型、全能型）\n - 物理攻击力增加 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的350%\n - 额外效果：技能冷却时间增加[19秒] [60%的概率]\nTranscend Lv.2 Effect\n - 攻击型、全能型友军\n - 额外效果：解除2个减益",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "赤兔疾风击",
+        "desc": "全体敌军\n - 2次相当于物理攻击力52%的无视防御伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力27%的无视防御的额外伤害\n - 用该技能的直接伤害消灭敌军时以100%的威力连续发动\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的60%\n - 伤害量提升：造成弱点攻击伤害时，提升至物理攻击力的32%\nTranscend Lv.2 Effect\n - 额外效果：防御力减少29% [100%的概率] [持续3回合]\nTranscend Lv.6 Effect\n - 我军（自己、后排优先1名）\n - 追加恢复：按照物理攻击力的40%恢复生命力\n - 额外效果：无视防御效率增加10% [持续3回合]",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148604",
-        "name": "",
-        "desc": "自己\n - 死亡时以生命力的100%复活（每场战斗发动2次）\n - 死亡后复活时免疫所有减益 [持续3回合]\n - 全体我军\n - 伤害量增加 [长期]\nSkill Enhancement Effect\n - 全体我军\n - 额外效果：伤害量增加24% [始终]\nTranscend Lv.6 Effect\n - 攻击型、全能型友军\n - 额外效果：自身复活时所有伤害无效[被击3次]",
+        "name": "洪荒之力",
+        "desc": "自己\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予祝福 [始终]\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 发动复活时，技能冷却时间初始化 （每场战斗发动1次）\n - 全体我军\n - 有勇无谋 [长期]\n - 全体敌军\n - 每发动2次自身的普通攻击或每发动1次技能时，赋予[标记：方天画戟之怒] [100%的概率] 叠加1次 [最多叠加2次]（上阵3名以上攻击型时）\n - 每发动2次自身的普通攻击或每发动1次技能时，造成1次相当于物理攻击力45%的伤害\nSkill Enhancement Effect\n - 效果提升：祝福的被击限制数值提升至最大生命力的25%\n - 效果提升：复活时生命力提升至100%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
@@ -136,7 +135,7 @@
       "transcend_1": "所有攻击力提升12%。",
       "transcend_2": "所有攻击力提升6%。",
       "transcend_3": "生命力提升18%。",
-      "transcend_4": "弱点攻击概率提升16%。",
+      "transcend_4": "弱点攻击概率提升20%。",
       "transcend_5": "所有攻击力提升12%。",
       "transcend_6": "所有攻击力提升6%。",
       "transcend_7": "所有攻击力、防御力、生命力提升2%。",
@@ -156,8 +155,8 @@
       "height": "188",
       "weight": "95",
       "constellation": "射手座",
-      "likes": "CollectionProfileInfo.10148_Lubu_Like",
-      "dislikes": "CollectionProfileInfo.10148_Lubu_Dislike",
+      "likes": "貂蝉、肉饺、酒、武力、豪爽、赤兔马、貂蝉的音乐、睡觉、掰手腕",
+      "dislikes": "白格、蔬菜类、无耻、受到阻碍",
       "story": "传闻传开后，他在天子面前与将军们对战，却半点不输。天子称其为天下无双，命其守护峡谷。"
     }
   },
@@ -173,8 +172,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "171",
@@ -268,28 +266,28 @@
       "Normal Attack": {
         "id": "10148501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "desc": "2名敌人\n - 1次相当于物理攻击力70%的伤害\n - 伤害对象每减少1名，伤害量增加40%\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的70%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148502",
-        "name": "",
-        "desc": "全体敌军\n - 3次相当于物理攻击力175%的伤害\n - 解除3个增益 [100%的概率]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的73%",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "血雨腥风",
+        "desc": "全体敌军\n - 2次相当于物理攻击力52%的伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力22%的额外伤害\n - 眩晕 [45%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148503",
-        "name": "",
-        "desc": "全体敌军\n - 2次相当于物理攻击力245%的无视防御伤害\n - 友军（攻击型、全能型）\n - 物理攻击力增加 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的65%",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "赤兔疾风击",
+        "desc": "全体敌军\n - 2次相当于物理攻击力47%的无视防御伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力25%的无视防御的额外伤害\n - 用该技能的直接伤害消灭敌军时以100%的威力连续发动\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的47%",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148504",
-        "name": "",
-        "desc": "自己\n - 死亡时以生命力的70%复活（每场战斗发动2次）\n - 死亡后复活时免疫所有减益 [持续3回合]",
+        "name": "洪荒之力",
+        "desc": "自己\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予祝福 [始终]\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 发动复活时，技能冷却时间初始化 （每场战斗发动1次）\n - 全体我军\n - 有勇无谋 [长期]\n - 全体敌军\n - 每发动2次自身的普通攻击或每发动1次技能时，赋予[标记：方天画戟之怒] [100%的概率] 叠加1次 [最多叠加2次]（上阵3名以上攻击型时）\n - 每发动2次自身的普通攻击或每发动1次技能时，造成1次相当于物理攻击力45%的伤害",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
@@ -305,8 +303,8 @@
       "height": "188",
       "weight": "95",
       "constellation": "射手座",
-      "likes": "CollectionProfileInfo.10148_Lubu_Like",
-      "dislikes": "CollectionProfileInfo.10148_Lubu_Dislike",
+      "likes": "貂蝉、肉饺、酒、武力、豪爽、赤兔马、貂蝉的音乐、睡觉、掰手腕",
+      "dislikes": "白格、蔬菜类、无耻、受到阻碍",
       "story": "得知自己保护和追随的官吏威逼百姓、无恶不作时，十分愤慨地处理了他们。"
     }
   },
@@ -322,8 +320,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "122",
@@ -417,28 +414,28 @@
       "Normal Attack": {
         "id": "10148401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力90%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "desc": "2名敌人\n - 1次相当于物理攻击力60%的伤害\n - 伤害对象每减少1名，伤害量增加40%\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的60%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148402",
-        "name": "",
-        "desc": "全体敌军\n - 3次相当于物理攻击力150%的伤害\n - 解除1个增益 [100%的概率]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的73%",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "血雨腥风",
+        "desc": "全体敌军\n - 2次相当于物理攻击力47%的伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力22%的额外伤害\n - 眩晕 [35%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的47%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148403",
-        "name": "",
-        "desc": "全体敌军\n - 2次相当于物理攻击力200%的无视防御伤害\n - 友军（攻击型、全能型）\n - 物理攻击力增加 [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的65%",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "赤兔疾风击",
+        "desc": "全体敌军\n - 2次相当于物理攻击力42%的无视防御伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于物理攻击力22%的无视防御的额外伤害\n - 用该技能的直接伤害消灭敌军时以100%的威力连续发动\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的42%",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148404",
-        "name": "",
-        "desc": "自己\n - 死亡时以生命力的50%复活（每场战斗发动2次）\n - 死亡后复活时免疫所有减益 [持续3回合]",
+        "name": "洪荒之力",
+        "desc": "自己\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予祝福 [始终]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 发动复活时，技能冷却时间初始化 （每场战斗发动1次）\n - 全体我军\n - 有勇无谋 [长期]\n - 全体敌军\n - 每发动2次自身的普通攻击或每发动1次技能时，赋予[标记：方天画戟之怒] [100%的概率] 叠加1次 [最多叠加2次]（上阵3名以上攻击型时）\n - 每发动2次自身的普通攻击或每发动1次技能时，造成1次相当于物理攻击力45%的伤害",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
@@ -454,8 +451,8 @@
       "height": "188",
       "weight": "95",
       "constellation": "射手座",
-      "likes": "CollectionProfileInfo.10148_Lubu_Like",
-      "dislikes": "CollectionProfileInfo.10148_Lubu_Dislike",
+      "likes": "貂蝉、肉饺、酒、武力、豪爽、赤兔马、貂蝉的音乐、睡觉、掰手腕",
+      "dislikes": "白格、蔬菜类、无耻、受到阻碍",
       "story": "作为无亲无故的孤儿，混迹街头靠偷窃和打架斗殴长大。某天被官衙的人提拔为士兵。"
     }
   }
