@@ -11,8 +11,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "239",
@@ -106,28 +105,28 @@
       "Normal Attack": {
         "id": "10148601",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\n - 기절 [30% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 효과 추가 : 기절 [30% 확률] [2턴 지속]",
+        "desc": "적군 2명\n - 물리 공격력의 80%만큼 1회 피해\n - 피해 대상이 1명 줄어들 때마다 40%만큼 피해량 증가\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148602",
         "name": "혈풍벽파",
-        "desc": "모든 적군\n - 물리 공격력의 225%만큼 3회 피해\n - 버프 해제 1개 [100% 확률]\n - 기절 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 효과 추가 : 기절 [60% 확률] [2턴 지속]",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 57%만큼 2회 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 25%만큼 추가 피해\n - 기절 [45% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 67%\n - 확률 상승 : 기절 확률 55%\nTranscend Lv.2 Effect\n - 효과 추가 : 방어력 감소 29% [100% 확률] [3턴 지속]\nTranscend Lv.6 Effect\n - 아군(자신, 후열 우선 1명)\n - 회복 추가 : 물리 공격력의 40%만큼 생명력 회복\n - 효과 추가 : 방어 무시 효율 증가 10% [3턴 지속]",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148603",
         "name": "적토질풍격",
-        "desc": "모든 적군\n - 물리 공격력의 295%만큼 2회 방어 무시 피해\n - 스킬 쿨타임 증가 19초 [60% 확률]\n - 아군(공격형, 만능형)\n - 물리 공격력 증가 [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 350%\n - 효과 추가 : 스킬 쿨타임 증가 [19초] [60% 확률]\nTranscend Lv.2 Effect\n - 아군 공격형, 만능형\n - 효과 추가 : 디버프 해제 2개",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 52%만큼 2회 방어 무시 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 27%만큼 추가 방어 무시 피해\n - 해당 스킬의 직접 피해로 적군 처치 시 100% 위력으로 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%\n - 피해량 상승 : 약점 공격 피해 발생 시 물리 공격력의 32%\nTranscend Lv.2 Effect\n - 효과 추가 : 방어력 감소 29% [100% 확률] [3턴 지속]\nTranscend Lv.6 Effect\n - 아군(자신, 후열 우선 1명)\n - 회복 추가 : 물리 공격력의 40%만큼 생명력 회복\n - 효과 추가 : 방어 무시 효율 증가 10% [3턴 지속]",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148604",
         "name": "초인적인 힘",
-        "desc": "자신\n - 사망 시 생명력 100%로 부활 (전투당 2회 발동)\n - 사망 후 부활 시 모든 디버프 면역 [3턴 지속]\n - 모든 아군\n - 피해량 증가 [상시]\nSkill Enhancement Effect\n - 모든 아군\n - 효과 추가 : 피해량 증가 24% [상시]\nTranscend Lv.6 Effect\n - 아군 공격형, 만능형\n - 효과 추가 : 자신 부활 시 모든 피해 무효화 [피격 3회]",
+        "desc": "자신\n - 전투 시작 시 아군에 공격형 영웅이 3명 이상 있을 경우, 축복 [상시]\n - 사망 시 생명력 80%로 부활 (전투당 1회 발동)\n - 부활 발동 시 스킬 쿨타임 초기화 (전투당 1회 발동)\n - 모든 아군\n - 용이무모 [상시]\n - 모든 적군\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 [표식 : 방천화극의 분노] [100% 확률] 1중첩 [최대 2중첩] (공격형 3명 이상 편성 시)\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 물리 공격력의 45%만큼 1회 피해\nSkill Enhancement Effect\n - 효과 상승 : 축복의 피격 제한 수치가 최대 생명력의 25%\n - 효과 상승 : 부활 시 생명력 100%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
@@ -136,7 +135,7 @@
       "transcend_1": "모든 공격력이 12% 상승합니다.",
       "transcend_2": "모든 공격력이 6% 상승합니다.",
       "transcend_3": "생명력이 18% 상승합니다.",
-      "transcend_4": "약점 공격 확률이 16% 상승합니다.",
+      "transcend_4": "약점 공격 확률이 20% 상승합니다.",
       "transcend_5": "모든 공격력이 12% 상승합니다.",
       "transcend_6": "모든 공격력이 6% 상승합니다.",
       "transcend_7": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
@@ -173,8 +172,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "171",
@@ -268,28 +266,28 @@
       "Normal Attack": {
         "id": "10148501",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "적군 2명\n - 물리 공격력의 70%만큼 1회 피해\n - 피해 대상이 1명 줄어들 때마다 40%만큼 피해량 증가\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 70%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148502",
         "name": "혈풍벽파",
-        "desc": "모든 적군\n - 물리 공격력의 175%만큼 3회 피해\n - 버프 해제 3개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 73%",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 52%만큼 2회 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 22%만큼 추가 피해\n - 기절 [45% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 52%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148503",
         "name": "적토질풍격",
-        "desc": "모든 적군\n - 물리 공격력의 245%만큼 2회 방어 무시 피해\n - 아군(공격형, 만능형)\n - 물리 공격력 증가 [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 47%만큼 2회 방어 무시 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 25%만큼 추가 방어 무시 피해\n - 해당 스킬의 직접 피해로 적군 처치 시 100% 위력으로 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 47%",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148504",
         "name": "초인적인 힘",
-        "desc": "자신\n - 사망 시 생명력 70%로 부활 (전투당 2회 발동)\n - 사망 후 부활 시 모든 디버프 면역 [3턴 지속]",
+        "desc": "자신\n - 전투 시작 시 아군에 공격형 영웅이 3명 이상 있을 경우, 축복 [상시]\n - 사망 시 생명력 60%로 부활 (전투당 1회 발동)\n - 부활 발동 시 스킬 쿨타임 초기화 (전투당 1회 발동)\n - 모든 아군\n - 용이무모 [상시]\n - 모든 적군\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 [표식 : 방천화극의 분노] [100% 확률] 1중첩 [최대 2중첩] (공격형 3명 이상 편성 시)\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 물리 공격력의 45%만큼 1회 피해",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
@@ -322,8 +320,7 @@
       "maxStar": "6",
       "role": "1",
       "range": "1",
-      "weaponType": "101",
-      "unreleased": true
+      "weaponType": "101"
     },
     "stats": {
       "Physical Attack": "122",
@@ -417,28 +414,28 @@
       "Normal Attack": {
         "id": "10148401",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 90%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "적군 2명\n - 물리 공격력의 60%만큼 1회 피해\n - 피해 대상이 1명 줄어들 때마다 40%만큼 피해량 증가\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014801.webp"
       },
       "Skill 1": {
         "id": "10148402",
         "name": "혈풍벽파",
-        "desc": "모든 적군\n - 물리 공격력의 150%만큼 3회 피해\n - 버프 해제 1개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 73%",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 47%만큼 2회 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 22%만큼 추가 피해\n - 기절 [35% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 47%",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014802.webp"
       },
       "Skill 2": {
         "id": "10148403",
         "name": "적토질풍격",
-        "desc": "모든 적군\n - 물리 공격력의 200%만큼 2회 방어 무시 피해\n - 아군(공격형, 만능형)\n - 물리 공격력 증가 [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%",
-        "cooltime": "⏱️ CT: 60s",
+        "desc": "모든 적군\n - 물리 공격력의 42%만큼 2회 방어 무시 피해\n - 약점 공격 피해 발생 시 각 공격마다 물리 공격력의 22%만큼 추가 방어 무시 피해\n - 해당 스킬의 직접 피해로 적군 처치 시 100% 위력으로 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 42%",
+        "cooltime": "⏱️ CT: 112s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014803.webp"
       },
       "Passive": {
         "id": "10148404",
         "name": "초인적인 힘",
-        "desc": "자신\n - 사망 시 생명력 50%로 부활 (전투당 2회 발동)\n - 사망 후 부활 시 모든 디버프 면역 [3턴 지속]",
+        "desc": "자신\n - 전투 시작 시 아군에 공격형 영웅이 3명 이상 있을 경우, 축복 [상시]\n - 사망 시 생명력 40%로 부활 (전투당 1회 발동)\n - 부활 발동 시 스킬 쿨타임 초기화 (전투당 1회 발동)\n - 모든 아군\n - 용이무모 [상시]\n - 모든 적군\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 [표식 : 방천화극의 분노] [100% 확률] 1중첩 [최대 2중첩] (공격형 3명 이상 편성 시)\n - 자신의 기본 공격 2회 혹은 스킬 1회 발동마다 물리 공격력의 45%만큼 1회 피해",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014804.webp"
       }
