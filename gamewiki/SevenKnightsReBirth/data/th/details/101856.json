@@ -1,0 +1,429 @@
+[
+  {
+    "basicInfo": {
+      "id": "101856",
+      "name": "シャオ",
+      "subname": "主を失いし者",
+      "affiliation": "นักผจญภัย",
+      "flavor": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。",
+      "rarity": "epic",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "unreleased": true
+    },
+    "stats": {
+      "Physical Attack": "221",
+      "Magical Attack": "0",
+      "Defense": "88",
+      "HP": "510",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 221,
+        "Defense": 88,
+        "HP": 510
+      },
+      "level30": {
+        "Physical Attack": 1004,
+        "Defense": 378,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Physical Attack": 27,
+        "Defense": 10,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Physical Attack": 77,
+        "Defense": 31,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1004,
+          "Defense": 378,
+          "HP": 2279
+        },
+        "+1": {
+          "Physical Attack": 1081,
+          "Defense": 409,
+          "HP": 2458
+        },
+        "+2": {
+          "Physical Attack": 1158,
+          "Defense": 440,
+          "HP": 2637
+        },
+        "+3": {
+          "Physical Attack": 1235,
+          "Defense": 471,
+          "HP": 2816
+        },
+        "+4": {
+          "Physical Attack": 1312,
+          "Defense": 502,
+          "HP": 2995
+        },
+        "+5": {
+          "Physical Attack": 1389,
+          "Defense": 533,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10185601",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 100% ของพลังโจมตีเวท\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 120% ของพลังโจมตีเวท\nTranscend Lv.2 Effect\n - ศัตรูเดี่ยว\n - เพิ่มผล : เลือดไหล [อัตรา 50%] [ต่อเนื่อง 2 เทิร์น]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
+      },
+      "Skill 1": {
+        "id": "10185602",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 230% ของพลังโจมตีเวท\n - กรณีที่เป้าหมายอยู่ในสถานะ [เลือดไหล] จะสร้างความเสียหายเพิ่มเติมเท่ากับ 180% ของพลังโจมตีเวท\n - พันธมิตรทั้งหมด\n - ได้รับโล่ป้องกันเท่ากับ 160% ของพลังโจมตีกายภาพของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 270% ของพลังโจมตีเวท",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
+      },
+      "Skill 2": {
+        "id": "10185603",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 170% ของพลังโจมตีเวท\n - เลือดไหล [อัตรา 100%] [ต่อเนื่อง 3 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 205% ของพลังโจมตีเวท",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      },
+      "Passive": {
+        "id": "10185604",
+        "name": "",
+        "desc": "พันธมิตรทั้งหมด\n - คุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - เมื่อโจมตีพื้นฐานของตนเองทำงาน 1 ครั้ง จะคุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - หาก HP ของตนเองน้อยกว่า 50% ฟื้นฟู HP เท่ากับ 40% ของพลังโจมตีเวทของผู้ร่าย (ทำงาน 1 ครั้ง ต่อการต่อสู้)\nSkill Enhancement Effect\n - ปริมาณฟื้นฟูเพิ่มขึ้น : ปริมาณฟื้นฟู HP เพิ่มเป็น 45% ของพลังโจมตีเวท\nTranscend Lv.6 Effect\n - พันธมิตรทั้งหมด",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "พลังโจมตีทั้งหมด เพิ่มขึ้น 9%",
+      "transcend_2": "พลังโจมตีทั้งหมด เพิ่มขึ้น 4.5%",
+      "transcend_3": "HP เพิ่มขึ้น 14%",
+      "transcend_4": "อัตราคริติคอล เพิ่มขึ้น 14%",
+      "transcend_5": "พลังโจมตีทั้งหมด เพิ่มขึ้น 9%",
+      "transcend_6": "พลังโจมตีทั้งหมด เพิ่มขึ้น 4.5%",
+      "transcend_7": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_8": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_9": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_10": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_11": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_12": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%"
+    },
+    "profile": {
+      "story": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101855",
+      "name": "シャオ",
+      "subname": "死なない兵士",
+      "affiliation": "นักผจญภัย",
+      "flavor": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。",
+      "rarity": "epic",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "unreleased": true
+    },
+    "stats": {
+      "Physical Attack": "158",
+      "Magical Attack": "0",
+      "Defense": "63",
+      "HP": "364",
+      "Speed": "22",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 158,
+        "Defense": 63,
+        "HP": 364
+      },
+      "level30": {
+        "Physical Attack": 738,
+        "Defense": 266,
+        "HP": 1611
+      },
+      "levelUpBonus": {
+        "Physical Attack": 20,
+        "Defense": 7,
+        "HP": 43
+      },
+      "reinforceBonus": {
+        "Physical Attack": 55,
+        "Defense": 22,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 738,
+          "Defense": 266,
+          "HP": 1611
+        },
+        "+1": {
+          "Physical Attack": 793,
+          "Defense": 288,
+          "HP": 1738
+        },
+        "+2": {
+          "Physical Attack": 848,
+          "Defense": 310,
+          "HP": 1865
+        },
+        "+3": {
+          "Physical Attack": 903,
+          "Defense": 332,
+          "HP": 1992
+        },
+        "+4": {
+          "Physical Attack": 958,
+          "Defense": 354,
+          "HP": 2119
+        },
+        "+5": {
+          "Physical Attack": 1013,
+          "Defense": 376,
+          "HP": 2246
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10185501",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 90% ของพลังโจมตีเวท\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 90% ของพลังโจมตีกายภาพ",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
+      },
+      "Skill 1": {
+        "id": "10185502",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 205% ของพลังโจมตีเวท\n - กรณีที่เป้าหมายอยู่ในสถานะ [เลือดไหล] จะสร้างความเสียหายเพิ่มเติมเท่ากับ 160% ของพลังโจมตีเวท\n - พันธมิตรทั้งหมด\n - ได้รับโล่ป้องกันเท่ากับ 145% ของพลังโจมตีกายภาพของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 205% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
+      },
+      "Skill 2": {
+        "id": "10185503",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 155% ของพลังโจมตีเวท\n - เลือดไหล [อัตรา 100%] [ต่อเนื่อง 3 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 155% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      },
+      "Passive": {
+        "id": "10185504",
+        "name": "",
+        "desc": "พันธมิตรทั้งหมด\n - คุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - เมื่อโจมตีพื้นฐานของตนเองทำงาน 1 ครั้ง จะคุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - หาก HP ของตนเองน้อยกว่า 50% ฟื้นฟู HP เท่ากับ 35% ของพลังโจมตีเวทของผู้ร่าย (ทำงาน 1 ครั้ง ต่อการต่อสู้)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101854",
+      "name": "シャオ",
+      "subname": "23号キョンシー",
+      "affiliation": "นักผจญภัย",
+      "flavor": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。",
+      "rarity": "epic",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "unreleased": true
+    },
+    "stats": {
+      "Physical Attack": "113",
+      "Magical Attack": "0",
+      "Defense": "45",
+      "HP": "260",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 113,
+        "Defense": 45,
+        "HP": 260
+      },
+      "level30": {
+        "Physical Attack": 519,
+        "Defense": 190,
+        "HP": 1159
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 5,
+        "HP": 31
+      },
+      "reinforceBonus": {
+        "Physical Attack": 40,
+        "Defense": 16,
+        "HP": 90
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 519,
+          "Defense": 190,
+          "HP": 1159
+        },
+        "+1": {
+          "Physical Attack": 559,
+          "Defense": 206,
+          "HP": 1249
+        },
+        "+2": {
+          "Physical Attack": 599,
+          "Defense": 222,
+          "HP": 1339
+        },
+        "+3": {
+          "Physical Attack": 639,
+          "Defense": 238,
+          "HP": 1429
+        },
+        "+4": {
+          "Physical Attack": 679,
+          "Defense": 254,
+          "HP": 1519
+        },
+        "+5": {
+          "Physical Attack": 719,
+          "Defense": 270,
+          "HP": 1609
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10185401",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 80% ของพลังโจมตีเวท\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 80% ของพลังโจมตีกายภาพ",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
+      },
+      "Skill 1": {
+        "id": "10185402",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 185% ของพลังโจมตีเวท\n - กรณีที่เป้าหมายอยู่ในสถานะ [เลือดไหล] จะสร้างความเสียหายเพิ่มเติมเท่ากับ 145% ของพลังโจมตีเวท\n - พันธมิตรทั้งหมด\n - ได้รับโล่ป้องกันเท่ากับ 130% ของพลังโจมตีกายภาพของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 185% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 60s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
+      },
+      "Skill 2": {
+        "id": "10185403",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหาย 1 ครั้ง เท่ากับ 140% ของพลังโจมตีเวท\n - เลือดไหล [อัตรา 100%] [ต่อเนื่อง 3 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 140% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      },
+      "Passive": {
+        "id": "10185404",
+        "name": "",
+        "desc": "พันธมิตรทั้งหมด\n - คุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - เมื่อโจมตีพื้นฐานของตนเองทำงาน 1 ครั้ง จะคุ้มกันเดธ [ต่อเนื่อง 2 เทิร์น]\n - หาก HP ของตนเองน้อยกว่า 50% ฟื้นฟู HP เท่ากับ 35% ของพลังโจมตีเวทของผู้ร่าย (ทำงาน 1 ครั้ง ต่อการต่อสู้)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。"
+    }
+  }
+]

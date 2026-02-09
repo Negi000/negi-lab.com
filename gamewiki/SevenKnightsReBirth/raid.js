@@ -74,9 +74,12 @@ function switchRaidType(type) {
     
     // セクション表示切り替え
     document.getElementById('normal-raid-section').classList.toggle('hidden', type !== 'normal');
+    document.getElementById('unexpected-raid-section').classList.toggle('hidden', type !== 'unexpected');
     document.getElementById('world-raid-section').classList.toggle('hidden', type !== 'world');
     
-    if (type === 'world') {
+    if (type === 'unexpected') {
+        initUnexpectedRaid();
+    } else if (type === 'world') {
         initWorldBossCards();
     }
 }
@@ -615,6 +618,381 @@ function updateWorldRaidDetail(stageId) {
                 ${roundsHtml}
             </div>
             ${rewardsHtml}
+        </div>
+    `;
+}
+
+// ====================================
+// 突発レイド（Unexpected Raid）
+// ====================================
+
+let unexpectedRaidInitialized = false;
+let currentUnexpectedBoss = 0;
+
+function initUnexpectedRaid() {
+    if (!raidData || !raidData.unexpected_raids) return;
+    
+    const data = raidData.unexpected_raids;
+    const tr = typeof t === 'function' ? t : (k) => k;
+    const lang = typeof getLang === 'function' ? getLang() : 'ja';
+    
+    // テキスト選択ヘルパー（日本語版をデフォルト、韓国語はko版を使用）
+    const getText = (obj, key) => {
+        if (lang === 'ko' && obj[key + '_ko']) return obj[key + '_ko'];
+        return obj[key] || obj[key + '_ko'] || '';
+    };
+    
+    // システム概要
+    renderSystemOverview(data, tr, getText);
+    
+    // ボスカード
+    renderUnexpectedBossCards(data, tr, getText);
+    
+    // 最初のボスを選択
+    if (!unexpectedRaidInitialized && data.boss_info.length > 0) {
+        selectUnexpectedBoss(0, data, tr, getText);
+        unexpectedRaidInitialized = true;
+    } else {
+        selectUnexpectedBoss(currentUnexpectedBoss, data, tr, getText);
+    }
+    
+    // 報酬システム
+    renderRewardSystem(data, tr, getText);
+}
+
+function renderSystemOverview(data, tr, getText) {
+    const container = document.getElementById('unexpected-system-overview');
+    if (!container || !data.system_info) return;
+    
+    const sys = data.system_info;
+    
+    // フロー図
+    const flowHtml = sys.flow.map((step, i) => {
+        const phase = getText(step, 'phase');
+        const desc = getText(step, 'desc');
+        return `<div class="flow-step">
+            <div class="flow-step-number">${i + 1}</div>
+            <div class="flow-step-content">
+                <div class="flow-step-phase">${phase}</div>
+                <div class="flow-step-desc">${desc}</div>
+            </div>
+        </div>`;
+    }).join('<div class="flow-arrow">→</div>');
+
+    // 発生確率レベル
+    let triggerProbHtml = '';
+    if (sys.trigger_probability && sys.trigger_probability.levels) {
+        const probLevels = sys.trigger_probability.levels.map(lv => 
+            `<span class="prob-level-tag">${getText(lv, 'label')}</span>`
+        ).join('');
+        triggerProbHtml = `
+            <div class="trigger-probability-section">
+                <div class="trigger-prob-desc">${getText(sys.trigger_probability, 'desc')}</div>
+                <div class="trigger-prob-levels">${probLevels}</div>
+            </div>
+        `;
+    }
+
+    // ボスHP段階
+    let bossHpLevelsHtml = '';
+    if (sys.boss_hp_levels) {
+        const hpTags = sys.boss_hp_levels.map(lv =>
+            `<span class="hp-level-tag">${getText(lv, 'label')}</span>`
+        ).join('');
+        bossHpLevelsHtml = `<div class="boss-hp-levels">${hpTags}</div>`;
+    }
+    
+    container.innerHTML = `
+        <div class="system-overview-card">
+            <h3>${tr('raid.unexpectedOverview')}</h3>
+            <div class="system-info-grid">
+                <div class="system-info-item">
+                    <span class="system-info-icon">🔓</span>
+                    <div>
+                        <div class="system-info-label">${tr('raid.unlockCondition')}</div>
+                        <div class="system-info-value">${getText(sys, 'unlock_condition')}</div>
+                    </div>
+                </div>
+                <div class="system-info-item">
+                    <span class="system-info-icon">🎟️</span>
+                    <div>
+                        <div class="system-info-label">${tr('raid.entryCost')}</div>
+                        <div class="system-info-value">${getText(sys, 'entry_cost')}</div>
+                        <div class="system-info-sub">${tr('raid.ticketSource')}: ${getText(sys, 'ticket_source')}</div>
+                    </div>
+                </div>
+                <div class="system-info-item full-width">
+                    <span class="system-info-icon">⚡</span>
+                    <div>
+                        <div class="system-info-label">${tr('raid.triggerCondition')}</div>
+                        <div class="system-info-value">${getText(sys, 'trigger')}</div>
+                        ${triggerProbHtml}
+                    </div>
+                </div>
+                <div class="system-info-item">
+                    <span class="system-info-icon">⏱️</span>
+                    <div>
+                        <div class="system-info-label">${tr('raid.battleDuration')}</div>
+                        <div class="system-info-value">${getText(sys, 'duration')}</div>
+                    </div>
+                </div>
+                <div class="system-info-item">
+                    <span class="system-info-icon">🌐</span>
+                    <div>
+                        <div class="system-info-label">${tr('raid.sharedHP')}</div>
+                        <div class="system-info-value">${getText(sys, 'boss_hp')}</div>
+                        ${bossHpLevelsHtml}
+                    </div>
+                </div>
+            </div>
+            <div class="system-flow">
+                <h4>${tr('raid.progressFlow')}</h4>
+                <div class="flow-steps">${flowHtml}</div>
+            </div>
+        </div>
+    `;
+}
+
+function renderUnexpectedBossCards(data, tr, getText) {
+    const container = document.getElementById('unexpected-boss-cards');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    data.boss_info.forEach((boss, index) => {
+        const card = document.createElement('div');
+        card.className = 'boss-card unexpected-boss-card' + (index === currentUnexpectedBoss ? ' active' : '');
+        card.dataset.bossIndex = index;
+        
+        card.innerHTML = `
+            <img class="boss-card-image" src="${boss.image}" alt="${getText(boss, 'name')}" 
+                 onerror="this.style.display='none'">
+            <div class="boss-card-name">${getText(boss, 'name')}</div>
+            <div class="boss-card-subname">${getText(boss, 'subname')}</div>
+        `;
+        
+        card.addEventListener('click', () => {
+            currentUnexpectedBoss = index;
+            selectUnexpectedBoss(index, data, tr, getText);
+        });
+        container.appendChild(card);
+    });
+}
+
+function selectUnexpectedBoss(index, data, tr, getText) {
+    currentUnexpectedBoss = index;
+    
+    // カードのアクティブ状態更新
+    document.querySelectorAll('.unexpected-boss-card').forEach(card => {
+        card.classList.toggle('active', parseInt(card.dataset.bossIndex) === index);
+    });
+    
+    renderUnexpectedBossDetail(data.boss_info[index], tr, getText);
+}
+
+function renderUnexpectedBossDetail(boss, tr, getText) {
+    const container = document.getElementById('unexpected-boss-detail');
+    if (!container || !boss) return;
+    
+    // デバフ・バフ タグ
+    const debuffTags = boss.debuffs.map(d => `<span class="debuff-tag">${d}</span>`).join('');
+    const buffTags = boss.boss_buffs.map(b => `<span class="buff-tag">${b}</span>`).join('');
+    
+    // 攻撃タイプの表示
+    let attackTypeText = '';
+    if (boss.attack_type === 'physical_recommended') {
+        attackTypeText = `<span class="type-badge physical">${tr('raid.physicalRecommended')}</span>`;
+    } else if (boss.attack_type === 'magical_recommended') {
+        attackTypeText = `<span class="type-badge magical">${tr('raid.magicalRecommended')}</span>`;
+    } else {
+        attackTypeText = `<span class="type-badge any">${tr('raid.anyType')}</span>`;
+    }
+    
+    const storyText = getText(boss, 'story').replace(/\n/g, '<br>');
+    const solutionText = getText(boss, 'solution').replace(/\n/g, '<br>');
+
+    // スキル一覧
+    let skillsHtml = '';
+    if (boss.skills && boss.skills.length > 0) {
+        const skillTypeIcons = {
+            'normal': '⚔️',
+            'active': '🔥',
+            'ultimate': '💥',
+            'summon': '👹',
+            'passive': '🛡️'
+        };
+        const skillItems = boss.skills.map(skill => {
+            const icon = skillTypeIcons[skill.type] || '⚔️';
+            return `<div class="unexpected-skill-item">
+                <span class="unexpected-skill-icon">${icon}</span>
+                <div class="unexpected-skill-info">
+                    <span class="unexpected-skill-name">${getText(skill, 'name')}</span>
+                    <span class="unexpected-skill-desc">${getText(skill, 'desc')}</span>
+                </div>
+            </div>`;
+        }).join('');
+        skillsHtml = `
+            <div class="unexpected-boss-skills">
+                <h3>${tr('raid.bossSkills')}</h3>
+                <div class="unexpected-skill-list">${skillItems}</div>
+            </div>
+        `;
+    }
+
+    // キーメカニクス
+    let mechanicsHtml = '';
+    if (boss.key_mechanics && boss.key_mechanics.length > 0) {
+        const mechItems = boss.key_mechanics.map(mech => `
+            <div class="key-mechanic-item">
+                <div class="key-mechanic-name">${getText(mech, 'name')}</div>
+                <div class="key-mechanic-desc">${getText(mech, 'desc')}</div>
+            </div>
+        `).join('');
+        mechanicsHtml = `
+            <div class="unexpected-key-mechanics">
+                <h3>${tr('raid.keyMechanics')}</h3>
+                <div class="key-mechanics-grid">${mechItems}</div>
+            </div>
+        `;
+    }
+    
+    container.innerHTML = `
+        <div class="unexpected-boss-info">
+            <div class="unexpected-boss-header">
+                <div class="unexpected-boss-portrait">
+                    <img src="${boss.image}" alt="${getText(boss, 'name')}" 
+                         onerror="this.src='https://placehold.co/200x200/1a1a1a/ffd700?text=${encodeURIComponent(getText(boss, 'name'))}'">
+                </div>
+                <div class="unexpected-boss-title">
+                    <h2>${getText(boss, 'name')}</h2>
+                    <div class="unexpected-boss-subname">${getText(boss, 'subname')}</div>
+                    ${attackTypeText}
+                </div>
+            </div>
+            
+            <div class="unexpected-boss-story">
+                <h3>${tr('raid.bossStory')}</h3>
+                <p>${storyText}</p>
+            </div>
+            
+            ${skillsHtml}
+            ${mechanicsHtml}
+            
+            <div class="unexpected-boss-mechanics">
+                <h3>${tr('raid.hint')}</h3>
+                <p>${solutionText}</p>
+                
+                <div class="mechanics-tags">
+                    <div class="tags-group">
+                        <span class="tags-label">${tr('raid.bossDebuffs')}:</span>
+                        ${debuffTags}
+                    </div>
+                    <div class="tags-group">
+                        <span class="tags-label">${tr('raid.bossBuffs')}:</span>
+                        ${buffTags}
+                    </div>
+                </div>
+                
+                <div class="recommendation-box">
+                    <h4>${tr('raid.recommendedStrategy')}</h4>
+                    <p>${getText(boss, 'recommendation')}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderRewardSystem(data, tr, getText) {
+    const container = document.getElementById('unexpected-reward-system');
+    if (!container || !data.reward_info) return;
+    
+    const rewardIcons = {
+        'equipment_custom': '⚔️',
+        'grade': '🏆',
+        'ranking': '📊',
+        'discoverer': '🔍',
+        'subjugation': '💀'
+    };
+    
+    const rewardsHtml = data.reward_info.map(reward => {
+        let extraHtml = '';
+
+        // 装備カスタム詳細
+        if (reward.type === 'equipment_custom' && reward.details) {
+            const d = reward.details;
+            extraHtml = `
+                <div class="reward-details equip-custom-details">
+                    <div class="equip-custom-grid">
+                        <div class="equip-custom-item">
+                            <span class="equip-custom-label">${tr('raid.equipSets')}</span>
+                            <span class="equip-custom-value">${d.sets}</span>
+                        </div>
+                        <div class="equip-custom-item">
+                            <span class="equip-custom-label">${tr('raid.equipMainOptions')}</span>
+                            <span class="equip-custom-value">${d.main_options}</span>
+                        </div>
+                        <div class="equip-custom-item">
+                            <span class="equip-custom-label">${tr('raid.equipWeapon')}</span>
+                            <span class="equip-custom-value">${d.weapon_slots}</span>
+                        </div>
+                        <div class="equip-custom-item">
+                            <span class="equip-custom-label">${tr('raid.equipArmor')}</span>
+                            <span class="equip-custom-value">${d.armor_slots}</span>
+                        </div>
+                    </div>
+                    <div class="equip-custom-note">${getText(d, 'note')}</div>
+                </div>
+            `;
+        }
+
+        // 等級報酬詳細
+        if (reward.type === 'grade' && reward.grades) {
+            const gradeItems = reward.grades.map(g => `
+                <div class="grade-item grade-${g.grade.toLowerCase()}">
+                    <span class="grade-label">${g.grade}</span>
+                    <span class="grade-desc">${getText(g, 'desc')}</span>
+                </div>
+            `).join('');
+            extraHtml = `
+                <div class="reward-details grade-details">
+                    <div class="grade-list">${gradeItems}</div>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="unexpected-reward-card ${reward.type === 'equipment_custom' || reward.type === 'grade' ? 'expanded' : ''}">
+                <div class="reward-card-header">
+                    <span class="reward-card-icon">${rewardIcons[reward.type] || '📦'}</span>
+                    <span class="reward-card-name">${getText(reward, 'name')}</span>
+                </div>
+                <p class="reward-card-desc">${getText(reward, 'desc')}</p>
+                ${extraHtml}
+            </div>
+        `;
+    }).join('');
+    
+    // 覚醒ボス情報
+    let awakenedHtml = '';
+    if (data.awakened_bosses && data.awakened_bosses.length > 0) {
+        const bossTags = data.awakened_bosses.map(b => 
+            `<span class="awakened-boss-tag">${getText(b, 'name')}</span>`
+        ).join('');
+        awakenedHtml = `
+            <div class="awakened-bosses-section">
+                <h4>${tr('raid.awakenedBosses')}</h4>
+                <div class="awakened-boss-tags">${bossTags}</div>
+            </div>
+        `;
+    }
+    
+    container.innerHTML = `
+        <div class="unexpected-rewards">
+            <h3>${tr('raid.rewardSystem')}</h3>
+            <div class="reward-cards-grid">
+                ${rewardsHtml}
+            </div>
+            ${awakenedHtml}
         </div>
     `;
 }
