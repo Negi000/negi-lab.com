@@ -818,3 +818,740 @@
         justify-content: center;
     }
 }
+
+/* ====================================
+   突発レイド（Unexpected Raid）
+   ==================================== */
+
+.unexpected-raid-notice {
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 69, 0, 0.1));
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.unexpected-raid-notice p {
+    color: #ffa500;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* システム概要 */
+.system-overview-card {
+    background: var(--bg-card, #1e1e2e);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.system-overview-card h3 {
+    color: #ffa500;
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+}
+
+.system-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.system-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.system-info-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.system-info-label {
+    color: var(--text-sub, #aaa);
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.system-info-value {
+    color: var(--text-main, #eee);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 進行フロー */
+.system-flow h4 {
+    color: var(--text-main, #eee);
+    margin: 0 0 1rem;
+}
+
+.flow-steps {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.25);
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+.flow-step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffa500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.flow-step-phase {
+    color: #ffa500;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.flow-step-desc {
+    color: var(--text-sub, #aaa);
+    font-size: 0.75rem;
+}
+
+.flow-arrow {
+    color: rgba(255, 165, 0, 0.5);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* 突発ボスカード */
+.unexpected-boss-cards {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.unexpected-boss-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 165, 0, 0.2);
+}
+
+.unexpected-boss-card.active {
+    border-color: #ffa500;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
+}
+
+.unexpected-boss-card:hover {
+    border-color: rgba(255, 165, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+.boss-card-subname {
+    color: var(--text-sub, #aaa);
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* ボス詳細 */
+.unexpected-boss-info {
+    background: var(--bg-card, #1e1e2e);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.unexpected-boss-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.unexpected-boss-portrait {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 165, 0, 0.3);
+}
+
+.unexpected-boss-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.unexpected-boss-title h2 {
+    color: #ffa500;
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+}
+
+.unexpected-boss-subname {
+    color: var(--text-sub, #aaa);
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.type-badge.physical {
+    background: rgba(255, 100, 50, 0.2);
+    color: #ff6432;
+    border: 1px solid rgba(255, 100, 50, 0.3);
+}
+
+.type-badge.magical {
+    background: rgba(100, 100, 255, 0.2);
+    color: #6464ff;
+    border: 1px solid rgba(100, 100, 255, 0.3);
+}
+
+.type-badge.any {
+    background: rgba(200, 200, 200, 0.15);
+    color: #ccc;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.unexpected-boss-story {
+    margin-bottom: 1.5rem;
+}
+
+.unexpected-boss-story h3 {
+    color: var(--text-main, #eee);
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+.unexpected-boss-story p {
+    color: var(--text-sub, #bbb);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.unexpected-boss-mechanics h3 {
+    color: var(--text-main, #eee);
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+.unexpected-boss-mechanics > p {
+    color: var(--text-sub, #bbb);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.mechanics-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.tags-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tags-label {
+    color: var(--text-sub, #aaa);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.debuff-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(255, 50, 50, 0.15);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    color: #ff5050;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.buff-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(50, 150, 255, 0.15);
+    border: 1px solid rgba(50, 150, 255, 0.3);
+    color: #3296ff;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.recommendation-box {
+    background: rgba(255, 165, 0, 0.08);
+    border: 1px solid rgba(255, 165, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.recommendation-box h4 {
+    color: #ffa500;
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+}
+
+.recommendation-box p {
+    color: var(--text-main, #eee);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 報酬システム */
+.unexpected-rewards {
+    background: var(--bg-card, #1e1e2e);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.unexpected-rewards h3 {
+    color: #ffa500;
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+}
+
+.reward-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.unexpected-reward-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: border-color 0.3s;
+}
+
+.unexpected-reward-card:hover {
+    border-color: rgba(255, 165, 0, 0.3);
+}
+
+.reward-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.reward-card-icon {
+    font-size: 1.3rem;
+}
+
+.reward-card-name {
+    color: var(--text-main, #eee);
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.reward-card-desc {
+    color: var(--text-sub, #aaa);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 覚醒ボス */
+.awakened-bosses-section h4 {
+    color: var(--text-main, #eee);
+    margin: 0 0 0.75rem;
+}
+
+.awakened-boss-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.awakened-boss-tag {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: linear-gradient(135deg, rgba(255, 50, 50, 0.12), rgba(255, 165, 0, 0.12));
+    border: 1px solid rgba(255, 100, 50, 0.3);
+    color: #ff8c00;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* レスポンシブ: 突発レイド */
+@media (max-width: 768px) {
+    .unexpected-boss-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .unexpected-boss-portrait {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .flow-steps {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .flow-step {
+        min-width: 200px;
+        width: 100%;
+    }
+    
+    .system-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reward-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equip-custom-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .key-mechanics-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* システム概要 - 発生確率 */
+.system-info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.system-info-sub {
+    font-size: 0.8rem;
+    color: rgba(255, 165, 0, 0.7);
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+.trigger-probability-section {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 165, 0, 0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 165, 0, 0.15);
+}
+
+.trigger-prob-desc {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.trigger-prob-levels {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.prob-level-tag {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    background: rgba(255, 165, 0, 0.15);
+    color: #ffd700;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.prob-level-tag:first-child {
+    background: rgba(255, 50, 50, 0.2);
+    color: #ff6b6b;
+    border-color: rgba(255, 50, 50, 0.4);
+}
+
+.prob-level-tag:nth-child(2) {
+    background: rgba(255, 165, 0, 0.2);
+    color: #ffa500;
+    border-color: rgba(255, 165, 0, 0.4);
+}
+
+.prob-level-tag:nth-child(4) {
+    background: rgba(100, 150, 255, 0.15);
+    color: #7ca8ff;
+    border-color: rgba(100, 150, 255, 0.3);
+}
+
+.prob-level-tag:last-child {
+    background: rgba(150, 150, 150, 0.15);
+    color: #aaa;
+    border-color: rgba(150, 150, 150, 0.3);
+}
+
+.boss-hp-levels {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.hp-level-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    background: rgba(100, 200, 100, 0.12);
+    color: #8fc98f;
+    border: 1px solid rgba(100, 200, 100, 0.25);
+}
+
+/* ボススキル一覧 */
+.unexpected-boss-skills {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(255, 165, 0, 0.04);
+    border: 1px solid rgba(255, 165, 0, 0.15);
+    border-radius: 12px;
+}
+
+.unexpected-boss-skills h3 {
+    color: #ffd700;
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+}
+
+.unexpected-skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.unexpected-skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.unexpected-skill-item:hover {
+    background: rgba(255, 165, 0, 0.08);
+    border-color: rgba(255, 165, 0, 0.2);
+}
+
+.unexpected-skill-icon {
+    font-size: 1.3rem;
+    width: 2rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.unexpected-skill-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.unexpected-skill-name {
+    color: var(--text-main, #eee);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.unexpected-skill-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+/* 攻略ポイント */
+.unexpected-key-mechanics {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    background: rgba(100, 200, 255, 0.04);
+    border: 1px solid rgba(100, 200, 255, 0.15);
+    border-radius: 12px;
+}
+
+.unexpected-key-mechanics h3 {
+    color: #7cb8ff;
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+}
+
+.key-mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.key-mechanic-item {
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-left: 3px solid #7cb8ff;
+}
+
+.key-mechanic-name {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 0.88rem;
+    margin-bottom: 0.3rem;
+}
+
+.key-mechanic-desc {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* 報酬カード拡張 */
+.unexpected-reward-card.expanded {
+    grid-column: 1 / -1;
+}
+
+/* 装備カスタム詳細 */
+.equip-custom-details {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+.equip-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.equip-custom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(255, 165, 0, 0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 165, 0, 0.15);
+}
+
+.equip-custom-label {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.equip-custom-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.equip-custom-note {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-style: italic;
+}
+
+/* 等級報酬詳細 */
+.grade-details {
+    margin-top: 0.75rem;
+}
+
+.grade-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.grade-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.grade-item.grade-s {
+    border-left-color: #ffd700;
+    background: rgba(255, 215, 0, 0.08);
+}
+
+.grade-item.grade-a {
+    border-left-color: #ff8c00;
+    background: rgba(255, 140, 0, 0.06);
+}
+
+.grade-item.grade-b {
+    border-left-color: #c084fc;
+    background: rgba(192, 132, 252, 0.06);
+}
+
+.grade-item.grade-c {
+    border-left-color: #60a5fa;
+}
+
+.grade-item.grade-d {
+    border-left-color: #6b7280;
+}
+
+.grade-item.grade-e {
+    border-left-color: #4b5563;
+}
+
+.grade-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 2rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.grade-s .grade-label { color: #ffd700; }
+.grade-a .grade-label { color: #ff8c00; }
+.grade-b .grade-label { color: #c084fc; }
+.grade-c .grade-label { color: #60a5fa; }
+.grade-d .grade-label { color: #6b7280; }
+.grade-e .grade-label { color: #4b5563; }
+
+.grade-desc {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.82rem;
+}

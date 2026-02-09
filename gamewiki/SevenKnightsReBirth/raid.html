@@ -121,6 +121,10 @@
                     <span class="tab-icon">⚔️</span>
                     <span class="tab-label" data-i18n="raid.title">レイド</span>
                 </button>
+                <button class="raid-type-tab" data-type="unexpected">
+                    <span class="tab-icon">⚡</span>
+                    <span class="tab-label" data-i18n="raid.unexpected">突発レイド</span>
+                </button>
                 <button class="raid-type-tab" data-type="world">
                     <span class="tab-icon">🌍</span>
                     <span class="tab-label" data-i18n="raid.world">ワールドレイド</span>
@@ -203,6 +207,81 @@
                     </div>
                 </div>
             </div>
+
+            <!-- サブオプション確率一覧（通常レイド専用） -->
+            <div class="sub-option-table-section">
+                <h3 data-i18n="raid.subOptionTable">サブオプション確率一覧（難易度11～15）</h3>
+                <table class="sub-option-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="raid.difficulty">難易度</th>
+                            <th data-i18n="raid.4options">4オプション</th>
+                            <th data-i18n="raid.3options">3オプション</th>
+                            <th data-i18n="raid.2options">2オプション</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="raid.level11">11段階</td>
+                            <td class="prob-4op">6%</td>
+                            <td class="prob-3op">39%</td>
+                            <td class="prob-2op">55%</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="raid.level12">12段階</td>
+                            <td class="prob-4op">7%</td>
+                            <td class="prob-3op">53%</td>
+                            <td class="prob-2op">40%</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="raid.level13">13段階</td>
+                            <td class="prob-4op">8%</td>
+                            <td class="prob-3op">67%</td>
+                            <td class="prob-2op">25%</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="raid.level14">14段階</td>
+                            <td class="prob-4op">9%</td>
+                            <td class="prob-3op">81%</td>
+                            <td class="prob-2op">10%</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td data-i18n="raid.level15">15段階</td>
+                            <td class="prob-4op">10%</td>
+                            <td class="prob-3op">90%</td>
+                            <td class="prob-2op">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="table-note" data-i18n="raid.tableNote">※ 難易度1～10ではサブオプション確定なし（基本値）</p>
+            </div>
+        </section>
+
+        <!-- 突発レイドセクション -->
+        <section id="unexpected-raid-section" class="raid-section hidden">
+            <div class="unexpected-raid-notice">
+                <p data-i18n="raid.unexpectedNotice">⚡ 突発レイドは通常レイドクリアで発生するサーバー共有ボスコンテンツです</p>
+            </div>
+            
+            <!-- システム概要 -->
+            <div class="unexpected-system-overview" id="unexpected-system-overview">
+                <!-- JSで生成 -->
+            </div>
+
+            <!-- ボスセレクター -->
+            <div class="unexpected-boss-cards" id="unexpected-boss-cards">
+                <!-- JSで生成 -->
+            </div>
+
+            <!-- ボス詳細 -->
+            <div class="unexpected-boss-detail" id="unexpected-boss-detail">
+                <!-- JSで生成 -->
+            </div>
+
+            <!-- 報酬システム -->
+            <div class="unexpected-reward-system" id="unexpected-reward-system">
+                <!-- JSで生成 -->
+            </div>
         </section>
 
         <!-- ワールドレイドセクション -->
@@ -220,53 +299,7 @@
             </div>
         </section>
 
-        <!-- サブオプション確率一覧 -->
-        <section class="sub-option-table-section">
-            <h3 data-i18n="raid.subOptionTable">サブオプション確率一覧（難易度11～15）</h3>
-            <table class="sub-option-table">
-                <thead>
-                    <tr>
-                        <th data-i18n="raid.difficulty">難易度</th>
-                        <th data-i18n="raid.4options">4オプション</th>
-                        <th data-i18n="raid.3options">3オプション</th>
-                        <th data-i18n="raid.2options">2オプション</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-i18n="raid.level11">11段階</td>
-                        <td class="prob-4op">6%</td>
-                        <td class="prob-3op">39%</td>
-                        <td class="prob-2op">55%</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="raid.level12">12段階</td>
-                        <td class="prob-4op">7%</td>
-                        <td class="prob-3op">53%</td>
-                        <td class="prob-2op">40%</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="raid.level13">13段階</td>
-                        <td class="prob-4op">8%</td>
-                        <td class="prob-3op">67%</td>
-                        <td class="prob-2op">25%</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="raid.level14">14段階</td>
-                        <td class="prob-4op">9%</td>
-                        <td class="prob-3op">81%</td>
-                        <td class="prob-2op">10%</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td data-i18n="raid.level15">15段階</td>
-                        <td class="prob-4op">10%</td>
-                        <td class="prob-3op">90%</td>
-                        <td class="prob-2op">-</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="table-note" data-i18n="raid.tableNote">※ 難易度1～10ではサブオプション確定なし（基本値）</p>
-        </section>
+
     </main>
 
     <footer>
