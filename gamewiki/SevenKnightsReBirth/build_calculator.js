@@ -382,6 +382,7 @@ function updateCharacterInfo() {
         // Updated Priority: Card Icon -> SKRE -> SK1 -> Costume -> Fallback
         const paths = [
             `images/icon/Card/Tex_HeroIcon_${id}Card.webp`,
+            `images/icon/Big/Tex_HeroIcon_${id}Big.webp`,
             `images/portrait/SKRE/Tex_HeroIcon_${id}.webp`,
             `images/portrait/SK1/Tex_HeroIcon_${id}1.webp`,
             `images/portrait/SKRE/Tex_CostumeIcon_${id}1.webp`,

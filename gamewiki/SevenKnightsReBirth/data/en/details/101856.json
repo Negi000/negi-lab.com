@@ -2,14 +2,14 @@
   {
     "basicInfo": {
       "id": "101856",
-      "name": "シャオ",
-      "subname": "主を失いし者",
+      "name": "Xiao",
+      "subname": "Masterless One",
       "affiliation": "Adventurers",
-      "flavor": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。",
+      "flavor": "I think my master has died. I can't help but feel a bit sad. But as long as my talisman stays with me, I'll keep walking and talking and moving forward, obeying the last orders my master gave me.",
       "rarity": "epic",
       "star": "6",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -106,30 +106,30 @@
       "Normal Attack": {
         "id": "10185601",
         "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 100% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 120% of Magic Attack.\nTranscend Lv.2 Effect\n - Single Enemy\n - Adds Effect: 50% chance to inflict Bleed. [Duration: 2 Turn(s)]",
+        "desc": "Single Enemy\n - Deals damage equal to 100% of Physical Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 120% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185602",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 230% of Magic Attack 1 time(s).\n - Deals additional damage equal to 180% of Magic Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 160% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 270% of Magic Attack.",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Life Drain",
+        "desc": "Single Enemy\n - Deals damage equal to 230% of Physical Attack 1 time(s).\n - Deals additional damage equal to 180% of Physical Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 160% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 270% of Physical Attack.\nTranscend Lv.2 Effect\n - Single Enemy\n - Adds Effect: 100% chance to inflict 39% Defense Reduction. [Duration: 5 Turn(s)]",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185603",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 170% of Magic Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 205% of Magic Attack.",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Rise, Zombies!",
+        "desc": "Single Enemy\n - Deals damage equal to 170% of Physical Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 205% of Physical Attack.",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185604",
-        "name": "",
-        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 40% of the caster's Magic Attack when HP falls to 50% or lower. [1 Time(s) per Battle]\nSkill Enhancement Effect\n - Increases Healing: HP Recovery amount becomes 45% of Magic Attack.\nTranscend Lv.6 Effect\n - All Allies",
+        "name": "Jiangshi Charm",
+        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 40% of the caster's Physical Attack when HP falls to 50% or lower. [1 Time(s) per Battle]\nSkill Enhancement Effect\n - Increases Healing: HP Recovery amount becomes 45% of Physical Attack.\nTranscend Lv.6 Effect\n - All Allies",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {
@@ -147,20 +147,31 @@
       "transcend_12": "Increases All Attack, Defense, and HP by 2%."
     },
     "profile": {
-      "story": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。"
+      "cv": "0",
+      "species": "Undead",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Flowers, children, people who resemble their master",
+      "dislikes": "War, removing talismans",
+      "story": "I think my master has died. I can't help but feel a bit sad. But as long as my talisman stays with me, I'll keep walking and talking and moving forward, obeying the last orders my master gave me."
     }
   },
   {
     "basicInfo": {
       "id": "101855",
-      "name": "シャオ",
-      "subname": "死なない兵士",
+      "name": "Xiao",
+      "subname": "Undying Soldier",
       "affiliation": "Adventurers",
-      "flavor": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。",
+      "flavor": "I think my master wanted to bring the dead back to life. Someone very near and dear to my master died on the battlefield, you see. That's when someone suggested creating undying soldiers that could be used to prevent anyone from experiencing the kind of grief and sorrow he had.",
       "rarity": "epic",
       "star": "5",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -257,48 +268,59 @@
       "Normal Attack": {
         "id": "10185501",
         "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 90% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 90% of Physical Attack.",
+        "desc": "Single Enemy\n - Deals damage equal to 90% of Physical Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 90% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185502",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 205% of Magic Attack 1 time(s).\n - Deals additional damage equal to 160% of Magic Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 145% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 205% of Physical Attack.",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Life Drain",
+        "desc": "Single Enemy\n - Deals damage equal to 205% of Physical Attack 1 time(s).\n - Deals additional damage equal to 160% of Physical Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 145% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 205% of Physical Attack.",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185503",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 155% of Magic Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 155% of Physical Attack.",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Rise, Zombies!",
+        "desc": "Single Enemy\n - Deals damage equal to 155% of Physical Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 155% of Physical Attack.",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185504",
-        "name": "",
-        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 35% of the caster's Magic Attack when HP falls to 50% or lower. [1 Time(s) per Battle]",
+        "name": "Jiangshi Charm",
+        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 35% of the caster's Physical Attack when HP falls to 50% or lower. [1 Time(s) per Battle]",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。"
+      "cv": "0",
+      "species": "Undead",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Flowers, children, people who resemble their master",
+      "dislikes": "War, removing talismans",
+      "story": "I think my master wanted to bring the dead back to life. Someone very near and dear to my master died on the battlefield, you see. That's when someone suggested creating undying soldiers that could be used to prevent anyone from experiencing the kind of grief and sorrow he had."
     }
   },
   {
     "basicInfo": {
       "id": "101854",
-      "name": "シャオ",
-      "subname": "23号キョンシー",
+      "name": "Xiao",
+      "subname": "Jiangshi No. 23",
       "affiliation": "Adventurers",
-      "flavor": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。",
+      "flavor": "Hello, my name is Xiao, but you can also call me Number 23. I'm a jiangshi, so I act according to my master's commands. Even though I'm terrified of fighting, I'm incapable of running away, which can be stressful to deal with.",
       "rarity": "epic",
       "star": "4",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -395,35 +417,46 @@
       "Normal Attack": {
         "id": "10185401",
         "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 80% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 80% of Physical Attack.",
+        "desc": "Single Enemy\n - Deals damage equal to 80% of Physical Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 80% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185402",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 185% of Magic Attack 1 time(s).\n - Deals additional damage equal to 145% of Magic Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 130% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 185% of Physical Attack.",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Life Drain",
+        "desc": "Single Enemy\n - Deals damage equal to 185% of Physical Attack 1 time(s).\n - Deals additional damage equal to 145% of Physical Attack against targets inflicted with [Bleed].\n - All Allies\n - Grants a Barrier equal to 130% of the caster's Physical Attack. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 185% of Physical Attack.",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185403",
-        "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 140% of Magic Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 140% of Physical Attack.",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Rise, Zombies!",
+        "desc": "Single Enemy\n - Deals damage equal to 140% of Physical Attack 1 time(s).\n - 100% chance to inflict Bleed [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 140% of Physical Attack.",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185404",
-        "name": "",
-        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 35% of the caster's Magic Attack when HP falls to 50% or lower. [1 Time(s) per Battle]",
+        "name": "Jiangshi Charm",
+        "desc": "All Allies\n - Grants Death Immunity. [Duration: 2 Turn(s)]\n - Grants Death Immunity upon using a basic attack 1 time(s). [Duration: 2 Turn(s)]\n - Heals HP equal to 35% of the caster's Physical Attack when HP falls to 50% or lower. [1 Time(s) per Battle]",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。"
+      "cv": "0",
+      "species": "Undead",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Flowers, children, people who resemble their master",
+      "dislikes": "War, removing talismans",
+      "story": "Hello, my name is Xiao, but you can also call me Number 23. I'm a jiangshi, so I act according to my master's commands. Even though I'm terrified of fighting, I'm incapable of running away, which can be stressful to deal with."
     }
   }
 ]

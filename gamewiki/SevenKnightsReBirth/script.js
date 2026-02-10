@@ -579,6 +579,8 @@ async function initCharacterList() {
         
         const assets = getRarityAssets(char);
         const iconPath = `images/icon/Card/Tex_HeroIcon_${char.id}Card.webp`;
+        // Big版フォールバック（未実装キャラ等、Cardが無い場合）
+        const bigIconPath = `images/icon/Big/Tex_HeroIcon_${char.id}Big.webp`;
         
         // タイプアイコン (RoleIcon_{roleId}.webp) - roleIdがない場合はroleを使用
         const roleId = String(char.roleId || char.role || '0');
@@ -612,7 +614,7 @@ async function initCharacterList() {
             <div class="character-card-visual">
                 <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async">
                 <div class="card-icon-mask">
-                    <img src="${iconPath}" class="card-icon" alt="${char.name}" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/150x150/1a1a1a/e60012?text=No+Image'">
+                    <img src="${iconPath}" class="card-icon" alt="${char.name}" loading="lazy" decoding="async" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='${bigIconPath}';}else{this.src='https://placehold.co/150x150/1a1a1a/e60012?text=No+Image';}">
                 </div>
                 ${badgeHtml}
                 ${unreleasedBadgeHtml}
@@ -1450,10 +1452,14 @@ async function updatePortrait(char, versions) {
     const charId = a.id;
 
     const fallback = () => {
-        // 旧仕様のファイル名にも一応フォールバック
-        portraitImg.src = `images/portrait/${charId}.webp`;
+        // Big版にフォールバック（未実装キャラ等）
+        portraitImg.src = `images/icon/Big/Tex_HeroIcon_${charId}Big.webp`;
         portraitImg.onerror = () => {
-            portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
+            // 旧仕様のファイル名にも一応フォールバック
+            portraitImg.src = `images/portrait/${charId}.webp`;
+            portraitImg.onerror = () => {
+                portraitImg.src = 'https://placehold.co/400x600/1a1a1a/e60012?text=No+Portrait';
+            };
         };
     };
 
