@@ -2,14 +2,14 @@
   {
     "basicInfo": {
       "id": "101856",
-      "name": "シャオ",
-      "subname": "主を失いし者",
+      "name": "Xiao",
+      "subname": "Uno senza padrone",
       "affiliation": "Avventurieri",
-      "flavor": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。",
+      "flavor": "Penso che il mio Master sia morto. Non posso fare a meno di sentirmi un po' triste. Ma finché il mio talismano rimane con me, continuerò a camminare, parlare e andare avanti, obbedendo agli ultimi ordini che il mio Master mi ha dato.",
       "rarity": "epic",
       "star": "6",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -106,30 +106,30 @@
       "Normal Attack": {
         "id": "10185601",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco magico\nTranscend Lv.2 Effect\n - Singolo nemico\n - Effetto extra: Sanguinamento [Probabilità: 50%] [Durata: 2 turno/i]",
+        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185602",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 230% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 180% dell'attacco magico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 160% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 270% dell'attacco magico",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Assorbivita",
+        "desc": "Singolo nemico\n - Infligge danni pari al 230% dell'attacco fisico 1 volta/e\n - Infligge danni aggiuntivi pari al 180% dell'attacco fisico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 160% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 270% dell'attacco fisico\nTranscend Lv.2 Effect\n - Singolo nemico\n - Effetto extra: Difesa ▼39% [Probabilità: 100%] [Durata: 5 turno/i]",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185603",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 170% dell'attacco magico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 205% dell'attacco magico",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Sorgi, zombi!",
+        "desc": "Singolo nemico\n - Infligge danni pari al 170% dell'attacco fisico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 205% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185604",
-        "name": "",
-        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 40% dell'attacco magico dell'incantatore quando i PV scendono a di sotto del 50% [1 volta/e per battaglia]\nSkill Enhancement Effect\n - Miglioramento cura: La quantità di PV curati è pari al 45% dell'attacco magico\nTranscend Lv.6 Effect\n - Tutti gli alleati",
+        "name": "Talismano dello jiangshi",
+        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 40% dell'attacco fisico dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]\nSkill Enhancement Effect\n - Miglioramento cura: La quantità di PV curati è pari al 45% dell'attacco fisico\nTranscend Lv.6 Effect\n - Tutti gli alleati",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {
@@ -147,20 +147,31 @@
       "transcend_12": "Aumenta tutti gli attacchi, la difesa e i PV del 2%."
     },
     "profile": {
-      "story": "ご主人様が亡くなったようです。なんだか少し悲しい気持ちになりますね。でもこのお札が剥がれない限り、残された命令に従って動き続けるのでしょう。"
+      "cv": "小山内 怜央",
+      "species": "Non-morto",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Fiori, bambini, persone che assomigliano al loro padrone",
+      "dislikes": "Guerra, rimozione di talismani",
+      "story": "Penso che il mio Master sia morto. Non posso fare a meno di sentirmi un po' triste. Ma finché il mio talismano rimane con me, continuerò a camminare, parlare e andare avanti, obbedendo agli ultimi ordini che il mio Master mi ha dato."
     }
   },
   {
     "basicInfo": {
       "id": "101855",
-      "name": "シャオ",
-      "subname": "死なない兵士",
+      "name": "Xiao",
+      "subname": "Soldatessa Immortale",
       "affiliation": "Avventurieri",
-      "flavor": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。",
+      "flavor": "Penso che il mio Master volesse riportare in vita i morti. Qualcuno molto vicino e caro al mio Master è morto sul Campo di battaglia, capisci. È allora che qualcuno ha suggerito di creare soldati immortali che potrebbero essere usati per impedire a chiunque di provare il tipo di dolore e tristezza che ha provato lui.",
       "rarity": "epic",
       "star": "5",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -257,48 +268,59 @@
       "Normal Attack": {
         "id": "10185501",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 90% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
+        "desc": "Singolo nemico\n - Infligge danni pari al 90% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185502",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 205% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 160% dell'attacco magico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 145% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 205% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Assorbivita",
+        "desc": "Singolo nemico\n - Infligge danni pari al 205% dell'attacco fisico 1 volta/e\n - Infligge danni aggiuntivi pari al 160% dell'attacco fisico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 145% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 205% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185503",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 155% dell'attacco magico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 155% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Sorgi, zombi!",
+        "desc": "Singolo nemico\n - Infligge danni pari al 155% dell'attacco fisico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 155% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185504",
-        "name": "",
-        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 35% dell'attacco magico dell'incantatore quando i PV scendono a di sotto del 50% [1 volta/e per battaglia]",
+        "name": "Talismano dello jiangshi",
+        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 35% dell'attacco fisico dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "ご主人様は死んだ人を生き返らせたかったみたいです。愛する人が戦場で死んでしまったから。その時誰かが、悲しみが繰り返されないように死なない兵士を作ろうと提案したんです。"
+      "cv": "小山内 怜央",
+      "species": "Non-morto",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Fiori, bambini, persone che assomigliano al loro padrone",
+      "dislikes": "Guerra, rimozione di talismani",
+      "story": "Penso che il mio Master volesse riportare in vita i morti. Qualcuno molto vicino e caro al mio Master è morto sul Campo di battaglia, capisci. È allora che qualcuno ha suggerito di creare soldati immortali che potrebbero essere usati per impedire a chiunque di provare il tipo di dolore e tristezza che ha provato lui."
     }
   },
   {
     "basicInfo": {
       "id": "101854",
-      "name": "シャオ",
-      "subname": "23号キョンシー",
+      "name": "Xiao",
+      "subname": "Jiangshi No. 23",
       "affiliation": "Avventurieri",
-      "flavor": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。",
+      "flavor": "Ciao, mi chiamo Xiao, ma puoi anche chiamarmi Numero 23. Sono un jiangshi, quindi agisco secondo i comandi del mio Master. Anche se sono terrorizzato dal combattere, sono incapace di scappare, il che può essere stressante da affrontare.",
       "rarity": "epic",
       "star": "4",
       "maxStar": "6",
-      "role": "5",
+      "role": "1",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
@@ -395,35 +417,46 @@
       "Normal Attack": {
         "id": "10185401",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 80% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
+        "desc": "Singolo nemico\n - Infligge danni pari al 80% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018501.webp"
       },
       "Skill 1": {
         "id": "10185402",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 185% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 145% dell'attacco magico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 130% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 60s",
+        "name": "Assorbivita",
+        "desc": "Singolo nemico\n - Infligge danni pari al 185% dell'attacco fisico 1 volta/e\n - Infligge danni aggiuntivi pari al 145% dell'attacco fisico contro bersagli affetti da [Sanguinamento]\n - Tutti gli alleati\n - Concede una Barriera pari al 130% dell'attacco fisico dell'incantatore [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 78s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018502.webp"
       },
       "Skill 2": {
         "id": "10185403",
-        "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 140% dell'attacco magico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 140% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 70s",
+        "name": "Sorgi, zombi!",
+        "desc": "Singolo nemico\n - Infligge danni pari al 140% dell'attacco fisico 1 volta/e\n - Può infliggere Sanguinamento [Probabilità: 100%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 140% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 60s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
       },
       "Passive": {
         "id": "10185404",
-        "name": "",
-        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 35% dell'attacco magico dell'incantatore quando i PV scendono a di sotto del 50% [1 volta/e per battaglia]",
+        "name": "Talismano dello jiangshi",
+        "desc": "Tutti gli alleati\n - Concede Immunità a Morte immediata [Durata: 2 turno/i]\n - Concede Immunità a Morte immediata dopo aver usato un attacco base 1 volta/e [Durata: 2 turno/i]\n - Cura PV pari al 35% dell'attacco fisico dell'incantatore quando i PV scendono al di sotto del 50% [1 volta/e per battaglia]",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018503.webp"
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018504.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "こんにちは。私の名前はシャオです、23号とも呼ばれています。キョンシーなのでご主人様の命令に従って動きます。戦うのは怖いけど逃げられないので、耐えるのが辛いです。"
+      "cv": "小山内 怜央",
+      "species": "Non-morto",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "9",
+      "height": "135",
+      "weight": "21",
+      "constellation": "???",
+      "likes": "Fiori, bambini, persone che assomigliano al loro padrone",
+      "dislikes": "Guerra, rimozione di talismani",
+      "story": "Ciao, mi chiamo Xiao, ma puoi anche chiamarmi Numero 23. Sono un jiangshi, quindi agisco secondo i comandi del mio Master. Anche se sono terrorizzato dal combattere, sono incapace di scappare, il che può essere stressante da affrontare."
     }
   }
 ]
