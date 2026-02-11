@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神経衰弱攻略ツール - セブンナイツ リバース Wiki</title>
+    
+    <link rel="canonical" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32.webp">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e60012">
+    <meta name="description" content="神経衰弱攻略ツール - 画面キャプチャ/動画解析でカードの表面を自動記録。Seven Knights Re:Birth セブンナイツリバース攻略Wiki。">
+    <meta name="keywords" content="神経衰弱, Memory Game, ミニゲーム, 攻略ツール, Seven Knights Re:Birth, セブンナイツリバース">
+    
+    <!-- 多言語対応 hreflang -->
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=ja">
+    <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=en">
+    <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=ko">
+    <link rel="alternate" hreflang="zh-Hans" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=zh-Hans">
+    <link rel="alternate" hreflang="zh-Hant" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=zh-Hant">
+    <link rel="alternate" hreflang="th" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html?lang=th">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html">
+    
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Memory Game Helper - Seven Knights Re:Birth",
+        "description": "神経衰弱攻略ツール - 画面キャプチャ/動画解析でカードの表面を自動記録",
+        "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/memory.html",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "inLanguage": ["ja", "en", "ko", "zh-Hans", "zh-Hant", "th"],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Seven Knights Re:Birth Wiki",
+            "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/"
+        }
+    }
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835873052239386" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="memory.css">
+    <script src="i18n.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/icon/rogo.webp" alt="7K:Re Wiki"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav.home">ホーム</a></li>
+                <li><a href="characters.html" data-i18n="nav.characters">キャラクター</a></li>
+                <li><a href="build_calculator.html" data-i18n="nav.build">ビルド</a></li>
+                <li><a href="adventure.html" data-i18n="nav.adventure">冒険</a></li>
+                <li><a href="raid.html" data-i18n="nav.raid">レイド</a></li>
+                <!-- Mobile Support Links -->
+                <li class="mobile-nav-support">
+                    <div class="mobile-support-links active">
+                        <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                            <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                            <span>Ko-fi</span>
+                        </a>
+                        <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                            <span>OFUSEで応援</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-support-links">
+            <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn" title="Support on Ko-fi">
+                <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                <span>Ko-fi</span>
+            </a>
+            <a data-ofuse-widget-button href="https://ofuse.me/o?uid=116462" data-ofuse-id="116462" class="support-btn ofuse-btn" target="_blank" rel="noopener" title="OFUSEで応援">
+                <span>OFUSE</span>
+            </a>
+        </div>
+        <div class="language-selector-wrapper">
+            <select class="language-selector" aria-label="Language"></select>
+        </div>
+        <button class="mobile-menu-btn" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    
+    <main class="memory-page">
+        <h1 class="page-title">🃏 神経衰弱 攻略ツール</h1>
+        <p class="page-subtitle">画面キャプチャまたは動画解析でカードの表面を自動記録し、完全なカンニングペーパーを作成します。</p>
+        
+        <!-- モード選択タブ -->
+        <div class="mode-tabs">
+            <button class="mode-tab active" data-mode="pc" id="tabPC">
+                <span class="tab-icon">🖥️</span>
+                <span class="tab-label">PCモード</span>
+                <span class="tab-desc">リアルタイムキャプチャ</span>
+            </button>
+            <button class="mode-tab" data-mode="mobile" id="tabMobile">
+                <span class="tab-icon">📱</span>
+                <span class="tab-label">スマホモード</span>
+                <span class="tab-desc">動画解析 + PiP</span>
+            </button>
+        </div>
+        
+        <!-- ===== PCモード ===== -->
+        <div class="mode-panel active" id="panelPC">
+            <div class="memory-layout">
+                <!-- 左: キャプチャ映像 -->
+                <div class="capture-area">
+                    <div class="section-header">
+                        <h2>ゲーム画面</h2>
+                        <div class="capture-controls">
+                            <button id="btnStartCapture" class="btn-primary">
+                                <span class="btn-icon">📺</span> キャプチャ開始
+                            </button>
+                            <button id="btnStopCapture" class="btn-secondary" disabled>
+                                <span class="btn-icon">⏹</span> 停止
+                            </button>
+                        </div>
+                    </div>
+                    <div class="capture-preview" id="capturePreview">
+                        <div class="capture-placeholder" id="capturePlaceholder">
+                            <div class="placeholder-icon">📺</div>
+                            <p>「キャプチャ開始」を押して<br>ゲームウィンドウを選択してください</p>
+                            <p class="placeholder-hint">※ ブラウザの画面共有機能を使用します</p>
+                        </div>
+                        <video id="captureVideo" autoplay playsinline style="display:none"></video>
+                        <canvas id="captureOverlay" style="display:none"></canvas>
+                    </div>
+                    <!-- キャリブレーション -->
+                    <div class="calibration-bar" id="calibrationBar" style="display:none">
+                        <span class="calibration-status" id="calibrationStatus">⏳ カード裏面を検出中...</span>
+                        <button id="btnAutoDetect" class="btn-small btn-secondary">再検出</button>
+                        <button id="btnManualCalibrate" class="btn-small btn-secondary">手動調整</button>
+                    </div>
+                </div>
+                
+                <!-- 右: 攻略グリッド -->
+                <div class="result-area">
+                    <div class="section-header">
+                        <h2>攻略グリッド</h2>
+                        <div class="result-controls">
+                            <span class="detection-count" id="detectionCount">検出: 0/24</span>
+                            <button id="btnResetGrid" class="btn-secondary btn-small">リセット</button>
+                        </div>
+                    </div>
+                    <div class="result-grid-wrapper">
+                        <div class="result-grid" id="resultGrid">
+                            <!-- 3行×8列 = 24枚のカード -->
+                        </div>
+                    </div>
+                    <div class="match-helper" id="matchHelper" style="display:none">
+                        <h3>ペア検索</h3>
+                        <p class="match-hint">カードをクリックするとペアの位置をハイライトします</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PC解析設定 -->
+            <div class="settings-panel" id="pcSettings">
+                <details>
+                    <summary>⚙️ 詳細設定</summary>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <label>解析FPS</label>
+                            <select id="settingFPS">
+                                <option value="5">5 fps (低負荷)</option>
+                                <option value="10">10 fps</option>
+                                <option value="20" selected>20 fps (推奨)</option>
+                                <option value="30">30 fps (高精度)</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>変化検知しきい値</label>
+                            <input type="range" id="settingThreshold" min="10" max="50" value="20">
+                            <span id="thresholdValue">20</span>
+                        </div>
+                        <div class="setting-item">
+                            <label>表面確定待ち時間</label>
+                            <select id="settingStableTime">
+                                <option value="50" selected>0.05秒 (推奨)</option>
+                                <option value="100">0.1秒</option>
+                                <option value="200">0.2秒</option>
+                                <option value="300">0.3秒</option>
+                            </select>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+        
+        <!-- ===== スマホモード ===== -->
+        <div class="mode-panel" id="panelMobile">
+            <div class="mobile-steps">
+                <!-- Step 1: 動画選択 -->
+                <div class="step-card active" id="stepUpload">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>ゲームの録画を選択</h3>
+                        <p>全てのカードがめくられる演出を録画し、その動画を選択してください。</p>
+                        <label class="btn-primary btn-file">
+                            <span class="btn-icon">🎬</span> 動画を選択
+                            <input type="file" id="videoFileInput" accept="video/*" hidden>
+                        </label>
+                        <div class="upload-info" id="uploadInfo" style="display:none">
+                            <span id="uploadFileName"></span>
+                            <span id="uploadFileSize"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: キャリブレーション -->
+                <div class="step-card" id="stepCalibrate">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>カードエリアを指定</h3>
+                        <p>シークバーで<strong>全カードが裏向きで並んでいるフレーム</strong>を選び、カード配置エリアの左上と右下をタップしてください。</p>
+                        <div class="calibrate-canvas-wrapper" id="calibrateWrapper">
+                            <canvas id="calibrateCanvas"></canvas>
+                            <div class="calibrate-markers" id="calibrateMarkers"></div>
+                        </div>
+                        <div class="video-seek-bar">
+                            <input type="range" id="videoSeekBar" min="0" max="1000" value="0" step="1">
+                            <span id="videoSeekTime">0:00.0 / 0:00.0</span>
+                        </div>
+                        <div class="calibrate-controls">
+                            <button id="btnResetCalibrate" class="btn-secondary btn-small">やり直し</button>
+                            <button id="btnConfirmCalibrate" class="btn-primary btn-small" disabled>確定して解析開始</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: 解析中 -->
+                <div class="step-card" id="stepAnalyze">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>動画を解析中...</h3>
+                        <div class="progress-wrapper">
+                            <div class="progress-track-lg">
+                                <div class="progress-bar-lg" id="analyzeProgress"></div>
+                            </div>
+                            <span class="progress-text" id="analyzeProgressText">0%</span>
+                        </div>
+                        <div class="analyze-stats" id="analyzeStats">
+                            <span>検出済み: <strong id="analyzeDetected">0</strong>/24</span>
+                            <span>解析フレーム: <strong id="analyzeFrames">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 4: 結果 & PiP -->
+                <div class="step-card" id="stepResult">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>解析完了！</h3>
+                        <div class="result-grid-wrapper mobile-result">
+                            <div class="result-grid" id="mobileResultGrid"></div>
+                        </div>
+                        <div class="pip-controls">
+                            <button id="btnStartPiP" class="btn-primary btn-large">
+                                <span class="btn-icon">📌</span> 攻略スタート (PiP)
+                            </button>
+                            <p class="pip-hint">小窓表示でゲームをプレイしながら確認できます</p>
+                        </div>
+                        <button id="btnMobileReset" class="btn-secondary">最初からやり直す</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 使い方ガイド -->
+        <div class="guide-section">
+            <details open>
+                <summary class="guide-title">📖 使い方ガイド</summary>
+                <div class="guide-content">
+                    <div class="guide-columns">
+                        <div class="guide-column">
+                            <h3>🖥️ PCモード</h3>
+                            <ol>
+                                <li>「キャプチャ開始」をクリック</li>
+                                <li>ブラウザの共有ダイアログでゲームウィンドウを選択</li>
+                                <li>ゲーム内で神経衰弱を開始</li>
+                                <li>カードがめくられるたびに、右側のグリッドに自動記録</li>
+                                <li>全カードが記録されたら、カンニングペーパー完成！</li>
+                                <li>グリッド上のカードをクリックすると、ペアの位置がハイライトされます</li>
+                            </ol>
+                        </div>
+                        <div class="guide-column">
+                            <h3>📱 スマホモード</h3>
+                            <ol>
+                                <li>ゲーム内で神経衰弱が始まったら画面録画を開始</li>
+                                <li>全カードがめくられる演出を録画して停止</li>
+                                <li>このツールを開き「動画を選択」で録画ファイルを選択</li>
+                                <li>カードエリアの四隅を指定</li>
+                                <li>自動解析が完了したら「攻略スタート (PiP)」を押す</li>
+                                <li>小窓表示でゲームに戻り、ペアを作っていく</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">
+                    <span class="logo-seven">Seven</span>
+                    <span class="logo-knights">Knights</span>
+                    <span class="logo-rebirth">Re:Birth</span>
+                    <span class="logo-wiki">Wiki</span>
+                </p>
+                <div class="footer-support-links">
+                    <a href="https://ko-fi.com/X8X11KVU5K" target="_blank" rel="noopener" class="support-btn kofi-btn">
+                        <img src="images/icon/kofi-cup.webp" alt="Ko-fi" class="kofi-icon">
+                        <span>Ko-fi</span>
+                    </a>
+                    <a href="https://ofuse.me/o?uid=116462" target="_blank" rel="noopener" class="support-btn ofuse-btn">
+                        <span>OFUSEで応援</span>
+                    </a>
+                </div>
+                <p class="footer-disclaimer" data-i18n="footer.disclaimer">このサイトは非公式のファンサイトです。<br>ゲームの著作権はNetmarble Corp.に帰属します。</p>
+                <p class="footer-copyright">© 2025-2026 Seven Knights Re:Birth Unofficial Wiki</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 隠し要素群 -->
+    <video id="hiddenVideo" style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px" playsinline muted></video>
+    <canvas id="analysisCanvas" style="display:none"></canvas>
+    <canvas id="pipCanvas" width="640" height="360" style="display:none"></canvas>
+    <video id="pipVideo" style="display:none" playsinline loop muted></video>
+    
+    <!-- 手動キャリブレーション用モーダル -->
+    <div id="manualCalibModal" class="modal-overlay" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>手動キャリブレーション</h3>
+                <button id="btnCloseCalibModal" class="btn-cancel">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>ゲーム画面の<strong>左上カードの左上角</strong>と<strong>右下カードの右下角</strong>をクリックしてください。</p>
+                <div class="calib-canvas-wrapper">
+                    <canvas id="manualCalibCanvas"></canvas>
+                </div>
+                <div class="calib-info">
+                    <span id="calibCorner1">左上: 未設定</span>
+                    <span id="calibCorner2">右下: 未設定</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCalibReset" class="btn-secondary">リセット</button>
+                <button id="btnCalibApply" class="btn-primary" disabled>適用</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="memory.js"></script>
+</body>
+</html>
