@@ -1749,6 +1749,369 @@ footer {
     color: var(--text-sub);
 }
 
+/* External Links Section (Daily Gift Banner & Forum) */
+.external-links-section {
+    padding: 3rem 0;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.daily-gift-banner {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.daily-gift-banner:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.25);
+    transform: translateY(-3px);
+}
+
+.daily-gift-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Forum News Feed */
+.forum-news-section {
+    max-width: 840px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, rgba(18, 18, 30, 0.85), rgba(10, 10, 20, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.forum-news-section + .forum-news-section {
+    margin-top: 1.5rem;
+}
+
+.forum-kr-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgba(37, 99, 235, 0.4);
+}
+
+.forum-kr-section .forum-tab.active::after {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.forum-kr-section .forum-news-header {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), transparent);
+}
+
+.forum-kr-section .forum-news-item::before {
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
+}
+
+/* NEW badge & tab dot */
+.forum-new-badge {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b35, #ff4444);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    animation: forum-new-pulse 2s ease-in-out infinite;
+}
+
+@keyframes forum-new-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.forum-news-item.is-new {
+    background: rgba(255, 107, 53, 0.06);
+}
+
+.forum-news-item.is-new::before {
+    background: linear-gradient(180deg, #ff6b35, #ff4444) !important;
+    opacity: 1 !important;
+}
+
+.forum-tab-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff4444;
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: top;
+    box-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+    animation: forum-new-pulse 2s ease-in-out infinite;
+}
+
+.forum-news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.06), transparent);
+}
+
+.forum-news-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.forum-news-icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+}
+
+.forum-news-title h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.forum-view-all {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.forum-view-all:hover {
+    color: #fff;
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.35);
+}
+
+/* Forum Tabs */
+.forum-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.forum-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.forum-tab {
+    position: relative;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+}
+
+.forum-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 70%;
+    height: 2px;
+    background: var(--accent-gold);
+    border-radius: 2px 2px 0 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forum-tab:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.forum-tab.active {
+    color: var(--accent-gold);
+}
+
+.forum-tab.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.forum-news-list {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.forum-news-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.forum-news-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-gold);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.forum-news-item:last-child {
+    border-bottom: none;
+}
+
+.forum-news-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    padding-left: 1.75rem;
+}
+
+.forum-news-item:hover::before {
+    opacity: 1;
+}
+
+.forum-news-item-title {
+    flex: 1;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.forum-news-item-date {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    color: var(--text-sub);
+    font-variant-numeric: tabular-nums;
+    font-family: 'Inter', 'SF Mono', monospace;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+}
+
+.forum-news-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 3rem 2rem;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+}
+
+.forum-news-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--accent-gold);
+    border-radius: 50%;
+    animation: forumSpin 0.8s linear infinite;
+}
+
+@keyframes forumSpin {
+    to { transform: rotate(360deg); }
+}
+
+.forum-news-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2.5rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 0.88rem;
+    transition: all 0.3s ease;
+}
+
+.forum-news-fallback:hover {
+    color: var(--accent-gold);
+}
+
+.forum-news-fallback-icon {
+    font-size: 1.1rem;
+}
+
+/* Mobile responsive - Forum */
+@media (max-width: 600px) {
+    .forum-news-section {
+        border-radius: 12px;
+    }
+    .forum-news-header {
+        padding: 0.85rem 1rem 0.6rem;
+    }
+    .forum-news-icon-img {
+        width: 26px;
+        height: 26px;
+    }
+    .forum-news-title h3 {
+        font-size: 0.92rem;
+    }
+    .forum-tabs {
+        padding: 0 0.5rem;
+    }
+    .forum-tab {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.75rem;
+    }
+    .forum-news-item {
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+    }
+    .forum-news-item:hover {
+        padding-left: 1.15rem;
+    }
+    .forum-news-item-title {
+        font-size: 0.82rem;
+    }
+    .forum-news-item-date {
+        font-size: 0.68rem;
+    }
+}
+
 /* ============================
    CHARACTER LIST PAGE STYLES
    ============================ */
