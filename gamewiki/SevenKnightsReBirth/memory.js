@@ -169,7 +169,7 @@
         $.btnStop.addEventListener('click', stopCapture);
         if ($.btnAutoDetect) $.btnAutoDetect.addEventListener('click', () => {
             grid = null; detectAttempts = 0; resetCards();
-            $.calibStat.textContent = '⏳ 再検出中...'; $.calibStat.classList.remove('detected');
+            $.calibStat.textContent = t('memory.status.redetecting'); $.calibStat.classList.remove('detected');
         });
         if ($.btnManualCalib) $.btnManualCalib.addEventListener('click', openModal);
         if ($.btnReset) $.btnReset.addEventListener('click', fullReset);
@@ -528,13 +528,13 @@
             if (detectAttempts % 5 === 1) {
                 grid = autoDetectGrid(offCanvas);
                 if (grid) {
-                    $.calibStat.textContent = '✅ カード位置を検出 → ベースライン取得中...';
+                    $.calibStat.textContent = t('memory.status.gridDetected');
                     $.calibStat.classList.add('detected');
                     resetCards();
                 } else if (detectAttempts > 60) {
-                    $.calibStat.textContent = '⚠️ 自動検出失敗 - 「手動調整」をお試しください';
+                    $.calibStat.textContent = t('memory.status.detectFailed');
                 } else {
-                    $.calibStat.textContent = `⏳ カード位置を検出中... (${detectAttempts})`;
+                    $.calibStat.textContent = `${t('memory.status.detectingGrid')} (${detectAttempts})`;
                 }
             }
             if (!grid) return;
@@ -545,7 +545,7 @@
         /* Step 2: ベースライン取得 */
         if (!baselineSet) {
             captureBaselines(imgData.data, vw, grid);
-            $.calibStat.textContent = '✅ ベースライン取得完了 - カードをめくると検出されます';
+            $.calibStat.textContent = t('memory.status.baselineDone');
             return;
         }
 
@@ -864,9 +864,9 @@
 
     function updateDetectionUI() {
         const n = cards.filter(c => c.state === S.FACE_UP).length;
-        if ($.detCount) $.detCount.textContent = `検出: ${n}/${TOTAL}`;
+        if ($.detCount) $.detCount.textContent = t('memory.detectionCount', {n, total: TOTAL});
         if (n > 0 && $.matchHelper) $.matchHelper.style.display = 'block';
-        if (n >= TOTAL && $.calibStat) $.calibStat.textContent = '🎉 全カード検出完了！';
+        if (n >= TOTAL && $.calibStat) $.calibStat.textContent = t('memory.status.allDetected');
     }
 
     /* ====== カードクリック → ペアハイライト ====== */
@@ -912,11 +912,11 @@
                 if (b) b.remove();
             });
         });
-        if ($.detCount) $.detCount.textContent = `検出: 0/${TOTAL}`;
+        if ($.detCount) $.detCount.textContent = t('memory.detectionCount', {n: 0, total: TOTAL});
         if ($.matchHelper) $.matchHelper.style.display = 'none';
         clearHighlights();
         if ($.calibStat) {
-            $.calibStat.textContent = '⏳ カード位置を検出中...';
+            $.calibStat.textContent = t('memory.status.detectingGrid');
             $.calibStat.classList.remove('detected');
         }
     }
@@ -971,8 +971,8 @@
             mctx.strokeRect(modalCorners[0].x, modalCorners[0].y,
                 modalCorners[1].x - modalCorners[0].x, modalCorners[1].y - modalCorners[0].y);
         }
-        $.calibCorner1.textContent = modalCorners[0] ? `左上: (${Math.round(modalCorners[0].x)}, ${Math.round(modalCorners[0].y)})` : '左上: 未設定';
-        $.calibCorner2.textContent = modalCorners[1] ? `右下: (${Math.round(modalCorners[1].x)}, ${Math.round(modalCorners[1].y)})` : '右下: 未設定';
+        $.calibCorner1.textContent = modalCorners[0] ? `${t('memory.modal.topLeft').split(':')[0]}: (${Math.round(modalCorners[0].x)}, ${Math.round(modalCorners[0].y)})` : t('memory.modal.topLeft');
+        $.calibCorner2.textContent = modalCorners[1] ? `${t('memory.modal.bottomRight').split(':')[0]}: (${Math.round(modalCorners[1].x)}, ${Math.round(modalCorners[1].y)})` : t('memory.modal.bottomRight');
         $.btnCalibApply.disabled = modalCorners.length < 2;
     }
 
@@ -985,7 +985,7 @@
         const cellW = w / COLS, cellH = h / ROWS;
         grid = { x: x0, y: y0, cellW, cellH, cardW: cellW * 0.88, cardH: cellH * 0.9 };
         resetCards();
-        $.calibStat.textContent = '✅ 手動設定完了 → ベースライン取得中...';
+        $.calibStat.textContent = t('memory.status.manualDone');
         $.calibStat.classList.add('detected');
         closeModal();
     }
