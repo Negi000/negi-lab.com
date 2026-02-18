@@ -32,6 +32,9 @@ function detectBrowserLanguage() {
         'en-US': 'en',
         'en-GB': 'en',
         'en-AU': 'en',
+        'en-CA': 'en',
+        'en-NZ': 'en',
+        'en-IN': 'en',
         'ko': 'ko',
         'ko-KR': 'ko',
         'zh': 'zh-Hans',      // 簡体字をデフォルト
@@ -42,7 +45,39 @@ function detectBrowserLanguage() {
         'zh-HK': 'zh-Hant',
         'zh-Hant': 'zh-Hant',
         'th': 'th',
-        'th-TH': 'th'
+        'th-TH': 'th',
+        'de': 'de',
+        'de-DE': 'de',
+        'de-AT': 'de',
+        'de-CH': 'de',
+        'es': 'es',
+        'es-ES': 'es',
+        'es-MX': 'es',
+        'es-AR': 'es',
+        'es-CO': 'es',
+        'es-CL': 'es',
+        'fr': 'fr',
+        'fr-FR': 'fr',
+        'fr-CA': 'fr',
+        'fr-BE': 'fr',
+        'fr-CH': 'fr',
+        'id': 'id',
+        'id-ID': 'id',
+        'it': 'it',
+        'it-IT': 'it',
+        'ms': 'ms',
+        'ms-MY': 'ms',
+        'ms-BN': 'ms',
+        'nl': 'nl',
+        'nl-NL': 'nl',
+        'nl-BE': 'nl',
+        'pt': 'pt',
+        'pt-BR': 'pt',
+        'pt-PT': 'pt',
+        'ru': 'ru',
+        'ru-RU': 'ru',
+        'tr': 'tr',
+        'tr-TR': 'tr'
     };
     
     // navigator.languages (優先順位付きリスト) または navigator.language を使用
@@ -64,31 +99,123 @@ function detectBrowserLanguage() {
 }
 
 /**
+ * 言語コードからOpen Graph localeへのマッピング
+ */
+const OG_LOCALE_MAP = {
+    'ja': 'ja_JP',
+    'en': 'en_US',
+    'ko': 'ko_KR',
+    'zh-Hans': 'zh_CN',
+    'zh-Hant': 'zh_TW',
+    'th': 'th_TH',
+    'de': 'de_DE',
+    'es': 'es_ES',
+    'fr': 'fr_FR',
+    'id': 'id_ID',
+    'it': 'it_IT',
+    'ms': 'ms_MY',
+    'nl': 'nl_NL',
+    'pt': 'pt_BR',
+    'ru': 'ru_RU',
+    'tr': 'tr_TR'
+};
+
+/**
+ * 現在のページのベースURL（?lang=なし）を取得
+ * canonical linkから正確なURLを取得する
+ */
+function getPageBaseUrl() {
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+        return canonical.getAttribute('href').split('?')[0];
+    }
+    // フォールバック: 現在のURLから構築
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.hash = '';
+    return url.toString();
+}
+
+/**
+ * hreflangタグを全有効言語分、動的に生成・更新
+ * languages.jsonのenabledな言語すべてに対応するhreflangを出力
+ */
+function updateHreflangTags() {
+    if (!I18N_LANGUAGES) return;
+    
+    const enabledLangs = I18N_LANGUAGES.languages.filter(l => l.enabled);
+    const baseUrl = getPageBaseUrl();
+    
+    // 既存のhreflangタグをすべて削除
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
+    
+    // 全有効言語のhreflangを追加
+    enabledLangs.forEach(lang => {
+        const link = document.createElement('link');
+        link.rel = 'alternate';
+        link.hreflang = lang.code;
+        link.href = lang.code === I18N_LANGUAGES.default 
+            ? baseUrl 
+            : `${baseUrl}?lang=${lang.code}`;
+        document.head.appendChild(link);
+    });
+    
+    // x-default（デフォルト言語なし = 英語版にフォールバック）
+    const xDefault = document.createElement('link');
+    xDefault.rel = 'alternate';
+    xDefault.hreflang = 'x-default';
+    xDefault.href = `${baseUrl}?lang=en`;
+    document.head.appendChild(xDefault);
+}
+
+/**
+ * og:locale:alternateを全有効言語分、動的に更新
+ */
+function updateOgLocaleAlternates(currentLang) {
+    if (!I18N_LANGUAGES) return;
+    
+    const enabledLangs = I18N_LANGUAGES.languages.filter(l => l.enabled);
+    
+    // 既存のog:locale:alternateをすべて削除
+    document.querySelectorAll('meta[property="og:locale:alternate"]').forEach(el => el.remove());
+    
+    // 現在の言語以外のlocale alternateを追加
+    enabledLangs.forEach(lang => {
+        if (lang.code === currentLang) return;
+        const ogLocale = OG_LOCALE_MAP[lang.code];
+        if (!ogLocale) return;
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', 'og:locale:alternate');
+        meta.setAttribute('content', ogLocale);
+        document.head.appendChild(meta);
+    });
+}
+
+/**
+ * JSON-LD構造化データのinLanguageを全有効言語に更新
+ */
+function updateJsonLdLanguages() {
+    if (!I18N_LANGUAGES) return;
+    
+    const enabledLangs = I18N_LANGUAGES.languages.filter(l => l.enabled).map(l => l.code);
+    const scriptTag = document.querySelector('script[type="application/ld+json"]');
+    if (!scriptTag) return;
+    
+    try {
+        const data = JSON.parse(scriptTag.textContent);
+        data.inLanguage = enabledLangs;
+        scriptTag.textContent = JSON.stringify(data);
+    } catch (e) {
+        console.warn('[i18n] Failed to update JSON-LD:', e);
+    }
+}
+
+/**
  * SEOメタタグを言語に応じて動的に更新
  * @param {string} lang - 言語コード
  */
 function updateSEOMetaTags(lang) {
-    // 言語コードからOpen Graph localeへのマッピング
-    const localeMap = {
-        'ja': 'ja_JP',
-        'en': 'en_US',
-        'ko': 'ko_KR',
-        'zh-Hans': 'zh_CN',
-        'zh-Hant': 'zh_TW',
-        'th': 'th_TH',
-        'de': 'de_DE',
-        'es': 'es_ES',
-        'fr': 'fr_FR',
-        'id': 'id_ID',
-        'it': 'it_IT',
-        'ms': 'ms_MY',
-        'nl': 'nl_NL',
-        'pt': 'pt_BR',
-        'ru': 'ru_RU',
-        'tr': 'tr_TR'
-    };
-    
-    const locale = localeMap[lang] || 'ja_JP';
+    const locale = OG_LOCALE_MAP[lang] || 'ja_JP';
     
     // ui.jsonから翻訳を取得
     const siteTitle = I18N_UI?.['site.title']?.[lang] || I18N_UI?.['site.title']?.['en'] || 'Seven Knights Re:Birth Wiki';
@@ -143,16 +270,25 @@ function updateSEOMetaTags(lang) {
     // canonical URL を言語パラメータ付きで更新
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
-        const baseUrl = canonical.href.split('?')[0];
+        const baseUrl = canonical.getAttribute('href').split('?')[0];
         canonical.href = lang === 'ja' ? baseUrl : `${baseUrl}?lang=${lang}`;
     }
     
     // og:url も更新
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) {
-        const baseUrl = ogUrl.content.split('?')[0];
+        const baseUrl = ogUrl.getAttribute('content').split('?')[0];
         ogUrl.setAttribute('content', lang === 'ja' ? baseUrl : `${baseUrl}?lang=${lang}`);
     }
+    
+    // hreflangタグを全有効言語分、動的に生成
+    updateHreflangTags();
+    
+    // og:locale:alternateを全有効言語分追加
+    updateOgLocaleAlternates(lang);
+    
+    // JSON-LD構造化データのinLanguageを更新
+    updateJsonLdLanguages();
 }
 
 /**

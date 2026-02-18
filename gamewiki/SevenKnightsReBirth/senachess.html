@@ -11,9 +11,43 @@
     <meta name="theme-color" content="#e60012">
     <meta name="description" content="セナチェス確率計算ツール - ウィッシュリストキャラがどのマスに隠れているか確率を計算。Seven Knights Re:Birth セブンナイツリバース攻略Wiki。">
     <meta name="keywords" content="SenaChess, セナチェス, 確率計算, probability calculator, Seven Knights Re:Birth, セブンナイツリバース, wishlist, ウィッシュリスト">
+    <meta name="author" content="Seven Knights Re:Birth Wiki">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SenaChess Probability Calculator - Seven Knights Re:Birth Wiki">
+    <meta property="og:description" content="Calculate the probability of finding your wishlist character in Seven Knights Re:Birth SenaChess mini-game.">
+    <meta property="og:url" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html">
+    <meta property="og:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/ogp_image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Seven Knights Re:Birth Wiki">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="th_TH">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="ms_MY">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="tr_TR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="SenaChess Probability Calculator - Seven Knights Re:Birth Wiki">
+    <meta name="twitter:description" content="Calculate the probability of finding your wishlist character in SenaChess.">
+    <meta name="twitter:image" content="https://negi-lab.com/gamewiki/SevenKnightsReBirth/images/icon/ogp_image.webp">
     
     <!-- 多言語対応 hreflang -->
-    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ja">
+    <link rel="alternate" hreflang="ja" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html">
     <link rel="alternate" hreflang="en" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=en">
     <link rel="alternate" hreflang="ko" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ko">
     <link rel="alternate" hreflang="zh-Hans" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=zh-Hans">
@@ -29,7 +63,7 @@
     <link rel="alternate" hreflang="pt" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=pt">
     <link rel="alternate" hreflang="ru" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=ru">
     <link rel="alternate" hreflang="tr" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=tr">
-    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html">
+    <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html?lang=en">
     
     <!-- 構造化データ -->
     <script type="application/ld+json">
@@ -46,7 +80,29 @@
             "@type": "WebSite",
             "name": "Seven Knights Re:Birth Wiki",
             "url": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/"
+        },
+        "about": {
+            "@type": "VideoGame",
+            "name": "Seven Knights Re:Birth",
+            "alternateName": ["セブンナイツ リバース", "세븐나이츠 리버스", "7K ReBirth"],
+            "gamePlatform": ["Android", "iOS"],
+            "genre": ["RPG", "Turn-based RPG"],
+            "publisher": {"@type": "Organization", "name": "Netmarble"}
+        },
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".page-title", ".page-subtitle", "meta[name='description']"]
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Seven Knights Re:Birth Wiki", "item": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/"},
+            {"@type": "ListItem", "position": 2, "name": "SenaChess", "item": "https://negi-lab.com/gamewiki/SevenKnightsReBirth/senachess.html"}
+        ]
     }
     </script>
     
@@ -269,5 +325,65 @@
     </div>
     
     <script src="senachess.js"></script>
+
+    <!-- PWA Install Banner -->
+    <div id="pwa-install-banner" class="pwa-install-banner" role="alert">
+        <img src="images/icon/rogo.webp" alt="" class="pwa-install-banner-icon">
+        <div class="pwa-install-banner-text">
+            <div class="pwa-install-banner-title" data-i18n="pwa.install.title">アプリとして追加</div>
+            <div class="pwa-install-banner-desc" data-i18n="pwa.install.desc">ホーム画面に追加してオフラインでも利用</div>
+        </div>
+        <button id="pwa-install-btn" class="pwa-install-btn" data-i18n="pwa.install.button">インストール</button>
+        <button id="pwa-install-dismiss" class="pwa-install-dismiss" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Rotation Lock Overlay (PWA standalone mode only) -->
+    <div class="rotation-lock-overlay" id="rotation-lock-overlay">
+        <div class="rotate-icon">📱</div>
+        <div class="rotate-text" data-i18n="pwa.rotate.text">縦画面でご利用ください</div>
+    </div>
+
+    <script>
+    // PWA Install Promotion
+    (function() {
+        let deferredPrompt = null;
+        const banner = document.getElementById('pwa-install-banner');
+        const installBtn = document.getElementById('pwa-install-btn');
+        const dismissBtn = document.getElementById('pwa-install-dismiss');
+        if (!banner || !installBtn || !dismissBtn) return;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        if (isStandalone) return;
+        const dismissed = localStorage.getItem('pwa_install_dismissed');
+        if (dismissed && (Date.now() - parseInt(dismissed)) < 7 * 24 * 60 * 60 * 1000) return;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            setTimeout(() => { if (deferredPrompt) banner.classList.add('visible'); }, 30000);
+        });
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            banner.classList.remove('visible');
+        });
+        dismissBtn.addEventListener('click', () => {
+            banner.classList.remove('visible');
+            localStorage.setItem('pwa_install_dismissed', Date.now().toString());
+        });
+        window.addEventListener('appinstalled', () => {
+            banner.classList.remove('visible');
+            deferredPrompt = null;
+        });
+    })();
+    // Screen Orientation Lock (PWA standalone mode)
+    (function() {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        if (!isStandalone) return;
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('portrait').catch(() => {});
+        }
+    })();
+    </script>
 </body>
 </html>
