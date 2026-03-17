@@ -4,76 +4,76 @@
       "id": "101616",
       "name": "관우",
       "subname": "무안왕",
-      "affiliation": "",
-      "flavor": "",
+      "affiliation": "삼국호걸",
+      "flavor": "이후, 세상을 평정하면서 민중의 지지를 받아 왕으로 추대되었고 그 이름을 무안왕이라 했다. 관우는 그에 보답하기 위해 세상을 안전하고 평안하게 통치하였다.",
       "rarity": "legendary",
       "star": "6",
       "maxStar": "6",
-      "role": "3",
+      "role": "5",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
     },
     "stats": {
-      "Physical Attack": "116",
+      "Physical Attack": "211",
       "Magical Attack": "0",
-      "Defense": "135",
-      "HP": "773",
-      "Speed": "19",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
       "Critical Rate": "50"
     },
     "growth": {
       "attackType": "Physical Attack",
       "level1": {
-        "Physical Attack": 116,
-        "Defense": 135,
-        "HP": 773
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
       },
       "level30": {
-        "Physical Attack": 522,
-        "Defense": 657,
-        "HP": 3470
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
       },
       "levelUpBonus": {
-        "Physical Attack": 14,
-        "Defense": 18,
-        "HP": 93
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
       },
       "reinforceBonus": {
-        "Physical Attack": 41,
-        "Defense": 47,
-        "HP": 271
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
       },
       "reinforceStages": {
         "+0": {
-          "Physical Attack": 522,
-          "Defense": 657,
-          "HP": 3470
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
         },
         "+1": {
-          "Physical Attack": 563,
-          "Defense": 704,
-          "HP": 3741
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
         },
         "+2": {
-          "Physical Attack": 604,
-          "Defense": 751,
-          "HP": 4012
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
         },
         "+3": {
-          "Physical Attack": 645,
-          "Defense": 798,
-          "HP": 4283
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
         },
         "+4": {
-          "Physical Attack": 686,
-          "Defense": 845,
-          "HP": 4554
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
         },
         "+5": {
-          "Physical Attack": 727,
-          "Defense": 892,
-          "HP": 4825
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
         }
       },
       "reinforceCosts": [
@@ -106,39 +106,39 @@
       "Normal Attack": {
         "id": "10161601",
         "name": "",
-        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
+        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\n - 회복 불가 [30% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 효과 추가 : 회복 불가 [30% 확률] [2턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016101.webp"
       },
       "Skill 1": {
         "id": "10161602",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 85s",
+        "name": "청룡월파참",
+        "desc": "단일 적군\n - 버프 해제 3개 [100% 확률]\n - 물리 공격력의 390%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 470%\nTranscend Lv.6 Effect\n - 효과 추가 : 치명타 확률 100% 추가 적용",
+        "cooltime": "⏱️ CT: 68s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016102.webp"
       },
       "Skill 2": {
         "id": "10161603",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 84s",
+        "name": "진두지휘",
+        "desc": "모든 아군\n - 디버프 해제 2개\n - 해제한 디버프 1개당 지속 회복 [2턴 지속]\n - 모든 피해 면역 [1턴 지속]\n - 아군에게 해제 가능한 디버프가 있어야 사용 가능\nSkill Enhancement Effect\n - 효과 추가 : 모든 피해 면역 [1턴 지속]",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016103.webp"
       },
       "Passive": {
         "id": "10161604",
-        "name": "",
-        "desc": "자신",
+        "name": "만인지적",
+        "desc": "모든 아군\n - 감전 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 감전 면역 [2턴 지속]\n - 아군 후열\n - 물리 피해량 증가 [2턴 지속]\n - 자신의 모든 공격 2회 발동 시 물리 피해량 증가 [2턴 지속]\n - 물리 피해량 증가 [3턴 지속]\n - 자신의 모든 공격 2회 발동 시 물리 피해량 증가 [3턴 지속]\nSkill Enhancement Effect\n - 턴 상승 : 물리 피해량 증가 [3턴 지속]\nTranscend Lv.2 Effect\n - 아군 후열\n - 효과 추가 : 치명타 피해 증가 40% [3턴 지속]\n - 효과 추가 : 자신의 모든 공격 2회 발동 시 치명타 피해 증가 40% [3턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016104.webp"
       }
     },
     "transcendence": {
-      "transcend_1": "방어력이 12% 상승합니다.",
-      "transcend_2": "방어력이 6% 상승합니다.",
+      "transcend_1": "모든 공격력이 12% 상승합니다.",
+      "transcend_2": "모든 공격력이 6% 상승합니다.",
       "transcend_3": "생명력이 18% 상승합니다.",
-      "transcend_4": "막기 확률이 18% 상승합니다.",
-      "transcend_5": "방어력이 12% 상승합니다.",
-      "transcend_6": "방어력이 6% 상승합니다.",
+      "transcend_4": "약점 공격 확률이 20% 상승합니다.",
+      "transcend_5": "모든 공격력이 12% 상승합니다.",
+      "transcend_6": "모든 공격력이 6% 상승합니다.",
       "transcend_7": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
       "transcend_8": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
       "transcend_9": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
@@ -147,6 +147,17 @@
       "transcend_12": "모든 공격력, 방어력, 생명력이 2% 상승합니다."
     },
     "profile": {
+      "cv": "현경수",
+      "species": "인간",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "05 / 13",
+      "age": "71",
+      "height": "193",
+      "weight": "103",
+      "constellation": "황소자리",
+      "likes": "제갈량, 조운, 술, 복숭아, 대추, 바둑, 충의",
+      "dislikes": "비겁함, 거짓말, 너무 단 음식",
       "story": "이후, 세상을 평정하면서 민중의 지지를 받아 왕으로 추대되었고 그 이름을 무안왕이라 했다. 관우는 그에 보답하기 위해 세상을 안전하고 평안하게 통치하였다."
     }
   },
@@ -154,77 +165,77 @@
     "basicInfo": {
       "id": "101615",
       "name": "관우",
-      "subname": "PCTable.PcSubName_GuanYu_5",
-      "affiliation": "",
-      "flavor": "",
+      "subname": "오호대장군",
+      "affiliation": "삼국호걸",
+      "flavor": "점차 세상의 안정을 찾으려는 세력이 늘어나면서 그들과 합류하였고 그중 5명의 뛰어난 장군이 있었다. 그들을 오호대장군이라 불렀다. 그 가운데, 가장 실력이 뛰어났다.",
       "rarity": "legendary",
       "star": "5",
       "maxStar": "6",
-      "role": "3",
+      "role": "5",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
     },
     "stats": {
-      "Physical Attack": "83",
+      "Physical Attack": "151",
       "Magical Attack": "0",
-      "Defense": "96",
-      "HP": "552",
-      "Speed": "17",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
       "Critical Rate": "50"
     },
     "growth": {
       "attackType": "Physical Attack",
       "level1": {
-        "Physical Attack": 83,
-        "Defense": 96,
-        "HP": 552
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
       },
       "level30": {
-        "Physical Attack": 373,
-        "Defense": 473,
-        "HP": 2466
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
       },
       "levelUpBonus": {
-        "Physical Attack": 10,
-        "Defense": 13,
-        "HP": 66
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
       },
       "reinforceBonus": {
-        "Physical Attack": 28,
-        "Defense": 34,
-        "HP": 193
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
       },
       "reinforceStages": {
         "+0": {
-          "Physical Attack": 373,
-          "Defense": 473,
-          "HP": 2466
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
         },
         "+1": {
-          "Physical Attack": 401,
-          "Defense": 507,
-          "HP": 2659
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
         },
         "+2": {
-          "Physical Attack": 429,
-          "Defense": 541,
-          "HP": 2852
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
         },
         "+3": {
-          "Physical Attack": 457,
-          "Defense": 575,
-          "HP": 3045
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
         },
         "+4": {
-          "Physical Attack": 485,
-          "Defense": 609,
-          "HP": 3238
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
         },
         "+5": {
-          "Physical Attack": 513,
-          "Defense": 643,
-          "HP": 3431
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
         }
       },
       "reinforceCosts": [
@@ -263,106 +274,117 @@
       },
       "Skill 1": {
         "id": "10161502",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 85s",
+        "name": "청룡월파참",
+        "desc": "단일 적군\n - 버프 해제 2개 [100% 확률]\n - 물리 공격력의 350%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 350%",
+        "cooltime": "⏱️ CT: 68s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016102.webp"
       },
       "Skill 2": {
         "id": "10161503",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 84s",
+        "name": "진두지휘",
+        "desc": "모든 아군\n - 디버프 해제 1개\n - 해제한 디버프 1개당 지속 회복 [2턴 지속]\n - 아군에게 해제 가능한 디버프가 있어야 사용 가능",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016103.webp"
       },
       "Passive": {
         "id": "10161504",
-        "name": "",
-        "desc": "자신",
+        "name": "만인지적",
+        "desc": "모든 아군\n - 감전 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 감전 면역 [2턴 지속]\n - 아군 후열\n - 물리 피해량 증가 [2턴 지속]\n - 자신의 모든 공격 2회 발동 시 물리 피해량 증가 [2턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016104.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": ""
+      "cv": "현경수",
+      "species": "인간",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "05 / 13",
+      "age": "71",
+      "height": "193",
+      "weight": "103",
+      "constellation": "황소자리",
+      "likes": "제갈량, 조운, 술, 복숭아, 대추, 바둑, 충의",
+      "dislikes": "비겁함, 거짓말, 너무 단 음식",
+      "story": "점차 세상의 안정을 찾으려는 세력이 늘어나면서 그들과 합류하였고 그중 5명의 뛰어난 장군이 있었다. 그들을 오호대장군이라 불렀다. 그 가운데, 가장 실력이 뛰어났다."
     }
   },
   {
     "basicInfo": {
       "id": "101614",
       "name": "관우",
-      "subname": "PCTable.PcSubName_GuanYu_4",
-      "affiliation": "",
-      "flavor": "",
+      "subname": "운장",
+      "affiliation": "삼국호걸",
+      "flavor": "세븐나이츠의 등장 이후, 세상이 불안하여 어지러웠다. 그 틈을 타서 자신의 세상을 만들려는 불순 세력이 등장하였고 그들을 토벌하여 세상의 안정을 찾으려 한다.",
       "rarity": "legendary",
       "star": "4",
       "maxStar": "6",
-      "role": "3",
+      "role": "5",
       "range": "1",
       "weaponType": "101",
       "unreleased": true
     },
     "stats": {
-      "Physical Attack": "59",
+      "Physical Attack": "108",
       "Magical Attack": "0",
-      "Defense": "68",
-      "HP": "394",
-      "Speed": "15",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
       "Critical Rate": "50"
     },
     "growth": {
       "attackType": "Physical Attack",
       "level1": {
-        "Physical Attack": 59,
-        "Defense": 68,
-        "HP": 394
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
       },
       "level30": {
-        "Physical Attack": 262,
-        "Defense": 329,
-        "HP": 1757
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
       },
       "levelUpBonus": {
-        "Physical Attack": 7,
-        "Defense": 9,
-        "HP": 47
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
       },
       "reinforceBonus": {
-        "Physical Attack": 21,
-        "Defense": 24,
-        "HP": 138
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
       },
       "reinforceStages": {
         "+0": {
-          "Physical Attack": 262,
-          "Defense": 329,
-          "HP": 1757
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
         },
         "+1": {
-          "Physical Attack": 283,
-          "Defense": 353,
-          "HP": 1895
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
         },
         "+2": {
-          "Physical Attack": 304,
-          "Defense": 377,
-          "HP": 2033
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
         },
         "+3": {
-          "Physical Attack": 325,
-          "Defense": 401,
-          "HP": 2171
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
         },
         "+4": {
-          "Physical Attack": 346,
-          "Defense": 425,
-          "HP": 2309
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
         },
         "+5": {
-          "Physical Attack": 367,
-          "Defense": 449,
-          "HP": 2447
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
         }
       },
       "reinforceCosts": [
@@ -401,29 +423,40 @@
       },
       "Skill 1": {
         "id": "10161402",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 85s",
+        "name": "청룡월파참",
+        "desc": "단일 적군\n - 버프 해제 1개 [100% 확률]\n - 물리 공격력의 315%만큼 1회 방어 무시 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 315%",
+        "cooltime": "⏱️ CT: 68s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016102.webp"
       },
       "Skill 2": {
         "id": "10161403",
-        "name": "",
-        "desc": "적군 3명",
-        "cooltime": "⏱️ CT: 84s",
+        "name": "진두지휘",
+        "desc": "모든 아군\n - 디버프 해제 1개\n - 해제한 디버프 1개당 지속 회복 [2턴 지속]\n - 아군에게 해제 가능한 디버프가 있어야 사용 가능",
+        "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016103.webp"
       },
       "Passive": {
         "id": "10161404",
-        "name": "",
-        "desc": "자신",
+        "name": "만인지적",
+        "desc": "모든 아군\n - 감전 면역 [2턴 지속]\n - 자신의 기본 공격 1회 발동 시 감전 면역 [2턴 지속]\n - 아군 후열\n - 물리 피해량 증가 [2턴 지속]\n - 자신의 모든 공격 2회 발동 시 물리 피해량 증가 [2턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016104.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": ""
+      "cv": "현경수",
+      "species": "인간",
+      "gender": "1",
+      "bloodType": "3",
+      "birthday": "05 / 13",
+      "age": "71",
+      "height": "193",
+      "weight": "103",
+      "constellation": "황소자리",
+      "likes": "제갈량, 조운, 술, 복숭아, 대추, 바둑, 충의",
+      "dislikes": "비겁함, 거짓말, 너무 단 음식",
+      "story": "세븐나이츠의 등장 이후, 세상이 불안하여 어지러웠다. 그 틈을 타서 자신의 세상을 만들려는 불순 세력이 등장하였고 그들을 토벌하여 세상의 안정을 찾으려 한다."
     }
   }
 ]

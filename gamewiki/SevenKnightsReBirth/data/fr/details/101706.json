@@ -4,23 +4,456 @@
       "id": "101706",
       "name": "Reginleif",
       "subname": "Gardien des vœux",
-      "affiliation": "",
+      "affiliation": "Gardiens Célestes",
       "flavor": "Après la mort de Freyr, un [glossaryHero] du Royaume Céleste, même Freyja a disparu des yeux du public. Après que Reginleif ait été guérie et ait repris le contrôle de ses pouvoirs magiques, elle a décidé de consacrer tous ses efforts à défendre le Royaume Céleste selon les derniers vœux de Freyr.",
-      "rarity": "legendary",
+      "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
-      "role": "0",
-      "range": "0",
-      "weaponType": "0",
-      "unreleased": true
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
     },
-    "stats": {},
-    "growth": null,
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
     "experience": {
       "maxLevelTotal": 123900
     },
-    "skills": {},
+    "skills": {
+      "Normal Attack": {
+        "id": "10170601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts équivalents à 130 % de l'ATQ MAG 1 fois.\n - 100 % de chance d'infliger 1 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ MAG\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 2 Ennemis",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017001.webp"
+      },
+      "Skill 1": {
+        "id": "10170602",
+        "name": "Avènement de la lumière",
+        "desc": "Tous les ennemis\n - Pour chaque affaiblissement sur la cible, inflige des dégâts supplémentaires égaux à 9 % de l'ATQ MAG à chaque attaque. [Max 8 pile(s)]\n - Inflige des dégâts équivalents à 65 % de l'ATQ MAG 2 fois. [30% supplémentaire de Taux de coup critique]\n - Inflige des dégâts équivalents à 75 % de l'ATQ MAG 2 fois. [30% supplémentaire de Taux de coup critique]\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ MAG\nTranscend Lv.6 Effect\n - Gain d'effet : 100 % Taux de coup critique supplémentaire",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017002.webp"
+      },
+      "Skill 2": {
+        "id": "10170603",
+        "name": "Fissure de l'univers",
+        "desc": "Tous les ennemis\n - Inflige des dégâts égaux à 42 % de l'ATQ MAG plus 5 % des PV Max de la cible 3 fois. [30% supplémentaire de Taux de coup critique] (Dégâts basés sur les PV limités à 50 % de l'Attaque du lanceur.)\n - A 55 % de chances d'infliger Paralysie [Durée : 2 tour(s)]\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Ajoute un effet : 55 % de chance d'infliger une Paralysie. [Durée : 2 Tour(s)]\nTranscend Lv.6 Effect\n - Gain d'effet : 100 % Taux de coup critique supplémentaire",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017003.webp"
+      },
+      "Passive": {
+        "id": "10170604",
+        "name": "Secret de l'harmonie",
+        "desc": "Soi-même\n - Confère Immunité à tous les dégâts lorsque les PV tombent à 70 % ou moins [Durée : 2 tour(s)] (1 fois par combat)\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Accorde Jugement Final lors de l'obtention de Immortalité. [Durée : 2 Tour(s)]\n - Tous les ennemis\n - Inflige Réduction de défense [Toujours actif]\n - Inflige Réduction des soins reçus [Toujours actif]\n - Tous les alliés\n - Soigne les PV équivalents à 32 % de l'ATQ MAG du lanceur chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)\n - Accorde 1 Suppression de malus chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)\nSkill Enhancement Effect\n - Ajout d'effet : Réduction de défense 24 % [Toujours actif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le Taux d'attaque de point faible de 20 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "今野 優月",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "28 / 10",
+      "age": "0",
+      "height": "174",
+      "weight": "52",
+      "constellation": "Scorpion",
+      "likes": "Freyja, Freyr, des choses élégantes, son Offrir un cadeau de Freyja, steak, hydromel, paix, harmonie",
+      "dislikes": "Des choses qui perturbent la paix, des choses qui manquent de classe, de la nourriture bon marché, le chaos.",
+      "story": "Après la mort de Freyr, un [glossaryHero] du Royaume Céleste, même Freyja a disparu des yeux du public. Après que Reginleif ait été guérie et ait repris le contrôle de ses pouvoirs magiques, elle a décidé de consacrer tous ses efforts à défendre le Royaume Céleste selon les derniers vœux de Freyr."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101705",
+      "name": "Reginleif",
+      "subname": "Ami d'enfance",
+      "affiliation": "Gardiens Célestes",
+      "flavor": "Grâce à ses relations familiales, Reginleif se fit deux Amis, Freyr et Freyja.  \\nMalgré leurs personnalités différentes, tous trois devinrent extrêmement proches Amis, chacun comblant les lacunes des autres.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10170501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ MAG 1 fois.\n - 100 % de chance d'infliger 1 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017001.webp"
+      },
+      "Skill 1": {
+        "id": "10170502",
+        "name": "Avènement de la lumière",
+        "desc": "Tous les ennemis\n - Pour chaque affaiblissement sur la cible, inflige des dégâts supplémentaires égaux à 9 % de l'ATQ MAG à chaque attaque. [Max 8 pile(s)]\n - Inflige des dégâts équivalents à 60 % de l'ATQ MAG 2 fois. [30% supplémentaire de Taux de coup critique]\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 30%",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017002.webp"
+      },
+      "Skill 2": {
+        "id": "10170503",
+        "name": "Fissure de l'univers",
+        "desc": "Tous les ennemis\n - Inflige des dégâts égaux à 38 % de l'ATQ MAG plus 4 % des PV Max de la cible 3 fois. [30% supplémentaire de Taux de coup critique] (Dégâts basés sur les PV limités à 50 % de l'Attaque du lanceur.)\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 30%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017003.webp"
+      },
+      "Passive": {
+        "id": "10170504",
+        "name": "Secret de l'harmonie",
+        "desc": "Soi-même\n - Confère Immunité à tous les dégâts lorsque les PV tombent à 70 % ou moins [Durée : 2 tour(s)] (1 fois par combat)\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Accorde Jugement Final lors de l'obtention de Immortalité. [Durée : 2 Tour(s)]\n - Tous les ennemis\n - Inflige Réduction des soins reçus [Toujours actif]\n - Tous les alliés\n - Soigne les PV équivalents à 28 % de l'ATQ MAG du lanceur chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)\n - Accorde 1 Suppression de malus chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017004.webp"
+      }
+    },
     "transcendence": {},
-    "profile": {}
+    "profile": {
+      "cv": "今野 優月",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "28 / 10",
+      "age": "0",
+      "height": "174",
+      "weight": "52",
+      "constellation": "Scorpion",
+      "likes": "Freyja, Freyr, des choses élégantes, son Offrir un cadeau de Freyja, steak, hydromel, paix, harmonie",
+      "dislikes": "Des choses qui perturbent la paix, des choses qui manquent de classe, de la nourriture bon marché, le chaos.",
+      "story": "Grâce à ses relations familiales, Reginleif se fit deux Amis, Freyr et Freyja.  \\nMalgré leurs personnalités différentes, tous trois devinrent extrêmement proches Amis, chacun comblant les lacunes des autres."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101704",
+      "name": "Reginleif",
+      "subname": "Fleur de serre",
+      "affiliation": "Gardiens Célestes",
+      "flavor": "Née comme l’unique fille d’une prestigieuse famille du Royaume Céleste, Reginleif possédait une puissante Magie mais était frêle et maladive.  \\nElle passa son enfance à recevoir des soins, confinée dans sa chambre et complètement coupée du Monde extérieur.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10170401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ MAG 1 fois.\n - 100 % de chance d'infliger 1 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017001.webp"
+      },
+      "Skill 1": {
+        "id": "10170402",
+        "name": "Avènement de la lumière",
+        "desc": "Tous les ennemis\n - Pour chaque affaiblissement sur la cible, inflige des dégâts supplémentaires égaux à 9 % de l'ATQ MAG à chaque attaque. [Max 8 pile(s)]\n - Inflige des dégâts équivalents à 55 % de l'ATQ MAG 2 fois. [30% supplémentaire de Taux de coup critique]\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 30%",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017002.webp"
+      },
+      "Skill 2": {
+        "id": "10170403",
+        "name": "Fissure de l'univers",
+        "desc": "Tous les ennemis\n - Inflige des dégâts égaux à 35 % de l'ATQ MAG plus 3 % des PV Max de la cible 3 fois. [30% supplémentaire de Taux de coup critique] (Dégâts basés sur les PV limités à 50 % de l'Attaque du lanceur.)\n - 100 % de chance d'infliger 2 pile(s) de Vulnérabilité à la magie. [Max 4 pile(s)] (Si déployé dans une équipe avec 5 ou plus de Héros magiques.)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 30%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017003.webp"
+      },
+      "Passive": {
+        "id": "10170404",
+        "name": "Secret de l'harmonie",
+        "desc": "Soi-même\n - Confère Immunité à tous les dégâts lorsque les PV tombent à 70 % ou moins [Durée : 2 tour(s)] (1 fois par combat)\n - Se réanime avec Immortalité en cas de mort [Durée : 2 tour(s)] (1 fois par combat)\n - Accorde Jugement Final lors de l'obtention de Immortalité. [Durée : 2 Tour(s)]\n - Tous les ennemis\n - Inflige Réduction des soins reçus [Toujours actif]\n - Tous les alliés\n - Soigne les PV équivalents à 26 % de l'ATQ MAG du lanceur chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)\n - Accorde 1 Suppression de malus chaque fois qu'une attaque basique est utilisée 2 fois ou qu'une compétence est utilisée 1 fois. (Si déployé dans une équipe avec 5 Héros magiques ou plus.)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "今野 優月",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "28 / 10",
+      "age": "0",
+      "height": "174",
+      "weight": "52",
+      "constellation": "Scorpion",
+      "likes": "Freyja, Freyr, des choses élégantes, son Offrir un cadeau de Freyja, steak, hydromel, paix, harmonie",
+      "dislikes": "Des choses qui perturbent la paix, des choses qui manquent de classe, de la nourriture bon marché, le chaos.",
+      "story": "Née comme l’unique fille d’une prestigieuse famille du Royaume Céleste, Reginleif possédait une puissante Magie mais était frêle et maladive.  \\nElle passa son enfance à recevoir des soins, confinée dans sa chambre et complètement coupée du Monde extérieur."
+    }
   }
 ]
