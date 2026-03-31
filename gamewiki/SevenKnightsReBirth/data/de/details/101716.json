@@ -4,25 +4,456 @@
       "id": "101716",
       "name": "Randgrid",
       "subname": "Letzter Stolz",
-      "affiliation": "",
-      "flavor": "Radgrids jüngere Schwester, die ein triumphales Comeback als Schlachtfeldkommandantin feierte, weigerte sich, den Titel der Nachfolgerin bei ihrer Rückkehr zurückzufordern. Als sie auf die Frage nach dem Warum ein gefährliches Geheimnis als Grund offenbarte, ermutigte und bestätigte sie ihre ältere Schwester, die sich immer der Familie gewidmet hatte, als die wahre Nachfolgerin.",
-      "rarity": "legendary",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Randgrids jüngere Schwester feierte ein triumphales Comeback als Schlachtfeldkommandantin, weigerte sich jedoch, den Titel der Nachfolgerin zurückzufordern. Ihre Begründung enthüllte ein gefährliches Geheimnis, aber sie ermutigte und bestätigte ihre ältere Schwester, die sich immer der Familie gewidmet hatte, als die wahre Nachfolgerin.",
+      "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
-      "role": "0",
-      "range": "0",
-      "weaponType": "0",
-      "unreleased": true
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
     },
-    "stats": {},
-    "growth": null,
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
     "experience": {
       "maxLevelTotal": 123900
     },
-    "skills": {},
+    "skills": {
+      "Normal Attack": {
+        "id": "10171601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171602",
+        "name": "Versprochenes Schlachtfeld",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 145 % des physischen Angriffs 1 Mal.\n - Verursacht Schaden in Höhe von 170 % des physischen Angriffs 1 Mal.\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 170 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171603",
+        "name": "Ultimative Lanze",
+        "desc": "1 Gegner (Vordere Reihe zuerst)\n - Verursacht durchdringenden Schaden in Höhe von 127 % des physischen Angriffs 4 Mal.\n - Verursacht durchdringenden Schaden in Höhe von 153 % des physischen Angriffs 4 Mal.\n - Jeder Angriff verursacht zusätzlichen Durchdringungsschaden, der 50 % des physischen Angriffs entspricht, wenn der Angriff des Ziels niedriger ist als der Angriff des Zaubernden.\n - Jeder Angriff verursacht zusätzlichen Durchdringungsschaden, der 60 % des physischen Angriffs entspricht, wenn der Angriff des Ziels niedriger ist als der Angriff des Zaubernden.\n - Aktiviert sich erneut bis zu 1 Mal mit 100 % Kraft, wenn ein Gegner mit dieser Fähigkeit besiegt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 153 % des physischen Angriffs.\n - Erhöht den Schaden: Jeder Angriff verursacht zusätzlichen Schaden in Höhe von 60 % des physischen Angriffs, wenn der Angriff des Ziels niedriger ist als der Angriff des Zaubernden.\nTranscend Lv.6 Effect\n - Erhöht Effekt: Aktiviert sich erneut bis zu 2 Mal.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171604",
+        "name": "Unübertroffener Held",
+        "desc": "Selbst\n - Gewährt Immunität gegen alle Schäden. [Dauer: 2 Runde(n)]\n - Wird mit Unbezwingbar wiederbelebt, wenn er im Kampf fällt. [Endet nach: 8 Treffer(n)] [Einmal pro Kampf]\n - Erhöht die Trefferanzahl des Unbeugsam-Effekts um 1 Treffer, wenn eine Fähigkeit 1 Mal verwendet wird.\n - Gewährt Schwachstellenangriff-Erhöhung. [Immer aktiv]\n - Alle Verbündeten\n - Gewährt Alle Debuff entfernen (Massenkontrolle), wenn mit Massenkontrolle belegt. [Einmal Pro Kampf]\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Verursacht Blockrate-Reduzierung. [Immer aktiv]\nSkill Enhancement Effect\n - Selbst\n - Fügt Effekt hinzu: 39 % Schwachstellenangriff-Erhöhung. [Immer aktiv]\nTranscend Lv.2 Effect\n - Selbst\n - Fügt Effekt hinzu: Fähigkeit Abklingzeitzurücksetzung beim Auslösen von Indomitable.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht den Schwachstellenangriff um 20 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "吉森 未沙希",
+      "species": "Walküre",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "Stier",
+      "likes": "Radgrid, Reginleif, Trude, ihr Lieblingsspeer, Kampfkünste, Stärke, Reisen",
+      "dislikes": "Zurückhaltung, Schwäche, Passivität, viel Zeit mit Mahlzeiten verbringen",
+      "story": "Randgrids jüngere Schwester feierte ein triumphales Comeback als Schlachtfeldkommandantin, weigerte sich jedoch, den Titel der Nachfolgerin zurückzufordern. Ihre Begründung enthüllte ein gefährliches Geheimnis, aber sie ermutigte und bestätigte ihre ältere Schwester, die sich immer der Familie gewidmet hatte, als die wahre Nachfolgerin."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101715",
+      "name": "Randgrid",
+      "subname": "Unbesiegter Himmelsabenteurer",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Randgrid tat ihr Bestes, um den Ruf ihrer Familie als Erbin zu wahren. Sie kämpfte tapfer an den Frontlinien, führte unzählige Kämpfe zum Sieg und stand unter den Rängen der jungen Helden, doch ihr Vater blieb kalt und distanziert.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10171501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171502",
+        "name": "Versprochenes Schlachtfeld",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 130 % des physischen Angriffs 1 Mal.\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171503",
+        "name": "Ultimative Lanze",
+        "desc": "1 Gegner (Vordere Reihe zuerst)\n - Verursacht durchdringenden Schaden in Höhe von 115 % des physischen Angriffs 4 Mal.\n - Jeder Angriff verursacht zusätzlichen Durchdringungsschaden, der 45 % des physischen Angriffs entspricht, wenn der Angriff des Ziels niedriger ist als der Angriff des Zaubernden.\n - Aktiviert sich erneut bis zu 1 Mal mit 100 % Kraft, wenn ein Gegner mit dieser Fähigkeit besiegt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 115 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171504",
+        "name": "Unübertroffener Held",
+        "desc": "Selbst\n - Gewährt Immunität gegen alle Schäden. [Dauer: 2 Runde(n)]\n - Wird mit Unbezwingbar wiederbelebt, wenn er im Kampf fällt. [Endet nach: 8 Treffer(n)] [Einmal pro Kampf]\n - Erhöht die Trefferanzahl des Unbeugsam-Effekts um 1 Treffer, wenn eine Fähigkeit 1 Mal verwendet wird.\n - Alle Verbündeten\n - Gewährt Alle Debuff entfernen (Massenkontrolle), wenn mit Massenkontrolle belegt. [Einmal Pro Kampf]\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Verursacht Blockrate-Reduzierung. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
     "transcendence": {},
     "profile": {
-      "story": "Radgrids jüngere Schwester, die ein triumphales Comeback als Schlachtfeldkommandantin feierte, weigerte sich, den Titel der Nachfolgerin bei ihrer Rückkehr zurückzufordern. Als sie auf die Frage nach dem Warum ein gefährliches Geheimnis als Grund offenbarte, ermutigte und bestätigte sie ihre ältere Schwester, die sich immer der Familie gewidmet hatte, als die wahre Nachfolgerin."
+      "cv": "吉森 未沙希",
+      "species": "Walküre",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "Stier",
+      "likes": "Radgrid, Reginleif, Trude, ihr Lieblingsspeer, Kampfkünste, Stärke, Reisen",
+      "dislikes": "Zurückhaltung, Schwäche, Passivität, viel Zeit mit Mahlzeiten verbringen",
+      "story": "Randgrid tat ihr Bestes, um den Ruf ihrer Familie als Erbin zu wahren. Sie kämpfte tapfer an den Frontlinien, führte unzählige Kämpfe zum Sieg und stand unter den Rängen der jungen Helden, doch ihr Vater blieb kalt und distanziert."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101714",
+      "name": "Randgrid",
+      "subname": "Neuer Nachfolger",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Als uneheliche Tochter eines Kampfkunstmeisters wird Randgrid trotz ihres fehlenden Auges für ihr angeborenes Talent anerkannt. Sie verwickelt sich in einen unerwünschten Kampf um die Nachfolge mit ihrer rechtmäßigen jüngeren Schwester. Letztendlich beansprucht sie den Titel der Erbin, nachdem ihre Schwester während eines Kampfes verletzt wird.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10171401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171402",
+        "name": "Versprochenes Schlachtfeld",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 115 % des physischen Angriffs 1 Mal.\n - Verursacht 1 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 115 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171403",
+        "name": "Ultimative Lanze",
+        "desc": "1 Gegner (Vordere Reihe zuerst)\n - Verursacht durchdringenden Schaden in Höhe von 103 % des physischen Angriffs 4 Mal.\n - Jeder Angriff verursacht zusätzlichen Durchdringungsschaden, der 40 % des physischen Angriffs entspricht, wenn der Angriff des Ziels niedriger ist als der Angriff des Zaubernden.\n - Aktiviert sich erneut bis zu 1 Mal mit 100 % Kraft, wenn ein Gegner mit dieser Fähigkeit besiegt wird.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 103 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171404",
+        "name": "Unübertroffener Held",
+        "desc": "Selbst\n - Gewährt Immunität gegen alle Schäden. [Dauer: 2 Runde(n)]\n - Wird mit Unbezwingbar wiederbelebt, wenn er im Kampf fällt. [Endet nach: 8 Treffer(n)] [Einmal pro Kampf]\n - Erhöht die Trefferanzahl des Unbeugsam-Effekts um 1 Treffer, wenn eine Fähigkeit 1 Mal verwendet wird.\n - Alle Verbündeten\n - Gewährt Alle Debuff entfernen (Massenkontrolle), wenn mit Massenkontrolle belegt. [Einmal Pro Kampf]\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - Alle Feinde\n - Verursacht Verteidigungsreduktion. [Immer aktiv]\n - Verursacht Blockrate-Reduzierung. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "吉森 未沙希",
+      "species": "Walküre",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "Stier",
+      "likes": "Radgrid, Reginleif, Trude, ihr Lieblingsspeer, Kampfkünste, Stärke, Reisen",
+      "dislikes": "Zurückhaltung, Schwäche, Passivität, viel Zeit mit Mahlzeiten verbringen",
+      "story": "Als uneheliche Tochter eines Kampfkunstmeisters wird Randgrid trotz ihres fehlenden Auges für ihr angeborenes Talent anerkannt. Sie verwickelt sich in einen unerwünschten Kampf um die Nachfolge mit ihrer rechtmäßigen jüngeren Schwester. Letztendlich beansprucht sie den Titel der Erbin, nachdem ihre Schwester während eines Kampfes verletzt wird."
     }
   }
 ]

@@ -4,25 +4,456 @@
       "id": "101716",
       "name": "란드그리드",
       "subname": "마지막 자긍심",
-      "affiliation": "",
+      "affiliation": "천상의 수호자",
       "flavor": "전장의 지휘자로서 화려하게 복귀에 성공한 동생은 돌아온 후계 자리를 거절한다. 이유를 묻자 위험한 비밀을 털어놓은 동생은 가문을 위해 노력해온 언니가 진정한 후계자라며 독려한다.",
-      "rarity": "legendary",
+      "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
-      "role": "0",
-      "range": "0",
-      "weaponType": "0",
-      "unreleased": true
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
     },
-    "stats": {},
-    "growth": null,
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
     "experience": {
       "maxLevelTotal": 123900
     },
-    "skills": {},
+    "skills": {
+      "Normal Attack": {
+        "id": "10171601",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 130%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171602",
+        "name": "약속된 전장",
+        "desc": "적군 3명\n - 물리 공격력의 145%만큼 1회 피해\n - 버프 해제 2개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 170%",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171603",
+        "name": "절대 창의 주스트",
+        "desc": "적군 1명(전열 우선)\n - 물리 공격력의 127%만큼 4회 관통 피해\n - 대상의 공격력이 자신의 공격력보다 낮을 경우 각 공격마다 물리 공격력의 50%만큼 관통 추가 피해\n - 해당 스킬로 적군 처치 시 100% 위력으로 최대 1회 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 153%\n - 피해량 상승 : 대상의 공격력이 자신의 공격력보다 낮을 경우 각 공격 마다 물리 공격력의 60%만큼 추가 피해\nTranscend Lv.6 Effect\n - 효과 상승 : 연속 발동 최대 횟수 2회",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171604",
+        "name": "영웅 무쌍",
+        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 자신의 스킬 1회 발동 시, 불굴 효과의 피격 횟수 1회 증가\n - 약점 공격 확률 증가 [상시]\n - 모든 아군\n - 자신이 행동 제어에 걸릴 시, 모든 디버프(행동 제어) 해제 (전투당 1회 발동)\n - 디버프 해제 시, 행동 제어 면역 [2턴 지속]\n - 모든 적군\n - 방어력 감소 [상시]\n - 막기 확률 감소 [상시]\nSkill Enhancement Effect\n - 자신\n - 효과 추가 : 약점 공격 확률 증가 39% [상시]\nTranscend Lv.2 Effect\n - 자신\n - 효과 추가 : 불굴 발동 시 스킬 쿨타임 초기화",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "모든 공격력이 12% 상승합니다.",
+      "transcend_2": "모든 공격력이 6% 상승합니다.",
+      "transcend_3": "생명력이 18% 상승합니다.",
+      "transcend_4": "약점 공격 확률이 20% 상승합니다.",
+      "transcend_5": "모든 공격력이 12% 상승합니다.",
+      "transcend_6": "모든 공격력이 6% 상승합니다.",
+      "transcend_7": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_8": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_9": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_10": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_11": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_12": "모든 공격력, 방어력, 생명력이 2% 상승합니다."
+    },
+    "profile": {
+      "cv": "정유정",
+      "species": "발키리",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "황소자리",
+      "likes": "라드그리드, 레긴레이프, 트루드, 애용하는 창, 체술, 강인함, 여행",
+      "dislikes": "속박, 나약함, 수동적, 식사에 시간을 쏟는 것",
+      "story": "전장의 지휘자로서 화려하게 복귀에 성공한 동생은 돌아온 후계 자리를 거절한다. 이유를 묻자 위험한 비밀을 털어놓은 동생은 가문을 위해 노력해온 언니가 진정한 후계자라며 독려한다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101715",
+      "name": "란드그리드",
+      "subname": "백승의 발키리",
+      "affiliation": "천상의 수호자",
+      "flavor": "후계자로서 가문의 명성을 위해 언제나 최선을 다했다. 최전선에서 용맹하게 싸우는 그녀는 수많은 전장을 승리로 이끌며 젊은 영웅들과 이름을 나란히 했지만, 친부는 냉정하기만 했다.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10171501",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 90%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171502",
+        "name": "약속된 전장",
+        "desc": "적군 3명\n - 물리 공격력의 130%만큼 1회 피해\n - 버프 해제 2개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 130%",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171503",
+        "name": "절대 창의 주스트",
+        "desc": "적군 1명(전열 우선)\n - 물리 공격력의 115%만큼 4회 관통 피해\n - 대상의 공격력이 자신의 공격력보다 낮을 경우 각 공격마다 물리 공격력의 45%만큼 관통 추가 피해\n - 해당 스킬로 적군 처치 시 100% 위력으로 최대 1회 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 115%",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171504",
+        "name": "영웅 무쌍",
+        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 자신의 스킬 1회 발동 시, 불굴 효과의 피격 횟수 1회 증가\n - 모든 아군\n - 자신이 행동 제어에 걸릴 시, 모든 디버프(행동 제어) 해제 (전투당 1회 발동)\n - 디버프 해제 시, 행동 제어 면역 [2턴 지속]\n - 모든 적군\n - 방어력 감소 [상시]\n - 막기 확률 감소 [상시]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
     "transcendence": {},
     "profile": {
-      "story": "전장의 지휘자로서 화려하게 복귀에 성공한 동생은 돌아온 후계 자리를 거절한다. 이유를 묻자 위험한 비밀을 털어놓은 동생은 가문을 위해 노력해온 언니가 진정한 후계자라며 독려한다."
+      "cv": "정유정",
+      "species": "발키리",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "황소자리",
+      "likes": "라드그리드, 레긴레이프, 트루드, 애용하는 창, 체술, 강인함, 여행",
+      "dislikes": "속박, 나약함, 수동적, 식사에 시간을 쏟는 것",
+      "story": "후계자로서 가문의 명성을 위해 언제나 최선을 다했다. 최전선에서 용맹하게 싸우는 그녀는 수많은 전장을 승리로 이끌며 젊은 영웅들과 이름을 나란히 했지만, 친부는 냉정하기만 했다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101714",
+      "name": "란드그리드",
+      "subname": "새로운 후계자",
+      "affiliation": "천상의 수호자",
+      "flavor": "무예가의 서자로, 외눈에도 불구하고 타고난 재능으로 인정받으며, 적자인 동생과 원치 않는 후계 경쟁까지 벌인다. 결국, 대련 도중 다친 동생을 대신해 후계자 자리에 오른다.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101"
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10171401",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 80%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017101.webp"
+      },
+      "Skill 1": {
+        "id": "10171402",
+        "name": "약속된 전장",
+        "desc": "적군 3명\n - 물리 공격력의 115%만큼 1회 피해\n - 버프 해제 1개 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 115%",
+        "cooltime": "⏱️ CT: 105s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017102.webp"
+      },
+      "Skill 2": {
+        "id": "10171403",
+        "name": "절대 창의 주스트",
+        "desc": "적군 1명(전열 우선)\n - 물리 공격력의 103%만큼 4회 관통 피해\n - 대상의 공격력이 자신의 공격력보다 낮을 경우 각 공격마다 물리 공격력의 40%만큼 관통 추가 피해\n - 해당 스킬로 적군 처치 시 100% 위력으로 최대 1회 연속 발동\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 103%",
+        "cooltime": "⏱️ CT: 108s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017103.webp"
+      },
+      "Passive": {
+        "id": "10171404",
+        "name": "영웅 무쌍",
+        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 자신의 스킬 1회 발동 시, 불굴 효과의 피격 횟수 1회 증가\n - 모든 아군\n - 자신이 행동 제어에 걸릴 시, 모든 디버프(행동 제어) 해제 (전투당 1회 발동)\n - 디버프 해제 시, 행동 제어 면역 [2턴 지속]\n - 모든 적군\n - 방어력 감소 [상시]\n - 막기 확률 감소 [상시]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017104.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "정유정",
+      "species": "발키리",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "04 / 22",
+      "age": "0",
+      "height": "180",
+      "weight": "75",
+      "constellation": "황소자리",
+      "likes": "라드그리드, 레긴레이프, 트루드, 애용하는 창, 체술, 강인함, 여행",
+      "dislikes": "속박, 나약함, 수동적, 식사에 시간을 쏟는 것",
+      "story": "무예가의 서자로, 외눈에도 불구하고 타고난 재능으로 인정받으며, 적자인 동생과 원치 않는 후계 경쟁까지 벌인다. 결국, 대련 도중 다친 동생을 대신해 후계자 자리에 오른다."
     }
   }
 ]
