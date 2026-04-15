@@ -136,15 +136,13 @@ function getCharAccessor(char) {
         // スキル（multilangデータは全言語で (Trans) サフィックスを使用）
         skills,
         getSkillOrder: () => {
+            // JSONデータのスキルキーはjaは日本語、それ以外は全て英語で統一されている
             const skillOrders = {
                 'ja': ['通常攻撃', '通常攻撃 (Trans)', 'スキル1', 'スキル1 (Trans)', 'スキル2', 'スキル2 (Trans)', 'パッシブ', 'パッシブ (Trans)'],
-                'en': ['Normal Attack', 'Normal Attack (Trans)', 'Skill 1', 'Skill 1 (Trans)', 'Skill 2', 'Skill 2 (Trans)', 'Passive', 'Passive (Trans)'],
-                'ko': ['일반 공격', '일반 공격 (Trans)', '스킬 1', '스킬 1 (Trans)', '스킬 2', '스킬 2 (Trans)', '패시브', '패시브 (Trans)'],
-                'zh-Hans': ['普通攻击', '普通攻击 (Trans)', '技能1', '技能1 (Trans)', '技能2', '技能2 (Trans)', '被动', '被动 (Trans)'],
-                'zh-Hant': ['普通攻擊', '普通攻擊 (Trans)', '技能1', '技能1 (Trans)', '技能2', '技能2 (Trans)', '被動', '被動 (Trans)'],
-                'th': ['โจมตีปกติ', 'โจมตีปกติ (Trans)', 'สกิล 1', 'สกิล 1 (Trans)', 'สกิล 2', 'สกิล 2 (Trans)', 'พาสซีฟ', 'พาสซีฟ (Trans)']
             };
-            return skillOrders[lang] || skillOrders['en'];
+            // ja以外は全て英語キー
+            const enOrder = ['Normal Attack', 'Normal Attack (Trans)', 'Skill 1', 'Skill 1 (Trans)', 'Skill 2', 'Skill 2 (Trans)', 'Passive', 'Passive (Trans)'];
+            return skillOrders[lang] || enOrder;
         },
         isTransformedSkill: (skillType) => skillType.includes('(Trans)'),
         // スキルタイプラベルの翻訳（JSONキー→表示ラベル）
@@ -882,7 +880,9 @@ function renderDetail(char, versions) {
             }
             
             // 超越段階達成効果をパース（例：超越2段階達成効果、超越6段階達成効果）
-            const transcendMatch = line.match(/超越(\d+)段階達成効果/);
+            // 日本語パターン: 超越2段階達成効果
+            // 英語パターン: Transcend Lv.2 Effect
+            const transcendMatch = line.match(/超越(\d+)段階達成効果/) || line.match(/Transcend\s+Lv\.?\s*(\d+)\s*Effect/i);
             if (transcendMatch) {
                 currentSection = 'transcend';
                 currentTranscendStage = parseInt(transcendMatch[1]);
