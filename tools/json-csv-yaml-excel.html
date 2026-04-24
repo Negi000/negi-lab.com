@@ -4,30 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://cdn.jsdelivr.net 
-      https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; 
-    connect-src 'self' 
-      https://www.google-analytics.com; 
-    frame-src 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
@@ -44,17 +44,17 @@
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
     <!-- Data Processing Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" 
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
           crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" 
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"
           crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
           crossorigin="anonymous"></script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -71,7 +71,7 @@
     window.pageTitleTranslationKey = "jsonCsvYamlExcel.pageTitle";
     window.metaDescriptionTranslationKey = "jsonCsvYamlExcel.metaDescription";
   </script>
-  
+
   <!-- Custom Styles -->
   <style>
     .form-input, .form-select, .form-button, .form-textarea {
@@ -81,29 +81,29 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       transition: box-shadow 0.2s;
     }
-    
+
     .form-input:focus, .form-select:focus, .form-button:focus, .form-textarea:focus {
       outline: none;
       box-shadow: 0 0 0 2px #4ADE80;
       border-color: #4ADE80;
     }
-    
+
     .form-button {
       background: #4ADE80;
       color: #fff;
       transition: background 0.15s, color 0.15s;
     }
-    
+
     .form-button:hover:not(:disabled) {
       background: #10b981;
     }
-    
+
     .form-button:disabled {
       background: #d1d5db;
       color: #9ca3af;
       cursor: not-allowed;
     }
-    
+
     .drop-area {
       border: 2px dashed #d1d5db;
       border-radius: 0.5rem;
@@ -112,13 +112,13 @@
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
     }
-    
+
     .drop-area.dragover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.1);
     }
   </style>
-  
+
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -141,7 +141,7 @@
       </nav>
     </div>
   </header>
-  
+
   <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -154,7 +154,7 @@
       </ol>
     </div>
   </nav>
-  
+
   <main class="flex-grow py-12">
     <!-- 上部広告 -->
     <aside class="max-w-3xl mx-auto mb-10" aria-label="スポンサー広告">
@@ -352,7 +352,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">パフォーマンス・使い分け指針</h3>
           <div class="space-y-6">
@@ -377,7 +377,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">プロジェクト別推奨形式</h4>
               <ul class="text-sm text-gray-600 space-y-2">
@@ -447,7 +447,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>大容量データの変換が遅い・失敗する</span>
@@ -567,7 +567,7 @@
             <strong>成果：</strong> データ移行時間80%短縮 + 形式統一
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📊</div>
           <h3 class="text-lg font-semibold mb-3">マーケティング分析の自動化</h3>
@@ -582,7 +582,7 @@
             <strong>成果：</strong> 分析精度40%向上 + リアルタイム化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🔧</div>
           <h3 class="text-lg font-semibold mb-3">システム設定管理の効率化</h3>
@@ -597,7 +597,7 @@
             <strong>成果：</strong> デプロイエラー90%削減 + 運用効率化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🔬</div>
           <h3 class="text-lg font-semibold mb-3">研究データの標準化</h3>
@@ -612,7 +612,7 @@
             <strong>成果：</strong> 共同研究効率300%向上 + 国際対応
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏭</div>
           <h3 class="text-lg font-semibold mb-3">製造業のIoTデータ活用</h3>
@@ -627,7 +627,7 @@
             <strong>成果：</strong> 歩留まり15%向上 + 品質安定化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📈</div>
           <h3 class="text-lg font-semibold mb-3">金融データ処理の自動化</h3>
@@ -651,7 +651,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせたデータ変換活用を始めてみましょう。
             当ツールなら、すべてのデータ変換ニーズに対応した高精度な処理を簡単に実行できます。
           </p>
-          <a href="#" onclick="document.getElementById('fileInput').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('fileInput').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐデータ変換を始める
           </a>
@@ -698,31 +698,31 @@
         try {
           const file = e.target.files[0];
           if (!file) return;
-          
+
           // ファイル検証
           const allowedTypes = [
-            'application/json', 'text/csv', 'text/plain', 
+            'application/json', 'text/csv', 'text/plain',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             'application/vnd.ms-excel'
           ];
-          
+
           if (!SecurityUtils.validateFileType(file, allowedTypes)) {
             SecurityUtils.showUserError('JSON、CSV、YAML、Excel形式のファイルを選択してください');
             this.value = '';
             return;
           }
-          
+
           if (!SecurityUtils.validateFileSize(file, 10)) { // 10MB制限
             SecurityUtils.showUserError('ファイルサイズが10MB以下のファイルを選択してください');
             this.value = '';
             return;
           }
-          
+
           fileName.textContent = SecurityUtils.escapeHtml(file.name);
           inputName = SecurityUtils.sanitizeInput(file.name);
           const ext = file.name.split('.').pop().toLowerCase();
           const reader = new FileReader();
-          
+
           reader.onload = function(ev) {
             try {
               let text = ev.target.result;
@@ -746,11 +746,11 @@
               SecurityUtils.showUserError('ファイルの解析に失敗しました。正しい形式のファイルを選択してください', parseError);
             }
           };
-          
+
           reader.onerror = function() {
             SecurityUtils.showUserError('ファイルの読み込みに失敗しました');
           };
-          
+
           if (ext === 'xlsx') reader.readAsArrayBuffer(file);
           else reader.readAsText(file);
         } catch (error) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -15,7 +15,7 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
       https://fonts.googleapis.com
       https://cdn.tailwindcss.com;
@@ -25,22 +25,22 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     connect-src 'self'
       https://www.google-analytics.com
       https://pagead2.googlesyndication.com
       https://googleads.g.doubleclick.net
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     frame-src
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   "/>
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
@@ -55,17 +55,17 @@
   <meta name="twitter:card" content="summary_large_image" />  <meta name="twitter:title" content="【500+ Units】Universal Unit Converter - Japanese Traditional & International Units | negi-lab.com" />
   <meta name="twitter:description" content="Comprehensive unit converter with 500+ units including Japanese traditional units (shaku, sun, gou, sho), metric, imperial, electrical, radiation. Perfect for international users. 500+単位対応の万能単位変換ツール。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-unit-converter.png" />
-  
+
   <!-- 追加のSEO対策 -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/unit-converter.html" />
-  
+
   <!-- 多言語対応のhreflang -->
   <link rel="alternate" hreflang="ja" href="https://negi-lab.com/tools/unit-converter.html" />
   <link rel="alternate" hreflang="en" href="https://negi-lab.com/tools/unit-converter.html" />
   <link rel="alternate" hreflang="x-default" href="https://negi-lab.com/tools/unit-converter.html" />
-  
+
   <!-- 構造化データ -->
   <script type="application/ld+json">
   {
@@ -96,7 +96,7 @@
     "featureList": [
       "500+ unit conversions",
       "Japanese traditional units (shaku, sun, gou, sho)",
-      "Metric and Imperial systems", 
+      "Metric and Imperial systems",
       "Electrical units (voltage, current, resistance)",
       "Radiation units (becquerel, sievert)",
       "High precision calculations",
@@ -116,11 +116,11 @@
     // Map unit converter translations to global translations for compatibility
     window.translations = window.unitConverterTranslations;
   </script>
-  
+
   <!-- Data and Core Logic -->
   <script src="../js/unit-converter-data.js"></script>
   <script src="../js/unit-converter-core.js"></script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
@@ -180,14 +180,14 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(74, 222, 128, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     .category-btn.active {
       border-color: #4ADE80;
       background-color: rgba(74, 222, 128, 0.1);
       box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
       transform: translateY(-1px);
     }
-    
+
     .category-btn.active::before {
       content: '';
       position: absolute;
@@ -197,36 +197,36 @@
       height: 3px;
       background: linear-gradient(90deg, #4ADE80, #22c55e);
     }
-    
+
     /* カードアイコンのアニメーション */
     .category-btn svg {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .category-btn:hover svg {
       transform: scale(1.1) rotate(5deg);
     }
-    
+
     .category-btn.active svg {
       transform: scale(1.05);
       color: #22c55e;
     }
-    
+
     /* 単位シンボルのスタイル強化 */
     .category-btn .text-xs {
       font-weight: 500;
       letter-spacing: 0.025em;
     }
-    
+
     .category-btn:hover .text-xs {
       color: #374151;
     }
-    
+
     .category-btn.active .text-xs {
       color: #22c55e;
       font-weight: 600;
     }
-    
+
     /* カテゴリカードの単位シンボル強化 */
     .category-btn .font-mono {
       background: rgba(0, 0, 0, 0.03);
@@ -236,13 +236,13 @@
       border: 1px solid rgba(0, 0, 0, 0.05);
       transition: all 0.2s ease;
     }
-    
+
     .category-btn:hover .font-mono {
       background: rgba(74, 222, 128, 0.1);
       border-color: rgba(74, 222, 128, 0.2);
       color: #059669;
     }
-    
+
     .category-btn.active .font-mono {
       background: rgba(74, 222, 128, 0.15);
       border-color: #4ADE80;
@@ -254,21 +254,21 @@
     .fade-in {
       animation: fadeIn 0.3s ease-in-out;
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .slide-up {
       animation: slideUp 0.4s ease-out;
     }
-    
+
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     /* 入力フィールドの強化 */
     input[type="number"]:focus,
     input[type="text"]:focus,
@@ -277,12 +277,12 @@
       box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
       border-color: #4ADE80;
     }
-    
+
     /* コピーボタンのホバー効果 */
     #copyResult:hover {
       background-color: rgba(74, 222, 128, 0.1);
     }
-    
+
     /* エラーメッセージのスタイル */
     #errorMessage:not(:empty) {
       background-color: #fef2f2;
@@ -292,13 +292,13 @@
       margin-top: 1rem;
       animation: shake 0.5s ease-in-out;
     }
-    
+
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
       25% { transform: translateX(-5px); }
       75% { transform: translateX(5px); }
     }
-    
+
     /* 分秒入力・結果ボックスの見た目統一 */
     #inputMinuteSecondBox, #resultMinuteBox, #resultSecondBox {
       gap: 0.5rem;
@@ -314,7 +314,7 @@
       padding-left: 0.2rem;
       padding-right: 0.2rem;
     }
-    
+
     select:disabled {
       background: #f3f4f6;
       cursor: not-allowed;
@@ -326,16 +326,16 @@
         min-height: 90px;
         padding: 0.75rem 0.5rem;
       }
-      
+
       .category-btn svg {
         width: 1.75rem;
         height: 1.75rem;
       }
-      
+
       .category-btn .font-mono {
         font-size: 0.625rem;
         padding: 0.2rem 0.4rem;
-      }      
+      }
       .category-btn span:first-of-type {
         font-size: 0.8rem;
       }
@@ -398,7 +398,7 @@
        data-full-width-responsive="true"></ins>
       </div>      <!-- 新しいモダンGUI -->
       <div class="max-w-5xl mx-auto">
-        
+
         <!-- カテゴリ選択カード -->
         <div class="bg-white rounded-2xl shadow-xl p-6 mb-8 border border-gray-100">          <div class="flex items-center gap-3 mb-4">
             <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
@@ -526,7 +526,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.microwave">電子レンジ</span>
               <div class="text-xs text-gray-500 font-mono">500W, 600W, 700W</div>
             </button>
-            
+
             <button class="category-btn" data-category="frequency">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -536,7 +536,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.frequency">周波数</span>
               <div class="text-xs text-gray-500 font-mono">Hz, kHz, MHz, GHz</div>
             </button>
-            
+
             <button class="category-btn" data-category="angle">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -548,7 +548,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.angle">角度</span>
               <div class="text-xs text-gray-500 font-mono">°, rad, gon, turn</div>
             </button>
-            
+
             <button class="category-btn" data-category="data">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -568,7 +568,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.fuel_consumption">燃費</span>
               <div class="text-xs text-gray-500 font-mono">km/L, mpg, L/100km</div>
             </button>
-            
+
             <button class="category-btn" data-category="density">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -578,7 +578,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.density">密度</span>
               <div class="text-xs text-gray-500 font-mono">kg/m³, g/cm³, g/L</div>
             </button>
-            
+
             <button class="category-btn" data-category="force">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -589,7 +589,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.force">力</span>
               <div class="text-xs text-gray-500 font-mono">N, kN, lbf, kgf</div>
             </button>
-            
+
             <button class="category-btn" data-category="electric_current">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -599,7 +599,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.electric_current">電流</span>
               <div class="text-xs text-gray-500 font-mono">A, mA, μA, kA</div>
             </button>
-            
+
             <button class="category-btn" data-category="voltage">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -609,7 +609,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.voltage">電圧</span>
               <div class="text-xs text-gray-500 font-mono">V, mV, kV, MV</div>
             </button>
-            
+
             <button class="category-btn" data-category="resistance">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -619,7 +619,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.resistance">抵抗</span>
               <div class="text-xs text-gray-500 font-mono">Ω, mΩ, kΩ, MΩ</div>
             </button>
-            
+
             <button class="category-btn" data-category="radioactivity">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -630,7 +630,7 @@
               <span class="font-medium text-sm mb-1" data-translate-key="unitConverter.category.radioactivity">放射能</span>
               <div class="text-xs text-gray-500 font-mono">Bq, Ci, Rd</div>
             </button>
-            
+
             <button class="category-btn" data-category="luminance">
               <div class="mb-2">
                 <svg class="w-8 h-8 text-accent mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -678,7 +678,7 @@
         <!-- 変換エリア -->
         <div id="converterArea" class="hidden">
           <div class="grid md:grid-cols-2 gap-6 mb-6">
-            
+
             <!-- 入力カード -->
             <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
               <div class="flex items-center gap-3 mb-4">
@@ -689,17 +689,17 @@
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900" data-translate-key="unitConverter.inputTitle">入力</h3>
               </div>
-              
+
               <div class="space-y-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.inputValueLabel">数値を入力</label>                  <input type="number" id="inputValue" value="1" 
+                  <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.inputValueLabel">数値を入力</label>                  <input type="number" id="inputValue" value="1"
                          class="w-full px-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200 bg-white"
                          data-translate-key="unitConverter.inputPlaceholder"
                          data-translate-placeholder="unitConverter.inputExamplePlaceholder"
                          placeholder="Enter value (e.g., 100)">
                   <span id="inputMinuteSecondBox" class="hidden mt-2 flex gap-2"></span>
                 </div>
-                
+
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.fromUnitLabel">変換元の単位</label>
                   <div class="flex items-center gap-2">
@@ -727,15 +727,15 @@
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900" data-translate-key="unitConverter.outputTitle">結果</h3>
               </div>
-              
+
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.resultLabel">変換結果</label>
-                  <div class="relative">                    <input type="text" id="resultValue" readonly 
+                  <div class="relative">                    <input type="text" id="resultValue" readonly
                            class="w-full px-4 py-3 text-lg font-semibold border border-gray-300 rounded-xl bg-gray-50 text-gray-900"
                            data-translate-key="unitConverter.resultPlaceholder"
                            placeholder="結果がここに表示されます">
-                    <button id="copyResult" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-accent transition-colors" 
+                    <button id="copyResult" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-accent transition-colors"
                             data-translate-key="unitConverter.copy.copyButton" title="Copy result">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -744,7 +744,7 @@
                   </div>
                   <span id="resultMinuteBox" class="hidden mt-2 flex gap-2"></span>
                 </div>
-                
+
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="unitConverter.toUnitLabel">変換先の単位</label>
                   <div class="flex items-center gap-2">
@@ -800,7 +800,7 @@
       <div class="max-w-4xl mx-auto mt-16 px-4">
         <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center" data-translate-key="unitConverter.seo.featuresTitle">単位変換ツールの特徴</h2>
-          
+
           <div class="grid md:grid-cols-2 gap-8 mb-8">
             <div class="space-y-4">
               <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
@@ -815,7 +815,7 @@
                 <li data-translate-key="unitConverter.seo.electricalUnits">• <strong>電気</strong>：電圧(V)、電流(A)、抵抗(Ω)、静電容量(F)、インダクタンス(H)</li>
               </ul>
             </div>
-            
+
             <div class="space-y-4">
               <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
                 <span class="text-green-500">✓</span> <span data-translate-key="unitConverter.seo.specializedTitle">専門・科学単位も対応</span>
@@ -832,7 +832,7 @@
                 <li data-translate-key="unitConverter.seo.luminanceUnits">• <strong>輝度</strong>：カンデラ/m²、ニト、スチルブ、ランベルト</li>
               </ul>
             </div>
-          </div>          
+          </div>
           <div class="grid md:grid-cols-4 gap-6 mb-8">
             <div class="text-center p-4 bg-blue-50 rounded-lg">
               <div class="text-2xl font-bold text-blue-600 mb-2">25+</div>
@@ -850,7 +850,7 @@
               <div class="text-2xl font-bold text-orange-600 mb-2" data-translate-key="unitConverter.seo.freeLabel">無料</div>
               <div class="text-sm text-gray-600" data-translate-key="unitConverter.seo.freeSub">Free</div>
             </div>
-          </div>          
+          </div>
           <div class="space-y-6">
             <h3 class="text-lg font-semibold text-gray-800" data-translate-key="unitConverter.seo.useCasesTitle">このツールの活用シーン</h3>
             <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
@@ -874,7 +874,7 @@
                 </ul>
               </div>
             </div>
-          </div>          
+          </div>
           <div class="mt-8 p-4 bg-gray-50 rounded-lg">
             <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate-key="unitConverter.seo.traditionalTitle">日本の伝統単位も完全対応</h3>
             <p class="text-sm text-gray-600 mb-3" data-translate-key="unitConverter.seo.traditionalDescription">
@@ -891,7 +891,7 @@
                 <strong data-translate-key="unitConverter.seo.traditionalVolume">体積：</strong><span data-translate-key="unitConverter.seo.traditionalVolumeUnits">合、升、斗、石</span>
               </div>
             </div>
-          </div>          
+          </div>
           <div class="mt-8 text-center">
             <p class="text-sm text-gray-500">
               <span data-translate-key="unitConverter.seo.compatibility">スマートフォン・タブレット・PC完全対応</span><br>
@@ -1038,7 +1038,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="unitConverter.technical.systems.title">対応単位システム</h3>
           <div class="space-y-4">
@@ -1065,7 +1065,7 @@
             これらの技術解説を参考に、あなたの業界・用途に合わせた単位変換を始めてみましょう。
             当ツールなら、すべての計算を高精度で安全に実行できます。
           </p>
-          <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" 
+          <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
              data-translate-key="unitConverter.callToAction">
             今すぐ単位変換を始める
@@ -1113,11 +1113,11 @@
       const guideModal = document.getElementById('guide-modal');
       const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
-      
+
       if(guideBtn && guideModal && guideClose && guideContent) {
         guideBtn.addEventListener('click', function() {
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-          
+
           // リアルタイムで翻訳キーを使用してコンテンツを生成
           if (window.t) {
             updateGuideModalContentWithTranslations(lang, guideContent);
@@ -1163,7 +1163,7 @@
             html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
             guideContent.innerHTML = html;
           }
-          
+
           guideModal.classList.remove('hidden');
         });
         guideClose.addEventListener('click', function() {
@@ -1192,7 +1192,7 @@
       if (!window.t || !guideContentElement) {
         return;
       }
-      
+
       const title = window.t('unitConverter.guide.title');
       const steps = [
         window.t('unitConverter.guide.step1'),
@@ -1207,7 +1207,7 @@
         window.t('unitConverter.guide.tip2'),
         window.t('unitConverter.guide.tip3')
       ];
-      
+
       let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
       html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
@@ -1216,13 +1216,13 @@
   </script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
+
       // 新しいGUI要素の取得
       const categoryGrid = document.getElementById('categoryGrid');
       const categorySelect = document.getElementById('category');
       const converterArea = document.getElementById('converterArea');
       const microwaveControls = document.getElementById('microwaveControls');
-      
+
       const inputValue = document.getElementById('inputValue');
       const fromUnitSelect = document.getElementById('fromUnit');
       const toUnitSelect = document.getElementById('toUnit');
@@ -1241,20 +1241,20 @@
       categoryGrid.addEventListener('click', (e) => {
         const categoryBtn = e.target.closest('.category-btn');
         if (!categoryBtn) return;
-        
+
         const category = categoryBtn.dataset.category;
-        
+
         // アクティブ状態の切り替え
         document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
         categoryBtn.classList.add('active');
-        
+
         // 隠しselectの値を更新
         categorySelect.value = category;
-        
+
         // 変換エリアを表示（アニメーション付き）
         converterArea.classList.remove('hidden');
         converterArea.classList.add('fade-in');
-        
+
         // 電子レンジ特有のコントロール表示制御
         if (category === 'microwave') {
           microwaveControls.classList.remove('hidden');
@@ -1262,33 +1262,33 @@
         } else {
           microwaveControls.classList.add('hidden');
         }
-        
+
         // 既存のロジックを呼び出し
         handleCategoryChange();
           // スムーズスクロール
         converterArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
-      
+
       // 代替案：各カテゴリボタンに直接イベントリスナーを追加
       if (!categoryGrid) {
         const categoryButtons = document.querySelectorAll('.category-btn');
         categoryButtons.forEach(btn => {
           btn.addEventListener('click', function() {
             const category = this.dataset.category;
-            
+
             // アクティブ状態の切り替え
             document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            
+
             // 隠しselectの値を更新
             if (categorySelect) categorySelect.value = category;
-            
+
             // 変換エリアを表示
             if (converterArea) {
               converterArea.classList.remove('hidden');
               converterArea.classList.add('fade-in');
             }
-            
+
             // 電子レンジ特有のコントロール表示制御
             if (microwaveControls) {
               if (category === 'microwave') {
@@ -1298,12 +1298,12 @@
                 microwaveControls.classList.add('hidden');
               }
             }
-            
+
             // 既存のロジックを呼び出し
             if (typeof handleCategoryChange === 'function') {
               handleCategoryChange();
             }
-            
+
             // スムーズスクロール
             if (converterArea) {
               converterArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1315,7 +1315,7 @@
         if (microwaveInputMode !== 'sec') {
           microwaveInputMode = 'sec';
           updateMicrowaveToggleUI();
-          
+
           // 分・秒入力から秒数に戻す
           if (minInput && secInput) {
             const minutes = parseInt(minInput.value) || 0;
@@ -1334,11 +1334,11 @@
         if (microwaveInputMode !== 'min') {
           microwaveInputMode = 'min';
           updateMicrowaveToggleUI();
-          
+
           // 現在の秒数値を取得して分・秒に変換
           let fromSeconds = parseFloat(inputValue.value);
           if (isNaN(fromSeconds)) fromSeconds = 0;
-          
+
           showMinuteSecondInputs(fromSeconds);
           addMinuteSecondInputListeners();
           // convert()で結果表示も分モードに切り替わる（通常BOXを隠し、分・秒BOXを表示）
@@ -1371,7 +1371,7 @@
       }      function showMinuteSecondInputs(fromSeconds = null) {
         createMinuteSecondInputs();
         inputValue.style.display = 'none';
-        
+
         // 既存の内容をクリア
         let container = document.getElementById('inputMinuteSecondBox');
         if (!container) {
@@ -1394,7 +1394,7 @@
         minInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
         minWrapper.appendChild(minLabel);
         minWrapper.appendChild(minInput);
-        
+
         // 秒入力
         const secWrapper = document.createElement('div');
         secWrapper.className = 'flex-1 min-w-0';
@@ -1404,7 +1404,7 @@
         secInput.className = 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent min-w-0';
         secWrapper.appendChild(secLabel);
         secWrapper.appendChild(secInput);
-        
+
         container.appendChild(minWrapper);
         container.appendChild(secWrapper);
           // 値設定
@@ -1414,7 +1414,7 @@
           secInput.value = totalSecondsRounded % 60;
         }
       }
-      
+
       function hideMinuteSecondInputs() {
         inputValue.style.display = '';
         const container = document.getElementById('inputMinuteSecondBox');
@@ -1432,7 +1432,7 @@
               const additionalMinutes = Math.floor(secValue / 60);
               const remainingSeconds = secValue % 60;
               const currentMinutes = parseInt(minInput.value) || 0;
-              
+
               minInput.value = currentMinutes + additionalMinutes;
               this.value = remainingSeconds;
             }
@@ -1445,8 +1445,8 @@
             microwaveSecBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-accent text-white hover:bg-accent/90 transition';
             microwaveMinBtn.className = 'flex-1 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
             const lang = window.getLanguage();
-            inputValue.placeholder = window.t('unitConverter.microwave.placeholderSeconds', lang === 'en' 
-              ? 'e.g. Recipe time (seconds) for 600W' 
+            inputValue.placeholder = window.t('unitConverter.microwave.placeholderSeconds', lang === 'en'
+              ? 'e.g. Recipe time (seconds) for 600W'
               : '例: 600Wでのレシピ時間(秒)');
             hideMinuteSecondInputs();
           } else {
@@ -1475,7 +1475,7 @@
         if (!category || !unitsData[category]) {
           return;
         }
-        
+
         if (category === 'temperature') {
           const defs = unitsData[category].definitions;
           Object.keys(defs).forEach(key => {
@@ -1552,7 +1552,7 @@
           if (minuteLabel) minuteLabel.textContent = window.t('unitConverter.microwave.minutesLabel', '分');
           if (secondLabel) secondLabel.textContent = window.t('unitConverter.microwave.secondsLabel', '秒');
         }
-        
+
         // 結果側の分・秒ラベル
         const resultContainer = document.getElementById('resultMinuteBox');
         if (resultContainer && resultContainer.style.display !== 'none') {
@@ -1623,11 +1623,11 @@
       function showResultMinuteSecond(totalSeconds) {
         const container = document.getElementById('resultMinuteBox');
         if (!container) return;
-        
+
         container.innerHTML = '';
         container.style.display = 'flex';
         container.className = 'flex gap-2 mt-2 w-full';
-        
+
         // 秒数を正確に分・秒に変換（秒数が59を超える場合を適切に処理）
         const totalSecondsRounded = Math.round(totalSeconds);
         const minutes = Math.floor(totalSecondsRounded / 60);
@@ -1645,7 +1645,7 @@
         minDisplay.readOnly = true;
         minWrapper.appendChild(minLabel);
         minWrapper.appendChild(minDisplay);
-        
+
         // 秒表示
         const secWrapper = document.createElement('div');
         secWrapper.className = 'flex-1 min-w-0';
@@ -1659,10 +1659,10 @@
         secDisplay.readOnly = true;
         secWrapper.appendChild(secLabel);
         secWrapper.appendChild(secDisplay);
-        
+
         container.appendChild(minWrapper);
         container.appendChild(secWrapper);
-        
+
         // 分・秒形式のコピーボタンを追加
         const copyWrapper = document.createElement('div');
         copyWrapper.className = 'flex items-end';
@@ -1700,7 +1700,7 @@
             }, 1200);
           }
         });
-        
+
         copyWrapper.appendChild(minuteSecondCopyBtn);
         container.appendChild(copyWrapper);
       }
@@ -1711,12 +1711,12 @@
           container.innerHTML = '';
         }
       }
-      
+
       function handleCategoryChange() {
         populateUnitSelects();
         updateUnitLabels();
         updateMicrowaveToggleUI();
-        
+
         if (categorySelect.value === 'microwave' && microwaveInputMode === 'min') {
           let fromSeconds = parseFloat(inputValue.value);
           if (isNaN(fromSeconds)) fromSeconds = 0;
@@ -1730,7 +1730,7 @@
           hideResultMinuteSecond();
           resultValue.parentElement.style.display = 'block';
         }
-        
+
         convert();
       }
 
@@ -1751,14 +1751,14 @@
 
       // 言語切り替え時の処理を定義
       window.onLanguageChange = function(lang) {
-        
+
         // 単位プルダウンが表示されている場合は再生成
         if (categorySelect.value && !converterArea.classList.contains('hidden')) {
           populateUnitSelects();
           updateUnitLabels();
           updateMicrowaveToggleUI(); // 電子レンジモードのUI更新
         }
-        
+
         // ガイドモーダルが開いている場合は内容を更新
         const guideModal = document.getElementById('guide-modal');
         const guideContent = document.getElementById('guide-modal-content');
@@ -1777,7 +1777,7 @@
         copyBtn.addEventListener('click', async () => {
           try {
             let textToCopy = '';
-            
+
             // 電子レンジの分モード時は分・秒BOXからコピー
             if (categorySelect && categorySelect.value === 'microwave' && microwaveInputMode === 'min') {
               const resultMinuteBox = document.getElementById('resultMinuteBox');
@@ -1793,29 +1793,29 @@
                 }
               }
             }
-            
+
             // 通常モードまたは分・秒BOXが見つからない場合は通常の結果値をコピー
             if (!textToCopy) {
               textToCopy = resultValue.value;
             }
-            
+
             if (!textToCopy) {
               copyBtn.textContent = window.t('unitConverter.copy.noValue', '値がありません');
-              setTimeout(() => { 
-                copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+              setTimeout(() => {
+                copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー');
               }, 1200);
               return;
             }
-            
+
             await navigator.clipboard.writeText(textToCopy);
             copyBtn.textContent = window.t('unitConverter.copy.copied', 'コピー済み');
-            setTimeout(() => { 
-              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+            setTimeout(() => {
+              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー');
             }, 1200);
           } catch (e) {
             copyBtn.textContent = window.t('unitConverter.copy.failed', '失敗');
-            setTimeout(() => { 
-              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー'); 
+            setTimeout(() => {
+              copyBtn.textContent = window.t('unitConverter.copy.copyButton', 'コピー');
             }, 1200);
           }
         });

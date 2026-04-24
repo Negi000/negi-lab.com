@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -15,7 +15,7 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
       https://fonts.googleapis.com
       https://cdn.tailwindcss.com;
@@ -25,23 +25,23 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     connect-src 'self'
       https://is.gd
       https://www.google-analytics.com
       https://pagead2.googlesyndication.com
       https://googleads.g.doubleclick.net
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     frame-src
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   "/>
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
@@ -56,7 +56,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  
+
   <!-- Security and Common Utilities (use relative path to work on file:// and prod) -->
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
@@ -181,7 +181,7 @@
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮ツール">URL短縮ツール</h1>
       </div>
-      
+
       <!-- ツール上部：アドセンス（レスポンシブ） -->
       <div class="max-w-2xl mx-auto my-6">
   <ins class="adsbygoogle ad-pc"
@@ -206,9 +206,9 @@
             <input type="checkbox" id="enableStats" class="form-checkbox" aria-label="統計ログを有効にする">
             <label for="enableStats" class="text-sm font-medium text-gray-700 cursor-pointer" data-translate-key="urlShortener.enableStatsLabel" aria-label="統計ログを有効にするラベル">統計ログを有効にする</label>
         </div>
-        
+
         <button id="shortenButton" class="form-button w-full py-2.5" data-translate-key="urlShortener.shortenButton" aria-label="短縮するボタン">短縮する</button>
-        
+
         <div id="resultContainer" class="mt-4 hidden space-y-2">
             <div>
                 <label for="shortUrlOutput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.shortUrlLabel" aria-label="短縮URLラベル">短縮URL:</label>
@@ -225,7 +225,7 @@
             </div>
              <p id="statsNotEnabledMessage" class="text-xs text-gray-500 mt-1 hidden" data-translate-key="urlShortener.statsNotEnabled" aria-label="統計無効メッセージ">このURLでは統計ログが有効になっていません。</p>
         </div>
-        
+
         <div id="messageArea" class="text-sm mt-2">
             <p id="statusMessage" class="text-gray-600"></p>
             <p id="errorMessage" class="text-red-600"></p>
@@ -257,7 +257,7 @@
   <!-- push handled by ads-consent-loader.js after consent -->
       </div>
     </div>
-  
+
   <!-- 技術解説・活用ガイドセクション -->
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
@@ -394,7 +394,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">統計・分析システム</h3>
           <div class="space-y-6">
@@ -407,7 +407,7 @@
                 <strong>収集データ：</strong> IP地域、デバイス種別、OS、ブラウザ、リファラー
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">地域別・デバイス別分析</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -417,7 +417,7 @@
                 <strong>活用例：</strong> 地域限定キャンペーン、デバイス最適化
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">プライバシー配慮設計</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -475,7 +475,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>統計データの精度と活用方法は？</span>
@@ -507,7 +507,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>SNSでの短縮URL利用時の注意点は？</span>
@@ -543,7 +543,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>ビジネス利用でのベストプラクティスは？</span>
@@ -608,7 +608,7 @@
             <strong>成果：</strong> エンゲージメント率30%向上 + ROI可視化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">💼</div>
           <h3 class="text-lg font-semibold mb-3">B2Bメール営業の最適化</h3>
@@ -623,7 +623,7 @@
             <strong>成果：</strong> 商談化率25%向上 + 営業効率化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎪</div>
           <h3 class="text-lg font-semibold mb-3">イベント集客の精密分析</h3>
@@ -638,7 +638,7 @@
             <strong>成果：</strong> 参加者数200%増 + 広告効率向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🛒</div>
           <h3 class="text-lg font-semibold mb-3">Eコマースでの売上向上</h3>
@@ -653,7 +653,7 @@
             <strong>成果：</strong> 売上20%増 + 在庫効率化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📰</div>
           <h3 class="text-lg font-semibold mb-3">メディア・コンテンツ配信</h3>
@@ -668,7 +668,7 @@
             <strong>成果：</strong> PV数50%増 + 読者エンゲージメント向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏥</div>
           <h3 class="text-lg font-semibold mb-3">ヘルスケア・教育分野</h3>
@@ -692,7 +692,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせたURL短縮活用を始めてみましょう。
             当ツールなら、すべてのマーケティングニーズに対応した高精度な分析を簡単に実行できます。
           </p>
-          <a href="#" onclick="document.querySelector('input[type=url]').focus(); return false;" 
+          <a href="#" onclick="document.querySelector('input[type=url]').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐURL短縮を始める
           </a>
@@ -722,7 +722,7 @@
   </main>
 
 
-  
+
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
@@ -831,7 +831,7 @@ if (document.readyState === "loading") {
         function getLang() {
             return document.documentElement.lang || 'ja';
         }
-        
+
         function translate(key) {
             const lang = getLang();
             if (window.translations && window.translations[lang] && window.translations[lang][key]) {
@@ -868,11 +868,11 @@ if (document.readyState === "loading") {
                 }
                 return true;
             } catch (_) {
-                return false;  
+                return false;
             }
         }        shortenButton.addEventListener('click', async () => {
             clearMessages();
-            
+
             // セキュアな入力値取得と検証
             const longUrl = CommonUtils.getFormValue('longUrlInput', true, 2000);
             if (!longUrl) {
@@ -896,16 +896,16 @@ if (document.readyState === "loading") {
                 const encodedUrl = encodeURIComponent(sanitizedUrl);
                 const logStats = enableStatsCheckbox.checked ? 1 : 0;
                 const apiUrl = `https://is.gd/create.php?format=json&url=${encodedUrl}&logstats=${logStats}`;
-                
+
                 const response = await fetch(apiUrl);
-                
+
                 if (!response.ok) {
                     let errorData;
                     try { errorData = await response.json(); } catch (e) { /* no json */ }
                     errorMessage.textContent = (errorData && errorData.errormessage) ? errorData.errormessage : translate('urlShortener.error.apiError') + ` (Status: ${response.status})`;
                     throw new Error(`API error: ${response.status}`);
                 }
-                
+
                 const data = await response.json();
 
                 if (data.shorturl) {
@@ -944,7 +944,7 @@ if (document.readyState === "loading") {
                         const originalButtonText = copyButton.textContent; // This assumes textContent is already translated
                         const copiedText = translate('urlShortener.copiedMessage');
                         copyButton.textContent = copiedText;
-                        
+
                         setTimeout(() => {
                             copyMessage.textContent = '';
                             // Restore button text, ensuring it's the current language version of "Copy"
@@ -953,7 +953,7 @@ if (document.readyState === "loading") {
                     })
                     .catch(err => {
                         console.error('Failed to copy: ', err);
-                        copyMessage.textContent = 'Copy failed.'; 
+                        copyMessage.textContent = 'Copy failed.';
                     });
             }
         });
@@ -1040,7 +1040,7 @@ if (document.readyState === "loading") {
     });
   </script>
 
-  
+
 </body>
 </html>
 

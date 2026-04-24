@@ -2,13 +2,12 @@
   "name": "negi-lab-site-manager",
   "version": "1.0.0",
   "description": "negi-lab.comサイト管理ツール - 一貫性のあるWebツール生成と管理",
-  "main": "scripts/site-manager.js",  "scripts": {
-    "validate": "powershell -ExecutionPolicy Bypass -File scripts/simple-consistency.ps1 -action validate",
-    "update": "powershell -ExecutionPolicy Bypass -File scripts/simple-consistency.ps1 -action update",
+  "main": "scripts/site-manager.js",
+  "scripts": {
+    "validate": "node scripts/validate-site.js",
     "check": "npm run validate",
-    "fix": "npm run update",
-  "dev": "npm run validate && npm run update && npm run build:fellowmoon",
-  "build:fellowmoon": "powershell -ExecutionPolicy Bypass -File scripts/build-fellowmoon.ps1",
+    "dev": "npm run validate && npm run build:fellowmoon",
+    "build:fellowmoon": "powershell -ExecutionPolicy Bypass -File scripts/build-fellowmoon.ps1",
     "test": "npm run validate",
     "build:search": "node scripts/build-wiki-search-index.js",
     "serve": "node scripts/serve-static.js"

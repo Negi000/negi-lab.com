@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -12,25 +12,25 @@
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: https://*.google.com https://*.doubleclick.net https://www.amazon.co.jp https://*.afl.rakuten.co.jp https://hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     connect-src 'self' https://www.google-analytics.com https://*.google.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    frame-src 'self' https://*.google.com https://*.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src 'self' https://*.google.com https://*.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     worker-src 'self';
     object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  
+
   <title data-translate-key="pageTitle">【無料】QRコード生成ツール - ロゴ挿入・高品質・多機能 | negi-lab.com</title>
   <meta name="description" data-translate-key="metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整、エラー訂正レベル対応。プライバシー重視のブラウザ完結型で安全にご利用いただけます。" />
-  
+
   <!-- OG Tags -->
   <meta property="og:title" data-translate-key="pageTitle" content="【無料】QRコード生成ツール - ロゴ挿入・高品質・多機能 | negi-lab.com" />
   <meta property="og:description" data-translate-key="metaDescription" content="URLやテキストから高品質なQRコードを無料で作成。ロゴ挿入、色変更、サイズ調整、エラー訂正レベル対応。プライバシー重視のブラウザ完結型で安全にご利用いただけます。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
-  
+
   <!-- Tailwind CSS (動的設定対応版) -->
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
@@ -43,8 +43,8 @@
             negi: "#65c155",
             accent: "#4ADE80"
           },
-          fontFamily: { 
-            inter: ["Inter", "sans-serif"] 
+          fontFamily: {
+            inter: ["Inter", "sans-serif"]
           }
         }
       }
@@ -61,7 +61,7 @@
       background: white;
       transition: border-color 0.2s;
     }
-    
+
     .form-input:focus, .form-select:focus {
       outline: none;
       border-color: #65c155;
@@ -78,12 +78,12 @@
       text-align: center;
       font-weight: 500;
     }
-    
+
     .mode-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
     }
-    
+
     .mode-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
@@ -102,12 +102,12 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     .qr-template-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
     }
-    
+
     .qr-template-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
@@ -124,18 +124,18 @@
       text-align: center;
       font-weight: 500;
     }
-    
+
     .color-mode-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
     }
-    
+
     .color-mode-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
       color: white;
     }
-    
+
     .shape-btn {
       padding: 0.75rem;
       border: 1px solid #e5e7eb;
@@ -148,7 +148,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;    }
-    
+
     .shape-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.1);
@@ -186,7 +186,7 @@
       cursor: pointer;
       text-align: center;
     }
-    
+
     .preset-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
@@ -203,7 +203,7 @@
       transition: all 0.2s ease;
       font-size: 1rem;
     }
-    
+
     .btn-primary:hover {
       background: linear-gradient(135deg, #59b049, #22c55e);
       transform: translateY(-1px);
@@ -278,10 +278,10 @@
       </p>
     </div><!-- メインコンテンツ -->
     <div class="grid xl:grid-cols-3 lg:grid-cols-2 gap-8">
-      
+
       <!-- 左側: 設定パネル -->
       <div class="xl:col-span-2 space-y-6">
-        
+
           <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
             <div class="grid grid-cols-2 gap-3">
               <button id="singleModeBtn" class="mode-btn active bg-accent text-white" data-mode="single">
@@ -419,7 +419,7 @@
         <!-- バッチ生成セクション -->
           <div id="batchGenerationSection" class="hidden">
           <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">            <h2 class="text-xl font-bold mb-4 text-gray-800" data-translate-key="batch.dataTitle">バッチ生成データ</h2>
-            
+
             <!-- CSVインポート -->
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="batch.csvImportLabel">CSVファイル インポート</label>
@@ -462,7 +462,7 @@
             <!-- テキスト入力 -->
           <div id="textInput" class="template-input">
             <label class="block text-sm font-medium text-gray-700 mb-2" data-translate-key="form.inputLabel">QRコードにしたいテキストまたはURL</label>
-            <textarea id="qrText" class="form-input" rows="4" 
+            <textarea id="qrText" class="form-input" rows="4"
                       data-translate-key="form.inputPlaceholder"
                       placeholder="https://example.com または テキストを入力"></textarea>
           </div>
@@ -472,7 +472,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-2">URL</label>
             <input type="url" id="urlText" class="form-input" placeholder="https://example.com">
           </div>
-          
+
           <!-- Wi-Fi入力 -->
           <div id="wifiInput" class="template-input hidden">            <div class="space-y-3">
               <div>
@@ -510,7 +510,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- SMS入力 -->
           <div id="smsInput" class="template-input hidden">
             <div class="space-y-3">
@@ -531,7 +531,7 @@
               <input type="tel" id="phoneNumber" class="form-input" data-translate-key="phone.numberPlaceholder" placeholder="090-1234-5678">
             </div>
           </div>
-          
+
           <!-- vCard入力 -->
           <div id="vcardInput" class="template-input hidden">
             <div class="space-y-3">
@@ -571,7 +571,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- イベント入力 -->
           <div id="eventInput" class="template-input hidden">
             <div class="space-y-3">
@@ -599,7 +599,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- 位置情報入力 -->
           <div id="locationInput" class="template-input hidden">
             <div class="space-y-3">
@@ -622,7 +622,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- SNS入力 -->
           <div id="socialInput" class="template-input hidden">
             <div class="space-y-3">
@@ -652,7 +652,7 @@
         <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
           <h2 class="text-xl font-bold mb-4 text-gray-800" data-translate-key="customize.title">カスタマイズ設定</h2>
           <div class="grid md:grid-cols-2 gap-4">
-            
+
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.sizeLabel">サイズ</label>
               <select id="qrSize" class="form-select">
@@ -665,7 +665,7 @@
                 <option value="1000">1000×1000</option>
               </select>
             </div>
-            
+
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.downloadFormatLabel">ダウンロード形式</label>
               <select id="downloadFormat" class="form-select">
@@ -675,7 +675,7 @@
                 <option value="svg">SVG</option>
               </select>
             </div>
-            
+
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.errorCorrectionLabel">エラー訂正レベル</label>
               <select id="errorCorrection" class="form-select">
@@ -685,7 +685,7 @@
                 <option value="H" data-translate-key="customize.errorCorrectionHigh">H（最高）</option>
               </select>
             </div>
-            
+
             <div id="jpegQualityDiv" class="hidden">
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.jpegQualityLabel">JPEG品質</label>
               <input type="range" id="jpegQuality" min="0.1" max="1" step="0.1" value="0.9" class="w-full">
@@ -702,12 +702,12 @@
                 <span class="text-xs text-gray-500"><span data-translate-key="customize.radiusPrefix">半径:</span> <span id="roundedRadiusValue">5%</span></span>
               </div>
             </div>
-            
+
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.foregroundColorLabel">前景色</label>
               <input type="color" id="foregroundColor" value="#000000" class="form-input h-12">
             </div>
-            
+
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="customize.backgroundColorLabel">背景色</label>
               <input type="color" id="backgroundColor" value="#ffffff" class="form-input h-12">
@@ -721,9 +721,9 @@
             </svg>
             <span data-translate-key="customize.title">カスタマイズ設定</span>
           </h2>
-          
+
           <div class="space-y-6">
-            
+
             <!-- セルの形状 -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-3" data-translate-key="creative.cellShape">セルの形状</label>
@@ -875,7 +875,7 @@
 
       </div>      <!-- 右側: 結果表示 -->
       <div class="xl:col-span-1 lg:col-span-1 space-y-6 sticky top-24 self-start">
-        
+
         <!-- QRコード表示 -->
         <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
@@ -929,7 +929,7 @@
               </svg>
               <span data-i18n="qrCode.button.download">ダウンロード</span>
             </button>
-            
+
             <button id="downloadAllBtn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-lg hidden">
               <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -1114,7 +1114,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">読み取り精度を向上させる技術</h3>
           <div class="space-y-6">
@@ -1127,7 +1127,7 @@
                 <strong>計算式：</strong> 読み取り距離(cm) ÷ 10 = 最小QRサイズ(cm)
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">コントラストの確保</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -1137,7 +1137,7 @@
                 <strong>推奨：</strong> WCAG基準でコントラスト比4.5:1以上を維持
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">余白（クワイエットゾーン）の重要性</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -1195,7 +1195,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>ビジネスでの効果的なQRコード配置方法は？</span>
@@ -1227,7 +1227,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>Wi-Fi QRコードのセキュリティと注意点は？</span>
@@ -1263,7 +1263,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>商用利用時の法的注意点と著作権について</span>
@@ -1327,7 +1327,7 @@
             <strong>成果：</strong> 顧客満足度向上 + 業務効率化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎪</div>
           <h3 class="text-lg font-semibold mb-3">イベント運営での効率化</h3>
@@ -1342,7 +1342,7 @@
             <strong>成果：</strong> 受付時間67%短縮 + ペーパーレス化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏢</div>
           <h3 class="text-lg font-semibold mb-3">法人営業での名刺革新</h3>
@@ -1357,7 +1357,7 @@
             <strong>成果：</strong> 連絡先登録率60%向上 + 営業効率化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏥</div>
           <h3 class="text-lg font-semibold mb-3">医療機関での待ち時間対策</h3>
@@ -1372,7 +1372,7 @@
             <strong>成果：</strong> 診察効率15%向上 + 患者体験改善
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏫</div>
           <h3 class="text-lg font-semibold mb-3">教育現場でのデジタル化</h3>
@@ -1387,7 +1387,7 @@
             <strong>成果：</strong> 授業準備時間50%削減 + 学生エンゲージメント向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎭</div>
           <h3 class="text-lg font-semibold mb-3">文化施設での体験向上</h3>
@@ -1411,7 +1411,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせたQRコード活用を始めてみましょう。
             当ツールなら、すべての用途に対応した高品質なQRコードを簡単に作成できます。
           </p>
-          <a href="#" onclick="document.getElementById('qrText').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('qrText').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐQRコード作成を始める
           </a>
@@ -1463,20 +1463,20 @@
   <!-- 共通ユーティリティ -->
   <script src="../js/common-utils.js"></script>
   <script src="../js/security-utils.js"></script>
-  
+
   <!-- 多言語対応翻訳システム -->
   <script src="../js/common-translations.js"></script>
   <script src="../js/qr-generator-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
-  
+
   <!-- 多言語対応翻訳データ（既存、後で削除予定） -->
   <script src="../js/translations.js"></script>
-  
+
   <!-- QRコードライブラリ（順序重要） -->
-  <script src="../js/qrcode.min.js" 
-          onload="console.log('✅ QRライブラリ読み込み完了');" 
+  <script src="../js/qrcode.min.js"
+          onload="console.log('✅ QRライブラリ読み込み完了');"
           onerror="loadQRCodeFallback()"></script>
-  
+
   <!-- クリエイティブQR用ライブラリ -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"
           onload="console.log('✅ qrcode-generator読み込み完了: ', typeof qrcode);"
@@ -1501,15 +1501,15 @@
     }  </script>
 
   <!-- メイン JavaScript (統合版) -->
-  <script src="../js/qr-code-generator.js" 
-          onload="console.log('✅ qr-code-generator.js読み込み完了');" 
+  <script src="../js/qr-code-generator.js"
+          onload="console.log('✅ qr-code-generator.js読み込み完了');"
           onerror="console.error('❌ qr-code-generator.js読み込み失敗');"></script>
 
   <!-- アプリケーション準備完了確認 -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🚀 QRコード生成ツール初期化チェック');
-      
+
       // QRGeneratorインスタンスの確認
       setTimeout(() => {
         if (window.qrGeneratorInstance) {
@@ -1536,7 +1536,7 @@
       const guideModal = document.getElementById('guide-modal');
       const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
-      
+
       const guides = {
         ja: {
           title: 'QRコード生成ツールの使い方',
@@ -1628,9 +1628,9 @@
         guideBtn.addEventListener('click', function() {
           const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
           const g = guides[lang] || guides.ja;
-          
+
           let html = `<h2 class='text-2xl font-bold mb-6 text-accent'>${g.title}</h2>`;
-          
+
           g.sections.forEach(section => {
             html += `<div class="mb-6">`;
             html += `<h3 class='text-lg font-bold mb-3 text-gray-800'>${section.title}</h3>`;
@@ -1640,19 +1640,19 @@
             });
             html += '</ul></div>';
           });
-          
+
           guideContent.innerHTML = html;
           guideModal.classList.remove('hidden');
         });
-        
+
         guideClose.addEventListener('click', function() {
           guideModal.classList.add('hidden');
         });
-        
+
         guideModal.addEventListener('click', function(e) {
           if(e.target === guideModal) guideModal.classList.add('hidden');
         });
-        
+
         // ESCキーで閉じる
         document.addEventListener('keydown', function(e) {
           if(e.key === 'Escape' && !guideModal.classList.contains('hidden')) {
@@ -1669,95 +1669,6 @@
       setupGuideModal();
     }
   </script>
-  <!-- Amazon・楽天Cookie埋め込み機能（同意取得済みユーザーのみ） -->
-  <!-- 
-  <script>
-    // 開発環境では一時無効化 - 本番環境で有効化予定
-    // アフィリエイトCookie埋め込み関数
-    function embedAffiliateCookies() {
-      // Cookie承諾チェック
-      if (localStorage.getItem('cookieConsent') !== 'accepted') {
-        console.log('Cookie consent not given, skipping affiliate cookies');
-        return false;
-      }
-
-      try {
-        // Amazon アソシエイト Cookie埋め込み
-        var amazonImg = document.createElement('img');
-        amazonImg.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211';
-        amazonImg.width = '1';
-        amazonImg.height = '1';
-        amazonImg.style.display = 'none';
-        amazonImg.alt = '';
-        amazonImg.loading = 'eager';
-        amazonImg.referrerPolicy = 'no-referrer';
-        document.body.appendChild(amazonImg);
-
-        // 楽天アフィリエイト Cookie埋め込み
-        var rakutenImg = document.createElement('img');
-        rakutenImg.src = 'https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie';
-        rakutenImg.width = '1';
-        rakutenImg.height = '1';
-        rakutenImg.style.display = 'none';
-        rakutenImg.alt = '';
-        rakutenImg.loading = 'eager';
-        rakutenImg.referrerPolicy = 'no-referrer';
-        document.body.appendChild(rakutenImg);
-
-        console.log('✅ QRツール: アフィリエイトCookie埋め込み完了');
-        return true;
-      } catch (error) {
-        console.error('❌ QRツール: アフィリエイトCookie埋め込み失敗:', error);
-        return false;      }
-    }
-
-    // QRGenerator クラスの generateQR メソッドを拡張
-    document.addEventListener('DOMContentLoaded', function() {
-      // 元の generateQR 関数をフック
-      if (window.qrGeneratorInstance) {
-        console.log('🔧 QRGenerator インスタンス検出済み、Cookie機能を統合');
-        extendQRGeneratorWithAffiliates();
-      } else {
-        // インスタンスの作成を待機
-        const checkInterval = setInterval(() => {
-          if (window.qrGeneratorInstance) {
-            console.log('🔧 QRGenerator インスタンス作成確認、Cookie機能を統合');
-            extendQRGeneratorWithAffiliates();
-            clearInterval(checkInterval);
-          }
-        }, 100);
-        
-        // 5秒でタイムアウト
-        setTimeout(() => {
-          clearInterval(checkInterval);
-          console.warn('⚠️ QRGenerator インスタンスが見つかりませんでした');
-        }, 5000);
-      }
-    });
-
-    function extendQRGeneratorWithAffiliates() {
-      if (!window.qrGeneratorInstance) return;
-
-      // 元の generateQR メソッドを保存
-      const originalGenerateQR = window.qrGeneratorInstance.generateQR;      // generateQR メソッドを拡張
-      window.qrGeneratorInstance.generateQR = function() {
-        console.log('🚀 QRコード生成開始 - アフィリエイトCookie機能付き');
-        
-        // Cookie承諾を得ている場合は常にCookie埋め込み
-        if (localStorage.getItem('cookieConsent') === 'accepted') {
-          console.log('🍪 Cookie承諾済みユーザー - アフィリエイトCookie埋め込み実行');
-          embedAffiliateCookies();
-        } else {
-          console.log('ℹ️ Cookie未承諾ユーザー - Cookie埋め込みをスキップ');
-        }
-
-        // 元の generateQR メソッドを実行
-        return originalGenerateQR.call(this);
-      };      console.log('✅ QRGenerator にアフィリエイトCookie機能を統合完了');
-    }
-  </script>
-  -->
-    
   <!-- 多言語対応システム -->
   <script>
     // 多言語対応システム（このページ専用: qrGeneratorTranslations を使用）
@@ -1766,30 +1677,30 @@
         this.currentLanguage = this.getStoredLanguage() || this.detectBrowserLanguage();
         this.init();
       }
-      
+
       getStoredLanguage() {
         return localStorage.getItem('selectedLanguage');
       }
-      
+
       detectBrowserLanguage() {
         const browserLang = navigator.language || navigator.userLanguage;
         return browserLang.startsWith('ja') ? 'ja' : 'en';
       }
-      
+
       init() {
         console.log('🌐 言語システム初期化中...', this.currentLanguage);
         this.updateLanguageSelector();
         this.applyTranslations();
         this.bindLanguageSelector();
       }
-      
+
       updateLanguageSelector() {
         const langSwitch = document.getElementById('lang-switch');
         if (langSwitch) {
           langSwitch.value = this.currentLanguage;
         }
       }
-      
+
       bindLanguageSelector() {
         const langSwitch = document.getElementById('lang-switch');
         if (langSwitch) {
@@ -1798,7 +1709,7 @@
           });
         }
       }
-      
+
       changeLanguage(lang) {
         console.log('🔄 言語変更:', this.currentLanguage, '->', lang);
         this.currentLanguage = lang;
@@ -1806,7 +1717,7 @@
         this.applyTranslations();
         this.updateMetaTags();
       }
-      
+
       applyTranslations() {
         const source = window.qrGeneratorTranslations || window.translations;
         if (!source || !source[this.currentLanguage]) {
@@ -1846,10 +1757,10 @@
             element.placeholder = translations[key];
           }
         });
-        
+
         console.log('✅ 翻訳適用完了:', this.currentLanguage);
       }
-      
+
       updateMetaTags() {
         const source = window.qrGeneratorTranslations || window.translations;
         const translations = source?.[this.currentLanguage] || {};
@@ -1888,7 +1799,7 @@
           ogDesc.setAttribute('content', ogDescText);
         }
       }
-      
+
       t(key) {
         const source = window.qrGeneratorTranslations || window.translations;
         if (!source || !source[this.currentLanguage]) {
@@ -1897,7 +1808,7 @@
         return source[this.currentLanguage][key] || key;
       }
     }
-    
+
     // 言語マネージャー初期化
     document.addEventListener('DOMContentLoaded', () => {
       window.languageManager = new LanguageManager();
@@ -1913,7 +1824,7 @@
       const guideModal = document.getElementById('guide-modal');
       const guideClose = document.getElementById('guide-close');
       const guideContent = document.getElementById('guide-modal-content');
-      
+
       if(guideBtn && guideModal && guideClose && guideContent) {
         guideBtn.addEventListener('click', function() {
           if (window.t) {
@@ -1921,11 +1832,11 @@
           }
           guideModal.classList.remove('hidden');
         });
-        
+
         guideClose.addEventListener('click', function() {
           guideModal.classList.add('hidden');
         });
-        
+
         guideModal.addEventListener('click', function(e) {
           if(e.target === guideModal) guideModal.classList.add('hidden');
         });
@@ -1935,7 +1846,7 @@
     // QRガイドモーダルの内容更新
     function updateQRGuideModalContent(guideContentElement) {
       if (!window.t || !guideContentElement) return;
-      
+
       const title = window.t('guide.title');
       const steps = [
         window.t('guide.step1'),
@@ -1951,7 +1862,7 @@
         window.t('guide.tip3'),
         window.t('guide.tip4')
       ];
-      
+
       let html = `<h2 class='text-xl font-bold mb-3'>${title}</h2>`;
       html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + steps.map(x=>`<li>${x}</li>`).join('') + '</ul>';
       html += `<h3 class='font-bold text-base mt-6 mb-2'>${tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';

@@ -3,41 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google https://nbrosowsky.github.io;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://*.google.com;
-    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io https://nbrosowsky.github.io;
+    img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://*.google.com https://ep2.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io https://nbrosowsky.github.io https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     media-src 'self' https://nbrosowsky.github.io;
-    frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com;
+    frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com https://ep1.adtrafficquality.google;
     worker-src 'self' blob:;
     object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  
+
   <title data-translate-key="pageTitle">【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com</title>
   <meta name="description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
-  
+
   <!-- OG Tags -->
   <meta property="og:title" data-translate-key="pageTitle" content="【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com" />
   <meta property="og:description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
-  
+
   <!-- Suppress warnings early -->
   <script>
     // Suppress specific development warnings early
     const originalConsoleWarn = console.warn;
     const originalConsoleError = console.error;
-    
+
     console.warn = function(...args) {
       const message = args[0];
       if (typeof message === 'string') {
@@ -110,8 +110,8 @@
               negi: "#65c155",
               accent: "#4ADE80"
             },
-            fontFamily: { 
-              inter: ["Inter", "sans-serif"] 
+            fontFamily: {
+              inter: ["Inter", "sans-serif"]
             }
           }
         }
@@ -170,10 +170,10 @@
 
   <!-- Centralized consent-gated loader for GA/AdSense -->
   <script src="../js/ads-consent-loader.js" defer></script>
-  
+
   <!-- Fonts and Local Scripts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
+
   <!-- Tone.js and Instruments -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
@@ -236,7 +236,7 @@
 
       <!-- Main Content -->
       <div class="grid lg:grid-cols-5 gap-8">
-        
+
         <!-- Left: Settings Panel -->
         <div class="lg:col-span-3 space-y-6">
           <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
@@ -405,7 +405,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Generate Button -->
             <div class="mt-8">
               <button id="generate-btn" class="btn-primary w-full py-3 text-lg">

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://pagead2.googlesyndication.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: https://pagead2.googlesyndication.com https://tpc.googlesyndication.com;
-    connect-src 'self' https://www.google-analytics.com;
-    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+    img-src 'self' data: blob: https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   " />
@@ -24,7 +24,7 @@
       <div id="guide-modal-content"></div>
     </div>
   </div>
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
@@ -40,11 +40,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="../js/security-utils.js" onerror="console.warn('security-utils.js読み込みエラー')"></script>
   <script src="../js/common-utils.js" onerror="console.warn('common-utils.js読み込みエラー')"></script>
-  
+
   <!-- 翻訳システム -->
   <script src="../js/common-translations.js"></script>
   <script src="../js/date-calculator-translations.js"></script>
@@ -116,7 +116,7 @@
       </nav>
     </div>
   </header>
-  
+
   <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -129,7 +129,7 @@
       </ol>
     </div>
   </nav>
-  
+
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
@@ -364,7 +364,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">実務での計算精度向上</h3>
           <div class="space-y-6">
@@ -385,7 +385,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">期間計算の注意点</h4>
               <ul class="text-sm text-gray-600 space-y-1">
@@ -443,7 +443,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>年齢計算・勤続年数で1日ずれる</span>
@@ -563,7 +563,7 @@
             <strong>成果：</strong> 納期遵守率25%向上 + リスク管理強化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📅</div>
           <h3 class="text-lg font-semibold mb-3">人事・労務管理の自動化</h3>
@@ -578,7 +578,7 @@
             <strong>成果：</strong> 労務処理時間50%短縮 + 正確性向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏥</div>
           <h3 class="text-lg font-semibold mb-3">医療機関での年齢・期間管理</h3>
@@ -593,7 +593,7 @@
             <strong>成果：</strong> 医療ミス削減 + 診療効率向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📈</div>
           <h3 class="text-lg font-semibold mb-3">金融・保険業での期間計算</h3>
@@ -608,7 +608,7 @@
             <strong>成果：</strong> 計算精度向上 + 顧客満足度向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎓</div>
           <h3 class="text-lg font-semibold mb-3">教育機関での学事管理</h3>
@@ -623,7 +623,7 @@
             <strong>成果：</strong> 事務効率30%向上 + 学生支援強化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">⚖️</div>
           <h3 class="text-lg font-semibold mb-3">法務・契約管理の精密化</h3>
@@ -647,7 +647,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせた日付計算活用を始めてみましょう。
             当ツールなら、すべての日付・期間計算ニーズに対応した高精度な処理を簡単に実行できます。
           </p>
-          <a href="#" onclick="document.getElementById('startDate').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('startDate').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐ日付計算を始める
           </a>
@@ -674,7 +674,7 @@
     </div>
   </div>
 
-  
+
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
@@ -737,19 +737,19 @@
         return count;
       }      document.getElementById('diffForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         try {
           const s = SecurityUtils.sanitizeInput(document.getElementById('startDate').value);
           const e_ = SecurityUtils.sanitizeInput(document.getElementById('endDate').value);
           const useBiz = document.getElementById('optionBiz').checked;
           const incStart = document.getElementById('optionIncludeStart').checked;
           const incEnd = document.getElementById('optionIncludeEnd').checked;
-          
+
           if(!s || !e_) {
             SecurityUtils.showUserError('開始日と終了日を入力してください');
             return;
           }
-          
+
           // 日付形式の検証
           const startDate = new Date(s);
           const endDate = new Date(e_);
@@ -757,13 +757,13 @@
             SecurityUtils.showUserError('正しい日付形式で入力してください');
             return;
           }
-          
+
           const days = calcDateDiff(s, e_, useBiz, incStart, incEnd);
           const res = `${days}日` + (useBiz ? '（営業日）' : '');
           const resultBox = document.getElementById('diffResult');
           resultBox.textContent = res;
           resultBox.classList.remove('hidden');
-          
+
           SecurityUtils.showSuccessMessage('日付差の計算が完了しました');
         } catch (error) {
           SecurityUtils.showUserError('計算中にエラーが発生しました', error);
@@ -783,7 +783,7 @@
         return d;
       }      document.getElementById('addsubForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         try {
           const base = SecurityUtils.sanitizeInput(document.getElementById('baseDate').value);
           const daysInput = SecurityUtils.sanitizeInput(document.getElementById('days').value);
@@ -791,19 +791,19 @@
           const useBiz = document.getElementById('optionBiz').checked;
           const incStart = document.getElementById('optionIncludeStart').checked;
           const incEnd = document.getElementById('optionIncludeEnd').checked;
-          
+
           if(!base || isNaN(days)) {
             SecurityUtils.showUserError('基準日と日数を正しく入力してください');
             return;
           }
-          
+
           // 日付形式の検証
           const baseDate = new Date(base);
           if (isNaN(baseDate.getTime())) {
             SecurityUtils.showUserError('正しい日付形式で入力してください');
             return;
           }
-          
+
           // 日数の範囲制限（セキュリティ対策）
           if (Math.abs(days) > 36500) { // 100年以内
             SecurityUtils.showUserError('日数は100年以内（±36500日）で入力してください');
@@ -828,7 +828,7 @@
           const resultBox = document.getElementById('addsubResult');
           resultBox.textContent = res;
           resultBox.classList.remove('hidden');
-          
+
           SecurityUtils.showSuccessMessage('日付計算が完了しました');
         } catch (error) {
           SecurityUtils.showUserError('計算中にエラーが発生しました', error);
@@ -984,7 +984,7 @@
       const toggleDiff = document.getElementById('toggleDiff');
       const toggleAddSub = document.getElementById('toggleAddSub');
       const toggleBiz = document.getElementById('toggleBiz');
-      
+
       if (diffSection && toggleDiff) {
         diffSection.style.display = toggleDiff.checked ? '' : 'none';
       }
@@ -995,11 +995,11 @@
         bizSection.style.display = toggleBiz.checked ? '' : 'none';
       }
     }
-    
+
     const toggleDiff = document.getElementById('toggleDiff');
     const toggleAddSub = document.getElementById('toggleAddSub');
     const toggleBiz = document.getElementById('toggleBiz');
-    
+
     if (toggleDiff) {
       toggleDiff.addEventListener('change', updateSections);
     }

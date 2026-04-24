@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob:; 
-    connect-src 'self' 
-      https://www.google-analytics.com; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
@@ -38,7 +38,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
@@ -54,7 +54,7 @@
     window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
     window.metaDescriptionTranslationKey = "faviconOgGen.metaDescription";
   </script>
-  
+
   <!-- Custom Styles -->
   <style>
     .form-input, .form-select, .form-button, .form-textarea {
@@ -64,29 +64,29 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       transition: box-shadow 0.2s;
     }
-    
+
     .form-input:focus, .form-select:focus, .form-button:focus, .form-textarea:focus {
       outline: none;
       box-shadow: 0 0 0 2px #4ADE80;
       border-color: #4ADE80;
     }
-    
+
     .form-button {
       background: #4ADE80;
       color: #fff;
       transition: background 0.15s, color 0.15s;
     }
-    
+
     .form-button:hover:not(:disabled) {
       background: #10b981;
     }
-    
+
     .form-button:disabled {
       background: #d1d5db;
       color: #9ca3af;
       cursor: not-allowed;
     }
-    
+
     .drop-area {
       border: 2px dashed #d1d5db;
       border-radius: 0.5rem;
@@ -95,12 +95,12 @@
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
     }
-    
+
     .drop-area.dragover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.1);
     }
-    
+
     .preview-image {
       max-width: 100%;
       max-height: 16rem;
@@ -109,7 +109,7 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
   </style>
-  
+
   <script src="../js/ads-consent-loader.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
@@ -133,7 +133,7 @@
       </nav>
     </div>
   </header>
-  
+
   <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -146,7 +146,7 @@
       </ol>
     </div>
   </nav>
-  
+
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
@@ -210,7 +210,7 @@
               <p>これらの画像は、ブランディング・ユーザビリティ・SEO対策において非常に重要な要素です。</p>
             </div>
           </div>
-          
+
           <div>
             <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.sizes">⚙️ 各サイズの用途</h3>
             <div class="space-y-2 text-gray-700 text-sm">
@@ -253,7 +253,7 @@
               </code>
             </div>
           </div>
-          
+
           <div>
             <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.optimization">最適化のポイント</h3>
             <ul class="space-y-2 text-gray-700 text-sm">
@@ -278,21 +278,21 @@
               <p>ブラウザのキャッシュが原因の場合があります。Ctrl+F5でハードリフレッシュするか、HTMLの&lt;head&gt;内に正しくlink要素を記述しているか確認してください。</p>
             </div>
           </details>
-          
+
           <details class="border border-gray-200 rounded-lg p-4">
             <summary class="font-semibold cursor-pointer text-gray-800">OGP画像の推奨サイズは？</summary>
             <div class="mt-3 text-gray-700 text-sm">
               <p>1200×630pxが標準的です。Facebook・Twitter・LINEなど主要SNSで最適に表示されます。最小サイズは600×315pxです。</p>
             </div>
           </details>
-          
+
           <details class="border border-gray-200 rounded-lg p-4">
             <summary class="font-semibold cursor-pointer text-gray-800">どのファイル形式が良いですか？</summary>
             <div class="mt-3 text-gray-700 text-sm">
               <p>ファビコンはPNG形式を推奨。透明背景が使えます。OGP画像もPNG・JPEG両方対応していますが、品質を重視するならPNG、ファイルサイズを抑えるならJPEGが適しています。</p>
             </div>
           </details>
-          
+
           <details class="border border-gray-200 rounded-lg p-4">
             <summary class="font-semibold cursor-pointer text-gray-800">モバイル対応は必要ですか？</summary>
             <div class="mt-3 text-gray-700 text-sm">
@@ -329,7 +329,7 @@
             <strong>成果：</strong> サイト流入45%増 + ブランド認知向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">💼</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.corporate.title">企業サイトのプロフェッショナル化</h3>
@@ -344,7 +344,7 @@
             <strong>成果：</strong> お問い合わせ25%増 + 信頼性向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🛒</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.ec.title">ECサイトでのSEO・UX改善</h3>
@@ -359,7 +359,7 @@
             <strong>成果：</strong> オーガニック流入30%増 + 視認性向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📝</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.blog.title">ブログ・メディアでの読者獲得</h3>
@@ -374,7 +374,7 @@
             <strong>成果：</strong> PV数3倍増 + 収益化加速
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎓</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.school.title">教育機関での情報発信強化</h3>
@@ -389,7 +389,7 @@
             <strong>成果：</strong> 参加者40%増 + 魅力度向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏥</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.medical.title">医療・サービス業での信頼構築</h3>
@@ -413,7 +413,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせたFavicon・OG画像活用を始めてみましょう。
             当ツールなら、プロ品質のサイト画像を簡単に生成できます。
           </p>
-          <a href="#" onclick="document.querySelector('#textInput, #logoInput, [type=file]').focus(); return false;" 
+          <a href="#" onclick="document.querySelector('#textInput, #logoInput, [type=file]').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             <span data-translate-key="cta.button">今すぐFavicon・OG画像生成を始める</span>
           </a>
@@ -606,7 +606,7 @@ if (document.readyState === "loading") {
         document.addEventListener('DOMContentLoaded', function() {
           const fileInputs = document.querySelectorAll('input[type="file"]');
           const textInputs = document.querySelectorAll('input[type="text"], textarea');
-          
+
           // ファイル入力の検証
           fileInputs.forEach(input => {
             input.addEventListener('change', function(e) {
@@ -618,7 +618,7 @@ if (document.readyState === "loading") {
                   this.value = '';
                   return;
                 }
-                
+
                 if (!SecurityUtils.validateFileSize(file, 10)) {
                   SecurityUtils.showUserError('ファイルサイズが10MB以下の画像を選択してください');
                   this.value = '';
@@ -627,7 +627,7 @@ if (document.readyState === "loading") {
               }
             });
           });
-          
+
           // テキスト入力のサニタイズ
           textInputs.forEach(input => {
             input.addEventListener('input', function() {

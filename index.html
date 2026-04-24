@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -16,7 +16,7 @@
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
       https://adservice.google.com
-      https://xml.affiliate.rakuten.co.jp;
+      https://xml.affiliate.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
       https://fonts.googleapis.com
       https://cdn.tailwindcss.com;
@@ -32,31 +32,35 @@
       https://www.amazon.co.jp
       https://*.afl.rakuten.co.jp
       https://hbb.afl.rakuten.co.jp
-      https://ad.rakuten.co.jp;
+      https://ad.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     connect-src 'self'
       https://www.google-analytics.com
       https://pagead2.googlesyndication.com
       https://googleads.g.doubleclick.net
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google;
     frame-src
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
       https://adservice.google.com
-      https://*.rakuten.co.jp;
+      https://*.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   "/>
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-  
+
   <title data-translate-key="page.title">オンライン便利ツール集 - 日常作業を効率化 | negi-lab.com</title>
   <meta name="description" data-translate-key="meta.description" content="プライバシー重視のブラウザ完結型ツール集。QRコード生成、画像変換、単位換算など、専門的な機能を誰でも簡単に利用できます。技術解説と実用ガイド付きで安心してお使いいただけます。" />
   <meta name="robots" content="index,follow" />
-  <meta name="author" content="negi-lab.com" />  <meta property="og:type" content="website" />
+  <meta name="author" content="negi-lab.com" />
+  <link rel="canonical" href="https://negi-lab.com/" />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="【無料】オンラインツール集 | QRコード作成・画像変換・単位変換 - negi-lab.com" />
   <meta property="og:description" content="登録不要で使える無料のオンラインツール集。QRコード作成、画像変換、単位変換、URL短縮など、日々の作業を効率化する便利なツールを提供。セキュリティ重視で安心してご利用いただけます。" />
   <meta property="og:url" content="https://negi-lab.com/" />
@@ -68,7 +72,7 @@
     <!-- External Resources with SRI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -83,11 +87,11 @@
       }
     }
   </script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="js/security-utils.js"></script>
   <script src="js/common-utils.js"></script>
-  
+
   <!-- Portal-specific translations -->
   <script src="js/portal-translations.js"></script>
   <!-- Consent-gated loader for GA/AdSense -->
@@ -110,22 +114,12 @@
     <button id="consent-accept" class="bg-accent text-white rounded px-3 py-1 text-xs md:text-sm font-semibold ml-2" data-translate-key="consentBanner.acceptButton">OK</button>
   </div>
 
-  <!-- Amazonアソシエイト Cookie埋め込み（規約違反リスクのため削除） -->
-  <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
-  <!-- 楽天アフィリエイト Cookie埋め込み（規約違反リスクのため削除） -->
-  <!-- <img src="https://ad.rakuten.co.jp/s/?id=4910d747.d15dc188.4910d748.d56fc6c6" width="1" height="1" style="display:none;" alt="" referrerpolicy="no-referrer" /> -->
-
-  <!-- AmazonアフィリエイトCookie用ピクセル（規約違反リスクのため削除） -->
-  <!-- <img src="https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211" width="1" height="1" style="display:none;" alt="" loading="eager" /> -->
-  <!-- 楽天アフィリエイトCookie用ピクセル（規約違反リスクのため削除） -->
-  <!-- <img src="https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie" width="1" height="1" style="display:none;" alt="" loading="eager" /> -->
-
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
-        <ul class="flex gap-6 font-medium text-base items-center">
+        <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
@@ -135,7 +129,7 @@
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -158,17 +152,6 @@
         </a>
       </div>
 
-      <!-- ヒーローセクション下：アドセンス（レスポンシブ） -->
-    <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-  <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc"
-     style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="7843001775"
-       data-ad-format="auto"
-       data-full-width-responsive="true"
-       aria-label="広告"></ins>
-      </aside>
     </section>
 
     <!-- Tools Section -->
@@ -188,23 +171,10 @@
             </div>
           </div>
         </header>
-        
-        <!-- ツールセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
-        <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-          <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-    <ins class="adsbygoogle ad-pc"
-      style="display:block;min-height:250px"
-      data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="9898319477"
-      data-ad-format="auto"
-      data-ad-lazy="1"
-      data-full-width-responsive="true"
-      aria-label="広告"></ins>
-        </aside>
 
         <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
           <!-- Tool Cards -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/unit-converter.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/unit-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="3" rx="1.5"/><rect x="4" y="14" width="16" height="3" rx="1.5"/></svg>
             </div>
@@ -212,7 +182,7 @@
             <p class="text-gray-600 text-sm mb-3 flex-1" data-translate-key="tools.unitConverter.description">500以上の単位に対応した高精度変換ツール。日本の伝統単位（尺・寸・坪）から国際単位まで、工学・医療・料理分野での専門的な単位変換を実現。</p>
             <a href="tools/unit-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.unitConverter.open">開く</a>
           </div>
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-converter.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="7" cy="7" r="2"/><path d="M21 21l-6-6-4 4-2-2-5 5"/></svg>
             </div>
@@ -221,7 +191,7 @@
             <a href="tools/image-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageConverter.open">開く</a>
           </div>
           <!-- 3: QRコード作成ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/qr-code-generator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/qr-code-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
             </div>
@@ -230,7 +200,7 @@
             <a href="tools/qr-code-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.qrGenerator.open">開く</a>
           </div>
           <!-- 4: URL短縮ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/url-shortener.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/url-shortener.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 7a5 5 0 0 1 0 10M7 17a5 5 0 0 1 0-10"/><path d="M8 12h8"/></svg>
             </div>
@@ -239,7 +209,7 @@
             <a href="tools/url-shortener.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.urlShortener.open">開く</a>
           </div>
           <!-- 5: 日付計算ツール（追加） -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/date-calculator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/date-calculator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="4"/><path d="M8 2v4M16 2v4M3 10h18"/><rect x="7" y="14" width="3" height="3" rx="1.5"/><rect x="14" y="14" width="3" height="3" rx="1.5"/></svg>
             </div>
@@ -248,7 +218,7 @@
             <a href="tools/date-calculator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.dateCalculator.open">開く</a>
           </div>
           <!-- 6: 画像サイズ比較変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-size-compare.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/image-size-compare.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
             </div>
@@ -257,7 +227,7 @@
             <a href="tools/image-size-compare.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.imageSizeCompare.open">開く</a>
           </div>
           <!-- 7: カラーコード検索・表示ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/color-code-tool.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/color-code-tool.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="6"/></svg>
             </div>
@@ -266,7 +236,7 @@
             <a href="tools/color-code-tool.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.colorCodeTool.open">開く</a>
           </div>
           <!-- 8: PDFオールインワンツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/pdf-tool.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/pdf-tool.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
             </div>
@@ -275,7 +245,7 @@
             <a href="tools/pdf-tool.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.pdfTool.open">開く</a>
           </div>
           <!-- 9: 画像背景リムーバ&透過PNG生成ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/bg-remover.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/bg-remover.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
             </div>
@@ -284,7 +254,7 @@
             <a href="tools/bg-remover.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.bgRemover.open">開く</a>
           </div>
           <!-- 10: ファビコン&OG画像ジェネレータ -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/favicon-og-generator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/favicon-og-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
             </div>
@@ -293,7 +263,7 @@
             <a href="tools/favicon-og-generator.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.faviconOgGen.open">開く</a>
           </div>
           <!-- 11: JSON⇔CSV/YAML⇔Excel変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/json-csv-yaml-excel.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/json-csv-yaml-excel.html'">
             <div class="mb-3">
               <!-- より表計算らしいアイコンに変更 -->
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -314,7 +284,7 @@
             <a href="tools/json-csv-yaml-excel.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.jsonCsvYamlExcel.open">開く</a>
           </div>
           <!-- 12: テキスト変換ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/text-converter.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/text-converter.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M10 6h4M8 10h8M8 14h8M8 18h8M4 6h2M4 10h2M4 14h2M4 18h2"/>
@@ -326,7 +296,7 @@
             <a href="tools/text-converter.html" class="text-accent hover:underline font-semibold" data-translate-key="tools.textConverter.open">開く</a>
           </div>
           <!-- 13: 音楽生成ツール -->
-          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-2xl p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/music-generator.html'">
+          <div class="bg-gray-50 hover:bg-accent/10 transition rounded-lg p-6 shadow group flex flex-col items-start cursor-pointer tool-card" role="listitem" onclick="location.href='tools/music-generator.html'">
             <div class="mb-3">
               <svg class="w-9 h-9 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M9 18V5l12-3v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
@@ -359,21 +329,9 @@
     <section id="wikis" class="py-14 bg-gray-100">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center text-gray-900 mb-10" data-translate-key="wikis.sectionTitle">ゲーム攻略Wiki</h2>
-        <!-- Wikiセクションタイトル直下：AdSense（インフィード/ディスプレイ） -->
-        <div class="max-w-3xl mx-auto my-8">
-          <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-          <ins class="adsbygoogle ad-pc"
-               style="display:block;min-height:250px"
-               data-ad-client="ca-pub-1835873052239386"
-               data-ad-slot="9898319477"
-               data-ad-format="auto"
-               data-ad-lazy="1"
-               data-full-width-responsive="true"
-               aria-label="広告"></ins>
-        </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- 1 -->
-          <div class="bg-white hover:bg-accent/10 transition rounded-2xl p-7 shadow flex flex-col items-start cursor-pointer wiki-card" tabindex="0" role="button" aria-pressed="false" data-wiki-url="https://negi-lab.com/gamewiki/FellowMoon/site/index.html">
+          <div class="bg-white hover:bg-accent/10 transition rounded-lg p-7 shadow flex flex-col items-start cursor-pointer wiki-card" tabindex="0" role="button" aria-pressed="false" data-wiki-url="https://negi-lab.com/gamewiki/FellowMoon/site/index.html">
             <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate-key="wikis.shingetsu.title">新月同行 Wiki</h3>
             <p class="text-gray-600 text-sm mb-4 flex-1">
               <span data-translate-key="wikis.shingetsu.description">話題のスマホRPG「新月同行」の最新情報・データベース・攻略・ランキングなどを掲載。</span><span class="inline-block ml-1 px-2 py-0.5 bg-accent/20 text-xs text-accent rounded" data-translate-key="wikis.shingetsu.languageBadge">日本語限定</span>
@@ -381,7 +339,7 @@
             <a href="wiki-redirect.html?url=https%3A%2F%2Ffellowmoon.gamewiki.jp" class="text-accent hover:underline font-semibold" data-translate-key="wikis.shingetsu.open" tabindex="-1">Wikiを見る</a>
           </div>
           <!-- セブンナイツリバース Wiki -->
-          <div class="bg-white hover:bg-accent/10 transition rounded-2xl p-7 shadow flex flex-col items-start cursor-pointer wiki-card" tabindex="0" role="button" aria-pressed="false" data-wiki-url="https://negi-lab.com/gamewiki/SevenKnightsReBirth/index.html">
+          <div class="bg-white hover:bg-accent/10 transition rounded-lg p-7 shadow flex flex-col items-start cursor-pointer wiki-card" tabindex="0" role="button" aria-pressed="false" data-wiki-url="https://negi-lab.com/gamewiki/SevenKnightsReBirth/index.html">
             <h3 class="text-xl font-semibold mb-2 text-gray-800" data-translate-key="wikis.sevenknights.title">セブンナイツリバース Wiki</h3>
             <p class="text-gray-600 text-sm mb-4 flex-1">
               <span data-translate-key="wikis.sevenknights.description">話題のスマホRPG「セブンナイツリバース」の最新情報・データベース・攻略・ランキングなどを掲載。</span><span class="inline-block ml-1 px-2 py-0.5 bg-accent/20 text-xs text-accent rounded" data-translate-key="wikis.sevenknights.languageBadge">日本語限定</span>
@@ -584,12 +542,12 @@
     // Simple initialization
     document.addEventListener('DOMContentLoaded', function() {
       console.log('DOM loaded. Initializing translation system...');
-      
+
       // Verify translations are loaded
       if (window.translations) {
         console.log('Translations loaded successfully');
         console.log('Available languages:', Object.keys(window.translations));
-        
+
         // Initialize language system
         if (typeof window.initLanguageSwitch === 'function') {
           window.initLanguageSwitch();
@@ -662,7 +620,7 @@
         html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
         guideContent.innerHTML = html;
       }
-      
+
       // Make renderGuide available globally
       window.renderGuide = renderGuide;
       if(guideBtn && guideModal && guideClose && guideContent) {
@@ -822,123 +780,7 @@
     ]
   }
   </script>
-  <!-- head内にあったconsent-banner用JSもbody末尾に移動（構造エラー防止） -->
-  <script>
-    // consent-banner: ユーザビリティを損なわない下部バナー型
-    document.addEventListener('DOMContentLoaded', function() {
-      var banner = document.getElementById('consent-banner');
-      var accept = document.getElementById('consent-accept');
-      if (!localStorage.getItem('cookieConsent')) {
-        banner.classList.remove('hidden');
-      } else {
-        banner.classList.add('hidden');
-      }
-      accept.onclick = function() {
-        localStorage.setItem('cookieConsent', 'accepted');
-        banner.classList.add('hidden');
-        // Fire a site-wide consent accepted event for runtime initializers
-        try {
-          var evt = new Event('cookieConsentAccepted');
-          document.dispatchEvent(evt);
-        } catch (e) {
-          // IE fallback
-          var evtLegacy = document.createEvent('Event');
-          evtLegacy.initEvent('cookieConsentAccepted', true, true);
-          document.dispatchEvent(evtLegacy);
-        }
-      };
-    });
-
-    // Amazon・楽天Cookie埋め込み機能（アドセンス審査期間中は無効化）
-    function embedAffiliateCookies() {
-      // アドセンス審査期間中は機能を無効化
-      console.log('アフィリエイト機能は審査期間中無効化されています');
-      return false;
-      
-      /* 審査通過後に再有効化予定
-      // Cookie承諾チェック
-      if (localStorage.getItem('cookieConsent') !== 'accepted') {
-        return false;
-      }
-
-      try {
-        // Amazon アソシエイト Cookie埋め込み
-        var amazonImg = document.createElement('img');
-        amazonImg.src = 'https://www.amazon.co.jp/assoc-redirect?tag=negilab01-22&linkCode=ur2&camp=247&creative=1211';
-        amazonImg.width = '1';
-        amazonImg.height = '1';
-        amazonImg.style.display = 'none';
-        amazonImg.alt = '';
-        amazonImg.loading = 'eager';
-        amazonImg.referrerPolicy = 'no-referrer';
-        document.body.appendChild(amazonImg);
-
-        // 楽天アフィリエイト Cookie埋め込み
-        var rakutenImg = document.createElement('img');
-        rakutenImg.src = 'https://hbb.afl.rakuten.co.jp/hgb/4910d747.d15dc188.4910d748.d56fc6c6/cookie';
-        rakutenImg.width = '1';
-        rakutenImg.height = '1';
-        rakutenImg.style.display = 'none';
-        rakutenImg.alt = '';
-        rakutenImg.loading = 'eager';
-        rakutenImg.referrerPolicy = 'no-referrer';
-        document.body.appendChild(rakutenImg);
-
-        console.log('Affiliate cookies embedded for consented user');
-        return true;
-      } catch (error) {
-        console.error('Failed to embed affiliate cookies:', error);
-        return false;
-      }
-      */
-    }
-
-    // 単位変換ツールカードクリック時のCookie埋め込み
-    document.addEventListener('DOMContentLoaded', function() {
-      // 単位変換ツールカードの要素を取得
-      var unitConverterCard = document.querySelector('[onclick*="unit-converter.html"]');
-      var unitConverterLink = document.querySelector('a[href="tools/unit-converter.html"]');
-      
-      if (unitConverterCard) {
-        // 既存のonclickを一時的に無効化して、新しいイベントハンドラを追加
-        unitConverterCard.removeAttribute('onclick');
-        unitConverterCard.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // Cookie承諾を得ている場合のみCookie埋め込み
-          if (localStorage.getItem('cookieConsent') === 'accepted') {
-            embedAffiliateCookies();
-          }
-          
-          // 少し遅延してページ遷移（Cookie埋め込み完了後）
-          setTimeout(function() {
-            window.location.href = 'tools/unit-converter.html';
-          }, 100);
-        });
-      }
-
-      // リンクの場合も同様に処理
-      if (unitConverterLink) {
-        unitConverterLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // Cookie承諾を得ている場合のみCookie埋め込み
-          if (localStorage.getItem('cookieConsent') === 'accepted') {
-            embedAffiliateCookies();
-          }
-          
-          // 少し遅延してページ遷移（Cookie埋め込み完了後）
-          setTimeout(function() { 
-            window.location.href = 'tools/unit-converter.html';
-          }, 100);
-        });
-      }
-    });
-  </script>
-  <!-- 重要: consent-bannerのHTMLはbody直下に1つだけ。重複やhead内混入がないか必ず確認。 -->
-  <!-- 重要: head内にHTML要素(div等)が混入していないか再度チェック -->
-  <!-- head内はmeta/link/script/title等のみ。div等は絶対に置かない。 -->
-  <!-- 重要: <script>タグのネストや未閉じ、body直下以外へのJS混入がないか再度チェック。 -->
+  <!-- Consent handling is centralized in js/ads-consent-loader.js. -->
 </body>
 </html>
 

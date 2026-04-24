@@ -4,30 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://cdn.jsdelivr.net 
-      https://www.googletagmanager.com 
-      https://pagead2.googlesyndication.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; 
-    connect-src 'self' 
-      https://www.google-analytics.com; 
-    frame-src 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://www.googletagmanager.com
+      https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
@@ -44,13 +44,13 @@
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
     <!-- Pica Library -->
-  <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js" 
+  <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js"
           crossorigin="anonymous"></script>
-  
+
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -67,7 +67,7 @@
     window.pageTitleTranslationKey = "imageSizeCompare.pageTitle";
     window.metaDescriptionTranslationKey = "imageSizeCompare.metaDescription";
   </script>
-  
+
   <!-- Custom Styles -->
   <style>
     .form-input, .form-select, .form-button {
@@ -77,29 +77,29 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       transition: box-shadow 0.2s;
     }
-    
+
     .form-input:focus, .form-select:focus, .form-button:focus {
       outline: none;
       box-shadow: 0 0 0 2px #4ADE80;
       border-color: #4ADE80;
     }
-    
+
     .form-button {
       background: #4ADE80;
       color: #fff;
       transition: background 0.15s, color 0.15s;
     }
-    
+
     .form-button:hover:not(:disabled) {
       background: #10b981;
     }
-    
+
     .form-button:disabled {
       background: #d1d5db;
       color: #9ca3af;
       cursor: not-allowed;
     }
-    
+
     .drop-area {
       border: 2px dashed #d1d5db;
       border-radius: 0.5rem;
@@ -108,12 +108,12 @@
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
     }
-    
+
     .drop-area.dragover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.1);
     }
-    
+
     .preview-image {
       max-width: 100%;
       max-height: 16rem;
@@ -122,7 +122,7 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
   </style>
-  
+
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -145,7 +145,7 @@
       </nav>
     </div>
   </header>
-  
+
   <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
@@ -158,7 +158,7 @@
       </ol>
     </div>
   </nav>
-  
+
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
@@ -337,7 +337,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">レスポンシブ対応とデバイス最適化</h3>
           <div class="space-y-6">
@@ -350,7 +350,7 @@
                 <strong>推奨サイズ：</strong> モバイル320-480px、タブレット768-1024px、デスクトップ1200px以上
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">画像配信最適化技術</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -360,7 +360,7 @@
                 <strong>手法：</strong> picture要素・srcset属性活用、CDN連携
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">Core Web Vitals対応</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -418,7 +418,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>Web表示と印刷で画質が異なって見える場合は？</span>
@@ -450,7 +450,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>スマホ・タブレットで画像が重い・表示が遅い</span>
@@ -515,7 +515,7 @@
             <strong>成果：</strong> ページ速度40%改善 + CVR向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📱</div>
           <h3 class="text-lg font-semibold mb-3">アプリUI設計の統一化</h3>
@@ -530,7 +530,7 @@
             <strong>成果：</strong> 開発効率30%向上 + UI統一
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎨</div>
           <h3 class="text-lg font-semibold mb-3">印刷物制作の品質向上</h3>
@@ -545,7 +545,7 @@
             <strong>成果：</strong> 印刷トラブル90%削減 + 品質向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📺</div>
           <h3 class="text-lg font-semibold mb-3">メディア制作のワークフロー改善</h3>
@@ -560,7 +560,7 @@
             <strong>成果：</strong> 制作時間20%短縮 + 品質安定化
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏢</div>
           <h3 class="text-lg font-semibold mb-3">企業サイトのリニューアル</h3>
@@ -575,7 +575,7 @@
             <strong>成果：</strong> SEO指標改善 + UX向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏪</div>
           <h3 class="text-lg font-semibold mb-3">店舗販促材料の効率制作</h3>
@@ -599,7 +599,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせた画像サイズ最適化を始めてみましょう。
             当ツールなら、すべての画像活用ニーズに対応した高精度な比較・分析を簡単に実行できます。
           </p>
-          <a href="#" onclick="document.getElementById('imageFile').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('imageFile').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐ画像サイズ比較を始める
           </a>
@@ -761,12 +761,12 @@ if (document.readyState === "loading") {
         // 画像サイズ比較ツール用のセキュリティ強化
         document.addEventListener('DOMContentLoaded', function() {
           const imageInputs = document.querySelectorAll('input[type="file"][accept*="image"]');
-          
+
           // 画像ファイル入力の検証
           imageInputs.forEach(input => {
             input.addEventListener('change', function(e) {
               const files = Array.from(e.target.files);
-              
+
               for (const file of files) {
                 // 画像ファイルの検証
                 if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
@@ -774,14 +774,14 @@ if (document.readyState === "loading") {
                   this.value = '';
                   return;
                 }
-                
+
                 if (!SecurityUtils.validateFileSize(file, 20)) { // 20MB制限
                   SecurityUtils.showUserError('ファイルサイズが20MB以下の画像を選択してください');
                   this.value = '';
                   return;
                 }
               }
-              
+
               if (files.length > 0) {
                 SecurityUtils.showSuccessMessage(`${files.length}個の画像ファイルが読み込まれました`);
               }

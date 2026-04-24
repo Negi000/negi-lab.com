@@ -2,19 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com;
+    script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob:;
-    connect-src 'self' https://www.google-analytics.com;
+    img-src 'self' data: blob: https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index,follow">
   <link rel="stylesheet" href="/index.css">
-  
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
@@ -42,10 +42,10 @@
       }
     }
   </script>
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
+
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
@@ -54,7 +54,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <main class="max-w-4xl mx-auto py-12 px-4">
-    
+
     <!-- ヘッダーセクション -->
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold text-gray-800 mb-4">negi-lab.com について</h1>
@@ -154,12 +154,12 @@
         <div class="text-center mb-8">
           <h3 class="text-2xl font-semibold text-gray-800 mb-4">「日常の小さな作業を、もっと簡単に」</h3>
           <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            negi-lab.comは、日常的に行う「QRコード作成」「画像変換」「文字数カウント」などの作業を、 
-            わざわざ専用ソフトをインストールしたり、有料サービスに登録したりすることなく、 
+            negi-lab.comは、日常的に行う「QRコード作成」「画像変換」「文字数カウント」などの作業を、
+            わざわざ専用ソフトをインストールしたり、有料サービスに登録したりすることなく、
             ブラウザ一つで手軽に実行できる環境を提供することを目指しています。
           </p>
         </div>
-        
+
         <div class="space-y-6">
           <div class="border-l-4 border-blue-500 pl-6">
             <h4 class="text-lg font-semibold text-gray-800 mb-2">プライバシーファースト</h4>
@@ -167,14 +167,14 @@
               個人情報やビジネス機密を扱う作業でも安心してご利用いただけるよう、全ての処理をブラウザ内で完結させています。サーバーへのデータ送信は一切行わず、お客様のプライバシーを最優先に考えています。
             </p>
           </div>
-          
+
           <div class="border-l-4 border-green-500 pl-6">
             <h4 class="text-lg font-semibold text-gray-800 mb-2">シンプルで使いやすく</h4>
             <p class="text-gray-600">
               複雑な設定や専門知識は不要。直感的に操作できるインターフェースと、必要十分な機能に絞ったシンプルな設計で、初めての方でもすぐに使いこなせるツールを心がけています。
             </p>
           </div>
-          
+
           <div class="border-l-4 border-purple-500 pl-6">
             <h4 class="text-lg font-semibold text-gray-800 mb-2">継続的な改善</h4>
             <p class="text-gray-600">
@@ -220,7 +220,7 @@
     <section class="mb-8">
       <div class="bg-white rounded-xl shadow-lg p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">免責事項とお問い合わせ</h2>
-        
+
         <div class="mb-8">
           <h3 class="text-lg font-semibold text-gray-800 mb-4">免責事項</h3>
           <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">

@@ -22,21 +22,25 @@
     gaIdleDelay: 3000,                     // 初期操作が無い場合の GA フォールバック遅延
     enableAdaptiveCap: true
   };
-  // Simple consent + environment gated loader for GA & AdSense
-  // Allow production domain + localhost for development preview.
+  // Consent + environment gated loader for GA & AdSense.
+  // Ads and analytics are loaded only after the user explicitly accepts.
   var host = (typeof location !== 'undefined') ? location.hostname : '';
   // Allow primary domain + related wiki domains + localhost
   var ENV_OK = /(^|\.)negi-lab\.com$/i.test(host)
     || /(^|\.)gamewiki\.jp$/i.test(host)
     || /^(localhost|127\.0\.0\.1)$/.test(host);
-  // Manual override: add ?forceAds=1 to URL to force enable in any environment (for quick design QA)
-  try {
-    if(!ENV_OK && /[?&]forceAds=1/.test(location.search)) {
-      ENV_OK = true; host += ' (forced)';
-    }
-  } catch(_){}
-  // 収益最適化：同意を常にtrueに設定してバナー表示を回避
-  var CONSENT_OK = true;
+  // No URL override is supported: consent must be explicit.
+  // Consent is read from storage; ads and analytics stay off until accepted.
+  var CONSENT_STORAGE_KEY = 'cookieConsent';
+  function hasConsent(){
+    try { return localStorage.getItem(CONSENT_STORAGE_KEY) === 'accepted'; }
+    catch(_) { return false; }
+  }
+  var CONSENT_OK = hasConsent();
+  window.NegiLabConsent = window.NegiLabConsent || {
+    hasConsent: hasConsent,
+    storageKey: CONSENT_STORAGE_KEY
+  };
 
   // Don't run on 404 or noindex pages
   var isNoIndex = !!document.querySelector('meta[name="robots"][content*="noindex"]');
@@ -218,7 +222,7 @@
     }
   }
 
-  // Ad cap logic - 収益最適化：上限を大幅に緩和
+  // Ad cap logic - keep density adaptive to page length and viewport.
   var currentAdPushCount = 0;
   function computeAdaptiveCap(){
     if(!CONFIG.enableAdaptiveCap) return (window.innerWidth||1024) < 768 ? CONFIG.dynamicMaxMobile : CONFIG.dynamicMaxDesktop;
@@ -260,7 +264,7 @@
   function maybeInsertDynamicAds(){
     if (!ENV_OK || adCapReached()) return;
     if (document.querySelector('[data-dynamic-ads-managed="1"]')) return; // already managed
-    
+
     // Wiki専用：動的広告挿入の完全無効化
     // data-no-dynamic-ads属性またはwiki-専用クラスがある場合は動的挿入を行わない
     // 注意：data-wiki-contentは設置型広告には影響しないように条件を調整
@@ -269,16 +273,16 @@
       document.body.setAttribute('data-dynamic-ads-managed','1');
       return;
     }
-    
+
     // レスポンシブ広告システムのデバイス判定を使用
-    var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+    var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() :
                    (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     if (isMobile) {
       if (DEBUG) console.log('[ads-consent-loader] dynamic ads disabled on mobile devices');
       document.body.setAttribute('data-dynamic-ads-managed','1');
       return;
     }
-    
+
     // 既存の設置広告が多数ある場合は動的広告を控える
     try {
       // 楽天アフィリエイトは除外してカウント
@@ -289,7 +293,7 @@
         return;
       }
     } catch(_){}
-    
+
     // Skip short content pages
     try {
       var textLen = (document.body.innerText || '').length;
@@ -316,9 +320,9 @@
     var templateExists = document.getElementById('dynamic-ad-template');
     function createAdNode(slotId){
       // レスポンシブ広告システムを使用して適切なデバイス用広告を作成
-      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() :
                      (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-      
+
       var wrapper = document.createElement('aside');
       wrapper.className = 'max-w-3xl mx-auto my-10 dynamic-ad-container';
       wrapper.setAttribute('aria-label','スポンサー広告');
@@ -327,7 +331,7 @@
       var label = document.createElement('div');
       label.className = 'text-xs text-gray-400 mb-1';
       label.textContent = 'スポンサーリンク';
-      
+
       var ins = document.createElement('ins');
       ins.className = isMobile ? 'adsbygoogle ad-sp' : 'adsbygoogle ad-pc';
       ins.style.display = 'block';
@@ -353,12 +357,12 @@
     function isSafeDistanceFromExistingAds(targetElement) {
       var existingAds = document.querySelectorAll('.ad-block:not([aria-label*="楽天"]):not([aria-label*="アフィリエイト"]), ins.adsbygoogle, [data-dynamic-ad="true"]');
       var minDistance = 800; // 最小距離（ピクセル）
-      
+
       for (var i = 0; i < existingAds.length; i++) {
         var adRect = existingAds[i].getBoundingClientRect();
         var targetRect = targetElement.getBoundingClientRect();
         var distance = Math.abs(adRect.top - targetRect.top);
-        
+
         if (distance < minDistance) {
           if (DEBUG) console.log('[ads-consent-loader] too close to existing ad:', distance, 'px');
           return false;
@@ -369,7 +373,7 @@
 
   function tryInsert(){
       if (inserted >= maxDynamic || adCapReached()) return;
-      
+
       // 設置広告が既にある場合の制限強化（楽天アフィリエイト除外）
       try {
         var existingStatic = document.querySelectorAll('ins.adsbygoogle, .ad-block:not([aria-label*="楽天"]):not([aria-label*="アフィリエイト"])').length;
@@ -378,15 +382,15 @@
           return;
         }
       } catch(_){ }
-      
+
       var seconds = (Date.now() - startTime)/1000;
       var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
       if (seconds * 1000 < timeThreshold || scrollDepth < depthThreshold) return;
-      
+
       // レスポンシブ広告システムからスロットIDを取得
-      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() : 
+      var isMobile = window.ResponsiveAds ? window.ResponsiveAds.isMobileDevice() :
                      (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-      
+
       var slots, slot;
       if (window.ResponsiveAds && window.ResponsiveAds.AD_SLOTS) {
         var deviceSlots = isMobile ? window.ResponsiveAds.AD_SLOTS.mobile : window.ResponsiveAds.AD_SLOTS.pc;
@@ -397,21 +401,21 @@
         slots = isMobile ? ['8916646342','3205934910','6430083800'] : ['7843001775','9898319477','4837564489'];
         slot = slots[inserted % slots.length];
       }
-      
+
       var node = createAdNode(slot);
-      
+
       // 設置広告との距離チェック
       var tempNode = document.createElement('div');
       tempNode.style.position = 'absolute';
       tempNode.style.visibility = 'hidden';
       anchor.parentNode.insertBefore(tempNode, anchor.nextSibling);
-      
+
       if (!isSafeDistanceFromExistingAds(tempNode)) {
         anchor.parentNode.removeChild(tempNode);
         if (DEBUG) console.log('[ads-consent-loader] skipping insertion due to proximity to existing ads');
         return;
       }
-      
+
       anchor.parentNode.removeChild(tempNode);
       anchor.parentNode.insertBefore(node, anchor.nextSibling);
       inserted++;
@@ -564,7 +568,7 @@
   // Wiki専用：高度な広告状態監視システム
   function initAdvancedAdMonitoring(){
     if (DEBUG) console.log('[ads-consent-loader] initializing advanced ad monitoring for wiki');
-    
+
     // 💡 Wiki コンテンツ保護を強化
     const protectedSelectors = [
       '[data-wiki-content="true"]',
@@ -579,14 +583,14 @@
       'section.card',
       '.content-section'
     ];
-    
+
     protectedSelectors.forEach(selector => {
       const elements = document.querySelectorAll(selector);
       elements.forEach(element => {
         // 自動広告のみに保護属性を設定（設置型広告の動作は保持）
         element.setAttribute('data-no-auto-ads', 'true');
         element.style.setProperty('--google-ads-blocked', 'true');
-        
+
         // 既存の自動広告要素を除去（設置型広告は保持）
         const existingAds = element.querySelectorAll('.google-auto-placed, ins[class*="adsbygoogle"]:not([data-ad-slot])');
         existingAds.forEach(ad => {
@@ -608,7 +612,7 @@
             const ads = node.querySelectorAll ? node.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed') : [];
             if (ads.length || (node.classList && (node.classList.contains('google-auto-placed') || node.tagName === 'INS'))) {
               const adElement = ads.length ? ads[0] : node;
-              
+
               // 明示ホワイトリスト: アンカー/サイドレール系の自動広告は許可
               try {
                 const isAutoAd = adElement.classList && adElement.classList.contains('google-auto-placed');
@@ -626,40 +630,40 @@
                   }
                 }
               } catch(_) { /* no-op */ }
-              
+
               // 設置型広告（data-ad-slot属性付き）は制限対象外
               if (adElement.hasAttribute && adElement.hasAttribute('data-ad-slot')) {
                 if (DEBUG) console.log('[ads-consent-loader] 設置型広告を検出、制限をスキップ');
                 return;
               }
-              
+
               // 保護されたエリア内の自動広告は完全削除（設置型広告は除外）
               const parentProtected = adElement.closest('[data-no-dynamic-ads], .skill-section, .gate-section');
               if (parentProtected && !adElement.hasAttribute('data-ad-slot')) {
                 adElement.remove();
                 return;
               }
-              
+
               // サイドレーン判定：aside要素またはサイドバー系クラス内の広告は制限しない
               const isInSidebar = adElement.closest('aside, .sidebar, .side-panel, [class*="sidebar"], [class*="side"]');
               if (isInSidebar) {
                 if (DEBUG) console.log('[ads-consent-loader] サイドレーン内の広告をスキップ');
                 return;
               }
-              
+
               // メインコンテンツエリア判定（自動広告のみ対象）
-              const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout, [data-wiki-content]') && 
+              const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout, [data-wiki-content]') &&
                                     !adElement.closest('.ad-block, aside');
-              
+
               if (isInMainContent) {
                 // パフォーマンス最適化：遅延時間短縮
                 setTimeout(() => {
                   const height = adElement.offsetHeight;
                   const width = adElement.offsetWidth;
-                  
+
                   // 縦長広告判定：高さ200px以上、または高さが幅の1.5倍以上
                   const isTallAd = height > 200 || (height > width * 1.5);
-                  
+
                   if (isTallAd) {
                     adElement.remove();
                     console.warn('メインコンテンツ内の縦長自動広告を削除しました:', {
@@ -674,7 +678,7 @@
                 // サイドレーン以外の一般的な場所での高さ制限（自動広告のみ）
                 adElement.style.maxHeight = '600px';
                 adElement.style.overflow = 'hidden';
-                
+
                 // 異常に高い自動広告を検出・制限
                 setTimeout(() => {
                   const height = adElement.offsetHeight;
@@ -690,12 +694,12 @@
         });
       });
     });
-    
+
     adObserver.observe(document.body, {
       childList: true,
       subtree: true
     });
-    
+
     // 既存の広告もチェック（初期化時）
     setTimeout(() => {
       const existingAds = document.querySelectorAll('ins[class*="adsbygoogle"], .google-auto-placed');
@@ -722,27 +726,27 @@
           if (DEBUG) console.log('[ads-consent-loader] 既存の設置型広告を検出、制限をスキップ');
           return;
         }
-        
+
         // 保護されたエリア内の自動広告は削除（設置型広告は除外）
         const parentProtected = adElement.closest('[data-no-dynamic-ads], .skill-section, .gate-section');
         if (parentProtected && !adElement.hasAttribute('data-ad-slot')) {
           adElement.remove();
           return;
         }
-        
+
         // サイドレーン判定
         const isInSidebar = adElement.closest('aside, .sidebar, .side-panel, [class*="sidebar"], [class*="side"]');
         if (isInSidebar) return;
-        
+
         // メインコンテンツエリア判定（自動広告のみ対象）
-        const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout') && 
+        const isInMainContent = adElement.closest('main, .main-content, section.card, .content-section, .top-layout') &&
                               !adElement.closest('.ad-block, aside');
-        
+
         if (isInMainContent) {
           const height = adElement.offsetHeight;
           const width = adElement.offsetWidth;
           const isTallAd = height > 200 || (height > width * 1.5);
-          
+
           if (isTallAd) {
             adElement.remove();
             console.warn('初期化時にメインコンテンツ内の縦長自動広告を削除:', {
@@ -754,7 +758,7 @@
         }
       });
     }, 2000); // 2秒後に既存広告をチェック
-    
+
     // 広告ブロック要素の状態を監視する関数
     function watchAdBlock(block){
       if(!block) return;
@@ -763,14 +767,14 @@
         var parentWrap = block.closest('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]');
         if (parentWrap) block = parentWrap; else return; // ラッパーが無ければ監視しない
       }
-      
+
       // 初期状態では非表示フラグを付けない（広告読み込み前に枠が消えるのを防止）
       // 実際に「空」と判定された場合のみ data-ad-empty="true" を付与する
 
       var ins = block.querySelector('ins.adsbygoogle');
       var rak = block.querySelector('.rakuten-widget-placeholder');
       if(!ins && !rak) return;
-      
+
       var filled = false;
       var checkTimeout = null;
 
@@ -815,16 +819,16 @@
         setTimeout(function(){ if(!filled){ var loaded = rak.getAttribute('data-loaded')==='1'; var hasIframe = !!rak.querySelector('iframe'); if(loaded || hasIframe) markFilled(); else { try { block.setAttribute('data-ad-empty','true'); } catch(_){} } } }, 7000);
       }
     }
-    
+
     // 全ての広告ブロックを監視対象に追加
     function monitorAllAdBlocks(){
       // ラッパー要素のみに限定（子の ins.ad-pc/ad-sp などは除外）
       document.querySelectorAll('.ad-block, .dynamic-ad-container, aside[aria-label*="広告"], aside[aria-label*="スポンサー"]').forEach(watchAdBlock);
     }
-    
+
     // 初期監視設定
     monitorAllAdBlocks();
-    
+
     // 新しく追加される広告ブロックも監視（動的コンテンツ対応）
     var mainObserver = new MutationObserver(function(mutations){
       mutations.forEach(function(mutation){
@@ -841,17 +845,79 @@
         });
       });
     });
-    
+
     mainObserver.observe(document.body, {
       childList: true,
       subtree: true
     });
   }
 
-  // Cookieバナー機能を完全に無効化（収益最適化のため）
+  function dispatchConsentAccepted(){
+    try {
+      document.dispatchEvent(new Event('cookieConsentAccepted'));
+    } catch (e) {
+      var evtLegacy = document.createEvent('Event');
+      evtLegacy.initEvent('cookieConsentAccepted', true, true);
+      document.dispatchEvent(evtLegacy);
+    }
+  }
+
+  function acceptConsent(banner){
+    try { localStorage.setItem(CONSENT_STORAGE_KEY, 'accepted'); } catch(_) {}
+    CONSENT_OK = true;
+    if (banner) {
+      banner.classList.add('hidden');
+      banner.style.display = 'none';
+    }
+    dispatchConsentAccepted();
+  }
+
   function injectConsentBanner(){
-    // バナー表示を無効化
-    return;
+    var banner = document.getElementById('consent-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'consent-banner';
+      banner.className = 'hidden';
+      banner.setAttribute('role', 'alertdialog');
+      banner.setAttribute('aria-modal', 'true');
+      banner.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;gap:12px;align-items:center;justify-content:space-between;box-sizing:border-box;width:100%;padding:12px 16px;background:#fff;border-top:1px solid rgba(74,222,128,.45);box-shadow:0 -8px 24px rgba(15,23,42,.12);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;';
+      banner.innerHTML = '<span style="font-size:13px;line-height:1.7;color:#374151;">広告・アクセス解析はCookie等を利用します。詳細は <a href="/privacy-policy.html" style="color:#16a34a;text-decoration:underline;">プライバシーポリシー</a> をご確認ください。</span><button id="consent-accept" type="button" data-consent-accept="1" style="flex:0 0 auto;border:0;border-radius:6px;background:#22c55e;color:#fff;font-weight:700;padding:7px 14px;cursor:pointer;">OK</button>';
+      document.body.appendChild(banner);
+    }
+    var accept = document.getElementById('consent-accept') || banner.querySelector('[data-consent-accept]');
+    if (CONSENT_OK) {
+      banner.classList.add('hidden');
+      banner.style.display = 'none';
+      return;
+    }
+    banner.classList.remove('hidden');
+    banner.style.display = 'flex';
+    if (accept && accept.getAttribute('data-consent-bound') !== '1') {
+      accept.setAttribute('data-consent-bound', '1');
+      accept.addEventListener('click', function(){ acceptConsent(banner); });
+    }
+  }
+
+  function startRuntimeAfterConsent(){
+    if (window.__adsConsentRuntimeStarted || !ENV_OK || !CONSENT_OK) return;
+    window.__adsConsentRuntimeStarted = true;
+    var hasAdSlot = !!document.querySelector('ins.adsbygoogle');
+    scheduleGALoad();
+    if (hasAdSlot && !ADS_DISABLED) {
+      initAds();
+      if(document.querySelector('[data-wiki-content="true"]')){
+        setTimeout(initAdvancedAdMonitoring, 600);
+      }
+    }
+    else if (!ADS_DISABLED) startAdSlotObserver();
+    ensureBaseAdCSS();
+    if (!DYNAMIC_ADS_DISABLED) setTimeout(maybeInsertDynamicAds, 500);
+    try {
+      window.__pageTextLen = (document.body.innerText||'').length;
+      window.__dynamicAdCap = computeAdaptiveCap();
+      if(DEBUG) console.log('[ads-consent-loader] adaptive ad cap', window.__dynamicAdCap, 'textLen', window.__pageTextLen);
+    } catch(_){ }
+    initRakutenLazy();
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -861,6 +927,7 @@
         document.querySelectorAll(sel+'[hidden]').forEach(function(el){ el.removeAttribute('hidden'); });
       });
     } catch(_) {}
+    injectConsentBanner();
     // Lightweight heuristic: if there is at least one ad slot, we consider initializing ads when allowed
     var hasAdSlot = !!document.querySelector('ins.adsbygoogle');
 
@@ -880,28 +947,13 @@
       console.log('[ads-consent-loader] wiki content:', !!document.querySelector('[data-wiki-content="true"]'));
     }
 
-    // 収益最優先：環境チェックのみで広告を常時有効化
-    if (ENV_OK) {
-  scheduleGALoad(); // 即時ではなく遅延ロード
-      if (hasAdSlot && !ADS_DISABLED) {
-        initAds();
-        // Wiki専用の高度な広告監視を初期化
-        // Wiki要素存在時のみ重い監視を開始
-        if(document.querySelector('[data-wiki-content="true"]')){
-          setTimeout(initAdvancedAdMonitoring, 600); // わずかに後ろへ (初期描画優先)
-        }
-      }
-      else if (!ADS_DISABLED) startAdSlotObserver();
-      ensureBaseAdCSS();
-      if (!DYNAMIC_ADS_DISABLED) setTimeout(maybeInsertDynamicAds, 500); // 1500ms→500msに短縮
-      // ページテキスト長を後から計測してキャップ再計算（初回挿入前に）
-      try {
-        window.__pageTextLen = (document.body.innerText||'').length;
-        window.__dynamicAdCap = computeAdaptiveCap();
-        if(DEBUG) console.log('[ads-consent-loader] adaptive ad cap', window.__dynamicAdCap, 'textLen', window.__pageTextLen);
-      } catch(_){ }
-  // 楽天ウィジェット遅延初期化
-  initRakutenLazy();
+    if (CONSENT_OK) {
+      startRuntimeAfterConsent();
+    } else if (ENV_OK) {
+      document.addEventListener('cookieConsentAccepted', function(){
+        CONSENT_OK = true;
+        startRuntimeAfterConsent();
+      }, { once: true });
     }
   });
 })();

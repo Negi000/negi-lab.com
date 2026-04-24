@@ -3,61 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://pagead2.googlesyndication.com 
-      https://www.googletagmanager.com 
-      https://www.google-analytics.com 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob: 
-      https://pagead2.googlesyndication.com 
-      https://www.google-analytics.com 
-      https://googleads.g.doubleclick.net; 
-    connect-src 'self' 
-      https://www.google-analytics.com 
-      https://pagead2.googlesyndication.com; 
-    frame-src 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com
+      https://www.google-analytics.com
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob:
+      https://pagead2.googlesyndication.com
+      https://www.google-analytics.com
+      https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com
+      https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-  
+
   <title>【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com</title>
   <meta name="description" content="テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="negi-lab.com" />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com" />
   <meta property="og:description" content="テキストの大文字小文字変換、キャメルケース・スネークケース変換、文字数・行数カウント、文字反転が無料でできるオールインワンテキストツール。" />
   <meta property="og:url" content="https://negi-lab.com/tools/text-converter.html" />
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  
+
   <!-- CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -67,16 +67,16 @@
             negi: "#65c155",
             accent: "#4ADE80"
           },
-          fontFamily: { 
-            inter: ["Inter", "sans-serif"] 
+          fontFamily: {
+            inter: ["Inter", "sans-serif"]
           }
         }
       }
     }
   </script>
-  
+
   <!-- AdSense script is loaded centrally via ads-consent-loader.js when consented in production -->
-  
+
   <!-- Custom Styles -->
   <style>
     .form-input, .form-select {
@@ -88,7 +88,7 @@
       transition: border-color 0.2s;
       font-family: inherit;
     }
-    
+
     .form-input:focus, .form-select:focus {
       outline: none;
       border-color: #4ADE80;
@@ -106,12 +106,12 @@
       font-weight: 500;
       font-size: 0.875rem;
     }
-    
+
     .conversion-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
     }
-    
+
     .conversion-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
@@ -436,14 +436,14 @@
   <script>
     // Current conversion type
     let currentType = 'upper';
-    
+
     // Initialize when DOM loads
     document.addEventListener('DOMContentLoaded', function() {
       initializeEventListeners();
       updateCharCount();
       console.log('テキスト変換ツールが読み込まれました');
     });
-    
+
     function initializeEventListeners() {
       // Conversion type buttons
       const typeButtons = document.querySelectorAll('.conversion-btn');
@@ -452,37 +452,37 @@
           selectConversionType(this.dataset.type);
         });
       });
-      
+
       // Action buttons
       document.getElementById('convertBtn').addEventListener('click', convertText);
       document.getElementById('clearBtn').addEventListener('click', clearAll);
       document.getElementById('copyBtn').addEventListener('click', copyResult);
-      
+
       // Input text area
       document.getElementById('inputText').addEventListener('input', updateCharCount);
     }
-    
+
     function selectConversionType(type) {
       currentType = type;
-      
+
       // Update button states
       document.querySelectorAll('.conversion-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       document.querySelector(`[data-type="${type}"]`).classList.add('active');
     }
-    
+
     function convertText() {
       const input = document.getElementById('inputText').value;
       const output = document.getElementById('outputText');
-      
+
       if (!input.trim()) {
         alert('入力テキストが空です。変換したいテキストを入力してください。');
         return;
       }
-      
+
       let result = '';
-      
+
       switch(currentType) {
         case 'upper':
           result = input.toUpperCase();
@@ -491,12 +491,12 @@
           result = input.toLowerCase();
           break;
         case 'title':
-          result = input.replace(/\w\S*/g, (txt) => 
+          result = input.replace(/\w\S*/g, (txt) =>
             txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
           );
           break;
         case 'camel':
-          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => 
+          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
             index === 0 ? word.toLowerCase() : word.toUpperCase()
           ).replace(/\s+/g, '');
           break;
@@ -518,25 +518,25 @@
         default:
           result = input;
       }
-      
+
       output.value = result;
       updateOutputCharCount(result);
     }
-    
+
     function clearAll() {
       document.getElementById('inputText').value = '';
       document.getElementById('outputText').value = '';
       updateCharCount();
       updateOutputCharCount('');
     }
-    
+
     function copyResult() {
       const output = document.getElementById('outputText');
       if (!output.value) {
         alert('コピーする結果がありません。');
         return;
       }
-      
+
       // Modern clipboard API
       if (navigator.clipboard) {
         navigator.clipboard.writeText(output.value).then(() => {
@@ -548,14 +548,14 @@
         fallbackCopy(output);
       }
     }
-    
+
     function fallbackCopy(output) {
       output.select();
       output.setSelectionRange(0, 99999); // For mobile devices
       document.execCommand('copy');
       showCopyFeedback();
     }
-    
+
     function showCopyFeedback() {
       const copyBtn = document.getElementById('copyBtn');
       const originalText = copyBtn.innerHTML;
@@ -564,27 +564,27 @@
         copyBtn.innerHTML = originalText;
       }, 1500);
     }
-    
+
     function updateCharCount() {
       const input = document.getElementById('inputText').value;
       const count = input.length;
       // Input character count could be shown if needed
     }
-    
+
     function updateOutputCharCount(text) {
       const charCount = document.getElementById('charCount');
       charCount.textContent = `文字数: ${text.length}`;
     }
-    
+
     // Guide modal functions
     function showGuide() {
       document.getElementById('guideModal').classList.remove('hidden');
     }
-    
+
     function closeGuide() {
       document.getElementById('guideModal').classList.add('hidden');
     }
-    
+
     // Close modal when clicking outside
     document.addEventListener('click', function(e) {
       const modal = document.getElementById('guideModal');
@@ -592,20 +592,20 @@
         closeGuide();
       }
     });
-    
+
     // Security: Prevent XSS
     function sanitizeHTML(str) {
       const temp = document.createElement('div');
       temp.textContent = str;
       return temp.innerHTML;
     }
-    
+
     // Error handling
     window.addEventListener('error', function(e) {
       console.error('Error occurred:', e.error);
     });
   </script>
-  
+
   <!-- Centralized consent-gated Ads/Analytics loader -->
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>

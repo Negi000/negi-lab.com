@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-      https://cdn.tailwindcss.com 
-      https://cdn.jsdelivr.net 
-      https://www.googletagmanager.com 
-      https://pagead2.googlesyndication.com; 
-    style-src 'self' 'unsafe-inline' 
-      https://fonts.googleapis.com 
-      https://cdn.tailwindcss.com; 
-    font-src 'self' 
-      https://fonts.gstatic.com; 
-    img-src 'self' data: blob:; 
-    connect-src 'self' 
-      https://www.google-analytics.com; 
-    frame-src 
-      https://googleads.g.doubleclick.net 
-      https://tpc.googlesyndication.com; 
-    object-src 'none'; 
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://cdn.jsdelivr.net
+      https://www.googletagmanager.com
+      https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline'
+      https://fonts.googleapis.com
+      https://cdn.tailwindcss.com;
+    font-src 'self'
+      https://fonts.gstatic.com;
+    img-src 'self' data: blob: https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    object-src 'none';
     base-uri 'self';
   " />
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
@@ -37,9 +37,9 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
   <meta name="robots" content="index,follow" />
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
@@ -62,7 +62,7 @@
       }
     };
   </script>
-  
+
   <style>
     .form-select, .form-input, .form-button, .form-range {
       padding: 0.5rem;
@@ -109,17 +109,17 @@
       border: 1px solid #e5e7eb;
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     }
-    
+
     /* フィルター機能用スタイル */
     .filter-button-active {
       background-color: #4ADE80 !important;
       color: white;
     }
-    
+
     .file-item {
       animation: slideIn 0.3s ease-out;
     }
-    
+
     @keyframes slideIn {
       from {
         opacity: 0;
@@ -130,11 +130,11 @@
         transform: translateY(0);
       }
     }
-    
+
     .results-grid {
       animation: fadeIn 0.5s ease-out;
     }
-    
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -143,29 +143,29 @@
         opacity: 1;
       }
     }
-    
+
     /* プリセット選択ハイライト */
     .preset-highlight {
       border-color: #4ADE80;
       background-color: rgba(74, 222, 128, 0.05);
     }
-    
+
     /* 回転ボタンアクティブ状態 */
     .rotation-active {
       background-color: #3b82f6;
     }
-    
+
     /* ファイルアップロードエリアの改善 */
     .drop-area:hover {
       border-color: #4ADE80;
       background-color: rgba(74, 222, 128, 0.02);
     }
-    
+
     /* 進捗バー */
     .progress-container {
       animation: slideDown 0.3s ease-out;
     }
-    
+
     @keyframes slideDown {
       from {
         opacity: 0;
@@ -176,7 +176,7 @@
         transform: translateY(0);
       }
     }
-    
+
     /* リアルタイムプレビュー */
     .preview-comparison {
       display: grid;
@@ -184,7 +184,7 @@
       gap: 1rem;
       margin-top: 1rem;
     }
-    
+
     .preview-box {
       border: 1px solid #e5e7eb;
       border-radius: 0.5rem;
@@ -192,27 +192,27 @@
       text-align: center;
       background: #f9fafb;
     }
-    
+
     .preview-box h4 {
       font-size: 0.875rem;
       font-weight: 600;
       color: #374151;
       margin-bottom: 0.5rem;
     }
-    
+
     .preview-box img {
       max-width: 100%;
       max-height: 200px;
       object-fit: contain;
       border-radius: 0.375rem;
     }
-    
+
     /* ファイルサイズ制限エラー */
     .file-size-error {
       border-color: #ef4444;
       background-color: rgba(239, 68, 68, 0.1);
     }
-    
+
     /* 処理中スピナー */
     .spinner {
       display: inline-block;
@@ -223,7 +223,7 @@
       border-top-color: #4ADE80;
       animation: spin 1s ease-in-out infinite;
     }
-    
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
@@ -275,7 +275,7 @@
   <script src="../js/common-translations.js"></script>
   <!-- 画像変換ツール専用翻訳システム -->
   <script src="../js/image-converter-translations.js"></script>
-  
+
   <script src="../js/image-converter-core.js"></script>
   <script src="../js/image-converter-formats.js"></script>
   <script src="../js/image-converter-presets.js"></script>
@@ -296,7 +296,7 @@
           <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
         </aside>
       </div>
-      
+
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
         <div>
           <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.upload.label">画像ファイルをアップロード:</label>
@@ -424,7 +424,7 @@
                 <span id="qualityValue" class="text-sm text-gray-600 w-10 text-right">0.90</span>
             </div>
         </div>
-        
+
         <div>
             <p class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.options.maxDimensions">最大寸法 (省略可):</p>
             <div class="grid grid-cols-2 gap-4">
@@ -438,9 +438,9 @@
                 </div>
             </div>
         </div>
-        
+
         <button id="convertButton" class="form-button w-full py-2.5" disabled data-translate-key="imageConverter.actions.convert">変換開始</button>
-        
+
         <div id="resultContainer" class="mt-4 text-center hidden space-y-3">
             <h3 class="text-lg font-medium text-gray-800" data-translate-key="imageConverter.results.title">結果:</h3>
             <div id="resultsGrid" class="grid grid-cols-1 gap-4"></div>
@@ -613,7 +613,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- 一般・Web用フォーマット -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
           <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="imageConverter.formats.webSection">一般・Web用フォーマット</h3>
@@ -636,7 +636,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- 技術仕様と最適化 -->
         <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
           <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="imageConverter.formats.techSection">技術仕様と最適化</h3>
@@ -650,7 +650,7 @@
                 <strong data-translate-key="imageConverter.tech.canvas.benefits.label">利点:</strong> <span data-translate-key="imageConverter.tech.canvas.benefits.text">サーバー送信不要、リアルタイム処理、プライバシー保護</span>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg" data-translate-key="imageConverter.tech.color.title">色空間・画質保持</h4>
               <p class="text-sm text-gray-600 mb-3" data-translate-key="imageConverter.tech.color.description">
@@ -660,7 +660,7 @@
                 <strong data-translate-key="imageConverter.tech.color.features.label">技術:</strong> <span data-translate-key="imageConverter.tech.color.features.text">sRGB保持、ICC対応、ガンマ補正適用</span>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg" data-translate-key="imageConverter.tech.security.title">セキュリティ・プライバシー</h4>
               <p class="text-sm text-gray-600 mb-3" data-translate-key="imageConverter.tech.security.description">
@@ -717,7 +717,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span data-translate-key="imageConverter.faq.q2.title">どの画像フォーマットを選ぶべきですか？</span>
@@ -763,7 +763,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span data-translate-key="imageConverter.faq.q3.title">変換時に画質が劣化してしまう場合の対処方法は？</span>
@@ -799,7 +799,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span data-translate-key="imageConverter.faq.q4.title">大容量ファイルの処理速度が遅い・失敗する場合は？</span>
@@ -864,7 +864,7 @@
             <strong data-translate-key="imageConverter.cases.web.result.label">結果:</strong> <span data-translate-key="imageConverter.cases.web.result.text">読み込み時間40%短縮 + CVR 15%向上</span>
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📱</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="imageConverter.cases.sns.title">SNSマーケティングの効率化</h3>
@@ -879,7 +879,7 @@
             <strong data-translate-key="imageConverter.cases.sns.result.label">結果:</strong> <span data-translate-key="imageConverter.cases.sns.result.text">制作時間70%削減 + 画質向上</span>
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎨</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="imageConverter.cases.design.title">デザイン事務所の効率化</h3>
@@ -894,7 +894,7 @@
             <strong data-translate-key="imageConverter.cases.design.result.label">結果:</strong> <span data-translate-key="imageConverter.cases.design.result.text">作業速度30%向上 + 品質統一</span>
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏢</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="imageConverter.cases.enterprise.title">企業システムの容量最適化</h3>
@@ -909,7 +909,7 @@
             <strong data-translate-key="imageConverter.cases.enterprise.result.label">結果:</strong> <span data-translate-key="imageConverter.cases.enterprise.result.text">容量50%削減 + コスト200万円削減</span>
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🛒</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="imageConverter.cases.print.title">印刷・出版業界での品質管理</h3>
@@ -924,7 +924,7 @@
             <strong data-translate-key="imageConverter.cases.print.result.label">結果:</strong> <span data-translate-key="imageConverter.cases.print.result.text">制作期間50%短縮 + 品質向上</span>
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🔒</div>
           <h3 class="text-lg font-semibold mb-3" data-translate-key="imageConverter.cases.confidential.title">機密書類の画像処理</h3>
@@ -948,7 +948,7 @@
             上記の事例を参考に、あなたの業界・用途に合わせた画像最適化を始めてみましょう。
             このツールなら、すべての変換ニーズに対応した高品質な処理を安全に実行できます。
           </p>
-          <a href="#" onclick="document.querySelector('.drop-area').scrollIntoView({behavior: 'smooth'}); return false;" 
+          <a href="#" onclick="document.querySelector('.drop-area').scrollIntoView({behavior: 'smooth'}); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors" data-translate-key="imageConverter.cta.button">
             今すぐ画像変換を始める
           </a>
@@ -978,13 +978,13 @@
   <script type="module" defer>
     // デバッグ用: コンソールにログを出力
     console.log('HTML script loading...');
-    
+
     // メインロジックは分離されたJSファイルで実行されます
     document.addEventListener('DOMContentLoaded', () => {
         console.log('DOMContentLoaded fired');
         console.log('TranslationSystem available:', !!window.TranslationSystem);
         console.log('ImageConverterUI available:', !!window.ImageConverterUI);
-        
+
         // 新しい翻訳システムは自動初期化されるため、UIのみ初期化
         if (window.ImageConverterUI) {
             console.log('Initializing ImageConverterUI...');
@@ -992,13 +992,13 @@
         }
     });
   </script>
-  
+
   <!-- 翻訳システムコア -->
   <script src="../js/tool-translation-system.js"></script>
   <!-- 画像変換機能 -->
   <script src="../js/image-converter-guide.js"></script>
 
-  
+
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacy">プライバシーポリシー</a>

@@ -1,6 +1,6 @@
 /**
  * Portal (index.html) Translations for negi-lab.com
- * 
+ *
  * Contains all translation keys for the main portal page in Japanese and English
  * Organized by sections for maintainability
  */
@@ -87,12 +87,20 @@ window.translations = {
     "tools.textConverter.description": "大文字小文字変換・キャメルケース・スネークケース変換から文字数カウント・文字反転まで多機能。プログラミング・文書作成・データ処理での効率的なテキスト操作を支援。",
     "tools.textConverter.open": "開く",
 
+    "tools.musicGenerator.title": "音楽生成ツール",
+    "tools.musicGenerator.description": "音楽理論に基づいた楽曲生成ツール。ロック・ジャズ・クラシックなど多彩なジャンルと楽器で、動画BGMや創作活動に使えるオリジナル楽曲を作成できます。",
+    "tools.musicGenerator.open": "開く",
+
     // Wikis Section
     "wikis.sectionTitle": "ゲーム攻略Wiki",
     "wikis.shingetsu.title": "新月同行 Wiki",
     "wikis.shingetsu.description": "話題のスマホRPG「新月同行」の最新情報・データベース・攻略・ランキングなどを掲載。",
     "wikis.shingetsu.languageBadge": "日本語限定",
     "wikis.shingetsu.open": "Wikiを見る",
+    "wikis.sevenknights.title": "セブンナイツリバース Wiki",
+    "wikis.sevenknights.description": "話題のスマホRPG「セブンナイツリバース」の最新情報・データベース・攻略・ランキングなどを掲載。",
+    "wikis.sevenknights.languageBadge": "日本語限定",
+    "wikis.sevenknights.open": "Wikiを見る",
 
     // How to Use Section
     "howToUse.sectionTitle": "各ツールの使い方ガイド",
@@ -101,7 +109,7 @@ window.translations = {
     "howToUse.steps.step2": "必要な情報を入力フォームに記入",
     "howToUse.steps.step3": "「変換」や「生成」ボタンをクリックして結果を取得",
     "howToUse.steps.note": "登録やダウンロードは一切不要。ブラウザさえあればどなたでもご利用いただけます。",
-    
+
     "howToUse.popular.title": "🔧 よく使われる機能",
     "howToUse.popular.unitConverter_html": "📏 <strong>単位変換：</strong>メートル⇔フィート、kg⇔ポンドなど",
     "howToUse.popular.qrCode_html": "📱 <strong>QRコード：</strong>URL、Wi-Fi設定の即座生成",
@@ -225,12 +233,20 @@ window.translations = {
     "tools.textConverter.description": "Multi-functional tool from case conversion, camelCase, snake_case conversion to character counting and text reversal. Supports efficient text manipulation for programming, document creation, and data processing.",
     "tools.textConverter.open": "Open",
 
+    "tools.musicGenerator.title": "Music Generator Tool",
+    "tools.musicGenerator.description": "A browser-based composition assistant that creates original tracks with music-theory-aware patterns, instruments, and genres for videos, prototypes, and creative work.",
+    "tools.musicGenerator.open": "Open",
+
     // Wikis Section
     "wikis.sectionTitle": "Game Strategy Wikis",
     "wikis.shingetsu.title": "Fellow Moon Wiki",
     "wikis.shingetsu.description": "Latest information, database, guides, and rankings for the popular mobile RPG \"Fellow Moon\".",
     "wikis.shingetsu.languageBadge": "Japanese Only",
     "wikis.shingetsu.open": "View Wiki",
+    "wikis.sevenknights.title": "Seven Knights Re:BIRTH Wiki",
+    "wikis.sevenknights.description": "Latest information, database entries, guides, and rankings for the mobile RPG \"Seven Knights Re:BIRTH\".",
+    "wikis.sevenknights.languageBadge": "Japanese Only",
+    "wikis.sevenknights.open": "View Wiki",
 
     // How to Use Section
     "howToUse.sectionTitle": "How to Use Each Tool - Guide",
@@ -239,7 +255,7 @@ window.translations = {
     "howToUse.steps.step2": "Enter required information in the input form",
     "howToUse.steps.step3": "Click \"Convert\" or \"Generate\" button to get results",
     "howToUse.steps.note": "No registration or downloads required. Anyone can use with just a browser.",
-    
+
     "howToUse.popular.title": "🔧 Popular Features",
     "howToUse.popular.unitConverter_html": "📏 <strong>Unit Conversion:</strong> Meters↔Feet, kg↔Pounds, etc.",
     "howToUse.popular.qrCode_html": "📱 <strong>QR Code:</strong> Instant generation for URLs, Wi-Fi settings",

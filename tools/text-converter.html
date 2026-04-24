@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -15,7 +15,7 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
       https://fonts.googleapis.com
       https://cdn.tailwindcss.com;
@@ -25,47 +25,47 @@
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     connect-src 'self'
       https://www.google-analytics.com
       https://pagead2.googlesyndication.com
       https://googleads.g.doubleclick.net
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     frame-src
       https://googleads.g.doubleclick.net
       https://tpc.googlesyndication.com
       https://www.googletagservices.com
-      https://adservice.google.com;
+      https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   "/>
-  
+
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-  
+
   <title>【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com</title>
   <meta name="description" content="テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="negi-lab.com" />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com" />
   <meta property="og:description" content="テキストの大文字小文字変換、キャメルケース・スネークケース変換、文字数・行数カウント、文字反転が無料でできるオールインワンテキストツール。" />
   <meta property="og:url" content="https://negi-lab.com/tools/text-converter.html" />
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  
+
   <!-- CSS Framework -->
   <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -75,16 +75,16 @@
             negi: "#65c155",
             accent: "#4ADE80"
           },
-          fontFamily: { 
-            inter: ["Inter", "sans-serif"] 
+          fontFamily: {
+            inter: ["Inter", "sans-serif"]
           }
         }
       }
     }
   </script>
-  
+
   <!-- Consent-gated Ads/Analytics Loader will be added at the end -->
-  
+
   <!-- Custom Styles -->
   <style>
     .form-input, .form-select {
@@ -96,7 +96,7 @@
       transition: border-color 0.2s;
       font-family: inherit;
     }
-    
+
     .form-input:focus, .form-select:focus {
       outline: none;
       border-color: #4ADE80;
@@ -114,12 +114,12 @@
       font-weight: 500;
       font-size: 0.875rem;
     }
-    
+
     .conversion-btn:hover {
       border-color: #4ADE80;
       background: rgba(74, 222, 128, 0.05);
     }
-    
+
     .conversion-btn.active {
       border-color: #4ADE80;
       background: #4ADE80;
@@ -415,7 +415,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 class="text-2xl font-semibold mb-6 text-gray-800">文字数カウント・解析機能</h3>
           <div class="space-y-6">
@@ -430,7 +430,7 @@
                 <div><strong>単語数：</strong>空白区切りによる英単語数（日本語は文字数）</div>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">プラットフォーム別制限対応</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -443,7 +443,7 @@
                 <div><strong>メール件名：</strong>一般的に50-60文字推奨</div>
               </div>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2 text-lg">文字反転・逆順処理</h4>
               <p class="text-sm text-gray-600 mb-3">
@@ -501,7 +501,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>プログラミングでの効果的な活用方法は？</span>
@@ -533,7 +533,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>大量テキストの処理時の注意点とパフォーマンス</span>
@@ -569,7 +569,7 @@
             </div>
           </div>
         </details>
-        
+
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
             <span>文字化けや特殊文字の処理について</span>
@@ -634,7 +634,7 @@
             <strong>成果：</strong> 開発効率60%向上 + コード品質統一
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📊</div>
           <h3 class="text-lg font-semibold mb-3">データ分析業務での活用</h3>
@@ -649,7 +649,7 @@
             <strong>成果：</strong> データ重複30%削減 + 分析精度向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📝</div>
           <h3 class="text-lg font-semibold mb-3">出版社での編集業務効率化</h3>
@@ -664,7 +664,7 @@
             <strong>成果：</strong> 編集効率40%向上 + 体裁統一
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🏢</div>
           <h3 class="text-lg font-semibold mb-3">法務部門での契約書管理</h3>
@@ -679,7 +679,7 @@
             <strong>成果：</strong> レビュー時間50%短縮 + 品質向上
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">🎓</div>
           <h3 class="text-lg font-semibold mb-3">大学研究室での論文執筆支援</h3>
@@ -694,7 +694,7 @@
             <strong>成果：</strong> 投稿準備30%効率化 + 学術基準適合
           </div>
         </div>
-        
+
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
           <div class="text-4xl mb-4">📱</div>
           <h3 class="text-lg font-semibold mb-3">SNS運用での投稿最適化</h3>
@@ -718,7 +718,7 @@
             これらの事例を参考に、あなたの業界・用途に合わせたテキスト変換活用を始めてみましょう。
             当ツールなら、プログラミングから文書作成まで、あらゆる場面で作業効率を向上できます。
           </p>
-          <a href="#" onclick="document.getElementById('inputText').focus(); return false;" 
+          <a href="#" onclick="document.getElementById('inputText').focus(); return false;"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐテキスト変換を始める
           </a>
@@ -804,14 +804,14 @@
   <script>
     // Current conversion type
     let currentType = 'upper';
-    
+
     // Initialize when DOM loads
     document.addEventListener('DOMContentLoaded', function() {
       initializeEventListeners();
       updateCharCount();
       console.log('テキスト変換ツールが読み込まれました');
     });
-    
+
     function initializeEventListeners() {
       // Conversion type buttons
       const typeButtons = document.querySelectorAll('.conversion-btn');
@@ -820,37 +820,37 @@
           selectConversionType(this.dataset.type);
         });
       });
-      
+
       // Action buttons
       document.getElementById('convertBtn').addEventListener('click', convertText);
       document.getElementById('clearBtn').addEventListener('click', clearAll);
       document.getElementById('copyBtn').addEventListener('click', copyResult);
-      
+
       // Input text area
       document.getElementById('inputText').addEventListener('input', updateCharCount);
     }
-    
+
     function selectConversionType(type) {
       currentType = type;
-      
+
       // Update button states
       document.querySelectorAll('.conversion-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       document.querySelector(`[data-type="${type}"]`).classList.add('active');
     }
-    
+
     function convertText() {
       const input = document.getElementById('inputText').value;
       const output = document.getElementById('outputText');
-      
+
       if (!input.trim()) {
         alert('入力テキストが空です。変換したいテキストを入力してください。');
         return;
       }
-      
+
       let result = '';
-      
+
       switch(currentType) {
         case 'upper':
           result = input.toUpperCase();
@@ -859,12 +859,12 @@
           result = input.toLowerCase();
           break;
         case 'title':
-          result = input.replace(/\w\S*/g, (txt) => 
+          result = input.replace(/\w\S*/g, (txt) =>
             txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
           );
           break;
         case 'camel':
-          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => 
+          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
             index === 0 ? word.toLowerCase() : word.toUpperCase()
           ).replace(/\s+/g, '');
           break;
@@ -886,25 +886,25 @@
         default:
           result = input;
       }
-      
+
       output.value = result;
       updateOutputCharCount(result);
     }
-    
+
     function clearAll() {
       document.getElementById('inputText').value = '';
       document.getElementById('outputText').value = '';
       updateCharCount();
       updateOutputCharCount('');
     }
-    
+
     function copyResult() {
       const output = document.getElementById('outputText');
       if (!output.value) {
         alert('コピーする結果がありません。');
         return;
       }
-      
+
       // Modern clipboard API
       if (navigator.clipboard) {
         navigator.clipboard.writeText(output.value).then(() => {
@@ -916,14 +916,14 @@
         fallbackCopy(output);
       }
     }
-    
+
     function fallbackCopy(output) {
       output.select();
       output.setSelectionRange(0, 99999); // For mobile devices
       document.execCommand('copy');
       showCopyFeedback();
     }
-    
+
     function showCopyFeedback() {
       const copyBtn = document.getElementById('copyBtn');
       const originalText = copyBtn.innerHTML;
@@ -932,27 +932,27 @@
         copyBtn.innerHTML = originalText;
       }, 1500);
     }
-    
+
     function updateCharCount() {
       const input = document.getElementById('inputText').value;
       const count = input.length;
       // Input character count could be shown if needed
     }
-    
+
     function updateOutputCharCount(text) {
       const charCount = document.getElementById('charCount');
       charCount.textContent = `文字数: ${text.length}`;
     }
-    
+
     // Guide modal functions
     function showGuide() {
       document.getElementById('guideModal').classList.remove('hidden');
     }
-    
+
     function closeGuide() {
       document.getElementById('guideModal').classList.add('hidden');
     }
-    
+
     // Close modal when clicking outside
     document.addEventListener('click', function(e) {
       const modal = document.getElementById('guideModal');
@@ -960,14 +960,14 @@
         closeGuide();
       }
     });
-    
+
     // Security: Prevent XSS
     function sanitizeHTML(str) {
       const temp = document.createElement('div');
       temp.textContent = str;
       return temp.innerHTML;
     }
-    
+
     // Error handling
     window.addEventListener('error', function(e) {
       console.error('Error occurred:', e.error);
