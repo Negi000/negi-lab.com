@@ -59,8 +59,9 @@ function fail(message) {
 }
 
 function walk(dir, matcher, out = []) {
+  const ignoredDirectories = new Set(['.git', 'gamewiki', 'node_modules', '.playwright-cli']);
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === '.git' || entry.name === 'gamewiki') continue;
+    if (ignoredDirectories.has(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full, matcher, out);
     else if (matcher(full)) out.push(full);
@@ -291,6 +292,11 @@ function validateCriticalTextIsReadable() {
     'privacy-policy-unified.html',
     'terms.html',
     'wiki-redirect.html',
+    'package.json',
+    'robots.txt',
+    'ads.txt',
+    'llms.txt',
+    'site.webmanifest',
   ];
   const mojibakePattern = /繝|縺|蜊|譁|螟|髮|隱|邨|荳|逕/;
   for (const rel of criticalFiles) {
@@ -413,6 +419,11 @@ function validateReferencedAssets() {
       ...[...html.matchAll(/<script\b[^>]*src=["']([^"']+)["']/gi)].map((match) => match[1]),
       ...[...html.matchAll(/<link\b[^>]*href=["']([^"']+)["']/gi)].map((match) => match[1]),
     ];
+    const scriptRefs = [...html.matchAll(/<script\b[^>]*src=["']([^"']+)["']/gi)].map((match) => match[1]);
+    const duplicatedScripts = [...new Set(scriptRefs.filter((src, index) => scriptRefs.indexOf(src) !== index))];
+    if (duplicatedScripts.length) {
+      fail(`${rel}: duplicate script references: ${duplicatedScripts.join(', ')}`);
+    }
     for (const ref of refs) {
       const assetRel = normalizeAsset(ref, rel);
       if (!assetRel) continue;
@@ -423,6 +434,37 @@ function validateReferencedAssets() {
       }
       if (/\.(?:js|css)$/i.test(assetRel) && fs.statSync(assetPath).size === 0) {
         fail(`${rel}: referenced asset is empty: ${ref}`);
+      }
+    }
+  }
+}
+
+function validateNoEmptyPublicPlaceholders() {
+  const allowedEmptyFiles = new Set([
+    // Generated gamewiki pages still reference this root-level lane script.
+    'js/wiki-side-lane.js',
+  ]);
+  const files = walk(root, (file) => fs.statSync(file).size === 0);
+  for (const file of files) {
+    const rel = path.relative(root, file).replace(/\\/g, '/');
+    if (!allowedEmptyFiles.has(rel)) {
+      fail(`${rel}: empty public placeholder should be removed or filled with a clear note`);
+    }
+  }
+}
+
+function validateExternalRuntimeDependencies() {
+  const pages = [...seoPages, '404.html'];
+  for (const rel of pages) {
+    const file = path.join(root, rel);
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const scriptSources = [...html.matchAll(/<script\b[^>]*src=["']([^"']+)["'][^>]*>/gi)].map((match) => match[1]);
+    const teachableIndex = scriptSources.findIndex((src) => /@teachablemachine\/image/i.test(src));
+    if (teachableIndex >= 0) {
+      const hasTensorflowBefore = scriptSources.slice(0, teachableIndex).some((src) => /@tensorflow\/tfjs|tfjs/i.test(src));
+      if (!hasTensorflowBefore) {
+        fail(`${rel}: @teachablemachine/image is loaded without TensorFlow.js first`);
       }
     }
   }
@@ -486,6 +528,9 @@ function validateToolsIndex() {
   const text = fs.readFileSync(file, 'utf8');
   if (!/tool-index-enhancements\.js/.test(text)) {
     fail(`${rel}: missing tool-index-enhancements.js`);
+  }
+  if (!/data-tool-directory-grid=["']true["']/.test(text)) {
+    fail(`${rel}: missing data-tool-directory-grid marker for scoped search/filter controls`);
   }
   const jsonMatch = text.match(/<script type="application\/ld\+json" id="tool-index-structured-data">([\s\S]*?)<\/script>/i);
   if (!jsonMatch) {
@@ -637,6 +682,8 @@ validateToolsIndex();
 validateWebAppManifest();
 validateTailwindProductionCss();
 validateReferencedAssets();
+validateNoEmptyPublicPlaceholders();
+validateExternalRuntimeDependencies();
 validateSiteConfig();
 validateCopyrightYear();
 validateLlmsTxt();

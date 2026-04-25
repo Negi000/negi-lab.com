@@ -63,12 +63,12 @@
     if (location.pathname !== "/tools/" && location.pathname !== "/tools/index.html") return;
     if (document.querySelector("[data-tool-index-controls]")) return;
 
-    const cards = Array.from(document.querySelectorAll('a[href^="/tools/"], a[href^="tools/"]'))
+    const grid = document.querySelector("[data-tool-directory-grid]");
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('a[href^="/tools/"], a[href^="tools/"]'))
       .filter((card) => TOOL_META.some((tool) => tool.href === normalizePath(card.getAttribute("href"))));
     if (!cards.length) return;
-
-    const grid = cards[0].parentElement;
-    if (!grid) return;
 
     cards.forEach((card) => {
       const path = normalizePath(card.getAttribute("href"));

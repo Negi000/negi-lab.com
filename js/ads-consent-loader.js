@@ -37,6 +37,12 @@
     catch(_) { return false; }
   }
   var CONSENT_OK = hasConsent();
+  function syncConsentState(){
+    try {
+      document.documentElement.setAttribute('data-ads-consent', CONSENT_OK ? 'accepted' : 'pending');
+    } catch(_) {}
+  }
+  syncConsentState();
   window.NegiLabConsent = window.NegiLabConsent || {
     hasConsent: hasConsent,
     storageKey: CONSENT_STORAGE_KEY
@@ -865,6 +871,7 @@
   function acceptConsent(banner){
     try { localStorage.setItem(CONSENT_STORAGE_KEY, 'accepted'); } catch(_) {}
     CONSENT_OK = true;
+    syncConsentState();
     if (banner) {
       banner.classList.add('hidden');
       banner.style.display = 'none';

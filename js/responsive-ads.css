@@ -161,3 +161,26 @@ body[data-ads-debug="true"] .ad-block::after {
     max-width: 320px; /* モバイル時の最大幅制限 */
   }
 }
+
+html:not([data-ads-consent="accepted"]) ins.adsbygoogle {
+  display: none !important;
+  visibility: hidden !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html:not([data-ads-consent="accepted"]) aside:has(ins.adsbygoogle),
+html:not([data-ads-consent="accepted"]) .ad-block:has(ins.adsbygoogle) {
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-ads-consent="accepted"] aside:has(ins.adsbygoogle),
+html[data-ads-consent="accepted"] .ad-block:has(ins.adsbygoogle) {
+  display: block;
+}
