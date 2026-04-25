@@ -1,9 +1,12 @@
-﻿<!-- PDFオールインワンツール 雛形 -->
+<!-- PDFオールインワンツール 雛形 -->
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -20,7 +23,6 @@
 
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title data-translate-key="pdfTool.pageTitle">【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com</title>
   <meta name="description" data-translate-key="pdfTool.metaDescription" content="PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。" />
@@ -28,9 +30,14 @@
   <meta property="og:description" content="PDFの結合・分割・圧縮・画像変換が全て無料でできるオールインワンツール。ブラウザ完結でセキュリティも安心。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/pdf-tool.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com" />
+  <meta name="twitter:description" content="PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。" />
+  <meta property="og:site_name" content="negi-lab.com" />
   <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://negi-lab.com/tools/pdf-tool.html" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
     <!-- PDF Library -->
@@ -40,9 +47,13 @@
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
+  <script src="/js/portal-translations.js"></script>
+  <script src="/js/pdf-tool-translations.js"></script>
+  <script src="/js/tool-translation-system.js"></script>
 
   <!-- Tailwind Configuration -->
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -90,24 +101,106 @@
       cursor: not-allowed;
     }
   </style>
-
+  <script type="application/ld+json" id="tool-structured-data">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "【無料】PDFオールインワンツール - 結合・分割・圧縮・変換",
+    "description": "PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。",
+    "url": "https://negi-lab.com/tools/pdf-tool.html",
+    "applicationCategory": "Document utility",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser",
+    "isAccessibleForFree": true,
+    "inLanguage": [
+      "ja",
+      "en"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "negi-lab.com",
+      "url": "https://negi-lab.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://negi-lab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://negi-lab.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "【無料】PDFオールインワンツール - 結合・分割・圧縮・変換",
+        "item": "https://negi-lab.com/tools/pdf-tool.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "PDFファイルはサーバーに送信されますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。PDFの結合、分割、簡易圧縮、画像からPDFへの変換はブラウザ内で処理します。アップロード型サービスと違い、ファイルを外部サーバーへ送信しません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "無料で使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。negi-lab.comのPDFツールは無料で利用できます。広告を表示することで運営費をまかなっています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "大きなPDFも処理できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ブラウザのメモリに依存します。大容量PDFはページ数を分ける、軽い圧縮から試す、処理前にバックアップを取ることをおすすめします。"
+        }
+      }
+    ]
+  }
+]
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
-        <ul class="flex gap-6 font-medium text-base items-center">
+        <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -494,31 +587,8 @@
       <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
       <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
   </section>
-
-
-    <!-- 迢ｬ閾ｪ諤ｧ繝ｻ驕句霧譁ｹ驥昴・蜈崎ｲｬ莠矩・-->
-    <!--<section class="bg-gray-50 border-t border-gray-200 py-12" id="uniqueness">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">迢ｬ閾ｪ諤ｧ繝ｻ驕句霧譁ｹ驥昴・蜈崎ｲｬ莠矩・/h2>
-        <div class="grid md:grid-cols-3 gap-6 text-sm text-gray-600">
-          <div class="bg-white p-4 rounded-lg border">
-            <h3 class="font-semibold text-gray-800 mb-2">識 迢ｬ閾ｪ諤ｧ</h3>
-            <p>negi-lab.com縺ｯ縲∝ｮ溽畑諤ｧ縺ｨ菴ｿ縺・ｄ縺吶＆繧帝㍾隕悶＠縺溘が繝ｪ繧ｸ繝翫Ν繝・・繝ｫ繧呈署萓帙＠縺ｾ縺吶・/p>
-          </div>
-          <div class="bg-white p-4 rounded-lg border">
-            <h3 class="font-semibold text-gray-800 mb-2">搭 驕句霧譁ｹ驥・/h3>
-            <p>辟｡譁吶〒螳牙・縺ｫ蛻ｩ逕ｨ縺ｧ縺阪ｋWeb繝・・繝ｫ縺ｮ謠蝉ｾ帙ｒ逶ｮ謖・＠縺ｾ縺吶・/p>
-          </div>
-          <div class="bg-white p-4 rounded-lg border">
-            <h3 class="font-semibold text-gray-800 mb-2">笞・・蜈崎ｲｬ莠矩・/h3>
-            <p>譛ｬ繝・・繝ｫ縺ｮ蛻ｩ逕ｨ縺ｯ閾ｪ蟾ｱ雋ｬ莉ｻ縺ｧ縺企｡倥＞縺励∪縺吶・/p>
-          </div>
-        </div>
-      </div>
-    </section>-->
-
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
@@ -527,7 +597,7 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div>&copy; 2026 negi-lab.com</div>
   </footer>
   <script type="module" src="../index.js" defer></script>
   <script>
@@ -676,267 +746,9 @@
       });
     });
   </script>
-  <!-- ガイドモーダル（ヘッダー直下でOK） -->
-  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
-    </div>
-  </div>
-  <script>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: 'PDFオールインワンツールの使い方',
-      list: [
-        'PDFファイルを選択し、結合・分割・圧縮などを実行',
-        '画像ファイルからPDF化、PDF→画像変換も可能',
-        '結果はその場でダウンロード可能',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        '複数PDFの一括結合やページ分割',
-        '画像資料のPDF化やPDFの軽量化'
-      ]
-    },
-    en: {
-      title: 'How to Use the PDF All-in-One Tool',
-      list: [
-        'Select PDF files to merge, split, or compress.',
-        'Convert images to PDF or PDF to images as needed.',
-        'Download results instantly after processing.',
-        'Switch language from the top menu.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Batch merge or split PDF files.',
-        'Convert image materials to PDF or compress PDFs.'
-      ]
-    }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
-}
-</script>
-
-<!-- PDFツール完全ガイド -->
-<div class="max-w-6xl mx-auto px-4 py-16 bg-gray-50">
-  <div class="text-center mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 mb-4">PDFツール完全ガイド</h2>
-    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-      PDF結合・分割・圧縮・変換の技術的仕組みと、ビジネス・教育・法務での実践的活用方法を詳しく解説します。
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-    <!-- 技術解説セクション -->
-    <div class="bg-white rounded-lg p-6 shadow-md">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-        <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">1</span>
-        技術解説
-      </h3>
-      <div class="space-y-3 text-gray-600">
-        <p><strong>PDF-lib活用:</strong> 最先端のJavaScriptライブラリで高品質なPDF処理を実現</p>
-        <p><strong>クライアントサイド処理:</strong> ブラウザ内完結でファイルの安全性を最大限に保証</p>
-        <p><strong>メモリ最適化:</strong> 大容量ファイルも効率的に処理する独自アルゴリズム</p>
-      </div>
-    </div>
-
-    <!-- 機能特化 -->
-    <div class="bg-white rounded-lg p-6 shadow-md">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-        <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">2</span>
-        機能特化
-      </h3>
-      <div class="space-y-2 text-gray-600">
-        <p>• <strong>結合:</strong> 複数PDFを順序指定で統合</p>
-        <p>• <strong>分割:</strong> ページ範囲指定で抽出</p>
-        <p>• <strong>圧縮:</strong> 品質保持しながらサイズ削減</p>
-        <p>• <strong>変換:</strong> 画像との相互変換</p>
-      </div>
-    </div>
-
-    <!-- セキュリティ保護 -->
-    <div class="bg-white rounded-lg p-6 shadow-md">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">3</span>
-        セキュリティ保護
-      </h3>
-      <div class="space-y-3 text-gray-600">
-        <p><strong>外部送信なし:</strong> 機密文書も安全にブラウザ内で処理完結</p>
-        <p><strong>一時ファイル自動削除:</strong> 処理完了後にメモリを自動クリア</p>
-        <p><strong>暗号化対応:</strong> パスワード保護PDFの適切な処理</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 実用事例集セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際のPDFツール活用事例をご紹介します。
-        </p>
-      </div>
-      <!-- 中部広告（事例セクション直下） -->
-      <aside class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-      </aside>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📊</div>
-          <h3 class="text-lg font-semibold mb-3">ビジネス文書の効率管理</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            コンサルティング会社では、提案書・契約書・報告書を部門別に結合し、
-            クライアント向け資料パッケージを瞬時に作成。資料準備時間を70%削減。
-          </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: PDF結合 + 圧縮最適化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 資料準備時間70%削減 + 品質向上
-          </div>
-        </div>
-
-        <!-- フッター直前広告 -->
-        <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
-          <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-          <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-        </aside>
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏥</div>
-          <h3 class="text-lg font-semibold mb-3">医療機関での診療効率化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            総合病院では、検査結果・画像診断・診療記録を患者別に統合し、
-            電子カルテシステムと連携。診療時間の短縮と情報共有を実現。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 画像抽出 + 文書結合
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 診療効率20%向上 + 情報統合
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏫</div>
-          <h3 class="text-lg font-semibold mb-3">教育現場での資料最適化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            大学では、年間授業資料300ページを学期別・科目別に分割配布。
-            学生の学習効率向上と印刷コスト削減を同時に実現。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: PDF分割 + 圧縮
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 学習効率向上 + コスト40%削減
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏗️</div>
-          <h3 class="text-lg font-semibold mb-3">建設現場での図面管理</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            建設会社では、設計図面・仕様書・工程表を工事段階別に結合し、
-            現場作業員向けパッケージを作成。作業効率と安全性を向上。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: PDF結合 + 品質調整
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 作業効率25%向上 + 安全性強化
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">⚖️</div>
-          <h3 class="text-lg font-semibold mb-3">法務・コンプライアンス強化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            法律事務所では、契約書・判例・法令資料を案件別に統合管理。
-            クライアント対応の質向上と作業時間短縮を両立。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: 文書結合 + セキュリティ強化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 対応品質向上 + 作業時間30%短縮
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📈</div>
-          <h3 class="text-lg font-semibold mb-3">研究開発での論文管理</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            研究機関では、論文・データ・図表を研究テーマ別に整理し、
-            国際学会発表用資料を効率的に作成。研究成果の発信力を強化。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: 画像抽出 + 高品質圧縮
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 発表準備時間50%削減 + 品質向上
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの業務でもPDF処理を効率化しませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせたPDF活用を始めてみましょう。
-            当ツールなら、すべての文書処理ニーズに対応した高品質な処理を簡単に実行できます。
-          </p>
-          <a href="#" onclick="document.querySelector('.file-input').focus(); return false;"
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐPDF処理を始める
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      <!-- 独自性説明・免責事項セクション -->
-      <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-6xl mx-auto" aria-label="このツールについて">
-        <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-        <ul class="list-disc ml-5 mb-2">
-          <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-          <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-          <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-        </ul>
-        <p class="text-xs text-gray-500">&copy; 2025 negi-lab.com</p>
-      </section>
-</div>
   <!-- Consent-gated Ads/Analytics Loader -->
+  <script src="../js/tool-page-enhancements.js" defer></script>
+
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>
-
-

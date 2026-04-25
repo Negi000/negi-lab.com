@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -17,19 +17,27 @@
 
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title>運営者情報・サイトについて | negi-lab.com</title>
   <meta name="description" content="negi-lab.comの運営者情報とサイトコンセプト。個人開発による無料オンラインツール集の運営方針と開発背景について。">
+  <meta property="og:title" content="運営者情報・サイトについて | negi-lab.com" />
+  <meta property="og:description" content="negi-lab.comの運営者情報とサイトコンセプト。個人開発による無料オンラインツール集の運営方針と開発背景について。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/about.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
   <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://negi-lab.com/about.html" />
   <link rel="stylesheet" href="/index.css">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -51,6 +59,28 @@
   <script src="/js/common-utils.js"></script>
   <!-- Consent-gated Ads/Analytics loader (GA only on this page; no ad slots) -->
   <script src="/js/ads-consent-loader.js" defer></script>
+  <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="運営者情報・サイトについて | negi-lab.com" />
+  <meta name="twitter:description" content="negi-lab.comの運営者情報とサイトコンセプト。個人開発による無料オンラインツール集の運営方針と開発背景について。" />
+  <script type="application/ld+json" id="page-structured-data">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "運営者情報・サイトについて",
+  "description": "negi-lab.comの運営者情報とサイトコンセプト。個人開発による無料オンラインツール集の運営方針と開発背景について。",
+  "url": "https://negi-lab.com/about.html",
+  "inLanguage": [
+    "ja",
+    "en"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "negi-lab.com",
+    "url": "https://negi-lab.com/"
+  }
+}
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <main class="max-w-4xl mx-auto py-12 px-4">
@@ -256,7 +286,7 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div>&copy; 2026 negi-lab.com</div>
   </footer>
 </body>
 </html>

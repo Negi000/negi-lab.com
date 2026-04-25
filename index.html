@@ -1,8 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth" data-no-dynamic-ads>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -54,6 +57,7 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="ads-dynamic" content="off" />
 
   <title data-translate-key="page.title">オンライン便利ツール集 - 日常作業を効率化 | negi-lab.com</title>
   <meta name="description" data-translate-key="meta.description" content="プライバシー重視のブラウザ完結型ツール集。QRコード生成、画像変換、単位換算など、専門的な機能を誰でも簡単に利用できます。技術解説と実用ガイド付きで安心してお使いいただけます。" />
@@ -64,6 +68,7 @@
   <meta property="og:title" content="【無料】オンラインツール集 | QRコード作成・画像変換・単位変換 - negi-lab.com" />
   <meta property="og:description" content="登録不要で使える無料のオンラインツール集。QRコード作成、画像変換、単位変換、URL短縮など、日々の作業を効率化する便利なツールを提供。セキュリティ重視で安心してご利用いただけます。" />
   <meta property="og:url" content="https://negi-lab.com/" />
+  <meta property="og:site_name" content="negi-lab.com" />
   <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="【無料】オンラインツール集 | QRコード作成・画像変換・単位変換 - negi-lab.com" />
@@ -71,10 +76,11 @@
   <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
     <!-- External Resources with SRI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 
   <!-- Tailwind Configuration -->
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -123,7 +129,7 @@
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
@@ -155,7 +161,7 @@
     </section>
 
     <!-- Tools Section -->
-    <section id="tools" class="py-14 bg-white" role="main">
+    <section id="tools" class="py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4">        <header class="text-center mb-10">
           <h2 class="text-3xl font-bold text-gray-900 mb-4" data-translate-key="tools.sectionTitle">便利ツール集</h2>
           <p class="text-lg text-gray-600" data-translate-key="tools.sectionDescription">
@@ -404,7 +410,7 @@
         <p class="text-gray-700 mb-3" data-translate-html-key="about.paragraph2_html">ツールや情報はこれからも随時追加・改善予定。<br>「こんな機能がほしい」「使ってみた感想」など、気軽にご意見・ご要望をお寄せください。</p>
         <p class="text-gray-700 mb-3" data-translate-key="about.paragraph3">negi-lab.comは独自開発のツール・攻略情報を提供し、他サイトにはない専門性・利便性・安全性を重視しています。広告・アフィリエイトは運営維持のため最小限に設置しています。</p>
         <p class="text-gray-700 mb-3" data-translate-key="about.disclaimer">免責事項：本サイトの情報・ツールの利用は自己責任でお願いします。内容の正確性・完全性は保証できません。</p>
-        <p class="text-gray-500 text-xs mt-6" data-translate-key="about.copyrightLine">Copyright &copy; 2025 negi-lab.com</p>
+        <p class="text-gray-500 text-xs mt-6" data-translate-key="about.copyrightLine">Copyright &copy; 2026 negi-lab.com</p>
       </div>
     </section>
 
@@ -443,6 +449,14 @@
          data-ad-lazy="1"
          data-full-width-responsive="true"
          aria-label="広告"></ins>
+    <ins class="adsbygoogle ad-sp"
+         style="display:block;min-height:250px"
+         data-ad-client="ca-pub-1835873052239386"
+         data-ad-slot="3205934910"
+         data-ad-format="auto"
+         data-ad-lazy="1"
+         data-full-width-responsive="true"
+         aria-label="広告"></ins>
   </div>
 
   <!-- 独自性・免責事項セクション（全ツール・ポータル統一/短縮URLツール方式） -->
@@ -453,7 +467,7 @@
       <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
       <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
   </section>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
@@ -464,23 +478,8 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
-  </footer>  <!-- パンくずリスト構造化データ（JSON-LD） -->
-  <!-- 動的挿入用追加広告プレースホルダ（初期は空） -->
-  <div id="dynamic-ad-containers" class="hidden">
-    <template id="dynamic-ad-template">
-      <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc"
-       style="display:block"
-       data-ad-client="ca-pub-1835873052239386"
-       data-ad-slot="9898319477"
-       data-ad-format="auto"
-       data-full-width-responsive="true"
-       data-ad-lazy="1"></ins>
-      </aside>
-    </template>
-  </div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
+  </footer>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -539,25 +538,6 @@
   <script src="js/portal-translations.js"></script>
   <script src="index.js"></script>
   <script>
-    // Simple initialization
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM loaded. Initializing translation system...');
-
-      // Verify translations are loaded
-      if (window.translations) {
-        console.log('Translations loaded successfully');
-        console.log('Available languages:', Object.keys(window.translations));
-
-        // Initialize language system
-        if (typeof window.initLanguageSwitch === 'function') {
-          window.initLanguageSwitch();
-        } else {
-          console.error('initLanguageSwitch function not found');
-        }
-      } else {
-        console.error('Translations not loaded');
-      }
-    });    // ガイドモーダルの表示/非表示制御
     document.addEventListener('DOMContentLoaded', function() {
       const guideBtn = document.getElementById('guide-btn');
       const guideModal = document.getElementById('guide-modal');
@@ -637,86 +617,6 @@
         });
       }
     });
-    // Wikiカード全体クリック・キーボード操作でリダイレクト
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.wiki-card').forEach(function(card) {
-        card.addEventListener('click', function(e) {
-          // aタグクリック時は二重遷移防止
-          if(e.target.tagName.toLowerCase() === 'a') return;
-          const url = card.getAttribute('data-wiki-url');
-          if(url) {
-            window.location.href = 'wiki-redirect.html?url=' + encodeURIComponent(url);
-          }
-        });
-        card.addEventListener('keydown', function(e) {
-          if(e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const url = card.getAttribute('data-wiki-url');
-            if(url) {
-              window.location.href = 'wiki-redirect.html?url=' + encodeURIComponent(url);
-            }
-          }
-        });
-      });
-    });
-  </script>
-  <script>
-    // ユーザの初期エンゲージメント（滞在時間 & スクロール深度）を満たしたら中間広告を段階挿入
-    document.addEventListener('DOMContentLoaded', function(){
-      var engaged = false;
-      var inserted = 0;
-      var maxDynamic = 2; // 動的追加上限（UX維持のため）
-      var startTime = Date.now();
-      var scrollListenerAdded = false;
-
-      function tryInsert(){
-        if (inserted >= maxDynamic) return;
-        var seconds = (Date.now() - startTime)/1000;
-        var scrollDepth = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight);
-        if (seconds > 20 && scrollDepth > 0.45) engaged = true; // 20秒 & 45%到達
-        if (!engaged) return;
-
-        var template = document.getElementById('dynamic-ad-template');
-        if (!template) return;
-        var clone = template.content.firstElementChild.cloneNode(true);
-        // ランダムな事前定義スロット（ヒートマップ見ながら差し替え可能）
-        var slots = ['7843001775','9898319477','4837564489'];
-        var slot = slots[inserted % slots.length];
-        var ins = clone.querySelector('ins.adsbygoogle');
-        if (ins) {
-          ins.setAttribute('data-ad-slot', slot);
-          // lazy属性は既に付与
-        }
-        // 挿入位置: ツールカードグリッドの直後または how-to-use セクション手前
-        var anchor = document.querySelector('#tools article');
-        if (anchor && inserted === 0) {
-            anchor.parentNode.insertBefore(clone, anchor.nextElementSibling);
-        } else {
-            var howTo = document.getElementById('how-to-use');
-            if (howTo) howTo.parentNode.insertBefore(clone, howTo);
-            else document.body.appendChild(clone);
-        }
-        inserted++;
-        if (window.__adsLoaded) {
-          // 即時 push (lazy 判定は内部で行われる)
-          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
-        }
-        if (inserted >= maxDynamic) window.removeEventListener('scroll', onScroll, { passive: true });
-      }
-
-      function onScroll(){
-        tryInsert();
-      }
-
-      // スクロール監視
-      window.addEventListener('scroll', onScroll, { passive: true });
-      scrollListenerAdded = true;
-
-      // アドネットワーク準備後に一度試行
-      document.addEventListener('adsReady', tryInsert, { once: false });
-      // 30秒経過でもう一度試行
-      setTimeout(tryInsert, 30000);
-    });
   </script>
 
   <!-- ABテスト用のダミー広告枠は審査中は無効化 -->
@@ -783,4 +683,3 @@
   <!-- Consent handling is centralized in js/ads-consent-loader.js. -->
 </body>
 </html>
-

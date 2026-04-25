@@ -3,6 +3,45 @@
  * 複数のツール間で共有される機能を提供
  */
 
+(function () {
+  if (window.NEGI_DEBUG_LOGS === true || /[?&]debugLogs=1\b/.test(location.search)) return;
+  if (console && !console.__negiLogFiltered) {
+    console.__negiOriginalLog = console.log;
+    console.__negiOriginalDebug = console.debug;
+    console.log = function () {};
+    console.debug = function () {};
+    console.__negiLogFiltered = true;
+  }
+})();
+
+(function () {
+  function enhancePageChrome() {
+    const main = document.querySelector("main");
+    if (main && !main.id) main.id = "main-content";
+
+    if (main && !document.querySelector("[data-negi-skip-link]")) {
+      const link = document.createElement("a");
+      link.href = `#${main.id}`;
+      link.setAttribute("data-negi-skip-link", "true");
+      link.className = "sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded focus:bg-gray-950 focus:px-4 focus:py-2 focus:text-white";
+      link.textContent = document.documentElement.lang === "en" ? "Skip to content" : "本文へ移動";
+      document.body.insertBefore(link, document.body.firstChild);
+    }
+
+    document.querySelectorAll("#lang-switch, #langSelect").forEach((select) => {
+      if (!select.getAttribute("aria-label")) {
+        select.setAttribute("aria-label", "Language");
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhancePageChrome);
+  } else {
+    enhancePageChrome();
+  }
+})();
+
 window.CommonUtils = {
   // ローディング表示制御
   showLoading: function(targetElementId, message = '処理中...') {

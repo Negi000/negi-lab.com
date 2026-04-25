@@ -24,6 +24,23 @@
 
   // 広告クライアントID（統一）
   const AD_CLIENT = 'ca-pub-1835873052239386';
+  const DEBUG = window.NEGI_AD_DEBUG === true || /[?&]debugAds=1\b/.test(location.search);
+
+  if (!DEBUG && console && !console.__negiLogFiltered) {
+    console.__negiOriginalLog = console.log;
+    console.__negiOriginalDebug = console.debug;
+    console.log = function () {};
+    console.debug = function () {};
+    console.__negiLogFiltered = true;
+  }
+
+  function log() {
+    if (DEBUG) console.log.apply(console, arguments);
+  }
+
+  function warn() {
+    if (DEBUG) console.warn.apply(console, arguments);
+  }
 
   /**
    * デバイス判定
@@ -51,13 +68,28 @@
     const targetClass = isMobile ? 'ad-pc' : 'ad-sp';
     const activeClass = isMobile ? 'ad-sp' : 'ad-pc';
     
-    console.log(`[ResponsiveAds] Device detected: ${isMobile ? 'Mobile' : 'PC'}`);
+    log(`[ResponsiveAds] Device detected: ${isMobile ? 'Mobile' : 'PC'}`);
+
+    function ensureActiveCounterpart(element) {
+      const parent = element.parentElement;
+      if (!parent || parent.querySelector(`ins.adsbygoogle.${activeClass}`)) return;
+      if (!element.matches || !element.matches('ins.adsbygoogle')) return;
+
+      const replacement = element.cloneNode(false);
+      replacement.classList.remove(targetClass);
+      replacement.classList.add(activeClass);
+      replacement.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
+      replacement.setAttribute('data-ad-client', AD_CLIENT);
+      replacement.setAttribute('data-ad-slot', isMobile ? AD_SLOTS.mobile.middle : AD_SLOTS.pc.middle);
+      parent.insertBefore(replacement, element.nextSibling);
+    }
     
     // 対象外のデバイス用広告を完全に削除
     const elementsToRemove = document.querySelectorAll(`.${targetClass}`);
     elementsToRemove.forEach(element => {
+      ensureActiveCounterpart(element);
       element.remove();
-      console.log(`[ResponsiveAds] Removed ${targetClass} ad element`);
+      log(`[ResponsiveAds] Removed ${targetClass} ad element`);
     });
 
     // アクティブな広告要素を更新（クライアントIDが古い場合の対応）
@@ -66,7 +98,7 @@
       // クライアントIDを統一されたものに更新
       if (element.getAttribute('data-ad-client') !== AD_CLIENT) {
         element.setAttribute('data-ad-client', AD_CLIENT);
-        console.log(`[ResponsiveAds] Updated ad client for ${activeClass}`);
+        log(`[ResponsiveAds] Updated ad client for ${activeClass}`);
       }
       
       // デバイス識別用の属性を追加
@@ -91,7 +123,7 @@
     const slotId = slots[position];
     
     if (!slotId) {
-      console.warn(`[ResponsiveAds] No slot ID found for position: ${position}`);
+      warn(`[ResponsiveAds] No slot ID found for position: ${position}`);
       return null;
     }
 
@@ -109,7 +141,7 @@
       ins.setAttribute('data-ad-lazy', '1');
     }
 
-    console.log(`[ResponsiveAds] Created ${isMobile ? 'mobile' : 'PC'} ad for ${position}: ${slotId}`);
+    log(`[ResponsiveAds] Created ${isMobile ? 'mobile' : 'PC'} ad for ${position}: ${slotId}`);
     
     return ins;
   }
@@ -124,7 +156,7 @@
       const ads = block.querySelectorAll('ins.adsbygoogle');
       
       if (ads.length > 1) {
-        console.log(`[ResponsiveAds] Found ${ads.length} ads in block, fixing...`);
+        log(`[ResponsiveAds] Found ${ads.length} ads in block, fixing...`);
         
         const isMobile = isMobileDevice();
         
@@ -135,7 +167,7 @@
           
           if ((isMobile && isPcAd) || (!isMobile && isMobileAd)) {
             ad.remove();
-            console.log(`[ResponsiveAds] Removed inappropriate ad from block`);
+            log(`[ResponsiveAds] Removed inappropriate ad from block`);
           }
         });
       }
@@ -149,7 +181,7 @@
     // デバウンス処理
     clearTimeout(window.responsiveAdsTimeout);
     window.responsiveAdsTimeout = setTimeout(() => {
-      console.log('[ResponsiveAds] Screen resized, rechecking...');
+      log('[ResponsiveAds] Screen resized, rechecking...');
       setupResponsiveAds();
       fixDuplicateAds();
     }, 300);
@@ -159,7 +191,7 @@
    * 初期化
    */
   function init() {
-    console.log('[ResponsiveAds] Initializing responsive ads controller...');
+    log('[ResponsiveAds] Initializing responsive ads controller...');
     
     // 初期設定
     setupResponsiveAds();
@@ -175,7 +207,7 @@
       });
     }
     
-    console.log('[ResponsiveAds] Initialization complete');
+    log('[ResponsiveAds] Initialization complete');
   }
 
   // DOMContentLoaded後に初期化

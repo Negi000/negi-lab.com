@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -36,23 +39,27 @@
 
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
   <title>外部Wikiへリダイレクト中… | Negi-lab.com</title>
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="外部Wikiへ安全にリダイレクトしています。" />
+  <meta name="description" content="ゲームWikiへの遷移前に行き先を確認できる安全なリダイレクトページです。negi-lab.com内の関連コンテンツからWikiへ移動します。" />
+  <meta property="og:title" content="外部Wikiへリダイレクト中… | Negi-lab.com" />
+  <meta property="og:description" content="ゲームWikiへの遷移前に行き先を確認できる安全なリダイレクトページです。negi-lab.com内の関連コンテンツからWikiへ移動します。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://negi-lab.com/wiki-redirect.html" />
   <link rel="canonical" href="https://negi-lab.com/wiki-redirect.html" />
 
   <!-- External Resources with SRI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 
   <!-- Tailwind Configuration -->
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -69,6 +76,28 @@
   <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
+  <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="外部Wikiへリダイレクト中… | Negi-lab.com" />
+  <meta name="twitter:description" content="ゲームWikiへの遷移前に行き先を確認できる安全なリダイレクトページです。negi-lab.com内の関連コンテンツからWikiへ移動します。" />
+  <script type="application/ld+json" id="page-structured-data">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "外部Wikiへリダイレクト中…",
+  "description": "ゲームWikiへの遷移前に行き先を確認できる安全なリダイレクトページです。negi-lab.com内の関連コンテンツからWikiへ移動します。",
+  "url": "https://negi-lab.com/wiki-redirect.html",
+  "inLanguage": [
+    "ja",
+    "en"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "negi-lab.com",
+    "url": "https://negi-lab.com/"
+  }
+}
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col items-center justify-center">
   <main class="max-w-xl mx-auto py-20 px-4 text-center">
@@ -113,7 +142,7 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
     </nav>
-    <div>&copy; 2025 negi-lab.com</div>
+    <div>&copy; 2026 negi-lab.com</div>
   </footer>
 </body>
 </html>

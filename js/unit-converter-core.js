@@ -1,66 +1,58 @@
-// 単位変換共通ロジック（今後の拡張・保守性重視）
-window.unitConverterCore = {
-  convert: function(category, value, fromUnit, toUnit) {
-    const data = window.unitConverterData[category];
-    if (!data) return null;
-    
-    // 温度の特殊変換
-    if (category === 'temperature' && typeof data.convert === 'function') {
-      return data.convert(value, fromUnit, toUnit);
-    }
-      // 電子レンジの特殊変換
-    if (category === 'microwave' && typeof data.convert === 'function') {
-      return data.convert(value, fromUnit, toUnit);
-    }
-    
-    // 燃費の特殊変換
-    if (category === 'fuel_consumption' && typeof data.convert === 'function') {
-      return data.convert(value, fromUnit, toUnit);
-    }
-    
-    // 一般的なfactor基準変換
-    if (!data.definitions[fromUnit] || !data.definitions[toUnit]) return null;
-    const fromDef = data.definitions[fromUnit];
-    const toDef = data.definitions[toUnit];
-    
-    // 基本単位を介した変換
-    const baseValue = value * fromDef.factor;
-    return baseValue / toDef.factor;
-  },
-  
-  // カテゴリ情報取得
-  getCategories: function() {
-    return Object.keys(window.unitConverterData);
-  },
-  
-  // 単位情報取得
-  getUnits: function(category) {
-    const data = window.unitConverterData[category];
-    return data ? Object.keys(data.definitions) : [];
-  },
-  
-  // 単位シンボル取得
-  getUnitSymbol: function(category, unit) {
-    const data = window.unitConverterData[category];
-    if (!data || !data.definitions[unit]) return '';
-    return data.definitions[unit].symbol || '';
-  },
-  
-  // 単位名取得（多言語対応）
-  getUnitName: function(category, unit, lang = 'ja') {
-    const data = window.unitConverterData[category];
-    if (!data || !data.definitions[unit]) return '';
-    const unitDef = data.definitions[unit];
-    return unitDef[lang] || unitDef.ja || unitDef.en || unit;
-  },
-  
-  // バリデーション
-  isValidCategory: function(category) {
-    return category in window.unitConverterData;
-  },
-  
-  isValidUnit: function(category, unit) {
-    const data = window.unitConverterData[category];
-    return data && data.definitions && unit in data.definitions;
+// Shared conversion logic for the static unit converter.
+(function () {
+  "use strict";
+
+  function getCategory(category) {
+    return window.unitConverterData && window.unitConverterData[category];
   }
-};
+
+  window.unitConverterCore = {
+    convert(category, value, fromUnit, toUnit) {
+      const data = getCategory(category);
+      const numericValue = Number(value);
+      if (!data || !Number.isFinite(numericValue)) return null;
+      if (!data.definitions?.[fromUnit] || !data.definitions?.[toUnit]) return null;
+
+      if (typeof data.convert === "function") {
+        const converted = data.convert(numericValue, fromUnit, toUnit);
+        return Number.isFinite(converted) ? converted : null;
+      }
+
+      const fromDef = data.definitions[fromUnit];
+      const toDef = data.definitions[toUnit];
+      if (!Number.isFinite(fromDef.factor) || !Number.isFinite(toDef.factor) || toDef.factor === 0) {
+        return null;
+      }
+
+      return (numericValue * fromDef.factor) / toDef.factor;
+    },
+
+    getCategories() {
+      return Object.keys(window.unitConverterData || {});
+    },
+
+    getUnits(category) {
+      const data = getCategory(category);
+      return data ? Object.keys(data.definitions || {}) : [];
+    },
+
+    getUnitSymbol(category, unit) {
+      const data = getCategory(category);
+      return data?.definitions?.[unit]?.symbol || "";
+    },
+
+    getUnitName(category, unit, lang = "ja") {
+      const data = getCategory(category);
+      const unitDef = data?.definitions?.[unit];
+      return unitDef?.[lang] || unitDef?.ja || unitDef?.en || unit;
+    },
+
+    isValidCategory(category) {
+      return Boolean(getCategory(category));
+    },
+
+    isValidUnit(category, unit) {
+      return Boolean(getCategory(category)?.definitions?.[unit]);
+    }
+  };
+})();

@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -36,11 +39,16 @@
   <meta property="og:description" content="KTX・DDS・TGA等13形式対応、ゲーム・VR・3D制作向けプロ仕様画像変換ツール。一括処理、回転・フィルター効果、専用プリセット搭載で開発効率を大幅向上。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/image-converter.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="【無料】プロ仕様画像変換ツール - KTX・DDS・TGA等20形式対応 一括処理 | negi-lab.com" />
+  <meta name="twitter:description" content="KTX・KTX2・DDS・TGAなどゲーム開発対応、最新フォーマット20種類に対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。" />
+  <meta property="og:site_name" content="negi-lab.com" />
   <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://negi-lab.com/tools/image-converter.html" />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
   <script>
@@ -228,25 +236,108 @@
       to { transform: rotate(360deg); }
     }
   </style>
+  <script type="application/ld+json" id="tool-structured-data">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "【無料】プロ仕様画像変換ツール - KTX・DDS・TGA等20形式対応 一括処理",
+    "description": "KTX・KTX2・DDS・TGAなどゲーム開発対応、最新フォーマット20種類に対応した高機能変換ツール。複数ファイル一括処理、回転・フィルター効果、ゲーム/VR/3D制作向けプリセット搭載。最大50MB対応。",
+    "url": "https://negi-lab.com/tools/image-converter.html",
+    "applicationCategory": "Image editing",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser",
+    "isAccessibleForFree": true,
+    "inLanguage": [
+      "ja",
+      "en"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "negi-lab.com",
+      "url": "https://negi-lab.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://negi-lab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://negi-lab.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "【無料】プロ仕様画像変換ツール - KTX・DDS・TGA等20形式対応 一括処理",
+        "item": "https://negi-lab.com/tools/image-converter.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "このツールは無料で使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "入力したデータは安全ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "スマートフォンでも使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+        }
+      }
+    ]
+  }
+]
+  </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
-        <ul class="flex gap-6 font-medium text-base items-center">
+        <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="imageConverter.lang.ja">日本語</option>
               <option value="en" data-translate-key="imageConverter.lang.en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="imageConverter.ui.guideButton">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="imageConverter.ui.guideButton">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -254,6 +345,8 @@
   </header>
 
   <!-- Consent-gated loader for GA/AdSense -->
+  <script src="../js/tool-page-enhancements.js" defer></script>
+
   <script src="../js/ads-consent-loader.js" defer></script>
 
   <!-- ブレッドクラムナビゲーション -->
@@ -964,7 +1057,7 @@
       <li data-translate-key="disclaimer.revenue">広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。</li>
       <li data-translate-key="disclaimer.liability">精度・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500" data-translate-key="disclaimer.copyright">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="disclaimer.copyright">&copy; 2026 negi-lab.com</p>
   </section>
 
   <!-- Guide Modal Popup -->
@@ -994,6 +1087,7 @@
   </script>
 
   <!-- 翻訳システムコア -->
+  <script src="../js/portal-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
   <!-- 画像変換機能 -->
   <script src="../js/image-converter-guide.js"></script>
@@ -1007,8 +1101,7 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="common.contact">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="common.sitemap">サイトマップ</a>
     </nav>
-    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
 </body>
 </html>
-

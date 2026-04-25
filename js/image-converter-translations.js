@@ -220,7 +220,7 @@ window.imageConverterTranslations = {
         'footer.about': '運営者情報',
         'footer.contact': 'お問い合わせ',
         'footer.sitemap': 'サイトマップ',
-        'footer.copyright': '© 2025 negi-lab.com',
+        'footer.copyright': '© 2026 negi-lab.com',
         
         // 独自性・運営方針・免責事項
         'disclaimer.title': 'negi-lab.comの独自性・運営方針・免責事項について',
@@ -230,7 +230,7 @@ window.imageConverterTranslations = {
         'disclaimer.responsibility': '本ツールはnegi-lab.comが責任開発・運営しています。',
         'disclaimer.revenue': '広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。',
         'disclaimer.liability': '精度・安全性には万全を期していますが、利用は自己責任でお願いします。',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // Language selection
         'lang.ja': '日本語',
@@ -246,14 +246,14 @@ window.imageConverterTranslations = {
         'footer.privacy': 'プライバシーポリシー',
         'footer.terms': '利用規約',
         'footer.about': '運営者情報',
-        'footer.copyright': '© 2025 negi-lab.com',
+        'footer.copyright': '© 2026 negi-lab.com',
         
         // Disclaimer
         'disclaimer.title': 'negi-lab.comの独自性・運営方針・免責事項について',
         'disclaimer.responsibility': '本ツールはnegi-lab.comが責任開発・運営しています。',
         'disclaimer.revenue': '広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。',
         'disclaimer.liability': '精度・安全性には万全を期していますが、利用は自己責任でお願いします。',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // 共通要素
         'common.contact': 'お問い合わせ',
@@ -652,14 +652,14 @@ window.imageConverterTranslations = {
         'footer.privacy': 'Privacy Policy',
         'footer.terms': 'Terms of Service',
         'footer.about': 'About Us',
-        'footer.copyright': '© 2025 negi-lab.com',
+        'footer.copyright': '© 2026 negi-lab.com',
         
         // Disclaimer
         'disclaimer.title': 'About negi-lab.com\'s Uniqueness, Operating Policy, and Disclaimer',
         'disclaimer.responsibility': 'This tool is responsibly developed and operated by negi-lab.com.',
         'disclaimer.revenue': 'While we include advertising and affiliate revenue, we prioritize user convenience.',
         'disclaimer.liability': 'We strive for accuracy and safety, but please use at your own discretion.',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // Common elements
         'common.contact': 'Contact',
@@ -698,7 +698,7 @@ window.imageConverterTranslations = {
         'footer.about': 'About Us',
         'footer.contact': 'Contact',
         'footer.sitemap': 'Sitemap',
-        'footer.copyright': '© 2025 negi-lab.com',
+        'footer.copyright': '© 2026 negi-lab.com',
         
         // Uniqueness, Policy & Disclaimer
         'disclaimer.title': 'About negi-lab.com\'s Uniqueness, Policy & Disclaimer',
@@ -708,7 +708,7 @@ window.imageConverterTranslations = {
         'disclaimer.responsibility': 'This tool is responsibly developed and operated by negi-lab.com.',
         'disclaimer.revenue': 'We include advertising and affiliate revenue, but prioritize user convenience.',
         'disclaimer.liability': 'While we strive for accuracy and safety, use is at your own risk.',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // Common elements
         'common.contact': 'Contact',

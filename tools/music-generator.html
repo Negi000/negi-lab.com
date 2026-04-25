@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
 
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -31,6 +34,10 @@
   <meta property="og:description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com" />
+  <meta name="twitter:description" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  <meta property="og:site_name" content="negi-lab.com" />
 
   <!-- Suppress warnings early -->
   <script>
@@ -97,12 +104,13 @@
   </script>
 
   <!-- Tailwind CSS - Development Mode -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
   <script>
     // Configure Tailwind
     if (window.tailwind) {
+      window.tailwind = window.tailwind || {};
       tailwind.config = {
         theme: {
           extend: {
@@ -169,6 +177,8 @@
   </style>
 
   <!-- Centralized consent-gated loader for GA/AdSense -->
+  <script src="../js/tool-page-enhancements.js" defer></script>
+
   <script src="../js/ads-consent-loader.js" defer></script>
 
   <!-- Fonts and Local Scripts -->
@@ -181,22 +191,108 @@
   <script src="https://nbrosowsky.github.io/tonejs-instruments/Tonejs-Instruments.js"></script>
   <script src="../js/common-utils.js"></script>
   <script src="../js/music-generator-translations.js"></script>
+  <script src="../js/portal-translations.js"></script>
+  <script src="../js/tool-translation-system.js"></script>
   <script src="../js/music-generator-engine.js"></script>
   <script src="../js/music-generator-ui.js"></script>
+  <link rel="canonical" href="https://negi-lab.com/tools/music-generator.html" />
+  <script type="application/ld+json" id="tool-structured-data">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "【無料】AI音楽生成ツール - 作曲・BGM作成",
+    "description": "キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。",
+    "url": "https://negi-lab.com/tools/music-generator.html",
+    "applicationCategory": "Creative tool",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser",
+    "isAccessibleForFree": true,
+    "inLanguage": [
+      "ja",
+      "en"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "negi-lab.com",
+      "url": "https://negi-lab.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://negi-lab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://negi-lab.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "【無料】AI音楽生成ツール - 作曲・BGM作成",
+        "item": "https://negi-lab.com/tools/music-generator.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "このツールは無料で使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "入力したデータは安全ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "スマートフォンでも使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+        }
+      }
+    ]
+  }
+]
+  </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-      <a href="/" class="text-2xl font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
       <nav>
-        <ul class="flex gap-6 font-medium text-base items-center">
+        <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
@@ -557,7 +653,7 @@
       <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
       <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2025 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
   </section>
 
   <!-- Footer -->
@@ -569,8 +665,7 @@
       <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
       <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div data-translate-key="footer.copyright">&copy; 2025 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
 </body>
 </html>
-

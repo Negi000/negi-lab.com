@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval'
+      https://cdn.tailwindcss.com
+      https://pagead2.googlesyndication.com
+      https://www.googletagmanager.com
+      https://www.google-analytics.com
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com
+      https://www.googletagservices.com
+      https://adservice.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: blob:
+      https://pagead2.googlesyndication.com
+      https://www.google-analytics.com
+      https://googleads.g.doubleclick.net
+      https://www.googletagservices.com
+      https://adservice.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google;
+    connect-src 'self'
+      https://www.google-analytics.com
+      https://pagead2.googlesyndication.com
+      https://googleads.g.doubleclick.net
+      https://www.googletagservices.com
+      https://adservice.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google;
+    frame-src
+      https://googleads.g.doubleclick.net
+      https://tpc.googlesyndication.com
+      https://www.googletagservices.com
+      https://adservice.google.com
+      https://ep1.adtrafficquality.google
+      https://ep2.adtrafficquality.google
+      https://www.google.com;
+    object-src 'none';
+    base-uri 'self';
+  " />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <title data-translate-key="toolIndex.pageTitle">無料オンライン便利ツール一覧 | negi-lab.com</title>
+  <meta name="description" data-translate-key="toolIndex.metaDescription" content="QRコード作成、画像変換、単位変換、PDF処理、JSON/CSV/YAML/Excel変換など、登録不要で使えるブラウザ完結型オンラインツール一覧です。" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://negi-lab.com/tools/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="無料オンライン便利ツール一覧 | negi-lab.com" />
+  <meta property="og:description" content="登録不要で使えるブラウザ完結型オンラインツール集。日常作業、制作、開発、文書処理を効率化します。" />
+  <meta property="og:url" content="https://negi-lab.com/tools/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="無料オンライン便利ツール一覧 | negi-lab.com" />
+  <meta name="twitter:description" content="QRコード作成、画像変換、単位変換、PDF処理、JSON/CSV/YAML/Excel変換など、登録不要で使えるブラウザ完結型オンラインツール一覧です。" />
+  <meta property="og:site_name" content="negi-lab.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <link rel="stylesheet" href="/js/responsive-ads.css">
+  <script src="/js/responsive-ads-controller.js"></script>
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { negi: "#65c155", accent: "#4ADE80" },
+          fontFamily: { inter: ["Inter", "sans-serif"] }
+        }
+      }
+    };
+    window.pageTitleTranslationKey = "toolIndex.pageTitle";
+    window.metaDescriptionTranslationKey = "toolIndex.metaDescription";
+  </script>
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
+  <script src="/js/portal-translations.js"></script>
+  <script src="/js/tool-translation-system.js"></script>
+  <script src="/js/tool-index-enhancements.js" defer></script>
+  <script src="/js/ads-consent-loader.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <nav>
+        <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
+          <li><a href="/tools/" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li>
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
+              <option value="ja" data-translate-key="option.ja">日本語</option>
+              <option value="en" data-translate-key="option.en">English</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-14 md:py-20">
+        <p class="text-sm font-semibold text-accent mb-3" data-translate-key="toolIndex.eyebrow">ブラウザ完結・登録不要</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-950 leading-tight max-w-3xl" data-translate-key="toolIndex.heroTitle">作業をすぐ終わらせる無料オンラインツール</h1>
+        <p class="mt-5 text-lg text-gray-600 max-w-3xl" data-translate-key="toolIndex.heroLead">画像、PDF、データ変換、URL、QRコード、単位換算まで。ファイル処理系はできるだけブラウザ内で完結し、日常作業と制作ワークフローを軽くします。</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-12" aria-labelledby="tool-list-title">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div>
+          <h2 id="tool-list-title" class="text-2xl md:text-3xl font-bold text-gray-950" data-translate-key="toolIndex.listTitle">ツール一覧</h2>
+          <p class="mt-2 text-gray-600" data-translate-key="toolIndex.listLead">目的別に選んで、その場で処理できます。</p>
+        </div>
+        <a href="/" class="text-accent font-semibold hover:underline" data-translate-key="toolIndex.backHome">トップへ戻る</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/unit-converter.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.unitConverter.title">単位変換ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.unitConverter.description">500以上の単位に対応した高精度変換ツール。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/image-converter.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.imageConverter.title">画像変換ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageConverter.description">JPEG・PNG・WebP形式の高品質変換機能。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/qr-code-generator.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.qrGenerator.title">QRコード作成</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.qrGenerator.description">高品質QRコードをブラウザで生成。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/url-shortener.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.urlShortener.title">URL短縮ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.urlShortener.description">長いURLを短く共有しやすい形へ変換。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/date-calculator.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.dateCalculator.title">日付計算ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.dateCalculator.description">期間計算・年齢算出・営業日計算に対応。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/image-size-compare.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.imageSizeCompare.title">画像サイズ比較変換</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageSizeCompare.description">SNSや動画制作向けの画像サイズ最適化。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/color-code-tool.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.colorCodeTool.title">カラーコード検索・表示</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.colorCodeTool.description">画像からの色抽出とカラーコード変換。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/pdf-tool.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.pdfTool.title">PDFオールインワン</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.pdfTool.description">PDFの結合・分割・圧縮・変換に対応。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/bg-remover.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.bgRemover.title">画像背景リムーバ</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.bgRemover.description">画像の背景を削除し、透過PNGを生成。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/favicon-og-generator.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.faviconOgGen.title">ファビコン&OG画像</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.faviconOgGen.description">サイト用アイコンとOGP画像を作成。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/json-csv-yaml-excel.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.jsonCsvYamlExcel.title">JSON⇔CSV/YAML⇔Excel</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.jsonCsvYamlExcel.description">データ形式を相互変換。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/text-converter.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.textConverter.title">テキスト変換ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.textConverter.description">文字種変換・文字数カウント・反転などに対応。</p>
+        </a>
+        <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/music-generator.html">
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.musicGenerator.title">音楽生成ツール</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.musicGenerator.description">動画BGMや創作活動向けの楽曲生成ツール。</p>
+        </a>
+      </div>
+
+      <aside class="max-w-3xl mx-auto mt-12" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
+        <ins class="adsbygoogle ad-pc"
+             style="display:block;min-height:250px"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="9898319477"
+             data-ad-format="auto"
+             data-ad-lazy="1"
+             data-full-width-responsive="true"
+             aria-label="広告"></ins>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
+    <nav class="mb-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
+    </nav>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
+  </footer>
+
+  <script type="application/ld+json" id="tool-index-structured-data">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "negi-lab.com online tools",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"url":"https://negi-lab.com/tools/unit-converter.html","name":"Unit Converter"},
+      {"@type":"ListItem","position":2,"url":"https://negi-lab.com/tools/image-converter.html","name":"Image Converter"},
+      {"@type":"ListItem","position":3,"url":"https://negi-lab.com/tools/qr-code-generator.html","name":"QR Code Generator"},
+      {"@type":"ListItem","position":4,"url":"https://negi-lab.com/tools/url-shortener.html","name":"URL Shortener"},
+      {"@type":"ListItem","position":5,"url":"https://negi-lab.com/tools/date-calculator.html","name":"Date Calculator"},
+      {"@type":"ListItem","position":6,"url":"https://negi-lab.com/tools/image-size-compare.html","name":"Image Size Converter"},
+      {"@type":"ListItem","position":7,"url":"https://negi-lab.com/tools/color-code-tool.html","name":"Color Code Tool"},
+      {"@type":"ListItem","position":8,"url":"https://negi-lab.com/tools/pdf-tool.html","name":"PDF Tool"},
+      {"@type":"ListItem","position":9,"url":"https://negi-lab.com/tools/bg-remover.html","name":"Background Remover"},
+      {"@type":"ListItem","position":10,"url":"https://negi-lab.com/tools/favicon-og-generator.html","name":"Favicon and OG Image Generator"},
+      {"@type":"ListItem","position":11,"url":"https://negi-lab.com/tools/json-csv-yaml-excel.html","name":"JSON CSV YAML Excel Converter"},
+      {"@type":"ListItem","position":12,"url":"https://negi-lab.com/tools/text-converter.html","name":"Text Converter"},
+      {"@type":"ListItem","position":13,"url":"https://negi-lab.com/tools/music-generator.html","name":"Music Generator"}
+    ]
+  }
+  </script>
+</body>
+</html>

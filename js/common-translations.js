@@ -51,7 +51,7 @@ window.commonTranslations = {
         'disclaimer.responsibility': '本ツールはnegi-lab.comが責任開発・運営しています。',
         'disclaimer.revenue': '広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。',
         'disclaimer.liability': '精度・安全性には万全を期していますが、利用は自己責任でお願いします。',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // モーダル・UI要素
         'modal.close': '閉じる',
@@ -113,7 +113,7 @@ window.commonTranslations = {
         'disclaimer.responsibility': 'This tool is responsibly developed and operated by negi-lab.com.',
         'disclaimer.revenue': 'While including advertising and affiliate revenue, we prioritize user convenience.',
         'disclaimer.liability': 'Although we strive for accuracy and safety, please use at your own risk.',
-        'disclaimer.copyright': '© 2025 negi-lab.com',
+        'disclaimer.copyright': '© 2026 negi-lab.com',
         
         // モーダル・UI要素
         'modal.close': 'Close',

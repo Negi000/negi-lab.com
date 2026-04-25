@@ -1,162 +1,128 @@
 /**
- * Portal (index.html) Main JavaScript
- * Handles translation system and language switching
+ * Portal language switching and light interactions.
  */
+(function () {
+  "use strict";
 
-// Translation system function
-function applyTranslations(lang) {
-  console.log(`Applying translations for language: ${lang}`);
-  
-  if (!window.translations || !window.translations[lang]) {
-    console.warn(`Translations not available for language: ${lang}`);
-    return;
+  const STORAGE_KEYS = ["selectedLanguage", "negi-lab-language", "preferredLanguage", "language"];
+  const SUPPORTED = { ja: true, en: true };
+
+  function normalizeLanguage(lang) {
+    lang = String(lang || "").toLowerCase().slice(0, 2);
+    return SUPPORTED[lang] ? lang : "ja";
   }
 
-  const translations = window.translations[lang];
-  console.log(`Found ${Object.keys(translations).length} translation keys`);
-
-  // Handle regular data-translate-key elements
-  const regularElements = document.querySelectorAll('[data-translate-key]');
-  console.log(`Found ${regularElements.length} elements with data-translate-key`);
-  
-  regularElements.forEach(element => {
-    const key = element.getAttribute('data-translate-key');
-    if (translations[key]) {
-      element.textContent = translations[key];
-    } else {
-      console.warn(`Translation key not found: ${key}`);
+  function getLanguage() {
+    try {
+      const urlLang = new URLSearchParams(location.search).get("lang");
+      if (urlLang && SUPPORTED[normalizeLanguage(urlLang)]) return normalizeLanguage(urlLang);
+    } catch (_) {}
+    for (const key of STORAGE_KEYS) {
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved) return normalizeLanguage(saved);
+      } catch (_) {}
     }
-  });
+    return normalizeLanguage(document.documentElement.lang || navigator.language || "ja");
+  }
 
-  // Handle HTML content with data-translate-html-key
-  const htmlElements = document.querySelectorAll('[data-translate-html-key]');
-  console.log(`Found ${htmlElements.length} elements with data-translate-html-key`);
-  
-  htmlElements.forEach(element => {
-    const key = element.getAttribute('data-translate-html-key');
-    if (translations[key]) {
-      element.innerHTML = translations[key];
-    } else {
-      console.warn(`Translation HTML key not found: ${key}`);
+  function persistLanguage(lang) {
+    lang = normalizeLanguage(lang);
+    for (const key of STORAGE_KEYS) {
+      try { localStorage.setItem(key, lang); } catch (_) {}
     }
-  });
-
-  // Handle placeholders with data-translate-placeholder-key
-  const placeholderElements = document.querySelectorAll('[data-translate-placeholder-key]');
-  placeholderElements.forEach(element => {
-    const key = element.getAttribute('data-translate-placeholder-key');
-    if (translations[key]) {
-      element.setAttribute('placeholder', translations[key]);
-    } else {
-      console.warn(`Translation placeholder key not found: ${key}`);
-    }
-  });
-
-  // Update document language
-  document.documentElement.lang = lang;
-  
-  // Update meta description (prefer page-specific key if provided)
-  const metaDescription = document.querySelector('meta[name="description"]');
-  const metaKey = window.metaDescriptionTranslationKey || 'meta.description';
-  if (metaDescription && translations[metaKey]) {
-    metaDescription.setAttribute('content', translations[metaKey]);
+    document.documentElement.lang = lang;
+    return lang;
   }
 
-  // Update page title (prefer page-specific key if provided)
-  const titleKey = window.pageTitleTranslationKey || 'page.title';
-  if (translations[titleKey]) {
-    document.title = translations[titleKey];
+  function applyValue(element, value, mode) {
+    if (!element || typeof value !== "string") return;
+    const tag = element.tagName ? element.tagName.toLowerCase() : "";
+    if (mode === "html") element.innerHTML = value;
+    else if (mode === "placeholder") element.setAttribute("placeholder", value);
+    else if (tag === "title") {
+      element.textContent = value;
+      document.title = value;
+    } else if (tag === "meta") element.setAttribute("content", value);
+    else element.textContent = value;
   }
 
-  // Update aria-label for guide close button
-  const guideCloseBtn = document.getElementById('guide-close');
-  if (guideCloseBtn && translations['guideModal.closeButton']) {
-    guideCloseBtn.setAttribute('aria-label', translations['guideModal.closeButton']);
-  }
-}
-
-// Language switching functionality
-function initLanguageSwitch() {
-  console.log('Initializing language switch...');
-  
-  const langSwitch = document.getElementById('lang-switch');
-  if (!langSwitch) {
-    console.error('Language switch element not found');
-    return;
+  function translate(lang, key) {
+    const table = window.translations && window.translations[lang];
+    const fallback = window.translations && window.translations.ja;
+    return (table && table[key]) || (fallback && fallback[key]);
   }
 
-  // Set initial language from localStorage or default to 'ja'
-  const savedLang = localStorage.getItem('selectedLanguage') || 'ja';
-  console.log(`Setting initial language to: ${savedLang}`);
-  langSwitch.value = savedLang;
-  
-  // Apply translations for the saved language
-  if (window.translations) {
-    console.log('Applying initial translations...');
-    applyTranslations(savedLang);
-  } else {
-    console.warn('Translations not loaded yet');
+  function applyTranslations(lang) {
+    lang = persistLanguage(lang);
+
+    document.querySelectorAll("[data-translate-key]").forEach((element) => {
+      applyValue(element, translate(lang, element.getAttribute("data-translate-key")));
+    });
+    document.querySelectorAll("[data-translate-html-key]").forEach((element) => {
+      applyValue(element, translate(lang, element.getAttribute("data-translate-html-key")), "html");
+    });
+    document.querySelectorAll("[data-translate-placeholder-key]").forEach((element) => {
+      applyValue(element, translate(lang, element.getAttribute("data-translate-placeholder-key")), "placeholder");
+    });
+
+    applyValue(document.querySelector("meta[name='description']"), translate(lang, window.metaDescriptionTranslationKey || "meta.description"));
+    const title = translate(lang, window.pageTitleTranslationKey || "page.title");
+    if (title) document.title = title;
+
+    const guideClose = document.getElementById("guide-close");
+    const guideCloseLabel = translate(lang, "guideModal.closeButton");
+    if (guideClose && guideCloseLabel) guideClose.setAttribute("aria-label", guideCloseLabel);
+
+    const selector = document.getElementById("lang-switch");
+    if (selector && selector.value !== lang) selector.value = lang;
   }
 
-  // Handle language switch
-  langSwitch.addEventListener('change', function() {
-    const selectedLang = this.value;
-    console.log(`Language switched to: ${selectedLang}`);
-    localStorage.setItem('selectedLanguage', selectedLang);
-    
-    if (window.translations) {
-      applyTranslations(selectedLang);
-    } else {
-      console.error('Translations not available for language switch');
-    }
-
-    // Update guide modal content if it's open
-    const guideModal = document.getElementById('guide-modal');
-    if (guideModal && !guideModal.classList.contains('hidden')) {
-      // Re-render guide content in new language
-      const guideContent = document.getElementById('guide-modal-content');
-      if (guideContent && window.renderGuide) {
-        window.renderGuide(selectedLang);
+  function initLanguageSwitch() {
+    const selector = document.getElementById("lang-switch");
+    const lang = getLanguage();
+    if (selector) {
+      selector.value = lang;
+      if (selector.getAttribute("data-portal-i18n-bound") !== "1") {
+        selector.setAttribute("data-portal-i18n-bound", "1");
+        selector.addEventListener("change", () => {
+          const nextLang = persistLanguage(selector.value);
+          applyTranslations(nextLang);
+          window.dispatchEvent(new CustomEvent("languageChanged", { detail: { language: nextLang } }));
+          const guideModal = document.getElementById("guide-modal");
+          if (guideModal && !guideModal.classList.contains("hidden") && window.renderGuide) {
+            window.renderGuide(nextLang);
+          }
+        });
       }
     }
-  });
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing translation system...');
-  
-  // If a tool-specific translation system/data is present, skip portal translation init
-  if (
-    window.qrGeneratorTranslations ||
-    window.dateCalculatorTranslations ||
-    window.imageConverterTranslations ||
-    window.ImageConverterTranslationSystem ||
-    window.dateCalculatorTranslationSystem ||
-    window.applyToolTranslations // generic tool translator present
-  ) {
-    console.log('Tool-specific translations detected; skipping portal translation initialization.');
-    return;
+    applyTranslations(lang);
   }
 
-  // Wait for translations to load, then initialize
-  if (window.translations) {
-    console.log('Translations already loaded, initializing language switch');
+  function initWikiCards() {
+    document.querySelectorAll(".wiki-card").forEach((card) => {
+      if (card.getAttribute("data-wiki-bound") === "1") return;
+      card.setAttribute("data-wiki-bound", "1");
+      const navigate = (event) => {
+        if (event && event.target && event.target.closest("a")) return;
+        const url = card.getAttribute("data-wiki-url");
+        if (url) window.location.href = `wiki-redirect.html?url=${encodeURIComponent(url)}`;
+      };
+      card.addEventListener("click", navigate);
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          navigate(event);
+        }
+      });
+    });
+  }
+
+  window.applyTranslations = applyTranslations;
+  window.initLanguageSwitch = initLanguageSwitch;
+
+  document.addEventListener("DOMContentLoaded", () => {
     initLanguageSwitch();
-  } else {
-    console.log('Waiting for translations to load...');
-    // Fallback: wait a bit for translations to load
-    setTimeout(() => {
-      if (window.translations) {
-        console.log('Translations loaded after timeout, initializing language switch');
-        initLanguageSwitch();
-      } else {
-        console.info('Portal translations not found; likely a tool page using its own i18n. Skipping portal translation initialization.');
-      }
-    }, 100);
-  }
-});
-
-// Export for global access
-window.applyTranslations = applyTranslations;
-window.initLanguageSwitch = initLanguageSwitch;
+    initWikiCards();
+  });
+})();

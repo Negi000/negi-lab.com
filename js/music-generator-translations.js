@@ -74,7 +74,7 @@ const musicGeneratorTranslations = {
         point1: "This site and its tools are independently developed and operated by negi-lab.com.",
         point2: "While we include ads and affiliate links, our top priority is the user experience.",
         point3: "We strive for accuracy and safety, but please use the site at your own risk.",
-        copyright: "© 2025 negi-lab.com"
+        copyright: "© 2026 negi-lab.com"
     },
     footer: {
         privacyPolicy: "Privacy Policy",
@@ -82,7 +82,7 @@ const musicGeneratorTranslations = {
         about: "About Us",
         contact: "Contact",
         sitemap: "Sitemap",
-        copyright: "© 2025 negi-lab.com"
+        copyright: "© 2026 negi-lab.com"
     }
   },
   ja: {
@@ -159,7 +159,7 @@ const musicGeneratorTranslations = {
         point1: "本サイト・各ツールはnegi-lab.comが独自開発・運営しています。",
         point2: "広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。",
         point3: "正確性・安全性には万全を期していますが、利用は自己責任でお願いします。",
-        copyright: "© 2025 negi-lab.com"
+        copyright: "© 2026 negi-lab.com"
     },
     footer: {
         privacyPolicy: "プライバシーポリシー",
@@ -167,12 +167,19 @@ const musicGeneratorTranslations = {
         about: "運営者情報",
         contact: "お問い合わせ",
         sitemap: "サイトマップ",
-        copyright: "© 2025 negi-lab.com"
+        copyright: "© 2026 negi-lab.com"
     }
   }
 };
+window.musicGeneratorTranslations = musicGeneratorTranslations;
 
-let currentLanguage = localStorage.getItem('language') || 'ja';
+let currentLanguage = (
+    localStorage.getItem('selectedLanguage') ||
+    localStorage.getItem('negi-lab-language') ||
+    localStorage.getItem('preferredLanguage') ||
+    localStorage.getItem('language') ||
+    'ja'
+);
 
 function translatePage() {
     document.querySelectorAll('[data-translate]').forEach(element => {
@@ -206,15 +213,25 @@ function setLanguage(lang) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const langSwitch = document.getElementById('lang-switch');
-    const savedLang = localStorage.getItem('preferredLanguage') || 'ja';
+    const savedLang = (
+        localStorage.getItem('selectedLanguage') ||
+        localStorage.getItem('negi-lab-language') ||
+        localStorage.getItem('preferredLanguage') ||
+        localStorage.getItem('language') ||
+        'ja'
+    );
     langSwitch.value = savedLang;
     setLanguage(savedLang);
     translatePage();
 
     langSwitch.addEventListener('change', (e) => {
         const newLang = e.target.value;
+        localStorage.setItem('selectedLanguage', newLang);
+        localStorage.setItem('negi-lab-language', newLang);
         localStorage.setItem('preferredLanguage', newLang);
+        localStorage.setItem('language', newLang);
         setLanguage(newLang);
         translatePage();
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: newLang } }));
     });
 });
