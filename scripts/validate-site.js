@@ -91,6 +91,133 @@ function validatePortalTranslations() {
   }
 }
 
+function validateToolTranslationCoverage() {
+  const pages = ['tools/index.html', ...primaryToolPages];
+
+  function normalizeScript(src, pageRel) {
+    if (/^https?:/i.test(src)) return null;
+    const clean = src.split(/[?#]/)[0];
+    if (clean.startsWith('/')) return clean.slice(1);
+    return path.posix.normalize(path.posix.join(path.posix.dirname(pageRel), clean));
+  }
+
+  function createTranslationSandbox() {
+    const window = {};
+    const storage = {};
+    const document = {
+      documentElement: { lang: 'ja' },
+      addEventListener() {},
+      querySelectorAll() { return []; },
+      querySelector() { return null; },
+      getElementById() { return null; },
+      title: '',
+    };
+    window.window = window;
+    window.document = document;
+    window.localStorage = {
+      getItem: (key) => storage[key] || null,
+      setItem: (key, value) => { storage[key] = String(value); },
+    };
+    window.navigator = { language: 'ja' };
+    window.location = { search: '', pathname: '/' };
+    window.console = { log() {}, warn() {}, error() {} };
+    window.CustomEvent = function CustomEvent(name, init) { return { name, ...init }; };
+    window.addEventListener = function addEventListener() {};
+    window.dispatchEvent = function dispatchEvent() {};
+    window.setTimeout = function setTimeoutMock() { return 0; };
+    window.clearTimeout = function clearTimeoutMock() {};
+    return {
+      window,
+      document,
+      localStorage: window.localStorage,
+      navigator: window.navigator,
+      location: window.location,
+      console: window.console,
+      CustomEvent: window.CustomEvent,
+      setTimeout: window.setTimeout,
+      clearTimeout: window.clearTimeout,
+      module: { exports: {} },
+      exports: {},
+    };
+  }
+
+  function lookupObject(obj, key) {
+    if (!obj || !key) return undefined;
+    if (Object.prototype.hasOwnProperty.call(obj, key)) return obj[key];
+    const parts = key.split('.');
+    let current = obj;
+    for (const part of parts) {
+      if (!current || typeof current !== 'object' || !Object.prototype.hasOwnProperty.call(current, part)) {
+        current = undefined;
+        break;
+      }
+      current = current[part];
+    }
+    if (typeof current !== 'undefined') return current;
+    if (parts.length > 1) return lookupObject(obj, parts.slice(1).join('.'));
+    return undefined;
+  }
+
+  function translationSources(window) {
+    return [
+      window.qrGeneratorTranslations,
+      window.unitConverterTranslations,
+      window.imageConverterTranslations,
+      window.dateCalculatorTranslations,
+      window.colorCodeToolTranslations,
+      window.colorCodeTranslations,
+      window.bgRemoverTranslations,
+      window.faviconOgGenTranslations,
+      window.pdfToolTranslations,
+      window.textConverterTranslations,
+      window.musicGeneratorTranslations,
+      window.commonTranslations,
+      window.translations,
+    ].filter(Boolean);
+  }
+
+  function resolve(window, lang, key) {
+    for (const source of translationSources(window)) {
+      const value = lookupObject(source[lang], key);
+      if (typeof value === 'string') return value;
+    }
+    return undefined;
+  }
+
+  for (const rel of pages) {
+    const file = path.join(root, rel);
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const keys = [...html.matchAll(/data-translate(?:-[a-z-]+)?-key=["']([^"']+)["']/g)].map((match) => match[1]);
+    if (!keys.length) continue;
+    const scripts = [...html.matchAll(/<script\b[^>]*src=["']([^"']+)["'][^>]*>/gi)]
+      .map((match) => normalizeScript(match[1], rel))
+      .filter((script) => script && /(^|\/)[^/]*translations\.js$/i.test(script));
+
+    const sandbox = createTranslationSandbox();
+    vm.createContext(sandbox);
+    for (const script of scripts) {
+      const scriptPath = path.join(root, script);
+      if (!fs.existsSync(scriptPath)) {
+        fail(`${rel}: missing translation script ${script}`);
+        continue;
+      }
+      try {
+        vm.runInContext(fs.readFileSync(scriptPath, 'utf8'), sandbox, { filename: script });
+      } catch (error) {
+        fail(`${rel}: could not load translation script ${script}: ${error.message}`);
+      }
+    }
+
+    for (const lang of ['ja', 'en']) {
+      const missing = [...new Set(keys.filter((key) => !resolve(sandbox.window, lang, key)))];
+      if (missing.length) {
+        fail(`${rel}: missing ${lang} translations for: ${missing.join(', ')}`);
+      }
+    }
+  }
+}
+
 function validateLayoutGuardrails() {
   const files = walk(root, (file) => file.endsWith('.html'));
   const stripAllowedFooterTail = (html) => {
@@ -232,12 +359,12 @@ function validateTailwindProductionCss() {
   }
   const css = fs.readFileSync(cssPath, 'utf8');
   if (css.length < 20000) fail('assets/css/negi-tailwind.css: generated CSS bundle looks too small');
-  const files = [
+  const pageFiles = [
     ...seoPages,
     '404.html',
     'test-responsive-ads.html',
   ];
-  for (const rel of files) {
+  for (const rel of pageFiles) {
     const file = path.join(root, rel);
     if (!fs.existsSync(file)) continue;
     const html = fs.readFileSync(file, 'utf8');
@@ -247,6 +374,80 @@ function validateTailwindProductionCss() {
     if (html.includes('tailwind.config') && !html.includes('window.tailwind = window.tailwind || {};')) {
       fail(`${rel}: tailwind.config must be guarded now that the CDN runtime is not loaded`);
     }
+  }
+
+  const scanned = walk(root, (file) => /\.(html|js|json)$/.test(file));
+  for (const file of scanned) {
+    const rel = path.relative(root, file).replace(/\\/g, '/');
+    if (rel === 'scripts/validate-site.js') continue;
+    const text = fs.readFileSync(file, 'utf8');
+    if (/cdn\.tailwindcss\.com/i.test(text)) {
+      fail(`${rel}: contains obsolete Tailwind CDN reference`);
+    }
+    if (rel !== 'tools/music-generator.html' && /'unsafe-eval'/.test(text)) {
+      fail(`${rel}: contains unsafe-eval outside the music generator exception`);
+    }
+  }
+}
+
+function validateReferencedAssets() {
+  const pages = [
+    ...seoPages,
+    '404.html',
+    ...retiredToolRedirects.map((page) => page.rel),
+  ];
+
+  function normalizeAsset(assetUrl, pageRel) {
+    if (!assetUrl || /^(?:https?:|data:|mailto:|tel:|#)/i.test(assetUrl)) return null;
+    const clean = assetUrl.split(/[?#]/)[0];
+    if (!clean || clean.startsWith('#')) return null;
+    if (clean.startsWith('/')) return clean.slice(1);
+    return path.posix.normalize(path.posix.join(path.posix.dirname(pageRel), clean));
+  }
+
+  for (const rel of pages) {
+    const file = path.join(root, rel);
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const refs = [
+      ...[...html.matchAll(/<script\b[^>]*src=["']([^"']+)["']/gi)].map((match) => match[1]),
+      ...[...html.matchAll(/<link\b[^>]*href=["']([^"']+)["']/gi)].map((match) => match[1]),
+    ];
+    for (const ref of refs) {
+      const assetRel = normalizeAsset(ref, rel);
+      if (!assetRel) continue;
+      const assetPath = path.join(root, assetRel);
+      if (!fs.existsSync(assetPath)) {
+        fail(`${rel}: referenced asset is missing: ${ref}`);
+        continue;
+      }
+      if (/\.(?:js|css)$/i.test(assetRel) && fs.statSync(assetPath).size === 0) {
+        fail(`${rel}: referenced asset is empty: ${ref}`);
+      }
+    }
+  }
+}
+
+function validateSiteConfig() {
+  const rel = 'config/site-config.json';
+  const file = path.join(root, rel);
+  if (!fs.existsSync(file)) {
+    fail(`${rel}: missing`);
+    return;
+  }
+  try {
+    const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (config.site && config.site.year !== '2026') fail(`${rel}: site.year should be 2026`);
+    if (/cdn\.tailwindcss\.com|'unsafe-eval'/.test(config.security && config.security.csp || '')) {
+      fail(`${rel}: CSP contains obsolete Tailwind CDN or unsafe-eval permissions`);
+    }
+    for (const key of ['uniqueness', 'policy', 'disclaimer']) {
+      if (!config.common_sections || /繝|縺|蜊|譁|螟|髮|隱|邨|荳|逕|\?{4,}/.test(config.common_sections[key] || '')) {
+        fail(`${rel}: common_sections.${key} is not readable`);
+      }
+    }
+  } catch (error) {
+    fail(`${rel}: invalid JSON: ${error.message}`);
   }
 }
 
@@ -427,6 +628,7 @@ try {
 
 validateJavaScriptSyntax();
 validatePortalTranslations();
+validateToolTranslationCoverage();
 validateLayoutGuardrails();
 validateCriticalTextIsReadable();
 validateSeoMetadata();
@@ -434,6 +636,8 @@ validateToolEnhancements();
 validateToolsIndex();
 validateWebAppManifest();
 validateTailwindProductionCss();
+validateReferencedAssets();
+validateSiteConfig();
 validateCopyrightYear();
 validateLlmsTxt();
 validateConsentAndAffiliateSafety();

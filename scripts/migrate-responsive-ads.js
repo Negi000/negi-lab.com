@@ -1,183 +1,129 @@
 #!/usr/bin/env node
 /**
- * Responsive Ads Migration Script
- * 全てのHTMLファイルに対してレスポンシブ広告システムを適用
- * 2025-01-11 作成
+ * Responsive ads migration script.
+ *
+ * Keeps legacy HTML pages aligned with the current AdSense client and shared
+ * responsive-ad assets. The script intentionally uses only Node's standard
+ * library so it can run in this repository without installing dependencies.
  */
 
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
-// 設定
+const root = path.resolve(__dirname, '..');
+
 const config = {
-  // 統一されたクライアントID
   adClient: 'ca-pub-1835873052239386',
-  
-  // 旧クライアントID（置換対象）
   oldClients: [
     'ca-pub-6234639838467127',
-    // 必要に応じて他の古いIDを追加
   ],
-  
-  // スタイル・スクリプトの挿入位置を示すマーカー
   headMarkers: [
-    '<link rel="preconnect" href="https://pagead2.googlesyndication.com">',
-    '<script src="https://cdn.tailwindcss.com"></script>',
-    '</head>'
+    '<link rel="stylesheet" href="/assets/css/negi-tailwind.css" />',
+    '<link rel="stylesheet" href="/js/responsive-ads.css">',
+    '</head>',
   ],
-  
-  // 処理対象外のファイル
   excludePatterns: [
-    '**/node_modules/**',
-    '**/.*',
-    '**/*.backup',
-    '**/*.min.html'
-  ]
+    `${path.sep}.git${path.sep}`,
+    `${path.sep}gamewiki${path.sep}`,
+    `${path.sep}node_modules${path.sep}`,
+  ],
 };
 
-/**
- * HTMLファイルを処理
- * @param {string} filePath - ファイルパス
- * @returns {boolean} - 変更があったかどうか
- */
+function shouldSkip(filePath) {
+  return config.excludePatterns.some((pattern) => filePath.includes(pattern))
+    || filePath.endsWith('.backup')
+    || filePath.endsWith('.min.html');
+}
+
+function walkHtmlFiles(dir, out = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (!shouldSkip(`${full}${path.sep}`)) walkHtmlFiles(full, out);
+    } else if (entry.isFile() && entry.name.endsWith('.html') && !shouldSkip(full)) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
 function processHtmlFile(filePath) {
   try {
-    console.log(`Processing: ${filePath}`);
-    
+    console.log(`Processing: ${path.relative(root, filePath)}`);
+
     let content = fs.readFileSync(filePath, 'utf8');
     let hasChanges = false;
-    
-    // 1. 古いクライアントIDを新しいものに置換
-    config.oldClients.forEach(oldClient => {
-      const regex = new RegExp(oldClient, 'g');
+
+    for (const oldClient of config.oldClients) {
       if (content.includes(oldClient)) {
-        content = content.replace(regex, config.adClient);
+        content = content.replace(new RegExp(oldClient, 'g'), config.adClient);
         hasChanges = true;
-        console.log(`  ✓ Updated client ID: ${oldClient} → ${config.adClient}`);
+        console.log(`  Updated AdSense client: ${oldClient} -> ${config.adClient}`);
       }
-    });
-    
-    // 2. レスポンシブ広告システムのスタイル・スクリプトを追加
+    }
+
     const requiredAssets = [
       '<link rel="stylesheet" href="/js/responsive-ads.css">',
-      '<script src="/js/responsive-ads-controller.js"></script>'
+      '<script src="/js/responsive-ads-controller.js"></script>',
     ];
-    
-    // すでに追加済みかチェック
-    const hasResponsiveAds = requiredAssets.some(asset => content.includes(asset));
-    
-    if (!hasResponsiveAds) {
-      // 適切な位置にアセットを挿入
-      let insertionPoint = -1;
-      let marker = '';
-      
-      for (const testMarker of config.headMarkers) {
-        insertionPoint = content.indexOf(testMarker);
-        if (insertionPoint !== -1) {
-          marker = testMarker;
-          break;
-        }
-      }
-      
-      if (insertionPoint !== -1) {
-        const insertAfter = insertionPoint + marker.length;
-        const before = content.substring(0, insertAfter);
-        const after = content.substring(insertAfter);
-        
-        content = before + '\n' + requiredAssets.join('\n') + after;
+    const missingAssets = requiredAssets.filter((asset) => !content.includes(asset));
+
+    if (missingAssets.length) {
+      const marker = config.headMarkers.find((candidate) => content.includes(candidate));
+      if (marker) {
+        const insertAfter = content.indexOf(marker) + marker.length;
+        content = `${content.slice(0, insertAfter)}\n${missingAssets.join('\n')}${content.slice(insertAfter)}`;
         hasChanges = true;
-        console.log(`  ✓ Added responsive ads assets after: ${marker}`);
+        console.log(`  Added responsive ad assets after: ${marker}`);
       }
     }
-    
-    // 3. PC用とモバイル用の広告を適切なクラスで分離
-    // ad-pc, ad-sp クラスが付いていない古い広告要素を修正
-    const adPattern = /<ins\s+class="adsbygoogle"([^>]*?)data-ad-slot="([^"]*?)"([^>]*?)>/g;
-    content = content.replace(adPattern, (match, beforeSlot, slotId, afterSlot) => {
-      // クラスにad-pcまたはad-spが含まれているかチェック
-      if (match.includes(' ad-pc') || match.includes(' ad-sp')) {
-        return match; // すでに適切なクラスが付いている
-      }
-      
-      // スロットIDに基づいてデバイスタイプを判定
+
+    content = content.replace(/<ins\s+class="adsbygoogle"([^>]*?)data-ad-slot="([^"]*?)"([^>]*?)>/g, (match, beforeSlot, slotId) => {
+      if (match.includes(' ad-pc') || match.includes(' ad-sp')) return match;
+
       const deviceClass = isPhoneSlot(slotId) ? ' ad-sp' : ' ad-pc';
-      
-      // クラス属性を更新
-      const updatedMatch = match.replace(
-        'class="adsbygoogle"',
-        `class="adsbygoogle${deviceClass}"`
-      );
-      
-      if (updatedMatch !== match) {
-        hasChanges = true;
-        console.log(`  ✓ Added device class ${deviceClass} to slot ${slotId}`);
-      }
-      
-      return updatedMatch;
+      hasChanges = true;
+      console.log(`  Added ${deviceClass.trim()} class to ad slot ${slotId}`);
+      return match.replace('class="adsbygoogle"', `class="adsbygoogle${deviceClass}"`);
     });
-    
-    // ファイルを更新
-    if (hasChanges) {
-      fs.writeFileSync(filePath, content, 'utf8');
-      console.log(`  ✅ File updated: ${path.basename(filePath)}`);
-      return true;
-    } else {
-      console.log(`  ⚪ No changes needed: ${path.basename(filePath)}`);
+
+    if (!hasChanges) {
+      console.log('  No changes needed');
       return false;
     }
-    
+
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log('  File updated');
+    return true;
   } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
+    console.error(`Error processing ${filePath}: ${error.message}`);
     return false;
   }
 }
 
-/**
- * スロットIDがモバイル用かどうか判定
- * @param {string} slotId - 広告スロットID
- * @returns {boolean}
- */
 function isPhoneSlot(slotId) {
-  const mobileSlots = ['8916646342', '3205934910', '6430083800'];
-  return mobileSlots.includes(slotId);
+  return ['8916646342', '3205934910', '6430083800'].includes(slotId);
 }
 
-/**
- * メイン処理
- */
 function main() {
-  console.log('🚀 Starting Responsive Ads Migration...\n');
-  
-  // HTMLファイルを検索
-  const htmlFiles = glob.sync('**/*.html', {
-    ignore: config.excludePatterns,
-    absolute: true
-  });
-  
-  console.log(`Found ${htmlFiles.length} HTML files\n`);
-  
-  let processedCount = 0;
+  console.log('Starting responsive ads migration...\n');
+
+  const htmlFiles = walkHtmlFiles(root);
   let updatedCount = 0;
-  
-  htmlFiles.forEach(filePath => {
-    processedCount++;
-    if (processHtmlFile(filePath)) {
-      updatedCount++;
-    }
-    console.log(''); // 空行を追加
-  });
-  
-  console.log('📊 Migration Summary:');
-  console.log(`  Total files processed: ${processedCount}`);
+
+  for (const filePath of htmlFiles) {
+    if (processHtmlFile(filePath)) updatedCount += 1;
+    console.log('');
+  }
+
+  console.log('Migration summary:');
+  console.log(`  Total files processed: ${htmlFiles.length}`);
   console.log(`  Files updated: ${updatedCount}`);
-  console.log(`  Files unchanged: ${processedCount - updatedCount}`);
-  console.log('\n✅ Migration completed!');
+  console.log(`  Files unchanged: ${htmlFiles.length - updatedCount}`);
 }
 
-// スクリプトが直接実行された場合にメイン処理を実行
 if (require.main === module) {
   main();
 }
 
-module.exports = { processHtmlFile, isPhoneSlot };
+module.exports = { processHtmlFile, isPhoneSlot, walkHtmlFiles };

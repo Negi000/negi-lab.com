@@ -8,8 +8,7 @@
   <meta name="theme-color" content="#65c155" />
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval'
-      https://cdn.tailwindcss.com
+    script-src 'self' 'unsafe-inline'
       https://pagead2.googlesyndication.com
       https://www.googletagmanager.com
       https://www.google-analytics.com
@@ -18,8 +17,7 @@
       https://www.googletagservices.com
       https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com
-      https://cdn.tailwindcss.com;
+      https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob:
       https://pagead2.googlesyndication.com
@@ -123,22 +121,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script>
-    window.tailwind = window.tailwind || {};
-    window.tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            accent: "#22c55e",
-            ink: "#0f172a"
-          },
-          fontFamily: { inter: ["Inter", "system-ui", "sans-serif"] },
-          boxShadow: {
-            soft: "0 18px 45px rgba(15, 23, 42, 0.08)"
-          }
-        }
-      }
-    };
-    window.pageTitleTranslationKey = "unitConverter.pageTitle";
+window.pageTitleTranslationKey = "unitConverter.pageTitle";
     window.metaDescriptionTranslationKey = "unitConverter.metaDescription";
   </script>
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />

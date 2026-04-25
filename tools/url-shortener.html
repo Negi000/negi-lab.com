@@ -10,8 +10,7 @@
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval'
-      https://cdn.tailwindcss.com
+    script-src 'self' 'unsafe-inline'
       https://pagead2.googlesyndication.com
       https://www.googletagmanager.com
       https://www.google-analytics.com
@@ -20,8 +19,7 @@
       https://www.googletagservices.com
       https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com
-      https://cdn.tailwindcss.com;
+      https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data:
       https://pagead2.googlesyndication.com
@@ -69,19 +67,7 @@
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
   <script>
-    window.tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            negi: "#65c155",
-            accent: "#4ADE80"
-          },
-          fontFamily: { inter: ["Inter", "sans-serif"] }
-        }
-      }
-    }
-    window.pageTitleTranslationKey = "urlShortener.pageTitle";
+window.pageTitleTranslationKey = "urlShortener.pageTitle";
     window.metaDescriptionTranslationKey = "urlShortener.metaDescription";
   </script>
   <style>
