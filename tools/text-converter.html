@@ -237,7 +237,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" onclick="showGuide()" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" type="button" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -306,6 +306,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
           <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <label class="block text-sm font-medium text-gray-700 mb-2">入力テキスト</label>
             <textarea id="inputText" class="form-input w-full h-32" placeholder="ここに変換したいテキストを入力してください"></textarea>
+            <p id="inputStats" class="mt-2 text-xs text-gray-500" aria-live="polite">文字数: 0 / 表示上の文字数: 0</p>
             <div class="flex gap-4 mt-4">
               <button id="convertBtn" class="btn-primary flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -502,7 +503,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
                 用途に応じて異なるカウント方式を提供。文字数制限のあるプラットフォームに最適化。
               </p>
               <div class="bg-blue-50 p-3 rounded-lg text-xs space-y-1">
-                <div><strong>文字数：</strong>Unicode文字単位でカウント（絵文字・特殊文字対応）</div>
+                <div><strong>文字数：</strong>UTF-16コードユニット数と表示上の文字数を併記</div>
                 <div><strong>行数：</strong>改行文字（\n）を基準とした行の総数</div>
                 <div><strong>単語数：</strong>空白区切りによる英単語数（日本語は文字数）</div>
               </div>
@@ -514,7 +515,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
                 主要プラットフォームの文字数制限に対応した最適化機能を内蔵。
               </p>
               <div class="bg-amber-50 p-3 rounded-lg text-xs space-y-1">
-                <div><strong>Twitter：</strong>280文字制限（URL・メンション考慮）</div>
+                <div><strong>X：</strong>投稿文の長さ確認（URL・メンション考慮）</div>
                 <div><strong>Instagram：</strong>キャプション2,200文字、ハッシュタグ30個</div>
                 <div><strong>LinkedIn：</strong>投稿3,000文字、記事125,000文字</div>
                 <div><strong>メール件名：</strong>一般的に50-60文字推奨</div>
@@ -524,10 +525,10 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
             <div>
               <h4 class="font-medium mb-2 text-lg">文字反転・逆順処理</h4>
               <p class="text-sm text-gray-600 mb-3">
-                Unicode正規化対応の安全な文字列反転処理。サロゲートペア・結合文字も正しく処理。
+                Intl.Segmenter対応ブラウザでは、絵文字や結合文字を表示上の1文字として扱いながら逆順に処理します。
               </p>
               <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>技術仕様：</strong>JavaScript標準のString.prototype.split('')を使用し、Unicode正規化後に逆順処理
+                <strong>技術仕様：</strong>Intl.Segmenterを優先し、未対応環境ではArray.fromによるコードポイント単位の処理にフォールバック
               </div>
             </div>
           </div>
@@ -686,119 +687,38 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
     </div>
   </section>
 
-  <!-- 実用事例集セクション -->
-  <section class="bg-white py-16">
+  <!-- 実用例セクション -->
+  <section class="bg-white py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際のテキスト変換ツール活用事例をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">💻</div>
-          <h3 class="text-lg font-semibold mb-3">Web開発会社での効率化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            100人規模の開発会社では、既存プロジェクトのコーディング規約統一作業でテキスト変換ツールを活用。
-            変数名・関数名の一括変換により、リファクタリング工数を60%削減に成功。
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">よく使う場面</h2>
+          <p class="text-gray-600 leading-7">
+            テキストを外部サービスへ送らず、命名規則の整理、原稿の文字数確認、投稿文の下書き調整をブラウザ内で処理できます。
           </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: camelCase/snake_case変換
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 開発効率60%向上 + コード品質統一
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📊</div>
-          <h3 class="text-lg font-semibold mb-3">データ分析業務での活用</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            マーケティング会社では、顧客データのクリーニング作業でテキスト変換ツールを利用。
-            企業名・人名の大文字小文字統一により、重複データを30%削減し分析精度が向上。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 大文字小文字変換 + 文字数カウント
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> データ重複30%削減 + 分析精度向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📝</div>
-          <h3 class="text-lg font-semibold mb-3">出版社での編集業務効率化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            出版社の編集部では、原稿の文字数管理と見出し統一作業でツールを活用。
-            章タイトルのTitle Case変換と文字数制限チェックにより、編集工数を40%短縮。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: Title Case + 文字数カウント
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 編集効率40%向上 + 体裁統一
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏢</div>
-          <h3 class="text-lg font-semibold mb-3">法務部門での契約書管理</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            企業の法務部では、契約書テンプレートの条項番号・見出し統一でツールを利用。
-            複数部門からの原稿を統一フォーマットに変換し、レビュー時間を50%短縮。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: 大文字変換 + 文字反転（確認用）
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> レビュー時間50%短縮 + 品質向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🎓</div>
-          <h3 class="text-lg font-semibold mb-3">大学研究室での論文執筆支援</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            大学院生の論文執筆では、参考文献・用語集の表記統一でツールを活用。
-            英語論文の見出し・キーワードをTitle Caseに統一し、投稿準備時間を大幅短縮。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: Title Case + 文字数制限チェック
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 投稿準備30%効率化 + 学術基準適合
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="text-lg font-semibold mb-3">SNS運用での投稿最適化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            デジタルマーケティング会社では、SNS投稿の文字数管理でツールを活用。
-            Twitter・Instagram・LinkedInの文字数制限に合わせた投稿最適化で、エンゲージメント率が向上。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: 文字数カウント + 大文字小文字調整
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 投稿効率向上 + エンゲージメント率20%増
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの業務でも効率化してみませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせたテキスト変換活用を始めてみましょう。
-            当ツールなら、プログラミングから文書作成まで、あらゆる場面で作業効率を向上できます。
-          </p>
-          <a href="#" onclick="document.getElementById('inputText').focus(); return false;"
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐテキスト変換を始める
+          <a href="#inputText" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            入力欄へ移動
           </a>
+        </div>
+        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">コード・設定名の整形</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              見出しや項目名を camelCase、snake_case、kebab-case に変換し、READMEや設定ファイルへ貼り付けやすくします。
+            </p>
+          </div>
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">原稿と投稿文の確認</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              文字数、表示上の文字数、行数、単語数、UTF-8バイト数をまとめて確認し、SNSやメール件名の下書きを調整できます。
+            </p>
+          </div>
+          <div class="py-5 md:px-5">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">貼り付け前の表記ゆれ整理</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              大文字小文字や区切り文字をそろえてから、CSV、表計算、CMS、チャットへ貼り付ける前処理として使えます。
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -846,7 +766,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       <div class="p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold text-gray-800">使い方ガイド</h2>
-          <button onclick="closeGuide()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+          <button id="guideClose" type="button" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
         </div>
         <div class="space-y-3 text-sm text-gray-600">
           <p>テキスト変換ツールの使い方をご説明します。</p>
@@ -878,178 +798,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   </div>
 
   <!-- JavaScript -->
-  <script>
-    // Current conversion type
-    let currentType = 'upper';
-
-    // Initialize when DOM loads
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeEventListeners();
-      updateCharCount();
-      console.log('テキスト変換ツールが読み込まれました');
-    });
-
-    function initializeEventListeners() {
-      // Conversion type buttons
-      const typeButtons = document.querySelectorAll('.conversion-btn');
-      typeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          selectConversionType(this.dataset.type);
-        });
-      });
-
-      // Action buttons
-      document.getElementById('convertBtn').addEventListener('click', convertText);
-      document.getElementById('clearBtn').addEventListener('click', clearAll);
-      document.getElementById('copyBtn').addEventListener('click', copyResult);
-
-      // Input text area
-      document.getElementById('inputText').addEventListener('input', updateCharCount);
-    }
-
-    function selectConversionType(type) {
-      currentType = type;
-
-      // Update button states
-      document.querySelectorAll('.conversion-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`[data-type="${type}"]`).classList.add('active');
-    }
-
-    function convertText() {
-      const input = document.getElementById('inputText').value;
-      const output = document.getElementById('outputText');
-
-      if (!input.trim()) {
-        alert('入力テキストが空です。変換したいテキストを入力してください。');
-        return;
-      }
-
-      let result = '';
-
-      switch(currentType) {
-        case 'upper':
-          result = input.toUpperCase();
-          break;
-        case 'lower':
-          result = input.toLowerCase();
-          break;
-        case 'title':
-          result = input.replace(/\w\S*/g, (txt) =>
-            txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-          );
-          break;
-        case 'camel':
-          result = input.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) =>
-            index === 0 ? word.toLowerCase() : word.toUpperCase()
-          ).replace(/\s+/g, '');
-          break;
-        case 'snake':
-          result = input.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
-          break;
-        case 'kebab':
-          result = input.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-          break;
-        case 'reverse':
-          result = input.split('').reverse().join('');
-          break;
-        case 'count':
-          const chars = input.length;
-          const lines = input.split('\n').length;
-          const words = input.trim() ? input.trim().split(/\s+/).length : 0;
-          result = `文字数: ${chars}\n行数: ${lines}\n単語数: ${words}`;
-          break;
-        default:
-          result = input;
-      }
-
-      output.value = result;
-      updateOutputCharCount(result);
-    }
-
-    function clearAll() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('outputText').value = '';
-      updateCharCount();
-      updateOutputCharCount('');
-    }
-
-    function copyResult() {
-      const output = document.getElementById('outputText');
-      if (!output.value) {
-        alert('コピーする結果がありません。');
-        return;
-      }
-
-      // Modern clipboard API
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(output.value).then(() => {
-          showCopyFeedback();
-        }).catch(() => {
-          fallbackCopy(output);
-        });
-      } else {
-        fallbackCopy(output);
-      }
-    }
-
-    function fallbackCopy(output) {
-      output.select();
-      output.setSelectionRange(0, 99999); // For mobile devices
-      document.execCommand('copy');
-      showCopyFeedback();
-    }
-
-    function showCopyFeedback() {
-      const copyBtn = document.getElementById('copyBtn');
-      const originalText = copyBtn.innerHTML;
-      copyBtn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>コピー完了';
-      setTimeout(() => {
-        copyBtn.innerHTML = originalText;
-      }, 1500);
-    }
-
-    function updateCharCount() {
-      const input = document.getElementById('inputText').value;
-      const count = input.length;
-      // Input character count could be shown if needed
-    }
-
-    function updateOutputCharCount(text) {
-      const charCount = document.getElementById('charCount');
-      charCount.textContent = `文字数: ${text.length}`;
-    }
-
-    // Guide modal functions
-    function showGuide() {
-      document.getElementById('guideModal').classList.remove('hidden');
-    }
-
-    function closeGuide() {
-      document.getElementById('guideModal').classList.add('hidden');
-    }
-
-    // Close modal when clicking outside
-    document.addEventListener('click', function(e) {
-      const modal = document.getElementById('guideModal');
-      if (e.target === modal) {
-        closeGuide();
-      }
-    });
-
-    // Security: Prevent XSS
-    function sanitizeHTML(str) {
-      const temp = document.createElement('div');
-      temp.textContent = str;
-      return temp.innerHTML;
-    }
-
-    // Error handling
-    window.addEventListener('error', function(e) {
-      console.error('Error occurred:', e.error);
-    });
-  </script>
+  <script src="../js/text-converter.js" defer></script>
   <script src="../js/portal-translations.js"></script>
   <script src="../js/text-converter-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>

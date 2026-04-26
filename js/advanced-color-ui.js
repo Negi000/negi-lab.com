@@ -243,13 +243,13 @@ class AdvancedColorUI {
   }
 
   /**
-   * 改良されたAI統合カラーパレット・ハーモニージェネレーターの作成
+   * カラーパレット・ハーモニージェネレーターの作成
    */
   createPaletteGenerator() {
     const container = document.createElement('div');
     container.className = 'palette-generator bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">AI統合カラーパレット・ハーモニージェネレーター</h3>
+      <h3 class="text-lg font-semibold mb-4">カラーパレット・ハーモニージェネレーター</h3>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- 左側：ハーモニータイプとテーマ -->
@@ -300,7 +300,7 @@ class AdvancedColorUI {
 
         <!-- 右側：コントロールとプレビュー -->
         <div class="control-preview-section">
-          <!-- AI生成コントロール -->
+          <!-- パレット生成コントロール -->
           <div class="generator-controls mb-4">
             <h4 class="font-medium mb-3">生成設定</h4>
             <div class="space-y-3">

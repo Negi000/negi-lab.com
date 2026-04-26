@@ -28,15 +28,15 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="bgRemover.pageTitle">【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除 | negi-lab.com</title>
-  <meta name="description" data-translate-key="bgRemover.metaDescription" content="最新AI技術による高精度な画像背景除去と透過PNG生成ツール。人物・商品写真・ロゴ画像の背景削除をワンクリックで実現し、プロ品質の画像処理を提供する専門ツールです。" />
-  <meta property="og:title" content="【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除 | negi-lab.com" />
-  <meta property="og:description" content="AI技術で画像の背景を自動削除し、透過PNGを生成。人物・商品写真の背景除去がワンクリック。画像切り抜き・背景透明化が簡単。" />
+    <title data-translate-key="bgRemover.pageTitle">画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com</title>
+  <meta name="description" data-translate-key="bgRemover.metaDescription" content="画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
+  <meta property="og:title" content="画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com" />
+  <meta property="og:description" content="画像の四隅に近い背景色を透明化し、透過PNGを生成。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/bg-remover.html" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除 | negi-lab.com" />
-  <meta name="twitter:description" content="最新AI技術による高精度な画像背景除去と透過PNG生成ツール。人物・商品写真・ロゴ画像の背景削除をワンクリックで実現し、プロ品質の画像処理を提供する専門ツールです。" />
+  <meta name="twitter:title" content="画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com" />
+  <meta name="twitter:description" content="画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/bg-remover.html" />
@@ -107,8 +107,8 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除",
-    "description": "最新AI技術による高精度な画像背景除去と透過PNG生成ツール。人物・商品写真・ロゴ画像の背景削除をワンクリックで実現し、プロ品質の画像処理を提供する専門ツールです。",
+    "name": "画像背景リムーバ・透過PNG生成ツール - 単色背景向け",
+    "description": "画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。",
     "url": "https://negi-lab.com/tools/bg-remover.html",
     "applicationCategory": "Image editing",
     "operatingSystem": "Any",
@@ -148,7 +148,7 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "【無料】画像背景リムーバ・透過PNG生成ツール - AI自動背景削除",
+        "name": "画像背景リムーバ・透過PNG生成ツール",
         "item": "https://negi-lab.com/tools/bg-remover.html"
       }
     ]
@@ -232,27 +232,35 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="bgRemover.mainTitle">画像背景リムーバ&透過PNG生成ツール</h1>
       </div>
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4" data-translate-key="bgRemover.lead">画像の背景を自動で削除し、透過PNG画像を生成できるツールです。人物・商品・ロゴ等の切り抜きに便利です。</p>
+        <p class="text-gray-700 mb-4" data-translate-key="bgRemover.lead">画像の四隅に近い背景色を透明化し、透過PNGを生成するブラウザ内処理ツールです。単色背景の商品画像、ロゴ、アイコン素材の下処理に向いています。</p>
         <div class="space-y-4">
           <div>
             <label class="block font-semibold mb-1" data-translate-key="bgRemover.selectImage">画像ファイルを選択</label>
-            <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
+            <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full" />
             <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
           </div>
           <div id="previewContainer" class="hidden">
             <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.originalPreview">オリジナル画像プレビュー</h2>
             <img id="originalPreview" src="#" alt="オリジナル画像" class="max-w-full max-h-64 rounded border mb-4" />
           </div>
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <label for="thresholdRange" class="block text-sm font-semibold text-gray-700">背景色の許容範囲</label>
+            <div class="mt-2 flex items-center gap-3">
+              <input id="thresholdRange" type="range" min="8" max="96" value="32" class="w-full accent-green-500" />
+              <span id="thresholdValue" class="w-10 text-right text-sm font-semibold text-gray-700">32</span>
+            </div>
+            <p class="mt-2 text-xs leading-5 text-gray-500">値を上げるほど背景に近い色を広く透明化します。人物写真や複雑な背景では手動調整や専用編集ソフトとの併用がおすすめです。</p>
+          </div>
           <button id="removeBgBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled data-translate-key="bgRemover.removeButton">背景を削除して透過PNG生成</button>
           <div id="resultContainer" class="mt-6 hidden">
             <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.resultPreview">背景除去結果プレビュー</h2>
+            <p id="bgRemovalStatus" class="text-xs text-gray-500 mb-2" aria-live="polite"></p>
             <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
             <a id="downloadLink" href="#" download="bg-removed.png" class="text-accent underline text-xs" data-translate-key="bgRemover.download">透過PNGをダウンロード</a>
           </div>
         </div>
       </div>
       <div id="smart-ads" class="flex justify-center my-8"></div>
-      <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
     </div>
   </main>
     <!-- フッター直前広告 -->
@@ -261,119 +269,38 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
   <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
     </aside>
 
-  <!-- 実用事例集セクション -->
-<section class="bg-white py-16">
+  <!-- 実用例セクション -->
+  <section class="bg-white py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際の背景除去・画像加工活用事例をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3">ECサイトでの商品画像最適化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            オンラインショップでは、商品写真の背景を統一することで商品の視認性を向上。
-            クリーンな白背景による統一感でCVR20%向上、返品率も30%削減を実現。
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">きれいに処理しやすい画像</h2>
+          <p class="text-gray-600 leading-7">
+            このツールは画像四隅の色を背景として推定し、近い色を透明化します。単色背景や余白のある商品写真、ロゴ素材の下処理に向いています。
           </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: 自動背景除去 + 品質最適化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> CVR20%向上 + 返品率30%削減
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="text-lg font-semibold mb-3">SNSマーケティングでの魅力化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            インフルエンサーマーケティング会社では、人物写真の背景をブランドカラーに変更。
-            統一感のある投稿でブランド認知度向上、エンゲージメント率40%アップ。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 背景除去 + カスタム背景合成
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> エンゲージメント40%向上 + 認知度アップ
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏢</div>
-          <h3 class="text-lg font-semibold mb-3">企業プロフィール写真の統一</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            企業では、社員プロフィール写真の背景を統一してプロフェッショナルな印象を構築。
-            ブランドイメージ向上により新卒採用での志望者数が50%増加。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: 人物写真処理 + 企業ブランディング
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 志望者数50%増 + ブランドイメージ向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🎨</div>
-          <h3 class="text-lg font-semibold mb-3">クリエイティブ制作の効率化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            広告代理店では、撮影素材の背景除去で多様なバリエーション制作を効率化。
-            制作時間を60%短縮し、クライアントへの提案数を3倍に増加。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: バッチ処理 + 高速背景除去
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 制作時間60%短縮 + 提案数3倍
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏠</div>
-          <h3 class="text-lg font-semibold mb-3">不動産業界での物件紹介</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            不動産会社では、室内写真から不要な家具を除去してスッキリとした印象を演出。
-            内見予約率が35%向上し、成約率も25%アップを達成。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: オブジェクト除去 + 空間演出
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 内見率35%向上 + 成約率25%アップ
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📚</div>
-          <h3 class="text-lg font-semibold mb-3">教育・研修コンテンツ制作</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            企業研修会社では、講師の背景を統一することでプロフェッショナルな動画コンテンツを制作。
-            研修効果測定でスコアが平均15%向上、受講者満足度も大幅改善。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: 動画背景処理 + 品質向上
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> スコア15%向上 + 満足度改善
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたのプロジェクトでも背景除去を活用しませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせた背景除去活用を始めてみましょう。
-            当ツールなら、プロ品質の画像加工を簡単に実行できます。
-          </p>
-          <a href="#" onclick="document.getElementById('imageFile').focus(); return false;"
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐ背景除去を始める
+          <a href="#imageInput" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            入力欄へ移動
           </a>
+        </div>
+        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">単色背景の素材</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              白、淡色、グレーなど背景が均一な画像は透明化しやすく、EC商品画像やアイコン素材の下処理に使えます。
+            </p>
+          </div>
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">四隅が背景の写真</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              被写体が中央にあり、四隅に背景が出ている画像ほど推定が安定します。余白がない画像では先にトリミングしてください。
+            </p>
+          </div>
+          <div class="py-5 md:px-5">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">複雑な背景は調整</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              髪の毛、影、模様のある背景は残りやすい場合があります。許容範囲を調整し、必要なら専用編集ソフトで仕上げてください。
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -403,156 +330,7 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
   <script src="../js/portal-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
   <script src="../js/bg-remover-translations.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
-      const imageInput = document.getElementById('imageInput');
-      const fileName = document.getElementById('fileName');
-      const previewContainer = document.getElementById('previewContainer');
-      const originalPreview = document.getElementById('originalPreview');
-      const removeBgBtn = document.getElementById('removeBgBtn');
-      const resultContainer = document.getElementById('resultContainer');
-      const resultCanvas = document.getElementById('resultCanvas');
-      const downloadLink = document.getElementById('downloadLink');
-      let img = null;
-      let imgDataUrl = null;      imageInput.addEventListener('change', function(e) {
-        try {
-          const file = e.target.files[0];
-          if (!file) return;
-
-          // ファイル検証
-          if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/webp'])) {
-            SecurityUtils.showUserError('JPEG、PNG、WebP形式の画像ファイルを選択してください');
-            this.value = '';
-            return;
-          }
-
-          if (!SecurityUtils.validateFileSize(file, 10)) {
-            SecurityUtils.showUserError('ファイルサイズが10MB以下の画像を選択してください');
-            this.value = '';
-            return;
-          }
-
-          fileName.textContent = SecurityUtils.escapeHtml(file.name);
-          const reader = new FileReader();
-          reader.onload = function(ev) {
-            originalPreview.src = ev.target.result;
-            previewContainer.classList.remove('hidden');
-            img = new window.Image();
-            img.src = ev.target.result;
-            imgDataUrl = ev.target.result;
-            removeBgBtn.disabled = false;
-            SecurityUtils.showSuccessMessage('画像が正常に読み込まれました');
-          };
-          reader.onerror = function() {
-            SecurityUtils.showUserError('画像ファイルの読み込みに失敗しました');
-          };
-        } catch (error) {
-          SecurityUtils.showUserError('ファイル処理中にエラーが発生しました', error);
-          this.value = '';
-        }
-        reader.readAsDataURL(file);
-      });
-      // 簡易な背景除去（K-meansクラスタリングによる近似）
-      removeBgBtn.addEventListener('click', async function() {
-        if (!img) return;
-        resultContainer.classList.remove('hidden');
-        // Canvasに描画
-        const canvas = resultCanvas;
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        ctx.drawImage(img, 0, 0);
-        // 画像データ取得
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-        // 左上ピクセルを背景色と仮定し、近い色を透明化
-        const bgR = data[0], bgG = data[1], bgB = data[2];
-        const threshold = 32; // 色差しきい値
-        for (let i = 0; i < data.length; i += 4) {
-          const dr = data[i] - bgR;
-          const dg = data[i+1] - bgG;
-          const db = data[i+2] - bgB;
-          if (Math.sqrt(dr*dr + dg*dg + db*db) < threshold) {
-            data[i+3] = 0; // 透明化
-          }
-        }
-        ctx.putImageData(imageData, 0, 0);
-        // ダウンロードリンク生成
-        canvas.toBlob(function(blob) {
-          const url = URL.createObjectURL(blob);
-          downloadLink.href = url;
-        }, 'image/png');
-      });
-    });
-  </script>
-  <!-- ガイドモーダル（ヘッダー直下でOK） -->
-  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
-    </div>
-  </div>
-  <script>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: '画像背景リムーバの使い方',
-      list: [
-        '画像をアップロードし、ボタンで背景除去',
-        '結果は透過PNGでダウンロード可能',
-        '人物・商品・ロゴ等の切り抜きに便利',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        'EC商品画像やアイコンの背景透過',
-        'ロゴや人物写真の切り抜き'
-      ]
-    },
-    en: {
-      title: 'How to Use the Background Remover',
-      list: [
-        'Upload an image and click the button to remove background.',
-        'Download the result as a transparent PNG.',
-        'Great for people, products, or logo cutouts.',
-        'Switch language from the top menu.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Make product images or icons transparent.',
-        'Cut out logos or people from photos.'
-      ]
-    }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
-}
-</script>
+  <script src="../js/bg-remover.js" defer></script>
 
   <!-- Centralized consent-gated Ads/Analytics loader -->
   <script src="../js/tool-page-enhancements.js" defer></script>

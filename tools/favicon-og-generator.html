@@ -243,7 +243,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
         <div class="space-y-4">
           <div>
             <label class="block font-semibold mb-1" data-translate-key="faviconOgGen.uploadOptional">画像アップロード（任意）</label>
-            <input type="file" id="imageInput" accept="image/*" class="form-input w-full" />
+            <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full" />
             <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
           </div>
           <div class="flex flex-wrap gap-2 items-center">
@@ -270,6 +270,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
           <button id="generateBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" data-translate-key="faviconOgGen.generate">画像生成＆プレビュー</button>
           <div id="resultContainer" class="mt-6 hidden">
             <h2 class="text-base font-semibold mb-2" data-translate-key="faviconOgGen.previewDownload">プレビュー＆ダウンロード</h2>
+            <p id="generationStatus" class="text-xs text-gray-500 mb-2" aria-live="polite"></p>
             <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
             <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs" data-translate-key="faviconOgGen.download">画像をダウンロード</a>
           </div>
@@ -277,15 +278,14 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
       </div>
   <div class="text-xs text-gray-500 mt-6 mb-1">スポンサーリンク</div>
   <div id="smart-ads" class="flex justify-center my-8"></div>
-  <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
 
       <!-- 教育的ガイド -->
       <section class="mt-12 bg-white rounded-xl shadow-lg p-6 md:p-8" id="educational-guide">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.sectionTitle">📚 ファビコン・OGP画像作成の完全ガイド</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.sectionTitle">ファビコン・OGP画像作成ガイド</h2>
 
         <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.whatIs">🎯 ファビコン・OGPとは</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.whatIs">ファビコン・OGPとは</h3>
             <div class="space-y-3 text-gray-700 text-sm">
               <p><strong>ファビコン（Favicon）</strong>は、ブラウザのタブやブックマークに表示される小さなアイコンです。Webサイトの顔として重要な役割を果たします。</p>
               <p><strong>OGP画像（Open Graph画像）</strong>は、SNSでシェアされた際に表示されるサムネイル画像で、クリック率向上に大きく影響します。</p>
@@ -294,7 +294,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
           </div>
 
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.sizes">⚙️ 各サイズの用途</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.sizes">各サイズの用途</h3>
             <div class="space-y-2 text-gray-700 text-sm">
               <div class="bg-gray-50 p-3 rounded">
                 <strong>32×32px（ファビコン）</strong><br>
@@ -319,7 +319,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
 
       <!-- 技術解説 -->
       <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.techSpec">🔧 技術仕様と実装方法</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.techSpec">技術仕様と実装方法</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div>
             <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.htmlImpl">HTML実装方法</h3>
@@ -352,7 +352,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
 
       <!-- FAQ -->
       <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.faq">❓ よくある質問（FAQ）</h2>
+  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.faq">よくある質問（FAQ）</h2>
         <div class="space-y-4">
           <details class="border border-gray-200 rounded-lg p-4">
             <summary class="font-semibold cursor-pointer text-gray-800">ファビコンが表示されないのはなぜですか？</summary>
@@ -386,119 +386,38 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
     </div>
   </main>
 
-  <!-- 実用事例集セクション -->
-<section class="bg-white py-16">
+  <!-- 実用例セクション -->
+  <section class="bg-white py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-  <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="cases.title">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際のFavicon・OG画像生成活用事例をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🚀</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.startup.title">スタートアップのブランド構築</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            テックスタートアップでは、統一感のあるFavicon・OG画像でブランド認知度を向上。
-            SNSでのシェア時の視認性向上により、サイト流入数が45%増加。
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="cases.title">作成前のチェックポイント</h2>
+          <p class="text-gray-600 leading-7">
+            アイコンやOGP画像は、実際に表示される場所が小さく、背景色や文字量の影響を受けやすい素材です。生成前に用途を決めると、使い回しやすい画像になります。
           </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: ブランド統一 + SNS最適化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> サイト流入45%増 + ブランド認知向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">💼</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.corporate.title">企業サイトのプロフェッショナル化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            中小企業では、プロ品質のFavicon・OG画像で企業の信頼性を向上。
-            お問い合わせ率25%向上、新規取引先開拓でも成果を実感。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 企業ロゴ最適化 + 信頼性向上
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> お問い合わせ25%増 + 信頼性向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.ec.title">ECサイトでのSEO・UX改善</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            オンラインショップでは、商品カテゴリ別のFavicon・OG画像で差別化。
-            検索結果での視認性向上により、オーガニック流入30%アップ。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: カテゴリ別最適化 + SEO強化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> オーガニック流入30%増 + 視認性向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📝</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.blog.title">ブログ・メディアでの読者獲得</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            個人ブロガーでは、記事ごとに最適化されたOG画像でSNSでのシェア率を向上。
-            月間PV数が3倍に増加し、収益化も加速。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: 記事別最適化 + シェア促進
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> PV数3倍増 + 収益化加速
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🎓</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.school.title">教育機関での情報発信強化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            専門学校では、学科別のFavicon・OG画像で各コースの魅力を視覚的にアピール。
-            オープンキャンパス参加者数が40%増加。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: 学科別ブランディング + 魅力訴求
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 参加者40%増 + 魅力度向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏥</div>
-          <h3 class="text-lg font-semibold mb-3" data-translate-key="cases.medical.title">医療・サービス業での信頼構築</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            クリニックでは、清潔感のあるFavicon・OG画像で患者さんへの安心感を提供。
-            オンライン予約率が35%向上し、患者満足度も改善。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: 信頼性デザイン + 安心感提供
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 予約率35%向上 + 満足度改善
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3" data-translate-key="cta.heading">あなたのサイトでもプロ品質の画像を作成しませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせたFavicon・OG画像活用を始めてみましょう。
-            当ツールなら、プロ品質のサイト画像を簡単に生成できます。
-          </p>
-          <a href="#" onclick="document.querySelector('#textInput, #logoInput, [type=file]').focus(); return false;"
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            <span data-translate-key="cta.button">今すぐFavicon・OG画像生成を始める</span>
+          <a href="#textInput" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+            入力欄へ移動
           </a>
+        </div>
+        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">タブで読める形にする</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              ファビコンは32px程度でも判別できる単色・短い文字・余白が向いています。細かいロゴや長い文字はつぶれやすくなります。
+            </p>
+          </div>
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">OGPは余白を残す</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              SNSやチャットでは端が切れる場合があります。中央に主題を置き、周囲に余白を残すと見切れを避けやすくなります。
+            </p>
+          </div>
+          <div class="py-5 md:px-5">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">保存後に実機で確認</h3>
+            <p class="text-sm leading-7 text-gray-600">
+              生成した画像は、ブラウザタブ、スマホホーム画面、SNSプレビューなど、実際の表示先で一度確認してください。
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -528,199 +447,6 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
   <script src="../js/portal-translations.js"></script>
   <script src="../js/favicon-og-generator-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
-      const imageInput = document.getElementById('imageInput');
-      const fileName = document.getElementById('fileName');
-      const textInput = document.getElementById('textInput');
-      const bgColorInput = document.getElementById('bgColorInput');
-      const textColorInput = document.getElementById('textColorInput');
-      const sizeSelect = document.getElementById('sizeSelect');
-      const customWidth = document.getElementById('customWidth');
-      const customHeight = document.getElementById('customHeight');
-      const customX = document.getElementById('customX');
-      const generateBtn = document.getElementById('generateBtn');
-      const resultContainer = document.getElementById('resultContainer');
-      const resultCanvas = document.getElementById('resultCanvas');
-      const downloadLink = document.getElementById('downloadLink');
-      let img = null;
-      let imgDataUrl = null;
-      imageInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        fileName.textContent = file.name;
-        const reader = new FileReader();
-        reader.onload = function(ev) {
-          img = new window.Image();
-          img.onload = function() { imgDataUrl = ev.target.result; };
-          img.src = ev.target.result;
-        };
-        reader.readAsDataURL(file);
-      });
-      sizeSelect.addEventListener('change', function() {
-        if (sizeSelect.value === 'custom') {
-          customWidth.style.display = '';
-          customHeight.style.display = '';
-          customX.style.display = '';
-        } else {
-          customWidth.style.display = 'none';
-          customHeight.style.display = 'none';
-          customX.style.display = 'none';
-        }
-      });
-      function getSize() {
-        switch(sizeSelect.value) {
-          case 'favicon': return [32,32];
-          case 'ogp': return [1200,630];
-          case 'icon180': return [180,180];
-          case 'icon192': return [192,192];
-          case 'custom': return [parseInt(customWidth.value)||512, parseInt(customHeight.value)||512];
-        }
-        return [512,512];
-      }
-      generateBtn.addEventListener('click', function() {
-        const [w, h] = getSize();
-        resultCanvas.width = w;
-        resultCanvas.height = h;
-        const ctx = resultCanvas.getContext('2d');
-        // 背景
-        ctx.clearRect(0,0,w,h);
-        ctx.fillStyle = bgColorInput.value;
-        ctx.fillRect(0,0,w,h);
-        // 画像
-        if (img && imgDataUrl) {
-          // 画像を中央にリサイズ描画
-          let iw = img.naturalWidth, ih = img.naturalHeight;
-          let scale = Math.min(w/iw, h/ih, 1);
-          let dw = iw*scale, dh = ih*scale;
-          ctx.drawImage(img, (w-dw)/2, (h-dh)/2, dw, dh);
-        }
-        // テキスト
-        const text = textInput.value;
-        if (text) {
-          ctx.font = `bold ${Math.floor(h*0.5)}px Inter, sans-serif`;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillStyle = textColorInput.value;
-          ctx.shadowColor = '#0008';
-          ctx.shadowBlur = Math.floor(h*0.04);
-          ctx.fillText(text, w/2, h/2);
-          ctx.shadowBlur = 0;
-        }
-        // ダウンロードリンク
-        resultContainer.classList.remove('hidden');
-        resultCanvas.toBlob(function(blob) {
-          const url = URL.createObjectURL(blob);
-          downloadLink.href = url;
-        }, 'image/png');
-      });
-    });
-  </script>
-  <!-- ガイドモーダルはbody直下でOK -->
-  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
-    </div>
-  </div>
-  <script>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: 'ファビコン&OG画像ジェネレータの使い方',
-      list: [
-        '画像またはテキスト・色・サイズを指定',
-        '生成ボタンで即時プレビュー',
-        'ダウンロードしてWebやSNSに利用',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        'Webサイトやブログのファビコン作成',
-        'SNS用OGP画像やアイコンの生成'
-      ]
-    },
-    en: {
-      title: 'How to Use the Favicon & OG Image Generator',
-      list: [
-        'Specify an image or text, color, and size.',
-        'Click generate to preview instantly.',
-        'Download and use for web or SNS.',
-        'Switch language from the top menu.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Create favicons for websites or blogs.',
-        'Generate OGP images or icons for SNS.'
-      ]
-    }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
-}
-</script>
-<script>
-        // ファビコン・OGP画像生成ツール用のセキュリティ強化
-        document.addEventListener('DOMContentLoaded', function() {
-          const fileInputs = document.querySelectorAll('input[type="file"]');
-          const textInputs = document.querySelectorAll('input[type="text"], textarea');
-
-          // ファイル入力の検証
-          fileInputs.forEach(input => {
-            input.addEventListener('change', function(e) {
-              const file = e.target.files[0];
-              if (file) {
-                // 画像ファイルの検証
-                if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'])) {
-                  SecurityUtils.showUserError('JPEG、PNG、GIF、WebP、SVG形式の画像ファイルを選択してください');
-                  this.value = '';
-                  return;
-                }
-
-                if (!SecurityUtils.validateFileSize(file, 10)) {
-                  SecurityUtils.showUserError('ファイルサイズが10MB以下の画像を選択してください');
-                  this.value = '';
-                  return;
-                }
-              }
-            });
-          });
-
-          // テキスト入力のサニタイズ
-          textInputs.forEach(input => {
-            input.addEventListener('input', function() {
-              const sanitized = SecurityUtils.sanitizeInput(this.value);
-              if (sanitized !== this.value) {
-                this.value = sanitized;
-              }
-            });
-          });
-        });
-      </script>
+  <script src="../js/favicon-og-generator.js" defer></script>
 </body>
 </html>

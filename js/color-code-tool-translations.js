@@ -9,13 +9,13 @@
 window.colorCodeTranslations = {
     ja: {
         // ページタイトル・メタ
-        'pageTitle': 'カラーコード変換ツール - HEX・RGB・HSL・CMYK変換 | negi-lab.com',
-        'metaDescription': 'HEX、RGB、HSL、CMYK、HSV間の色コード相互変換。カラーピッカー、パレット作成、色の組み合わせ提案、アクセシビリティチェック機能付き。Web・デザイン制作に最適。',
+        'pageTitle': 'カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com',
+        'metaDescription': 'HEX、RGB、HSL、CMYKの相互変換、カラーピッカー、画像からの色抽出、配色生成、コントラスト確認をブラウザ内で行える無料カラーツールです。',
         
         // メインタイトル
-        'mainTitle': 'カラーコード変換ツール',
+        'mainTitle': 'カラーコード変換・色抽出ツール',
         'subtitle': 'HEX・RGB・HSL・CMYK・HSV 完全対応',
-        'description': 'あらゆる色コード形式を相互変換。カラーピッカー、パレット作成、アクセシビリティチェック機能搭載',
+        'description': '色コード変換、画像スポイト、パレット作成、アクセシビリティチェックをまとめて使えます。',
         
         // カラーピッカー
         'picker.title': 'カラーピッカー',
@@ -203,13 +203,13 @@ window.colorCodeTranslations = {
     
     en: {
         // ページタイトル・メタ
-        'pageTitle': 'Color Code Converter - HEX, RGB, HSL, CMYK Conversion | negi-lab.com',
-        'metaDescription': 'Convert between HEX, RGB, HSL, CMYK, HSV color codes. Features color picker, palette creation, color harmony suggestions, and accessibility checker. Perfect for web and design work.',
+        'pageTitle': 'Color Code Converter & Image Color Picker - HEX/RGB/HSL/CMYK | negi-lab.com',
+        'metaDescription': 'Convert HEX, RGB, HSL, and CMYK, pick colors from images, generate palettes, and check contrast in your browser.',
         
         // メインタイトル
-        'mainTitle': 'Color Code Converter',
+        'mainTitle': 'Color Code Converter & Image Color Picker',
         'subtitle': 'Complete Support for HEX, RGB, HSL, CMYK, HSV',
-        'description': 'Convert between all color code formats. Features color picker, palette creation, and accessibility checker',
+        'description': 'Convert color codes, pick colors from images, create palettes, and check accessibility in one browser-based tool.',
         
         // カラーピッカー
         'picker.title': 'Color Picker',
@@ -499,18 +499,18 @@ document.addEventListener('DOMContentLoaded', () => {
 const colorCodeToolTranslations = {
   ja: {
     colorCodeTool: {
-      pageTitle: "【無料】カラーコード検索・色抽出ツール - HEX・RGB・HSL変換対応 | negi-lab.com",
-      metaDescription: "画像からの精密な色抽出とHEX・RGB・HSL・CMYK形式での変換に対応した専門的カラーツール。Webデザイン・印刷・ブランディングでの色彩管理に最適な高機能色彩分析ツールです。",
-      mainTitle: "高度カラーコード分析・変換ツール",
-      lead: "プロフェッショナル仕様の色彩分析エンジンで、画像からの精密色抽出、カラーハーモニー生成、アクセシビリティ検証まで包括的に対応。",
+      pageTitle: "カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com",
+      metaDescription: "HEX、RGB、HSL、CMYKの相互変換、カラーピッカー、画像からの色抽出、配色生成、コントラスト確認をブラウザ内で行える無料カラーツールです。",
+      mainTitle: "カラーコード変換・色抽出ツール",
+      lead: "HEX、RGB、HSL、CMYKの相互変換、画像スポイト、配色生成、アクセシビリティ確認をブラウザ内でまとめて行えます。",
       hexLabel: "HEX",
       rgbLabel: "RGB", 
       hslLabel: "HSL",
       cmykLabel: "CMYK",
       pickerLabel: "カラーピッカー",
       imageLabel: "画像から色を抽出",
-      spoitInfo: "画像をクリックするとそのピクセルの色を取得できます。高精度な色抽出が可能です。",
-      paletteLabel: "AI生成カラーパレット",
+      spoitInfo: "画像をクリックすると、その位置のピクセル色を取得できます。SVGは安全性と描画差異を避けるため対象外です。",
+      paletteLabel: "カラーパレット・ハーモニー生成",
       
       // 高度な機能
       advancedPicker: "高度な色選択",
@@ -546,7 +546,7 @@ const colorCodeToolTranslations = {
       suggestedPairs: "推奨されるアクセシブルな色の組み合わせ",
       
       // パレットジェネレーター
-      paletteGenerator: "AI型パレットジェネレーター",
+      paletteGenerator: "パレットジェネレーター",
       colorCount: "色数",
       paletteStyle: "スタイル",
       paletteUsage: "用途",
@@ -684,18 +684,18 @@ const colorCodeToolTranslations = {
   
   en: {
     colorCodeTool: {
-      pageTitle: "【Free】Advanced Color Code Tool - HEX・RGB・HSL Converter | negi-lab.com",
-      metaDescription: "Professional color analysis tool with precise color extraction from images and conversion support for HEX, RGB, HSL, CMYK formats. Perfect for web design, printing, and branding color management.",
-      mainTitle: "Advanced Color Code Analysis & Conversion Tool",
-      lead: "Professional-grade color analysis engine supporting precise color extraction from images, color harmony generation, and comprehensive accessibility verification.",
+      pageTitle: "Color Code Converter & Image Color Picker - HEX/RGB/HSL/CMYK | negi-lab.com",
+      metaDescription: "A free browser-based color tool for HEX, RGB, HSL, and CMYK conversion, color picking, image color extraction, palette generation, and contrast checks.",
+      mainTitle: "Color Code Converter & Image Color Picker",
+      lead: "Convert HEX, RGB, HSL, and CMYK, pick colors from images, generate palettes, and check accessibility in your browser.",
       hexLabel: "HEX",
       rgbLabel: "RGB",
       hslLabel: "HSL", 
       cmykLabel: "CMYK",
       pickerLabel: "Color Picker",
       imageLabel: "Extract Color from Image",
-      spoitInfo: "Click on the image to extract the pixel color. High-precision color extraction available.",
-      paletteLabel: "AI-Generated Color Palette",
+      spoitInfo: "Click the image to pick the pixel color at that position. SVG is excluded to avoid safety and rendering differences.",
+      paletteLabel: "Color Palette & Harmony Generator",
       
       // Advanced features
       advancedPicker: "Advanced Color Selection",
@@ -731,7 +731,7 @@ const colorCodeToolTranslations = {
       suggestedPairs: "Suggested Accessible Color Combinations",
       
       // Palette generator
-      paletteGenerator: "AI-Powered Palette Generator",
+      paletteGenerator: "Palette Generator",
       colorCount: "Color Count",
       paletteStyle: "Style",
       paletteUsage: "Usage",

@@ -24,15 +24,15 @@
     'faviconOgGen.download': '画像をダウンロード',
   'faviconOgGen.breadcrumbCurrent': 'ファビコン・OG画像ジェネレータ',
   // Guide/sections (headings only)
-  'guide.sectionTitle': '📚 ファビコン・OGP画像作成の完全ガイド',
-  'guide.whatIs': '🎯 ファビコン・OGPとは',
-  'guide.sizes': '⚙️ 各サイズの用途',
-  'guide.techSpec': '🔧 技術仕様と実装方法',
+  'guide.sectionTitle': 'ファビコン・OGP画像作成ガイド',
+  'guide.whatIs': 'ファビコン・OGPとは',
+  'guide.sizes': '各サイズの用途',
+  'guide.techSpec': '技術仕様と実装方法',
   'guide.htmlImpl': 'HTML実装方法',
   'guide.optimization': '最適化のポイント',
-  'guide.faq': '❓ よくある質問（FAQ）',
+  'guide.faq': 'よくある質問（FAQ）',
   // Cases (headings only)
-  'cases.title': '実際の活用事例',
+  'cases.title': '作成前のチェックポイント',
   'cases.startup.title': 'スタートアップのブランド構築',
   'cases.corporate.title': '企業サイトのプロフェッショナル化',
   'cases.ec.title': 'ECサイトでのSEO・UX改善',
@@ -40,7 +40,7 @@
   'cases.school.title': '教育機関での情報発信強化',
   'cases.medical.title': '医療・サービス業での信頼構築',
   // CTA
-  'cta.heading': 'あなたのサイトでもプロ品質の画像を作成しませんか？',
+  'cta.heading': '用途に合わせて画像を作成しましょう',
   'cta.button': '今すぐFavicon・OG画像生成を始める'
   });
 
@@ -65,15 +65,15 @@
     'faviconOgGen.download': 'Download Image',
   'faviconOgGen.breadcrumbCurrent': 'Favicon & OG Image Generator',
   // Guide/sections (headings only)
-  'guide.sectionTitle': '📚 Complete Guide to Favicon & OGP Image Creation',
-  'guide.whatIs': '🎯 What are Favicon and OGP Images',
-  'guide.sizes': '⚙️ Use Cases by Size',
-  'guide.techSpec': '🔧 Technical Specs & Implementation',
+  'guide.sectionTitle': 'Favicon & OGP Image Creation Guide',
+  'guide.whatIs': 'What are Favicon and OGP Images',
+  'guide.sizes': 'Use Cases by Size',
+  'guide.techSpec': 'Technical Specs & Implementation',
   'guide.htmlImpl': 'HTML Implementation',
   'guide.optimization': 'Optimization Tips',
-  'guide.faq': '❓ Frequently Asked Questions (FAQ)',
+  'guide.faq': 'Frequently Asked Questions (FAQ)',
   // Cases (headings only)
-  'cases.title': 'Real-world Use Cases',
+  'cases.title': 'Pre-generation Checklist',
   'cases.startup.title': 'Branding for Startups',
   'cases.corporate.title': 'Professionalize Corporate Sites',
   'cases.ec.title': 'Improve SEO & UX for E-commerce',
@@ -81,7 +81,7 @@
   'cases.school.title': 'Enhance Outreach for Education',
   'cases.medical.title': 'Build Trust for Medical/Services',
   // CTA
-  'cta.heading': 'Create professional images for your site too?',
+  'cta.heading': 'Create images for each use case',
   'cta.button': 'Start Generating Favicon/OG Images Now'
   });
 })();
