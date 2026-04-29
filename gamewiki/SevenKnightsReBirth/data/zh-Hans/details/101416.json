@@ -105,28 +105,28 @@
       "Normal Attack": {
         "id": "10141601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力100%的伤害\n - 混乱 [45%的概率] [攻击1次]\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的120%\n - 概率提升：混乱概率增加50%",
+        "desc": "2名敌人\n - 1次相当于魔法攻击力55%的伤害\n - 混乱 [45%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的65%\n - 概率提升：混乱概率增加50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014101.webp"
       },
       "Skill 1": {
         "id": "10141602",
         "name": "龙临天下",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力62%的伤害\n - 发生暴击时，每次攻击造成相当于魔法攻击力37%的额外伤害\n - 对象的回合制增益减少2回合 [100%的概率]\nSkill Enhancement Effect\n - 追加伤害量：发生暴击时，每次攻击造成相当于魔法攻击力37%的额外伤害\nTranscend Lv.6 Effect\n - 额外效果：用该技能的直接伤害消灭敌军时[龙临天下]冷却时间初始化",
+        "desc": "4名敌人\n - 对象的回合制增益减少2回合 [100%的概率]\n - 2次相当于魔法攻击力62%的伤害\n - 造成弱点攻击伤害时，每次攻击造成相当于魔法攻击力37%的额外伤害\nSkill Enhancement Effect\n - 追加伤害量：造成弱点攻击伤害时，每次攻击造成相当于魔法攻击力37%的额外伤害\nTranscend Lv.6 Effect\n - 额外效果：用该技能的直接伤害消灭敌军时[龙临天下]冷却时间初始化",
         "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014102.webp"
       },
       "Skill 2": {
         "id": "10141603",
         "name": "龙帝震怒",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力70%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力30%的额外伤害\n - 混乱 [100%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的90%\n - 伤害量提升：对象当前生命力在50%以上时每次攻击造成魔法攻击力的42%",
+        "desc": "4名敌人\n - 2次相当于魔法攻击力70%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力42%的额外伤害\n - 弱点攻击概率减少 [100%的概率] [持续3回合]\n - 混乱 [100%的概率] [攻击3次]\nSkill Enhancement Effect\n - 伤害量提升：提升至魔法攻击力的90%\n - 额外效果：弱点攻击概率减少30% [100%的概率] [持续3回合]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014103.webp"
       },
       "Passive": {
         "id": "10141604",
         "name": "红麟咆",
-        "desc": "自己\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 发动1次自身的技能时，赋予相当于施展者魔法攻击力67%的护盾 [持续3回合]\n - 与攻击力成比例的暴击率增加 [始终]\nSkill Enhancement Effect\n - 效果提升：与攻击力成比例的暴击率最大增加数值33%\nTranscend Lv.2 Effect\n - 效果提升：复活时生命力提升至100%\n - 额外效果：自身复活时所有伤害无效[被击2次]",
+        "desc": "自己\n - 所有伤害无效 [被击2次]\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 发动1次自身的技能时赋予所有伤害无效 [被击2次] 增加（最多6次）\n - 全体我军\n - 弱点攻击伤害量增加[始终]\n - 全体敌军\n - 弱点攻击概率减少 [始终]\nSkill Enhancement Effect\n - 效果提升：弱点攻击伤害量增加23%\n - 效果提升：弱点攻击概率减少22%\nTranscend Lv.2 Effect\n - 效果提升：复活时生命力提升至100%\n - 额外效果：自身复活时所有伤害无效[被击2次]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014104.webp"
       }
@@ -135,7 +135,7 @@
       "transcend_1": "所有攻击力提升12%。",
       "transcend_2": "所有攻击力提升6%。",
       "transcend_3": "生命力提升18%。",
-      "transcend_4": "暴击率提升18%。",
+      "transcend_4": "弱点攻击概率提升20%。",
       "transcend_5": "所有攻击力提升12%。",
       "transcend_6": "所有攻击力提升6%。",
       "transcend_7": "所有攻击力、防御力、生命力提升2%。",
@@ -266,28 +266,28 @@
       "Normal Attack": {
         "id": "10141501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力90%的伤害\n - 混乱 [40%的概率] [攻击1次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的90%",
+        "desc": "2名敌人\n - 1次相当于魔法攻击力50%的伤害\n - 混乱 [40%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的50%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014101.webp"
       },
       "Skill 1": {
         "id": "10141502",
         "name": "龙临天下",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力57%的伤害\n - 对象的回合制增益减少1回合 [100%的概率]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
+        "desc": "4名敌人\n - 对象的回合制增益减少1回合 [100%的概率]\n - 2次相当于魔法攻击力57%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
         "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014102.webp"
       },
       "Skill 2": {
         "id": "10141503",
         "name": "龙帝震怒",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力62%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力27%的额外伤害\n - 混乱 [100%的概率] [攻击1次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的62%",
+        "desc": "4名敌人\n - 2次相当于魔法攻击力62%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力37%的额外伤害\n - 混乱 [100%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的62%",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014103.webp"
       },
       "Passive": {
         "id": "10141504",
         "name": "红麟咆",
-        "desc": "自己\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 发动1次自身的技能时，赋予相当于施展者魔法攻击力61%的护盾 [持续3回合]\n - 与攻击力成比例的暴击率增加 [始终]\nSkill Enhancement Effect\n - 效果提升：护盾吸收量为物理攻击力的61%",
+        "desc": "自己\n - 所有伤害无效 [被击2次]\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 发动1次自身的技能时赋予所有伤害无效 [被击2次] 增加（最多6次）\n - 全体我军\n - 弱点攻击伤害量增加[始终]\n - 全体敌军\n - 弱点攻击概率减少 [始终]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014104.webp"
       }
@@ -414,28 +414,28 @@
       "Normal Attack": {
         "id": "10141401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于魔法攻击力80%的伤害\n - 混乱 [40%的概率] [攻击1次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "desc": "2名敌人\n - 1次相当于魔法攻击力45%的伤害\n - 混乱 [40%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的45%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014101.webp"
       },
       "Skill 1": {
         "id": "10141402",
         "name": "龙临天下",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力52%的伤害\n - 对象的回合制增益减少1回合 [100%的概率]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
+        "desc": "4名敌人\n - 对象的回合制增益减少1回合 [100%的概率]\n - 2次相当于魔法攻击力52%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
         "cooltime": "⏱️ CT: 80s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014102.webp"
       },
       "Skill 2": {
         "id": "10141403",
         "name": "龙帝震怒",
-        "desc": "4名敌人\n - 2次相当于魔法攻击力57%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力25%的额外伤害\n - 混乱 [100%的概率] [攻击1次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
+        "desc": "4名敌人\n - 2次相当于魔法攻击力57%的伤害\n - 对象的当前生命力在50%以上时每次攻击造成魔法攻击力32%的额外伤害\n - 混乱 [100%的概率] [攻击2次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014103.webp"
       },
       "Passive": {
         "id": "10141404",
         "name": "红麟咆",
-        "desc": "自己\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 发动1次自身的技能时，赋予相当于施展者魔法攻击力55%的护盾 [持续3回合]\n - 与攻击力成比例的暴击率增加 [始终]\nSkill Enhancement Effect\n - 效果提升：护盾吸收量为物理攻击力的55%",
+        "desc": "自己\n - 所有伤害无效 [被击2次]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 发动1次自身的技能时赋予所有伤害无效 [被击2次] 增加（最多6次）\n - 全体我军\n - 弱点攻击伤害量增加[始终]\n - 全体敌军\n - 弱点攻击概率减少 [始终]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014104.webp"
       }

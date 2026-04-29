@@ -1,0 +1,459 @@
+[
+  {
+    "basicInfo": {
+      "id": "101776",
+      "name": "O' Mok",
+      "subname": "Blutlinie des Geistmeisters",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "O' Mok begann, ihre latenten Talente auf natürliche Weise zu manifestieren, wie zum Beispiel die Kraft der Geister zu kanalisieren oder heilige Bestien zu erwecken. Aber aufgrund von Teos entschiedener Ablehnung, einem so jungen Kind das Tragen von Waffen zu erlauben, gelang es ihr, ein ansonsten ruhiges und gewöhnliches Leben zu führen.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10177601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des Magieangriffs 1 Mal.\n - 2 Verbündete (ohne sich selbst)\n - Gewährt Magie-Schadenserhöhung. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - 2 Verbündete (Excluding Self)\n - Fügt Effekt hinzu: 10 % Erhöhung des magischen Schadens. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017701.webp"
+      },
+      "Skill 1": {
+        "id": "10177602",
+        "name": "Ritterlichkeit des stürmischen Tigers",
+        "desc": "Feind mit der höchsten Verteidigung\n - 32 % TP-Änderung\n - Verursacht Schaden in Höhe von 305 % des Magieangriffs 1 Mal.\n - Verbündete (Magie-Typ)\n - Gewährt Wächtergeist. [Dauer: 2 Runde(n)]\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Magie Verbündete\n - Fügt Effekt hinzu: 2 Debuff entfernen.",
+        "cooltime": "⏱️ CT: 98s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017702.webp"
+      },
+      "Skill 2": {
+        "id": "10177603",
+        "name": "Mond-Tiger-Feuerwagen",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 70 % des Magischen Angriffs plus 7 % der Max. TP des Ziels 2 Mal. (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.) (Der Schaden erhöht sich um bis zu 50 %, proportional zu den aktuellen TP des Ziels.)\n - Verursacht Schaden in Höhe von 80 % des Magischen Angriffs plus 9 % der Max. TP des Ziels 2 Mal. (TP-basierter Schaden ist auf 150 % des Angriffs des Zaubernden begrenzt.) (Der Schaden erhöht sich um bis zu 50 %, proportional zu den aktuellen TP des Ziels.)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des Magieangriffs plus 9 % der maximalen TP des Ziels.\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Ignoriert 65 % der Verteidigung.",
+        "cooltime": "⏱️ CT: 136s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017703.webp"
+      },
+      "Passive": {
+        "id": "10177604",
+        "name": "Schutz des heiligen Baumes",
+        "desc": "Selbst\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\n - Alle Verbündeten\n - Gewährt Magische AK-Erhöhung. [Immer aktiv].\n - Alle Feinde\n - 100 % Chance, Schwachstellenangriff-Verringerung und VK-Verringerung zuzufügen, wenn man im Kampf fällt. [Dauer: 3 Runde(n)] [Einmal Pro Kampf]\nSkill Enhancement Effect\n - Alle Verbündeten\n - Erhöhter Effekt: Magische AK-Erhöhung auf 25 %.\n - Alle Feinde\n - Erhöhter Effekt: VK-Verringerung auf 34 %.\nTranscend Lv.2 Effect\n - Selbst\n - Fügt Effekt hinzu: Mut. [Einmal pro Kampf]\n - Fügt Effekt hinzu: Gewährt ein Schild in Höhe von 155 % des Magischen Angriffs des Zaubernden beim Auslösen von Mut. [Dauer: 3 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Krit. Trefferrate um 18 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "佐藤 舞",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "23 / 09",
+      "age": "13",
+      "height": "130",
+      "weight": "30",
+      "constellation": "Jungfrau",
+      "likes": "Alles über die Krähen der Nacht, Karon, Okchundang-Bonbons, Sesamkrokant, Gamju-Süßreistrunk, Freundlichkeit, Wärme, Tiere, Drachen und Laufen.",
+      "dislikes": "Clan-Älteste, Sujeonggwa-Zimt-Punsch, scharfe Speisen, fettige Speisen, Kälte, Finsternis, Nacht, die Stille",
+      "story": "O' Mok begann, ihre latenten Talente auf natürliche Weise zu manifestieren, wie zum Beispiel die Kraft der Geister zu kanalisieren oder heilige Bestien zu erwecken. Aber aufgrund von Teos entschiedener Ablehnung, einem so jungen Kind das Tragen von Waffen zu erlauben, gelang es ihr, ein ansonsten ruhiges und gewöhnliches Leben zu führen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101775",
+      "name": "O' Mok",
+      "subname": "Kleiner Gast",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "In letzter Minute wurde O' Mok von Karl Heron gerettet — und im Handumdrehen brach sie den Fluch auf seiner Augenklappe, der ihn so lange gequält hatte. Die Krähen der Nacht erkannten ihre wundersamen Kräfte und nahmen O' Mok in ihre Reihen auf.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10177501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des Magieangriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017701.webp"
+      },
+      "Skill 1": {
+        "id": "10177502",
+        "name": "Ritterlichkeit des stürmischen Tigers",
+        "desc": "Feind mit der höchsten Verteidigung\n - 46 % TP-Änderung\n - Verursacht Schaden in Höhe von 275 % des Magieangriffs 1 Mal.\n - Verbündete (Magie-Typ)\n - Gewährt Wächtergeist. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 275 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 98s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017702.webp"
+      },
+      "Skill 2": {
+        "id": "10177503",
+        "name": "Mond-Tiger-Feuerwagen",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 62 % des Magischen Angriffs plus 5 % der Max. TP des Ziels 2 Mal. (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.) (Der Schaden erhöht sich um bis zu 50 %, proportional zu den aktuellen TP des Ziels.)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 62 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 5 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 136s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017703.webp"
+      },
+      "Passive": {
+        "id": "10177504",
+        "name": "Schutz des heiligen Baumes",
+        "desc": "Selbst\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\n - Alle Verbündeten\n - Gewährt Magische AK-Erhöhung. [Immer aktiv].\n - Alle Feinde\n - 100 % Chance, Schwachstellenangriff-Verringerung und VK-Verringerung zuzufügen, wenn man im Kampf fällt. [Dauer: 3 Runde(n)] [Einmal Pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐藤 舞",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "23 / 09",
+      "age": "13",
+      "height": "130",
+      "weight": "30",
+      "constellation": "Jungfrau",
+      "likes": "Alles über die Krähen der Nacht, Karon, Okchundang-Bonbons, Sesamkrokant, Gamju-Süßreistrunk, Freundlichkeit, Wärme, Tiere, Drachen und Laufen.",
+      "dislikes": "Clan-Älteste, Sujeonggwa-Zimt-Punsch, scharfe Speisen, fettige Speisen, Kälte, Finsternis, Nacht, die Stille",
+      "story": "In letzter Minute wurde O' Mok von Karl Heron gerettet — und im Handumdrehen brach sie den Fluch auf seiner Augenklappe, der ihn so lange gequält hatte. Die Krähen der Nacht erkannten ihre wundersamen Kräfte und nahmen O' Mok in ihre Reihen auf."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101774",
+      "name": "O' Mok",
+      "subname": "Verfluchtes Kind",
+      "affiliation": "Krähen der Nacht",
+      "flavor": "Als eine Horde von Monstern aus einem dimensionalen Riss auftauchte, opferten die Menschen im Dorf von O' Mok ihr Leben, um sie zu schützen. Sie fühlte sich von enormer Schuld belastet und glaubte, für den Soforttod der Dorfbewohner verantwortlich zu sein.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102"
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10177401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des Magieangriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017701.webp"
+      },
+      "Skill 1": {
+        "id": "10177402",
+        "name": "Ritterlichkeit des stürmischen Tigers",
+        "desc": "Feind mit der höchsten Verteidigung\n - 55 % TP-Änderung\n - Verursacht Schaden in Höhe von 250 % des Magieangriffs 1 Mal.\n - Verbündete (Magie-Typ)\n - Gewährt Wächtergeist. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 250 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 98s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017702.webp"
+      },
+      "Skill 2": {
+        "id": "10177403",
+        "name": "Mond-Tiger-Feuerwagen",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 57 % des Magischen Angriffs plus 4 % der Max. TP des Ziels 2 Mal. (TP-basierter Schaden ist auf 75 % des Angriffs des Zaubernden begrenzt.) (Der Schaden erhöht sich um bis zu 50 %, proportional zu den aktuellen TP des Ziels.)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 57 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 4 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 136s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017703.webp"
+      },
+      "Passive": {
+        "id": "10177404",
+        "name": "Schutz des heiligen Baumes",
+        "desc": "Selbst\n - Gewährt Tarnung. [Dauer: 2 Runde(n)]\n - Alle Verbündeten\n - Gewährt Magische AK-Erhöhung. [Immer aktiv].\n - Alle Feinde\n - 100 % Chance, Schwachstellenangriff-Verringerung und VK-Verringerung zuzufügen, wenn man im Kampf fällt. [Dauer: 3 Runde(n)] [Einmal Pro Kampf]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐藤 舞",
+      "species": "Elf",
+      "gender": "2",
+      "bloodType": "1",
+      "birthday": "23 / 09",
+      "age": "13",
+      "height": "130",
+      "weight": "30",
+      "constellation": "Jungfrau",
+      "likes": "Alles über die Krähen der Nacht, Karon, Okchundang-Bonbons, Sesamkrokant, Gamju-Süßreistrunk, Freundlichkeit, Wärme, Tiere, Drachen und Laufen.",
+      "dislikes": "Clan-Älteste, Sujeonggwa-Zimt-Punsch, scharfe Speisen, fettige Speisen, Kälte, Finsternis, Nacht, die Stille",
+      "story": "Als eine Horde von Monstern aus einem dimensionalen Riss auftauchte, opferten die Menschen im Dorf von O' Mok ihr Leben, um sie zu schützen. Sie fühlte sich von enormer Schuld belastet und glaubte, für den Soforttod der Dorfbewohner verantwortlich zu sein."
+    }
+  }
+]
