@@ -1,4 +1,3 @@
-<!-- 用途別画像サイズ比較変換ツール 雛形 -->
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
@@ -7,199 +6,146 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
-
-  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline'
-      https://cdn.jsdelivr.net
-      https://www.googletagmanager.com
-      https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com;
-    font-src 'self'
-      https://fonts.gstatic.com;
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    connect-src 'self'
-      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    frame-src
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   " />
-
-  <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="imageSizeCompare.pageTitle">【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化 | negi-lab.com</title>
-  <meta name="description" data-translate-key="imageSizeCompare.metaDescription" content="YouTube・Instagram・Twitter・Facebook等のプラットフォーム別最適画像サイズに高品質変換する専門ツール。SNSマーケティング・動画制作・Webデザインでの画像最適化を効率的に実現します。" />
-  <meta property="og:title" content="【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化 | negi-lab.com" />
-  <meta property="og:description" content="YouTube、Twitter、Instagram、Facebook等のSNS用サムネイルや投稿画像の最適サイズに一括変換・比較。Webサイト用画像サイズも対応。" />
+  <title data-translate-key="imageSizeCompare.pageTitle">画像サイズ比較・SNSプリセット変換ツール | negi-lab.com</title>
+  <meta name="description" data-translate-key="imageSizeCompare.metaDescription" content="YouTube、Instagram、X、Facebook、LINE向けの画像サイズへブラウザ内で変換。中央トリミング、余白追加、PNG/JPEG/WebP出力に対応した無料ツールです。" />
+  <meta property="og:title" content="画像サイズ比較・SNSプリセット変換ツール | negi-lab.com" />
+  <meta property="og:description" content="SNS向け画像サイズをブラウザ内でまとめて生成。中央トリミング、余白追加、PNG/JPEG/WebP出力に対応。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/image-size-compare.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化 | negi-lab.com" />
-  <meta name="twitter:description" content="YouTube・Instagram・Twitter・Facebook等のプラットフォーム別最適画像サイズに高品質変換する専門ツール。SNSマーケティング・動画制作・Webデザインでの画像最適化を効率的に実現します。" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="画像サイズ比較・SNSプリセット変換ツール | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="画像サイズ比較・SNSプリセット変換ツール | negi-lab.com" />
+  <meta name="twitter:description" content="SNS向け画像サイズをブラウザ内でまとめて生成できます。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/image-size-compare.html" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-    <!-- Pica Library -->
-  <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js"
-          crossorigin="anonymous"></script>
-
-  <!-- Security and Common Utilities -->
+  <link rel="stylesheet" href="/js/responsive-ads.css" />
+  <script src="/js/responsive-ads-controller.js"></script>
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
   <script src="/js/portal-translations.js"></script>
   <script src="/js/tool-translation-system.js"></script>
-
-  <!-- Tailwind Configuration -->
   <script>
-window.pageTitleTranslationKey = "imageSizeCompare.pageTitle";
+    window.pageTitleTranslationKey = "imageSizeCompare.pageTitle";
     window.metaDescriptionTranslationKey = "imageSizeCompare.metaDescription";
   </script>
-
-  <!-- Custom Styles -->
   <style>
     .form-input, .form-select, .form-button {
-      padding: 0.5rem;
+      min-height: 2.75rem;
+      padding: 0.625rem 0.75rem;
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
+      border-radius: 0.5rem;
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
-
     .form-input:focus, .form-select:focus, .form-button:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
-      border-color: #4ADE80;
+      border-color: #4ade80;
+      box-shadow: 0 0 0 3px rgb(74 222 128 / 0.25);
     }
-
     .form-button {
-      background: #4ADE80;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #16a34a;
       color: #fff;
-      transition: background 0.15s, color 0.15s;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
     }
-
-    .form-button:hover:not(:disabled) {
-      background: #10b981;
-    }
-
+    .form-button:hover:not(:disabled) { background: #15803d; }
     .form-button:disabled {
       background: #d1d5db;
-      color: #9ca3af;
+      color: #6b7280;
       cursor: not-allowed;
     }
-
-    .drop-area {
-      border: 2px dashed #d1d5db;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .drop-area.dragover {
-      border-color: #4ADE80;
-      background: rgba(74, 222, 128, 0.1);
-    }
-
-    .preview-image {
-      max-width: 100%;
-      max-height: 16rem;
-      border-radius: 0.375rem;
+    .preset-check {
+      display: flex;
+      min-height: 3.25rem;
+      align-items: center;
+      gap: 0.5rem;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      border-radius: 0.5rem;
+      background: #fff;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.35;
     }
+    .ad-slot-wrap:empty { display: none; }
   </style>
   <script type="application/ld+json" id="tool-structured-data">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化",
-    "description": "YouTube・Instagram・Twitter・Facebook等のプラットフォーム別最適画像サイズに高品質変換する専門ツール。SNSマーケティング・動画制作・Webデザインでの画像最適化を効率的に実現します。",
-    "url": "https://negi-lab.com/tools/image-size-compare.html",
-    "applicationCategory": "Image editing",
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires a modern web browser",
-    "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "画像サイズ比較・SNSプリセット変換ツール",
+      "description": "YouTube、Instagram、X、Facebook、LINE向けの画像サイズへブラウザ内で変換できる無料ツールです。",
+      "url": "https://negi-lab.com/tools/image-size-compare.html",
+      "applicationCategory": "Image editing",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "inLanguage": ["ja", "en"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "publisher": { "@type": "Organization", "name": "negi-lab.com", "url": "https://negi-lab.com/" }
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "negi-lab.com",
-      "url": "https://negi-lab.com/"
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://negi-lab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "ツール", "item": "https://negi-lab.com/#tools" },
+        { "@type": "ListItem", "position": 3, "name": "画像サイズ比較", "item": "https://negi-lab.com/tools/image-size-compare.html" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "画像はサーバーへ送信されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ。画像の読み込みと変換はブラウザ内で行います。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "対応している画像形式は何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG、JPEG、WebP、GIFに対応しています。SVGは対象外です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "変換後の画像は保存できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。変換結果ごとのダウンロードと一括ダウンロードに対応しています。"
+          }
+        }
+      ]
     }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://negi-lab.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://negi-lab.com/tools/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "【無料】画像サイズ比較・変換ツール - YouTube・SNS・Web用最適化",
-        "item": "https://negi-lab.com/tools/image-size-compare.html"
-      }
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "このツールは無料で使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "入力したデータは安全ですか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
-        }
-      }
-    ]
-  }
-]
+  ]
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
@@ -224,652 +170,151 @@ window.pageTitleTranslationKey = "imageSizeCompare.pageTitle";
     </div>
   </header>
 
-  <!-- ブレッドクラムナビゲーション -->
-  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="パンくず">
     <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <ol class="flex flex-wrap items-center gap-2 text-sm text-gray-600">
         <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
-        <li><span class="text-gray-400">/</span></li>
+        <li class="text-gray-400">/</li>
         <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
-        <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">画像サイズ比較ツール</li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-800 font-medium" aria-current="page">画像サイズ比較</li>
       </ol>
     </div>
   </nav>
 
-  <main class="flex-grow py-12">
+  <main class="flex-grow py-10">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageSizeCompare.mainTitle">画像サイズ比較変換ツール</h1>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="imageSizeCompare.lead">YouTubeやSNS用サムネイル・アイコン等の用途別画像サイズに一括変換＆プレビュー。アップロード画像と各用途サイズの比較も可能。</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageSizeCompare.mainTitle">画像サイズ比較・SNSプリセット変換ツール</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="imageSizeCompare.lead">画像をブラウザ内で読み込み、SNSやWebで使いやすいサイズにまとめて変換します。ファイルはサーバーへ送信されません。</p>
       </div>
-      <aside class="mb-8" aria-label="スポンサーリンク 上部広告">
+
+      <aside class="ad-slot-wrap mb-8" aria-label="スポンサーリンク">
         <div class="text-xs text-gray-500 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+        <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
       </aside>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+
+      <section class="bg-white p-5 md:p-8 rounded-xl shadow-lg space-y-6" aria-labelledby="tool-heading">
         <div>
-          <label for="imageFile" class="block text-sm font-medium text-gray-700 mb-1">画像ファイルをアップロード:</label>
-          <input type="file" id="imageFile" accept="image/*" class="form-input w-full" />
-          <p id="fileName" class="text-sm text-gray-500 mt-1"></p>
+          <h2 id="tool-heading" class="text-xl font-bold text-gray-900 mb-2">変換設定</h2>
+          <p class="text-sm text-gray-600">PNG/JPEG/WebP/GIF、20MBまで対応。アニメーションGIFは先頭フレームを基準に変換します。</p>
         </div>
+
+        <div>
+          <label for="imageFile" class="block text-sm font-semibold text-gray-700 mb-2">画像ファイル</label>
+          <input type="file" id="imageFile" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full bg-white" />
+          <p id="fileName" class="text-sm text-gray-500 mt-2" aria-live="polite"></p>
+          <p id="fileError" class="hidden mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700" aria-live="assertive"></p>
+        </div>
+
         <div id="previewContainer" class="hidden">
-          <h2 class="text-base font-semibold mb-2">オリジナル画像プレビュー</h2>
-          <img id="originalPreview" src="#" alt="オリジナル画像" class="max-w-full max-h-64 rounded border mb-4" />
+          <h2 class="text-base font-semibold mb-2">元画像プレビュー</h2>
+          <img id="originalPreview" src="#" alt="元画像" class="max-w-full max-h-64 rounded border border-gray-200 bg-white object-contain" />
         </div>
+
         <div>
-          <h2 class="text-base font-semibold mb-2">用途別サイズ選択</h2>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-2">
-            <label><input type="checkbox" class="size-check" value="youtube" checked />YouTubeサムネ(1280x720)</label>
-            <label><input type="checkbox" class="size-check" value="twitter" checked />X(旧Twitter)ヘッダー(1500x500)</label>
-            <label><input type="checkbox" class="size-check" value="twitter-icon" checked />Xアイコン(400x400)</label>
-            <label><input type="checkbox" class="size-check" value="instagram" checked />Instagram投稿(1080x1080)</label>
-            <label><input type="checkbox" class="size-check" value="facebook" checked />Facebookカバー(820x312)</label>
-            <label><input type="checkbox" class="size-check" value="line" checked />LINEアイコン(640x640)</label>
+          <h2 class="text-base font-semibold mb-3">変換するサイズ</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            <label class="preset-check"><input type="checkbox" class="size-check" value="youtube" checked /> YouTube サムネイル <span class="text-gray-500">(1280x720)</span></label>
+            <label class="preset-check"><input type="checkbox" class="size-check" value="twitter" checked /> X ヘッダー <span class="text-gray-500">(1500x500)</span></label>
+            <label class="preset-check"><input type="checkbox" class="size-check" value="twitter-icon" checked /> X アイコン <span class="text-gray-500">(400x400)</span></label>
+            <label class="preset-check"><input type="checkbox" class="size-check" value="instagram" checked /> Instagram 投稿 <span class="text-gray-500">(1080x1080)</span></label>
+            <label class="preset-check"><input type="checkbox" class="size-check" value="facebook" checked /> Facebook カバー <span class="text-gray-500">(820x312)</span></label>
+            <label class="preset-check"><input type="checkbox" class="size-check" value="line" checked /> LINE アイコン <span class="text-gray-500">(640x640)</span></label>
           </div>
         </div>
-        <button id="convertBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled>一括変換＆比較プレビュー</button>
+
+        <div class="grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4 md:grid-cols-3">
+          <div>
+            <label for="fitMode" class="block text-sm font-semibold text-gray-700 mb-1">合わせ方</label>
+            <select id="fitMode" class="form-select w-full bg-white">
+              <option value="cover">中央トリミング</option>
+              <option value="contain">余白を追加</option>
+            </select>
+          </div>
+          <div>
+            <label for="outputFormat" class="block text-sm font-semibold text-gray-700 mb-1">出力形式</label>
+            <select id="outputFormat" class="form-select w-full bg-white">
+              <option value="png">PNG</option>
+              <option value="jpg">JPEG</option>
+              <option value="webp">WebP</option>
+            </select>
+          </div>
+          <div>
+            <label for="paddingColor" class="block text-sm font-semibold text-gray-700 mb-1">余白色</label>
+            <input id="paddingColor" type="color" value="#ffffff" class="form-input h-11 w-full p-1 bg-white" />
+          </div>
+          <div class="md:col-span-3">
+            <label for="qualityRange" class="block text-sm font-semibold text-gray-700">JPEG/WebP 品質</label>
+            <div class="mt-2 flex items-center gap-3">
+              <input id="qualityRange" type="range" min="40" max="100" value="88" class="w-full accent-green-500" />
+              <span id="qualityValue" class="w-10 text-right text-sm font-semibold text-gray-700">88</span>
+            </div>
+            <p class="mt-2 text-xs leading-5 text-gray-500">PNGでは品質値はほぼ影響しません。ロゴや資料は余白追加、サムネイルやカバー画像は中央トリミングが向いています。</p>
+          </div>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-[1fr_auto]">
+          <button id="convertBtn" class="form-button w-full py-2.5" disabled>一括変換してプレビュー</button>
+          <button id="downloadAllBtn" class="form-button hidden w-full sm:w-auto bg-gray-800 hover:bg-gray-700" type="button">一括ダウンロード</button>
+        </div>
+
         <div id="resultContainer" class="mt-6 hidden">
-          <h2 class="text-base font-semibold mb-2">変換＆比較プレビュー</h2>
+          <h2 class="text-base font-semibold mb-2">変換結果</h2>
+          <p id="conversionStatus" class="text-sm text-gray-600 mb-3" aria-live="polite"></p>
           <div id="compareGrid" class="grid gap-4 md:grid-cols-2"></div>
         </div>
-      </div>
-  <div class="text-xs text-gray-500 mt-6 mb-1">スポンサーリンク</div>
-  <div id="smart-ads" class="flex justify-center my-8"></div>
+      </section>
     </div>
+  <section class="bg-white py-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">使い分けの目安</h2>
+          <p class="text-gray-600 leading-7">同じ画像でも、投稿、ヘッダー、アイコンでは見え方が変わります。余白を足すか、中央で切り抜くかを先に決めると、作り直しを減らせます。</p>
+          <a href="#imageFile" class="mt-5 inline-flex items-center justify-center bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">ファイル選択へ戻る</a>
+        </div>
+        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">中央トリミング</h3>
+            <p class="text-sm leading-7 text-gray-600">指定サイズいっぱいに表示します。端が切れる場合があるため、人物や文字が中央にある画像に向いています。</p>
+          </div>
+          <div class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">余白を追加</h3>
+            <p class="text-sm leading-7 text-gray-600">画像全体を残します。ロゴ、アイコン、資料画像など、欠けを避けたい素材に向いています。</p>
+          </div>
+          <div class="py-5 md:px-5">
+            <h3 class="text-base font-semibold text-gray-900 mb-2">出力形式</h3>
+            <p class="text-sm leading-7 text-gray-600">透過が必要ならPNG、写真を軽くしたい場合はJPEG/WebPを選びます。WebPは軽量化しやすい形式です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-6xl mx-auto" aria-label="このツールについて">
+    <h2 class="font-bold text-base mb-2">このツールについて</h2>
+    <ul class="list-disc ml-5 space-y-1">
+      <li>画像の読み込みと変換はブラウザ内で行います。</li>
+      <li>広告表示を含む場合がありますが、操作領域とfooterの余白を圧迫しない配置にしています。</li>
+      <li>各SNSの推奨サイズは変更されることがあります。投稿前に必要に応じて公式案内も確認してください。</li>
+    </ul>
+  </section>
+
   </main>
 
-  <!-- 画像サイズ比較活用完全ガイド -->
-  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">画像サイズ比較活用完全ガイド</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          デザイン最適化からWeb表示まで、画像サイズ比較を効果的に活用するための実践的なノウハウをご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Web・UI最適化 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">Web・UI最適化</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>レスポンシブ対応：</strong>デバイス別最適サイズの決定</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ページ速度向上：</strong>表示速度とファイルサイズの最適化</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>バナー・ヘッダー：</strong>統一感のあるサイズ調整</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>SNS投稿：</strong>プラットフォーム推奨サイズ確認</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 印刷・出版最適化 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-purple-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">印刷・出版最適化</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>DPI計算：</strong>印刷品質に適した解像度確認</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>用紙サイズ対応：</strong>A4・B5等の規格サイズ調整</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>カタログ・パンフレット：</strong>レイアウト統一確認</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ポスター・看板：</strong>大判印刷向け拡大品質評価</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- ECサイト・商品撮影 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-green-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2-2v6.01"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">ECサイト・商品撮影</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>商品画像統一：</strong>サイズ規格の一貫性確保</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ズーム機能対応：</strong>高解像度版の品質確認</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>モバイル表示：</strong>スマホ画面での見え方最適化</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ロード時間短縮：</strong>購買体験向上のための軽量化</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技術解説セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">画像サイズ技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          画像サイズの仕組みを理解することで、より効果的な画像活用が可能になります。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">解像度とファイルサイズの関係</h3>
-          <div class="space-y-4">
-            <div class="border-l-4 border-red-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">ピクセル数とファイルサイズ</h4>
-              <p class="text-sm text-gray-600">幅×高さのピクセル数が増加すると、ファイルサイズは二乗的に増大。</p>
-            </div>
-            <div class="border-l-4 border-yellow-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">DPI（解像度）の重要性</h4>
-              <p class="text-sm text-gray-600">印刷品質はDPIで決まる。Web用72dpi、印刷用300dpi以上を推奨。</p>
-            </div>
-            <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">圧縮率と画質のバランス</h4>
-              <p class="text-sm text-gray-600">用途に応じてJPEG品質・PNG圧縮レベルを適切に調整。</p>
-            </div>
-            <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">フォーマット特性の理解</h4>
-              <p class="text-sm text-gray-600">JPEG・PNG・WebPそれぞれの特徴を活かした使い分け。</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">レスポンシブ対応とデバイス最適化</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-medium mb-2 text-lg">デバイス別最適サイズ</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                スマホ・タブレット・デスクトップそれぞれに最適化したサイズで、ユーザー体験と表示速度を両立。
-              </p>
-              <div class="bg-blue-50 p-3 rounded-lg text-xs">
-                <strong>推奨サイズ：</strong> モバイル320-480px、タブレット768-1024px、デスクトップ1200px以上
-              </div>
-            </div>
-
-            <div>
-              <h4 class="font-medium mb-2 text-lg">画像配信最適化技術</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                WebP・AVIF等の次世代フォーマットと従来フォーマットの使い分けで、全ブラウザ対応と軽量化を実現。
-              </p>
-              <div class="bg-amber-50 p-3 rounded-lg text-xs">
-                <strong>手法：</strong> picture要素・srcset属性活用、CDN連携
-              </div>
-            </div>
-
-            <div>
-              <h4 class="font-medium mb-2 text-lg">Core Web Vitals対応</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                Google検索ランキングに影響するページ速度指標LCP・CLS改善のための画像サイズ戦略。
-              </p>
-              <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>対策：</strong> 適切なサイズ指定、遅延読み込み、プリロード活用
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ・トラブルシューティングセクション -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          画像サイズ比較時によくある疑問や問題の解決方法をまとめました。
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>同じピクセル数なのにファイルサイズが違うのは？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な要因と対処法：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-blue-600 mb-2">画像内容による影響</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>色数：</strong>グラデーション・複雑な画像ほど大容量</li>
-                  <li>• <strong>ノイズ：</strong>圧縮効率を低下させる細かい模様</li>
-                  <li>• <strong>エッジ：</strong>輪郭がはっきりした画像は圧縮しやすい</li>
-                  <li>• <strong>単色領域：</strong>背景色等の均一部分は高圧縮可能</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-purple-600 mb-2">技術的な設定差</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>圧縮品質：</strong>JPEG品質80%と95%で2倍以上の差</li>
-                  <li>• <strong>フォーマット：</strong>PNG・JPEG・WebPで大幅な差異</li>
-                  <li>• <strong>カラープロファイル：</strong>メタデータの埋め込み量</li>
-                  <li>• <strong>プログレッシブ：</strong>JPEG形式の読み込み方式設定</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>Web表示と印刷で画質が異なって見える場合は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>表示環境の違いと解決策：</strong></p>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 class="font-medium text-green-600 mb-3">解像度の考え方</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>Web表示：</strong>72-96DPIで十分、ピクセル数が重要</li>
-                  <li><strong>印刷用途：</strong>300DPI以上、物理サイズとの関係</li>
-                  <li><strong>高解像度ディスプレイ：</strong>Retinaディスプレイは2倍解像度</li>
-                  <li><strong>印刷サイズ計算：</strong>ピクセル数÷DPI=実際の印刷サイズ</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-orange-600 mb-3">色彩・表示環境</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>カラースペース：</strong>sRGB（Web）、CMYK（印刷）の差</li>
-                  <li><strong>ディスプレイキャリブレーション：</strong>モニター設定の個体差</li>
-                  <li><strong>ブラウザ色補正：</strong>ブラウザごとの色再現性の違い</li>
-                  <li><strong>印刷機械差：</strong>プリンター・印刷所による仕上がり差</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>スマホ・タブレットで画像が重い・表示が遅い</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
-              <p class="text-amber-800 text-sm font-medium">
-                ⚠️ モバイル環境では通信速度・メモリ制限が厳しく、画像最適化が特に重要です。
-              </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 class="font-medium text-red-600 mb-3">最適化のポイント</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>適切なサイズ：</strong>画面幅以上の画像は不要、最大2倍程度</li>
-                  <li>• <strong>次世代フォーマット：</strong>WebP・AVIF採用で30-50%軽量化</li>
-                  <li>• <strong>遅延読み込み：</strong>スクロール時に読み込んで初期表示高速化</li>
-                  <li>• <strong>圧縮レベル調整：</strong>小画面では多少の品質低下は許容範囲</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-blue-600 mb-3">技術的な対策</h4>
-                <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>レスポンシブ画像：</strong>デバイス別最適サイズ自動配信</li>
-                  <li>• <strong>CDN活用：</strong>地理的に近いサーバーから高速配信</li>
-                  <li>• <strong>プリロード：</strong>重要画像の事前読み込み指示</li>
-                  <li>• <strong>キャッシュ最適化：</strong>ブラウザ・サーバーキャッシュ活用</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- 実用事例集セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">実際の活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          様々な業界・用途での実際の画像サイズ比較ツール活用事例をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🛒</div>
-          <h3 class="text-lg font-semibold mb-3">ECサイトのページ速度改善</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            オンラインショップでは、商品画像のサイズ最適化により、
-            ページ読み込み速度を40%改善。コンバージョン率の大幅向上を実現。
-          </p>
-          <div class="text-xs text-blue-600 bg-blue-50 p-2 rounded mb-2">
-            使用機能: 複数サイズ比較 + 最適化
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> ページ速度40%改善 + CVR向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="text-lg font-semibold mb-3">アプリUI設計の統一化</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            モバイルアプリ開発では、アイコン・画像素材のサイズ規格を統一し、
-            デザインシステム構築。開発効率とUI品質を同時に向上。
-          </p>
-          <div class="text-xs text-green-600 bg-green-50 p-2 rounded mb-2">
-            使用機能: 規格統一確認 + 品質チェック
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 開発効率30%向上 + UI統一
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🎨</div>
-          <h3 class="text-lg font-semibold mb-3">印刷物制作の品質向上</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            デザイン会社では、印刷用画像の解像度確認により、
-            印刷トラブルを90%削減。クライアント満足度と制作効率が大幅改善。
-          </p>
-          <div class="text-xs text-purple-600 bg-purple-50 p-2 rounded mb-2">
-            使用機能: DPI確認 + 印刷適性判定
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 印刷トラブル90%削減 + 品質向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">📺</div>
-          <h3 class="text-lg font-semibold mb-3">メディア制作のワークフロー改善</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            映像制作会社では、素材画像のサイズ・品質確認を自動化し、
-            編集前の品質チェック工程を効率化。制作スケジュール短縮を実現。
-          </p>
-          <div class="text-xs text-red-600 bg-red-50 p-2 rounded mb-2">
-            使用機能: 一括サイズ確認 + 品質評価
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 制作時間20%短縮 + 品質安定化
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏢</div>
-          <h3 class="text-lg font-semibold mb-3">企業サイトのリニューアル</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            企業では、既存サイトの画像を新デザインに最適化し、
-            Core Web Vitals指標を大幅改善。SEO順位とユーザー体験が向上。
-          </p>
-          <div class="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mb-2">
-            使用機能: パフォーマンス最適化 + SEO対応
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> SEO指標改善 + UX向上
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-          <div class="text-4xl mb-4">🏪</div>
-          <h3 class="text-lg font-semibold mb-3">店舗販促材料の効率制作</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            小売チェーンでは、店舗ポスター・POP素材のサイズ統一により、
-            全店一括制作システムを構築。販促効果の向上と制作コスト削減。
-          </p>
-          <div class="text-xs text-teal-600 bg-teal-50 p-2 rounded mb-2">
-            使用機能: 店舗規格統一 + 一括制作
-          </div>
-          <div class="text-xs text-gray-500">
-            <strong>成果：</strong> 制作コスト50%削減 + 販促効果向上
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="bg-accent/10 rounded-xl p-6 max-w-3xl mx-auto">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">あなたの画像活用も最適化しませんか？</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            これらの事例を参考に、あなたの業界・用途に合わせた画像サイズ最適化を始めてみましょう。
-            当ツールなら、すべての画像活用ニーズに対応した高精度な比較・分析を簡単に実行できます。
-          </p>
-          <a href="#" onclick="document.getElementById('imageFile').focus(); return false;"
-             class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            今すぐ画像サイズ比較を始める
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-6xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-    </ul>
-    <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
-  </section>
-
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <div class="max-w-6xl mx-auto mb-6">
-      <aside aria-label="スポンサーリンク フッター広告">
-        <div class="text-xs text-gray-400 mb-1 text-left">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-      </aside>
-    </div>
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent">サイトマップ</a>
     </nav>
     <div>&copy; 2026 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.renderSmartAds) window.renderSmartAds('smart-ads');
-      const imageFile = document.getElementById('imageFile');
-      const fileName = document.getElementById('fileName');
-      const previewContainer = document.getElementById('previewContainer');
-      const originalPreview = document.getElementById('originalPreview');
-      const convertBtn = document.getElementById('convertBtn');
-      const resultContainer = document.getElementById('resultContainer');
-      const compareGrid = document.getElementById('compareGrid');
-      const sizeChecks = Array.from(document.querySelectorAll('.size-check'));
-      const sizeDefs = {
-        youtube: {label:'YouTubeサムネ', w:1280, h:720},
-        twitter: {label:'Xヘッダー', w:1500, h:500},
-        'twitter-icon': {label:'Xアイコン', w:400, h:400},
-        instagram: {label:'Instagram投稿', w:1080, h:1080},
-        facebook: {label:'Facebookカバー', w:820, h:312},
-        line: {label:'LINEアイコン', w:640, h:640}
-      };
-      let img = null;
-      imageFile.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        fileName.textContent = file.name;
-        const reader = new FileReader();
-        reader.onload = function(ev) {
-          originalPreview.src = ev.target.result;
-          previewContainer.classList.remove('hidden');
-          img = new window.Image();
-          img.src = ev.target.result;
-          convertBtn.disabled = false;
-        };
-        reader.readAsDataURL(file);
-      });
-      convertBtn.addEventListener('click', async function() {
-        if (!img) return;
-        resultContainer.classList.remove('hidden');
-        compareGrid.innerHTML = '';
-        const pica = window.pica();
-        for (const check of sizeChecks) {
-          if (!check.checked) continue;
-          const def = sizeDefs[check.value];
-          const canvas = document.createElement('canvas');
-          canvas.width = def.w;
-          canvas.height = def.h;
-          await pica.resize(img, canvas, {unsharpAmount:80, unsharpThreshold:2});
-          const url = canvas.toDataURL('image/png');
-          const div = document.createElement('div');
-          div.className = 'bg-gray-100 rounded p-3 flex flex-col items-center';
-          div.innerHTML = `<div class='mb-2 font-semibold text-sm'>${def.label} (${def.w}x${def.h})</div><img src='${url}' class='rounded border mb-2' style='max-width:100%;max-height:160px;'/><a href='${url}' download='${def.label}.png' class='text-accent underline text-xs'>ダウンロード</a>`;
-          compareGrid.appendChild(div);
-        }
-      });
-    });
-  </script>
-  <!-- ガイドモーダル（ヘッダー直下でOK） -->
-  <div id="guide-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
-    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 relative">
-      <button id="guide-close" class="absolute top-2 right-2 text-gray-400 hover:text-accent text-2xl font-bold" aria-label="閉じる">&times;</button>
-      <div id="guide-modal-content"></div>
-    </div>
-  </div>
-  <script>
-function setupGuideModal() {
-  const guideBtn = document.getElementById('guide-btn');
-  const guideModal = document.getElementById('guide-modal');
-  const guideClose = document.getElementById('guide-close');
-  const guideContent = document.getElementById('guide-modal-content');
-  const guides = {
-    ja: {
-      title: '画像サイズ比較変換ツールの使い方',
-      list: [
-        '画像をアップロードし、用途別サイズを選択',
-        '一括変換ボタンで各種サイズ画像を生成',
-        'プレビュー＆ダウンロード可能',
-        '右上メニューで日本語・英語切替可能'
-      ],
-      tipsTitle: '活用例・ヒント',
-      tips: [
-        'YouTubeサムネやSNSアイコンの最適化',
-        '複数サービス用画像の一括作成'
-      ]
-    },
-    en: {
-      title: 'How to Use the Image Size Compare Tool',
-      list: [
-        'Upload an image and select target sizes.',
-        'Click the convert button to generate all sizes.',
-        'Preview and download each result.',
-        'Switch language from the top menu.'
-      ],
-      tipsTitle: 'Tips & Examples',
-      tips: [
-        'Optimize for YouTube thumbnails or SNS icons.',
-        'Batch create images for multiple services.'
-      ]
-    }
-  };
-  if(guideBtn && guideModal && guideClose && guideContent) {
-    guideBtn.addEventListener('click', function() {
-      const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'ja';
-      const g = guides[lang] || guides.ja;
-      let html = `<h2 class='text-xl font-bold mb-3'>${g.title}</h2>`;
-      html += '<ul class="list-disc ml-5 mb-4 text-gray-700">' + g.list.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      html += `<h3 class='font-bold text-base mt-6 mb-2'>${g.tipsTitle}</h3><ul class='list-disc ml-5 text-gray-700'>` + g.tips.map(x=>`<li>${x}</li>`).join('') + '</ul>';
-      guideContent.innerHTML = html;
-      guideModal.classList.remove('hidden');
-    });
-    guideClose.addEventListener('click', function() {
-      guideModal.classList.add('hidden');
-    });
-    guideModal.addEventListener('click', function(e) {
-      if(e.target === guideModal) guideModal.classList.add('hidden');
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", setupGuideModal);
-} else {
-  setupGuideModal();
-}
-</script>
-<script>
-        // 画像サイズ比較ツール用のセキュリティ強化
-        document.addEventListener('DOMContentLoaded', function() {
-          const imageInputs = document.querySelectorAll('input[type="file"][accept*="image"]');
-
-          // 画像ファイル入力の検証
-          imageInputs.forEach(input => {
-            input.addEventListener('change', function(e) {
-              const files = Array.from(e.target.files);
-
-              for (const file of files) {
-                // 画像ファイルの検証
-                if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
-                  SecurityUtils.showUserError('JPEG、PNG、GIF、WebP形式の画像ファイルを選択してください');
-                  this.value = '';
-                  return;
-                }
-
-                if (!SecurityUtils.validateFileSize(file, 20)) { // 20MB制限
-                  SecurityUtils.showUserError('ファイルサイズが20MB以下の画像を選択してください');
-                  this.value = '';
-                  return;
-                }
-              }
-
-              if (files.length > 0) {
-                SecurityUtils.showSuccessMessage(`${files.length}個の画像ファイルが読み込まれました`);
-              }
-            });
-          });
-        });
-      </script>
-  <!-- Consent-gated Ads/Analytics Loader -->
+  <script src="../js/image-size-compare.js" defer></script>
   <script src="../js/tool-page-enhancements.js" defer></script>
-
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>

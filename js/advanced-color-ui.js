@@ -15,6 +15,24 @@ class AdvancedColorUI {
     this.animationFrameId = null;
     this.components = new Map();
     this.colorHistory = [];
+    this.debugEnabled = Boolean(window.DEBUG_COLOR_TOOL);
+    this.namedColors = {
+      black: '#000000',
+      white: '#FFFFFF',
+      red: '#FF0000',
+      green: '#008000',
+      lime: '#00FF00',
+      blue: '#0000FF',
+      yellow: '#FFFF00',
+      cyan: '#00FFFF',
+      magenta: '#FF00FF',
+      gray: '#808080',
+      grey: '#808080',
+      orange: '#FFA500',
+      purple: '#800080',
+      pink: '#FFC0CB',
+      brown: '#A52A2A'
+    };
     this.themes = {
       light: {
         bg: '#ffffff',
@@ -38,6 +56,37 @@ class AdvancedColorUI {
     this.bindEvents();
   }
 
+  debug(...args) {
+    if (this.debugEnabled && window.console && typeof console.debug === 'function') {
+      console.debug('[AdvancedColorUI]', ...args);
+    }
+  }
+
+  t(key, fallback, ...args) {
+    if (typeof window.getColorCodeToolTranslation === 'function') {
+      return window.getColorCodeToolTranslation(key, fallback, ...args);
+    }
+
+    return args.reduce((message, value, index) => {
+      return String(message).replace(`{${index}}`, value);
+    }, fallback || key);
+  }
+
+  getCurrentLanguage() {
+    return window.colorCodeTranslationSystem?.getCurrentLanguage?.() || document.documentElement.lang || 'ja';
+  }
+
+  getLocalizedSpectrumType(type) {
+    const labels = {
+      hue: this.t('spectrumTypeHue', 'Hue distribution'),
+      saturation: this.t('spectrumTypeSaturation', 'Saturation distribution'),
+      lightness: this.t('spectrumTypeLightness', 'Lightness distribution'),
+      rgb: this.t('spectrumTypeRgb', 'RGB distribution')
+    };
+
+    return labels[type] || type;
+  }
+
   /**
    * 既存の要素との競合チェック
    */
@@ -51,7 +100,7 @@ class AdvancedColorUI {
     this.hasExistingElements = existingElements.some(id => document.getElementById(id) !== null);
     
     if (this.hasExistingElements) {
-      console.log('既存のカラーツール要素が検出されました。統合モードで動作します。');
+      this.debug('既存のカラーツール要素が検出されました。統合モードで動作します。');
       this.integrationMode = true;
     } else {
       this.integrationMode = false;
@@ -835,33 +884,42 @@ class AdvancedColorUI {
    * 色のパース（改良版）
    */
   parseColor(color) {
-    if (!color) return { r: 0, g: 0, b: 0 };
+    const value = String(color || '').trim();
+    if (!value) throw new Error('Color value is empty');
     
     // HEX形式
-    if (color.startsWith('#')) {
-      return this.hexToRgb(color);
+    const normalizedHex = this.normalizeHex(value);
+    if (normalizedHex) {
+      return this.hexToRgb(normalizedHex);
     }
     
     // RGB形式
-    if (color.includes('rgb')) {
-      const matches = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    if (/^rgba?\(/i.test(value)) {
+      const matches = value.match(/^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})(?:\s*,\s*(?:0|1|0?\.\d+))?\s*\)$/i);
       if (matches) {
-        return {
-          r: parseInt(matches[1]),
-          g: parseInt(matches[2]),
-          b: parseInt(matches[3])
+        const rgb = {
+          r: parseInt(matches[1], 10),
+          g: parseInt(matches[2], 10),
+          b: parseInt(matches[3], 10)
         };
+        if ([rgb.r, rgb.g, rgb.b].every(component => component >= 0 && component <= 255)) {
+          return rgb;
+        }
       }
     }
     
     // HSL形式
-    if (color.includes('hsl')) {
-      const hsl = this.parseColorToHsl(color);
+    if (/^hsla?\(/i.test(value)) {
+      const hsl = this.parseColorToHsl(value);
       return this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
     }
     
-    // デフォルト値
-    return { r: 0, g: 0, b: 0 };
+    const namedColor = this.namedColors[value.toLowerCase()];
+    if (namedColor) {
+      return this.hexToRgb(namedColor);
+    }
+
+    throw new Error('Unsupported color format');
   }
 
   /**
@@ -1011,32 +1069,50 @@ class AdvancedColorUI {
    * 色の正規化
    */
   normalizeColor(color) {
-    if (!color) return '#000000';
+    const value = String(color || '').trim();
+    if (!value) throw new Error('Color value is empty');
     
     try {
       // HSL形式の場合はHEXに変換
-      if (color.includes('hsl')) {
-        const hsl = this.parseColorToHsl(color);
+      if (/^hsla?\(/i.test(value)) {
+        const hsl = this.parseColorToHsl(value);
         const rgb = this.hslToRgbValues(hsl.h, hsl.s, hsl.l);
         return this.rgbToHex(rgb.r, rgb.g, rgb.b);
       }
       
       // RGB形式の場合はHEXに変換
-      if (color.includes('rgb')) {
-        const rgb = this.parseColor(color);
+      if (/^rgba?\(/i.test(value)) {
+        const rgb = this.parseColor(value);
         return this.rgbToHex(rgb.r, rgb.g, rgb.b);
       }
       
       // HEX形式の場合はそのまま
-      if (color.startsWith('#')) {
-        return color;
+      const normalizedHex = this.normalizeHex(value);
+      if (normalizedHex) {
+        return normalizedHex;
+      }
+
+      const namedColor = this.namedColors[value.toLowerCase()];
+      if (namedColor) {
+        return namedColor;
       }
       
-      return '#000000';
+      throw new Error('Unsupported color format');
     } catch (error) {
-      console.warn('色の正規化に失敗しました:', color, error);
-      return '#000000';
+      this.debug('色の正規化に失敗しました', color, error);
+      throw error;
     }
+  }
+
+  normalizeHex(hex) {
+    const value = String(hex || '').trim();
+    const withHash = value.startsWith('#') ? value : `#${value}`;
+    const shortMatch = /^#([0-9A-F]{3})$/i.exec(withHash);
+    if (shortMatch) {
+      return `#${shortMatch[1].split('').map(char => char + char).join('')}`.toUpperCase();
+    }
+
+    return /^#[0-9A-F]{6}$/i.test(withHash) ? withHash.toUpperCase() : null;
   }
 
   /**
@@ -1335,21 +1411,34 @@ class AdvancedColorUI {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.innerHTML = '';
-    colors.forEach((color, index) => {
-      const colorItem = document.createElement('div');
-      colorItem.className = 'color-item relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:scale-105 transition-transform';
-      colorItem.innerHTML = `
-        <div class="color-swatch h-20" style="background-color: ${color}"></div>
-        <div class="p-2 text-center">
-          <div class="color-value text-xs font-mono text-gray-600">${color}</div>
-        </div>
-      `;
+    container.replaceChildren();
+    colors.forEach((color) => {
+      const normalizedColor = this.normalizeColor(color);
+      const colorItem = document.createElement('button');
+      colorItem.type = 'button';
+      colorItem.className = 'color-item relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-accent';
+      colorItem.dataset.color = normalizedColor;
+      colorItem.setAttribute('aria-label', this.t('colorButtonAriaLabel', 'Select and copy {0}', normalizedColor));
+      colorItem.title = normalizedColor;
+
+      const swatch = document.createElement('div');
+      swatch.className = 'color-swatch h-20';
+      swatch.style.backgroundColor = normalizedColor;
+
+      const labelWrap = document.createElement('div');
+      labelWrap.className = 'p-2 text-center';
+
+      const label = document.createElement('div');
+      label.className = 'color-value text-xs font-mono text-gray-600';
+      label.textContent = normalizedColor;
+
+      labelWrap.appendChild(label);
+      colorItem.append(swatch, labelWrap);
       
       colorItem.addEventListener('click', () => {
-        this.selectColor(color);
-        this.copyToClipboard(color);
-        this.showToast(`${color} をコピーしました`);
+        this.selectColor(normalizedColor);
+        this.copyToClipboard(normalizedColor);
+        this.showToast(this.t('copySuccess', 'Copied: {0}', normalizedColor));
       });
       
       container.appendChild(colorItem);
@@ -1364,12 +1453,18 @@ class AdvancedColorUI {
     if (!container || !colors.length) return;
 
     const analysis = this.analyzePalette(colors);
-    container.innerHTML = `
-      <div>色数: ${colors.length}</div>
-      <div>平均明度: ${analysis.avgLightness.toFixed(1)}%</div>
-      <div>色相範囲: ${analysis.hueRange.toFixed(1)}°</div>
-      <div>彩度範囲: ${analysis.saturationRange.toFixed(1)}%</div>
-    `;
+    const rows = [
+      `${this.t('analysisColorCount', 'Color count')}: ${colors.length}`,
+      `${this.t('analysisAvgLightness', 'Average lightness')}: ${analysis.avgLightness.toFixed(1)}%`,
+      `${this.t('analysisHueRange', 'Hue range')}: ${analysis.hueRange.toFixed(1)}°`,
+      `${this.t('analysisSaturationRange', 'Saturation range')}: ${analysis.saturationRange.toFixed(1)}%`
+    ];
+
+    container.replaceChildren(...rows.map(row => {
+      const item = document.createElement('div');
+      item.textContent = row;
+      return item;
+    }));
   }
 
   /**
@@ -1410,14 +1505,17 @@ class AdvancedColorUI {
     const container = document.getElementById('colorHistory');
     if (!container) return;
 
-    container.innerHTML = '';
+    container.replaceChildren();
     this.colorHistory.forEach((color, index) => {
+      const normalizedColor = this.normalizeHex(color);
+      if (!normalizedColor) return;
+
       const colorItem = document.createElement('div');
       colorItem.className = 'color-history-item w-10 h-10 rounded border border-gray-200 cursor-pointer hover:scale-110 transition-transform';
-      colorItem.style.backgroundColor = color;
-      colorItem.title = color;
+      colorItem.style.backgroundColor = normalizedColor;
+      colorItem.title = normalizedColor;
       colorItem.addEventListener('click', () => {
-        this.selectColor(color);
+        this.selectColor(normalizedColor);
       });
       container.appendChild(colorItem);
     });
@@ -1623,35 +1721,44 @@ class AdvancedColorUI {
    * HSL文字列をパース
    */
   parseColorToHsl(color) {
-    if (color.includes('hsl')) {
-      const matches = color.match(/hsl\((\d+),\s*(\d+(?:\.\d+)?)%,\s*(\d+(?:\.\d+)?)%\)/);
+    const value = String(color || '').trim();
+
+    if (/^hsla?\(/i.test(value)) {
+      const matches = value.match(/^hsla?\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*(?:,\s*(?:0|1|0?\.\d+))?\s*\)$/i);
       if (matches) {
-        return {
-          h: parseFloat(matches[1]),
-          s: parseFloat(matches[2]),
-          l: parseFloat(matches[3])
-        };
+        const h = parseFloat(matches[1]);
+        const s = parseFloat(matches[2]);
+        const l = parseFloat(matches[3]);
+        if (s >= 0 && s <= 100 && l >= 0 && l <= 100) {
+          return { h: ((h % 360) + 360) % 360, s, l };
+        }
       }
     }
 
     // HEX形式の場合はRGBに変換してからHSLに
-    if (color.startsWith('#')) {
-      const rgb = this.hexToRgb(color);
+    const normalizedHex = this.normalizeHex(value);
+    if (normalizedHex) {
+      const rgb = this.hexToRgb(normalizedHex);
       if (rgb) {
         return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
       }
     }
 
     // RGB形式の場合
-    if (color.includes('rgb')) {
-      const rgb = this.parseColor(color);
+    if (/^rgba?\(/i.test(value)) {
+      const rgb = this.parseColor(value);
       if (rgb) {
         return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
       }
     }
 
-    // デフォルト値
-    return { h: 0, s: 0, l: 0 };
+    const namedColor = this.namedColors[value.toLowerCase()];
+    if (namedColor) {
+      const rgb = this.hexToRgb(namedColor);
+      return this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+    }
+
+    throw new Error('Unsupported color format');
   }
 
   /**
@@ -1667,6 +1774,9 @@ class AdvancedColorUI {
     // 新しいトーストを作成
     const toast = document.createElement('div');
     toast.className = 'toast-message fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.setAttribute('aria-label', this.t('toastRoleLabel', 'Notification'));
     toast.textContent = message;
     document.body.appendChild(toast);
 
@@ -1757,21 +1867,152 @@ class AdvancedColorUI {
     const resultsContainer = document.getElementById('accessibilityResults');
     if (!resultsContainer) return;
 
-    let content = '';
+    let content = null;
     
     switch (testType) {
       case 'colorBlind':
-        content = this.generateColorBlindTest();
+        content = this.createColorBlindTestResult();
         break;
       case 'lowVision':
-        content = this.generateLowVisionTest();
+        content = this.createLowVisionTestResult();
         break;
       case 'motionSensitivity':
-        content = this.generateMotionSensitivityTest();
+        content = this.createMotionSensitivityTestResult();
         break;
     }
     
-    resultsContainer.innerHTML = content;
+    if (content) {
+      resultsContainer.replaceChildren(content);
+    }
+  }
+
+  createColorBlindTestResult() {
+    const wrapper = document.createElement('div');
+    const title = document.createElement('h4');
+    title.className = 'font-medium mb-3';
+    title.textContent = '色覚多様性シミュレーション結果';
+
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
+
+    ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'].forEach(color => {
+      const item = document.createElement('div');
+      item.className = 'test-color-item border rounded p-3';
+
+      const swatch = document.createElement('div');
+      swatch.className = 'w-full h-16 mb-2 rounded';
+      swatch.style.backgroundColor = color;
+
+      const text = document.createElement('div');
+      text.className = 'text-xs text-center';
+
+      const code = document.createElement('div');
+      code.className = 'font-mono';
+      code.textContent = color;
+
+      const details = document.createElement('div');
+      details.className = 'text-gray-600 mt-1';
+      [
+        `第1色覚: ${this.simulateProtanopia(color)}`,
+        `第2色覚: ${this.simulateDeuteranopia(color)}`,
+        `第3色覚: ${this.simulateTritanopia(color)}`
+      ].forEach(line => {
+        const row = document.createElement('div');
+        row.textContent = line;
+        details.appendChild(row);
+      });
+
+      text.append(code, details);
+      item.append(swatch, text);
+      grid.appendChild(item);
+    });
+
+    wrapper.append(title, grid);
+    return wrapper;
+  }
+
+  createLowVisionTestResult() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'space-y-4';
+
+    const title = document.createElement('h4');
+    title.className = 'font-medium mb-3';
+    title.textContent = '低視力シミュレーション結果';
+    wrapper.appendChild(title);
+
+    [
+      ['通常視力', 'この文字は通常の視力で見えます', '小さな文字も問題なく読めます', 'background: white; color: black;'],
+      ['低視力（ぼやけ）', 'この文字はぼやけて見えます', '小さな文字は読みにくくなります', 'background: white; color: black; filter: blur(2px);'],
+      ['低コントラスト', 'この文字はコントラストが低いです', '視認性が大幅に低下します', 'background: #f0f0f0; color: #888;']
+    ].forEach(([heading, largeText, smallText, style]) => {
+      const section = document.createElement('div');
+      section.className = 'test-section';
+
+      const h5 = document.createElement('h5');
+      h5.className = 'font-medium';
+      h5.textContent = heading;
+
+      const sample = document.createElement('div');
+      sample.className = 'p-4 border rounded';
+      sample.setAttribute('style', style);
+
+      const large = document.createElement('p');
+      large.className = 'text-lg';
+      large.textContent = largeText;
+
+      const small = document.createElement('p');
+      small.className = 'text-sm';
+      small.textContent = smallText;
+
+      sample.append(large, small);
+      section.append(h5, sample);
+      wrapper.appendChild(section);
+    });
+
+    return wrapper;
+  }
+
+  createMotionSensitivityTestResult() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'space-y-4';
+
+    const title = document.createElement('h4');
+    title.className = 'font-medium mb-3';
+    title.textContent = '動きに敏感度テスト結果';
+
+    const alert = document.createElement('div');
+    alert.className = 'alert-box p-4 bg-yellow-50 border border-yellow-200 rounded';
+    const alertText = document.createElement('p');
+    alertText.className = 'text-yellow-800';
+    alertText.textContent = 'このテストは光過敏性てんかんなどに配慮したものです';
+    alert.appendChild(alertText);
+
+    const recommendations = document.createElement('div');
+    recommendations.className = 'test-recommendations';
+    const recTitle = document.createElement('h5');
+    recTitle.className = 'font-medium mb-2';
+    recTitle.textContent = '推奨事項:';
+    const list = document.createElement('ul');
+    list.className = 'list-disc list-inside text-sm text-gray-700 space-y-1';
+    ['点滅速度は3Hz以下に制限', '高コントラストの急激な変化を避ける', 'アニメーションの停止オプションを提供', '視差効果を控えめにする'].forEach(text => {
+      const item = document.createElement('li');
+      item.textContent = text;
+      list.appendChild(item);
+    });
+    recommendations.append(recTitle, list);
+
+    const current = document.createElement('div');
+    current.className = 'current-color-test';
+    const currentTitle = document.createElement('h5');
+    currentTitle.className = 'font-medium mb-2';
+    currentTitle.textContent = '現在の色の確認:';
+    const currentBody = document.createElement('div');
+    currentBody.className = 'p-3 bg-green-50 text-green-800 rounded';
+    currentBody.textContent = 'この簡易確認では、動きや点滅を伴う表現は検出していません。';
+    current.append(currentTitle, currentBody);
+
+    wrapper.append(title, alert, recommendations, current);
+    return wrapper;
   }
 
   /**
@@ -1852,9 +2093,9 @@ class AdvancedColorUI {
           </ul>
         </div>
         <div class="current-color-test">
-          <h5 class="font-medium mb-2">現在の色での安全性:</h5>
+          <h5 class="font-medium mb-2">現在の色の確認:</h5>
           <div class="p-3 bg-green-50 text-green-800 rounded">
-            ✅ 現在選択中の色は安全な範囲内です
+            この簡易確認では、動きや点滅を伴う表現は検出していません。
           </div>
         </div>
       </div>
@@ -1976,74 +2217,109 @@ class AdvancedColorUI {
     const container = document.getElementById('batchResults');
     if (!container) return;
 
-    let content = '';
+    const titleText = {
+      conversion: this.t('batchTitleConversion', 'Conversion result'),
+      validation: this.t('batchTitleValidation', 'Validation result'),
+      sorted: this.t('batchTitleSorted', 'Sorted result (by hue)')
+    }[type] || this.t('batchTitleDefault', 'Result');
 
-    switch (type) {
-      case 'conversion':
-        content = `
-          <h4 class="font-medium mb-3">変換結果</h4>
-          <div class="space-y-2">
-            ${results.map((result, index) => `
-              <div class="result-item p-3 border rounded ${result.error ? 'bg-red-50 border-red-200' : 'bg-white'}">
-                ${result.error ? `
-                  <div class="text-red-600">❌ ${result.input}: ${result.error}</div>
-                ` : `
-                  <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded border" style="background-color: ${result.hex}"></div>
-                    <div class="flex-1 text-sm">
-                      <div><strong>入力:</strong> ${result.input}</div>
-                      <div><strong>HEX:</strong> ${result.hex}</div>
-                      <div><strong>RGB:</strong> ${result.rgb}</div>
-                      <div><strong>HSL:</strong> ${result.hsl}</div>
-                      <div><strong>CMYK:</strong> ${result.cmyk}</div>
-                    </div>
-                  </div>
-                `}
-              </div>
-            `).join('')}
-          </div>
-        `;
-        break;
+    const title = document.createElement('h4');
+    title.className = 'font-medium mb-3';
+    title.textContent = titleText;
 
-      case 'validation':
-        content = `
-          <h4 class="font-medium mb-3">検証結果</h4>
-          <div class="space-y-2">
-            ${results.map(result => `
-              <div class="result-item p-3 border rounded ${result.isValid ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}">
-                <div class="flex items-center space-x-2">
-                  <span class="${result.isValid ? 'text-green-600' : 'text-red-600'}">${result.isValid ? '✅' : '❌'}</span>
-                  <span class="font-mono">${result.input}</span>
-                  <span class="text-sm text-gray-600">(${result.format})</span>
-                </div>
-                ${result.issues.length > 0 ? `
-                  <div class="mt-2 text-sm text-gray-600">
-                    <strong>Issues:</strong> ${result.issues.join(', ')}
-                  </div>
-                ` : ''}
-              </div>
-            `).join('')}
-          </div>
-        `;
-        break;
+    const list = document.createElement('div');
+    list.className = type === 'sorted'
+      ? 'grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3'
+      : 'space-y-2';
 
-      case 'sorted':
-        content = `
-          <h4 class="font-medium mb-3">ソート結果（色相順）</h4>
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            ${results.map(result => `
-              <div class="result-item p-2 border rounded bg-white text-center">
-                <div class="w-full h-16 rounded mb-2" style="background-color: ${result.normalized}"></div>
-                <div class="text-xs font-mono">${result.normalized}</div>
-                <div class="text-xs text-gray-600">H:${Math.round(result.hue)}°</div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-        break;
-    }
+    const appendLabelValue = (parent, label, value) => {
+      const row = document.createElement('div');
+      const strong = document.createElement('strong');
+      strong.textContent = `${label}:`;
+      row.append(strong, ` ${value}`);
+      parent.appendChild(row);
+    };
 
-    container.innerHTML = content;
+    results.forEach(result => {
+      const item = document.createElement('div');
+
+      if (type === 'conversion') {
+        item.className = `result-item p-3 border rounded ${result.error ? 'bg-red-50 border-red-200' : 'bg-white'}`;
+        if (result.error) {
+          const error = document.createElement('div');
+          error.className = 'text-red-600';
+          error.textContent = `${this.t('batchErrorLabel', 'Error')}: ${result.input} (${result.error})`;
+          item.appendChild(error);
+        } else {
+          const row = document.createElement('div');
+          row.className = 'flex items-center space-x-3';
+
+          const swatch = document.createElement('div');
+          swatch.className = 'w-8 h-8 rounded border';
+          swatch.style.backgroundColor = result.hex;
+
+          const details = document.createElement('div');
+          details.className = 'flex-1 text-sm';
+          appendLabelValue(details, this.t('batchInputLabel', 'Input'), result.input);
+          appendLabelValue(details, 'HEX', result.hex);
+          appendLabelValue(details, 'RGB', result.rgb);
+          appendLabelValue(details, 'HSL', result.hsl);
+          appendLabelValue(details, 'CMYK', result.cmyk);
+
+          row.append(swatch, details);
+          item.appendChild(row);
+        }
+      } else if (type === 'validation') {
+        item.className = `result-item p-3 border rounded ${result.isValid ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`;
+
+        const row = document.createElement('div');
+        row.className = 'flex items-center space-x-2';
+
+        const status = document.createElement('span');
+        status.className = result.isValid ? 'text-green-600' : 'text-red-600';
+        status.textContent = result.isValid
+          ? this.t('batchStatusOk', 'OK')
+          : this.t('batchStatusNg', 'NG');
+
+        const input = document.createElement('span');
+        input.className = 'font-mono';
+        input.textContent = result.input;
+
+        const format = document.createElement('span');
+        format.className = 'text-sm text-gray-600';
+        format.textContent = `(${result.format})`;
+
+        row.append(status, input, format);
+        item.appendChild(row);
+
+        if (result.issues.length > 0) {
+          const issues = document.createElement('div');
+          issues.className = 'mt-2 text-sm text-gray-600';
+          issues.textContent = `${this.t('batchIssuesLabel', 'Issues')}: ${result.issues.join(', ')}`;
+          item.appendChild(issues);
+        }
+      } else if (type === 'sorted') {
+        item.className = 'result-item p-2 border rounded bg-white text-center';
+
+        const swatch = document.createElement('div');
+        swatch.className = 'w-full h-16 rounded mb-2';
+        swatch.style.backgroundColor = result.normalized;
+
+        const value = document.createElement('div');
+        value.className = 'text-xs font-mono';
+        value.textContent = result.normalized;
+
+        const hue = document.createElement('div');
+        hue.className = 'text-xs text-gray-600';
+        hue.textContent = `H:${Math.round(result.hue)}°`;
+
+        item.append(swatch, value, hue);
+      }
+
+      list.appendChild(item);
+    });
+
+    container.replaceChildren(title, list);
   }
 
   /**
@@ -2200,21 +2476,37 @@ class AdvancedColorUI {
     
     const hsl = this.parseColorToHsl(color);
     const rgb = this.hexToRgb(color);
-    
-    container.innerHTML = `
-      <h4 class="font-medium mb-2">スペクトラム分析結果</h4>
-      <div class="analysis-data space-y-2 text-sm">
-        <div><strong>基準色:</strong> ${color}</div>
-        <div><strong>分析タイプ:</strong> ${type}</div>
-        <div><strong>色相:</strong> ${hsl.h}°</div>
-        <div><strong>彩度:</strong> ${hsl.s}%</div>
-        <div><strong>明度:</strong> ${hsl.l}%</div>
-        <div><strong>RGB値:</strong> R:${rgb.r}, G:${rgb.g}, B:${rgb.b}</div>
-        <div class="mt-3 p-2 bg-blue-50 rounded">
-          <strong>分析結果:</strong> ${this.getSpectrumAnalysisDescription(type, hsl)}
-        </div>
-      </div>
-    `;
+
+    const title = document.createElement('h4');
+    title.className = 'font-medium mb-2';
+    title.textContent = this.t('spectrumTitle', 'Spectrum analysis result');
+
+    const data = document.createElement('div');
+    data.className = 'analysis-data space-y-2 text-sm';
+
+    [
+      [this.t('spectrumBaseColor', 'Base color'), color],
+      [this.t('spectrumType', 'Analysis type'), this.getLocalizedSpectrumType(type)],
+      [this.t('spectrumHue', 'Hue'), `${hsl.h}°`],
+      [this.t('spectrumSaturation', 'Saturation'), `${hsl.s}%`],
+      [this.t('spectrumLightness', 'Lightness'), `${hsl.l}%`],
+      [this.t('spectrumRgb', 'RGB value'), `R:${rgb.r}, G:${rgb.g}, B:${rgb.b}`]
+    ].forEach(([label, value]) => {
+      const row = document.createElement('div');
+      const strong = document.createElement('strong');
+      strong.textContent = `${label}:`;
+      row.append(strong, ` ${value}`);
+      data.appendChild(row);
+    });
+
+    const summary = document.createElement('div');
+    summary.className = 'mt-3 p-2 bg-blue-50 rounded';
+    const strong = document.createElement('strong');
+    strong.textContent = `${this.t('spectrumSummary', 'Summary')}:`;
+    summary.append(strong, ` ${this.getSpectrumAnalysisDescription(type, hsl)}`);
+    data.appendChild(summary);
+
+    container.replaceChildren(title, data);
   }
 
   /**
@@ -2248,17 +2540,22 @@ class AdvancedColorUI {
   }
 
   detectColorFormat(color) {
-    if (color.startsWith('#')) return 'HEX';
-    if (color.includes('rgb')) return 'RGB';
-    if (color.includes('hsl')) return 'HSL';
-    if (color.includes('cmyk')) return 'CMYK';
+    const value = String(color || '').trim().toLowerCase();
+    if (this.normalizeHex(value)) return 'HEX';
+    if (value.startsWith('rgb')) return 'RGB';
+    if (value.startsWith('hsl')) return 'HSL';
+    if (value.startsWith('cmyk')) return 'CMYK';
+    if (this.namedColors[value]) return 'Named color';
     return 'Unknown';
   }
 
   getColorIssues(color) {
     const issues = [];
-    if (color.startsWith('#') && color.length !== 7) {
-      issues.push('Invalid HEX length');
+    const value = String(color || '').trim();
+    if (!this.isValidColor(value)) {
+      issues.push('Unsupported or invalid color format');
+    } else if (value.startsWith('#') && !this.normalizeHex(value)) {
+      issues.push('Invalid HEX value');
     }
     return issues;
   }

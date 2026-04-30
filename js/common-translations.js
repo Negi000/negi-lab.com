@@ -1,261 +1,195 @@
 /**
- * 共通UI要素用翻訳データ & システム
- * @description ヘッダー・ナビ・フッター等の共通UI翻訳
- * @version 1.0.0
- * @author negi-lab.com
+ * Shared translations used by common headers, footers, and utility UI.
  */
 
-// 共通UI翻訳データ
-window.commonTranslations = {
+(function () {
+  "use strict";
+
+  window.commonTranslations = {
     ja: {
-        // ナビゲーション
-        'nav.tools': 'ツール',
-        'nav.wikis': 'ゲームWiki',
-        'nav.home': 'ホーム',
-        
-        // 言語切り替え
-        'langSwitch.label': '言語:',
-        'langSwitch.ja': '日本語',
-        'langSwitch.en': 'English',
-        
-        // 共通ボタン
-        'common.download': 'ダウンロード',
-        'common.reset': 'リセット',
-        'common.convert': '変換',
-        'common.upload': 'アップロード',
-        'common.copy': 'コピー',
-        'common.clear': 'クリア',
-        'common.save': '保存',
-        'common.load': '読み込み',
-        'common.apply': '適用',
-        'common.cancel': 'キャンセル',
-        
-        // 共通メッセージ
-        'common.success': '成功しました',
-        'common.error': 'エラーが発生しました',
-        'common.loading': '読み込み中...',
-        'common.processing': '処理中...',
-        'common.complete': '完了',
-        'common.noFileSelected': 'ファイルが選択されていません',
-        'common.invalidFile': '無効なファイルです',
-        'common.fileTooLarge': 'ファイルサイズが大きすぎます',
-        
-        // フッター
-        'footer.copyright': '© 2024 negi-lab.com - All rights reserved',
-        'footer.privacy': 'プライバシーポリシー',
-        'footer.terms': '利用規約',
-        'footer.about': 'サイトについて',
-        
-        // 独自性・運営方針・免責事項
-        'disclaimer.title': 'negi-lab.comの独自性・運営方針・免責事項について',
-        'disclaimer.responsibility': '本ツールはnegi-lab.comが責任開発・運営しています。',
-        'disclaimer.revenue': '広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。',
-        'disclaimer.liability': '精度・安全性には万全を期していますが、利用は自己責任でお願いします。',
-        'disclaimer.copyright': '© 2026 negi-lab.com',
-        
-        // モーダル・UI要素
-        'modal.close': '閉じる',
-        'guide.modalTitle': 'ガイド',
-        
-        // ブレッドクラム
-        'breadcrumb.home': 'ホーム',
-        'breadcrumb.tools': 'ツール',
-        
-        // 共通リンク
-        'common.contact': 'お問い合わせ',
-        'common.sitemap': 'サイトマップ',
-        'common.privacyPolicy': 'プライバシーポリシー',
-        'common.terms': '利用規約',
-        'common.about': '運営者情報',
+      "nav.tools": "Tools",
+      "nav.wikis": "Game Wikis",
+      "nav.home": "Home",
+      "langSwitch.label": "Language",
+      "langSwitch.ja": "Japanese",
+      "langSwitch.en": "English",
+      "common.download": "Download",
+      "common.reset": "Reset",
+      "common.convert": "Convert",
+      "common.upload": "Upload",
+      "common.copy": "Copy",
+      "common.clear": "Clear",
+      "common.save": "Save",
+      "common.load": "Load",
+      "common.apply": "Apply",
+      "common.cancel": "Cancel",
+      "common.success": "Success",
+      "common.error": "An error occurred",
+      "common.loading": "Loading...",
+      "common.processing": "Processing...",
+      "common.complete": "Complete",
+      "common.noFileSelected": "No file selected",
+      "common.invalidFile": "Invalid file",
+      "common.fileTooLarge": "File size is too large",
+      "footer.copyright": "© 2026 negi-lab.com",
+      "footer.privacy": "Privacy Policy",
+      "footer.terms": "Terms",
+      "footer.about": "About",
+      "disclaimer.title": "Site Policy and Disclaimer",
+      "disclaimer.responsibility": "negi-lab.com maintains these browser-based tools with practical, transparent operation in mind.",
+      "disclaimer.revenue": "Advertising and affiliate links may be used, while keeping utility and readability first.",
+      "disclaimer.liability": "Please review important outputs yourself before relying on them for critical use.",
+      "disclaimer.copyright": "© 2026 negi-lab.com",
+      "modal.close": "Close",
+      "guide.modalTitle": "Guide",
+      "breadcrumb.home": "Home",
+      "breadcrumb.tools": "Tools",
+      "common.contact": "Contact",
+      "common.sitemap": "Sitemap",
+      "common.privacyPolicy": "Privacy Policy",
+      "common.terms": "Terms",
+      "common.about": "About",
     },
-    
     en: {
-        // ナビゲーション
-        'nav.tools': 'Tools',
-        'nav.wikis': 'Game Wikis',
-        'nav.home': 'Home',
-        
-        // 言語切り替え
-        'langSwitch.label': 'Language:',
-        'langSwitch.ja': '日本語',
-        'langSwitch.en': 'English',
-        
-        // 共通ボタン
-        'common.download': 'Download',
-        'common.reset': 'Reset',
-        'common.convert': 'Convert',
-        'common.upload': 'Upload',
-        'common.copy': 'Copy',
-        'common.clear': 'Clear',
-        'common.save': 'Save',
-        'common.load': 'Load',
-        'common.apply': 'Apply',
-        'common.cancel': 'Cancel',
-        
-        // 共通メッセージ
-        'common.success': 'Success',
-        'common.error': 'An error occurred',
-        'common.loading': 'Loading...',
-        'common.processing': 'Processing...',
-        'common.complete': 'Complete',
-        'common.noFileSelected': 'No file selected',
-        'common.invalidFile': 'Invalid file',
-        'common.fileTooLarge': 'File size too large',
-        
-        // フッター
-        'footer.copyright': '© 2024 negi-lab.com - All rights reserved',
-        'footer.privacy': 'Privacy Policy',
-        'footer.terms': 'Terms of Service',
-        'footer.about': 'About',
-        
-        // 独自性・運営方針・免責事項
-        'disclaimer.title': 'About negi-lab.com\'s Uniqueness, Management Policy & Disclaimer',
-        'disclaimer.responsibility': 'This tool is responsibly developed and operated by negi-lab.com.',
-        'disclaimer.revenue': 'While including advertising and affiliate revenue, we prioritize user convenience.',
-        'disclaimer.liability': 'Although we strive for accuracy and safety, please use at your own risk.',
-        'disclaimer.copyright': '© 2026 negi-lab.com',
-        
-        // モーダル・UI要素
-        'modal.close': 'Close',
-        'guide.modalTitle': 'Guide',
-        
-        // ブレッドクラム
-        'breadcrumb.home': 'Home',
-        'breadcrumb.tools': 'Tools',
-        
-        // 共通リンク
-        'common.contact': 'Contact',
-        'common.sitemap': 'Sitemap',
-        'common.privacyPolicy': 'Privacy Policy',
-        'common.terms': 'Terms of Service',
-        'common.about': 'About',
-    }
-};
+      "nav.tools": "Tools",
+      "nav.wikis": "Game Wikis",
+      "nav.home": "Home",
+      "langSwitch.label": "Language",
+      "langSwitch.ja": "Japanese",
+      "langSwitch.en": "English",
+      "common.download": "Download",
+      "common.reset": "Reset",
+      "common.convert": "Convert",
+      "common.upload": "Upload",
+      "common.copy": "Copy",
+      "common.clear": "Clear",
+      "common.save": "Save",
+      "common.load": "Load",
+      "common.apply": "Apply",
+      "common.cancel": "Cancel",
+      "common.success": "Success",
+      "common.error": "An error occurred",
+      "common.loading": "Loading...",
+      "common.processing": "Processing...",
+      "common.complete": "Complete",
+      "common.noFileSelected": "No file selected",
+      "common.invalidFile": "Invalid file",
+      "common.fileTooLarge": "File size is too large",
+      "footer.copyright": "© 2026 negi-lab.com",
+      "footer.privacy": "Privacy Policy",
+      "footer.terms": "Terms",
+      "footer.about": "About",
+      "disclaimer.title": "Site Policy and Disclaimer",
+      "disclaimer.responsibility": "negi-lab.com maintains these browser-based tools with practical, transparent operation in mind.",
+      "disclaimer.revenue": "Advertising and affiliate links may be used, while keeping utility and readability first.",
+      "disclaimer.liability": "Please review important outputs yourself before relying on them for critical use.",
+      "disclaimer.copyright": "© 2026 negi-lab.com",
+      "modal.close": "Close",
+      "guide.modalTitle": "Guide",
+      "breadcrumb.home": "Home",
+      "breadcrumb.tools": "Tools",
+      "common.contact": "Contact",
+      "common.sitemap": "Sitemap",
+      "common.privacyPolicy": "Privacy Policy",
+      "common.terms": "Terms",
+      "common.about": "About",
+    },
+  };
 
-/**
- * 共通翻訳システムクラス
- */
-class CommonTranslationSystem {
+  class CommonTranslationSystem {
     constructor() {
-        this.currentLanguage = 'ja';
-        this.translations = window.commonTranslations;
-        this.init();
+      this.currentLanguage = this.resolveInitialLanguage();
+      this.translations = window.commonTranslations;
+      this.init();
     }
-    
-    init() {
-        // 保存された言語設定を読み込み
-        const savedLang = localStorage.getItem('negi-lab-language');
-        if (savedLang && this.translations[savedLang]) {
-            this.currentLanguage = savedLang;
-        }
-        
-        // 言語切り替えボタンのイベントリスナー設定
-        this.setupLanguageSwitcher();
-        
-        // 初期翻訳適用
-        this.translatePage();
-    }
-    
-    setupLanguageSwitcher() {
-        const langButtons = document.querySelectorAll('[data-lang]');
-        langButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const lang = e.target.getAttribute('data-lang');
-                this.setLanguage(lang);
-            });
-        });
-        
-        // 言語切り替えセレクトボックス対応
-        const langSelect = document.getElementById('langSelect');
-        if (langSelect) {
-            langSelect.value = this.currentLanguage;
-            langSelect.addEventListener('change', (e) => {
-                this.setLanguage(e.target.value);
-            });
-        }
-    }
-    
-    setLanguage(lang) {
-        if (!this.translations[lang]) {
-            console.warn(`Language "${lang}" not supported`);
-            return;
-        }
-        
-        this.currentLanguage = lang;
-        localStorage.setItem('negi-lab-language', lang);
-        
-        // ページを翻訳
-        this.translatePage();
-        
-        // 他の翻訳システムにも言語変更を通知
-        window.dispatchEvent(new CustomEvent('languageChanged', { 
-            detail: { language: lang } 
-        }));
-    }
-    
-    translatePage() {
-        const elements = document.querySelectorAll('[data-translate-key]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-translate-key');
-            const translation = this.getTranslation(key);
-            
-            if (translation) {
-                if (element.tagName.toLowerCase() === 'input' && 
-                    (element.type === 'button' || element.type === 'submit')) {
-                    element.value = translation;
-                } else if (element.hasAttribute('placeholder')) {
-                    element.placeholder = translation;
-                } else if (element.hasAttribute('title')) {
-                    element.title = translation;
-                } else {
-                    element.innerHTML = translation;
-                }
-            }
-        });
-        
-        // アクティブな言語ボタンのスタイル更新
-        this.updateLanguageButtons();
-    }
-    
-    updateLanguageButtons() {
-        const langButtons = document.querySelectorAll('[data-lang]');
-        langButtons.forEach(button => {
-            const lang = button.getAttribute('data-lang');
-            if (lang === this.currentLanguage) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
-        
-        // セレクトボックスの値も更新
-        const langSelect = document.getElementById('langSelect');
-        if (langSelect) {
-            langSelect.value = this.currentLanguage;
-        }
-    }
-    
-    getTranslation(key) {
-        const keys = key.split('.');
-        let current = this.translations[this.currentLanguage];
-        
-        for (const k of keys) {
-            if (current && typeof current === 'object' && k in current) {
-                current = current[k];
-            } else {
-                return null;
-            }
-        }
-        
-        return current;
-    }
-    
-    getCurrentLanguage() {
-        return this.currentLanguage;
-    }
-}
 
-// グローバルインスタンス作成（ページ読み込み後）
-document.addEventListener('DOMContentLoaded', () => {
+    resolveInitialLanguage() {
+      try {
+        const savedLang = localStorage.getItem("negi-lab-language") || localStorage.getItem("selectedLanguage");
+        if (savedLang && window.commonTranslations[savedLang]) return savedLang;
+      } catch (_) {}
+      return "ja";
+    }
+
+    init() {
+      this.setupLanguageSwitcher();
+      this.translatePage();
+    }
+
+    setupLanguageSwitcher() {
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          this.setLanguage(event.currentTarget.getAttribute("data-lang"));
+        });
+      });
+
+      const langSelect = document.getElementById("langSelect");
+      if (langSelect) {
+        langSelect.value = this.currentLanguage;
+        langSelect.addEventListener("change", (event) => {
+          this.setLanguage(event.currentTarget.value);
+        });
+      }
+    }
+
+    setLanguage(lang) {
+      if (!this.translations[lang]) {
+        console.warn(`Language "${lang}" is not supported.`);
+        return;
+      }
+
+      this.currentLanguage = lang;
+      try {
+        localStorage.setItem("negi-lab-language", lang);
+        localStorage.setItem("selectedLanguage", lang);
+      } catch (_) {}
+
+      document.documentElement.lang = lang;
+      this.translatePage();
+      window.dispatchEvent(new CustomEvent("languageChanged", { detail: { language: lang } }));
+    }
+
+    translatePage() {
+      document.querySelectorAll("[data-translate-key]").forEach((element) => {
+        const translation = this.getTranslation(element.getAttribute("data-translate-key"));
+        if (!translation) return;
+
+        const tag = element.tagName.toLowerCase();
+        if (tag === "input" && /^(button|submit|reset)$/.test(element.type || "")) {
+          element.value = translation;
+        } else if (element.hasAttribute("placeholder")) {
+          element.setAttribute("placeholder", translation);
+        } else if (element.hasAttribute("title")) {
+          element.setAttribute("title", translation);
+        } else {
+          element.textContent = translation;
+        }
+      });
+
+      this.updateLanguageButtons();
+    }
+
+    updateLanguageButtons() {
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.classList.toggle("active", button.getAttribute("data-lang") === this.currentLanguage);
+      });
+
+      const langSelect = document.getElementById("langSelect");
+      if (langSelect) langSelect.value = this.currentLanguage;
+    }
+
+    getTranslation(key) {
+      if (!key) return null;
+      const table = this.translations[this.currentLanguage] || this.translations.ja;
+      return table[key] || null;
+    }
+
+    getCurrentLanguage() {
+      return this.currentLanguage;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
     window.commonTranslationSystem = new CommonTranslationSystem();
-});
+  });
+})();

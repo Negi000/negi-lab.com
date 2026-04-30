@@ -59,7 +59,10 @@ class ColorAnalysisEngine {
    * RGBをHEXに変換
    */
   rgbToHex(r, g, b) {
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    return `#${[r, g, b]
+      .map((value) => Math.max(0, Math.min(255, Number(value) || 0)))
+      .map((value) => Math.round(value).toString(16).padStart(2, '0'))
+      .join('')}`.toUpperCase();
   }
 
   /**
@@ -175,7 +178,7 @@ class ColorAnalysisEngine {
    * WCAG基準判定
    */
   getWcagRating(ratio) {
-    if (ratio >= 7) return { level: 'AAA', description: '最高レベル' };
+    if (ratio >= 7) return { level: 'AAA', description: 'AAAレベル' };
     if (ratio >= 4.5) return { level: 'AA', description: '標準レベル' };
     if (ratio >= 3) return { level: 'AA Large', description: '大きな文字' };
     return { level: 'Fail', description: '基準未満' };
@@ -248,7 +251,18 @@ class ColorAnalysisEngine {
    * HEX値の正規化
    */
   normalizeHex(hex) {
-    return hex.toUpperCase();
+    const value = String(hex || '').trim();
+    if (!value) {
+      return null;
+    }
+
+    const withHash = value.startsWith('#') ? value : `#${value}`;
+    const shortMatch = /^#([0-9a-f]{3})$/i.exec(withHash);
+    if (shortMatch) {
+      return `#${shortMatch[1].split('').map((char) => char + char).join('')}`.toUpperCase();
+    }
+
+    return /^#[0-9a-f]{6}$/i.test(withHash) ? withHash.toUpperCase() : null;
   }
 
   /**
@@ -335,23 +349,32 @@ class ColorAnalysisEngine {
    * 色温度の取得
    */
   getColorTemperature(hex) {
-    const rgb = this.hexToRgb(hex);
-    const temp = (rgb.r + rgb.g + rgb.b) / 3;
-    
-    if (temp > 170) {
-      return { temperature: 'warm', description: '暖色' };
-    } else if (temp < 85) {
-      return { temperature: 'cool', description: '寒色' };
-    } else {
+    const rgb = this.hexToRgb(this.normalizeHex(hex));
+    if (!rgb) {
       return { temperature: 'neutral', description: '中性色' };
     }
+
+    const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+    if (hsl.h < 60 || hsl.h >= 300) {
+      return { temperature: 'warm', description: '暖色' };
+    }
+    if (hsl.h >= 120 && hsl.h < 260) {
+      return { temperature: 'cool', description: '寒色' };
+    }
+
+    return { temperature: 'neutral', description: '中性色' };
   }
 
   /**
    * 色の心理効果
    */
   getColorPsychology(hex) {
-    const hsl = this.rgbToHsl(...Object.values(this.hexToRgb(hex)));
+    const rgb = this.hexToRgb(this.normalizeHex(hex));
+    if (!rgb) {
+      return { effects: [] };
+    }
+
+    const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
     
     const effects = [];
     if (hsl.h < 60) effects.push('エネルギッシュ');
@@ -368,16 +391,21 @@ class ColorAnalysisEngine {
    * 履歴に追加
    */
   addToHistory(colorData) {
-    if (!this.history) this.history = [];
-    this.history.unshift(colorData);
-    if (this.history.length > 50) this.history.pop();
+    if (!colorData) {
+      return;
+    }
+
+    this.colorHistory.unshift(colorData);
+    if (this.colorHistory.length > 50) {
+      this.colorHistory.pop();
+    }
   }
 
   /**
    * 色履歴の取得
    */
   getHistory() {
-    return this.colorHistory;
+    return [...this.colorHistory];
   }
 
   /**

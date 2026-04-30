@@ -1,229 +1,162 @@
 /**
- * Responsive Ads Controller
- * PC/モバイル環境に応じて適切な広告のみを表示する制御システム
- * 2025-01-11 作成
+ * Responsive AdSense slot normalizer.
+ *
+ * This file only keeps the correct device slot in the DOM and exposes a
+ * small API used by ads-consent-loader.js. It must not silence console output
+ * or push AdSense; consent-gated loading is handled by ads-consent-loader.js.
  */
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
-  // 広告スロット設定
+  const AD_CLIENT = "ca-pub-1835873052239386";
   const AD_SLOTS = {
-    // スマホ用広告スロット
     mobile: {
-      bottom: '8916646342',
-      middle: '3205934910', 
-      top: '6430083800'
+      top: "6430083800",
+      middle: "3205934910",
+      bottom: "8916646342"
     },
-    // PC用広告スロット
     pc: {
-      middle: '9898319477',
-      bottom: '7843001775',
-      top: '4837564489'
+      top: "4837564489",
+      middle: "9898319477",
+      bottom: "7843001775"
     }
   };
 
-  // 広告クライアントID（統一）
-  const AD_CLIENT = 'ca-pub-1835873052239386';
+  const POSITION_BY_SLOT = Object.keys(AD_SLOTS).reduce((result, device) => {
+    Object.keys(AD_SLOTS[device]).forEach((position) => {
+      result[AD_SLOTS[device][position]] = position;
+    });
+    return result;
+  }, {});
+
   const DEBUG = window.NEGI_AD_DEBUG === true || /[?&]debugAds=1\b/.test(location.search);
 
-  if (!DEBUG && console && !console.__negiLogFiltered) {
-    console.__negiOriginalLog = console.log;
-    console.__negiOriginalDebug = console.debug;
-    console.log = function () {};
-    console.debug = function () {};
-    console.__negiLogFiltered = true;
-  }
-
   function log() {
-    if (DEBUG) console.log.apply(console, arguments);
+    if (DEBUG && window.console) console.debug.apply(console, arguments);
   }
 
-  function warn() {
-    if (DEBUG) console.warn.apply(console, arguments);
-  }
-
-  /**
-   * デバイス判定
-   * @returns {boolean} モバイルデバイスの場合true
-   */
   function isMobileDevice() {
-    const userAgent = navigator.userAgent || '';
-    const screenWidth = window.innerWidth || screen.width || 1024;
-    
-    // ユーザーエージェントベースの判定
-    const mobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    
-    // 画面幅ベースの判定（768px以下をモバイル）
-    const mobileWidth = screenWidth <= 768;
-    
-    // どちらかの条件を満たせばモバイル
-    return mobileUA || mobileWidth;
+    const userAgent = navigator.userAgent || "";
+    const width = window.innerWidth || document.documentElement.clientWidth || screen.width || 1024;
+    return width <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
   }
 
-  /**
-   * 不要な広告要素を非表示にし、適切な広告を表示
-   */
+  function slotPosition(element) {
+    const explicit = element.getAttribute("data-ad-position");
+    if (explicit && AD_SLOTS.pc[explicit]) return explicit;
+    const slot = element.getAttribute("data-ad-slot");
+    return POSITION_BY_SLOT[slot] || "middle";
+  }
+
+  function normalizeElement(element, device) {
+    const isMobile = device === "mobile";
+    const activeClass = isMobile ? "ad-sp" : "ad-pc";
+    const inactiveClass = isMobile ? "ad-pc" : "ad-sp";
+    const position = slotPosition(element);
+
+    element.classList.add(activeClass);
+    element.classList.remove(inactiveClass);
+    element.setAttribute("data-device-type", device);
+    element.setAttribute("data-ad-position", position);
+    element.setAttribute("data-ad-client", AD_CLIENT);
+    element.setAttribute("data-ad-slot", AD_SLOTS[device][position] || AD_SLOTS[device].middle);
+    element.style.display = "block";
+    return element;
+  }
+
+  function ensureCounterpartBeforeRemoval(element, device) {
+    const parent = element.parentElement;
+    if (!parent || !element.matches("ins.adsbygoogle")) return;
+    const activeClass = device === "mobile" ? "ad-sp" : "ad-pc";
+    if (parent.querySelector(`ins.adsbygoogle.${activeClass}`)) return;
+
+    const clone = element.cloneNode(false);
+    normalizeElement(clone, device);
+    parent.insertBefore(clone, element.nextSibling);
+  }
+
   function setupResponsiveAds() {
-    const isMobile = isMobileDevice();
-    const targetClass = isMobile ? 'ad-pc' : 'ad-sp';
-    const activeClass = isMobile ? 'ad-sp' : 'ad-pc';
-    
-    log(`[ResponsiveAds] Device detected: ${isMobile ? 'Mobile' : 'PC'}`);
+    const device = isMobileDevice() ? "mobile" : "pc";
+    const activeClass = device === "mobile" ? "ad-sp" : "ad-pc";
+    const inactiveClass = device === "mobile" ? "ad-pc" : "ad-sp";
 
-    function ensureActiveCounterpart(element) {
-      const parent = element.parentElement;
-      if (!parent || parent.querySelector(`ins.adsbygoogle.${activeClass}`)) return;
-      if (!element.matches || !element.matches('ins.adsbygoogle')) return;
-
-      const replacement = element.cloneNode(false);
-      replacement.classList.remove(targetClass);
-      replacement.classList.add(activeClass);
-      replacement.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
-      replacement.setAttribute('data-ad-client', AD_CLIENT);
-      replacement.setAttribute('data-ad-slot', isMobile ? AD_SLOTS.mobile.middle : AD_SLOTS.pc.middle);
-      parent.insertBefore(replacement, element.nextSibling);
-    }
-    
-    // 対象外のデバイス用広告を完全に削除
-    const elementsToRemove = document.querySelectorAll(`.${targetClass}`);
-    elementsToRemove.forEach(element => {
-      ensureActiveCounterpart(element);
+    document.querySelectorAll(`ins.adsbygoogle.${inactiveClass}`).forEach((element) => {
+      ensureCounterpartBeforeRemoval(element, device);
       element.remove();
-      log(`[ResponsiveAds] Removed ${targetClass} ad element`);
     });
 
-    // アクティブな広告要素を更新（クライアントIDが古い場合の対応）
-    const activeAds = document.querySelectorAll(`.${activeClass}`);
-    activeAds.forEach(element => {
-      // クライアントIDを統一されたものに更新
-      if (element.getAttribute('data-ad-client') !== AD_CLIENT) {
-        element.setAttribute('data-ad-client', AD_CLIENT);
-        log(`[ResponsiveAds] Updated ad client for ${activeClass}`);
-      }
-      
-      // デバイス識別用の属性を追加
-      element.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
-      element.style.display = 'block';
+    document.querySelectorAll(`ins.adsbygoogle.${activeClass}`).forEach((element) => {
+      normalizeElement(element, device);
     });
 
-    // document.bodyにデバイスタイプを設定（CSS用）
-    document.body.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
-    document.body.setAttribute('data-screen-width', window.innerWidth);
+    if (document.body) {
+      document.body.setAttribute("data-device-type", device);
+      document.body.setAttribute("data-screen-width", String(window.innerWidth || 0));
+    }
+    log("[ResponsiveAds] normalized", device);
   }
 
-  /**
-   * 動的に広告を作成する関数
-   * @param {string} position - 'top', 'middle', 'bottom'
-   * @param {boolean} lazy - 遅延読み込みするかどうか
-   * @returns {HTMLElement} 作成された広告要素
-   */
-  function createAdElement(position, lazy = true) {
-    const isMobile = isMobileDevice();
-    const slots = isMobile ? AD_SLOTS.mobile : AD_SLOTS.pc;
-    const slotId = slots[position];
-    
-    if (!slotId) {
-      warn(`[ResponsiveAds] No slot ID found for position: ${position}`);
-      return null;
-    }
-
-    // ins要素を作成
-    const ins = document.createElement('ins');
-    ins.className = `adsbygoogle ${isMobile ? 'ad-sp' : 'ad-pc'}`;
-    ins.style.display = 'block';
-    ins.setAttribute('data-ad-client', AD_CLIENT);
-    ins.setAttribute('data-ad-slot', slotId);
-    ins.setAttribute('data-ad-format', 'auto');
-    ins.setAttribute('data-full-width-responsive', 'true');
-    ins.setAttribute('data-device-type', isMobile ? 'mobile' : 'pc');
-    
-    if (lazy) {
-      ins.setAttribute('data-ad-lazy', '1');
-    }
-
-    log(`[ResponsiveAds] Created ${isMobile ? 'mobile' : 'PC'} ad for ${position}: ${slotId}`);
-    
+  function createAdElement(position, lazy) {
+    const device = isMobileDevice() ? "mobile" : "pc";
+    const normalizedPosition = AD_SLOTS[device][position] ? position : "middle";
+    const ins = document.createElement("ins");
+    ins.className = `adsbygoogle ${device === "mobile" ? "ad-sp" : "ad-pc"}`;
+    ins.style.display = "block";
+    ins.setAttribute("data-ad-client", AD_CLIENT);
+    ins.setAttribute("data-ad-slot", AD_SLOTS[device][normalizedPosition]);
+    ins.setAttribute("data-ad-position", normalizedPosition);
+    ins.setAttribute("data-ad-format", "auto");
+    ins.setAttribute("data-full-width-responsive", "true");
+    ins.setAttribute("data-device-type", device);
+    if (lazy !== false) ins.setAttribute("data-ad-lazy", "1");
     return ins;
   }
 
-  /**
-   * 広告ブロック内の重複広告を修正
-   */
   function fixDuplicateAds() {
-    const adBlocks = document.querySelectorAll('.ad-block');
-    
-    adBlocks.forEach(block => {
-      const ads = block.querySelectorAll('ins.adsbygoogle');
-      
-      if (ads.length > 1) {
-        log(`[ResponsiveAds] Found ${ads.length} ads in block, fixing...`);
-        
-        const isMobile = isMobileDevice();
-        
-        // 現在のデバイスに適さない広告を削除
-        ads.forEach(ad => {
-          const isPcAd = ad.classList.contains('ad-pc');
-          const isMobileAd = ad.classList.contains('ad-sp');
-          
-          if ((isMobile && isPcAd) || (!isMobile && isMobileAd)) {
-            ad.remove();
-            log(`[ResponsiveAds] Removed inappropriate ad from block`);
-          }
-        });
-      }
+    document.querySelectorAll(".ad-block, aside").forEach((block) => {
+      const ads = Array.from(block.querySelectorAll("ins.adsbygoogle"));
+      if (ads.length <= 1) return;
+      const device = isMobileDevice() ? "mobile" : "pc";
+      const activeClass = device === "mobile" ? "ad-sp" : "ad-pc";
+      let kept = false;
+      ads.forEach((ad) => {
+        if (!kept && ad.classList.contains(activeClass)) {
+          kept = true;
+          normalizeElement(ad, device);
+        } else {
+          ad.remove();
+        }
+      });
     });
   }
 
-  /**
-   * 画面サイズ変更時の再調整
-   */
   function handleResize() {
-    // デバウンス処理
     clearTimeout(window.responsiveAdsTimeout);
     window.responsiveAdsTimeout = setTimeout(() => {
-      log('[ResponsiveAds] Screen resized, rechecking...');
       setupResponsiveAds();
       fixDuplicateAds();
-    }, 300);
+    }, 250);
   }
 
-  /**
-   * 初期化
-   */
   function init() {
-    log('[ResponsiveAds] Initializing responsive ads controller...');
-    
-    // 初期設定
     setupResponsiveAds();
     fixDuplicateAds();
-    
-    // リサイズイベントリスナーを追加
-    window.addEventListener('resize', handleResize, { passive: true });
-    
-    // オリエンテーション変更対応（モバイル）
-    if ('orientation' in window) {
-      window.addEventListener('orientationchange', () => {
-        setTimeout(handleResize, 100);
-      });
-    }
-    
-    log('[ResponsiveAds] Initialization complete');
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("orientationchange", handleResize, { passive: true });
   }
 
-  // DOMContentLoaded後に初期化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
 
-  // 外部からアクセス可能なAPIを提供
   window.ResponsiveAds = {
-    createAdElement: createAdElement,
-    isMobileDevice: isMobileDevice,
-    fixDuplicateAds: fixDuplicateAds,
-    AD_SLOTS: AD_SLOTS,
-    AD_CLIENT: AD_CLIENT
+    createAdElement,
+    isMobileDevice,
+    fixDuplicateAds,
+    setupResponsiveAds,
+    AD_SLOTS,
+    AD_CLIENT
   };
-
 })();

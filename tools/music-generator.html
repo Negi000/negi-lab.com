@@ -10,12 +10,12 @@
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://cdnjs.cloudflare.com https://ep2.adtrafficquality.google https://nbrosowsky.github.io;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com *.google.com *.doubleclick.net https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: *.google.com *.doubleclick.net www.amazon.co.jp *.afl.rakuten.co.jp hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://*.google.com https://ep2.adtrafficquality.google;
-    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://tonejs.github.io https://gleitz.github.io https://nbrosowsky.github.io https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    media-src 'self' https://nbrosowsky.github.io;
+    connect-src 'self' https://www.google-analytics.com *.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    media-src 'self' blob:;
     frame-src 'self' *.google.com *.doubleclick.net https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com https://ep1.adtrafficquality.google;
     worker-src 'self' blob:;
     object-src 'none';
@@ -26,91 +26,26 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
 
-  <title data-translate-key="pageTitle">【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com</title>
-  <meta name="description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  <title data-translate-key="pageTitle">無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com</title>
+  <meta name="description" data-translate-key="metaDescription" content="ジャンル、ムード、テンポ、キーを選んで、ブラウザ内でBGMやメロディの下書きを生成できる作曲支援ツールです。" />
 
   <!-- OG Tags -->
-  <meta property="og:title" data-translate-key="pageTitle" content="【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com" />
-  <meta property="og:description" data-translate-key="metaDescription" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  <meta property="og:title" data-translate-key="pageTitle" content="無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com" />
+  <meta property="og:description" data-translate-key="metaDescription" content="ジャンル、ムード、テンポ、キーを選んで、ブラウザ内でBGMやメロディの下書きを生成できる作曲支援ツールです。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/music-generator.html" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】AI音楽生成ツール - 作曲・BGM作成 | negi-lab.com" />
-  <meta name="twitter:description" content="キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com" />
+  <meta name="twitter:description" content="ジャンル、ムード、テンポ、キーを選んで、ブラウザ内でBGMやメロディの下書きを生成できる作曲支援ツールです。" />
   <meta property="og:site_name" content="negi-lab.com" />
 
-  <!-- Suppress warnings early -->
-  <script>
-    // Suppress specific development warnings early
-    const originalConsoleWarn = console.warn;
-    const originalConsoleError = console.error;
-
-    console.warn = function(...args) {
-      const message = args[0];
-      if (typeof message === 'string') {
-        // Suppress common development warnings and Tone.js warnings
-        if (message.includes('ScriptProcessorNode is deprecated') ||
-            message.includes('AudioContext was not allowed to start') ||
-            message.includes('Tone.js') ||
-            message.includes('AudioWorkletNode') ||
-            message.includes('autoplay') ||
-            message.includes('user gesture')) {
-          return; // Suppress these warnings
-        }
-      }
-      originalConsoleWarn.apply(console, args);
-    };
-
-    console.error = function(...args) {
-      const message = args[0];
-      if (typeof message === 'string') {
-        if (message.includes('AudioContext was not allowed to start') ||
-            message.includes('ScriptProcessorNode') ||
-            message.includes('AudioWorkletNode') ||
-            message.includes('404') ||
-            message.includes('Failed to load resource') ||
-            message.includes('tonejs-instruments/samples')) {
-          return; // Suppress these errors
-        }
-      }
-      originalConsoleError.apply(console, args);
-    };
-
-    // Override network error console output
-    const originalFetch = window.fetch;
-    window.fetch = function(...args) {
-      return originalFetch.apply(this, args).catch(error => {
-        // Suppress 404 errors for instrument samples
-        if (error.message && (error.message.includes('404') || args[0].includes('tonejs-instruments'))) {
-          return Promise.reject(error); // Still reject but don't log
-        }
-        console.error('Network error:', error);
-        return Promise.reject(error);
-      });
-    };
-
-    // Override XMLHttpRequest to suppress 404 errors
-    const originalXHROpen = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function(method, url, ...args) {
-      this.addEventListener('error', function() {
-        if (url.includes('tonejs-instruments') || url.includes('.mp3')) {
-          // Suppress these errors
-          return;
-        }
-      });
-      return originalXHROpen.call(this, method, url, ...args);
-    };
-  </script>
-
-  <!-- Tailwind CSS - Development Mode -->
+  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
-  <script>
-    // Configure Tailwind
-    if (window.tailwind) {
-}
-  </script>
 
   <style>
     .form-input, .form-select {
@@ -169,11 +104,8 @@
   <!-- Fonts and Local Scripts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
-  <!-- Tone.js and Instruments -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.28/build/Midi.min.js"></script>
-  <script src="https://nbrosowsky.github.io/tonejs-instruments/Tonejs-Instruments.js"></script>
+  <!-- Local audio runtime -->
+  <script src="../js/vendor/tone-14.7.77.js"></script>
   <script src="../js/common-utils.js"></script>
   <script src="../js/music-generator-translations.js"></script>
   <script src="../js/portal-translations.js"></script>
@@ -186,8 +118,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】AI音楽生成ツール - 作曲・BGM作成",
-    "description": "キーワードやジャンルを指定するだけで、AIが音楽を自動生成。音楽理論に基づいた高品質な楽曲を無料で作成できます。動画のBGMやコンテンツ制作に最適です。",
+    "name": "無料ブラウザ作曲支援ツール - BGM・メロディ生成",
+    "description": "ジャンル、ムード、テンポ、キーを選んで、ブラウザ内でBGMやメロディの下書きを生成できる作曲支援ツールです。",
     "url": "https://negi-lab.com/tools/music-generator.html",
     "applicationCategory": "Creative tool",
     "operatingSystem": "Any",
@@ -227,7 +159,7 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "【無料】AI音楽生成ツール - 作曲・BGM作成",
+        "name": "無料ブラウザ作曲支援ツール - BGM・メロディ生成",
         "item": "https://negi-lab.com/tools/music-generator.html"
       }
     ]
@@ -241,7 +173,7 @@
         "name": "このツールは無料で使えますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。ページ内に広告やアフィリエイトリンクを含む場合があります。"
         }
       },
       {
@@ -311,7 +243,7 @@
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="main.title">音楽生成ツール</h1>
         <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="main.subtitle">
-          音楽理論に基づき、キーワードや感情から高品質なオリジナル楽曲を生成します。
+          ジャンル、ムード、テンポ、キーワードから、BGMやメロディの下書きを生成します。
         </p>
       </div>
 
@@ -460,7 +392,7 @@
 
                 <!-- Tempo -->
                 <div>
-                    <label for="tempo" class="block text-sm font-medium text-gray-700" data-translate="tempo_label">テンポ (BPM)</label>
+                    <label for="tempo" class="block text-sm font-medium text-gray-700" data-translate="tempo_bpm_label">テンポ (BPM)</label>
                     <div class="flex items-center space-x-3 mt-1">
                         <input type="range" id="tempo" name="tempo" min="60" max="180" value="120" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                         <span id="tempo-value" class="text-sm font-mono text-gray-600">120</span>
@@ -495,7 +427,7 @@
               </button>
               <div id="loading-indicator" class="hidden text-center mt-2 text-sm text-gray-600">
                 <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-accent mx-auto mb-1"></div>
-                <span data-translate-key="status.generating">AIが作曲中です...</span>
+                <span data-translate-key="status.generating">生成中...</span>
               </div>
             </div>
           </div>
@@ -555,7 +487,6 @@
         </div>
       </div>
     </div>
-  </main>
     <!-- フッター直前広告 -->
     <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
       <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
@@ -572,7 +503,7 @@
                 <div class="space-y-4">
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="howTo.item1.title">1. ジャンルとムードのルールブック</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="howTo.item1.desc">各ジャンル・ムードに最適なテンポ、スケール、コード進行、リズムパターンのルールを定義しています。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item1.desc">各ジャンル・ムードに合わせたテンポ、スケール、コード進行、リズムパターンの候補を切り替えます。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="howTo.item2.title">2. ダイアトニックコード理論</h3>
@@ -584,15 +515,15 @@
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="howTo.item4.title">4. 曲の展開とダイナミクス</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="howTo.item4.desc">Aメロ→Bメロ→サビといった典型的な曲の構造を生成し、セクションごとに楽器の編成や音量を変化させ、聴き応えのある展開を作ります。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item4.desc">セクションごとに音の密度や強弱を変え、短い下書きでも単調になりにくい展開を目指します。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="howTo.item5.title">5. キーワード解析システム</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="howTo.item5.desc">入力された自然言語を解析し、「疾走感」ならテンポを上げる、「宇宙」ならシンセサイザーを使うなど、音楽のパラメータに変換します。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item5.desc">入力されたキーワードをヒントとして、テンポや雰囲気、楽器選びにゆるく反映します。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item6.title">6. リアルな楽器音源</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="howTo.item6.desc">Tone.js-Instrumentsライブラリを使用し、実際の楽器からサンプリングされたリアルな音源で演奏します。</p>
+                        <h3 class="font-semibold text-accent" data-translate-key="howTo.item6.title">6. ブラウザ内シンセ再生</h3>
+                        <p class="text-sm text-gray-600" data-translate-key="howTo.item6.desc">ローカルのTone.jsシンセサイザーを使うため、外部サンプル音源の読み込みを待たずに再生できます。</p>
                     </div>
                 </div>
             </div>
@@ -602,23 +533,23 @@
                 <div class="space-y-4">
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item1.title">動画コンテンツのBGM</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="useCase.item1.desc">YouTube動画、Vlog、企業プロモーションビデオなど、著作権フリーのオリジナルBGMとして利用できます。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item1.desc">YouTube動画、Vlog、プロモーション動画などのBGM案を、制作前のラフとして試せます。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item2.title">ゲーム・アプリ開発</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="useCase.item2.desc">インディーゲームや個人開発アプリの背景音楽、効果音のベースとして活用し、開発コストを削減します。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item2.desc">インディーゲームや個人開発アプリの雰囲気確認用に、短いループ案を作れます。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item3.title">プレゼンテーション</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="useCase.item3.desc">発表の雰囲気やテーマに合わせた音楽を流すことで、聴衆のエンゲージメントを高めます。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item3.desc">発表やデモの雰囲気に合わせた、シンプルなテーマ案を試せます。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item4.title">ポッドキャスト・配信</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="useCase.item4.desc">オープニング、エンディング、ジングルなど、番組のブランドイメージに合った音楽を簡単に作成できます。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item4.desc">オープニング、エンディング、ジングルなどの短いアイデア作りに向いています。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item5.title">作曲・編曲のアイデア出し</h3>
-                        <p class="text-sm text-gray-600" data-translate-key="useCase.item5.desc">AIが生成したメロディやコード進行をヒントに、新しい楽曲のインスピレーションを得ることができます。</p>
+                        <p class="text-sm text-gray-600" data-translate-key="useCase.item5.desc">生成されたメロディやコード進行を、編曲や作曲の出発点として使えます。</p>
                     </div>
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="font-semibold text-accent" data-translate-key="useCase.item6.title">リラクゼーション・作業用BGM</h3>
@@ -636,10 +567,12 @@
     <ul class="list-disc ml-5 mb-2">
       <li data-translate-key="siteInfo.point1">本サイト・各ツールはnegi-lab.comが独自開発・運営しています。</li>
       <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>
     <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">

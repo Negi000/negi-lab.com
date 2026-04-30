@@ -7,7 +7,6 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
 
-  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline'
@@ -24,108 +23,142 @@
     base-uri 'self';
   " />
 
-  <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="faviconOgGen.pageTitle">【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成 | negi-lab.com</title>
-  <meta name="description" data-translate-key="faviconOgGen.metaDescription" content="Webサイト用ファビコンとOGP画像を複数サイズで一括生成する専門ツール。SEO対策・ブランディング・SNS最適化に必要な全サイズのファビコンとソーシャルメディア画像を効率的に作成できます。" />
-  <meta property="og:title" content="【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成 | negi-lab.com" />
-  <meta property="og:description" content="Webサイトのファビコンやソーシャルメディア用OGP画像を簡単生成。複数サイズ一括出力でホームページ制作・ブログ運営に便利。" />
+  <title>Favicon・OGP画像ジェネレーター | negi-lab.com</title>
+  <meta name="description" content="Favicon、Apple Touch Icon、Android/PWAアイコン、OGP画像をブラウザ内で生成できる無料ツール。PNG保存、ZIP一括保存、設置用HTMLのコピーに対応しています。" />
+  <meta property="og:title" content="Favicon・OGP画像ジェネレーター | negi-lab.com" />
+  <meta property="og:description" content="サイト用のFavicon、アプリアイコン、OGP画像をブラウザ内で作成。画像検証、プレビュー、PNG/ZIP保存、設置タグのコピーに対応。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/favicon-og-generator.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成 | negi-lab.com" />
-  <meta name="twitter:description" content="Webサイト用ファビコンとOGP画像を複数サイズで一括生成する専門ツール。SEO対策・ブランディング・SNS最適化に必要な全サイズのファビコンとソーシャルメディア画像を効率的に作成できます。" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="Favicon・OGP画像ジェネレーター | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="Favicon・OGP画像ジェネレーター | negi-lab.com" />
+  <meta name="twitter:description" content="Favicon、Apple/Androidアイコン、OGP画像をブラウザ内で生成し、PNGまたはZIPで保存できます。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/favicon-og-generator.html" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
 
-  <!-- Security and Common Utilities -->
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
-  <script>
-window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
-    window.metaDescriptionTranslationKey = "faviconOgGen.metaDescription";
-  </script>
 
-  <!-- Custom Styles -->
   <style>
-    .form-input, .form-select, .form-button, .form-textarea {
-      padding: 0.5rem;
+    .form-input,
+    .form-select,
+    .form-button,
+    .form-textarea {
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
+      border-radius: 0.5rem;
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
     }
 
-    .form-input:focus, .form-select:focus, .form-button:focus, .form-textarea:focus {
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: #fff;
+      padding: 0.65rem 0.75rem;
+      width: 100%;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-button:focus,
+    .form-textarea:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgb(34 197 94 / 0.24);
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
-      border-color: #4ADE80;
     }
 
     .form-button {
-      background: #4ADE80;
+      align-items: center;
+      background: #16a34a;
       color: #fff;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .form-button:hover:not(:disabled) {
-      background: #10b981;
-    }
-
-    .form-button:disabled {
-      background: #d1d5db;
-      color: #9ca3af;
-      cursor: not-allowed;
-    }
-
-    .drop-area {
-      border: 2px dashed #d1d5db;
-      border-radius: 0.5rem;
-      padding: 2rem;
+      display: inline-flex;
+      font-weight: 700;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.65rem 1rem;
       text-align: center;
+    }
+
+    .form-button:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: #15803d;
+    }
+
+    .form-button.secondary {
+      background: #fff;
+      color: #166534;
+    }
+
+    .form-button.secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: #f0fdf4;
+    }
+
+    .form-button:disabled,
+    .form-button[aria-disabled="true"] {
+      background: #e5e7eb;
+      color: #6b7280;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .drop-zone {
+      border: 2px dashed #86efac;
+      border-radius: 0.5rem;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
+      display: block;
+      padding: 1rem;
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
 
-    .drop-area.dragover {
-      border-color: #4ADE80;
-      background: rgba(74, 222, 128, 0.1);
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      background: #f0fdf4;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgb(34 197 94 / 0.14);
     }
 
-    .preview-image {
-      max-width: 100%;
-      max-height: 16rem;
-      border-radius: 0.375rem;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    .checkerboard {
+      background-color: #fff;
+      background-image:
+        linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+      background-size: 16px 16px;
+    }
+
+    .sr-only {
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
     }
   </style>
-  <script src="../js/tool-page-enhancements.js" defer></script>
 
-
-  <script src="../js/ads-consent-loader.js" defer></script>
   <script type="application/ld+json" id="tool-structured-data">
 [
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成",
-    "description": "Webサイト用ファビコンとOGP画像を複数サイズで一括生成する専門ツール。SEO対策・ブランディング・SNS最適化に必要な全サイズのファビコンとソーシャルメディア画像を効率的に作成できます。",
+    "name": "Favicon・OGP画像ジェネレーター",
+    "description": "Favicon、アプリアイコン、OGP画像をブラウザ内で生成できる無料ツールです。PNG保存、ZIP一括保存、設置用HTMLのコピーに対応しています。",
     "url": "https://negi-lab.com/tools/favicon-og-generator.html",
-    "applicationCategory": "Website utility",
+    "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
-    "browserRequirements": "Requires a modern web browser",
+    "browserRequirements": "Requires a modern browser with Canvas support",
     "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
+    "inLanguage": "ja",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -156,7 +189,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "【無料】ファビコン・OGP画像ジェネレータ - Webサイト用画像作成",
+        "name": "Favicon・OGP画像ジェネレーター",
         "item": "https://negi-lab.com/tools/favicon-og-generator.html"
       }
     ]
@@ -167,26 +200,18 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "このツールは無料で使えますか？",
+        "name": "アップロードした画像はサーバーへ送信されますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "このツールでは、選択した画像の読み込み、リサイズ、PNG/ZIP生成をブラウザ内で行います。画像ファイルそのものを本ツールのサーバーへ送信する処理はありません。"
         }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
+        "name": "OGP画像の推奨サイズは？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+          "text": "多くのSNSで扱いやすい標準的なサイズとして1200x630pxを用意しています。公開前に実際のSNSカード表示でも確認してください。"
         }
       }
     ]
@@ -198,7 +223,7 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
-      <nav>
+      <nav aria-label="グローバルナビゲーション">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
@@ -216,237 +241,223 @@ window.pageTitleTranslationKey = "faviconOgGen.pageTitle";
     </div>
   </header>
 
-  <!-- ブレッドクラムナビゲーション -->
-  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="パンくずリスト">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
         <li><a href="/" class="text-accent hover:underline" data-translate-key="header.nav.home">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
         <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="faviconOgGen.breadcrumbCurrent">ファビコン・OG画像ジェネレータ</li>
+        <li class="text-gray-800 font-medium" aria-current="page">Favicon・OGP画像ジェネレーター</li>
       </ol>
     </div>
   </nav>
 
-  <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="faviconOgGen.mainTitle">ファビコン&OG画像ジェネレータ</h1>
+  <main class="flex-grow">
+    <section class="py-10 md:py-14">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mb-8 max-w-3xl">
+          <p class="text-sm font-semibold text-green-700">ブラウザ内で生成 / PNG・ZIP保存</p>
+          <h1 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Favicon・OGP画像ジェネレーター</h1>
+          <p class="mt-3 text-gray-700 leading-7">
+            サイト用のFavicon、Apple Touch Icon、Android/PWAアイコン、OGP画像を同じ素材と色でまとめて作成できます。画像は端末内で処理され、本ツールのサーバーへ送信する処理はありません。
+          </p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="generator-heading">
+            <h2 id="generator-heading" class="text-xl font-bold text-gray-900">1. 素材と出力を設定</h2>
+            <p class="mt-2 text-sm leading-6 text-gray-600">画像なしでも文字と背景色だけで生成できます。対応形式はPNG/JPEG/WebP/GIFです。SVGは安全性と表示差異を避けるため対象外です。</p>
+
+            <div id="generationAlert" class="hidden mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+              <span id="generationAlertText"></span>
+            </div>
+
+            <div class="mt-5">
+              <label id="dropZone" for="imageInput" class="drop-zone" tabindex="0">
+                <span class="block text-sm font-bold text-gray-900">ロゴ画像を選択、またはドラッグ＆ドロップ</span>
+                <span class="mt-1 block text-sm text-gray-600">PNG/JPEG/WebP/GIF、最大10MB、最大1600万ピクセル</span>
+                <span id="fileName" class="mt-2 block text-xs text-gray-500" aria-live="polite">画像なし。文字と背景色だけでも生成できます。</span>
+              </label>
+              <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="sr-only" />
+            </div>
+
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="textInput" class="mb-1 block text-sm font-bold text-gray-800">表示テキスト</label>
+                <input type="text" id="textInput" maxlength="48" class="form-input" value="N" placeholder="例: N / negi-lab" autocomplete="off" />
+              </div>
+              <div>
+                <label for="sizeSelect" class="mb-1 block text-sm font-bold text-gray-800">出力サイズ</label>
+                <select id="sizeSelect" class="form-select">
+                  <option value="favicon32">Favicon 32x32</option>
+                  <option value="favicon16">Favicon 16x16</option>
+                  <option value="apple180">Apple Touch Icon 180x180</option>
+                  <option value="android192">Android/PWA Icon 192x192</option>
+                  <option value="android512">Android/PWA Icon 512x512</option>
+                  <option value="ogp">OGP 1200x630</option>
+                  <option value="custom">カスタム</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="bgColorInput" class="mb-1 block text-sm font-bold text-gray-800">背景色</label>
+                <input type="color" id="bgColorInput" value="#16a34a" class="form-input h-11 p-1" />
+              </div>
+              <div>
+                <label for="textColorInput" class="mb-1 block text-sm font-bold text-gray-800">文字色</label>
+                <input type="color" id="textColorInput" value="#ffffff" class="form-input h-11 p-1" />
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+              <div>
+                <label for="fitSelect" class="mb-1 block text-sm font-bold text-gray-800">画像の収め方</label>
+                <select id="fitSelect" class="form-select">
+                  <option value="contain">全体を収める</option>
+                  <option value="cover">余白なく塗る</option>
+                </select>
+              </div>
+              <div id="customSizeGroup" class="grid grid-cols-[1fr_auto_1fr] items-end gap-2">
+                <div>
+                  <label for="customWidth" class="mb-1 block text-sm font-bold text-gray-800">幅</label>
+                  <input type="number" id="customWidth" class="form-input" min="16" max="2048" value="512" inputmode="numeric" />
+                </div>
+                <span id="customX" class="pb-3 text-gray-500">x</span>
+                <div>
+                  <label for="customHeight" class="mb-1 block text-sm font-bold text-gray-800">高さ</label>
+                  <input type="number" id="customHeight" class="form-input" min="16" max="2048" value="512" inputmode="numeric" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 space-y-5">
+              <div>
+                <div class="flex items-center justify-between gap-3">
+                  <label for="paddingRange" class="text-sm font-bold text-gray-800">余白</label>
+                  <output id="paddingValue" for="paddingRange" class="text-sm font-bold text-green-700">18%</output>
+                </div>
+                <input id="paddingRange" type="range" min="0" max="32" value="18" class="mt-2 w-full accent-green-600" />
+              </div>
+              <div>
+                <div class="flex items-center justify-between gap-3">
+                  <label for="radiusRange" class="text-sm font-bold text-gray-800">角丸</label>
+                  <output id="radiusValue" for="radiusRange" class="text-sm font-bold text-green-700">18%</output>
+                </div>
+                <input id="radiusRange" type="range" min="0" max="50" value="18" class="mt-2 w-full accent-green-600" />
+              </div>
+            </div>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <button id="generateBtn" type="button" class="form-button">生成してプレビュー</button>
+              <button id="clearImageBtn" type="button" class="form-button secondary" disabled>画像を外す</button>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="preview-heading">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 id="preview-heading" class="text-xl font-bold text-gray-900">2. プレビュー・保存・設置</h2>
+                <p id="generationStatus" class="mt-2 text-sm leading-6 text-gray-600" aria-live="polite">設定を変更するとプレビューを更新できます。</p>
+              </div>
+            </div>
+
+            <div id="resultContainer" class="mt-5">
+              <div class="checkerboard flex min-h-72 items-center justify-center rounded-lg border border-gray-200 p-4">
+                <canvas id="resultCanvas" class="max-h-[420px] max-w-full rounded" aria-label="生成された画像のプレビュー"></canvas>
+              </div>
+            </div>
+
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              <a id="downloadLink" href="#" download="favicon-32x32.png" class="form-button" aria-disabled="true">PNGをダウンロード</a>
+              <button id="copyImageBtn" type="button" class="form-button secondary" disabled>画像をコピー</button>
+              <button id="downloadZipBtn" type="button" class="form-button secondary">基本セットをZIP保存</button>
+              <button id="copyMarkupBtn" type="button" class="form-button secondary">HTMLタグをコピー</button>
+            </div>
+
+            <div class="mt-5">
+              <label for="markupSnippet" class="mb-2 block text-sm font-bold text-gray-800">設置用HTML</label>
+              <textarea id="markupSnippet" class="form-textarea min-h-36 font-mono text-xs leading-5" readonly spellcheck="false"></textarea>
+            </div>
+
+            <div class="mt-5 rounded-lg border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
+              <p class="font-bold">ZIPに含まれるもの</p>
+              <p class="mt-1">favicon-16x16.png、favicon-32x32.png、apple-touch-icon.png、android-chrome-192x192.png、android-chrome-512x512.png、og-image.png、設置用HTML、manifestサンプルを生成します。</p>
+            </div>
+          </section>
+        </div>
       </div>
-      <aside class="mb-8" aria-label="スポンサーリンク 上部広告">
-        <div class="text-xs text-gray-500 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-      </aside>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4" data-translate-key="faviconOgGen.lead">ファビコンやOGP画像を簡単に生成・ダウンロードできるツールです。WebサイトやSNS用のアイコン・サムネイル作成に。</p>
-        <div class="space-y-4">
+    </section>
+
+    <section class="border-y border-gray-200 bg-white py-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
-            <label class="block font-semibold mb-1" data-translate-key="faviconOgGen.uploadOptional">画像アップロード（任意）</label>
-            <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full" />
-            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
+            <h2 class="text-2xl font-bold text-gray-900">作成前のチェックポイント</h2>
+            <p class="mt-3 text-gray-600 leading-7">
+              小さなタブ用のFaviconと、SNSで共有されるOGP画像では見え方が大きく変わります。保存後は、ブラウザタブ、スマートフォンのホーム画面、SNSカードの実表示で確認してください。
+            </p>
           </div>
-          <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold" data-translate-key="faviconOgGen.textOptional">テキスト（任意）</label>
-            <input type="text" id="textInput" maxlength="32" class="form-input flex-1 min-w-[120px]" data-translate-placeholder-key="faviconOgGen.textPlaceholder" placeholder="例: N" />
-            <label class="block font-semibold ml-2" data-translate-key="faviconOgGen.bgColor">背景色</label>
-            <input type="color" id="bgColorInput" value="#4ADE80" class="form-input w-10 h-10 p-0 border-0" />
-            <label class="block font-semibold ml-2" data-translate-key="faviconOgGen.textColor">文字色</label>
-            <input type="color" id="textColorInput" value="#ffffff" class="form-input w-10 h-10 p-0 border-0" />
-          </div>
-          <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold" data-translate-key="faviconOgGen.size">サイズ</label>
-            <select id="sizeSelect" class="form-input">
-              <option value="favicon" data-translate-key="faviconOgGen.size.favicon">ファビコン(32x32)</option>
-              <option value="ogp" data-translate-key="faviconOgGen.size.ogp">OGP(1200x630)</option>
-              <option value="icon180" data-translate-key="faviconOgGen.size.icon180">iOSアイコン(180x180)</option>
-              <option value="icon192" data-translate-key="faviconOgGen.size.icon192">Androidアイコン(192x192)</option>
-              <option value="custom" data-translate-key="faviconOgGen.size.custom">カスタム</option>
-            </select>
-            <input type="number" id="customWidth" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
-            <span class="mx-1" id="customX" style="display:none;">×</span>
-            <input type="number" id="customHeight" class="form-input w-20" min="16" max="2048" value="512" style="display:none;" />
-          </div>
-          <button id="generateBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" data-translate-key="faviconOgGen.generate">画像生成＆プレビュー</button>
-          <div id="resultContainer" class="mt-6 hidden">
-            <h2 class="text-base font-semibold mb-2" data-translate-key="faviconOgGen.previewDownload">プレビュー＆ダウンロード</h2>
-            <p id="generationStatus" class="text-xs text-gray-500 mb-2" aria-live="polite"></p>
-            <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
-            <a id="downloadLink" href="#" download="favicon.png" class="text-accent underline text-xs" data-translate-key="faviconOgGen.download">画像をダウンロード</a>
+          <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900">Faviconは単純に</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">16pxや32pxでは細かいロゴや長い文字がつぶれます。短い文字、強いコントラスト、はっきりした形が安定します。</p>
+            </div>
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900">OGPは余白を残す</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">SNSやチャットでは端が切れる場合があります。中心に主題を置き、外側に余白を残すと見切れを避けやすくなります。</p>
+            </div>
+            <div class="py-5 md:px-5">
+              <h3 class="text-base font-semibold text-gray-900">公開前に実機確認</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">生成結果はブラウザのCanvas品質に依存します。公開前に実際の表示先でサイズ、色、文字の読みやすさを確認してください。</p>
+            </div>
           </div>
         </div>
       </div>
-  <div class="text-xs text-gray-500 mt-6 mb-1">スポンサーリンク</div>
-  <div id="smart-ads" class="flex justify-center my-8"></div>
+    </section>
 
-      <!-- 教育的ガイド -->
-      <section class="mt-12 bg-white rounded-xl shadow-lg p-6 md:p-8" id="educational-guide">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.sectionTitle">ファビコン・OGP画像作成ガイド</h2>
-
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.whatIs">ファビコン・OGPとは</h3>
-            <div class="space-y-3 text-gray-700 text-sm">
-              <p><strong>ファビコン（Favicon）</strong>は、ブラウザのタブやブックマークに表示される小さなアイコンです。Webサイトの顔として重要な役割を果たします。</p>
-              <p><strong>OGP画像（Open Graph画像）</strong>は、SNSでシェアされた際に表示されるサムネイル画像で、クリック率向上に大きく影響します。</p>
-              <p>これらの画像は、ブランディング・ユーザビリティ・SEO対策において非常に重要な要素です。</p>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.sizes">各サイズの用途</h3>
-            <div class="space-y-2 text-gray-700 text-sm">
-              <div class="bg-gray-50 p-3 rounded">
-                <strong>32×32px（ファビコン）</strong><br>
-                ブラウザタブ・ブックマーク用の基本サイズ
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <strong>1200×630px（OGP）</strong><br>
-                Twitter・Facebook等のSNSシェア用画像
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <strong>180×180px（iOS）</strong><br>
-                iPhoneホーム画面アイコン用
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <strong>192×192px（Android）</strong><br>
-                Androidホーム画面アイコン用
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 技術解説 -->
-      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.techSpec">技術仕様と実装方法</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.htmlImpl">HTML実装方法</h3>
-            <div class="bg-gray-100 p-4 rounded-lg text-sm">
-              <code class="text-gray-800">
-                &lt;!-- ファビコン --&gt;<br>
-                &lt;link rel="icon" href="/favicon.ico"&gt;<br>
-                &lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;<br><br>
-                &lt;!-- OGP画像 --&gt;<br>
-                &lt;meta property="og:image" content="/ogp-image.png"&gt;<br>
-                &lt;meta property="og:image:width" content="1200"&gt;<br>
-                &lt;meta property="og:image:height" content="630"&gt;
-              </code>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4" data-translate-key="guide.optimization">最適化のポイント</h3>
-            <ul class="space-y-2 text-gray-700 text-sm">
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>シンプルで識別しやすいデザイン</li>
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>小さいサイズでも視認性を保つ</li>
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>ブランドカラーの統一</li>
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>適切なファイル形式（PNG推奨）</li>
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>複数サイズの用意</li>
-              <li class="flex items-start"><span class="text-accent mr-2">✓</span>OGP画像は文字を大きく配置</li>
+    <section class="py-8">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid gap-6 md:grid-cols-[1fr_1fr]">
+          <div class="text-sm text-gray-700">
+            <h2 class="font-bold text-base text-gray-900">プライバシーと安全性</h2>
+            <ul class="mt-2 grid gap-2">
+              <li>選択した画像の検証、プレビュー、リサイズ、ZIP生成はブラウザ内で行います。</li>
+              <li>画像形式、ファイルサイズ、画像ピクセル数を確認し、SVGや不明な形式は読み込みません。</li>
+              <li>入力テキストやファイル名はHTMLとして挿入せず、テキストとして画面へ反映します。</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6" data-translate-key="guide.faq">よくある質問（FAQ）</h2>
-        <div class="space-y-4">
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="font-semibold cursor-pointer text-gray-800">ファビコンが表示されないのはなぜですか？</summary>
-            <div class="mt-3 text-gray-700 text-sm">
-              <p>ブラウザのキャッシュが原因の場合があります。Ctrl+F5でハードリフレッシュするか、HTMLの&lt;head&gt;内に正しくlink要素を記述しているか確認してください。</p>
+          <div class="text-sm text-gray-700">
+            <h2 class="font-bold text-base text-gray-900">関連ツール</h2>
+            <p class="mt-2 leading-7">サイト制作や公開前チェックに使える無料ツールもあわせてご利用ください。</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <a class="rounded border border-green-200 px-3 py-2 text-green-800 hover:bg-green-50" href="/#tools">ツール一覧を見る</a>
+              <a class="rounded border border-green-200 px-3 py-2 text-green-800 hover:bg-green-50" href="/privacy-policy-unified.html">プライバシーポリシー</a>
+              <a class="rounded border border-green-200 px-3 py-2 text-green-800 hover:bg-green-50" href="mailto:negilab.com@gmail.com">改善リクエスト</a>
             </div>
-          </details>
-
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="font-semibold cursor-pointer text-gray-800">OGP画像の推奨サイズは？</summary>
-            <div class="mt-3 text-gray-700 text-sm">
-              <p>1200×630pxが標準的です。Facebook・Twitter・LINEなど主要SNSで最適に表示されます。最小サイズは600×315pxです。</p>
-            </div>
-          </details>
-
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="font-semibold cursor-pointer text-gray-800">どのファイル形式が良いですか？</summary>
-            <div class="mt-3 text-gray-700 text-sm">
-              <p>ファビコンはPNG形式を推奨。透明背景が使えます。OGP画像もPNG・JPEG両方対応していますが、品質を重視するならPNG、ファイルサイズを抑えるならJPEGが適しています。</p>
-            </div>
-          </details>
-
-          <details class="border border-gray-200 rounded-lg p-4">
-            <summary class="font-semibold cursor-pointer text-gray-800">モバイル対応は必要ですか？</summary>
-            <div class="mt-3 text-gray-700 text-sm">
-              <p>はい。iOS用（180×180px）、Android用（192×192px）のアイコンを用意することで、ホーム画面に追加された際に最適な表示が可能です。</p>
-            </div>
-          </details>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- 実用例セクション -->
-  <section class="bg-white py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="cases.title">作成前のチェックポイント</h2>
-          <p class="text-gray-600 leading-7">
-            アイコンやOGP画像は、実際に表示される場所が小さく、背景色や文字量の影響を受けやすい素材です。生成前に用途を決めると、使い回しやすい画像になります。
-          </p>
-          <a href="#textInput" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            入力欄へ移動
-          </a>
-        </div>
-        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">タブで読める形にする</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              ファビコンは32px程度でも判別できる単色・短い文字・余白が向いています。細かいロゴや長い文字はつぶれやすくなります。
-            </p>
-          </div>
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">OGPは余白を残す</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              SNSやチャットでは端が切れる場合があります。中央に主題を置き、周囲に余白を残すと見切れを避けやすくなります。
-            </p>
-          </div>
-          <div class="py-5 md:px-5">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">保存後に実機で確認</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              生成した画像は、ブラウザタブ、スマホホーム画面、SNSプレビューなど、実際の表示先で一度確認してください。
-            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
-      <li data-translate-key="siteInfo.point1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li data-translate-key="siteInfo.point3">正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-    </ul>
-    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
-  </section>
-
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
+  <footer class="bg-gray-800 text-gray-300 py-7 text-center text-sm">
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2" aria-label="フッターナビゲーション">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
     <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
-  <!-- Translations and system -->
+
   <script src="../js/portal-translations.js"></script>
-  <script src="../js/favicon-og-generator-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
   <script src="../js/favicon-og-generator.js" defer></script>
+  <script src="../js/tool-page-enhancements.js" defer></script>
+  <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>

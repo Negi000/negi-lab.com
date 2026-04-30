@@ -1,4 +1,3 @@
-<!-- JSON⇔CSV/YAML⇔Excel変換ツール 雛形 -->
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
@@ -7,162 +6,103 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
-
-  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline'
-      https://cdn.jsdelivr.net
-      https://pagead2.googlesyndication.com
-      https://www.googletagmanager.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com;
-    font-src 'self'
-      https://fonts.gstatic.com;
+    script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    connect-src 'self'
-      https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    frame-src
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagservices.com https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   " />
-
-  <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="jsonCsvYamlExcel.pageTitle">【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com</title>
-  <meta name="description" data-translate-key="jsonCsvYamlExcel.metaDescription" content="JSON・CSV・YAML・Excel形式を高精度で相互変換できる専門データ処理ツール。API開発・データ分析・システム統合での効率的なデータ形式変換を実現する無料オンラインツールです。" />
-  <meta property="og:title" content="【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com" />
-  <meta property="og:description" content="JSON・CSV・YAML・Excelファイルを相互変換できる無料ツール。プログラミング・データ分析・システム連携に便利。" />
+  <title>JSON・CSV・YAML・Excel変換ツール | negi-lab.com</title>
+  <meta name="description" content="JSON、CSV、YAML、Excelファイルをブラウザ内で相互変換できる無料ツールです。貼り付け、サンプル入力、コピー、ダウンロードに対応しています。" />
+  <meta property="og:title" content="JSON・CSV・YAML・Excel変換ツール | negi-lab.com" />
+  <meta property="og:description" content="JSON、CSV、YAML、Excelをブラウザ内で相互変換。API開発、データ確認、設定ファイル整理に使える無料ツールです。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/json-csv-yaml-excel.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換 | negi-lab.com" />
-  <meta name="twitter:description" content="JSON・CSV・YAML・Excel形式を高精度で相互変換できる専門データ処理ツール。API開発・データ分析・システム統合での効率的なデータ形式変換を実現する無料オンラインツールです。" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="JSON・CSV・YAML・Excel変換ツール | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="JSON・CSV・YAML・Excel変換ツール | negi-lab.com" />
+  <meta name="twitter:description" content="JSON、CSV、YAML、Excelをブラウザ内で相互変換できる無料ツールです。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/json-csv-yaml-excel.html" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-    <!-- Data Processing Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
-          crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"
-          crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
-          crossorigin="anonymous"></script>
-
-  <!-- Security and Common Utilities -->
+  <link rel="stylesheet" href="/js/responsive-ads.css" />
+  <script src="/js/responsive-ads-controller.js"></script>
+  <script src="/js/vendor/papaparse-5.4.1.min.js" defer></script>
+  <script src="/js/vendor/js-yaml-4.1.0.min.js" defer></script>
+  <script src="/js/vendor/xlsx-0.18.5.full.min.js" defer></script>
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
   <script src="/js/portal-translations.js"></script>
   <script src="/js/tool-translation-system.js"></script>
-
-  <!-- Tailwind Configuration -->
-  <script>
-window.pageTitleTranslationKey = "jsonCsvYamlExcel.pageTitle";
-    window.metaDescriptionTranslationKey = "jsonCsvYamlExcel.metaDescription";
-  </script>
-
-  <!-- Custom Styles -->
   <style>
     .form-input, .form-select, .form-button, .form-textarea {
-      padding: 0.5rem;
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      border-radius: 0.5rem;
+      padding: 0.65rem 0.75rem;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
     }
-
     .form-input:focus, .form-select:focus, .form-button:focus, .form-textarea:focus {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 3px rgb(74 222 128 / 0.25);
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
-      border-color: #4ADE80;
     }
-
     .form-button {
-      background: #4ADE80;
+      align-items: center;
+      background: #22c55e;
       color: #fff;
-      transition: background 0.15s, color 0.15s;
+      display: inline-flex;
+      font-weight: 700;
+      justify-content: center;
     }
-
-    .form-button:hover:not(:disabled) {
-      background: #10b981;
+    .form-button:hover:not(:disabled) { background: #16a34a; }
+    .form-button.secondary {
+      background: #fff;
+      border-color: #86efac;
+      color: #166534;
     }
-
+    .form-button.secondary:hover:not(:disabled) { background: #f0fdf4; }
     .form-button:disabled {
-      background: #d1d5db;
+      background: #e5e7eb;
       color: #9ca3af;
       cursor: not-allowed;
     }
-
-    .drop-area {
-      border: 2px dashed #d1d5db;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .drop-area.dragover {
-      border-color: #4ADE80;
-      background: rgba(74, 222, 128, 0.1);
-    }
+    .notice[hidden] { display: none; }
   </style>
   <script type="application/ld+json" id="tool-structured-data">
 [
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換",
-    "description": "JSON・CSV・YAML・Excel形式を高精度で相互変換できる専門データ処理ツール。API開発・データ分析・システム統合での効率的なデータ形式変換を実現する無料オンラインツールです。",
+    "name": "JSON・CSV・YAML・Excel変換ツール",
+    "description": "JSON、CSV、YAML、Excelファイルをブラウザ内で相互変換できる無料ツールです。",
     "url": "https://negi-lab.com/tools/json-csv-yaml-excel.html",
-    "applicationCategory": "Developer tool",
+    "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser",
     "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "JPY"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "negi-lab.com",
-      "url": "https://negi-lab.com/"
-    }
+    "inLanguage": ["ja", "en"],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "publisher": { "@type": "Organization", "name": "negi-lab.com", "url": "https://negi-lab.com/" }
   },
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://negi-lab.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://negi-lab.com/tools/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "【無料】JSON・CSV・YAML・Excel変換ツール - データ形式相互変換",
-        "item": "https://negi-lab.com/tools/json-csv-yaml-excel.html"
-      }
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://negi-lab.com/" },
+      { "@type": "ListItem", "position": 2, "name": "ツール", "item": "https://negi-lab.com/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "JSON・CSV・YAML・Excel変換ツール", "item": "https://negi-lab.com/tools/json-csv-yaml-excel.html" }
     ]
   },
   {
@@ -171,27 +111,18 @@ window.pageTitleTranslationKey = "jsonCsvYamlExcel.pageTitle";
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "このツールは無料で使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
-        }
+        "name": "入力したデータはサーバーへ送信されますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "変換処理はブラウザ内で行われ、入力データを変換のために外部サーバーへ送信しません。" }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
-        }
+        "name": "対応している形式は何ですか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "JSON、CSV、YAML、Excel（.xlsx）の読み込みと、各形式への出力に対応しています。" }
       },
       {
         "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
-        }
+        "name": "変換結果を保存できますか？",
+        "acceptedAnswer": { "@type": "Answer", "text": "結果はクリップボードへコピーでき、JSON、CSV、YAML、XLSXファイルとしてダウンロードできます。" }
       }
     ]
   }
@@ -202,487 +133,130 @@ window.pageTitleTranslationKey = "jsonCsvYamlExcel.pageTitle";
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
-      <nav>
+      <nav aria-label="メインナビゲーション">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
-          <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
-          <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
+          <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
+          <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
           <li>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
-              <option value="ja" data-translate-key="option.ja">日本語</option>
-              <option value="en" data-translate-key="option.en">English</option>
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal">ガイド</button>
           </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ブレッドクラムナビゲーション -->
-  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-      <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
-        <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
-        <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">JSON/CSV/YAML/Excel変換ツール</li>
-      </ol>
-    </div>
-  </nav>
-
-  <main class="flex-grow py-12">
-    <!-- 上部広告 -->
-    <aside class="max-w-3xl mx-auto mb-10" aria-label="スポンサー広告">
-      <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-    </aside>
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="jsonCsvYamlExcel.mainTitle">JSON⇔CSV/YAML⇔Excel変換ツール</h1>
+  <main class="flex-grow">
+    <section class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-10 md:py-14">
+        <nav class="text-sm text-gray-500 mb-4" aria-label="パンくずリスト">
+          <a href="/" class="hover:text-accent">ホーム</a>
+          <span class="mx-2">/</span>
+          <a href="/tools/" class="hover:text-accent">ツール</a>
+          <span class="mx-2">/</span>
+          <span>データ変換</span>
+        </nav>
+        <p class="text-sm font-semibold text-accent mb-2">Browser-only converter</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-950">JSON・CSV・YAML・Excel変換ツール</h1>
+        <p class="mt-4 max-w-3xl text-gray-600 leading-7">貼り付けたテキストやファイルを、JSON、CSV、YAML、Excel形式へ変換します。APIレスポンス確認、表データの整理、設定ファイルの変換に使えます。</p>
       </div>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4">JSON・CSV・YAML・Excelファイルを相互に変換できるツールです。データの一括変換やプレビューも可能です。</p>
-        <div class="space-y-4">
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <aside class="max-w-3xl mx-auto mb-8" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+        <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+      </aside>
+
+      <div id="messageBox" class="notice mb-5 rounded-lg border px-4 py-3 text-sm" role="status" aria-live="polite" hidden></div>
+
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(340px,420px)]">
+        <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6 shadow-sm">
+          <h2 class="text-xl font-bold text-gray-950 mb-5">入力</h2>
+          <div class="space-y-5">
+            <div>
+              <label for="fileInput" class="block font-semibold mb-2">ファイルを選択</label>
+              <input type="file" id="fileInput" accept=".json,.csv,.yaml,.yml,.xlsx" class="form-input w-full bg-white" />
+              <p id="fileName" class="text-xs text-gray-500 mt-2">対応形式: .json / .csv / .yaml / .yml / .xlsx（10MBまで）</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+                <label for="textInput" class="block font-semibold">またはテキストを貼り付け</label>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" id="sampleJsonBtn" class="form-button secondary text-sm px-3 py-2">JSONサンプル</button>
+                  <button type="button" id="sampleCsvBtn" class="form-button secondary text-sm px-3 py-2">CSVサンプル</button>
+                  <button type="button" id="sampleYamlBtn" class="form-button secondary text-sm px-3 py-2">YAMLサンプル</button>
+                </div>
+              </div>
+              <textarea id="textInput" rows="12" class="form-textarea w-full font-mono text-sm" spellcheck="false" placeholder='例: [{"name":"Negi","score":95}]'></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6 shadow-sm h-fit">
+          <h2 class="text-xl font-bold text-gray-950 mb-5">変換設定</h2>
+          <label for="formatSelect" class="block font-semibold mb-2">変換先形式</label>
+          <select id="formatSelect" class="form-select w-full bg-white">
+            <option value="json">JSON</option>
+            <option value="csv">CSV</option>
+            <option value="yaml">YAML</option>
+            <option value="xlsx">Excel (.xlsx)</option>
+          </select>
+          <button type="button" id="convertBtn" class="form-button rounded-lg px-5 py-3 mt-5 w-full">変換</button>
+
+          <div id="resultContainer" class="hidden mt-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div>
+                <h3 class="font-bold text-gray-950">変換結果</h3>
+                <p id="conversionStatus" class="text-xs text-gray-500" aria-live="polite"></p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" id="copyResultBtn" class="form-button secondary text-sm px-3 py-2">コピー</button>
+                <a id="downloadLink" href="#" download="converted.txt" class="form-button secondary text-sm px-3 py-2 no-underline">ダウンロード</a>
+              </div>
+            </div>
+            <textarea id="resultText" rows="15" class="form-textarea w-full font-mono text-sm bg-gray-50" readonly></textarea>
+          </div>
+        </section>
+      </div>
+
+      <section class="mt-12 border-y border-gray-200 py-8">
+        <div class="grid gap-6 md:grid-cols-3 text-sm leading-7 text-gray-600">
           <div>
-            <label class="block font-semibold mb-1">ファイルを選択（JSON/CSV/YAML/XLSX）</label>
-            <input type="file" id="fileInput" accept=".json,.csv,.yaml,.yml,.xlsx" class="form-input w-full" />
-            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
+            <h2 class="text-base font-bold text-gray-950 mb-2">ブラウザ内で変換</h2>
+            <p>ファイルと貼り付けテキストは、このページ上で形式変換します。</p>
           </div>
-          <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold">またはテキスト貼り付け</label>
-            <textarea id="textInput" rows="4" class="form-input w-full" placeholder="ここにデータを貼り付け"></textarea>
+          <div>
+            <h2 class="text-base font-bold text-gray-950 mb-2">表データを扱いやすく</h2>
+            <p>CSVとExcelは行データとして扱い、JSONやYAMLへ確認しやすい形で出力します。</p>
           </div>
-          <div class="flex flex-wrap gap-2 items-center">
-            <label class="block font-semibold">変換先形式</label>
-            <select id="formatSelect" class="form-input">
-              <option value="json">JSON</option>
-              <option value="csv">CSV</option>
-              <option value="yaml">YAML</option>
-              <option value="xlsx">Excel(xlsx)</option>
-            </select>
-            <button id="convertBtn" class="form-button bg-accent text-white rounded px-4 py-2 font-bold">変換＆プレビュー</button>
-          </div>
-          <div id="resultContainer" class="mt-6 hidden">
-            <h2 class="text-base font-semibold mb-2">変換結果プレビュー</h2>
-            <p id="conversionStatus" class="text-xs text-gray-500 mb-2" aria-live="polite"></p>
-            <textarea id="resultText" rows="8" class="form-input w-full mb-2" readonly></textarea>
-            <a id="downloadLink" href="#" download="converted.txt" class="text-accent underline text-xs">ファイルをダウンロード</a>
+          <div>
+            <h2 class="text-base font-bold text-gray-950 mb-2">コピーと保存</h2>
+            <p>結果はコピーでき、目的の拡張子でダウンロードできます。</p>
           </div>
         </div>
-      </div>
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-    </div>
+      </section>
+    </section>
   </main>
-    <!-- フッター直前広告 -->
-    <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
-      <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-    </aside>
-
-  <!-- 活用事例・ユースケースセクション -->
-  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">データ変換ツールの実用的な活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          API連携・データ分析・システム移行での具体的な活用シーンと、その効果をご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- API開発・システム連携 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">API開発・システム連携</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>API仕様書作成：</strong>JSONスキーマをYAMLで文書化・チーム共有</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>設定ファイル変換：</strong>本番・開発環境設定のフォーマット統一</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>レスポンス検証：</strong>APIテスト用データの形式変換</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>マイクロサービス連携：</strong>異なるシステム間のデータ橋渡し</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- データ分析・BI -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-green-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">データ分析・BI</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>分析データ準備：</strong>JSON APIデータをExcel・Tableau用に変換</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>レポート自動化：</strong>CSVレポートをJSON APIで他システム連携</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>データクレンジング：</strong>異なる形式データの統一・正規化</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>可視化準備：</strong>D3.js・Chart.js用のJSONデータ構造作成</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 業務効率化・移行 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-purple-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">業務効率化・システム移行</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>顧客データ移行：</strong>旧システムCSVを新システムJSON形式に変換</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>在庫管理統合：</strong>Excel在庫表をAPIデータ形式に自動変換</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>設定ファイル管理：</strong>YAML設定をJSON・環境変数形式に変換</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>マスターデータ同期：</strong>商品・社員情報の形式統一・同期</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技術解説セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">データ形式技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          各データ形式の特性と適切な使い分けを理解し、効率的なデータ管理を実現しましょう。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">データ形式の特性比較</h3>
-          <div class="space-y-4">
-            <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">JSON - Web API標準</h4>
-              <p class="text-sm text-gray-600 mb-2">軽量・高速パース・JavaScriptネイティブ対応。REST API・Web開発の主流。</p>
-              <div class="text-xs bg-blue-50 p-2 rounded">
-                <strong>最適用途：</strong>API通信・設定ファイル・NoSQLデータベース
-              </div>
-            </div>
-            <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">CSV - 表計算・データ交換</h4>
-              <p class="text-sm text-gray-600 mb-2">シンプル・軽量・Excel対応。大量データの高速処理に最適化。</p>
-              <div class="text-xs bg-green-50 p-2 rounded">
-                <strong>最適用途：</strong>データ分析・一括インポート・レポート出力
-              </div>
-            </div>
-            <div class="border-l-4 border-purple-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">YAML - 設定管理・可読性</h4>
-              <p class="text-sm text-gray-600 mb-2">人間が読みやすい・コメント対応・階層構造表現に優秀。</p>
-              <div class="text-xs bg-purple-50 p-2 rounded">
-                <strong>最適用途：</strong>設定ファイル・CI/CD・Docker Compose
-              </div>
-            </div>
-            <div class="border-l-4 border-orange-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">Excel - ビジネス・分析</h4>
-              <p class="text-sm text-gray-600 mb-2">数式・グラフ・書式設定。非技術者でも扱いやすい万能形式。</p>
-              <div class="text-xs bg-orange-50 p-2 rounded">
-                <strong>最適用途：</strong>レポート作成・データ分析・プレゼンテーション
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">パフォーマンス・使い分け指針</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-medium mb-2 text-lg">扱うデータ量の目安</h4>
-              <div class="space-y-2">
-                <div class="flex justify-between items-center p-2 bg-green-50 rounded">
-                  <span class="font-medium">CSV（最軽量）</span>
-                  <span class="text-sm text-gray-600">列名付きの表データ向け</span>
-                </div>
-                <div class="flex justify-between items-center p-2 bg-blue-50 rounded">
-                  <span class="font-medium">JSON（軽量）</span>
-                  <span class="text-sm text-gray-600">APIレスポンス確認向け</span>
-                </div>
-                <div class="flex justify-between items-center p-2 bg-purple-50 rounded">
-                  <span class="font-medium">YAML（中量）</span>
-                  <span class="text-sm text-gray-600">設定ファイル確認向け</span>
-                </div>
-                <div class="flex justify-between items-center p-2 bg-orange-50 rounded">
-                  <span class="font-medium">Excel（重量）</span>
-                  <span class="text-sm text-gray-600">業務表の受け渡し向け</span>
-                </div>
-              </div>
-              <p class="mt-3 text-xs leading-6 text-gray-500">このページではブラウザ保護のため、ファイル入力は10MB以下を目安にしています。大容量データは専用のETLツールやスクリプトで処理してください。</p>
-            </div>
-
-            <div>
-              <h4 class="font-medium mb-2 text-lg">プロジェクト別推奨形式</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li class="flex items-start">
-                  <span class="text-blue-500 mr-2">🔧</span>
-                  <span><strong>Web開発：</strong>JSON中心・API仕様もJSON Schema活用</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-green-500 mr-2">📊</span>
-                  <span><strong>データ分析：</strong>CSV基軸・可視化はJSON・レポートはExcel</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-purple-500 mr-2">⚙️</span>
-                  <span><strong>インフラ管理：</strong>YAML設定・監視データはJSON</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-orange-500 mr-2">📈</span>
-                  <span><strong>ビジネス用途：</strong>Excel中心・システム連携はCSV/JSON</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ・トラブルシューティングセクション -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          データ変換時によくある疑問や問題の解決方法をまとめました。
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>変換エラー・文字化けが発生する場合は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-red-600 mb-2">文字エンコーディング問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>CSV文字化け：</strong>UTF-8・Shift_JIS・EUC-JPを試行</li>
-                  <li>• <strong>Excel対応：</strong>BOM付きUTF-8で保存・読み込み</li>
-                  <li>• <strong>特殊文字対応：</strong>JSON Unicodeエスケープ（\u形式）活用</li>
-                  <li>• <strong>改行コード：</strong>CRLF・LF・CRの環境差に注意</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-blue-600 mb-2">データ構造・形式問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>JSON構文エラー：</strong>括弧・カンマ・クォートの対応確認</li>
-                  <li>• <strong>CSV区切り文字：</strong>カンマ・セミコロン・タブの統一</li>
-                  <li>• <strong>YAML インデント：</strong>スペース・タブ混在の回避</li>
-                  <li>• <strong>Excel数式：</strong>文字列として保持・数式は別途処理</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>大容量データの変換が遅い・失敗する</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>処理効率化の対策：</strong></p>
-            <div class="space-y-4">
-              <div class="bg-amber-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">事前対策・分割処理</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>ファイル分割：</strong>10MB以下に分割して段階的変換</li>
-                  <li>• <strong>不要データ削除：</strong>必要な列・行のみに絞り込み</li>
-                  <li>• <strong>ブラウザ最適化：</strong>他のタブを閉じてメモリ確保</li>
-                  <li>• <strong>ストリーミング処理：</strong>一括読み込みではなく部分処理</li>
-                </ul>
-              </div>
-              <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">推奨処理手順</h4>
-                <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
-                  <li>サンプルデータで動作確認・設定調整</li>
-                  <li>1万行程度の中サイズで最終確認</li>
-                  <li>本データを複数ファイルに分割</li>
-                  <li>各ファイルを順次変換・結果をマージ</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>階層データ・ネストした構造の扱い方</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>複雑なデータ構造への対応：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-green-600 mb-2">JSON→CSV（平坦化）</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>ドット記法：</strong>user.name・user.email形式で展開</li>
-                  <li>• <strong>配列展開：</strong>複数行に分割または文字列化</li>
-                  <li>• <strong>NULL値処理：</strong>空文字・ゼロ・"null"文字列の選択</li>
-                  <li>• <strong>型情報保持：</strong>数値・真偽値の形式維持</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-purple-600 mb-2">CSV→JSON（構造化）</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>グルーピング：</strong>関連する列をオブジェクト化</li>
-                  <li>• <strong>配列生成：</strong>ID重複行を配列要素として統合</li>
-                  <li>• <strong>型変換：</strong>文字列から適切なデータ型へ推定変換</li>
-                  <li>• <strong>スキーマ定義：</strong>一貫した構造・命名規則の適用</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>API連携・自動化での活用方法</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>システム連携・自動化のパターン：</strong></p>
-            <div class="bg-green-50 p-4 rounded-lg">
-              <h4 class="font-medium mb-2">推奨ワークフロー</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li>• <strong>定期バッチ処理：</strong>夜間バッチでCSV→JSON変換・API投入</li>
-                <li>• <strong>リアルタイム連携：</strong>Webhook受信→形式変換→転送</li>
-                <li>• <strong>エラーハンドリング：</strong>変換失敗時の再試行・通知機能</li>
-                <li>• <strong>ログ・監視：</strong>変換件数・エラー率の可視化・アラート</li>
-              </ul>
-              <div class="mt-3 p-3 bg-white rounded border-l-4 border-green-400">
-                <p class="text-sm text-gray-700">
-                  <strong>実装例：</strong>Google Apps Script・Power Automate・Zapier等のノーコードツールと
-                  当ツールを組み合わせることで、プログラミングなしでの自動化も可能
-                </p>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- 実用例セクション -->
-  <section class="bg-white py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-4">変換前に確認したいこと</h2>
-          <p class="text-gray-600 leading-7">
-            データ形式を変える前に、列名、文字コード、空行、ネスト構造を確認しておくと、変換後の手戻りを減らせます。
-          </p>
-          <a href="#fileInput" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            入力欄へ移動
-          </a>
-        </div>
-        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">APIデータの確認</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              JSONレスポンスをCSVやExcelへ変換し、非エンジニアにも共有しやすい表形式で確認できます。
-            </p>
-          </div>
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">設定ファイルの整理</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              YAMLとJSONを相互変換して、CI/CD設定やアプリ設定の差分確認、レビュー準備に使えます。
-            </p>
-          </div>
-          <div class="py-5 md:px-5">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">表データの受け渡し</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              CSVやExcelの一覧をJSONへ変換し、サンプルデータ、テストデータ、インポート前の確認に利用できます。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-6xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-    </ul>
-    <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
-  </section>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2" aria-label="フッターナビゲーション">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent">サイトマップ</a>
     </nav>
     <div>&copy; 2026 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
-  <script src="../js/data-format-converter.js" defer></script>
-  <!-- Consent-gated Ads/Analytics Loader -->
-  <script src="../js/tool-page-enhancements.js" defer></script>
 
+  <script src="../js/data-format-converter.js" defer></script>
+  <script src="../js/tool-page-enhancements.js" defer></script>
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>

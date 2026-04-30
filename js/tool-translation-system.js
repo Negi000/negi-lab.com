@@ -113,6 +113,10 @@
       document.title = value;
     } else if (tag === 'meta') {
       element.setAttribute('content', value);
+    } else if (tag === 'optgroup') {
+      element.setAttribute('label', value);
+    } else if (element.hasAttribute && element.hasAttribute('placeholder')) {
+      element.setAttribute('placeholder', value);
     } else if (tag === 'input' && /^(button|submit|reset)$/.test(element.type || '')) {
       element.value = value;
     } else {

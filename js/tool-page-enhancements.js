@@ -5,10 +5,10 @@
     { href: "/tools/unit-converter.html", ja: "単位変換", en: "Unit Converter", noteJa: "長さ・重さ・坪・電子レンジ時間", noteEn: "Units, tsubo, microwave time", group: "calc" },
     { href: "/tools/image-converter.html", ja: "画像変換", en: "Image Converter", noteJa: "JPEG・PNG・WebP変換", noteEn: "JPEG, PNG, WebP conversion", group: "image" },
     { href: "/tools/image-size-compare.html", ja: "画像サイズ変換", en: "Image Size Converter", noteJa: "SNS・YouTube・Web用サイズ", noteEn: "Social and web image sizes", group: "image" },
-    { href: "/tools/bg-remover.html", ja: "背景リムーバ", en: "Background Remover", noteJa: "透過PNG素材づくり", noteEn: "Transparent PNG assets", group: "image" },
+    { href: "/tools/bg-remover.html", ja: "背景リムーバー", en: "Background Remover", noteJa: "透過PNG素材づくり", noteEn: "Transparent PNG assets", group: "image" },
     { href: "/tools/color-code-tool.html", ja: "カラーコード", en: "Color Code Tool", noteJa: "HEX・RGB・画像色抽出", noteEn: "HEX, RGB, image colors", group: "image" },
-    { href: "/tools/favicon-og-generator.html", ja: "Favicon・OG画像", en: "Favicon & OG Image", noteJa: "サイト表示素材を生成", noteEn: "Website preview assets", group: "image" },
-    { href: "/tools/pdf-tool.html", ja: "PDFツール", en: "PDF Tool", noteJa: "結合・分割・圧縮", noteEn: "Merge, split, compress", group: "doc" },
+    { href: "/tools/favicon-og-generator.html", ja: "Favicon・OG画像", en: "Favicon & OG Image", noteJa: "サイト表示素材を作成", noteEn: "Website preview assets", group: "image" },
+    { href: "/tools/pdf-tool.html", ja: "PDFツール", en: "PDF Tool", noteJa: "結合・分割・軽量化", noteEn: "Merge, split, re-save", group: "doc" },
     { href: "/tools/text-converter.html", ja: "テキスト変換", en: "Text Converter", noteJa: "表記ゆれ・文字数・ケース変換", noteEn: "Case, width, character count", group: "doc" },
     { href: "/tools/json-csv-yaml-excel.html", ja: "データ形式変換", en: "Data Converter", noteJa: "JSON・CSV・YAML・Excel", noteEn: "JSON, CSV, YAML, Excel", group: "doc" },
     { href: "/tools/qr-code-generator.html", ja: "QRコード作成", en: "QR Code Generator", noteJa: "URL・Wi-Fi・テキスト", noteEn: "URL, Wi-Fi, text", group: "web" },
@@ -20,27 +20,27 @@
   const COPY = {
     ja: {
       skip: "本文へ移動",
-      supportTitle: "安心して使えるブラウザ完結ツール",
-      supportLead: "入力した内容は、原則としてこのブラウザ内で処理されます。作業を止めず、必要な変換だけをすぐ実行できます。",
+      supportTitle: "ブラウザで使える軽い作業ツール",
+      supportLead: "多くの処理はこのブラウザ内で実行されます。登録なしで、必要な変換や確認をすぐに始められます。",
       point1: "登録不要",
       point1Note: "アカウント作成なしで、その場で使えます。",
       point2: "スマホ対応",
-      point2Note: "小さな画面でも操作しやすい余白と入力欄に整えます。",
-      point3: "次の作業へつながる",
-      point3Note: "関連ツールを近くに置き、検索し直す手間を減らします。",
-      faqTitle: "よくある確認",
+      point2Note: "小さな画面でも入力と確認がしやすい余白に整えています。",
+      point3: "次の作業へ進みやすい",
+      point3Note: "関連ツールを近くに置き、探し直す手間を減らします。",
+      faqTitle: "確認ポイント",
       faq1: "ファイルはアップロードされますか？",
       faq1Answer: "多くの処理はブラウザ内で完結します。外部APIや広告配信が関わる場合は、プライバシーポリシーで用途を確認できます。",
       faq2: "無料で使えますか？",
       faq2Answer: "無料で利用できます。運営維持のため、広告やアフィリエイトを配置する場合があります。",
-      faq3: "商用作業に使えますか？",
-      faq3Answer: "業務や制作の下処理にも使えますが、最終成果物の確認と利用判断はご自身で行ってください。",
+      faq3: "業務用途に使えますか？",
+      faq3Answer: "下書き、確認、整理作業には使えます。最終成果物の確認と利用判断はご自身で行ってください。",
       relatedTitle: "関連ツール",
       relatedLead: "次の小さな作業も、同じブラウザ内で続けられます。",
       allTools: "ツール一覧",
-      guideTitle: "使い方ガイド",
+      guideTitle: "使い方",
       guideLead: "入力、設定、実行、結果確認の順に進めると迷わず使えます。",
-      guideStep1: "必要なテキストやファイルを入力します。",
+      guideStep1: "処理したいテキストやファイルを入力します。",
       guideStep2: "変換形式や出力条件を選びます。",
       guideStep3: "結果を確認し、コピーまたはダウンロードします。",
       close: "閉じる"
@@ -79,11 +79,12 @@
       return window.NegiI18n.getLanguage() === "en" ? "en" : "ja";
     }
     try {
+      const urlLang = new URLSearchParams(location.search).get("lang");
+      if (urlLang) return urlLang === "en" ? "en" : "ja";
       const stored = localStorage.getItem("selectedLanguage") || localStorage.getItem("negi-lab-language");
-      return stored === "en" ? "en" : "ja";
-    } catch (_) {
-      return document.documentElement.lang === "en" ? "en" : "ja";
-    }
+      if (stored) return stored === "en" ? "en" : "ja";
+    } catch (_) {}
+    return document.documentElement.lang === "en" ? "en" : "ja";
   }
 
   function isToolPage() {
@@ -93,6 +94,13 @@
 
   function currentTool() {
     return TOOLS.find((tool) => tool.href === location.pathname) || null;
+  }
+
+  function textElement(tag, className, text) {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    element.textContent = text;
+    return element;
   }
 
   function insertSkipLink() {
@@ -126,7 +134,7 @@
     if (footerIndex < 0) return;
     siblings.slice(footerIndex + 1).forEach((element) => {
       if (["SCRIPT", "STYLE", "LINK", "TEMPLATE"].includes(element.tagName)) return;
-      if (element.id === "guide-modal" && element.classList.contains("hidden")) return;
+      if ((element.id === "guide-modal" || element.id === "guideModal") && element.classList.contains("hidden")) return;
       const style = getComputedStyle(element);
       if (style.display === "none" || style.position === "fixed" || style.position === "sticky") return;
       if (!element.querySelector("input, button, a, canvas, textarea, select, iframe")) {
@@ -156,48 +164,55 @@
 
     function update() {
       const copy = COPY[getLanguage()];
-      section.innerHTML = `
-        <div class="border-y border-gray-200 py-8">
-          <div class="grid lg:grid-cols-[1.15fr_1fr] gap-8 items-start">
-            <div>
-              <h2 class="text-2xl font-bold text-gray-950">${copy.supportTitle}</h2>
-              <p class="mt-3 text-sm leading-7 text-gray-600">${copy.supportLead}</p>
-              <div class="mt-6 grid sm:grid-cols-3 gap-4">
-                <div>
-                  <p class="font-semibold text-gray-950">${copy.point1}</p>
-                  <p class="mt-1 text-xs leading-6 text-gray-600">${copy.point1Note}</p>
-                </div>
-                <div>
-                  <p class="font-semibold text-gray-950">${copy.point2}</p>
-                  <p class="mt-1 text-xs leading-6 text-gray-600">${copy.point2Note}</p>
-                </div>
-                <div>
-                  <p class="font-semibold text-gray-950">${copy.point3}</p>
-                  <p class="mt-1 text-xs leading-6 text-gray-600">${copy.point3Note}</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-base font-bold text-gray-950">${copy.faqTitle}</h3>
-              <div class="mt-3 divide-y divide-gray-200 border-y border-gray-200">
-                ${[
-                  [copy.faq1, copy.faq1Answer],
-                  [copy.faq2, copy.faq2Answer],
-                  [copy.faq3, copy.faq3Answer]
-                ].map(([question, answer]) => `
-                  <details class="group py-3">
-                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-gray-900">
-                      <span>${question}</span>
-                      <span class="text-accent transition group-open:rotate-45">+</span>
-                    </summary>
-                    <p class="mt-2 text-xs leading-6 text-gray-600">${answer}</p>
-                  </details>
-                `).join("")}
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
+      const wrapper = document.createElement("div");
+      wrapper.className = "border-y border-gray-200 py-8";
+
+      const grid = document.createElement("div");
+      grid.className = "grid lg:grid-cols-[1.15fr_1fr] gap-8 items-start";
+      wrapper.appendChild(grid);
+
+      const intro = document.createElement("div");
+      intro.appendChild(textElement("h2", "text-2xl font-bold text-gray-950", copy.supportTitle));
+      intro.appendChild(textElement("p", "mt-3 text-sm leading-7 text-gray-600", copy.supportLead));
+
+      const points = document.createElement("div");
+      points.className = "mt-6 grid sm:grid-cols-3 gap-4";
+      [
+        [copy.point1, copy.point1Note],
+        [copy.point2, copy.point2Note],
+        [copy.point3, copy.point3Note]
+      ].forEach(([title, body]) => {
+        const item = document.createElement("div");
+        item.appendChild(textElement("p", "font-semibold text-gray-950", title));
+        item.appendChild(textElement("p", "mt-1 text-xs leading-6 text-gray-600", body));
+        points.appendChild(item);
+      });
+      intro.appendChild(points);
+      grid.appendChild(intro);
+
+      const faq = document.createElement("div");
+      faq.appendChild(textElement("h3", "text-base font-bold text-gray-950", copy.faqTitle));
+      const faqList = document.createElement("div");
+      faqList.className = "mt-3 divide-y divide-gray-200 border-y border-gray-200";
+      [
+        [copy.faq1, copy.faq1Answer],
+        [copy.faq2, copy.faq2Answer],
+        [copy.faq3, copy.faq3Answer]
+      ].forEach(([question, answer]) => {
+        const details = document.createElement("details");
+        details.className = "group py-3";
+        const summary = document.createElement("summary");
+        summary.className = "flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-gray-900";
+        summary.appendChild(textElement("span", "", question));
+        summary.appendChild(textElement("span", "text-accent transition group-open:rotate-45", "+"));
+        details.appendChild(summary);
+        details.appendChild(textElement("p", "mt-2 text-xs leading-6 text-gray-600", answer));
+        faqList.appendChild(details);
+      });
+      faq.appendChild(faqList);
+      grid.appendChild(faq);
+
+      section.replaceChildren(wrapper);
     }
 
     update();
@@ -220,23 +235,32 @@
       const lang = getLanguage();
       const copy = COPY[lang];
       const tools = chooseRelatedTools();
-      section.innerHTML = `
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
-          <div>
-            <h2 class="text-xl font-bold text-gray-950">${copy.relatedTitle}</h2>
-            <p class="text-sm text-gray-600 mt-1">${copy.relatedLead}</p>
-          </div>
-          <a href="/tools/" class="text-sm font-semibold text-accent hover:underline">${copy.allTools}</a>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          ${tools.map((tool) => `
-            <a href="${tool.href}" class="block rounded-lg border border-gray-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-accent hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-accent">
-              <span class="block font-semibold text-gray-950">${lang === "en" ? tool.en : tool.ja}</span>
-              <span class="block text-xs leading-5 text-gray-600 mt-1">${lang === "en" ? tool.noteEn : tool.noteJa}</span>
-            </a>
-          `).join("")}
-        </div>
-      `;
+
+      const headingRow = document.createElement("div");
+      headingRow.className = "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4";
+      const headingText = document.createElement("div");
+      headingText.appendChild(textElement("h2", "text-xl font-bold text-gray-950", copy.relatedTitle));
+      headingText.appendChild(textElement("p", "text-sm text-gray-600 mt-1", copy.relatedLead));
+      headingRow.appendChild(headingText);
+
+      const allTools = document.createElement("a");
+      allTools.href = "/tools/";
+      allTools.className = "text-sm font-semibold text-accent hover:underline";
+      allTools.textContent = copy.allTools;
+      headingRow.appendChild(allTools);
+
+      const list = document.createElement("div");
+      list.className = "grid sm:grid-cols-2 lg:grid-cols-4 gap-3";
+      tools.forEach((tool) => {
+        const link = document.createElement("a");
+        link.href = tool.href;
+        link.className = "block rounded-lg border border-gray-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-accent hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-accent";
+        link.appendChild(textElement("span", "block font-semibold text-gray-950", lang === "en" ? tool.en : tool.ja));
+        link.appendChild(textElement("span", "block text-xs leading-5 text-gray-600 mt-1", lang === "en" ? tool.noteEn : tool.noteJa));
+        list.appendChild(link);
+      });
+
+      section.replaceChildren(headingRow, list);
     }
 
     update();
@@ -247,11 +271,17 @@
     const button = document.getElementById("guide-btn");
     if (!isToolPage() || !button) return;
 
+    const existingCustomModal = document.getElementById("guide-modal") || document.getElementById("guideModal");
+    if (existingCustomModal) {
+      existingCustomModal.setAttribute("data-custom-guide", "1");
+      return;
+    }
+
     let modal = document.getElementById("guide-modal");
     if (!modal) {
       modal = document.createElement("div");
       modal.id = "guide-modal";
-      modal.className = "hidden fixed inset-0 z-[9998] bg-gray-950/60 px-4 py-6";
+      modal.className = "hidden fixed inset-0 z-[9998] items-start justify-center bg-gray-950/60 px-4 py-6";
       modal.setAttribute("role", "dialog");
       modal.setAttribute("aria-modal", "true");
       modal.setAttribute("aria-labelledby", "guide-modal-title");
@@ -260,32 +290,50 @@
 
     function update() {
       const copy = COPY[getLanguage()];
-      modal.innerHTML = `
-        <div class="mx-auto mt-16 max-w-lg rounded-lg bg-white p-6 shadow-xl">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h2 id="guide-modal-title" class="text-xl font-bold text-gray-950">${copy.guideTitle}</h2>
-              <p class="mt-2 text-sm leading-6 text-gray-600">${copy.guideLead}</p>
-            </div>
-            <button type="button" class="rounded border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-50" data-guide-close>${copy.close}</button>
-          </div>
-          <ol class="mt-5 space-y-3 text-sm text-gray-700">
-            <li class="flex gap-3"><span class="font-bold text-accent">1</span><span>${copy.guideStep1}</span></li>
-            <li class="flex gap-3"><span class="font-bold text-accent">2</span><span>${copy.guideStep2}</span></li>
-            <li class="flex gap-3"><span class="font-bold text-accent">3</span><span>${copy.guideStep3}</span></li>
-          </ol>
-        </div>
-      `;
+      const dialog = document.createElement("div");
+      dialog.className = "mx-auto mt-16 max-w-lg rounded-lg bg-white p-6 shadow-xl";
+
+      const header = document.createElement("div");
+      header.className = "flex items-start justify-between gap-4";
+      const titleGroup = document.createElement("div");
+      const title = textElement("h2", "text-xl font-bold text-gray-950", copy.guideTitle);
+      title.id = "guide-modal-title";
+      titleGroup.appendChild(title);
+      titleGroup.appendChild(textElement("p", "mt-2 text-sm leading-6 text-gray-600", copy.guideLead));
+      header.appendChild(titleGroup);
+
+      const closeButton = document.createElement("button");
+      closeButton.type = "button";
+      closeButton.className = "rounded border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-gray-50";
+      closeButton.setAttribute("data-guide-close", "true");
+      closeButton.textContent = copy.close;
+      header.appendChild(closeButton);
+      dialog.appendChild(header);
+
+      const list = document.createElement("ol");
+      list.className = "mt-5 space-y-3 text-sm text-gray-700";
+      [copy.guideStep1, copy.guideStep2, copy.guideStep3].forEach((step, index) => {
+        const item = document.createElement("li");
+        item.className = "flex gap-3";
+        item.appendChild(textElement("span", "font-bold text-accent", String(index + 1)));
+        item.appendChild(textElement("span", "", step));
+        list.appendChild(item);
+      });
+      dialog.appendChild(list);
+      modal.replaceChildren(dialog);
     }
 
     function open() {
+      update();
       modal.classList.remove("hidden");
+      modal.classList.add("flex");
       const closeButton = modal.querySelector("[data-guide-close]");
       if (closeButton) closeButton.focus();
     }
 
     function close() {
       modal.classList.add("hidden");
+      modal.classList.remove("flex");
       button.focus();
     }
 

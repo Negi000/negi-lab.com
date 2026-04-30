@@ -150,8 +150,8 @@
         megapascals: { ja: "メガパスカル", en: "Megapascals", factor: 1e6, symbol: "MPa" },
         bars: { ja: "バール", en: "Bars", factor: 100000, symbol: "bar" },
         atmospheres: { ja: "気圧", en: "Atmospheres", factor: 101325, symbol: "atm" },
-        mmhg: { ja: "水銀柱ミリメートル", en: "Millimeters of Mercury", factor: 133.322387415, symbol: "mmHg" },
-        psi: { ja: "重量ポンド毎平方インチ", en: "Pounds per Square Inch", factor: 6894.75729, symbol: "psi" },
+        mmhg: { ja: "ミリメートル水銀柱", en: "Millimeters of Mercury", factor: 133.322387415, symbol: "mmHg" },
+        psi: { ja: "ポンド毎平方インチ", en: "Pounds per Square Inch", factor: 6894.75729, symbol: "psi" },
         torr: { ja: "トル", en: "Torr", factor: 133.322368421, symbol: "Torr" }
       }
     },
@@ -175,7 +175,7 @@
         kilowatts: { ja: "キロワット", en: "Kilowatts", factor: 1000, symbol: "kW" },
         megawatts: { ja: "メガワット", en: "Megawatts", factor: 1e6, symbol: "MW" },
         horsepower: { ja: "馬力", en: "Horsepower", factor: 745.699871582, symbol: "hp" },
-        metric_horsepower: { ja: "仏馬力", en: "Metric Horsepower", factor: 735.49875, symbol: "PS" },
+        metric_horsepower: { ja: "メートル馬力", en: "Metric Horsepower", factor: 735.49875, symbol: "PS" },
         btu_per_hour: { ja: "BTU毎時", en: "BTU per Hour", factor: 0.293071070172, symbol: "BTU/h" }
       }
     },
@@ -287,10 +287,10 @@
         newtons: { ja: "ニュートン", en: "Newtons", factor: 1, symbol: "N" },
         kilonewtons: { ja: "キロニュートン", en: "Kilonewtons", factor: 1000, symbol: "kN" },
         dynes: { ja: "ダイン", en: "Dynes", factor: 1e-5, symbol: "dyn" },
-        pounds_force: { ja: "重量ポンド", en: "Pounds Force", factor: 4.4482216, symbol: "lbf" },
-        kilograms_force: { ja: "重量キログラム", en: "Kilograms Force", factor: 9.80665, symbol: "kgf" },
-        tons_force: { ja: "重量トン", en: "Tons Force", factor: 9806.65, symbol: "tf" },
-        ounces_force: { ja: "重量オンス", en: "Ounces Force", factor: 0.27801385, symbol: "ozf" }
+        pounds_force: { ja: "ポンド重", en: "Pounds Force", factor: 4.4482216, symbol: "lbf" },
+        kilograms_force: { ja: "キログラム重", en: "Kilograms Force", factor: 9.80665, symbol: "kgf" },
+        tons_force: { ja: "トン重", en: "Tons Force", factor: 9806.65, symbol: "tf" },
+        ounces_force: { ja: "オンス重", en: "Ounces Force", factor: 0.27801385, symbol: "ozf" }
       }
     },
     torque: {

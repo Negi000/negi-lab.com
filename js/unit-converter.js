@@ -42,19 +42,39 @@
     microwave: "600W → 500W",
     data: "GB / MB",
     time: "min / s",
+    speed: "km/h / mph",
     pressure: "Pa / psi",
     energy: "kcal / J",
     power: "W / hp",
-    fuel_consumption: "km/L / mpg"
+    fuel_consumption: "km/L / mpg",
+    angle: "° / rad",
+    frequency: "Hz / rpm",
+    density: "kg/m³",
+    force: "N / kgf",
+    torque: "N·m",
+    acceleration: "m/s²",
+    velocity: "m/s / c",
+    electric_current: "A / mA",
+    voltage: "V / kV",
+    resistance: "Ω / kΩ",
+    capacitance: "F / µF",
+    inductance: "H / mH",
+    luminance: "cd/m²",
+    illuminance: "lux",
+    radioactivity: "Bq / Ci",
+    radiation_dose: "Gy / Sv"
   };
 
   const EXAMPLES = [
     { ja: "1mをフィートへ", en: "1 m to feet", category: "length", from: "meters", to: "feet", value: "1" },
     { ja: "100平米を坪へ", en: "100 m² to tsubo", category: "area", from: "square_meters", to: "tsubo", value: "100" },
+    { ja: "10kgをポンドへ", en: "10 kg to pounds", category: "weight", from: "kilograms", to: "pounds", value: "10" },
     { ja: "180°Cを華氏へ", en: "180°C to Fahrenheit", category: "temperature", from: "celsius", to: "fahrenheit", value: "180" },
     { ja: "600W 3分を500Wへ", en: "600W 3 min to 500W", category: "microwave", from: "600w", to: "500w", value: "180" },
     { ja: "日本の1カップをmLへ", en: "1 Japanese cup to mL", category: "volume", from: "cups_jp", to: "milliliters", value: "1" },
-    { ja: "1GBをMBへ", en: "1 GB to MB", category: "data", from: "gigabytes", to: "megabytes", value: "1" }
+    { ja: "1GBをMBへ", en: "1 GB to MB", category: "data", from: "gigabytes", to: "megabytes", value: "1" },
+    { ja: "1気圧をkPaへ", en: "1 atm to kPa", category: "pressure", from: "atmospheres", to: "kilopascals", value: "1" },
+    { ja: "15km/Lをmpgへ", en: "15 km/L to mpg", category: "fuel_consumption", from: "kilometers_per_liter", to: "miles_per_gallon_us", value: "15" }
   ];
 
   const RELATED_TOOLS = [
@@ -121,13 +141,43 @@
     return `${name} (${symbol})`;
   }
 
+  function categorySearchText(category) {
+    const dict = window.unitConverterTranslations || {};
+    const labelKey = categoryKey(category);
+    const descKey = `unitConverter.desc.${category}`;
+    const definitions = Object.values(window.unitConverterData?.[category]?.definitions || {});
+    const unitText = definitions
+      .flatMap((def) => [def.ja, def.en, def.symbol])
+      .filter(Boolean)
+      .join(" ");
+    return [
+      category,
+      categoryLabel(category),
+      categoryDescription(category),
+      dict.ja?.[labelKey],
+      dict.ja?.[descKey],
+      dict.en?.[labelKey],
+      dict.en?.[descKey],
+      unitText
+    ].filter(Boolean).join(" ").toLowerCase();
+  }
+
   function resultSymbol(category, unit) {
     if (category === "microwave") return "s";
     return unitDef(category, unit)?.symbol || "";
   }
 
+  function normalizeNumberString(value) {
+    return String(value ?? "")
+      .replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xFEE0))
+      .replace(/[．]/g, ".")
+      .replace(/[，]/g, ",")
+      .replace(/[＋]/g, "+")
+      .replace(/[－ー]/g, "-");
+  }
+
   function parseValue(value) {
-    const cleaned = String(value || "").replace(/,/g, "").trim();
+    const cleaned = normalizeNumberString(value).replace(/,/g, "").trim();
     if (cleaned === "") return NaN;
     return Number(cleaned);
   }
@@ -174,25 +224,40 @@
   function renderCategories() {
     const query = els.categorySearch.value.trim().toLowerCase();
     els.categoryGrid.innerHTML = "";
+    let matchCount = 0;
     CATEGORY_ORDER.filter((category) => window.unitConverterData?.[category]).forEach((category) => {
       const label = categoryLabel(category);
       const description = categoryDescription(category);
-      const searchable = `${label} ${description} ${category}`.toLowerCase();
+      const searchable = categorySearchText(category);
       if (query && !searchable.includes(query)) return;
+      matchCount += 1;
 
       const button = document.createElement("button");
       button.type = "button";
       button.className = "category-button rounded-lg bg-white p-3 text-left";
       button.setAttribute("aria-pressed", category === state.category ? "true" : "false");
       button.dataset.category = category;
-      button.innerHTML = `
-        <span class="block text-sm font-bold text-ink">${label}</span>
-        <span class="mt-1 block min-h-[2.5rem] text-xs leading-5 text-slate-600">${description}</span>
-        <span class="mt-2 inline-flex rounded bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-500">${CATEGORY_SYMBOLS[category] || unitCountLabel(category)}</span>
-      `;
+
+      const labelEl = document.createElement("span");
+      labelEl.className = "block text-sm font-bold text-ink";
+      labelEl.textContent = label;
+      const descriptionEl = document.createElement("span");
+      descriptionEl.className = "mt-1 block min-h-[2.5rem] text-xs leading-5 text-slate-600";
+      descriptionEl.textContent = description;
+      const symbolEl = document.createElement("span");
+      symbolEl.className = "mt-2 inline-flex rounded bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-500";
+      symbolEl.textContent = CATEGORY_SYMBOLS[category] || unitCountLabel(category);
+      button.append(labelEl, descriptionEl, symbolEl);
+
       button.addEventListener("click", () => selectCategory(category, true));
       els.categoryGrid.appendChild(button);
     });
+    if (matchCount === 0) {
+      const empty = document.createElement("p");
+      empty.className = "col-span-full rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center text-sm text-slate-500";
+      empty.textContent = t("unitConverter.categoryNoResults", "該当するカテゴリがありません");
+      els.categoryGrid.appendChild(empty);
+    }
   }
 
   function unitCountLabel(category) {
@@ -214,9 +279,12 @@
 
   function populateSelects() {
     const units = Object.keys(window.unitConverterData[state.category].definitions);
-    const options = units.map((unit) => `<option value="${unit}">${unitLabel(state.category, unit)}</option>`).join("");
-    els.fromUnit.innerHTML = options;
-    els.toUnit.innerHTML = options;
+    els.fromUnit.innerHTML = "";
+    els.toUnit.innerHTML = "";
+    units.forEach((unit) => {
+      els.fromUnit.appendChild(new Option(unitLabel(state.category, unit), unit));
+      els.toUnit.appendChild(new Option(unitLabel(state.category, unit), unit));
+    });
     els.fromUnit.value = state.from;
     els.toUnit.value = state.to;
   }
@@ -262,23 +330,34 @@
     syncingMicrowave = false;
   }
 
+  function setResultPlaceholder() {
+    els.resultValue.textContent = t("unitConverter.resultPlaceholder", "結果がここに表示されます");
+    els.resultDetail.textContent = "";
+  }
+
   function renderResult() {
     const value = parseValue(state.value);
     els.errorMessage.classList.add("hidden");
     els.errorMessage.textContent = "";
 
     if (!Number.isFinite(value)) {
-      els.resultValue.textContent = t("unitConverter.resultPlaceholder", "結果がここに表示されます");
-      els.resultDetail.textContent = "";
+      setResultPlaceholder();
       return;
     }
     if (Math.abs(value) > 1e15) {
+      setResultPlaceholder();
       els.errorMessage.textContent = t("unitConverter.errorTooLarge", "値が大きすぎます。1e15以下の値で試してください。");
       els.errorMessage.classList.remove("hidden");
       return;
     }
 
     const result = conversionResult();
+    if (!Number.isFinite(result)) {
+      setResultPlaceholder();
+      els.errorMessage.textContent = t("unitConverter.errorUnavailable", "この組み合わせでは換算できません。別の値または単位を選んでください。");
+      els.errorMessage.classList.remove("hidden");
+      return;
+    }
     const symbol = resultSymbol(state.category, state.to);
     const resultText = `${formatNumber(result)}${symbol ? ` ${symbol}` : ""}`;
     els.resultValue.textContent = resultText;
@@ -293,18 +372,26 @@
 
   function renderAllResults() {
     const value = parseValue(state.value);
+    const canConvert = Number.isFinite(value) && Math.abs(value) <= 1e15;
     const units = Object.keys(window.unitConverterData[state.category].definitions);
     els.allResultsBody.innerHTML = "";
     units.forEach((unit) => {
-      const converted = Number.isFinite(value) ? conversionResult(unit) : NaN;
+      const converted = canConvert ? conversionResult(unit) : NaN;
       const def = unitDef(state.category, unit);
       const row = document.createElement("tr");
-      if (unit === state.to) row.className = "bg-green-50";
-      row.innerHTML = `
-        <td class="px-4 py-3 font-medium text-ink">${unitName(state.category, unit)}</td>
-        <td class="px-4 py-3 tabular-nums">${Number.isFinite(converted) ? formatNumber(converted) : "-"}</td>
-        <td class="px-4 py-3 text-slate-500">${state.category === "microwave" ? "s" : (def?.symbol || "")}</td>
-      `;
+      row.className = unit === state.to ? "bg-green-50 cursor-pointer" : "cursor-pointer hover:bg-slate-50";
+
+      const nameCell = document.createElement("td");
+      nameCell.className = "px-4 py-3 font-medium text-ink";
+      nameCell.textContent = unitName(state.category, unit);
+      const valueCell = document.createElement("td");
+      valueCell.className = "px-4 py-3 tabular-nums";
+      valueCell.textContent = Number.isFinite(converted) ? formatNumber(converted) : "-";
+      const symbolCell = document.createElement("td");
+      symbolCell.className = "px-4 py-3 text-slate-500";
+      symbolCell.textContent = state.category === "microwave" ? "s" : (def?.symbol || "");
+      row.append(nameCell, valueCell, symbolCell);
+
       row.addEventListener("click", () => {
         state.to = unit;
         renderAll();
@@ -317,7 +404,7 @@
     const categories = Object.keys(window.unitConverterData || {});
     const units = categories.reduce((sum, category) => sum + Object.keys(window.unitConverterData[category].definitions || {}).length, 0);
     els.categoryCount.textContent = String(categories.length);
-    els.unitCount.textContent = `${units}+`;
+    els.unitCount.textContent = String(units);
   }
 
   function renderAll() {

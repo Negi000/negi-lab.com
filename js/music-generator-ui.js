@@ -1,3 +1,10 @@
+const DEBUG_MUSIC_GENERATOR_UI = Boolean(window.DEBUG_MUSIC_GENERATOR);
+function musicGeneratorUiDebugLog(...args) {
+    if (DEBUG_MUSIC_GENERATOR_UI) {
+        console.log(...args);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Element Cache ---
     const simpleModeBtn = document.getElementById('simple-mode-btn');
@@ -56,17 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Note: Loading overlay removed as per user request
         
         try {
-            // Wait for the SampleLibrary to be available
-            let attempts = 0;
-            while (typeof SampleLibrary === 'undefined' && attempts < 50) {
-              await new Promise(resolve => setTimeout(resolve, 100));
-              attempts++;
-            }
-            
-            if (typeof SampleLibrary === 'undefined') {
-              throw new Error('SampleLibrary failed to load after 5 seconds');
-            }
-            
             // Wait for music engine to be available
             let engineAttempts = 0;
             while (!window.musicGenerator && engineAttempts < 100) {
@@ -128,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 simpleModeBtn.classList.add('text-gray-700');
             }
         }
-        console.log(`Switched to ${mode} mode.`);
+        musicGeneratorUiDebugLog(`Switched to ${mode} mode.`);
     }
 
     if (simpleModeBtn) {
@@ -144,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reverbSlider.addEventListener('input', (e) => {
             const value = parseFloat(e.target.value);
             // Reverb is now handled by the advanced engine's effects chain
-            console.log(`🎛️ Reverb set to: ${value}`);
+            musicGeneratorUiDebugLog(`🎛️ Reverb set to: ${value}`);
             if (reverbValue) {
                 reverbValue.textContent = value.toFixed(2);
             }
@@ -163,9 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tempoSimpleSlider) {
         tempoSimpleSlider.addEventListener('input', (e) => {
             const value = parseInt(e.target.value, 10);
-            const labels = ['遅い', '普通', '速い'];
-            if (tempoSimpleValue) {
-                tempoSimpleValue.textContent = labels[value] || '普通';
+            const labels = [
+                getTranslation('tempo_slow', '遅い'),
+                getTranslation('tempo_medium', '普通'),
+                getTranslation('tempo_fast', '速い')
+            ];
+            const valueTarget = document.getElementById('tempo-simple-value') || tempoSimpleValue;
+            if (valueTarget) {
+                valueTarget.textContent = labels[value] || getTranslation('tempo_medium', '普通');
             }
         });
     }
@@ -180,11 +181,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
                 // Start Tone.js context (this requires user gesture)
                 if (Tone.context.state !== 'running') {
-                    console.log('🎵 Starting AudioContext...');
+                    musicGeneratorUiDebugLog('🎵 Starting AudioContext...');
                     await Tone.start();
-                    console.log('✅ AudioContext started');
+                    musicGeneratorUiDebugLog('✅ AudioContext started');
                 } else {
-                    console.log('✅ AudioContext already running');
+                    musicGeneratorUiDebugLog('✅ AudioContext already running');
+                }
+
+                if (window.musicGenerator && typeof window.musicGenerator.ensureInitialized === 'function') {
+                    await window.musicGenerator.ensureInitialized();
                 }
 
                 // Collect options
@@ -206,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         instruments: { // Default instruments for simple mode
                             melody: 'piano',
                             chords: 'piano',
-                            bass: 'bass-electric',
+                            bass: 'bass',
                         }
                     };
                     
@@ -228,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         instruments: {
                             melody: melodyInstrumentSelect ? melodyInstrumentSelect.value : 'piano',
                             chords: chordInstrumentSelect ? chordInstrumentSelect.value : 'piano',
-                            bass: bassInstrumentSelect ? bassInstrumentSelect.value : 'bass-electric',
+                            bass: bassInstrumentSelect ? bassInstrumentSelect.value : 'bass',
                         },
                         key: keySelect ? keySelect.value : 'C',
                         tempo: tempoSlider ? parseInt(tempoSlider.value, 10) : 120,
@@ -237,12 +242,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                 }
 
-                console.log('Generating with options:', options);
+                musicGeneratorUiDebugLog('Generating with options:', options);
     
                 // Generate music using Advanced AI Engine
                 const composition = await window.musicGenerator.generateAdvancedComposition(options);
     
-                console.log('Generated AI composition:', composition);
+                musicGeneratorUiDebugLog('Generated AI composition:', composition);
     
                 // Update UI for player
                 if (playerPlaceholder) playerPlaceholder.style.display = 'none';
@@ -265,14 +270,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Player Controls ---
+    function createSvgIcon(className, viewBox, paths) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', className);
+        svg.setAttribute('fill', 'currentColor');
+        svg.setAttribute('viewBox', viewBox);
+        paths.forEach(attrs => {
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            Object.entries(attrs).forEach(([name, value]) => path.setAttribute(name, value));
+            svg.appendChild(path);
+        });
+        return svg;
+    }
+
+    function createPlayIcon(className = 'w-8 h-8') {
+        return createSvgIcon(className, '0 0 20 20', [
+            { 'fill-rule': 'evenodd', d: 'M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.002v3.996a1 1 0 001.555.832l3.196-1.998a1 1 0 000-1.664L9.555 7.168z', 'clip-rule': 'evenodd' }
+        ]);
+    }
+
+    function createPauseIcon() {
+        return createSvgIcon('w-8 h-8', '0 0 20 20', [
+            { 'fill-rule': 'evenodd', d: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z', 'clip-rule': 'evenodd' }
+        ]);
+    }
+
     function updatePlayPauseButton(isPlaying) {
         if (!playPauseBtn) return;
-        
-        if (isPlaying) {
-            playPauseBtn.innerHTML = `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>`; // Pause icon
-        } else {
-            playPauseBtn.innerHTML = `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8.002v3.996a1 1 0 001.555.832l3.196-1.998a1 1 0 000-1.664L9.555 7.168z" clip-rule="evenodd"></path></svg>`; // Play icon
-        }
+        playPauseBtn.replaceChildren(isPlaying ? createPauseIcon() : createPlayIcon());
     }
 
     if (playPauseBtn) {
@@ -280,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Resume AudioContext if suspended
             if (Tone.context.state !== 'running') {
                 await Tone.start();
-                console.log('✅ AudioContext started');
+                musicGeneratorUiDebugLog('✅ AudioContext started');
             }
             
             if (Tone.Transport.state === 'started') {
@@ -326,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             Tone.getDestination().volume.value = dbValue;
-            console.log(`🔊 Volume set to: ${percentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
+            musicGeneratorUiDebugLog(`🔊 Volume set to: ${percentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
         });
     }
     
@@ -371,11 +396,21 @@ document.addEventListener('DOMContentLoaded', () => {
         renderHistory();
     }
 
+    function getTranslation(key, fallback) {
+        const lang = (document.documentElement.lang || 'ja').slice(0, 2);
+        const table = window.musicGeneratorTranslations && (window.musicGeneratorTranslations[lang] || window.musicGeneratorTranslations.ja);
+        return (table && typeof table[key] === 'string') ? table[key] : fallback;
+    }
+
     function renderHistory() {
         if (!historyList) return;
-        historyList.innerHTML = '';
+        historyList.replaceChildren();
         if (generationHistory.length === 0) {
-            historyList.innerHTML = `<p class="text-gray-500 text-sm" data-translate="history_empty">まだ生成された音楽はありません。</p>`;
+            const emptyMessage = document.createElement('p');
+            emptyMessage.className = 'text-gray-500 text-sm';
+            emptyMessage.dataset.translate = 'history_empty';
+            emptyMessage.textContent = getTranslation('history_empty', 'まだ生成された音楽はありません。');
+            historyList.appendChild(emptyMessage);
             return;
         }
 
@@ -385,18 +420,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const infoDiv = document.createElement('div');
             const description = item.options.keywords || `${item.options.genre}/${item.options.mood}` || `${item.options.key} Key`;
-            infoDiv.innerHTML = `
-                <p class="font-semibold text-gray-700">${description}</p>
-                <p class="text-xs text-gray-500">${item.timestamp}</p>
-            `;
+            const descriptionElement = document.createElement('p');
+            descriptionElement.className = 'font-semibold text-gray-700';
+            descriptionElement.textContent = description;
+            const timestampElement = document.createElement('p');
+            timestampElement.className = 'text-xs text-gray-500';
+            timestampElement.textContent = item.timestamp;
+            infoDiv.append(descriptionElement, timestampElement);
 
             const button = document.createElement('button');
-            button.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664L9.555 7.168z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
             button.className = 'p-1 rounded-full hover:bg-accent/20 text-gray-600 hover:text-accent';
             button.title = 'この音楽を再生';
+            button.appendChild(createPlayIcon('w-5 h-5'));
             button.onclick = () => {
                 if (window.musicGenerator && window.musicGenerator.playFromHistory) {
-                    console.log('🎵 Playing from history:', item.options);
+                    musicGeneratorUiDebugLog('🎵 Playing from history:', item.options);
                     window.musicGenerator.playFromHistory(item.musicData);
                 } else {
                     console.warn('❌ Music generator not available for history playback');
@@ -504,11 +542,11 @@ document.addEventListener('DOMContentLoaded', () => {
             dbValue = -60 + (initialValue * 60);
         }
         Tone.getDestination().volume.value = dbValue;
-        console.log(`🔊 Initial volume set to: ${initialPercentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
+        musicGeneratorUiDebugLog(`🔊 Initial volume set to: ${initialPercentage}% (${dbValue === -Infinity ? '-∞' : dbValue.toFixed(1)}dB)`);
     }
     if (reverbSlider) {
         // Initial reverb will be set by the reverb slider event listener
-        console.log('🎛️ Initial reverb value:', reverbSlider.value);
+        musicGeneratorUiDebugLog('🎛️ Initial reverb value:', reverbSlider.value);
     }
     renderHistory(); // Initial render
     setupWaveform(); // Initialize the waveform visualizer
@@ -517,10 +555,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Protocol Check ---
     function checkProtocol() {
-        console.log('🔍 Current protocol:', window.location.protocol);
-        console.log('🔍 Current URL:', window.location.href);
+        musicGeneratorUiDebugLog('🔍 Current protocol:', window.location.protocol);
+        musicGeneratorUiDebugLog('🔍 Current URL:', window.location.href);
         
-        // CORS warnings removed - using CDN now
+        // Local synth playback works on both hosted and file-based previews.
         return true;
     }
 
@@ -529,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Instrument Options Update ---
     function updateInstrumentOptions() {
-        console.log('🎺 Updating instrument options...');
+        musicGeneratorUiDebugLog('🎺 Updating instrument options...');
         
         if (!window.musicGenerator || !window.musicGenerator.instruments) {
             console.warn('⚠️ Advanced Music Engine not available for instrument update');
@@ -537,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const instruments = Object.keys(window.musicGenerator.instruments);
-        console.log(`🎼 Available instruments: ${instruments.join(', ')}`);
+        musicGeneratorUiDebugLog(`🎼 Available instruments: ${instruments.join(', ')}`);
         
         // Update melody instrument options
         if (melodyInstrumentSelect) {
@@ -550,13 +588,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Update bass instrument options
-        if (bassInstrumentSelect) {
-            updateSelectOptions(bassInstrumentSelect, instruments, 'bass-electric');
+            if (bassInstrumentSelect) {
+            updateSelectOptions(bassInstrumentSelect, instruments, 'bass');
         }
     }
     
     function updateSelectOptions(selectElement, options, defaultValue) {
-        selectElement.innerHTML = '';
+        selectElement.replaceChildren();
         
         options.forEach(option => {
             const optionElement = document.createElement('option');

@@ -1,475 +1,386 @@
-/**
- * テキスト変換ツール専用翻訳データ & システム
- * @description text-converter.html専用の多言語対応
- * @version 1.0.0
- * @author negi-lab.com
- */
+// Text Converter translations consumed by js/tool-translation-system.js.
+(function () {
+  "use strict";
 
-// テキスト変換ツール用翻訳データ
-window.textConverterTranslations = {
-    ja: {
-        // ページタイトル・メタ
-        'pageTitle': 'テキスト変換ツール - 大文字小文字・全角半角・文字コード変換 | negi-lab.com',
-        'metaDescription': '大文字小文字変換、全角半角変換、文字コード変換、改行コード変換、HTMLエンコード・デコード、URLエンコード・デコード、Base64エンコード・デコードなど豊富なテキスト変換機能。',
-        
-        // メインタイトル
-        'mainTitle': '多機能テキスト変換ツール',
-        'subtitle': '大文字小文字・全角半角・文字コード・エンコード変換対応',
-        'description': '様々なテキスト変換機能を一つのツールで。プログラミング・Web開発に便利',
-        
-        // 変換カテゴリ
-        'category.title': '変換カテゴリ',
-        'category.case': '大文字小文字',
-        'category.width': '全角半角',
-        'category.encoding': 'エンコード',
-        'category.linebreak': '改行コード',
-        'category.format': 'フォーマット',
-        'category.special': '特殊変換',
-        
-        // 入力エリア
-        'input.title': '変換元テキスト',
-        'input.placeholder': 'ここに変換したいテキストを入力してください',
-        'input.wordCount': '文字数: {0}',
-        'input.lineCount': '行数: {0}',
-        'input.clear': 'クリア',
-        'input.paste': '貼り付け',
-        'input.selectAll': '全選択',
-        
-        // 出力エリア
-        'output.title': '変換後テキスト',
-        'output.placeholder': '変換結果がここに表示されます',
-        'output.copy': 'コピー',
-        'output.download': 'ダウンロード',
-        'output.clear': 'クリア',
-        
-        // 大文字小文字変換
-        'case.uppercase': '大文字変換',
-        'case.lowercase': '小文字変換',
-        'case.capitalize': '単語の先頭を大文字',
-        'case.sentence': '文の先頭を大文字',
-        'case.toggle': '大文字小文字切り替え',
-        'case.camelCase': 'camelCase',
-        'case.pascalCase': 'PascalCase',
-        'case.snakeCase': 'snake_case',
-        'case.kebabCase': 'kebab-case',
-        
-        // 全角半角変換
-        'width.toFullWidth': '半角→全角',
-        'width.toHalfWidth': '全角→半角',
-        'width.alphanumeric': '英数字のみ',
-        'width.kana': 'カナのみ',
-        'width.symbols': '記号のみ',
-        'width.spaces': 'スペースのみ',
-        'width.all': 'すべて',
-        
-        // エンコード変換
-        'encoding.htmlEncode': 'HTMLエンコード',
-        'encoding.htmlDecode': 'HTMLデコード',
-        'encoding.urlEncode': 'URLエンコード',
-        'encoding.urlDecode': 'URLデコード',
-        'encoding.base64Encode': 'Base64エンコード',
-        'encoding.base64Decode': 'Base64デコード',
-        'encoding.unicodeEscape': 'Unicode エスケープ',
-        'encoding.unicodeUnescape': 'Unicode アンエスケープ',
-        
-        // 改行コード変換
-        'linebreak.toCRLF': 'CRLF (Windows)',
-        'linebreak.toLF': 'LF (Unix/Mac)',
-        'linebreak.toCR': 'CR (旧Mac)',
-        'linebreak.remove': '改行削除',
-        'linebreak.normalize': '改行正規化',
-        
-        // フォーマット変換
-        'format.removeSpaces': 'スペース削除',
-        'format.removeExtraSpaces': '余分なスペース削除',
-        'format.addSpaces': 'スペース挿入',
-        'format.trimLines': '行の前後空白削除',
-        'format.removeEmptyLines': '空行削除',
-        'format.addLineNumbers': '行番号追加',
-        'format.removeLineNumbers': '行番号削除',
-        'format.reverse': '文字列反転',
-        'format.sort': '行ソート',
-        'format.unique': '重複行削除',
-        
-        // 特殊変換
-        'special.hiraganaToKatakana': 'ひらがな→カタカナ',
-        'special.katakanaToHiragana': 'カタカナ→ひらがな',
-        'special.romajiToHiragana': 'ローマ字→ひらがな',
-        'special.hiraganaToRomaji': 'ひらがな→ローマ字',
-        'special.extractNumbers': '数字抽出',
-        'special.extractEmails': 'メール抽出',
-        'special.extractUrls': 'URL抽出',
-        'special.wordCount': '単語数カウント',
-        'special.charFrequency': '文字頻度',
-        
-        // 設定オプション
-        'options.title': '変換オプション',
-        'options.preserveCase': '大文字小文字保持',
-        'options.preserveSpaces': 'スペース保持',
-        'options.preserveLinebreaks': '改行保持',
-        'options.trimWhitespace': '前後空白削除',
-        'options.skipEmpty': '空行をスキップ',
-        
-        // ボタン
-        'button.convert': '変換実行',
-        'button.clear': 'クリア',
-        'button.copy': 'コピー',
-        'button.paste': '貼り付け',
-        'button.download': 'ダウンロード',
-        'button.upload': 'ファイル読み込み',
-        'button.undo': '元に戻す',
-        'button.redo': 'やり直し',
-        'button.selectAll': '全選択',
-        
-        // ファイル操作
-        'file.upload': 'ファイルアップロード',
-        'file.download': 'ファイルダウンロード',
-        'file.fileName': 'ファイル名:',
-        'file.encoding': '文字エンコード:',
-        'file.format': 'ファイル形式:',
-        'file.maxSize': '最大ファイルサイズ: 10MB',
-        
-        // 履歴機能
-        'history.title': '変換履歴',
-        'history.clear': '履歴クリア',
-        'history.empty': '履歴がありません',
-        'history.restore': '復元',
-        'history.delete': '削除',
-        
-        // プリセット
-        'preset.title': 'プリセット',
-        'preset.webDev': 'Web開発用',
-        'preset.dataClean': 'データクリーニング',
-        'preset.textFormat': 'テキスト整形',
-        'preset.coding': 'プログラミング',
-        'preset.japanese': '日本語処理',
-        
-        // 統計情報
-        'stats.title': 'テキスト統計',
-        'stats.characters': '文字数',
-        'stats.charactersNoSpaces': '文字数（空白除く）',
-        'stats.words': '単語数',
-        'stats.lines': '行数',
-        'stats.paragraphs': '段落数',
-        'stats.bytes': 'バイト数',
-        
-        // メッセージ
-        'message.converted': '変換しました',
-        'message.copied': 'コピーしました',
-        'message.cleared': 'クリアしました',
-        'message.uploaded': 'ファイルを読み込みました',
-        'message.downloaded': 'ダウンロードしました',
-        'message.error': 'エラーが発生しました',
-        'message.emptyInput': '入力テキストが空です',
-        'message.fileTooLarge': 'ファイルサイズが大きすぎます',
-        'message.invalidFile': '無効なファイルです',
-        'message.encodingError': 'エンコードエラーが発生しました',
-        
-        // ガイド
-        'guide.title': '使い方ガイド',
-        'guide.step1': '1. 変換したいテキストを入力',
-        'guide.step2': '2. 変換カテゴリを選択',
-        'guide.step3': '3. 変換ボタンをクリック',
-        'guide.step4': '4. 結果をコピーまたはダウンロード',
-        
-        // FAQ
-        'faq.title': 'よくある質問',
-        'faq.q1': '対応している文字エンコードは？',
-        'faq.a1': 'UTF-8、Shift_JIS、EUC-JP、ISO-2022-JP等の主要エンコードに対応しています。',
-        'faq.q2': '処理できるテキストサイズの上限は？',
-        'faq.a2': 'ブラウザのメモリ制限内であれば処理できますが、快適な動作のため数MB以下を推奨します。',
-        'faq.q3': 'ファイルの内容は外部に送信されますか？',
-        'faq.a3': 'いいえ、すべての処理はブラウザ内で完結します。',
-        
-        // ショートカット
-        'shortcut.title': 'キーボードショートカット',
-        'shortcut.copy': 'Ctrl+C: コピー',
-        'shortcut.paste': 'Ctrl+V: 貼り付け',
-        'shortcut.selectAll': 'Ctrl+A: 全選択',
-        'shortcut.clear': 'Ctrl+L: クリア',
-        'shortcut.convert': 'Ctrl+Enter: 変換実行'
-    },
-    
-    en: {
-        // ページタイトル・メタ
-        'pageTitle': 'Text Converter Tool - Case, Width, Character Code Conversion | negi-lab.com',
-        'metaDescription': 'Comprehensive text conversion tool featuring case conversion, full/half-width conversion, character encoding, line break conversion, HTML encode/decode, URL encode/decode, Base64 encode/decode.',
-        
-        // メインタイトル
-        'mainTitle': 'Multi-Function Text Converter',
-        'subtitle': 'Case, Width, Character Code, and Encoding Conversion',
-        'description': 'Various text conversion functions in one tool. Convenient for programming and web development',
-        
-        // 変換カテゴリ
-        'category.title': 'Conversion Category',
-        'category.case': 'Case Conversion',
-        'category.width': 'Width Conversion',
-        'category.encoding': 'Encoding',
-        'category.linebreak': 'Line Breaks',
-        'category.format': 'Format',
-        'category.special': 'Special Conversion',
-        
-        // 入力エリア
-        'input.title': 'Source Text',
-        'input.placeholder': 'Enter text to convert here',
-        'input.wordCount': 'Characters: {0}',
-        'input.lineCount': 'Lines: {0}',
-        'input.clear': 'Clear',
-        'input.paste': 'Paste',
-        'input.selectAll': 'Select All',
-        
-        // 出力エリア
-        'output.title': 'Converted Text',
-        'output.placeholder': 'Conversion result will be displayed here',
-        'output.copy': 'Copy',
-        'output.download': 'Download',
-        'output.clear': 'Clear',
-        
-        // 大文字小文字変換
-        'case.uppercase': 'UPPERCASE',
-        'case.lowercase': 'lowercase',
-        'case.capitalize': 'Capitalize Words',
-        'case.sentence': 'Sentence case',
-        'case.toggle': 'tOGGLE cASE',
-        'case.camelCase': 'camelCase',
-        'case.pascalCase': 'PascalCase',
-        'case.snakeCase': 'snake_case',
-        'case.kebabCase': 'kebab-case',
-        
-        // 全角半角変換
-        'width.toFullWidth': 'Half → Full Width',
-        'width.toHalfWidth': 'Full → Half Width',
-        'width.alphanumeric': 'Alphanumeric Only',
-        'width.kana': 'Kana Only',
-        'width.symbols': 'Symbols Only',
-        'width.spaces': 'Spaces Only',
-        'width.all': 'All',
-        
-        // エンコード変換
-        'encoding.htmlEncode': 'HTML Encode',
-        'encoding.htmlDecode': 'HTML Decode',
-        'encoding.urlEncode': 'URL Encode',
-        'encoding.urlDecode': 'URL Decode',
-        'encoding.base64Encode': 'Base64 Encode',
-        'encoding.base64Decode': 'Base64 Decode',
-        'encoding.unicodeEscape': 'Unicode Escape',
-        'encoding.unicodeUnescape': 'Unicode Unescape',
-        
-        // 改行コード変換
-        'linebreak.toCRLF': 'CRLF (Windows)',
-        'linebreak.toLF': 'LF (Unix/Mac)',
-        'linebreak.toCR': 'CR (Old Mac)',
-        'linebreak.remove': 'Remove Line Breaks',
-        'linebreak.normalize': 'Normalize Line Breaks',
-        
-        // フォーマット変換
-        'format.removeSpaces': 'Remove Spaces',
-        'format.removeExtraSpaces': 'Remove Extra Spaces',
-        'format.addSpaces': 'Add Spaces',
-        'format.trimLines': 'Trim Line Whitespace',
-        'format.removeEmptyLines': 'Remove Empty Lines',
-        'format.addLineNumbers': 'Add Line Numbers',
-        'format.removeLineNumbers': 'Remove Line Numbers',
-        'format.reverse': 'Reverse Text',
-        'format.sort': 'Sort Lines',
-        'format.unique': 'Remove Duplicate Lines',
-        
-        // 特殊変換
-        'special.hiraganaToKatakana': 'Hiragana → Katakana',
-        'special.katakanaToHiragana': 'Katakana → Hiragana',
-        'special.romajiToHiragana': 'Romaji → Hiragana',
-        'special.hiraganaToRomaji': 'Hiragana → Romaji',
-        'special.extractNumbers': 'Extract Numbers',
-        'special.extractEmails': 'Extract Emails',
-        'special.extractUrls': 'Extract URLs',
-        'special.wordCount': 'Word Count',
-        'special.charFrequency': 'Character Frequency',
-        
-        // 設定オプション
-        'options.title': 'Conversion Options',
-        'options.preserveCase': 'Preserve Case',
-        'options.preserveSpaces': 'Preserve Spaces',
-        'options.preserveLinebreaks': 'Preserve Line Breaks',
-        'options.trimWhitespace': 'Trim Whitespace',
-        'options.skipEmpty': 'Skip Empty Lines',
-        
-        // ボタン
-        'button.convert': 'Convert',
-        'button.clear': 'Clear',
-        'button.copy': 'Copy',
-        'button.paste': 'Paste',
-        'button.download': 'Download',
-        'button.upload': 'Upload File',
-        'button.undo': 'Undo',
-        'button.redo': 'Redo',
-        'button.selectAll': 'Select All',
-        
-        // ファイル操作
-        'file.upload': 'File Upload',
-        'file.download': 'File Download',
-        'file.fileName': 'File Name:',
-        'file.encoding': 'Character Encoding:',
-        'file.format': 'File Format:',
-        'file.maxSize': 'Max file size: 10MB',
-        
-        // 履歴機能
-        'history.title': 'Conversion History',
-        'history.clear': 'Clear History',
-        'history.empty': 'No history available',
-        'history.restore': 'Restore',
-        'history.delete': 'Delete',
-        
-        // プリセット
-        'preset.title': 'Presets',
-        'preset.webDev': 'Web Development',
-        'preset.dataClean': 'Data Cleaning',
-        'preset.textFormat': 'Text Formatting',
-        'preset.coding': 'Programming',
-        'preset.japanese': 'Japanese Processing',
-        
-        // 統計情報
-        'stats.title': 'Text Statistics',
-        'stats.characters': 'Characters',
-        'stats.charactersNoSpaces': 'Characters (no spaces)',
-        'stats.words': 'Words',
-        'stats.lines': 'Lines',
-        'stats.paragraphs': 'Paragraphs',
-        'stats.bytes': 'Bytes',
-        
-        // メッセージ
-        'message.converted': 'Text converted successfully',
-        'message.copied': 'Copied to clipboard',
-        'message.cleared': 'Content cleared',
-        'message.uploaded': 'File uploaded successfully',
-        'message.downloaded': 'File downloaded successfully',
-        'message.error': 'An error occurred',
-        'message.emptyInput': 'Input text is empty',
-        'message.fileTooLarge': 'File size too large',
-        'message.invalidFile': 'Invalid file',
-        'message.encodingError': 'Encoding error occurred',
-        
-        // ガイド
-        'guide.title': 'Usage Guide',
-        'guide.step1': '1. Enter text to convert',
-        'guide.step2': '2. Select conversion category',
-        'guide.step3': '3. Click convert button',
-        'guide.step4': '4. Copy or download result',
-        
-        // FAQ
-        'faq.title': 'Frequently Asked Questions',
-        'faq.q1': 'What character encodings are supported?',
-        'faq.a1': 'Major encodings including UTF-8, Shift_JIS, EUC-JP, and ISO-2022-JP are supported.',
-        'faq.q2': 'What is the text size limit?',
-        'faq.a2': 'Text can be processed within browser memory limits, but a few MB or less is recommended for optimal performance.',
-        'faq.q3': 'Is file content sent to external servers?',
-        'faq.a3': 'No, all processing is done within your browser.',
-        
-        // ショートカット
-        'shortcut.title': 'Keyboard Shortcuts',
-        'shortcut.copy': 'Ctrl+C: Copy',
-        'shortcut.paste': 'Ctrl+V: Paste',
-        'shortcut.selectAll': 'Ctrl+A: Select All',
-        'shortcut.clear': 'Ctrl+L: Clear',
-        'shortcut.convert': 'Ctrl+Enter: Convert'
-    }
-};
+  const ja = {
+    "textConverter.pageTitle": "テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com",
+    "textConverter.metaDescription": "大文字・小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数やUTF-8バイト数の確認、履歴管理をブラウザ上で行えるテキスト変換ツールです。",
+    "textConverter.ogTitle": "テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com",
+    "textConverter.ogDescription": "大文字・小文字、camelCase、snake_case、kebab-case、文字反転、文字数カウント、履歴管理をブラウザ上で処理できます。",
+    "textConverter.mainTitle": "テキスト変換ツール",
+    "textConverter.description": "大文字小文字変換、命名規則変換、文字反転、文字数カウント、ローカル履歴をブラウザ上で確認できます。",
+    "textConverter.adsArea": "スポンサー広告",
+    "textConverter.adLabel": "広告",
+    "ads.sponsorLink": "スポンサーリンク",
+    "header.nav.home": "ホーム",
+    "header.nav.tools": "ツール",
+    "header.nav.wikis": "ゲームWiki",
+    "header.guide": "ガイド",
+    "option.ja": "日本語",
+    "option.en": "English",
+    "siteInfo.title": "negi-lab.comの独自性・運営方針・免責事項",
+    "siteInfo.point1": "本ツールはnegi-lab.comが独自開発・運営しています。",
+    "siteInfo.point2": "広告・アフィリエイトを含みますが、ユーザー体験を優先して配置しています。",
+    "siteInfo.point3": "正確性・安全性には注意していますが、利用は自己責任でお願いします。",
+    "siteInfo.copyright": "© 2026 negi-lab.com",
+    "footer.privacyPolicy": "プライバシーポリシー",
+    "footer.terms": "利用規約",
+    "footer.about": "運営者情報",
+    "footer.contact": "お問い合わせ",
+    "footer.sitemap": "サイトマップ",
+    "footer.copyright": "© 2026 negi-lab.com",
+    "guideModal.closeButton": "閉じる",
 
-/**
- * テキスト変換ツール専用翻訳システムクラス
- */
-class TextConverterTranslationSystem {
-    constructor() {
-        this.currentLanguage = 'ja';
-        this.translations = window.textConverterTranslations;
-        this.init();
-    }
-    
-    init() {
-        // 共通翻訳システムから言語設定を継承
-        if (window.commonTranslationSystem) {
-            this.currentLanguage = window.commonTranslationSystem.getCurrentLanguage();
-        } else {
-            const savedLang = localStorage.getItem('negi-lab-language');
-            if (savedLang && this.translations[savedLang]) {
-                this.currentLanguage = savedLang;
-            }
-        }
-        
-        // 言語変更イベントリスナー
-        window.addEventListener('languageChanged', (event) => {
-            this.setLanguage(event.detail.language);
-        });
-        
-        // 初期翻訳適用
-        this.translatePage();
-    }
-    
-    setLanguage(lang) {
-        if (!this.translations[lang]) {
-            console.warn(`Language "${lang}" not supported in Text Converter`);
-            return;
-        }
-        
-        this.currentLanguage = lang;
-        this.translatePage();
-    }
-    
-    translatePage() {
-        const elements = document.querySelectorAll('[data-translate-key], [data-i18n]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-translate-key') || element.getAttribute('data-i18n');
-            const translation = this.getTranslation(key);
-            if (translation) {
-                this.applyTranslation(element, translation);
-            }
-        });
-    }
-    
-    applyTranslation(element, translation) {
-        if (element.tagName.toLowerCase() === 'input') {
-            if (element.type === 'button' || element.type === 'submit') {
-                element.value = translation;
-            } else if (element.hasAttribute('placeholder')) {
-                element.placeholder = translation;
-            }
-        } else if (element.hasAttribute('placeholder')) {
-            element.placeholder = translation;
-        } else if (element.hasAttribute('title')) {
-            element.title = translation;
-        } else if (element.hasAttribute('content')) {
-            element.setAttribute('content', translation);
-        } else {
-            element.innerHTML = translation;
-        }
-    }
-    
-    getTranslation(key) {
-        const keys = key.split('.');
-        let current = this.translations[this.currentLanguage];
-        
-        for (const k of keys) {
-            if (current && typeof current === 'object' && k in current) {
-                current = current[k];
-            } else {
-                return null;
-            }
-        }
-        
-        return current;
-    }
-    
-    formatString(template, ...args) {
-        return template.replace(/\{(\d+)\}/g, (match, index) => {
-            return args[index] !== undefined ? args[index] : match;
-        });
-    }
-    
-    getCurrentLanguage() {
-        return this.currentLanguage;
-    }
-}
+    "textConverter.typeTitle": "変換タイプ",
+    "textConverter.type.upper": "大文字変換",
+    "textConverter.type.lower": "小文字変換",
+    "textConverter.type.title": "タイトルケース",
+    "textConverter.type.camel": "キャメルケース",
+    "textConverter.type.snake": "スネークケース",
+    "textConverter.type.kebab": "ケバブケース",
+    "textConverter.type.reverse": "文字反転",
+    "textConverter.type.count": "文字数カウント",
 
-// グローバルインスタンス作成
-document.addEventListener('DOMContentLoaded', () => {
-    window.textConverterTranslationSystem = new TextConverterTranslationSystem();
-});
+    "textConverter.inputLabel": "入力テキスト",
+    "textConverter.inputPlaceholder": "ここに変換したいテキストを入力してください",
+    "textConverter.outputLabel": "変換結果",
+    "textConverter.outputPlaceholder": "変換結果がここに表示されます",
+    "textConverter.button.convert": "変換実行",
+    "textConverter.button.clear": "クリア",
+    "textConverter.button.copy": "コピー",
+
+    "textConverter.stats.chars": "文字数",
+    "textConverter.stats.graphemes": "表示上の文字数",
+    "textConverter.stats.lines": "行数",
+    "textConverter.stats.words": "単語数",
+    "textConverter.stats.bytes": "UTF-8バイト数",
+    "textConverter.message.emptyInput": "入力テキストが空です。変換したいテキストを入力してください。",
+    "textConverter.message.emptyOutput": "コピーする結果がありません。",
+    "textConverter.message.copyFailed": "コピーに失敗しました。手動で選択してコピーしてください。",
+    "textConverter.message.copied": "コピー完了",
+    "textConverter.status.ready": "入力すると自動で変換結果を更新します。",
+    "textConverter.status.converted": "変換結果を更新しました。",
+    "textConverter.status.cleared": "入力欄と変換結果をクリアしました。",
+    "textConverter.status.restored": "履歴から内容を復元しました。",
+    "textConverter.status.historyCleared": "変換履歴を削除しました。",
+    "textConverter.history.title": "変換履歴",
+    "textConverter.history.note": "履歴はこの端末のブラウザにのみ保存されます。不要になったら削除できます。",
+    "textConverter.history.clear": "履歴を削除",
+    "textConverter.history.empty": "まだ履歴はありません。変換実行した内容がここに表示されます。",
+    "textConverter.history.restore": "復元",
+    "textConverter.history.delete": "削除",
+
+    "textConverter.guideSection.title": "テキスト変換活用ガイド",
+    "textConverter.guideSection.lead": "プログラミングからビジネス文書まで、テキスト変換を活用しやすい場面をまとめました。",
+    "textConverter.guideSection.devTitle": "プログラミング・開発",
+    "textConverter.guideSection.devPoint1": "変数名や項目名を camelCase、snake_case などへ変換",
+    "textConverter.guideSection.devPoint2": "APIレスポンスや設定ファイルの表記をそろえる前処理",
+    "textConverter.guideSection.devPoint3": "リファクタリング前の命名候補チェック",
+    "textConverter.guideSection.devPoint4": "カラム名・テーブル名の規則確認",
+    "textConverter.guideSection.dataTitle": "データ分析・管理",
+    "textConverter.guideSection.dataPoint1": "CSVデータの大文字小文字をそろえて確認しやすくする",
+    "textConverter.guideSection.dataPoint2": "レポートや投稿文の文字数を確認する",
+    "textConverter.guideSection.dataPoint3": "ログやメモの行数・単語数をざっくり把握する",
+    "textConverter.guideSection.dataPoint4": "表計算ソフトへ貼り付ける前の表記整理",
+    "textConverter.guideSection.contentTitle": "文書・コンテンツ作成",
+    "textConverter.guideSection.contentPoint1": "見出しやラベルの表記を整える",
+    "textConverter.guideSection.contentPoint2": "原稿・記事の文字数を確認する",
+    "textConverter.guideSection.contentPoint3": "引用文やメモの大文字小文字をそろえる",
+    "textConverter.guideSection.contentPoint4": "多言語コンテンツの見出し確認に使う",
+
+    "textConverter.details.title": "変換の仕組みと注意点",
+    "textConverter.details.lead": "変換ルールの特徴を知っておくと、コードや文章へ貼り付ける前に結果を確認しやすくなります。",
+    "textConverter.details.namingTitle": "命名規則変換の考え方",
+    "textConverter.details.camelDesc": "最初の単語は小文字、以降の単語の先頭は大文字にします。JavaScriptなどでよく使われます。",
+    "textConverter.details.snakeDesc": "単語間をアンダースコアで区切り、全て小文字にします。PythonやSQLでよく使われます。",
+    "textConverter.details.kebabDesc": "単語間をハイフンで区切り、全て小文字にします。CSSクラス名やURLの下書きで使いやすい形式です。",
+    "textConverter.details.titleDesc": "各単語の先頭を大文字にします。見出しやラベルの表記確認に使えます。",
+    "textConverter.details.countTitle": "文字数カウント・解析",
+    "textConverter.details.countMethodsTitle": "複数の数え方を併記",
+    "textConverter.details.countMethodsDesc": "文字数、表示上の文字数、行数、単語数、UTF-8バイト数をまとめて確認できます。",
+    "textConverter.details.countNote1": "文字数: JavaScriptの文字列長と表示上の文字数を併記",
+    "textConverter.details.countNote2": "行数: 改行文字を基準に集計",
+    "textConverter.details.countNote3": "単語数: 文字・数字のまとまりを単語として集計",
+    "textConverter.details.draftTitle": "投稿文・件名の下書き確認",
+    "textConverter.details.draftDesc": "SNS投稿、メール件名、CMS入力欄などへ貼り付ける前に、長さの目安を確認できます。",
+    "textConverter.details.draftNote1": "投稿文: 文字数と改行数を確認",
+    "textConverter.details.draftNote2": "メール件名: 長すぎないかの目安に利用",
+    "textConverter.details.draftNote3": "CMS入力: 表示上の文字数とUTF-8バイト数を確認",
+    "textConverter.details.draftNote4": "仕様確認: 実際の制限は各サービスの最新案内を確認してください",
+    "textConverter.details.reverseTitle": "文字反転・逆順処理",
+    "textConverter.details.reverseDesc": "Intl.Segmenter対応ブラウザでは、絵文字や結合文字を表示上の1文字として扱いながら逆順に処理します。",
+    "textConverter.details.reverseNote": "技術仕様: Intl.Segmenterを優先し、未対応環境ではArray.fromによるコードポイント単位の処理にフォールバックします。",
+
+    "textConverter.faqSection.title": "よくある質問・トラブルシューティング",
+    "textConverter.faqSection.lead": "テキスト変換ツール利用時によくある疑問や確認ポイントをまとめました。",
+    "textConverter.faqSection.q1": "変換結果が期待通りにならない場合の対処法は？",
+    "textConverter.faqSection.q1Intro": "主な原因と確認ポイント:",
+    "textConverter.faqSection.inputIssueTitle": "入力テキストの確認",
+    "textConverter.faqSection.inputIssue1": "• 改行・タブ・連続スペースが単語分割に影響する場合があります",
+    "textConverter.faqSection.inputIssue2": "• 記号は命名規則変換では区切りとして扱われます",
+    "textConverter.faqSection.inputIssue3": "• 日本語は大文字小文字変換の対象にならない場合があります",
+    "textConverter.faqSection.inputIssue4": "• 必要に応じて変換前の原文を手元に残してください",
+    "textConverter.faqSection.ruleTitle": "変換ルールの確認",
+    "textConverter.faqSection.rule1": "• camelCase: 1単語目は小文字で開始します",
+    "textConverter.faqSection.rule2": "• snake_case/kebab-case: 単語を区切り文字でつなぎます",
+    "textConverter.faqSection.rule3": "• Title Case: 各単語の先頭を大文字にします",
+    "textConverter.faqSection.rule4": "• 文字数カウント: 制御文字・空白文字も含めて集計します",
+    "textConverter.faqSection.q2": "プログラミングでの活用方法は？",
+    "textConverter.faqSection.q2Intro": "開発時に使いやすい活用例:",
+    "textConverter.faqSection.codingTitle": "コーディング規約の確認",
+    "textConverter.faqSection.coding1": "JavaScript/TypeScript: 変数名・関数名の camelCase 確認",
+    "textConverter.faqSection.coding2": "Python: 関数名・変数名の snake_case 確認",
+    "textConverter.faqSection.coding3": "CSS/HTML: クラス名・ID名の kebab-case 確認",
+    "textConverter.faqSection.coding4": "SQL: テーブル名・カラム名の表記整理",
+    "textConverter.faqSection.dataProcessTitle": "データ処理・API連携",
+    "textConverter.faqSection.dataProcess1": "APIレスポンス: フロントエンド用の命名確認",
+    "textConverter.faqSection.dataProcess2": "データベース: snake_case 形式の下書き",
+    "textConverter.faqSection.dataProcess3": "設定ファイル: YAML・JSONのキー名確認",
+    "textConverter.faqSection.dataProcess4": "ログ解析: 大文字小文字のゆれ確認",
+    "textConverter.faqSection.q3": "大量テキストの処理時の注意点",
+    "textConverter.faqSection.largeWarning": "ブラウザ上での処理のため、極端に大量なテキストでは動作が重くなる場合があります。",
+    "textConverter.faqSection.performanceTitle": "パフォーマンス上の注意",
+    "textConverter.faqSection.performance1": "• 数百KB程度までを目安にすると扱いやすいです",
+    "textConverter.faqSection.performance2": "• 入力と変換結果を同時に保持します",
+    "textConverter.faqSection.performance3": "• 文字反転やカウントは文字量に応じて時間が増えます",
+    "textConverter.faqSection.performance4": "• ブラウザや端末の性能により動作感は変わります",
+    "textConverter.faqSection.efficientTitle": "扱いやすくする方法",
+    "textConverter.faqSection.efficient1": "大量データは複数回に分けて変換する",
+    "textConverter.faqSection.efficient2": "不要な改行・空白を事前に整理する",
+    "textConverter.faqSection.efficient3": "重要なデータは事前に控えを残す",
+    "textConverter.faqSection.efficient4": "結果を部分的に確認してから利用する",
+    "textConverter.faqSection.q4": "文字化けや特殊文字の処理について",
+    "textConverter.faqSection.unicodeNote": "Unicode文字を扱えるよう配慮しています。環境差があるため、重要な文字列は変換後に確認してください。",
+    "textConverter.faqSection.unicodeTitle": "扱える文字の例",
+    "textConverter.faqSection.unicode1": "• 日本語・中国語・韓国語などのUnicode文字",
+    "textConverter.faqSection.unicode2": "• 数学記号・通貨記号・矢印などの特殊記号",
+    "textConverter.faqSection.unicode3": "• 絵文字などのサロゲートペア",
+    "textConverter.faqSection.unicode4": "• アクセント付き文字や結合文字",
+    "textConverter.faqSection.limitTitle": "制限事項・注意点",
+    "textConverter.faqSection.limit1": "• 命名規則変換では記号が区切りとして扱われます",
+    "textConverter.faqSection.limit2": "• 大文字小文字変換は一部言語では変化しない場合があります",
+    "textConverter.faqSection.limit3": "• 表示幅と文字数は同じではありません",
+    "textConverter.faqSection.limit4": "• コピー先のアプリによって表示が変わる場合があります",
+
+    "textConverter.useCases.title": "よく使う場面",
+    "textConverter.useCases.lead": "テキストを外部サービスへ送らず、命名規則の整理、原稿の文字数確認、投稿文の下書き調整をブラウザ内で処理できます。",
+    "textConverter.useCases.cta": "入力欄へ移動",
+    "textConverter.useCases.codeTitle": "コード・設定名の整形",
+    "textConverter.useCases.codeText": "見出しや項目名を camelCase、snake_case、kebab-case に変換し、READMEや設定ファイルへ貼り付けやすくします。",
+    "textConverter.useCases.draftTitle": "原稿と投稿文の確認",
+    "textConverter.useCases.draftText": "文字数、表示上の文字数、行数、単語数、UTF-8バイト数をまとめて確認し、SNSやメール件名の下書きを調整できます。",
+    "textConverter.useCases.cleanupTitle": "貼り付け前の表記ゆれ整理",
+    "textConverter.useCases.cleanupText": "大文字小文字や区切り文字をそろえてから、CSV、表計算、CMS、チャットへ貼り付ける前処理として使えます。",
+
+    "textConverter.guideModal.title": "使い方ガイド",
+    "textConverter.guideModal.lead": "テキスト変換ツールの使い方をご説明します。",
+    "textConverter.guideModal.step1": "変換したいテキストを入力フィールドに入力してください",
+    "textConverter.guideModal.step2": "変換タイプボタンから希望の変換方法を選択してください",
+    "textConverter.guideModal.step3": "「変換実行」ボタンをクリックしてください",
+    "textConverter.guideModal.step4": "結果を確認し、必要に応じてコピーボタンで結果をコピーしてください",
+    "textConverter.guideModal.hint": "ヒント: このツールはブラウザ上で動作し、入力テキストは変換のために外部サーバーへ送信されません。",
+    "textConverter.guideModal.typesTitle": "利用可能な変換タイプ:",
+    "textConverter.guideModal.typeUpper": "• 大文字変換: 文字を大文字に変換",
+    "textConverter.guideModal.typeLower": "• 小文字変換: 文字を小文字に変換",
+    "textConverter.guideModal.typeTitle": "• タイトルケース: 各単語の最初を大文字に変換",
+    "textConverter.guideModal.typeCamel": "• キャメルケース: camelCase形式に変換",
+    "textConverter.guideModal.typeSnake": "• スネークケース: snake_case形式に変換",
+    "textConverter.guideModal.typeKebab": "• ケバブケース: kebab-case形式に変換",
+    "textConverter.guideModal.typeReverse": "• 文字反転: 文字列を逆順に並べ替え",
+    "textConverter.guideModal.typeCount": "• 文字数カウント: 文字数・行数・単語数を表示"
+  };
+
+  const en = {
+    "textConverter.pageTitle": "Text Converter - Case Conversion, Character Count & Naming Styles | negi-lab.com",
+    "textConverter.metaDescription": "Convert text in your browser to uppercase, lowercase, Title Case, camelCase, snake_case, kebab-case, reverse order, check character, line, word, and UTF-8 byte counts, and keep a local history.",
+    "textConverter.ogTitle": "Text Converter - Case Conversion, Character Count & Naming Styles | negi-lab.com",
+    "textConverter.ogDescription": "Convert text case, naming styles, reversed text, character counts, and local history directly in your browser.",
+    "textConverter.mainTitle": "Text Converter",
+    "textConverter.description": "Convert case, naming styles, reversed text, text counts, and local history directly in your browser.",
+    "textConverter.adsArea": "Sponsored advertisement",
+    "textConverter.adLabel": "Advertisement",
+    "ads.sponsorLink": "Sponsored",
+    "header.nav.home": "Home",
+    "header.nav.tools": "Tools",
+    "header.nav.wikis": "Game Wikis",
+    "header.guide": "Guide",
+    "option.ja": "Japanese",
+    "option.en": "English",
+    "siteInfo.title": "Originality, Operating Policy, and Disclaimer",
+    "siteInfo.point1": "This tool is independently developed and operated by negi-lab.com.",
+    "siteInfo.point2": "Ads and affiliate links may appear, but placement is designed around user experience.",
+    "siteInfo.point3": "We pay attention to accuracy and safety, but please use the tool at your own discretion.",
+    "siteInfo.copyright": "© 2026 negi-lab.com",
+    "footer.privacyPolicy": "Privacy Policy",
+    "footer.terms": "Terms",
+    "footer.about": "About",
+    "footer.contact": "Contact",
+    "footer.sitemap": "Sitemap",
+    "footer.copyright": "© 2026 negi-lab.com",
+    "guideModal.closeButton": "Close",
+
+    "textConverter.typeTitle": "Conversion Type",
+    "textConverter.type.upper": "Uppercase",
+    "textConverter.type.lower": "Lowercase",
+    "textConverter.type.title": "Title Case",
+    "textConverter.type.camel": "camelCase",
+    "textConverter.type.snake": "snake_case",
+    "textConverter.type.kebab": "kebab-case",
+    "textConverter.type.reverse": "Reverse Text",
+    "textConverter.type.count": "Character Count",
+
+    "textConverter.inputLabel": "Input Text",
+    "textConverter.inputPlaceholder": "Enter the text you want to convert",
+    "textConverter.outputLabel": "Result",
+    "textConverter.outputPlaceholder": "The converted result will appear here",
+    "textConverter.button.convert": "Convert",
+    "textConverter.button.clear": "Clear",
+    "textConverter.button.copy": "Copy",
+
+    "textConverter.stats.chars": "Characters",
+    "textConverter.stats.graphemes": "Displayed characters",
+    "textConverter.stats.lines": "Lines",
+    "textConverter.stats.words": "Words",
+    "textConverter.stats.bytes": "UTF-8 bytes",
+    "textConverter.message.emptyInput": "Enter text before converting.",
+    "textConverter.message.emptyOutput": "There is no result to copy.",
+    "textConverter.message.copyFailed": "Copy failed. Select the result and copy it manually.",
+    "textConverter.message.copied": "Copied",
+    "textConverter.status.ready": "Results update automatically while you type.",
+    "textConverter.status.converted": "Conversion complete.",
+    "textConverter.status.cleared": "Cleared the current input and result.",
+    "textConverter.status.restored": "Restored this item from history.",
+    "textConverter.status.historyCleared": "Cleared conversion history.",
+    "textConverter.history.title": "Conversion History",
+    "textConverter.history.note": "History is stored only in this browser on this device and can be cleared at any time.",
+    "textConverter.history.clear": "Clear History",
+    "textConverter.history.empty": "No history yet. Converted items will appear here.",
+    "textConverter.history.restore": "Restore",
+    "textConverter.history.delete": "Delete",
+
+    "textConverter.guideSection.title": "Text Conversion Guide",
+    "textConverter.guideSection.lead": "Practical ways to use text conversion for code, data cleanup, and everyday writing.",
+    "textConverter.guideSection.devTitle": "Programming and Development",
+    "textConverter.guideSection.devPoint1": "Convert variable and field names to camelCase, snake_case, and more",
+    "textConverter.guideSection.devPoint2": "Normalize API response keys and configuration names before editing",
+    "textConverter.guideSection.devPoint3": "Check naming candidates before refactoring",
+    "textConverter.guideSection.devPoint4": "Review table and column naming conventions",
+    "textConverter.guideSection.dataTitle": "Data Analysis and Management",
+    "textConverter.guideSection.dataPoint1": "Make CSV casing easier to review",
+    "textConverter.guideSection.dataPoint2": "Check character counts for reports and posts",
+    "textConverter.guideSection.dataPoint3": "Estimate line and word counts in logs or notes",
+    "textConverter.guideSection.dataPoint4": "Clean up text before pasting into spreadsheets",
+    "textConverter.guideSection.contentTitle": "Writing and Content",
+    "textConverter.guideSection.contentPoint1": "Tidy headings and labels",
+    "textConverter.guideSection.contentPoint2": "Check article and draft lengths",
+    "textConverter.guideSection.contentPoint3": "Normalize casing in quotes or notes",
+    "textConverter.guideSection.contentPoint4": "Review headings in multilingual content",
+
+    "textConverter.details.title": "How Conversion Works",
+    "textConverter.details.lead": "Knowing the rules makes it easier to review results before pasting them into code or documents.",
+    "textConverter.details.namingTitle": "Naming Style Rules",
+    "textConverter.details.camelDesc": "The first word starts lowercase, and later words start uppercase. Common in JavaScript and similar code.",
+    "textConverter.details.snakeDesc": "Words are joined with underscores and lowercased. Common in Python and SQL.",
+    "textConverter.details.kebabDesc": "Words are joined with hyphens and lowercased. Useful for CSS class names and URL drafts.",
+    "textConverter.details.titleDesc": "Each word starts uppercase. Useful when reviewing headings and labels.",
+    "textConverter.details.countTitle": "Text Counts",
+    "textConverter.details.countMethodsTitle": "Several counts in one place",
+    "textConverter.details.countMethodsDesc": "Check characters, displayed characters, lines, words, and UTF-8 bytes together.",
+    "textConverter.details.countNote1": "Characters: JavaScript string length plus displayed character count",
+    "textConverter.details.countNote2": "Lines: counted from newline characters",
+    "textConverter.details.countNote3": "Words: groups of letters and numbers",
+    "textConverter.details.draftTitle": "Draft length checks",
+    "textConverter.details.draftDesc": "Use counts as a quick reference before pasting into social posts, email subjects, or CMS fields.",
+    "textConverter.details.draftNote1": "Posts: check characters and line breaks",
+    "textConverter.details.draftNote2": "Email subjects: use as a length sanity check",
+    "textConverter.details.draftNote3": "CMS fields: compare displayed characters and UTF-8 bytes",
+    "textConverter.details.draftNote4": "Limits: confirm current limits in the service you use",
+    "textConverter.details.reverseTitle": "Text reversal",
+    "textConverter.details.reverseDesc": "Browsers with Intl.Segmenter can reverse text while treating emoji and combining marks closer to displayed characters.",
+    "textConverter.details.reverseNote": "Technical note: Intl.Segmenter is preferred; unsupported browsers fall back to Array.from code point handling.",
+
+    "textConverter.faqSection.title": "FAQ and Troubleshooting",
+    "textConverter.faqSection.lead": "Common questions and checks for the text converter.",
+    "textConverter.faqSection.q1": "What should I check if the result looks unexpected?",
+    "textConverter.faqSection.q1Intro": "Common causes and checks:",
+    "textConverter.faqSection.inputIssueTitle": "Input text checks",
+    "textConverter.faqSection.inputIssue1": "• Newlines, tabs, and repeated spaces may affect word splitting",
+    "textConverter.faqSection.inputIssue2": "• Symbols are treated as separators in naming style conversion",
+    "textConverter.faqSection.inputIssue3": "• Some languages may not change during case conversion",
+    "textConverter.faqSection.inputIssue4": "• Keep a copy of important source text when needed",
+    "textConverter.faqSection.ruleTitle": "Rule checks",
+    "textConverter.faqSection.rule1": "• camelCase: the first word starts lowercase",
+    "textConverter.faqSection.rule2": "• snake_case/kebab-case: words are joined with delimiters",
+    "textConverter.faqSection.rule3": "• Title Case: each word starts uppercase",
+    "textConverter.faqSection.rule4": "• Counts include control and whitespace characters",
+    "textConverter.faqSection.q2": "How can I use this for programming?",
+    "textConverter.faqSection.q2Intro": "Useful development cases:",
+    "textConverter.faqSection.codingTitle": "Coding convention checks",
+    "textConverter.faqSection.coding1": "JavaScript/TypeScript: check camelCase names",
+    "textConverter.faqSection.coding2": "Python: check snake_case names",
+    "textConverter.faqSection.coding3": "CSS/HTML: check kebab-case classes and IDs",
+    "textConverter.faqSection.coding4": "SQL: tidy table and column names",
+    "textConverter.faqSection.dataProcessTitle": "Data and API work",
+    "textConverter.faqSection.dataProcess1": "API responses: review frontend naming",
+    "textConverter.faqSection.dataProcess2": "Databases: draft snake_case names",
+    "textConverter.faqSection.dataProcess3": "Config files: review YAML and JSON keys",
+    "textConverter.faqSection.dataProcess4": "Logs: check inconsistent casing",
+    "textConverter.faqSection.q3": "What should I know about large text?",
+    "textConverter.faqSection.largeWarning": "Very large text may feel slow because processing runs in the browser.",
+    "textConverter.faqSection.performanceTitle": "Performance notes",
+    "textConverter.faqSection.performance1": "• A few hundred KB is usually easier to handle",
+    "textConverter.faqSection.performance2": "• Input and result text are kept at the same time",
+    "textConverter.faqSection.performance3": "• Reversal and counting take longer as text grows",
+    "textConverter.faqSection.performance4": "• Performance depends on your browser and device",
+    "textConverter.faqSection.efficientTitle": "Ways to keep it manageable",
+    "textConverter.faqSection.efficient1": "Split large data into multiple conversions",
+    "textConverter.faqSection.efficient2": "Clean up unnecessary line breaks and spaces first",
+    "textConverter.faqSection.efficient3": "Keep a backup of important text",
+    "textConverter.faqSection.efficient4": "Review part of the result before using it",
+    "textConverter.faqSection.q4": "How are mojibake and special characters handled?",
+    "textConverter.faqSection.unicodeNote": "The tool is designed with Unicode text in mind. Because environments differ, review important strings after conversion.",
+    "textConverter.faqSection.unicodeTitle": "Examples of supported text",
+    "textConverter.faqSection.unicode1": "• Unicode text such as Japanese, Chinese, and Korean",
+    "textConverter.faqSection.unicode2": "• Math symbols, currency symbols, arrows, and similar marks",
+    "textConverter.faqSection.unicode3": "• Surrogate pairs such as emoji",
+    "textConverter.faqSection.unicode4": "• Accented and combining characters",
+    "textConverter.faqSection.limitTitle": "Limitations and notes",
+    "textConverter.faqSection.limit1": "• Symbols are treated as separators in naming conversion",
+    "textConverter.faqSection.limit2": "• Case conversion may not change some languages",
+    "textConverter.faqSection.limit3": "• Display width and character count are different concepts",
+    "textConverter.faqSection.limit4": "• Pasted output may appear differently in another app",
+
+    "textConverter.useCases.title": "Common Uses",
+    "textConverter.useCases.lead": "Process naming styles, draft lengths, and text cleanup in your browser without sending text to an external service.",
+    "textConverter.useCases.cta": "Go to input",
+    "textConverter.useCases.codeTitle": "Code and config names",
+    "textConverter.useCases.codeText": "Convert headings or field names to camelCase, snake_case, or kebab-case before pasting into READMEs or config files.",
+    "textConverter.useCases.draftTitle": "Draft and post checks",
+    "textConverter.useCases.draftText": "Review characters, displayed characters, lines, words, and UTF-8 bytes for posts and email subjects.",
+    "textConverter.useCases.cleanupTitle": "Before pasting elsewhere",
+    "textConverter.useCases.cleanupText": "Normalize casing and separators before pasting into CSV files, spreadsheets, CMS fields, or chat.",
+
+    "textConverter.guideModal.title": "Usage Guide",
+    "textConverter.guideModal.lead": "How to use the text converter.",
+    "textConverter.guideModal.step1": "Enter the text you want to convert.",
+    "textConverter.guideModal.step2": "Choose the conversion type.",
+    "textConverter.guideModal.step3": "Click the Convert button.",
+    "textConverter.guideModal.step4": "Review the result and copy it if needed.",
+    "textConverter.guideModal.hint": "Hint: This tool runs in your browser and does not send input text to an external server for conversion.",
+    "textConverter.guideModal.typesTitle": "Available conversion types:",
+    "textConverter.guideModal.typeUpper": "• Uppercase: convert letters to uppercase",
+    "textConverter.guideModal.typeLower": "• Lowercase: convert letters to lowercase",
+    "textConverter.guideModal.typeTitle": "• Title Case: uppercase the first character of each word",
+    "textConverter.guideModal.typeCamel": "• camelCase: convert to camelCase",
+    "textConverter.guideModal.typeSnake": "• snake_case: convert to snake_case",
+    "textConverter.guideModal.typeKebab": "• kebab-case: convert to kebab-case",
+    "textConverter.guideModal.typeReverse": "• Reverse Text: reverse the text order",
+    "textConverter.guideModal.typeCount": "• Character Count: show characters, lines, and words"
+  };
+
+  window.textConverterTranslations = { ja, en };
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = window.textConverterTranslations;
+  }
+})();

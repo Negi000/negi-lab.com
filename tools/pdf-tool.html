@@ -1,4 +1,4 @@
-<!-- PDFオールインワンツール 雛形 -->
+<!-- PDF merge, split, re-save, and image-to-PDF tool -->
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
@@ -8,75 +8,70 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
 
-  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-  connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-  frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
+    img-src 'self' data: blob: https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com;
     object-src 'none';
     base-uri 'self';
   " />
-
-  <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="pdfTool.pageTitle">【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com</title>
-  <meta name="description" data-translate-key="pdfTool.metaDescription" content="PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。" />
-  <meta property="og:title" content="【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com" />
-  <meta property="og:description" content="PDFの結合・分割・圧縮・画像変換が全て無料でできるオールインワンツール。ブラウザ完結でセキュリティも安心。" />
+
+  <title data-translate-key="pdfTool.pageTitle">PDF結合・分割・画像PDF作成ツール | negi-lab.com</title>
+  <meta name="description" data-translate-key="pdfTool.metaDescription" content="PDFの結合、ページごとの分割、PDFの再保存、画像からPDF作成をブラウザ内で行える無料ツールです。ファイルは外部サーバーへ送信しません。" />
+  <meta property="og:title" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com" />
+  <meta property="og:description" content="PDF結合、ページ分割、再保存、画像からPDF作成をブラウザ内で処理。ファイルは外部サーバーへ送信しません。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/pdf-tool.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】PDFオールインワンツール - 結合・分割・圧縮・変換 | negi-lab.com" />
-  <meta name="twitter:description" content="PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com" />
+  <meta name="twitter:description" content="PDF結合、ページ分割、再保存、画像からPDF作成をブラウザ内で処理する無料ツールです。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/pdf-tool.html" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-    <!-- PDF Library -->
-  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"
-          crossorigin="anonymous"></script>
-
-  <!-- Security and Common Utilities -->
+  <link rel="stylesheet" href="/js/responsive-ads.css" />
+  <script src="/js/responsive-ads-controller.js"></script>
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
   <script src="/js/portal-translations.js"></script>
   <script src="/js/pdf-tool-translations.js"></script>
   <script src="/js/tool-translation-system.js"></script>
 
-  <!-- Tailwind Configuration -->
   <script>
-window.pageTitleTranslationKey = "pdfTool.pageTitle";
+    window.pageTitleTranslationKey = "pdfTool.pageTitle";
     window.metaDescriptionTranslationKey = "pdfTool.metaDescription";
   </script>
 
-  <!-- Custom Styles -->
   <style>
-    .form-input, .form-select, .form-button {
+    .form-input,
+    .form-button {
       padding: 0.5rem;
       border: 1px solid #d1d5db;
       border-radius: 0.375rem;
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, border-color 0.2s, background 0.15s;
     }
 
-    .form-input:focus, .form-select:focus, .form-button:focus {
+    .form-input:focus,
+    .form-button:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
-      border-color: #4ADE80;
+      box-shadow: 0 0 0 2px #4ade80;
+      border-color: #4ade80;
     }
 
     .form-button {
-      background: #4ADE80;
+      background: #4ade80;
       color: #fff;
-      transition: background 0.15s, color 0.15s;
     }
 
     .form-button:hover:not(:disabled) {
@@ -85,7 +80,7 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
 
     .form-button:disabled {
       background: #d1d5db;
-      color: #9ca3af;
+      color: #6b7280;
       cursor: not-allowed;
     }
   </style>
@@ -94,17 +89,14 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】PDFオールインワンツール - 結合・分割・圧縮・変換",
-    "description": "PDF結合・分割・圧縮・画像変換を一つのツールで実現する無料オールインワンソリューション。ブラウザ完結処理でセキュリティ対策も万全、業務効率化に最適な専門PDFツールです。",
+    "name": "PDF結合・分割・画像PDF作成ツール",
+    "description": "PDFの結合、ページごとの分割、PDFの再保存、画像からPDF作成をブラウザ内で行える無料ツールです。ファイルは外部サーバーへ送信しません。",
     "url": "https://negi-lab.com/tools/pdf-tool.html",
     "applicationCategory": "Document utility",
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser",
     "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
+    "inLanguage": ["ja", "en"],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -135,7 +127,7 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "【無料】PDFオールインワンツール - 結合・分割・圧縮・変換",
+        "name": "PDF結合・分割・画像PDF作成ツール",
         "item": "https://negi-lab.com/tools/pdf-tool.html"
       }
     ]
@@ -149,7 +141,7 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
         "name": "PDFファイルはサーバーに送信されますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "いいえ。PDFの結合、分割、簡易圧縮、画像からPDFへの変換はブラウザ内で処理します。アップロード型サービスと違い、ファイルを外部サーバーへ送信しません。"
+          "text": "いいえ。PDFの結合、分割、再保存、画像からPDFへの変換はブラウザ内で処理します。ファイルを外部サーバーへ送信しません。"
         }
       },
       {
@@ -162,10 +154,10 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
       },
       {
         "@type": "Question",
-        "name": "大きなPDFも処理できますか？",
+        "name": "PDFを小さくできますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ブラウザのメモリに依存します。大容量PDFはページ数を分ける、軽い圧縮から試す、処理前にバックアップを取ることをおすすめします。"
+          "text": "このツールの軽量化はPDFを再保存する機能です。画像圧縮やOCR、パスワード解除には対応していません。ファイルによってはサイズが増える場合があります。"
         }
       }
     ]
@@ -177,33 +169,33 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
-      <nav>
+      <nav aria-label="Main navigation">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
+            <label for="lang-switch" class="sr-only">Language</label>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" type="button" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
           </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ブレッドクラムナビゲーション -->
-  <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
+  <nav class="bg-gray-100 border-b border-gray-200" aria-label="Breadcrumb">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
-        <li><a href="/" class="text-accent hover:underline">ホーム</a></li>
+        <li><a href="/" class="text-accent hover:underline" data-translate-key="pdfTool.breadcrumbHome">ホーム</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li><a href="/#tools" class="text-accent hover:underline">ツール</a></li>
+        <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="pdfTool.breadcrumbTools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page">PDFツール</li>
+        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="pdfTool.breadcrumbCurrent">PDFツール</li>
       </ol>
     </div>
   </nav>
@@ -211,532 +203,133 @@ window.pageTitleTranslationKey = "pdfTool.pageTitle";
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="pdfTool.mainTitle">PDFオールインワンツール</h1>
+        <p class="text-sm font-semibold uppercase tracking-wide text-accent" data-translate-key="pdfTool.eyebrow">ブラウザ内で処理・登録不要</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-4" data-translate-key="pdfTool.mainTitle">PDF結合・分割・画像PDF作成ツール</h1>
+        <p class="max-w-3xl mx-auto text-gray-600 leading-7" data-translate-key="pdfTool.lead">PDFの結合、ページごとの分割、PDFの再保存、画像からPDF作成をブラウザ内で行います。選択したファイルは外部サーバーへ送信しません。</p>
       </div>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4">PDFの結合・分割・圧縮・画像⇔PDF変換など、あらゆるPDF操作ができるオールインワンツールです。</p>
-        <div class="space-y-4">
+
+      <section class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6" aria-labelledby="pdf-workspace-title">
+        <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
           <div>
-            <label class="block font-semibold mb-1">PDFファイルを選択（複数可）</label>
-            <input type="file" id="pdfFiles" accept="application/pdf" multiple class="form-input w-full" />
-            <div id="pdfFileList" class="text-xs text-gray-500 mt-1"></div>
+            <h2 id="pdf-workspace-title" class="text-xl font-bold text-gray-900" data-translate-key="pdfTool.workspaceTitle">PDF作業エリア</h2>
+            <p class="text-sm text-gray-600 mt-1" data-translate-key="pdfTool.workspaceNote">対応形式とサイズを確認してから処理します。PDFは1ファイル50MBまで、画像は1ファイル20MBまでです。</p>
           </div>
-          <div class="flex flex-wrap gap-2 mt-2">
-            <button id="mergeBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF結合</button>
-            <button id="splitBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF分割</button>
-            <button id="compressBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF圧縮</button>
-          </div>
-          <div class="mt-4">
-            <label class="block font-semibold mb-1">画像ファイルをPDF化</label>
-            <input type="file" id="imgFiles" accept="image/*" multiple class="form-input w-full" />
-            <button id="img2pdfBtn" class="bg-accent text-white rounded px-4 py-2 font-bold mt-2 disabled:opacity-50">画像→PDF変換</button>
-          </div>
-          <div class="mt-4">
-            <label class="block font-semibold mb-1">PDFを画像化</label>
-            <button id="pdf2imgBtn" class="bg-accent text-white rounded px-4 py-2 font-bold disabled:opacity-50">PDF→画像変換</button>
-          </div>
-        </div>
-        <div id="pdfResult" class="mt-6"></div>
-      </div>
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-      <script>document.addEventListener('DOMContentLoaded',function(){if(window.renderSmartAds)window.renderSmartAds('smart-ads');});</script>
-    </div>
-  </main>
-
-  <!-- ツールへ戻るボタン -->
-  <div class="text-center py-8">
-    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-negi hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
-      <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l3-3m0 0l3 3m-3-3v12m0-12V4"></path>
-      </svg>
-      ツールに戻る
-    </button>
-  </div>
-
-  <!-- 活用事例・ユースケースセクション -->
-  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">PDF処理ツールの実用的な活用事例</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          ビジネス・教育・デザインの現場でのPDF最適化・変換・加工の具体的な活用シーンをご紹介します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- ビジネス・文書管理 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">ビジネス・文書管理</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>契約書の軽量化：</strong>重要書類をファイルサイズ圧縮してメール添付</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>プレゼン資料最適化：</strong>画像圧縮で共有しやすいサイズに調整</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>報告書の画像抽出：</strong>グラフや図表を個別画像として再利用</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>アーカイブ管理：</strong>長期保存用にファイルサイズを最小化</span>
-            </li>
-          </ul>
+          <a href="#privacy-notes" class="text-sm font-semibold text-accent hover:underline" data-translate-key="pdfTool.privacyLink">安全性を見る</a>
         </div>
 
-        <!-- 教育・学習 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-green-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">教育・学習現場</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>教材の分割配布：</strong>大きな教科書PDFを章ごとに分割して配布</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>授業資料軽量化：</strong>学生のダウンロード負荷を軽減</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>図解資料の抽出：</strong>テキストから図表のみを画像化</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>研究論文の最適化：</strong>提出用にファイルサイズ制限をクリア</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- デザイン・印刷業界 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <div class="flex items-center mb-4">
-            <div class="bg-purple-100 p-3 rounded-lg mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h4l4-4-4-4H7v8z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800">デザイン・印刷業界</h3>
-          </div>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>印刷用データ最適化：</strong>高解像度PDF を印刷品質を保ちつつ圧縮</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>カタログページ抽出：</strong>大容量カタログから必要ページのみ分割</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>画像素材の準備：</strong>PDF内画像を高品質で抽出・再利用</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-2">✓</span>
-              <span><strong>クライアント確認用：</strong>プレゼン用に軽量版PDFを作成</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技術解説セクション -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">PDF最適化技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          PDF圧縮・変換の仕組みと、品質とファイルサイズのバランス調整について解説します。
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">PDF圧縮の技術的アプローチ</h3>
+        <div class="grid gap-8 lg:grid-cols-2">
           <div class="space-y-4">
-            <div class="border-l-4 border-blue-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">画像圧縮最適化</h4>
-              <p class="text-sm text-gray-600 mb-2">PDF内の画像をJPEG・WebP圧縮で大幅なファイルサイズ削減を実現。</p>
-              <div class="text-xs bg-blue-50 p-2 rounded">
-                <strong>効果：</strong>画像中心のPDFで70-90%のサイズ削減可能
-              </div>
+            <div>
+              <label for="pdfFiles" class="block font-semibold mb-1" data-translate-key="pdfTool.pdfInputLabel">PDFファイルを選択（複数可）</label>
+              <input type="file" id="pdfFiles" accept="application/pdf,.pdf" multiple class="form-input w-full" aria-describedby="pdfHelp pdfFileList" />
+              <p id="pdfHelp" class="mt-1 text-xs text-gray-500" data-translate-key="pdfTool.pdfHelp">結合は2個以上、分割は1個のPDFを選んでください。</p>
+              <div id="pdfFileList" class="text-xs text-gray-600 mt-2 space-y-1" aria-live="polite"></div>
             </div>
-            <div class="border-l-4 border-green-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">フォント最適化</h4>
-              <p class="text-sm text-gray-600 mb-2">未使用フォント削除・フォントサブセット化で文字情報を効率化。</p>
-              <div class="text-xs bg-green-50 p-2 rounded">
-                <strong>効果：</strong>多フォント使用文書で30-50%のサイズ削減
-              </div>
+            <div class="flex flex-wrap gap-2">
+              <button id="mergeBtn" class="form-button px-4 py-2 font-bold disabled:opacity-70" type="button" disabled data-translate-key="pdfTool.mergeButton">PDF結合</button>
+              <button id="splitBtn" class="form-button px-4 py-2 font-bold disabled:opacity-70" type="button" disabled data-translate-key="pdfTool.splitButton">PDF分割</button>
+              <button id="compactBtn" class="form-button px-4 py-2 font-bold disabled:opacity-70" type="button" disabled data-translate-key="pdfTool.compactButton">PDF再保存</button>
             </div>
-            <div class="border-l-4 border-purple-400 pl-4 py-2">
-              <h4 class="font-medium text-lg">構造最適化</h4>
-              <p class="text-sm text-gray-600 mb-2">重複オブジェクト除去・メタデータクリーンアップで構造を効率化。</p>
-              <div class="text-xs bg-purple-50 p-2 rounded">
-                <strong>効果：</strong>複雑な文書構造で20-40%のサイズ削減
-              </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label for="imgFiles" class="block font-semibold mb-1" data-translate-key="pdfTool.imageInputLabel">画像ファイルをPDF化</label>
+              <input type="file" id="imgFiles" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" multiple class="form-input w-full" aria-describedby="imageHelp imgFileList" />
+              <p id="imageHelp" class="mt-1 text-xs text-gray-500" data-translate-key="pdfTool.imageHelp">PNG/JPEG/WebP/GIFに対応。SVGやHEICは対象外です。</p>
+              <div id="imgFileList" class="text-xs text-gray-600 mt-2 space-y-1" aria-live="polite"></div>
             </div>
+            <button id="img2pdfBtn" class="form-button px-4 py-2 font-bold disabled:opacity-70" type="button" disabled data-translate-key="pdfTool.imageButton">画像をPDFに変換</button>
           </div>
         </div>
 
-        <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">品質設定の指針</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="font-medium mb-2 text-lg">用途別最適化設定</h4>
-              <div class="space-y-2">
-                <div class="flex justify-between items-center p-2 bg-red-50 rounded">
-                  <span class="font-medium">印刷用（高品質）</span>
-                  <span class="text-sm text-gray-600">300dpi・品質90%以上</span>
-                </div>
-                <div class="flex justify-between items-center p-2 bg-yellow-50 rounded">
-                  <span class="font-medium">オフィス用（標準）</span>
-                  <span class="text-sm text-gray-600">150dpi・品質70-80%</span>
-                </div>
-                <div class="flex justify-between items-center p-2 bg-blue-50 rounded">
-                  <span class="font-medium">Web配布用（軽量）</span>
-                  <span class="text-sm text-gray-600">72dpi・品質50-60%</span>
-                </div>
-              </div>
-            </div>
+        <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <p id="pdfStatus" class="text-sm text-gray-700" role="status" aria-live="polite" aria-atomic="true" data-translate-key="pdfTool.initialStatus">ファイルを選択してください。</p>
+          <div id="pdfResult" class="mt-4" aria-live="polite"></div>
+        </div>
+      </section>
 
-            <div>
-              <h4 class="font-medium mb-2 text-lg">PDF/A対応について</h4>
-              <ul class="text-sm text-gray-600 space-y-1">
-                <li>• <strong>PDF/A-1b：</strong>長期保存用標準・ISO 19005-1準拠</li>
-                <li>• <strong>PDF/A-2u：</strong>Unicode対応・多言語文書に最適</li>
-                <li>• <strong>PDF/A-3a：</strong>添付ファイル対応・完全アクセシビリティ</li>
-                <li>• <strong>最適化：</strong>アーカイブ向けには品質低下を最小限に圧縮</li>
-              </ul>
-            </div>
-          </div>
+      <section class="mt-8 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-900" aria-label="Sponsored notice">
+        <p data-translate-key="pdfTool.revenueNote">この無料ツールは広告収益で運営しています。作業エリアを邪魔しない配置を心がけています。</p>
+      </section>
+    </div>
+  <section class="bg-white py-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="pdfTool.flowTitle">できること</h2>
+          <p class="text-gray-600 leading-7" data-translate-key="pdfTool.flowLead">PDF結合、ページ単位の分割、PDF構造の再保存、画像からPDF作成に対応しています。すべて現在開いているブラウザ内で処理します。</p>
+          <a href="#pdfFiles" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors" data-translate-key="pdfTool.selectPdfCta">PDFを選択する</a>
+        </div>
+        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-4 md:border-l">
+          <article class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="pdfTool.featureMergeTitle">結合</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="pdfTool.featureMergeText">複数のPDFを選択順にまとめ、1つのPDFとして保存できます。</p>
+          </article>
+          <article class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="pdfTool.featureSplitTitle">分割</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="pdfTool.featureSplitText">1つのPDFをページごとのPDFに分けます。必要なページだけ保存したいときに便利です。</p>
+          </article>
+          <article class="py-5 md:px-5 md:border-r border-gray-200">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="pdfTool.featureCompactTitle">再保存</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="pdfTool.featureCompactText">PDFを再生成して保存します。画像圧縮ではないため、サイズが増える場合もあります。</p>
+          </article>
+          <article class="py-5 md:px-5">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="pdfTool.featureImageTitle">画像PDF化</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="pdfTool.featureImageText">PNG、JPEG、WebP、GIFからPDFを作成できます。大きな画像はページに収まるよう縮小します。</p>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ・トラブルシューティングセクション -->
-  <section class="bg-gray-50 py-16">
+  <section id="privacy-notes" class="bg-gray-50 py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          PDF処理時によくある疑問や問題の解決方法をまとめました。
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>圧縮後のPDFが読めない・開けない場合は？</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-red-600 mb-2">過度な圧縮による問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>画質設定を上げる：</strong>50%以下の品質設定は避ける</li>
-                  <li>• <strong>段階的圧縮：</strong>80%→70%→60%と段階的に試す</li>
-                  <li>• <strong>元ファイル確認：</strong>元PDFに破損がないか検証</li>
-                  <li>• <strong>フォーマット変更：</strong>画像抽出→再PDF化を試行</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-blue-600 mb-2">互換性の問題</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>PDF版数確認：</strong>古いリーダーはPDF 2.0非対応</li>
-                  <li>• <strong>フォント埋め込み：</strong>特殊フォントは埋め込み必須</li>
-                  <li>• <strong>暗号化解除：</strong>パスワード保護解除後に再圧縮</li>
-                  <li>• <strong>別ツール併用：</strong>Adobe Reader等で開けるか確認</li>
-                </ul>
-              </div>
-            </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4" data-translate-key="pdfTool.limitTitle">処理できない場合</h2>
+          <div class="space-y-4 text-sm leading-7 text-gray-600">
+            <p data-translate-key="pdfTool.limitText1">暗号化PDF、破損したPDF、一部の特殊なPDFは読み込めないことがあります。パスワード保護されたPDFは解除したコピーでお試しください。</p>
+            <p data-translate-key="pdfTool.limitText2">巨大なPDFや高解像度画像を大量に扱う場合、ブラウザのメモリ制限で処理が止まることがあります。</p>
           </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>画像抽出時の品質が悪い・解像度が低い</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>画質向上の対策：</strong></p>
-            <div class="space-y-4">
-              <div class="bg-amber-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">元PDF作成時の注意点</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• 画像は300dpi以上で埋め込む</li>
-                  <li>• PNG形式を優先（透明度保持）</li>
-                  <li>• 過度な圧縮設定を避ける</li>
-                  <li>• ベクター画像はなるべくベクターのまま保持</li>
-                </ul>
-              </div>
-              <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-medium mb-2">抽出時の最適化</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• 抽出形式をPNGに設定（可逆圧縮）</li>
-                  <li>• 元画像の解像度に依存するため限界有り</li>
-                  <li>• 小さい画像は拡大せず等倍で利用</li>
-                  <li>• ベクター要素はSVGでの抽出を検討</li>
-                </ul>
-              </div>
-            </div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4" data-translate-key="pdfTool.privacyTitle">プライバシー</h2>
+          <div class="space-y-4 text-sm leading-7 text-gray-600">
+            <p data-translate-key="pdfTool.privacyText1">選択したPDFや画像はサーバーへ送信されません。処理は現在開いているブラウザ内で行われます。</p>
+            <p data-translate-key="pdfTool.privacyText2">共有端末では、作成したPDFを保存したあとにブラウザのダウンロード履歴も確認してください。</p>
           </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>大容量PDFの処理が遅い・失敗する</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>処理効率化の方法：</strong></p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 class="font-medium text-green-600 mb-2">事前対策</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>ページ分割：</strong>100ページ以上は分割して処理</li>
-                  <li>• <strong>不要ページ削除：</strong>必要な範囲のみを対象に</li>
-                  <li>• <strong>ブラウザ最新化：</strong>WebAssembly対応最新版を使用</li>
-                  <li>• <strong>メモリ確保：</strong>他のタブやアプリを閉じて処理</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="font-medium text-purple-600 mb-2">段階的処理</h4>
-                <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>軽い圧縮から：</strong>80%→60%→40%と段階実行</li>
-                  <li>• <strong>機能別実行：</strong>圧縮→分割→画像抽出の順序</li>
-                  <li>• <strong>部分的処理：</strong>章ごと・セクションごとに分けて実行</li>
-                  <li>• <strong>結果確認：</strong>各段階で品質をチェック</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
-          <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>セキュリティ・プライバシーについて</span>
-            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>ブラウザ完結型の安全性：</strong></p>
-            <div class="bg-green-50 p-4 rounded-lg">
-              <h4 class="font-medium mb-2">当ツールのセキュリティ特徴</h4>
-              <ul class="text-sm text-gray-600 space-y-2">
-                <li>• <strong>ローカル処理：</strong>PDFファイルはブラウザ内でのみ処理</li>
-                <li>• <strong>サーバー送信なし：</strong>外部への情報漏洩リスクゼロ</li>
-                <li>• <strong>一時的メモリ使用：</strong>処理後はメモリから完全削除</li>
-                <li>• <strong>HTTPS通信：</strong>ツール読み込み時の通信も暗号化</li>
-              </ul>
-              <div class="mt-3 p-3 bg-white rounded border-l-4 border-green-400">
-                <p class="text-sm text-gray-700">
-                  <strong>推奨：</strong>機密文書も安心してご利用いただけますが、
-                  重要な文書は必ず事前バックアップを取ってからご利用ください
-                </p>
-              </div>
-            </div>
-          </div>
-        </details>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <ul class="list-disc ml-5 mb-2 space-y-1">
+      <li data-translate-key="siteInfo.point1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を優先して配置しています。</li>
+      <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>
-    <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
+    <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
   </section>
+
+  </main>
+
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+    <nav class="mb-2" aria-label="Footer navigation">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2026 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
-  <script type="module" src="../index.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if(window.renderSmartAds)window.renderSmartAds('smart-ads');
-      const pdfFiles = document.getElementById('pdfFiles');
-      const pdfFileList = document.getElementById('pdfFileList');
-      const mergeBtn = document.getElementById('mergeBtn');
-      const splitBtn = document.getElementById('splitBtn');
-      const compressBtn = document.getElementById('compressBtn');
-      const imgFiles = document.getElementById('imgFiles');
-      const img2pdfBtn = document.getElementById('img2pdfBtn');
-      const pdf2imgBtn = document.getElementById('pdf2imgBtn');
-      const pdfResult = document.getElementById('pdfResult');
-      let loadedPdfFiles = [];
-      let loadedImgFiles = [];      pdfFiles.addEventListener('change', function(e) {
-        try {
-          const files = Array.from(e.target.files);
-          loadedPdfFiles = [];
 
-          // ファイル検証
-          for (const file of files) {
-            if (!SecurityUtils.validateFileType(file, ['application/pdf'])) {
-              SecurityUtils.showUserError('PDFファイルのみアップロード可能です');
-              this.value = '';
-              return;
-            }
-
-            if (!SecurityUtils.validateFileSize(file, 50)) { // 50MB制限
-              SecurityUtils.showUserError('ファイルサイズが50MB以下のPDFを選択してください');
-              this.value = '';
-              return;
-            }
-
-            loadedPdfFiles.push(file);
-          }
-
-          pdfFileList.textContent = loadedPdfFiles.map(f=>SecurityUtils.escapeHtml(f.name)).join(', ');
-          mergeBtn.disabled = loadedPdfFiles.length < 2;
-          splitBtn.disabled = loadedPdfFiles.length !== 1;
-          compressBtn.disabled = loadedPdfFiles.length === 0;
-          pdf2imgBtn.disabled = loadedPdfFiles.length !== 1;
-
-          if (loadedPdfFiles.length > 0) {
-            SecurityUtils.showSuccessMessage(`${loadedPdfFiles.length}個のPDFファイルが読み込まれました`);
-          }
-        } catch (error) {
-          SecurityUtils.showUserError('ファイル読み込み中にエラーが発生しました', error);
-          this.value = '';
-        }
-      });      imgFiles.addEventListener('change', function(e) {
-        try {
-          const files = Array.from(e.target.files);
-          loadedImgFiles = [];
-
-          // 画像ファイル検証
-          for (const file of files) {
-            if (!SecurityUtils.validateFileType(file, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
-              SecurityUtils.showUserError('JPEG、PNG、GIF、WebP形式の画像ファイルのみアップロード可能です');
-              this.value = '';
-              return;
-            }
-
-            if (!SecurityUtils.validateFileSize(file, 20)) { // 20MB制限
-              SecurityUtils.showUserError('ファイルサイズが20MB以下の画像を選択してください');
-              this.value = '';
-              return;
-            }
-
-            loadedImgFiles.push(file);
-          }
-
-          img2pdfBtn.disabled = loadedImgFiles.length === 0;
-
-          if (loadedImgFiles.length > 0) {
-            SecurityUtils.showSuccessMessage(`${loadedImgFiles.length}個の画像ファイルが読み込まれました`);
-          }
-        } catch (error) {
-          SecurityUtils.showUserError('画像ファイル読み込み中にエラーが発生しました', error);
-          this.value = '';
-        }
-        img2pdfBtn.disabled = loadedImgFiles.length === 0;
-      });
-      mergeBtn.addEventListener('click', async function() {
-        pdfResult.innerHTML = '結合中...';
-        const pdfDocs = await Promise.all(loadedPdfFiles.map(async f => PDFLib.PDFDocument.load(await f.arrayBuffer())));
-        const mergedPdf = await PDFLib.PDFDocument.create();
-        for(const doc of pdfDocs) {
-          const pages = await mergedPdf.copyPages(doc, doc.getPageIndices());
-          pages.forEach(p => mergedPdf.addPage(p));
-        }
-        const mergedBytes = await mergedPdf.save();
-        const blob = new Blob([mergedBytes], {type:'application/pdf'});
-        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="merged.pdf" class="text-accent underline">結合PDFをダウンロード</a>`;
-      });
-      splitBtn.addEventListener('click', async function() {
-        pdfResult.innerHTML = '分割中...';
-        const file = loadedPdfFiles[0];
-        const pdfDoc = await PDFLib.PDFDocument.load(await file.arrayBuffer());
-        const pages = pdfDoc.getPages();
-        let links = '';
-        for(let i=0;i<pages.length;i++){
-          const newPdf = await PDFLib.PDFDocument.create();
-          const [copied] = await newPdf.copyPages(pdfDoc, [i]);
-          newPdf.addPage(copied);
-          const bytes = await newPdf.save();
-          const blob = new Blob([bytes], {type:'application/pdf'});
-          links += `<a href="${URL.createObjectURL(blob)}" download="page${i+1}.pdf" class="text-accent underline mr-2">${i+1}ページ目</a>`;
-        }
-        pdfResult.innerHTML = links;
-      });
-      compressBtn.addEventListener('click', async function() {
-        pdfResult.innerHTML = '圧縮中...';
-        // 圧縮は画像再埋め込み等の簡易圧縮のみ
-        const pdfDocs = await Promise.all(loadedPdfFiles.map(async f => PDFLib.PDFDocument.load(await f.arrayBuffer())));
-        const compressedPdf = await PDFLib.PDFDocument.create();
-        for(const doc of pdfDocs) {
-          const pages = await compressedPdf.copyPages(doc, doc.getPageIndices());
-          pages.forEach(p => compressedPdf.addPage(p));
-        }
-        // 画像圧縮はpdf-lib単体では困難なため、簡易的な再保存のみ
-        const compressedBytes = await compressedPdf.save();
-        const blob = new Blob([compressedBytes], {type:'application/pdf'});
-        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="compressed.pdf" class="text-accent underline">圧縮PDFをダウンロード</a><div class='text-xs text-gray-500 mt-1'>※本圧縮は簡易的なものです</div>`;
-      });
-      img2pdfBtn.addEventListener('click', async function() {
-        pdfResult.innerHTML = '変換中...';
-        const pdfDoc = await PDFLib.PDFDocument.create();
-        for(const file of loadedImgFiles) {
-          const imgBytes = new Uint8Array(await file.arrayBuffer());
-          let img;
-          if(file.type === 'image/jpeg') {
-            img = await pdfDoc.embedJpg(imgBytes);
-          } else {
-            img = await pdfDoc.embedPng(imgBytes);
-          }
-          const page = pdfDoc.addPage([img.width, img.height]);
-          page.drawImage(img, {x:0, y:0, width:img.width, height:img.height});
-        }
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], {type:'application/pdf'});
-        pdfResult.innerHTML = `<a href="${URL.createObjectURL(blob)}" download="images.pdf" class="text-accent underline">画像PDFをダウンロード</a>`;
-      });
-      pdf2imgBtn.addEventListener('click', async function() {
-        pdfResult.innerHTML = 'PDF→画像変換は現在ベータ対応中です（PDF.js等のCDN連携で今後実装予定）';
-      });
-    });
-  </script>
-  <!-- Consent-gated Ads/Analytics Loader -->
+  <script src="../js/vendor/pdf-lib.min.js" defer></script>
+  <script src="../js/pdf-tool.js" defer></script>
   <script src="../js/tool-page-enhancements.js" defer></script>
-
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>

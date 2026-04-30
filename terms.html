@@ -3,135 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://negi-lab.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <title>利用規約 | negi-lab.com</title>
+  <meta name="description" content="negi-lab.comの利用規約です。オンラインツール、禁止事項、免責事項、知的財産権、広告について説明します。" />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://negi-lab.com/terms.html" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
-
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'unsafe-inline'
-      https://pagead2.googlesyndication.com
-      https://www.googletagmanager.com
-      https://www.google-analytics.com
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com;
-    style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com;
-    font-src 'self'
-      https://fonts.gstatic.com;
-    img-src 'self' data: blob:
-      https://negi-lab.com
-      https://pagead2.googlesyndication.com
-      https://www.google-analytics.com
-      https://googleads.g.doubleclick.net;
-    connect-src 'self'
-      https://www.google-analytics.com
-      https://pagead2.googlesyndication.com;
-    frame-src
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com;
-    object-src 'none';
-    base-uri 'self';
-  " />
-
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-
-  <title>利用規約 | negi-lab.com</title>
-  <meta name="description" content="negi-lab.comの利用規約です。無料オンラインツール、広告、免責事項、禁止事項、知的財産権について説明します。" />
-  <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href="https://negi-lab.com/terms.html" />
-
-  <!-- External Resources with SRI -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-
-  <!-- Tailwind Configuration -->
-  <!-- Security and Common Utilities -->
-  <script src="/js/security-utils.js"></script>
-  <script src="/js/common-utils.js"></script>
-
-  <!-- No ads/analytics scripts on policy page (noindex) -->
   <meta property="og:site_name" content="negi-lab.com" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="利用規約 | negi-lab.com" />
-  <meta name="twitter:description" content="negi-lab.comの利用規約です。無料オンラインツール、広告、免責事項、禁止事項、知的財産権について説明します。" />
-  <script type="application/ld+json" id="page-structured-data">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "利用規約",
-  "description": "negi-lab.comの利用規約です。無料オンラインツール、広告、免責事項、禁止事項、知的財産権について説明します。",
-  "url": "https://negi-lab.com/terms.html",
-  "inLanguage": [
-    "ja",
-    "en"
-  ],
-  "publisher": {
-    "@type": "Organization",
-    "name": "negi-lab.com",
-    "url": "https://negi-lab.com/"
-  }
-}
-  </script>
   <meta property="og:title" content="利用規約 | negi-lab.com" />
-  <meta property="og:description" content="negi-lab.comの利用規約です。無料オンラインツール、広告、免責事項、禁止事項、知的財産権について説明します。" />
+  <meta property="og:description" content="negi-lab.comの利用規約です。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/terms.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="利用規約 | negi-lab.com" />
+  <meta name="twitter:description" content="negi-lab.comの利用規約です。" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <script src="/js/security-utils.js"></script>
+  <script src="/js/common-utils.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-  <main class="max-w-2xl mx-auto py-10 px-4">
+  <main class="w-full max-w-2xl mx-auto py-10 px-4 flex-1">
     <h1 class="text-2xl font-bold mb-6">利用規約</h1>
-    <p>negi-lab.com（以下「当サイト」）のサービスをご利用いただく前に、以下の利用規約をよくお読みください。</p>
+    <p class="leading-relaxed">negi-lab.com（以下「当サイト」）をご利用いただく前に、以下の内容をご確認ください。</p>
     <h2 class="text-xl font-semibold mt-8 mb-2">1. サービス内容</h2>
-    <p>当サイトは、以下のサービスを無料で提供します：</p>
-    <ul class="list-disc ml-6 mb-4">
-      <li>各種単位変換ツール（長さ、重量、面積、体積等）</li>
-      <li>QRコード生成ツール</li>
-      <li>画像変換・リサイズツール</li>
-      <li>URL短縮ツール</li>
-      <li>日付計算ツール</li>
-      <li>その他の便利ツール</li>
-    </ul>
-    <p>サービス内容は予告なく変更・追加・終了する場合があります。重要な変更については事前にサイト上で告知いたします。</p>
+    <p class="leading-relaxed">当サイトは、単位変換、QRコード生成、画像変換、文字数カウントなどのオンラインツールや関連情報を提供します。サービス内容は、予告なく変更、追加、停止する場合があります。</p>
     <h2 class="text-xl font-semibold mt-8 mb-2">2. 禁止事項</h2>
-    <p>当サイトをご利用の際は、以下の行為を禁止いたします：</p>
-    <ul class="list-disc ml-6 mb-4">
-      <li>当サイトの内容の無断転載・複製・再配布</li>
-      <li>不正アクセスやサービス妨害行為</li>
-      <li>法令・公序良俗に反する行為</li>
-      <li>他のユーザーや第三者への迷惑行為</li>
-      <li>商業目的での過度な利用（大量アクセス等）</li>
-      <li>虚偽の情報の入力や意図的な誤用</li>
-      <li>セキュリティを脅かす行為</li>
+    <ul class="list-disc ml-6 space-y-1 leading-relaxed">
+      <li>法令または公序良俗に反する行為</li>
+      <li>不正アクセス、過度な負荷、サービス運営を妨げる行為</li>
+      <li>第三者の権利、プライバシー、信用を侵害する行為</li>
+      <li>虚偽情報の入力、迷惑行為、悪意ある利用</li>
+      <li>当サイトのコンテンツを無断で転載、複製、再配布する行為</li>
     </ul>
-    <h2 class="text-xl font-semibold mt-8 mb-2">3. 免責事項</h2>
-    <p>当サイトの情報・ツールの正確性・安全性には万全を期していますが、利用による損害等について一切の責任を負いません。</p>
-    <h2 class="text-xl font-semibold mt-8 mb-2">4. 著作権</h2>
-    <p>当サイトのコンテンツの著作権は管理人に帰属します。無断転載・複製を禁じます。</p>
-    <h2 class="text-xl font-semibold mt-8 mb-2">5. 規約の変更</h2>
-    <p>本規約は予告なく変更される場合があります。最新の内容をご確認ください。</p>
-    <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto">
-      <h2 class="text-lg font-bold mb-2">独自性・運営方針・免責事項</h2>
-      <ul class="list-disc ml-5 mb-2">
-        <li>本サイトは個人が独自に企画・開発・運営しています。</li>
-        <li>利便性・楽しさ・学びを重視し、独自の視点で情報やツールを提供します。</li>
-        <li>内容の正確性・安全性には配慮しますが、利用による損害等の責任は負いかねます。</li>
-      </ul>
-      <p>ご意見・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで。</p>
-    </section>
+    <h2 class="text-xl font-semibold mt-8 mb-2">3. 広告と外部リンク</h2>
+    <p class="leading-relaxed">当サイトには広告、アフィリエイトリンク、外部サイトへのリンクが含まれる場合があります。リンク先の内容、商品、サービス、個人情報の取り扱いは、各事業者の規約やポリシーをご確認ください。</p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">4. 免責事項</h2>
+    <p class="leading-relaxed">当サイトは、情報やツールの正確性、安全性、継続性の向上に努めますが、常に不具合や誤りがないことを保証するものではありません。利用により生じた損害については、法令上認められる範囲で責任を負いかねます。</p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">5. 知的財産権</h2>
+    <p class="leading-relaxed">当サイト上の文章、画像、デザイン、プログラム等の権利は、当サイトまたは正当な権利者に帰属します。引用の範囲を超える無断利用はお控えください。</p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">6. 規約の変更</h2>
+    <p class="leading-relaxed">本規約は、必要に応じて変更する場合があります。変更後の内容は、当サイト上に掲載した時点から適用されます。</p>
+    <h2 class="text-xl font-semibold mt-8 mb-2">7. お問い合わせ</h2>
+    <p class="leading-relaxed">ご質問やご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent break-all">negilab.com@gmail.com</a> までご連絡ください。</p>
+    <p class="text-xs text-gray-500 mt-8">改定日: 2026年4月29日</p>
   </main>
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  <footer class="bg-gray-800 text-gray-300 py-6 text-center text-sm mt-auto">
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2 px-4">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent">運営者情報</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent">サイトマップ</a>
     </nav>
     <div>&copy; 2026 negi-lab.com</div>
   </footer>

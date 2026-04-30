@@ -1,11 +1,18 @@
 /**
- * 🎵 Advanced AI Music Generator Engine v2.0 - Real Instruments
- * Professional-grade music composition with AI intelligence and real instrument samples
+ * Advanced browser music generator engine.
+ * Generates theory-informed drafts with local Tone.js synthesizers.
  */
+
+const DEBUG_MUSIC_GENERATOR = Boolean(window.DEBUG_MUSIC_GENERATOR);
+function musicGeneratorDebugLog(...args) {
+  if (DEBUG_MUSIC_GENERATOR) {
+    console.log(...args);
+  }
+}
 
 class AdvancedMusicGeneratorEngine {
   constructor() {
-    // Advanced AI Music Generator Engine v2.0 - Real instrument initialization
+    // Audio nodes are created after user interaction.
     
     this.instruments = {};
     this.isInitialized = false;
@@ -14,6 +21,7 @@ class AdvancedMusicGeneratorEngine {
     this.currentConfig = null;
     this.effects = {};
     this.generationHistory = [];
+    this.initializationPromise = null;
     
     // AI composition parameters
     this.creativity = 0.8;
@@ -24,7 +32,7 @@ class AdvancedMusicGeneratorEngine {
     // Initialize non-audio components only
     this.initializeBasicComponents();
     
-    console.log('🔧 Music Generator Engine initialized (audio deferred)');
+    musicGeneratorDebugLog('🔧 Music Generator Engine initialized (audio deferred)');
     this.deferredInitialization();
   }
 
@@ -137,7 +145,7 @@ class AdvancedMusicGeneratorEngine {
     // Wait for user interaction before any audio initialization
     const startEngine = async () => {
       try {
-        console.log('🎵 Starting audio engine after user interaction...');
+        musicGeneratorDebugLog('🎵 Starting audio engine after user interaction...');
         if (Tone.context.state !== 'running') {
           await Tone.start();
         }
@@ -150,7 +158,7 @@ class AdvancedMusicGeneratorEngine {
     // Listen for first user interaction
     const userInteractionEvents = ['click', 'touchstart', 'keydown'];
     const handleFirstInteraction = async () => {
-      await startEngine();
+      await this.ensureInitialized();
       userInteractionEvents.forEach(event => {
         document.removeEventListener(event, handleFirstInteraction);
       });
@@ -161,14 +169,36 @@ class AdvancedMusicGeneratorEngine {
     });
   }
 
+  async ensureInitialized() {
+    if (this.isInitialized) return;
+    if (!this.initializationPromise) {
+      this.initializationPromise = (async () => {
+        try {
+          musicGeneratorDebugLog('Starting audio engine after user interaction...');
+          if (Tone.context.state !== 'running') {
+            await Tone.start();
+          }
+          await this.initializeAdvancedEngine();
+        } catch (error) {
+          console.error('Deferred initialization failed:', error);
+          this.createEmergencyInstrument();
+          this.isInitialized = true;
+        } finally {
+          this.initializationPromise = null;
+        }
+      })();
+    }
+    await this.initializationPromise;
+  }
+
   async initializeAdvancedEngine() {
     try {
       this.initializeAIComposition();
       this.initializeAdvancedEffects();
-      await this.loadRealInstruments();
+      await this.loadSimpleInstruments();
       
       this.isInitialized = true;
-      console.log('✅ Advanced AI Music Engine with real instruments initialized');
+      musicGeneratorDebugLog('Music engine initialized with local synthesizers');
       
     } catch (error) {
       console.error('❌ Engine initialization failed:', error);
@@ -179,7 +209,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Load real instrument samples using SampleLibrary
   async loadRealInstruments() {
-    console.log('🎻 Loading real instrument samples...');
+    musicGeneratorDebugLog('🎻 Loading real instrument samples...');
     
     try {
       // Check if SampleLibrary is available
@@ -189,10 +219,10 @@ class AdvancedMusicGeneratorEngine {
         return;
       }
 
-      console.log('✅ SampleLibrary found, loading real instruments');
+      musicGeneratorDebugLog('✅ SampleLibrary found, loading real instruments');
       
-      // Configure SampleLibrary for GitHub CDN
-      SampleLibrary.baseUrl = 'https://nbrosowsky.github.io/tonejs-instruments/samples/';
+      // Legacy SampleLibrary hook. The current page initializes local synths instead.
+      SampleLibrary.baseUrl = '';
       
       // Check if we're in HTTP environment for real instruments
       if (window.location.protocol === 'file:') {
@@ -201,7 +231,7 @@ class AdvancedMusicGeneratorEngine {
         return;
       }
       
-      console.log('🌐 Using online CDN for real instrument samples');
+      musicGeneratorDebugLog('Using legacy sample loader');
       
       // Available real instruments for CDN loading
       const instrumentsToLoad = [
@@ -215,14 +245,14 @@ class AdvancedMusicGeneratorEngine {
         'organ'
       ];
 
-      console.log('📦 Loading instruments from CDN:', instrumentsToLoad);
+      musicGeneratorDebugLog('Loading optional sample instruments:', instrumentsToLoad);
 
       // Load instruments with shorter timeout
       const loadedInstruments = await this.loadInstrumentsWithTimeout(instrumentsToLoad, 3000);
       
       // Check if real instruments loaded successfully
       if (loadedInstruments && Object.keys(loadedInstruments).length > 0) {
-        console.log('🎹 Using real instruments from CDN');
+        musicGeneratorDebugLog('Using optional sample instruments');
         
         // Map loaded instruments with both original and alias names
         this.instruments = {
@@ -252,16 +282,16 @@ class AdvancedMusicGeneratorEngine {
               // Try to boost volume for SampleLibrary instruments
               if (instrument.volume) {
                 instrument.volume.value = +6; // +6dB boost
-                console.log(`🔊 Boosted volume for real ${name} instrument`);
+                musicGeneratorDebugLog(`🔊 Boosted volume for real ${name} instrument`);
               }
             } catch (error) {
-              console.log(`📢 Volume boost not available for ${name}`);
+              musicGeneratorDebugLog(`📢 Volume boost not available for ${name}`);
             }
           }
         });
         
       } else {
-        console.log('🎛️ Using high-quality synthesizers (real instruments unavailable)');
+        musicGeneratorDebugLog('🎛️ Using high-quality synthesizers (real instruments unavailable)');
         await this.loadSimpleInstruments();
         return;
       }
@@ -272,8 +302,8 @@ class AdvancedMusicGeneratorEngine {
       // Set emergency fallback
       this.instruments.emergency = this.instruments.piano;
       
-      console.log('✅ Real instruments loaded successfully');
-      console.log('🎼 Available instruments:', Object.keys(this.instruments));
+      musicGeneratorDebugLog('✅ Real instruments loaded successfully');
+      musicGeneratorDebugLog('🎼 Available instruments:', Object.keys(this.instruments));
       
     } catch (error) {
       console.error('❌ Real instrument loading failed:', error);
@@ -297,7 +327,7 @@ class AdvancedMusicGeneratorEngine {
 
       // Try to load real instruments
       try {
-        console.log('� Attempting to load real instruments from CDN...');
+        musicGeneratorDebugLog('Attempting to load optional sample instruments...');
         
         // Load a simple test instrument first
         const testInstrument = SampleLibrary.load({
@@ -306,8 +336,8 @@ class AdvancedMusicGeneratorEngine {
             if (!completed) {
               completed = true;
               clearTimeout(timeoutId);
-              console.log('✅ Real instruments loaded successfully from CDN');
-        console.log('🎹 Using real piano, violin, cello, flute, trumpet, saxophone, and organ sounds');
+              musicGeneratorDebugLog('Optional sample instruments loaded');
+        musicGeneratorDebugLog('🎹 Using real piano, violin, cello, flute, trumpet, saxophone, and organ sounds');
               
               // Load all instruments
               instrumentList.forEach(name => {
@@ -345,7 +375,7 @@ class AdvancedMusicGeneratorEngine {
   }
 
   createFallbackSynth(type) {
-    console.log(`🔧 Creating high-quality synth for ${type}`);
+    musicGeneratorDebugLog(`🔧 Creating high-quality synth for ${type}`);
     
     const synthConfigs = {
       piano: {
@@ -449,7 +479,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Enhanced synthesizer instrument loading for high-quality sound
   async loadSimpleInstruments() {
-    console.log('� Loading high-quality synthesizer instruments...');
+    musicGeneratorDebugLog('Loading high-quality synthesizer instruments...');
     
     try {
       this.instruments = {
@@ -464,7 +494,7 @@ class AdvancedMusicGeneratorEngine {
       
       this.createSimpleDrumKit();
       
-      console.log('✅ Fallback instruments loaded');
+      musicGeneratorDebugLog('✅ Fallback instruments loaded');
       
     } catch (error) {
       console.error('❌ Fallback instrument loading failed:', error);
@@ -474,7 +504,7 @@ class AdvancedMusicGeneratorEngine {
 
   createAdvancedDrumKit() {
     try {
-      console.log('🥁 Creating advanced drum kit...');
+      musicGeneratorDebugLog('🥁 Creating advanced drum kit...');
       
       // High-quality drum sounds using samples or better synthesis
       this.instruments.kick = new Tone.MembraneSynth({
@@ -510,7 +540,7 @@ class AdvancedMusicGeneratorEngine {
         envelope: { attack: 0.01, decay: 0.1, sustain: 0 }
       }).toDestination();
 
-      console.log('✅ Advanced drum kit created');
+      musicGeneratorDebugLog('✅ Advanced drum kit created');
 
     } catch (error) {
       console.warn('⚠️ Advanced drum kit creation failed:', error.message);
@@ -554,7 +584,7 @@ class AdvancedMusicGeneratorEngine {
   }
 
   createEmergencyInstrument() {
-    console.log('🚨 Creating emergency fallback instrument...');
+    musicGeneratorDebugLog('🚨 Creating emergency fallback instrument...');
     try {
       const emergency = new Tone.Synth().toDestination();
       this.instruments = {
@@ -598,7 +628,7 @@ class AdvancedMusicGeneratorEngine {
         }).toDestination()
       };
       
-      console.log('✅ Advanced effects initialized');
+      musicGeneratorDebugLog('✅ Advanced effects initialized');
     } catch (error) {
       console.warn('⚠️ Effects initialization failed:', error.message);
       this.effects = {};
@@ -771,7 +801,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Main composition generation method
   async generateAdvancedComposition(options = {}) {
-    console.log('🤖 Generating advanced AI composition...');
+    musicGeneratorDebugLog('🤖 Generating advanced AI composition...');
     
     const config = {
       genre: options.genre || 'pop',
@@ -787,7 +817,7 @@ class AdvancedMusicGeneratorEngine {
 
     try {
       const key = this.selectIntelligentKey(config.genre, config.mood, config.key);
-      console.log(`🎼 AI selected key: ${key} for ${config.genre}/${config.mood} (${config.isLooping ? 'LOOP' : 'SINGLE'} playback)`);
+      musicGeneratorDebugLog(`🎼 AI selected key: ${key} for ${config.genre}/${config.mood} (${config.isLooping ? 'LOOP' : 'SINGLE'} playback)`);
 
       const composition = await this.createAIComposition(config, key);
       
@@ -798,14 +828,14 @@ class AdvancedMusicGeneratorEngine {
         timestamp: Date.now()
       });
 
-      console.log('🎼 Scheduling advanced playback...');
+      musicGeneratorDebugLog('🎼 Scheduling advanced playback...');
       await this.scheduleAdvancedPlayback(composition, config);
 
       // Store current composition for playback control
       this.currentComposition = composition;
       this.currentConfig = config;
 
-      console.log('✅ Advanced AI composition completed');
+      musicGeneratorDebugLog('✅ Advanced AI composition completed');
       return composition;
 
     } catch (error) {
@@ -902,11 +932,11 @@ class AdvancedMusicGeneratorEngine {
   }
 
   async createAIComposition(config, key) {
-    console.log('🎵 Creating unified AI composition...');
+    musicGeneratorDebugLog('🎵 Creating unified AI composition...');
 
     // Generate proper song structure like professional music generators
     const songStructure = this.generateSongStructure(config.genre, config.isLooping);
-    console.log(`🎼 Song structure: ${songStructure.map(s => s.name).join(' - ')}`);
+    musicGeneratorDebugLog(`🎼 Song structure: ${songStructure.map(s => s.name).join(' - ')}`);
 
     const chordProgression = this.generateAdvancedChordProgression(
       config.genre, config.mood, config.length, key, config.creativity
@@ -970,7 +1000,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Generate sophisticated chord progressions with musical context
   generateAdvancedChordProgression(genre, mood, length, key, creativity) {
-    console.log(`🎼 Generating advanced chord progression: ${genre}/${mood} in ${key}`);
+    musicGeneratorDebugLog(`🎼 Generating advanced chord progression: ${genre}/${mood} in ${key}`);
     
     // Use proven, musical chord progressions instead of random generation
     const musicalProgressions = {
@@ -1070,7 +1100,7 @@ class AdvancedMusicGeneratorEngine {
     // Convert to the requested key
     const progression = this.transposeProgression(selectedProgression, key);
     
-    console.log(`🎵 Generated musical progression: ${progression.join(' - ')}`);
+    musicGeneratorDebugLog(`🎵 Generated musical progression: ${progression.join(' - ')}`);
     return progression;
   }
 
@@ -1264,7 +1294,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Generate melody with主題フレーズと繰り返し・変奏
   generateStructuredMelody(songStructure, chordProgression, key, genre, mood, creativity, config) {
-    console.log('🎵 Generating structured melody with motif and repetition...');
+    musicGeneratorDebugLog('🎵 Generating structured melody with motif and repetition...');
     const scale = this.getMusicalScale(key);
     const melody = [];
     let currentTime = 0;
@@ -1321,13 +1351,13 @@ class AdvancedMusicGeneratorEngine {
       }
       currentTime += sectionDuration;
     });
-    console.log(`🎵 Generated musical melody with motif: ${melody.length} notes across ${songStructure.length} sections`);
+    musicGeneratorDebugLog(`🎵 Generated musical melody with motif: ${melody.length} notes across ${songStructure.length} sections`);
     return melody;
   }
 
   // Generate bassline that follows song structure with proper musical patterns
   generateStructuredBassline(songStructure, chordProgression, key, complexity, config) {
-    console.log('🎸 Creating rich structured bassline...');
+    musicGeneratorDebugLog('🎸 Creating rich structured bassline...');
     const scale = this.getMusicalScale(key);
     const bassline = [];
     let currentTime = 0;
@@ -1390,14 +1420,14 @@ class AdvancedMusicGeneratorEngine {
       currentTime += sectionDuration;
     });
     
-    console.log(`🎸 Generated rich bassline: ${bassline.length} notes`);
-    console.log(`🎸 Bass density: ${(bassline.length / (currentTime)).toFixed(1)} notes per second`);
+    musicGeneratorDebugLog(`🎸 Generated rich bassline: ${bassline.length} notes`);
+    musicGeneratorDebugLog(`🎸 Bass density: ${(bassline.length / (currentTime)).toFixed(1)} notes per second`);
     return bassline;
   }
 
   // Generate harmony with proper musical chord voicings
   generateStructuredHarmony(songStructure, chordProgression, key, genre, complexity, config) {
-    console.log('🎼 Creating structured harmony...');
+    musicGeneratorDebugLog('🎼 Creating structured harmony...');
     const scale = this.getMusicalScale(key);
     const harmonyLayers = [];
     let currentTime = 0;
@@ -1450,13 +1480,13 @@ class AdvancedMusicGeneratorEngine {
       }
       currentTime += sectionDuration;
     });
-    console.log(`🎼 Generated musical harmony: ${harmonyLayers.length} chord changes`);
+    musicGeneratorDebugLog(`🎼 Generated musical harmony: ${harmonyLayers.length} chord changes`);
     return harmonyLayers;
   }
 
   // Generate drums with proper song structure
   generateStructuredDrums(songStructure, genre, mood, tempo, config) {
-    console.log('🥁 Creating structured drum patterns...');
+    musicGeneratorDebugLog('🥁 Creating structured drum patterns...');
     
     const drums = [];
     let currentTime = 0;
@@ -1467,7 +1497,7 @@ class AdvancedMusicGeneratorEngine {
       const beatsPerSecond = tempo / 60;
       const sectionBeats = Math.floor(sectionDuration * beatsPerSecond * 4); // 16th note resolution
 
-      console.log(`🥁 ${section.name}: ${sectionBeats} drum hits over ${sectionDuration}s`);
+      musicGeneratorDebugLog(`🥁 ${section.name}: ${sectionBeats} drum hits over ${sectionDuration}s`);
 
       for (let i = 0; i < sectionBeats; i++) {
         const beatTime = currentTime + (i / sectionBeats) * sectionDuration;
@@ -1504,7 +1534,7 @@ class AdvancedMusicGeneratorEngine {
       currentTime += sectionDuration;
     });
 
-    console.log(`🥁 Generated structured drums: ${drums.length} drum hits`);
+    musicGeneratorDebugLog(`🥁 Generated structured drums: ${drums.length} drum hits`);
     return drums;
   }
 
@@ -1595,7 +1625,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Transpose a chord progression to a different key musically
   transposeProgression(progression, targetKey) {
-    console.log(`🎼 Transposing progression [${progression.join(', ')}] to ${targetKey}`);
+    musicGeneratorDebugLog(`🎼 Transposing progression [${progression.join(', ')}] to ${targetKey}`);
     
     // Parse target key (remove 'major'/'minor')
     const targetRoot = targetKey.split(' ')[0];
@@ -1603,10 +1633,10 @@ class AdvancedMusicGeneratorEngine {
     
     // Calculate semitones to transpose
     const transposition = this.calculateTransposition(sourceRoot, targetRoot);
-    console.log(`🎼 Transposition: ${transposition} semitones from ${sourceRoot} to ${targetRoot}`);
+    musicGeneratorDebugLog(`🎼 Transposition: ${transposition} semitones from ${sourceRoot} to ${targetRoot}`);
     
     const transposedProgression = progression.map(chord => this.transposeChord(chord, transposition));
-    console.log(`🎼 Transposed result: [${transposedProgression.join(', ')}]`);
+    musicGeneratorDebugLog(`🎼 Transposed result: [${transposedProgression.join(', ')}]`);
     
     return transposedProgression;
   }
@@ -1671,7 +1701,7 @@ class AdvancedMusicGeneratorEngine {
     const newRoot = chromaticScale[newRootIndex];
     
     const result = newRoot + suffix;
-    console.log(`🎼 Chord transposition: ${chord} -> ${result} (+${semitones} semitones)`);
+    musicGeneratorDebugLog(`🎼 Chord transposition: ${chord} -> ${result} (+${semitones} semitones)`);
     
     return result;
   }
@@ -1681,7 +1711,7 @@ class AdvancedMusicGeneratorEngine {
     try {
       Tone.Transport.stop();
       Tone.Transport.cancel();
-      console.log('🛑 Playback stopped');
+      musicGeneratorDebugLog('🛑 Playback stopped');
     } catch (error) {
       console.warn('⚠️ Stop failed:', error);
     }
@@ -1691,7 +1721,7 @@ class AdvancedMusicGeneratorEngine {
   start() {
     try {
       Tone.Transport.start();
-      console.log('▶️ Playback started');
+      musicGeneratorDebugLog('▶️ Playback started');
     } catch (error) {
       console.warn('⚠️ Start failed:', error);
     }
@@ -1701,7 +1731,7 @@ class AdvancedMusicGeneratorEngine {
   pause() {
     try {
       Tone.Transport.pause();
-      console.log('⏸️ Playback paused');
+      musicGeneratorDebugLog('⏸️ Playback paused');
     } catch (error) {
       console.warn('⚠️ Pause failed:', error);
     }
@@ -1709,14 +1739,14 @@ class AdvancedMusicGeneratorEngine {
 
   // Advanced playback scheduling with professional song structure
   async scheduleAdvancedPlayback(composition, config) {
-    console.log('🎼 Scheduling professional playback with grid synchronization...');
+    musicGeneratorDebugLog('🎼 Scheduling professional playback with grid synchronization...');
     try {
       // Clear existing parts
       Tone.Transport.cancel();
 
       // Calculate total song duration
       const totalDuration = composition.songStructure.reduce((sum, section) => sum + section.duration, 0);
-      console.log(`🎼 Total song duration: ${totalDuration} seconds`);
+      musicGeneratorDebugLog(`🎼 Total song duration: ${totalDuration} seconds`);
 
       // Set up transport with musical grid
       Tone.Transport.bpm.value = composition.tempo;
@@ -1730,7 +1760,7 @@ class AdvancedMusicGeneratorEngine {
       const totalBeats = Math.ceil(totalDuration * beatsPerSecond);
       const musicalGrid = this.createMusicalGrid(composition, totalBeats, beatsPerSecond);
 
-      console.log(`🎼 Created musical grid: ${totalBeats} beats at ${composition.tempo} BPM`);
+      musicGeneratorDebugLog(`🎼 Created musical grid: ${totalBeats} beats at ${composition.tempo} BPM`);
 
       // Schedule harmony first (foundation) - NOW ENABLED for full band sound
       if (musicalGrid.harmony.length > 0) {
@@ -1746,7 +1776,7 @@ class AdvancedMusicGeneratorEngine {
           }
         }, musicalGrid.harmony);
         harmonyPart.start(0);
-        console.log(`🎼 Scheduled ${musicalGrid.harmony.length} background harmony chords`);
+        musicGeneratorDebugLog(`🎼 Scheduled ${musicalGrid.harmony.length} background harmony chords`);
       }
 
       // Schedule bassline (rhythmic foundation) - NOW ENABLED for full band sound
@@ -1758,7 +1788,7 @@ class AdvancedMusicGeneratorEngine {
           }
         }, musicalGrid.bass);
         bassPart.start(0);
-        console.log(`� Scheduled ${musicalGrid.bass.length} synchronized bassline notes`);
+        musicGeneratorDebugLog(`Scheduled ${musicalGrid.bass.length} synchronized bassline notes`);
       }
 
       // Schedule melody (melodic line) - Enhanced prominence with simplified approach
@@ -1770,13 +1800,13 @@ class AdvancedMusicGeneratorEngine {
             // Fixed high velocity for clear melody line
             const melodyVelocity = 0.9;
             melodyInstrument.triggerAttackRelease(note.note, note.duration || '4n', time, melodyVelocity);
-            console.log(`� Piano melody: ${note.note} at ${time.toFixed(2)}s`);
+            musicGeneratorDebugLog(`Piano melody: ${note.note} at ${time.toFixed(2)}s`);
           } else {
             console.warn('⚠️ Piano not available for melody');
           }
         }, musicalGrid.melody);
         melodyPart.start(0);
-        console.log(`🎵 Scheduled ${musicalGrid.melody.length} piano melody notes`);
+        musicGeneratorDebugLog(`🎵 Scheduled ${musicalGrid.melody.length} piano melody notes`);
       }
 
       // Schedule drums (rhythmic layer)
@@ -1794,18 +1824,18 @@ class AdvancedMusicGeneratorEngine {
           }
         }, musicalGrid.drums);
         drumPart.start(0);
-        console.log(`🥁 Scheduled ${musicalGrid.drums.length} synchronized drum hits`);
+        musicGeneratorDebugLog(`🥁 Scheduled ${musicalGrid.drums.length} synchronized drum hits`);
       }
 
       // Auto-stop for non-looping tracks
       if (!config.isLooping) {
         Tone.Transport.schedule(() => {
-          console.log('🎼 Song completed, stopping transport');
+          musicGeneratorDebugLog('🎼 Song completed, stopping transport');
           Tone.Transport.stop();
         }, totalDuration);
       }
 
-      console.log('✅ Professional synchronized playback scheduled successfully');
+      musicGeneratorDebugLog('✅ Professional synchronized playback scheduled successfully');
     } catch (error) {
       console.error('❌ Playback scheduling failed:', error);
       throw error;
@@ -1814,7 +1844,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Create unified musical grid for all parts - Enhanced version
   createMusicalGrid(composition, totalBeats, beatsPerSecond) {
-    console.log('🎼 Creating unified musical grid with advanced composition integration...');
+    musicGeneratorDebugLog('🎼 Creating unified musical grid with advanced composition integration...');
     
     const grid = {
       harmony: [],
@@ -1825,7 +1855,7 @@ class AdvancedMusicGeneratorEngine {
 
     // CHECK FOR UNIFIED COMPOSITION (new system)
     if (composition.isUnified) {
-      console.log('🎯 Using unified composition - all parts already synchronized!');
+      musicGeneratorDebugLog('🎯 Using unified composition - all parts already synchronized!');
       
       // Direct integration of unified parts
       grid.melody = composition.melody.map(note => ({
@@ -1859,14 +1889,14 @@ class AdvancedMusicGeneratorEngine {
         type: drum.type
       }));
       
-      console.log(`🎯 Unified grid: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
+      musicGeneratorDebugLog(`🎯 Unified grid: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
       
     } else {
       // OLD SYSTEM: Individual part integration
 
     // INTEGRATE EXISTING HARMONY from advanced composition
     if (composition.harmonyLayers && composition.harmonyLayers.length > 0) {
-      console.log(`🎼 Integrating ${composition.harmonyLayers.length} advanced harmony layers`);
+      musicGeneratorDebugLog(`🎼 Integrating ${composition.harmonyLayers.length} advanced harmony layers`);
       grid.harmony = composition.harmonyLayers.map(harmony => ({
         time: harmony.time,
         notes: harmony.notes,
@@ -1880,13 +1910,13 @@ class AdvancedMusicGeneratorEngine {
     }
 
     // FORCE USE of simplified melody generation (bypass complex system)
-    console.log('🎵 FORCING simplified melody generation for musical coherence...');
+    musicGeneratorDebugLog('🎵 FORCING simplified melody generation for musical coherence...');
     grid.melody = [];
     this.createFallbackMelody(grid, composition, totalBeats, beatsPerSecond);
 
     // INTEGRATE EXISTING BASSLINE from advanced composition
     if (composition.bassline && composition.bassline.length > 0) {
-      console.log(`🎸 Integrating ${composition.bassline.length} advanced bassline notes`);
+      musicGeneratorDebugLog(`🎸 Integrating ${composition.bassline.length} advanced bassline notes`);
       grid.bass = composition.bassline.map(note => ({
         time: note.time,
         note: note.note,
@@ -1900,7 +1930,7 @@ class AdvancedMusicGeneratorEngine {
 
     // INTEGRATE EXISTING DRUMS from advanced composition
     if (composition.drums && composition.drums.length > 0) {
-      console.log(`🥁 Integrating ${composition.drums.length} advanced drum patterns`);
+      musicGeneratorDebugLog(`🥁 Integrating ${composition.drums.length} advanced drum patterns`);
       grid.drums = composition.drums.map(drum => ({
         time: drum.time,
         instrument: drum.instrument,
@@ -1911,16 +1941,16 @@ class AdvancedMusicGeneratorEngine {
       this.createFallbackDrums(grid, composition, totalBeats, beatsPerSecond);
     }
 
-      console.log(`🎼 Enhanced musical grid created: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
+      musicGeneratorDebugLog(`🎼 Enhanced musical grid created: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
     }
 
-    console.log(`🎼 Enhanced musical grid created: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
+    musicGeneratorDebugLog(`🎼 Enhanced musical grid created: H:${grid.harmony.length} M:${grid.melody.length} B:${grid.bass.length} D:${grid.drums.length}`);
     return grid;
   }
 
   // Fallback harmony generation
   createFallbackHarmony(grid, composition, totalBeats, beatsPerSecond) {
-    console.log('🎼 Creating fallback harmony...');
+    musicGeneratorDebugLog('🎼 Creating fallback harmony...');
     const chordDuration = 4;
     const chordsPerSong = Math.ceil(totalBeats / chordDuration);
     
@@ -1951,7 +1981,7 @@ class AdvancedMusicGeneratorEngine {
 
   // COMPLETELY REWRITTEN melody generation for musical richness
   createFallbackMelody(grid, composition, totalBeats, beatsPerSecond) {
-    console.log('🎵 Creating rich, musical melody...');
+    musicGeneratorDebugLog('🎵 Creating rich, musical melody...');
     const scale = this.getMusicalScale(composition.key);
     const melodyOctave = 4;
     
@@ -2013,20 +2043,20 @@ class AdvancedMusicGeneratorEngine {
       return Math.random() > 0.15; // Keep 85% of notes
     });
     
-    console.log(`🎵 Generated ${grid.melody.length} rich melody notes`);
-    console.log(`🎵 Melody density: ${(grid.melody.length / (totalBeats / beatsPerSecond)).toFixed(1)} notes per second`);
-    console.log(`🎵 Following chord progression: ${chordProgression.join(' → ')}`);
+    musicGeneratorDebugLog(`🎵 Generated ${grid.melody.length} rich melody notes`);
+    musicGeneratorDebugLog(`🎵 Melody density: ${(grid.melody.length / (totalBeats / beatsPerSecond)).toFixed(1)} notes per second`);
+    musicGeneratorDebugLog(`🎵 Following chord progression: ${chordProgression.join(' → ')}`);
     
     // Show first few notes
     if (grid.melody.length > 0) {
       const preview = grid.melody.slice(0, 12).map(n => n.note).join(' → ');
-      console.log(`� Melody preview: ${preview}...`);
+      musicGeneratorDebugLog(`Melody preview: ${preview}...`);
     }
   }
 
   // Fallback bass generation
   createFallbackBass(grid, composition, totalBeats, beatsPerSecond) {
-    console.log('🎸 Creating fallback bass...');
+    musicGeneratorDebugLog('🎸 Creating fallback bass...');
     const chordDuration = 4;
     const chordsPerSong = Math.ceil(totalBeats / chordDuration);
     
@@ -2053,7 +2083,7 @@ class AdvancedMusicGeneratorEngine {
 
   // Fallback drums generation
   createFallbackDrums(grid, composition, totalBeats, beatsPerSecond) {
-    console.log('🥁 Creating fallback drums...');
+    musicGeneratorDebugLog('🥁 Creating fallback drums...');
     for (let beat = 0; beat < totalBeats; beat++) {
       const timePosition = beat / beatsPerSecond;
       
@@ -2088,7 +2118,7 @@ class AdvancedMusicGeneratorEngine {
     try {
       Tone.Transport.stop();
       Tone.Transport.cancel();
-      console.log('🛑 Playback stopped');
+      musicGeneratorDebugLog('🛑 Playback stopped');
     } catch (error) {
       console.warn('⚠️ Stop failed:', error);
     }
@@ -2096,7 +2126,7 @@ class AdvancedMusicGeneratorEngine {
 
   // NEW: Unified musical composition generator with GENRE/MOOD AWARENESS
   generateUnifiedComposition(songStructure, chordProgression, key, tempo, config) {
-    console.log(`🎼 Generating ${config.genre}/${config.mood} unified composition...`);
+    musicGeneratorDebugLog(`🎼 Generating ${config.genre}/${config.mood} unified composition...`);
     
     const composition = {
       melody: [],
@@ -2122,14 +2152,14 @@ class AdvancedMusicGeneratorEngine {
     
     // GENRE/MOOD ADJUSTMENTS
     const genreSettings = this.getGenreSettings(config.genre, config.mood);
-    console.log(`🎯 Genre settings: ${JSON.stringify(genreSettings)}`);
-    console.log(`🎯 Complexity: ${config.complexity} → ${complexityNum.toFixed(2)}`);
+    musicGeneratorDebugLog(`🎯 Genre settings: ${JSON.stringify(genreSettings)}`);
+    musicGeneratorDebugLog(`🎯 Complexity: ${config.complexity} → ${complexityNum.toFixed(2)}`);
     
     // CONTINUOUS COMPOSITION: No breaks between sections
     const totalDuration = songStructure.reduce((sum, section) => sum + section.duration, 0);
     const totalBeats = Math.floor(totalDuration * beatsPerSecond);
     
-    console.log(`🎵 Composing CONTINUOUS ${totalDuration}s with ${totalBeats} beats...`);
+    musicGeneratorDebugLog(`🎵 Composing CONTINUOUS ${totalDuration}s with ${totalBeats} beats...`);
     
     // MUSICAL PROGRESSION: Create sections with different patterns
     const sectionsCount = Math.ceil(totalBeats / 16); // 16拍 = 1セクション
@@ -2326,6 +2356,10 @@ class AdvancedMusicGeneratorEngine {
           let melodyNote;
           const isChordChange = beatInChord === 0;
           const randomSeed = Math.random() * (currentSection + 1) * 1.414; // Use section for variation
+          if (!chordTones || chordTones.length === 0) {
+            console.warn(`Invalid chord tones for melody generation, skipping melody at beat ${beat}`);
+            continue;
+          }
           
           // ADDITIONAL SAFETY: Ensure chordTones are valid for melody generation
           if (!chordTones || chordTones.length === 0) {
@@ -2402,9 +2436,12 @@ class AdvancedMusicGeneratorEngine {
                 break;
                 
               case 'uplifting': // Happy: Bouncy, ascending
-                const happyPattern = [(beatInChord * 3) % chordTones.length, (beatInChord + 1) % chordTones.length];
+                const happyPattern = [
+                  Math.floor(beatInChord * 3) % chordTones.length,
+                  Math.floor(beatInChord + 1) % chordTones.length
+                ];
                 const patternIndex = Math.floor(intraChordSeed * 2) % happyPattern.length;
-                const chordToneIndex = happyPattern[patternIndex] % chordTones.length;
+                const chordToneIndex = Math.floor(happyPattern[patternIndex]) % chordTones.length;
                 melodyNote = chordTones[chordToneIndex].note + (intraChordSeed > 0.4 ? '5' : '4');
                 break;
                 
@@ -2492,13 +2529,13 @@ class AdvancedMusicGeneratorEngine {
       }
     }
     
-    console.log(`🎼 DENSE unified composition complete:`);
-    console.log(`   🎵 Melody: ${composition.melody.length} notes (${(composition.melody.length/totalDuration).toFixed(1)}/sec)`);
-    console.log(`   🎸 Bass: ${composition.bass.length} notes (${(composition.bass.length/totalDuration).toFixed(1)}/sec)`);
-    console.log(`   🎼 Harmony: ${composition.harmony.length} chords (${(composition.harmony.length/totalDuration).toFixed(1)}/sec)`);
-    console.log(`   🥁 Drums: ${composition.drums.length} hits (${(composition.drums.length/totalDuration).toFixed(1)}/sec)`);
-    console.log(`🎯 Complexity level: ${complexityNum} | CONTINUOUS with musical progression`);
-    console.log(`🎵 Musical sections: ${sectionsCount} with variation patterns`);
+    musicGeneratorDebugLog(`🎼 DENSE unified composition complete:`);
+    musicGeneratorDebugLog(`   🎵 Melody: ${composition.melody.length} notes (${(composition.melody.length/totalDuration).toFixed(1)}/sec)`);
+    musicGeneratorDebugLog(`   🎸 Bass: ${composition.bass.length} notes (${(composition.bass.length/totalDuration).toFixed(1)}/sec)`);
+    musicGeneratorDebugLog(`   🎼 Harmony: ${composition.harmony.length} chords (${(composition.harmony.length/totalDuration).toFixed(1)}/sec)`);
+    musicGeneratorDebugLog(`   🥁 Drums: ${composition.drums.length} hits (${(composition.drums.length/totalDuration).toFixed(1)}/sec)`);
+    musicGeneratorDebugLog(`🎯 Complexity level: ${complexityNum} | CONTINUOUS with musical progression`);
+    musicGeneratorDebugLog(`🎵 Musical sections: ${sectionsCount} with variation patterns`);
     
     return composition;
   }

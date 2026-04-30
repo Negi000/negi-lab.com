@@ -1,4 +1,4 @@
-<!-- 画像背景リムーバ&透過PNG生成ツール 雛形 -->
+<!-- 画像背景リムーバ・透過PNG生成ツール -->
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
@@ -8,7 +8,6 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#65c155" />
 
-  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline'
@@ -25,99 +24,129 @@
     base-uri 'self';
   " />
 
-  <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <title data-translate-key="bgRemover.pageTitle">画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com</title>
-  <meta name="description" data-translate-key="bgRemover.metaDescription" content="画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
-  <meta property="og:title" content="画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com" />
-  <meta property="og:description" content="画像の四隅に近い背景色を透明化し、透過PNGを生成。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
+  <title>画像背景リムーバ・透過PNG生成ツール | negi-lab.com</title>
+  <meta name="description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバー。画像はサーバーへ送信されず、エッジ連結判定とソフトエッジ調整に対応しています。" />
+  <meta property="og:title" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com" />
+  <meta property="og:description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存。画像をサーバーへ送信しない安全な静的ツールです。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/bg-remover.html" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="画像背景リムーバ・透過PNG生成ツール - 単色背景向け | negi-lab.com" />
-  <meta name="twitter:description" content="画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com" />
+  <meta name="twitter:description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバーです。" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/bg-remover.html" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-  <!-- Security and Common Utilities -->
+
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
 
-  <!-- Tailwind Configuration -->
-  <script>
-window.pageTitleTranslationKey = "bgRemover.pageTitle";
-    window.metaDescriptionTranslationKey = "bgRemover.metaDescription";
-  </script>
-
-  <!-- Custom Styles -->
   <style>
-    .form-input, .form-select, .form-button {
-      padding: 0.5rem;
+    .form-input,
+    .form-button {
       border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
+      border-radius: 0.5rem;
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      transition: box-shadow 0.2s;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
     }
 
-    .form-input:focus, .form-select:focus, .form-button:focus {
+    .form-input:focus,
+    .form-button:focus {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 3px rgb(74 222 128 / 0.28);
       outline: none;
-      box-shadow: 0 0 0 2px #4ADE80;
-      border-color: #4ADE80;
     }
 
     .form-button {
-      background: #4ADE80;
+      align-items: center;
+      background: #16a34a;
       color: #fff;
-      transition: background 0.15s, color 0.15s;
+      display: inline-flex;
+      font-weight: 700;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.65rem 1rem;
     }
 
     .form-button:hover:not(:disabled) {
-      background: #10b981;
+      background: #15803d;
     }
 
-    .form-button:disabled {
-      background: #d1d5db;
+    .form-button.secondary {
+      background: #fff;
+      color: #166534;
+    }
+
+    .form-button.secondary:hover:not(:disabled) {
+      background: #f0fdf4;
+    }
+
+    .form-button:disabled,
+    .form-button[aria-disabled="true"] {
+      background: #e5e7eb;
       color: #9ca3af;
       cursor: not-allowed;
     }
 
-    .drop-area {
-      border: 2px dashed #d1d5db;
+    .drop-zone {
+      border: 2px dashed #bbf7d0;
       border-radius: 0.5rem;
-      padding: 2rem;
-      text-align: center;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
+      display: block;
+      padding: 1.25rem;
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
 
-    .drop-area.dragover {
-      border-color: #4ADE80;
-      background: rgba(74, 222, 128, 0.1);
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      background: #f0fdf4;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgb(34 197 94 / 0.14);
+    }
+
+    .checkerboard {
+      background-color: #fff;
+      background-image:
+        linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+      background-size: 16px 16px;
+    }
+
+    .sr-only {
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
     }
   </style>
 
-  <!-- Analytics are initialized centrally via ads-consent-loader.js with consent in production -->
   <script type="application/ld+json" id="tool-structured-data">
 [
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "画像背景リムーバ・透過PNG生成ツール - 単色背景向け",
-    "description": "画像の四隅に近い背景色を透明化し、透過PNGを生成する無料ツール。単色背景の商品画像、ロゴ、アイコン素材の下処理をブラウザ内で行えます。",
+    "name": "画像背景リムーバ・透過PNG生成ツール",
+    "description": "単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバー。画像はサーバーへ送信されません。",
     "url": "https://negi-lab.com/tools/bg-remover.html",
     "applicationCategory": "Image editing",
     "operatingSystem": "Any",
-    "browserRequirements": "Requires a modern web browser",
+    "browserRequirements": "Requires a modern web browser with Canvas support",
     "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
+    "inLanguage": ["ja"],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -148,7 +177,7 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "画像背景リムーバ・透過PNG生成ツール",
+        "name": "画像背景リムーバ",
         "item": "https://negi-lab.com/tools/bg-remover.html"
       }
     ]
@@ -159,26 +188,18 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "このツールは無料で使えますか？",
+        "name": "画像はサーバーに送信されますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "いいえ。選択した画像はブラウザ内のCanvasで処理され、negi-lab.comのサーバーへアップロードされません。"
         }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
+        "name": "どのような画像に向いていますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+          "text": "白や淡色など単色に近い背景で、四隅や外周に背景が見えている画像に向いています。人物や複雑な背景の完全な切り抜きには専用編集ツールの併用をおすすめします。"
         }
       }
     ]
@@ -208,7 +229,6 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
     </div>
   </header>
 
-  <!-- ブレッドクラムナビゲーション -->
   <nav class="bg-gray-100 border-b border-gray-200" aria-label="ページナビゲーション">
     <div class="max-w-7xl mx-auto px-4 py-3">
       <ol class="flex items-center space-x-2 text-sm text-gray-600">
@@ -216,125 +236,164 @@ window.pageTitleTranslationKey = "bgRemover.pageTitle";
         <li><span class="text-gray-400">/</span></li>
         <li><a href="/#tools" class="text-accent hover:underline" data-translate-key="header.nav.tools">ツール</a></li>
         <li><span class="text-gray-400">/</span></li>
-        <li class="text-gray-800 font-medium" aria-current="page" data-translate-key="bgRemover.breadcrumbCurrent">背景除去ツール</li>
+        <li class="text-gray-800 font-medium" aria-current="page">背景リムーバー</li>
       </ol>
     </div>
   </nav>
 
-  <main class="flex-grow py-12">
-    <!-- 上部広告 -->
-    <aside class="max-w-3xl mx-auto mb-10" aria-label="スポンサー広告">
-      <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-    </aside>
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="bgRemover.mainTitle">画像背景リムーバ&透過PNG生成ツール</h1>
-      </div>
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
-        <p class="text-gray-700 mb-4" data-translate-key="bgRemover.lead">画像の四隅に近い背景色を透明化し、透過PNGを生成するブラウザ内処理ツールです。単色背景の商品画像、ロゴ、アイコン素材の下処理に向いています。</p>
-        <div class="space-y-4">
-          <div>
-            <label class="block font-semibold mb-1" data-translate-key="bgRemover.selectImage">画像ファイルを選択</label>
-            <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full" />
-            <div id="fileName" class="text-xs text-gray-500 mt-1"></div>
-          </div>
-          <div id="previewContainer" class="hidden">
-            <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.originalPreview">オリジナル画像プレビュー</h2>
-            <img id="originalPreview" src="#" alt="オリジナル画像" class="max-w-full max-h-64 rounded border mb-4" />
-          </div>
-          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
-            <label for="thresholdRange" class="block text-sm font-semibold text-gray-700">背景色の許容範囲</label>
-            <div class="mt-2 flex items-center gap-3">
-              <input id="thresholdRange" type="range" min="8" max="96" value="32" class="w-full accent-green-500" />
-              <span id="thresholdValue" class="w-10 text-right text-sm font-semibold text-gray-700">32</span>
-            </div>
-            <p class="mt-2 text-xs leading-5 text-gray-500">値を上げるほど背景に近い色を広く透明化します。人物写真や複雑な背景では手動調整や専用編集ソフトとの併用がおすすめです。</p>
-          </div>
-          <button id="removeBgBtn" class="form-button w-full py-2.5 bg-accent text-white rounded font-bold" disabled data-translate-key="bgRemover.removeButton">背景を削除して透過PNG生成</button>
-          <div id="resultContainer" class="mt-6 hidden">
-            <h2 class="text-base font-semibold mb-2" data-translate-key="bgRemover.resultPreview">背景除去結果プレビュー</h2>
-            <p id="bgRemovalStatus" class="text-xs text-gray-500 mb-2" aria-live="polite"></p>
-            <canvas id="resultCanvas" class="rounded border mb-2 max-w-full max-h-64"></canvas>
-            <a id="downloadLink" href="#" download="bg-removed.png" class="text-accent underline text-xs" data-translate-key="bgRemover.download">透過PNGをダウンロード</a>
-          </div>
-        </div>
-      </div>
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-    </div>
-  </main>
-    <!-- フッター直前広告 -->
-    <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
-      <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-    </aside>
-
-  <!-- 実用例セクション -->
-  <section class="bg-white py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-4">きれいに処理しやすい画像</h2>
-          <p class="text-gray-600 leading-7">
-            このツールは画像四隅の色を背景として推定し、近い色を透明化します。単色背景や余白のある商品写真、ロゴ素材の下処理に向いています。
+  <main class="flex-grow">
+    <section class="py-10 md:py-14">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="mb-8 max-w-3xl">
+          <p class="text-sm font-semibold text-green-700">ブラウザ内で完結 / サーバー送信なし</p>
+          <h1 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">画像背景リムーバ・透過PNG生成</h1>
+          <p class="mt-3 text-gray-700 leading-7">
+            外周からつながっている背景色だけを判定して透明化します。白背景の商品画像、ロゴ、アイコン素材の下処理に向いた、静的サイトで使える安全な画像ツールです。
           </p>
-          <a href="#imageInput" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
-            入力欄へ移動
-          </a>
         </div>
-        <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">単色背景の素材</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              白、淡色、グレーなど背景が均一な画像は透明化しやすく、EC商品画像やアイコン素材の下処理に使えます。
+
+        <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="input-heading">
+            <h2 id="input-heading" class="text-xl font-bold text-gray-900">1. 画像と処理条件</h2>
+            <p class="mt-2 text-sm leading-6 text-gray-600">
+              PNG/JPEG/WebP/GIFに対応します。SVGはスクリプト混入や表示差異を避けるため対象外です。アニメーションGIFは先頭フレームとして処理されます。
+            </p>
+
+            <div id="bgRemovalAlert" class="hidden mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+              <span id="bgRemovalAlertText"></span>
+            </div>
+
+            <div class="mt-5">
+              <label id="dropZone" for="imageInput" class="drop-zone" tabindex="0">
+                <span class="block text-sm font-bold text-gray-900">画像を選択またはドラッグ&ドロップ</span>
+                <span class="mt-1 block text-sm text-gray-600">最大10MB、長辺4096px程度までを推奨</span>
+                <span id="fileName" class="mt-2 block text-xs text-gray-500" aria-live="polite">まだ画像は選択されていません。</span>
+              </label>
+              <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="sr-only" />
+            </div>
+
+            <div class="mt-6 space-y-5">
+              <div>
+                <div class="flex items-center justify-between gap-3">
+                  <label for="thresholdRange" class="text-sm font-bold text-gray-800">背景色の許容範囲</label>
+                  <output id="thresholdValue" for="thresholdRange" class="text-sm font-bold text-green-700">34</output>
+                </div>
+                <input id="thresholdRange" type="range" min="8" max="110" value="34" class="mt-2 w-full accent-green-600" />
+                <p class="mt-1 text-xs leading-5 text-gray-500">値を上げるほど、外周の背景色に近い画素を広く透明化します。</p>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between gap-3">
+                  <label for="featherRange" class="text-sm font-bold text-gray-800">エッジのなじませ</label>
+                  <output id="featherValue" for="featherRange" class="text-sm font-bold text-green-700">3</output>
+                </div>
+                <input id="featherRange" type="range" min="0" max="8" value="3" class="mt-2 w-full accent-green-600" />
+                <p class="mt-1 text-xs leading-5 text-gray-500">境界のギザつきや白い縁を軽く抑えます。細い線が消える場合は小さくしてください。</p>
+              </div>
+            </div>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <button id="removeBgBtn" type="button" class="form-button" disabled>背景を透明化</button>
+              <button id="resetBtn" type="button" class="form-button secondary" disabled>リセット</button>
+            </div>
+          </section>
+
+          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="preview-heading">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 id="preview-heading" class="text-xl font-bold text-gray-900">2. プレビューと保存</h2>
+                <p id="bgRemovalStatus" class="mt-2 text-sm leading-6 text-gray-600" aria-live="polite">画像を選択すると、ここに処理結果が表示されます。</p>
+              </div>
+            </div>
+
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              <div id="previewContainer" class="hidden">
+                <h3 class="mb-2 text-sm font-bold text-gray-800">元画像</h3>
+                <div class="flex min-h-56 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 p-3">
+                  <img id="originalPreview" src="#" alt="選択した元画像のプレビュー" class="max-h-64 max-w-full rounded" />
+                </div>
+              </div>
+
+              <div id="resultContainer" class="hidden">
+                <h3 class="mb-2 text-sm font-bold text-gray-800">透過PNG</h3>
+                <div class="checkerboard flex min-h-56 items-center justify-center rounded-lg border border-gray-200 p-3">
+                  <canvas id="resultCanvas" class="max-h-64 max-w-full rounded" aria-label="背景を透明化した画像プレビュー"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a id="downloadLink" href="#" download="transparent-background.png" class="form-button" aria-disabled="true">PNGをダウンロード</a>
+              <button id="copyImageBtn" type="button" class="form-button secondary" disabled>画像をコピー</button>
+            </div>
+
+            <div class="mt-5 rounded-lg border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
+              <p class="font-bold">安全な処理について</p>
+              <p class="mt-1">
+                選択した画像は端末内のメモリ上で読み込み、Canvasで処理します。アップロード、外部AI API、保存用サーバーは使いません。共有端末では、作業後にページを閉じると一時URLも破棄されます。
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-gray-200 bg-white py-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900">きれいに抜ける画像の条件</h2>
+            <p class="mt-3 text-gray-600 leading-7">
+              このツールは外周に触れている背景を追跡して透明化します。被写体内部の似た色まで一気に消えにくく、従来の単純な四隅平均より安定しやすい方式です。
             </p>
           </div>
-          <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">四隅が背景の写真</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              被写体が中央にあり、四隅に背景が出ている画像ほど推定が安定します。余白がない画像では先にトリミングしてください。
-            </p>
-          </div>
-          <div class="py-5 md:px-5">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">複雑な背景は調整</h3>
-            <p class="text-sm leading-7 text-gray-600">
-              髪の毛、影、模様のある背景は残りやすい場合があります。許容範囲を調整し、必要なら専用編集ソフトで仕上げてください。
-            </p>
+          <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900">単色に近い背景</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">白、薄いグレー、淡色など、外周の背景色が大きく変化しない画像に向いています。</p>
+            </div>
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900">被写体が中央にある</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">画像の四辺や四隅に背景が残っていると、背景として判定しやすくなります。</p>
+            </div>
+            <div class="py-5 md:px-5">
+              <h3 class="text-base font-semibold text-gray-900">複雑な背景は補助的に</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">髪の毛、影、柄、透明物などの精密な切り抜きは、専用編集ソフトで仕上げる前の下処理として使ってください。</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
-    </ul>
-    <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
-  </section>
+    <section class="py-8">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-sm text-gray-700">
+          <h2 class="font-bold text-base text-gray-900">negi-lab.comの運営方針</h2>
+          <ul class="mt-2 grid gap-2 md:grid-cols-3">
+            <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+            <li>画像処理はブラウザ内で行い、入力画像をサーバーへ送信しません。</li>
+            <li>結果は画像条件に左右されます。重要な素材は保存前に必ず確認してください。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  <footer class="bg-gray-800 text-gray-300 py-7 text-center text-sm">
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2026 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
-  <!-- Translations and system -->
+
   <script src="../js/portal-translations.js"></script>
   <script src="../js/tool-translation-system.js"></script>
-  <script src="../js/bg-remover-translations.js"></script>
   <script src="../js/bg-remover.js" defer></script>
-
-  <!-- Centralized consent-gated Ads/Analytics loader -->
   <script src="../js/tool-page-enhancements.js" defer></script>
-
   <script src="../js/ads-consent-loader.js" defer></script>
 </body>
 </html>

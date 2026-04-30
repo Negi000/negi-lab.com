@@ -55,18 +55,21 @@
   <link rel="canonical" href="https://negi-lab.com/tools/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="無料オンライン便利ツール一覧 | negi-lab.com" />
-  <meta property="og:description" content="登録不要で使えるブラウザ完結型オンラインツール集。日常作業、制作、開発、文書処理を効率化します。" />
+  <meta property="og:description" content="日常作業、制作、開発、文書処理をブラウザで進めるためのオンラインツール集です。" />
   <meta property="og:url" content="https://negi-lab.com/tools/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="無料オンライン便利ツール一覧 | negi-lab.com" />
-  <meta name="twitter:description" content="QRコード作成、画像変換、単位変換、PDF処理、JSON/CSV/YAML/Excel変換など、登録不要で使えるブラウザ完結型オンラインツール一覧です。" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="無料オンライン便利ツール一覧 | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" content="無料オンライン便利ツール一覧 | negi-lab.com" />
+  <meta name="twitter:description" content="QRコード作成、画像変換、単位変換、PDF処理、データ変換などを登録不要で使えます。" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-  <link rel="stylesheet" href="/js/responsive-ads.css">
+  <link rel="stylesheet" href="/js/responsive-ads.css" />
   <script src="/js/responsive-ads-controller.js"></script>
   <script>
-window.pageTitleTranslationKey = "toolIndex.pageTitle";
+    window.pageTitleTranslationKey = "toolIndex.pageTitle";
     window.metaDescriptionTranslationKey = "toolIndex.metaDescription";
   </script>
   <script src="/js/security-utils.js"></script>
@@ -80,11 +83,12 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
-      <nav>
+      <nav aria-label="メインナビゲーション">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/tools/" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
+            <label class="sr-only" for="lang-switch">Language</label>
             <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
@@ -99,7 +103,7 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
     <section class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 py-14 md:py-20">
         <p class="text-sm font-semibold text-accent mb-3" data-translate-key="toolIndex.eyebrow">ブラウザ完結・登録不要</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-950 leading-tight max-w-3xl" data-translate-key="toolIndex.heroTitle">作業をすぐ終わらせる無料オンラインツール</h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-950 leading-tight max-w-3xl" data-translate-key="toolIndex.heroTitle">作業をすぐ進められる無料オンラインツール</h1>
         <p class="mt-5 text-lg text-gray-600 max-w-3xl" data-translate-key="toolIndex.heroLead">画像、PDF、データ変換、URL、QRコード、単位換算まで。ファイル処理系はできるだけブラウザ内で完結し、日常作業と制作ワークフローを軽くします。</p>
       </div>
     </section>
@@ -121,8 +125,8 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full lg:max-w-3xl">
             <a href="/tools/image-converter.html" class="block rounded-lg border border-gray-200 bg-white p-4 hover:border-accent hover:shadow-sm transition">
-              <span class="block text-sm font-bold text-gray-950" data-translate-key="toolIndex.workflowImage">画像を軽く整える</span>
-              <span class="mt-1 block text-xs leading-5 text-gray-600" data-translate-key="toolIndex.workflowImageNote">変換、リサイズ、背景透過、SNS比率</span>
+              <span class="block text-sm font-bold text-gray-950" data-translate-key="toolIndex.workflowImage">画像を整える</span>
+              <span class="mt-1 block text-xs leading-5 text-gray-600" data-translate-key="toolIndex.workflowImageNote">変換、リサイズ、背景透過、SNS比較</span>
             </a>
             <a href="/tools/pdf-tool.html" class="block rounded-lg border border-gray-200 bg-white p-4 hover:border-accent hover:shadow-sm transition">
               <span class="block text-sm font-bold text-gray-950" data-translate-key="toolIndex.workflowDocument">文書を整理する</span>
@@ -143,19 +147,19 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" data-tool-directory-grid="true">
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/unit-converter.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.unitConverter.title">単位変換ツール</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.unitConverter.description">500以上の単位に対応した高精度変換ツール。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.unitConverter.description">長さ・重さ・温度などをすばやく換算できます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/image-converter.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.imageConverter.title">画像変換ツール</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageConverter.description">JPEG・PNG・WebP形式の高品質変換機能。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageConverter.description">JPEG・PNG・WebPの変換、品質調整、リサイズに対応。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/qr-code-generator.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.qrGenerator.title">QRコード作成</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.qrGenerator.description">高品質QRコードをブラウザで生成。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.qrGenerator.description">URLやテキストからQRコードをブラウザで生成。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/url-shortener.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.urlShortener.title">URL短縮ツール</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.urlShortener.description">長いURLを短く共有しやすい形へ変換。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.urlShortener.description">長いURLを扱いやすい共有リンク形式へ整えます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/date-calculator.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.dateCalculator.title">日付計算ツール</h3>
@@ -163,27 +167,27 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/image-size-compare.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.imageSizeCompare.title">画像サイズ比較変換</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageSizeCompare.description">SNSや動画制作向けの画像サイズ最適化。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.imageSizeCompare.description">SNSや動画制作向けの画像サイズ確認に使えます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/color-code-tool.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.colorCodeTool.title">カラーコード検索・表示</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.colorCodeTool.description">画像からの色抽出とカラーコード変換。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.colorCodeTool.description">画像からの色抽出とHEX・RGB・HSL変換に対応。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/pdf-tool.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.pdfTool.title">PDFオールインワン</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.pdfTool.description">PDFの結合・分割・圧縮・変換に対応。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.pdfTool.description">PDFの結合・分割・圧縮・画像変換などをまとめて扱えます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/bg-remover.html">
-          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.bgRemover.title">画像背景リムーバ</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.bgRemover.description">画像の背景を削除し、透過PNGを生成。</p>
+          <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.bgRemover.title">画像背景リムーバー</h3>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.bgRemover.description">画像の背景を削除し、透過PNGを生成します。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/favicon-og-generator.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.faviconOgGen.title">ファビコン&OG画像</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.faviconOgGen.description">サイト用アイコンとOGP画像を作成。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.faviconOgGen.description">サイト用アイコンとOGP画像を作成できます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/json-csv-yaml-excel.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.jsonCsvYamlExcel.title">JSON⇔CSV/YAML⇔Excel</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.jsonCsvYamlExcel.description">データ形式を相互変換。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.jsonCsvYamlExcel.description">データ形式を相互変換できます。</p>
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/text-converter.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.textConverter.title">テキスト変換ツール</h3>
@@ -191,7 +195,7 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
         </a>
         <a class="block bg-white rounded-lg border border-gray-200 p-5 hover:border-accent hover:shadow-sm transition" href="/tools/music-generator.html">
           <h3 class="font-bold text-lg text-gray-950" data-translate-key="tools.musicGenerator.title">音楽生成ツール</h3>
-          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.musicGenerator.description">動画BGMや創作活動向けの楽曲生成ツール。</p>
+          <p class="mt-2 text-sm text-gray-600" data-translate-key="tools.musicGenerator.description">動画BGMや創作活動向けの楽曲生成ツールです。</p>
         </a>
       </div>
 
@@ -212,7 +216,7 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
             </div>
             <div class="py-4">
               <h3 class="text-sm font-bold text-gray-950" data-translate-key="toolIndex.choiceBusinessTitle">日常業務で使う場合</h3>
-              <p class="mt-1 text-sm leading-6 text-gray-600" data-translate-key="toolIndex.choiceBusinessText">単位変換、日付計算、PDF処理を組み合わせると、資料作成や見積もり前の小さな確認をブラウザだけで済ませられます。</p>
+              <p class="mt-1 text-sm leading-6 text-gray-600" data-translate-key="toolIndex.choiceBusinessText">単位変換、日付計算、PDF処理を組み合わせると、資料作成や見積もり前の小さな確認をブラウザだけで進められます。</p>
             </div>
           </div>
         </div>
@@ -233,7 +237,7 @@ window.pageTitleTranslationKey = "toolIndex.pageTitle";
   </main>
 
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
-    <nav class="mb-2">
+    <nav class="mb-2" aria-label="フッターナビゲーション">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
       <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
       <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>

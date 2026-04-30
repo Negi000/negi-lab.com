@@ -11,11 +11,24 @@
  * @version 2.0.0
  */
 
-console.log('🔧 QRGenerator読み込み開始');
+const QR_GENERATOR_DEBUG =
+  Boolean(window.QR_GENERATOR_DEBUG) ||
+  window.localStorage?.getItem('qrGeneratorDebug') === 'true';
+
+const qrDebug = {
+  log: (...args) => {
+    if (QR_GENERATOR_DEBUG) console.log(...args);
+  },
+  trace: (...args) => {
+    if (QR_GENERATOR_DEBUG) console.trace(...args);
+  }
+};
+
+qrDebug.log('🔧 QRGenerator読み込み開始');
 
 class QRGenerator {
   constructor() {
-    console.log('🏗️ QRGeneratorコンストラクター実行');
+    qrDebug.log('🏗️ QRGeneratorコンストラクター実行');
     
     // === 基本プロパティ ===
     this.currentTemplate = 'text';
@@ -53,12 +66,12 @@ class QRGenerator {
    * 安全な初期化処理
    */
   safeInitialize() {
-    console.log('🔧 QRGenerator初期化開始');
+    qrDebug.log('🔧 QRGenerator初期化開始');
     try {
       this.initializeElements();
       this.bindEvents();
       this.initializeSettings();
-      console.log('✅ QRGenerator初期化完了');
+      qrDebug.log('✅ QRGenerator初期化完了');
     } catch (error) {
       console.error('❌ QRGenerator初期化エラー:', error);
     }
@@ -195,7 +208,7 @@ class QRGenerator {
       batchProgressText: document.getElementById('batchProgressText')
     };
 
-    console.log(`📝 要素取得完了: ${Object.keys(this.elements).length}個の要素`);
+    qrDebug.log(`📝 要素取得完了: ${Object.keys(this.elements).length}個の要素`);
   }
 
   /**
@@ -206,7 +219,7 @@ class QRGenerator {
     this.bindDesignEvents();
     this.bindDownloadEvents();
     this.bindBatchEvents();
-    console.log('✅ 全イベントバインディング完了');
+    qrDebug.log('✅ 全イベントバインディング完了');
   }
   
   /**
@@ -220,10 +233,10 @@ class QRGenerator {
     // クリエイティブ設定セクションを初期状態で非表示
     if (this.elements.creativeSettingsSection) {
       this.elements.creativeSettingsSection.classList.add('hidden');
-      console.log('✅ クリエイティブ設定セクション初期非表示設定');
+      qrDebug.log('✅ クリエイティブ設定セクション初期非表示設定');
     }
     
-    console.log('✅ 初期設定完了');
+    qrDebug.log('✅ 初期設定完了');
   }
 
   // =========================================
@@ -237,7 +250,7 @@ class QRGenerator {
     // QR生成ボタン
     if (this.elements.generateBtn) {
       this.elements.generateBtn.addEventListener('click', () => {
-        console.log('🎯 QR生成ボタンクリック');
+        qrDebug.log('🎯 QR生成ボタンクリック');
         this.generateQR();
       });
     }
@@ -246,7 +259,7 @@ class QRGenerator {
     this.elements.modeBtns?.forEach(btn => {
       btn.addEventListener('click', () => {
         const mode = btn.dataset.mode;
-        console.log(`モード切り替え: ${mode}`);
+        qrDebug.log(`モード切り替え: ${mode}`);
         this.switchMode(mode);
       });
     });    // デザインモード切り替え
@@ -277,7 +290,7 @@ class QRGenerator {
     if (this.elements.colorMode) {
       this.elements.colorMode.addEventListener('change', () => {
         const mode = this.elements.colorMode.value;
-        console.log(`カラーモード変更: ${mode}`);
+        qrDebug.log(`カラーモード変更: ${mode}`);
         this.currentColorMode = mode;
         this.updateGradientSettings();
         if (this.qrData && this.designMode === 'creative') {
@@ -319,7 +332,7 @@ class QRGenerator {
       });
     }    if (this.elements.detectionShape) {
       this.elements.detectionShape.addEventListener('change', () => {
-        console.log('検出パターン形状変更:', this.elements.detectionShape.value);
+        qrDebug.log('検出パターン形状変更:', this.elements.detectionShape.value);
         if (this.qrData && this.designMode === 'creative') {
           this.renderCreativeQR();
           this.updateDownloadPreview();
@@ -404,7 +417,7 @@ class QRGenerator {
     shapeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const shape = btn.dataset.shape;
-        console.log(`形状変更: ${shape}`);
+        qrDebug.log(`形状変更: ${shape}`);
         this.currentShape = shape;
         
         // アクティブ状態の更新
@@ -428,7 +441,7 @@ class QRGenerator {
     colorModeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const mode = btn.dataset.colorMode;
-        console.log(`カラーモードボタン変更: ${mode}`);
+        qrDebug.log(`カラーモードボタン変更: ${mode}`);
         this.currentColorMode = mode;
         
         // 隠しselectを更新
@@ -531,7 +544,7 @@ class QRGenerator {
       this.elements.presetBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const preset = btn.dataset.preset;
-          console.log('デザインプリセット選択:', preset);
+          qrDebug.log('デザインプリセット選択:', preset);
           this.applyDesignPreset(preset);
         });
       });
@@ -542,15 +555,15 @@ class QRGenerator {
    * ダウンロード関連イベントのバインド
    */
   bindDownloadEvents() {
-    console.log('🔗 ダウンロードイベントバインド開始');
+    qrDebug.log('🔗 ダウンロードイベントバインド開始');
     
     // ダウンロードボタン
     if (this.elements.downloadBtn) {
-      console.log('📌 downloadBtn イベントリスナー設定');
+      qrDebug.log('📌 downloadBtn イベントリスナー設定');
       
       // ワンショットイベントリスナーを使用して重複を防ぐ
       const downloadHandler = () => {
-        console.log('🖱️ downloadBtn クリック検出');
+        qrDebug.log('🖱️ downloadBtn クリック検出');
         this.downloadQR();
       };
       
@@ -645,7 +658,7 @@ class QRGenerator {
     if (this.elements.detectionColor && this.elements.foregroundColor) {
       const defaultColor = this.elements.foregroundColor.value;
       this.elements.detectionColor.value = defaultColor;
-      console.log('検出パターン初期色設定:', defaultColor);
+      qrDebug.log('検出パターン初期色設定:', defaultColor);
     }
   }
 
@@ -664,7 +677,7 @@ class QRGenerator {
         this.elements.roundedRadius.value + '%';
     }
 
-    console.log('✅ 角丸設定初期化完了');
+    qrDebug.log('✅ 角丸設定初期化完了');
   }
 
   // =========================================
@@ -695,7 +708,7 @@ class QRGenerator {
       this.elements.customDetectionColor.classList.add('hidden');
     }
 
-    console.log('検出パターン色設定更新:', mode);
+    qrDebug.log('検出パターン色設定更新:', mode);
   }
 
   /**
@@ -709,7 +722,7 @@ class QRGenerator {
     } else {
       this.elements.borderSettings.classList.add('hidden');
     }
-    console.log('外枠設定更新:', this.elements.borderEnabled.checked);
+    qrDebug.log('外枠設定更新:', this.elements.borderEnabled.checked);
   }
 
   /**
@@ -736,7 +749,7 @@ class QRGenerator {
       this.elements.customBorderColor.classList.add('hidden');
     }
 
-    console.log('外枠色設定更新:', useCustom ? 'custom' : 'data');
+    qrDebug.log('外枠色設定更新:', useCustom ? 'custom' : 'data');
   }
 
   /**
@@ -775,7 +788,7 @@ class QRGenerator {
    */
   generateQR() {
     try {
-      console.log('🔄 QRコード生成開始');
+      qrDebug.log('🔄 QRコード生成開始');
       
       const content = this.getContentFromTemplate();
       if (!content.trim()) {
@@ -788,7 +801,7 @@ class QRGenerator {
       this.qrData.addData(content);
       this.qrData.make();
 
-      console.log(`✅ QRコード生成成功 - 内容: ${content}`);
+      qrDebug.log(`✅ QRコード生成成功 - 内容: ${content}`);
 
       if (this.designMode === 'standard') {
         this.renderStandardQR();
@@ -977,7 +990,7 @@ class QRGenerator {
     this.currentCreativeCanvas = canvas;
     this.displayCanvas(canvas);
     
-    console.log('✅ 標準QR描画完了');
+    qrDebug.log('✅ 標準QR描画完了');
   }
 
   /**
@@ -986,7 +999,7 @@ class QRGenerator {
   renderCreativeQR() {
     if (!this.qrData) return;
 
-    console.log('🎨 クリエイティブQR描画開始');
+    qrDebug.log('🎨 クリエイティブQR描画開始');
     
     const size = parseInt(this.elements.qrSize?.value) || 256;
     const canvas = this.createCreativeQRCanvas(this.qrData, size);
@@ -994,7 +1007,7 @@ class QRGenerator {
     this.currentCreativeCanvas = canvas;
     this.displayCanvas(canvas);
     
-    console.log('✅ クリエイティブQR描画完了');
+    qrDebug.log('✅ クリエイティブQR描画完了');
   }
 
   /**
@@ -1216,14 +1229,14 @@ class QRGenerator {
       this.drawSingleDetectionPattern(ctx, startX, startY, moduleSize, patternColor, detectionShape);
     });
 
-    console.log(`✅ 検出パターン描画完了 - 色: ${patternColor} 形状: ${detectionShape}`);
+    qrDebug.log(`✅ 検出パターン描画完了 - 色: ${patternColor} 形状: ${detectionShape}`);
   }  /**
    * 単一の検出パターンを描画
    */
   drawSingleDetectionPattern(ctx, startX, startY, moduleSize, fillStyle, shape) {
     const bgColor = this.elements.backgroundColor?.value || '#ffffff';
 
-    console.log(`🎯 検出パターン描画: 位置(${startX}, ${startY}), 形状: ${shape}`);
+    qrDebug.log(`🎯 検出パターン描画: 位置(${startX}, ${startY}), 形状: ${shape}`);
 
     // グラデーションの場合は、QRコード全体と同じグラデーションを使用
     let actualFillStyle = fillStyle;
@@ -1325,7 +1338,7 @@ class QRGenerator {
    * モードを切り替え
    */
   switchMode(mode) {
-    console.log(`モード切り替え: ${mode}`);
+    qrDebug.log(`モード切り替え: ${mode}`);
     this.currentMode = mode;
 
     // UI切り替え
@@ -1358,7 +1371,7 @@ class QRGenerator {
    * デザインモードを切り替え
    */
   switchDesignMode(mode) {
-    console.log(`デザインモード切り替え: ${mode}`);
+    qrDebug.log(`デザインモード切り替え: ${mode}`);
     this.designMode = mode;
 
     if (mode === 'creative') {
@@ -1399,7 +1412,7 @@ class QRGenerator {
    * テンプレートを選択
    */
   selectTemplate(template) {
-    console.log(`テンプレート選択: ${template}`);
+    qrDebug.log(`テンプレート選択: ${template}`);
     this.currentTemplate = template;
 
     // 全てのテンプレート入力を非表示
@@ -1433,7 +1446,7 @@ class QRGenerator {
    */
   updateDownloadPreview() {
     try {
-      console.log('📸 保存時プレビュー更新開始');
+      qrDebug.log('📸 保存時プレビュー更新開始');
       
       if (!this.elements.downloadPreview) return;
       
@@ -1441,7 +1454,7 @@ class QRGenerator {
       this.elements.downloadPreview.innerHTML = '';
       
       if (!this.currentCreativeCanvas) {
-        console.log('❌ プレビュー対象のキャンバスがありません');
+        qrDebug.log('❌ プレビュー対象のキャンバスがありません');
         return;
       }
       
@@ -1479,7 +1492,7 @@ class QRGenerator {
         this.elements.downloadPreviewSection.classList.remove('hidden');
       }
       
-      console.log('✅ 保存時プレビュー更新完了');
+      qrDebug.log('✅ 保存時プレビュー更新完了');
     } catch (error) {
       console.error('❌ 保存時プレビュー更新エラー:', error);
     }
@@ -1489,7 +1502,7 @@ class QRGenerator {
    * 余白付きキャンバスを作成
    */
   createCanvasWithMargin(originalCanvas) {
-    console.log('📏 余白付きキャンバス作成開始');
+    qrDebug.log('📏 余白付きキャンバス作成開始');
     
     const qrSize = originalCanvas.width;
     
@@ -1520,7 +1533,7 @@ class QRGenerator {
       this.drawBorderOnMarginCanvas(ctx, newSize, margin);
     }
     
-    console.log(`✅ 余白付きキャンバス作成完了: ${qrSize}x${qrSize} → ${newSize}x${newSize} (余白: ${margin}px)`);
+    qrDebug.log(`✅ 余白付きキャンバス作成完了: ${qrSize}x${qrSize} → ${newSize}x${newSize} (余白: ${margin}px)`);
     
     return newCanvas;
   }
@@ -1536,7 +1549,7 @@ class QRGenerator {
     
     if (!borderStyle) return;
     
-    console.log(`🖼️ 外枠描画: 太さ${borderWidth}px`);
+    qrDebug.log(`🖼️ 外枠描画: 太さ${borderWidth}px`);
     
     ctx.strokeStyle = borderStyle;
     ctx.lineWidth = borderWidth;
@@ -1554,7 +1567,7 @@ class QRGenerator {
       return originalCanvas;
     }
 
-    console.log('🔄 角丸キャンバス作成開始');
+    qrDebug.log('🔄 角丸キャンバス作成開始');
     
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -1593,7 +1606,7 @@ class QRGenerator {
     
     ctx.restore();
     
-    console.log(`✅ 角丸キャンバス作成完了: 半径${radius}px(${radiusPercent}%), 外枠${borderWidth}px`);
+    qrDebug.log(`✅ 角丸キャンバス作成完了: 半径${radius}px(${radiusPercent}%), 外枠${borderWidth}px`);
     return canvas;
   }
 
@@ -1631,7 +1644,7 @@ class QRGenerator {
     
     if (!borderStyle) return;
     
-    console.log(`�️ 角丸外枠描画: 太さ${borderWidth}px, 半径${radius}px`);
+    qrDebug.log(`角丸外枠描画: 太さ${borderWidth}px, 半径${radius}px`);
     
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
@@ -1702,8 +1715,8 @@ class QRGenerator {
    * DataURLからファイルをダウンロード
    */
   downloadDataURL(dataURL, filename) {
-    console.log(`🔽 downloadDataURL 実行: ${filename}`);
-    console.trace('downloadDataURL 呼び出し元のスタックトレース:');
+    qrDebug.log(`🔽 downloadDataURL 実行: ${filename}`);
+    qrDebug.trace('downloadDataURL 呼び出し元のスタックトレース:');
     
     const link = document.createElement('a');
     link.download = filename;
@@ -1712,15 +1725,15 @@ class QRGenerator {
     link.click();
     document.body.removeChild(link);
     
-    console.log(`✅ ダウンロード完了: ${filename}`);
+    qrDebug.log(`✅ ダウンロード完了: ${filename}`);
   }
 
   /**
    * QRコードをダウンロード
    */
   downloadQR() {
-    console.log('🔽 downloadQR メソッド呼び出し開始');
-    console.trace('downloadQR 呼び出し元のスタックトレース:');
+    qrDebug.log('🔽 downloadQR メソッド呼び出し開始');
+    qrDebug.trace('downloadQR 呼び出し元のスタックトレース:');
     
     if (!this.currentCreativeCanvas) {
       alert('ダウンロードするQRコードがありません。');
@@ -1752,7 +1765,7 @@ class QRGenerator {
         case 'svg':
           // SVGはベクター生成関数を使用
           this.downloadCreativeSVG();
-          console.log('✅ SVGダウンロード完了 (format switch)');
+          qrDebug.log('✅ SVGダウンロード完了 (format switch)');
           return;
         default:
           dataURL = finalCanvas.toDataURL('image/png');
@@ -1760,7 +1773,7 @@ class QRGenerator {
       }
 
       this.downloadDataURL(dataURL, filename);
-      console.log(`✅ QRコードダウンロード完了: ${filename}`);
+      qrDebug.log(`✅ QRコードダウンロード完了: ${filename}`);
     } catch (error) {
       console.error('❌ ダウンロードエラー:', error);
       alert('ダウンロードに失敗しました: ' + error.message);
@@ -1798,7 +1811,7 @@ class QRGenerator {
         this.downloadCreativeSVG();
       }
       
-      console.log('✅ 全フォーマットダウンロード完了');
+      qrDebug.log('✅ 全フォーマットダウンロード完了');
     } catch (error) {
       console.error('❌ 全フォーマットダウンロードエラー:', error);
       alert('ダウンロードに失敗しました: ' + error.message);
@@ -1812,7 +1825,7 @@ class QRGenerator {
     if (!this.qrData) return;
 
     try {
-      console.log('📥 SVGダウンロード開始');
+      qrDebug.log('📥 SVGダウンロード開始');
       
       const originalSize = parseInt(this.elements.qrSize?.value) || 256;
       const moduleCount = this.qrData.getModuleCount();
@@ -1912,7 +1925,7 @@ class QRGenerator {
       this.downloadDataURL(url, 'qr-code.svg');
       setTimeout(() => URL.revokeObjectURL(url), 100);
       
-      console.log('✅ SVGダウンロード完了');
+      qrDebug.log('✅ SVGダウンロード完了');
     } catch (error) {
       console.error('❌ SVGダウンロードエラー:', error);
     }
@@ -2037,7 +2050,7 @@ class QRGenerator {
     const baseRadius = (totalSize * radiusPercent) / 100;
     const radius = Math.max(baseRadius, borderWidth + 2);
 
-    console.log(`🎯 SVG角丸クリップ生成: 半径${radius}px(${radiusPercent}%)`);
+    qrDebug.log(`🎯 SVG角丸クリップ生成: 半径${radius}px(${radiusPercent}%)`);
 
     return `
       <defs>
@@ -2070,7 +2083,7 @@ class QRGenerator {
       const finalCanvas = this.createRoundedCanvas(marginCanvas);
       const dataURL = finalCanvas.toDataURL('image/png');
       this.downloadDataURL(dataURL, 'qr-code-creative.png');
-      console.log('✅ クリエイティブPNGダウンロード完了');
+      qrDebug.log('✅ クリエイティブPNGダウンロード完了');
     } catch (error) {
       console.error('❌ クリエイティブPNGダウンロードエラー:', error);
       alert('ダウンロードに失敗しました: ' + error.message);
@@ -2082,25 +2095,82 @@ class QRGenerator {
   // =========================================
 
   generateBatch() {
-    // 実装予定
-    console.log('🔄 バッチ生成（未実装）');
+    this.parseBatchTextData();
+    const count = this.batchData.length;
+    const message = count > 0
+      ? `バッチ生成は現在準備中です。${count}件の入力内容を確認しました。単体生成をご利用ください。`
+      : 'バッチ生成は現在準備中です。1行に1件ずつ入力すると、ここで内容を確認できます。';
+    alert(message);
   }
 
   handleCSVFile(e) {
-    // 実装予定
-    console.log('📂 CSVファイル処理（未実装）');
+    const file = e?.target?.files?.[0];
+    if (!file || !this.elements.batchTextData) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.elements.batchTextData.value = String(reader.result || '');
+      this.parseBatchTextData();
+    };
+    reader.onerror = () => {
+      alert('CSVファイルを読み込めませんでした。');
+    };
+    reader.readAsText(file);
   }
 
   parseBatchTextData() {
-    // 実装予定
-    console.log('📝 バッチテキストデータ解析（未実装）');
+    const source = this.elements.batchTextData?.value || '';
+    this.batchData = source
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line, index) => {
+        const [content, filename] = line.split(',');
+        return {
+          content: (content || '').trim(),
+          filename: (filename || `qr-code-${index + 1}`).trim()
+        };
+      })
+      .filter((item) => item.content);
+
+    if (this.elements.batchCount) {
+      this.elements.batchCount.textContent = String(this.batchData.length);
+    }
+
+    if (!this.elements.batchPreview || !this.elements.batchPreviewList) return;
+
+    this.elements.batchPreview.classList.toggle('hidden', this.batchData.length === 0);
+    this.elements.batchPreviewList.replaceChildren();
+
+    this.batchData.slice(0, 20).forEach((item) => {
+      const row = document.createElement('div');
+      row.className = 'px-3 py-2 text-sm text-gray-700 border-b border-gray-100 last:border-b-0';
+
+      const content = document.createElement('div');
+      content.className = 'font-medium truncate';
+      content.textContent = item.content;
+
+      const filename = document.createElement('div');
+      filename.className = 'text-xs text-gray-500 truncate';
+      filename.textContent = item.filename;
+
+      row.append(content, filename);
+      this.elements.batchPreviewList.appendChild(row);
+    });
+
+    if (this.batchData.length > 20) {
+      const more = document.createElement('div');
+      more.className = 'px-3 py-2 text-xs text-gray-500';
+      more.textContent = `ほか ${this.batchData.length - 20} 件`;
+      this.elements.batchPreviewList.appendChild(more);
+    }
   }
 
   /**
    * デザインプリセットを適用
    */
   applyDesignPreset(preset) {
-    console.log(`デザインプリセット適用: ${preset}`);
+    qrDebug.log(`デザインプリセット適用: ${preset}`);
     
     // プリセットに応じて色とグラデーション設定を変更
     const presets = {
@@ -2184,21 +2254,21 @@ class QRGenerator {
 }
 
 // === 統合QRコード生成ツール - グローバルインスタンス作成 ===
-console.log('🔄 QRGeneratorインスタンス作成開始');
+qrDebug.log('🔄 QRGeneratorインスタンス作成開始');
 
 try {
   // DOM読み込み完了を確認してからインスタンス作成
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       window.qrGeneratorInstance = new QRGenerator();
-      console.log('✅ QRGeneratorインスタンス作成成功');
+      qrDebug.log('✅ QRGeneratorインスタンス作成成功');
     });
   } else {
     window.qrGeneratorInstance = new QRGenerator();
-    console.log('✅ QRGeneratorインスタンス作成成功');
+    qrDebug.log('✅ QRGeneratorインスタンス作成成功');
   }
 } catch (error) {
   console.error('❌ QRGeneratorインスタンス作成失敗:', error);
 }
 
-console.log('🏁 QRGenerator読み込み完了');
+qrDebug.log('🏁 QRGenerator読み込み完了');

@@ -3,80 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'unsafe-inline'
-      https://pagead2.googlesyndication.com
-      https://www.googletagmanager.com
-      https://www.google-analytics.com
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com;
-    style-src 'self' 'unsafe-inline'
-      https://fonts.googleapis.com;
-    font-src 'self'
-      https://fonts.gstatic.com;
-    img-src 'self' data: blob:
-      https://negi-lab.com
-      https://pagead2.googlesyndication.com
-      https://www.google-analytics.com
-      https://googleads.g.doubleclick.net;
-    connect-src 'self'
-      https://www.google-analytics.com
-      https://pagead2.googlesyndication.com;
-    frame-src
-      https://googleads.g.doubleclick.net
-      https://tpc.googlesyndication.com;
-    object-src 'none';
-    base-uri 'self';
-  " />
-
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://negi-lab.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net; connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-
   <title>ページが見つかりません | negi-lab.com</title>
   <meta name="robots" content="noindex,follow" />
-
-  <!-- External Resources with SRI -->
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <meta name="theme-color" content="#65c155" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
-<link rel="stylesheet" href="/js/responsive-ads.css">
-<script src="/js/responsive-ads-controller.js"></script>
-
-  <!-- Tailwind Configuration -->
-  <!-- Security and Common Utilities -->
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
-
-  <!-- No ads/analytics scripts on noindex error page -->
 </head>
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-  <main class="max-w-xl mx-auto py-20 px-4 text-center">
-    <h1 class="text-4xl font-bold mb-6">404 Not Found</h1>
-    <p class="mb-6">お探しのページは見つかりませんでした。<br>URLが間違っているか、ページが削除された可能性があります。</p>
+  <main class="w-full max-w-xl mx-auto py-16 px-4 text-center flex-1">
+    <p class="text-sm font-semibold text-accent mb-3">404 Not Found</p>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-6">ページが見つかりません</h1>
+    <p class="mb-8 leading-relaxed text-gray-600">お探しのページは移動または削除された可能性があります。URLをご確認いただくか、トップページから目的のツールをお探しください。</p>
     <a href="/" class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-emerald-500 transition">トップページへ戻る</a>
-    <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto">
-      <h2 class="text-lg font-bold mb-2">独自性・運営方針・免責事項</h2>
-      <ul class="list-disc ml-5 mb-2">
-        <li>本サイトは個人が独自に企画・開発・運営しています。</li>
-        <li>利便性・楽しさ・学びを重視し、独自の視点で情報やツールを提供します。</li>
-        <li>内容の正確性・安全性には配慮しますが、利用による損害等の責任は負いかねます。</li>
-      </ul>
-      <p>ご意見・ご要望は <a href="mailto:negilab.com@gmail.com" class="underline text-accent">negilab.com@gmail.com</a> まで。</p>
-    </section>
   </main>
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm mt-auto">
-    <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+  <footer class="bg-gray-800 text-gray-300 py-6 text-center text-sm mt-auto">
+    <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2 px-4">
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent">運営者情報</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent">サイトマップ</a>
     </nav>
     <div>&copy; 2026 negi-lab.com</div>
   </footer>
 </body>
 </html>
-

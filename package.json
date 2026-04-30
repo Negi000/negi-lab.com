@@ -1,7 +1,7 @@
 {
   "name": "negi-lab-site-manager",
   "version": "1.0.0",
-  "description": "negi-lab.comサイト管理ツール - 一貫性のあるWebツール生成と管理",
+  "description": "Site management scripts for negi-lab.com browser tools and static pages",
   "main": "scripts/site-manager.js",
   "scripts": {
     "build:css": "npx --yes --package tailwindcss@3.4.17 tailwindcss -c tailwind.config.js -i assets/css/tailwind-source.css -o assets/css/negi-tailwind.css --minify",

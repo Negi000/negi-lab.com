@@ -48,7 +48,11 @@
   <meta property="og:description" content="HEX、RGB、HSL、CMYKの変換、画像からの色抽出、配色生成、コントラスト確認に対応した無料カラーツールです。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/color-code-tool.html" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
   <meta name="twitter:title" content="カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com" />
   <meta name="twitter:description" content="HEX、RGB、HSL、CMYKの相互変換、カラーピッカー、画像からの色抽出、配色生成、コントラスト確認をブラウザ内で行える無料カラーツールです。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -504,7 +508,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
       <!-- 基本カラー入力セクション -->
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-8">
-        <h2 class="text-xl font-semibold mb-4">基本カラー入力</h2>
+        <h2 class="text-xl font-semibold mb-4" data-translate-key="colorCodeTool.baseInputTitle">基本カラー入力</h2>
         <form id="colorForm" class="space-y-4" autocomplete="off">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
@@ -521,14 +525,14 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
             </div>
             <div>
               <label for="colorPicker" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.pickerLabel">カラーピッカー</label>
-              <input id="colorPicker" type="color" class="form-input w-full h-10 p-1" aria-label="カラーピッカー">
+              <input id="colorPicker" type="color" class="form-input w-full h-10 p-1" aria-label="カラーピッカー" data-translate-key="colorCodeTool.pickerAriaLabel" data-translate-attr="aria-label">
             </div>
           </div>
           <div class="flex items-center gap-4 mt-4">
             <div id="colorPreview" class="w-20 h-20 rounded-lg border border-gray-200 shadow-inner" aria-label="色プレビュー"></div>
             <div class="flex-1">
-              <div class="text-sm text-gray-600 mb-1">選択中の色:</div>
-              <div id="colorName" class="text-gray-700 font-medium"></div>
+              <div class="text-sm text-gray-600 mb-1" data-translate-key="colorCodeTool.selectedColorLabel">選択中の色</div>
+              <div id="colorName" class="text-gray-700 font-medium" role="status" aria-live="polite"></div>
               <div class="text-xs text-gray-500 mt-1">
                 <span id="colorTemperature"></span> | <span id="colorPsychology"></span>
               </div>
@@ -538,21 +542,25 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
         <!-- 画像からの色抽出 -->
         <div class="mt-8 pt-6 border-t border-gray-200">
-          <h3 class="text-lg font-semibold mb-4">画像からの色抽出</h3>
-          <input id="imageInput" type="file" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full mb-4" aria-label="画像ファイルを選択">
+          <h3 class="text-lg font-semibold mb-4" data-translate-key="colorCodeTool.imageSectionTitle">画像からの色抽出</h3>
+          <input id="imageInput" type="file" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full mb-4" aria-label="画像ファイルを選択" data-translate-key="colorCodeTool.imageInputAriaLabel" data-translate-attr="aria-label">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2">
-              <canvas id="imageCanvas" class="rounded-lg border border-gray-200 bg-gray-100 max-w-full cursor-crosshair" style="max-width:100%;height:auto;display:none;" aria-label="画像キャンバス"></canvas>
+              <canvas id="imageCanvas" class="rounded-lg border border-gray-200 bg-gray-100 max-w-full cursor-crosshair" style="max-width:100%;height:auto;display:none;" aria-label="画像キャンバス" data-translate-key="colorCodeTool.imageCanvasAriaLabel" data-translate-attr="aria-label"></canvas>
             </div>
             <div class="space-y-4">
               <div class="text-sm text-gray-600" data-translate-key="colorCodeTool.spoitInfo">画像をクリックすると、その位置のピクセル色を取得できます。SVGは安全性と描画差異を避けるため対象外です。</div>
-              <div id="pickedColor" class="space-y-2"></div>
+              <section class="space-y-2" aria-labelledby="pickedColorHeading">
+                <h4 id="pickedColorHeading" class="font-semibold text-sm" data-translate-key="colorCodeTool.pickedColorTitle">画像から取得した色</h4>
+                <p class="text-xs text-gray-500" data-translate-key="colorCodeTool.pickedColorHint">クリックしたピクセルのHEX・RGB・HSLを確認できます。</p>
+                <div id="pickedColor" class="space-y-2" role="status" aria-live="polite"></div>
+              </section>
               <div>
                 <h4 class="font-semibold text-sm mb-2" data-translate-key="colorCodeTool.paletteLabel">カラーパレット・ハーモニー生成</h4>
 
                 <!-- ハーモニータイプ選択 -->
                 <div class="mb-3">
-                  <h5 class="text-xs font-medium mb-1 text-gray-700">カラーハーモニー</h5>
+                  <h5 class="text-xs font-medium mb-1 text-gray-700" data-translate-key="colorCodeTool.harmonyLabel">カラーハーモニー</h5>
                   <div class="flex flex-wrap gap-1">
                     <button data-harmony="monochromatic" class="harmony-btn px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">モノクロマチック</button>
                     <button data-harmony="analogous" class="harmony-btn px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600">類似色</button>
@@ -564,7 +572,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
                 <!-- テーマパレット選択 -->
                 <div class="mb-3">
-                  <h5 class="text-xs font-medium mb-1 text-gray-700">テーマパレット</h5>
+                  <h5 class="text-xs font-medium mb-1 text-gray-700" data-translate-key="colorCodeTool.themePaletteLabel">テーマパレット</h5>
                   <div class="flex flex-wrap gap-1">
                     <button data-palette="warm" class="palette-btn px-2 py-1 bg-orange-500 text-white rounded text-xs hover:bg-orange-600">暖色系</button>
                     <button data-palette="cool" class="palette-btn px-2 py-1 bg-teal-500 text-white rounded text-xs hover:bg-teal-600">寒色系</button>
@@ -576,9 +584,9 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
                 <!-- 生成コントロール -->
                 <div class="mb-3 flex items-center space-x-2">
-                  <button id="generateRandomPalette" class="px-3 py-1 bg-indigo-500 text-white rounded text-xs hover:bg-indigo-600">🎲 ランダム生成</button>
-                  <button id="refinePalette" class="px-3 py-1 bg-purple-500 text-white rounded text-xs hover:bg-purple-600">🔧 微調整</button>
-                  <button id="savePalette" class="px-3 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600">💾 保存</button>
+                  <button id="generateRandomPalette" class="px-3 py-1 bg-indigo-500 text-white rounded text-xs hover:bg-indigo-600" data-translate-key="colorCodeTool.randomizeHarmony">ランダム生成</button>
+                  <button id="refinePalette" class="px-3 py-1 bg-purple-500 text-white rounded text-xs hover:bg-purple-600" data-translate-key="colorCodeTool.refinePalette">微調整</button>
+                  <button id="savePalette" class="px-3 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600" data-translate-key="colorCodeTool.saveHarmony">保存</button>
                   <select id="paletteSize" class="px-2 py-1 border border-gray-300 rounded text-xs">
                     <option value="5">5色</option>
                     <option value="7">7色</option>
@@ -587,12 +595,12 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
                 </div>
 
                 <!-- 統合パレット表示エリア -->
-                <div id="paletteDisplay" class="grid grid-cols-4 gap-2 min-h-[60px] border-2 border-dashed border-gray-300 rounded p-2">
-                  <div class="text-center text-gray-500 col-span-4 py-4">ボタンをクリックしてパレットを生成</div>
+                <div id="paletteDisplay" class="grid grid-cols-4 gap-2 min-h-[60px] border-2 border-dashed border-gray-300 rounded p-2" role="list" aria-live="polite">
+                  <div class="text-center text-gray-500 col-span-4 py-4" data-translate-key="colorCodeTool.palettePlaceholder">ボタンをクリックしてパレットを生成</div>
                 </div>
 
                 <!-- 生成統計情報 -->
-                <div id="paletteStats" class="mt-2 text-xs text-gray-600"></div>
+                <div id="paletteStats" class="mt-2 text-xs text-gray-600" role="status" aria-live="polite" data-translate-key="colorCodeTool.paletteStatsPlaceholder">色数や明度の傾向をここに表示します。</div>
               </div>
             </div>
           </div>
@@ -602,14 +610,34 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
       <!-- 高度な機能が挿入される場所 -->
       <div id="advancedFeaturesContainer"></div>
 
-      <div id="smart-ads" class="flex justify-center my-8"></div>
-
-      <div id="messageArea" class="text-center mt-4">
-        <p id="statusMessage" class="text-gray-600"></p>
-        <p id="errorMessage" class="text-red-600"></p>
+      <div id="messageArea" class="text-center mt-4" aria-label="ツールからのお知らせ" data-translate-key="colorCodeTool.messageAreaLabel" data-translate-attr="aria-label">
+        <p id="statusMessage" class="text-gray-600" role="status" aria-live="polite" data-translate-key="colorCodeTool.statusReady">色を入力すると、変換結果とプレビューを更新します。</p>
+        <p id="errorMessage" class="text-red-600" role="alert" aria-live="assertive"></p>
       </div>
     </div>
   </main>
+  <section class="py-12 bg-white border-y border-gray-200">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-3" data-translate-key="colorCodeTool.relatedToolsTitle">関連ツール</h2>
+        <p class="text-gray-600 max-w-3xl" data-translate-key="colorCodeTool.relatedToolsLead">色の確認から画像・OGP制作まで、静的サイト制作で使いやすい関連ツールです。</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/image-converter.html" class="block border border-gray-200 rounded-lg p-5 hover:border-accent hover:shadow-md transition">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.relatedImageConverterTitle">画像変換ツール</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.relatedImageConverterDesc">PNG・JPEG・WebPの変換や軽量化をまとめて行えます。</p>
+        </a>
+        <a href="/tools/favicon-og-generator.html" class="block border border-gray-200 rounded-lg p-5 hover:border-accent hover:shadow-md transition">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.relatedFaviconTitle">ファビコン・OG画像ジェネレーター</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.relatedFaviconDesc">SNSシェアやサイト公開向けの画像をまとめて準備できます。</p>
+        </a>
+        <a href="/tools/qr-code-generator.html" class="block border border-gray-200 rounded-lg p-5 hover:border-accent hover:shadow-md transition">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.relatedQrTitle">QRコード生成ツール</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.relatedQrDesc">配布用URLや印刷物向けのQRコード作成に使えます。</p>
+        </a>
+      </div>
+    </div>
+  </section>
     <!-- フッター直前広告 -->
     <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
       <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
@@ -783,7 +811,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
             <div>
               <h4 class="font-medium mb-2 text-lg">コントラスト比計算</h4>
               <ul class="text-sm text-gray-600 space-y-1">
-                <li>• <strong>AAA基準（7:1以上）：</strong>最高レベル・小さい文字にも対応</li>
+                <li>• <strong>AAA基準（7:1以上）：</strong>小さい文字にも対応しやすい基準</li>
                 <li>• <strong>AA基準（4.5:1以上）：</strong>標準レベル・大部分のWebサイトで推奨</li>
                 <li>• <strong>AA大（3:1以上）：</strong>大きな文字・ボタン等に適用</li>
                 <li>• <strong>計算式：</strong>(L1 + 0.05) / (L2 + 0.05) ※L1>L2</li>
@@ -971,11 +999,11 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
   </section>
 
   <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-    <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <h2 class="font-bold text-base mb-2" data-translate-key="colorCodeTool.noticeTitle">negi-lab.comの運営方針</h2>
     <ul class="list-disc ml-5 mb-2">
-      <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-      <li>広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
-      <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+      <li data-translate-key="colorCodeTool.noticeLine1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li data-translate-key="colorCodeTool.noticeLine2">広告・アフィリエイトを含みますが、ユーザー体験に配慮しています。</li>
+      <li data-translate-key="colorCodeTool.noticeLine3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>
     <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
   </section>
@@ -999,7 +1027,91 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         this.colorEngine = null;
         this.colorUI = null;
         this.currentColor = '#65c155';
+        this.debugEnabled = Boolean(window.DEBUG_COLOR_TOOL);
         this.init();
+      }
+
+      debug(...args) {
+        if (this.debugEnabled && window.console && typeof console.debug === 'function') {
+          console.debug('[ColorCodeTool]', ...args);
+        }
+      }
+
+      t(key, fallback, ...args) {
+        if (typeof window.getColorCodeToolTranslation === 'function') {
+          return window.getColorCodeToolTranslation(key, fallback, ...args);
+        }
+
+        return args.reduce((message, value, index) => {
+          return String(message).replace(`{${index}}`, value);
+        }, fallback || key);
+      }
+
+      setStatusMessage(message) {
+        const statusMessage = document.getElementById('statusMessage');
+        if (statusMessage) {
+          statusMessage.textContent = message || '';
+        }
+      }
+
+      setErrorMessage(message) {
+        const errorMessage = document.getElementById('errorMessage');
+        if (errorMessage) {
+          errorMessage.textContent = message || '';
+        }
+      }
+
+      renderPickedColor(hex) {
+        const pickedColor = document.getElementById('pickedColor');
+        if (!pickedColor || !this.colorEngine) {
+          return;
+        }
+
+        const rgb = this.colorEngine.hexToRgb(hex);
+        const hsl = rgb ? this.colorEngine.rgbToHsl(rgb.r, rgb.g, rgb.b) : null;
+        pickedColor.replaceChildren();
+
+        if (!rgb || !hsl) {
+          return;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'border border-gray-200 rounded-lg p-3 bg-white shadow-sm';
+
+        const topRow = document.createElement('div');
+        topRow.className = 'flex items-center gap-3 mb-2';
+
+        const swatch = document.createElement('div');
+        swatch.className = 'w-10 h-10 rounded border border-gray-200';
+        swatch.style.backgroundColor = hex;
+
+        const titleWrap = document.createElement('div');
+        const title = document.createElement('div');
+        title.className = 'font-medium text-gray-800';
+        title.textContent = hex;
+        const hint = document.createElement('div');
+        hint.className = 'text-xs text-gray-500';
+        hint.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+        titleWrap.append(title, hint);
+        topRow.append(swatch, titleWrap);
+
+        const details = document.createElement('div');
+        details.className = 'text-xs text-gray-600 space-y-1';
+
+        [
+          ['HEX', hex],
+          ['RGB', `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`],
+          ['HSL', `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`]
+        ].forEach(([label, value]) => {
+          const row = document.createElement('div');
+          const strong = document.createElement('strong');
+          strong.textContent = `${label}:`;
+          row.append(strong, ` ${value}`);
+          details.appendChild(row);
+        });
+
+        card.append(topRow, details);
+        pickedColor.appendChild(card);
       }
 
       async init() {
@@ -1021,7 +1133,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
             if (window.AdvancedColorUI) {
               this.colorUI = new AdvancedColorUI(this.colorEngine);
               this.insertAdvancedComponents();
-              console.log('AdvancedColorUI initialized successfully');
+              this.debug('AdvancedColorUI initialized');
 
               // 初期色の同期
               if (this.currentColor) {
@@ -1033,7 +1145,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
               window.colorApp = this;
               window.colorCodeApp = this;
 
-              console.log('Global variables set: colorUI, colorApp, colorCodeApp');
+              this.debug('Global variables set');
             } else {
               console.warn('AdvancedColorUI not available');
             }
@@ -1045,11 +1157,13 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
           // 初期色の設定
           this.updateColor(this.currentColor);
+          this.setStatusMessage(this.t('statusReady', 'Enter a color to update the conversion result and preview.'));
+          this.setErrorMessage('');
 
           // セキュリティ強化の初期化
           this.initSecurity();
 
-          console.log('Color Code Tool initialized successfully');
+          this.debug('Color Code Tool initialized');
         } catch (error) {
           console.error('Initialization error:', error);
           this.showError('ツールの初期化に失敗しました。ページを再読み込みしてください。');
@@ -1063,11 +1177,10 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         const hslInput = document.getElementById('hslInput');
         const colorPicker = document.getElementById('colorPicker');
 
-        console.log('Binding basic events...', { hexInput, rgbInput, hslInput, colorPicker });
+        this.debug('Binding basic events', { hexInput, rgbInput, hslInput, colorPicker });
 
         if (hexInput) {
           hexInput.addEventListener('input', (e) => {
-            console.log('HEX input changed:', e.target.value);
             const hex = e.target.value;
             if (this.isValidHex(hex)) {
               this.updateColor(hex);
@@ -1076,18 +1189,16 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
           // フォーカス時の動作も追加
           hexInput.addEventListener('focus', () => {
-            console.log('HEX input focused');
+            this.debug('HEX input focused');
           });
 
           // 追加のイベント
           hexInput.addEventListener('change', (e) => {
-            console.log('HEX change event:', e.target.value);
             this.handleInputChange('hexInput', e.target.value);
           });
 
           hexInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
-              console.log('HEX Enter pressed:', e.target.value);
               this.handleInputChange('hexInput', e.target.value);
             }
           });
@@ -1095,7 +1206,6 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
         if (rgbInput) {
           rgbInput.addEventListener('input', (e) => {
-            console.log('RGB input changed:', e.target.value);
             const rgb = this.parseRGB(e.target.value);
             if (rgb) {
               const hex = this.colorEngine.rgbToHex(rgb.r, rgb.g, rgb.b);
@@ -1105,13 +1215,11 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
           // 追加のイベント
           rgbInput.addEventListener('change', (e) => {
-            console.log('RGB change event:', e.target.value);
             this.handleInputChange('rgbInput', e.target.value);
           });
 
           rgbInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
-              console.log('RGB Enter pressed:', e.target.value);
               this.handleInputChange('rgbInput', e.target.value);
             }
           });
@@ -1119,7 +1227,6 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
         if (hslInput) {
           hslInput.addEventListener('input', (e) => {
-            console.log('HSL input changed:', e.target.value);
             const hsl = this.parseHSL(e.target.value);
             if (hsl) {
               const rgb = this.colorEngine.hslToRgb(hsl.h, hsl.s, hsl.l);
@@ -1130,13 +1237,11 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
           // 追加のイベント
           hslInput.addEventListener('change', (e) => {
-            console.log('HSL change event:', e.target.value);
             this.handleInputChange('hslInput', e.target.value);
           });
 
           hslInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
-              console.log('HSL Enter pressed:', e.target.value);
               this.handleInputChange('hslInput', e.target.value);
             }
           });
@@ -1144,13 +1249,11 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
         if (colorPicker) {
           colorPicker.addEventListener('change', (e) => {
-            console.log('Color picker changed:', e.target.value);
             this.updateColor(e.target.value);
           });
 
           // inputイベントも追加（リアルタイム更新）
           colorPicker.addEventListener('input', (e) => {
-            console.log('Color picker input:', e.target.value);
             this.updateColor(e.target.value);
           });
         }
@@ -1160,7 +1263,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
       }
 
       connectAllUIElements() {
-        console.log('🔗 Connecting all UI elements...');
+        this.debug('Connecting UI elements');
 
         // 基本フォーム要素を接続
         this.connectFormElements();
@@ -1171,7 +1274,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         // 画像関連要素を接続
         this.connectImageElements();
 
-        console.log('✅ All UI elements connected successfully');
+        this.debug('UI elements connected');
       }
 
       connectFormElements() {
@@ -1192,8 +1295,9 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         if (rgbInput) {
           rgbInput.addEventListener('input', (e) => {
             const value = e.target.value.trim();
-            if (value && this.isValidRgb(value)) {
-              const hex = this.rgbToHex(value);
+            const rgb = this.parseRGB(value);
+            if (rgb) {
+              const hex = this.rgbToHex(rgb.r, rgb.g, rgb.b);
               this.updateColor(hex);
             }
           });
@@ -1208,7 +1312,7 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
       connectHarmonyButtons() {
         // AdvancedColorUIに委任するため、重複するイベントリスナーは削除
-        console.log('🔗 Harmony buttons delegated to AdvancedColorUI');
+        this.debug('Harmony buttons delegated to AdvancedColorUI');
       }
 
       connectImageElements() {
@@ -1303,33 +1407,55 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         const paletteDisplay = document.getElementById('paletteDisplay');
         if (!paletteDisplay) return;
 
-        paletteDisplay.innerHTML = colors.map(color => `
-          <div class="aspect-square rounded-lg cursor-pointer border-2 border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-200 flex items-end justify-center"
-               style="background-color: ${color};"
-               data-copy="${color}"
-               title="クリックでコピー: ${color}">
-            <span class="text-xs font-mono text-white bg-black bg-opacity-50 px-1 rounded mb-1">${color}</span>
-          </div>
-        `).join('');
+        const safeColors = colors
+          .map(color => this.normalizeHex(color))
+          .filter(Boolean);
+
+        paletteDisplay.replaceChildren();
+
+        if (!safeColors.length) {
+          const empty = document.createElement('div');
+          empty.className = 'text-center text-gray-500 col-span-4 py-4';
+          empty.textContent = this.t('paletteEmpty', 'No colors available to display.');
+          paletteDisplay.appendChild(empty);
+          return;
+        }
+
+        safeColors.forEach(color => {
+          const item = document.createElement('button');
+          item.type = 'button';
+          item.className = 'aspect-square rounded-lg cursor-pointer border-2 border-gray-200 hover:border-gray-400 hover:scale-105 transition-all duration-200 flex items-end justify-center focus:outline-none focus:ring-2 focus:ring-accent';
+          item.style.backgroundColor = color;
+          item.dataset.copy = color;
+          item.title = color;
+          item.setAttribute('aria-label', this.t('colorButtonAriaLabel', 'Select and copy {0}', color));
+
+          const label = document.createElement('span');
+          label.className = 'text-xs font-mono text-white bg-black bg-opacity-50 px-1 rounded mb-1';
+          label.textContent = color;
+          item.appendChild(label);
+
+          paletteDisplay.appendChild(item);
+        });
 
         // コピー機能を追加
         paletteDisplay.querySelectorAll('[data-copy]').forEach(div => {
           div.addEventListener('click', (e) => {
             const color = e.currentTarget.getAttribute('data-copy');
-            navigator.clipboard.writeText(color).then(() => {
-              console.log(`📋 Copied: ${color}`);
-              this.showSuccess(`コピーしました: ${color}`);
-              this.updateColor(color);
-            });
+            this.copyToClipboard(color);
+            this.updateColor(color);
+            this.setStatusMessage(this.t('statusPaletteCopied', 'Color copied and selected.'));
           });
         });
+
+        this.setStatusMessage(this.t('statusPaletteGenerated', 'Palette updated.'));
+        this.setErrorMessage('');
       }
 
       async copyToClipboard(text) {
         try {
           await navigator.clipboard.writeText(text);
-          console.log('Copied to clipboard:', text);
-          this.showSuccess(`コピーしました: ${text}`);
+          this.showSuccess(this.t('copySuccess', 'Copied: {0}', text));
         } catch (error) {
           console.error('Copy failed:', error);
           const textarea = document.createElement('textarea');
@@ -1338,32 +1464,37 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
           textarea.select();
           document.execCommand('copy');
           document.body.removeChild(textarea);
-          this.showSuccess(`コピーしました: ${text}`);
+          this.showSuccess(this.t('copySuccess', 'Copied: {0}', text));
         }
       }
 
       showSuccess(message) {
-        console.log('✅', message);
         const existingToast = document.querySelector('.success-toast');
         if (existingToast) existingToast.remove();
 
         const toast = document.createElement('div');
         toast.className = 'success-toast fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
         toast.textContent = message;
         document.body.appendChild(toast);
+        this.setStatusMessage(message);
+        this.setErrorMessage('');
 
         setTimeout(() => toast.remove(), 3000);
       }
 
       showError(message) {
-        console.error('❌', message);
         const existingToast = document.querySelector('.error-toast');
         if (existingToast) existingToast.remove();
 
         const toast = document.createElement('div');
         toast.className = 'error-toast fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'assertive');
         toast.textContent = message;
         document.body.appendChild(toast);
+        this.setErrorMessage(message);
 
         setTimeout(() => toast.remove(), 5000);
       }
@@ -1393,20 +1524,20 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
       bindColorInputEvents() {
         // 追加の色入力イベント
-        console.log('Additional color input events bound');
+        this.debug('Additional color input events bound');
       }
 
       insertAdvancedComponents() {
         // 高度なコンポーネントの挿入を AdvancedColorUI に委任
         if (this.colorUI) {
           // AdvancedColorUI のコンポーネントが自動的に挿入される
-          console.log('Advanced components delegated to AdvancedColorUI');
+          this.debug('Advanced components delegated to AdvancedColorUI');
         }
       }
 
       initSecurity() {
         // セキュリティ機能の初期化
-        console.log('Security features initialized');
+        this.debug('Security features initialized');
       }
 
       isAllowedImageFile(file) {
@@ -1415,11 +1546,11 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
           return false;
         }
         if (!allowedTypes.includes(file.type)) {
-          this.showError('PNG、JPEG、WebP、GIF形式の画像ファイルを選択してください。SVGは対象外です。');
+          this.showError(this.t('invalidImageType', 'Choose a PNG, JPEG, WebP, or GIF image. SVG is excluded.'));
           return false;
         }
         if (file.size > 10 * 1024 * 1024) {
-          this.showError('ファイルサイズが10MB以下の画像を選択してください。');
+          this.showError(this.t('invalidImageSize', 'Choose an image file that is 10 MB or smaller.'));
           return false;
         }
         return true;
@@ -1450,13 +1581,14 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
           canvas.style.display = 'block';
 
           ctx.drawImage(img, 0, 0, width, height);
-          console.log('🖼️ Image loaded to canvas');
           URL.revokeObjectURL(objectUrl);
+          this.setStatusMessage(this.t('statusImageLoaded', 'Image loaded. Click the canvas to pick a color.'));
+          this.setErrorMessage('');
         };
 
         img.onerror = () => {
           URL.revokeObjectURL(objectUrl);
-          this.showError('画像ファイルの読み込みに失敗しました。');
+          this.showError(this.t('imageLoadFailed', 'Failed to load the image file.'));
         };
 
         img.src = objectUrl;
@@ -1479,33 +1611,112 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
         const hex = this.rgbToHex(r, g, b);
         this.updateColor(hex);
-
-        console.log(`🎨 Extracted color from image: ${hex} at (${x}, ${y})`);
-        this.showSuccess(`画像から色を抽出しました: ${hex}`);
+        this.renderPickedColor(hex);
+        this.showSuccess(this.t('imageExtracted', 'Picked a color from the image: {0}', hex));
       }
 
-      rgbToHex(r, g, b) {
-        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-      }
+      handleInputChange(inputId, value) {
+        const trimmedValue = String(value || '').trim();
+        if (!trimmedValue) return;
 
-      updateColor(hex) {
-        console.log('🎨 updateColor called with:', hex);
-
-        if (!hex || !this.isValidHex(hex)) {
-          console.error('Invalid hex color:', hex);
+        if (inputId === 'hexInput') {
+          const normalizedHex = this.normalizeHex(trimmedValue);
+          if (normalizedHex) {
+            this.updateColor(normalizedHex);
+          } else {
+            this.showError(this.t('invalidHex', 'Enter a valid HEX color code.'));
+          }
           return;
         }
 
-        this.currentColor = hex;
+        if (inputId === 'rgbInput') {
+          const rgb = this.parseRGB(trimmedValue);
+          if (rgb) {
+            this.updateColor(this.rgbToHex(rgb.r, rgb.g, rgb.b));
+          } else {
+            this.showError(this.t('invalidRgb', 'Enter RGB as "rgb(101, 193, 85)" or "101,193,85".'));
+          }
+          return;
+        }
+
+        if (inputId === 'hslInput') {
+          const hsl = this.parseHSL(trimmedValue);
+          if (hsl) {
+            const rgb = this.colorEngine.hslToRgb(hsl.h, hsl.s, hsl.l);
+            this.updateColor(this.rgbToHex(rgb.r, rgb.g, rgb.b));
+          } else {
+            this.showError(this.t('invalidHsl', 'Enter HSL as "hsl(100, 47%, 55%)" or "100,47,55".'));
+          }
+        }
+      }
+
+      normalizeHex(hex) {
+        const value = String(hex || '').trim();
+        const withHash = value.startsWith('#') ? value : `#${value}`;
+        const shortMatch = /^#([0-9A-F]{3})$/i.exec(withHash);
+        if (shortMatch) {
+          return `#${shortMatch[1].split('').map(char => char + char).join('')}`.toUpperCase();
+        }
+
+        return /^#[0-9A-F]{6}$/i.test(withHash) ? withHash.toUpperCase() : null;
+      }
+
+      parseRGB(value) {
+        const match = String(value || '').trim().match(/^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})(?:\s*,\s*(?:0|1|0?\.\d+))?\s*\)$|^(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})$/i);
+        if (!match) return null;
+
+        const values = [match[1] || match[4], match[2] || match[5], match[3] || match[6]].map(Number);
+        if (values.some(component => !Number.isInteger(component) || component < 0 || component > 255)) {
+          return null;
+        }
+
+        return { r: values[0], g: values[1], b: values[2] };
+      }
+
+      parseHSL(value) {
+        const match = String(value || '').trim().match(/^hsla?\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*(?:,\s*(?:0|1|0?\.\d+))?\s*\)$|^(-?\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%?\s*,\s*(\d+(?:\.\d+)?)%?$/i);
+        if (!match) return null;
+
+        const h = Number(match[1] || match[4]);
+        const s = Number(match[2] || match[5]);
+        const l = Number(match[3] || match[6]);
+
+        if (!Number.isFinite(h) || !Number.isFinite(s) || !Number.isFinite(l) || s < 0 || s > 100 || l < 0 || l > 100) {
+          return null;
+        }
+
+        return { h: ((h % 360) + 360) % 360, s, l };
+      }
+
+      isValidRgb(value) {
+        return this.parseRGB(value) !== null;
+      }
+
+      rgbToHex(r, g, b) {
+        const components = [r, g, b].map(component => Math.max(0, Math.min(255, Number(component) || 0)));
+        return `#${components.map(component => Math.round(component).toString(16).padStart(2, '0')).join('')}`.toUpperCase();
+      }
+
+      updateColor(hex) {
+        const normalizedHex = this.normalizeHex(hex);
+
+        if (!normalizedHex) {
+          this.debug('Invalid hex color ignored', hex);
+          return;
+        }
+
+        this.currentColor = normalizedHex;
 
         // DOM要素の更新
-        this.updateColorInputs(hex);
-        this.updateColorPreview(hex);
-        this.updateColorInfo(hex);
+        this.updateColorInputs(normalizedHex);
+        this.updateColorPreview(normalizedHex);
+        this.updateColorInfo(normalizedHex);
+        this.setStatusMessage(`${this.t('statusColorUpdated', 'Color updated.')} ${normalizedHex}`);
+        this.setErrorMessage('');
 
         // AdvancedColorUIにも色を同期
         if (window.colorUI) {
-          window.colorUI.currentColor = hex;
+          window.colorUI.currentColor = normalizedHex;
         }
       }
 
@@ -1544,14 +1755,41 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
         const colorName = document.getElementById('colorName');
         const colorTemperature = document.getElementById('colorTemperature');
         const colorPsychology = document.getElementById('colorPsychology');
+        const rgb = this.hexToRgb(hex);
+        const hsl = rgb ? this.rgbToHsl(rgb.r, rgb.g, rgb.b) : null;
 
-        if (colorName) colorName.textContent = hex;
-        if (colorTemperature) colorTemperature.textContent = 'Color info';
-        if (colorPsychology) colorPsychology.textContent = 'Psychology info';
+        const temperature = hsl
+          ? (hsl.h < 45 || hsl.h >= 315
+              ? this.t('colorInfoTemperatureWarm', 'Warm')
+              : hsl.h >= 180 && hsl.h < 285
+                ? this.t('colorInfoTemperatureCool', 'Cool')
+                : this.t('colorInfoTemperatureNeutral', 'Neutral'))
+          : '';
+        const psychology = hsl
+          ? (hsl.h < 45 || hsl.h >= 315
+              ? this.t('colorInfoPsychologyWarm', 'Attention and energy')
+              : hsl.h < 90
+                ? this.t('colorInfoPsychologyYellow', 'Brightness and friendliness')
+                : hsl.h < 165
+                  ? this.t('colorInfoPsychologyGreen', 'Nature and reassurance')
+                  : hsl.h < 240
+                    ? this.t('colorInfoPsychologyBlue', 'Calm and trust')
+                    : hsl.h < 300
+                      ? this.t('colorInfoPsychologyPurple', 'Creativity and polish')
+                      : this.t('colorInfoPsychologyPink', 'Softness and impression'))
+          : '';
+
+        const name = this.colorEngine?.getClosestColorName?.(hex) || this.t('colorNameCustom', 'Custom color');
+
+        if (colorName) {
+          colorName.textContent = this.t('colorInfoTemplate', '{0} ({1})', name, hex);
+        }
+        if (colorTemperature) colorTemperature.textContent = temperature;
+        if (colorPsychology) colorPsychology.textContent = psychology;
       }
 
       isValidHex(hex) {
-        return /^#[0-9A-F]{6}$/i.test(hex);
+        return this.normalizeHex(hex) !== null;
       }
 
       hexToRgb(hex) {
@@ -1614,7 +1852,6 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
 
     // DOMContentLoadedでアプリケーション開始
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM loaded, initializing color code tool...');
       window.colorCodeApp = new window.ColorCodeToolApp();
     });
 

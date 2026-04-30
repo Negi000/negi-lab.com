@@ -38,10 +38,7 @@ window.ImageConverterUI = {
     // 翻訳システム初期化（既に初期化されている場合はスキップ）
     initializeTranslations: function() {
         if (window.TranslationSystem && !window.TranslationSystem._initialized) {
-            console.log('ImageConverterUI: Initializing TranslationSystem...');
             window.TranslationSystem.init();
-        } else if (window.TranslationSystem) {
-            console.log('ImageConverterUI: TranslationSystem already initialized');
         }
     },
 
@@ -110,6 +107,12 @@ window.ImageConverterUI = {
     bindEvents: function() {
         // ファイルアップロード
         this.elements.uploadArea.addEventListener('click', () => this.elements.fileInput.click());
+        this.elements.uploadArea.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                this.elements.fileInput.click();
+            }
+        });
         this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
         
         // ドラッグ&ドロップ
@@ -154,12 +157,12 @@ window.ImageConverterUI = {
 
     // フォーマットサポート確認
     checkFormatSupport: function() {
-        console.log('=== 対応フォーマット状況 ===');
-        console.log('✅ JPEG, PNG, WebP, GIF (標準サポート)');
-        console.log('✅ BMP, TGA, KTX, KTX2, DDS (自前実装)');
-        console.log('✅ HDR, EXR, SVG (基本実装)');
-        console.log(window.UTIF_FALLBACK ? '⚠️ TIFF (簡易モード)' : '✅ TIFF (UTIF使用)');
-        console.log('========================');
+        this.formatSupport = {
+            standard: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
+            custom: ['image/bmp', 'image/x-targa', 'application/ktx', 'application/ktx2', 'image/vnd-ms.dds'],
+            fallback: ['image/tiff', 'image/vnd.radiance', 'image/x-exr', 'image/svg+xml'],
+            tiffMode: window.UTIF_FALLBACK ? 'fallback' : 'utif'
+        };
     },
 
     // ファイル選択処理
@@ -193,23 +196,19 @@ window.ImageConverterUI = {
     addFiles: function(files) {
         const validFiles = [];
         const errorFiles = [];
-        
-        // ファイル形式とサイズチェック
+
         files.forEach(file => {
-            const isValidFormat = file.type.startsWith('image/') || 
-                                file.name.toLowerCase().match(/\.(ktx|ktx2|dds|tga|hdr|exr)$/);
-            
-            if (!isValidFormat) {
-                errorFiles.push(`${file.name}: 未対応の形式`);
+            if (!this.isSupportedInputFile(file)) {
+                errorFiles.push(`${file.name}: unsupported input format. Use JPEG, PNG, WebP, GIF, BMP, TIFF, SVG, or AVIF when supported by your browser.`);
                 return;
             }
-            
+
             if (file.size > this.maxFileSize) {
                 const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
-                errorFiles.push(`${file.name}: ファイルサイズが大きすぎます (${sizeMB}MB > 50MB)`);
+                errorFiles.push(`${file.name}: file is too large (${sizeMB}MB > 50MB).`);
                 return;
             }
-            
+
             validFiles.push(file);
         });
 
@@ -220,7 +219,7 @@ window.ImageConverterUI = {
 
         if (validFiles.length === 0) {
             if (errorFiles.length === 0) {
-                this.showStatus('画像ファイルを選択してください。', 'error');
+                this.showStatus('Please select an image file.', 'error');
             }
             return;
         }
@@ -233,9 +232,9 @@ window.ImageConverterUI = {
         this.updateFileList();
         this.showPreview(validFiles[0]);
         
-        let message = `${validFiles.length}個のファイルを追加しました。`;
+        let message = `${validFiles.length} file(s) added.`;
         if (errorFiles.length > 0) {
-            message += ` (${errorFiles.length}個のファイルをスキップ)`;
+            message += ` (${errorFiles.length} file(s) skipped)`;
         }
         this.showStatus(message, 'success');
         
@@ -244,22 +243,45 @@ window.ImageConverterUI = {
     },
 
     // ファイルリスト更新
+    isSupportedInputFile: function(file) {
+        const supportedTypes = new Set([
+            'image/jpeg', 'image/png', 'image/webp', 'image/gif',
+            'image/bmp', 'image/tiff', 'image/svg+xml', 'image/avif'
+        ]);
+        const supportedExtensions = /.(jpe?g|png|webp|gif|bmp|tiff?|svg|avif)$/i;
+        return supportedTypes.has(file.type) || supportedExtensions.test(file.name);
+    },
+
     updateFileList: function() {
         const fileList = this.elements.fileList;
-        fileList.innerHTML = '';
+        if (!fileList) return;
+        fileList.replaceChildren();
 
         window.ImageConverterCore.selectedFiles.forEach((file, index) => {
             const fileSize = this.formatFileSize(file.size);
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item flex items-center justify-between bg-gray-50 p-2 rounded mb-1';
-            fileItem.innerHTML = `
-                <div class="flex-1">
-                    <span class="text-sm text-gray-700 block">${file.name}</span>
-                    <span class="text-xs text-gray-500">${fileSize}</span>
-                </div>
-                <button onclick="ImageConverterUI.removeFile(${index})" 
-                        class="text-red-500 hover:text-red-700 text-sm ml-2">削除</button>
-            `;
+
+            const fileMeta = document.createElement('div');
+            fileMeta.className = 'flex-1 min-w-0';
+
+            const fileName = document.createElement('span');
+            fileName.className = 'text-sm text-gray-700 block break-all';
+            fileName.textContent = file.name;
+
+            const size = document.createElement('span');
+            size.className = 'text-xs text-gray-500';
+            size.textContent = fileSize;
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.className = 'text-red-500 hover:text-red-700 text-sm ml-2 shrink-0';
+            removeButton.textContent = 'Remove';
+            removeButton.setAttribute('aria-label', `Remove ${file.name}`);
+            removeButton.addEventListener('click', () => this.removeFile(index));
+
+            fileMeta.append(fileName, size);
+            fileItem.append(fileMeta, removeButton);
             fileList.appendChild(fileItem);
         });
         
@@ -274,7 +296,7 @@ window.ImageConverterUI = {
         
         if (window.ImageConverterCore.selectedFiles.length === 0) {
             this.elements.previewContainer.classList.add('hidden');
-            this.showStatus('ファイルがすべて削除されました。', 'info');
+            this.showStatus('All files removed.', 'info');
         }
     },
 
@@ -374,15 +396,17 @@ window.ImageConverterUI = {
     // 画像変換実行
     convertImages: async function() {
         if (window.ImageConverterCore.selectedFiles.length === 0) {
-            this.showStatus('変換する画像ファイルを選択してください。', 'error');
+            this.showStatus('Please select at least one image before converting.', 'error');
             return;
         }
 
         try {
             // UI状態を変換中に変更
             this.elements.convertBtn.disabled = true;
-            this.elements.convertBtn.innerHTML = '<span class="spinner mr-2"></span>変換中...';
-            this.showProgress(0, window.ImageConverterCore.selectedFiles.length, '変換を開始します...');
+            const spinner = document.createElement('span');
+            spinner.className = 'spinner mr-2';
+            this.elements.convertBtn.replaceChildren(spinner, document.createTextNode('Converting...'));
+            this.showProgress(0, window.ImageConverterCore.selectedFiles.length, 'Starting conversion...');
             
             // 結果リセット
             window.ImageConverterCore.results = [];
@@ -393,37 +417,37 @@ window.ImageConverterUI = {
             for (let i = 0; i < totalFiles; i++) {
                 const file = window.ImageConverterCore.selectedFiles[i];
                 
-                this.showProgress(i, totalFiles, `${file.name} を変換中...`);
+                this.showProgress(i, totalFiles, `Converting ${file.name}...`);
                 
                 try {
                     const result = await this.convertSingleImage(file);
                     window.ImageConverterCore.results.push(result);
                 } catch (error) {
-                    console.error(`変換エラー (${file.name}):`, error);
+                    console.error(`Conversion error (${file.name}):`, error);
                     window.ImageConverterCore.results.push({
                         fileName: file.name,
-                        error: error.message || '変換に失敗しました',
+                        error: error.message || 'Conversion failed',
                         originalSize: file.size
                     });
                 }
             }
             
             // 完了
-            this.showProgress(totalFiles, totalFiles, '変換完了');
+            this.showProgress(totalFiles, totalFiles, 'Conversion complete');
             setTimeout(() => this.hideProgress(), 1000);
             
             // 結果表示
             this.displayResults();
-            this.showStatus(`${totalFiles}個のファイルの変換が完了しました。`, 'success');
+            this.showStatus(`${totalFiles} file(s) converted.`, 'success');
             
         } catch (error) {
-            console.error('一括変換エラー:', error);
-            this.showStatus('変換処理中にエラーが発生しました。', 'error');
+            console.error('Batch conversion error:', error);
+            this.showStatus('An error occurred during conversion.', 'error');
             this.hideProgress();
         } finally {
             // UI状態を元に戻す
             this.elements.convertBtn.disabled = false;
-            this.elements.convertBtn.innerHTML = '変換開始';
+            this.elements.convertBtn.replaceChildren(document.createTextNode('Start Conversion'));
         }
     },
 
@@ -453,13 +477,13 @@ window.ImageConverterUI = {
                             reject(error);
                         }
                     };
-                    img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
+                    img.onerror = () => reject(new Error('The image could not be loaded.'));
                     img.src = e.target.result;
                 } catch (error) {
                     reject(error);
                 }
             };
-            reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
+            reader.onerror = () => reject(new Error('The file could not be read.'));
             reader.readAsDataURL(file);
         });
     },
@@ -549,7 +573,7 @@ window.ImageConverterUI = {
                 }
             };
             
-            img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
+            img.onerror = () => reject(new Error('The image could not be loaded.'));
             img.src = URL.createObjectURL(file);
         });
     },
@@ -607,7 +631,7 @@ window.ImageConverterUI = {
         window.ImageConverterCore.results = data;
         const grid = this.elements.resultsGrid || this.elements.resultsContainer;
         if (!grid) return;
-        grid.innerHTML = '';
+        grid.replaceChildren();
         
         data.forEach((result, index) => {
             const resultItem = this.createResultItem(result, index);
@@ -624,30 +648,52 @@ window.ImageConverterUI = {
         div.className = 'bg-white p-4 rounded-lg shadow border';
         
         if (result.error) {
-            div.innerHTML = `
-                <div class="text-red-600">
-                    <p class="font-medium">${result.originalFile.name}</p>
-                    <p class="text-sm">エラー: ${result.error}</p>
-                </div>
-            `;
+            const errorWrap = document.createElement('div');
+            errorWrap.className = 'text-red-600';
+
+            const name = document.createElement('p');
+            name.className = 'font-medium break-all';
+            name.textContent = result.fileName || result.originalFile?.name || 'File';
+
+            const message = document.createElement('p');
+            message.className = 'text-sm';
+            message.textContent = `Error: ${result.error}`;
+
+            errorWrap.append(name, message);
+            div.appendChild(errorWrap);
         } else {
-            const compressionRatio = ((1 - result.convertedSize / result.originalSize) * 100).toFixed(1);
-            
-            div.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="font-medium text-gray-800">${result.fileName}</p>
-                        <p class="text-sm text-gray-600">
-                            ${this.formatFileSize(result.originalSize)} → ${this.formatFileSize(result.convertedSize)}
-                            <span class="text-green-600">(${compressionRatio}% 削減)</span>
-                        </p>
-                    </div>
-                    <button onclick="ImageConverterUI.downloadResult(${index})" 
-                            class="form-button px-4 py-2 text-sm">
-                        ダウンロード
-                    </button>
-                </div>
-            `;
+            const row = document.createElement('div');
+            row.className = 'flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+
+            const details = document.createElement('div');
+            details.className = 'min-w-0';
+
+            const name = document.createElement('p');
+            name.className = 'font-medium text-gray-800 break-all';
+            name.textContent = result.fileName;
+
+            const sizeLine = document.createElement('p');
+            sizeLine.className = 'text-sm text-gray-600';
+            const delta = result.originalSize - result.convertedSize;
+            const ratio = result.originalSize > 0 ? Math.abs(delta / result.originalSize * 100).toFixed(1) : '0.0';
+            const change = document.createElement('span');
+            change.className = delta >= 0 ? 'text-green-600' : 'text-orange-600';
+            change.textContent = delta >= 0 ? ` (${ratio}% smaller)` : ` (${ratio}% larger)`;
+            sizeLine.append(
+                document.createTextNode(`${this.formatFileSize(result.originalSize)} -> ${this.formatFileSize(result.convertedSize)}`),
+                change
+            );
+
+            const downloadButton = document.createElement('button');
+            downloadButton.type = 'button';
+            downloadButton.className = 'form-button px-4 py-2 text-sm shrink-0 self-start sm:self-auto';
+            downloadButton.textContent = 'Download';
+            downloadButton.setAttribute('aria-label', `Download ${result.fileName}`);
+            downloadButton.addEventListener('click', () => this.downloadResult(index));
+
+            details.append(name, sizeLine);
+            row.append(details, downloadButton);
+            div.appendChild(row);
         }
         
         return div;
@@ -680,13 +726,13 @@ window.ImageConverterUI = {
         window.ImageConverterCore.selectedFiles = [];
         window.ImageConverterCore.results = [];
         
-        this.elements.fileList.innerHTML = '';
-    this.elements.resultsGrid && (this.elements.resultsGrid.innerHTML = '');
-    this.elements.previewContainer.classList.add('hidden');
-    this.elements.resultContainer?.classList.add('hidden');
+        this.elements.fileList?.replaceChildren();
+        this.elements.resultsGrid?.replaceChildren();
+        this.elements.previewContainer.classList.add('hidden');
+        this.elements.resultContainer?.classList.add('hidden');
         this.elements.downloadAllBtn?.classList.add('hidden');
         
-        this.showStatus('すべてクリアしました。', 'info');
+        this.showStatus('Cleared files and results.', 'info');
     },
 
     // ステータス表示
@@ -718,7 +764,7 @@ window.ImageConverterUI = {
             
             const percent = Math.round((current / total) * 100);
             this.elements.progressBar.style.width = percent + '%';
-            this.elements.progressText.textContent = message || `処理中... (${current}/${total})`;
+            this.elements.progressText.textContent = message || `Processing... (${current}/${total})`;
             this.elements.progressPercent.textContent = percent + '%';
         }
     },
@@ -800,7 +846,7 @@ window.ImageConverterUI = {
                 }, format, quality);
             } catch (error) {
                 console.error('Preview generation failed:', error);
-                this.elements.processedInfo.textContent = 'プレビュー生成エラー';
+                this.elements.processedInfo.textContent = 'Preview generation failed';
             }
         };
         img.src = originalDataUrl;

@@ -118,11 +118,38 @@
     });
   }
 
+  function initToolCards() {
+    document.querySelectorAll(".tool-card[data-tool-url]").forEach((card) => {
+      if (card.getAttribute("data-tool-bound") === "1") return;
+      card.setAttribute("data-tool-bound", "1");
+
+      const title = card.querySelector("[data-translate-key$='.title'], h3");
+      if (!card.hasAttribute("aria-label") && title && title.textContent.trim()) {
+        card.setAttribute("aria-label", title.textContent.trim());
+      }
+
+      const navigate = (event) => {
+        if (event && event.target && event.target.closest("a, button, select, input, textarea")) return;
+        const url = card.getAttribute("data-tool-url");
+        if (url) window.location.assign(url);
+      };
+
+      card.addEventListener("click", navigate);
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          navigate(event);
+        }
+      });
+    });
+  }
+
   window.applyTranslations = applyTranslations;
   window.initLanguageSwitch = initLanguageSwitch;
 
   document.addEventListener("DOMContentLoaded", () => {
     initLanguageSwitch();
+    initToolCards();
     initWikiCards();
   });
 })();

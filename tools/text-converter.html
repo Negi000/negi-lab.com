@@ -47,20 +47,23 @@
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
-  <title data-translate-key="textConverter.pageTitle">【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com</title>
-  <meta name="description" data-translate-key="textConverter.metaDescription" content="テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
+  <title data-translate-key="textConverter.pageTitle">テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com</title>
+  <meta name="description" data-translate-key="textConverter.metaDescription" content="大文字・小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数やUTF-8バイト数の確認をブラウザ上で行えるテキスト変換ツールです。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/text-converter.html" />
   <meta name="author" content="negi-lab.com" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com" />
-  <meta property="og:description" content="テキストの大文字小文字変換、キャメルケース・スネークケース変換、文字数・行数カウント、文字反転が無料でできるオールインワンテキストツール。" />
+  <meta property="og:title" data-translate-key="textConverter.ogTitle" content="テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com" />
+  <meta property="og:description" data-translate-key="textConverter.ogDescription" content="大文字・小文字、camelCase、snake_case、kebab-case、文字反転、文字数カウントをブラウザ上で処理できます。" />
   <meta property="og:url" content="https://negi-lab.com/tools/text-converter.html" />
+  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image:alt" content="テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換 | negi-lab.com" />
-  <meta name="twitter:description" content="テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。" />
+  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:title" data-translate-key="textConverter.ogTitle" content="テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com" />
+  <meta name="twitter:description" data-translate-key="textConverter.ogDescription" content="大文字・小文字、camelCase、snake_case、kebab-case、文字反転、文字数カウントをブラウザ上で処理できます。" />
   <meta property="og:site_name" content="negi-lab.com" />
 
   <!-- Fonts -->
@@ -141,8 +144,8 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換",
-    "description": "テキストの大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転を一つで実現するオールインワンテキスト処理ツール。プログラミング・データ解析・文書作成での効率的なテキスト操作を支援する専門ツールです。",
+    "name": "テキスト変換ツール",
+    "description": "大文字・小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数やUTF-8バイト数の確認をブラウザ上で行えるテキスト変換ツールです。",
     "url": "https://negi-lab.com/tools/text-converter.html",
     "applicationCategory": "Text utility",
     "operatingSystem": "Any",
@@ -161,7 +164,16 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       "@type": "Organization",
       "name": "negi-lab.com",
       "url": "https://negi-lab.com/"
-    }
+    },
+    "featureList": [
+      "Case conversion",
+      "camelCase conversion",
+      "snake_case conversion",
+      "kebab-case conversion",
+      "Text reversal",
+      "Character, line, word, and UTF-8 byte counts",
+      "Local history stored in your browser"
+    ]
   },
   {
     "@context": "https://schema.org",
@@ -182,7 +194,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "【無料】テキスト変換ツール - 大文字小文字・文字数カウント・キャメルケース変換",
+        "name": "テキスト変換ツール",
         "item": "https://negi-lab.com/tools/text-converter.html"
       }
     ]
@@ -196,15 +208,15 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
         "name": "このツールは無料で使えますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。ページ内に広告が表示される場合があります。"
         }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
+        "name": "入力したテキストは外部送信されますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
+          "text": "入力したテキストの変換と集計はブラウザ内で処理します。履歴はこの端末のブラウザにのみ保存され、コピー操作はお使いのブラウザのクリップボード機能を利用します。"
         }
       },
       {
@@ -221,7 +233,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   </script>
 </head>
 
-<body class="bg-gray-50 font-inter">
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <!-- Header（他のツールと統一） -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
@@ -266,8 +278,8 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       </div>
 
       <!-- 上部広告 -->
-      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告" data-translate-aria-label-key="textConverter.adsArea">
+        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
   <ins class="adsbygoogle ad-pc"
        style="display:block;min-height:250px"
        data-ad-client="ca-pub-1835873052239386"
@@ -275,6 +287,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
        data-ad-format="auto"
        data-ad-lazy="1"
        aria-label="広告"
+       data-translate-aria-label-key="textConverter.adLabel"
        data-full-width-responsive="true"></ins>
   <!-- Managed by consent-gated loader -->
       </div>
@@ -288,60 +301,74 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
               <svg class="w-5 h-5 mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              変換タイプ
+              <span data-translate-key="textConverter.typeTitle">変換タイプ</span>
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <button id="upperBtn" class="conversion-btn active" data-type="upper">大文字変換</button>
-              <button id="lowerBtn" class="conversion-btn" data-type="lower">小文字変換</button>
-              <button id="titleBtn" class="conversion-btn" data-type="title">タイトルケース</button>
-              <button id="camelBtn" class="conversion-btn" data-type="camel">キャメルケース</button>
-              <button id="snakeBtn" class="conversion-btn" data-type="snake">スネークケース</button>
-              <button id="kebabBtn" class="conversion-btn" data-type="kebab">ケバブケース</button>
-              <button id="reverseBtn" class="conversion-btn" data-type="reverse">文字反転</button>
-              <button id="countBtn" class="conversion-btn" data-type="count">文字数カウント</button>
+              <button id="upperBtn" class="conversion-btn active" data-type="upper" data-translate-key="textConverter.type.upper">大文字変換</button>
+              <button id="lowerBtn" class="conversion-btn" data-type="lower" data-translate-key="textConverter.type.lower">小文字変換</button>
+              <button id="titleBtn" class="conversion-btn" data-type="title" data-translate-key="textConverter.type.title">タイトルケース</button>
+              <button id="camelBtn" class="conversion-btn" data-type="camel" data-translate-key="textConverter.type.camel">キャメルケース</button>
+              <button id="snakeBtn" class="conversion-btn" data-type="snake" data-translate-key="textConverter.type.snake">スネークケース</button>
+              <button id="kebabBtn" class="conversion-btn" data-type="kebab" data-translate-key="textConverter.type.kebab">ケバブケース</button>
+              <button id="reverseBtn" class="conversion-btn" data-type="reverse" data-translate-key="textConverter.type.reverse">文字反転</button>
+              <button id="countBtn" class="conversion-btn" data-type="count" data-translate-key="textConverter.type.count">文字数カウント</button>
             </div>
           </div>
 
           <!-- 入力エリア -->
           <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-            <label class="block text-sm font-medium text-gray-700 mb-2">入力テキスト</label>
-            <textarea id="inputText" class="form-input w-full h-32" placeholder="ここに変換したいテキストを入力してください"></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-2" for="inputText" data-translate-key="textConverter.inputLabel">入力テキスト</label>
+            <textarea id="inputText" class="form-input w-full h-32" data-translate-placeholder-key="textConverter.inputPlaceholder" placeholder="ここに変換したいテキストを入力してください" aria-describedby="inputStats converterStatus" autocapitalize="off" autocomplete="off" spellcheck="false"></textarea>
             <p id="inputStats" class="mt-2 text-xs text-gray-500" aria-live="polite">文字数: 0 / 表示上の文字数: 0</p>
             <div class="flex gap-4 mt-4">
-              <button id="convertBtn" class="btn-primary flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button id="convertBtn" type="button" class="btn-primary flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                変換実行
+                <span data-translate-key="textConverter.button.convert">変換実行</span>
               </button>
-              <button id="clearBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition">
+              <button id="clearBtn" type="button" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition" data-translate-key="textConverter.button.clear">
                 クリア
               </button>
             </div>
+            <p id="converterStatus" class="mt-3 text-sm text-gray-600" role="status" aria-live="polite" data-translate-key="textConverter.status.ready">入力すると自動で変換結果を更新します。</p>
           </div>
 
           <!-- 結果表示エリア -->
           <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-            <label class="block text-sm font-medium text-gray-700 mb-2">変換結果</label>
-            <textarea id="outputText" class="form-input w-full h-32" readonly placeholder="変換結果がここに表示されます"></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-2" for="outputText" data-translate-key="textConverter.outputLabel">変換結果</label>
+            <textarea id="outputText" class="form-input w-full h-32" readonly data-translate-placeholder-key="textConverter.outputPlaceholder" placeholder="変換結果がここに表示されます" aria-describedby="charCount converterStatus historyPrivacyNote"></textarea>
             <div class="flex gap-4 mt-4">
-              <button id="copyBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button id="copyBtn" type="button" class="bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg transition flex items-center gap-2" disabled>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                コピー
+                <span id="copyBtnLabel" data-translate-key="textConverter.button.copy" aria-live="polite">コピー</span>
               </button>
               <div id="charCount" class="flex items-center text-sm text-gray-500">
                 文字数: 0
               </div>
             </div>
           </div>
+
+          <section class="bg-white rounded-xl shadow-lg p-6 border border-gray-100" aria-labelledby="historyTitle">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <h2 id="historyTitle" class="text-xl font-bold text-gray-800" data-translate-key="textConverter.history.title">変換履歴</h2>
+                <p id="historyPrivacyNote" class="mt-1 text-sm text-gray-500" data-translate-key="textConverter.history.note">履歴はこの端末のブラウザにのみ保存されます。不要になったら削除できます。</p>
+              </div>
+              <button id="clearHistoryBtn" type="button" class="rounded border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-600 hover:bg-gray-50" data-translate-key="textConverter.history.clear">
+                履歴を削除
+              </button>
+            </div>
+            <ul id="historyList" class="space-y-3" aria-live="polite" aria-describedby="historyPrivacyNote"></ul>
+          </section>
         </div>
       </div>
 
       <!-- 中間広告 -->
-      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告">
-        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告" data-translate-aria-label-key="textConverter.adsArea">
+        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
   <ins class="adsbygoogle ad-pc"
        style="display:block;min-height:250px"
        data-ad-client="ca-pub-1835873052239386"
@@ -349,16 +376,17 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
        data-ad-format="auto"
        data-ad-lazy="1"
        aria-label="広告"
+       data-translate-aria-label-key="textConverter.adLabel"
        data-full-width-responsive="true"></ins>
   <!-- Managed by consent-gated loader -->
       </div>
 
-  <!-- テキスト変換活用完全ガイドセクション -->
+  <!-- テキスト変換活用ガイドセクション -->
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">テキスト変換活用完全ガイド</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="textConverter.guideSection.title">テキスト変換活用ガイド</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="textConverter.guideSection.lead">
           プログラミングからビジネス文書まで、テキスト変換を効果的に活用するための実践的なノウハウをご紹介します。
         </p>
       </div>
@@ -372,24 +400,24 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">プログラミング・開発</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="textConverter.guideSection.devTitle">プログラミング・開発</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>変数名統一：</strong>camelCase、snake_case等の命名規則変換</span>
+              <span data-translate-key="textConverter.guideSection.devPoint1">変数名や項目名を camelCase、snake_case などへ変換</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>データ正規化：</strong>APIレスポンス・設定ファイルの統一</span>
+              <span data-translate-key="textConverter.guideSection.devPoint2">APIレスポンスや設定ファイルの表記をそろえる前処理</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>コード品質向上：</strong>リファクタリング時の一括命名変換</span>
+              <span data-translate-key="textConverter.guideSection.devPoint3">リファクタリング前の命名候補チェック</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>データベース設計：</strong>カラム名・テーブル名の規則統一</span>
+              <span data-translate-key="textConverter.guideSection.devPoint4">カラム名・テーブル名の規則確認</span>
             </li>
           </ul>
         </div>
@@ -402,24 +430,24 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">データ分析・管理</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="textConverter.guideSection.dataTitle">データ分析・管理</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>CSVデータクリーニング：</strong>大文字小文字統一で重複除去</span>
+              <span data-translate-key="textConverter.guideSection.dataPoint1">CSVデータの大文字小文字をそろえて確認しやすくする</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>文字数制限管理：</strong>レポート・SNS投稿の最適化</span>
+              <span data-translate-key="textConverter.guideSection.dataPoint2">レポートや投稿文の文字数を確認する</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>ログファイル解析：</strong>大量テキストの統計処理</span>
+              <span data-translate-key="textConverter.guideSection.dataPoint3">ログやメモの行数・単語数をざっくり把握する</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>Excel連携：</strong>データインポート前の前処理作業</span>
+              <span data-translate-key="textConverter.guideSection.dataPoint4">表計算ソフトへ貼り付ける前の表記整理</span>
             </li>
           </ul>
         </div>
@@ -432,24 +460,24 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">文書・コンテンツ作成</h3>
+            <h3 class="text-xl font-semibold text-gray-800" data-translate-key="textConverter.guideSection.contentTitle">文書・コンテンツ作成</h3>
           </div>
           <ul class="space-y-3 text-gray-600">
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>見出し統一：</strong>タイトルケース変換で体裁整備</span>
+              <span data-translate-key="textConverter.guideSection.contentPoint1">見出しやラベルの表記を整える</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>文字数管理：</strong>原稿・記事の文字数制限チェック</span>
+              <span data-translate-key="textConverter.guideSection.contentPoint2">原稿・記事の文字数を確認する</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>引用文正規化：</strong>学術論文・レポートでの統一</span>
+              <span data-translate-key="textConverter.guideSection.contentPoint3">引用文やメモの大文字小文字をそろえる</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-500 mr-2">✓</span>
-              <span><strong>翻訳文書管理：</strong>多言語コンテンツの体裁統一</span>
+              <span data-translate-key="textConverter.guideSection.contentPoint4">多言語コンテンツの見出し確認に使う</span>
             </li>
           </ul>
         </div>
@@ -457,78 +485,78 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
     </div>
   </section>
 
-  <!-- 技術解説セクション -->
+  <!-- 仕組みと注意点セクション -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">テキスト変換技術の詳細解説</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-          各種変換アルゴリズムの仕組みを理解することで、より効果的な活用が可能になります。
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="textConverter.details.title">変換の仕組みと注意点</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="textConverter.details.lead">
+          変換ルールの特徴を知っておくと、コードや文章へ貼り付ける前に結果を確認しやすくなります。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">命名規則変換の詳細</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="textConverter.details.namingTitle">命名規則変換の考え方</h3>
           <div class="space-y-4">
             <div class="border-l-4 border-blue-400 pl-4 py-2">
               <h4 class="font-medium text-lg">camelCase（キャメルケース）</h4>
-              <p class="text-sm text-gray-600 mb-2">最初の単語は小文字、以降の単語の先頭は大文字。JavaScript・Javaで標準。</p>
+              <p class="text-sm text-gray-600 mb-2" data-translate-key="textConverter.details.camelDesc">最初の単語は小文字、以降の単語の先頭は大文字にします。JavaScriptなどでよく使われます。</p>
               <div class="bg-blue-50 p-2 rounded text-xs font-mono">例: userName, firstName, calculateTotalPrice</div>
             </div>
             <div class="border-l-4 border-purple-400 pl-4 py-2">
               <h4 class="font-medium text-lg">snake_case（スネークケース）</h4>
-              <p class="text-sm text-gray-600 mb-2">単語間をアンダースコアで区切り、全て小文字。Python・SQLで標準。</p>
+              <p class="text-sm text-gray-600 mb-2" data-translate-key="textConverter.details.snakeDesc">単語間をアンダースコアで区切り、全て小文字にします。PythonやSQLでよく使われます。</p>
               <div class="bg-purple-50 p-2 rounded text-xs font-mono">例: user_name, first_name, calculate_total_price</div>
             </div>
             <div class="border-l-4 border-green-400 pl-4 py-2">
               <h4 class="font-medium text-lg">kebab-case（ケバブケース）</h4>
-              <p class="text-sm text-gray-600 mb-2">単語間をハイフンで区切り、全て小文字。CSS・URLで標準。</p>
+              <p class="text-sm text-gray-600 mb-2" data-translate-key="textConverter.details.kebabDesc">単語間をハイフンで区切り、全て小文字にします。CSSクラス名やURLの下書きで使いやすい形式です。</p>
               <div class="bg-green-50 p-2 rounded text-xs font-mono">例: user-name, first-name, calculate-total-price</div>
             </div>
             <div class="border-l-4 border-yellow-400 pl-4 py-2">
               <h4 class="font-medium text-lg">Title Case（タイトルケース）</h4>
-              <p class="text-sm text-gray-600 mb-2">各単語の先頭を大文字に。文書見出し・固有名詞で使用。</p>
+              <p class="text-sm text-gray-600 mb-2" data-translate-key="textConverter.details.titleDesc">各単語の先頭を大文字にします。見出しやラベルの表記確認に使えます。</p>
               <div class="bg-yellow-50 p-2 rounded text-xs font-mono">例: User Name, First Name, Calculate Total Price</div>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 class="text-2xl font-semibold mb-6 text-gray-800">文字数カウント・解析機能</h3>
+          <h3 class="text-2xl font-semibold mb-6 text-gray-800" data-translate-key="textConverter.details.countTitle">文字数カウント・解析</h3>
           <div class="space-y-6">
             <div>
-              <h4 class="font-medium mb-2 text-lg">多様な文字数カウント方式</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                用途に応じて異なるカウント方式を提供。文字数制限のあるプラットフォームに最適化。
+              <h4 class="font-medium mb-2 text-lg" data-translate-key="textConverter.details.countMethodsTitle">複数の数え方を併記</h4>
+              <p class="text-sm text-gray-600 mb-3" data-translate-key="textConverter.details.countMethodsDesc">
+                文字数、表示上の文字数、行数、単語数、UTF-8バイト数をまとめて確認できます。
               </p>
               <div class="bg-blue-50 p-3 rounded-lg text-xs space-y-1">
-                <div><strong>文字数：</strong>UTF-16コードユニット数と表示上の文字数を併記</div>
-                <div><strong>行数：</strong>改行文字（\n）を基準とした行の総数</div>
-                <div><strong>単語数：</strong>空白区切りによる英単語数（日本語は文字数）</div>
+                <div data-translate-key="textConverter.details.countNote1">文字数: JavaScriptの文字列長と表示上の文字数を併記</div>
+                <div data-translate-key="textConverter.details.countNote2">行数: 改行文字を基準に集計</div>
+                <div data-translate-key="textConverter.details.countNote3">単語数: 文字・数字のまとまりを単語として集計</div>
               </div>
             </div>
 
             <div>
-              <h4 class="font-medium mb-2 text-lg">プラットフォーム別制限対応</h4>
-              <p class="text-sm text-gray-600 mb-3">
-                主要プラットフォームの文字数制限に対応した最適化機能を内蔵。
+              <h4 class="font-medium mb-2 text-lg" data-translate-key="textConverter.details.draftTitle">投稿文・件名の下書き確認</h4>
+              <p class="text-sm text-gray-600 mb-3" data-translate-key="textConverter.details.draftDesc">
+                SNS投稿、メール件名、CMS入力欄などへ貼り付ける前に、長さの目安を確認できます。
               </p>
               <div class="bg-amber-50 p-3 rounded-lg text-xs space-y-1">
-                <div><strong>X：</strong>投稿文の長さ確認（URL・メンション考慮）</div>
-                <div><strong>Instagram：</strong>キャプション2,200文字、ハッシュタグ30個</div>
-                <div><strong>LinkedIn：</strong>投稿3,000文字、記事125,000文字</div>
-                <div><strong>メール件名：</strong>一般的に50-60文字推奨</div>
+                <div data-translate-key="textConverter.details.draftNote1">投稿文: 文字数と改行数を確認</div>
+                <div data-translate-key="textConverter.details.draftNote2">メール件名: 長すぎないかの目安に利用</div>
+                <div data-translate-key="textConverter.details.draftNote3">CMS入力: 表示上の文字数とUTF-8バイト数を確認</div>
+                <div data-translate-key="textConverter.details.draftNote4">仕様確認: 実際の制限は各サービスの最新案内を確認してください</div>
               </div>
             </div>
 
             <div>
-              <h4 class="font-medium mb-2 text-lg">文字反転・逆順処理</h4>
-              <p class="text-sm text-gray-600 mb-3">
+              <h4 class="font-medium mb-2 text-lg" data-translate-key="textConverter.details.reverseTitle">文字反転・逆順処理</h4>
+              <p class="text-sm text-gray-600 mb-3" data-translate-key="textConverter.details.reverseDesc">
                 Intl.Segmenter対応ブラウザでは、絵文字や結合文字を表示上の1文字として扱いながら逆順に処理します。
               </p>
-              <div class="bg-green-50 p-3 rounded-lg text-xs">
-                <strong>技術仕様：</strong>Intl.Segmenterを優先し、未対応環境ではArray.fromによるコードポイント単位の処理にフォールバック
+              <div class="bg-green-50 p-3 rounded-lg text-xs" data-translate-key="textConverter.details.reverseNote">
+                技術仕様: Intl.Segmenterを優先し、未対応環境ではArray.fromによるコードポイント単位の処理にフォールバックします。
               </div>
             </div>
           </div>
@@ -541,8 +569,8 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   <section class="bg-gray-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">よくある質問・トラブルシューティング</h2>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="textConverter.faqSection.title">よくある質問・トラブルシューティング</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="textConverter.faqSection.lead">
           テキスト変換ツール利用時によくある疑問や問題の解決方法をまとめました。
         </p>
       </div>
@@ -550,30 +578,30 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       <div class="space-y-6">
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>変換結果が期待通りにならない場合の対処法は？</span>
+            <span data-translate-key="textConverter.faqSection.q1">変換結果が期待通りにならない場合の対処法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>主な原因と解決策：</strong></p>
+            <p class="text-gray-700 mb-3 font-semibold" data-translate-key="textConverter.faqSection.q1Intro">主な原因と確認ポイント:</p>
             <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <h4 class="font-medium text-blue-600 mb-2">入力データに関する問題</h4>
+                <h4 class="font-medium text-blue-600 mb-2" data-translate-key="textConverter.faqSection.inputIssueTitle">入力テキストの確認</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>特殊文字混入：</strong>半角英数字のみでの変換を推奨</li>
-                  <li>• <strong>改行・タブ文字：</strong>見えない文字が影響する場合</li>
-                  <li>• <strong>日本語処理：</strong>ローマ字表記での入力を検討</li>
-                  <li>• <strong>数字・記号：</strong>変換ルールの適用範囲外の文字</li>
+                  <li data-translate-key="textConverter.faqSection.inputIssue1">• 改行・タブ・連続スペースが単語分割に影響する場合があります</li>
+                  <li data-translate-key="textConverter.faqSection.inputIssue2">• 記号は命名規則変換では区切りとして扱われます</li>
+                  <li data-translate-key="textConverter.faqSection.inputIssue3">• 日本語は大文字小文字変換の対象にならない場合があります</li>
+                  <li data-translate-key="textConverter.faqSection.inputIssue4">• 必要に応じて変換前の原文を手元に残してください</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-purple-600 mb-2">変換ルールの理解</h4>
+                <h4 class="font-medium text-purple-600 mb-2" data-translate-key="textConverter.faqSection.ruleTitle">変換ルールの確認</h4>
                 <ul class="text-sm text-gray-600 space-y-1">
-                  <li>• <strong>camelCase：</strong>1単語目は小文字で開始</li>
-                  <li>• <strong>snake_case：</strong>記号・数字は除去される</li>
-                  <li>• <strong>Title Case：</strong>前置詞（a, the等）は小文字維持</li>
-                  <li>• <strong>文字数カウント：</strong>制御文字・空白文字も含む</li>
+                  <li data-translate-key="textConverter.faqSection.rule1">• camelCase: 1単語目は小文字で開始します</li>
+                  <li data-translate-key="textConverter.faqSection.rule2">• snake_case/kebab-case: 単語を区切り文字でつなぎます</li>
+                  <li data-translate-key="textConverter.faqSection.rule3">• Title Case: 各単語の先頭を大文字にします</li>
+                  <li data-translate-key="textConverter.faqSection.rule4">• 文字数カウント: 制御文字・空白文字も含めて集計します</li>
                 </ul>
               </div>
             </div>
@@ -582,30 +610,30 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>プログラミングでの効果的な活用方法は？</span>
+            <span data-translate-key="textConverter.faqSection.q2">プログラミングでの活用方法は？</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </summary>
           <div class="mt-4 space-y-4">
-            <p class="text-gray-700 mb-3"><strong>開発効率を向上させる活用例：</strong></p>
+            <p class="text-gray-700 mb-3 font-semibold" data-translate-key="textConverter.faqSection.q2Intro">開発時に使いやすい活用例:</p>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 class="font-medium text-green-600 mb-3">コーディング規約統一</h4>
+                <h4 class="font-medium text-green-600 mb-3" data-translate-key="textConverter.faqSection.codingTitle">コーディング規約の確認</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>JavaScript/TypeScript：</strong>変数名・関数名をcamelCaseに統一</li>
-                  <li><strong>Python：</strong>関数名・変数名をsnake_caseに変換</li>
-                  <li><strong>CSS/HTML：</strong>クラス名・ID名をkebab-caseに統一</li>
-                  <li><strong>SQL：</strong>テーブル名・カラム名をsnake_caseで管理</li>
+                  <li data-translate-key="textConverter.faqSection.coding1">JavaScript/TypeScript: 変数名・関数名の camelCase 確認</li>
+                  <li data-translate-key="textConverter.faqSection.coding2">Python: 関数名・変数名の snake_case 確認</li>
+                  <li data-translate-key="textConverter.faqSection.coding3">CSS/HTML: クラス名・ID名の kebab-case 確認</li>
+                  <li data-translate-key="textConverter.faqSection.coding4">SQL: テーブル名・カラム名の表記整理</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-orange-600 mb-3">データ処理・API連携</h4>
+                <h4 class="font-medium text-orange-600 mb-3" data-translate-key="textConverter.faqSection.dataProcessTitle">データ処理・API連携</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>APIレスポンス：</strong>フロントエンド用にcamelCase変換</li>
-                  <li><strong>データベース：</strong>snake_case形式でカラム名統一</li>
-                  <li><strong>設定ファイル：</strong>YAML・JSONの命名規則統一</li>
-                  <li><strong>ログ解析：</strong>大文字小文字統一で重複除去</li>
+                  <li data-translate-key="textConverter.faqSection.dataProcess1">APIレスポンス: フロントエンド用の命名確認</li>
+                  <li data-translate-key="textConverter.faqSection.dataProcess2">データベース: snake_case 形式の下書き</li>
+                  <li data-translate-key="textConverter.faqSection.dataProcess3">設定ファイル: YAML・JSONのキー名確認</li>
+                  <li data-translate-key="textConverter.faqSection.dataProcess4">ログ解析: 大文字小文字のゆれ確認</li>
                 </ul>
               </div>
             </div>
@@ -614,7 +642,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>大量テキストの処理時の注意点とパフォーマンス</span>
+            <span data-translate-key="textConverter.faqSection.q3">大量テキストの処理時の注意点</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -622,26 +650,26 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
           <div class="mt-4 space-y-4">
             <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4">
               <p class="text-amber-800 text-sm font-medium">
-                ⚠️ ブラウザ上での処理のため、極端に大量なテキスト（1MB以上）は動作が重くなる可能性があります。
+                <span data-translate-key="textConverter.faqSection.largeWarning">ブラウザ上での処理のため、極端に大量なテキストでは動作が重くなる場合があります。</span>
               </p>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 class="font-medium text-red-600 mb-3">パフォーマンス制限</h4>
+                <h4 class="font-medium text-red-600 mb-3" data-translate-key="textConverter.faqSection.performanceTitle">パフォーマンス上の注意</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li>• <strong>推奨上限：</strong>100KB（約10万文字）以下</li>
-                  <li>• <strong>メモリ使用量：</strong>変換前後で2倍のメモリを消費</li>
-                  <li>• <strong>処理時間：</strong>文字反転・複雑な変換は時間増加</li>
-                  <li>• <strong>ブラウザ制限：</strong>タブがフリーズする可能性</li>
+                  <li data-translate-key="textConverter.faqSection.performance1">• 数百KB程度までを目安にすると扱いやすいです</li>
+                  <li data-translate-key="textConverter.faqSection.performance2">• 入力と変換結果を同時に保持します</li>
+                  <li data-translate-key="textConverter.faqSection.performance3">• 文字反転やカウントは文字量に応じて時間が増えます</li>
+                  <li data-translate-key="textConverter.faqSection.performance4">• ブラウザや端末の性能により動作感は変わります</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-blue-600 mb-3">効率的な処理方法</h4>
+                <h4 class="font-medium text-blue-600 mb-3" data-translate-key="textConverter.faqSection.efficientTitle">扱いやすくする方法</h4>
                 <ul class="text-sm text-gray-600 space-y-2">
-                  <li><strong>分割処理：</strong>大量データは複数回に分けて変換</li>
-                  <li><strong>事前整理：</strong>不要な改行・空白を削除</li>
-                  <li><strong>バックアップ：</strong>重要なデータは事前にコピー保存</li>
-                  <li><strong>段階実行：</strong>一度に全変換せず、部分確認を実施</li>
+                  <li data-translate-key="textConverter.faqSection.efficient1">大量データは複数回に分けて変換する</li>
+                  <li data-translate-key="textConverter.faqSection.efficient2">不要な改行・空白を事前に整理する</li>
+                  <li data-translate-key="textConverter.faqSection.efficient3">重要なデータは事前に控えを残す</li>
+                  <li data-translate-key="textConverter.faqSection.efficient4">結果を部分的に確認してから利用する</li>
                 </ul>
               </div>
             </div>
@@ -650,7 +678,7 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 
         <details class="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:bg-gray-50">
           <summary class="font-semibold text-lg text-gray-800 flex items-center justify-between">
-            <span>文字化けや特殊文字の処理について</span>
+            <span data-translate-key="textConverter.faqSection.q4">文字化けや特殊文字の処理について</span>
             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -658,26 +686,26 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
           <div class="mt-4 space-y-4">
             <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
               <p class="text-green-800 text-sm font-medium">
-                ✅ 当ツールはUnicode対応で、絵文字・特殊文字も正しく処理します。
+                <span data-translate-key="textConverter.faqSection.unicodeNote">Unicode文字を扱えるよう配慮しています。環境差があるため、重要な文字列は変換後に確認してください。</span>
               </p>
             </div>
             <div class="space-y-4">
               <div>
-                <h4 class="font-medium text-gray-800 mb-2">対応文字・機能</h4>
+                <h4 class="font-medium text-gray-800 mb-2" data-translate-key="textConverter.faqSection.unicodeTitle">扱える文字の例</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>Unicode全般：</strong>日本語・中国語・韓国語・絵文字対応</li>
-                  <li>• <strong>特殊記号：</strong>数学記号・通貨記号・矢印等</li>
-                  <li>• <strong>サロゲートペア：</strong>4バイト文字も正確に処理</li>
-                  <li>• <strong>結合文字：</strong>アクセント付き文字・合成絵文字</li>
+                  <li data-translate-key="textConverter.faqSection.unicode1">• 日本語・中国語・韓国語などのUnicode文字</li>
+                  <li data-translate-key="textConverter.faqSection.unicode2">• 数学記号・通貨記号・矢印などの特殊記号</li>
+                  <li data-translate-key="textConverter.faqSection.unicode3">• 絵文字などのサロゲートペア</li>
+                  <li data-translate-key="textConverter.faqSection.unicode4">• アクセント付き文字や結合文字</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-medium text-gray-800 mb-2">制限事項・注意点</h4>
+                <h4 class="font-medium text-gray-800 mb-2" data-translate-key="textConverter.faqSection.limitTitle">制限事項・注意点</h4>
                 <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                  <li>• <strong>命名規則変換：</strong>英数字以外は除去・置換される場合</li>
-                  <li>• <strong>大文字小文字：</strong>一部言語では変換効果なし</li>
-                  <li>• <strong>文字数カウント：</strong>表示幅と文字数は異なる場合</li>
-                  <li>• <strong>コピー&ペースト：</strong>環境により文字化けの可能性</li>
+                  <li data-translate-key="textConverter.faqSection.limit1">• 命名規則変換では記号が区切りとして扱われます</li>
+                  <li data-translate-key="textConverter.faqSection.limit2">• 大文字小文字変換は一部言語では変化しない場合があります</li>
+                  <li data-translate-key="textConverter.faqSection.limit3">• 表示幅と文字数は同じではありません</li>
+                  <li data-translate-key="textConverter.faqSection.limit4">• コピー先のアプリによって表示が変わる場合があります</li>
                 </ul>
               </div>
             </div>
@@ -692,30 +720,30 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-4">よく使う場面</h2>
-          <p class="text-gray-600 leading-7">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4" data-translate-key="textConverter.useCases.title">よく使う場面</h2>
+          <p class="text-gray-600 leading-7" data-translate-key="textConverter.useCases.lead">
             テキストを外部サービスへ送らず、命名規則の整理、原稿の文字数確認、投稿文の下書き調整をブラウザ内で処理できます。
           </p>
-          <a href="#inputText" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+          <a href="#inputText" class="mt-5 inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors" data-translate-key="textConverter.useCases.cta">
             入力欄へ移動
           </a>
         </div>
         <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
           <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">コード・設定名の整形</h3>
-            <p class="text-sm leading-7 text-gray-600">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="textConverter.useCases.codeTitle">コード・設定名の整形</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="textConverter.useCases.codeText">
               見出しや項目名を camelCase、snake_case、kebab-case に変換し、READMEや設定ファイルへ貼り付けやすくします。
             </p>
           </div>
           <div class="py-5 md:px-5 md:border-r border-gray-200">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">原稿と投稿文の確認</h3>
-            <p class="text-sm leading-7 text-gray-600">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="textConverter.useCases.draftTitle">原稿と投稿文の確認</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="textConverter.useCases.draftText">
               文字数、表示上の文字数、行数、単語数、UTF-8バイト数をまとめて確認し、SNSやメール件名の下書きを調整できます。
             </p>
           </div>
           <div class="py-5 md:px-5">
-            <h3 class="text-base font-semibold text-gray-900 mb-2">貼り付け前の表記ゆれ整理</h3>
-            <p class="text-sm leading-7 text-gray-600">
+            <h3 class="text-base font-semibold text-gray-900 mb-2" data-translate-key="textConverter.useCases.cleanupTitle">貼り付け前の表記ゆれ整理</h3>
+            <p class="text-sm leading-7 text-gray-600" data-translate-key="textConverter.useCases.cleanupText">
               大文字小文字や区切り文字をそろえてから、CSV、表計算、CMS、チャットへ貼り付ける前処理として使えます。
             </p>
           </div>
@@ -737,13 +765,13 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 
       <!-- 独自性・免責事項セクション -->
       <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
-        <h2 class="font-bold text-base mb-2">negi-lab.comの独自性・運営方針・免責事項</h2>
+        <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
         <ul class="list-disc ml-5 mb-2">
-          <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-          <li>広告を含みますが、ユーザー体験を最優先しています。</li>
-          <li>正確性・安全性には万全を期していますが、利用は自己責任でお願いします。</li>
+          <li data-translate-key="siteInfo.point1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
+          <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を優先して配置しています。</li>
+          <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
         </ul>
-        <p class="text-xs text-gray-500">&copy; 2026 negi-lab.com</p>
+        <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
       </section>
     </div>
   </main>
@@ -751,45 +779,45 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   <!-- Footer -->
   <footer class="bg-gray-800 text-gray-300 py-8 text-center text-sm">
     <nav class="mb-2">
-      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2">プライバシーポリシー</a>
-      <a href="/terms.html" class="underline hover:text-accent mx-2">利用規約</a>
-      <a href="/about.html" class="underline hover:text-accent mx-2">運営者情報</a>
-      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2">お問い合わせ</a>
-      <a href="/sitemap.xml" class="underline hover:text-accent mx-2">サイトマップ</a>
+      <a href="/privacy-policy-unified.html" class="underline hover:text-accent mx-2" data-translate-key="footer.privacyPolicy">プライバシーポリシー</a>
+      <a href="/terms.html" class="underline hover:text-accent mx-2" data-translate-key="footer.terms">利用規約</a>
+      <a href="/about.html" class="underline hover:text-accent mx-2" data-translate-key="footer.about">運営者情報</a>
+      <a href="mailto:negilab.com@gmail.com" class="underline hover:text-accent mx-2" data-translate-key="footer.contact">お問い合わせ</a>
+      <a href="/sitemap.xml" class="underline hover:text-accent mx-2" data-translate-key="footer.sitemap">サイトマップ</a>
     </nav>
-    <div>&copy; 2026 negi-lab.com</div>
+    <div data-translate-key="footer.copyright">&copy; 2026 negi-lab.com</div>
   </footer>
 
   <!-- ガイドモーダル -->
-  <div id="guideModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+  <div id="guideModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle" aria-describedby="guideModalDesc">
     <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-96 overflow-y-auto">
       <div class="p-6">
         <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">使い方ガイド</h2>
-          <button id="guideClose" type="button" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+          <h2 id="guideModalTitle" class="text-xl font-bold text-gray-800" data-translate-key="textConverter.guideModal.title">使い方ガイド</h2>
+          <button id="guideClose" type="button" class="text-gray-500 hover:text-gray-700 text-xl" data-translate-aria-label-key="guideModal.closeButton" aria-label="閉じる">&times;</button>
         </div>
         <div class="space-y-3 text-sm text-gray-600">
-          <p>テキスト変換ツールの使い方をご説明します。</p>
+          <p id="guideModalDesc" data-translate-key="textConverter.guideModal.lead">テキスト変換ツールの使い方をご説明します。</p>
           <ol class="list-decimal list-inside space-y-2">
-            <li>変換したいテキストを入力フィールドに入力してください</li>
-            <li>変換タイプボタンから希望の変換方法を選択してください</li>
-            <li>「変換実行」ボタンをクリックしてください</li>
-            <li>結果を確認し、必要に応じてコピーボタンで結果をコピーしてください</li>
+            <li data-translate-key="textConverter.guideModal.step1">変換したいテキストを入力フィールドに入力してください</li>
+            <li data-translate-key="textConverter.guideModal.step2">変換タイプボタンから希望の変換方法を選択してください</li>
+            <li data-translate-key="textConverter.guideModal.step3">「変換実行」ボタンをクリックしてください</li>
+            <li data-translate-key="textConverter.guideModal.step4">結果を確認し、必要に応じてコピーボタンで結果をコピーしてください</li>
           </ol>
           <div class="bg-blue-50 p-3 rounded border-l-4 border-blue-400">
-            <p class="text-blue-800 text-xs">💡 ヒント: このツールはブラウザ上で動作し、データはサーバーに送信されません。</p>
+            <p class="text-blue-800 text-xs" data-translate-key="textConverter.guideModal.hint">ヒント: このツールはブラウザ上で動作し、入力テキストは変換のために外部サーバーへ送信されません。</p>
           </div>
           <div class="space-y-2">
-            <h3 class="font-medium text-gray-800">利用可能な変換タイプ：</h3>
+            <h3 class="font-medium text-gray-800" data-translate-key="textConverter.guideModal.typesTitle">利用可能な変換タイプ:</h3>
             <ul class="text-xs space-y-1 ml-4">
-              <li>• <strong>大文字変換：</strong>すべての文字を大文字に変換</li>
-              <li>• <strong>小文字変換：</strong>すべての文字を小文字に変換</li>
-              <li>• <strong>タイトルケース：</strong>各単語の最初を大文字に変換</li>
-              <li>• <strong>キャメルケース：</strong>camelCase形式に変換</li>
-              <li>• <strong>スネークケース：</strong>snake_case形式に変換</li>
-              <li>• <strong>ケバブケース：</strong>kebab-case形式に変換</li>
-              <li>• <strong>文字反転：</strong>文字列を逆順に並べ替え</li>
-              <li>• <strong>文字数カウント：</strong>文字数・行数・単語数を表示</li>
+              <li data-translate-key="textConverter.guideModal.typeUpper">• 大文字変換: 文字を大文字に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeLower">• 小文字変換: 文字を小文字に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeTitle">• タイトルケース: 各単語の最初を大文字に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeCamel">• キャメルケース: camelCase形式に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeSnake">• スネークケース: snake_case形式に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeKebab">• ケバブケース: kebab-case形式に変換</li>
+              <li data-translate-key="textConverter.guideModal.typeReverse">• 文字反転: 文字列を逆順に並べ替え</li>
+              <li data-translate-key="textConverter.guideModal.typeCount">• 文字数カウント: 文字数・行数・単語数を表示</li>
             </ul>
           </div>
         </div>
