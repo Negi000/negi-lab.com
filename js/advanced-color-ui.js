@@ -231,11 +231,11 @@ class AdvancedColorUI {
     const container = document.createElement('div');
     container.className = 'contrast-checker bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">アクセシビリティ・コントラストチェッカー</h3>
+      <h3 class="text-lg font-semibold mb-4">${this.t('contrastCheckerTitle', 'Accessibility contrast checker')}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="contrast-inputs">
           <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">前景色（テキスト）</label>
+            <label class="block text-sm font-medium mb-2">${this.t('contrastForegroundLabel', 'Foreground color (text)')}</label>
             <div class="flex items-center space-x-2">
               <div id="foregroundPreview" class="w-12 h-12 border border-gray-200 rounded"></div>
               <input id="foregroundColor" type="color" class="w-16 h-12 border-0">
@@ -243,7 +243,7 @@ class AdvancedColorUI {
             </div>
           </div>
           <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">背景色</label>
+            <label class="block text-sm font-medium mb-2">${this.t('contrastBackgroundLabel', 'Background color')}</label>
             <div class="flex items-center space-x-2">
               <div id="backgroundPreview" class="w-12 h-12 border border-gray-200 rounded"></div>
               <input id="backgroundColor" type="color" class="w-16 h-12 border-0">
@@ -253,27 +253,27 @@ class AdvancedColorUI {
         </div>
         
         <div class="contrast-results">
-          <div class="contrast-preview mb-4 p-4 rounded border-2">
-            <div class="text-lg font-medium">サンプルテキスト</div>
-            <div class="text-sm">小さなテキストのサンプル</div>
-            <div class="text-xl font-bold">大きなテキストのサンプル</div>
+          <div class="contrast-preview mb-4 p-4 rounded border-2" role="group" aria-label="${this.t('contrastPreviewLabel', 'Contrast preview sample')}">
+            <div class="text-lg font-medium">${this.t('contrastPreviewTitle', 'Sample text')}</div>
+            <div class="text-sm">${this.t('contrastPreviewSmall', 'Small text sample')}</div>
+            <div class="text-xl font-bold">${this.t('contrastPreviewLarge', 'Large text sample')}</div>
           </div>
           
           <div class="contrast-ratio mb-3">
-            <div class="text-sm font-medium">コントラスト比: <span id="contrastRatio" class="text-lg font-bold">1:1</span></div>
+            <div class="text-sm font-medium">${this.t('contrastRatioLabel', 'Contrast ratio')}: <span id="contrastRatio" class="text-lg font-bold">1:1</span></div>
           </div>
           
           <div class="wcag-compliance space-y-2">
             <div class="flex items-center justify-between p-2 rounded" id="wcag-aa">
-              <span class="text-sm">WCAG AA (通常テキスト)</span>
+              <span class="text-sm">${this.t('contrastWcagAa', 'WCAG AA (normal text)')}</span>
               <span class="compliance-badge"></span>
             </div>
             <div class="flex items-center justify-between p-2 rounded" id="wcag-aa-large">
-              <span class="text-sm">WCAG AA (大きなテキスト)</span>
+              <span class="text-sm">${this.t('contrastWcagAaLarge', 'WCAG AA (large text)')}</span>
               <span class="compliance-badge"></span>
             </div>
             <div class="flex items-center justify-between p-2 rounded" id="wcag-aaa">
-              <span class="text-sm">WCAG AAA (通常テキスト)</span>
+              <span class="text-sm">${this.t('contrastWcagAaa', 'WCAG AAA (normal text)')}</span>
               <span class="compliance-badge"></span>
             </div>
           </div>
@@ -281,8 +281,8 @@ class AdvancedColorUI {
       </div>
       
       <div class="suggested-pairs mt-6">
-        <h4 class="font-medium mb-3">推奨されるアクセシブルな色の組み合わせ</h4>
-        <div id="accessiblePairs" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+        <h4 class="font-medium mb-3">${this.t('contrastSuggestedPairsTitle', 'Suggested accessible color pairs')}</h4>
+        <div id="accessiblePairs" class="grid grid-cols-2 md:grid-cols-4 gap-3" role="list" aria-live="polite"></div>
       </div>
     `;
     
@@ -515,24 +515,24 @@ class AdvancedColorUI {
     const container = document.createElement('div');
     container.className = 'accessibility-analyzer bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">アクセシビリティアナライザー</h3>
+      <h3 class="text-lg font-semibold mb-4">${this.t('accessibilityAnalyzerTitle', 'Accessibility analyzer')}</h3>
       <div class="analyzer-content">
         <div class="quick-tests mb-4">
-          <h4 class="font-medium mb-2">クイックテスト</h4>
+          <h4 class="font-medium mb-2">${this.t('accessibilityQuickTestsTitle', 'Quick checks')}</h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="colorBlind">
-              🎨 色覚異常シミュレーション
+              ${this.t('accessibilityColorBlindButton', 'Color-vision simulation')}
             </button>
             <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="lowVision">
-              👁️ 低視力シミュレーション
+              ${this.t('accessibilityLowVisionButton', 'Low-vision simulation')}
             </button>
             <button class="accessibility-test-btn p-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors" data-test="motionSensitivity">
-              ⚡ 動きに敏感度テスト
+              ${this.t('accessibilityMotionButton', 'Motion-sensitivity check')}
             </button>
           </div>
         </div>
-        <div id="accessibilityResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50">
-          <div class="text-center text-gray-500">テストを選択してください</div>
+        <div id="accessibilityResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50" role="status" aria-live="polite">
+          <div class="text-center text-gray-500">${this.t('accessibilityTestPrompt', 'Choose a check to review.')}</div>
         </div>
       </div>
     `;
@@ -561,20 +561,20 @@ class AdvancedColorUI {
     const container = document.createElement('div');
     container.className = 'batch-converter bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">バッチ色変換・検証</h3>
+      <h3 class="text-lg font-semibold mb-4">${this.t('batchConverterTitle', 'Batch color conversion and validation')}</h3>
       <div class="batch-input mb-4">
-        <label class="block text-sm font-medium mb-2">色リスト（1行に1色）</label>
+        <label class="block text-sm font-medium mb-2">${this.t('batchListLabel', 'Color list (one per line)')}</label>
         <textarea id="batchColorInput" class="w-full h-32 px-3 py-2 border border-gray-300 rounded" 
           placeholder="#FF0000&#10;rgb(0,255,0)&#10;hsl(240,100%,50%)&#10;blue"></textarea>
       </div>
       <div class="batch-controls mb-4 flex flex-wrap gap-2">
-        <button id="processBatch" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">🔄 変換実行</button>
-        <button id="validateColors" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">✅ 色検証</button>
-        <button id="sortColors" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition-colors">📊 色ソート</button>
-        <button id="downloadResults" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">💾 結果ダウンロード</button>
+        <button id="processBatch" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">${this.t('batchProcessButton', 'Convert')}</button>
+        <button id="validateColors" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">${this.t('batchValidateButton', 'Validate')}</button>
+        <button id="sortColors" class="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition-colors">${this.t('batchSortButton', 'Sort')}</button>
+        <button id="downloadResults" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">${this.t('batchDownloadButton', 'Download results')}</button>
       </div>
-      <div id="batchResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50">
-        <div class="text-center text-gray-500">上記のボタンをクリックして処理を開始してください</div>
+      <div id="batchResults" class="results-area min-h-[200px] border border-gray-200 rounded p-4 bg-gray-50" role="status" aria-live="polite">
+        <div class="text-center text-gray-500">${this.t('batchPrompt', 'Use one of the actions above to start processing.')}</div>
       </div>
     `;
     
@@ -609,9 +609,9 @@ class AdvancedColorUI {
     const container = document.createElement('div');
     container.className = 'color-export bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">色エクスポート</h3>
+      <h3 class="text-lg font-semibold mb-4">${this.t('exportTitle', 'Color export')}</h3>
       <div class="export-options mb-4">
-        <h4 class="font-medium mb-2">エクスポート形式</h4>
+        <h4 class="font-medium mb-2">${this.t('exportFormatTitle', 'Export format')}</h4>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <label class="flex items-center p-2 border rounded hover:bg-gray-50 cursor-pointer">
             <input type="radio" name="exportFormat" value="css" class="mr-2" checked>
@@ -633,7 +633,7 @@ class AdvancedColorUI {
       </div>
       
       <div class="naming-options mb-4">
-        <h4 class="font-medium mb-2">命名規則</h4>
+        <h4 class="font-medium mb-2">${this.t('exportNamingTitle', 'Naming convention')}</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <select id="namingConvention" class="px-3 py-2 border border-gray-300 rounded">
             <option value="camelCase">camelCase</option>
@@ -641,19 +641,19 @@ class AdvancedColorUI {
             <option value="snake_case">snake_case</option>
             <option value="PascalCase">PascalCase</option>
           </select>
-          <input id="colorPrefix" type="text" placeholder="プレフィックス" class="px-3 py-2 border border-gray-300 rounded">
+          <input id="colorPrefix" type="text" placeholder="${this.t('exportPrefixPlaceholder', 'Prefix')}" class="px-3 py-2 border border-gray-300 rounded">
         </div>
       </div>
       
       <div class="export-preview mb-4">
-        <label class="block text-sm font-medium mb-2">プレビュー</label>
-        <pre id="exportPreview" class="bg-gray-100 p-3 rounded text-sm overflow-x-auto font-mono min-h-[100px]">エクスポートする色を選択して「生成」ボタンをクリックしてください</pre>
+        <label class="block text-sm font-medium mb-2">${this.t('exportPreviewLabel', 'Preview')}</label>
+        <pre id="exportPreview" class="bg-gray-100 p-3 rounded text-sm overflow-x-auto font-mono min-h-[100px]">${this.t('exportPreviewPrompt', 'Select colors to export, then choose Generate.')}</pre>
       </div>
       
       <div class="export-actions flex gap-2">
-        <button id="generateExport" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition-colors">🔄 生成</button>
-        <button id="downloadExport" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">💾 ダウンロード</button>
-        <button class="copy-btn px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors" data-copy="exportPreview">📋 コピー</button>
+        <button id="generateExport" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition-colors">${this.t('exportGenerateButton', 'Generate')}</button>
+        <button id="downloadExport" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">${this.t('exportDownloadButton', 'Download')}</button>
+        <button class="copy-btn px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors" data-copy="exportPreview">${this.t('exportCopyButton', 'Copy')}</button>
       </div>
     `;
     
@@ -685,37 +685,37 @@ class AdvancedColorUI {
     const container = document.createElement('div');
     container.className = 'advanced-spectrum bg-white rounded-xl shadow-lg p-6 mb-6';
     container.innerHTML = `
-      <h3 class="text-lg font-semibold mb-4">高度なスペクトラム分析</h3>
+      <h3 class="text-lg font-semibold mb-4">${this.t('spectrumToolTitle', 'Advanced spectrum analysis')}</h3>
       <div class="spectrum-canvas mb-4">
         <canvas id="spectrumCanvas" width="400" height="200" class="w-full border border-gray-200 rounded"></canvas>
       </div>
       <div class="spectrum-controls mb-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label class="block text-sm font-medium mb-2">分析色</label>
+            <label class="block text-sm font-medium mb-2">${this.t('spectrumColorLabel', 'Analysis color')}</label>
             <input id="spectrumColor" type="color" class="w-full h-10 border border-gray-300 rounded" value="#4ADE80">
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">分析タイプ</label>
+            <label class="block text-sm font-medium mb-2">${this.t('spectrumAnalysisTypeLabel', 'Analysis type')}</label>
             <select id="spectrumType" class="w-full px-3 py-2 border border-gray-300 rounded">
-              <option value="hue">色相スペクトラム</option>
-              <option value="saturation">彩度スペクトラム</option>
-              <option value="lightness">明度スペクトラム</option>
-              <option value="rgb">RGBスペクトラム</option>
+              <option value="hue">${this.t('spectrumOptionHue', 'Hue spectrum')}</option>
+              <option value="saturation">${this.t('spectrumOptionSaturation', 'Saturation spectrum')}</option>
+              <option value="lightness">${this.t('spectrumOptionLightness', 'Lightness spectrum')}</option>
+              <option value="rgb">${this.t('spectrumOptionRgb', 'RGB spectrum')}</option>
             </select>
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">解像度: <span id="resolutionValue">50</span></label>
+            <label class="block text-sm font-medium mb-2">${this.t('spectrumResolutionLabel', 'Resolution')}: <span id="resolutionValue">50</span></label>
             <input id="spectrumResolution" type="range" min="10" max="100" value="50" class="w-full">
           </div>
         </div>
       </div>
       <div class="spectrum-actions mb-4">
-        <button id="analyzeSpectrum" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">🔬 スペクトラム分析</button>
-        <button id="exportSpectrum" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">💾 スペクトラム保存</button>
+        <button id="analyzeSpectrum" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">${this.t('spectrumAnalyzeButton', 'Analyze spectrum')}</button>
+        <button id="exportSpectrum" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">${this.t('spectrumExportButton', 'Save spectrum')}</button>
       </div>
-      <div id="spectrumResults" class="spectrum-results p-4 bg-gray-50 rounded border text-sm text-gray-600">
-        分析色を選択して「スペクトラム分析」ボタンをクリックしてください
+      <div id="spectrumResults" class="spectrum-results p-4 bg-gray-50 rounded border text-sm text-gray-600" role="status" aria-live="polite">
+        ${this.t('spectrumPrompt', 'Choose a color and run spectrum analysis.')}
       </div>
     `;
     
@@ -1890,7 +1890,7 @@ class AdvancedColorUI {
     const wrapper = document.createElement('div');
     const title = document.createElement('h4');
     title.className = 'font-medium mb-3';
-    title.textContent = '色覚多様性シミュレーション結果';
+    title.textContent = this.t('colorBlindResultTitle', 'Color-vision simulation results');
 
     const grid = document.createElement('div');
     grid.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
@@ -1913,9 +1913,9 @@ class AdvancedColorUI {
       const details = document.createElement('div');
       details.className = 'text-gray-600 mt-1';
       [
-        `第1色覚: ${this.simulateProtanopia(color)}`,
-        `第2色覚: ${this.simulateDeuteranopia(color)}`,
-        `第3色覚: ${this.simulateTritanopia(color)}`
+        `${this.t('colorBlindLabelProtanopia', 'Protanopia-style view')}: ${this.simulateProtanopia(color)}`,
+        `${this.t('colorBlindLabelDeuteranopia', 'Deuteranopia-style view')}: ${this.simulateDeuteranopia(color)}`,
+        `${this.t('colorBlindLabelTritanopia', 'Tritanopia-style view')}: ${this.simulateTritanopia(color)}`
       ].forEach(line => {
         const row = document.createElement('div');
         row.textContent = line;
@@ -1937,13 +1937,13 @@ class AdvancedColorUI {
 
     const title = document.createElement('h4');
     title.className = 'font-medium mb-3';
-    title.textContent = '低視力シミュレーション結果';
+    title.textContent = this.t('lowVisionResultTitle', 'Low-vision simulation results');
     wrapper.appendChild(title);
 
     [
-      ['通常視力', 'この文字は通常の視力で見えます', '小さな文字も問題なく読めます', 'background: white; color: black;'],
-      ['低視力（ぼやけ）', 'この文字はぼやけて見えます', '小さな文字は読みにくくなります', 'background: white; color: black; filter: blur(2px);'],
-      ['低コントラスト', 'この文字はコントラストが低いです', '視認性が大幅に低下します', 'background: #f0f0f0; color: #888;']
+      [this.t('lowVisionNormalTitle', 'Standard view'), this.t('lowVisionNormalLarge', 'This sample reflects a standard view.'), this.t('lowVisionNormalSmall', 'Small text remains easier to compare here.'), 'background: white; color: black;'],
+      [this.t('lowVisionBlurTitle', 'Blurred view'), this.t('lowVisionBlurLarge', 'Blur makes the letter shapes less distinct.'), this.t('lowVisionBlurSmall', 'Thin or small text becomes harder to read.'), 'background: white; color: black; filter: blur(2px);'],
+      [this.t('lowVisionLowContrastTitle', 'Low-contrast view'), this.t('lowVisionLowContrastLarge', 'This sample has limited separation from the background.'), this.t('lowVisionLowContrastSmall', 'Check contrast carefully before publishing.'), 'background: #f0f0f0; color: #888;']
     ].forEach(([heading, largeText, smallText, style]) => {
       const section = document.createElement('div');
       section.className = 'test-section';
@@ -1978,23 +1978,28 @@ class AdvancedColorUI {
 
     const title = document.createElement('h4');
     title.className = 'font-medium mb-3';
-    title.textContent = '動きに敏感度テスト結果';
+    title.textContent = this.t('motionResultTitle', 'Motion-sensitivity check');
 
     const alert = document.createElement('div');
     alert.className = 'alert-box p-4 bg-yellow-50 border border-yellow-200 rounded';
     const alertText = document.createElement('p');
     alertText.className = 'text-yellow-800';
-    alertText.textContent = 'このテストは光過敏性てんかんなどに配慮したものです';
+    alertText.textContent = this.t('motionAlert', 'This check is framed around photosensitivity safety considerations.');
     alert.appendChild(alertText);
 
     const recommendations = document.createElement('div');
     recommendations.className = 'test-recommendations';
     const recTitle = document.createElement('h5');
     recTitle.className = 'font-medium mb-2';
-    recTitle.textContent = '推奨事項:';
+    recTitle.textContent = this.t('motionRecommendationsTitle', 'Pre-publish checklist');
     const list = document.createElement('ul');
     list.className = 'list-disc list-inside text-sm text-gray-700 space-y-1';
-    ['点滅速度は3Hz以下に制限', '高コントラストの急激な変化を避ける', 'アニメーションの停止オプションを提供', '視差効果を控えめにする'].forEach(text => {
+    [
+      this.t('motionRecommendationFlash', 'Keep flashing under roughly 3 Hz'),
+      this.t('motionRecommendationContrast', 'Avoid sudden high-contrast changes'),
+      this.t('motionRecommendationPause', 'Provide a way to pause motion'),
+      this.t('motionRecommendationParallax', 'Use parallax and large movement sparingly')
+    ].forEach(text => {
       const item = document.createElement('li');
       item.textContent = text;
       list.appendChild(item);
@@ -2005,10 +2010,10 @@ class AdvancedColorUI {
     current.className = 'current-color-test';
     const currentTitle = document.createElement('h5');
     currentTitle.className = 'font-medium mb-2';
-    currentTitle.textContent = '現在の色の確認:';
+    currentTitle.textContent = this.t('motionCurrentColorTitle', 'About the current color');
     const currentBody = document.createElement('div');
     currentBody.className = 'p-3 bg-green-50 text-green-800 rounded';
-    currentBody.textContent = 'この簡易確認では、動きや点滅を伴う表現は検出していません。';
+    currentBody.textContent = this.t('motionCurrentColorBody', 'This quick check does not detect motion or flashing effects.');
     current.append(currentTitle, currentBody);
 
     wrapper.append(title, alert, recommendations, current);

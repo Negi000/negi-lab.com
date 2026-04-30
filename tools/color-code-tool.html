@@ -504,7 +504,26 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="colorCodeTool.mainTitle">カラーコード変換・色抽出ツール</h1>
         <p class="text-gray-600 text-lg max-w-4xl mx-auto" data-translate-key="colorCodeTool.lead">HEX、RGB、HSL、CMYKの相互変換、画像スポイト、配色生成、アクセシビリティ確認をブラウザ内でまとめて行えます。</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-2 text-sm">
+          <span class="inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-green-800 border border-green-200" data-translate-key="colorCodeTool.trustFeatureBrowser">ブラウザ内で完結</span>
+          <span class="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-blue-800 border border-blue-200" data-translate-key="colorCodeTool.trustFeatureImage">画像アップロードは手元処理</span>
+          <span class="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-amber-800 border border-amber-200" data-translate-key="colorCodeTool.trustFeatureAccessibility">WCAG確認付き</span>
+        </div>
       </div>
+
+      <section class="mb-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm" aria-labelledby="tool-helper-title">
+        <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+          <div>
+            <h2 id="tool-helper-title" class="text-lg font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.helperTitle">Web制作で使いやすい使い方</h2>
+            <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.helperBody">ブランドカラーの変換、画像からの色抽出、アクセシビリティ確認、OG画像やQRコード制作への引き継ぎまでを1ページで進められます。</p>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-700" aria-label="Tool benefits">
+            <li class="flex gap-2"><span aria-hidden="true">1.</span><span data-translate-key="colorCodeTool.helperListInput">HEX・RGB・HSL・CMYKを相互変換</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">2.</span><span data-translate-key="colorCodeTool.helperListImage">画像から色を抽出し、そのまま配色へ展開</span></li>
+            <li class="flex gap-2"><span aria-hidden="true">3.</span><span data-translate-key="colorCodeTool.helperListCheck">コントラスト比や配色の傾向を確認</span></li>
+          </ul>
+        </div>
+      </section>
 
       <!-- 基本カラー入力セクション -->
       <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-8">
@@ -513,15 +532,15 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label for="hexInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.hexLabel">HEX</label>
-              <input id="hexInput" type="text" maxlength="9" class="form-input w-full" placeholder="#65c155" aria-label="HEXカラーコード">
+              <input id="hexInput" type="text" maxlength="9" class="form-input w-full" placeholder="#65c155" aria-label="HEXカラーコード" aria-describedby="statusMessage errorMessage">
             </div>
             <div>
               <label for="rgbInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.rgbLabel">RGB</label>
-              <input id="rgbInput" type="text" class="form-input w-full" placeholder="101,193,85" aria-label="RGBカラーコード">
+              <input id="rgbInput" type="text" class="form-input w-full" placeholder="101,193,85" aria-label="RGBカラーコード" aria-describedby="statusMessage errorMessage">
             </div>
             <div>
               <label for="hslInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.hslLabel">HSL</label>
-              <input id="hslInput" type="text" class="form-input w-full" placeholder="100,47%,55%" aria-label="HSLカラーコード">
+              <input id="hslInput" type="text" class="form-input w-full" placeholder="100,47%,55%" aria-label="HSLカラーコード" aria-describedby="statusMessage errorMessage">
             </div>
             <div>
               <label for="colorPicker" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="colorCodeTool.pickerLabel">カラーピッカー</label>
@@ -616,9 +635,32 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
       </div>
     </div>
   </main>
+  <section class="py-10 bg-gray-50 border-t border-gray-200">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2" data-translate-key="colorCodeTool.resultsTitle">今の色で確認できること</h2>
+        <p class="text-gray-600 max-w-3xl" data-translate-key="colorCodeTool.resultsLead">選択した色をもとに、配色・アクセシビリティ・公開準備まで続けて確認できます。</p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="border border-gray-200 bg-white rounded-lg p-5">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.resultsItemContrast">コントラスト比</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.resultsItemContrastDesc">本文と見出しの可読性を確認</p>
+        </div>
+        <div class="border border-gray-200 bg-white rounded-lg p-5">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.resultsItemPalette">配色候補</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.resultsItemPaletteDesc">類似色や補色をすぐ比較</p>
+        </div>
+        <div class="border border-gray-200 bg-white rounded-lg p-5">
+          <h3 class="font-semibold text-gray-800 mb-2" data-translate-key="colorCodeTool.resultsItemExport">制作データ化</h3>
+          <p class="text-sm text-gray-600" data-translate-key="colorCodeTool.resultsItemExportDesc">CSSや共有用コードへ整理</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="py-12 bg-white border-y border-gray-200">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="mb-8">
+        <div class="text-sm font-medium text-accent mb-2" data-translate-key="colorCodeTool.relatedToolsEyebrow">次の作業へ</div>
         <h2 class="text-2xl font-bold text-gray-800 mb-3" data-translate-key="colorCodeTool.relatedToolsTitle">関連ツール</h2>
         <p class="text-gray-600 max-w-3xl" data-translate-key="colorCodeTool.relatedToolsLead">色の確認から画像・OGP制作まで、静的サイト制作で使いやすい関連ツールです。</p>
       </div>

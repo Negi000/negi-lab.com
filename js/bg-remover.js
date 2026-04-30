@@ -5,6 +5,9 @@
   const allowedTypes = new Set(["image/png", "image/jpeg", "image/webp", "image/gif"]);
   const maxFileSize = 10 * 1024 * 1024;
   const maxPixels = 12 * 1000 * 1000;
+  const maxEdge = 4096;
+  const defaultFileLabel = "まだ画像は選択されていません。";
+  const defaultStatus = "画像を選択すると、ここに処理結果が表示されます。";
 
   let sourceImage = null;
   let sourceFile = null;
@@ -12,6 +15,7 @@
   let downloadObjectUrl = null;
   let lastPngBlob = null;
   let reprocessTimer = null;
+  let isProcessing = false;
 
   function byId(id) {
     return document.getElementById(id);
@@ -60,6 +64,12 @@
     if (status) status.textContent = message;
   }
 
+  function safeBaseName(fileName) {
+    const baseName = String(fileName || "image").replace(/\.[^.]+$/, "").trim();
+    const sanitized = baseName.replace(/[<>:"/\\|?*\u0000-\u001f]/g, "-").replace(/\s+/g, "-");
+    return sanitized.slice(0, 80) || "image";
+  }
+
   function setResultActionsEnabled(enabled) {
     const downloadLink = byId("downloadLink");
     const copyButton = byId("copyImageBtn");
@@ -67,10 +77,30 @@
     if (downloadLink) {
       downloadLink.setAttribute("aria-disabled", enabled ? "false" : "true");
       downloadLink.classList.toggle("secondary", !enabled);
-      if (!enabled) downloadLink.removeAttribute("href");
+      if (!enabled) {
+        downloadLink.removeAttribute("href");
+        downloadLink.setAttribute("tabindex", "-1");
+      } else {
+        downloadLink.removeAttribute("tabindex");
+      }
     }
 
     if (copyButton) copyButton.disabled = !enabled;
+  }
+
+  function setBusyState(busy) {
+    isProcessing = busy;
+    const removeButton = byId("removeBgBtn");
+    const resetButton = byId("resetBtn");
+    const imageInput = byId("imageInput");
+    const thresholdRange = byId("thresholdRange");
+    const featherRange = byId("featherRange");
+
+    if (removeButton) removeButton.disabled = busy || !sourceImage;
+    if (resetButton) resetButton.disabled = busy || !sourceImage;
+    if (imageInput) imageInput.disabled = busy;
+    if (thresholdRange) thresholdRange.disabled = busy || !sourceImage;
+    if (featherRange) featherRange.disabled = busy || !sourceImage;
   }
 
   function resetResult() {
@@ -85,16 +115,21 @@
     sourceImage = null;
     sourceFile = null;
     lastPngBlob = null;
-    byId("imageInput").value = "";
-    byId("fileName").textContent = "まだ画像は選択されていません。";
-    byId("previewContainer").classList.add("hidden");
-    byId("originalPreview").removeAttribute("src");
-    byId("removeBgBtn").disabled = true;
-    byId("resetBtn").disabled = true;
+    window.clearTimeout(reprocessTimer);
+    reprocessTimer = null;
+    const imageInput = byId("imageInput");
+    const fileName = byId("fileName");
+    const previewContainer = byId("previewContainer");
+    const originalPreview = byId("originalPreview");
+    if (imageInput) imageInput.value = "";
+    if (fileName) fileName.textContent = defaultFileLabel;
+    if (previewContainer) previewContainer.classList.add("hidden");
+    if (originalPreview) originalPreview.removeAttribute("src");
     clearInlineError();
     resetResult();
     revokeImageUrl();
-    setStatus("画像を選択すると、ここに処理結果が表示されます。");
+    setBusyState(false);
+    setStatus(defaultStatus);
   }
 
   function formatBytes(bytes) {
@@ -135,6 +170,11 @@
       return false;
     }
 
+    if (Math.max(image.naturalWidth, image.naturalHeight) > maxEdge) {
+      showInlineError(`長辺が${maxEdge}pxを超えています。${image.naturalWidth}x${image.naturalHeight}pxです。縮小してからお試しください。`);
+      return false;
+    }
+
     return true;
   }
 
@@ -163,25 +203,23 @@
       if (!validateImageDimensions(image)) {
         sourceImage = null;
         sourceFile = null;
-        byId("imageInput").value = "";
-        byId("fileName").textContent = "まだ画像は選択されていません。";
-        byId("previewContainer").classList.add("hidden");
-        byId("originalPreview").removeAttribute("src");
-        byId("removeBgBtn").disabled = true;
-        byId("resetBtn").disabled = true;
+        if (byId("imageInput")) byId("imageInput").value = "";
+        if (byId("fileName")) byId("fileName").textContent = defaultFileLabel;
+        if (byId("previewContainer")) byId("previewContainer").classList.add("hidden");
+        if (byId("originalPreview")) byId("originalPreview").removeAttribute("src");
         resetResult();
         revokeImageUrl();
+        setBusyState(false);
         setStatus("画像サイズを小さくしてから、もう一度選択してください。");
         return;
       }
 
       sourceImage = image;
       sourceFile = file;
-      byId("fileName").textContent = `${file.name} / ${image.naturalWidth}x${image.naturalHeight}px / ${formatBytes(file.size)}`;
-      byId("originalPreview").src = imageObjectUrl;
-      byId("previewContainer").classList.remove("hidden");
-      byId("removeBgBtn").disabled = false;
-      byId("resetBtn").disabled = false;
+      if (byId("fileName")) byId("fileName").textContent = `${file.name} / ${image.naturalWidth}x${image.naturalHeight}px / ${formatBytes(file.size)}`;
+      if (byId("originalPreview")) byId("originalPreview").src = imageObjectUrl;
+      if (byId("previewContainer")) byId("previewContainer").classList.remove("hidden");
+      setBusyState(false);
       setStatus("画像を読み込みました。背景が外周に出ている画像ほど安定して透明化できます。");
       showSuccess("画像を読み込みました。");
     } catch (error) {
@@ -381,11 +419,21 @@
 
     clearInlineError();
     const canvas = byId("resultCanvas");
+    if (!canvas || typeof canvas.getContext !== "function") {
+      showInlineError("このブラウザではプレビュー描画に必要なCanvas機能を利用できません。");
+      return;
+    }
+
     const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) {
+      showInlineError("Canvasコンテキストを初期化できませんでした。別のブラウザでお試しください。");
+      return;
+    }
+
     const threshold = Number(byId("thresholdRange").value) || 34;
     const feather = Number(byId("featherRange").value) || 0;
 
-    byId("removeBgBtn").disabled = true;
+    setBusyState(true);
     setStatus("処理中です。大きい画像では数秒かかる場合があります。");
 
     try {
@@ -404,9 +452,11 @@
       downloadObjectUrl = URL.createObjectURL(blob);
 
       const downloadLink = byId("downloadLink");
-      const baseName = sourceFile ? sourceFile.name.replace(/\.[^.]+$/, "") : "image";
-      downloadLink.href = downloadObjectUrl;
-      downloadLink.download = `${baseName}-transparent.png`;
+      const baseName = safeBaseName(sourceFile && sourceFile.name);
+      if (downloadLink) {
+        downloadLink.href = downloadObjectUrl;
+        downloadLink.download = `${baseName}-transparent.png`;
+      }
 
       byId("resultContainer").classList.remove("hidden");
       setResultActionsEnabled(true);
@@ -419,7 +469,7 @@
       showInlineError("透過PNGの生成に失敗しました。画像サイズを小さくするか、別の画像でお試しください。", error);
       setStatus("処理を完了できませんでした。");
     } finally {
-      byId("removeBgBtn").disabled = false;
+      setBusyState(false);
     }
   }
 
@@ -446,7 +496,7 @@
   function scheduleReprocess() {
     byId("thresholdValue").textContent = byId("thresholdRange").value;
     byId("featherValue").textContent = byId("featherRange").value;
-    if (!sourceImage || byId("resultContainer").classList.contains("hidden")) return;
+    if (isProcessing || !sourceImage || byId("resultContainer").classList.contains("hidden")) return;
 
     window.clearTimeout(reprocessTimer);
     reprocessTimer = window.setTimeout(removeBackground, 180);
@@ -491,6 +541,13 @@
     byId("copyImageBtn").addEventListener("click", copyImageToClipboard);
     byId("thresholdRange").addEventListener("input", scheduleReprocess);
     byId("featherRange").addEventListener("input", scheduleReprocess);
+    byId("downloadLink").addEventListener("click", (event) => {
+      const downloadLink = event.currentTarget;
+      if (downloadLink?.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        showInlineError("先に透過PNGを生成してからダウンロードしてください。");
+      }
+    });
     bindDropZone();
 
     window.addEventListener("beforeunload", () => {
@@ -500,9 +557,25 @@
   }
 
   function init() {
+    if (
+      !byId("imageInput") ||
+      !byId("dropZone") ||
+      !byId("thresholdRange") ||
+      !byId("featherRange") ||
+      !byId("thresholdValue") ||
+      !byId("featherValue") ||
+      !byId("downloadLink") ||
+      !byId("resultContainer")
+    ) {
+      console.error("bg-remover: required DOM nodes are missing");
+      return;
+    }
+
     byId("thresholdValue").textContent = byId("thresholdRange").value;
     byId("featherValue").textContent = byId("featherRange").value;
     setResultActionsEnabled(false);
+    setBusyState(false);
+    setStatus(defaultStatus);
     bindEvents();
   }
 

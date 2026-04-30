@@ -27,7 +27,7 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <title>画像背景リムーバ・透過PNG生成ツール | negi-lab.com</title>
-  <meta name="description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバー。画像はサーバーへ送信されず、エッジ連結判定とソフトエッジ調整に対応しています。" />
+  <meta name="description" content="単色に近い背景の画像をブラウザ内で透明化し、透過PNGとして保存できる背景除去ツール。PNG/JPEG/WebP/GIFに対応し、画像はサーバーへ送信されません。" />
   <meta property="og:title" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com" />
   <meta property="og:description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存。画像をサーバーへ送信しない安全な静的ツールです。" />
   <meta property="og:type" content="website" />
@@ -140,7 +140,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "画像背景リムーバ・透過PNG生成ツール",
-    "description": "単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバー。画像はサーバーへ送信されません。",
+    "description": "単色に近い背景の画像をブラウザ内で透明化し、透過PNGとして保存できる背景除去ツール。画像はサーバーへ送信されません。",
     "url": "https://negi-lab.com/tools/bg-remover.html",
     "applicationCategory": "Image editing",
     "operatingSystem": "Any",
@@ -259,17 +259,17 @@
               PNG/JPEG/WebP/GIFに対応します。SVGはスクリプト混入や表示差異を避けるため対象外です。アニメーションGIFは先頭フレームとして処理されます。
             </p>
 
-            <div id="bgRemovalAlert" class="hidden mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+            <div id="bgRemovalAlert" class="hidden mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert" aria-live="assertive" aria-atomic="true">
               <span id="bgRemovalAlertText"></span>
             </div>
 
             <div class="mt-5">
-              <label id="dropZone" for="imageInput" class="drop-zone" tabindex="0">
+              <label id="dropZone" for="imageInput" class="drop-zone" tabindex="0" aria-describedby="fileInputHelp fileName">
                 <span class="block text-sm font-bold text-gray-900">画像を選択またはドラッグ&ドロップ</span>
-                <span class="mt-1 block text-sm text-gray-600">最大10MB、長辺4096px程度までを推奨</span>
+                <span id="fileInputHelp" class="mt-1 block text-sm text-gray-600">最大10MB、長辺4096px程度までを推奨。人物や複雑な背景より、白背景の商品画像やロゴ向けです。</span>
                 <span id="fileName" class="mt-2 block text-xs text-gray-500" aria-live="polite">まだ画像は選択されていません。</span>
               </label>
-              <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="sr-only" />
+              <input type="file" id="imageInput" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="sr-only" aria-describedby="fileInputHelp fileName" />
             </div>
 
             <div class="mt-6 space-y-5">
@@ -302,7 +302,7 @@
             <div class="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h2 id="preview-heading" class="text-xl font-bold text-gray-900">2. プレビューと保存</h2>
-                <p id="bgRemovalStatus" class="mt-2 text-sm leading-6 text-gray-600" aria-live="polite">画像を選択すると、ここに処理結果が表示されます。</p>
+                <p id="bgRemovalStatus" class="mt-2 text-sm leading-6 text-gray-600" role="status" aria-live="polite" aria-atomic="true">画像を選択すると、ここに処理結果が表示されます。</p>
               </div>
             </div>
 
@@ -317,15 +317,16 @@
               <div id="resultContainer" class="hidden">
                 <h3 class="mb-2 text-sm font-bold text-gray-800">透過PNG</h3>
                 <div class="checkerboard flex min-h-56 items-center justify-center rounded-lg border border-gray-200 p-3">
-                  <canvas id="resultCanvas" class="max-h-64 max-w-full rounded" aria-label="背景を透明化した画像プレビュー"></canvas>
+                  <canvas id="resultCanvas" class="max-h-64 max-w-full rounded" aria-label="背景を透明化した画像プレビュー">お使いのブラウザではCanvasプレビューに対応していません。</canvas>
                 </div>
               </div>
             </div>
 
             <div class="mt-5 flex flex-wrap gap-3">
-              <a id="downloadLink" href="#" download="transparent-background.png" class="form-button" aria-disabled="true">PNGをダウンロード</a>
-              <button id="copyImageBtn" type="button" class="form-button secondary" disabled>画像をコピー</button>
+              <a id="downloadLink" href="#" download="transparent-background.png" class="form-button" aria-disabled="true" aria-describedby="downloadHint">PNGをダウンロード</a>
+              <button id="copyImageBtn" type="button" class="form-button secondary" disabled aria-describedby="downloadHint">画像をコピー</button>
             </div>
+            <p id="downloadHint" class="mt-2 text-xs leading-5 text-gray-500">保存前に透過状態を確認してください。ダウンロードは透過PNG、コピーは対応ブラウザのみ利用できます。</p>
 
             <div class="mt-5 rounded-lg border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
               <p class="font-bold">安全な処理について</p>
@@ -367,13 +368,22 @@
 
     <section class="py-8">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="text-sm text-gray-700">
+        <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+          <div class="text-sm text-gray-700">
+            <h2 class="font-bold text-base text-gray-900">関連ツール</h2>
+            <ul class="mt-2 grid gap-2 sm:grid-cols-2">
+              <li><a href="/tools/image-converter.html" class="text-accent underline hover:no-underline">画像変換ツール</a>でPNG/WebP/JPEGへの書き出しを調整</li>
+              <li><a href="/tools/favicon-og-generator.html" class="text-accent underline hover:no-underline">Favicon / OGP画像生成ツール</a>で透過後の素材をSNS・サイト用に整形</li>
+            </ul>
+          </div>
+          <div class="text-sm text-gray-700">
           <h2 class="font-bold text-base text-gray-900">negi-lab.comの運営方針</h2>
           <ul class="mt-2 grid gap-2 md:grid-cols-3">
             <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
             <li>画像処理はブラウザ内で行い、入力画像をサーバーへ送信しません。</li>
             <li>結果は画像条件に左右されます。重要な素材は保存前に必ず確認してください。</li>
           </ul>
+        </div>
         </div>
       </div>
     </section>

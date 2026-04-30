@@ -164,6 +164,10 @@ class ColorAnalysisEngine {
   getContrastRatio(color1, color2) {
     const rgb1 = this.hexToRgb(color1);
     const rgb2 = this.hexToRgb(color2);
+
+    if (!rgb1 || !rgb2) {
+      return null;
+    }
     
     const lum1 = this.getLuminance(rgb1.r, rgb1.g, rgb1.b);
     const lum2 = this.getLuminance(rgb2.r, rgb2.g, rgb2.b);
@@ -178,6 +182,10 @@ class ColorAnalysisEngine {
    * WCAG基準判定
    */
   getWcagRating(ratio) {
+    if (!Number.isFinite(ratio)) {
+      return { level: 'Fail', description: 'Invalid contrast input' };
+    }
+
     if (ratio >= 7) return { level: 'AAA', description: 'AAAレベル' };
     if (ratio >= 4.5) return { level: 'AA', description: '標準レベル' };
     if (ratio >= 3) return { level: 'AA Large', description: '大きな文字' };
@@ -189,6 +197,9 @@ class ColorAnalysisEngine {
    */
   generateColorHarmony(baseColor, harmonyType) {
     const rgb = this.hexToRgb(baseColor);
+    if (!rgb) {
+      return [];
+    }
     const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
     const colors = [baseColor];
 
