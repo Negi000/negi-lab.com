@@ -38,6 +38,7 @@
   <meta property="og:image:alt" content="無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="音楽生成ツールの設定画面とブラウザ再生イメージを示した共有カード画像" />
   <meta name="twitter:title" content="無料ブラウザ作曲支援ツール - BGM・メロディ生成 | negi-lab.com" />
   <meta name="twitter:description" content="ジャンル、ムード、テンポ、キーを選んで、ブラウザ内でBGMやメロディの下書きを生成できる作曲支援ツールです。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -93,6 +94,18 @@
     }
     .btn-secondary:hover {
         background-color: #e5e7eb;
+    }
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      border: 1px solid #d1fae5;
+      background: #f0fdf4;
+      color: #166534;
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+      padding: 0.4rem 0.7rem;
     }
   </style>
 
@@ -193,6 +206,57 @@
         }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "音楽生成ツールでBGMの下書きを作る手順",
+    "description": "ジャンル、ムード、テンポ、長さを選び、ブラウザ内で短いBGMやメロディ案を生成して確認する手順です。",
+    "totalTime": "PT3M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "音楽生成ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "雰囲気を決める",
+        "text": "ジャンル、ムード、キーワードを選び、作りたい曲の方向性を決めます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "再生条件を調整する",
+        "text": "テンポ、長さ、複雑さ、必要に応じてキーや楽器を調整します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "生成して試聴する",
+        "text": "生成ボタンを押してブラウザ内で再生し、履歴から気に入った案を比較します。"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "音楽生成ツール",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "softwareVersion": "1.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "url": "https://negi-lab.com/tools/music-generator.html",
+    "featureList": [
+      "ジャンルとムード選択",
+      "キーワードからの作曲ヒント生成",
+      "ブラウザ内試聴",
+      "生成履歴の比較",
+      "シンプルモードと詳細設定"
+    ]
   }
 ]
   </script>
@@ -245,6 +309,11 @@
         <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="main.subtitle">
           ジャンル、ムード、テンポ、キーワードから、BGMやメロディの下書きを生成します。
         </p>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-2" aria-label="ツールの特徴">
+          <span class="feature-pill">ブラウザ内で試聴</span>
+          <span class="feature-pill">会員登録不要</span>
+          <span class="feature-pill">動画・ゲーム試作向け</span>
+        </div>
       </div>
 
       <!-- Main Content -->
@@ -435,6 +504,24 @@
 
         <!-- Right: Player and History -->
         <div class="lg:col-span-2 space-y-6">
+          <section class="bg-white rounded-2xl shadow-lg p-5 border border-gray-100" aria-labelledby="music-tool-guide">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h2 id="music-tool-guide" class="text-lg font-semibold text-gray-900">最初の1曲をすばやく作るコツ</h2>
+                <p class="mt-2 text-sm leading-6 text-gray-600">ジャンルとムードを決めてからテンポと長さを絞ると、雰囲気の近い下書きを比較しやすくなります。</p>
+              </div>
+              <div class="hidden sm:block text-right text-xs text-gray-500">
+                <div>ローカル再生</div>
+                <div>すぐ試聴</div>
+              </div>
+            </div>
+            <ul class="mt-4 grid gap-3 text-sm text-gray-700 sm:grid-cols-3">
+              <li class="rounded-lg bg-gray-50 px-4 py-3">動画BGMなら <span class="font-semibold text-gray-900">約30秒</span> から始めると全体感を掴みやすいです。</li>
+              <li class="rounded-lg bg-gray-50 px-4 py-3">キーワードは <span class="font-semibold text-gray-900">場面や情景</span> を入れると方向性が安定します。</li>
+              <li class="rounded-lg bg-gray-50 px-4 py-3">気に入った案は <span class="font-semibold text-gray-900">履歴で聴き比べ</span> しながら微調整できます。</li>
+            </ul>
+          </section>
+
           <!-- Player -->
           <div class="mt-8">
             <h3 class="text-lg font-semibold text-gray-800 mb-4" data-translate-key="player.title">プレーヤー</h3>
@@ -492,6 +579,36 @@
       <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
   <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
     </aside>
+
+  <section id="related-tools" class="pb-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-bold text-gray-900">関連ツール</h2>
+            <p class="mt-2 text-sm leading-7 text-gray-600">
+              音の下書きから公開導線や配布素材づくりまで、同じ制作フローの中で続けて使いやすいツールです。
+            </p>
+          </div>
+          <a href="/#tools" class="text-sm font-semibold text-green-700 hover:text-green-800">ツール一覧を見る</a>
+        </div>
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">QRコード生成ツール</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">音源サンプルやLP、配信ページへの導線を配布用コードにまとめたいときに便利です。</p>
+          </a>
+          <a href="/tools/url-shortener.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">URL短縮ツール</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">試聴リンクやキャンペーンURLを、SNSや配布資料で扱いやすい短い形に整えられます。</p>
+          </a>
+          <a href="/tools/favicon-og-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">Favicon・OGP画像ジェネレーター</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">公開ページや告知用の共有画像を整えて、音楽ツールの導線をそのまま仕上げられます。</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Educational Sections -->
   <section class="py-16 bg-white">
@@ -562,10 +679,12 @@
   </section>
 
   <!-- Site Info/Disclaimer -->
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このサイトについて">
-    <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
-    <ul class="list-disc ml-5 mb-2">
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-5 border border-gray-200 max-w-3xl mx-auto" aria-label="このサイトについて">
+    <h2 class="font-bold text-base mb-2 text-gray-900" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
+    <p class="mb-3 leading-7 text-gray-600">このツールは、ラフなBGMやメロディ案をすぐ試したい個人制作や初期検証向けに、ブラウザだけで完結する使い勝手を重視して設計しています。</p>
+    <ul class="list-disc ml-5 mb-2 space-y-1">
       <li data-translate-key="siteInfo.point1">本サイト・各ツールはnegi-lab.comが独自開発・運営しています。</li>
+      <li>生成と再生の中心処理はブラウザ内で行い、すばやい試聴体験を優先しています。</li>
       <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を最優先しています。</li>
       <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>

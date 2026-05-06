@@ -68,10 +68,12 @@
   <meta property="og:url" content="https://negi-lab.com/" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta property="og:image:alt" content="negi-lab.comの無料オンライン便利ツール集を紹介するメインビジュアル" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="無料オンライン便利ツール集 | negi-lab.com" />
   <meta name="twitter:description" content="QRコード生成、画像変換、単位換算、PDF処理などをブラウザで使えるツール集です。登録不要でスマートフォンにも対応しています。" />
   <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta name="twitter:image:alt" content="無料オンライン便利ツール集 negi-lab.com の共有カード画像" />
     <!-- External Resources with SRI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
@@ -138,9 +140,28 @@
           <b class="text-accent">ゲームを深く楽しみたい人</b>に向けた<br class="hidden md:inline">
           ウェブツール＆情報サービスのポータルです。
         </p>
-        <a href="#tools" class="inline-block bg-accent hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg shadow-md transition text-lg" data-translate-key="hero.cta">
-          ツールを使ってみる
-        </a>
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <a href="#tools" class="inline-block bg-accent hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg shadow-md transition text-lg" data-translate-key="hero.cta">
+            ツールを使ってみる
+          </a>
+          <a href="/tools/" class="inline-block rounded-lg border border-gray-300 bg-white px-8 py-3 text-lg font-semibold text-gray-700 transition hover:border-accent hover:text-accent">
+            目的別に探す
+          </a>
+        </div>
+        <div class="mt-6 grid gap-3 text-left sm:grid-cols-3">
+          <div class="rounded-lg border border-white/70 bg-white/80 p-4 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Trust</p>
+            <p class="mt-2 text-sm leading-6 text-gray-700">登録不要で試せて、主要ツールはブラウザ内で完結します。</p>
+          </div>
+          <div class="rounded-lg border border-white/70 bg-white/80 p-4 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Workflow</p>
+            <p class="mt-2 text-sm leading-6 text-gray-700">画像整理、共有準備、PDF処理まで目的に沿って選びやすくしています。</p>
+          </div>
+          <div class="rounded-lg border border-white/70 bg-white/80 p-4 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Privacy</p>
+            <p class="mt-2 text-sm leading-6 text-gray-700">入力データの扱いと広告方針を明示し、安心して使える導線を整えています。</p>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -160,6 +181,20 @@
               <p data-translate-key="tools.features.free">🆓 無料・登録不要</p>
               <p data-translate-key="tools.features.bilingual">🌍 日本語・英語対応</p>
             </div>
+          </div>
+          <div class="mt-6 grid gap-3 text-left md:grid-cols-3">
+            <a href="/tools/image-converter.html" class="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-accent hover:bg-accent/5">
+              <p class="text-sm font-semibold text-gray-900">SNS用の画像を整える</p>
+              <p class="mt-1 text-sm leading-6 text-gray-600">画像変換、サイズ調整、背景透過までまとめて進めやすい入口です。</p>
+            </a>
+            <a href="/tools/pdf-tool.html" class="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-accent hover:bg-accent/5">
+              <p class="text-sm font-semibold text-gray-900">PDFや文書を片付ける</p>
+              <p class="mt-1 text-sm leading-6 text-gray-600">結合、分割、軽量化など、事務作業で使う処理へすぐ進めます。</p>
+            </a>
+            <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-accent hover:bg-accent/5">
+              <p class="text-sm font-semibold text-gray-900">共有リンクを作る</p>
+              <p class="mt-1 text-sm leading-6 text-gray-600">URL短縮やQRコード生成で配布用の導線づくりを時短できます。</p>
+            </a>
           </div>
         </header>
 
@@ -433,6 +468,7 @@
         <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を優先して配置しています。</li>
         <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
       </ul>
+      <p class="mb-2 text-sm leading-6 text-gray-600">画像変換やPDF整理など、日常作業で使う主要ツールは手早く試せるように整理し、収益導線は体験を邪魔しない形で案内しています。</p>
       <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
     </section>
   </main>
@@ -629,6 +665,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "サイト運営費用確保のため、Google AdSenseによる広告を表示していますが、ツールの利用に支障のない配置を心がけています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "どのツールから使い始めればよいですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "画像整理なら画像変換ツール、共有準備ならQRコード作成やURL短縮、書類整理ならPDFツールから使い始めると目的に合う導線で進めやすくなります。"
         }
       }
     ]

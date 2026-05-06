@@ -62,6 +62,7 @@
   <meta property="og:image:alt" content="テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="テキスト変換ツールの入力欄と命名規則変換結果を示す共有カード画像" />
   <meta name="twitter:title" data-translate-key="textConverter.ogTitle" content="テキスト変換ツール - 大文字小文字・文字数カウント・命名規則変換 | negi-lab.com" />
   <meta name="twitter:description" data-translate-key="textConverter.ogDescription" content="大文字・小文字、camelCase、snake_case、kebab-case、文字反転、文字数カウントをブラウザ上で処理できます。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -143,11 +144,11 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 [
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": "テキスト変換ツール",
     "description": "大文字・小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数やUTF-8バイト数の確認をブラウザ上で行えるテキスト変換ツールです。",
     "url": "https://negi-lab.com/tools/text-converter.html",
-    "applicationCategory": "Text utility",
+    "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser",
     "isAccessibleForFree": true,
@@ -165,15 +166,37 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
       "name": "negi-lab.com",
       "url": "https://negi-lab.com/"
     },
+    "image": "https://negi-lab.com/favicon.ico",
     "featureList": [
-      "Case conversion",
-      "camelCase conversion",
-      "snake_case conversion",
-      "kebab-case conversion",
-      "Text reversal",
-      "Character, line, word, and UTF-8 byte counts",
-      "Local history stored in your browser"
+      "大文字・小文字変換",
+      "camelCase変換",
+      "snake_case変換",
+      "kebab-case変換",
+      "文字反転",
+      "文字数・行数・単語数・UTF-8バイト数の確認",
+      "ブラウザ内だけで完結する変換処理",
+      "ローカル履歴の保存"
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "テキスト変換ツール",
+    "description": "大文字・小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数やUTF-8バイト数の確認をブラウザ上で行えるテキスト変換ツールです。",
+    "url": "https://negi-lab.com/tools/text-converter.html",
+    "applicationCategory": "Text utility",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser",
+    "isAccessibleForFree": true,
+    "inLanguage": [
+      "ja",
+      "en"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -228,6 +251,36 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
         }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "テキスト変換ツールの使い方",
+    "description": "入力したテキストを命名規則や用途に合わせて変換し、結果を確認してコピーする手順です。",
+    "totalTime": "PT1M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "テキスト変換ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "テキストを入力する",
+        "text": "変換したい文章、識別子、見出し、URL用の文言などを入力欄へ貼り付けます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "変換タイプを選ぶ",
+        "text": "大文字小文字、Title Case、camelCase、snake_case、kebab-case、文字反転、文字数カウントから用途に合うものを選びます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "結果を確認して使う",
+        "text": "変換結果と文字数情報を確認し、必要に応じてコピーしてコード、原稿、CMS、表計算などへ貼り付けます。"
+      }
+    ]
   }
 ]
   </script>
@@ -238,18 +291,18 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
-      <nav>
+      <nav aria-label="メインナビゲーション">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="言語選択">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
           </li>
           <li>
-            <button id="guide-btn" type="button" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" type="button" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent transition" data-translate-key="header.guide" aria-haspopup="dialog" aria-controls="guideModal">ガイド</button>
           </li>
         </ul>
       </nav>
@@ -304,14 +357,14 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
               <span data-translate-key="textConverter.typeTitle">変換タイプ</span>
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <button id="upperBtn" class="conversion-btn active" data-type="upper" data-translate-key="textConverter.type.upper">大文字変換</button>
-              <button id="lowerBtn" class="conversion-btn" data-type="lower" data-translate-key="textConverter.type.lower">小文字変換</button>
-              <button id="titleBtn" class="conversion-btn" data-type="title" data-translate-key="textConverter.type.title">タイトルケース</button>
-              <button id="camelBtn" class="conversion-btn" data-type="camel" data-translate-key="textConverter.type.camel">キャメルケース</button>
-              <button id="snakeBtn" class="conversion-btn" data-type="snake" data-translate-key="textConverter.type.snake">スネークケース</button>
-              <button id="kebabBtn" class="conversion-btn" data-type="kebab" data-translate-key="textConverter.type.kebab">ケバブケース</button>
-              <button id="reverseBtn" class="conversion-btn" data-type="reverse" data-translate-key="textConverter.type.reverse">文字反転</button>
-              <button id="countBtn" class="conversion-btn" data-type="count" data-translate-key="textConverter.type.count">文字数カウント</button>
+              <button id="upperBtn" type="button" class="conversion-btn active" data-type="upper" data-translate-key="textConverter.type.upper" aria-label="大文字へ変換">大文字変換</button>
+              <button id="lowerBtn" type="button" class="conversion-btn" data-type="lower" data-translate-key="textConverter.type.lower" aria-label="小文字へ変換">小文字変換</button>
+              <button id="titleBtn" type="button" class="conversion-btn" data-type="title" data-translate-key="textConverter.type.title" aria-label="タイトルケースへ変換">タイトルケース</button>
+              <button id="camelBtn" type="button" class="conversion-btn" data-type="camel" data-translate-key="textConverter.type.camel" aria-label="camelCaseへ変換">キャメルケース</button>
+              <button id="snakeBtn" type="button" class="conversion-btn" data-type="snake" data-translate-key="textConverter.type.snake" aria-label="snake_caseへ変換">スネークケース</button>
+              <button id="kebabBtn" type="button" class="conversion-btn" data-type="kebab" data-translate-key="textConverter.type.kebab" aria-label="kebab-caseへ変換">ケバブケース</button>
+              <button id="reverseBtn" type="button" class="conversion-btn" data-type="reverse" data-translate-key="textConverter.type.reverse" aria-label="文字列を逆順に並べ替え">文字反転</button>
+              <button id="countBtn" type="button" class="conversion-btn" data-type="count" data-translate-key="textConverter.type.count" aria-label="文字数と行数を確認">文字数カウント</button>
             </div>
           </div>
 
@@ -748,6 +801,34 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12" aria-labelledby="text-converter-related-tools">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-8">
+        <h2 id="text-converter-related-tools" class="text-2xl font-bold text-gray-900 mb-3">関連ツール</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">
+          命名規則の整理、データ整形、共有準備まで続けて進めやすいツールをまとめています。
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <a href="/tools/json-csv-yaml-excel.html" class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-accent hover:shadow-md">
+          <div class="text-sm font-semibold text-accent mb-2">データ整形</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">JSON・CSV・YAML・Excel変換ツール</h3>
+          <p class="text-sm leading-7 text-gray-600">キー名や見出しを整えた後、そのままデータ形式の変換や表計算への受け渡しまで進められます。</p>
+        </a>
+        <a href="/tools/url-shortener.html" class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-accent hover:shadow-md">
+          <div class="text-sm font-semibold text-accent mb-2">共有文面の仕上げ</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">URL短縮・共有リンク整形ツール</h3>
+          <p class="text-sm leading-7 text-gray-600">投稿文やREADME内の文言を整えた後、リンクも短く整理して共有しやすい形にまとめられます。</p>
+        </a>
+        <a href="/tools/qr-code-generator.html" class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-accent hover:shadow-md">
+          <div class="text-sm font-semibold text-accent mb-2">配布・オフライン導線</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">QRコード生成ツール</h3>
+          <p class="text-sm leading-7 text-gray-600">整えたURLや案内文のリンク先をQRコード化して、配布資料や掲示物への導線づくりに使えます。</p>
+        </a>
       </div>
     </div>
   </section>
