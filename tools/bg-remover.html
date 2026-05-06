@@ -36,6 +36,7 @@
   <meta property="og:image:alt" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="背景除去前後の比較をイメージした画像背景リムーバーの共有カード画像" />
   <meta name="twitter:title" content="画像背景リムーバ・透過PNG生成ツール | negi-lab.com" />
   <meta name="twitter:description" content="単色に近い背景をブラウザ内で透明化し、透過PNGとして保存できる画像背景リムーバーです。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -203,6 +204,49 @@
         }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "画像背景を透明化して透過PNGを保存する手順",
+    "description": "画像をアップロードし、背景色の許容範囲とエッジのなじませを調整して透過PNGを書き出す手順です。",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "画像を読み込む",
+        "text": "白背景の商品画像やロゴ画像を選択、またはドラッグ&ドロップして読み込みます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "透明化の強さを調整する",
+        "text": "背景色の許容範囲とエッジのなじませを確認し、プレビューを見ながら最適な値に調整します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "透過PNGを書き出す",
+        "text": "背景を透明化したあと、仕上がりを確認して透過PNGを保存します。"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "画像背景リムーバ・透過PNG生成ツール",
+    "applicationCategory": "GraphicsApplication",
+    "operatingSystem": "Any",
+    "softwareVersion": "1.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "url": "https://negi-lab.com/tools/bg-remover.html",
+    "featureList": [
+      "単色背景の透明化",
+      "透過PNG保存",
+      "しきい値とエッジ調整",
+      "ブラウザ内完結"
+    ]
   }
 ]
   </script>
@@ -335,6 +379,36 @@
               </p>
             </div>
           </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="related-tools" class="pb-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+          <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div class="max-w-3xl">
+              <h2 class="text-2xl font-bold text-gray-900">関連ツール</h2>
+              <p class="mt-2 text-sm leading-7 text-gray-600">
+                背景を整えたあとの画像加工や公開素材づくりまで、同じブラウザ内で続けて進められます。
+              </p>
+            </div>
+            <a href="/#tools" class="text-sm font-semibold text-green-700 hover:text-green-800">ツール一覧を見る</a>
+          </div>
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <a href="/tools/favicon-og-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+              <h3 class="font-semibold text-gray-900">Favicon・OGP画像ジェネレーター</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-600">背景を整えたロゴや商品画像から、SNS共有画像やアイコン素材をまとめて作成できます。</p>
+            </a>
+            <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+              <h3 class="font-semibold text-gray-900">QRコード生成ツール</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-600">透過ロゴ画像を用意したあとに、販促物や店舗掲示向けのQRコード制作へつなげられます。</p>
+            </a>
+            <a href="/tools/image-converter.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+              <h3 class="font-semibold text-gray-900">画像変換ツール</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-600">透過PNGの書き出し後に、用途に合わせて形式や容量を調整したいときに便利です。</p>
+            </a>
+          </div>
         </div>
       </div>
     </section>

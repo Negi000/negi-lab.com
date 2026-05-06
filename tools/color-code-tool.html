@@ -49,10 +49,11 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/color-code-tool.html" />
   <meta property="og:locale" content="ja_JP" />
-  <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
+  <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
   <meta property="og:image:alt" content="カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta name="twitter:image:alt" content="カラーコード変換・色抽出ツールの共有カード画像" />
   <meta name="twitter:title" content="カラーコード変換・色抽出ツール - HEX/RGB/HSL/CMYK対応 | negi-lab.com" />
   <meta name="twitter:description" content="HEX、RGB、HSL、CMYKの相互変換、カラーピッカー、画像からの色抽出、配色生成、コントラスト確認をブラウザ内で行える無料カラーツールです。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -380,6 +381,13 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
       "ja",
       "en"
     ],
+    "featureList": [
+      "HEX・RGB・HSL・CMYKの相互変換",
+      "画像からの色抽出と配色候補の確認",
+      "コントラスト比のチェックとアクセシビリティ確認",
+      "ブラウザ内で完結するローカル処理",
+      "CSSや共有用のカラーコード整理"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -442,6 +450,36 @@ window.pageTitleTranslationKey = "colorCodeTool.pageTitle";
           "@type": "Answer",
           "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
         }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "カラーコード変換・色抽出ツールの使い方",
+    "description": "色コードを変換し、画像から色を抽出し、配色候補やコントラストを確認する手順です。",
+    "totalTime": "PT3M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "カラーコード変換・色抽出ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "色を入力または選択する",
+        "text": "HEX入力、カラーピッカー、画像からの抽出のいずれかで基準色を選びます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "形式を確認する",
+        "text": "HEX、RGB、HSL、CMYKの値を見比べて、制作物に必要な形式を確認します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "配色とコントラストを確認する",
+        "text": "類似色、補色、アクセシビリティ上のコントラスト比を確認し、公開前の色指定を整えます。"
       }
     ]
   }

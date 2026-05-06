@@ -251,6 +251,29 @@
   },
   {
     "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Image converter, resizer, and WebP tool",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web browser",
+    "softwareVersion": "browser-based",
+    "downloadUrl": "https://negi-lab.com/tools/image-converter.html",
+    "url": "https://negi-lab.com/tools/image-converter.html",
+    "featureList": [
+      "Convert browser-supported image formats",
+      "Resize images before export",
+      "Rotate images and apply simple filters",
+      "Create WebP files without uploading originals"
+    ],
+    "permissions": "No account required",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       {
@@ -300,6 +323,36 @@
           "@type": "Answer",
           "text": "Yes, but large files and large batches depend on device memory and browser performance."
         }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to convert and resize images in the browser",
+    "description": "Upload an image, choose the output format and size, preview the result, and download the converted file without sending it to a server.",
+    "totalTime": "PT3M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "Image converter, resizer, and WebP tool"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Upload images",
+        "text": "Choose one or more images from your device or drag them into the upload area."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Choose format and size",
+        "text": "Select the output format, adjust size or rotation if needed, and review the preset options."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Preview and export",
+        "text": "Check the preview, confirm the file size, and download the converted image."
       }
     ]
   }
@@ -1065,16 +1118,26 @@
           <p class="text-sm text-gray-600" data-translate-key="imageConverter.related.compare.description">変換候補の容量や寸法を並べて見比べ、配信前の最終判断をしやすくします。</p>
         </a>
       </div>
+      <div class="mt-8 rounded-xl border border-gray-200 bg-white p-5 text-left shadow-sm">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">使い方の流れ</h3>
+        <ol class="grid gap-3 text-sm leading-7 text-gray-600 md:grid-cols-3">
+          <li class="rounded-lg bg-gray-50 p-4">1. 画像を読み込み、用途に合う形式とサイズを選びます。</li>
+          <li class="rounded-lg bg-gray-50 p-4">2. 必要なら回転や簡易フィルターで見た目を整えます。</li>
+          <li class="rounded-lg bg-gray-50 p-4">3. 背景透過やOGP作成、サイズ比較へそのまま進めます。</li>
+        </ol>
+        <p class="mt-4 text-xs leading-6 text-gray-500">会員登録は不要です。変換対象の画像はブラウザ内で処理され、作業の下準備から公開前チェックまで同じ端末で完結できます。</p>
+      </div>
     </div>
   </section>
 
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+  <section class="mt-10 mb-8 text-sm text-gray-700 bg-white rounded-lg p-5 border border-gray-200 max-w-3xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2" data-translate-key="disclaimer.title">negi-lab.comの独自性・運営方針・免責事項について</h2>
-    <ul class="list-disc ml-5 mb-2">
+    <ul class="list-disc ml-5 mb-2 space-y-1">
       <li data-translate-key="disclaimer.responsibility">本ツールはnegi-lab.comが責任開発・運営しています。</li>
       <li data-translate-key="disclaimer.revenue">広告・アフィリエイト収益を含みますが、ユーザーの利便性を優先しています。</li>
       <li data-translate-key="disclaimer.liability">精度・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>
+    <p class="mb-2 text-xs leading-6 text-gray-500">公開前の画像確認や共有素材づくりに使いやすいよう、作業ボタンの近くに強い訴求や登録導線を置かない構成を保っています。</p>
     <p class="text-xs text-gray-500" data-translate-key="disclaimer.copyright">&copy; 2026 negi-lab.com</p>
   </section>
 

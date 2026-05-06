@@ -33,6 +33,7 @@
   <meta property="og:image:alt" content="日付計算・日数差・加算減算ツール | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="開始日と終了日から日数差を確認する日付計算ツールの共有カード画像" />
   <meta name="twitter:title" content="日付計算・日数差・加算減算ツール | negi-lab.com" />
   <meta name="twitter:description" content="日付差分、日数計算、営業日数、日付の加算・減算をブラウザ内で確認できます。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -176,6 +177,49 @@ window.pageTitleTranslationKey = "dateCalculator.pageTitle";
           "text": "はい。日付の加算・減算では、-5 のように入力すると基準日より前の日付を計算できます。"
         }
       }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "日付差分や期限日を計算する手順",
+    "description": "開始日と終了日、または基準日と日数を入力して、差分日数や加算・減算後の日付を確認する手順です。",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "計算モードを選ぶ",
+        "text": "日付差分または日付の加算・減算から目的に合うモードを選択します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "日付と条件を入力する",
+        "text": "開始日、終了日、基準日、日数、営業日オプションなど必要な条件を入力します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "結果を確認して控える",
+        "text": "計算結果を確認し、必要に応じてコピーや履歴機能で控えます。"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "日付計算・日数差・加算減算ツール",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "softwareVersion": "1.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "url": "https://negi-lab.com/tools/date-calculator.html",
+    "featureList": [
+      "日付差分計算",
+      "日付の加算と減算",
+      "営業日数の確認",
+      "ローカル履歴保存"
     ]
   }
 ]
@@ -758,6 +802,36 @@ window.pageTitleTranslationKey = "dateCalculator.pageTitle";
           <a href="#date-tool-panel" data-date-focus="startDate"
              class="inline-block bg-accent hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             今すぐ日付計算を始める
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="related-tools" class="pb-10">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-3xl">
+            <h2 class="text-2xl font-bold text-gray-900">関連ツール</h2>
+            <p class="mt-2 text-sm leading-7 text-gray-600">
+              期限確認の前後で使いやすい、公開素材や導線づくり向けのツールもあわせて使えます。
+            </p>
+          </div>
+          <a href="/#tools" class="text-sm font-semibold text-green-700 hover:text-green-800">ツール一覧を見る</a>
+        </div>
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">QRコード生成ツール</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">予約案内、イベント申込、支払いページなど、期限付き案内の導線づくりに向いています。</p>
+          </a>
+          <a href="/tools/favicon-og-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">Favicon・OGP画像ジェネレーター</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">公開告知ページやキャンペーンのOGP画像を整えたいときに、そのまま素材作成へ進めます。</p>
+          </a>
+          <a href="/tools/url-shortener.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <h3 class="font-semibold text-gray-900">URL短縮ツール</h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">算出した締切案内や申込ページの共有リンクを、配布しやすい短いURLへ整えたいときに使えます。</p>
           </a>
         </div>
       </div>

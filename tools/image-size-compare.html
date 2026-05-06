@@ -30,6 +30,7 @@
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="画像サイズ比較・SNSプリセット変換ツールの共有カード画像" />
   <meta name="twitter:title" content="画像サイズ比較・SNSプリセット変換ツール | negi-lab.com" />
   <meta name="twitter:description" content="SNS向け画像サイズをブラウザ内でまとめて生成できます。" />
   <meta name="robots" content="index,follow" />
@@ -144,6 +145,37 @@
           }
         }
       ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "画像サイズ比較・SNSプリセット変換ツールの使い方",
+      "description": "1枚の画像からSNSや配信用のサイズをまとめて作成する手順です。",
+      "totalTime": "PT2M",
+      "tool": [
+        { "@type": "HowToTool", "name": "画像サイズ比較・SNSプリセット変換ツール" }
+      ],
+      "step": [
+        { "@type": "HowToStep", "name": "画像を選ぶ", "text": "PNG、JPEG、WebP、GIF画像を読み込みます。" },
+        { "@type": "HowToStep", "name": "プリセットと出力条件を決める", "text": "用途に合うサイズ、トリミング方式、出力形式、品質を選びます。" },
+        { "@type": "HowToStep", "name": "生成して保存する", "text": "変換結果を確認し、必要なサイズだけまとめてダウンロードします。" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "画像サイズ比較・SNSプリセット変換ツール",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "featureList": [
+        "SNS画像プリセット",
+        "中央トリミング",
+        "余白追加",
+        "PNG出力",
+        "JPEG/WebP出力"
+      ],
+      "url": "https://negi-lab.com/tools/image-size-compare.html"
     }
   ]
   </script>
@@ -151,13 +183,13 @@
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
-      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition" aria-label="ホーム">negi-lab.com</a>
       <nav>
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition" data-translate-key="header.nav.tools">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition" data-translate-key="header.nav.wikis">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="言語選択">
               <option value="ja" data-translate-key="option.ja">日本語</option>
               <option value="en" data-translate-key="option.en">English</option>
             </select>
@@ -202,7 +234,7 @@
 
         <div>
           <label for="imageFile" class="block text-sm font-semibold text-gray-700 mb-2">画像ファイル</label>
-          <input type="file" id="imageFile" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full bg-white" />
+          <input type="file" id="imageFile" accept=".png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/webp,image/gif" class="form-input w-full bg-white" aria-describedby="fileName fileError" />
           <p id="fileName" class="text-sm text-gray-500 mt-2" aria-live="polite"></p>
           <p id="fileError" class="hidden mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700" aria-live="assertive"></p>
         </div>
@@ -299,6 +331,30 @@
       <li>広告表示を含む場合がありますが、操作領域とfooterの余白を圧迫しない配置にしています。</li>
       <li>各SNSの推奨サイズは変更されることがあります。投稿前に必要に応じて公式案内も確認してください。</li>
     </ul>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 pb-12" aria-labelledby="image-size-related-tools">
+    <div class="text-center mb-8">
+      <h2 id="image-size-related-tools" class="text-2xl font-bold text-gray-900 mb-3">関連ツール</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">SNS投稿やサイト公開前の画像準備を、同じ流れで続けやすくする導線です。</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <a href="/tools/image-converter.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-sm font-semibold text-accent mb-2">形式変換</div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">画像変換・リサイズツール</h3>
+        <p class="text-sm text-gray-600">WebP化や容量調整を先に済ませてから、SNSサイズへ展開できます。</p>
+      </a>
+      <a href="/tools/favicon-og-generator.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-sm font-semibold text-accent mb-2">公開準備</div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Favicon・OGP画像作成</h3>
+        <p class="text-sm text-gray-600">共有画像やサイト用アセットをまとめて作りたいときに便利です。</p>
+      </a>
+      <a href="/tools/bg-remover.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-sm font-semibold text-accent mb-2">素材整理</div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">背景削除ツール</h3>
+        <p class="text-sm text-gray-600">商品画像やプロフィール画像の下処理をしてから、各SNSサイズへ変換できます。</p>
+      </a>
+    </div>
   </section>
 
   </main>

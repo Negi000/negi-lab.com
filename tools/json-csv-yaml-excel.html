@@ -30,6 +30,7 @@
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="JSON・CSV・YAML・Excel変換ツールの共有カード画像" />
   <meta name="twitter:title" content="JSON・CSV・YAML・Excel変換ツール | negi-lab.com" />
   <meta name="twitter:description" content="JSON、CSV、YAML、Excelをブラウザ内で相互変換できる無料ツールです。" />
   <meta name="robots" content="index,follow" />
@@ -125,6 +126,37 @@
         "acceptedAnswer": { "@type": "Answer", "text": "結果はクリップボードへコピーでき、JSON、CSV、YAML、XLSXファイルとしてダウンロードできます。" }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "JSON・CSV・YAML・Excel変換ツールの使い方",
+    "description": "データ形式を貼り付けまたは読み込んで、必要な形式へ変換して保存する手順です。",
+    "totalTime": "PT2M",
+    "tool": [
+      { "@type": "HowToTool", "name": "JSON・CSV・YAML・Excel変換ツール" }
+    ],
+    "step": [
+      { "@type": "HowToStep", "name": "入力方法を選ぶ", "text": "JSON、CSV、YAML、Excelファイルを読み込むか、テキストを貼り付けます。" },
+      { "@type": "HowToStep", "name": "出力形式を選ぶ", "text": "JSON、CSV、YAML、Excelから必要な形式を選択します。" },
+      { "@type": "HowToStep", "name": "変換して保存する", "text": "変換結果を確認し、コピーまたはダウンロードして使います。" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "JSON・CSV・YAML・Excel変換ツール",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "featureList": [
+      "JSON変換",
+      "CSV変換",
+      "YAML変換",
+      "Excel変換",
+      "ブラウザ内処理"
+    ],
+    "url": "https://negi-lab.com/tools/json-csv-yaml-excel.html"
   }
 ]
   </script>
@@ -132,13 +164,13 @@
 <body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
-      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
+      <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition" aria-label="ホーム">negi-lab.com</a>
       <nav aria-label="メインナビゲーション">
         <ul class="flex flex-wrap gap-3 sm:gap-6 font-medium text-sm sm:text-base items-center justify-end">
           <li><a href="/#tools" class="hover:text-accent transition">ツール</a></li>
           <li><a href="/#wikis" class="hover:text-accent transition">ゲームWiki</a></li>
           <li>
-            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="Language">
+            <select id="lang-switch" class="rounded border border-gray-300 px-2 py-1 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-accent transition" aria-label="言語選択">
               <option value="ja">日本語</option>
               <option value="en">English</option>
             </select>
@@ -181,7 +213,7 @@
           <div class="space-y-5">
             <div>
               <label for="fileInput" class="block font-semibold mb-2">ファイルを選択</label>
-              <input type="file" id="fileInput" accept=".json,.csv,.yaml,.yml,.xlsx" class="form-input w-full bg-white" />
+              <input type="file" id="fileInput" accept=".json,.csv,.yaml,.yml,.xlsx" class="form-input w-full bg-white" aria-describedby="fileName" />
               <p id="fileName" class="text-xs text-gray-500 mt-2">対応形式: .json / .csv / .yaml / .yml / .xlsx（10MBまで）</p>
             </div>
             <div>
@@ -239,6 +271,53 @@
             <h2 class="text-base font-bold text-gray-950 mb-2">コピーと保存</h2>
             <p>結果はコピーでき、目的の拡張子でダウンロードできます。</p>
           </div>
+        </div>
+      </section>
+
+      <section class="py-12" aria-labelledby="data-converter-use-cases">
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <h2 id="data-converter-use-cases" class="text-2xl font-bold text-gray-950 mb-3">用途別の使い分け</h2>
+            <p class="text-gray-600 leading-7">API確認、表計算の受け渡し、設定ファイル整理まで、形式の違うデータを一度に見直したい場面で使いやすい構成です。</p>
+          </div>
+          <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900 mb-2">APIレスポンス確認</h3>
+              <p class="text-sm leading-7 text-gray-600">JSONをCSVやYAMLへ変えて、一覧確認や設定差分の見直しに使えます。</p>
+            </div>
+            <div class="py-5 md:px-5 md:border-r border-gray-200">
+              <h3 class="text-base font-semibold text-gray-900 mb-2">表計算との受け渡し</h3>
+              <p class="text-sm leading-7 text-gray-600">ExcelやCSVをJSONへ変換し、CMS投入前や簡易データ整形の下準備に向いています。</p>
+            </div>
+            <div class="py-5 md:px-5">
+              <h3 class="text-base font-semibold text-gray-900 mb-2">設定ファイル整理</h3>
+              <p class="text-sm leading-7 text-gray-600">YAMLやJSONを並べ替えて、構成ファイルの確認や共有用の整形に役立ちます。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pb-12" aria-labelledby="data-converter-related-tools">
+        <div class="text-center mb-8">
+          <h2 id="data-converter-related-tools" class="text-2xl font-bold text-gray-950 mb-3">関連ツール</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">データ整理の前後で使いやすい、文字整形や共有準備向けのツールです。</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <a href="/tools/text-converter.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-sm font-semibold text-accent mb-2">命名規則の整理</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">テキスト変換ツール</h3>
+            <p class="text-sm text-gray-600">キー名や見出しを camelCase、snake_case、kebab-case にそろえる前処理に使えます。</p>
+          </a>
+          <a href="/tools/url-shortener.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-sm font-semibold text-accent mb-2">共有リンク整理</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">URL短縮・共有リンク整形ツール</h3>
+            <p class="text-sm text-gray-600">変換結果の共有やドキュメント貼り付け前に、長いURLを整えられます。</p>
+          </a>
+          <a href="/tools/qr-code-generator.html" class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-sm font-semibold text-accent mb-2">配布・現場共有</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">QRコード生成ツール</h3>
+            <p class="text-sm text-gray-600">整理したURLや配布先ページを、そのままQRコードにして共有できます。</p>
+          </a>
         </div>
       </section>
     </section>

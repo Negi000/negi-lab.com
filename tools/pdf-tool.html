@@ -124,6 +124,29 @@
   },
   {
     "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PDF結合・分割・画像PDF作成ツール",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web browser",
+    "softwareVersion": "browser-based",
+    "downloadUrl": "https://negi-lab.com/tools/pdf-tool.html",
+    "url": "https://negi-lab.com/tools/pdf-tool.html",
+    "featureList": [
+      "PDFを結合する",
+      "PDFをページごとに分割する",
+      "PDFを再保存する",
+      "画像からPDFを作成する"
+    ],
+    "permissions": "No account required",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       {
@@ -173,6 +196,36 @@
           "@type": "Answer",
           "text": "このツールの軽量化はPDFを再保存する機能です。画像圧縮やOCR、パスワード解除には対応していません。ファイルによってはサイズが増える場合があります。"
         }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "PDFをブラウザ内で結合・分割・画像PDF化する方法",
+    "description": "ファイルを選択し、目的に応じたボタンを実行して、結果のPDFを保存します。アップロードや会員登録は不要です。",
+    "totalTime": "PT3M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "PDF結合・分割・画像PDF作成ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "ファイルを選ぶ",
+        "text": "PDFを扱う場合はPDFファイルを、画像からPDFを作る場合は画像ファイルを選択します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "処理方法を選ぶ",
+        "text": "結合、分割、再保存、画像PDF化のうち目的に合うボタンを押します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "結果を保存する",
+        "text": "ブラウザ内で生成された結果を確認し、必要に応じて別名で保存します。"
       }
     ]
   }
@@ -265,9 +318,11 @@
 
       <section class="mt-8 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-900" aria-label="Sponsored notice">
         <p data-translate-key="pdfTool.revenueNote">この無料ツールは広告収益で運営しています。作業エリアを邪魔しない配置を心がけています。</p>
+        <p class="mt-2 text-xs leading-6 text-green-800">請求書、配布資料、申込書などを急いでまとめたい場面でも、登録なしですぐ使える導線を維持しています。</p>
       </section>
     </div>
-  <section class="bg-white py-12">
+
+  <section class="bg-white py-12 border-t border-gray-100">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <div>
@@ -343,6 +398,14 @@
           <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.useCaseImagesText">領収書、メモ、ホワイトボード写真を1つのPDFにして提出するときに便利です。大きい画像は先に調整すると失敗しにくくなります。</p>
           <a href="#imgFiles" class="mt-4 inline-flex items-center font-semibold text-accent hover:underline" data-translate-key="pdfTool.useCaseImagesCta">画像を選んでPDF化する</a>
         </article>
+      </div>
+      <div class="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-5">
+        <h3 class="text-lg font-semibold text-gray-900">使い方の流れ</h3>
+        <ol class="mt-3 grid gap-3 text-sm leading-7 text-gray-600 md:grid-cols-3">
+          <li class="rounded-lg bg-white p-4">1. PDF または画像ファイルを選択します。</li>
+          <li class="rounded-lg bg-white p-4">2. 結合・分割・再保存・画像PDF化から目的に合う処理を実行します。</li>
+          <li class="rounded-lg bg-white p-4">3. 結果を保存し、必要なら関連ツールで配布導線まで整えます。</li>
+        </ol>
       </div>
     </div>
   </section>
@@ -431,13 +494,14 @@
     </div>
   </section>
 
-  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto" aria-label="このツールについて">
+  <section class="mt-12 mb-8 text-sm text-gray-700 bg-white rounded-lg p-5 border border-gray-200 max-w-3xl mx-auto" aria-label="このツールについて">
     <h2 class="font-bold text-base mb-2" data-translate-key="siteInfo.title">negi-lab.comの独自性・運営方針・免責事項</h2>
     <ul class="list-disc ml-5 mb-2 space-y-1">
       <li data-translate-key="siteInfo.point1">本ツールはnegi-lab.comが独自開発・運営しています。</li>
       <li data-translate-key="siteInfo.point2">広告・アフィリエイトを含みますが、ユーザー体験を優先して配置しています。</li>
       <li data-translate-key="siteInfo.point3">正確性・安全性には注意していますが、利用は自己責任でお願いします。</li>
     </ul>
+    <p class="mb-2 text-xs leading-6 text-gray-500">外部アップロードを避けたい書類整理や社内共有の下準備でも使いやすいよう、処理内容と制限をページ内で先に確認できる構成にしています。</p>
     <p class="text-xs text-gray-500" data-translate-key="siteInfo.copyright">&copy; 2026 negi-lab.com</p>
   </section>
 
