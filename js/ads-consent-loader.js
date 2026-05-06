@@ -166,7 +166,7 @@
   }
 
   function isMobile() {
-    return window.ResponsiveAds
+    return window.ResponsiveAds && typeof window.ResponsiveAds.isMobileDevice === "function"
       ? window.ResponsiveAds.isMobileDevice()
       : (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
   }
@@ -300,7 +300,9 @@
 
     if (window.ResponsiveAds && typeof window.ResponsiveAds.setupResponsiveAds === "function") {
       window.ResponsiveAds.setupResponsiveAds();
-      window.ResponsiveAds.fixDuplicateAds();
+      if (typeof window.ResponsiveAds.fixDuplicateAds === "function") {
+        window.ResponsiveAds.fixDuplicateAds();
+      }
     }
     setPendingAdShells(false);
     startAdSlotObserver();
@@ -310,7 +312,13 @@
         window.__negiAdsLoaded = true;
         observeLazySlots();
         setTimeout(observeLazySlots, 1200);
-        document.dispatchEvent(new Event("adsReady"));
+        try {
+          document.dispatchEvent(new Event("adsReady"));
+        } catch (_) {
+          const event = document.createEvent("Event");
+          event.initEvent("adsReady", true, true);
+          document.dispatchEvent(event);
+        }
       })
       .catch((error) => {
         if (DEBUG) console.warn("[ads-consent-loader] AdSense load failed", error);
@@ -342,10 +350,10 @@
     label.textContent = "スポンサーリンク";
     wrapper.appendChild(label);
 
-    const ad = window.ResponsiveAds
+    const ad = window.ResponsiveAds && typeof window.ResponsiveAds.createAdElement === "function"
       ? window.ResponsiveAds.createAdElement("middle", true)
       : document.createElement("ins");
-    if (!window.ResponsiveAds) {
+    if (!(window.ResponsiveAds && typeof window.ResponsiveAds.createAdElement === "function")) {
       ad.className = "adsbygoogle ad-pc";
       ad.style.display = "block";
       ad.setAttribute("data-ad-client", AD_CLIENT);

@@ -137,7 +137,13 @@
       if ((element.id === "guide-modal" || element.id === "guideModal") && element.classList.contains("hidden")) return;
       const style = getComputedStyle(element);
       if (style.display === "none" || style.position === "fixed" || style.position === "sticky") return;
-      if (!element.querySelector("input, button, a, canvas, textarea, select, iframe")) {
+      const interactive = element.querySelector("input, button, a, canvas, textarea, select, iframe");
+      const visibleText = (element.textContent || "").replace(/\s+/g, "");
+      const isAdShell = element.matches("aside, .ad-block, .dynamic-ad-container")
+        || !!element.querySelector("ins.adsbygoogle, .rakuten-widget-placeholder");
+      if (isAdShell && !interactive && !visibleText) {
+        element.style.display = "none";
+      } else if (!interactive && !visibleText && element.childElementCount === 0) {
         element.style.display = "none";
       }
     });

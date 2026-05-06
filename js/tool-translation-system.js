@@ -168,7 +168,13 @@
     if (!options || options.dispatch !== false) {
       applyingEvent = true;
       try {
-        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+        try {
+          window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+        } catch (_) {
+          var legacyEvent = document.createEvent('CustomEvent');
+          legacyEvent.initCustomEvent('languageChanged', true, true, { language: lang });
+          window.dispatchEvent(legacyEvent);
+        }
       } finally {
         applyingEvent = false;
       }
