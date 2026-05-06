@@ -27,12 +27,14 @@
   <meta property="og:title" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com" />
   <meta property="og:description" content="PDF結合、ページ分割、再保存、画像からPDF作成をブラウザ内で処理。ファイルは外部サーバーへ送信しません。" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
   <meta property="og:url" content="https://negi-lab.com/tools/pdf-tool.html" />
   <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
   <meta property="og:image:alt" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com social share image" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com social share image" />
   <meta name="twitter:title" content="PDF結合・分割・画像PDF作成ツール | negi-lab.com" />
   <meta name="twitter:description" content="PDF結合、ページ分割、再保存、画像からPDF作成をブラウザ内で処理する無料ツールです。" />
   <meta name="robots" content="index,follow" />
@@ -92,11 +94,23 @@
     "name": "PDF結合・分割・画像PDF作成ツール",
     "description": "PDFの結合、ページごとの分割、PDFの再保存、画像からPDF作成をブラウザ内で行える無料ツールです。ファイルは外部サーバーへ送信しません。",
     "url": "https://negi-lab.com/tools/pdf-tool.html",
+    "image": "https://negi-lab.com/favicon.ico",
     "applicationCategory": "Document utility",
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser",
     "isAccessibleForFree": true,
     "inLanguage": ["ja", "en"],
+    "featureList": [
+      "Merge multiple PDF files in the browser",
+      "Split one PDF into page-level files",
+      "Re-save a PDF without uploading it",
+      "Create a PDF from PNG, JPEG, WebP, and GIF images"
+    ],
+    "mainEntityOfPage": "https://negi-lab.com/tools/pdf-tool.html",
+    "potentialAction": {
+      "@type": "UseAction",
+      "target": "https://negi-lab.com/tools/pdf-tool.html"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -301,6 +315,119 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-12 border-t border-gray-200" aria-labelledby="pdf-use-cases-title">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="max-w-3xl mb-8">
+        <h2 id="pdf-use-cases-title" class="text-2xl font-bold text-gray-900 mb-3" data-translate-key="pdfTool.useCasesTitle">用途別ガイド</h2>
+        <p class="text-gray-600 leading-7" data-translate-key="pdfTool.useCasesLead">よくあるPDF作業を迷わず進められるように、用途ごとの入口と注意点をまとめています。</p>
+      </div>
+      <div class="grid gap-5 lg:grid-cols-3">
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent" data-translate-key="pdfTool.useCaseMergeEyebrow">提出・配布向け</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900" data-translate-key="pdfTool.useCaseMergeTitle">複数PDFをひとつにまとめる</h3>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.useCaseMergeText">請求書、配布資料、スキャンしたページを順番どおりにまとめたいときに向いています。結合前にファイル名と並び順を確認してください。</p>
+          <a href="#pdfFiles" class="mt-4 inline-flex items-center font-semibold text-accent hover:underline" data-translate-key="pdfTool.useCaseMergeCta">PDFを選んで結合する</a>
+        </article>
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent" data-translate-key="pdfTool.useCaseSplitEyebrow">抜粋・共有向け</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900" data-translate-key="pdfTool.useCaseSplitTitle">必要なページだけ切り出す</h3>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.useCaseSplitText">契約書、説明書、会議資料の一部だけ共有したいときに便利です。まず1つのPDFを選択してから分割を実行してください。</p>
+          <a href="#splitBtn" class="mt-4 inline-flex items-center font-semibold text-accent hover:underline" data-translate-key="pdfTool.useCaseSplitCta">1つのPDFを分割する</a>
+        </article>
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent" data-translate-key="pdfTool.useCaseImagesEyebrow">画像整理向け</p>
+          <h3 class="mt-2 text-lg font-semibold text-gray-900" data-translate-key="pdfTool.useCaseImagesTitle">写真や画像をPDFにまとめる</h3>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.useCaseImagesText">領収書、メモ、ホワイトボード写真を1つのPDFにして提出するときに便利です。大きい画像は先に調整すると失敗しにくくなります。</p>
+          <a href="#imgFiles" class="mt-4 inline-flex items-center font-semibold text-accent hover:underline" data-translate-key="pdfTool.useCaseImagesCta">画像を選んでPDF化する</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 border-t border-gray-200" aria-labelledby="pdf-trust-title">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <h2 id="pdf-trust-title" class="text-2xl font-bold text-gray-900 mb-3" data-translate-key="pdfTool.guideTitle">迷わない使い方</h2>
+          <p class="text-gray-600 leading-7 mb-5" data-translate-key="pdfTool.guideLead">アップロード型サービスを避けたいときでも、ブラウザだけでPDF作業を完了できるようにしています。最短の流れは次の3ステップです。</p>
+          <ol class="space-y-4">
+            <li class="rounded-xl border border-gray-200 bg-white p-5">
+              <h3 class="font-semibold text-gray-900" data-translate-key="pdfTool.guideStep1Title">1. 処理したい形式を選ぶ</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.guideStep1Text">PDF結合・分割・再保存は左側、画像からPDF作成は右側の入力を使います。対応外の形式は自動で弾かれます。</p>
+            </li>
+            <li class="rounded-xl border border-gray-200 bg-white p-5">
+              <h3 class="font-semibold text-gray-900" data-translate-key="pdfTool.guideStep2Title">2. 変換前に失敗しそうな条件を避ける</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.guideStep2Text">暗号化PDFや巨大画像はブラウザのメモリ制限で止まることがあります。画像は先に軽くしておくと安定します。</p>
+            </li>
+            <li class="rounded-xl border border-gray-200 bg-white p-5">
+              <h3 class="font-semibold text-gray-900" data-translate-key="pdfTool.guideStep3Title">3. 結果を保存して次の作業へつなぐ</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.guideStep3Text">生成されたファイルはその場でダウンロードできます。画像調整やQR追加が必要なら関連ツールへすぐ移動できます。</p>
+            </li>
+          </ol>
+        </div>
+        <aside class="rounded-2xl border border-green-200 bg-green-50 p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-3" data-translate-key="pdfTool.trustTitle">安心して使うための確認ポイント</h2>
+          <ul class="space-y-3 text-sm leading-7 text-gray-700">
+            <li data-translate-key="pdfTool.trustPoint1">処理はブラウザ内で完結するため、外部アップロードを避けたい書類整理に向いています。</li>
+            <li data-translate-key="pdfTool.trustPoint2">広告は作業ボタンから距離を取り、誤操作しにくい配置を保っています。</li>
+            <li data-translate-key="pdfTool.trustPoint3">結果が想定と違う場合は元ファイルを残したまま、別名で保存して比較してください。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-12 border-t border-gray-200" aria-labelledby="pdf-faq-title">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="max-w-3xl mb-8">
+        <h2 id="pdf-faq-title" class="text-2xl font-bold text-gray-900 mb-3" data-translate-key="pdfTool.faqTitle">よくある質問</h2>
+        <p class="text-gray-600 leading-7" data-translate-key="pdfTool.faqLead">検索流入で多い不安や確認事項を先にまとめています。処理の限界もここで確認できます。</p>
+      </div>
+      <div class="space-y-4">
+        <details class="group rounded-xl border border-gray-200 bg-gray-50 p-5" open>
+          <summary class="cursor-pointer list-none font-semibold text-gray-900" data-translate-key="pdfTool.faqQuestion1">PDFファイルはサーバーに送信されますか？</summary>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.faqAnswer1">いいえ。結合、分割、再保存、画像からPDFへの変換はブラウザ内で処理します。ファイルは外部サーバーへ送信しません。</p>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-gray-900" data-translate-key="pdfTool.faqQuestion2">無料で使えますか？</summary>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.faqAnswer2">はい。無料で使えます。広告収益で運営しているため、会員登録なしで試せます。</p>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-gray-900" data-translate-key="pdfTool.faqQuestion3">PDFを軽くできますか？</summary>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.faqAnswer3">このページの再保存はPDFを再生成する機能です。画像圧縮やOCRには対応していないため、ファイルによってはサイズが増える場合があります。</p>
+        </details>
+        <details class="group rounded-xl border border-gray-200 bg-gray-50 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-gray-900" data-translate-key="pdfTool.faqQuestion4">画像からPDF化するときに失敗するのはなぜですか？</summary>
+          <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.faqAnswer4">高解像度画像が多い場合は、ブラウザのメモリ制限で停止することがあります。先に画像変換ツールで縮小してから再実行すると安定しやすくなります。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 border-t border-gray-200" aria-labelledby="pdf-related-title">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="max-w-3xl mb-8">
+        <h2 id="pdf-related-title" class="text-2xl font-bold text-gray-900 mb-3" data-translate-key="pdfTool.relatedTitle">あわせて使うと便利なツール</h2>
+        <p class="text-gray-600 leading-7" data-translate-key="pdfTool.relatedLead">PDF作業の前後でよく一緒に使われる静的ツールをまとめています。下準備と配布導線までひと続きで進められます。</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <a href="/tools/image-converter.html" class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <h3 class="text-lg font-semibold text-gray-900" data-translate-key="pdfTool.relatedImageTitle">画像変換・リサイズツール</h3>
+          <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.relatedImageText">PDF化する前に、画像サイズや形式を整えて失敗しにくくします。</p>
+        </a>
+        <a href="/tools/qr-code-generator.html" class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <h3 class="text-lg font-semibold text-gray-900" data-translate-key="pdfTool.relatedQrTitle">QRコード生成ツール</h3>
+          <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.relatedQrText">配布用PDFにアクセス先や申込ページのQRコードを載せたいときに役立ちます。</p>
+        </a>
+        <a href="/tools/text-converter.html" class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <h3 class="text-lg font-semibold text-gray-900" data-translate-key="pdfTool.relatedTextTitle">テキスト変換ツール</h3>
+          <p class="mt-2 text-sm leading-7 text-gray-600" data-translate-key="pdfTool.relatedTextText">PDF化前の原稿や注釈テキストを整えたいときに使えます。</p>
+        </a>
+      </div>
+      <a href="/#tools" class="mt-6 inline-flex items-center font-semibold text-accent hover:underline" data-translate-key="pdfTool.relatedHubCta">ツール一覧を見る</a>
     </div>
   </section>
 

@@ -48,16 +48,17 @@
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <title data-translate-key="urlShortener.pageTitle">無料URL短縮・共有リンク整形ツール - トラッキング削除とリンク生成 | negi-lab.com</title>
   <meta name="description" data-translate-key="urlShortener.metaDescription" content="長いURLを短縮し、トラッキングパラメータ削除、クエリ整理、Markdownリンク・HTMLリンク生成までブラウザで行える無料ツールです。SNS共有、資料作成、メール文面のリンク整理に使えます。" />
-  <meta property="og:title" content="無料URL短縮・共有リンク整形ツール - negi-lab.com" />
-  <meta property="og:description" content="長いURLの短縮、トラッキング削除、Markdown/HTMLリンク生成をまとめて行える無料ブラウザツール。" />
+  <meta property="og:title" data-translate-key="urlShortener.pageTitle" content="無料URL短縮・共有リンク整形ツール - トラッキング削除とリンク生成 | negi-lab.com" />
+  <meta property="og:description" data-translate-key="urlShortener.metaDescription" content="長いURLを短縮し、トラッキングパラメータ削除、クエリ整理、Markdownリンク・HTMLリンク生成までブラウザで行える無料ツールです。SNS共有、資料作成、メール文面のリンク整理に使えます。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/url-shortener.html" />
   <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
   <meta property="og:image:alt" content="無料URL短縮・共有リンク整形ツール - トラッキング削除とリンク生成 | negi-lab.com social share image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
-  <meta name="twitter:title" content="無料URL短縮・共有リンク整形ツール | negi-lab.com" />
-  <meta name="twitter:description" content="長いURLの短縮、トラッキング削除、Markdown/HTMLリンク生成をまとめて行える無料ブラウザツール。" />
+  <meta name="twitter:title" data-translate-key="urlShortener.pageTitle" content="無料URL短縮・共有リンク整形ツール - トラッキング削除とリンク生成 | negi-lab.com" />
+  <meta name="twitter:description" data-translate-key="urlShortener.metaDescription" content="長いURLを短縮し、トラッキングパラメータ削除、クエリ整理、Markdownリンク・HTMLリンク生成までブラウザで行える無料ツールです。SNS共有、資料作成、メール文面のリンク整理に使えます。" />
+  <meta name="twitter:image:alt" content="無料URL短縮・共有リンク整形ツールの共有カード画像" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/tools/url-shortener.html" />
@@ -206,29 +207,79 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "このツールは無料で使えますか？",
+        "name": "URL短縮に失敗しても使えますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "はい。外部短縮URLの生成には is.gd の公開APIを利用しますが、失敗しても整理済みURL、Markdownリンク、HTMLリンク、共有用URLはそのまま使えます。"
         }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
+        "name": "どのようなURLに向いていますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
+          "text": "SNS投稿、メール、社内資料、README、印刷物用のQRコード化前のURL整理に向いています。追跡パラメータ削除とリンク形式変換をまとめて行えます。"
         }
       },
       {
         "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
+        "name": "追跡パラメータ削除の注意点は？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+          "text": "ログイン状態、検索条件、商品オプションなどに必要なクエリは削除しないでください。共有前に整理済みURLを一度確認するのがおすすめです。"
         }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "URL短縮・共有リンク整形ツールの使い方",
+    "description": "長いURLを整理して、短縮URLやMarkdownリンク、HTMLリンクを作る手順です。",
+    "totalTime": "PT1M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "URL短縮・共有リンク整形ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "URLを入力する",
+        "text": "共有したい元URLを入力します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "整理オプションを選ぶ",
+        "text": "追跡パラメータ削除やクエリ並べ替えを必要に応じて選びます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "共有用の形式を使う",
+        "text": "短縮URL、整理済みURL、Markdownリンク、HTMLリンクから用途に合うものを使います。"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "URL短縮・共有リンク整形ツール",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "URL短縮",
+      "追跡パラメータ削除",
+      "Markdownリンク生成",
+      "HTMLリンク生成",
+      "共有用URL作成"
+    ],
+    "url": "https://negi-lab.com/tools/url-shortener.html"
   }
 ]
   </script>
@@ -274,6 +325,7 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮・共有リンク整形ツール">URL短縮・共有リンク整形ツール</h1>
+        <p class="mx-auto max-w-3xl text-base leading-7 text-gray-600 md:text-lg" data-translate-key="urlShortener.heroLead">SNS共有、広告入稿、メール、社内資料、印刷物向けQRコード化の前処理まで、共有用URLをブラウザで整えられます。</p>
       </div>
 
       <!-- ツール上部：アドセンス（レスポンシブ） -->
@@ -294,6 +346,11 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
         <div>
           <label for="longUrlInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.longUrlLabel" aria-label="元のURLラベル">元のURL:</label>
           <input type="url" id="longUrlInput" class="form-input w-full" data-translate-placeholder-key="urlShortener.placeholder" placeholder="例: https://www.example.com/very/long/url" aria-label="元のURL入力" autocomplete="off" spellcheck="false" inputmode="url">
+          <div class="mt-3 flex flex-wrap gap-2" aria-label="example URLs">
+            <button type="button" class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-700 transition hover:border-accent hover:text-accent" data-example-url="https://example.com/article?utm_source=x&utm_medium=social&utm_campaign=spring" data-translate-key="urlShortener.exampleCampaign">広告・SNS共有の例</button>
+            <button type="button" class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-700 transition hover:border-accent hover:text-accent" data-example-url="https://docs.example.com/manual?page=3&section=intro&utm_source=newsletter" data-translate-key="urlShortener.exampleDocs">資料リンクの例</button>
+            <button type="button" class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-700 transition hover:border-accent hover:text-accent" data-example-url="https://shop.example.com/products/item?color=blue&size=m&gclid=test123" data-translate-key="urlShortener.exampleShop">商品ページ共有の例</button>
+          </div>
         </div>
 
         <div class="grid gap-3 sm:grid-cols-2">
@@ -420,6 +477,61 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
         <p data-translate-key="urlShortener.checkQrText">印刷物やイベント導線には、整理済みURLをQRコード作成ツールへ渡すと扱いやすくなります。</p>
         <p class="mt-2"><a href="/tools/qr-code-generator.html" class="text-accent hover:underline text-sm" data-translate-key="urlShortener.qrToolLink">QRコード作成ツールを開く</a></p>
       </div>
+    </div>
+  </section>
+
+  <section class="mt-10 border-b border-gray-200 pb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="urlShortener.useCasesTitle">用途別のおすすめ使い方</h2>
+    <p class="mb-5 text-sm leading-7 text-gray-600" data-translate-key="urlShortener.useCasesLead">共有先や媒体に応じて、どの出力を使うかを決めると作業が速くなります。</p>
+    <div class="grid gap-5 md:grid-cols-3">
+      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.caseSocialTitle">SNS・広告共有</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.caseSocialText">短い見た目を優先したい投稿や配布リンクでは、追跡パラメータを整理してから短縮URLを作ると見やすくなります。</p>
+      </article>
+      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.caseDocsTitle">資料・README・メール</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.caseDocsText">MarkdownリンクとHTMLリンクを同時に作れるので、社内資料、ナレッジベース、メール文面への転記がまとまります。</p>
+      </article>
+      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.caseOfflineTitle">印刷物・イベント導線</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.caseOfflineText">整理済みURLをQRコードにすると、ポスター、店頭POP、配布資料のオフライン導線が扱いやすくなります。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-10 border-b border-gray-200 pb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="urlShortener.relatedTitle">関連ツール</h2>
+    <div class="grid gap-5 md:grid-cols-3">
+      <a href="/tools/qr-code-generator.html" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-accent hover:shadow-md">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.relatedQrTitle">QRコード生成ツール</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.relatedQrText">整理済みURLをポスター、名刺、イベント配布物へつなげる時に便利です。</p>
+      </a>
+      <a href="/tools/text-converter.html" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-accent hover:shadow-md">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.relatedTextTitle">テキスト変換ツール</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.relatedTextText">共有文面や説明文の整形をまとめて進めたい時に使えます。</p>
+      </a>
+      <a href="/tools/favicon-og-generator.html" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-accent hover:shadow-md">
+        <h3 class="text-base font-bold text-gray-950" data-translate-key="urlShortener.relatedOgTitle">Favicon・OG画像生成</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600" data-translate-key="urlShortener.relatedOgText">共有リンク先の見た目やブランド統一まで整えたい時に相性が良いツールです。</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-10 border-b border-gray-200 pb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4" data-translate-key="urlShortener.faqTitle">よくある質問</h2>
+    <div class="space-y-4">
+      <details class="rounded-xl border border-gray-200 bg-white p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900" data-translate-key="urlShortener.faq1Q">短縮URLの生成に失敗した場合はどうなりますか？</summary>
+        <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="urlShortener.faq1A">外部短縮URLの作成に失敗しても、整理済みURL、Markdownリンク、HTMLリンク、共有用URLはそのまま使えます。</p>
+      </details>
+      <details class="rounded-xl border border-gray-200 bg-white p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900" data-translate-key="urlShortener.faq2Q">追跡パラメータは全部消しても大丈夫ですか？</summary>
+        <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="urlShortener.faq2A">ログイン状態、検索条件、商品オプションなどに必要なクエリがある場合は残してください。共有前に整理済みURLを一度確認するのがおすすめです。</p>
+      </details>
+      <details class="rounded-xl border border-gray-200 bg-white p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900" data-translate-key="urlShortener.faq3Q">どんな場面で使うと効果的ですか？</summary>
+        <p class="mt-3 text-sm leading-7 text-gray-600" data-translate-key="urlShortener.faq3A">SNS投稿、メール、社内資料、README、印刷物向けQRコード化の前処理など、リンクを短く整えて共有したい場面で便利です。</p>
+      </details>
     </div>
   </section>
 

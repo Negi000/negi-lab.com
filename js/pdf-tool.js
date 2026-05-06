@@ -43,7 +43,12 @@
     const status = byId("pdfStatus");
     if (!status) return;
     status.textContent = message;
-    status.className = tone === "error" ? "text-sm text-red-700" : "text-sm text-gray-700";
+    status.className =
+      tone === "error"
+        ? "text-sm text-red-700"
+        : tone === "success"
+          ? "text-sm text-green-700"
+          : "text-sm text-gray-700";
   }
 
   function revokeResultUrls() {
@@ -195,6 +200,34 @@
     return link;
   }
 
+  function createResultActionLink(href, label) {
+    const link = document.createElement("a");
+    link.href = href;
+    link.className =
+      "inline-flex items-center rounded border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:border-accent hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent";
+    link.textContent = label;
+    return link;
+  }
+
+  function appendResultActions(container) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4";
+
+    const title = document.createElement("p");
+    title.className = "text-sm font-semibold text-gray-900";
+    title.textContent = t("pdfTool.resultActionsTitle", "次の作業");
+    wrapper.appendChild(title);
+
+    const actions = document.createElement("div");
+    actions.className = "mt-3 flex flex-wrap gap-2";
+    actions.appendChild(createResultActionLink("#pdf-workspace-title", t("pdfTool.resultActionReset", "別のファイルでもう一度処理する")));
+    actions.appendChild(createResultActionLink("/tools/image-converter.html", t("pdfTool.resultActionImage", "画像を先に整える")));
+    actions.appendChild(createResultActionLink("/#tools", t("pdfTool.resultActionHub", "他のツールを見る")));
+    wrapper.appendChild(actions);
+
+    container.appendChild(wrapper);
+  }
+
   function showLinks(links, lead) {
     const result = byId("pdfResult");
     result.replaceChildren();
@@ -208,6 +241,7 @@
     list.className = "flex flex-wrap gap-2";
     links.forEach((link) => list.appendChild(link));
     result.appendChild(list);
+    appendResultActions(result);
   }
 
   async function runTask(button, message, task) {
@@ -247,7 +281,7 @@
         [createDownloadLink(blob, "merged.pdf", t("pdfTool.downloadMerged", "結合PDFをダウンロード"))],
         t("pdfTool.mergedLead", "{count}個のPDFを結合しました。", { count: loadedPdfFiles.length }),
       );
-      setStatus(t("pdfTool.statusMerged", "結合PDFを生成しました。"));
+      setStatus(t("pdfTool.statusMerged", "結合PDFを生成しました。"), "success");
     });
   }
 
@@ -265,7 +299,7 @@
         links.push(createDownloadLink(blob, `page-${pageIndex + 1}.pdf`, t("pdfTool.downloadPage", "{page}ページ目", { page: pageIndex + 1 })));
       }
       showLinks(links, t("pdfTool.splitLead", "{count}ページに分割しました。", { count: links.length }));
-      setStatus(t("pdfTool.statusSplit", "ページごとのPDFを生成しました。"));
+      setStatus(t("pdfTool.statusSplit", "ページごとのPDFを生成しました。"), "success");
     });
   }
 
@@ -288,7 +322,7 @@
           after: formatBytes(blob.size),
         }),
       );
-      setStatus(t("pdfTool.statusCompacted", "PDFを再保存しました。"));
+      setStatus(t("pdfTool.statusCompacted", "PDFを再保存しました。"), "success");
     });
   }
 
@@ -353,7 +387,7 @@
         [createDownloadLink(blob, "images.pdf", t("pdfTool.downloadImages", "画像PDFをダウンロード"))],
         t("pdfTool.imagesLead", "{count}個の画像をPDFにまとめました。", { count: loadedImageFiles.length }),
       );
-      setStatus(t("pdfTool.statusImagesDone", "画像PDFを生成しました。"));
+      setStatus(t("pdfTool.statusImagesDone", "画像PDFを生成しました。"), "success");
     });
   }
 

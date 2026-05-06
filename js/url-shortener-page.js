@@ -142,8 +142,23 @@
     });
   }
 
+  function bindExamples() {
+    document.querySelectorAll("[data-example-url]").forEach((button) => {
+      if (button.dataset.exampleBound === "1") return;
+      button.dataset.exampleBound = "1";
+      button.addEventListener("click", () => {
+        const input = document.getElementById("longUrlInput");
+        if (!input) return;
+        input.value = button.getAttribute("data-example-url") || "";
+        input.focus();
+        input.select();
+      });
+    });
+  }
+
   function init() {
     bindGuide();
+    bindExamples();
   }
 
   if (document.readyState === "loading") {

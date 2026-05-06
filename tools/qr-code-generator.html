@@ -35,8 +35,10 @@
   <meta property="og:url" content="https://negi-lab.com/tools/qr-code-generator.html" />
   <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
   <meta property="og:image:alt" content="QRコード生成ツール - URL・Wi-Fi・名刺・SNS対応 | negi-lab.com social share image" />
+  <meta name="robots" content="index,follow" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
+  <meta name="twitter:image:alt" content="QRコード生成ツールの共有カード画像" />
   <meta name="twitter:title" data-translate-key="pageTitle" content="QRコード生成ツール - URL・Wi-Fi・名刺・SNS対応 | negi-lab.com" />
   <meta name="twitter:description" data-translate-key="metaDescription" content="URL、テキスト、Wi-Fi、メール、電話、名刺、イベント、位置情報、SNS用のQRコードをブラウザ内で作成できます。" />
   <meta property="og:site_name" content="negi-lab.com" />
@@ -283,29 +285,80 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "このツールは無料で使えますか？",
+        "name": "どのような用途のQRコードを作れますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。negi-lab.comのオンラインツールは無料で利用できます。広告表示により運営費をまかなっています。"
+          "text": "URL、テキスト、Wi-Fi、メール、電話、名刺、イベント、位置情報、SNSプロフィール向けのQRコードをブラウザ内で作成できます。"
         }
       },
       {
         "@type": "Question",
-        "name": "入力したデータは安全ですか？",
+        "name": "読み取りやすいQRコードにするコツはありますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "主要な変換や計算はブラウザ内で処理します。外部サービス連携が必要な機能では、画面上の案内に従って内容を確認してください。"
+          "text": "前景色と背景色のコントラストを十分に取り、余白を確保し、印刷用途では少し大きめのサイズで保存してください。装飾を加えた場合は実機で読み取り確認するのがおすすめです。"
         }
       },
       {
         "@type": "Question",
-        "name": "スマートフォンでも使えますか？",
+        "name": "URLを短くしてからQRコード化した方が良いですか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。PCとスマートフォンの両方で使えるようにレスポンシブ対応しています。"
+          "text": "長いURLや追跡パラメータが多いURLは、先にURL短縮・共有リンク整形ツールで整理してからQRコード化すると扱いやすくなる場合があります。"
         }
       }
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "QRコード生成ツールの使い方",
+    "description": "用途に合わせてテンプレートを選び、内容を入力して保存するまでの基本手順です。",
+    "totalTime": "PT2M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "QRコード生成ツール"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "テンプレートを選ぶ",
+        "text": "URL、Wi-Fi、名刺、SNSなど用途に合うテンプレートを選びます。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "内容とデザインを設定する",
+        "text": "必要な情報を入力し、サイズや色、保存形式を調整します。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "生成して保存する",
+        "text": "QRコードを生成し、PNG、JPEG、SVGなど必要な形式で保存します。"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QRコード生成ツール",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "URL QRコード生成",
+      "Wi-Fi QRコード生成",
+      "名刺QRコード生成",
+      "SNS QRコード生成",
+      "バッチ入力レビュー",
+      "PNG/JPEG/SVG保存"
+    ],
+    "url": "https://negi-lab.com/tools/qr-code-generator.html"
   }
 ]
   </script>

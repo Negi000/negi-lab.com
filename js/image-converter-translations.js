@@ -22,6 +22,12 @@ window.imageConverterTranslations = {
         'mainTitle': '画像変換・リサイズ・WebP作成ツール',
         'subtitle': 'JPEG・PNG・WebPなど主要形式に対応',
         'description': '複数ファイルの変換、リサイズ、回転、簡易フィルターをブラウザ内で処理できます。',
+        'imageConverter.trust.privacyTitle': 'ブラウザ内処理',
+        'imageConverter.trust.privacyText': '変換処理は主にブラウザ内で完結します。画像データは negi-lab.com のサーバーへ送信しません。',
+        'imageConverter.trust.workflowTitle': '用途別プリセット',
+        'imageConverter.trust.workflowText': 'Web掲載、SNS投稿、印刷確認など、目的別の初期設定からすぐ始められます。',
+        'imageConverter.trust.reviewTitle': '変換前後を比較',
+        'imageConverter.trust.reviewText': 'プレビューと容量差を見ながら、画質と軽さのバランスを確認できます。',
         
         // ファイルアップロード
         'upload.label': '画像ファイルをアップロード:',
@@ -110,6 +116,17 @@ window.imageConverterTranslations = {
         'cta.title': 'あなたの画像も最適化してみませんか？',
         'cta.description': '用途に合わせて変換形式、サイズ、回転、フィルターを選び、ブラウザ内で処理できます。',
         'cta.button': '今すぐ画像変換を始める',
+        'imageConverter.related.heading': '画像まわりの作業をまとめて進める',
+        'imageConverter.related.description': '画像の変換が終わったら、背景透過やOGP画像作成、サイズ比較まで同じブラウザ内で続けて進められます。',
+        'imageConverter.related.bgRemover.label': '背景透過',
+        'imageConverter.related.bgRemover.title': '背景削除ツール',
+        'imageConverter.related.bgRemover.description': '商品画像やプロフィール画像の背景を整理して、用途別の素材を作りやすくします。',
+        'imageConverter.related.ogp.label': 'SNS・サイト公開',
+        'imageConverter.related.ogp.title': 'Favicon・OGP画像作成',
+        'imageConverter.related.ogp.description': '変換後の画像をそのまま使って、サイトやSNS向けの共有画像セットを用意できます。',
+        'imageConverter.related.compare.label': '最終チェック',
+        'imageConverter.related.compare.title': '画像サイズ比較ツール',
+        'imageConverter.related.compare.description': '変換候補の容量や寸法を並べて見比べ、配信前の最終判断をしやすくします。',
         
         // ガイド
         'guide.webDev': 'Web・アプリ開発',
@@ -372,6 +389,12 @@ window.imageConverterTranslations = {
         'mainTitle': 'Image Converter, Resizer, and WebP Maker',
         'subtitle': 'Supports common formats including JPEG, PNG, and WebP',
         'description': 'Convert, resize, rotate, and apply simple filters to multiple files in your browser.',
+        'imageConverter.trust.privacyTitle': 'Browser-side processing',
+        'imageConverter.trust.privacyText': 'Conversion is handled primarily in the browser. Image data is not uploaded to negi-lab.com servers.',
+        'imageConverter.trust.workflowTitle': 'Workflow presets',
+        'imageConverter.trust.workflowText': 'Start quickly with preset defaults for web publishing, social posts, and print review.',
+        'imageConverter.trust.reviewTitle': 'Compare before and after',
+        'imageConverter.trust.reviewText': 'Use the preview and size difference to balance visual quality with lighter output.',
         
         // File upload
         'upload.label': 'Upload Image Files:',
@@ -460,6 +483,17 @@ window.imageConverterTranslations = {
         'cta.title': 'Ready to optimize your images?',
         'cta.description': 'Choose the format, size, rotation, and filters you need, then process images directly in your browser.',
         'cta.button': 'Start Converting Images Now',
+        'imageConverter.related.heading': 'Keep image work moving in one place',
+        'imageConverter.related.description': 'After converting images, continue with background cleanup, OGP asset creation, and size comparison in the same browser session.',
+        'imageConverter.related.bgRemover.label': 'Background cleanup',
+        'imageConverter.related.bgRemover.title': 'Background Remover',
+        'imageConverter.related.bgRemover.description': 'Prepare product shots and profile images with cleaner backgrounds for each publishing use case.',
+        'imageConverter.related.ogp.label': 'Social and site launch',
+        'imageConverter.related.ogp.title': 'Favicon and OGP Generator',
+        'imageConverter.related.ogp.description': 'Turn converted images into share-card assets and favicon sets for websites and social posts.',
+        'imageConverter.related.compare.label': 'Final review',
+        'imageConverter.related.compare.title': 'Image Size Compare Tool',
+        'imageConverter.related.compare.description': 'Compare output candidates side by side so it is easier to choose the right size and weight before publishing.',
         
         // Guide sections
         'guide.webDev': 'Web & App Development',
