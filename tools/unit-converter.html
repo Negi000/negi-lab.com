@@ -41,8 +41,8 @@
   " />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="ads-dynamic" content="off" />
-  <title data-translate-key="unitConverter.pageTitle">単位変換ツール - 長さ・重さ・温度・面積・体積・電子レンジ時間 | negi-lab.com</title>
-  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ、重さ、温度、面積、体積、圧力、データ量、電子レンジ時間、日本の伝統単位など230以上の単位をブラウザ上で換算できます。" />
+  <title data-translate-key="unitConverter.pageTitle">単位変換ツール - 長さ・重さ・温度・面積・体積・電子レンジ時間をまとめて変換 | negi-lab.com</title>
+  <meta name="description" data-translate-key="unitConverter.metaDescription" content="長さ、重さ、温度、面積、体積、圧力、データ容量、電子レンジ時間、尺貫法など 230 以上の単位をブラウザ上で変換できます。" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://negi-lab.com/tools/unit-converter.html" />
   <link rel="alternate" hreflang="ja" href="https://negi-lab.com/tools/unit-converter.html" />
@@ -52,20 +52,20 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/tools/unit-converter.html" />
   <meta property="og:image" content="https://negi-lab.com/favicon.ico" />
-  <meta property="og:image:alt" content="単位変換ツール - 長さ・重さ・温度・面積・体積・電子レンジ時間 | negi-lab.com social share image" />
+  <meta property="og:image:alt" content="単位変換ツールの共有画像" />
   <meta property="og:site_name" content="negi-lab.com" />
-  <meta property="og:title" content="単位変換ツール - 230以上の単位を換算 | negi-lab.com" />
-  <meta property="og:description" content="長さ、重さ、温度、面積、体積、電子レンジ時間、日本の伝統単位までブラウザ内で換算できます。" />
+  <meta property="og:title" content="単位変換ツール - 230以上の単位に対応 | negi-lab.com" />
+  <meta property="og:description" content="長さ、重さ、温度、面積、体積、圧力、データ容量、電子レンジ時間、尺貫法などをブラウザ上で変換できます。" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://negi-lab.com/favicon.ico" />
   <meta name="twitter:title" content="単位変換ツール | negi-lab.com" />
-  <meta name="twitter:description" content="230以上の単位をブラウザ上で換算。長さ・重さ・温度・坪・電子レンジ時間にも対応。" />
+  <meta name="twitter:description" content="230以上の単位に対応したブラウザ完結の単位変換ツールです。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <script>
-window.pageTitleTranslationKey = "unitConverter.pageTitle";
+    window.pageTitleTranslationKey = "unitConverter.pageTitle";
     window.metaDescriptionTranslationKey = "unitConverter.metaDescription";
   </script>
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
@@ -101,9 +101,13 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
       box-shadow: 0 0 0 3px rgba(34, 197, 94, .16);
     }
     @media (prefers-reduced-motion: reduce) {
-      .category-button { transition: none; }
+      .category-button {
+        transition: none;
+      }
       .category-button:hover,
-      .category-button[aria-pressed="true"] { transform: none; }
+      .category-button[aria-pressed="true"] {
+        transform: none;
+      }
     }
   </style>
   <script type="application/ld+json" id="tool-structured-data">
@@ -111,22 +115,19 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "単位変換ツール",
+    "name": "\u5358\u4f4d\u5909\u63db\u30c4\u30fc\u30eb",
     "alternateName": [
       "Unit Converter",
       "Metric Converter",
       "Japanese Unit Converter"
     ],
-    "description": "長さ、重さ、温度、面積、体積、圧力、データ量、電子レンジ時間、日本の伝統単位など230以上の単位をブラウザ上で換算できます。",
+    "description": "\u9577\u3055\u3001\u91cd\u3055\u3001\u6e29\u5ea6\u3001\u9762\u7a4d\u3001\u4f53\u7a4d\u3001\u30c7\u30fc\u30bf\u5bb9\u91cf\u3001\u96fb\u5b50\u30ec\u30f3\u30b8\u6642\u9593\u306a\u3069230\u4ee5\u4e0a\u306e\u5358\u4f4d\u3092\u30d6\u30e9\u30a6\u30b6\u4e0a\u3067\u5909\u63db\u3067\u304d\u308b\u7121\u6599\u30c4\u30fc\u30eb\u3067\u3059\u3002",
     "url": "https://negi-lab.com/tools/unit-converter.html",
     "applicationCategory": "Calculator",
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser",
     "isAccessibleForFree": true,
-    "inLanguage": [
-      "ja",
-      "en"
-    ],
+    "inLanguage": ["ja", "en"],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -138,35 +139,20 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
       "url": "https://negi-lab.com/"
     },
     "featureList": [
-      "長さ、重さ、温度、面積、体積の換算",
-      "日本の伝統単位に対応",
-      "電子レンジのワット数別時間換算",
-      "同一カテゴリの全単位一覧",
-      "ブラウザ内処理"
+      "29\u30ab\u30c6\u30b4\u30ea\u30fb230\u5358\u4f4d\u306b\u5bfe\u5fdc",
+      "\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u5b8c\u7d50\u3059\u308b\u30ed\u30fc\u30ab\u30eb\u8a08\u7b97",
+      "\u65e5\u672c\u306e\u4f1d\u7d71\u5358\u4f4d\u3084\u6d77\u5916\u5358\u4f4d\u306b\u3082\u5bfe\u5fdc",
+      "\u96fb\u5b50\u30ec\u30f3\u30b8\u6642\u9593\u3084\u30c7\u30fc\u30bf\u5bb9\u91cf\u306e\u5909\u63db",
+      "\u6700\u8fd1\u306e\u5909\u63db\u5c65\u6b74\u3092\u7aef\u672b\u5185\u306b\u4fdd\u5b58"
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "ホーム",
-        "item": "https://negi-lab.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "ツール",
-        "item": "https://negi-lab.com/tools/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "単位変換ツール",
-        "item": "https://negi-lab.com/tools/unit-converter.html"
-      }
+      { "@type": "ListItem", "position": 1, "name": "\u30db\u30fc\u30e0", "item": "https://negi-lab.com/" },
+      { "@type": "ListItem", "position": 2, "name": "\u30c4\u30fc\u30eb", "item": "https://negi-lab.com/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "\u5358\u4f4d\u5909\u63db\u30c4\u30fc\u30eb", "item": "https://negi-lab.com/tools/unit-converter.html" }
     ]
   },
   {
@@ -175,26 +161,26 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "この単位変換ツールは無料ですか？",
+        "name": "\u3053\u306e\u5358\u4f4d\u5909\u63db\u30c4\u30fc\u30eb\u306f\u7121\u6599\u3067\u3059\u304b\uff1f",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "無料で利用できます。会員登録は不要で、スマートフォンとPCのどちらでも使えます。"
+          "text": "\u306f\u3044\u3002\u7121\u6599\u3067\u5229\u7528\u3067\u304d\u307e\u3059\u3002\u767b\u9332\u306f\u4e0d\u8981\u3067\u3001\u30b9\u30de\u30fc\u30c8\u30d5\u30a9\u30f3\u3068PC\u306e\u3069\u3061\u3089\u3067\u3082\u4f7f\u3048\u307e\u3059\u3002"
         }
       },
       {
         "@type": "Question",
-        "name": "入力した値は保存されますか？",
+        "name": "\u5165\u529b\u3057\u305f\u5024\u306f\u4fdd\u5b58\u3055\u308c\u307e\u3059\u304b\uff1f",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "変換処理はブラウザ内で完結します。入力値をサーバーへ送信する仕組みはありません。"
+          "text": "\u5909\u63db\u8a08\u7b97\u306f\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u884c\u308f\u308c\u3001\u5165\u529b\u5024\u306f\u30b5\u30fc\u30d0\u30fc\u3078\u9001\u4fe1\u3055\u308c\u307e\u305b\u3093\u3002\u5c65\u6b74\u3082\u7aef\u672b\u5185\u306e\u4fdd\u5b58\u306b\u9650\u3089\u308c\u307e\u3059\u3002"
         }
       },
       {
         "@type": "Question",
-        "name": "日本の伝統単位にも対応していますか？",
+        "name": "\u5c3a\u8cab\u6cd5\u3084\u65e5\u672c\u306e\u4f1d\u7d71\u5358\u4f4d\u306b\u3082\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u304b\uff1f",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "尺、寸、間、坪、合、升、貫、匁など、日常や資料確認で使う伝統単位にも対応しています。"
+          "text": "\u306f\u3044\u3002\u5c3a\u3001\u5bf8\u3001\u9593\u3001\u576a\u3001\u5408\u3001\u5347\u3001\u8cab\u3001\u5301\u306a\u3069\u3001\u65e5\u672c\u3067\u4f7f\u308f\u308c\u3066\u304d\u305f\u5358\u4f4d\u306b\u3082\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u3002"
         }
       }
     ]
@@ -217,7 +203,7 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
             </select>
           </li>
           <li>
-            <button id="guide-btn" type="button" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">ガイド</button>
+            <button id="guide-btn" type="button" class="rounded border border-accent px-2 sm:px-3 py-1 text-accent text-sm font-semibold bg-white hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-accent transition" aria-haspopup="dialog" aria-controls="guide-modal" data-translate-key="header.guide">使い方</button>
           </li>
         </ul>
       </nav>
@@ -241,10 +227,10 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
       <div class="max-w-7xl mx-auto px-4 py-8 sm:py-10">
         <div class="grid lg:grid-cols-[1fr_auto] gap-6 lg:items-end">
           <div>
-            <p class="text-sm font-semibold text-accent" data-translate-key="unitConverter.eyebrow">29カテゴリ・230単位</p>
+            <p class="text-sm font-semibold text-accent" data-translate-key="unitConverter.eyebrow">29カテゴリ・230単位に対応</p>
             <h1 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-ink" data-translate-key="unitConverter.title">単位変換ツール</h1>
-            <p class="mt-3 max-w-3xl text-base sm:text-lg leading-8 text-slate-600" data-translate-key="unitConverter.lead">長さ・重さ・面積・体積・温度・電子レンジ時間まで、必要な換算を1画面で確認できます。</p>
-            <p class="mt-3 text-sm text-slate-500" data-translate-key="unitConverter.privacyNote">入力値はブラウザ内で処理され、サーバーへ送信されません。</p>
+            <p class="mt-3 max-w-3xl text-base sm:text-lg leading-8 text-slate-600" data-translate-key="unitConverter.lead">長さ、重さ、温度、面積、体積、データ容量、電子レンジ時間まで、1つの画面で素早く変換できます。</p>
+            <p class="mt-3 text-sm text-slate-500" data-translate-key="unitConverter.privacyNote">計算はブラウザ内で完結します。入力した値はサーバーへ送信されません。</p>
           </div>
           <dl class="grid grid-cols-3 gap-3 text-center min-w-[min(100%,26rem)]">
             <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
@@ -273,21 +259,21 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
                 <h2 class="text-xl font-bold text-ink" data-translate-key="unitConverter.categoryTitle">変換カテゴリ</h2>
                 <label for="categorySearch" class="mt-3 block text-sm font-medium text-slate-600" data-translate-key="unitConverter.categorySearchLabel">カテゴリ検索</label>
               </div>
-              <input id="categorySearch" type="search" class="tool-input w-full sm:max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm" data-translate-placeholder-key="unitConverter.categorySearchPlaceholder" placeholder="例：温度、坪、psi、電子レンジ、データ" autocomplete="off" />
+              <input id="categorySearch" type="search" class="tool-input w-full sm:max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm" data-translate-placeholder-key="unitConverter.categorySearchPlaceholder" placeholder="例: 温度、坪、psi、電子レンジ、データ" autocomplete="off" />
             </div>
             <div id="categoryGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3"></div>
           </section>
 
-          <section class="bg-white border border-slate-200 rounded-lg shadow-soft p-4 sm:p-5">
+          <section class="bg-white border border-slate-200 rounded-lg shadow-soft p-4 sm:p-5" aria-labelledby="workspace-heading">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
               <div>
-                <h2 class="text-xl font-bold text-ink" data-translate-key="unitConverter.workspaceTitle">換算ワークスペース</h2>
-                <p class="mt-1 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.workspaceLead">数値を入力すると、結果と同じカテゴリ内の全単位一覧が即時に更新されます。</p>
+                <h2 id="workspace-heading" class="text-xl font-bold text-ink" data-translate-key="unitConverter.workspaceTitle">変換ワークスペース</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.workspaceLead">数値を入力すると、主要な変換結果と同カテゴリ内の一覧がすぐに更新されます。</p>
               </div>
               <div class="flex gap-2">
                 <button id="shareUrl" type="button" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:border-accent hover:text-accent transition">
                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h8m-5-5 5 5-5 5M5 4h4a2 2 0 0 1 2 2v1M5 20h4a2 2 0 0 0 2-2v-1"/></svg>
-                  <span data-translate-key="unitConverter.shareButton">URL共有</span>
+                  <span data-translate-key="unitConverter.shareButton">共有URLをコピー</span>
                 </button>
               </div>
             </div>
@@ -295,7 +281,7 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
             <div class="grid lg:grid-cols-[1fr_auto_1fr] gap-4 items-end">
               <div>
                 <label for="inputValue" class="block text-sm font-semibold text-slate-700 mb-2" data-translate-key="unitConverter.valueLabel">変換する値</label>
-                <input id="inputValue" type="text" inputmode="decimal" class="tool-input w-full rounded-lg border border-slate-300 px-4 py-3 text-lg font-semibold" data-translate-placeholder-key="unitConverter.valuePlaceholder" placeholder="例：100" value="1" />
+                <input id="inputValue" type="text" inputmode="decimal" class="tool-input w-full rounded-lg border border-slate-300 px-4 py-3 text-lg font-semibold" data-translate-placeholder-key="unitConverter.valuePlaceholder" placeholder="例: 100" value="1" aria-describedby="resultHint errorMessage" />
                 <div id="microwaveFields" class="hidden grid grid-cols-2 gap-3 mt-3">
                   <label class="block text-xs font-medium text-slate-600">
                     <span data-translate-key="unitConverter.microwaveMinutesLabel">分</span>
@@ -337,39 +323,53 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
               </div>
             </div>
 
-            <div class="mt-5 rounded-lg border border-green-200 bg-green-50 p-4">
+            <div class="mt-5 rounded-lg border border-green-200 bg-green-50 p-4" aria-live="polite">
               <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
                 <div class="min-w-0">
-                  <p class="text-sm font-semibold text-green-800" data-translate-key="unitConverter.resultLabel">結果</p>
+                  <p class="text-sm font-semibold text-green-800" data-translate-key="unitConverter.resultLabel">変換結果</p>
                   <output id="resultValue" class="mt-1 block break-words text-2xl sm:text-3xl font-extrabold text-ink">0</output>
                   <p id="resultDetail" class="mt-1 text-sm text-slate-600"></p>
+                  <p id="resultHint" class="mt-2 text-xs text-slate-500" data-translate-key="unitConverter.resultHint">一覧の行を選ぶと変換先を切り替えられます。</p>
                 </div>
                 <button id="copyResult" type="button" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-green-300 bg-white px-3 py-2 text-sm font-bold text-green-700 hover:bg-green-100 transition">
                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8h10v12H8zM6 16H4V4h12v2"/></svg>
-                  <span data-translate-key="unitConverter.copyButton">コピー</span>
+                  <span data-translate-key="unitConverter.copyButton">結果をコピー</span>
                 </button>
               </div>
-              <p id="errorMessage" class="mt-3 hidden text-sm font-semibold text-red-600"></p>
+              <p id="errorMessage" class="mt-3 text-sm font-semibold text-red-600" role="alert" hidden></p>
+              <p id="statusMessage" class="mt-3 text-sm text-slate-600" aria-live="polite"></p>
             </div>
           </section>
         </div>
 
         <aside class="space-y-6 xl:sticky xl:top-24">
           <section class="bg-white border border-slate-200 rounded-lg shadow-soft p-4 sm:p-5">
-            <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.examplesTitle">よく使う換算</h2>
+            <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.examplesTitle">よく使う変換</h2>
             <div id="exampleList" class="mt-4 grid gap-2"></div>
+          </section>
+
+          <section class="bg-white border border-slate-200 rounded-lg shadow-soft p-4 sm:p-5">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.historyTitle">最近の変換</h2>
+                <p class="mt-1 text-sm text-slate-600" data-translate-key="unitConverter.historyLead">ブラウザ内に最近使った変換を保存します。</p>
+              </div>
+              <button id="clearHistory" type="button" class="rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 hover:border-accent hover:text-accent transition" data-translate-key="unitConverter.historyClear">履歴を消去</button>
+            </div>
+            <div id="historyList" class="mt-4 grid gap-2"></div>
           </section>
 
           <section class="bg-white border border-slate-200 rounded-lg shadow-soft overflow-hidden">
             <div class="p-4 sm:p-5 border-b border-slate-200">
-              <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.allResultsTitle">同じカテゴリの全換算結果</h2>
+              <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.allResultsTitle">カテゴリ内の全変換結果</h2>
             </div>
             <div class="max-h-[560px] overflow-auto">
               <table class="min-w-full text-sm">
+                <caption class="sr-only" data-translate-key="unitConverter.tableCaption">現在のカテゴリで利用できるすべての単位への変換結果一覧</caption>
                 <thead class="bg-slate-50 sticky top-0 z-10">
                   <tr class="text-left text-slate-600">
                     <th class="px-4 py-3 font-semibold" data-translate-key="unitConverter.unitColumn">単位</th>
-                    <th class="px-4 py-3 font-semibold" data-translate-key="unitConverter.valueColumn">換算値</th>
+                    <th class="px-4 py-3 font-semibold" data-translate-key="unitConverter.valueColumn">変換値</th>
                     <th class="px-4 py-3 font-semibold" data-translate-key="unitConverter.symbolColumn">記号</th>
                   </tr>
                 </thead>
@@ -403,20 +403,20 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
       <div class="max-w-7xl mx-auto px-4 py-10">
         <div class="max-w-3xl">
           <h2 class="text-2xl font-extrabold text-ink" data-translate-key="unitConverter.guideTitle">単位変換を正確に使うコツ</h2>
-          <p class="mt-2 text-slate-600 leading-7" data-translate-key="unitConverter.guideLead">料理・建築・海外仕様・理工系の計算では、同じ名前でも国や分野で基準が違うことがあります。</p>
+          <p class="mt-2 text-slate-600 leading-7" data-translate-key="unitConverter.guideLead">料理、建築、海外仕様、科学分野では、似た名前でも前提の単位系が異なることがあります。</p>
         </div>
         <div class="mt-6 grid md:grid-cols-3 gap-5">
           <article class="border-l-4 border-accent pl-4">
-            <h3 class="font-bold text-ink" data-translate-key="unitConverter.guidePoint1Title">料理は地域差を確認</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint1Body">カップは日本で200mL、米国では約236.6mLです。レシピの国に合わせて選ぶと取り違えを防ぎやすくなります。</p>
+            <h3 class="font-bold text-ink" data-translate-key="unitConverter.guidePoint1Title">料理の容量は地域差を確認</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint1Body">カップは日本では 200mL、米国では約 236.6mL です。レシピの出典に合わせて選ぶと失敗を防げます。</p>
           </article>
           <article class="border-l-4 border-accent pl-4">
-            <h3 class="font-bold text-ink" data-translate-key="unitConverter.guidePoint2Title">面積は坪と平米を併記</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint2Body">不動産や建築では、坪と平方メートルを並べて確認すると面積を照合しやすくなります。</p>
+            <h3 class="font-bold text-ink" data-translate-key="unitConverter.guidePoint2Title">不動産や施工では坪と平方メートルを併記</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint2Body">坪と平方メートルを並べて確認すると、面積感覚のズレを減らしやすくなります。</p>
           </article>
           <article class="border-l-4 border-accent pl-4">
             <h3 class="font-bold text-ink" data-translate-key="unitConverter.guidePoint3Title">電子レンジはワット数を合わせる</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint3Body">食品パッケージの加熱時間は基準ワット数が違うことがあるため、手元の機種に合わせて換算します。</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.guidePoint3Body">食品パッケージの加熱条件と自宅のレンジ出力が違う場合は、時間を換算してから使うと安心です。</p>
           </article>
         </div>
       </div>
@@ -425,26 +425,26 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
     <section class="max-w-7xl mx-auto px-4 py-10">
       <div class="grid lg:grid-cols-[1fr_360px] gap-8">
         <section>
-          <h2 class="text-2xl font-extrabold text-ink" data-translate-key="unitConverter.faqTitle">単位変換ツールのFAQ</h2>
+          <h2 class="text-2xl font-extrabold text-ink" data-translate-key="unitConverter.faqTitle">単位変換ツール FAQ</h2>
           <div class="mt-5 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
             <details class="group p-5" open>
               <summary class="cursor-pointer font-bold text-ink" data-translate-key="unitConverter.faq1Q">この単位変換ツールは無料ですか？</summary>
-              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq1A">無料で利用できます。会員登録も不要で、スマートフォンとPCのどちらでも使えます。</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq1A">はい。無料で使えます。登録は不要で、スマートフォンと PC のどちらでも利用できます。</p>
             </details>
             <details class="group p-5">
               <summary class="cursor-pointer font-bold text-ink" data-translate-key="unitConverter.faq2Q">入力した値は保存されますか？</summary>
-              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq2A">変換処理はブラウザ内で完結します。入力値をサーバーへ送信する仕組みはありません。</p>
+              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq2A">変換計算はブラウザ内で行われ、入力値はサーバーへ送信されません。履歴も端末内の保存に限られます。</p>
             </details>
             <details class="group p-5">
-              <summary class="cursor-pointer font-bold text-ink" data-translate-key="unitConverter.faq3Q">日本の伝統単位にも対応していますか？</summary>
-              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq3A">尺、寸、間、坪、合、升、貫、匁など、日常や資料確認で使う伝統単位にも対応しています。</p>
+              <summary class="cursor-pointer font-bold text-ink" data-translate-key="unitConverter.faq3Q">尺貫法や日本の伝統単位にも対応していますか？</summary>
+              <p class="mt-3 text-sm leading-7 text-slate-600" data-translate-key="unitConverter.faq3A">はい。尺、寸、間、坪、合、升、貫、匁など、日本で使われてきた単位にも対応しています。</p>
             </details>
           </div>
         </section>
 
         <aside class="bg-white border border-slate-200 rounded-lg p-5 h-fit">
           <h2 class="text-lg font-bold text-ink" data-translate-key="unitConverter.relatedTitle">関連ツール</h2>
-          <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.relatedLead">変換後の数値やテキスト処理まで、同じブラウザ内で続けて使えます。</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600" data-translate-key="unitConverter.relatedLead">数値変換のあとに、日付計算やテキスト整形、データ変換も同じサイト内で続けて使えます。</p>
           <div id="relatedTools" class="mt-4 grid gap-2"></div>
         </aside>
       </div>
@@ -473,8 +473,8 @@ window.pageTitleTranslationKey = "unitConverter.pageTitle";
       <ol class="mt-5 space-y-3 text-sm leading-7 text-slate-700">
         <li data-translate-key="unitConverter.modalStep1">カテゴリを選ぶ</li>
         <li data-translate-key="unitConverter.modalStep2">変換元と変換先の単位を選ぶ</li>
-        <li data-translate-key="unitConverter.modalStep3">数値を入力する</li>
-        <li data-translate-key="unitConverter.modalStep4">結果と全単位一覧を確認する</li>
+        <li data-translate-key="unitConverter.modalStep3">値を入力する</li>
+        <li data-translate-key="unitConverter.modalStep4">主要結果と一覧を確認する</li>
       </ol>
     </div>
   </div>
