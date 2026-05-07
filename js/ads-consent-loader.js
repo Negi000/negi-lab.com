@@ -205,6 +205,25 @@
     if (shell) shell.setAttribute("data-ad-empty", "true");
   }
 
+  function disableGoogleAdSlots(reason) {
+    document.documentElement.setAttribute("data-google-ads-disabled", reason || "1");
+    document.querySelectorAll("ins.adsbygoogle").forEach((ins) => {
+      ins.setAttribute("data-ads-pushed", "disabled");
+      ins.setAttribute("data-ad-status", "unfilled");
+      const shell = getAdShell(ins);
+      if (shell) {
+        shell.setAttribute("data-ad-empty", "true");
+        shell.hidden = true;
+      } else {
+        ins.style.display = "none";
+      }
+    });
+  }
+
+  function mobileGoogleAdsDisabled() {
+    return isMobile() && !document.documentElement.hasAttribute("data-allow-mobile-google-ads");
+  }
+
   function watchAdFill(ins) {
     const shell = getAdShell(ins);
     if (!shell) return;
@@ -297,6 +316,10 @@
     if (!ENV_OK || document.documentElement.hasAttribute("data-ads-disabled")) return;
     const disabledByMeta = !!document.querySelector('meta[name="ads"][content="off"]');
     if (disabledByMeta) return;
+    if (mobileGoogleAdsDisabled()) {
+      disableGoogleAdSlots("mobile");
+      return;
+    }
 
     if (window.ResponsiveAds && typeof window.ResponsiveAds.setupResponsiveAds === "function") {
       window.ResponsiveAds.setupResponsiveAds();
@@ -529,7 +552,12 @@
     ensureBaseAdCSS();
     setPendingAdShells(!consentAccepted);
     injectConsentBanner();
-    if (isMobile() && document.body) document.body.setAttribute("data-mobile-device", "true");
+    if (isMobile() && document.body) {
+      document.body.setAttribute("data-mobile-device", "true");
+      if (mobileGoogleAdsDisabled()) {
+        disableGoogleAdSlots("mobile");
+      }
+    }
     if (consentAccepted) {
       startRuntimeAfterConsent();
     } else if (ENV_OK) {
