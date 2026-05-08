@@ -24,7 +24,9 @@
     dynamicMaxSlots: 1,
     overlayWatchdogIntervalMs: 500,
     overlayWatchdogWindowMs: 20000,
-    overlayHiddenGraceMs: 2500
+    overlayHiddenGraceMs: 2500,
+    overlayGuardianIntervalMs: 900,
+    overlayGuardianFastWindowMs: 180000
   };
 
   const host = location.hostname || "";
@@ -39,6 +41,7 @@
   let runtimeStarted = false;
   let noVignetteObserver = null;
   let overlayWatchdogStarted = false;
+  let overlayGuardianStarted = false;
 
   function safeGet(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
@@ -346,6 +349,142 @@
     try { history.replaceState(null, document.title, cleanUrl); } catch (_) {}
   }
 
+  function removeUnsafeVisibilityState(reason) {
+    const roots = [document.documentElement, document.body].filter(Boolean);
+    const contentRoots = Array.from(document.querySelectorAll("body, main, header, footer, [role='main'], #main-content"));
+    roots.concat(contentRoots).forEach((node) => {
+      if (!node || node.nodeType !== 1) return;
+      node.removeAttribute("aria-hidden");
+      node.removeAttribute("inert");
+      if (node.style) {
+        ["visibility", "opacity", "display", "pointer-events"].forEach((prop) => {
+          const value = node.style.getPropertyValue(prop);
+          if (value && /hidden|none|0/i.test(value)) node.style.removeProperty(prop);
+        });
+      }
+    });
+    if (document.body && document.body.style) {
+      ["position", "top", "left", "right", "bottom", "height", "max-height", "overflow", "padding-right"].forEach((prop) => {
+        const value = document.body.style.getPropertyValue(prop);
+        if (value) document.body.style.removeProperty(prop);
+      });
+    }
+    document.documentElement.setAttribute("data-google-overlay-recovered", reason || "visibility");
+  }
+
+  function adOverlaySignal(node) {
+    if (!node || node.nodeType !== 1) return false;
+    const signal = [
+      node.id,
+      typeof node.className === "string" ? node.className : "",
+      node.getAttribute("name"),
+      node.getAttribute("title"),
+      node.getAttribute("aria-label"),
+      node.getAttribute("src"),
+      node.getAttribute("data-google-container-id"),
+      node.getAttribute("data-ad-client")
+    ].filter(Boolean).join(" ").toLowerCase();
+    return /google_vignette|google_ads_iframe|aswift|adsbygoogle|pagead|googlesyndication|googlefc|adtrafficquality/.test(signal);
+  }
+
+  function viewportCoveringElement(node) {
+    if (!node || node.nodeType !== 1 || !node.getBoundingClientRect) return false;
+    const rect = node.getBoundingClientRect();
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    if (!viewportWidth || !viewportHeight || rect.width <= 0 || rect.height <= 0) return false;
+    const style = window.getComputedStyle ? window.getComputedStyle(node) : null;
+    const zIndex = style ? parseInt(style.zIndex || "0", 10) || 0 : 0;
+    const positioned = style && /fixed|absolute|sticky/i.test(style.position || "");
+    const coversWidth = rect.width >= viewportWidth * 0.86 || (rect.left <= 4 && rect.right >= viewportWidth - 4);
+    const coversHeight = rect.height >= viewportHeight * 0.68 || (rect.top <= 4 && rect.bottom >= viewportHeight - 4);
+    const centerX = Math.max(1, Math.min(viewportWidth - 1, viewportWidth / 2));
+    const centerY = Math.max(1, Math.min(viewportHeight - 1, viewportHeight / 2));
+    const centerNode = document.elementFromPoint ? document.elementFromPoint(centerX, centerY) : null;
+    const coversCenter = !!centerNode && (centerNode === node || node.contains(centerNode));
+    return coversWidth && coversHeight && (coversCenter || positioned || zIndex >= 1000);
+  }
+
+  function removableAdOverlayRoot(node) {
+    let root = node;
+    while (root && root.parentElement && root.parentElement !== document.body && root.parentElement !== document.documentElement) {
+      if (!viewportCoveringElement(root.parentElement)) break;
+      root = root.parentElement;
+    }
+    return root && root !== document.body && root !== document.documentElement ? root : node;
+  }
+
+  function removeBlockingAdOverlays(reason) {
+    let removed = 0;
+    const nodes = Array.from(document.querySelectorAll("iframe, ins, div, aside, section"));
+    nodes.forEach((node) => {
+      if (!adOverlaySignal(node) || !viewportCoveringElement(node)) return;
+      const root = removableAdOverlayRoot(node);
+      if (!root || root === document.body || root === document.documentElement) return;
+      const shell = root.closest(".ad-shell, .ad-block, .dynamic-ad-container, aside");
+      if (shell && !viewportCoveringElement(shell)) return;
+      try {
+        root.remove();
+        removed += 1;
+      } catch (_) {
+        root.style.display = "none";
+        root.setAttribute("aria-hidden", "true");
+        removed += 1;
+      }
+    });
+    if (removed) {
+      document.documentElement.setAttribute("data-google-overlay-recovered", reason || "blocking-overlay");
+    }
+    return removed;
+  }
+
+  function pageVisibilityIsUnsafe() {
+    const body = document.body;
+    if (!body) return googleVignetteHashActive();
+    const bodyStyle = window.getComputedStyle ? window.getComputedStyle(body) : null;
+    const htmlStyle = window.getComputedStyle ? window.getComputedStyle(document.documentElement) : null;
+    return googleVignetteHashActive()
+      || body.getAttribute("aria-hidden") === "true"
+      || document.documentElement.getAttribute("aria-hidden") === "true"
+      || body.hasAttribute("inert")
+      || document.documentElement.hasAttribute("inert")
+      || (bodyStyle && (bodyStyle.visibility === "hidden" || bodyStyle.opacity === "0" || bodyStyle.display === "none"))
+      || (htmlStyle && (htmlStyle.visibility === "hidden" || htmlStyle.opacity === "0" || htmlStyle.display === "none"));
+  }
+
+  function recoverAdOverlay(reason) {
+    const unsafe = pageVisibilityIsUnsafe();
+    const removed = removeBlockingAdOverlays(reason || "guardian");
+    if (!unsafe && !removed) return false;
+    removeUnsafeVisibilityState(reason || (removed ? "blocking-overlay" : "visibility"));
+    clearGoogleVignetteHash();
+    return true;
+  }
+
+  function startAdOverlayGuardian() {
+    if (overlayGuardianStarted || !ENV_OK) return;
+    overlayGuardianStarted = true;
+    const started = Date.now();
+    const run = (reason) => recoverAdOverlay(reason);
+    run("startup");
+    if ("MutationObserver" in window) {
+      const observer = new MutationObserver(() => run("mutation"));
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["aria-hidden", "inert", "style", "class"],
+        childList: true,
+        subtree: true
+      });
+    }
+    ["hashchange", "pageshow", "focus", "visibilitychange", "popstate"].forEach((eventName) => {
+      window.addEventListener(eventName, () => setTimeout(() => run(eventName), 60), { passive: true });
+    });
+    setInterval(() => {
+      const reason = Date.now() - started <= CONFIG.overlayGuardianFastWindowMs ? "interval-fast" : "interval";
+      run(reason);
+    }, CONFIG.overlayGuardianIntervalMs);
+  }
+
   function markNoVignetteLinks(root) {
     const scope = root && root.querySelectorAll ? root : document;
     if (document.documentElement.hasAttribute("data-allow-vignette-ads")) return;
@@ -392,10 +531,7 @@
 
       const stuckHidden = hiddenSince && now - hiddenSince >= CONFIG.overlayHiddenGraceMs;
       if (vignetteHash || stuckHidden) {
-        document.documentElement.setAttribute("data-google-overlay-recovered", vignetteHash ? "vignette" : "aria-hidden");
-        if (document.body) {
-          document.body.removeAttribute("aria-hidden");
-        }
+        recoverAdOverlay(vignetteHash ? "vignette" : "aria-hidden");
         clearGoogleVignetteHash();
         clearInterval(timer);
         return;
@@ -523,9 +659,9 @@
   function initAds() {
     if (!ENV_OK || document.documentElement.hasAttribute("data-ads-disabled")) return;
     setupNoVignetteLinks();
+    startAdOverlayGuardian();
     if (googleVignetteHashActive()) {
-      document.documentElement.setAttribute("data-google-overlay-recovered", "vignette");
-      clearGoogleVignetteHash();
+      recoverAdOverlay("vignette");
     }
     if (shouldDisableGoogleAds()) {
       disableGoogleAdSlots(googleAdsDisabledBySession() ? "session-overlay-recovery" : "disabled");
@@ -767,6 +903,7 @@
     setTimeout(maybeInsertDynamicAds, 600);
   }
 
+  startAdOverlayGuardian();
   syncConsentState();
   window.NegiLabConsent = {
     hasConsent,
@@ -777,10 +914,10 @@
   document.addEventListener("DOMContentLoaded", () => {
     ensureBaseAdCSS();
     setupNoVignetteLinks();
+    startAdOverlayGuardian();
     googleAdsDisabledBySession();
     if (googleVignetteHashActive()) {
-      document.documentElement.setAttribute("data-google-overlay-recovered", "vignette");
-      clearGoogleVignetteHash();
+      recoverAdOverlay("vignette");
     }
     setPendingAdShells(!consentAccepted);
     injectConsentBanner();
