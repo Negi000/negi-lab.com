@@ -111,7 +111,10 @@
       ".negi-ad-fallback{display:flex;min-height:160px;align-items:center;justify-content:center;border:1px solid rgba(148,163,184,.45);background:rgba(248,250,252,.9);}",
       ".negi-ad-fallback-label{margin-bottom:.25rem;font-size:.75rem;color:#94a3b8;}",
       ".dynamic-ad-container{overflow:hidden;}",
-      ".dynamic-ad-container ins.adsbygoogle{min-height:180px;}"
+      ".dynamic-ad-container ins.adsbygoogle{min-height:180px;}",
+      "html[data-google-overlay-recovered],html[data-google-overlay-recovered] body{visibility:visible!important;opacity:1!important;}",
+      "html[data-google-overlay-recovered] body{display:flex!important;min-height:100vh!important;}",
+      "html[data-google-overlay-recovered] body>header,html[data-google-overlay-recovered] body>main,html[data-google-overlay-recovered] body>footer{visibility:visible!important;opacity:1!important;}"
     ].join("");
     document.head.appendChild(style);
   }
@@ -361,6 +364,10 @@
           const value = node.style.getPropertyValue(prop);
           if (value && /hidden|none|0/i.test(value)) node.style.removeProperty(prop);
         });
+        node.style.setProperty("visibility", "visible", "important");
+        node.style.setProperty("opacity", "1", "important");
+        if (node === document.documentElement) node.style.setProperty("display", "block", "important");
+        if (node === document.body) node.style.setProperty("display", "flex", "important");
       }
     });
     document.querySelectorAll("body [aria-hidden='true'], body [inert]").forEach((node) => {
@@ -375,6 +382,12 @@
       });
     }
     document.documentElement.setAttribute("data-google-overlay-recovered", reason || "visibility");
+  }
+
+  function computedStyleHides(node) {
+    if (!node || !window.getComputedStyle) return false;
+    const style = window.getComputedStyle(node);
+    return style.display === "none" || style.visibility === "hidden" || style.opacity === "0";
   }
 
   function adOverlaySignal(node) {
@@ -453,6 +466,7 @@
       mainContent.getAttribute("aria-hidden") === "true"
       || mainContent.hasAttribute("inert")
       || (mainContent.closest && mainContent.closest("[aria-hidden='true'], [inert]"))
+      || computedStyleHides(mainContent)
     ));
     const contentChildren = Array.from(body.children).filter((node) => {
       if (!node || node.nodeType !== 1) return false;
@@ -462,7 +476,8 @@
     const hiddenChildren = contentChildren.filter((node) => {
       return node.getAttribute("aria-hidden") === "true"
         || node.hasAttribute("inert")
-        || (node.closest && node.closest("[aria-hidden='true'], [inert]"));
+        || (node.closest && node.closest("[aria-hidden='true'], [inert]"))
+        || computedStyleHides(node);
     });
     const bodyChildrenHidden = contentChildren.length >= 2 && hiddenChildren.length >= Math.ceil(contentChildren.length * 0.6);
     return googleVignetteHashActive()
