@@ -395,21 +395,35 @@
     const markFilled = () => {
       shell.setAttribute("data-ad-empty", "false");
     };
-    const hasContent = () => {
-      return !!ins.querySelector("iframe")
-        || ins.getAttribute("data-adsbygoogle-status") === "done"
-        || ins.childElementCount > 0;
+    const getAdState = () => {
+      const adStatus = (ins.getAttribute("data-ad-status") || "").toLowerCase();
+      if (adStatus === "unfilled" || adStatus.indexOf("unfill") === 0) return "unfilled";
+      if (adStatus === "filled") return "filled";
+
+      const iframe = ins.querySelector("iframe");
+      if (iframe) {
+        const rect = iframe.getBoundingClientRect();
+        if (rect.width > 1 && rect.height > 1) return "filled";
+      }
+
+      return "pending";
     };
     const observer = new MutationObserver(() => {
-      if (hasContent()) {
+      const state = getAdState();
+      if (state === "filled") {
         markFilled();
+        observer.disconnect();
+      } else if (state === "unfilled") {
+        renderFallbackAdShell(shell, "adsense-unfilled");
         observer.disconnect();
       }
     });
     observer.observe(ins, { attributes: true, childList: true, subtree: true });
     setTimeout(() => {
-      if (hasContent()) markFilled();
-      else markAdShellEmpty(ins);
+      const state = getAdState();
+      if (state === "filled") markFilled();
+      else if (state === "unfilled") renderFallbackAdShell(shell, "adsense-unfilled");
+      else renderFallbackAdShell(shell, "adsense-timeout");
       observer.disconnect();
     }, CONFIG.adFillTimeoutMs);
   }
