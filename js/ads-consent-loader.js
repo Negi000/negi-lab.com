@@ -318,6 +318,20 @@
     return googleAdsDisabledByMeta() || googleAdsDisabledBySession() || mobileGoogleAdsDisabled();
   }
 
+  function isUnfilledAdSlot(ins) {
+    const adStatus = (ins.getAttribute("data-ad-status") || "").toLowerCase();
+    return adStatus === "unfilled" || adStatus.indexOf("unfill") === 0;
+  }
+
+  function recoverUnfilledSlots(reason) {
+    document.querySelectorAll("ins.adsbygoogle").forEach((ins) => {
+      if (!isUnfilledAdSlot(ins)) return;
+      const shell = getAdShell(ins);
+      if (!shell || shell === document.body || shell === document.documentElement) return;
+      renderFallbackAdShell(shell, reason || "adsense-unfilled");
+    });
+  }
+
   function googleVignetteHashActive() {
     return /(?:^|[#&])google_vignette(?:=|&|$)/i.test(location.hash || "");
   }
@@ -397,7 +411,7 @@
     };
     const getAdState = () => {
       const adStatus = (ins.getAttribute("data-ad-status") || "").toLowerCase();
-      if (adStatus === "unfilled" || adStatus.indexOf("unfill") === 0) return "unfilled";
+      if (isUnfilledAdSlot(ins)) return "unfilled";
       if (adStatus === "filled") return "filled";
 
       const iframe = ins.querySelector("iframe");
@@ -479,6 +493,9 @@
     const observer = new MutationObserver((mutations) => {
       let found = false;
       mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.target && mutation.target.matches && mutation.target.matches("ins.adsbygoogle")) {
+          found = true;
+        }
         mutation.addedNodes.forEach((node) => {
           if (node.nodeType !== 1) return;
           if ((node.matches && node.matches("ins.adsbygoogle")) || (node.querySelector && node.querySelector("ins.adsbygoogle"))) {
@@ -486,9 +503,17 @@
           }
         });
       });
-      if (found && window.__negiAdsLoaded) observeLazySlots();
+      if (found && window.__negiAdsLoaded) {
+        observeLazySlots();
+        recoverUnfilledSlots("adsense-unfilled");
+      }
     });
-    observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+    observer.observe(document.body || document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-ad-status", "data-adsbygoogle-status"],
+      childList: true,
+      subtree: true
+    });
     window.__negiAdSlotObserverStarted = true;
   }
 
@@ -518,7 +543,10 @@
       .then(() => {
         window.__negiAdsLoaded = true;
         observeLazySlots();
+        recoverUnfilledSlots("adsense-unfilled");
         setTimeout(observeLazySlots, 1200);
+        setTimeout(() => recoverUnfilledSlots("adsense-unfilled"), 1800);
+        setTimeout(() => recoverUnfilledSlots("adsense-unfilled"), CONFIG.adFillTimeoutMs + 500);
         try {
           document.dispatchEvent(new Event("adsReady"));
         } catch (_) {
