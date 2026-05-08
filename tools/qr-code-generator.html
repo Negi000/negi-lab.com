@@ -11,12 +11,12 @@
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com
-      https://fundingchoicesmessages.google.com https://*.google.com https://*.doubleclick.net https://ep2.adtrafficquality.google;
+      https://fundingchoicesmessages.google.com https://*.google.com https://*.doubleclick.net https://ep2.adtrafficquality.google https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://xml.affiliate.rakuten.co.jp https://ep1.adtrafficquality.google;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: https://*.google.com https://*.doubleclick.net https://www.amazon.co.jp https://*.afl.rakuten.co.jp https://hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    connect-src 'self' https://www.google-analytics.com https://*.google.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com;
-    frame-src 'self' https://*.google.com https://*.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com https://tpc.googlesyndication.com;
+    img-src 'self' data: blob: https://*.google.com https://*.doubleclick.net https://www.amazon.co.jp https://*.afl.rakuten.co.jp https://hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://pagead2.googlesyndication.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://fundingchoicesmessages.google.com https://ad.rakuten.co.jp;
+    connect-src 'self' https://www.google-analytics.com https://*.google.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com https://www.googletagservices.com https://adservice.google.com https://xml.affiliate.rakuten.co.jp;
+    frame-src 'self' https://*.google.com https://*.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com https://tpc.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagservices.com https://adservice.google.com https://fundingchoicesmessages.google.com https://*.rakuten.co.jp;
     worker-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -224,7 +224,7 @@
   <!-- Centralized consent-gated loader for GA/AdSense -->
   <script src="../js/tool-page-enhancements.js" defer></script>
 
-  <script src="../js/ads-consent-loader.js?v=20260508a" defer></script>
+  <script src="../js/ads-consent-loader.js?v=20260508b" defer></script>
   <!-- Fonts and Local Scripts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
@@ -1105,7 +1105,7 @@
        data-ad-lazy="1"
        aria-label="広告"
        data-full-width-responsive="true"></ins>
-      <!-- push handled by ads-consent-loader.js?v=20260508a"bg-gradient-to-br from-blue-50 to-green-50 py-16">
+      <!-- push handled by ads-consent-loader.js?v=20260508b"bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">QRコード活用完全ガイド</h2>
@@ -1556,7 +1556,7 @@
      data-ad-lazy="1"
      aria-label="広告"
      data-full-width-responsive="true"></ins>
-    <!-- push handled by ads-consent-loader.js?v=20260508a"related-tools" class="py-10">
+    <!-- push handled by ads-consent-loader.js?v=20260508b"related-tools" class="py-10">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

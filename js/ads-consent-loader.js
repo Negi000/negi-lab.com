@@ -2,9 +2,12 @@
   "use strict";
 
   const CONSENT_STORAGE_KEY = "cookieConsent";
+  const GOOGLE_ADS_SESSION_OFF_KEY = "negiGoogleAdsSessionOff";
   const AD_CLIENT = "ca-pub-1835873052239386";
   const GA_ID = "G-N9X3N0RY0H";
   const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + AD_CLIENT;
+  const RAKUTEN_AFFILIATE_ID = "4c2fb9c2.c3e2b140.4c2fb9c3.cbd16d01";
+  const RAKUTEN_TS = "1757509067733";
 
   const CONFIG = {
     gaIdleDelayMs: 4000,
@@ -18,7 +21,10 @@
     dynamicMinTextLength: 2500,
     dynamicDelayMs: 12000,
     dynamicScrollDepth: 0.5,
-    dynamicMaxSlots: 1
+    dynamicMaxSlots: 1,
+    overlayWatchdogIntervalMs: 500,
+    overlayWatchdogWindowMs: 20000,
+    overlayHiddenGraceMs: 2500
   };
 
   const host = location.hostname || "";
@@ -31,6 +37,8 @@
   let currentAdPushCount = 0;
   let lazyObserver = null;
   let runtimeStarted = false;
+  let noVignetteObserver = null;
+  let overlayWatchdogStarted = false;
 
   function safeGet(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
@@ -38,6 +46,14 @@
 
   function safeSet(key, value) {
     try { localStorage.setItem(key, value); } catch (_) {}
+  }
+
+  function safeSessionGet(key) {
+    try { return sessionStorage.getItem(key); } catch (_) { return null; }
+  }
+
+  function safeSessionSet(key, value) {
+    try { sessionStorage.setItem(key, value); } catch (_) {}
   }
 
   function log() {
@@ -88,6 +104,9 @@
       "html[data-ads-consent='pending'] ins.adsbygoogle{display:none!important;min-height:0!important;height:0!important;}",
       "[data-ads-pending-hidden='1']{display:none!important;}",
       "[data-ad-empty='true']{display:none!important;visibility:hidden!important;height:0!important;margin:0!important;padding:0!important;border:0!important;}",
+      "[data-ad-empty='fallback']{display:block!important;visibility:visible!important;}",
+      ".negi-ad-fallback{display:flex;min-height:160px;align-items:center;justify-content:center;border:1px solid rgba(148,163,184,.45);background:rgba(248,250,252,.9);}",
+      ".negi-ad-fallback-label{margin-bottom:.25rem;font-size:.75rem;color:#94a3b8;}",
       ".dynamic-ad-container{overflow:hidden;}",
       ".dynamic-ad-container ins.adsbygoogle{min-height:180px;}"
     ].join("");
@@ -99,6 +118,9 @@
     window[key] = new Promise((resolve, reject) => {
       const existing = document.querySelector(`script[src^="${src.split("?")[0]}"]`);
       if (existing) {
+        if (attrs) {
+          Object.keys(attrs).forEach((name) => existing.setAttribute(name, attrs[name]));
+        }
         existing.addEventListener("load", resolve, { once: true });
         existing.addEventListener("error", reject, { once: true });
         if (existing.dataset.loaded === "1") resolve();
@@ -205,23 +227,165 @@
     if (shell) shell.setAttribute("data-ad-empty", "true");
   }
 
+  function createRakutenFallback(reason) {
+    const fragment = document.createDocumentFragment();
+
+    const label = document.createElement("div");
+    label.className = "negi-ad-fallback-label";
+    label.textContent = "Sponsored Links";
+
+    const placeholder = document.createElement("div");
+    placeholder.className = "rakuten-widget-placeholder negi-ad-fallback";
+    placeholder.setAttribute("data-rakuten-widget", "slide");
+    placeholder.setAttribute("data-rakuten-affiliate", RAKUTEN_AFFILIATE_ID);
+    placeholder.setAttribute("data-rakuten-ts", RAKUTEN_TS);
+    placeholder.setAttribute("data-rakuten-size-mobile", "300x250");
+    placeholder.setAttribute("data-rakuten-size-desktop", "468x160");
+    placeholder.setAttribute("data-google-ad-fallback-reason", reason || "google-disabled");
+
+    fragment.append(label, placeholder);
+    return { fragment, placeholder };
+  }
+
+  function renderFallbackAdShell(shell, reason) {
+    if (!shell || shell === document.body || shell === document.documentElement) return null;
+    if (shell.getAttribute("data-google-ad-fallback") === "true") {
+      return shell.querySelector(".rakuten-widget-placeholder");
+    }
+
+    const fallback = createRakutenFallback(reason);
+    shell.hidden = false;
+    shell.removeAttribute("data-ads-pending-hidden");
+    shell.setAttribute("data-ad-empty", "fallback");
+    shell.setAttribute("data-google-ad-fallback", "true");
+    shell.replaceChildren(fallback.fragment);
+    if (consentAccepted) loadRakutenFor(fallback.placeholder);
+    return fallback.placeholder;
+  }
+
+  function insertFallbackAd(reason) {
+    const main = document.querySelector("main");
+    if (!main || document.querySelector("[data-google-ad-fallback='true']")) return null;
+
+    const wrapper = document.createElement("aside");
+    wrapper.className = "mx-auto my-8 max-w-3xl px-4 sm:px-6";
+    wrapper.setAttribute("aria-label", "Sponsored links");
+    wrapper.setAttribute("data-runtime-fallback-ad", "true");
+
+    const fallback = createRakutenFallback(reason);
+    wrapper.setAttribute("data-ad-empty", "fallback");
+    wrapper.setAttribute("data-google-ad-fallback", "true");
+    wrapper.appendChild(fallback.fragment);
+
+    const anchor = main.querySelector("section:nth-of-type(2), article, .tool-shell, .grid") || main.firstElementChild;
+    if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(wrapper, anchor.nextSibling);
+    else main.appendChild(wrapper);
+
+    if (consentAccepted) loadRakutenFor(fallback.placeholder);
+    return fallback.placeholder;
+  }
+
   function disableGoogleAdSlots(reason) {
     document.documentElement.setAttribute("data-google-ads-disabled", reason || "1");
+    let fallbackCount = 0;
     document.querySelectorAll("ins.adsbygoogle").forEach((ins) => {
       ins.setAttribute("data-ads-pushed", "disabled");
       ins.setAttribute("data-ad-status", "unfilled");
       const shell = getAdShell(ins);
       if (shell) {
-        shell.setAttribute("data-ad-empty", "true");
-        shell.hidden = true;
+        renderFallbackAdShell(shell, reason || "google-disabled");
+        fallbackCount += 1;
       } else {
         ins.style.display = "none";
       }
     });
+    if (fallbackCount === 0) insertFallbackAd(reason || "google-disabled");
   }
 
   function mobileGoogleAdsDisabled() {
-    return isMobile() && !document.documentElement.hasAttribute("data-allow-mobile-google-ads");
+    return isMobile() && document.documentElement.hasAttribute("data-disable-mobile-google-ads");
+  }
+
+  function googleAdsDisabledBySession() {
+    return safeSessionGet(GOOGLE_ADS_SESSION_OFF_KEY) === "1";
+  }
+
+  function googleAdsDisabledByMeta() {
+    return !!document.querySelector('meta[name="ads"][content="off"]');
+  }
+
+  function shouldDisableGoogleAds() {
+    return googleAdsDisabledByMeta() || googleAdsDisabledBySession() || mobileGoogleAdsDisabled();
+  }
+
+  function googleVignetteHashActive() {
+    return /(?:^|[#&])google_vignette(?:=|&|$)/i.test(location.hash || "");
+  }
+
+  function clearGoogleVignetteHash() {
+    if (!googleVignetteHashActive() || !history.replaceState) return;
+    const cleanUrl = location.pathname + location.search;
+    try { history.replaceState(null, document.title, cleanUrl); } catch (_) {}
+  }
+
+  function markNoVignetteLinks(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    if (document.documentElement.hasAttribute("data-allow-vignette-ads")) return;
+    scope.querySelectorAll("a[href]").forEach((link) => {
+      if (!link.hasAttribute("data-google-vignette")) {
+        link.setAttribute("data-google-vignette", "false");
+      }
+    });
+  }
+
+  function setupNoVignetteLinks() {
+    markNoVignetteLinks(document);
+    if (noVignetteObserver || !("MutationObserver" in window)) return;
+    const target = document.body || document.documentElement;
+    noVignetteObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.matches && node.matches("a[href]")) {
+            if (!node.hasAttribute("data-google-vignette")) {
+              node.setAttribute("data-google-vignette", "false");
+            }
+          }
+          markNoVignetteLinks(node);
+        });
+      });
+    });
+    noVignetteObserver.observe(target, { childList: true, subtree: true });
+  }
+
+  function startAdOverlayWatchdog() {
+    if (overlayWatchdogStarted || !ENV_OK) return;
+    overlayWatchdogStarted = true;
+    const started = Date.now();
+    let hiddenSince = 0;
+
+    const timer = setInterval(() => {
+      const now = Date.now();
+      const bodyHidden = document.body && document.body.getAttribute("aria-hidden") === "true";
+      const vignetteHash = googleVignetteHashActive();
+
+      if (bodyHidden) hiddenSince = hiddenSince || now;
+      else hiddenSince = 0;
+
+      const stuckHidden = hiddenSince && now - hiddenSince >= CONFIG.overlayHiddenGraceMs;
+      if (vignetteHash || stuckHidden) {
+        safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+        document.documentElement.setAttribute("data-google-overlay-recovered", vignetteHash ? "vignette" : "aria-hidden");
+        clearGoogleVignetteHash();
+        clearInterval(timer);
+        setTimeout(() => {
+          try { location.reload(); } catch (_) {}
+        }, 120);
+        return;
+      }
+
+      if (now - started > CONFIG.overlayWatchdogWindowMs) clearInterval(timer);
+    }, CONFIG.overlayWatchdogIntervalMs);
   }
 
   function watchAdFill(ins) {
@@ -269,6 +433,8 @@
       });
     } catch (error) {
       if (DEBUG) console.warn("[ads-consent-loader] AdSense push failed", error);
+      const shell = getAdShell(ins);
+      if (shell) renderFallbackAdShell(shell, "push-failed");
     }
   }
 
@@ -314,10 +480,13 @@
 
   function initAds() {
     if (!ENV_OK || document.documentElement.hasAttribute("data-ads-disabled")) return;
-    const disabledByMeta = !!document.querySelector('meta[name="ads"][content="off"]');
-    if (disabledByMeta) return;
-    if (mobileGoogleAdsDisabled()) {
-      disableGoogleAdSlots("mobile");
+    setupNoVignetteLinks();
+    if (googleVignetteHashActive()) {
+      safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+      clearGoogleVignetteHash();
+    }
+    if (shouldDisableGoogleAds()) {
+      disableGoogleAdSlots(googleAdsDisabledBySession() ? "session-overlay-recovery" : "disabled");
       return;
     }
 
@@ -329,8 +498,9 @@
     }
     setPendingAdShells(false);
     startAdSlotObserver();
+    startAdOverlayWatchdog();
 
-    loadScriptOnce("__negiAdsenseScript", ADSENSE_SRC, { crossorigin: "anonymous" })
+    loadScriptOnce("__negiAdsenseScript", ADSENSE_SRC, { crossorigin: "anonymous", "data-overlays": "bottom" })
       .then(() => {
         window.__negiAdsLoaded = true;
         observeLazySlots();
@@ -345,6 +515,8 @@
       })
       .catch((error) => {
         if (DEBUG) console.warn("[ads-consent-loader] AdSense load failed", error);
+        safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+        disableGoogleAdSlots("load-failed");
       });
   }
 
@@ -550,6 +722,11 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     ensureBaseAdCSS();
+    setupNoVignetteLinks();
+    if (googleVignetteHashActive()) {
+      safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+      clearGoogleVignetteHash();
+    }
     setPendingAdShells(!consentAccepted);
     injectConsentBanner();
     if (isMobile() && document.body) {
