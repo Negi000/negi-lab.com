@@ -363,6 +363,11 @@
         });
       }
     });
+    document.querySelectorAll("body [aria-hidden='true'], body [inert]").forEach((node) => {
+      if (adOverlaySignal(node) || (node.closest && node.closest("iframe, ins.adsbygoogle, [id*='google_ads_iframe'], [id*='aswift']"))) return;
+      node.removeAttribute("aria-hidden");
+      node.removeAttribute("inert");
+    });
     if (document.body && document.body.style) {
       ["position", "top", "left", "right", "bottom", "height", "max-height", "overflow", "padding-right"].forEach((prop) => {
         const value = document.body.style.getPropertyValue(prop);
@@ -443,11 +448,30 @@
     if (!body) return googleVignetteHashActive();
     const bodyStyle = window.getComputedStyle ? window.getComputedStyle(body) : null;
     const htmlStyle = window.getComputedStyle ? window.getComputedStyle(document.documentElement) : null;
+    const mainContent = document.querySelector("main, [role='main'], #main-content");
+    const mainHidden = !!(mainContent && (
+      mainContent.getAttribute("aria-hidden") === "true"
+      || mainContent.hasAttribute("inert")
+      || (mainContent.closest && mainContent.closest("[aria-hidden='true'], [inert]"))
+    ));
+    const contentChildren = Array.from(body.children).filter((node) => {
+      if (!node || node.nodeType !== 1) return false;
+      if (/^(SCRIPT|STYLE|NOSCRIPT|IFRAME|INS)$/i.test(node.tagName || "")) return false;
+      return !!(node.textContent || "").trim() || (node.getBoundingClientRect && node.getBoundingClientRect().height > 20);
+    });
+    const hiddenChildren = contentChildren.filter((node) => {
+      return node.getAttribute("aria-hidden") === "true"
+        || node.hasAttribute("inert")
+        || (node.closest && node.closest("[aria-hidden='true'], [inert]"));
+    });
+    const bodyChildrenHidden = contentChildren.length >= 2 && hiddenChildren.length >= Math.ceil(contentChildren.length * 0.6);
     return googleVignetteHashActive()
       || body.getAttribute("aria-hidden") === "true"
       || document.documentElement.getAttribute("aria-hidden") === "true"
       || body.hasAttribute("inert")
       || document.documentElement.hasAttribute("inert")
+      || mainHidden
+      || bodyChildrenHidden
       || (bodyStyle && (bodyStyle.visibility === "hidden" || bodyStyle.opacity === "0" || bodyStyle.display === "none"))
       || (htmlStyle && (htmlStyle.visibility === "hidden" || htmlStyle.opacity === "0" || htmlStyle.display === "none"));
   }
