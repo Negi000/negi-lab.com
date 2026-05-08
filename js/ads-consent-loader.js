@@ -52,8 +52,8 @@
     try { return sessionStorage.getItem(key); } catch (_) { return null; }
   }
 
-  function safeSessionSet(key, value) {
-    try { sessionStorage.setItem(key, value); } catch (_) {}
+  function safeSessionRemove(key) {
+    try { sessionStorage.removeItem(key); } catch (_) {}
   }
 
   function log() {
@@ -307,8 +307,12 @@
   }
 
   function googleAdsDisabledBySession() {
-    return safeSessionGet(GOOGLE_ADS_SESSION_OFF_KEY) === "1";
+    // Previous releases stored a plain "1" here and disabled Google ads for the
+    // whole tab session. Clear it so Auto ads can recover on the next load.
+    if (safeSessionGet(GOOGLE_ADS_SESSION_OFF_KEY)) safeSessionRemove(GOOGLE_ADS_SESSION_OFF_KEY);
+    return false;
   }
+  googleAdsDisabledBySession();
 
   function googleAdsDisabledByMeta() {
     return !!document.querySelector('meta[name="ads"][content="off"]');
@@ -388,13 +392,12 @@
 
       const stuckHidden = hiddenSince && now - hiddenSince >= CONFIG.overlayHiddenGraceMs;
       if (vignetteHash || stuckHidden) {
-        safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
         document.documentElement.setAttribute("data-google-overlay-recovered", vignetteHash ? "vignette" : "aria-hidden");
+        if (document.body) {
+          document.body.removeAttribute("aria-hidden");
+        }
         clearGoogleVignetteHash();
         clearInterval(timer);
-        setTimeout(() => {
-          try { location.reload(); } catch (_) {}
-        }, 120);
         return;
       }
 
@@ -521,7 +524,7 @@
     if (!ENV_OK || document.documentElement.hasAttribute("data-ads-disabled")) return;
     setupNoVignetteLinks();
     if (googleVignetteHashActive()) {
-      safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+      document.documentElement.setAttribute("data-google-overlay-recovered", "vignette");
       clearGoogleVignetteHash();
     }
     if (shouldDisableGoogleAds()) {
@@ -557,7 +560,6 @@
       })
       .catch((error) => {
         if (DEBUG) console.warn("[ads-consent-loader] AdSense load failed", error);
-        safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
         disableGoogleAdSlots("load-failed");
       });
   }
@@ -639,38 +641,48 @@
     if (!affiliateId || !timestamp) return;
 
     placeholder.setAttribute("data-loading", "1");
-    const config = document.createElement("script");
     const mobileSize = placeholder.getAttribute("data-rakuten-size-mobile") || "300x250";
     const desktopSize = placeholder.getAttribute("data-rakuten-size-desktop") || "468x160";
     const design = placeholder.getAttribute("data-rakuten-widget") || "slide";
-    config.textContent = [
-      `rakuten_design="${design}";`,
-      `rakuten_affiliateId="${affiliateId}";`,
-      'rakuten_items="ctsmatch";',
-      'rakuten_genreId="0";',
-      `rakuten_size=(window.innerWidth<768?"${mobileSize}":"${desktopSize}");`,
-      'rakuten_target="_blank";',
-      'rakuten_theme="gray";',
-      'rakuten_border="off";',
-      'rakuten_auto_mode="on";',
-      'rakuten_genre_title="off";',
-      'rakuten_recommend="on";',
-      `rakuten_ts="${timestamp}";`
+
+    const iframe = document.createElement("iframe");
+    iframe.title = "Sponsored Links";
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.style.cssText = "width:100%;min-height:160px;border:0;display:block;background:transparent;";
+    iframe.srcdoc = [
+      "<!doctype html><html><head><meta charset=\"utf-8\">",
+      "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
+      "<style>html,body{margin:0;background:transparent;overflow:hidden;}body{display:flex;align-items:center;justify-content:center;min-height:160px;}</style>",
+      "</head><body>",
+      "<script>",
+      `var rakuten_design=${JSON.stringify(design)};`,
+      `var rakuten_affiliateId=${JSON.stringify(affiliateId)};`,
+      "var rakuten_items='ctsmatch';",
+      "var rakuten_genreId='0';",
+      `var rakuten_size=(innerWidth<768?${JSON.stringify(mobileSize)}:${JSON.stringify(desktopSize)});`,
+      "var rakuten_target='_blank';",
+      "var rakuten_theme='gray';",
+      "var rakuten_border='off';",
+      "var rakuten_auto_mode='on';",
+      "var rakuten_genre_title='off';",
+      "var rakuten_recommend='on';",
+      `var rakuten_ts=${JSON.stringify(timestamp)};`,
+      "<\/script>",
+      "<script src=\"https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106\"><\/script>",
+      "</body></html>"
     ].join("");
-    const script = document.createElement("script");
-    script.src = "https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106";
-    script.defer = true;
-    script.onload = () => {
+    iframe.addEventListener("load", () => {
       placeholder.setAttribute("data-loaded", "1");
       placeholder.removeAttribute("data-loading");
       const shell = getAdShell(placeholder);
       if (shell) shell.setAttribute("data-ad-empty", "false");
-    };
-    script.onerror = () => {
+    }, { once: true });
+    iframe.addEventListener("error", () => {
       const shell = getAdShell(placeholder);
       if (shell) shell.setAttribute("data-ad-empty", "true");
-    };
-    placeholder.append(config, script);
+    }, { once: true });
+    placeholder.replaceChildren(iframe);
   }
 
   function initRakutenLazy() {
@@ -765,8 +777,9 @@
   document.addEventListener("DOMContentLoaded", () => {
     ensureBaseAdCSS();
     setupNoVignetteLinks();
+    googleAdsDisabledBySession();
     if (googleVignetteHashActive()) {
-      safeSessionSet(GOOGLE_ADS_SESSION_OFF_KEY, "1");
+      document.documentElement.setAttribute("data-google-overlay-recovered", "vignette");
       clearGoogleVignetteHash();
     }
     setPendingAdShells(!consentAccepted);
