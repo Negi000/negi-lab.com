@@ -15,7 +15,7 @@
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: https://*.google.com https://*.doubleclick.net https://www.amazon.co.jp https://*.afl.rakuten.co.jp https://hbb.afl.rakuten.co.jp https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    connect-src 'self' https://www.google-analytics.com https://*.google.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self' https://www.google-analytics.com https://*.google.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com;
     frame-src 'self' https://*.google.com https://*.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com https://tpc.googlesyndication.com;
     worker-src 'self';
     object-src 'none';
@@ -25,7 +25,6 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <meta name="ads" content="off" />
 
   <title data-translate-key="pageTitle">QRコード生成ツール - URL・Wi-Fi・名刺・SNS対応 | negi-lab.com</title>
   <meta name="description" data-translate-key="metaDescription" content="URL、テキスト、Wi-Fi、メール、電話、名刺、イベント、位置情報、SNS用のQRコードをブラウザ内で作成できます。画像は外部サーバーへ送信しません。" />
@@ -225,7 +224,7 @@
   <!-- Centralized consent-gated loader for GA/AdSense -->
   <script src="../js/tool-page-enhancements.js" defer></script>
 
-  <script src="../js/ads-consent-loader.js?v=20260507c" defer></script>
+  <script src="../js/ads-consent-loader.js?v=20260508a" defer></script>
   <!-- Fonts and Local Scripts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
@@ -1106,7 +1105,7 @@
        data-ad-lazy="1"
        aria-label="広告"
        data-full-width-responsive="true"></ins>
-      <!-- push handled by ads-consent-loader.js?v=20260507c"bg-gradient-to-br from-blue-50 to-green-50 py-16">
+      <!-- push handled by ads-consent-loader.js?v=20260508a"bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">QRコード活用完全ガイド</h2>
@@ -1557,7 +1556,7 @@
      data-ad-lazy="1"
      aria-label="広告"
      data-full-width-responsive="true"></ins>
-    <!-- push handled by ads-consent-loader.js?v=20260507c"related-tools" class="py-10">
+    <!-- push handled by ads-consent-loader.js?v=20260508a"related-tools" class="py-10">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

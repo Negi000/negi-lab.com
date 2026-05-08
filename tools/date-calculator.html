@@ -14,7 +14,7 @@
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: blob: https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
-    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com;
+    connect-src 'self' https://www.google-analytics.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://fundingchoicesmessages.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
     frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com https://fundingchoicesmessages.google.com;
     object-src 'none';
     base-uri 'self';
@@ -23,7 +23,6 @@
   <!-- Security Headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <meta name="ads" content="off" />
     <title data-translate-key="dateCalculator.pageTitle">日付計算・日数差・加算減算ツール | negi-lab.com</title>
   <meta name="description" data-translate-key="dateCalculator.metaDescription" content="2つの日付の差分計算、基準日からの日付加算・減算、営業日数の確認に使えるブラウザ内日付計算ツールです。" />
   <meta property="og:title" content="日付計算・日数差・加算減算ツール | negi-lab.com" />
@@ -91,7 +90,7 @@ window.pageTitleTranslationKey = "dateCalculator.pageTitle";
   </style>
   <script src="../js/tool-page-enhancements.js" defer></script>
 
-  <script src="../js/ads-consent-loader.js?v=20260507c" defer></script>
+  <script src="../js/ads-consent-loader.js?v=20260508a" defer></script>
   <script type="application/ld+json" id="tool-structured-data">
 [
   {
