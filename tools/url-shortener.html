@@ -68,6 +68,7 @@
   <link rel="canonical" href="https://negi-lab.com/tools/url-shortener.html" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+<link rel="stylesheet" href="/assets/css/portal-refresh.css">
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 
@@ -288,7 +289,7 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
 ]
   </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+<body class="portal-refresh bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -327,23 +328,40 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
 
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮・共有リンク整形ツール">URL短縮・共有リンク整形ツール</h1>
-        <p class="mx-auto max-w-3xl text-base leading-7 text-gray-600 md:text-lg" data-translate-key="urlShortener.heroLead">SNS共有、広告入稿、メール、社内資料、印刷物向けQRコード化の前処理まで、共有用URLをブラウザで整えられます。</p>
-      </div>
+      <section class="mb-8 rounded-3xl border border-gray-200 bg-white px-6 py-7 shadow-sm md:px-8 md:py-8">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold text-accent">共有前のURL整理</p>
+            <h1 class="mt-2 text-3xl font-bold text-gray-900 md:text-4xl" data-translate-key="urlShortener.mainTitle" aria-label="URL短縮・共有リンク整形ツール">URL短縮・共有リンク整形ツール</h1>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-gray-600 md:text-lg" data-translate-key="urlShortener.heroLead">SNS共有、広告入稿、メール、社内資料、印刷物向けQRコード化の前処理まで、共有用URLをブラウザで整えられます。</p>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3">
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Clean</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">不要な追跡パラメータを落として共有向けに整形します。</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Format</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">Markdown と HTML のリンク表記をすぐ作れます。</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Share</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">短縮URL作成に失敗しても、整理済みURLはそのまま使えます。</p>
+              </div>
+            </div>
+          </div>
+          <aside class="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-5">
+            <h2 class="text-base font-bold text-gray-900">最初に見るポイント</h2>
+            <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-700">
+              <li>共有先で必要なクエリは削除しない</li>
+              <li>短縮前に整理済みURLを一度確認する</li>
+              <li>印刷物に載せる前は QR 化までまとめて確認する</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
 
-      <!-- ツール上部：アドセンス（レスポンシブ） -->
-      <div class="max-w-2xl mx-auto my-6">
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="7843001775"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-full-width-responsive="true"></ins>
-  <!-- push handled by ads-consent-loader.js?v=20260508h"max-w-xl mx-auto">
-        <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 space-y-6">
         <div>
           <label for="longUrlInput" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="urlShortener.longUrlLabel" aria-label="元のURLラベル">元のURL:</label>
           <input type="url" id="longUrlInput" class="form-input w-full" data-translate-placeholder-key="urlShortener.placeholder" placeholder="例: https://www.example.com/very/long/url" aria-label="元のURL入力" autocomplete="off" spellcheck="false" inputmode="url">
@@ -420,19 +438,43 @@ window.pageTitleTranslationKey = "urlShortener.pageTitle";
             <p id="statusMessage" class="text-gray-600" role="status"></p>
             <p id="errorMessage" class="text-red-600" role="alert"></p>
         </div>
+        </div>
+
+        <aside class="space-y-5 lg:sticky lg:top-24">
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 class="text-base font-bold text-gray-900">よくある流れ</h2>
+            <ol class="mt-3 space-y-3 text-sm leading-6 text-gray-600">
+              <li>1. 元URLを貼り付ける</li>
+              <li>2. 追跡削除と並べ替えを確認する</li>
+              <li>3. 必要なら短縮し、共有用形式をコピーする</li>
+            </ol>
+          </section>
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+            <ins class="adsbygoogle ad-pc"
+                 style="display:block;min-height:250px"
+                 data-ad-client="ca-pub-1835873052239386"
+                 data-ad-slot="7843001775"
+                 data-ad-format="auto"
+                 data-ad-lazy="1"
+                 aria-label="広告"
+                 data-full-width-responsive="true"></ins>
+          </section>
+        </aside>
       </div>
 
-      <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
       <div class="max-w-2xl mx-auto my-8">
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="4837564489"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-full-width-responsive="true"></ins>
-  <!-- push handled by ads-consent-loader.js?v=20260508h"mt-12 border-y border-gray-200 py-8">
+        <ins class="adsbygoogle ad-pc"
+             style="display:block;min-height:250px"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="4837564489"
+             data-ad-format="auto"
+             data-ad-lazy="1"
+             aria-label="広告"
+             data-full-width-responsive="true"></ins>
+      </div>
+
+      <section class="mt-12 border-y border-gray-200 py-8">
     <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
       <div>
         <h2 class="text-2xl font-bold text-gray-900 mb-3" data-translate-key="urlShortener.whatTitle">このツールでできること</h2>

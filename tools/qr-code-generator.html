@@ -46,6 +46,7 @@
 
   <!-- Tailwind CSS (動的設定対応版) -->
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+<link rel="stylesheet" href="/assets/css/portal-refresh.css">
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
   <style>
@@ -365,7 +366,7 @@
   </script>
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+<body class="portal-refresh bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
 
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
@@ -402,13 +403,40 @@
   </nav>
 
   <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-6xl">      <!-- ヘッダー -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="header.title">QRコード生成ツール</h1>
-      <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="header.subtitle">
-        URLやテキストから実用的なQRコードを作成
-      </p>
-    </div><!-- メインコンテンツ -->
+    <div class="container mx-auto px-4 max-w-6xl">
+    <section class="mb-8 rounded-3xl border border-gray-200 bg-white px-6 py-7 shadow-sm md:px-8">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
+        <div>
+          <p class="text-sm font-semibold text-accent">共有・配布導線の準備</p>
+          <h1 class="mt-2 text-3xl md:text-4xl font-bold text-gray-900" data-translate-key="header.title">QRコード生成ツール</h1>
+          <p class="mt-4 text-gray-600 text-lg max-w-3xl" data-translate-key="header.subtitle">
+            URLやテキストから実用的なQRコードを作成
+          </p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Template</p>
+              <p class="mt-2 text-sm leading-6 text-gray-700">URL、Wi-Fi、名刺、SNSに対応</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Design</p>
+              <p class="mt-2 text-sm leading-6 text-gray-700">サイズや色を現場に合わせて調整</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Export</p>
+              <p class="mt-2 text-sm leading-6 text-gray-700">PNG、JPEG、SVGで保存</p>
+            </div>
+          </div>
+        </div>
+        <aside class="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-5">
+          <h2 class="text-base font-bold text-gray-900">読み取りやすくするコツ</h2>
+          <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-700">
+            <li>前景と背景のコントラストを十分に取る</li>
+            <li>印刷用は少し大きめに保存する</li>
+            <li>装飾したら実機で読み取り確認する</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
     <div class="grid xl:grid-cols-3 lg:grid-cols-2 gap-8">
 
       <!-- 左側: 設定パネル -->
@@ -1105,7 +1133,7 @@
        data-ad-lazy="1"
        aria-label="広告"
        data-full-width-responsive="true"></ins>
-      <!-- push handled by ads-consent-loader.js?v=20260508h"bg-gradient-to-br from-blue-50 to-green-50 py-16">
+  <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">QRコード活用完全ガイド</h2>
@@ -1556,7 +1584,7 @@
      data-ad-lazy="1"
      aria-label="広告"
      data-full-width-responsive="true"></ins>
-    <!-- push handled by ads-consent-loader.js?v=20260508h"related-tools" class="py-10">
+  <section id="related-tools" class="py-10">
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
         <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

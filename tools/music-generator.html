@@ -45,6 +45,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+<link rel="stylesheet" href="/assets/css/portal-refresh.css">
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 
@@ -297,32 +298,39 @@
   </nav>
 
   <main class="flex-grow py-12">
-    <!-- 上部広告 -->
-    <aside class="max-w-3xl mx-auto mb-10" aria-label="スポンサー広告">
-      <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
-    </aside>
     <div class="container mx-auto px-4 max-w-7xl">
-      <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="main.title">音楽生成ツール</h1>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto" data-translate-key="main.subtitle">
-          ジャンル、ムード、テンポ、キーワードから、BGMやメロディの下書きを生成します。
-        </p>
-        <div class="mt-4 flex flex-wrap items-center justify-center gap-2" aria-label="ツールの特徴">
-          <span class="feature-pill">ブラウザ内で試聴</span>
-          <span class="feature-pill">会員登録不要</span>
-          <span class="feature-pill">動画・ゲーム試作向け</span>
+      <section class="mb-8 rounded-3xl border border-gray-200 bg-white px-6 py-7 shadow-sm md:px-8">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold text-accent">BGM とメロディの下書き</p>
+            <h1 class="mt-2 text-3xl md:text-4xl font-bold text-gray-900" data-translate-key="main.title">音楽生成ツール</h1>
+            <p class="mt-4 max-w-3xl text-gray-600 text-lg" data-translate-key="main.subtitle">
+              ジャンル、ムード、テンポ、キーワードから、BGMやメロディの下書きを生成します。
+            </p>
+            <div class="mt-4 flex flex-wrap items-center gap-2" aria-label="ツールの特徴">
+              <span class="feature-pill">ブラウザ内で試聴</span>
+              <span class="feature-pill">会員登録不要</span>
+              <span class="feature-pill">動画・ゲーム試作向け</span>
+            </div>
+          </div>
+          <aside class="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-5">
+            <h2 class="text-base font-bold text-gray-900">こんな時に便利</h2>
+            <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-700">
+              <li>動画や配信のラフBGM確認</li>
+              <li>ゲームやアプリ試作の雰囲気出し</li>
+              <li>作曲のたたき台やコード案作り</li>
+            </ul>
+          </aside>
         </div>
-      </div>
+      </section>
+      <aside class="max-w-3xl mx-auto mb-10" aria-label="スポンサー広告">
+        <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+        <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="広告"></ins>
+      </aside>
 
-      <!-- Main Content -->
       <div class="grid lg:grid-cols-5 gap-8">
-
-        <!-- Left: Settings Panel -->
         <div class="lg:col-span-3 space-y-6">
           <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <!-- Mode Toggle -->
             <div class="flex justify-center mb-6">
                 <div class="relative flex w-full max-w-xs p-1 bg-gray-100 rounded-full">
                     <button id="simple-mode-btn" class="relative w-1/2 py-2 text-sm font-bold text-gray-700 rounded-full z-10 transition-colors duration-300" data-translate-key="mode.simple">シンプル</button>
@@ -331,7 +339,6 @@
                 </div>
             </div>
 
-            <!-- Simple Mode -->
             <div id="simple-mode-panel" class="space-y-6">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -400,9 +407,7 @@
               </div>
             </div>
 
-            <!-- Advanced Mode -->
             <div id="advanced-mode-panel" class="hidden space-y-6">
-                <!-- Key -->
                 <div>
                     <label for="key" class="block text-sm font-medium text-gray-700" data-translate="key_label">キー</label>
                     <select id="key" name="key" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent focus:border-accent sm:text-sm rounded-md">
@@ -421,7 +426,6 @@
                     </select>
                 </div>
 
-                <!-- Instruments by Role -->
                 <div class="space-y-4">
                     <div>
                         <label for="melody-instrument-select" class="block text-sm font-medium text-gray-700" data-translate="melody_instrument_label">メロディ楽器</label>
@@ -459,7 +463,6 @@
                     </div>
                 </div>
 
-                <!-- Tempo -->
                 <div>
                     <label for="tempo" class="block text-sm font-medium text-gray-700" data-translate="tempo_bpm_label">テンポ (BPM)</label>
                     <div class="flex items-center space-x-3 mt-1">

@@ -8,7 +8,7 @@
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <title>運営者情報・サイトについて | negi-lab.com</title>
-  <meta name="description" content="negi-lab.comの運営方針とサイト概要です。ブラウザで使える無料オンラインツールの提供方針、プライバシーへの配慮、免責事項を説明します。" />
+  <meta name="description" content="negi-lab.com の運営方針、ブラウザツールの考え方、広告とプライバシーへの向き合い方をまとめたページです。" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://negi-lab.com/about.html" />
   <link rel="manifest" href="/site.webmanifest" />
@@ -16,64 +16,95 @@
   <meta name="theme-color" content="#65c155" />
   <meta property="og:site_name" content="negi-lab.com" />
   <meta property="og:title" content="運営者情報・サイトについて | negi-lab.com" />
-  <meta property="og:description" content="negi-lab.comの運営方針、プライバシーへの配慮、免責事項を説明します。" />
+  <meta property="og:description" content="無料ブラウザツールの運営方針、実用性への考え方、広告とプライバシーへの姿勢を紹介します。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://negi-lab.com/about.html" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta property="og:image:alt" content="negi-lab.com の運営者情報ページ" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="運営者情報・サイトについて | negi-lab.com" />
-  <meta name="twitter:description" content="negi-lab.comの運営方針とサイト概要です。" />
+  <meta name="twitter:description" content="無料ブラウザツールの運営方針、実用性への考え方、広告とプライバシーへの姿勢を紹介します。" />
+  <meta name="twitter:image" content="https://negi-lab.com/ogp-main.png" />
+  <meta name="twitter:image:alt" content="negi-lab.com の運営者情報ページ" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/portal-refresh.css" />
   <script src="/js/security-utils.js"></script>
   <script src="/js/common-utils.js"></script>
   <script src="/js/ads-consent-loader.js?v=20260508h" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
-  <main class="w-full max-w-4xl mx-auto py-10 px-4 flex-1">
-    <header class="text-center mb-12">
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">negi-lab.com について</h1>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">日常の小さな作業を、できるだけ軽く進めるためのオンラインツール集です。</p>
-    </header>
-
-    <section class="grid md:grid-cols-3 gap-6 mb-14">
-      <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-3">ブラウザ中心の処理</h2>
-        <p class="text-gray-600 leading-relaxed">QRコード生成、画像変換、文字数カウントなど、多くの処理は利用者のブラウザ内で行う設計です。外部サービスが関わる場合は、ページ上で分かるように案内します。</p>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-3">すぐ使える設計</h2>
-        <p class="text-gray-600 leading-relaxed">インストールや複雑な登録なしで、必要な作業へ進めることを重視しています。スマートフォンでも操作しやすい表示を心がけています。</p>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-xl font-semibold mb-3">継続的な改善</h2>
-        <p class="text-gray-600 leading-relaxed">利用状況やフィードバックを参考に、機能、説明、表示を継続して見直します。変更が必要な内容は随時更新します。</p>
-      </div>
-    </section>
-
-    <section class="mb-14">
-      <h2 class="text-2xl font-bold mb-4">運営方針</h2>
-      <div class="space-y-5">
-        <div class="border-l-4 border-accent pl-5">
-          <h3 class="font-semibold mb-1">プライバシーへの配慮</h3>
-          <p class="text-gray-600 leading-relaxed">ツールに入力された情報は、原則としてブラウザ内で処理する方針です。ただし、広告、アクセス解析、外部リンクなどではCookieや外部サービスが関わる場合があります。</p>
+<body class="portal-refresh portal-shell bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+  <main class="flex-1">
+    <section class="border-b border-gray-200 bg-white">
+      <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+        <div class="max-w-3xl" data-shell-about-summary="true">
+          <p class="text-sm font-semibold text-accent">About negi-lab.com</p>
+          <h1 class="mt-3 text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">negi-lab.com について</h1>
+          <p class="mt-5 text-lg leading-8 text-gray-600">
+            negi-lab.com は、日常の小さな作業を軽くする無料ブラウザツールと、
+            役立つ情報をまとめる個人運営サイトです。使い始めるまでの迷いを減らし、
+            その場で手を動かせる体験を大事にしています。
+          </p>
         </div>
-        <div class="border-l-4 border-accent pl-5">
-          <h3 class="font-semibold mb-1">分かりやすさ</h3>
-          <p class="text-gray-600 leading-relaxed">専門知識がなくても使いやすいように、画面構成や説明文を簡潔に保つことを意識しています。</p>
-        </div>
-        <div class="border-l-4 border-accent pl-5">
-          <h3 class="font-semibold mb-1">安全性と正確性</h3>
-          <p class="text-gray-600 leading-relaxed">安全性や正確性の向上に努めていますが、すべての環境で同じ結果や常に正確な結果を保証するものではありません。重要な用途では、結果を確認したうえでご利用ください。</p>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-5">
+            <h2 class="text-base font-semibold text-gray-950">ブラウザで完結</h2>
+            <p class="mt-2 text-sm leading-6 text-gray-600">主要ツールはインストール不要で、思いついた作業をすぐ始められる構成を目指しています。</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-5">
+            <h2 class="text-base font-semibold text-gray-950">実用性を優先</h2>
+            <p class="mt-2 text-sm leading-6 text-gray-600">画像整理、PDF処理、共有準備など、日常業務や個人作業で繰り返す処理を短く済ませられることを重視しています。</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-5">
+            <h2 class="text-base font-semibold text-gray-950">運営継続のための収益化</h2>
+            <p class="mt-2 text-sm leading-6 text-gray-600">広告やアフィリエイト導線は、サイト維持と改善のために設置しています。使い勝手を崩さない配置を心がけています。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="mb-14 bg-white rounded-lg shadow p-6">
-      <h2 class="text-2xl font-bold mb-4">運営者情報</h2>
-      <p class="text-gray-600 leading-relaxed mb-4">negi-lab.comは、Web制作とUI改善を中心に活動する個人運営のサイトです。日常業務や学習で使いやすい小さなツールを継続して整備しています。</p>
-      <p class="text-gray-600 leading-relaxed">お問い合わせは <a href="mailto:negilab.com@gmail.com" class="underline text-accent break-all">negilab.com@gmail.com</a> までお願いします。</p>
+    <section class="mx-auto max-w-5xl px-4 py-12">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-950">運営方針</h2>
+          <div class="mt-6 space-y-5">
+            <div class="border-l-4 border-accent pl-5">
+              <h3 class="font-semibold text-gray-950">プライバシーへの配慮</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">多くの処理はブラウザ内で完結する設計を採用しています。Cookie や広告配信の扱いは同意バナーとプライバシーポリシーで案内しています。</p>
+            </div>
+            <div class="border-l-4 border-accent pl-5">
+              <h3 class="font-semibold text-gray-950">使いやすさの改善</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">導線、UI、メタデータ、翻訳品質を継続的に見直し、使う前の判断と使った後の満足感を両立できるよう調整しています。</p>
+            </div>
+            <div class="border-l-4 border-accent pl-5">
+              <h3 class="font-semibold text-gray-950">正確性と免責</h3>
+              <p class="mt-2 text-sm leading-7 text-gray-600">結果の正確性には注意していますが、用途によっては最終確認が必要です。各ツールの出力や情報利用は自己責任でお願いします。</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h2 class="text-2xl font-bold text-gray-950">連絡先</h2>
+          <p class="mt-4 text-sm leading-7 text-gray-600">不具合報告、改善提案、掲載内容に関する連絡はメールで受け付けています。</p>
+          <p class="mt-4 text-sm font-semibold text-gray-950">Email</p>
+          <p class="mt-2 text-sm leading-7 text-gray-600">
+            <a href="mailto:negilab.com@gmail.com" class="break-all text-accent underline">negilab.com@gmail.com</a>
+          </p>
+          <div class="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <p class="text-sm font-semibold text-gray-950">関連ページ</p>
+            <ul class="mt-3 space-y-2 text-sm text-gray-600">
+              <li><a href="/" class="underline hover:text-accent">トップページ</a></li>
+              <li><a href="/tools/" class="underline hover:text-accent">ツール一覧</a></li>
+              <li><a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a></li>
+              <li><a href="/terms.html" class="underline hover:text-accent">利用規約</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </section>
   </main>
+
   <footer class="bg-gray-800 text-gray-300 py-6 text-center text-sm mt-auto">
     <nav class="mb-2 flex flex-wrap justify-center gap-x-4 gap-y-2 px-4">
       <a href="/privacy-policy-unified.html" class="underline hover:text-accent">プライバシーポリシー</a>

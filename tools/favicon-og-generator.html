@@ -43,6 +43,7 @@ object-src 'none';
   <link rel="canonical" href="https://negi-lab.com/tools/favicon-og-generator.html" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/portal-refresh.css" />
 
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
@@ -265,7 +266,7 @@ object-src 'none';
 ]
   </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+<body class="portal-refresh bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
@@ -299,19 +300,45 @@ object-src 'none';
     </div>
   </nav>
 
-  <main class="flex-grow">
-    <section class="py-10 md:py-14">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mb-8 max-w-3xl">
-          <p class="text-sm font-semibold text-green-700">ブラウザ内で生成 / PNG・ZIP保存</p>
-          <h1 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Favicon・OGP画像ジェネレーター</h1>
-          <p class="mt-3 text-gray-700 leading-7">
-            サイト用のFavicon、Apple Touch Icon、Android/PWAアイコン、OGP画像を同じ素材と色でまとめて作成できます。画像は端末内で処理され、本ツールのサーバーへ送信する処理はありません。
-          </p>
-        </div>
+  <main class="flex-grow portal-shell">
+    <section class="page-band">
+      <div class="container mx-auto px-4 max-w-6xl tool-shell">
+        <section class="tool-hero" aria-labelledby="favicon-generator-title">
+          <div class="tool-hero__inner lg:grid lg:grid-cols-[1.18fr_0.82fr] lg:items-end">
+            <div class="space-y-5">
+              <p class="tool-hero__eyebrow">Browser generated</p>
+              <div class="space-y-3">
+                <h1 id="favicon-generator-title" class="tool-hero__title">Favicon・OGP画像ジェネレーター</h1>
+                <p class="tool-hero__lead">
+                  サイト用のFavicon、Apple Touch Icon、Android/PWAアイコン、OGP画像を同じ素材と色でまとめて作成できます。画像は端末内で処理され、本ツールのサーバーへ送信する処理はありません。
+                </p>
+              </div>
+            </div>
+            <div class="tool-kicker-grid">
+              <div class="tool-trust-card">
+                <strong>一括生成</strong>
+                <p>ロゴ画像がなくても、文字と背景色だけで favicon、OGP、アプリアイコンの基本セットを揃えられます。</p>
+              </div>
+              <div class="tool-trust-card">
+                <strong>保存しやすい出力</strong>
+                <p>PNG単体に加えて ZIP と設置用HTMLをまとめて出力できるので、公開前の差し替えが速くなります。</p>
+              </div>
+              <div class="tool-stat-row">
+                <div class="tool-stat">
+                  <strong>32 / 180 / 192 / 512 / 1200x630</strong>
+                  <span>favicon、PWA、OGPの主要サイズをすぐ確認できます。</span>
+                </div>
+                <div class="tool-stat">
+                  <strong>ZIP + HTML</strong>
+                  <span>設置タグのコピーとアセット書き出しを同じ画面で完結できます。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="generator-heading">
+        <div class="tool-workspace lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <section class="tool-panel" aria-labelledby="generator-heading">
             <h2 id="generator-heading" class="text-xl font-bold text-gray-900">1. 素材と出力を設定</h2>
             <p class="mt-2 text-sm leading-6 text-gray-600">画像なしでも文字と背景色だけで生成できます。対応形式はPNG/JPEG/WebP/GIFです。SVGは安全性と表示差異を避けるため対象外です。</p>
 
@@ -402,7 +429,7 @@ object-src 'none';
             </div>
           </section>
 
-          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="preview-heading">
+          <section class="tool-panel tool-panel--soft" aria-labelledby="preview-heading">
             <div class="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h2 id="preview-heading" class="text-xl font-bold text-gray-900">2. プレビュー・保存・設置</h2>
@@ -428,7 +455,7 @@ object-src 'none';
               <textarea id="markupSnippet" class="form-textarea min-h-36 font-mono text-xs leading-5" readonly spellcheck="false"></textarea>
             </div>
 
-            <div class="mt-5 rounded-lg border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
+            <div class="mt-5 rounded-2xl border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
               <p class="font-bold">ZIPに含まれるもの</p>
               <p class="mt-1">favicon-16x16.png、favicon-32x32.png、apple-touch-icon.png、android-chrome-192x192.png、android-chrome-512x512.png、og-image.png、設置用HTML、manifestサンプルを生成します。</p>
             </div>
@@ -437,47 +464,47 @@ object-src 'none';
       </div>
     </section>
 
-    <section class="border-y border-gray-200 bg-white py-10">
+    <section class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <h2 class="text-2xl font-bold text-gray-900">作成前のチェックポイント</h2>
-            <p class="mt-3 text-gray-600 leading-7">
-              小さなタブ用のFaviconと、SNSで共有されるOGP画像では見え方が大きく変わります。保存後は、ブラウザタブ、スマートフォンのホーム画面、SNSカードの実表示で確認してください。
-            </p>
-          </div>
-          <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
-            <div class="py-5 md:px-5 md:border-r border-gray-200">
-              <h3 class="text-base font-semibold text-gray-900">Faviconは単純に</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">16pxや32pxでは細かいロゴや長い文字がつぶれます。短い文字、強いコントラスト、はっきりした形が安定します。</p>
+        <div class="portal-card p-6 md:p-8">
+          <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div class="tool-section-heading">
+              <h2>作成前のチェックポイント</h2>
+              <p>小さなタブ用のFaviconと、SNSで共有されるOGP画像では見え方が大きく変わります。保存後は、ブラウザタブ、スマートフォンのホーム画面、SNSカードの実表示で確認してください。</p>
             </div>
-            <div class="py-5 md:px-5 md:border-r border-gray-200">
-              <h3 class="text-base font-semibold text-gray-900">OGPは余白を残す</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">SNSやチャットでは端が切れる場合があります。中心に主題を置き、外側に余白を残すと見切れを避けやすくなります。</p>
-            </div>
-            <div class="py-5 md:px-5">
-              <h3 class="text-base font-semibold text-gray-900">公開前に実機確認</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">生成結果はブラウザのCanvas品質に依存します。公開前に実際の表示先でサイズ、色、文字の読みやすさを確認してください。</p>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">Faviconは単純に</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">16pxや32pxでは細かいロゴや長い文字がつぶれます。短い文字、強いコントラスト、はっきりした形が安定します。</p>
+              </div>
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">OGPは余白を残す</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">SNSやチャットでは端が切れる場合があります。中心に主題を置き、外側に余白を残すと見切れを避けやすくなります。</p>
+              </div>
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">公開前に実機確認</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">生成結果はブラウザのCanvas品質に依存します。公開前に実際の表示先でサイズ、色、文字の読みやすさを確認してください。</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-8">
+    <section class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid gap-6 md:grid-cols-[1fr_1fr]">
-          <div class="text-sm text-gray-700">
+          <div class="tool-panel">
             <h2 class="font-bold text-base text-gray-900">プライバシーと安全性</h2>
-            <ul class="mt-2 grid gap-2">
+            <ul class="mt-2 grid gap-2 text-sm text-gray-700">
               <li>選択した画像の検証、プレビュー、リサイズ、ZIP生成はブラウザ内で行います。</li>
               <li>画像形式、ファイルサイズ、画像ピクセル数を確認し、SVGや不明な形式は読み込みません。</li>
               <li>入力テキストやファイル名はHTMLとして挿入せず、テキストとして画面へ反映します。</li>
             </ul>
           </div>
-          <div class="text-sm text-gray-700">
+          <div class="tool-panel">
             <h2 class="font-bold text-base text-gray-900">関連ツール</h2>
-            <p class="mt-2 leading-7">サイト制作や公開前チェックに使える無料ツールもあわせてご利用ください。</p>
+            <p class="mt-2 text-sm leading-7 text-gray-700">サイト制作や公開前チェックに使える無料ツールもあわせてご利用ください。</p>
             <div class="mt-3 flex flex-wrap gap-2">
               <a class="rounded border border-green-200 px-3 py-2 text-green-800 hover:bg-green-50" href="/#tools">ツール一覧を見る</a>
               <a class="rounded border border-green-200 px-3 py-2 text-green-800 hover:bg-green-50" href="/privacy-policy-unified.html">プライバシーポリシー</a>
@@ -487,28 +514,26 @@ object-src 'none';
         </div>
       </div>
     </section>
-    <section id="related-tools" class="pb-10">
+    <section id="related-tools" class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+        <div class="portal-card p-6 md:p-8">
           <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div class="max-w-3xl">
-              <h2 class="text-2xl font-bold text-gray-900">関連ツール</h2>
-              <p class="mt-2 text-sm leading-7 text-gray-600">
-                サイト公開やSNS導線づくりまでを一気に進めたいときに、相性のよいツールをまとめました。
-              </p>
+            <div class="tool-section-heading">
+              <h2>関連ツール</h2>
+              <p>サイト公開やSNS導線づくりまでを一気に進めたいときに、相性のよいツールをまとめました。</p>
             </div>
             <a href="/#tools" class="text-sm font-semibold text-green-700 hover:text-green-800">ツール一覧を見る</a>
           </div>
-          <div class="mt-5 grid gap-4 md:grid-cols-3">
-            <a href="/tools/bg-remover.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+          <div class="tool-related-grid mt-5 md:grid-cols-3">
+            <a href="/tools/bg-remover.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">画像背景リムーバー</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">ロゴや商品画像の背景を整えてから、FaviconやOGP画像を作成したいときに便利です。</p>
             </a>
-            <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <a href="/tools/qr-code-generator.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">QRコード生成ツール</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">OGPやLP素材を整えたあとに、配布物や店頭掲示用のQR導線まで続けて用意できます。</p>
             </a>
-            <a href="/tools/image-converter.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <a href="/tools/image-converter.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">画像変換ツール</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">作成した画像の形式や容量を調整したいときに、公開先に合わせた変換作業へつなげられます。</p>
             </a>

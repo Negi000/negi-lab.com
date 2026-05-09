@@ -45,6 +45,7 @@ object-src 'none';
   <link rel="canonical" href="https://negi-lab.com/tools/bg-remover.html" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/portal-refresh.css" />
 
   <script src="../js/security-utils.js"></script>
   <script src="../js/common-utils.js"></script>
@@ -252,7 +253,7 @@ object-src 'none';
 ]
   </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+<body class="portal-refresh bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
       <a href="/" class="text-xl sm:text-2xl leading-tight font-extrabold text-accent tracking-tight hover:opacity-80 transition">negi-lab.com</a>
@@ -286,19 +287,45 @@ object-src 'none';
     </div>
   </nav>
 
-  <main class="flex-grow">
-    <section class="py-10 md:py-14">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="mb-8 max-w-3xl">
-          <p class="text-sm font-semibold text-green-700">ブラウザ内で完結 / サーバー送信なし</p>
-          <h1 class="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">画像背景リムーバ・透過PNG生成</h1>
-          <p class="mt-3 text-gray-700 leading-7">
-            外周からつながっている背景色だけを判定して透明化します。白背景の商品画像、ロゴ、アイコン素材の下処理に向いた、静的サイトで使える安全な画像ツールです。
-          </p>
-        </div>
+  <main class="flex-grow portal-shell">
+    <section class="page-band">
+      <div class="container mx-auto px-4 max-w-6xl tool-shell">
+        <section class="tool-hero" aria-labelledby="bg-remover-title">
+          <div class="tool-hero__inner lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div class="space-y-5">
+              <p class="tool-hero__eyebrow">Browser only</p>
+              <div class="space-y-3">
+                <h1 id="bg-remover-title" class="tool-hero__title">画像背景リムーバ・透過PNG生成</h1>
+                <p class="tool-hero__lead">
+                  外周からつながっている背景色だけを判定して透明化します。白背景の商品画像、ロゴ、アイコン素材の下処理に向いた、静的サイトで使える安全な画像ツールです。
+                </p>
+              </div>
+            </div>
+            <div class="tool-kicker-grid">
+              <div class="tool-trust-card">
+                <strong>アップロードなし</strong>
+                <p>画像は端末内のメモリとCanvasだけで処理します。共有端末でも作業後にページを閉じれば一時URLは破棄されます。</p>
+              </div>
+              <div class="tool-trust-card">
+                <strong>向いている素材</strong>
+                <p>白背景の商品画像、ロゴ、アイコンに最適です。人物や複雑な背景は下処理用途として使うと安定します。</p>
+              </div>
+              <div class="tool-stat-row">
+                <div class="tool-stat">
+                  <strong>PNG / JPEG / WebP / GIF</strong>
+                  <span>SVGは安全性と表示差異を避けるため対象外です。</span>
+                </div>
+                <div class="tool-stat">
+                  <strong>透過PNG保存</strong>
+                  <span>コピー機能は対応ブラウザでそのまま利用できます。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="input-heading">
+        <div class="tool-workspace lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <section class="tool-panel" aria-labelledby="input-heading">
             <h2 id="input-heading" class="text-xl font-bold text-gray-900">1. 画像と処理条件</h2>
             <p class="mt-2 text-sm leading-6 text-gray-600">
               PNG/JPEG/WebP/GIFに対応します。SVGはスクリプト混入や表示差異を避けるため対象外です。アニメーションGIFは先頭フレームとして処理されます。
@@ -343,7 +370,7 @@ object-src 'none';
             </div>
           </section>
 
-          <section class="bg-white border border-gray-200 rounded-lg p-5 md:p-6" aria-labelledby="preview-heading">
+          <section class="tool-panel tool-panel--soft" aria-labelledby="preview-heading">
             <div class="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h2 id="preview-heading" class="text-xl font-bold text-gray-900">2. プレビューと保存</h2>
@@ -373,7 +400,7 @@ object-src 'none';
             </div>
             <p id="downloadHint" class="mt-2 text-xs leading-5 text-gray-500">保存前に透過状態を確認してください。ダウンロードは透過PNG、コピーは対応ブラウザのみ利用できます。</p>
 
-            <div class="mt-5 rounded-lg border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
+            <div class="mt-5 rounded-2xl border border-green-100 bg-green-50 p-4 text-sm leading-6 text-green-900">
               <p class="font-bold">安全な処理について</p>
               <p class="mt-1">
                 選択した画像は端末内のメモリ上で読み込み、Canvasで処理します。アップロード、外部AI API、保存用サーバーは使いません。共有端末では、作業後にページを閉じると一時URLも破棄されます。
@@ -384,28 +411,26 @@ object-src 'none';
       </div>
     </section>
 
-    <section id="related-tools" class="pb-10">
+    <section id="related-tools" class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+        <div class="portal-card p-6 md:p-8">
           <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div class="max-w-3xl">
-              <h2 class="text-2xl font-bold text-gray-900">関連ツール</h2>
-              <p class="mt-2 text-sm leading-7 text-gray-600">
-                背景を整えたあとの画像加工や公開素材づくりまで、同じブラウザ内で続けて進められます。
-              </p>
+            <div class="tool-section-heading">
+              <h2>関連ツール</h2>
+              <p>背景を整えたあとの画像加工や公開素材づくりまで、同じブラウザ内で続けて進められます。</p>
             </div>
             <a href="/#tools" class="text-sm font-semibold text-green-700 hover:text-green-800">ツール一覧を見る</a>
           </div>
-          <div class="mt-5 grid gap-4 md:grid-cols-3">
-            <a href="/tools/favicon-og-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+          <div class="tool-related-grid mt-5 md:grid-cols-3">
+            <a href="/tools/favicon-og-generator.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">Favicon・OGP画像ジェネレーター</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">背景を整えたロゴや商品画像から、SNS共有画像やアイコン素材をまとめて作成できます。</p>
             </a>
-            <a href="/tools/qr-code-generator.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <a href="/tools/qr-code-generator.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">QRコード生成ツール</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">透過ロゴ画像を用意したあとに、販促物や店舗掲示向けのQRコード制作へつなげられます。</p>
             </a>
-            <a href="/tools/image-converter.html" class="rounded-lg border border-gray-200 p-4 transition hover:border-green-300 hover:bg-green-50">
+            <a href="/tools/image-converter.html" class="tool-related-card">
               <h3 class="font-semibold text-gray-900">画像変換ツール</h3>
               <p class="mt-2 text-sm leading-6 text-gray-600">透過PNGの書き出し後に、用途に合わせて形式や容量を調整したいときに便利です。</p>
             </a>
@@ -414,51 +439,51 @@ object-src 'none';
       </div>
     </section>
 
-    <section class="border-y border-gray-200 bg-white py-10">
+    <section class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <h2 class="text-2xl font-bold text-gray-900">きれいに抜ける画像の条件</h2>
-            <p class="mt-3 text-gray-600 leading-7">
-              このツールは外周に触れている背景を追跡して透明化します。被写体内部の似た色まで一気に消えにくく、従来の単純な四隅平均より安定しやすい方式です。
-            </p>
-          </div>
-          <div class="grid gap-0 border-y border-gray-200 md:grid-cols-3 md:border-l">
-            <div class="py-5 md:px-5 md:border-r border-gray-200">
-              <h3 class="text-base font-semibold text-gray-900">単色に近い背景</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">白、薄いグレー、淡色など、外周の背景色が大きく変化しない画像に向いています。</p>
+        <div class="portal-card p-6 md:p-8">
+          <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div class="tool-section-heading">
+              <h2>きれいに抜ける画像の条件</h2>
+              <p>このツールは外周に触れている背景を追跡して透明化します。被写体内部の似た色まで一気に消えにくく、従来の単純な四隅平均より安定しやすい方式です。</p>
             </div>
-            <div class="py-5 md:px-5 md:border-r border-gray-200">
-              <h3 class="text-base font-semibold text-gray-900">被写体が中央にある</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">画像の四辺や四隅に背景が残っていると、背景として判定しやすくなります。</p>
-            </div>
-            <div class="py-5 md:px-5">
-              <h3 class="text-base font-semibold text-gray-900">複雑な背景は補助的に</h3>
-              <p class="mt-2 text-sm leading-7 text-gray-600">髪の毛、影、柄、透明物などの精密な切り抜きは、専用編集ソフトで仕上げる前の下処理として使ってください。</p>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">単色に近い背景</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">白、薄いグレー、淡色など、外周の背景色が大きく変化しない画像に向いています。</p>
+              </div>
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">被写体が中央にある</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">画像の四辺や四隅に背景が残っていると、背景として判定しやすくなります。</p>
+              </div>
+              <div class="portal-card p-5">
+                <h3 class="text-base font-semibold text-gray-900">複雑な背景は補助的に</h3>
+                <p class="mt-2 text-sm leading-7 text-gray-600">髪の毛、影、柄、透明物などの精密な切り抜きは、専用編集ソフトで仕上げる前の下処理として使ってください。</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-8">
+    <section class="page-band pt-0">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
-          <div class="text-sm text-gray-700">
+          <div class="tool-panel">
             <h2 class="font-bold text-base text-gray-900">関連ツール</h2>
             <ul class="mt-2 grid gap-2 sm:grid-cols-2">
               <li><a href="/tools/image-converter.html" class="text-accent underline hover:no-underline">画像変換ツール</a>でPNG/WebP/JPEGへの書き出しを調整</li>
               <li><a href="/tools/favicon-og-generator.html" class="text-accent underline hover:no-underline">Favicon / OGP画像生成ツール</a>で透過後の素材をSNS・サイト用に整形</li>
             </ul>
           </div>
-          <div class="text-sm text-gray-700">
-          <h2 class="font-bold text-base text-gray-900">negi-lab.comの運営方針</h2>
-          <ul class="mt-2 grid gap-2 md:grid-cols-3">
-            <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
-            <li>画像処理はブラウザ内で行い、入力画像をサーバーへ送信しません。</li>
-            <li>結果は画像条件に左右されます。重要な素材は保存前に必ず確認してください。</li>
-          </ul>
-        </div>
+          <div class="tool-panel">
+            <h2 class="font-bold text-base text-gray-900">negi-lab.comの運営方針</h2>
+            <ul class="mt-2 grid gap-2 md:grid-cols-3 text-sm text-gray-700">
+              <li>本ツールはnegi-lab.comが独自開発・運営しています。</li>
+              <li>画像処理はブラウザ内で行い、入力画像をサーバーへ送信しません。</li>
+              <li>結果は画像条件に左右されます。重要な素材は保存前に必ず確認してください。</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

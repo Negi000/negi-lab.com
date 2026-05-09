@@ -50,6 +50,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/portal-refresh.css" />
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
   <style>
@@ -360,7 +361,7 @@
   </script>
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
+<body class="portal-refresh bg-gray-50 text-gray-800 font-inter min-h-screen flex flex-col">
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap gap-3 justify-between items-center px-4 py-3">
@@ -414,35 +415,43 @@
   <script src="../js/image-converter-ui.js"></script>
 
   <!-- Main Content -->
-  <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="imageConverter.mainTitle">&#30011;&#20687;&#22793;&#25563;&#12539;&#12522;&#12469;&#12452;&#12474;&#12539;WebP&#20316;&#25104;&#12484;&#12540;&#12523;</h1>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-6">
-          <strong data-translate-key="imageConverter.subtitle">&#20027;&#35201;&#12394;&#30011;&#20687;&#24418;&#24335;&#12434;&#12502;&#12521;&#12454;&#12470;&#20869;&#12391;&#22793;&#25563;</strong> - <span data-translate-key="imageConverter.description">&#35079;&#25968;&#12501;&#12449;&#12452;&#12523;&#12398;&#22793;&#25563;&#12289;&#12522;&#12469;&#12452;&#12474;&#12289;&#22238;&#36578;&#12289;&#31777;&#26131;&#12501;&#12451;&#12523;&#12479;&#12540;&#12395;&#23550;&#24540;&#12290;&#30011;&#20687;&#12487;&#12540;&#12479;&#12399;&#12469;&#12540;&#12496;&#12540;&#12408;&#36865;&#20449;&#12375;&#12414;&#12379;&#12435;&#12290;</span>
-        </p>
-        <div class="grid gap-3 sm:grid-cols-3 max-w-4xl mx-auto text-left mb-6" aria-label="信頼補助情報">
-          <div class="rounded-lg border border-green-200 bg-green-50 p-4">
-            <div class="text-sm font-semibold text-green-800" data-translate-key="imageConverter.trust.privacyTitle">ブラウザ内処理</div>
-            <p class="mt-1 text-sm text-green-900/80" data-translate-key="imageConverter.trust.privacyText">変換処理は主にブラウザ内で完結します。画像データは negi-lab.com のサーバーへ送信しません。</p>
+  <main class="flex-grow portal-shell">
+    <section class="page-band">
+      <div class="container mx-auto px-4 max-w-6xl tool-shell">
+        <section class="tool-hero" aria-labelledby="image-converter-title">
+          <div class="tool-hero__inner">
+            <div class="space-y-4">
+              <p class="tool-hero__eyebrow">Multi-format</p>
+              <h1 id="image-converter-title" class="tool-hero__title" data-translate-key="imageConverter.mainTitle">&#30011;&#20687;&#22793;&#25563;&#12539;&#12522;&#12469;&#12452;&#12474;&#12539;WebP&#20316;&#25104;&#12484;&#12540;&#12523;</h1>
+              <p class="tool-hero__lead">
+                <strong data-translate-key="imageConverter.subtitle">&#20027;&#35201;&#12394;&#30011;&#20687;&#24418;&#24335;&#12434;&#12502;&#12521;&#12454;&#12470;&#20869;&#12391;&#22793;&#25563;</strong>
+                <span data-translate-key="imageConverter.description">&#35079;&#25968;&#12501;&#12449;&#12452;&#12523;&#12398;&#22793;&#25563;&#12289;&#12522;&#12469;&#12452;&#12474;&#12289;&#22238;&#36578;&#12289;&#31777;&#26131;&#12501;&#12451;&#12523;&#12479;&#12540;&#12395;&#23550;&#24540;&#12290;&#30011;&#20687;&#12487;&#12540;&#12479;&#12399;&#12469;&#12540;&#12496;&#12540;&#12408;&#36865;&#20449;&#12375;&#12414;&#12379;&#12435;&#12290;</span>
+              </p>
+            </div>
+            <div class="tool-hero__grid sm:grid-cols-3" aria-label="信頼補助情報">
+              <div class="tool-trust-card">
+                <strong data-translate-key="imageConverter.trust.privacyTitle">ブラウザ内処理</strong>
+                <p data-translate-key="imageConverter.trust.privacyText">変換処理は主にブラウザ内で完結します。画像データは negi-lab.com のサーバーへ送信しません。</p>
+              </div>
+              <div class="tool-trust-card">
+                <strong data-translate-key="imageConverter.trust.workflowTitle">用途別プリセット</strong>
+                <p data-translate-key="imageConverter.trust.workflowText">Web掲載、SNS投稿、印刷確認など、目的別の初期設定からすぐ始められます。</p>
+              </div>
+              <div class="tool-trust-card">
+                <strong data-translate-key="imageConverter.trust.reviewTitle">変換前後を比較</strong>
+                <p data-translate-key="imageConverter.trust.reviewText">プレビューと容量差を見ながら、画質と軽さのバランスを確認できます。</p>
+              </div>
+            </div>
           </div>
-          <div class="rounded-lg border border-blue-200 bg-blue-50 p-4">
-            <div class="text-sm font-semibold text-blue-800" data-translate-key="imageConverter.trust.workflowTitle">用途別プリセット</div>
-            <p class="mt-1 text-sm text-blue-900/80" data-translate-key="imageConverter.trust.workflowText">Web掲載、SNS投稿、印刷確認など、目的別の初期設定からすぐ始められます。</p>
-          </div>
-          <div class="rounded-lg border border-amber-200 bg-amber-50 p-4">
-            <div class="text-sm font-semibold text-amber-800" data-translate-key="imageConverter.trust.reviewTitle">変換前後を比較</div>
-            <p class="mt-1 text-sm text-amber-900/80" data-translate-key="imageConverter.trust.reviewText">プレビューと容量差を見ながら、画質と軽さのバランスを確認できます。</p>
-          </div>
-        </div>
-        <!-- 上部広告（標準化：lazy + min-height） -->
-        <aside class="max-w-3xl mx-auto my-6" aria-label="&#24195;&#21578;">
-          <div class="text-xs text-gray-400 mb-1">&#12473;&#12509;&#12531;&#12469;&#12540;&#12522;&#12531;&#12463;</div>
+        </section>
+
+        <aside class="tool-ad-frame max-w-3xl mx-auto" aria-label="&#24195;&#21578;">
+          <div class="text-xs text-gray-400">&#12473;&#12509;&#12531;&#12469;&#12540;&#12522;&#12531;&#12463;</div>
           <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="7843001775" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="&#24195;&#21578;"></ins>
         </aside>
-      </div>
 
-      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-6">
+        <div class="tool-workspace">
+          <section class="tool-panel space-y-6">
         <div>
           <label for="imageUploadArea" class="block text-sm font-medium text-gray-700 mb-1" data-translate-key="imageConverter.upload.label">&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12434;&#12450;&#12483;&#12503;&#12525;&#12540;&#12489;</label>
           <div id="imageUploadArea" class="drop-area" role="button" aria-label="&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12450;&#12483;&#12503;&#12525;&#12540;&#12489;&#12456;&#12522;&#12450;" aria-describedby="dropInstructions" tabindex="0">
@@ -603,14 +612,16 @@
             <p id="errorMessage" class="text-red-600"></p>
         </div>
 
-      </div>
+          </section>
       <!-- フッター直前広告 -->
-      <aside class="max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
+      <aside class="tool-ad-frame max-w-3xl mx-auto my-10" aria-label="スポンサー広告">
         <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
   <ins class="adsbygoogle ad-pc" style="display:block;min-height:250px" data-ad-client="ca-pub-1835873052239386" data-ad-slot="4837564489" data-ad-format="auto" data-full-width-responsive="true" data-ad-lazy="1" aria-label="&#24195;&#21578;"></ins>
       </aside>
 
-    </div>
+        </div>
+      </div>
+    </section>
 
   <!-- 技術的・活用ガイドセクション -->
   <section class="bg-gradient-to-br from-blue-50 to-green-50 py-16">

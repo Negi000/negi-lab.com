@@ -41,6 +41,7 @@
   <link rel="canonical" href="https://negi-lab.com/tools/date-calculator.html" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+<link rel="stylesheet" href="/assets/css/portal-refresh.css">
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 
@@ -264,22 +265,40 @@ window.pageTitleTranslationKey = "dateCalculator.pageTitle";
 
   <main class="flex-grow py-12">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="dateCalculator.mainTitle">日付計算ツール</h1>
-        <p class="text-gray-600 max-w-3xl mx-auto" data-translate-key="dateCalculator.lead">開始日と終了日の差分、基準日からの日付加算・減算をブラウザ内で確認できます。</p>
-      </div>
-      <!-- ツール上部：アドセンス（レスポンシブ） -->
-      <div class="max-w-2xl mx-auto my-6">
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="7843001775"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-full-width-responsive="true"></ins>
-      </div>
-      <div id="date-tool-panel" class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-8">
+      <section class="mb-8 rounded-3xl border border-gray-200 bg-white px-6 py-7 shadow-sm md:px-8">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold text-accent">差分確認と期限計算</p>
+            <h1 class="mt-2 text-3xl md:text-4xl font-bold text-gray-900" data-translate-key="dateCalculator.mainTitle">日付計算ツール</h1>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-gray-600 md:text-lg" data-translate-key="dateCalculator.lead">開始日と終了日の差分、基準日からの日付加算・減算をブラウザ内で確認できます。</p>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3">
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Diff</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">期間の長さをすぐ確認</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Add/Subtract</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">締切や予定日の前後計算</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Business Days</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">土日と内蔵祝日を除外</p>
+              </div>
+            </div>
+          </div>
+          <aside class="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-5">
+            <h2 class="text-base font-bold text-gray-900">使い始めの目安</h2>
+            <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-700">
+              <li>開始日・終了日を含めるか先に決める</li>
+              <li>営業日計算は社内独自休日を含まない</li>
+              <li>重要日程は公式カレンダーでも再確認する</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <div id="date-tool-panel" class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 space-y-8">
         <div class="mb-6 flex gap-4">
           <button id="tabDiff" type="button" class="tab-btn px-4 py-2 rounded font-semibold bg-accent text-white" data-translate-key="dateCalculator.tabDiff">日付の差分</button>
           <button id="tabAddSub" type="button" class="tab-btn px-4 py-2 rounded font-semibold bg-gray-200 text-gray-700" data-translate-key="dateCalculator.tabAddSub">日付の加算・減算</button>
@@ -362,17 +381,38 @@ window.pageTitleTranslationKey = "dateCalculator.pageTitle";
             </details>
           </div>
         </div>
+        </div>
+        <aside class="space-y-5 lg:sticky lg:top-24">
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 class="text-base font-bold text-gray-900">よく使う場面</h2>
+            <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-600">
+              <li>納期や公開日までの残り日数確認</li>
+              <li>契約更新や申請期限の前倒し計算</li>
+              <li>営業日ベースの工数感チェック</li>
+            </ul>
+          </section>
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm" aria-label="スポンサー広告">
+            <div class="text-xs text-gray-400 mb-1">スポンサーリンク</div>
+            <ins class="adsbygoogle ad-pc"
+                 style="display:block;min-height:250px"
+                 data-ad-client="ca-pub-1835873052239386"
+                 data-ad-slot="7843001775"
+                 data-ad-format="auto"
+                 data-ad-lazy="1"
+                 aria-label="広告"
+                 data-full-width-responsive="true"></ins>
+          </section>
+        </aside>
       </div>
-      <!-- フッター直前：アドセンス（インフィード/ディスプレイ） -->
       <div class="max-w-xl mx-auto my-8">
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="4837564489"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle ad-pc"
+             style="display:block;min-height:250px"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="4837564489"
+             data-ad-format="auto"
+             data-ad-lazy="1"
+             aria-label="広告"
+             data-full-width-responsive="true"></ins>
       </div>
     </div>
 

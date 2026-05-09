@@ -76,6 +76,7 @@
 
   <!-- CSS Framework -->
   <link rel="stylesheet" href="/assets/css/negi-tailwind.css" />
+<link rel="stylesheet" href="/assets/css/portal-refresh.css">
 <link rel="stylesheet" href="/js/responsive-ads.css">
 <script src="/js/responsive-ads-controller.js"></script>
 
@@ -328,29 +329,42 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
 
   <!-- Main Content -->
   <main class="flex-grow py-12">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="textConverter.mainTitle">テキスト変換ツール</h1>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-translate-key="textConverter.description">大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転まで多機能なテキスト処理ツール</p>
-      </div>
+    <div class="container mx-auto px-4 max-w-6xl">
+      <section class="mb-8 rounded-3xl border border-gray-200 bg-white px-6 py-7 shadow-sm md:px-8">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold text-accent">命名規則と文字数確認</p>
+            <h1 class="mt-2 text-3xl md:text-4xl font-bold text-gray-900" data-translate-key="textConverter.mainTitle">テキスト変換ツール</h1>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-gray-600 md:text-lg" data-translate-key="textConverter.description">大文字小文字変換・キャメルケース・スネークケース変換・文字数カウント・文字反転まで多機能なテキスト処理ツール</p>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3">
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Convert</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">表記ゆれをすぐ統一</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Count</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">文字数や行数をその場で確認</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Local</p>
+                <p class="mt-2 text-sm leading-6 text-gray-700">入力と履歴はブラウザ内で完結</p>
+              </div>
+            </div>
+          </div>
+          <aside class="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-5">
+            <h2 class="text-base font-bold text-gray-900">すぐ使う流れ</h2>
+            <ol class="mt-3 space-y-3 text-sm leading-6 text-gray-700">
+              <li>1. 変換タイプを選ぶ</li>
+              <li>2. テキストを貼り付ける</li>
+              <li>3. 結果をコピーして次の作業へ進む</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
 
-      <!-- 上部広告 -->
-      <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告" data-translate-aria-label-key="textConverter.adsArea">
-        <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="7843001775"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-translate-aria-label-key="textConverter.adLabel"
-       data-full-width-responsive="true"></ins>
-  <!-- Managed by consent-gated loader -->
-      </div>
-
-      <!-- Tool Content -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <!-- Tool Content -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
         <div class="space-y-6">
           <!-- 変換タイプ選択 -->
           <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
@@ -421,21 +435,43 @@ window.pageTitleTranslationKey = "textConverter.pageTitle";
             <ul id="historyList" class="space-y-3" aria-live="polite" aria-describedby="historyPrivacyNote"></ul>
           </section>
         </div>
+        </div>
+
+        <aside class="space-y-5 lg:sticky lg:top-24">
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 class="text-base font-bold text-gray-900">よく使う場面</h2>
+            <ul class="mt-3 space-y-3 text-sm leading-6 text-gray-600">
+              <li>APIキー名や変数名の表記統一</li>
+              <li>投稿文や見出しの文字数確認</li>
+              <li>README や設定ファイル用の整形</li>
+            </ul>
+          </section>
+          <section class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm" aria-label="スポンサー広告" data-translate-aria-label-key="textConverter.adsArea">
+            <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
+            <ins class="adsbygoogle ad-pc"
+                 style="display:block;min-height:250px"
+                 data-ad-client="ca-pub-1835873052239386"
+                 data-ad-slot="7843001775"
+                 data-ad-format="auto"
+                 data-ad-lazy="1"
+                 aria-label="広告"
+                 data-translate-aria-label-key="textConverter.adLabel"
+                 data-full-width-responsive="true"></ins>
+          </section>
+        </aside>
       </div>
 
-      <!-- 中間広告 -->
       <div class="max-w-3xl mx-auto my-8" aria-label="スポンサー広告" data-translate-aria-label-key="textConverter.adsArea">
         <div class="text-xs text-gray-400 mb-1" data-translate-key="ads.sponsorLink">スポンサーリンク</div>
-  <ins class="adsbygoogle ad-pc"
-       style="display:block;min-height:250px"
-       data-ad-client="ca-pub-1835873052239386"
-  data-ad-slot="4837564489"
-       data-ad-format="auto"
-       data-ad-lazy="1"
-       aria-label="広告"
-       data-translate-aria-label-key="textConverter.adLabel"
-       data-full-width-responsive="true"></ins>
-  <!-- Managed by consent-gated loader -->
+        <ins class="adsbygoogle ad-pc"
+             style="display:block;min-height:250px"
+             data-ad-client="ca-pub-1835873052239386"
+             data-ad-slot="4837564489"
+             data-ad-format="auto"
+             data-ad-lazy="1"
+             aria-label="広告"
+             data-translate-aria-label-key="textConverter.adLabel"
+             data-full-width-responsive="true"></ins>
       </div>
 
   <!-- テキスト変換活用ガイドセクション -->

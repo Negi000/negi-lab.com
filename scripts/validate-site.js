@@ -548,6 +548,48 @@ function validateToolsIndex() {
   }
 }
 
+function validatePortalShellPages() {
+  const pages = [
+    {
+      rel: 'index.html',
+      markers: [
+        { pattern: /data-shell-home-hero=["']true["']/, label: 'home hero marker' },
+        { pattern: /data-shell-home-pathways=["']true["']/, label: 'home pathway marker' },
+      ],
+    },
+    {
+      rel: 'tools/index.html',
+      markers: [
+        { pattern: /data-shell-tool-hero=["']true["']/, label: 'tool hero marker' },
+        { pattern: /data-shell-tool-shortcuts=["']true["']/, label: 'tool shortcut marker' },
+      ],
+    },
+    {
+      rel: 'about.html',
+      markers: [
+        { pattern: /data-shell-about-summary=["']true["']/, label: 'about summary marker' },
+      ],
+    },
+  ];
+
+  for (const page of pages) {
+    const file = path.join(root, page.rel);
+    if (!fs.existsSync(file)) {
+      fail(`${page.rel}: missing`);
+      continue;
+    }
+    const text = fs.readFileSync(file, 'utf8');
+    if (!/href=["']\/assets\/css\/portal-refresh\.css["']/.test(text)) {
+      fail(`${page.rel}: missing shared /assets/css/portal-refresh.css stylesheet`);
+    }
+    for (const marker of page.markers) {
+      if (!marker.pattern.test(text)) {
+        fail(`${page.rel}: missing ${marker.label}`);
+      }
+    }
+  }
+}
+
 function validateCopyrightYear() {
   const files = [
     ...seoPages,
@@ -679,6 +721,7 @@ validateCriticalTextIsReadable();
 validateSeoMetadata();
 validateToolEnhancements();
 validateToolsIndex();
+validatePortalShellPages();
 validateWebAppManifest();
 validateTailwindProductionCss();
 validateReferencedAssets();
