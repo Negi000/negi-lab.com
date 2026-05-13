@@ -4,8 +4,8 @@
       "id": "101786",
       "name": "卡尔海伦",
       "subname": "双矛猎人",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101786",
+      "affiliation": "夜鸦",
+      "flavor": "因为到处找强者对战，于是被称为双矛猎人。\\n曾与太乌对决，但失败了，然后加入了太乌的组织。",
       "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
@@ -105,28 +105,28 @@
       "Normal Attack": {
         "id": "10178601",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的100%",
+        "desc": "单一敌军（战雷标记优先）\n - 1次相当于物理攻击力100%的伤害\n - 对象处于战雷标记状态时造成相当于400的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [20%的概率] [持续1回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的120%\nTranscend Lv.2 Effect\n - 单一敌军（战雷标记）\n - 概率提升：触电概率提升至30%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178602",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力185%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的185%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷狂炮",
+        "desc": "3名敌军（战雷标记优先）\n - 3次相当于物理攻击力53%的贯穿伤害\n - 物理脆弱 [100%的概率] [持续3回合]\n - 对象处于战雷标记状态时造成相当于1700的额外贯穿固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 效果提升：物理脆弱28%\nTranscend Lv.2 Effect\n - 单一敌军（战雷标记）\n - 概率提升：触电概率提升至50%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178603",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力185%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的185%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹雳·改",
+        "desc": "全体敌军\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 对象处于战雷标记状态时造成相当于1700的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 概率提升：触电概率提升至35%\nTranscend Lv.2 Effect\n - 单一敌军（战雷标记）\n - 概率提升：触电概率提升至50%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178604",
-        "name": "",
-        "desc": "自己\n - 弱点攻击概率增加\nSkill Enhancement Effect\n - 效果提升：弱点攻击概率增加50%",
+        "name": "双矛达人",
+        "desc": "自己\n - 所有伤害免疫 [持续2回合]\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 我军（攻击型）\n - 暴击伤害增加 [始终]\n - 全体我军\n - 物理伤害量增加 [持续3回合]\n - 效果抵抗增加 [持续3回合]\n - 全体敌军\n - 所受恢复量减少 [始终]\n - 攻击力最高的敌军\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予战雷标记 [始终]\nSkill Enhancement Effect\n - 效果提升：复活时生命力提升至100%\n - 效果提升：所受恢复量减少52%\nTranscend Lv.6 Effect\n - 攻击型我军\n - 额外效果：自身复活时赋予所有伤害无效[被击2次] （每场战斗发动1次）\n - 效果添加：自身复活时减益解除2个（每场战斗激活1次）\n - 效果添加：自身复活时物理伤害量增加19% [3回合持续]（每场战斗激活1次）",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
@@ -146,6 +146,17 @@
       "transcend_12": "所有攻击力、防御力、生命力提升2%。"
     },
     "profile": {
+      "cv": "森久保 祥太郎",
+      "species": "人类",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蝎座",
+      "likes": "阿依琳、亚琪拉、塔卡、仙人掌汁、中立、毛茸茸且小只的动物、紫色、蓝色",
+      "dislikes": "白格、各种干燥食品、混沌、邪恶、尴尬的沉默、黑色",
       "story": "因为到处找强者对战，于是被称为双矛猎人。\\n曾与太乌对决，但失败了，然后加入了太乌的组织。"
     }
   },
@@ -153,9 +164,9 @@
     "basicInfo": {
       "id": "101785",
       "name": "卡尔海伦",
-      "subname": "PCTable.PcSubName_Karlheron_5",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101785",
+      "subname": "流浪佣兵",
+      "affiliation": "夜鸦",
+      "flavor": "厌倦了佣兵生活，一言不发地离开了。\\n后与大陆的强者们对战，积累实力。",
       "rarity": "legendary+",
       "star": "5",
       "maxStar": "6",
@@ -255,44 +266,55 @@
       "Normal Attack": {
         "id": "10178501",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的100%",
+        "desc": "单一敌军（战雷标记优先）\n - 1次相当于物理攻击力90%的伤害\n - 对象处于战雷标记状态时造成相当于400的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [20%的概率] [持续1回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178502",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力190%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的190%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷狂炮",
+        "desc": "3名敌军（战雷标记优先）\n - 3次相当于物理攻击力48%的贯穿伤害\n - 物理脆弱 [100%的概率] [持续3回合]\n - 对象处于战雷标记状态时造成相当于1100的额外贯穿固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的48%\n - 效果提升：物理脆弱17%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178503",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力190%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的190%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹雳·改",
+        "desc": "全体敌军\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 对象处于战雷标记状态时造成相当于1100的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178504",
-        "name": "",
-        "desc": "自己\n - 弱点攻击概率增加\nSkill Enhancement Effect\n - 效果提升：弱点攻击概率增加60%",
+        "name": "双矛达人",
+        "desc": "自己\n - 所有伤害免疫 [持续2回合]\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 我军（攻击型）\n - 暴击伤害增加 [始终]\n - 全体我军\n - 物理伤害量增加 [持续3回合]\n - 效果抵抗增加 [持续3回合]\n - 全体敌军\n - 所受恢复量减少 [始终]\n - 攻击力最高的敌军\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予战雷标记 [始终]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101785"
+      "cv": "森久保 祥太郎",
+      "species": "人类",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蝎座",
+      "likes": "阿依琳、亚琪拉、塔卡、仙人掌汁、中立、毛茸茸且小只的动物、紫色、蓝色",
+      "dislikes": "白格、各种干燥食品、混沌、邪恶、尴尬的沉默、黑色",
+      "story": "厌倦了佣兵生活，一言不发地离开了。\\n后与大陆的强者们对战，积累实力。"
     }
   },
   {
     "basicInfo": {
       "id": "101784",
       "name": "卡尔海伦",
-      "subname": "PCTable.PcSubName_Karlheron_4",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101784",
+      "subname": "黎明佣兵团",
+      "affiliation": "夜鸦",
+      "flavor": "过去作为黎明佣兵团团长的孙子，实力得到认可，担任了副团长的职位。\\n爷爷教授他枪术，而他也培养了属于自己的技能。",
       "rarity": "legendary+",
       "star": "4",
       "maxStar": "6",
@@ -392,35 +414,46 @@
       "Normal Attack": {
         "id": "10178401",
         "name": "",
-        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的100%",
+        "desc": "单一敌军（战雷标记优先）\n - 1次相当于物理攻击力80%的伤害\n - 对象处于战雷标记状态时造成相当于400的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [20%的概率] [持续1回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178402",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力185%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的185%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷狂炮",
+        "desc": "3名敌军（战雷标记优先）\n - 3次相当于物理攻击力41%的贯穿伤害\n - 物理脆弱 [100%的概率] [持续3回合]\n - 对象处于战雷标记状态时造成相当于635的额外贯穿固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的41%\n - 效果提升：物理脆弱11%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178403",
-        "name": "",
-        "desc": "全体敌军\n - 5次相当于物理攻击力185%的伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的185%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹雳·改",
+        "desc": "全体敌军\n - 2次相当于物理攻击力47%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 对象处于战雷标记状态时造成相当于635的额外固定伤害\n - 对象处于战雷标记状态时赋予触电 [30%的概率] [持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的47%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178404",
-        "name": "",
-        "desc": "自己\n - 弱点攻击概率增加\nSkill Enhancement Effect\n - 效果提升：弱点攻击概率增加50%",
+        "name": "双矛达人",
+        "desc": "自己\n - 所有伤害免疫 [持续1回合]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 我军（攻击型）\n - 暴击伤害增加 [始终]\n - 全体我军\n - 物理伤害量增加 [持续3回合]\n - 效果抵抗增加 [持续3回合]\n - 全体敌军\n - 所受恢复量减少 [始终]\n - 攻击力最高的敌军\n - 战斗开始时，若我军中存在3名以上攻击型英雄，则赋予战雷标记 [始终]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101784"
+      "cv": "森久保 祥太郎",
+      "species": "人类",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蝎座",
+      "likes": "阿依琳、亚琪拉、塔卡、仙人掌汁、中立、毛茸茸且小只的动物、紫色、蓝色",
+      "dislikes": "白格、各种干燥食品、混沌、邪恶、尴尬的沉默、黑色",
+      "story": "过去作为黎明佣兵团团长的孙子，实力得到认可，担任了副团长的职位。\\n爷爷教授他枪术，而他也培养了属于自己的技能。"
     }
   }
 ]

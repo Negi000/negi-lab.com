@@ -4,8 +4,8 @@
       "id": "101786",
       "name": "Karl Heron",
       "subname": "Inseguitore con doppia lancia",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101786",
+      "affiliation": "NIGHT CROW",
+      "flavor": "La reputazione di Karl Heron per vagare per la terra e sfidare gli avversari potenti che incontrava gli valse il soprannome di \\\"Inseguitore della Doppia Lancia.\\\" Fu durante questo periodo che incrociò il cammino con Teo; dopo aver subito una sconfitta in un duello contro di lui, si unì all'organizzazione di Teo.",
       "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
@@ -105,28 +105,28 @@
       "Normal Attack": {
         "id": "10178601",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
+        "desc": "Nemico singolo (Dà priorità ai bersagli con il marchio Thunderbolt)\n - Infligge danni pari al 100% dell'attacco fisico 1 volta/e\n - Infligge 400 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 20% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 1 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco fisico\nTranscend Lv.2 Effect\n - Singolo nemico (Marchio Fulmine)\n - Incremento probabilità: Probabilità di Folgore 30%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178602",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 185% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Cannone tuonante",
+        "desc": "3 Nemici (Dà priorità ai bersagli con il Marchio Fulmine)\n - Infligge danni perforanti pari al 53% dell'attacco fisico 3 volta/e\n - 100% di probabilità di infliggere Vulnerabilità fisica [Durata: 3 turno/i]\n - Infligge 1700 danni aggiuntivi Fissi, Perforanti contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Vulnerabilità fisica 28%\nTranscend Lv.2 Effect\n - Singolo nemico (Marchio Fulmine)\n - Incremento probabilità: Probabilità di Folgore 50%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178603",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 185% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Riformato",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 57% dell'attacco fisico 2 volta/e\n - Ogni attacco ha una 30% probabilità di infliggere Folgore [Durata: 2 turno/i]\n - Infligge 1700 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Incremento probabilità: Probabilità di Folgore 35%\nTranscend Lv.2 Effect\n - Singolo nemico (Marchio Fulmine)\n - Incremento probabilità: Probabilità di Folgore 50%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178604",
-        "name": "",
-        "desc": "Sé\n - Probabilità di attacco al punto debole ▲\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di attacco al punto debole ▲50%",
+        "name": "Maestro delle lance gemelle",
+        "desc": "Sé\n - Concede Immunità a tutti i danni [Durata: 2 turno/i]\n - Concede Resurrezione con il 80% di PV al momento della morte [Una volta per battaglia]\n - Alleati (tipo Attacco)\n - Concede Danni critici ▲ [Sempre attivo]\n - Tutti gli alleati\n - Concede Danni fisici ▲ [Durata: 3 turno/i]\n - Concede Resistenza agli effetti ▲ [Durata: 3 turno/i]\n - Tutti i nemici\n - Infligge Cura ricevuta ▼ [Sempre attivo]\n - Nemico con l'attacco più alto\n - Iniziare le battaglie con almeno 3 eroe/i con Attacco nella tua squadra garantisce Marchio del Fulmine. [Sempre Attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: PV ripristinati al 100% al momento della resurrezione\n - Rafforzamento effetto: Cura ricevuta ▼52%\nTranscend Lv.6 Effect\n - Alleati di tipo Attacco\n - Aggiunge effetto: Concede annullamento danni totali al momento della resurrezione. [Termina dopo: aver subito 2 colpo/i] [1 volta/e per battaglia]\n - Aggiunta effetto: Alla rinascita, Rimozione debuff 2 (Si attiva 1 volte per battaglia)\n - Effetto aggiunto: Incremento danni fisici 19% al momento della rinascita [3 turni di durata] (Si attiva 1 volte per battaglia)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
@@ -146,6 +146,17 @@
       "transcend_12": "Aumenta tutti gli attacchi, la difesa e i PV del 2%."
     },
     "profile": {
+      "cv": "森久保 祥太郎",
+      "species": "Umano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpione",
+      "likes": "Eileene, Aquila, Taka, succo di cactus, neutralità, piccoli animali pelosi, il colore viola, il colore blu",
+      "dislikes": "Bai Jiao, vari cibi essiccati, caos, male, imbarazzanti silenzi, il colore nero",
       "story": "La reputazione di Karl Heron per vagare per la terra e sfidare gli avversari potenti che incontrava gli valse il soprannome di \\\"Inseguitore della Doppia Lancia.\\\" Fu durante questo periodo che incrociò il cammino con Teo; dopo aver subito una sconfitta in un duello contro di lui, si unì all'organizzazione di Teo."
     }
   },
@@ -153,9 +164,9 @@
     "basicInfo": {
       "id": "101785",
       "name": "Karl Heron",
-      "subname": "PCTable.PcSubName_Karlheron_5",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101785",
+      "subname": "Mercenario Errante",
+      "affiliation": "NIGHT CROW",
+      "flavor": "Essendosi stancato della vita da mercenario, Karl Heron ha lasciato il gruppo senza una parola. Successivamente, ha viaggiato per il continente, cercando e affrontando in duelli i combattenti più formidabili del continente.",
       "rarity": "legendary+",
       "star": "5",
       "maxStar": "6",
@@ -255,44 +266,55 @@
       "Normal Attack": {
         "id": "10178501",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
+        "desc": "Nemico singolo (Dà priorità ai bersagli con il marchio Thunderbolt)\n - Infligge danni pari al 90% dell'attacco fisico 1 volta/e\n - Infligge 400 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 20% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 1 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178502",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 190% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 190% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Cannone tuonante",
+        "desc": "3 Nemici (Dà priorità ai bersagli con il Marchio Fulmine)\n - Infligge danni perforanti pari al 48% dell'attacco fisico 3 volta/e\n - 100% di probabilità di infliggere Vulnerabilità fisica [Durata: 3 turno/i]\n - Infligge 1100 danni aggiuntivi Fissi, Perforanti contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 48% dell'attacco fisico\n - Rafforzamento effetto: Vulnerabilità fisica 17%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178503",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 190% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 190% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Riformato",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 52% dell'attacco fisico 2 volta/e\n - Ogni attacco ha una 30% probabilità di infliggere Folgore [Durata: 2 turno/i]\n - Infligge 1100 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 52% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178504",
-        "name": "",
-        "desc": "Sé\n - Probabilità di attacco al punto debole ▲\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di attacco al punto debole ▲60%",
+        "name": "Maestro delle lance gemelle",
+        "desc": "Sé\n - Concede Immunità a tutti i danni [Durata: 2 turno/i]\n - Concede Resurrezione con il 60% di PV al momento della morte [Una volta per battaglia]\n - Alleati (tipo Attacco)\n - Concede Danni critici ▲ [Sempre attivo]\n - Tutti gli alleati\n - Concede Danni fisici ▲ [Durata: 3 turno/i]\n - Concede Resistenza agli effetti ▲ [Durata: 3 turno/i]\n - Tutti i nemici\n - Infligge Cura ricevuta ▼ [Sempre attivo]\n - Nemico con l'attacco più alto\n - Iniziare le battaglie con almeno 3 eroe/i con Attacco nella tua squadra garantisce Marchio del Fulmine. [Sempre Attivo]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101785"
+      "cv": "森久保 祥太郎",
+      "species": "Umano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpione",
+      "likes": "Eileene, Aquila, Taka, succo di cactus, neutralità, piccoli animali pelosi, il colore viola, il colore blu",
+      "dislikes": "Bai Jiao, vari cibi essiccati, caos, male, imbarazzanti silenzi, il colore nero",
+      "story": "Essendosi stancato della vita da mercenario, Karl Heron ha lasciato il gruppo senza una parola. Successivamente, ha viaggiato per il continente, cercando e affrontando in duelli i combattenti più formidabili del continente."
     }
   },
   {
     "basicInfo": {
       "id": "101784",
       "name": "Karl Heron",
-      "subname": "PCTable.PcSubName_Karlheron_4",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101784",
+      "subname": "Mercenari di Daybreak",
+      "affiliation": "NIGHT CROW",
+      "flavor": "In quanto nipote dell’ex Capogilda dei Mercenari dell’Alba, Karl Heron ottenne riconoscimento per la sua abilità in combattimento e divenne il vice capitano del gruppo. Ereditò la sua Abilità e la tecnica con la lancia dal nonno, per poi affinarla ulteriormente incorporando il proprio stile.",
       "rarity": "legendary+",
       "star": "4",
       "maxStar": "6",
@@ -392,35 +414,46 @@
       "Normal Attack": {
         "id": "10178401",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco fisico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
+        "desc": "Nemico singolo (Dà priorità ai bersagli con il marchio Thunderbolt)\n - Infligge danni pari al 80% dell'attacco fisico 1 volta/e\n - Infligge 400 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 20% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 1 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178402",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 185% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Cannone tuonante",
+        "desc": "3 Nemici (Dà priorità ai bersagli con il Marchio Fulmine)\n - Infligge danni perforanti pari al 41% dell'attacco fisico 3 volta/e\n - 100% di probabilità di infliggere Vulnerabilità fisica [Durata: 3 turno/i]\n - Infligge 635 danni aggiuntivi Fissi, Perforanti contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 41% dell'attacco fisico\n - Rafforzamento effetto: Vulnerabilità fisica 11%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178403",
-        "name": "",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 185% dell'attacco fisico 5 volta/e\nSkill Enhancement Effect\n - Incremento danno: 185% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Riformato",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 47% dell'attacco fisico 2 volta/e\n - Ogni attacco ha una 20% probabilità di infliggere Folgore [Durata: 2 turno/i]\n - Infligge 635 danni fissi aggiuntivi contro bersagli colpiti dal Marchio Fulmine.\n - 30% di probabilità di infliggere Shock contro bersagli colpiti da Marchio del Fulmine. [Durata: 2 Turno/i]\nSkill Enhancement Effect\n - Incremento danno: 47% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178404",
-        "name": "",
-        "desc": "Sé\n - Probabilità di attacco al punto debole ▲\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di attacco al punto debole ▲50%",
+        "name": "Maestro delle lance gemelle",
+        "desc": "Sé\n - Concede Immunità a tutti i danni [Durata: 1 turno/i]\n - Concede Resurrezione con il 40% di PV al momento della morte [Una volta per battaglia]\n - Alleati (tipo Attacco)\n - Concede Danni critici ▲ [Sempre attivo]\n - Tutti gli alleati\n - Concede Danni fisici ▲ [Durata: 3 turno/i]\n - Concede Resistenza agli effetti ▲ [Durata: 3 turno/i]\n - Tutti i nemici\n - Infligge Cura ricevuta ▼ [Sempre attivo]\n - Nemico con l'attacco più alto\n - Iniziare le battaglie con almeno 3 eroe/i con Attacco nella tua squadra garantisce Marchio del Fulmine. [Sempre Attivo]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101784"
+      "cv": "森久保 祥太郎",
+      "species": "Umano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpione",
+      "likes": "Eileene, Aquila, Taka, succo di cactus, neutralità, piccoli animali pelosi, il colore viola, il colore blu",
+      "dislikes": "Bai Jiao, vari cibi essiccati, caos, male, imbarazzanti silenzi, il colore nero",
+      "story": "In quanto nipote dell’ex Capogilda dei Mercenari dell’Alba, Karl Heron ottenne riconoscimento per la sua abilità in combattimento e divenne il vice capitano del gruppo. Ereditò la sua Abilità e la tecnica con la lancia dal nonno, per poi affinarla ulteriormente incorporando il proprio stile."
     }
   }
 ]

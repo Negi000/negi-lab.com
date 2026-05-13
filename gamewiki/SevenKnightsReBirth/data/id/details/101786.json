@@ -4,8 +4,8 @@
       "id": "101786",
       "name": "Karl Heron",
       "subname": "Double Spear Hunter",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101786",
+      "affiliation": "Night Crow",
+      "flavor": "Dia dikenal sebagai \\\"Pemburu Tombak Ganda\\\" karena mencari para petarung tangguh untuk bertarung.\\nNamun, dia kalah saat bertarung melawan Teo dan akhirnya bergabung dengan kelompok Teo.",
       "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
@@ -105,28 +105,28 @@
       "Normal Attack": {
         "id": "10178601",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari P. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
+        "desc": "Satu Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Damage sebesar 100% dari P. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 400 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 20%] [Durasi: 1 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari P. ATK.\nTranscend Lv.2 Effect\n - Satu Musuh (Thunderbolt Mark)\n - Meningkatkan Rate: Shock Rate menjadi 30%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178602",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 185% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 185% dari P. ATK.",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Lightning Beam",
+        "desc": "3 Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Pierce Damage sebesar 53% dari P. ATK sebanyak 3x.\n - Physical Vulnerability. [Rate: 100%] [Durasi: 3 turn]\n - Memberikan Pierce Fixed Damage tambahan sebesar 1700 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Efek: Physical Vulnerability menjadi 28%.\nTranscend Lv.2 Effect\n - Satu Musuh (Thunderbolt Mark)\n - Meningkatkan Rate: Shock Rate menjadi 50%.",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178603",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 185% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 185% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Reformed",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 57% dari P. ATK sebanyak 2x.\n - Menerapkan Shock pada setiap serangan. [Rate: 30%] [Durasi: 2 turn]\n - Memberikan Fixed Damage tambahan sebesar 1700 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Rate: Shock Rate menjadi 35%.\nTranscend Lv.2 Effect\n - Satu Musuh (Thunderbolt Mark)\n - Meningkatkan Rate: Shock Rate menjadi 50%.",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178604",
-        "name": "",
-        "desc": "Diri Sendiri\n - Weakness Hit Rate Meningkat\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Weakness Hit Rate menjadi 50%.",
+        "name": "Master of the Twin Spears",
+        "desc": "Diri Sendiri\n - Kebal Semua Damage. [Durasi: 2 turn]\n - Hidup kembali dengan 80% HP saat mati. (Aktif 1x per battle)\n - Ally (Tipe Attack)\n - Critical Damage meningkat. [Selalu Aktif]\n - Semua Ally\n - Physical Damage meningkat. [Durasi: 3 turn]\n - Effect Resistance meningkat. [Durasi: 3 turn]\n - Semua Musuh\n - Jumlah Healing yang diterima menurun. [Selalu Aktif]\n - Musuh dengan ATK tertinggi\n - Memberikan Thunderbolt Mark ketika ada 3 Hero tipe Attack di dalam tim saat battle dimulai. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: HP saat Hidup Kembali menjadi 100%.\n - Meningkatkan Efek: Penurunan Jumlah Healing Diterima menjadi 52%.\nTranscend Lv.6 Effect\n - Ally Tipe Attack\n - Menambahkan Efek: Memberikan Meniadakan Semua Damage saat diri sendiri hidup kembali. [Diserang 2x] (Aktif 1x per battle)\n - Penambahan Efek: Saat Hidup Kembali, Hapus Debuff 2 (Aktif 1 kali per pertempuran)\n - Efek Ditambahkan: Peningkatan Physical Damage 19% saat Hidup Kembali [3 giliran durasi] (Aktif 1 kali per pertempuran)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
@@ -146,6 +146,17 @@
       "transcend_12": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%."
     },
     "profile": {
+      "cv": "森久保 祥太郎",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpio",
+      "likes": "Eileene, Aquila, Taka, jus kaktus, kenetralan, hewan kecil berbulu, warna ungu, warna biru",
+      "dislikes": "Bai Jiao, makanan olahan kering, kekacauan, kejahatan, keheningan yang canggung, warna hitam",
       "story": "Dia dikenal sebagai \\\"Pemburu Tombak Ganda\\\" karena mencari para petarung tangguh untuk bertarung.\\nNamun, dia kalah saat bertarung melawan Teo dan akhirnya bergabung dengan kelompok Teo."
     }
   },
@@ -153,9 +164,9 @@
     "basicInfo": {
       "id": "101785",
       "name": "Karl Heron",
-      "subname": "PCTable.PcSubName_Karlheron_5",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101785",
+      "subname": "Wandering Mercenary",
+      "affiliation": "Night Crow",
+      "flavor": "Karena bosan dengan kehidupannya sebagai seorang Mercenary, Karl Heron akhirnya pergi tanpa kata.\\nKemudian, dia berkelana di seluruh benua, mencari dan terlibat dalam duel dengan para petarung tangguh untuk meningkatkan kemampuannya.",
       "rarity": "legendary+",
       "star": "5",
       "maxStar": "6",
@@ -255,44 +266,55 @@
       "Normal Attack": {
         "id": "10178501",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari P. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
+        "desc": "Satu Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Damage sebesar 90% dari P. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 400 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 20%] [Durasi: 1 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 90% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178502",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 190% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 190% dari P. ATK.",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Lightning Beam",
+        "desc": "3 Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Pierce Damage sebesar 48% dari P. ATK sebanyak 3x.\n - Physical Vulnerability. [Rate: 100%] [Durasi: 3 turn]\n - Memberikan Pierce Fixed Damage tambahan sebesar 1100 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 48% dari P. ATK.\n - Meningkatkan Efek: Physical Vulnerability menjadi 17%.",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178503",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 190% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 190% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Reformed",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 52% dari P. ATK sebanyak 2x.\n - Menerapkan Shock pada setiap serangan. [Rate: 30%] [Durasi: 2 turn]\n - Memberikan Fixed Damage tambahan sebesar 1100 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 52% dari P. ATK.",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178504",
-        "name": "",
-        "desc": "Diri Sendiri\n - Weakness Hit Rate Meningkat\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Weakness Hit Rate menjadi 60%.",
+        "name": "Master of the Twin Spears",
+        "desc": "Diri Sendiri\n - Kebal Semua Damage. [Durasi: 2 turn]\n - Hidup kembali dengan 60% HP saat mati. (Aktif 1x per battle)\n - Ally (Tipe Attack)\n - Critical Damage meningkat. [Selalu Aktif]\n - Semua Ally\n - Physical Damage meningkat. [Durasi: 3 turn]\n - Effect Resistance meningkat. [Durasi: 3 turn]\n - Semua Musuh\n - Jumlah Healing yang diterima menurun. [Selalu Aktif]\n - Musuh dengan ATK tertinggi\n - Memberikan Thunderbolt Mark ketika ada 3 Hero tipe Attack di dalam tim saat battle dimulai. [Selalu Aktif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101785"
+      "cv": "森久保 祥太郎",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpio",
+      "likes": "Eileene, Aquila, Taka, jus kaktus, kenetralan, hewan kecil berbulu, warna ungu, warna biru",
+      "dislikes": "Bai Jiao, makanan olahan kering, kekacauan, kejahatan, keheningan yang canggung, warna hitam",
+      "story": "Karena bosan dengan kehidupannya sebagai seorang Mercenary, Karl Heron akhirnya pergi tanpa kata.\\nKemudian, dia berkelana di seluruh benua, mencari dan terlibat dalam duel dengan para petarung tangguh untuk meningkatkan kemampuannya."
     }
   },
   {
     "basicInfo": {
       "id": "101784",
       "name": "Karl Heron",
-      "subname": "PCTable.PcSubName_Karlheron_4",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101784",
+      "subname": "Daybreak Mercenaries",
+      "affiliation": "Night Crow",
+      "flavor": "Walaupun Karl Heron adalah cucu dari pemimpin Daybreak Mercenary, dia naik pangkat menjadi Wakil Kapten dengan kemampuannya sendiri.\\nDia belajar cara mengendalikan tombak dari kakeknya, tapi dia menambahkan gaya dan teknik miliknya sendiri.",
       "rarity": "legendary+",
       "star": "4",
       "maxStar": "6",
@@ -392,35 +414,46 @@
       "Normal Attack": {
         "id": "10178401",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari P. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
+        "desc": "Satu Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Damage sebesar 80% dari P. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 400 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 20%] [Durasi: 1 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 80% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178402",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 185% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 185% dari P. ATK.",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "Lightning Beam",
+        "desc": "3 Musuh (Target dengan Thunderbolt Mark lebih dulu)\n - Memberikan Pierce Damage sebesar 41% dari P. ATK sebanyak 3x.\n - Physical Vulnerability. [Rate: 100%] [Durasi: 3 turn]\n - Memberikan Pierce Fixed Damage tambahan sebesar 635 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 41% dari P. ATK.\n - Meningkatkan Efek: Physical Vulnerability menjadi 11%.",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178403",
-        "name": "",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 185% dari P. ATK sebanyak 5x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 185% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "Heavens' Wrath: Reformed",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 47% dari P. ATK sebanyak 2x.\n - Menerapkan Shock pada setiap serangan. [Rate: 20%] [Durasi: 2 turn]\n - Memberikan Fixed Damage tambahan sebesar 635 jika target terkena Thunderbolt Mark.\n - Memberikan Shock jika target terkena Thunderbolt Mark. [Rate: 30%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 47% dari P. ATK.",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178404",
-        "name": "",
-        "desc": "Diri Sendiri\n - Weakness Hit Rate Meningkat\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Weakness Hit Rate menjadi 50%.",
+        "name": "Master of the Twin Spears",
+        "desc": "Diri Sendiri\n - Kebal Semua Damage. [Durasi: 1 turn]\n - Hidup kembali dengan 40% HP saat mati. (Aktif 1x per battle)\n - Ally (Tipe Attack)\n - Critical Damage meningkat. [Selalu Aktif]\n - Semua Ally\n - Physical Damage meningkat. [Durasi: 3 turn]\n - Effect Resistance meningkat. [Durasi: 3 turn]\n - Semua Musuh\n - Jumlah Healing yang diterima menurun. [Selalu Aktif]\n - Musuh dengan ATK tertinggi\n - Memberikan Thunderbolt Mark ketika ada 3 Hero tipe Attack di dalam tim saat battle dimulai. [Selalu Aktif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101784"
+      "cv": "森久保 祥太郎",
+      "species": "Manusia",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "Scorpio",
+      "likes": "Eileene, Aquila, Taka, jus kaktus, kenetralan, hewan kecil berbulu, warna ungu, warna biru",
+      "dislikes": "Bai Jiao, makanan olahan kering, kekacauan, kejahatan, keheningan yang canggung, warna hitam",
+      "story": "Walaupun Karl Heron adalah cucu dari pemimpin Daybreak Mercenary, dia naik pangkat menjadi Wakil Kapten dengan kemampuannya sendiri.\\nDia belajar cara mengendalikan tombak dari kakeknya, tapi dia menambahkan gaya dan teknik miliknya sendiri."
     }
   }
 ]

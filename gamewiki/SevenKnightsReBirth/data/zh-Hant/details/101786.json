@@ -4,8 +4,8 @@
       "id": "101786",
       "name": "卡爾赫倫",
       "subname": "雙槍的獵人",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101786",
+      "affiliation": "夜烏鴉",
+      "flavor": "因為他四處尋訪強者挑戰，而被稱為雙槍獵人。\\n在那段期間，他曾與太烏決鬥卻不幸戰敗，隨後便加入了他所領導的組織。",
       "rarity": "legendary+",
       "star": "6",
       "maxStar": "6",
@@ -105,28 +105,28 @@
       "Normal Attack": {
         "id": "10178601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
+        "desc": "單一敵軍（雷電的標記優先）\n - 相當於物理攻擊力100%的1次傷害\n - 對象為［雷電的標記］狀態時，造成相當於400的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［20%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的120%\nTranscend Lv.2 Effect\n - ［單一敵軍（雷電的標記）］\n - 機率上升：觸電機率30%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178602",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力185%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的185%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷光砲",
+        "desc": "敵軍3名（雷電的標記優先）\n - 相當於物理攻擊力53%的3次穿透傷害\n - 物理脆弱［100%機率］［持續3回合］\n - 對象為［雷電的標記］狀態時，造成相當於1700的追加穿透固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 效果上升：物理脆弱28%\nTranscend Lv.2 Effect\n - ［單一敵軍（雷電的標記）］\n - 機率上升：觸電機率50%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178603",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力185%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的185%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹靂.改",
+        "desc": "所有敵軍\n - 相當於物理攻擊力57%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 對象為［雷電的標記］狀態時，造成相當於1700的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 機率上升：觸電機率35%\nTranscend Lv.2 Effect\n - ［單一敵軍（雷電的標記）］\n - 機率上升：觸電機率50%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178604",
-        "name": "",
-        "desc": "自身\n - 弱點攻擊機率增加\nSkill Enhancement Effect\n - 效果上升：弱點攻擊機率增加50%",
+        "name": "雙槍的達人",
+        "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 死亡時，以生命力80%復活（每戰鬥發動1次）\n - 我軍（攻擊型）\n - 暴擊傷害增加［常態］\n - 所有我軍\n - 物理傷害量增加［持續3回合］\n - 效果抵抗增加［持續3回合］\n所有敵軍\n - 受到的恢復量減少［常態］\n攻擊力最高的敵軍\n - 戰鬥開始時，當我軍攻擊型英雄有3名以上時，雷電的標記［常態］\nSkill Enhancement Effect\n - 效果上升：復活時，生命力100%\n - 效果上升：受到的恢復量減少52%\nTranscend Lv.6 Effect\n - ［我軍攻擊型］\n - 添加效果：自身復活時，所有傷害無效化［被擊中2次］（每戰鬥發動1次）\n - 效果追加：自己復活時DeBuff解除2個（每場戰鬥發動1次）\n - 效果新增：自己復活時物理傷害量增加19% [持續3回合]（每場戰鬥發動1次）",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
@@ -146,6 +146,17 @@
       "transcend_12": "所有攻擊力、防禦力、生命力上升2%。"
     },
     "profile": {
+      "cv": "森久保 祥太郎",
+      "species": "人類",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蠍座",
+      "likes": "亞依林、亞葵菈、塔卡、仙人掌果汁、中立、毛絨絨的小動物、紫色、藍色",
+      "dislikes": "百閣、各種風乾食品、混沌、惡、尷尬的沉默、黑色",
       "story": "因為他四處尋訪強者挑戰，而被稱為雙槍獵人。\\n在那段期間，他曾與太烏決鬥卻不幸戰敗，隨後便加入了他所領導的組織。"
     }
   },
@@ -153,9 +164,9 @@
     "basicInfo": {
       "id": "101785",
       "name": "卡爾赫倫",
-      "subname": "PCTable.PcSubName_Karlheron_5",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101785",
+      "subname": "漂泊的傭兵",
+      "affiliation": "夜烏鴉",
+      "flavor": "他對傭兵生活感到厭倦，便不告而別離開了。\\n隨後，他透過與大陸上強者們的挑戰，不斷累積實力。",
       "rarity": "legendary+",
       "star": "5",
       "maxStar": "6",
@@ -255,44 +266,55 @@
       "Normal Attack": {
         "id": "10178501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
+        "desc": "單一敵軍（雷電的標記優先）\n - 相當於物理攻擊力90%的1次傷害\n - 對象為［雷電的標記］狀態時，造成相當於400的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［20%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178502",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力190%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的190%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷光砲",
+        "desc": "敵軍3名（雷電的標記優先）\n - 相當於物理攻擊力48%的3次穿透傷害\n - 物理脆弱［100%機率］［持續3回合］\n - 對象為［雷電的標記］狀態時，造成相當於1100的追加穿透固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的48%\n - 效果上升：物理脆弱17%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178503",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力190%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的190%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹靂.改",
+        "desc": "所有敵軍\n - 相當於物理攻擊力52%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 對象為［雷電的標記］狀態時，造成相當於1100的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的52%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178504",
-        "name": "",
-        "desc": "自身\n - 弱點攻擊機率增加\nSkill Enhancement Effect\n - 效果上升：弱點攻擊機率增加60%",
+        "name": "雙槍的達人",
+        "desc": "自身\n - 所有傷害免疫［持續2回合］\n - 死亡時，以生命力60%復活（每戰鬥發動1次）\n - 我軍（攻擊型）\n - 暴擊傷害增加［常態］\n - 所有我軍\n - 物理傷害量增加［持續3回合］\n - 效果抵抗增加［持續3回合］\n所有敵軍\n - 受到的恢復量減少［常態］\n攻擊力最高的敵軍\n - 戰鬥開始時，當我軍攻擊型英雄有3名以上時，雷電的標記［常態］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101785"
+      "cv": "森久保 祥太郎",
+      "species": "人類",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蠍座",
+      "likes": "亞依林、亞葵菈、塔卡、仙人掌果汁、中立、毛絨絨的小動物、紫色、藍色",
+      "dislikes": "百閣、各種風乾食品、混沌、惡、尷尬的沉默、黑色",
+      "story": "他對傭兵生活感到厭倦，便不告而別離開了。\\n隨後，他透過與大陸上強者們的挑戰，不斷累積實力。"
     }
   },
   {
     "basicInfo": {
       "id": "101784",
       "name": "卡爾赫倫",
-      "subname": "PCTable.PcSubName_Karlheron_4",
-      "affiliation": "",
-      "flavor": "PCTable.PcSummary_Omok_101784",
+      "subname": "黎明傭兵團",
+      "affiliation": "夜烏鴉",
+      "flavor": "曾為黎明傭兵團團長的孫子，他過人實力備受認可，並擔任副團長一職。\\n他承襲了祖父傳授的槍術，並融入了屬於自己的獨門技術。",
       "rarity": "legendary+",
       "star": "4",
       "maxStar": "6",
@@ -392,35 +414,46 @@
       "Normal Attack": {
         "id": "10178401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於物理攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
+        "desc": "單一敵軍（雷電的標記優先）\n - 相當於物理攻擊力80%的1次傷害\n - 對象為［雷電的標記］狀態時，造成相當於400的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［20%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017801.webp"
       },
       "Skill 1": {
         "id": "10178402",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力185%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的185%",
-        "cooltime": "⏱️ CT: 49s",
+        "name": "雷光砲",
+        "desc": "敵軍3名（雷電的標記優先）\n - 相當於物理攻擊力41%的3次穿透傷害\n - 物理脆弱［100%機率］［持續3回合］\n - 對象為［雷電的標記］狀態時，造成相當於635的追加穿透固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的41%\n - 效果上升：物理脆弱11%",
+        "cooltime": "⏱️ CT: 84s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017802.webp"
       },
       "Skill 2": {
         "id": "10178403",
-        "name": "",
-        "desc": "所有敵軍\n - 相當於物理攻擊力185%的5次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的185%",
-        "cooltime": "⏱️ CT: 88s",
+        "name": "晴天霹靂.改",
+        "desc": "所有敵軍\n - 相當於物理攻擊力47%的2次傷害\n - 每次攻擊觸電［20%機率］［持續2回合］\n - 對象為［雷電的標記］狀態時，造成相當於635的追加固定傷害\n - 對象為［雷電的標記］狀態時，觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的47%",
+        "cooltime": "⏱️ CT: 104s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017803.webp"
       },
       "Passive": {
         "id": "10178404",
-        "name": "",
-        "desc": "自身\n - 弱點攻擊機率增加\nSkill Enhancement Effect\n - 效果上升：弱點攻擊機率增加50%",
+        "name": "雙槍的達人",
+        "desc": "自身\n - 所有傷害免疫［持續1回合］\n - 死亡時，以生命力40%復活（每戰鬥發動1次）\n - 我軍（攻擊型）\n - 暴擊傷害增加［常態］\n - 所有我軍\n - 物理傷害量增加［持續3回合］\n - 效果抵抗增加［持續3回合］\n所有敵軍\n - 受到的恢復量減少［常態］\n攻擊力最高的敵軍\n - 戰鬥開始時，當我軍攻擊型英雄有3名以上時，雷電的標記［常態］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017804.webp"
       }
     },
     "transcendence": {},
     "profile": {
-      "story": "PCTable.PcSummary_KarlHeron_101784"
+      "cv": "森久保 祥太郎",
+      "species": "人類",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "11 / 11",
+      "age": "34",
+      "height": "182",
+      "weight": "74",
+      "constellation": "天蠍座",
+      "likes": "亞依林、亞葵菈、塔卡、仙人掌果汁、中立、毛絨絨的小動物、紫色、藍色",
+      "dislikes": "百閣、各種風乾食品、混沌、惡、尷尬的沉默、黑色",
+      "story": "曾為黎明傭兵團團長的孫子，他過人實力備受認可，並擔任副團長一職。\\n他承襲了祖父傳授的槍術，並融入了屬於自己的獨門技術。"
     }
   }
 ]
