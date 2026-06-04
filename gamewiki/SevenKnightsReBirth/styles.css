@@ -303,6 +303,19 @@ nav a:hover::after, nav a.active::after {
     box-shadow: var(--shadow-card);
 }
 
+/* Detail page small awaken badge next to the character name */
+.detail-awaken-badge {
+    display: inline-block;
+    margin-left: 8px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffb400 100%);
+    color: #111;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -673,6 +686,27 @@ nav a:hover::after, nav a.active::after {
     color: #fff;
     border-color: var(--accent-red);
     box-shadow: 0 0 10px rgba(230, 0, 18, 0.4);
+}
+
+/* 覚醒ボタン（紫） */
+.rarity-btn.awakened {
+    background: linear-gradient(135deg, #8e44ad 0%, #6a1b9a 100%);
+    border-color: rgba(106,27,154,0.6);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(124,77,255,0.18);
+}
+
+.rarity-btn.awakened:hover {
+    transform: translateY(-2px);
+    border-color: #7b1fa2;
+    box-shadow: 0 0 18px rgba(124,77,255,0.25);
+}
+
+.rarity-btn.awakened.active {
+    background: linear-gradient(135deg, #7b1fa2 0%, #5e35b1 100%);
+    border-color: #5e35b1;
+    color: #fff;
+    box-shadow: 0 0 18px rgba(94,53,177,0.35);
 }
 
 .section-title {
@@ -1153,6 +1187,23 @@ footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+/* 覚醒済みバッジ（カード右上） */
+.awaken-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffb400 100%);
+    color: #1a1a1a;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 4px;
+    z-index: 11;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    text-transform: none;
+    letter-spacing: 0.2px;
 }
 
 /* Skill Icons */

@@ -138,10 +138,10 @@ function getCharAccessor(char) {
         getSkillOrder: () => {
             // JSONデータのスキルキーはjaは日本語、それ以外は全て英語で統一されている
             const skillOrders = {
-                'ja': ['通常攻撃', '通常攻撃 (Trans)', 'スキル1', 'スキル1 (Trans)', 'スキル2', 'スキル2 (Trans)', 'パッシブ', 'パッシブ (Trans)'],
+                'ja': ['通常攻撃', '通常攻撃 (Trans)', 'スキル1', 'スキル1 (Trans)', 'スキル2', 'スキル2 (Trans)', 'パッシブ', 'パッシブ (Trans)', '覚醒スキル', '覚醒スキル (Trans)'],
             };
             // ja以外は全て英語キー
-            const enOrder = ['Normal Attack', 'Normal Attack (Trans)', 'Skill 1', 'Skill 1 (Trans)', 'Skill 2', 'Skill 2 (Trans)', 'Passive', 'Passive (Trans)'];
+            const enOrder = ['Normal Attack', 'Normal Attack (Trans)', 'Skill 1', 'Skill 1 (Trans)', 'Skill 2', 'Skill 2 (Trans)', 'Passive', 'Passive (Trans)', 'Awaken Skill', 'Awaken Skill (Trans)'];
             return skillOrders[lang] || enOrder;
         },
         isTransformedSkill: (skillType) => skillType.includes('(Trans)'),
@@ -157,10 +157,12 @@ function getCharAccessor(char) {
                 'Skill 1': 'skill.skill1',
                 'Skill 2': 'skill.skill2',
                 'Passive': 'skill.passive',
+                'Awaken Skill': 'skill.awakenSkill',
                 '通常攻撃': 'skill.normalAttack',
                 'スキル1': 'skill.skill1',
                 'スキル2': 'skill.skill2',
-                'パッシブ': 'skill.passive'
+                'パッシブ': 'skill.passive',
+                '覚醒スキル': 'skill.awakenSkill'
             };
             
             let label = baseType;
@@ -584,9 +586,10 @@ async function initCharacterList() {
         const roleId = String(char.roleId || char.role || '0');
         const typeIconPath = `images/icon/CharacterRoleType/RoleIcon_${roleId.padStart(2, '0')}.webp`;
         
-        // 星アイコン (Atl_Symbol_Star_M{star}.webp) - 3～6のみ
+        // 星アイコン (Atl_Symbol_Star_M{star}.webp)
         const maxStar = char.star || '3';
-        const starIconPath = `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.webp`;
+        // 覚醒キャラは専用M7画像を使用
+        const starIconPath = (char.awakened) ? 'images/icon/Stars/Atl_Symbol_Star_M7.webp' : `images/icon/Stars/Atl_Symbol_Star_M${maxStar}.webp`;
         
         let badgeHtml = '';
         if (assets.badge) {
@@ -607,7 +610,6 @@ async function initCharacterList() {
         const unreleasedBadgeHtml = char.unreleased 
             ? `<div class="unreleased-badge" data-i18n="char.unreleased">${t('char.unreleased')}</div>` 
             : '';
-
         card.innerHTML = `
             <div class="character-card-visual">
                 <img src="${assets.bg}" class="card-bg-frame" alt="frame" loading="lazy" decoding="async">
@@ -616,6 +618,7 @@ async function initCharacterList() {
                 </div>
                 ${badgeHtml}
                 ${unreleasedBadgeHtml}
+                
                 <img src="${typeIconPath}" class="card-type-icon" alt="${char.role}" loading="lazy" decoding="async" onerror="this.style.display='none'">
                 <img src="${starIconPath}" class="card-star-icon" alt="${maxStar}星" loading="lazy" decoding="async" onerror="this.style.display='none'">
                 <div class="card-name-overlay">
@@ -780,19 +783,56 @@ function renderDetail(char, versions) {
     
     // Update Page Title
     document.title = `${a.name} - セブンナイツ リバース Wiki`;
-    document.getElementById('char-name-title').textContent = a.name;
+    const nameTitleEl = document.getElementById('char-name-title');
+    // No separate awaken badge in detail header; just set the name
+    nameTitleEl.textContent = a.name;
     document.getElementById('char-subname').textContent = a.subname || '';
 
     // Rarity Selector
     const rarityContainer = document.getElementById('rarity-selector');
     rarityContainer.innerHTML = '';
+    
+    // versions をレアリティや覚醒ステータスに基づいて一意化
+    const seenKeys = new Set();
+    const uniqueVersions = [];
+    
     versions.forEach(v => {
         const va = getCharAccessor(v);
+        const vRawBasic = va.raw['基本情報'] || va.raw.basicInfo || {};
+        const isAwaken = vRawBasic['覚醒'] || vRawBasic['awakened'] || false;
+        
+        // ユニークキーを生成
+        const key = isAwaken ? 'awaken' : `★${va.star}_${va.rarity}`;
+        
+        if (!seenKeys.has(key)) {
+            seenKeys.add(key);
+            uniqueVersions.push({
+                key: key,
+                data: v,
+                va: va,
+                isAwaken: isAwaken
+            });
+        }
+    });
+
+    uniqueVersions.forEach(uv => {
         const btn = document.createElement('button');
-        const isCurrent = va.id === a.id;
-        btn.className = `rarity-btn ${isCurrent ? 'active' : ''}`;
-        btn.textContent = `★${va.star} ${va.rarity}`;
-        btn.onclick = () => renderDetail(v, versions);
+        
+        // 現在表示しているキャラとの対応判定
+        // 現在のキャラ (a) も同じユニークキーを持つか確認
+        const currentRawBasic = a.raw['基本情報'] || a.raw.basicInfo || {};
+        const currentIsAwaken = currentRawBasic['覚醒'] || currentRawBasic['awakened'] || false;
+        const currentKey = currentIsAwaken ? 'awaken' : `★${a.star}_${a.rarity}`;
+        
+        const isCurrent = uv.key === currentKey;
+        
+        btn.className = `rarity-btn ${isCurrent ? 'active' : ''}${uv.isAwaken ? ' awakened' : ''}`;
+        if (uv.isAwaken) {
+            btn.textContent = typeof t === 'function' ? t('char.awakened') : '覚醒';
+        } else {
+            btn.textContent = `★${uv.va.star} ${uv.va.rarity}`;
+        }
+        btn.onclick = () => renderDetail(uv.data, versions);
         rarityContainer.appendChild(btn);
     });
 
@@ -801,10 +841,12 @@ function renderDetail(char, versions) {
 
     // Basic Info
     const basicInfoGrid = document.getElementById('basic-info-grid');
+    const starDisplay = `★${a.star} / ★${a.maxStar}`;
+
     const basicInfoItems = [
         { label: a.labels.id, value: a.id },
         { label: a.labels.rarity, value: a.rarity },
-        { label: a.labels.star, value: `★${a.star} / ★${a.maxStar}` },
+        { label: a.labels.star, value: starDisplay },
         { label: a.labels.affiliation, value: a.affiliation },
         { label: a.labels.role, value: a.role },
         { label: a.labels.range, value: a.range },
@@ -967,10 +1009,11 @@ function renderDetail(char, versions) {
             
             const descHtml = formatSkillDesc(skill.desc);
             const isTransformed = a.isTransformedSkill(skillType);
-            // 表示用タイプ名（変化マーカーを除去）
-            const displayType = a.isJa 
-                ? (isTransformed ? skillType.replace('（変化）', '') : skillType)
-                : (isTransformed ? skillType.replace(' (Trans)', '') : skillType);
+            // 表示用タイプ名（変化マーカーを除去して翻訳）
+            const baseType = isTransformed 
+                ? (a.isJa ? skillType.replace('（変化）', '').replace(' (Trans)', '') : skillType.replace(' (Trans)', '').replace('（変化）', '')) 
+                : skillType;
+            const displayType = a.getSkillTypeLabel ? a.getSkillTypeLabel(baseType) : baseType;
             const transformClass = isTransformed ? ' transformed' : '';
             const titleText = skill.name ? skill.name : displayType;
             const transformLabel = a.isJa ? ' (変化)' : ' (Trans)';

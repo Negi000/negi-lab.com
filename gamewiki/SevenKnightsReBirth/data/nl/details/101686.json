@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401687",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_7",
+      "affiliation": "Hemelse Bewakers",
+      "flavor": "Skuld is zich er al van bewust dat de kloof tussen het Hemelse Rijk en de Oppervlakte Wereld uiteindelijk zal verdwijnen, waardoor de hele Wereld in chaos zal worden gestort. Echter, dergelijke complicaties vallen buiten de reikwijdte van haar interesse.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40168701",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 55% van Magische Aanval 1 keer.\n - 100% kans om Magische Kwetsbaarheid toe te brengen. [Duur: 2 Beurt(en)]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 70% van magische aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "40168702",
+        "name": "Hemelse reis",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 32% van Magische Aanval 2 keer.\n - 60% kans om Stilte toe te brengen. [Duur: 2 Beurt(en)]\n - [100% kans om Binnenkomende Genezing Reductie toe te brengen tegen doelen die getroffen zijn door [Magische Kwetsbaarheid]. [Duur: 3 Beurt(en)]\n - Bondgenoten (Magie-type)\n - Verleent 2 Debuff Verwijdering(en).\nSkill Enhancement Effect\n - Verhoogt schade: Tot 37% van magische aanval.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "40168703",
+        "name": "Het geheim van het Sterrenbeeld",
+        "desc": "Alle vijanden\n - Veroorzaakt doordringende schade gelijk aan 26% van Magische Aanval 3 keer.\n - 100% kans om Verkorting van Buffduur toe te brengen. [Verkort met: 2 beurt(en).\n - 60% kans om vaardigheidsafkoelingen te verhogen met 23s tegen doelen die getroffen zijn door [Magische Kwetsbaarheid].\nSkill Enhancement Effect\n - Verhoogt Kans: De kans op vaardigheidsafkoeling wordt 70%.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "40168704",
+        "name": "Crescent Moon Ziener",
+        "desc": "Zelf\n - Verleent Volledige Schade Nullificatie. [4 Treffers]\n - Geneest HP gelijk aan 165% van de magische aanval van de caster wanneer HP daalt tot 50% of lager. [2 keer per gevecht]\n - Alle vijanden\n - Veroorzaakt Effect Weerstandsvermindering. [Altijd Actief]\nSkill Enhancement Effect\n - Verhoogt effect: Effect Weerstand Vermindering tot 34%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      },
+      "Awaken Skill": {
+        "id": "40168707",
+        "name": "Stralend lot",
+        "desc": "3 Vijanden\n - Verleent 39% HP Wijziging wanneer het doelwit is getroffen door [Magische Kwetsbaarheid].\n - 100% kans om Niet in staat om te herstellen toe te brengen. [Duur: 3 beurt(en)]\n - Veroorzaakt doordringende schade gelijk aan 145% van Magische Aanval 1 keer.\n - 100% kans om Skill Cooldown Increase te veroorzaken. [Neemt toe met 26s]\nSkill Enhancement Effect\n - Verhoogt schade: Tot 155% van magische aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4016806.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Zoete etenswaren, mensen die gemakkelijk te plagen zijn, hedonisme, orde",
+      "dislikes": "Bittere voedingsmiddelen, dwaze mensen, wanorde",
+      "story": "Skuld is zich er al van bewust dat de kloof tussen het Hemelse Rijk en de Oppervlakte Wereld uiteindelijk zal verdwijnen, waardoor de hele Wereld in chaos zal worden gestort. Echter, dergelijke complicaties vallen buiten de reikwijdte van haar interesse."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101686",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_6",
+      "affiliation": "Hemelse Bewakers",
+      "flavor": "Telkens wanneer er complicaties ontstaan als een Resultaat van oorlog, verschijnt ze af en toe om aanwijzingen te geven ten dienste van een oplossing. Echter, ze grijpt nooit actief in om zaken zelf op te lossen, maar kiest ervoor om te observeren hoe Evenementen zich van een afstand ontvouwen.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168601",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 55% van Magische Aanval 1 keer.\n - 100% kans om Magische Kwetsbaarheid toe te brengen. [Duur: 2 Beurt(en)]\nSkill Enhancement Effect\n - Voegt effect toe: 100% kans om 10% magische kwetsbaarheid toe te brengen. [Duur: 2 beurt(en)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168602",
+        "name": "Hemelse reis",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 32% van Magische Aanval 2 keer.\n - 50% kans om Stilte toe te brengen. [Duur: 2 Beurt(en)]\n - [100% kans om Binnenkomende Genezing Reductie toe te brengen tegen doelen die getroffen zijn door [Magische Kwetsbaarheid]. [Duur: 3 Beurt(en)]\n - Bondgenoten (Magie-type)\n - Verleent 2 Debuff Verwijdering(en).\nSkill Enhancement Effect\n - Verhoogt kans: Stiltekans wordt 60%.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168603",
+        "name": "Het geheim van het Sterrenbeeld",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 26% van Magische Aanval 3 keer.\n - Veroorzaakt doordringende schade gelijk aan 26% van Magische Aanval 3 keer.\n - 100% kans om Verkorting van Buffduur toe te brengen. [Verkort met: 2 beurt(en).\n - 60% kans om vaardigheidsafkoelingen te verhogen met 19s tegen doelen die getroffen zijn door [Magische Kwetsbaarheid].\n - 60% kans om vaardigheidsafkoelingen te verhogen met 23s tegen doelen die getroffen zijn door [Magische Kwetsbaarheid].\nSkill Enhancement Effect\n - Voegt effect toe: Pierce\n - Verhoogt effect: Vaardigheid afkoeltijd verhoogd met 23s.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168604",
+        "name": "Crescent Moon Ziener",
+        "desc": "Zelf\n - Verleent Volledige Schade Nullificatie. [3 Treffers]\n - Verleent Volledige Schade Nullificatie. [4 Treffers]\n - Alle vijanden\n - Veroorzaakt Effect Weerstandsvermindering. [Altijd Actief]\nSkill Enhancement Effect\n - Verhoogt stapels: Alle schade-nulificatie stapels verhogen naar 4.\nTranscend Lv.2 Effect\n - Zelf\n - Voegt genezing toe: Geneest HP gelijk aan 165% van de Magische aanval van de caster wanneer HP daalt tot 50% of lager. [2 keer per Gevecht]\nTranscend Lv.6 Effect\n - Zelf\n - Verhoogt Effect: Verleent Alle Schade Annulering bij het consumeren van Threads of Fate. [Eindigt Na: Het nemen van 4 Hit(s)]\n - Voegt Effect toe: Verleent 3 Debuff Verwijdering(en) bij het consumeren van Threads of Fate.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Verhoogt alle aanval met 12%.",
+      "transcend_2": "Verhoogt alle aanval met 6%.",
+      "transcend_3": "Verhoogt HP met 18%.",
+      "transcend_4": "Verhoogt de Effect Hit Rate met 24%.",
+      "transcend_5": "Verhoogt alle aanval met 12%.",
+      "transcend_6": "Verhoogt alle aanval met 6%.",
+      "transcend_7": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_8": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_9": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_10": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_11": "Verhoogt alle aanval, verdediging en HP met 2%.",
+      "transcend_12": "Verhoogt alle aanval, verdediging en HP met 2%."
+    },
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Zoete etenswaren, mensen die gemakkelijk te plagen zijn, hedonisme, orde",
+      "dislikes": "Bittere voedingsmiddelen, dwaze mensen, wanorde",
+      "story": "Telkens wanneer er complicaties ontstaan als een Resultaat van oorlog, verschijnt ze af en toe om aanwijzingen te geven ten dienste van een oplossing. Echter, ze grijpt nooit actief in om zaken zelf op te lossen, maar kiest ervoor om te observeren hoe Evenementen zich van een afstand ontvouwen."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101685",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_5",
+      "affiliation": "Hemelse Bewakers",
+      "flavor": "Skuld heeft de Hemelse Bewakers opgericht samen met Freyja. Na Freyja te hebben voorgesteld aan verschillende medewerkers en Bondgenoten en een korte voorspelling te hebben gedaan bij de oprichting van de organisatie, verdween ze.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168501",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 50% van Magische Aanval 1 keer.\nSkill Enhancement Effect\n - Verhoogt schade: Tot 50% van fysieke aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168502",
+        "name": "Hemelse reis",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 30% van Magische Aanval 2 keer.\n - 45% kans om Stilte toe te brengen. [Duur: 2 Beurt(en)]\n - [100% kans om Binnenkomende Genezing Reductie toe te brengen tegen doelen die getroffen zijn door [Magische Kwetsbaarheid]. [Duur: 3 Beurt(en)]\n - Bondgenoten (Magie-type)\n - Verleent 1 Debuff Verwijdering(en).\nSkill Enhancement Effect\n - Verhoogt schade: Tot 30% van fysieke aanval.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168503",
+        "name": "Het geheim van het Sterrenbeeld",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval 3 keer.\n - 100% kans om Verkorting van Buffduur toe te brengen. [Verkort met: 1 beurt(en).\n - 50% kans om vaardigheidsafkoelingen te verhogen met 16s tegen doelen die getroffen zijn door [Magische Kwetsbaarheid].\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168504",
+        "name": "Crescent Moon Ziener",
+        "desc": "Zelf\n - Verleent Volledige Schade Nullificatie. [3 Treffers]\n - Alle vijanden\n - Veroorzaakt Effect Weerstandsvermindering. [Altijd Actief]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Zoete etenswaren, mensen die gemakkelijk te plagen zijn, hedonisme, orde",
+      "dislikes": "Bittere voedingsmiddelen, dwaze mensen, wanorde",
+      "story": "Skuld heeft de Hemelse Bewakers opgericht samen met Freyja. Na Freyja te hebben voorgesteld aan verschillende medewerkers en Bondgenoten en een korte voorspelling te hebben gedaan bij de oprichting van de organisatie, verdween ze."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101684",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_4",
+      "affiliation": "Hemelse Bewakers",
+      "flavor": "Skuld is de jongste van de Drie Zusters van het Lot en een walkure met het Cadeau van vooruitziendheid. In de nasleep van de Grote Hemelse Oorlog vele eonen geleden verloor ze haar zusters, en later werd ze alleen teruggevonden door de andere walkuren.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168401",
+        "name": "",
+        "desc": "2 Vijanden\n - Veroorzaakt schade gelijk aan 45% van Magische Aanval 1 keer.\nSkill Enhancement Effect\n - Verhoogt schade: Tot 45% van fysieke aanval.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168402",
+        "name": "Hemelse reis",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 25% van Magische Aanval 2 keer.\n - 40% kans om Stilte toe te brengen. [Duur: 2 Beurt(en)]\n - [100% kans om Binnenkomende Genezing Reductie toe te brengen tegen doelen die getroffen zijn door [Magische Kwetsbaarheid]. [Duur: 3 Beurt(en)]\n - Bondgenoten (Magie-type)\n - Verleent 1 Debuff Verwijdering(en).\nSkill Enhancement Effect\n - Verhoogt schade: Tot 25% van fysieke aanval.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168403",
+        "name": "Het geheim van het Sterrenbeeld",
+        "desc": "Alle vijanden\n - Veroorzaakt schade gelijk aan 21% van Magische Aanval 3 keer.\n - 100% kans om Verkorting van Buffduur toe te brengen. [Verkort met: 1 beurt(en).\n - 45% kans om vaardigheidsafkoelingen te verhogen met 12s tegen doelen die getroffen zijn door [Magische Kwetsbaarheid].\nSkill Enhancement Effect\n - Verhoogt schade: Tot 21% van fysieke aanval.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168404",
+        "name": "Crescent Moon Ziener",
+        "desc": "Zelf\n - Verleent Volledige Schade Nullificatie. [3 Treffers]\n - Alle vijanden\n - Veroorzaakt Effect Weerstandsvermindering. [Altijd Actief]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Zoete etenswaren, mensen die gemakkelijk te plagen zijn, hedonisme, orde",
+      "dislikes": "Bittere voedingsmiddelen, dwaze mensen, wanorde",
+      "story": "Skuld is de jongste van de Drie Zusters van het Lot en een walkure met het Cadeau van vooruitziendheid. In de nasleep van de Grote Hemelse Oorlog vele eonen geleden verloor ze haar zusters, en later werd ze alleen teruggevonden door de andere walkuren."
+    }
+  }
+]

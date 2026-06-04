@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401687",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_7",
+      "affiliation": "Göksel Muhafızlar",
+      "flavor": "Skuld, Göksel Âlem ile Yeryüzü Dünyası arasındaki ayrımın sonunda ortadan kalkacağını ve tüm dünyanın kaosa sürükleneceğini zaten biliyor. Ancak, böyle karmaşık meseleler ilgi alanının dışında kalıyor.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40168701",
+        "name": "",
+        "desc": "2 Düşman\n - Büyü Saldırısının 55%'ine eşit hasar verir 1 kez.\n - 100% şansla Büyü Zayıflığı uygulama. [Süre: 2 Tur]\nSkill Enhancement Effect\n - Hasar Artışı: Büyü Saldırısının 70% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "40168702",
+        "name": "Göksel Yolculuk",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 32%'ine eşit hasar verir 2 kez.\n - 60% şansla Sessizlik uygulama. [Süre: 2 Tur]\n - [%100 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere Gelen Şifa Azaltma uygulama. [Süre: 3 Tur]]\n - Müttefikler (Büyü-tipi)\n - 2 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Büyü Saldırısının 37% kadarına.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "40168703",
+        "name": "Takımyıldızın Sırrı",
+        "desc": "Tüm Düşmanlar\n - Delici hasar verir, 26% Büyü Saldırısının 3 kez eşit.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 2 Tur.\n - %60 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 23s kadar.\n - %70 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 23s kadar.\nSkill Enhancement Effect\n - Şans Artışı: Beceri Bekleme Süresi Artışı şansı 70% olur.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "40168704",
+        "name": "Hilal Ay Kahini",
+        "desc": "Kendi\n - Tüm Hasar İptali sağlar. [4 Vuruş]\n - HP, 50% veya daha düşük olduğunda, büyü saldırısının 165%'ine eşit HP iyileştirir. [Savaş başına 2 Kez]\n - Tüm Düşmanlar\n - Etki Direnci Azaltma uygular. [Her Zaman Aktif]\nSkill Enhancement Effect\n - Etkisini Artırır: Etki Direnci Azaltma 34% olarak.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      },
+      "Awaken Skill": {
+        "id": "40168707",
+        "name": "Işıltılı Kader",
+        "desc": "3 Düşman\n - Hedefe [Büyüye Karşı Savunmasızlık] uygulandığında %39 HP Değişikliği sağlar.\n - 100% şansla İyileşememe etkisi uygular. [Süre: 3 Tur]\n - Delici hasar verir, 145% Büyü Saldırısının 1 kez eşit.\n - 100% şansla Beceri Bekleme Süresi Artışı uygular. [26sn artar]\nSkill Enhancement Effect\n - Hasar Artışı: Büyü Saldırısının 155% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4016806.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Tatlı yiyecekler, kolayca alay edilebilen insanlar, hedonizm, düzen",
+      "dislikes": "Acı yiyecekler, aptal insanlar, düzensizlik",
+      "story": "Skuld, Göksel Âlem ile Yeryüzü Dünyası arasındaki ayrımın sonunda ortadan kalkacağını ve tüm dünyanın kaosa sürükleneceğini zaten biliyor. Ancak, böyle karmaşık meseleler ilgi alanının dışında kalıyor."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101686",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_6",
+      "affiliation": "Göksel Muhafızlar",
+      "flavor": "Savaşın bir sonucu olarak komplikasyonlar ortaya çıktığında, zaman zaman çözüm için ipuçları sağlamak amacıyla yeniden ortaya çıkar. Ancak, meseleleri çözmede aktif olarak müdahale etmez, bunun yerine etkinliklerin nasıl geliştiğini uzaktan gözlemlemeyi tercih eder.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168601",
+        "name": "",
+        "desc": "2 Düşman\n - Büyü Saldırısının 55%'ine eşit hasar verir 1 kez.\n - 100% şansla Büyü Zayıflığı uygulama. [Süre: 2 Tur]\nSkill Enhancement Effect\n - Etki Ekler: 100% şansla 10% Büyü Zayıflığı uygular. [Süre: 2 Tur]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168602",
+        "name": "Göksel Yolculuk",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 32%'ine eşit hasar verir 2 kez.\n - 50% şansla Sessizlik uygulama. [Süre: 2 Tur]\n - [%100 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere Gelen Şifa Azaltma uygulama. [Süre: 3 Tur]]\n - Müttefikler (Büyü-tipi)\n - 2 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Şans Artışı: Sessizlik şansı 60% olur.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168603",
+        "name": "Takımyıldızın Sırrı",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 26%'ine eşit hasar verir 3 kez.\n - Delici hasar verir, 26% Büyü Saldırısının 3 kez eşit.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 2 Tur.\n - %60 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 19s kadar.\n - %60 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 23s kadar.\nSkill Enhancement Effect\n - Etki Ekler: Delme\n - Etkileri Artırır: Beceri Bekleme Süresi 23s kadar artar.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168604",
+        "name": "Hilal Ay Kahini",
+        "desc": "Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\n - Tüm Hasar İptali sağlar. [4 Vuruş]\n - Tüm Düşmanlar\n - Etki Direnci Azaltma uygular. [Her Zaman Aktif]\nSkill Enhancement Effect\n - Yığınları Artırır: Tüm Hasar İptal yığınları 4 olarak artar.\nTranscend Lv.2 Effect\n - Kendi\n - Şifa Ekler: HP, HP %50 veya daha düşük olduğunda, büyü yapanın Büyü Saldırısının %165'ine eşit miktarda iyileşir. [Savaş başına 2 Kez]\nTranscend Lv.6 Effect\n - Kendi\n - Etkiyi Artırır: Kaderin İpliklerini tükettiğinde Tüm Hasar İptali sağlar. [Biter Sonra: 4 Vuruş]\n - Etki Ekler: Kaderin İpliklerini tükettiğinde 3 Zayıflatma Kaldırma(sı) verir.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Tüm Saldırıyı %12 artırır.",
+      "transcend_2": "Tüm Saldırıyı %6 artırır.",
+      "transcend_3": "HP'yi %18 artırır.",
+      "transcend_4": "Etki Vuruş Oranını %24 artırır.",
+      "transcend_5": "Tüm Saldırıyı %12 artırır.",
+      "transcend_6": "Tüm Saldırıyı %6 artırır.",
+      "transcend_7": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_8": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_9": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_10": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_11": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_12": "Tüm Saldırı, Savunma ve HP'yi %2 artırır."
+    },
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Tatlı yiyecekler, kolayca alay edilebilen insanlar, hedonizm, düzen",
+      "dislikes": "Acı yiyecekler, aptal insanlar, düzensizlik",
+      "story": "Savaşın bir sonucu olarak komplikasyonlar ortaya çıktığında, zaman zaman çözüm için ipuçları sağlamak amacıyla yeniden ortaya çıkar. Ancak, meseleleri çözmede aktif olarak müdahale etmez, bunun yerine etkinliklerin nasıl geliştiğini uzaktan gözlemlemeyi tercih eder."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101685",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_5",
+      "affiliation": "Göksel Muhafızlar",
+      "flavor": "Skuld, Göksel Muhafızlar'ı Freyja ile birlikte kurdu. Freyja'yı birkaç işbirlikçi ve Müttefikler ile tanıştırdıktan ve organizasyonun kuruluşu üzerine kısa bir kehanet sunduktan sonra ortadan kayboldu.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168501",
+        "name": "",
+        "desc": "2 Düşman\n - Büyü Saldırısının 50%'ine eşit hasar verir 1 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 50% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168502",
+        "name": "Göksel Yolculuk",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 30%'ine eşit hasar verir 2 kez.\n - 45% şansla Sessizlik uygulama. [Süre: 2 Tur]\n - [%100 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere Gelen Şifa Azaltma uygulama. [Süre: 3 Tur]]\n - Müttefikler (Büyü-tipi)\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 30% kadarına.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168503",
+        "name": "Takımyıldızın Sırrı",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 25%'ine eşit hasar verir 3 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\n - %50 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 16s kadar.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 25% kadarına.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168504",
+        "name": "Hilal Ay Kahini",
+        "desc": "Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\n - Tüm Düşmanlar\n - Etki Direnci Azaltma uygular. [Her Zaman Aktif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Tatlı yiyecekler, kolayca alay edilebilen insanlar, hedonizm, düzen",
+      "dislikes": "Acı yiyecekler, aptal insanlar, düzensizlik",
+      "story": "Skuld, Göksel Muhafızlar'ı Freyja ile birlikte kurdu. Freyja'yı birkaç işbirlikçi ve Müttefikler ile tanıştırdıktan ve organizasyonun kuruluşu üzerine kısa bir kehanet sunduktan sonra ortadan kayboldu."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101684",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_4",
+      "affiliation": "Göksel Muhafızlar",
+      "flavor": "Skuld, Kaderin Üç Kız Kardeşi'nin en küçüğü ve geleceği görme yeteneğine sahip bir Valkyrie'dir. Çok uzun zaman önce gerçekleşen Büyük Göksel Savaş'ın ardından kız kardeşlerini kaybetmiş ve daha sonra diğer Valkyrieler tarafından yalnız başına bulunmuştur.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168401",
+        "name": "",
+        "desc": "2 Düşman\n - Büyü Saldırısının 45%'ine eşit hasar verir 1 kez.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 45% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168402",
+        "name": "Göksel Yolculuk",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 25%'ine eşit hasar verir 2 kez.\n - 40% şansla Sessizlik uygulama. [Süre: 2 Tur]\n - [%100 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere Gelen Şifa Azaltma uygulama. [Süre: 3 Tur]]\n - Müttefikler (Büyü-tipi)\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 25% kadarına.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168403",
+        "name": "Takımyıldızın Sırrı",
+        "desc": "Tüm Düşmanlar\n - Büyü Saldırısının 21%'ine eşit hasar verir 3 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\n - %45 şansla [Büyüye Karşı Savunmasızlık] etkisi altındaki hedeflere karşı beceri bekleme sürelerini artırma 12s kadar.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 21% kadarına.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168404",
+        "name": "Hilal Ay Kahini",
+        "desc": "Kendi\n - Tüm Hasar İptali sağlar. [3 Vuruş]\n - Tüm Düşmanlar\n - Etki Direnci Azaltma uygular. [Her Zaman Aktif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Tatlı yiyecekler, kolayca alay edilebilen insanlar, hedonizm, düzen",
+      "dislikes": "Acı yiyecekler, aptal insanlar, düzensizlik",
+      "story": "Skuld, Kaderin Üç Kız Kardeşi'nin en küçüğü ve geleceği görme yeteneğine sahip bir Valkyrie'dir. Çok uzun zaman önce gerçekleşen Büyük Göksel Savaş'ın ardından kız kardeşlerini kaybetmiş ve daha sonra diğer Valkyrieler tarafından yalnız başına bulunmuştur."
+    }
+  }
+]

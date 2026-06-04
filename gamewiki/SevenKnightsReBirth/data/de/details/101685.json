@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401687",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_7",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Skuld ist sich bereits bewusst, dass die Kluft zwischen dem Himmlischen Reich und der Oberflächenwelt schließlich verschwinden wird, was die ganze Welt ins Chaos stürzen wird. Solche Komplikationen liegen jedoch außerhalb ihres Interesses.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40168701",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 55 % des Magieangriffs 1 Mal.\n - Verursacht Schaden in Höhe von 70 % des Magieangriffs 1 Mal.\n - 100 % Chance, Magische Verwundbarkeit zuzufügen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 70 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "40168702",
+        "name": "Strahle hell! Himmlische Reise",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 32 % des Magieangriffs 2 Mal.\n - Verursacht Schaden in Höhe von 37 % des Magieangriffs 2 Mal.\n - 60 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - [100 % Chance, Gewährte Heilungs-Verringerung gegen Ziele zu verursachen, die mit [Magische Verwundbarkeit] belegt sind. [Dauer: 3 Runde(n)]\n - Verbündete (Magie-Typ)\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 37 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "40168703",
+        "name": "Geheimnis der Konstellation",
+        "desc": "Alle Feinde\n - Verursacht Durchdringung Schaden in Höhe von 26 % des Magieangriffs 3 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 60 % Chance, die Fähigkeit-Abklingzeiten um 23s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\n - 70 % Chance, die Fähigkeit-Abklingzeiten um 23s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\nSkill Enhancement Effect\n - Erhöht Chance: Die Chance auf Abklingzeit erhöht wird zu 70 %.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "40168704",
+        "name": "Halbmondseher",
+        "desc": "Selbst\n - Gewährt Schadensannullierung. [4 Treffer]\n - Heilt TP in Höhe von 165 % des Magieangriffs des Zaubernden, wenn TP auf 50 % oder niedriger fallen. [2 Mal pro Kampf]\n - Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: Effektwiderstand-Verringerung auf 34 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      },
+      "Awaken Skill": {
+        "id": "40168707",
+        "name": "Brillanz des Glücks",
+        "desc": "3 Feinde\n - Gewährt 39 % TP-Änderung, wenn das Ziel mit [Magische Verwundbarkeit] belegt ist.\n - 100 % Chance, Kann sich nicht erholen zu verursachen. [Dauer: 3 Runde(n)]\n - Verursacht Durchdringung Schaden in Höhe von 145 % des Magieangriffs 1 Mal.\n - Verursacht Durchdringung Schaden in Höhe von 155 % des Magieangriffs 1 Mal.\n - 100 % Chance, Fähigkeit Abklingzeit Erhöhung zu verursachen. [Erhöht um 26s]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 155 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4016806.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Süße Speisen, Menschen, die leicht zu necken sind, Hedonismus, Ordnung",
+      "dislikes": "Bittere Speisen, törichte Menschen, Unordnung",
+      "story": "Skuld ist sich bereits bewusst, dass die Kluft zwischen dem Himmlischen Reich und der Oberflächenwelt schließlich verschwinden wird, was die ganze Welt ins Chaos stürzen wird. Solche Komplikationen liegen jedoch außerhalb ihres Interesses."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101686",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_6",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Immer wenn Komplikationen als Folge von Krieg auftraten, taucht sie gelegentlich wieder auf, um Hinweise zur Lösung zu geben. Sie greift jedoch niemals aktiv in die Klärung der Angelegenheiten ein, sondern entscheidet sich stattdessen dafür, aus der Distanz zu beobachten, wie sich die Events entwickeln.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168601",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 55 % des Magieangriffs 1 Mal.\n - 100 % Chance, Magische Verwundbarkeit zuzufügen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Fügt Effekt hinzu: 100 % Chance, 10 % magische Verwundbarkeit zu verursachen. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168602",
+        "name": "Strahle hell! Himmlische Reise",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 32 % des Magieangriffs 2 Mal.\n - 50 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - 60 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - [100 % Chance, Gewährte Heilungs-Verringerung gegen Ziele zu verursachen, die mit [Magische Verwundbarkeit] belegt sind. [Dauer: 3 Runde(n)]\n - Verbündete (Magie-Typ)\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht die Chance: Schweigen-Chance wird zu 60 %.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168603",
+        "name": "Geheimnis der Konstellation",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 26 % des Magieangriffs 3 Mal.\n - Verursacht Durchdringung Schaden in Höhe von 26 % des Magieangriffs 3 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - 60 % Chance, die Fähigkeit-Abklingzeiten um 19s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\n - 60 % Chance, die Fähigkeit-Abklingzeiten um 23s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\nSkill Enhancement Effect\n - Fügt Effekt hinzu: Durchdringen\n - Erhöhter Effekt: Abklingzeit-Erhöhung um 23 Sek..",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168604",
+        "name": "Halbmondseher",
+        "desc": "Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Gewährt Schadensannullierung. [4 Treffer]\n - Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöht Stapel: Alle Schadensannullierungsstapel erhöhen sich auf 4.\nTranscend Lv.2 Effect\n - Selbst\n - Fügt Heilung hinzu: Heilt TP in Höhe von 165 % des magischen Angriffs des Zaubernden, wenn die TP auf 50 % oder niedriger fallen. [2 Mal pro Kampf]\nTranscend Lv.6 Effect\n - Selbst\n - Erhöht Effekt: Gewährt Annullierung allen Schadens beim Verbrauch von Threads of Fate. [Endet nach: 4 Treffer(n)]\n - Fügt Effekt hinzu: Gewährt 3 Debuff entfernen beim Verbrauch von Threads of Fate.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht die Effekt-Trefferquote um 24 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Süße Speisen, Menschen, die leicht zu necken sind, Hedonismus, Ordnung",
+      "dislikes": "Bittere Speisen, törichte Menschen, Unordnung",
+      "story": "Immer wenn Komplikationen als Folge von Krieg auftraten, taucht sie gelegentlich wieder auf, um Hinweise zur Lösung zu geben. Sie greift jedoch niemals aktiv in die Klärung der Angelegenheiten ein, sondern entscheidet sich stattdessen dafür, aus der Distanz zu beobachten, wie sich die Events entwickeln."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101685",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_5",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Skuld gründete die Himmlischen Wächter zusammen mit Freyja. Nachdem sie Freyja mehreren Kooperationspartnern und Verbündeten vorgestellt und eine kurze Prophezeiung bei der Gründung der Organisation verkündet hatte, verschwand sie.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168501",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 50 % des Magieangriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 50 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168502",
+        "name": "Strahle hell! Himmlische Reise",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 30 % des Magieangriffs 2 Mal.\n - 45 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - [100 % Chance, Gewährte Heilungs-Verringerung gegen Ziele zu verursachen, die mit [Magische Verwundbarkeit] belegt sind. [Dauer: 3 Runde(n)]\n - Verbündete (Magie-Typ)\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 30 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168503",
+        "name": "Geheimnis der Konstellation",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 25 % des Magieangriffs 3 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - 50 % Chance, die Fähigkeit-Abklingzeiten um 16s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168504",
+        "name": "Halbmondseher",
+        "desc": "Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Süße Speisen, Menschen, die leicht zu necken sind, Hedonismus, Ordnung",
+      "dislikes": "Bittere Speisen, törichte Menschen, Unordnung",
+      "story": "Skuld gründete die Himmlischen Wächter zusammen mit Freyja. Nachdem sie Freyja mehreren Kooperationspartnern und Verbündeten vorgestellt und eine kurze Prophezeiung bei der Gründung der Organisation verkündet hatte, verschwand sie."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101684",
+      "name": "PCTable.PcName_Skuld",
+      "subname": "PCTable.PcSubName_Skuld_4",
+      "affiliation": "Himmlische Wächter",
+      "flavor": "Skuld ist die jüngste der Drei Schwestern des Schicksals und eine Walküre mit dem Schenken der Voraussicht. Nach dem Großen Himmlischen Krieg vor vielen Äonen verlor sie ihre Schwestern und wurde später von den anderen Walküren allein entdeckt.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10168401",
+        "name": "",
+        "desc": "2 Feinde\n - Verursacht Schaden in Höhe von 45 % des Magieangriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016801.webp"
+      },
+      "Skill 1": {
+        "id": "10168402",
+        "name": "Strahle hell! Himmlische Reise",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 25 % des Magieangriffs 2 Mal.\n - 40 % Chance, Stille zu verursachen. [Dauer: 2 Runde(n)]\n - [100 % Chance, Gewährte Heilungs-Verringerung gegen Ziele zu verursachen, die mit [Magische Verwundbarkeit] belegt sind. [Dauer: 3 Runde(n)]\n - Verbündete (Magie-Typ)\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 25 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016802.webp"
+      },
+      "Skill 2": {
+        "id": "10168403",
+        "name": "Geheimnis der Konstellation",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 21 % des Magieangriffs 3 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - 45 % Chance, die Fähigkeit-Abklingzeiten um 12s zu erhöhen bei Zielen, die mit [Magische Verwundbarkeit] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 21 % des physischen Angriffs.",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016803.webp"
+      },
+      "Passive": {
+        "id": "10168404",
+        "name": "Halbmondseher",
+        "desc": "Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Alle Feinde\n - Verursacht Effektwiderstandsreduktion. [Immer aktiv]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1016804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "柳木 みり",
+      "species": "???",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "???",
+      "age": "0",
+      "height": "147",
+      "weight": "33",
+      "constellation": "???",
+      "likes": "Süße Speisen, Menschen, die leicht zu necken sind, Hedonismus, Ordnung",
+      "dislikes": "Bittere Speisen, törichte Menschen, Unordnung",
+      "story": "Skuld ist die jüngste der Drei Schwestern des Schicksals und eine Walküre mit dem Schenken der Voraussicht. Nach dem Großen Himmlischen Krieg vor vielen Äonen verlor sie ihre Schwestern und wurde später von den anderen Walküren allein entdeckt."
+    }
+  }
+]

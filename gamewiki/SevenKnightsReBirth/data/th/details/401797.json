@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401797",
+      "name": "PCTable.PcName_Clemyth",
+      "subname": "PCTable.PcSubName_Clemyth_7",
+      "affiliation": "เพนตากอน",
+      "flavor": "PCTable.PcSummary_Clemyth_401797",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40179701",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหายเท่ากับ 60% ของพลังโจมตีเวท, 14% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - พันธมิตรที่มี HP ปัจจุบันต่ำที่สุด (ไม่รวมตนเอง)\n - ได้รับโล่ป้องกันเท่ากับ 15% ของ HP สูงสุดของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 65% ของพลังโจมตีเวท, 14% ของ HP สูงสุดของผู้ร่าย",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4017901.webp"
+      },
+      "Skill 1": {
+        "id": "40179702",
+        "name": "",
+        "desc": "ศัตรูทั้งหมด\n - ความเสียหายเท่ากับ 75% ของพลังโจมตีเวท, 20% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - ลดเทิร์นบัฟของเป้าหมาย 3 เทิร์น [อัตรา 100%]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 85% ของพลังโจมตีเวท, 20% ของ HP สูงสุดของผู้ร่าย",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4017902.webp"
+      },
+      "Skill 2": {
+        "id": "40179703",
+        "name": "",
+        "desc": "- เพิ่มพลังโจมตีทั้งหมด [ต่อเนื่อง 3 เทิร์น]\n - เพิ่มพลังป้องกัน [ต่อเนื่อง 3 เทิร์น]\n - พันธมิตรทั้งหมด\nSkill Enhancement Effect\n - เทิร์นเพิ่มขึ้น : เพิ่มพลังโจมตีทั้งหมด [ต่อเนื่อง 4 เทิร์น]\n - เทิร์นเพิ่มขึ้น : เพิ่มพลังป้องกัน [ต่อเนื่อง 4 เทิร์น]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4017903.webp"
+      },
+      "Passive": {
+        "id": "40179704",
+        "name": "",
+        "desc": "ตนเอง\n - เพิ่มอัตราบล็อกตามสัดส่วน HP สูงสุด [ตลอดเวลา]\n - เมื่อตายจะคืนชีพด้วย HP 100% (ทำงาน 1 ครั้งต่อการต่อสู้)\n - เมื่อตนเองคืนชีพ คุ้มกันความเสียหายทั้งหมด [ต่อเนื่อง 2 เทิร์น] (ทำงาน 1 ครั้ง ต่อการต่อสู้)\n - พันธมิตรทั้งหมด\n - เพิ่มต้านทานผล [ตลอดเวลา]\nSkill Enhancement Effect\n - ผลเพิ่มขึ้น : HP เมื่อคืนชีพ เป็น 100%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4017904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40179707",
+        "name": "",
+        "desc": "พันธมิตรทั้งหมด\n - ฟื้นฟู HP เท่ากับ 24% ของ HP สูงสุดของผู้ร่าย\nSkill Enhancement Effect\n - เทิร์นเพิ่มขึ้น : อมตะ [ต่อเนื่อง 3 เทิร์น]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4017907.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "มนุษย์",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 06",
+      "age": "48",
+      "height": "174",
+      "weight": "61",
+      "constellation": "ราศีเมถุน",
+      "likes": "CollectionProfileInfo.40179_Clemyth_Like",
+      "dislikes": "CollectionProfileInfo.40179_Clemyth_Dislike",
+      "story": "PCTable.PcSummary_Clemyth_401797"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101796",
+      "name": "PCTable.PcName_Clemyth",
+      "subname": "PCTable.PcSubName_Clemyth_6",
+      "affiliation": "เพนตากอน",
+      "flavor": "PCTable.PcSummary_Clemyth_101796",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10179601",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหายเท่ากับ 50% ของพลังโจมตีเวท, 12% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - พันธมิตรที่มี HP ปัจจุบันต่ำที่สุด (ไม่รวมตนเอง)\n - ได้รับโล่ป้องกันเท่ากับ 14% ของ HP สูงสุดของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 60% ของพลังโจมตีเวท, 14% ของ HP สูงสุดของผู้ร่าย",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017901.webp"
+      },
+      "Skill 1": {
+        "id": "10179602",
+        "name": "",
+        "desc": "ศัตรูทั้งหมด\n - ความเสียหายเท่ากับ 60% ของพลังโจมตีเวท, 14% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - ลดเทิร์นบัฟของเป้าหมาย 2 เทิร์น [อัตรา 100%]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 75% ของพลังโจมตีเวท, 20% ของ HP สูงสุดของผู้ร่าย\nTranscend Lv.6 Effect\n - ผลเพิ่มขึ้น : ลดเทิร์นบัฟ เป็น 3 เทิร์น",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017902.webp"
+      },
+      "Skill 2": {
+        "id": "10179603",
+        "name": "",
+        "desc": "- เพิ่มพลังโจมตีทั้งหมด [ต่อเนื่อง 3 เทิร์น]\n - เพิ่มพลังป้องกัน [ต่อเนื่อง 3 เทิร์น]\n - พันธมิตรทั้งหมด\nSkill Enhancement Effect\n - ผลเพิ่มขึ้น : เพิ่มพลังโจมตีทั้งหมด เป็น 26%\n - ผลเพิ่มขึ้น : เพิ่มพลังป้องกัน เป็น 39%",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017903.webp"
+      },
+      "Passive": {
+        "id": "10179604",
+        "name": "",
+        "desc": "ตนเอง\n - เพิ่มอัตราบล็อกตามสัดส่วน HP สูงสุด [ตลอดเวลา]\n - เมื่อตายจะคืนชีพด้วย HP 80% (ทำงาน 1 ครั้งต่อการต่อสู้)\n - พันธมิตรทั้งหมด\n - เพิ่มต้านทานผล [ตลอดเวลา]\nSkill Enhancement Effect\n - ผลเพิ่มขึ้น : เพิ่มต้านทานผล เป็น 34%\nTranscend Lv.2 Effect\n - ตนเอง\n - เพิ่มผล : เมื่อตนเองคืนชีพ จะคุ้มกันความเสียหายทั้งหมด [ต่อเนื่อง 2 เทิร์น] (ทำงาน 1 ครั้ง ต่อการต่อสู้)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "พลังป้องกัน เพิ่มขึ้น 12%",
+      "transcend_2": "พลังป้องกัน เพิ่มขึ้น 6%",
+      "transcend_3": "HP เพิ่มขึ้น 18%",
+      "transcend_4": "ลดความเสียหายที่ได้รับ เพิ่มขึ้น 10%",
+      "transcend_5": "พลังป้องกัน เพิ่มขึ้น 12%",
+      "transcend_6": "พลังป้องกัน เพิ่มขึ้น 6%",
+      "transcend_7": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_8": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_9": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_10": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_11": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%",
+      "transcend_12": "พลังโจมตีทั้งหมด พลังป้องกัน HP เพิ่มขึ้น 2%"
+    },
+    "profile": {
+      "cv": "0",
+      "species": "มนุษย์",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 06",
+      "age": "48",
+      "height": "174",
+      "weight": "61",
+      "constellation": "ราศีเมถุน",
+      "likes": "CollectionProfileInfo.40179_Clemyth_Like",
+      "dislikes": "CollectionProfileInfo.40179_Clemyth_Dislike",
+      "story": "PCTable.PcSummary_Clemyth_101796"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101795",
+      "name": "PCTable.PcName_Clemyth",
+      "subname": "PCTable.PcSubName_Clemyth_5",
+      "affiliation": "เพนตากอน",
+      "flavor": "PCTable.PcSummary_Clemyth_101795",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10179501",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหายเท่ากับ 45% ของพลังโจมตีเวท, 11% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - พันธมิตรที่มี HP ปัจจุบันต่ำที่สุด (ไม่รวมตนเอง)\n - ได้รับโล่ป้องกันเท่ากับ 12% ของ HP สูงสุดของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 45% ของพลังโจมตีกายภาพ",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017901.webp"
+      },
+      "Skill 1": {
+        "id": "10179502",
+        "name": "",
+        "desc": "ศัตรูทั้งหมด\n - ความเสียหายเท่ากับ 55% ของพลังโจมตีเวท, 12% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - ลดเทิร์นบัฟของเป้าหมาย 1 เทิร์น [อัตรา 100%]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 55% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017902.webp"
+      },
+      "Skill 2": {
+        "id": "10179503",
+        "name": "",
+        "desc": "- เพิ่มพลังโจมตีทั้งหมด [ต่อเนื่อง 3 เทิร์น]\n - เพิ่มพลังป้องกัน [ต่อเนื่อง 3 เทิร์น]\n - พันธมิตรทั้งหมด",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017903.webp"
+      },
+      "Passive": {
+        "id": "10179504",
+        "name": "",
+        "desc": "ตนเอง\n - เพิ่มอัตราบล็อกตามสัดส่วน HP สูงสุด [ตลอดเวลา]\n - เมื่อตายจะคืนชีพด้วย HP 60% (ทำงาน 1 ครั้งต่อการต่อสู้)\n - พันธมิตรทั้งหมด\n - เพิ่มต้านทานผล [ตลอดเวลา]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "มนุษย์",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 06",
+      "age": "48",
+      "height": "174",
+      "weight": "61",
+      "constellation": "ราศีเมถุน",
+      "likes": "CollectionProfileInfo.40179_Clemyth_Like",
+      "dislikes": "CollectionProfileInfo.40179_Clemyth_Dislike",
+      "story": "PCTable.PcSummary_Clemyth_101795"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101794",
+      "name": "PCTable.PcName_Clemyth",
+      "subname": "PCTable.PcSubName_Clemyth_4",
+      "affiliation": "เพนตากอน",
+      "flavor": "PCTable.PcSummary_Clemyth_101794",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10179401",
+        "name": "",
+        "desc": "ศัตรูเดี่ยว\n - ความเสียหายเท่ากับ 40% ของพลังโจมตีเวท, 10% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - พันธมิตรที่มี HP ปัจจุบันต่ำที่สุด (ไม่รวมตนเอง)\n - ได้รับโล่ป้องกันเท่ากับ 10% ของ HP สูงสุดของผู้ร่าย [ต่อเนื่อง 2 เทิร์น]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 40% ของพลังโจมตีกายภาพ",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017901.webp"
+      },
+      "Skill 1": {
+        "id": "10179402",
+        "name": "",
+        "desc": "ศัตรูทั้งหมด\n - ความเสียหายเท่ากับ 50% ของพลังโจมตีเวท, 11% ของ HP สูงสุดของผู้ร่าย 1 ครั้ง\n - ลดเทิร์นบัฟของเป้าหมาย 1 เทิร์น [อัตรา 100%]\nSkill Enhancement Effect\n - ปริมาณความเสียหายเพิ่มขึ้น : เป็น 50% ของพลังโจมตีกายภาพ",
+        "cooltime": "⏱️ CT: 104s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017902.webp"
+      },
+      "Skill 2": {
+        "id": "10179403",
+        "name": "",
+        "desc": "- เพิ่มพลังโจมตีทั้งหมด [ต่อเนื่อง 3 เทิร์น]\n - เพิ่มพลังป้องกัน [ต่อเนื่อง 3 เทิร์น]\n - พันธมิตรทั้งหมด",
+        "cooltime": "⏱️ CT: 100s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017903.webp"
+      },
+      "Passive": {
+        "id": "10179404",
+        "name": "",
+        "desc": "ตนเอง\n - เพิ่มอัตราบล็อกตามสัดส่วน HP สูงสุด [ตลอดเวลา]\n - เมื่อตายจะคืนชีพด้วย HP 40% (ทำงาน 1 ครั้งต่อการต่อสู้)\n - พันธมิตรทั้งหมด\n - เพิ่มต้านทานผล [ตลอดเวลา]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1017904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "มนุษย์",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "07 / 06",
+      "age": "48",
+      "height": "174",
+      "weight": "61",
+      "constellation": "ราศีเมถุน",
+      "likes": "CollectionProfileInfo.40179_Clemyth_Like",
+      "dislikes": "CollectionProfileInfo.40179_Clemyth_Dislike",
+      "story": "PCTable.PcSummary_Clemyth_101794"
+    }
+  }
+]
