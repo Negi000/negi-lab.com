@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400667",
+      "name": "Hellenia",
+      "subname": "Alevin İlahiliği",
+      "affiliation": "Evan Keşif Gezisi",
+      "flavor": "PCTable.PcSummary_Hellenia_400667",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "124",
+      "Magical Attack": "0",
+      "Defense": "148",
+      "HP": "845",
+      "Speed": "16",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 124,
+        "Defense": 148,
+        "HP": 845
+      },
+      "level30": {
+        "Physical Attack": 559,
+        "Defense": 670,
+        "HP": 3774
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 18,
+        "HP": 101
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 52,
+        "HP": 296
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 559,
+          "Defense": 670,
+          "HP": 3774
+        },
+        "+1": {
+          "Physical Attack": 602,
+          "Defense": 722,
+          "HP": 4070
+        },
+        "+2": {
+          "Physical Attack": 645,
+          "Defense": 774,
+          "HP": 4366
+        },
+        "+3": {
+          "Physical Attack": 688,
+          "Defense": 826,
+          "HP": 4662
+        },
+        "+4": {
+          "Physical Attack": 731,
+          "Defense": 878,
+          "HP": 4958
+        },
+        "+5": {
+          "Physical Attack": 774,
+          "Defense": 930,
+          "HP": 5254
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40066701",
+        "name": "",
+        "desc": "Tek Düşman\n - Fiziksel Saldırının 65% ve Savunmanın 75% kadar hasar verir, 1 kez uygulanır.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 65% kadarına.\n - Hasar Artışı: Büyü Saldırısının 75% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
+      },
+      "Skill 1": {
+        "id": "40066702",
+        "name": "Gök Işığı",
+        "desc": "3 Düşman\n - Fiziksel Saldırının 75% ve Savunmanın 85% kadar hasar verir, 1 kez uygulanır.\n - %100 şansla Zayıflık Vuruş Şansı Azaltma uygulama. [Süre: 3 Tur]\n - 3 Müttefik\n - 2 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 75% kadarına.\n - Hasar Artışı: Büyü Saldırısının 85% kadarına.\nTranscend Lv.2 Effect\n - 3 Düşman\n - Etki Ekler: 100% şansla 44% Artırılmış Iska Şansı uygular. [Süre: 3 Tur]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
+      },
+      "Skill 2": {
+        "id": "40066703",
+        "name": "Gök Kalkanı",
+        "desc": "Kendi\n - Büyü Hasarına Karşı Bağışıklık sağlar. [Süre: 3 Tur]\n - Kışkırtma verir. [Süre: 2 Tur]\n - 3 Müttefik\n - Büyü Direnci sağlar. [Süre: 3 Tur]",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
+      },
+      "Passive": {
+        "id": "40066704",
+        "name": "Valkyrie'nin Varlığı",
+        "desc": "Kendi\n - Büyü Direnci sağlar. [Her Zaman Aktif]\n - Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 3 kez saldırıya uğramak, büyü yapanın Savunmasının 40%'ine eşit HP iyileştirir.\n - Koruma sağlar. [Her Zaman Aktif]\nTranscend Lv.6 Effect\n - Hedef Sayısını Değiştirir: En düşük mevcut HP'ye sahip 2 Müttefiklere.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40066707",
+        "name": "救援の祝福",
+        "desc": "3 Müttefik\n - Tüm Zayıflatma Etkilerini Kaldırma sağlar.\n - Beceri Bekleme Süresi Sıfırlama sağlar.\n - Atanın Savunmasının 120%'ine eşit bir Barikat sağlar. [Süre: 2 Tur(lar)]\nSkill Enhancement Effect\n - Etkiyi Artırır: Bariyer emilimi, Savunmanın 135% olur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "明坂 聡美",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "171",
+      "weight": "52",
+      "constellation": "Terazi",
+      "likes": "Heavenia, kurabiyeler, siyah çay, adalet, düzen, nezaket, merak, masumiyet, temizlik, çamaşır, okuma",
+      "dislikes": "Dellons, Sun Wukong, diğer hayvan sütü, kötülük, kaos, şeylerin kirli olması, şeylerin dağınık olması",
+      "story": "PCTable.PcSummary_Hellenia_400667"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100666",
       "name": "Hellenia",
       "subname": "Kızıl Kuyruklu Yıldız",
@@ -113,8 +269,8 @@
       "Skill 1": {
         "id": "10066602",
         "name": "Gök Işığı",
-        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 50% ve Savunmanın 55% kadar hasar verir, 1 kez uygulanır.\n - Tüm Müttefikler\n - 1 Zayıflatma Etkisi Kaldırma verir.\n - 2 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Etkiyi Artırır: Zayıflatma Kaldırma sayısı 2 olur.\nTranscend Lv.2 Effect\n - Tüm Düşmanlar\n - Etki Ekler: 100% şansla 40% Artırılmış Iska Şansı uygular. [Süre: 3 Tur]",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Düşman\n - Fiziksel Saldırının 75% ve Savunmanın 85% kadar hasar verir, 1 kez uygulanır.\n - 3 Müttefik\n - 1 Zayıflatma Etkisi Kaldırma verir.\n - 2 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Etkiyi Artırır: Zayıflatma Kaldırma sayısı 2 olur.\nTranscend Lv.2 Effect\n - 3 Düşman\n - Etki Ekler: 100% şansla 44% Artırılmış Iska Şansı uygular. [Süre: 3 Tur]",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10066604",
         "name": "Valkyrie'nin Varlığı",
-        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 5 kez saldırıya uğramak, büyü yapanın Savunmasının 30%'ine eşit HP iyileştirir.\n - Kendi\n - Savunma Artışı sağlar. [Her Zaman Aktif]\nSkill Enhancement Effect\n - Şifa Artışı: HP İyileştirme miktarı, Savunmanın 35% 'i olur.\nTranscend Lv.6 Effect\n - Hedef Sayısını Değiştirir: En düşük mevcut HP'ye sahip 2 Müttefiklere.",
+        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 3 kez saldırıya uğramak, büyü yapanın Savunmasının 30%'ine eşit HP iyileştirir.\n - Koruma sağlar. [Her Zaman Aktif]\nSkill Enhancement Effect\n - Şifa Artışı: HP İyileştirme miktarı, Savunmanın 40% 'i olur.\nTranscend Lv.6 Effect\n - Hedef Sayısını Değiştirir: En düşük mevcut HP'ye sahip 2 Müttefiklere.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -153,8 +309,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Terazi",
       "likes": "Heavenia, kurabiyeler, siyah çay, adalet, düzen, nezaket, merak, masumiyet, temizlik, çamaşır, okuma",
       "dislikes": "Dellons, Sun Wukong, diğer hayvan sütü, kötülük, kaos, şeylerin kirli olması, şeylerin dağınık olması",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10066502",
         "name": "Gök Işığı",
-        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 45% ve Savunmanın 50% kadar hasar verir, 1 kez uygulanır.\n - Tüm Müttefikler\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 45% kadarına.\n - Hasar Artışı: Büyü Saldırısının 50% kadarına.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Düşman\n - Fiziksel Saldırının 60% ve Savunmanın 70% kadar hasar verir, 1 kez uygulanır.\n - 3 Müttefik\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 60% kadarına.\n - Hasar Artışı: Büyü Saldırısının 70% kadarına.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10066504",
         "name": "Valkyrie'nin Varlığı",
-        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 5 kez saldırıya uğramak, büyü yapanın Savunmasının 25%'ine eşit HP iyileştirir.\n - Kendi\n - Savunma Artışı sağlar. [Her Zaman Aktif]",
+        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 3 kez saldırıya uğramak, büyü yapanın Savunmasının 25%'ine eşit HP iyileştirir.\n - Koruma sağlar. [Her Zaman Aktif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -578,8 +734,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Terazi",
       "likes": "Heavenia, kurabiyeler, siyah çay, adalet, düzen, nezaket, merak, masumiyet, temizlik, çamaşır, okuma",
       "dislikes": "Dellons, Sun Wukong, diğer hayvan sütü, kötülük, kaos, şeylerin kirli olması, şeylerin dağınık olması",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10066402",
         "name": "Gök Işığı",
-        "desc": "Tüm Düşmanlar\n - Fiziksel Saldırının 40% ve Savunmanın 45% kadar hasar verir, 1 kez uygulanır.\n - Tüm Müttefikler\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 40% kadarına.\n - Hasar Artışı: Büyü Saldırısının 45% kadarına.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Düşman\n - Fiziksel Saldırının 55% ve Savunmanın 65% kadar hasar verir, 1 kez uygulanır.\n - 3 Müttefik\n - 1 Zayıflatma Etkisi Kaldırma verir.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 55% kadarına.\n - Hasar Artışı: Büyü Saldırısının 65% kadarına.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10066404",
         "name": "Valkyrie'nin Varlığı",
-        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 5 kez saldırıya uğramak, büyü yapanın Savunmasının 25%'ine eşit HP iyileştirir.\n - Kendi\n - Savunma Artışı sağlar. [Her Zaman Aktif]",
+        "desc": "Mevcut HP'si En Düşük Olan Müttefik\n - Bir düşman tarafından 3 kez saldırıya uğramak, büyü yapanın Savunmasının 25%'ine eşit HP iyileştirir.\n - Koruma sağlar. [Her Zaman Aktif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -727,8 +883,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Terazi",
       "likes": "Heavenia, kurabiyeler, siyah çay, adalet, düzen, nezaket, merak, masumiyet, temizlik, çamaşır, okuma",
       "dislikes": "Dellons, Sun Wukong, diğer hayvan sütü, kötülük, kaos, şeylerin kirli olması, şeylerin dağınık olması",

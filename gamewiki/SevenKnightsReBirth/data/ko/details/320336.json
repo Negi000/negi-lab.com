@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400667",
+      "name": "헬레니아",
+      "subname": "홍염의 신성",
+      "affiliation": "에반원정대",
+      "flavor": "정체불명의 마법사에게 운명을 빼앗길 위기의 순간,\\n헤브니아를 살리기 위해 바쳤던 운명의 실이 실타래에 감겨 들어가기 시작한다.\\n이윽고 위기를 극복해 낸 헬레니아는 여섯 개의 날개를 가진 홍염의 신성으로 다시 태어났다.",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "124",
+      "Magical Attack": "0",
+      "Defense": "148",
+      "HP": "845",
+      "Speed": "16",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 124,
+        "Defense": 148,
+        "HP": 845
+      },
+      "level30": {
+        "Physical Attack": 559,
+        "Defense": 670,
+        "HP": 3774
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 18,
+        "HP": 101
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 52,
+        "HP": 296
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 559,
+          "Defense": 670,
+          "HP": 3774
+        },
+        "+1": {
+          "Physical Attack": 602,
+          "Defense": 722,
+          "HP": 4070
+        },
+        "+2": {
+          "Physical Attack": 645,
+          "Defense": 774,
+          "HP": 4366
+        },
+        "+3": {
+          "Physical Attack": 688,
+          "Defense": 826,
+          "HP": 4662
+        },
+        "+4": {
+          "Physical Attack": 731,
+          "Defense": 878,
+          "HP": 4958
+        },
+        "+5": {
+          "Physical Attack": 774,
+          "Defense": 930,
+          "HP": 5254
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40066701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 65%, 방어력의 75%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%\n - 피해량 상승 : 마법 공격력의 75%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
+      },
+      "Skill 1": {
+        "id": "40066702",
+        "name": "하늘의 빛",
+        "desc": "적군 3명\n - 물리 공격력의 75%, 방어력의 85%만큼 1회 피해\n - 약점 공격 확률 감소 [100% 확률] [3턴 지속]\n - 아군 3명\n - 디버프 해제 2개\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%\n - 피해량 상승 : 마법 공격력의 85%\nTranscend Lv.2 Effect\n - 적군 3명\n - 효과 추가 : 빗나감 확률 증가 44% [100% 확률] [3턴 지속]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
+      },
+      "Skill 2": {
+        "id": "40066703",
+        "name": "하늘의 방패",
+        "desc": "자신\n - 마법 피해 면역 [3턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 마법 감쇄 [3턴 지속]",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
+      },
+      "Passive": {
+        "id": "40066704",
+        "name": "발키리의 저력",
+        "desc": "자신\n - 마법 감쇄 [상시]\n - 현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 3회 적중 당할 시, 시전자 방어력의 40%만큼 생명력 회복\n - 아군 2명(후열 만능형)\n - 방호 [상시]\nTranscend Lv.6 Effect\n - 대상 수 변경 : 현재 생명력이 가장 낮은 아군 2명",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40066707",
+        "name": "구원의 축복",
+        "desc": "아군 3명\n - 모든 디버프 해제\n - 스킬 쿨타임 초기화\n - 시전자 방어력의 120%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 보호막 흡수량이 방어력의 135%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "김하영",
+      "species": "발키리",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "171",
+      "weight": "52",
+      "constellation": "천칭자리",
+      "likes": "헤브니아, 쿠키, 홍차, 정의, 질서, 선, 호기심, 순수, 청소, 빨래, 독서",
+      "dislikes": "델론즈, 손오공, 다른 동물의 젖, 악, 혼돈, 지저분한 것, 어질러진 것",
+      "story": "정체불명의 마법사에게 운명을 빼앗길 위기의 순간,\\n헤브니아를 살리기 위해 바쳤던 운명의 실이 실타래에 감겨 들어가기 시작한다.\\n이윽고 위기를 극복해 낸 헬레니아는 여섯 개의 날개를 가진 홍염의 신성으로 다시 태어났다."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100666",
       "name": "헬레니아",
       "subname": "붉은 혜성",
@@ -113,8 +269,8 @@
       "Skill 1": {
         "id": "10066602",
         "name": "하늘의 빛",
-        "desc": "모든 적군\n - 물리 공격력의 50%, 방어력의 55%만큼 1회 피해\n - 모든 아군\n - 디버프 해제 1개\n - 디버프 해제 2개\nSkill Enhancement Effect\n - 효과 상승 : 디버프 해제 2개\nTranscend Lv.2 Effect\n - 모든 적군\n - 효과 추가 : 빗나감 확률 증가 40% [100% 확률] [3턴 지속]",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "적군 3명\n - 물리 공격력의 75%, 방어력의 85%만큼 1회 피해\n - 아군 3명\n - 디버프 해제 1개\n - 디버프 해제 2개\nSkill Enhancement Effect\n - 효과 상승 : 디버프 해제 2개\nTranscend Lv.2 Effect\n - 적군 3명\n - 효과 추가 : 빗나감 확률 증가 44% [100% 확률] [3턴 지속]",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10066604",
         "name": "발키리의 저력",
-        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 5회 적중 당할 시, 시전자 방어력의 30%만큼 생명력 회복\n - 자신\n - 방어력 증가 [상시]\nSkill Enhancement Effect\n - 회복량 상승 : 생명력 회복량이 방어력의 35%\nTranscend Lv.6 Effect\n - 대상 수 변경 : 현재 생명력이 가장 낮은 아군 2명",
+        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 3회 적중 당할 시, 시전자 방어력의 30%만큼 생명력 회복\n - 아군 2명(후열 만능형)\n - 방호 [상시]\nSkill Enhancement Effect\n - 회복량 상승 : 생명력 회복량이 방어력의 40%\nTranscend Lv.6 Effect\n - 대상 수 변경 : 현재 생명력이 가장 낮은 아군 2명",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -153,8 +309,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "천칭자리",
       "likes": "헤브니아, 쿠키, 홍차, 정의, 질서, 선, 호기심, 순수, 청소, 빨래, 독서",
       "dislikes": "델론즈, 손오공, 다른 동물의 젖, 악, 혼돈, 지저분한 것, 어질러진 것",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10066502",
         "name": "하늘의 빛",
-        "desc": "모든 적군\n - 물리 공격력의 45%, 방어력의 50%만큼 1회 피해\n - 모든 아군\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 45%\n - 피해량 상승 : 마법 공격력의 50%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "적군 3명\n - 물리 공격력의 60%, 방어력의 70%만큼 1회 피해\n - 아군 3명\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%\n - 피해량 상승 : 마법 공격력의 70%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10066504",
         "name": "발키리의 저력",
-        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 5회 적중 당할 시, 시전자 방어력의 25%만큼 생명력 회복\n - 자신\n - 방어력 증가 [상시]",
+        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 3회 적중 당할 시, 시전자 방어력의 25%만큼 생명력 회복\n - 아군 2명(후열 만능형)\n - 방호 [상시]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -578,8 +734,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "천칭자리",
       "likes": "헤브니아, 쿠키, 홍차, 정의, 질서, 선, 호기심, 순수, 청소, 빨래, 독서",
       "dislikes": "델론즈, 손오공, 다른 동물의 젖, 악, 혼돈, 지저분한 것, 어질러진 것",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10066402",
         "name": "하늘의 빛",
-        "desc": "모든 적군\n - 물리 공격력의 40%, 방어력의 45%만큼 1회 피해\n - 모든 아군\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 40%\n - 피해량 상승 : 마법 공격력의 45%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "적군 3명\n - 물리 공격력의 55%, 방어력의 65%만큼 1회 피해\n - 아군 3명\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 55%\n - 피해량 상승 : 마법 공격력의 65%",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10066404",
         "name": "발키리의 저력",
-        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 5회 적중 당할 시, 시전자 방어력의 25%만큼 생명력 회복\n - 자신\n - 방어력 증가 [상시]",
+        "desc": "현재 생명력이 가장 낮은 아군\n - 자신이 적의 공격 3회 적중 당할 시, 시전자 방어력의 25%만큼 생명력 회복\n - 아군 2명(후열 만능형)\n - 방호 [상시]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -727,8 +883,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "천칭자리",
       "likes": "헤브니아, 쿠키, 홍차, 정의, 질서, 선, 호기심, 순수, 청소, 빨래, 독서",
       "dislikes": "델론즈, 손오공, 다른 동물의 젖, 악, 혼돈, 지저분한 것, 어질러진 것",

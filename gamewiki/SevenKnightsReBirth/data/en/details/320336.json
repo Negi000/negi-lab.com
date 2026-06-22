@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400667",
+      "name": "Hellenia",
+      "subname": "Divinity of Flame",
+      "affiliation": "Evan Expedition",
+      "flavor": "PCTable.PcSummary_Hellenia_400667",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "124",
+      "Magical Attack": "0",
+      "Defense": "148",
+      "HP": "845",
+      "Speed": "16",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 124,
+        "Defense": 148,
+        "HP": 845
+      },
+      "level30": {
+        "Physical Attack": 559,
+        "Defense": 670,
+        "HP": 3774
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 18,
+        "HP": 101
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 52,
+        "HP": 296
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 559,
+          "Defense": 670,
+          "HP": 3774
+        },
+        "+1": {
+          "Physical Attack": 602,
+          "Defense": 722,
+          "HP": 4070
+        },
+        "+2": {
+          "Physical Attack": 645,
+          "Defense": 774,
+          "HP": 4366
+        },
+        "+3": {
+          "Physical Attack": 688,
+          "Defense": 826,
+          "HP": 4662
+        },
+        "+4": {
+          "Physical Attack": 731,
+          "Defense": 878,
+          "HP": 4958
+        },
+        "+5": {
+          "Physical Attack": 774,
+          "Defense": 930,
+          "HP": 5254
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40066701",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 65% of Physical Attack plus 75% of Defense 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 65% of Physical Attack.\n - Increases Damage: To 75% of Magic Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
+      },
+      "Skill 1": {
+        "id": "40066702",
+        "name": "Celestial Light",
+        "desc": "3 Enemies\n - Deals damage equal to 75% of Physical Attack plus 85% of Defense 1 time(s).\n - 100% chance to inflict Weakness Hit Chance Reduction. [Duration: 3 Turn(s)]\n - 3 Allies\n - Grants 2 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\n - Increases Damage: To 85% of Magic Attack.\nTranscend Lv.2 Effect\n - 3 Enemies\n - Adds Effect: 100% chance to inflict 44% Increased Miss Chance. [Duration: 3 Turn(s)]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
+      },
+      "Skill 2": {
+        "id": "40066703",
+        "name": "Celestial Shield",
+        "desc": "Self\n - Grants Magic Damage Immunity. [Duration: 3 Turn(s)]\n - Grants Taunt. [Duration: 2 Turn(s)]\n - 3 Allies\n - Grants Magic Resistance. [Duration: 3 Turn(s)]",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
+      },
+      "Passive": {
+        "id": "40066704",
+        "name": "Valkyrie's Presence",
+        "desc": "Self\n - Grants Magic Resistance. [Always Active]\n - Ally with the Lowest Current HP\n - Getting attacked by an enemy 3 time(s) heals HP equal to 40% of the caster's Defense.\n - Grants Protection. [Always Active]\nTranscend Lv.6 Effect\n - Changes Number of Targets: To 2 Allies with the lowest current HP",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40066707",
+        "name": "Blessings of Salvation",
+        "desc": "3 Allies\n - Grants All Debuff Removal.\n - Grants Skill Cooldown Reset.\n - Grants a Barrier equal to 120% of the caster's Defense. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Effect: Barrier absorption becomes 135% of Defense.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "171",
+      "weight": "52",
+      "constellation": "Libra",
+      "likes": "Heavenia, cookies, black tea, justice, order, kindness, curiosity, innocence, cleaning, laundry, reading",
+      "dislikes": "Dellons, Sun Wukong, other animal milk, evil, chaos, things being dirty, things being messy",
+      "story": "PCTable.PcSummary_Hellenia_400667"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100666",
       "name": "Hellenia",
       "subname": "Crimson Comet",
@@ -113,8 +269,8 @@
       "Skill 1": {
         "id": "10066602",
         "name": "Celestial Light",
-        "desc": "All Enemies\n - Deals damage equal to 50% of Physical Attack plus 55% of Defense 1 time(s).\n - All Allies\n - Grants 1 Debuff Removal(s).\n - Grants 2 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Effect: Debuff Removal count becomes 2.\nTranscend Lv.2 Effect\n - All Enemies\n - Adds Effect: 100% chance to inflict 40% Increased Miss Chance. [Duration: 3 Turn(s)]",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Enemies\n - Deals damage equal to 75% of Physical Attack plus 85% of Defense 1 time(s).\n - 3 Allies\n - Grants 1 Debuff Removal(s).\n - Grants 2 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Effect: Debuff Removal count becomes 2.\nTranscend Lv.2 Effect\n - 3 Enemies\n - Adds Effect: 100% chance to inflict 44% Increased Miss Chance. [Duration: 3 Turn(s)]",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10066604",
         "name": "Valkyrie's Presence",
-        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 5 time(s) heals HP equal to 30% of the caster's Defense.\n - Self\n - Grants Defense Boost. [Always Active]\nSkill Enhancement Effect\n - Increases Healing: HP Recovery amount becomes 35% of Defense.\nTranscend Lv.6 Effect\n - Changes Number of Targets: To 2 Allies with the lowest current HP",
+        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 3 time(s) heals HP equal to 30% of the caster's Defense.\n - Grants Protection. [Always Active]\nSkill Enhancement Effect\n - Increases Healing: HP Recovery amount becomes 40% of Defense.\nTranscend Lv.6 Effect\n - Changes Number of Targets: To 2 Allies with the lowest current HP",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -153,8 +309,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Libra",
       "likes": "Heavenia, cookies, black tea, justice, order, kindness, curiosity, innocence, cleaning, laundry, reading",
       "dislikes": "Dellons, Sun Wukong, other animal milk, evil, chaos, things being dirty, things being messy",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10066502",
         "name": "Celestial Light",
-        "desc": "All Enemies\n - Deals damage equal to 45% of Physical Attack plus 50% of Defense 1 time(s).\n - All Allies\n - Grants 1 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Damage: To 45% of Physical Attack.\n - Increases Damage: To 50% of Magic Attack.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Enemies\n - Deals damage equal to 60% of Physical Attack plus 70% of Defense 1 time(s).\n - 3 Allies\n - Grants 1 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Damage: To 60% of Physical Attack.\n - Increases Damage: To 70% of Magic Attack.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10066504",
         "name": "Valkyrie's Presence",
-        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 5 time(s) heals HP equal to 25% of the caster's Defense.\n - Self\n - Grants Defense Boost. [Always Active]",
+        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 3 time(s) heals HP equal to 25% of the caster's Defense.\n - Grants Protection. [Always Active]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -578,8 +734,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Libra",
       "likes": "Heavenia, cookies, black tea, justice, order, kindness, curiosity, innocence, cleaning, laundry, reading",
       "dislikes": "Dellons, Sun Wukong, other animal milk, evil, chaos, things being dirty, things being messy",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10066402",
         "name": "Celestial Light",
-        "desc": "All Enemies\n - Deals damage equal to 40% of Physical Attack plus 45% of Defense 1 time(s).\n - All Allies\n - Grants 1 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Damage: To 40% of Physical Attack.\n - Increases Damage: To 45% of Magic Attack.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Enemies\n - Deals damage equal to 55% of Physical Attack plus 65% of Defense 1 time(s).\n - 3 Allies\n - Grants 1 Debuff Removal(s).\nSkill Enhancement Effect\n - Increases Damage: To 55% of Physical Attack.\n - Increases Damage: To 65% of Magic Attack.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10066404",
         "name": "Valkyrie's Presence",
-        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 5 time(s) heals HP equal to 25% of the caster's Defense.\n - Self\n - Grants Defense Boost. [Always Active]",
+        "desc": "Ally with the Lowest Current HP\n - Getting attacked by an enemy 3 time(s) heals HP equal to 25% of the caster's Defense.\n - Grants Protection. [Always Active]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -727,8 +883,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Libra",
       "likes": "Heavenia, cookies, black tea, justice, order, kindness, curiosity, innocence, cleaning, laundry, reading",
       "dislikes": "Dellons, Sun Wukong, other animal milk, evil, chaos, things being dirty, things being messy",

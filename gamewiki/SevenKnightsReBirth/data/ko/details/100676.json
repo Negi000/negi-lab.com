@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400677",
+      "name": "헤브니아",
+      "subname": "혹한의 신성",
+      "affiliation": "에반원정대",
+      "flavor": "정체불명의 마법사에게 운명을 빼앗길 위기에 봉착한 헤브니아는 언니 헬레니아와 함께 새로운 미래를 이어나갈 운명을 개척해 낸다.\\n새롭게 이어진 운명에 따라 헤브니아는 여섯 개의 날개를 가진 혹한의 신성으로 거듭났다.",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "254",
+      "Magical Attack": "0",
+      "Defense": "101",
+      "HP": "587",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 254,
+        "Defense": 101,
+        "HP": 587
+      },
+      "level30": {
+        "Physical Attack": 1124,
+        "Defense": 420,
+        "HP": 2617
+      },
+      "levelUpBonus": {
+        "Physical Attack": 30,
+        "Defense": 11,
+        "HP": 70
+      },
+      "reinforceBonus": {
+        "Physical Attack": 89,
+        "Defense": 35,
+        "HP": 205
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1124,
+          "Defense": 420,
+          "HP": 2617
+        },
+        "+1": {
+          "Physical Attack": 1213,
+          "Defense": 455,
+          "HP": 2822
+        },
+        "+2": {
+          "Physical Attack": 1302,
+          "Defense": 490,
+          "HP": 3027
+        },
+        "+3": {
+          "Physical Attack": 1391,
+          "Defense": 525,
+          "HP": 3232
+        },
+        "+4": {
+          "Physical Attack": 1480,
+          "Defense": 560,
+          "HP": 3437
+        },
+        "+5": {
+          "Physical Attack": 1569,
+          "Defense": 595,
+          "HP": 3642
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40067701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 120%만큼 1회 피해\n - 빙결 [50% 확률] [1턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 120%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "40067702",
+        "name": "검의 심판",
+        "desc": "적군 3명\n - 물리 공격력의 160%만큼 1회 피해\n - 빙결 [75% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 160%\nTranscend Lv.2 Effect\n - 확률 상승 : 빙결 확률 85%",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "40067703",
+        "name": "맹렬한 공격",
+        "desc": "단일 적군\n - 물리 공격력의 340%만큼 1회 피해\n - 대상의 턴제 버프 감소 3턴 [100% 확률]\n - 물리 취약 [100% 확률] [5턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 340%\n - 효과 상승 : 물리 취약 29%",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "40067704",
+        "name": "마법 포착",
+        "desc": "자신\n - 물리 공격력 증가 [상시]\n - 공격력이 가장 높은 아군 2명(자신 제외)\n - 모든 아군\n - 자신의 모든 공격 2회 발동 시 시전자 물리 공격력의 35% 만큼 생명력 회복\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 모든 피해 면역 [2턴 지속]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      },
+      "Awaken Skill": {
+        "id": "40067707",
+        "name": "유성폭발",
+        "desc": "자신\n - 물리 공격력 증가 [5턴 지속]\n - 치명타 피해 증가 [5턴 지속]\n - 공격력이 가장 높은 아군 2명(자신 제외)\n - 단일 적군\n - 물리 공격력의 350%만큼 1회 피해\nSkill Enhancement Effect\n - 효과 상승 : 물리 공격력 증가 23%\n - 자신, 공격력이 가장 높은 아군 2명(자신 제외)\n - 효과 추가 : 치명타 피해 증가 34% [5턴 지속]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006706.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "김소희",
+      "species": "발키리",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "천칭자리",
+      "likes": "헬레니아, 루디, 쿠키, 치즈, 매운 것, 정의, 질서, 선, 호기심, 익스트림 스포츠",
+      "dislikes": "아리엘, 다른 동물의 젖, 악, 혼돈, 청소, 빨래",
+      "story": "정체불명의 마법사에게 운명을 빼앗길 위기에 봉착한 헤브니아는 언니 헬레니아와 함께 새로운 미래를 이어나갈 운명을 개척해 낸다.\\n새롭게 이어진 운명에 따라 헤브니아는 여섯 개의 날개를 가진 혹한의 신성으로 거듭났다."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100676",
       "name": "헤브니아",
       "subname": "푸른 유성",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10067604",
         "name": "마법 포착",
-        "desc": "자신\n - 물리 공격력 증가 [3턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 물리 공격력 증가 31%\nTranscend Lv.6 Effect\n - 효과 추가 : 모든 피해 면역 [2턴 지속]",
+        "desc": "자신\n - 물리 공격력 증가 [상시]\n - 공격력이 가장 높은 아군 2명(자신 제외)\n - 모든 아군\n - 자신의 모든 공격 2회 발동 시 시전자 물리 공격력의 30% 만큼 생명력 회복\nSkill Enhancement Effect\n - 효과 상승 : 물리 공격력 증가 25%\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 모든 피해 면역 [2턴 지속]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -154,7 +310,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "천칭자리",
       "likes": "헬레니아, 루디, 쿠키, 치즈, 매운 것, 정의, 질서, 선, 호기심, 익스트림 스포츠",
       "dislikes": "아리엘, 다른 동물의 젖, 악, 혼돈, 청소, 빨래",
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "10067504",
         "name": "마법 포착",
-        "desc": "자신\n - 물리 공격력 증가 [3턴 지속]",
+        "desc": "자신\n - 물리 공격력 증가 [상시]\n - 공격력이 가장 높은 아군 2명(자신 제외)\n - 모든 아군\n - 자신의 모든 공격 2회 발동 시 시전자 물리 공격력의 25% 만큼 생명력 회복",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -303,7 +459,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "천칭자리",
       "likes": "헬레니아, 루디, 쿠키, 치즈, 매운 것, 정의, 질서, 선, 호기심, 익스트림 스포츠",
       "dislikes": "아리엘, 다른 동물의 젖, 악, 혼돈, 청소, 빨래",
@@ -438,7 +594,7 @@
       "Passive": {
         "id": "10067404",
         "name": "마법 포착",
-        "desc": "자신\n - 물리 공격력 증가 [3턴 지속]",
+        "desc": "자신\n - 물리 공격력 증가 [상시]\n - 공격력이 가장 높은 아군 2명(자신 제외)\n - 모든 아군\n - 자신의 모든 공격 2회 발동 시 시전자 물리 공격력의 20% 만큼 생명력 회복",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -452,7 +608,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "천칭자리",
       "likes": "헬레니아, 루디, 쿠키, 치즈, 매운 것, 정의, 질서, 선, 호기심, 익스트림 스포츠",
       "dislikes": "아리엘, 다른 동물의 젖, 악, 혼돈, 청소, 빨래",

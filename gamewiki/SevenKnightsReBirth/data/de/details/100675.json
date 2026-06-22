@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400677",
+      "name": "Heavenia",
+      "subname": "Göttlichkeit des Frosts",
+      "affiliation": "Evan-Expedition",
+      "flavor": "PCTable.PcSummary_Heavenia_400677",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "254",
+      "Magical Attack": "0",
+      "Defense": "101",
+      "HP": "587",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 254,
+        "Defense": 101,
+        "HP": 587
+      },
+      "level30": {
+        "Physical Attack": 1124,
+        "Defense": 420,
+        "HP": 2617
+      },
+      "levelUpBonus": {
+        "Physical Attack": 30,
+        "Defense": 11,
+        "HP": 70
+      },
+      "reinforceBonus": {
+        "Physical Attack": 89,
+        "Defense": 35,
+        "HP": 205
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1124,
+          "Defense": 420,
+          "HP": 2617
+        },
+        "+1": {
+          "Physical Attack": 1213,
+          "Defense": 455,
+          "HP": 2822
+        },
+        "+2": {
+          "Physical Attack": 1302,
+          "Defense": 490,
+          "HP": 3027
+        },
+        "+3": {
+          "Physical Attack": 1391,
+          "Defense": 525,
+          "HP": 3232
+        },
+        "+4": {
+          "Physical Attack": 1480,
+          "Defense": 560,
+          "HP": 3437
+        },
+        "+5": {
+          "Physical Attack": 1569,
+          "Defense": 595,
+          "HP": 3642
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40067701",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 120 % des physischen Angriffs 1 Mal.\n - 50 % Chance, Einfrieren zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 120 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "40067702",
+        "name": "Schwert der Entscheidung",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 160 % des physischen Angriffs 1 Mal.\n - 75 % Chance, Einfrieren zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 160 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Erhöht die Chance: Einfrieren-Chance wird zu 85 %.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "40067703",
+        "name": "Grausamer Angriff",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 340 % des physischen Angriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 3 Runde(n).\n - 100 % Chance, Physische Verwundbarkeit zuzufügen. [Dauer: 5 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 340 % des physischen Angriffs.\n - Erhöhter Effekt: Physische Verwundbarkeit auf 29 %.",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "40067704",
+        "name": "Manaaufnahme",
+        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Alle Verbündeten\n - Heilt TP in Höhe von 35 % des physischen Angriffs des Zaubernden bei Verwendung eines Angriffs 2 Mal.\nTranscend Lv.6 Effect\n - Selbst\n - Fügt Effekt hinzu: Immunität gegen allen Schaden. [Dauer: 2 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      },
+      "Awaken Skill": {
+        "id": "40067707",
+        "name": "Meteorexplosion",
+        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Dauer: 5 Runde(n)]\n - Gewährt Krit. Schaden-Erhöhung. [Dauer: 5 Runde(n)]\n - Einzelner Feind\n - Verursacht Schaden in Höhe von 350 % des physischen Angriffs 1 Mal.\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 23 %.\n - Fügt Effekt hinzu: 34 % Krit.-Schaden-Erhöhung. [Dauer: 5 Runde(n)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006706.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐久間 紅美",
+      "species": "Walküre",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "Waage",
+      "likes": "Hellenia, Rudy, Kekse, Käse, scharfe Sachen, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Extremsportarten",
+      "dislikes": "Ariel, alle Arten von Milch, Böses, Chaos, Reinigung, Wäsche",
+      "story": "PCTable.PcSummary_Heavenia_400677"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100676",
       "name": "Heavenia",
       "subname": "Azurblauer Komet",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10067604",
         "name": "Manaaufnahme",
-        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 31 %.\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Immunität gegen allen Schaden. [Dauer: 2 Runde(n)]",
+        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Alle Verbündeten\n - Heilt TP in Höhe von 30 % des physischen Angriffs des Zaubernden bei Verwendung eines Angriffs 2 Mal.\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 25 %.\nTranscend Lv.6 Effect\n - Selbst\n - Fügt Effekt hinzu: Immunität gegen allen Schaden. [Dauer: 2 Runde(n)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -154,7 +310,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "Waage",
       "likes": "Hellenia, Rudy, Kekse, Käse, scharfe Sachen, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Extremsportarten",
       "dislikes": "Ariel, alle Arten von Milch, Böses, Chaos, Reinigung, Wäsche",
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "10067504",
         "name": "Manaaufnahme",
-        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Dauer: 3 Runde(n)]",
+        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Alle Verbündeten\n - Heilt TP in Höhe von 25 % des physischen Angriffs des Zaubernden bei Verwendung eines Angriffs 2 Mal.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -303,7 +459,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "Waage",
       "likes": "Hellenia, Rudy, Kekse, Käse, scharfe Sachen, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Extremsportarten",
       "dislikes": "Ariel, alle Arten von Milch, Böses, Chaos, Reinigung, Wäsche",
@@ -438,7 +594,7 @@
       "Passive": {
         "id": "10067404",
         "name": "Manaaufnahme",
-        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Dauer: 3 Runde(n)]",
+        "desc": "Selbst\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Alle Verbündeten\n - Heilt TP in Höhe von 20 % des physischen Angriffs des Zaubernden bei Verwendung eines Angriffs 2 Mal.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
       }
@@ -452,7 +608,7 @@
       "birthday": "10 / 10",
       "age": "0",
       "height": "170",
-      "weight": "52",
+      "weight": "53",
       "constellation": "Waage",
       "likes": "Hellenia, Rudy, Kekse, Käse, scharfe Sachen, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Extremsportarten",
       "dislikes": "Ariel, alle Arten von Milch, Böses, Chaos, Reinigung, Wäsche",

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400667",
+      "name": "Hellenia",
+      "subname": "Göttlichkeit der Flamme",
+      "affiliation": "Evan-Expedition",
+      "flavor": "PCTable.PcSummary_Hellenia_400667",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "124",
+      "Magical Attack": "0",
+      "Defense": "148",
+      "HP": "845",
+      "Speed": "16",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 124,
+        "Defense": 148,
+        "HP": 845
+      },
+      "level30": {
+        "Physical Attack": 559,
+        "Defense": 670,
+        "HP": 3774
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 18,
+        "HP": 101
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 52,
+        "HP": 296
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 559,
+          "Defense": 670,
+          "HP": 3774
+        },
+        "+1": {
+          "Physical Attack": 602,
+          "Defense": 722,
+          "HP": 4070
+        },
+        "+2": {
+          "Physical Attack": 645,
+          "Defense": 774,
+          "HP": 4366
+        },
+        "+3": {
+          "Physical Attack": 688,
+          "Defense": 826,
+          "HP": 4662
+        },
+        "+4": {
+          "Physical Attack": 731,
+          "Defense": 878,
+          "HP": 4958
+        },
+        "+5": {
+          "Physical Attack": 774,
+          "Defense": 930,
+          "HP": 5254
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40066701",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 65 % des physischen Angriffs plus 75 % der Verteidigung 1 Mal.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 65 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 75 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006601.webp"
+      },
+      "Skill 1": {
+        "id": "40066702",
+        "name": "Himmlisches Licht",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - 100 % Chance, um Schwachstellenangriff-Verringerung zu verursachen. [Dauer: 3 Runde(n)]\n - 3 Verbündete\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 85 % des Magieangriffs.\nTranscend Lv.2 Effect\n - 3 Feinde\n - Fügt Effekt hinzu: 100 % Chance, 44 % Verfehlchance-Erhöhung zu verursachen. [Dauer: 3 Runde(n)]",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
+      },
+      "Skill 2": {
+        "id": "40066703",
+        "name": "Himmlischer Schild",
+        "desc": "Selbst\n - Gewährt Magieschaden-Immunität. [Dauer: 3 Runde(n)]\n - Gewährt Spott. [Dauer: 2 Runde(n)]\n - 3 Verbündete\n - Gewährt Magiewiderstand. [Dauer: 3 Runde(n)]",
+        "cooltime": "⏱️ CT: 66s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006603.webp"
+      },
+      "Passive": {
+        "id": "40066704",
+        "name": "Potenzial der Walküre",
+        "desc": "Selbst\n - Gewährt Magischen Widerstand. [Immer aktiv]\n - Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 3 Mal angegriffen wird, heilt es TP in Höhe von 40 % der Verteidigung des Zaubernden.\n - Gewährt Schutz. [Immer aktiv]\nTranscend Lv.6 Effect\n - Ändert die Anzahl der Ziele: Auf 2 Verbündete mit den niedrigsten aktuellen TP",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40066707",
+        "name": "Segen der Erlösung",
+        "desc": "3 Verbündete\n - Gewährt alle Schwächungen entfernen.\n - Gewährt Fähigkeit Abklingzeit zurücksetzen.\n - Gewährt einen Schild, der 120 % der Verteidigung des Zaubernden entspricht. [Dauer: 2 Runde(n)]\n - Gewährt einen Schild, der 135 % der Verteidigung des Zaubernden entspricht. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: Schildabsorption wird zu 135 % der Verteidigung.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4006606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "明坂 聡美",
+      "species": "Walküre",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "171",
+      "weight": "52",
+      "constellation": "Waage",
+      "likes": "Heavenia, Kekse, schwarzer Tee, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Unschuld, Putzen, Wäsche, Lesen",
+      "dislikes": "Dellons, Sun Wukong, andere Tiermilch, böse, Chaos, Dinge, die schmutzig sind, Dinge, die unordentlich sind",
+      "story": "PCTable.PcSummary_Hellenia_400667"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100666",
       "name": "Hellenia",
       "subname": "Purpurroter Komet",
@@ -113,8 +269,8 @@
       "Skill 1": {
         "id": "10066602",
         "name": "Himmlisches Licht",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 55 % der Verteidigung 1 Mal.\n - Alle Verbündeten\n - Gewährt 1 Debuff-Entfernung(en).\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöhter Effekt: 2 Mal Debuff entfernen.\nTranscend Lv.2 Effect\n - Alle Feinde\n - Fügt Effekt hinzu: 100 % Chance, 40 % Verfehlchance-Erhöhung zu verursachen. [Dauer: 3 Runde(n)]",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - 3 Verbündete\n - Gewährt 1 Debuff-Entfernung(en).\n - Gewährt 2 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöhter Effekt: 2 Mal Debuff entfernen.\nTranscend Lv.2 Effect\n - 3 Feinde\n - Fügt Effekt hinzu: 100 % Chance, 44 % Verfehlchance-Erhöhung zu verursachen. [Dauer: 3 Runde(n)]",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10066604",
         "name": "Potenzial der Walküre",
-        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 5 Mal angegriffen wird, heilt es TP in Höhe von 30 % der Verteidigung des Zaubernden.\n - Wenn man von einem Feind 5 Mal angegriffen wird, heilt es TP in Höhe von 35 % der Verteidigung des Zaubernden.\n - Selbst\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöht Heilung: TP-Wiederherstellungsmenge wird zu 35 % der Verteidigung.\nTranscend Lv.6 Effect\n - Ändert die Anzahl der Ziele: Auf 2 Verbündete mit den niedrigsten aktuellen TP",
+        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 3 Mal angegriffen wird, heilt es TP in Höhe von 30 % der Verteidigung des Zaubernden.\n - Wenn man von einem Feind 3 Mal angegriffen wird, heilt es TP in Höhe von 40 % der Verteidigung des Zaubernden.\n - Gewährt Schutz. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöht Heilung: TP-Wiederherstellungsmenge wird zu 40 % der Verteidigung.\nTranscend Lv.6 Effect\n - Ändert die Anzahl der Ziele: Auf 2 Verbündete mit den niedrigsten aktuellen TP",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -153,8 +309,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Waage",
       "likes": "Heavenia, Kekse, schwarzer Tee, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Unschuld, Putzen, Wäsche, Lesen",
       "dislikes": "Dellons, Sun Wukong, andere Tiermilch, böse, Chaos, Dinge, die schmutzig sind, Dinge, die unordentlich sind",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10066502",
         "name": "Himmlisches Licht",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 45 % des physischen Angriffs plus 50 % der Verteidigung 1 Mal.\n - Alle Verbündeten\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 50 % des Magieangriffs.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\n - 3 Verbündete\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 70 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10066504",
         "name": "Potenzial der Walküre",
-        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 5 Mal angegriffen wird, heilt es TP in Höhe von 25 % der Verteidigung des Zaubernden.\n - Selbst\n - Gewährt Verteidigungssteigerung. [Immer aktiv]",
+        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 3 Mal angegriffen wird, heilt es TP in Höhe von 25 % der Verteidigung des Zaubernden.\n - Gewährt Schutz. [Immer aktiv]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -578,8 +734,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Waage",
       "likes": "Heavenia, Kekse, schwarzer Tee, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Unschuld, Putzen, Wäsche, Lesen",
       "dislikes": "Dellons, Sun Wukong, andere Tiermilch, böse, Chaos, Dinge, die schmutzig sind, Dinge, die unordentlich sind",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10066402",
         "name": "Himmlisches Licht",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 40 % des physischen Angriffs plus 45 % der Verteidigung 1 Mal.\n - Alle Verbündeten\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 40 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 45 % des Magieangriffs.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 55 % des physischen Angriffs plus 65 % der Verteidigung 1 Mal.\n - 3 Verbündete\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 55 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 65 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 70s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10066404",
         "name": "Potenzial der Walküre",
-        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 5 Mal angegriffen wird, heilt es TP in Höhe von 25 % der Verteidigung des Zaubernden.\n - Selbst\n - Gewährt Verteidigungssteigerung. [Immer aktiv]",
+        "desc": "Verbündeter mit den niedrigsten aktuellen TP\n - Wenn man von einem Feind 3 Mal angegriffen wird, heilt es TP in Höhe von 25 % der Verteidigung des Zaubernden.\n - Gewährt Schutz. [Immer aktiv]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006604.webp"
       }
@@ -727,8 +883,8 @@
       "bloodType": "3",
       "birthday": "10 / 10",
       "age": "0",
-      "height": "145",
-      "weight": "39",
+      "height": "171",
+      "weight": "52",
       "constellation": "Waage",
       "likes": "Heavenia, Kekse, schwarzer Tee, Gerechtigkeit, Ordnung, Freundlichkeit, Neugier, Unschuld, Putzen, Wäsche, Lesen",
       "dislikes": "Dellons, Sun Wukong, andere Tiermilch, böse, Chaos, Dinge, die schmutzig sind, Dinge, die unordentlich sind",
