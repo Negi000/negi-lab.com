@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "Rudy",
+      "subname": "Pathfinder",
+      "affiliation": "Seven Knights",
+      "flavor": "Rudy, habiendo comenzado a cuestionar la voluntad de la Luz, finalmente perdió su fe y cayó en la desesperación. Luego decidió salvar el Mundo — de acuerdo con sus propias convicciones.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 70% del ATQ físico y85% de la DEF 1 vez/veces.\n - A sí mismo\nSkill Enhancement Effect\n - Aumento de daño: 70% del ATQ físico.\n - Aumento de daño: 85% del ATQ mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "Carga",
+        "desc": "3 enemigos (Por mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 2 Turno(s).\n - Inflige daño de un 85% del ATQ físico y100% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 65%] [Duración: 2 turno(s)]\n - A sí mismo\nSkill Enhancement Effect\n - Aumento de daño: 85% del ATQ físico.\n - Aumento de daño: 100% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "Preparativos de defensa",
+        "desc": "Todos los aliados\n - Enlace. [Duración: 2 turno(s)]\n - A sí mismo\nSkill Enhancement Effect\n - Eliminación de desventaja x1.\nTranscend Lv.2 Effect\n - Aumenta los turnos: la duración del Enlace se convierte en 3 turno(s).\nTranscend Lv.6 Effect\n - Efecto adicional: Inmunidad a Control de masas [Duración: 2 turno(s)]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "Escudo recio",
+        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - Enlace. [Duración: 2 turno(s)]\n - A sí mismo\n - Atenuación. [Permanente]\n - Contraataque [Prob.: 38%] [Permanente]\n - Aliados de la primera fila\n - Un solo enemigo al contraatacar\n - Inflige daño de un 50% del ATQ físico y60% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 35%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Reducción de DEF 24%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "Juicio de gloria",
+        "desc": "Todos los enemigos\n - Inflige daño de un 90% del ATQ físico y100% de la DEF 1 vez/veces.\n - 100 % de probabilidad de 10 Reducción del Indicador de Despertar.\n - 100 % de probabilidad de 20 Reducción del Indicador de Despertar.\n - Todos los aliados\n - Enlace. [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta el efecto: La reducción del indicador de despertar aumenta a 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三木 眞一郎",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "Libra",
+      "likes": "Evan, Kris, Jave, Aragon, pan integral, tomates, leche, sopa, orden, bondad, justicia, jardinería, pesca",
+      "dislikes": "Dellons, yogur, caos, maldad, injusticia, cocina",
+      "story": "Rudy, habiendo comenzado a cuestionar la voluntad de la Luz, finalmente perdió su fe y cayó en la desesperación. Luego decidió salvar el Mundo — de acuerdo con sus propias convicciones."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "Rudy",
       "subname": "Guardián total",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "Carga",
-        "desc": "Un solo enemigo (Por el mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 3 Turno(s).\n - Inflige daño de un 170% del ATQ físico y195% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 85%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 205% del ATQ físico y 235% de la DEF.\n - Aumento de probabilidad: Probabilidad de Aturdimiento 100%.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 enemigos (Por mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 2 Turno(s).\n - Inflige daño de un 75% del ATQ físico y85% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 55%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 85% del ATQ físico y 100% de la DEF.\n - Aumento de probabilidad: Probabilidad de Aturdimiento 65%.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "Preparativos de defensa",
-        "desc": "Todos los aliados\n - Enlace. [Duración: 2 turno(s)]\n - Eliminación de desventaja x1.\nSkill Enhancement Effect\n - Efecto adicional: Tasa de Reducción de Enlace 10%.\nTranscend Lv.2 Effect\n - Aumenta los turnos: la duración del Enlace se convierte en 3 turno(s).\nTranscend Lv.6 Effect\n - Efecto adicional: Inmunidad a Control de masas [Duración: 2 turno(s)]",
+        "desc": "Todos los aliados\n - Enlace. [Duración: 2 turno(s)]\n - Eliminación de desventaja x1.\nSkill Enhancement Effect\n - Aumento de efecto: Tasa de Reducción de Enlace 20%.\nTranscend Lv.2 Effect\n - Aumenta los turnos: la duración del Enlace se convierte en 3 turno(s).\nTranscend Lv.6 Effect\n - Efecto adicional: Inmunidad a Control de masas [Duración: 2 turno(s)]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "Escudo recio",
-        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de DEF 24%.\n - Aumento de efecto: Atenuación 20%.",
+        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\n - Contraataque [Prob.: 38%] [Permanente]\n - Un solo enemigo al contraatacar\n - Inflige daño de un 50% del ATQ físico y60% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 35%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de DEF 24%.\n - Aumento de efecto: Atenuación 20%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "Carga",
-        "desc": "Un solo enemigo (Por el mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 2 Turno(s).\n - Inflige daño de un 155% del ATQ físico y175% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 85%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 155% del ATQ físico.\n - Aumento de daño: 175% del ATQ mágico.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 enemigos (Por mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 2 Turno(s).\n - Inflige daño de un 65% del ATQ físico y75% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 55%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 65% del ATQ físico.\n - Aumento de daño: 75% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "Escudo recio",
-        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Reducción de DEF 15%.",
+        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\n - Contraataque [Prob.: 29%] [Permanente]\n - Un solo enemigo al contraatacar\n - Inflige daño de un 45% del ATQ físico y55% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 35%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Reducción de DEF 15%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "Carga",
-        "desc": "Un solo enemigo (Por el mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 1 Turno(s).\n - Inflige daño de un 140% del ATQ físico y160% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 70%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 140% del ATQ físico.\n - Aumento de daño: 160% del ATQ mágico.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 enemigos (Por mayor número de beneficios)\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 1 Turno(s).\n - Inflige daño de un 60% del ATQ físico y70% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 50%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 60% del ATQ físico.\n - Aumento de daño: 70% del ATQ mágico.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "Escudo recio",
-        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Reducción de DEF 11%.",
+        "desc": "Todos los aliados\n - Aumento de DEF. [Permanente]\n - A sí mismo\n - Atenuación. [Permanente]\n - Contraataque [Prob.: 24%] [Permanente]\n - Un solo enemigo al contraatacar\n - Inflige daño de un 40% del ATQ físico y50% de la DEF 1 vez/veces.\n - Causa Aturdimiento. [Prob.: 30%] [Duración: 1 turno(s)]\nSkill Enhancement Effect\n - Aumento de efecto: Reducción de DEF 11%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",

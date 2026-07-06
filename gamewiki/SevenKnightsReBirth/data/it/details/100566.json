@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "Rudy",
+      "subname": "Pathfinder",
+      "affiliation": "Seven Knights",
+      "flavor": "Rudy, avendo iniziato a mettere in discussione la volontà della Luce, alla fine perse la fede e cadde nella disperazione. Decise quindi di salvare il Mondo — in accordo con le sue proprie convinzioni.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 70% dell'attacco fisico più il 85% della difesa 1 volta/e\n - Sé\nSkill Enhancement Effect\n - Incremento danno: 70% dell'attacco fisico\n - Incremento danno: 85% dell'attacco magico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "Carica",
+        "desc": "3 nemici con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 2 Turno/i.\n - Infligge danni pari al 85% dell'attacco fisico più il 100% della difesa 1 volta/e\n - 65% di probabilità di infliggere Stordimento [Durata: 2 turno/i]\n - Sé\nSkill Enhancement Effect\n - Incremento danno: 85% dell'attacco fisico\n - Incremento danno: 100% dell'attacco magico",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "Posizione difensiva",
+        "desc": "Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\n - Sé\nSkill Enhancement Effect\n - Concede Rimozione debuff 1\nTranscend Lv.2 Effect\n - Aumenta i turni: la durata del Collegamento diventa 3 turno/i.\nTranscend Lv.6 Effect\n - Effetto extra: Immunità a Controllo [Durata: 2 turno/i]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "Scudo robusto",
+        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Collegamento [Durata: 2 turno/i]\n - Sé\n - Concede Attenuazione [Sempre attivo]\n - Contrattacco [Probabilità: 38%] [Sempre attivo]\n - Alleati della fila anteriore\n - Singolo nemico colpito all'attivazione di contrattacco\n - Infligge danni pari al 50% dell'attacco fisico più il 60% della difesa 1 volta/e\n - 35% di probabilità di infliggere Stordimento [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▼24%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "Giudizio della gloria",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 90% dell'attacco fisico più il 100% della difesa 1 volta/e\n - 100% di possibilità di 10 Riduzione della Barra di Risveglio.\n - 100% di possibilità di 20 Riduzione della Barra di Risveglio.\n - Tutti gli alleati\n - Collegamento [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Aumenta l'effetto: la riduzione della barra di risveglio aumenta a 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三木 眞一郎",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "Bilancia",
+      "likes": "Evan, Kris, Jave, Aragon, pane integrale, pomodori, latte, zuppa, ordine, bontà, giustizia, giardinaggio, pesca",
+      "dislikes": "Dellons, yogurt, caos, male, ingiustizia, cucina",
+      "story": "Rudy, avendo iniziato a mettere in discussione la volontà della Luce, alla fine perse la fede e cadde nella disperazione. Decise quindi di salvare il Mondo — in accordo con le sue proprie convinzioni."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "Rudy",
       "subname": "Guardiano Assoluto",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "Carica",
-        "desc": "Singolo nemico con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 3 Turno/i.\n - Infligge danni pari al 170% dell'attacco fisico più il 195% della difesa 1 volta/e\n - 85% di probabilità di infliggere Stordimento [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 205% dell'attacco fisico più 235% della difesa\n - Incremento probabilità: Probabilità di Stordimento 100%",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 nemici con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 2 Turno/i.\n - Infligge danni pari al 75% dell'attacco fisico più il 85% della difesa 1 volta/e\n - 55% di probabilità di infliggere Stordimento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 85% dell'attacco fisico più 100% della difesa\n - Incremento probabilità: Probabilità di Stordimento 65%",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "Posizione difensiva",
-        "desc": "Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\n - Concede Rimozione debuff 1\nSkill Enhancement Effect\n - Effetto extra: Percentuale di riduzione Collegamento 10%\nTranscend Lv.2 Effect\n - Aumenta i turni: la durata del Collegamento diventa 3 turno/i.\nTranscend Lv.6 Effect\n - Effetto extra: Immunità a Controllo [Durata: 2 turno/i]",
+        "desc": "Tutti gli alleati\n - Collegamento [Durata: 2 turno/i]\n - Concede Rimozione debuff 1\nSkill Enhancement Effect\n - Rafforzamento effetto: Percentuale di riduzione Collegamento 20%\nTranscend Lv.2 Effect\n - Aumenta i turni: la durata del Collegamento diventa 3 turno/i.\nTranscend Lv.6 Effect\n - Effetto extra: Immunità a Controllo [Durata: 2 turno/i]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "Scudo robusto",
-        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▲24%\n - Rafforzamento effetto: Effetto Attenuazione 20%",
+        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\n - Contrattacco [Probabilità: 38%] [Sempre attivo]\n - Singolo nemico colpito all'attivazione di contrattacco\n - Infligge danni pari al 50% dell'attacco fisico più il 60% della difesa 1 volta/e\n - 35% di probabilità di infliggere Stordimento [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▲24%\n - Rafforzamento effetto: Effetto Attenuazione 20%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Bilancia",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "Carica",
-        "desc": "Singolo nemico con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 2 Turno/i.\n - Infligge danni pari al 155% dell'attacco fisico più il 175% della difesa 1 volta/e\n - 85% di probabilità di infliggere Stordimento [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 155% dell'attacco fisico\n - Incremento danno: 175% dell'attacco magico",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 nemici con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 2 Turno/i.\n - Infligge danni pari al 65% dell'attacco fisico più il 75% della difesa 1 volta/e\n - 55% di probabilità di infliggere Stordimento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 65% dell'attacco fisico\n - Incremento danno: 75% dell'attacco magico",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "Scudo robusto",
-        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▼15%",
+        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\n - Contrattacco [Probabilità: 29%] [Sempre attivo]\n - Singolo nemico colpito all'attivazione di contrattacco\n - Infligge danni pari al 45% dell'attacco fisico più il 55% della difesa 1 volta/e\n - 35% di probabilità di infliggere Stordimento [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▼15%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Bilancia",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "Carica",
-        "desc": "Singolo nemico con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 1 Turno/i.\n - Infligge danni pari al 140% dell'attacco fisico più il 160% della difesa 1 volta/e\n - 70% di probabilità di infliggere Stordimento [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 140% dell'attacco fisico\n - Incremento danno: 160% dell'attacco magico",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 nemici con più buff\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 1 Turno/i.\n - Infligge danni pari al 60% dell'attacco fisico più il 70% della difesa 1 volta/e\n - 50% di probabilità di infliggere Stordimento [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 60% dell'attacco fisico\n - Incremento danno: 70% dell'attacco magico",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "Scudo robusto",
-        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▼11%",
+        "desc": "Tutti gli alleati\n - Concede Difesa ▲ [Sempre attivo]\n - Sé\n - Concede Attenuazione [Sempre attivo]\n - Contrattacco [Probabilità: 24%] [Sempre attivo]\n - Singolo nemico colpito all'attivazione di contrattacco\n - Infligge danni pari al 40% dell'attacco fisico più il 50% della difesa 1 volta/e\n - 30% di probabilità di infliggere Stordimento [Durata: 1 turno/i]\nSkill Enhancement Effect\n - Rafforzamento effetto: Difesa ▼11%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Bilancia",

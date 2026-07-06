@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "루디",
+      "subname": "선구자",
+      "affiliation": "세븐나이츠",
+      "flavor": "빛의 뜻에 의문을 품던 루디는 결국, 믿음을 잃고 좌절한다.\\n그리고 자신의 신념에 따라 세상을 구하기 위한 결단을 내린다.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 70%, 방어력의 85%만큼 1회 피해\n - 자신\n - 방어자세 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 70%\n - 피해량 상승 : 마법 공격력의 85%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "돌격",
+        "desc": "적군 3명(버프가 많은 순)\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\n - 물리 공격력의 85%, 방어력의 100%만큼 1회 피해\n - 기절 [65% 확률] [2턴 지속]\n - 자신\n - 방어자세 2중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 85%\n - 피해량 상승 : 마법 공격력의 100%",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "방어준비",
+        "desc": "모든 아군\n - 링크 [2턴 지속]\n - [방어자세]를 4개 소모하여 시전자 방어력의 155%만큼 생명력 회복\n - 자신\n - 방어자세 2중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 디버프 해제 1개\nTranscend Lv.2 Effect\n - 턴 상승 : 링크 [3턴 지속]\nTranscend Lv.6 Effect\n - 효과 추가 : 행동 제어 면역 [2턴 지속]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "견고한 방패",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 링크 [2턴 지속]\n - 자신\n - 감쇄 [상시]\n - 반격 [38% 확률] [상시]\n - 아군 전열\n - 자신이 적의 공격에 3회 적중 당할 시 감쇄  [피격 2회]\n - 반격 발동 시 단일 적군\n - 물리 공격력의 50%, 방어력의 60%만큼 1회 피해\n - 기절 [35% 확률] [1턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 24%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "영광의 심판",
+        "desc": "모든 적군\n - 물리 공격력의 90%, 방어력의 100%만큼 1회 피해\n - 각성 게이지 감소 10 [100% 확률]\n - 각성 게이지 감소 20 [100% 확률]\n - 모든 아군\n - 링크 [3턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 각성 게이지 감소 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "박성태",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "천칭자리",
+      "likes": "에반, 크리스, 제이브, 아라곤, 호밀빵, 토마토, 우유, 수프, 질서, 선, 정의, 텃밭 키우기, 낚시",
+      "dislikes": "델론즈, 요거트, 혼돈, 악, 불의, 요리",
+      "story": "빛의 뜻에 의문을 품던 루디는 결국, 믿음을 잃고 좌절한다.\\n그리고 자신의 신념에 따라 세상을 구하기 위한 결단을 내린다."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "루디",
       "subname": "절대 수호자",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "돌격",
-        "desc": "단일 적군(버프가 많은 순)\n - 대상의 턴제 버프 감소 3턴 [100% 확률]\n - 물리 공격력의 170%, 방어력의 195%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 205%, 방어력의 235%\n - 확률 상승 : 기절 확률 100%",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "적군 3명(버프가 많은 순)\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\n - 물리 공격력의 75%, 방어력의 85%만큼 1회 피해\n - 기절 [55% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 85%, 방어력의 100%\n - 확률 상승 : 기절 확률 65%",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "방어준비",
-        "desc": "모든 아군\n - 링크 [2턴 지속]\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 효과 추가 : 링크 감소율 10%\nTranscend Lv.2 Effect\n - 턴 상승 : 링크 [3턴 지속]\nTranscend Lv.6 Effect\n - 효과 추가 : 행동 제어 면역 [2턴 지속]",
+        "desc": "모든 아군\n - 링크 [2턴 지속]\n - 디버프 해제 1개\nSkill Enhancement Effect\n - 효과 상승 : 링크 감소율 20%\nTranscend Lv.2 Effect\n - 턴 상승 : 링크 [3턴 지속]\nTranscend Lv.6 Effect\n - 효과 추가 : 행동 제어 면역 [2턴 지속]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "견고한 방패",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 증가 24%\n - 효과 상승 : 감쇄 효과 20%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\n - 반격 [38% 확률] [상시]\n - 반격 발동 시 단일 적군\n - 물리 공격력의 50%, 방어력의 60%만큼 1회 피해\n - 기절 [35% 확률] [1턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 증가 24%\n - 효과 상승 : 감쇄 효과 20%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "천칭자리",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "돌격",
-        "desc": "단일 적군(버프가 많은 순)\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\n - 물리 공격력의 155%, 방어력의 175%만큼 1회 피해\n - 기절 [85% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 155%\n - 피해량 상승 : 마법 공격력의 175%",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "적군 3명(버프가 많은 순)\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\n - 물리 공격력의 65%, 방어력의 75%만큼 1회 피해\n - 기절 [55% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%\n - 피해량 상승 : 마법 공격력의 75%",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "견고한 방패",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 15%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\n - 반격 [29% 확률] [상시]\n - 반격 발동 시 단일 적군\n - 물리 공격력의 45%, 방어력의 55%만큼 1회 피해\n - 기절 [35% 확률] [1턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 15%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "천칭자리",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "돌격",
-        "desc": "단일 적군(버프가 많은 순)\n - 대상의 턴제 버프 감소 1턴 [100% 확률]\n - 물리 공격력의 140%, 방어력의 160%만큼 1회 피해\n - 기절 [70% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 140%\n - 피해량 상승 : 마법 공격력의 160%",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "적군 3명(버프가 많은 순)\n - 대상의 턴제 버프 감소 1턴 [100% 확률]\n - 물리 공격력의 60%, 방어력의 70%만큼 1회 피해\n - 기절 [50% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%\n - 피해량 상승 : 마법 공격력의 70%",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "견고한 방패",
-        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 11%",
+        "desc": "모든 아군\n - 방어력 증가 [상시]\n - 자신\n - 감쇄 [상시]\n - 반격 [24% 확률] [상시]\n - 반격 발동 시 단일 적군\n - 물리 공격력의 40%, 방어력의 50%만큼 1회 피해\n - 기절 [30% 확률] [1턴 지속]\nSkill Enhancement Effect\n - 효과 상승 : 방어력 감소 11%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "천칭자리",

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "Rudy",
+      "subname": "Pathfinder",
+      "affiliation": "Seven Knights",
+      "flavor": "Rudy, ayant commencé à remettre en question la volonté de la Lumière, a finalement perdu sa foi et est tombé dans le désespoir. Il a ensuite décidé de sauver le Monde — conformément à ses propres convictions.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 70 % de l'ATQ PHY, 85 % de la DÉF 1 fois\n - Soi-même\nSkill Enhancement Effect\n - Hausse des dégâts : 70 % de l'ATQ PHY\n - Hausse des dégâts : 85 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "Ruée",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts équivalents à 85 % de l'ATQ PHY, 100 % de la DÉF 1 fois\n - A 65 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\n - Soi-même\nSkill Enhancement Effect\n - Hausse des dégâts : 85 % de l'ATQ PHY\n - Hausse des dégâts : 100 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "Posture défensive",
+        "desc": "Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\n - Soi-même\nSkill Enhancement Effect\n - Confère 1 Suppression(s) de malus\nTranscend Lv.2 Effect\n - Augmente les tours : la durée du Lien devient 3 tour(s).\nTranscend Lv.6 Effect\n - Ajout d'effet : Immunité au Contrôle de foule [Durée : 2 tour(s)]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "Bouclier robuste",
+        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Confère Lien [Durée : 2 tour(s)]\n - Soi-même\n - Confère Résistance [Toujours actif]\n - A 38 % chance de Contre-attaque [Toujours actif]\n - Alliés de la rangée avant\n - Un seul ennemi lors d'une contre-attaque\n - Inflige des dégâts équivalents à 50 % de l'ATQ PHY, 60 % de la DÉF 1 fois\n - A 35 % de chances d'infliger Étourdissement [Durée : 1 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 24 %",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "Jugement de la gloire",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY, 100 % de la DÉF 1 fois\n - 100 % chance de 10 Réduction de la Jauge d'Éveil.\n - 100 % chance de 20 Réduction de la Jauge d'Éveil.\n - Tous les alliés\n - Confère Lien [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Augmente l'effet : La réduction de la jauge d'éveil augmente à 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三木 眞一郎",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "Balance",
+      "likes": "Evan, Kris, Jave, Aragon, pain complet, tomates, lait, soupe, discipline, bonté, justice, jardinage, pêche",
+      "dislikes": "Dellons, yaourt, chaos, le mal, injustice, cuisine",
+      "story": "Rudy, ayant commencé à remettre en question la volonté de la Lumière, a finalement perdu sa foi et est tombé dans le désespoir. Il a ensuite décidé de sauver le Monde — conformément à ses propres convictions."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "Rudy",
       "subname": "Gardien absolu",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "Ruée",
-        "desc": "Un seul ennemi (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 3 tour(s).\n - Inflige des dégâts équivalents à 170 % de l'ATQ PHY, 195 % de la DÉF 1 fois\n - Inflige des dégâts équivalents à 205 % de l'ATQ PHY, 235 % de la DÉF 1 fois\n - A 85 % de chances d'infliger Étourdissement [Durée : 3 tour(s)]\n - A 100 % de chances d'infliger Étourdissement [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 205 % de l'ATQ PHY, 235 % de la DÉF\n - Hausse de taux : Chances d'Étourdissement 100 %",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY, 85 % de la DÉF 1 fois\n - Inflige des dégâts équivalents à 85 % de l'ATQ PHY, 100 % de la DÉF 1 fois\n - A 55 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\n - A 65 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 85 % de l'ATQ PHY, 100 % de la DÉF\n - Hausse de taux : Chances d'Étourdissement 65 %",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "Posture défensive",
-        "desc": "Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\n - Confère 1 Suppression(s) de malus\nSkill Enhancement Effect\n - Ajout d'effet : Taux de réduction de lien 10 %\nTranscend Lv.2 Effect\n - Augmente les tours : la durée du Lien devient 3 tour(s).\nTranscend Lv.6 Effect\n - Ajout d'effet : Immunité au Contrôle de foule [Durée : 2 tour(s)]",
+        "desc": "Tous les alliés\n - Confère Lien [Durée : 2 tour(s)]\n - Confère 1 Suppression(s) de malus\nSkill Enhancement Effect\n - Gain d'effet : Taux de réduction de lien 20 %\nTranscend Lv.2 Effect\n - Augmente les tours : la durée du Lien devient 3 tour(s).\nTranscend Lv.6 Effect\n - Ajout d'effet : Immunité au Contrôle de foule [Durée : 2 tour(s)]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "Bouclier robuste",
-        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de DÉF 24 %\n - Gain d'effet : Effet de Résistance 20 %",
+        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\n - A 38 % chance de Contre-attaque [Toujours actif]\n - Un seul ennemi lors d'une contre-attaque\n - Inflige des dégâts équivalents à 50 % de l'ATQ PHY, 60 % de la DÉF 1 fois\n - A 35 % de chances d'infliger Étourdissement [Durée : 1 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de DÉF 24 %\n - Gain d'effet : Effet de Résistance 20 %",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Balance",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "Ruée",
-        "desc": "Un seul ennemi (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts équivalents à 155 % de l'ATQ PHY, 175 % de la DÉF 1 fois\n - A 85 % de chances d'infliger Étourdissement [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 155 % de l'ATQ PHY\n - Hausse des dégâts : 175 % de l'ATQ MAG",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts équivalents à 65 % de l'ATQ PHY, 75 % de la DÉF 1 fois\n - A 55 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 65 % de l'ATQ PHY\n - Hausse des dégâts : 75 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "Bouclier robuste",
-        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 15 %",
+        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\n - A 29 % chance de Contre-attaque [Toujours actif]\n - Un seul ennemi lors d'une contre-attaque\n - Inflige des dégâts équivalents à 45 % de l'ATQ PHY, 55 % de la DÉF 1 fois\n - A 35 % de chances d'infliger Étourdissement [Durée : 1 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 15 %",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Balance",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "Ruée",
-        "desc": "Un seul ennemi (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\n - Inflige des dégâts équivalents à 140 % de l'ATQ PHY, 160 % de la DÉF 1 fois\n - A 70 % de chances d'infliger Étourdissement [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 140 % de l'ATQ PHY\n - Hausse des dégâts : 160 % de l'ATQ MAG",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 ennemis (Par ordre de nombre de bonus décroissant)\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\n - Inflige des dégâts équivalents à 60 % de l'ATQ PHY, 70 % de la DÉF 1 fois\n - A 50 % de chances d'infliger Étourdissement [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 60 % de l'ATQ PHY\n - Hausse des dégâts : 70 % de l'ATQ MAG",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "Bouclier robuste",
-        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 11 %",
+        "desc": "Tous les alliés\n - Confère Augmentation de DÉF [Toujours actif]\n - Soi-même\n - Confère Résistance [Toujours actif]\n - A 24 % chance de Contre-attaque [Toujours actif]\n - Un seul ennemi lors d'une contre-attaque\n - Inflige des dégâts équivalents à 40 % de l'ATQ PHY, 50 % de la DÉF 1 fois\n - A 30 % de chances d'infliger Étourdissement [Durée : 1 tour(s)]\nSkill Enhancement Effect\n - Gain d'effet : Réduction de DÉF 11 %",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Balance",

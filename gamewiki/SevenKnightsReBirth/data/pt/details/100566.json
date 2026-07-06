@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "Rudy",
+      "subname": "Pathfinder",
+      "affiliation": "Sete Cavaleiros",
+      "flavor": "Rudy, tendo começado a questionar a vontade da Luz, acabou perdendo sua fé e caiu em desespero. Ele então decidiu salvar o Global — de acordo com suas próprias convicções.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 70% do ATQ Físico e 85% da DEF 1x.\n - Si Mesmo\nSkill Enhancement Effect\n - Aumenta o Dano: Para 70% do ATQ Físico.\n - Aumenta o Dano: Para 85% do ATQ Mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "Investida",
+        "desc": "3 Inimigos (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 2 Turno(s).\n - Causa dano igual a 85% do ATQ Físico e 100% da DEF 1x.\n - 65% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\n - Si Mesmo\nSkill Enhancement Effect\n - Aumenta o Dano: Para 85% do ATQ Físico.\n - Aumenta o Dano: Para 100% do ATQ Mágico.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "Levantar Escudo",
+        "desc": "Todos os Aliados\n - Concede Vínculo. [Duração: 2 turno(s)]\n - Si Mesmo\nSkill Enhancement Effect\n - Concede Remoção de Debuff x1.\nTranscend Lv.2 Effect\n - Aumenta Turnos: A duração do Vínculo se torna 3 turno(s).\nTranscend Lv.6 Effect\n - Adiciona Efeito: Imunidade a Controle de Grupo [Duração: 2 turno(s)]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "Escudo Inabalável",
+        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Concede Vínculo. [Duração: 2 turno(s)]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\n - 38% de chance de realizar um Contra-ataque. [Sempre Ativo]\n - Aliados da Dianteira\n - Inimigo Único ao Contra-Atacar\n - Causa dano igual a 50% do ATQ Físico e 60% da DEF 1x.\n - 35% de chance de infligir Atordoamento. [Duração: 1 turno(s)]\nSkill Enhancement Effect\n - Aumenta Efeito: Redução de DEF para 24%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "Julgamento da Glória",
+        "desc": "Todos os Inimigos\n - Causa dano igual a 90% do ATQ Físico e 100% da DEF 1x.\n - 100% de chance de 10 Redução do Medidor de Despertar.\n - 100% de chance de 20 Redução do Medidor de Despertar.\n - Todos os Aliados\n - Concede Vínculo. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Efeito: Redução do Medidor de Despertar aumenta para 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三木 眞一郎",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "Libra",
+      "likes": "Evan, Kris, Jave, Aragon, pão integral, tomates, leite, sopa, ordem, bondade, justiça, jardinagem, pesca",
+      "dislikes": "Dellons, iogurte, caos, mal, injustiça, culinária",
+      "story": "Rudy, tendo começado a questionar a vontade da Luz, acabou perdendo sua fé e caiu em desespero. Ele então decidiu salvar o Global — de acordo com suas próprias convicções."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "Rudy",
       "subname": "Guardião Supremo",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "Investida",
-        "desc": "Inimigo Único (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 3 Turno(s).\n - Causa dano igual a 170% do ATQ Físico e 195% da DEF 1x.\n - 85% de chance de infligir Atordoamento. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 205% do ATQ Físico e 235% da DEF.\n - Aumenta Chance: A chance de Atordoamento se torna 100%.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Inimigos (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 2 Turno(s).\n - Causa dano igual a 75% do ATQ Físico e 85% da DEF 1x.\n - 55% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 85% do ATQ Físico e 100% da DEF.\n - Aumenta Chance: A chance de Atordoamento se torna 65%.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "Levantar Escudo",
-        "desc": "Todos os Aliados\n - Concede Vínculo. [Duração: 2 turno(s)]\n - Concede Remoção de Debuff x1.\nSkill Enhancement Effect\n - Adiciona Efeito: Taxa de Redução de Vínculo de 10%.\nTranscend Lv.2 Effect\n - Aumenta Turnos: A duração do Vínculo se torna 3 turno(s).\nTranscend Lv.6 Effect\n - Adiciona Efeito: Imunidade a Controle de Grupo [Duração: 2 turno(s)]",
+        "desc": "Todos os Aliados\n - Concede Vínculo. [Duração: 2 turno(s)]\n - Concede Remoção de Debuff x1.\nSkill Enhancement Effect\n - Aumenta Efeito: A Taxa de Redução de Vínculo se torna 20%.\nTranscend Lv.2 Effect\n - Aumenta Turnos: A duração do Vínculo se torna 3 turno(s).\nTranscend Lv.6 Effect\n - Adiciona Efeito: Imunidade a Controle de Grupo [Duração: 2 turno(s)]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "Escudo Inabalável",
-        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de DEF para 24%.\n - Aumenta Efeito: RES Dano para 20%.",
+        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\n - 38% de chance de realizar um Contra-ataque. [Sempre Ativo]\n - Inimigo Único ao Contra-Atacar\n - Causa dano igual a 50% do ATQ Físico e 60% da DEF 1x.\n - 35% de chance de infligir Atordoamento. [Duração: 1 turno(s)]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de DEF para 24%.\n - Aumenta Efeito: RES Dano para 20%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "Investida",
-        "desc": "Inimigo Único (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 2 Turno(s).\n - Causa dano igual a 155% do ATQ Físico e 175% da DEF 1x.\n - 85% de chance de infligir Atordoamento. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 155% do ATQ Físico.\n - Aumenta o Dano: Para 175% do ATQ Mágico.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Inimigos (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 2 Turno(s).\n - Causa dano igual a 65% do ATQ Físico e 75% da DEF 1x.\n - 55% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 65% do ATQ Físico.\n - Aumenta o Dano: Para 75% do ATQ Mágico.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "Escudo Inabalável",
-        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Redução de DEF para 15%.",
+        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\n - 29% de chance de realizar um Contra-ataque. [Sempre Ativo]\n - Inimigo Único ao Contra-Atacar\n - Causa dano igual a 45% do ATQ Físico e 55% da DEF 1x.\n - 35% de chance de infligir Atordoamento. [Duração: 1 turno(s)]\nSkill Enhancement Effect\n - Aumenta Efeito: Redução de DEF para 15%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "Investida",
-        "desc": "Inimigo Único (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\n - Causa dano igual a 140% do ATQ Físico e 160% da DEF 1x.\n - 70% de chance de infligir Atordoamento. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 140% do ATQ Físico.\n - Aumenta o Dano: Para 160% do ATQ Mágico.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Inimigos (Por Maior Nº de Buffs)\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\n - Causa dano igual a 60% do ATQ Físico e 70% da DEF 1x.\n - 50% de chance de infligir Atordoamento. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 60% do ATQ Físico.\n - Aumenta o Dano: Para 70% do ATQ Mágico.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "Escudo Inabalável",
-        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Redução de DEF para 11%.",
+        "desc": "Todos os Aliados\n - Concede Aumento de DEF. [Sempre Ativo]\n - Si Mesmo\n - Concede RES Dano. [Sempre Ativo]\n - 24% de chance de realizar um Contra-ataque. [Sempre Ativo]\n - Inimigo Único ao Contra-Atacar\n - Causa dano igual a 40% do ATQ Físico e 50% da DEF 1x.\n - 30% de chance de infligir Atordoamento. [Duração: 1 turno(s)]\nSkill Enhancement Effect\n - Aumenta Efeito: Redução de DEF para 11%.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Libra",

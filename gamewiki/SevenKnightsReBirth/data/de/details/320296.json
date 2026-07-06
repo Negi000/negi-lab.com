@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400567",
+      "name": "Rudy",
+      "subname": "Pfadfinder",
+      "affiliation": "Sieben Ritter",
+      "flavor": "Rudy, der begonnen hatte, den Willen des Lichts zu hinterfragen, verlor letztendlich seinen Glauben und fiel in Verzweiflung. Dann beschloss er, die Welt zu retten — gemäß seinen eigenen Überzeugungen.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "116",
+      "Magical Attack": "0",
+      "Defense": "135",
+      "HP": "773",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 116,
+        "Defense": 135,
+        "HP": 773
+      },
+      "level30": {
+        "Physical Attack": 522,
+        "Defense": 657,
+        "HP": 3470
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 18,
+        "HP": 93
+      },
+      "reinforceBonus": {
+        "Physical Attack": 41,
+        "Defense": 47,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 522,
+          "Defense": 657,
+          "HP": 3470
+        },
+        "+1": {
+          "Physical Attack": 563,
+          "Defense": 704,
+          "HP": 3741
+        },
+        "+2": {
+          "Physical Attack": 604,
+          "Defense": 751,
+          "HP": 4012
+        },
+        "+3": {
+          "Physical Attack": 645,
+          "Defense": 798,
+          "HP": 4283
+        },
+        "+4": {
+          "Physical Attack": 686,
+          "Defense": 845,
+          "HP": 4554
+        },
+        "+5": {
+          "Physical Attack": 727,
+          "Defense": 892,
+          "HP": 4825
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40056701",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 70 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - Selbst\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 70 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 85 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005601.webp"
+      },
+      "Skill 1": {
+        "id": "40056702",
+        "name": "Sturmangriff",
+        "desc": "3 Feinde (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - Verursacht Schaden in Höhe von 85 % des physischen Angriffs plus 100 % der Verteidigung 1 Mal.\n - 65 % Chance, Betäubung zu verursachen. [Dauer: 2 Runde(n)]\n - Selbst\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 85 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 100 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
+      },
+      "Skill 2": {
+        "id": "40056703",
+        "name": "Verteidigungsvorbereitung",
+        "desc": "Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\n - Selbst\nSkill Enhancement Effect\n - Gewährt 1 Debuff-Entfernung(en).\nTranscend Lv.2 Effect\n - Erhöht Runden: Verknüpfungsdauer wird zu 3 Runde(n).\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Immunität gegen Massenkontrolle. [Dauer: 2 Runde(n)]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
+      },
+      "Passive": {
+        "id": "40056704",
+        "name": "Stabiler Schild",
+        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - 38 % Chance, einen Gegenangriff auszuführen. [Immer aktiv]\n - Front Row Allies\n - Einzelner Gegner beim Gegenangriff\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 60 % der Verteidigung 1 Mal.\n - 35 % Chance, Betäubung zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 24 %.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
+      },
+      "Awaken Skill": {
+        "id": "40056707",
+        "name": "Urteil des Ruhms",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 90 % des physischen Angriffs plus 100 % der Verteidigung 1 Mal.\n - 100 % Chance auf 10 Erwachungsanzeige-Reduzierung.\n - 100 % Chance auf 20 Erwachungsanzeige-Reduzierung.\n - Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht Effekt: Erwachungsleiste-Reduktion erhöht sich auf 20",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4005606.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "三木 眞一郎",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "10 / 10",
+      "age": "28",
+      "height": "185",
+      "weight": "83",
+      "constellation": "Waage",
+      "likes": "Evan, Kris, Jave, Aragon, Vollkornbrot, Tomaten, Milch, Suppe, Ordnung, Güte, Gerechtigkeit, Gartenarbeit, Angeln",
+      "dislikes": "Dellons, Joghurt, Chaos, Böses, Ungerechtigkeit, Kochen",
+      "story": "Rudy, der begonnen hatte, den Willen des Lichts zu hinterfragen, verlor letztendlich seinen Glauben und fiel in Verzweiflung. Dann beschloss er, die Welt zu retten — gemäß seinen eigenen Überzeugungen."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100566",
       "name": "Rudy",
       "subname": "Hoher Wächter",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10056602",
         "name": "Sturmangriff",
-        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 3 Runde(n).\n - Verursacht Schaden in Höhe von 170 % des physischen Angriffs plus 195 % der Verteidigung 1 Mal.\n - Verursacht Schaden in Höhe von 205 % des physischen Angriffs plus 235 % der Verteidigung 1 Mal.\n - 85 % Chance, Betäubung zu verursachen. [Dauer: 3 Runde(n)]\n - 100 % Chance, Betäubung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 205 % des physischen Angriffs plus 235 % der Verteidigung.\n - Erhöht Chance: Betäubenchance wird zu 100 %.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Feinde (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs plus 85 % der Verteidigung 1 Mal.\n - Verursacht Schaden in Höhe von 85 % des physischen Angriffs plus 100 % der Verteidigung 1 Mal.\n - 55 % Chance, Betäubung zu verursachen. [Dauer: 2 Runde(n)]\n - 65 % Chance, Betäubung zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 85 % des physischen Angriffs plus 100 % der Verteidigung.\n - Erhöht Chance: Betäubenchance wird zu 65 %.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
         "id": "10056603",
         "name": "Verteidigungsvorbereitung",
-        "desc": "Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Fügt Effekt hinzu: Verknüpfen-Verringerung von 10 %.\nTranscend Lv.2 Effect\n - Erhöht Runden: Verknüpfungsdauer wird zu 3 Runde(n).\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Immunität gegen Massenkontrolle. [Dauer: 2 Runde(n)]",
+        "desc": "Alle Verbündeten\n - Gewährt Verknüpfen. [Dauer: 2 Runde(n)]\n - Gewährt 1 Debuff-Entfernung(en).\nSkill Enhancement Effect\n - Erhöhter Effekt: Verknüpfen-Verringerung wird zu 20 %.\nTranscend Lv.2 Effect\n - Erhöht Runden: Verknüpfungsdauer wird zu 3 Runde(n).\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Immunität gegen Massenkontrolle. [Dauer: 2 Runde(n)]",
         "cooltime": "⏱️ CT: 96s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005603.webp"
       },
       "Passive": {
         "id": "10056604",
         "name": "Stabiler Schild",
-        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Erhöhung auf 24 %.\n - Erhöhter Effekt: Widerstand auf 20 %.",
+        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - 38 % Chance, einen Gegenangriff auszuführen. [Immer aktiv]\n - Einzelner Gegner beim Gegenangriff\n - Verursacht Schaden in Höhe von 50 % des physischen Angriffs plus 60 % der Verteidigung 1 Mal.\n - 35 % Chance, Betäubung zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Erhöhung auf 24 %.\n - Erhöhter Effekt: Widerstand auf 20 %.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Waage",
@@ -551,8 +707,8 @@
       "Skill 1": {
         "id": "10056502",
         "name": "Sturmangriff",
-        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - Verursacht Schaden in Höhe von 155 % des physischen Angriffs plus 175 % der Verteidigung 1 Mal.\n - 85 % Chance, Betäubung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 155 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 175 % des Magieangriffs.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Feinde (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - Verursacht Schaden in Höhe von 65 % des physischen Angriffs plus 75 % der Verteidigung 1 Mal.\n - 55 % Chance, Betäubung zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 65 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 75 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -565,7 +721,7 @@
       "Passive": {
         "id": "10056504",
         "name": "Stabiler Schild",
-        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 15 %.",
+        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - 29 % Chance, einen Gegenangriff auszuführen. [Immer aktiv]\n - Einzelner Gegner beim Gegenangriff\n - Verursacht Schaden in Höhe von 45 % des physischen Angriffs plus 55 % der Verteidigung 1 Mal.\n - 35 % Chance, Betäubung zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 15 %.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Waage",
@@ -700,8 +856,8 @@
       "Skill 1": {
         "id": "10056402",
         "name": "Sturmangriff",
-        "desc": "Einzelner Feind (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - Verursacht Schaden in Höhe von 140 % des physischen Angriffs plus 160 % der Verteidigung 1 Mal.\n - 70 % Chance, Betäubung zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 140 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 160 % des Magieangriffs.",
-        "cooltime": "⏱️ CT: 78s",
+        "desc": "3 Feinde (nach höchster Anzahl von Buffs)\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\n - Verursacht Schaden in Höhe von 60 % des physischen Angriffs plus 70 % der Verteidigung 1 Mal.\n - 50 % Chance, Betäubung zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 60 % des physischen Angriffs.\n - Erhöht den Schaden: Auf 70 % des Magieangriffs.",
+        "cooltime": "⏱️ CT: 91s",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005602.webp"
       },
       "Skill 2": {
@@ -714,7 +870,7 @@
       "Passive": {
         "id": "10056404",
         "name": "Stabiler Schild",
-        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 11 %.",
+        "desc": "Alle Verbündeten\n - Gewährt Verteidigungssteigerung. [Immer aktiv]\n - Selbst\n - Gewährt Schadenswiderstand. [Immer aktiv]\n - 24 % Chance, einen Gegenangriff auszuführen. [Immer aktiv]\n - Einzelner Gegner beim Gegenangriff\n - Verursacht Schaden in Höhe von 40 % des physischen Angriffs plus 50 % der Verteidigung 1 Mal.\n - 30 % Chance, Betäubung zu verursachen. [Dauer: 1 Runde(n)]\nSkill Enhancement Effect\n - Erhöhter Effekt: VK-Verringerung auf 11 %.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005604.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "10 / 10",
-      "age": "26",
+      "age": "28",
       "height": "185",
       "weight": "83",
       "constellation": "Waage",
