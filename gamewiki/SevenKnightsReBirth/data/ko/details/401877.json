@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401877",
+      "name": "선란",
+      "subname": "천검",
+      "affiliation": "경계의 수호자",
+      "flavor": "하늘에 닿은 그 검이 가르지 못할 것은 없었다.\\n대적할 방법이 없기에, 그녀의 검은 하늘이 내리는 심판 그 자체였다.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "275",
+      "Magical Attack": "0",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Physical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Physical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Physical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Physical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Physical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Physical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Physical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Physical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40187701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 145%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 145%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "40187702",
+        "name": "연환참",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 61%만큼 3회 피해\n - [귀면] 2중첩당 물리 공격력의 36%만큼 추가 피해 [최대 6중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 61%\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "40187703",
+        "name": "무영비검",
+        "desc": "적군 3명(후열 우선)\n - 버프 해제 2개 [100% 확률]\n - 물리 공격력의 61%, 대상 최대 생명력의 7%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 61%\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "40187704",
+        "name": "귀면무사",
+        "desc": "자신\n - 우위 [3턴 지속]\n - 사망 시 생명력 100%로 부활 (전투당 1회 발동)\n - 부활 시 우위 [3턴 지속]\n - 자신이 적의 공격에 빗나감 피해로 2회 적중 당할 시 귀면 1중첩 [최대 6중첩] (공격형 3명 이상 편성 시)\n - 자신의 스킬 1회 발동 시, 우위 1턴 증가, 우위 미보유 시 우위 1턴 (턴 증가 시, 버프의 본래 턴보다 초과 할 수 없음)\n - 모든 아군\n - 물리 공격력 증가 [상시]\n - 적군 3명(후열 우선)\n - [귀면] 6중첩 보유 시 [무영비검] 효과 발동 (전투당 1회 발동)\n - 버프 해제 2개 [100% 확률]\n - 물리 공격력의 61%, 대상 최대 생명력의 7%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명\nTranscend Lv.6 Effect\n - 효과 추가 : 전투 시작 시 귀면 3중첩\n - 효과 추가 : 약점 공격 확률 증가 100% [상시]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      },
+      "Awaken Skill": {
+        "id": "40187707",
+        "name": "천검",
+        "desc": "모든 적군\n - 물리 공격력의 107%, 대상 최대 생명력의 9%만큼 2회 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\n - 물리 공격력의 107%, 대상 최대 생명력의 9%만큼 2회 관통 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\n - [귀면] 6중첩 보유 시 대상의 현재 생명력에 비례해 최대 100%만큼 피해량 증가\nSkill Enhancement Effect\n - 효과 추가 : 관통",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4018706.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "신나리",
+      "species": "나이트 엘프",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "염소자리",
+      "likes": "하연, 미주, 흑도, 수련, 바둑",
+      "dislikes": "악, 소란스러움, 무책임",
+      "story": "하늘에 닿은 그 검이 가르지 못할 것은 없었다.\\n대적할 방법이 없기에, 그녀의 검은 하늘이 내리는 심판 그 자체였다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101876",
+      "name": "선란",
+      "subname": "칠야의 수호대감",
+      "affiliation": "경계의 수호자",
+      "flavor": "균열의 마물들로부터 신지의 일곱 밤을 수호하여 수많은 사람들을 구했다.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187601",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 130%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187602",
+        "name": "연환참",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 53%만큼 3회 피해\n - [귀면] 2중첩당 물리 공격력의 33%만큼 추가 피해 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 61%\n - 피해량 상승 : [귀면] 2중첩당 물리 공격력의 36%\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187603",
+        "name": "무영비검",
+        "desc": "적군 3명(후열 우선)\n - 버프 해제 2개 [100% 확률]\n - 물리 공격력의 48%, 대상 최대 생명력의 6%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\nSkill Enhancement Effect\n - 효과 추가 : 버프 해제 2개 [100% 확률]\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187604",
+        "name": "귀면무사",
+        "desc": "자신\n - 우위 [2턴 지속]\n - 우위 [3턴 지속]\n - 사망 시 생명력 80%로 부활 (전투당 1회 발동)\n - 자신이 적의 공격에 빗나감 피해로 2회 적중 당할 시 귀면 1중첩 [최대 6중첩] (공격형 3명 이상 편성 시)\n - 자신의 스킬 1회 발동 시, 우위 1턴 증가, 우위 미보유 시 우위 1턴 (턴 증가 시, 버프의 본래 턴보다 초과 할 수 없음)\n - 모든 아군\n - 물리 공격력 증가 [상시]\n - 적군 3명(후열 우선)\n - [귀면] 6중첩 보유 시 [무영비검] 효과 발동 (전투당 1회 발동)\n - 버프 해제 2개 [100% 확률]\n - 물리 공격력의 48%, 대상 최대 생명력의 6%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 100% 제한)\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급\nSkill Enhancement Effect\n - 자신\n - 턴 상승 : 우위 [3턴 지속]\n - 효과 상승 : 부활 시 생명력 100%\nTranscend Lv.2 Effect\n - 대상 수 변경 : 적군 4명\nTranscend Lv.6 Effect\n - 효과 추가 : 전투 시작 시 귀면 3중첩\n - 효과 추가 : 약점 공격 확률 증가 100% [상시]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "모든 공격력이 12% 상승합니다.",
+      "transcend_2": "모든 공격력이 6% 상승합니다.",
+      "transcend_3": "생명력이 18% 상승합니다.",
+      "transcend_4": "치명타 확률이 18% 상승합니다.",
+      "transcend_5": "모든 공격력이 12% 상승합니다.",
+      "transcend_6": "모든 공격력이 6% 상승합니다.",
+      "transcend_7": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_8": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_9": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_10": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_11": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_12": "모든 공격력, 방어력, 생명력이 2% 상승합니다."
+    },
+    "profile": {
+      "cv": "신나리",
+      "species": "나이트 엘프",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "염소자리",
+      "likes": "하연, 미주, 흑도, 수련, 바둑",
+      "dislikes": "악, 소란스러움, 무책임",
+      "story": "균열의 마물들로부터 신지의 일곱 밤을 수호하여 수많은 사람들을 구했다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101875",
+      "name": "선란",
+      "subname": "귀면갑의 주인",
+      "affiliation": "경계의 수호자",
+      "flavor": "세계를 위협했던 대악마의 두려움을 잊지 않기 위해 갑옷에 그 모습을 새겼다.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187501",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 90%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187502",
+        "name": "연환참",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 48%만큼 3회 피해\n - [귀면] 2중첩당 물리 공격력의 30%만큼 추가 피해 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 48%",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187503",
+        "name": "무영비검",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 43%, 대상 최대 생명력의 4%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 75% 제한)\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 43%",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187504",
+        "name": "귀면무사",
+        "desc": "자신\n - 우위 [2턴 지속]\n - 사망 시 생명력 60%로 부활 (전투당 1회 발동)\n - 자신이 적의 공격에 빗나감 피해로 2회 적중 당할 시 귀면 1중첩 [최대 6중첩] (공격형 3명 이상 편성 시)\n - 자신의 스킬 1회 발동 시, 우위 1턴 증가, 우위 미보유 시 우위 1턴 (턴 증가 시, 버프의 본래 턴보다 초과 할 수 없음)\n - 모든 아군\n - 물리 공격력 증가 [상시]\n - 적군 3명(후열 우선)\n - [귀면] 6중첩 보유 시 [무영비검] 효과 발동 (전투당 1회 발동)\n - 물리 공격력의 43%, 대상 최대 생명력의 4%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 75% 제한)\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "신나리",
+      "species": "나이트 엘프",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "염소자리",
+      "likes": "하연, 미주, 흑도, 수련, 바둑",
+      "dislikes": "악, 소란스러움, 무책임",
+      "story": "세계를 위협했던 대악마의 두려움을 잊지 않기 위해 갑옷에 그 모습을 새겼다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101874",
+      "name": "선란",
+      "subname": "경계의 수호자",
+      "affiliation": "경계의 수호자",
+      "flavor": "경계의 수호자가 된 선란은 대악마를 떨어뜨려 봉인한 균열을 지킬 것을 맹세했다.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187401",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 80%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187402",
+        "name": "연환참",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 41%만큼 3회 피해\n - [귀면] 2중첩당 물리 공격력의 24%만큼 추가 피해 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 41%",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187403",
+        "name": "무영비검",
+        "desc": "적군 3명(후열 우선)\n - 물리 공격력의 38%, 대상 최대 생명력의 3%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 75% 제한)\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 38%",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187404",
+        "name": "귀면무사",
+        "desc": "자신\n - 우위 [2턴 지속]\n - 사망 시 생명력 40%로 부활 (전투당 1회 발동)\n - 자신이 적의 공격에 빗나감 피해로 2회 적중 당할 시 귀면 1중첩 [최대 6중첩] (공격형 3명 이상 편성 시)\n - 자신의 스킬 1회 발동 시, 우위 1턴 증가, 우위 미보유 시 우위 1턴 (턴 증가 시, 버프의 본래 턴보다 초과 할 수 없음)\n - 모든 아군\n - 물리 공격력 증가 [상시]\n - 적군 3명(후열 우선)\n - [귀면] 6중첩 보유 시 [무영비검] 효과 발동 (전투당 1회 발동)\n - 물리 공격력의 38%, 대상 최대 생명력의 3%만큼 3회 피해 (생명력 비례 피해는 시전자 공격력의 75% 제한)\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "신나리",
+      "species": "나이트 엘프",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "염소자리",
+      "likes": "하연, 미주, 흑도, 수련, 바둑",
+      "dislikes": "악, 소란스러움, 무책임",
+      "story": "경계의 수호자가 된 선란은 대악마를 떨어뜨려 봉인한 균열을 지킬 것을 맹세했다."
+    }
+  }
+]

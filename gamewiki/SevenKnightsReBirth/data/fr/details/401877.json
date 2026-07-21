@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401877",
+      "name": "Sunran",
+      "subname": "Épée Empyréenne",
+      "affiliation": "境界の守護者",
+      "flavor": "Il n'y avait rien que la lame de Sunran, tendue vers le ciel, ne puisse fendre. Sans moyen de la contrer, sa lame était considérée comme le jugement lui-même, délivré des cieux.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "275",
+      "Magical Attack": "0",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Physical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Physical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Physical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Physical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Physical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Physical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Physical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Physical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40187701",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 145 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 145 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "40187702",
+        "name": "Coup enchaîné",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 61 % de l'ATQ PHY 3 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 61 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "40187703",
+        "name": "Lame volante fantôme",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts équivalents à 61 % de l'ATQ PHY, 7 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 100% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 61 % de l'ATQ PHY\n - Hausse des dégâts : 7 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "40187704",
+        "name": "Guerrier au visage de démon",
+        "desc": "Soi-même\n - Accorde Upper Hand. [Durée : 3 Tour(s)]\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\n - Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - 3 ennemis (Priorité à la rangée arrière)\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts équivalents à 61 % de l'ATQ PHY, 7 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 100% de l’attaque du lanceur.)\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis\nTranscend Lv.6 Effect\n - Ajout d'effet : Augmentation de taux d'attaque de point faible 100 % [Toujours actif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      },
+      "Awaken Skill": {
+        "id": "40187707",
+        "name": "Épée Empyréenne",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 107 % de l'ATQ PHY, 9 % des PV max de la cible 2 fois (Les dégâts proportionnels aux PV sont limités à 100% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Ajout d'effet : Perçage",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4018706.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "瀬戸 麻沙美",
+      "species": "CollectionProfileInfo.Species_018",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "Capricorne",
+      "likes": "ハヨン、美酒、黒刀、修行、囲碁",
+      "dislikes": "悪、騒ぎ、無責任",
+      "story": "Il n'y avait rien que la lame de Sunran, tendue vers le ciel, ne puisse fendre. Sans moyen de la contrer, sa lame était considérée comme le jugement lui-même, délivré des cieux."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101876",
+      "name": "Sunran",
+      "subname": "Seigneur Gardien des Sept Nuits",
+      "affiliation": "境界の守護者",
+      "flavor": "Sunran a protégé les Sept Nuits de Shinji des monstres émergeant de la faille, sauvant d'innombrables vies.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "239",
+      "Magical Attack": "0",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Physical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Physical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Physical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Physical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Physical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Physical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Physical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Physical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187601",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts équivalents à 130 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 130 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187602",
+        "name": "Coup enchaîné",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 53 % de l'ATQ PHY 3 fois.\n - Inflige des dégâts équivalents à 61 % de l'ATQ PHY 3 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 61 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187603",
+        "name": "Lame volante fantôme",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts équivalents à 48 % de l'ATQ PHY, 6 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 100% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Ajout d'effet : 100 % de chances d'infliger 2 Suppression(s) de bonus\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187604",
+        "name": "Guerrier au visage de démon",
+        "desc": "Soi-même\n - Accorde Upper Hand. [Durée : 2 Tour(s)]\n - Accorde Upper Hand. [Durée : 3 Tour(s)]\n - Se réanime avec 80 % de PV en cas de mort (1 fois par combat)\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\n - Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - 3 ennemis (Priorité à la rangée arrière)\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Inflige des dégâts équivalents à 48 % de l'ATQ PHY, 6 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 100% de l’attaque du lanceur.)\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.\nSkill Enhancement Effect\n - Soi-même\n - Gain d'effet : PV 100 % lors de la réanimation\nTranscend Lv.2 Effect\n - Modifications du Nombre de Cibles : À 4 Ennemis\nTranscend Lv.6 Effect\n - Ajout d'effet : Augmentation de taux d'attaque de point faible 100 % [Toujours actif]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Augmente toute attaque de 12 %.",
+      "transcend_2": "Augmente toute attaque de 6 %.",
+      "transcend_3": "Augmente les PV de 18 %.",
+      "transcend_4": "Augmente le Taux de coup critique de 18 %.",
+      "transcend_5": "Augmente toute attaque de 12 %.",
+      "transcend_6": "Augmente toute attaque de 6 %.",
+      "transcend_7": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_8": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_9": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_10": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_11": "Augmente toute attaque, la défense et les PV de 2 %.",
+      "transcend_12": "Augmente toute attaque, la défense et les PV de 2 %."
+    },
+    "profile": {
+      "cv": "瀬戸 麻沙美",
+      "species": "CollectionProfileInfo.Species_018",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "Capricorne",
+      "likes": "ハヨン、美酒、黒刀、修行、囲碁",
+      "dislikes": "悪、騒ぎ、無責任",
+      "story": "Sunran a protégé les Sept Nuits de Shinji des monstres émergeant de la faille, sauvant d'innombrables vies."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101875",
+      "name": "Sunran",
+      "subname": "Maître de l'épaulette à visage de démon",
+      "affiliation": "境界の守護者",
+      "flavor": "Pour s'assurer qu'elle n'oublierait jamais la menace de l'Archidémon — qui avait autrefois menacé le Monde — elle grava son image sur ses Armures.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "171",
+      "Magical Attack": "0",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Physical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Physical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Physical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Physical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Physical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Physical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Physical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Physical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187501",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187502",
+        "name": "Coup enchaîné",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 48 % de l'ATQ PHY 3 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 48 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187503",
+        "name": "Lame volante fantôme",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 43 % de l'ATQ PHY, 4 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 75% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 43 % de l'ATQ PHY\n - Hausse des dégâts : 4 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187504",
+        "name": "Guerrier au visage de démon",
+        "desc": "Soi-même\n - Accorde Upper Hand. [Durée : 2 Tour(s)]\n - Se réanime avec 60 % de PV en cas de mort (1 fois par combat)\n - Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - 3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 43 % de l'ATQ PHY, 4 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 75% de l’attaque du lanceur.)\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "瀬戸 麻沙美",
+      "species": "CollectionProfileInfo.Species_018",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "Capricorne",
+      "likes": "ハヨン、美酒、黒刀、修行、囲碁",
+      "dislikes": "悪、騒ぎ、無責任",
+      "story": "Pour s'assurer qu'elle n'oublierait jamais la menace de l'Archidémon — qui avait autrefois menacé le Monde — elle grava son image sur ses Armures."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101874",
+      "name": "Sunran",
+      "subname": "Gardien de la frontière",
+      "affiliation": "境界の守護者",
+      "flavor": "Après être devenu le Gardien de la Frontière, Sunran a juré de veiller sur la faille dans laquelle l'Archidémon avait été jeté et scellé.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "122",
+      "Magical Attack": "0",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Physical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Physical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Physical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Physical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Physical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Physical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Physical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Physical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10187401",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018701.webp"
+      },
+      "Skill 1": {
+        "id": "10187402",
+        "name": "Coup enchaîné",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 41 % de l'ATQ PHY 3 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 41 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 91s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018702.webp"
+      },
+      "Skill 2": {
+        "id": "10187403",
+        "name": "Lame volante fantôme",
+        "desc": "3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 38 % de l'ATQ PHY, 3 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 75% de l’attaque du lanceur.)\nSkill Enhancement Effect\n - Hausse des dégâts : 38 % de l'ATQ PHY\n - Hausse des dégâts : 3 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 77s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018703.webp"
+      },
+      "Passive": {
+        "id": "10187404",
+        "name": "Guerrier au visage de démon",
+        "desc": "Soi-même\n - Accorde Upper Hand. [Durée : 2 Tour(s)]\n - Se réanime avec 40 % de PV en cas de mort (1 fois par combat)\n - Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - 3 ennemis (Priorité à la rangée arrière)\n - Inflige des dégâts équivalents à 38 % de l'ATQ PHY, 3 % des PV max de la cible 3 fois (Les dégâts proportionnels aux PV sont limités à 75% de l’attaque du lanceur.)\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "瀬戸 麻沙美",
+      "species": "CollectionProfileInfo.Species_018",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "175",
+      "weight": "55",
+      "constellation": "Capricorne",
+      "likes": "ハヨン、美酒、黒刀、修行、囲碁",
+      "dislikes": "悪、騒ぎ、無責任",
+      "story": "Après être devenu le Gardien de la Frontière, Sunran a juré de veiller sur la faille dans laquelle l'Archidémon avait été jeté et scellé."
+    }
+  }
+]
