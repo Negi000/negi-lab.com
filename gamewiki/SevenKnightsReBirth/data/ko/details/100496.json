@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400497",
+      "name": "녹스",
+      "subname": "지옥의 화신",
+      "affiliation": "복수자의 지옥",
+      "flavor": "델론즈의 일격에 죽었던 녹스가 알 수 없는 힘에 의해 강해진 모습으로 되돌아 왔다. 하지만 혼이 없어진 듯 전혀 다른 사람 같이 보인다.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "133",
+      "Magical Attack": "0",
+      "Defense": "155",
+      "HP": "889",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 133,
+        "Defense": 155,
+        "HP": 889
+      },
+      "level30": {
+        "Physical Attack": 597,
+        "Defense": 764,
+        "HP": 3992
+      },
+      "levelUpBonus": {
+        "Physical Attack": 16,
+        "Defense": 21,
+        "HP": 107
+      },
+      "reinforceBonus": {
+        "Physical Attack": 47,
+        "Defense": 54,
+        "HP": 311
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 597,
+          "Defense": 764,
+          "HP": 3992
+        },
+        "+1": {
+          "Physical Attack": 644,
+          "Defense": 818,
+          "HP": 4303
+        },
+        "+2": {
+          "Physical Attack": 691,
+          "Defense": 872,
+          "HP": 4614
+        },
+        "+3": {
+          "Physical Attack": 738,
+          "Defense": 926,
+          "HP": 4925
+        },
+        "+4": {
+          "Physical Attack": 785,
+          "Defense": 980,
+          "HP": 5236
+        },
+        "+5": {
+          "Physical Attack": 832,
+          "Defense": 1034,
+          "HP": 5547
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40049701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 60%, 시전자 최대 생명력의 14%만큼 1회 피해\n - 자신\n - 시전자 최대 생명력의 13% 만큼 생명력 회복\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 60%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
+      },
+      "Skill 1": {
+        "id": "40049702",
+        "name": "지옥의 방패",
+        "desc": "자신\n - 모든 피해 면역 [2턴 지속]\n - 도발 [2턴 지속]\n - 아군 3명\n - 지속 회복 [2턴 지속]\n - 적군 후열\n - 대상이 즉사를 보유하고 있지 않으면 즉사 [35% 확률] [3턴 지속]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
+      },
+      "Skill 2": {
+        "id": "40049703",
+        "name": "지옥의 일격",
+        "desc": "적군 3명\n - 물리 공격력의 95%, 시전자 최대 생명력의 23%만큼 1회 피해\n - 효과 저항 감소 [100% 확률] [3턴 지속]\n - 즉사 [40% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 95%",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
+      },
+      "Passive": {
+        "id": "40049704",
+        "name": "지옥의 기사",
+        "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 45%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 적 사망 시 각성 게이지 증가 10\nTranscend Lv.2 Effect\n - 모든 적군\n - 효과 추가 : 효과 저항 감소 34% [상시]\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력 45%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40049707",
+        "name": "심연의 검풍",
+        "desc": "모든 적군\n - 물리 공격력의 80%, 시전자 최대 생명력의 19%만큼 1회 피해\n - 즉사 [30% 확률] [3턴 지속]\n - 버프 해제 2개 [100% 확률]\n - 모든 아군\n - 스킬 쿨타임 감소 16초\nSkill Enhancement Effect\n - 모든 아군\n - 효과 추가 : 스킬 쿨타임 감소 효과 16초",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4004906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "소정환",
+      "species": "언데드",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "06 / 05",
+      "age": "39",
+      "height": "187",
+      "weight": "72",
+      "constellation": "쌍둥이자리",
+      "likes": "크리스, 복수, 정정당당",
+      "dislikes": "루디, 에반, 배신, 음모, 모략",
+      "story": "델론즈의 일격에 죽었던 녹스가 알 수 없는 힘에 의해 강해진 모습으로 되돌아 왔다. 하지만 혼이 없어진 듯 전혀 다른 사람 같이 보인다."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100496",
       "name": "녹스",
       "subname": "지옥의 총사령관",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10049604",
         "name": "지옥의 기사",
-        "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 39%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\nSkill Enhancement Effect\n - 효과 상승 : 보호막 흡수량이 최대 생명력의 45%\nTranscend Lv.2 Effect\n - 모든 적군\n - 효과 추가 : 효과 저항 감소 34% [상시]\nTranscend Lv.6 Effect\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력 39%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "desc": "모든 아군\n - 즉사 효과 적용 확률 증가 [상시]\n - 자신\n - 시전자 최대 생명력의 39%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\nSkill Enhancement Effect\n - 효과 상승 : 보호막 흡수량이 최대 생명력의 45%\nTranscend Lv.2 Effect\n - 모든 적군\n - 효과 추가 : 효과 저항 감소 34% [상시]\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력 39%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "쌍둥이자리",
@@ -180,7 +336,7 @@
       "Physical Attack": "2000",
       "Magical Attack": "0",
       "Defense": "1500",
-      "HP": "250000",
+      "HP": "500000",
       "Speed": "50",
       "Critical Rate": "300"
     },
@@ -189,12 +345,12 @@
       "level1": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "level30": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "levelUpBonus": {
         "Physical Attack": 0,
@@ -210,32 +366,32 @@
         "+0": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+1": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+2": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+3": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+4": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+5": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         }
       },
       "reinforceCosts": [
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "32053604",
         "name": "지옥의 기사",
-        "desc": "자신\n - 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력의 20%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "desc": "자신\n - 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력의 20%만큼 보호막 [3턴 지속] (전투당 1회 발동)\n - 막기 확률 증가 [상시]\n - 모든 적군\n - 모든 공격력 감소 [상시]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "쌍둥이자리",
@@ -588,7 +744,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "쌍둥이자리",

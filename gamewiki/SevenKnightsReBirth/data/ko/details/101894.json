@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401897",
+      "name": "동영",
+      "subname": "저승사자",
+      "affiliation": "신지",
+      "flavor": "쥬다스의 칠흑 같은 가호로 다시 태어난 동영은 죽음을 형상화한 듯한 압도적인 권능을 휘둘렀다.\\n그의 앞길을 막아선 자들은 비명조차 지르지 못한 채, 끔찍한 파멸을 맞이하며 스러져 갔다.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40189701",
+        "name": "",
+        "desc": "단일 적군\n - 마법 공격력의 120%만큼 1회 피해\n - 극독 [50% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 120%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "40189702",
+        "name": "황천의 숨결",
+        "desc": "모든 적군\n - 마법 공격력의 70%만큼 1회 피해\n - 대상이 [중독] 상태일 경우 마법 공격력의 22%만큼 추가 고정 피해\n - 모든 아군\n - 시전자 마법 공격력의 65%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 70%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "40189703",
+        "name": "심연의 손길",
+        "desc": "모든 적군\n - 마법 공격력의 155%만큼 1회 관통 피해\n - 공포 [45% 확률] [2턴 지속]\n - 극독 [75% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 155%",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "40189704",
+        "name": "황천의 동행자",
+        "desc": "자신\n - 공격력 비례 효과 적중 증가 [상시]\n - 불굴 발동 시 각성 게이지 증가 40\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 모든 아군\n - 마법 피해량 증가 [상시]\n - 불굴 발동 시 시전자 마법 공격력의 65% 만큼 생명력 회복\n - 모든 적군\n - 아군의 스킬 2회 발동 시 마법 공격력의 50%만큼 1회 피해\n - 아군의 스킬 2회 발동 시 극독 [100% 확률] [2턴 지속]\n - 아군의 스킬 2회 발동 시 받는 회복량 감소 [100% 확률] 1중첩 [최대 3중첩]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 20%\nTranscend Lv.2 Effect\n - 자신과 동일 열 아군(마법형)\n - 효과 추가 : 모든 피해 면역 [1턴 지속]\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 아군 사망 시, 불굴 효과의 피격 횟수 1회 증가\n - 모든 적군\n - 효과 추가 : 마법 취약 20% [100% 확률] [2턴 지속]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40189707",
+        "name": "필멸의 선고",
+        "desc": "모든 적군\n - 마법 공격력의 145%만큼 1회 피해\n - 대상이 [중독] 상태일 경우 마법 공격력의 23%만큼 추가 고정 피해\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 160%\n - 피해량 상승 : 고정 피해 26%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4018906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "민승우",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "04 / 02",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "양자리",
+      "likes": "쥬다스, 하연, 심연, 사색, 마음에 든 상대를 괴롭히는 것",
+      "dislikes": "선란, 정의로움, 지상의 밝은 빛",
+      "story": "쥬다스의 칠흑 같은 가호로 다시 태어난 동영은 죽음을 형상화한 듯한 압도적인 권능을 휘둘렀다.\\n그의 앞길을 막아선 자들은 비명조차 지르지 못한 채, 끔찍한 파멸을 맞이하며 스러져 갔다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101896",
+      "name": "동영",
+      "subname": "망령의 언사",
+      "affiliation": "신지",
+      "flavor": "죽음의 길에 들어서게 하는 것은 그저 말 몇 마디를 보태는 것만으로도 충분했다.\\n하지만 가끔, 깊은 인연의 끈을 가진 이들은 죽음의 길에서 벗어나 구원받기도 했다.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189601",
+        "name": "",
+        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 극독 [40% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189602",
+        "name": "황천의 숨결",
+        "desc": "모든 적군\n - 마법 공격력의 60%만큼 1회 피해\n - 대상이 [중독] 상태일 경우 마법 공격력의 19%만큼 추가 고정 피해\n - 모든 아군\n - 시전자 마법 공격력의 55%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 70%\n - 피해량 상승 : 고정 피해 22%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189603",
+        "name": "심연의 손길",
+        "desc": "모든 적군\n - 마법 공격력의 130%만큼 1회 관통 피해\n - 공포 [45% 확률] [2턴 지속]\n - 극독 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 확률 상승 : 극독 확률 75%",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189604",
+        "name": "황천의 동행자",
+        "desc": "자신\n - 공격력 비례 효과 적중 증가 [상시]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 모든 아군\n - 마법 피해량 증가 [상시]\n - 불굴 발동 시 시전자 마법 공격력의 55% 만큼 생명력 회복\n - 모든 적군\n - 아군의 스킬 2회 발동 시 마법 공격력의 50%만큼 1회 피해\n - 아군의 스킬 2회 발동 시 극독 [100% 확률] [2턴 지속]\n - 아군의 스킬 2회 발동 시 받는 회복량 감소 [100% 확률] 1중첩 [최대 3중첩]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 20%\nTranscend Lv.2 Effect\n - 자신과 동일 열 아군(마법형)\n - 효과 추가 : 모든 피해 면역 [1턴 지속]\nTranscend Lv.6 Effect\n - 자신\n - 효과 추가 : 아군 사망 시, 불굴 효과의 피격 횟수 1회 증가\n - 모든 적군\n - 효과 추가 : 마법 취약 20% [100% 확률] [2턴 지속]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "모든 공격력이 12% 상승합니다.",
+      "transcend_2": "모든 공격력이 6% 상승합니다.",
+      "transcend_3": "생명력이 18% 상승합니다.",
+      "transcend_4": "효과 적중이 24% 상승합니다.",
+      "transcend_5": "모든 공격력이 12% 상승합니다.",
+      "transcend_6": "모든 공격력이 6% 상승합니다.",
+      "transcend_7": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_8": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_9": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_10": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_11": "모든 공격력, 방어력, 생명력이 2% 상승합니다.",
+      "transcend_12": "모든 공격력, 방어력, 생명력이 2% 상승합니다."
+    },
+    "profile": {
+      "cv": "민승우",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "04 / 02",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "양자리",
+      "likes": "쥬다스, 하연, 심연, 사색, 마음에 든 상대를 괴롭히는 것",
+      "dislikes": "선란, 정의로움, 지상의 밝은 빛",
+      "story": "죽음의 길에 들어서게 하는 것은 그저 말 몇 마디를 보태는 것만으로도 충분했다.\\n하지만 가끔, 깊은 인연의 끈을 가진 이들은 죽음의 길에서 벗어나 구원받기도 했다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101895",
+      "name": "동영",
+      "subname": "쥬다스의 수하",
+      "affiliation": "신지",
+      "flavor": "동영은 심연에서도 그 힘과 위용을 잃지 않는 대악마를 만났다.\\n심연조차 굴복시킬 수 없는 그 대악마를 자신의 주인으로 인정했다.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189501",
+        "name": "",
+        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\n - 극독 [40% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189502",
+        "name": "황천의 숨결",
+        "desc": "모든 적군\n - 마법 공격력의 55%만큼 1회 피해\n - 대상이 [중독] 상태일 경우 마법 공격력의 16%만큼 추가 고정 피해\n - 모든 아군\n - 시전자 마법 공격력의 50%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 55%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189503",
+        "name": "심연의 손길",
+        "desc": "모든 적군\n - 마법 공격력의 120%만큼 1회 관통 피해\n - 공포 [45% 확률] [2턴 지속]\n - 극독 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 120%",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189504",
+        "name": "황천의 동행자",
+        "desc": "자신\n - 공격력 비례 효과 적중 증가 [상시]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 모든 아군\n - 마법 피해량 증가 [상시]\n - 불굴 발동 시 시전자 마법 공격력의 50% 만큼 생명력 회복\n - 모든 적군\n - 아군의 스킬 2회 발동 시 마법 공격력의 45%만큼 1회 피해\n - 아군의 스킬 2회 발동 시 극독 [100% 확률] [2턴 지속]\n - 아군의 스킬 2회 발동 시 받는 회복량 감소 [100% 확률] 1중첩 [최대 3중첩]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 13%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "민승우",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "04 / 02",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "양자리",
+      "likes": "쥬다스, 하연, 심연, 사색, 마음에 든 상대를 괴롭히는 것",
+      "dislikes": "선란, 정의로움, 지상의 밝은 빛",
+      "story": "동영은 심연에서도 그 힘과 위용을 잃지 않는 대악마를 만났다.\\n심연조차 굴복시킬 수 없는 그 대악마를 자신의 주인으로 인정했다."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101894",
+      "name": "동영",
+      "subname": "속삭이는 악마",
+      "affiliation": "신지",
+      "flavor": "동영은 심연에 빠져 좌절하고 있는 사람들에게 접근하여 빠져나갈 방법이 있을 것이라고 부추겼다.\\n어떻게든 빠져나가려고 발버둥 치다가, 마침내 절망에 빠져 일그러진 얼굴을 보는 것이 즐거웠기 때문이다.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189401",
+        "name": "",
+        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\n - 극독 [35% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189402",
+        "name": "황천의 숨결",
+        "desc": "모든 적군\n - 마법 공격력의 50%만큼 1회 피해\n - 대상이 [중독] 상태일 경우 마법 공격력의 13%만큼 추가 고정 피해\n - 모든 아군\n - 시전자 마법 공격력의 40%만큼 보호막 [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 50%",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189403",
+        "name": "심연의 손길",
+        "desc": "모든 적군\n - 마법 공격력의 110%만큼 1회 관통 피해\n - 공포 [35% 확률] [2턴 지속]\n - 극독 [55% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 110%",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189404",
+        "name": "황천의 동행자",
+        "desc": "자신\n - 공격력 비례 효과 적중 증가 [상시]\n - 사망 시 불굴 상태로 부활 [피격 8회] (전투당 1회 발동)\n - 모든 아군\n - 마법 피해량 증가 [상시]\n - 불굴 발동 시 시전자 마법 공격력의 40% 만큼 생명력 회복\n - 모든 적군\n - 아군의 스킬 2회 발동 시 마법 공격력의 40%만큼 1회 피해\n - 아군의 스킬 2회 발동 시 극독 [100% 확률] [2턴 지속]\n - 아군의 스킬 2회 발동 시 받는 회복량 감소 [100% 확률] 1중첩 [최대 3중첩]\nSkill Enhancement Effect\n - 효과 상승 : 마법 피해량 증가 10%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "민승우",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "04 / 02",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "양자리",
+      "likes": "쥬다스, 하연, 심연, 사색, 마음에 든 상대를 괴롭히는 것",
+      "dislikes": "선란, 정의로움, 지상의 밝은 빛",
+      "story": "동영은 심연에 빠져 좌절하고 있는 사람들에게 접근하여 빠져나갈 방법이 있을 것이라고 부추겼다.\\n어떻게든 빠져나가려고 발버둥 치다가, 마침내 절망에 빠져 일그러진 얼굴을 보는 것이 즐거웠기 때문이다."
+    }
+  }
+]

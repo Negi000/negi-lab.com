@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400497",
+      "name": "Knox",
+      "subname": "Hellfire Incarnate",
+      "affiliation": "Purgatory",
+      "flavor": "Setelah terbunuh oleh pukulan Dellons, Knox kembali sebagai orang yang sama sekali berbeda. Dia tampak kehilangan jiwa dan diperkuat oleh kekuatan yang tidak diketahui.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "133",
+      "Magical Attack": "0",
+      "Defense": "155",
+      "HP": "889",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 133,
+        "Defense": 155,
+        "HP": 889
+      },
+      "level30": {
+        "Physical Attack": 597,
+        "Defense": 764,
+        "HP": 3992
+      },
+      "levelUpBonus": {
+        "Physical Attack": 16,
+        "Defense": 21,
+        "HP": 107
+      },
+      "reinforceBonus": {
+        "Physical Attack": 47,
+        "Defense": 54,
+        "HP": 311
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 597,
+          "Defense": 764,
+          "HP": 3992
+        },
+        "+1": {
+          "Physical Attack": 644,
+          "Defense": 818,
+          "HP": 4303
+        },
+        "+2": {
+          "Physical Attack": 691,
+          "Defense": 872,
+          "HP": 4614
+        },
+        "+3": {
+          "Physical Attack": 738,
+          "Defense": 926,
+          "HP": 4925
+        },
+        "+4": {
+          "Physical Attack": 785,
+          "Defense": 980,
+          "HP": 5236
+        },
+        "+5": {
+          "Physical Attack": 832,
+          "Defense": 1034,
+          "HP": 5547
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40049701",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 60% dari P. ATK dan 14% dari Maks. HP caster sebanyak 1x.\n - Diri Sendiri\n - Memulihkan HP sebesar 13% dari Maks. HP caster.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 60% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
+      },
+      "Skill 1": {
+        "id": "40049702",
+        "name": "Infernal Shield",
+        "desc": "Diri Sendiri\n - Kebal Semua Damage. [Durasi: 2 turn]\n - Taunt. [Durasi: 2 turn]\n - 3 Ally\n - Continuous Healing. [Durasi: 2 turn]\n - Musuh baris belakang\n - Jika target tidak memiliki Death, Death akan diterapkan. [Rate: 35%] [Durasi: 3 turn]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
+      },
+      "Skill 2": {
+        "id": "40049703",
+        "name": "Hell Strike",
+        "desc": "3 Musuh\n - Memberikan Damage sebesar 95% dari P. ATK dan 23% dari Maks. HP caster sebanyak 1x.\n - Effect Resistance menurun. [Rate: 100%] [Durasi: 3 turn]\n - Death. [Rate: 40%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari P. ATK.",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
+      },
+      "Passive": {
+        "id": "40049704",
+        "name": "Knight of Hell",
+        "desc": "Semua Ally\n - Rate Penerapan Efek Death meningkat. [Selalu Aktif]\n - Diri Sendiri\n - Menerapkan Barrier sebesar 45% dari Maks. HP caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Memberikan Peningkatan Awaken Gauge sebesar 10 saat musuh mati.\nTranscend Lv.2 Effect\n - Semua Musuh\n - Menambahkan Efek: Penurunan Effect Resistance sebesar 34% [Selalu Aktif]\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambahkan Efek: Menerapkan Barrier sebesar 45% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40049707",
+        "name": "Abyssal Wave",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 80% dari P. ATK dan 19% dari Maks. HP caster sebanyak 1x.\n - Death. [Rate: 30%] [Durasi: 3 turn]\n - Menghapus Buff sebanyak 2. [Rate: 100%]\n - Semua Ally\n - Menurunkan Cooldown Skill sebanyak 16 dtk\nSkill Enhancement Effect\n - Semua Ally\n - Menambahkan Efek: Penurunan Cooldown Skill sebanyak 16 dtk.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4004906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "横田 紘一",
+      "species": "Undead",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "05 / 06",
+      "age": "39",
+      "height": "187",
+      "weight": "72",
+      "constellation": "Gemini",
+      "likes": "Kris, balas dendam, bersikap adil",
+      "dislikes": "Rudy, Evan, pengkhianatan, konspirasi, rencana jahat",
+      "story": "Setelah terbunuh oleh pukulan Dellons, Knox kembali sebagai orang yang sama sekali berbeda. Dia tampak kehilangan jiwa dan diperkuat oleh kekuatan yang tidak diketahui."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100496",
       "name": "Knox",
       "subname": "Commander of Hell",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10049604",
         "name": "Knight of Hell",
-        "desc": "Semua Ally\n - Rate Penerapan Efek Death meningkat. [Selalu Aktif]\n - Diri Sendiri\n - Menerapkan Barrier sebesar 39% dari Maks. HP caster. [Durasi: 3 turn] (Aktif 1x per round)\nSkill Enhancement Effect\n - Meningkatkan Efek: Penyerapan Barrier menjadi 45% dari Maks. HP.\nTranscend Lv.2 Effect\n - Semua Musuh\n - Menambahkan Efek: Penurunan Effect Resistance sebesar 34% [Selalu Aktif]\nTranscend Lv.6 Effect\n - Menambahkan Efek: Menerapkan Barrier sebesar 39% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
+        "desc": "Semua Ally\n - Rate Penerapan Efek Death meningkat. [Selalu Aktif]\n - Diri Sendiri\n - Menerapkan Barrier sebesar 39% dari Maks. HP caster. [Durasi: 3 turn] (Aktif 1x per round)\nSkill Enhancement Effect\n - Meningkatkan Efek: Penyerapan Barrier menjadi 45% dari Maks. HP.\nTranscend Lv.2 Effect\n - Semua Musuh\n - Menambahkan Efek: Penurunan Effect Resistance sebesar 34% [Selalu Aktif]\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambahkan Efek: Menerapkan Barrier sebesar 39% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemini",
@@ -180,7 +336,7 @@
       "Physical Attack": "2000",
       "Magical Attack": "0",
       "Defense": "1500",
-      "HP": "250000",
+      "HP": "500000",
       "Speed": "50",
       "Critical Rate": "300"
     },
@@ -189,12 +345,12 @@
       "level1": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "level30": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "levelUpBonus": {
         "Physical Attack": 0,
@@ -210,32 +366,32 @@
         "+0": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+1": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+2": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+3": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+4": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+5": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         }
       },
       "reinforceCosts": [
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "32053604",
         "name": "Knight of Hell",
-        "desc": "Diri Sendiri\n - Menerapkan Barrier sebesar 20% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
+        "desc": "Diri Sendiri\n - Menerapkan Barrier sebesar 20% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)\n - Block Rate meningkat. [Selalu Aktif]\n - Semua Musuh\n - Semua ATK menurun. [Selalu Aktif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemini",
@@ -588,7 +744,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemini",

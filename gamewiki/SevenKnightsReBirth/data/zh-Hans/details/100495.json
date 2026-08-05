@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400497",
+      "name": "诺克斯",
+      "subname": "地狱的化身",
+      "affiliation": "复仇者地狱",
+      "flavor": "在戴伦兹的一击之下死去后，诺克斯被一种未知的力量复活，以强大的姿态回归了。但灵魂仿佛消失了，看起来完全像另一个人。",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "133",
+      "Magical Attack": "0",
+      "Defense": "155",
+      "HP": "889",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 133,
+        "Defense": 155,
+        "HP": 889
+      },
+      "level30": {
+        "Physical Attack": 597,
+        "Defense": 764,
+        "HP": 3992
+      },
+      "levelUpBonus": {
+        "Physical Attack": 16,
+        "Defense": 21,
+        "HP": 107
+      },
+      "reinforceBonus": {
+        "Physical Attack": 47,
+        "Defense": 54,
+        "HP": 311
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 597,
+          "Defense": 764,
+          "HP": 3992
+        },
+        "+1": {
+          "Physical Attack": 644,
+          "Defense": 818,
+          "HP": 4303
+        },
+        "+2": {
+          "Physical Attack": 691,
+          "Defense": 872,
+          "HP": 4614
+        },
+        "+3": {
+          "Physical Attack": 738,
+          "Defense": 926,
+          "HP": 4925
+        },
+        "+4": {
+          "Physical Attack": 785,
+          "Defense": 980,
+          "HP": 5236
+        },
+        "+5": {
+          "Physical Attack": 832,
+          "Defense": 1034,
+          "HP": 5547
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40049701",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力60%、施展者最大生命力14%的伤害\n - 自己\n - 按照施展者最大生命力的13%恢复生命力\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的60%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
+      },
+      "Skill 1": {
+        "id": "40049702",
+        "name": "地狱之盾",
+        "desc": "自己\n - 所有伤害免疫 [持续2回合]\n - 挑衅 [持续2回合]\n - 3名我军\n - 持续恢复 [持续2回合]\n - 敌军后列\n - 如果对象拥有即死，则即死 [35%的概率] [持续3回合]",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
+      },
+      "Skill 2": {
+        "id": "40049703",
+        "name": "地狱一击",
+        "desc": "3名敌人\n - 1次相当于物理攻击力95%、施展者最大生命力23%的伤害\n - 效果抵抗减少 [100%的概率] [持续3回合]\n - 即死 [40%的概率] [持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的95%",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
+      },
+      "Passive": {
+        "id": "40049704",
+        "name": "地狱骑士",
+        "desc": "全体我军\n - 即死效果发动率增加 [始终]\n - 自己\n - 赋予相当于施展者最大生命力45%的护盾 [持续3回合]（每轮发动1次）\n - 敵が戦闘不能時、覚醒ゲージ上昇10\nTranscend Lv.2 Effect\n - 全体敌军\n - 额外效果：效果抵抗减少34% [始终]\nTranscend Lv.6 Effect\n - 自己\n - 额外效果：自身生命力达到50%以下时赋予相当于施展者最大生命力45%的护盾[持续3回合]（每场战斗发动1次）",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40049707",
+        "name": "深淵の剣風",
+        "desc": "全体敌军\n - 1次相当于物理攻击力80%、施展者最大生命力19%的伤害\n - 即死 [30%的概率] [持续3回合]\n - 解除2个增益 [100%的概率]\n - 全体我军\n - 技能冷却时间减少16秒\nSkill Enhancement Effect\n - 全体我军\n - 効果追加：スキルクールタイム短縮効果16秒",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4004906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "横田 紘一",
+      "species": "不死族",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "06 / 05",
+      "age": "39",
+      "height": "187",
+      "weight": "72",
+      "constellation": "双子座",
+      "likes": "克里斯、复仇、堂堂正正",
+      "dislikes": "路迪、伊凡、背叛、阴谋、谋略",
+      "story": "在戴伦兹的一击之下死去后，诺克斯被一种未知的力量复活，以强大的姿态回归了。但灵魂仿佛消失了，看起来完全像另一个人。"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100496",
       "name": "诺克斯",
       "subname": "地狱总指挥",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10049604",
         "name": "地狱骑士",
-        "desc": "全体我军\n - 即死效果发动率增加 [始终]\n - 自己\n - 赋予相当于施展者最大生命力39%的护盾 [持续3回合]（每轮发动1次）\nSkill Enhancement Effect\n - 效果提升：护盾吸收量提升至最大生命力的45%\nTranscend Lv.2 Effect\n - 全体敌军\n - 额外效果：效果抵抗减少34% [始终]\nTranscend Lv.6 Effect\n - 额外效果：自身生命力达到50%以下时赋予相当于施展者最大生命力39%的护盾[持续3回合]（每场战斗发动1次）",
+        "desc": "全体我军\n - 即死效果发动率增加 [始终]\n - 自己\n - 赋予相当于施展者最大生命力39%的护盾 [持续3回合]（每轮发动1次）\nSkill Enhancement Effect\n - 效果提升：护盾吸收量提升至最大生命力的45%\nTranscend Lv.2 Effect\n - 全体敌军\n - 额外效果：效果抵抗减少34% [始终]\nTranscend Lv.6 Effect\n - 自己\n - 额外效果：自身生命力达到50%以下时赋予相当于施展者最大生命力39%的护盾[持续3回合]（每场战斗发动1次）",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "双子座",
@@ -180,7 +336,7 @@
       "Physical Attack": "2000",
       "Magical Attack": "0",
       "Defense": "1500",
-      "HP": "250000",
+      "HP": "500000",
       "Speed": "50",
       "Critical Rate": "300"
     },
@@ -189,12 +345,12 @@
       "level1": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "level30": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "levelUpBonus": {
         "Physical Attack": 0,
@@ -210,32 +366,32 @@
         "+0": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+1": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+2": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+3": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+4": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+5": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         }
       },
       "reinforceCosts": [
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "32053604",
         "name": "地狱骑士",
-        "desc": "自己\n - 自身生命力达到50%以下时赋予相当于施展者最大生命力20%的护盾 [持续3回合]（每场战斗发动1次）",
+        "desc": "自己\n - 自身生命力达到50%以下时赋予相当于施展者最大生命力20%的护盾 [持续3回合]（每场战斗发动1次）\n - 格挡率增加 [始终]\n - 全体敌军\n - 所有攻击力减少 [始终]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "双子座",
@@ -588,7 +744,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "06 / 05",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "双子座",

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400497",
+      "name": "Knox",
+      "subname": "Incarnazione del Fuoco Infernale",
+      "affiliation": "Inferno del Vendicatore",
+      "flavor": "Dopo essere stato ucciso dal colpo di Dellons, Knox tornò come una persona completamente diversa, apparentemente priva di un'anima e rafforzata da una forza sconosciuta.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "133",
+      "Magical Attack": "0",
+      "Defense": "155",
+      "HP": "889",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 133,
+        "Defense": 155,
+        "HP": 889
+      },
+      "level30": {
+        "Physical Attack": 597,
+        "Defense": 764,
+        "HP": 3992
+      },
+      "levelUpBonus": {
+        "Physical Attack": 16,
+        "Defense": 21,
+        "HP": 107
+      },
+      "reinforceBonus": {
+        "Physical Attack": 47,
+        "Defense": 54,
+        "HP": 311
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 597,
+          "Defense": 764,
+          "HP": 3992
+        },
+        "+1": {
+          "Physical Attack": 644,
+          "Defense": 818,
+          "HP": 4303
+        },
+        "+2": {
+          "Physical Attack": 691,
+          "Defense": 872,
+          "HP": 4614
+        },
+        "+3": {
+          "Physical Attack": 738,
+          "Defense": 926,
+          "HP": 4925
+        },
+        "+4": {
+          "Physical Attack": 785,
+          "Defense": 980,
+          "HP": 5236
+        },
+        "+5": {
+          "Physical Attack": 832,
+          "Defense": 1034,
+          "HP": 5547
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40049701",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 60% dell'attacco fisico più il 14% dei PV massimi dell'incantatore 1 volta/e\n - Sé\n - Cura PV pari al 13% dei PV massimi dell'incantatore\nSkill Enhancement Effect\n - Incremento danno: 60% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
+      },
+      "Skill 1": {
+        "id": "40049702",
+        "name": "Scudo infernale",
+        "desc": "Sé\n - Concede Immunità a tutti i danni [Durata: 2 turno/i]\n - Concede Provocazione [Durata: 2 turno/i]\n - 3 alleati\n - Concede Cura continua [Durata: 2 turno/i]\n - Nemici della fila posteriore\n - 35% di probabilità di infliggere Morte immediata se il bersaglio non ha Morte immediata. [Durata: 3 Turno/i].",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
+      },
+      "Skill 2": {
+        "id": "40049703",
+        "name": "Colpo infernale",
+        "desc": "3 nemici\n - Infligge danni pari al 95% dell'attacco fisico più il 23% dei PV massimi dell'incantatore 1 volta/e\n - 100% di probabilità di infliggere Resistenza agli effetti ▼ [Durata: 3 turno/i]\n - Può infliggere Morte immediata [Probabilità: 40%] [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 95% dell'attacco fisico",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
+      },
+      "Passive": {
+        "id": "40049704",
+        "name": "Cavaliere infernale",
+        "desc": "Tutti gli alleati\n - Concede Probabilità di applicazione effetto Morte immediata ▲ [Sempre attivo]\n - Sé\n - Concede una Barriera pari al 45% dei PV massimi dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - ATT & MAG aumenta a 10 quando un nemico cade in battaglia.\nTranscend Lv.2 Effect\n - Tutti i nemici\n - Aggiunge effetto: Riduzione resistenza effetti 34% [Sempre attivo]\nTranscend Lv.6 Effect\n - Se stesso\n - Effetto extra: Barriera pari a 45% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40049707",
+        "name": "Vento di spade dell'abisso",
+        "desc": "Tutti i nemici\n - Infligge danni pari al 80% dell'attacco fisico più il 19% dei PV massimi dell'incantatore 1 volta/e\n - Può infliggere Morte immediata [Probabilità: 30%] [Durata: 3 turno/i]\n - Infligge 2 Rimozione Buff. [100% Probabilità]\n - Tutti gli alleati\n - Tempo di ricarica abilità ▼16s\nSkill Enhancement Effect\n - Tutti gli alleati\n - Aggiunge effetto: Tempo di ricarica abilità ▼ 16s.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4004906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "横田 紘一",
+      "species": "Non-morto",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "05 / 06",
+      "age": "39",
+      "height": "187",
+      "weight": "72",
+      "constellation": "Gemelli",
+      "likes": "Kris, vendetta, essere giusti",
+      "dislikes": "Rudy, Evan, tradimento, complotti, piani",
+      "story": "Dopo essere stato ucciso dal colpo di Dellons, Knox tornò come una persona completamente diversa, apparentemente priva di un'anima e rafforzata da una forza sconosciuta."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100496",
       "name": "Knox",
       "subname": "Comandante supremo dell'Inferno",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10049604",
         "name": "Cavaliere infernale",
-        "desc": "Tutti gli alleati\n - Concede Probabilità di applicazione effetto Morte immediata ▲ [Sempre attivo]\n - Sé\n - Concede una Barriera pari al 39% dei PV massimi dell'incantatore [Durata: 3 turno/i] [Una volta per round]\nSkill Enhancement Effect\n - Rafforzamento effetto: Assorbimento barriera pari al 45% dei PV massimi\nTranscend Lv.2 Effect\n - Tutti i nemici\n - Aggiunge effetto: Riduzione resistenza effetti 34% [Sempre attivo]\nTranscend Lv.6 Effect\n - Effetto extra: Barriera pari a 39% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]",
+        "desc": "Tutti gli alleati\n - Concede Probabilità di applicazione effetto Morte immediata ▲ [Sempre attivo]\n - Sé\n - Concede una Barriera pari al 39% dei PV massimi dell'incantatore [Durata: 3 turno/i] [Una volta per round]\nSkill Enhancement Effect\n - Rafforzamento effetto: Assorbimento barriera pari al 45% dei PV massimi\nTranscend Lv.2 Effect\n - Tutti i nemici\n - Aggiunge effetto: Riduzione resistenza effetti 34% [Sempre attivo]\nTranscend Lv.6 Effect\n - Se stesso\n - Effetto extra: Barriera pari a 39% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemelli",
@@ -180,7 +336,7 @@
       "Physical Attack": "2000",
       "Magical Attack": "0",
       "Defense": "1500",
-      "HP": "250000",
+      "HP": "500000",
       "Speed": "50",
       "Critical Rate": "300"
     },
@@ -189,12 +345,12 @@
       "level1": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "level30": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "levelUpBonus": {
         "Physical Attack": 0,
@@ -210,32 +366,32 @@
         "+0": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+1": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+2": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+3": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+4": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+5": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         }
       },
       "reinforceCosts": [
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "32053604",
         "name": "Cavaliere infernale",
-        "desc": "Sé\n - Concede una Barriera pari al 20% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]",
+        "desc": "Sé\n - Concede una Barriera pari al 20% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]\n - Concede Probabilità di parata ▲ [Sempre attivo]\n - Tutti i nemici\n - Infligge Tutti gli attacchi ▼ [Sempre attivo]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemelli",
@@ -588,7 +744,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gemelli",

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400497",
+      "name": "Knox",
+      "subname": "Enfer incarné",
+      "affiliation": "Enfer du vengeur",
+      "flavor": "Après avoir été tué par le coup de Dellons, Knox est revenu en tant que personne complètement différente, apparemment dépourvue d'âme et renforcée par une force inconnue.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "133",
+      "Magical Attack": "0",
+      "Defense": "155",
+      "HP": "889",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 133,
+        "Defense": 155,
+        "HP": 889
+      },
+      "level30": {
+        "Physical Attack": 597,
+        "Defense": 764,
+        "HP": 3992
+      },
+      "levelUpBonus": {
+        "Physical Attack": 16,
+        "Defense": 21,
+        "HP": 107
+      },
+      "reinforceBonus": {
+        "Physical Attack": 47,
+        "Defense": 54,
+        "HP": 311
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 597,
+          "Defense": 764,
+          "HP": 3992
+        },
+        "+1": {
+          "Physical Attack": 644,
+          "Defense": 818,
+          "HP": 4303
+        },
+        "+2": {
+          "Physical Attack": 691,
+          "Defense": 872,
+          "HP": 4614
+        },
+        "+3": {
+          "Physical Attack": 738,
+          "Defense": 926,
+          "HP": 4925
+        },
+        "+4": {
+          "Physical Attack": 785,
+          "Defense": 980,
+          "HP": 5236
+        },
+        "+5": {
+          "Physical Attack": 832,
+          "Defense": 1034,
+          "HP": 5547
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40049701",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 60 % de l'ATQ PHY, 14 % des PV max du lanceur 1 fois\n - Soi-même\n - Soigne les PV équivalents à 13 % des PV max du lanceur\nSkill Enhancement Effect\n - Hausse des dégâts : 60 % de l'ATQ PHY\n - Hausse des dégâts : 14 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004901.webp"
+      },
+      "Skill 1": {
+        "id": "40049702",
+        "name": "Bouclier des Enfers",
+        "desc": "Soi-même\n - Confère Immunité à tous les dégâts [Durée : 2 tour(s)]\n - Confère Provocation [Durée : 2 tour(s)]\n - 3 alliés\n - Confère Soin continu [Durée : 2 tour(s)]\n - Ennemis de la rangée arrière\n - 35 % de chance d'infliger Mort si la cible n'a pas Mort. [Durée : 3 Tour(s)].",
+        "cooltime": "⏱️ CT: 96s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004902.webp"
+      },
+      "Skill 2": {
+        "id": "40049703",
+        "name": "Attaque infernale",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 95 % de l'ATQ PHY, 23 % des PV max du lanceur 1 fois\n - A 100 % de chances d'infliger Réduction de résistance aux effets [Durée : 3 tour(s)]\n - A 40 % de chances d'infliger Mort [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ PHY\n - Hausse des dégâts : 23 % de l'ATQ PHY",
+        "cooltime": "⏱️ CT: 70s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004903.webp"
+      },
+      "Passive": {
+        "id": "40049704",
+        "name": "Chevalier de l'Enfer",
+        "desc": "Tous les alliés\n - Confère Augmentation de taux d'application de Mort [Toujours actif]\n - Soi-même\n - Confère Barrière équivalente à 45 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - ATQ & MAG augmente à 10 lorsqu'un ennemi tombe en Combat en cours.\nTranscend Lv.2 Effect\n - Tous les ennemis\n - Ajoute Effet : Réduction de la résistance aux effets de 34 % [Toujours actif]\nTranscend Lv.6 Effect\n - Soi-même\n - Ajout d'effet : Confère une Barrière équivalente à 45 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40049707",
+        "name": "Vague d'épée abyssale",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 80 % de l'ATQ PHY, 19 % des PV max du lanceur 1 fois\n - A 30 % de chances d'infliger Mort [Durée : 3 tour(s)]\n - Inflige 2 Suppression de Buff(s). [100% de chance]\n - Tous les alliés\n - Réduit le temps de recharge des compétences de 16 s\nSkill Enhancement Effect\n - Tous les alliés\n - Ajoute un effet : Réduction du temps de recharge des compétences de 16 s.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4004906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "横田 紘一",
+      "species": "Mort-vivant",
+      "gender": "1",
+      "bloodType": "1",
+      "birthday": "05 / 06",
+      "age": "39",
+      "height": "187",
+      "weight": "72",
+      "constellation": "Gémeaux",
+      "likes": "Kris, vengeance, loyauté",
+      "dislikes": "Rudy, Evan, trahison, complot, ruse",
+      "story": "Après avoir été tué par le coup de Dellons, Knox est revenu en tant que personne complètement différente, apparemment dépourvue d'âme et renforcée par une force inconnue."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100496",
       "name": "Knox",
       "subname": "Commandant de l'Enfer",
@@ -127,7 +283,7 @@
       "Passive": {
         "id": "10049604",
         "name": "Chevalier de l'Enfer",
-        "desc": "Tous les alliés\n - Confère Augmentation de taux d'application de Mort [Toujours actif]\n - Soi-même\n - Confère Barrière équivalente à 39 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Confère Barrière équivalente à 45 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\nSkill Enhancement Effect\n - Gain d'effet : Absorption de la Barrière correspond à 45 % des PV max\nTranscend Lv.2 Effect\n - Tous les ennemis\n - Ajoute Effet : Réduction de la résistance aux effets de 34 % [Toujours actif]\nTranscend Lv.6 Effect\n - Ajout d'effet : Confère une Barrière équivalente à 39 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)",
+        "desc": "Tous les alliés\n - Confère Augmentation de taux d'application de Mort [Toujours actif]\n - Soi-même\n - Confère Barrière équivalente à 39 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Confère Barrière équivalente à 45 % des PV max du lanceur [Durée : 3 tour(s)] [1 fois par manche]\nSkill Enhancement Effect\n - Gain d'effet : Absorption de la Barrière correspond à 45 % des PV max\nTranscend Lv.2 Effect\n - Tous les ennemis\n - Ajoute Effet : Réduction de la résistance aux effets de 34 % [Toujours actif]\nTranscend Lv.6 Effect\n - Soi-même\n - Ajout d'effet : Confère une Barrière équivalente à 39 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gémeaux",
@@ -180,7 +336,7 @@
       "Physical Attack": "2000",
       "Magical Attack": "0",
       "Defense": "1500",
-      "HP": "250000",
+      "HP": "500000",
       "Speed": "50",
       "Critical Rate": "300"
     },
@@ -189,12 +345,12 @@
       "level1": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "level30": {
         "Physical Attack": 2000,
         "Defense": 1500,
-        "HP": 250000
+        "HP": 500000
       },
       "levelUpBonus": {
         "Physical Attack": 0,
@@ -210,32 +366,32 @@
         "+0": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+1": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+2": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+3": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+4": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         },
         "+5": {
           "Physical Attack": 2000,
           "Defense": 1500,
-          "HP": 250000
+          "HP": 500000
         }
       },
       "reinforceCosts": [
@@ -289,7 +445,7 @@
       "Passive": {
         "id": "32053604",
         "name": "Chevalier de l'Enfer",
-        "desc": "Soi-même\n - Confère Barrière équivalente à 20 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)",
+        "desc": "Soi-même\n - Confère Barrière équivalente à 20 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)\n - Confère Augmentation du taux de parades [Toujours actif]\n - Tous les ennemis\n - Inflige Réduction de toute attaque [Toujours actif]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1004904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gémeaux",
@@ -588,7 +744,7 @@
       "gender": "1",
       "bloodType": "1",
       "birthday": "05 / 06",
-      "age": "37",
+      "age": "39",
       "height": "187",
       "weight": "72",
       "constellation": "Gémeaux",

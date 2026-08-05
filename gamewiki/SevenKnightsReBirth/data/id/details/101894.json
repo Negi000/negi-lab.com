@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401897",
+      "name": "Dongyoung",
+      "subname": "Grim Reaper",
+      "affiliation": "Shinji",
+      "flavor": "Terlahir kembali melalui berkat kegelapan yang pekat milik Judas, Dongyoung memiliki kekuatan luar biasa yang seolah-olah mewujudkan kematian itu sendiri. Mereka yang menghalangi jalannya akan jatuh ke dalam kehancuran mengerikan tanpa sempat berteriak.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40189701",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 120% dari M. ATK sebanyak 1x.\n - Memberikan Deadly Poison. [Rate: 50%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "40189702",
+        "name": "Breath of the Underworld",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 70% dari M. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 22% dari M. ATK saat target terkena [Poison].\n - Semua Ally\n - Menerapkan Barrier sebesar 65% dari M. ATK caster. [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 70% dari P. ATK.",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "40189703",
+        "name": "Touch of the Abyss",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 155% dari M. ATK sebanyak 1x.\n - Fear. [Rate: 45%] [Durasi: 2 turn]\n - Memberikan Deadly Poison. [Rate: 75%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 155% dari P. ATK.",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "40189704",
+        "name": "Companion of the Underworld",
+        "desc": "Diri Sendiri\n - Peningkatan Effect Hit Rate Setara ATK. [Selalu Aktif]\n - Peningkatan Awaken Gauge meningkat sebesar 40 saat Indomitable aktif.\n - Hidup Kembali dalam kondisi Indomitable saat mati. [Diserang 8x] (Aktif 1x per battle)\n - Semua Ally\n - Memberikan Peningkatan Magic Damage. [Selalu Aktif]\n - Memulihkan HP sebesar 65% dari M. ATK caster saat Indomitable aktif.\n - Semua Musuh\n - Memberikan Damage sebesar 50% dari M. ATK 1x saat skill Ally aktif sebanyak 2x.\n - Memberikan Deadly Poison saat skill Ally aktif sebanyak 2x [Rate: 100%] [Durasi: 2 turn]\n - 100% peluang memicu 1 Stack Penurunan Healing Diterima saat skill Ally aktif sebanyak 2x. [Maks. 3 Stack]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Magic Damage menjadi 20%.\nTranscend Lv.2 Effect\n - Ally di baris yang sama dengan diri sendiri (Tipe Magic)\n - Menambahkan Efek: Kebal Semua Damage. [Durasi: 1 turn]\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambahkan Efek: Meningkatkan jumlah Hit dari efek Indomitable sebanyak 1x saat Ally mati.\n - Semua Musuh\n - Menambahkan Efek: Magic Vulnerability sebesar 20% [Rate: 100%] [Durasi: 2 turn]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40189707",
+        "name": "Mortal Verdict",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 145% dari M. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 23% dari M. ATK saat target terkena [Poison].\n - Menurunkan Durasi Buff target sebanyak 2 turn. [Rate: 100%]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 160% dari M. ATK.\n - Meningkatkan Damage: Ke 26% Fixed Damage.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_4018906.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "越川 瑞樹",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "02 / 04",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "Aries",
+      "likes": "Judas, Hayeon, Abyss, kontemplasi, mengganggu orang yang disukai",
+      "dislikes": "Sunran, keadilan, cahaya terang di Bumi",
+      "story": "Terlahir kembali melalui berkat kegelapan yang pekat milik Judas, Dongyoung memiliki kekuatan luar biasa yang seolah-olah mewujudkan kematian itu sendiri. Mereka yang menghalangi jalannya akan jatuh ke dalam kehancuran mengerikan tanpa sempat berteriak."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101896",
+      "name": "Dongyoung",
+      "subname": "Words of a Wraith",
+      "affiliation": "Shinji",
+      "flavor": "Hanya dengan beberapa kata saja sudah cukup untuk menjerumuskan seseorang ke jalan kematian. Namun, terkadang mereka yang terjerat oleh ikatan yang dalam dapat lolos dari jalan kematian dan berhasil selamat.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189601",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\n - Memberikan Deadly Poison. [Rate: 40%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari M. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189602",
+        "name": "Breath of the Underworld",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 60% dari M. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 19% dari M. ATK saat target terkena [Poison].\n - Semua Ally\n - Menerapkan Barrier sebesar 55% dari M. ATK caster. [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 70% dari M. ATK.\n - Meningkatkan Damage: Ke 22% Fixed Damage.",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189603",
+        "name": "Touch of the Abyss",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 130% dari M. ATK sebanyak 1x.\n - Fear. [Rate: 45%] [Durasi: 2 turn]\n - Memberikan Deadly Poison. [Rate: 60%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Rate: Deadly Poison Rate menjadi 75%.",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189604",
+        "name": "Companion of the Underworld",
+        "desc": "Diri Sendiri\n - Peningkatan Effect Hit Rate Setara ATK. [Selalu Aktif]\n - Hidup Kembali dalam kondisi Indomitable saat mati. [Diserang 8x] (Aktif 1x per battle)\n - Semua Ally\n - Memberikan Peningkatan Magic Damage. [Selalu Aktif]\n - Memulihkan HP sebesar 55% dari M. ATK caster saat Indomitable aktif.\n - Semua Musuh\n - Memberikan Damage sebesar 50% dari M. ATK 1x saat skill Ally aktif sebanyak 2x.\n - Memberikan Deadly Poison saat skill Ally aktif sebanyak 2x [Rate: 100%] [Durasi: 2 turn]\n - 100% peluang memicu 1 Stack Penurunan Healing Diterima saat skill Ally aktif sebanyak 2x. [Maks. 3 Stack]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Magic Damage menjadi 20%.\nTranscend Lv.2 Effect\n - Ally di baris yang sama dengan diri sendiri (Tipe Magic)\n - Menambahkan Efek: Kebal Semua Damage. [Durasi: 1 turn]\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambahkan Efek: Meningkatkan jumlah Hit dari efek Indomitable sebanyak 1x saat Ally mati.\n - Semua Musuh\n - Menambahkan Efek: Magic Vulnerability sebesar 20% [Rate: 100%] [Durasi: 2 turn]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Meningkatkan Semua ATK sebesar 12%.",
+      "transcend_2": "Meningkatkan Semua ATK sebesar 6%.",
+      "transcend_3": "Meningkatkan HP sebesar 18%.",
+      "transcend_4": "Meningkatkan Effect Hit Rate sebesar 24%.",
+      "transcend_5": "Meningkatkan Semua ATK sebesar 12%.",
+      "transcend_6": "Meningkatkan Semua ATK sebesar 6%.",
+      "transcend_7": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_8": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_9": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_10": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_11": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%.",
+      "transcend_12": "Meningkatkan Semua ATK, DEF, dan HP sebesar 2%."
+    },
+    "profile": {
+      "cv": "越川 瑞樹",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "02 / 04",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "Aries",
+      "likes": "Judas, Hayeon, Abyss, kontemplasi, mengganggu orang yang disukai",
+      "dislikes": "Sunran, keadilan, cahaya terang di Bumi",
+      "story": "Hanya dengan beberapa kata saja sudah cukup untuk menjerumuskan seseorang ke jalan kematian. Namun, terkadang mereka yang terjerat oleh ikatan yang dalam dapat lolos dari jalan kematian dan berhasil selamat."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101895",
+      "name": "Dongyoung",
+      "subname": "Judas's Servant",
+      "affiliation": "Shinji",
+      "flavor": "Dongyoung bertemu dengan Iblis Agung yang tidak kehilangan kekuatan dan keagungannya bahkan di dalam Abyss. Dia mengakui Iblis Agung tersebut, yang bahkan tidak bisa ditaklukkan oleh Abyss itu, sebagai tuannya.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189501",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 90% dari M. ATK sebanyak 1x.\n - Memberikan Deadly Poison. [Rate: 40%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 90% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189502",
+        "name": "Breath of the Underworld",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 55% dari M. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 16% dari M. ATK saat target terkena [Poison].\n - Semua Ally\n - Menerapkan Barrier sebesar 50% dari M. ATK caster. [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 55% dari P. ATK.",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189503",
+        "name": "Touch of the Abyss",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 120% dari M. ATK sebanyak 1x.\n - Fear. [Rate: 45%] [Durasi: 2 turn]\n - Memberikan Deadly Poison. [Rate: 60%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari P. ATK.",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189504",
+        "name": "Companion of the Underworld",
+        "desc": "Diri Sendiri\n - Peningkatan Effect Hit Rate Setara ATK. [Selalu Aktif]\n - Hidup Kembali dalam kondisi Indomitable saat mati. [Diserang 8x] (Aktif 1x per battle)\n - Semua Ally\n - Memberikan Peningkatan Magic Damage. [Selalu Aktif]\n - Memulihkan HP sebesar 50% dari M. ATK caster saat Indomitable aktif.\n - Semua Musuh\n - Memberikan Damage sebesar 45% dari M. ATK 1x saat skill Ally aktif sebanyak 2x.\n - Memberikan Deadly Poison saat skill Ally aktif sebanyak 2x [Rate: 100%] [Durasi: 2 turn]\n - 100% peluang memicu 1 Stack Penurunan Healing Diterima saat skill Ally aktif sebanyak 2x. [Maks. 3 Stack]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Magic Damage menjadi 13%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "越川 瑞樹",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "02 / 04",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "Aries",
+      "likes": "Judas, Hayeon, Abyss, kontemplasi, mengganggu orang yang disukai",
+      "dislikes": "Sunran, keadilan, cahaya terang di Bumi",
+      "story": "Dongyoung bertemu dengan Iblis Agung yang tidak kehilangan kekuatan dan keagungannya bahkan di dalam Abyss. Dia mengakui Iblis Agung tersebut, yang bahkan tidak bisa ditaklukkan oleh Abyss itu, sebagai tuannya."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101894",
+      "name": "Dongyoung",
+      "subname": "Whispering Demon",
+      "affiliation": "Shinji",
+      "flavor": "Dongyoung mendekati jiwa-jiwa yang jatuh ke dalam Abyss. Lalu, di tengah keputusasaan mereka yang semakin dalam, dia akan menyemangati mereka dengan janji-janji bahwa mungkin masih ada jalan keluar. Dia senang melihat wajah mereka yang penuh penderitaan setelah berjuang untuk melarikan diri dan berakhir dalam keputusasaan.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10189401",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 80% dari M. ATK sebanyak 1x.\n - Memberikan Deadly Poison. [Rate: 35%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 80% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018901.webp"
+      },
+      "Skill 1": {
+        "id": "10189402",
+        "name": "Breath of the Underworld",
+        "desc": "Semua Musuh\n - Memberikan Damage sebesar 50% dari M. ATK sebanyak 1x.\n - Memberikan Fixed Damage tambahan sebesar 13% dari M. ATK saat target terkena [Poison].\n - Semua Ally\n - Menerapkan Barrier sebesar 40% dari M. ATK caster. [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 50% dari P. ATK.",
+        "cooltime": "⏱️ CT: 120s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018902.webp"
+      },
+      "Skill 2": {
+        "id": "10189403",
+        "name": "Touch of the Abyss",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 110% dari M. ATK sebanyak 1x.\n - Fear. [Rate: 35%] [Durasi: 2 turn]\n - Memberikan Deadly Poison. [Rate: 55%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 110% dari P. ATK.",
+        "cooltime": "⏱️ CT: 112s",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018903.webp"
+      },
+      "Passive": {
+        "id": "10189404",
+        "name": "Companion of the Underworld",
+        "desc": "Diri Sendiri\n - Peningkatan Effect Hit Rate Setara ATK. [Selalu Aktif]\n - Hidup Kembali dalam kondisi Indomitable saat mati. [Diserang 8x] (Aktif 1x per battle)\n - Semua Ally\n - Memberikan Peningkatan Magic Damage. [Selalu Aktif]\n - Memulihkan HP sebesar 40% dari M. ATK caster saat Indomitable aktif.\n - Semua Musuh\n - Memberikan Damage sebesar 40% dari M. ATK 1x saat skill Ally aktif sebanyak 2x.\n - Memberikan Deadly Poison saat skill Ally aktif sebanyak 2x [Rate: 100%] [Durasi: 2 turn]\n - 100% peluang memicu 1 Stack Penurunan Healing Diterima saat skill Ally aktif sebanyak 2x. [Maks. 3 Stack]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Magic Damage menjadi 10%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "越川 瑞樹",
+      "species": "???",
+      "gender": "1",
+      "bloodType": "4",
+      "birthday": "02 / 04",
+      "age": "0",
+      "height": "189",
+      "weight": "70",
+      "constellation": "Aries",
+      "likes": "Judas, Hayeon, Abyss, kontemplasi, mengganggu orang yang disukai",
+      "dislikes": "Sunran, keadilan, cahaya terang di Bumi",
+      "story": "Dongyoung mendekati jiwa-jiwa yang jatuh ke dalam Abyss. Lalu, di tengah keputusasaan mereka yang semakin dalam, dia akan menyemangati mereka dengan janji-janji bahwa mungkin masih ada jalan keluar. Dia senang melihat wajah mereka yang penuh penderitaan setelah berjuang untuk melarikan diri dan berakhir dalam keputusasaan."
+    }
+  }
+]
