@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "Velika",
+      "subname": "Sorcière lunaire des ténèbres",
+      "affiliation": "Aventuriers",
+      "flavor": "La douleur n'est que temporaire. C'est un petit prix à payer pour faire un pas de plus vers la vérité de l'univers. Maintenant, je pense que je vais fouiller dans la collection de la Liste des livres interdits de l'Académie.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 120 % de l'ATQ MAG 1 fois.\n - Dégâts supplémentaires équivalant à 115 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "Tous les ennemis\n - Dans la Tour Céleste et la Tour des épreuves, 100 % de Taux d'infliger Réduction de la durée de bonus de la cible de 3 tour(s).\n - Inflige des dégâts ignorant la défense équivalents à 80 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires avec Défense ignorée équivalant à 235 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 95 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires de Perçage équivalant à 270 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ PHY\nTranscend Lv.6 Effect\n - Ajout d'effet : 60 % de chances d'infliger Silence [Durée : 2 tour(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "Soi-même\n - Tolérance de la Tour [Permanent]\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 160 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Réduit le temps de recharge des compétences de 12s lorsqu'un ennemi tombe au combat.\n - Tous les alliés\n - Augmentation de dégâts dans la Tour Céleste et la Tour des épreuves [Permanent]\n - Augmentation des dégâts de coup critique dans la Tour Céleste et la Tour des épreuves [Permanent]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 45%\n - Augmente l'effet : l'absorption de la Barrière devient égale à 160 % de l'ATQ PHY.\nTranscend Lv.2 Effect\n - Gain d'effet : Absorption de la Barrière correspond à 185 % de l’ATQ MAG\n - Ajoute un effet : Confère une Barrière égale à 185 % de l'ATQ MAG du lanceur lorsque les PV tombent à 50 % ou moins. [Durée : 3 Tour(s)] [Une fois par Combat]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "Ombre de la sorcière",
+        "desc": "Tous les ennemis\n - 39 % Altération de PV\n - Inflige des dégâts perçants équivalents à 195 % de l'ATQ MAG 1 fois\n - Inflige des dégâts perçants équivalents à 215 % de l'ATQ MAG 1 fois\nSkill Enhancement Effect\n - Hausse des dégâts : 215 % de l'ATQ MAG",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "Humain",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "24 / 09",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Balance",
+      "likes": "Expériences, recherches, vérités, chocolat, salade, divers équipements magiques",
+      "dislikes": "Les Seven Knights, le Royaume Céleste, Ariel, manque de savoir",
+      "story": "La douleur n'est que temporaire. C'est un petit prix à payer pour faire un pas de plus vers la vérité de l'univers. Maintenant, je pense que je vais fouiller dans la collection de la Liste des livres interdits de l'Académie."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "Velika",
       "subname": "Flamme des ténèbres",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ MAG 1 fois.\n - Tous les alliés\n - Réduit les temps de recharge des compétences de 9s dans la Tour Céleste et la Tour des épreuves.\n - Réduit les temps de recharge des compétences de 12s dans la Tour Céleste et la Tour des épreuves.\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ MAG\n - Gain d'effet : Réduction du temps de recharge de compétences 12 s",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ MAG 1 fois.\n - Dégâts supplémentaires équivalant à 90 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ MAG",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "Météorite",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 105 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 40 % de l'ATQ MAG en cas de coup critique\n - Inflige des dégâts supplémentaires équivalents à 50 % de l'ATQ MAG en cas de coup critique\n - A 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ MAG\n - Ajoute des dégâts : Inflige des dégâts supplémentaires égaux à 50 % de l'ATQ MAG lors d'un coup critique.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tous les ennemis\n - Dans la Tour Céleste et la Tour des épreuves, 100 % de Taux d'infliger Réduction de la durée de bonus de la cible de 3 tour(s).\n - Inflige des dégâts ignorant la défense équivalents à 80 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires avec Défense ignorée équivalant à 180 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Effet supplémentaire : Dans la Tour Céleste et la Tour des épreuves, 100 % de Taux d'infliger Réduction de la durée de bonus de 3 tour(s).",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "Apparitions des ténèbres",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 105 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts équivalents à 120 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 55 % de l'ATQ MAG en cas de coup critique\n - A 100 % de chances d'infliger Vulnérabilité à la magie [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 120 % de l'ATQ MAG\n - Gain d'effet : Vulnérabilité à la magie 22 %\nTranscend Lv.6 Effect\n - Ajout d'effet : 60 % de chances d'infliger Silence [Durée : 2 tour(s)]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 80 % de l'ATQ MAG 1 fois\n - Inflige des dégâts perçants équivalents à 95 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires de Perçage équivalant à 205 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ MAG\nTranscend Lv.6 Effect\n - Ajout d'effet : 60 % de chances d'infliger Silence [Durée : 2 tour(s)]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "Bénédiction de la lune noire",
-        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 160 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Tous les alliés\n - Confère Augmentation des dégâts magiques dans la Tour Céleste et la Tour des épreuves. [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 33%\n - Gain d'effet : Augmentation des dégâts magiques 31 %\nTranscend Lv.2 Effect\n - Gain d'effet : Absorption de la Barrière correspond à 185 % de l’ATQ MAG\n - Ajoute un effet : Confère une Barrière égale à 185 % de l'ATQ MAG du lanceur lorsque les PV tombent à 50 % ou moins. [Durée : 3 Tour(s)] [Une fois par Combat]",
+        "desc": "Soi-même\n - Tolérance de la Tour [Permanent]\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 160 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Réduit le temps de recharge des compétences de 12s lorsqu'un ennemi tombe au combat.\n - Tous les alliés\n - Augmentation de dégâts dans la Tour Céleste et la Tour des épreuves [Permanent]\n - Augmentation des dégâts de coup critique dans la Tour Céleste et la Tour des épreuves [Permanent]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 45%\n - Gain d'effet : Augmentation des dégâts 28 %\nTranscend Lv.2 Effect\n - Gain d'effet : Absorption de la Barrière correspond à 185 % de l’ATQ MAG\n - Ajoute un effet : Confère une Barrière égale à 185 % de l'ATQ MAG du lanceur lorsque les PV tombent à 50 % ou moins. [Durée : 3 Tour(s)] [Une fois par Combat]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Balance",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 100 % de l'ATQ PHY",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "Météorite",
         "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 50 % de l'ATQ MAG en cas de coup critique\n - A 60 % de chances d'infliger Brûlure [Durée : 10 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 100 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "Apparitions des ténèbres",
         "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 50 % de l'ATQ MAG en cas de coup critique\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 1 tour(s).\nSkill Enhancement Effect\n - Hausse des dégâts : 100 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "Bénédiction de la lune noire",
         "desc": "Tous les alliés\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Soi-même\n - Confère Barrière équivalente à 20 % des PV max du lanceur lorsque les PV tombent à 50 % ou moins [Durée : 3 tour(s)] (1 fois par combat)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 25%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 100 % de l'ATQ MAG 1 fois.\nSkill Enhancement Effect\n - Hausse des dégâts : 100 % de l'ATQ PHY",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "Météorite",
         "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 105 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 40 % de l'ATQ MAG en cas de coup critique\n - A 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 105 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "Apparitions des ténèbres",
         "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 105 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 55 % de l'ATQ MAG en cas de coup critique\n - A 100 % de chances d'infliger Vulnérabilité à la magie [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 105 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "Bénédiction de la lune noire",
         "desc": "Tous les alliés\n - Confère Augmentation du taux de coup critique [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 19%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ MAG 1 fois.\n - Tous les alliés\n - Réduit les temps de recharge des compétences de 7s dans la Tour Céleste et la Tour des épreuves.\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 90 % de l'ATQ MAG 1 fois.\n - Dégâts supplémentaires équivalant à 80 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 90 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "Météorite",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 95 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 40 % de l'ATQ MAG en cas de coup critique\n - A 60 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tous les ennemis\n - Inflige des dégâts ignorant la défense équivalents à 75 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires avec Défense ignorée équivalant à 165 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "Apparitions des ténèbres",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 95 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 50 % de l'ATQ MAG en cas de coup critique\n - A 100 % de chances d'infliger Vulnérabilité à la magie [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 95 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 75 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires de Perçage équivalant à 190 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "Bénédiction de la lune noire",
-        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 145 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Tous les alliés\n - Confère Augmentation des dégâts magiques dans la Tour Céleste et la Tour des épreuves. [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 21%\n - Augmente l'effet : l'absorption de la Barrière devient égale à 145 % de l'ATQ PHY.",
+        "desc": "Soi-même\n - Tolérance de la Tour [Permanent]\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 145 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Réduit le temps de recharge des compétences de 10s lorsqu'un ennemi tombe au combat.\n - Tous les alliés\n - Augmentation de dégâts dans la Tour Céleste et la Tour des épreuves [Permanent]\n - Augmentation des dégâts de coup critique dans la Tour Céleste et la Tour des épreuves [Permanent]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 33%\n - Augmente l'effet : l'absorption de la Barrière devient égale à 145 % de l'ATQ PHY.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Balance",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ MAG 1 fois.\n - Tous les alliés\n - Réduit les temps de recharge des compétences de 5s dans la Tour Céleste et la Tour des épreuves.\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 80 % de l'ATQ MAG 1 fois.\n - Dégâts supplémentaires équivalant à 70 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 80 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "Météorite",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 85 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 35 % de l'ATQ MAG en cas de coup critique\n - A 55 % de chances d'infliger Brûlure [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 85 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tous les ennemis\n - Inflige des dégâts ignorant la défense équivalents à 65 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires avec Défense ignorée équivalant à 150 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 65 % de l'ATQ PHY",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "Apparitions des ténèbres",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 85 % de l'ATQ MAG 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 45 % de l'ATQ MAG en cas de coup critique\n - A 100 % de chances d'infliger Vulnérabilité à la magie [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 85 % de l'ATQ PHY",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tous les ennemis\n - Inflige des dégâts perçants équivalents à 65 % de l'ATQ MAG 1 fois\n - Dégâts supplémentaires de Perçage équivalant à 170 % de l'ATQ MAG dans la Tour Céleste et la Tour des épreuves\nSkill Enhancement Effect\n - Hausse des dégâts : 65 % de l'ATQ PHY",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "Bénédiction de la lune noire",
-        "desc": "Soi-même\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 130 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Tous les alliés\n - Confère Augmentation des dégâts magiques dans la Tour Céleste et la Tour des épreuves. [Toujours actif]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 15%\n - Augmente l'effet : l'absorption de la Barrière devient égale à 130 % de l'ATQ PHY.",
+        "desc": "Soi-même\n - Tolérance de la Tour [Permanent]\n - Confère Augmentation du taux de coup critique [Toujours actif]\n - Confère Barrière équivalente à 130 % de l'ATQ MAG du lanceur [Durée : 3 tour(s)] [1 fois par manche]\n - Réduit le temps de recharge des compétences de 8s lorsqu'un ennemi tombe au combat.\n - Tous les alliés\n - Augmentation de dégâts dans la Tour Céleste et la Tour des épreuves [Permanent]\n - Augmentation des dégâts de coup critique dans la Tour Céleste et la Tour des épreuves [Permanent]\nSkill Enhancement Effect\n - Gain d'effet : Augmentation de taux de coup critique 27%\n - Augmente l'effet : l'absorption de la Barrière devient égale à 130 % de l'ATQ PHY.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Balance",

@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401887",
+      "name": "Hayeon",
+      "subname": "Final Priestess",
+      "affiliation": "Guardians of the Boundary",
+      "flavor": "Hayeon's noble and selfless sacrifice had sealed the rift, fulfilling the Night Elves' long-cherished wish. With no further need to guard the breach in the darkness, she became known as the \\\"Final Priestess\\\" who brought a long and storied era to an end.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "202",
+      "Defense": "124",
+      "HP": "821",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 202,
+        "Defense": 124,
+        "HP": 821
+      },
+      "level30": {
+        "Magical Attack": 898,
+        "Defense": 559,
+        "HP": 3692
+      },
+      "levelUpBonus": {
+        "Magical Attack": 24,
+        "Defense": 15,
+        "HP": 99
+      },
+      "reinforceBonus": {
+        "Magical Attack": 71,
+        "Defense": 43,
+        "HP": 287
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 898,
+          "Defense": 559,
+          "HP": 3692
+        },
+        "+1": {
+          "Magical Attack": 969,
+          "Defense": 602,
+          "HP": 3979
+        },
+        "+2": {
+          "Magical Attack": 1040,
+          "Defense": 645,
+          "HP": 4266
+        },
+        "+3": {
+          "Magical Attack": 1111,
+          "Defense": 688,
+          "HP": 4553
+        },
+        "+4": {
+          "Magical Attack": 1182,
+          "Defense": 731,
+          "HP": 4840
+        },
+        "+5": {
+          "Magical Attack": 1253,
+          "Defense": 774,
+          "HP": 5127
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40188701",
+        "name": "",
+        "desc": "2 Enemies\n - Deals damage equal to 70% of Magic Attack 1 time(s).\n - 40% chance to inflict Bleed [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 70% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018801.webp"
+      },
+      "Skill 1": {
+        "id": "40188702",
+        "name": "",
+        "desc": "All Enemies\n - 100% chance to inflict 2 Buff Removal(s).\n - 75% chance to inflict a stack of Bleed for each buff removed. [Duration: 2 Turn(s)]\n - 100% chance to inflict a 2 turn Debuff Duration Boost on the target.\n - 55% chance to inflict Paralysis. [Duration: 2 Turn(s)]\n - Deals damage equal to 60% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 60% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018802.webp"
+      },
+      "Skill 2": {
+        "id": "40188703",
+        "name": "",
+        "desc": "All Allies\n - Grants 2 Debuff Removal(s).\n - Grants Continuous Healing for each debuff removed. [Duration: 3 Turn(s)]\n - Grants a Buff Duration Boost of 2 turn(s).\n - Grants All Damage Immunity. [Duration: 1 Turn(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018803.webp"
+      },
+      "Passive": {
+        "id": "40188704",
+        "name": "",
+        "desc": "Self\n - Grants Ally Role Support. [Always Active]\n - 63% chance to perform a Cover. [Always Active]\n - Grants Guts. [Once per Battle]\n - Grants a Barrier equal to 135% of the caster's Magic Attack upon triggering Guts. [Duration: 3 Turn(s)]\n - Awakening Gauge Boost increases to 11 when an ally falls in battle.\n - Awakening Gauge Boost increases to 11 when an enemy falls in battle.\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - Inflicts Unable to Recover upon triggering Guts. [Duration: 2 Turn(s)]\n - Inflicts Buff Block upon triggering Guts. [Duration: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 22% of the caster's Max HP when HP falls to 50% or lower. [1 Time(s) per Battle]\nTranscend Lv.2 Effect\n - All Allies\n - Adds Effect: Barrier equal to 25% of the caster's Max HP when HP falls to 50% or lower. [Duration: 2 Turn(s)] [Once per Battle]\nTranscend Lv.6 Effect\n - Enemies (Attack, Magic)\n - Adds Effect: 22% All Attack Reduction. [Always Active]\n - Enemies (Defense, Support, Universal)\n - Adds Effect: 24% Defense Reduction. [Always Active]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018804.webp"
+      },
+      "Awaken Skill": {
+        "id": "40188707",
+        "name": "Gate of Heavenly Mandate",
+        "desc": "All Allies\n - Reduces skill cooldowns by 20s.\n - Grants a Barrier equal to 30% of the caster's Max HP. [Duration: 2 Turn(s)]\n - All Enemies\n - 100% chance to inflict Skill Cooldown Increase. [Increased by: 24s]\n - 100% chance to inflict Buff Block. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - All Allies\n - Adds Effect: Grants a Barrier equal to 30% of the caster's Max HP. [Duration: 2 Turn(s)]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Night Elf",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "172",
+      "weight": "52",
+      "constellation": "Scorpio",
+      "likes": "Sunran, flowers, leisureliness, training, the priestesses, peace",
+      "dislikes": "Dongyoung, demons, the Abyss, malevolent entities",
+      "story": "Hayeon's noble and selfless sacrifice had sealed the rift, fulfilling the Night Elves' long-cherished wish. With no further need to guard the breach in the darkness, she became known as the \\\"Final Priestess\\\" who brought a long and storied era to an end."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101886",
+      "name": "Hayeon",
+      "subname": "Abyssal Priestess",
+      "affiliation": "Guardians of the Boundary",
+      "flavor": "After striking a bargain with the Archdemon, a deep void took root within Hayeon's body and soul. Yet, she remained unaware of the power that was slowly permeating every fiber of her being.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "176",
+      "Defense": "108",
+      "HP": "714",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 176,
+        "Defense": 108,
+        "HP": 714
+      },
+      "level30": {
+        "Magical Attack": 785,
+        "Defense": 485,
+        "HP": 3208
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 13,
+        "HP": 86
+      },
+      "reinforceBonus": {
+        "Magical Attack": 62,
+        "Defense": 38,
+        "HP": 250
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 785,
+          "Defense": 485,
+          "HP": 3208
+        },
+        "+1": {
+          "Magical Attack": 847,
+          "Defense": 523,
+          "HP": 3458
+        },
+        "+2": {
+          "Magical Attack": 909,
+          "Defense": 561,
+          "HP": 3708
+        },
+        "+3": {
+          "Magical Attack": 971,
+          "Defense": 599,
+          "HP": 3958
+        },
+        "+4": {
+          "Magical Attack": 1033,
+          "Defense": 637,
+          "HP": 4208
+        },
+        "+5": {
+          "Magical Attack": 1095,
+          "Defense": 675,
+          "HP": 4458
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10188601",
+        "name": "",
+        "desc": "2 Enemies\n - Deals damage equal to 55% of Magic Attack 1 time(s).\n - 35% chance to inflict Bleed [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 70% of Magic Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018801.webp"
+      },
+      "Skill 1": {
+        "id": "10188602",
+        "name": "Spirit Shackles",
+        "desc": "All Enemies\n - 100% chance to inflict 2 Buff Removal(s).\n - 60% chance to inflict a stack of Bleed for each buff removed. [Duration: 2 Turn(s)]\n - 100% chance to inflict a 2 turn Debuff Duration Boost on the target.\n - 45% chance to inflict Paralysis. [Duration: 2 Turn(s)]\n - Deals damage equal to 60% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Chance: Paralysis chance becomes 55%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018802.webp"
+      },
+      "Skill 2": {
+        "id": "10188603",
+        "name": "Moon-Sealing Gate",
+        "desc": "All Allies\n - Grants 2 Debuff Removal(s).\n - Grants Continuous Healing for each debuff removed. [Duration: 2 Turn(s)]\n - Grants a Buff Duration Boost of 2 turn(s).\n - Grants All Damage Immunity. [Duration: 1 Turn(s)]\nSkill Enhancement Effect\n - Adds Effect: All Damage Immunity. [Duration: 1 Turn(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018803.webp"
+      },
+      "Passive": {
+        "id": "10188604",
+        "name": "Ascetic of the Abyss",
+        "desc": "Self\n - Grants Ally Role Support. [Always Active]\n - 55% chance to perform a Cover. [Always Active]\n - Grants Guts. [Once per Battle]\n - Grants a Barrier equal to 135% of the caster's Magic Attack upon triggering Guts. [Duration: 3 Turn(s)]\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - Inflicts Unable to Recover upon triggering Guts. [Duration: 2 Turn(s)]\n - Inflicts Buff Block upon triggering Guts. [Duration: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 19% of the caster's Max HP when HP falls to 50% or lower. [1 Time(s) per Battle]\nSkill Enhancement Effect\n - Increases Chance: Cover chance increases to 63%.\n - Increases Healing: HP Recovery amount becomes equal to 22% of the caster's Max HP.\nTranscend Lv.2 Effect\n - All Allies\n - Adds Effect: Barrier equal to 25% of the caster's Max HP when HP falls to 50% or lower. [Duration: 2 Turn(s)] [Once per Battle]\nTranscend Lv.6 Effect\n - Enemies (Attack, Magic)\n - Adds Effect: 22% All Attack Reduction. [Always Active]\n - Enemies (Defense, Support, Universal)\n - Adds Effect: 24% Defense Reduction. [Always Active]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018804.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Increases Defense by 12%.",
+      "transcend_2": "Increases Defense by 6%.",
+      "transcend_3": "Increases HP by 18%.",
+      "transcend_4": "Increases Effect Hit Rate by 24%.",
+      "transcend_5": "Increases Defense by 12%.",
+      "transcend_6": "Increases Defense by 6%.",
+      "transcend_7": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_8": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_9": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_10": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_11": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_12": "Increases All Attack, Defense, and HP by 2%."
+    },
+    "profile": {
+      "cv": "0",
+      "species": "Night Elf",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "172",
+      "weight": "52",
+      "constellation": "Scorpio",
+      "likes": "Sunran, flowers, leisureliness, training, the priestesses, peace",
+      "dislikes": "Dongyoung, demons, the Abyss, malevolent entities",
+      "story": "After striking a bargain with the Archdemon, a deep void took root within Hayeon's body and soul. Yet, she remained unaware of the power that was slowly permeating every fiber of her being."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101885",
+      "name": "Hayeon",
+      "subname": "Wandering Priestess",
+      "affiliation": "Guardians of the Boundary",
+      "flavor": "Though Hayeon endlessly wandered the Abyss, her spirit never broke. She held fast to the hope that, one day, her sister would come to find her.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "126",
+      "Defense": "77",
+      "HP": "510",
+      "Speed": "17",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 126,
+        "Defense": 77,
+        "HP": 510
+      },
+      "level30": {
+        "Magical Attack": 561,
+        "Defense": 338,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 9,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Magical Attack": 44,
+        "Defense": 27,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 561,
+          "Defense": 338,
+          "HP": 2279
+        },
+        "+1": {
+          "Magical Attack": 605,
+          "Defense": 365,
+          "HP": 2458
+        },
+        "+2": {
+          "Magical Attack": 649,
+          "Defense": 392,
+          "HP": 2637
+        },
+        "+3": {
+          "Magical Attack": 693,
+          "Defense": 419,
+          "HP": 2816
+        },
+        "+4": {
+          "Magical Attack": 737,
+          "Defense": 446,
+          "HP": 2995
+        },
+        "+5": {
+          "Magical Attack": 781,
+          "Defense": 473,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10188501",
+        "name": "",
+        "desc": "2 Enemies\n - Deals damage equal to 50% of Magic Attack 1 time(s).\n - 30% chance to inflict Bleed [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 50% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018801.webp"
+      },
+      "Skill 1": {
+        "id": "10188502",
+        "name": "Spirit Shackles",
+        "desc": "All Enemies\n - 100% chance to inflict 1 Buff Removal(s).\n - 60% chance to inflict a stack of Bleed for each buff removed. [Duration: 2 Turn(s)]\n - 100% chance to inflict a 2 turn Debuff Duration Boost on the target.\n - 45% chance to inflict Paralysis. [Duration: 2 Turn(s)]\n - Deals damage equal to 55% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 55% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018802.webp"
+      },
+      "Skill 2": {
+        "id": "10188503",
+        "name": "Moon-Sealing Gate",
+        "desc": "All Allies\n - Grants 1 Debuff Removal(s).\n - Grants Continuous Healing for each debuff removed. [Duration: 2 Turn(s)]\n - Grants a Buff Duration Boost of 2 turn(s).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018803.webp"
+      },
+      "Passive": {
+        "id": "10188504",
+        "name": "Ascetic of the Abyss",
+        "desc": "Self\n - Grants Ally Role Support. [Always Active]\n - 44% chance to perform a Cover. [Always Active]\n - Grants Guts. [Once per Battle]\n - Grants a Barrier equal to 125% of the caster's Magic Attack upon triggering Guts. [Duration: 3 Turn(s)]\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - Inflicts Unable to Recover upon triggering Guts. [Duration: 2 Turn(s)]\n - Inflicts Buff Block upon triggering Guts. [Duration: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 17% of the caster's Max HP when HP falls to 50% or lower. [1 Time(s) per Battle]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Night Elf",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "172",
+      "weight": "52",
+      "constellation": "Scorpio",
+      "likes": "Sunran, flowers, leisureliness, training, the priestesses, peace",
+      "dislikes": "Dongyoung, demons, the Abyss, malevolent entities",
+      "story": "Though Hayeon endlessly wandered the Abyss, her spirit never broke. She held fast to the hope that, one day, her sister would come to find her."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101884",
+      "name": "Hayeon",
+      "subname": "Apprentice Priestess",
+      "affiliation": "Guardians of the Boundary",
+      "flavor": "Before offering her prayers, Hayeon ritually purified herself in the pond waters, still fresh with the morning dew. Her determination to become a priestess her older sister would be proud of left no room to feel even the biting cold.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "4",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "90",
+      "Defense": "55",
+      "HP": "364",
+      "Speed": "15",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 90,
+        "Defense": 55,
+        "HP": 364
+      },
+      "level30": {
+        "Magical Attack": 409,
+        "Defense": 229,
+        "HP": 1640
+      },
+      "levelUpBonus": {
+        "Magical Attack": 11,
+        "Defense": 6,
+        "HP": 44
+      },
+      "reinforceBonus": {
+        "Magical Attack": 30,
+        "Defense": 20,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 409,
+          "Defense": 229,
+          "HP": 1640
+        },
+        "+1": {
+          "Magical Attack": 439,
+          "Defense": 249,
+          "HP": 1767
+        },
+        "+2": {
+          "Magical Attack": 469,
+          "Defense": 269,
+          "HP": 1894
+        },
+        "+3": {
+          "Magical Attack": 499,
+          "Defense": 289,
+          "HP": 2021
+        },
+        "+4": {
+          "Magical Attack": 529,
+          "Defense": 309,
+          "HP": 2148
+        },
+        "+5": {
+          "Magical Attack": 559,
+          "Defense": 329,
+          "HP": 2275
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10188401",
+        "name": "",
+        "desc": "2 Enemies\n - Deals damage equal to 45% of Magic Attack 1 time(s).\n - 25% chance to inflict Bleed [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 45% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018801.webp"
+      },
+      "Skill 1": {
+        "id": "10188402",
+        "name": "Spirit Shackles",
+        "desc": "All Enemies\n - 100% chance to inflict 1 Buff Removal(s).\n - 55% chance to inflict a stack of Bleed for each buff removed. [Duration: 2 Turn(s)]\n - 100% chance to inflict a 1 turn Debuff Duration Boost on the target.\n - 35% chance to inflict Paralysis. [Duration: 2 Turn(s)]\n - Deals damage equal to 50% of Magic Attack 1 time(s).\nSkill Enhancement Effect\n - Increases Damage: To 50% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018802.webp"
+      },
+      "Skill 2": {
+        "id": "10188403",
+        "name": "Moon-Sealing Gate",
+        "desc": "All Allies\n - Grants 1 Debuff Removal(s).\n - Grants Continuous Healing for each debuff removed. [Duration: 2 Turn(s)]\n - Grants a Buff Duration Boost of 1 turn(s).",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018803.webp"
+      },
+      "Passive": {
+        "id": "10188404",
+        "name": "Ascetic of the Abyss",
+        "desc": "Self\n - Grants Ally Role Support. [Always Active]\n - 38% chance to perform a Cover. [Always Active]\n - Grants Guts. [Once per Battle]\n - Grants a Barrier equal to 110% of the caster's Magic Attack upon triggering Guts. [Duration: 3 Turn(s)]\n - Enemy with the highest current HP\n - Grants HP Swap upon triggering Guts.\n - Inflicts Unable to Recover upon triggering Guts. [Duration: 2 Turn(s)]\n - Inflicts Buff Block upon triggering Guts. [Duration: 2 Turn(s)]\n - All Allies\n - Heals HP equal to 15% of the caster's Max HP when HP falls to 50% or lower. [1 Time(s) per Battle]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1018804.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Night Elf",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "10 / 31",
+      "age": "0",
+      "height": "172",
+      "weight": "52",
+      "constellation": "Scorpio",
+      "likes": "Sunran, flowers, leisureliness, training, the priestesses, peace",
+      "dislikes": "Dongyoung, demons, the Abyss, malevolent entities",
+      "story": "Before offering her prayers, Hayeon ritually purified herself in the pond waters, still fresh with the morning dew. Her determination to become a priestess her older sister would be proud of left no room to feel even the biting cold."
+    }
+  }
+]

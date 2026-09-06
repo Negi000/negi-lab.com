@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401907",
+      "name": "Yoongun",
+      "subname": "Executor da Justiça Celestial",
+      "affiliation": "Mestres Ocultos",
+      "flavor": "Em vez de viver na covardia e fechar os olhos para o sofrimento do povo, Yoongun decidiu que preferia morrer com a cabeça erguida e sua integridade intacta, enfrentando os céus sem vergonha.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40190701",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 145% do ATQ Mágico 1x.\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\nSkill Enhancement Effect\n - Aumenta o Dano: Para 145% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "40190702",
+        "name": "",
+        "desc": "4 Inimigos\n - Causa dano igual a 50% do ATQ Mágico 3x.\n - Inflige 2 Remoção de Buff(s). [100% de Chance]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 50% do ATQ Físico.\nTranscend Lv.2 Effect\n - Adiciona Efeito: Ignora 40% do Defensivo.\nTranscend Lv.6 Effect\n - Adiciona Efeito: Ativa novamente [Saraivada Rápida] até 1 vez(es) com 70% de poder ao derrotar um inimigo com esta habilidade.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "40190703",
+        "name": "",
+        "desc": "Todos os Inimigos\n - 40% de chance de infligir Aura quando o HP atual do alvo estiver em 50% ou mais. [Duração: 2 Turno(s)]\n - 39% Alteração de HP\n - Causa dano de Perfuração igual a 58% do ATQ Mágico 3 vez(es). (O dano aumenta em até 50%, proporcional ao HP atual do alvo)\nSkill Enhancement Effect\n - Aumenta o Dano: Para 58% do ATQ Físico.\nTranscend Lv.2 Effect\n - Adiciona Efeito: Ignora 40% do Defensivo.\nTranscend Lv.6 Effect\n - Adiciona Efeito: Ativa novamente [Canhão Décuplo] até 1 vez(es) com 70% de poder ao derrotar um inimigo com esta habilidade.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "40190704",
+        "name": "",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede Aumento de Chance de Ataque no Ponto Fraco. [Sempre Ativo]\n - Concede uma Barreira igual a 185% do ATQ Mágico do conjurador. [Duração: 3 turno(s)]\n - * Ao formar 3 ou mais heróis do Tipo Mágico, concede o efeito abaixo\n - Ao ativar o próprio Ataque Básico 1 vezes, aumenta Anulação de Todo o Dano [Recebido 1 vezes] (máximo 6 vezes)\n - Aumenta a contagem de acertos da Anulação de Todos os Danos em 2 acerto(s) ao ativar uma habilidade 1 vez(es). [Máx. 6 acerto(s)]\n - Concede Remoção de Todos os Debuffs ao ser afetado por Controle de Grupo. [1 Vez(es) Por Batalha]\n - Concede Imunidade a Controle de Grupo quando um debuff é removido. [Duração: 2 Turno(s)]\n - 3 Inimigos\n - Ao usar qualquer ataque 2 vez(es), causa dano Perfurante igual a 75% do ATQ Mágico mais 22% do HP Máximo do alvo, 1 vez(es). (Dano baseado em HP limitado a 300% do Atacante do lançador.)\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 50%.\n - Aumenta Efeito: Aumento de Chance de Ataque no Ponto Fraco para 50%\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 185% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      },
+      "Awaken Skill": {
+        "id": "40190707",
+        "name": "Fogo Total",
+        "desc": "Todos os Inimigos\n - 50% de probabilidade de infligir Corda de Aprisionamento. [Duração: 2 Turno(s)]\n - Causa dano igual a 80% do ATQ Mágico 2x.\n - Causa dano que Ignora DEF igual a 80% do ATQ Mágico 2x.\nSkill Enhancement Effect\n - Adiciona Efeito: Ignora 65% do Defensivo.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgem",
+      "likes": "Sunran, o rei de Shinji, Shinji, o povo, subordinados, a culinária de Shinji, nova cultura e tecnologia",
+      "dislikes": "Funcionários corruptos, toda opressão contra qualquer povo",
+      "story": "Em vez de viver na covardia e fechar os olhos para o sofrimento do povo, Yoongun decidiu que preferia morrer com a cabeça erguida e sua integridade intacta, enfrentando os céus sem vergonha."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101906",
+      "name": "Yoongun",
+      "subname": "Magistrado da Fortaleza Celestial",
+      "affiliation": "Mestres Ocultos",
+      "flavor": "Reconhecido tanto por sua devoção ao povo quanto por sua lealdade inabalável ao Rei, Yoongun foi nomeado Magistrado de Skyward Keep, onde seus residentes viviam em segurança precária sob a ameaça constante representada pela fenda.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190601",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\nSkill Enhancement Effect\n - Aumenta o Dano: Para 130% do ATQ Mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190602",
+        "name": "Barragem Decuplicada",
+        "desc": "4 Inimigos\n - Causa dano igual a 35% do ATQ Mágico 3x.\n - Inflige 2 Remoção de Buff(s). [100% de Chance]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 43% do ATQ Mágico.\nTranscend Lv.2 Effect\n - Adiciona Efeito: Ignora 40% do Defensivo.\nTranscend Lv.6 Effect\n - Adiciona Efeito: Ativa novamente [Saraivada Rápida] até 1 vez(es) com 70% de poder ao derrotar um inimigo com esta habilidade.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190603",
+        "name": "Saraivada Rápida",
+        "desc": "Todos os Inimigos\n - 40% de chance de infligir Aura quando o HP atual do alvo estiver em 50% ou mais. [Duração: 2 Turno(s)]\n - 52% Alteração de HP\n - Causa dano igual a 50% do ATQ Mágico 3 vez(es). (O dano aumenta em até 50%, proporcional ao HP atual do alvo.)\n - Causa dano de Perfuração igual a 50% do ATQ Mágico 3 vez(es). (O dano aumenta em até 50%, proporcional ao HP atual do alvo)\nSkill Enhancement Effect\n - Adiciona Efeito: Perfuração\nTranscend Lv.2 Effect\n - Adiciona Efeito: Ignora 40% do Defensivo.\nTranscend Lv.6 Effect\n - Adiciona Efeito: Ativa novamente [Canhão Décuplo] até 1 vez(es) com 70% de poder ao derrotar um inimigo com esta habilidade.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190604",
+        "name": "Oficial de Shinji",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede Aumento de Chance de Ataque no Ponto Fraco. [Sempre Ativo]\n - Concede uma Barreira igual a 160% do ATQ Mágico do conjurador. [Duração: 3 turno(s)]\n - * Ao formar 3 ou mais heróis do Tipo Mágico, concede o efeito abaixo\n - Ao ativar o próprio Ataque Básico 1 vezes, aumenta Anulação de Todo o Dano [Recebido 1 vezes] (máximo 6 vezes)\n - Aumenta a contagem de acertos da Anulação de Todos os Danos em 2 acerto(s) ao ativar uma habilidade 1 vez(es). [Máx. 6 acerto(s)]\n - Concede Remoção de Todos os Debuffs ao ser afetado por Controle de Grupo. [1 Vez(es) Por Batalha]\n - Concede Imunidade a Controle de Grupo quando um debuff é removido. [Duração: 2 Turno(s)]\n - 3 Inimigos\n - Ao usar qualquer ataque 2 vez(es), causa dano Perfurante igual a 65% do ATQ Mágico mais 18% do HP Máximo do alvo, 1 vez(es). (Dano baseado em HP limitado a 300% do Atacante do lançador.)\nSkill Enhancement Effect\n - Aumenta Efeito: O limite da Bênção torna-se 25% do HP MÁX.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 185% do ATQ Mágico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Aumenta Todos ATQ em 12%.",
+      "transcend_2": "Aumenta Todos ATQ em 6%.",
+      "transcend_3": "Aumenta o HP em 18%.",
+      "transcend_4": "Aumenta o Dano Crítico em 24%.",
+      "transcend_5": "Aumenta Todos ATQ em 12%.",
+      "transcend_6": "Aumenta Todos ATQ em 6%.",
+      "transcend_7": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_8": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_9": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_10": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_11": "Aumenta Todos ATQ, DEF e HP em 2%.",
+      "transcend_12": "Aumenta Todos ATQ, DEF e HP em 2%."
+    },
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgem",
+      "likes": "Sunran, o rei de Shinji, Shinji, o povo, subordinados, a culinária de Shinji, nova cultura e tecnologia",
+      "dislikes": "Funcionários corruptos, toda opressão contra qualquer povo",
+      "story": "Reconhecido tanto por sua devoção ao povo quanto por sua lealdade inabalável ao Rei, Yoongun foi nomeado Magistrado de Skyward Keep, onde seus residentes viviam em segurança precária sob a ameaça constante representada pela fenda."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101905",
+      "name": "Yoongun",
+      "subname": "Inspetor Real Secreto",
+      "affiliation": "Mestres Ocultos",
+      "flavor": "Pelo bem das pessoas que desejavam apenas viver em paz, Yoongun aceitou o cargo de Inspetor Real Secreto. Ele prosseguiu para prender todos os membros do clã real e parentes da corte que estavam explorando o povo comum, mas acabou sendo removido do cargo por retaliação.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190501",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 90% do ATQ Mágico 1x.\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\nSkill Enhancement Effect\n - Aumenta o Dano: Para 90% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190502",
+        "name": "Barragem Decuplicada",
+        "desc": "4 Inimigos\n - Causa dano igual a 31% do ATQ Mágico 3x.\n - Inflige 1 Remoção de Buff(s). [100% de Chance]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 31% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190503",
+        "name": "Saraivada Rápida",
+        "desc": "Todos os Inimigos\n - 40% de chance de infligir Aura quando o HP atual do alvo estiver em 50% ou mais. [Duração: 2 Turno(s)]\n - 58% Alteração de HP\n - Causa dano igual a 45% do ATQ Mágico 3 vez(es). (O dano aumenta em até 50%, proporcional ao HP atual do alvo.)\nSkill Enhancement Effect\n - Aumenta o Dano: Para 45% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190504",
+        "name": "Oficial de Shinji",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede Aumento de Chance de Ataque no Ponto Fraco. [Sempre Ativo]\n - Concede uma Barreira igual a 145% do ATQ Mágico do conjurador. [Duração: 3 turno(s)]\n - * Ao formar 3 ou mais heróis do Tipo Mágico, concede o efeito abaixo\n - Ao ativar o próprio Ataque Básico 1 vezes, aumenta Anulação de Todo o Dano [Recebido 1 vezes] (máximo 6 vezes)\n - Aumenta a contagem de acertos da Anulação de Todos os Danos em 2 acerto(s) ao ativar uma habilidade 1 vez(es). [Máx. 6 acerto(s)]\n - Concede Remoção de Todos os Debuffs ao ser afetado por Controle de Grupo. [1 Vez(es) Por Batalha]\n - Concede Imunidade a Controle de Grupo quando um debuff é removido. [Duração: 2 Turno(s)]\n - 3 Inimigos\n - Ao usar qualquer ataque 2 vez(es), causa dano Perfurante igual a 60% do ATQ Mágico mais 14% do HP Máximo do alvo, 1 vez(es). (Dano baseado em HP limitado a 150% do Atacante do lançador.)\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 21%.\n - Aumenta Efeito: Aumento de Chance de Ataque no Ponto Fraco para 25%\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 145% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgem",
+      "likes": "Sunran, o rei de Shinji, Shinji, o povo, subordinados, a culinária de Shinji, nova cultura e tecnologia",
+      "dislikes": "Funcionários corruptos, toda opressão contra qualquer povo",
+      "story": "Pelo bem das pessoas que desejavam apenas viver em paz, Yoongun aceitou o cargo de Inspetor Real Secreto. Ele prosseguiu para prender todos os membros do clã real e parentes da corte que estavam explorando o povo comum, mas acabou sendo removido do cargo por retaliação."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101904",
+      "name": "Yoongun",
+      "subname": "Excêntrico",
+      "affiliation": "Mestres Ocultos",
+      "flavor": "Durante o Dia, Yoongun treinava com sua espada. À noite, ele lia seus livros, recitando as palavras tão alto que o som chegava até à aldeia vizinha. Considerando-o excêntrico, as pessoas mantinham distância. Mas ele frequentemente oferecia uma mão amiga, consertando ferramentas agrícolas ou coletando ervas medicinais para os doentes, e as pessoas gradualmente passaram a confiar e a segui-lo.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190401",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 80% do ATQ Mágico 1x.\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\nSkill Enhancement Effect\n - Aumenta o Dano: Para 80% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190402",
+        "name": "Barragem Decuplicada",
+        "desc": "4 Inimigos\n - Causa dano igual a 28% do ATQ Mágico 3x.\n - Inflige 1 Remoção de Buff(s). [100% de Chance]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 28% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190403",
+        "name": "Saraivada Rápida",
+        "desc": "Todos os Inimigos\n - 30% de chance de infligir Aura quando o HP atual do alvo estiver em 50% ou mais. [Duração: 2 Turno(s)]\n - 64% Alteração de HP\n - Causa dano igual a 41% do ATQ Mágico 3 vez(es). (O dano aumenta em até 50%, proporcional ao HP atual do alvo.)\nSkill Enhancement Effect\n - Aumenta o Dano: Para 41% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190404",
+        "name": "Oficial de Shinji",
+        "desc": "Si Mesmo\n - Concede Bênção. [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede Aumento de Chance de Ataque no Ponto Fraco. [Sempre Ativo]\n - Concede uma Barreira igual a 130% do ATQ Mágico do conjurador. [Duração: 3 turno(s)]\n - * Ao formar 3 ou mais heróis do Tipo Mágico, concede o efeito abaixo\n - Ao ativar o próprio Ataque Básico 1 vezes, aumenta Anulação de Todo o Dano [Recebido 1 vezes] (máximo 6 vezes)\n - Aumenta a contagem de acertos da Anulação de Todos os Danos em 2 acerto(s) ao ativar uma habilidade 1 vez(es). [Máx. 6 acerto(s)]\n - Concede Remoção de Todos os Debuffs ao ser afetado por Controle de Grupo. [1 Vez(es) Por Batalha]\n - Concede Imunidade a Controle de Grupo quando um debuff é removido. [Duração: 2 Turno(s)]\n - 3 Inimigos\n - Ao usar qualquer ataque 2 vez(es), causa dano Perfurante igual a 50% do ATQ Mágico mais 10% do HP Máximo do alvo, 1 vez(es). (Dano baseado em HP limitado a 150% do Atacante do lançador.)\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 15%.\n - Aumenta Efeito: Aumento de Chance de Ataque no Ponto Fraco para 18%\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 130% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Humano",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgem",
+      "likes": "Sunran, o rei de Shinji, Shinji, o povo, subordinados, a culinária de Shinji, nova cultura e tecnologia",
+      "dislikes": "Funcionários corruptos, toda opressão contra qualquer povo",
+      "story": "Durante o Dia, Yoongun treinava com sua espada. À noite, ele lia seus livros, recitando as palavras tão alto que o som chegava até à aldeia vizinha. Considerando-o excêntrico, as pessoas mantinham distância. Mas ele frequentemente oferecia uma mão amiga, consertando ferramentas agrícolas ou coletando ervas medicinais para os doentes, e as pessoas gradualmente passaram a confiar e a segui-lo."
+    }
+  }
+]

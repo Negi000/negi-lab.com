@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "Velika",
+      "subname": "Dark Lunar Witch",
+      "affiliation": "Petualang",
+      "flavor": "Rasa sakit ini hanya sementara. Itu adalah harga kecil yang harus dibayar untuk selangkah lebih dekat menuju kebenaran alam semesta. Sekarang, aku harus mencarinya di koleksi buku rahasia di Akademi.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 120% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 115% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "Semua Musuh\n - Penurunan Durasi Buff target di Infinite Tower dan Tower of Trials sebanyak 3 turn. [Rate: 100%]\n - Memberikan Damage Abaikan DEF sebesar 80% dari M. ATK sebanyak 1x.\n - Memberikan Damage Abaikan DEF tambahan sebesar 235% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 80% dari P. ATK.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 95% dari M. ATK sebanyak 1x.\n - Memberikan Pierce Damage tambahan sebesar 270% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari P. ATK.\nTranscend Lv.6 Effect\n - Menambahkan Efek: Silence. [Rate: 60%] [Durasi: 2 turn]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "Diri Sendiri\n - Tower's Benevolence [Selalu Aktif]\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 160% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Menurunkan Cooldown Skill sebanyak 12 dtk saat musuh mati.\n - Semua Ally\n - Memberikan Peningkatan Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\n - Memberikan Peningkatan Critical Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 45%.\n - Meningkatkan Efek: Penyerapan Barrier menjadi sebesar 160% dari P. ATK.\nTranscend Lv.2 Effect\n - Meningkatkan Efek: Penyerapan Barrier menjadi 185% dari M. ATK.\n - Menambahkan Efek: Menerapkan Barrier sebesar 185% dari M. ATK caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "Witch’s Shadow",
+        "desc": "Semua Musuh\n - Konversi HP sebesar 39%.\n - Memberikan Pierce Damage sebesar 195% dari M. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 215% dari M. ATK.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "Manusia",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "24 / 09",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Libra",
+      "likes": "Eksperimen, penelitian, kebenaran, cokelat, salad, berbagai peralatan sihir",
+      "dislikes": "Seven Knights, Kahyangan, Ariel, kebodohan",
+      "story": "Rasa sakit ini hanya sementara. Itu adalah harga kecil yang harus dibayar untuk selangkah lebih dekat menuju kebenaran alam semesta. Sekarang, aku harus mencarinya di koleksi buku rahasia di Akademi."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "Velika",
       "subname": "Flames of Darkness",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\n - Semua Ally\n - Menurunkan Cooldown Skill sebanyak 9 dtk di Infinite Tower dan Tower of Trials.\n - Menurunkan Cooldown Skill sebanyak 12 dtk di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari M. ATK.\n - Meningkatkan Efek: Penurunan Cooldown Skill sebanyak 12 dtk.",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 90% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari M. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "Summon Meteor",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 105% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 40% dari M. ATK saat Critical Hit mengenai musuh.\n - Burn. [Rate: 60%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari M. ATK.\n - Menambahkan Damage: Memberikan Damage tambahan sebesar 50% dari M. ATK saat Critical Hit terjadi.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Semua Musuh\n - Penurunan Durasi Buff target di Infinite Tower dan Tower of Trials sebanyak 3 turn. [Rate: 100%]\n - Memberikan Damage Abaikan DEF sebesar 80% dari M. ATK sebanyak 1x.\n - Memberikan Damage Abaikan DEF tambahan sebesar 180% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Menambahkan Efek: Penurunan Durasi Buff di Infinite Tower dan Tower of Trials menjadi 3 turn. [Rate: 100%]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "Apparitions of Darkness",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 105% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 55% dari M. ATK saat Critical Hit mengenai musuh.\n - Magic Vulnerability. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 120% dari M. ATK.\n - Meningkatkan Efek: Magic Vulnerability menjadi 22%.\nTranscend Lv.6 Effect\n - Menambahkan Efek: Silence. [Rate: 60%] [Durasi: 2 turn]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 80% dari M. ATK sebanyak 1x.\n - Memberikan Pierce Damage tambahan sebesar 205% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari M. ATK.\nTranscend Lv.6 Effect\n - Menambahkan Efek: Silence. [Rate: 60%] [Durasi: 2 turn]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "Black Moon's Blessing",
-        "desc": "Diri Sendiri\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 160% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Semua Ally\n - Meningkatkan Magic Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 33%.\n - Meningkatkan Efek: Peningkatan Magic Damage menjadi 31%.\nTranscend Lv.2 Effect\n - Meningkatkan Efek: Penyerapan Barrier menjadi 185% dari M. ATK.\n - Menambahkan Efek: Menerapkan Barrier sebesar 185% dari M. ATK caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
+        "desc": "Diri Sendiri\n - Tower's Benevolence [Selalu Aktif]\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 160% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Menurunkan Cooldown Skill sebanyak 12 dtk saat musuh mati.\n - Semua Ally\n - Memberikan Peningkatan Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\n - Memberikan Peningkatan Critical Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 45%.\n - Meningkatkan Efek: Peningkatan Damage menjadi 28%.\nTranscend Lv.2 Effect\n - Meningkatkan Efek: Penyerapan Barrier menjadi 185% dari M. ATK.\n - Menambahkan Efek: Menerapkan Barrier sebesar 185% dari M. ATK caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "Summon Meteor",
         "desc": "Semua Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 50% dari M. ATK saat Critical Hit mengenai musuh.\n - Burn. [Rate: 60%] [Durasi: 10 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "Apparitions of Darkness",
         "desc": "Semua Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 50% dari M. ATK saat Critical Hit mengenai musuh.\n - Menurunkan Durasi Buff target sebanyak 1 turn. [Rate: 100%]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "Black Moon's Blessing",
         "desc": "Semua Ally\n - Critical Rate meningkat. [Selalu Aktif]\n - Diri Sendiri\n - Menerapkan Barrier sebesar 20% dari Maks. HP caster saat HP diri sendiri berjumlah 50% atau kurang. [Durasi: 3 turn] (Aktif 1x per battle)\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 25%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "Satu Musuh\n - Memberikan Damage sebesar 100% dari M. ATK sebanyak 1x.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 100% dari P. ATK.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "Summon Meteor",
         "desc": "Semua Musuh\n - Memberikan Damage sebesar 105% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 40% dari M. ATK saat Critical Hit mengenai musuh.\n - Burn. [Rate: 60%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 105% dari P. ATK.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "Apparitions of Darkness",
         "desc": "Semua Musuh\n - Memberikan Damage sebesar 105% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 55% dari M. ATK saat Critical Hit mengenai musuh.\n - Magic Vulnerability. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 105% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "Black Moon's Blessing",
         "desc": "Semua Ally\n - Critical Rate meningkat. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 19%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -441,9 +597,9 @@
     "basicInfo": {
       "id": "100815",
       "name": "Velika",
-      "subname": "Darkness's Judgment",
+      "subname": "Arbiter of Darkness",
       "affiliation": "Petualang",
-      "flavor": "Penyihir Hitam adalah penyembah iblis. Namun, Velika berhasil menjadi Darkness's Judgment, salah satu jabatan tertinggi di Purgatory.",
+      "flavor": "Penyihir Hitam adalah penyembah iblis. Namun, Velika berhasil menjadi Hakim Kegelapan, salah satu jabatan tertinggi di Purgatory.",
       "rarity": "legendary",
       "star": "5",
       "maxStar": "6",
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 90% dari M. ATK sebanyak 1x.\n - Semua Ally\n - Menurunkan Cooldown Skill sebanyak 7 dtk di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 90% dari P. ATK.",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 90% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 80% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 90% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "Summon Meteor",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 95% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 40% dari M. ATK saat Critical Hit mengenai musuh.\n - Burn. [Rate: 60%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari P. ATK.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Semua Musuh\n - Memberikan Damage Abaikan DEF sebesar 75% dari M. ATK sebanyak 1x.\n - Memberikan Damage Abaikan DEF tambahan sebesar 165% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 75% dari P. ATK.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "Apparitions of Darkness",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 95% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 50% dari M. ATK saat Critical Hit mengenai musuh.\n - Magic Vulnerability. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 95% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 75% dari M. ATK sebanyak 1x.\n - Memberikan Pierce Damage tambahan sebesar 190% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 75% dari P. ATK.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "Black Moon's Blessing",
-        "desc": "Diri Sendiri\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 145% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Semua Ally\n - Meningkatkan Magic Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 21%.\n - Meningkatkan Efek: Penyerapan Barrier menjadi sebesar 145% dari P. ATK.",
+        "desc": "Diri Sendiri\n - Tower's Benevolence [Selalu Aktif]\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 145% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Menurunkan Cooldown Skill sebanyak 10 dtk saat musuh mati.\n - Semua Ally\n - Memberikan Peningkatan Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\n - Memberikan Peningkatan Critical Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 33%.\n - Meningkatkan Efek: Penyerapan Barrier menjadi sebesar 145% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,20 +733,20 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
       "likes": "Eksperimen, penelitian, kebenaran, cokelat, salad, berbagai peralatan sihir",
       "dislikes": "Seven Knights, Kahyangan, Ariel, kebodohan",
-      "story": "Penyihir Hitam adalah penyembah iblis. Namun, Velika berhasil menjadi Darkness's Judgment, salah satu jabatan tertinggi di Purgatory."
+      "story": "Penyihir Hitam adalah penyembah iblis. Namun, Velika berhasil menjadi Hakim Kegelapan, salah satu jabatan tertinggi di Purgatory."
     }
   },
   {
     "basicInfo": {
       "id": "100814",
       "name": "Velika",
-      "subname": "Dark Magician",
+      "subname": "Black Magician",
       "affiliation": "Petualang",
       "flavor": "Seorang Penyihir Hitam yang meneliti sihir kegelapan. Dia memiliki pesona yang angkuh dan dikenal sebagai musuh bebuyutan Ariel, Penyihir Cahaya.",
       "rarity": "legendary",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "Satu Musuh\n - Memberikan Damage sebesar 80% dari M. ATK sebanyak 1x.\n - Semua Ally\n - Menurunkan Cooldown Skill sebanyak 5 dtk di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 80% dari P. ATK.",
+        "desc": "Satu Musuh\n - Memberikan Damage sebesar 80% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 70% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 80% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "Summon Meteor",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 85% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 35% dari M. ATK saat Critical Hit mengenai musuh.\n - Burn. [Rate: 55%] [Durasi: 2 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 85% dari P. ATK.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Semua Musuh\n - Memberikan Damage Abaikan DEF sebesar 65% dari M. ATK sebanyak 1x.\n - Memberikan Damage Abaikan DEF tambahan sebesar 150% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 65% dari P. ATK.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "Apparitions of Darkness",
-        "desc": "Semua Musuh\n - Memberikan Damage sebesar 85% dari M. ATK sebanyak 1x.\n - Memberikan Damage tambahan sebesar 45% dari M. ATK saat Critical Hit mengenai musuh.\n - Magic Vulnerability. [Rate: 100%] [Durasi: 3 turn]\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 85% dari P. ATK.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Semua Musuh\n - Memberikan Pierce Damage sebesar 65% dari M. ATK sebanyak 1x.\n - Memberikan Pierce Damage tambahan sebesar 170% dari M. ATK di Infinite Tower dan Tower of Trials.\nSkill Enhancement Effect\n - Meningkatkan Damage: Menjadi 65% dari P. ATK.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "Black Moon's Blessing",
-        "desc": "Diri Sendiri\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 130% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Semua Ally\n - Meningkatkan Magic Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 15%.\n - Meningkatkan Efek: Penyerapan Barrier menjadi sebesar 130% dari P. ATK.",
+        "desc": "Diri Sendiri\n - Tower's Benevolence [Selalu Aktif]\n - Critical Rate meningkat. [Selalu Aktif]\n - Menerapkan Barrier sebesar 130% dari M. ATK caster. [Durasi: 3 turn] (Aktif 1x per round)\n - Menurunkan Cooldown Skill sebanyak 8 dtk saat musuh mati.\n - Semua Ally\n - Memberikan Peningkatan Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\n - Memberikan Peningkatan Critical Damage di Infinite Tower dan Tower of Trials. [Selalu Aktif]\nSkill Enhancement Effect\n - Meningkatkan Efek: Peningkatan Critical Rate menjadi 27%.\n - Meningkatkan Efek: Penyerapan Barrier menjadi sebesar 130% dari P. ATK.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "裴里卡",
+      "subname": "黑月的巫女",
+      "affiliation": "冒險家",
+      "flavor": "痛苦只是暫時，只要能更接近宇宙真理一步，這算是還不錯的代價。\\n現在，得去翻找學會的那些秘密書籍了。",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力120%的1次傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力115%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的120%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "所有敵軍\n - 在無限之塔、試煉之塔中，對象的回合制Buff減少3回合［100%機率］\n - 相當於魔法攻擊力80%的1次無視防禦傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力235%的無視防禦追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力95%的1次穿透傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力270%的穿透追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的95%\nTranscend Lv.6 Effect\n - 添加效果：沉默［60%機率］［持續2回合］",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "自身\n - 塔的寬容［常態］\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力160%的防護罩［持續3回合］（每回合發動1次）\n - 敵軍死亡時，技能冷卻時間減少12秒\n - 所有我軍\n - 在無限之塔、試煉之塔中，傷害量增加［常態］\n - 在無限之塔、試煉之塔中，暴擊傷害增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加45%\n - 效果上升：防護罩吸收量為物理攻擊力的160%\nTranscend Lv.2 Effect\n - 效果上升：防護罩吸收量為魔法攻擊力的185%\n - 添加效果：當自身的生命力達到50%以下時，產生相當於施展者魔法攻擊力185%的防護罩［持續3回合］（每戰鬥發動1次）",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "魔女的陰影",
+        "desc": "所有敵軍\n - 生命力轉換39%\n - 相當於魔法攻擊力195%的1次穿透傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的215%",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "人類",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "09 / 24",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "天秤座",
+      "likes": "實驗、研究、真理、巧克力、生菜沙拉、各種魔法器材",
+      "dislikes": "七騎士、天上、艾黎爾、無知",
+      "story": "痛苦只是暫時，只要能更接近宇宙真理一步，這算是還不錯的代價。\\n現在，得去翻找學會的那些秘密書籍了。"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "裴里卡",
       "subname": "黑暗火燄",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 所有我軍\n - 在無限之塔、試煉之塔中，技能冷卻時間減少9秒\n - 在無限之塔、試煉之塔中，技能冷卻時間減少12秒\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的120%\n - 效果上升：技能冷卻時間減少效果12秒",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力90%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "隕石炸裂",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力105%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力40%的追加傷害\n - 灼傷［60%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的120%\n - 傷害量上升：發生暴擊時，造成相當於魔法攻擊力50%的追加傷害",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "所有敵軍\n - 在無限之塔、試煉之塔中，對象的回合制Buff減少3回合［100%機率］\n - 相當於魔法攻擊力80%的1次無視防禦傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力180%的無視防禦追加傷害\nSkill Enhancement Effect\n - 添加效果：在無限之塔、試煉之塔中，回合制Buff減少3回合［100%機率］",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "黑暗幻影",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力105%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力55%的追加傷害\n - 魔法脆弱［100%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的120%\n - 效果上升：魔法脆弱22%\nTranscend Lv.6 Effect\n - 添加效果：沉默［60%機率］［持續2回合］",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力80%的1次穿透傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力205%的穿透追加傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的95%\nTranscend Lv.6 Effect\n - 添加效果：沉默［60%機率］［持續2回合］",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "黑月的祝福",
-        "desc": "自身\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力160%的防護罩［持續3回合］（每回合發動1次）\n - 所有我軍\n - 在無限之塔、試煉之塔中，魔法傷害量增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加33%\n - 效果上升：魔法傷害量增加31%\nTranscend Lv.2 Effect\n - 效果上升：防護罩吸收量為魔法攻擊力的185%\n - 添加效果：當自身的生命力達到50%以下時，產生相當於施展者魔法攻擊力185%的防護罩［持續3回合］（每戰鬥發動1次）",
+        "desc": "自身\n - 塔的寬容［常態］\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力160%的防護罩［持續3回合］（每回合發動1次）\n - 敵軍死亡時，技能冷卻時間減少12秒\n - 所有我軍\n - 在無限之塔、試煉之塔中，傷害量增加［常態］\n - 在無限之塔、試煉之塔中，暴擊傷害增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加45%\n - 效果上升：傷害量增加28%\nTranscend Lv.2 Effect\n - 效果上升：防護罩吸收量為魔法攻擊力的185%\n - 添加效果：當自身的生命力達到50%以下時，產生相當於施展者魔法攻擊力185%的防護罩［持續3回合］（每戰鬥發動1次）",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "天秤座",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "隕石炸裂",
         "desc": "所有敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力50%的追加傷害\n - 灼傷［60%機率］［持續10回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "黑暗幻影",
         "desc": "所有敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力50%的追加傷害\n - 對象的回合制Buff減少1回合［100%機率］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "黑月的祝福",
         "desc": "所有我軍\n - 暴擊機率增加［常態］\n自身\n - 當自身的生命力達到50%以下時，產生相當於施展者最大生命力20%的防護罩［持續3回合］（每戰鬥發動1次）\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加25%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "隕石炸裂",
         "desc": "所有敵軍\n - 相當於魔法攻擊力105%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力40%的追加傷害\n - 灼傷［60%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的105%",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "黑暗幻影",
         "desc": "所有敵軍\n - 相當於魔法攻擊力105%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力55%的追加傷害\n - 魔法脆弱［100%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的105%",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "黑月的祝福",
         "desc": "所有我軍\n - 暴擊機率增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加19%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力90%的1次傷害\n - 所有我軍\n - 在無限之塔、試煉之塔中，技能冷卻時間減少7秒\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力90%的1次傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力80%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "隕石炸裂",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力95%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力40%的追加傷害\n - 灼傷［60%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的95%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力75%的1次無視防禦傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力165%的無視防禦追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的75%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "黑暗幻影",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力95%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力50%的追加傷害\n - 魔法脆弱［100%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的95%",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力75%的1次穿透傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力190%的穿透追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的75%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "黑月的祝福",
-        "desc": "自身\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力145%的防護罩［持續3回合］（每回合發動1次）\n - 所有我軍\n - 在無限之塔、試煉之塔中，魔法傷害量增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加21%\n - 效果上升：防護罩吸收量為物理攻擊力的145%",
+        "desc": "自身\n - 塔的寬容［常態］\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力145%的防護罩［持續3回合］（每回合發動1次）\n - 敵軍死亡時，技能冷卻時間減少10秒\n - 所有我軍\n - 在無限之塔、試煉之塔中，傷害量增加［常態］\n - 在無限之塔、試煉之塔中，暴擊傷害增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加33%\n - 效果上升：防護罩吸收量為物理攻擊力的145%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "天秤座",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "單一敵軍\n - 相當於魔法攻擊力80%的1次傷害\n - 所有我軍\n - 在無限之塔、試煉之塔中，技能冷卻時間減少5秒\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力80%的1次傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力70%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "隕石炸裂",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力85%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力35%的追加傷害\n - 灼傷［55%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的85%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力65%的1次無視防禦傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力150%的無視防禦追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的65%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "黑暗幻影",
-        "desc": "所有敵軍\n - 相當於魔法攻擊力85%的1次傷害\n - 發生暴擊時，造成相當於魔法攻擊力45%的追加傷害\n - 魔法脆弱［100%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的85%",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力65%的1次穿透傷害\n - 在無限之塔、試煉之塔中，造成魔法攻擊力170%的穿透追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的65%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "黑月的祝福",
-        "desc": "自身\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力130%的防護罩［持續3回合］（每回合發動1次）\n - 所有我軍\n - 在無限之塔、試煉之塔中，魔法傷害量增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加15%\n - 效果上升：防護罩吸收量為物理攻擊力的130%",
+        "desc": "自身\n - 塔的寬容［常態］\n - 暴擊機率增加［常態］\n - 相當於施展者魔法攻擊力130%的防護罩［持續3回合］（每回合發動1次）\n - 敵軍死亡時，技能冷卻時間減少8秒\n - 所有我軍\n - 在無限之塔、試煉之塔中，傷害量增加［常態］\n - 在無限之塔、試煉之塔中，暴擊傷害增加［常態］\nSkill Enhancement Effect\n - 效果上升：暴擊機率增加27%\n - 效果上升：防護罩吸收量為物理攻擊力的130%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "天秤座",

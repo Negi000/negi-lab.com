@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "벨리카",
+      "subname": "흑월의 마녀",
+      "affiliation": "모험가",
+      "flavor": "고통은 잠시야. 우주의 진리에 한 걸음 더 다가갈 수 있었으니 괜찮은 대가지. \\n이제, 학회에 있는 비밀 서적들을 좀 뒤져봐야겠어.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "단일 적군\n - 마법 공격력의 120%만큼 1회 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 115%의 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 120%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "모든 적군\n - 무한의 탑, 시련의 탑에서 대상의 턴제 버프 감소 3턴 [100% 확률]\n - 마법 공격력의 80%만큼 1회 방어 무시 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 235%의 방어 무시 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "모든 적군\n - 마법 공격력의 95%만큼 1회 관통 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 270%의 관통 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 95%\nTranscend Lv.6 Effect\n - 효과 추가 : 침묵 [60% 확률] [2턴 지속]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "자신\n - 탑의 관용 [상시]\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 160%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 적군 사망 시 스킬 쿨타임 감소 12초\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 피해량 증가 [상시]\n - 무한의 탑, 시련의 탑에서 치명타 피해 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 45%\n - 효과 상승 : 보호막 흡수량이 물리 공격력의 160%\nTranscend Lv.2 Effect\n - 효과 상승 : 보호막 흡수량이 마법 공격력의 185%\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 마법 공격력의 185%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "마녀의 그림자",
+        "desc": "모든 적군\n - 생명력 전환 39%\n - 마법 공격력의 195%만큼 1회 관통 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 215%",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "견자희",
+      "species": "인간",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "09 / 24",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "천칭자리",
+      "likes": "실험, 연구, 진리, 초콜릿, 샐러드, 각종 마법 기재들",
+      "dislikes": "세븐나이츠, 천상, 아리엘, 무식함",
+      "story": "고통은 잠시야. 우주의 진리에 한 걸음 더 다가갈 수 있었으니 괜찮은 대가지. \\n이제, 학회에 있는 비밀 서적들을 좀 뒤져봐야겠어."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "벨리카",
       "subname": "어둠불꽃",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 스킬 쿨타임 감소 9초\n - 무한의 탑, 시련의 탑에서 스킬 쿨타임 감소 12초\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%\n - 효과 상승 : 스킬 쿨타임 감소 효과 12초",
+        "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 90%의 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "메테오",
-        "desc": "모든 적군\n - 마법 공격력의 105%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 40%만큼 추가 피해\n - 화상 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%\n - 피해량 추가 : 치명타 발생 시 마법 공격력의 50%만큼 추가 피해",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "모든 적군\n - 무한의 탑, 시련의 탑에서 대상의 턴제 버프 감소 3턴 [100% 확률]\n - 마법 공격력의 80%만큼 1회 방어 무시 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 180%의 방어 무시 추가 피해\nSkill Enhancement Effect\n - 효과 추가 : 무한의 탑, 시련의 탑에서 턴제 버프 감소 3턴 [100% 확률]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "어둠의 환영",
-        "desc": "모든 적군\n - 마법 공격력의 105%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 55%만큼 추가 피해\n - 마법 취약 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 120%\n - 효과 상승 : 마법 취약 22%\nTranscend Lv.6 Effect\n - 효과 추가 : 침묵 [60% 확률] [2턴 지속]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "모든 적군\n - 마법 공격력의 80%만큼 1회 관통 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 205%의 관통 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 마법 공격력의 95%\nTranscend Lv.6 Effect\n - 효과 추가 : 침묵 [60% 확률] [2턴 지속]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "흑월의 축복",
-        "desc": "자신\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 160%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 마법 피해량 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 33%\n - 효과 상승 : 마법 피해량 증가 31%\nTranscend Lv.2 Effect\n - 효과 상승 : 보호막 흡수량이 마법 공격력의 185%\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 마법 공격력의 185%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
+        "desc": "자신\n - 탑의 관용 [상시]\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 160%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 적군 사망 시 스킬 쿨타임 감소 12초\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 피해량 증가 [상시]\n - 무한의 탑, 시련의 탑에서 치명타 피해 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 45%\n - 효과 상승 : 피해량 증가 28%\nTranscend Lv.2 Effect\n - 효과 상승 : 보호막 흡수량이 마법 공격력의 185%\n - 효과 추가 : 자신의 생명력이 50% 이하가 되면 시전자 마법 공격력의 185%만큼 보호막 [3턴 지속] (전투당 1회 발동)",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "천칭자리",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "메테오",
         "desc": "모든 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 50%만큼 추가 피해\n - 화상 [60% 확률] [10턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "어둠의 환영",
         "desc": "모든 적군\n - 마법 공격력의 100%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 50%만큼 추가 피해\n - 대상의 턴제 버프 감소 1턴 [100% 확률]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "흑월의 축복",
         "desc": "모든 아군\n - 치명타 확률 증가 [상시]\n - 자신\n - 자신의 생명력이 50% 이하가 되면 시전자 최대 생명력의 20%만큼 보호막 [3턴 지속] (전투당 1회 발동)\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 25%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "단일 적군\n - 마법 공격력의 100%만큼 1회 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 100%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "메테오",
         "desc": "모든 적군\n - 마법 공격력의 105%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 40%만큼 추가 피해\n - 화상 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 105%",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "어둠의 환영",
         "desc": "모든 적군\n - 마법 공격력의 105%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 55%만큼 추가 피해\n - 마법 취약 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 105%",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "흑월의 축복",
         "desc": "모든 아군\n - 치명타 확률 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 19%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 스킬 쿨타임 감소 7초\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
+        "desc": "단일 적군\n - 마법 공격력의 90%만큼 1회 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 80%의 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 90%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "메테오",
-        "desc": "모든 적군\n - 마법 공격력의 95%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 40%만큼 추가 피해\n - 화상 [60% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 95%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "모든 적군\n - 마법 공격력의 75%만큼 1회 방어 무시 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 165%의 방어 무시 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "어둠의 환영",
-        "desc": "모든 적군\n - 마법 공격력의 95%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 50%만큼 추가 피해\n - 마법 취약 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 95%",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "모든 적군\n - 마법 공격력의 75%만큼 1회 관통 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 190%의 관통 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "흑월의 축복",
-        "desc": "자신\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 145%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 마법 피해량 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 21%\n - 효과 상승 : 보호막 흡수량이 물리 공격력의 145%",
+        "desc": "자신\n - 탑의 관용 [상시]\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 145%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 적군 사망 시 스킬 쿨타임 감소 10초\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 피해량 증가 [상시]\n - 무한의 탑, 시련의 탑에서 치명타 피해 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 33%\n - 효과 상승 : 보호막 흡수량이 물리 공격력의 145%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "천칭자리",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 스킬 쿨타임 감소 5초\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
+        "desc": "단일 적군\n - 마법 공격력의 80%만큼 1회 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 70%의 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 80%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "메테오",
-        "desc": "모든 적군\n - 마법 공격력의 85%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 35%만큼 추가 피해\n - 화상 [55% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 85%",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "모든 적군\n - 마법 공격력의 65%만큼 1회 방어 무시 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 150%의 방어 무시 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "어둠의 환영",
-        "desc": "모든 적군\n - 마법 공격력의 85%만큼 1회 피해\n - 치명타 발생 시 마법 공격력의 45%만큼 추가 피해\n - 마법 취약 [100% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 85%",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "모든 적군\n - 마법 공격력의 65%만큼 1회 관통 피해\n - 무한의 탑, 시련의 탑에서 마법 공격력의 170%의 관통 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 65%",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "흑월의 축복",
-        "desc": "자신\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 130%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 마법 피해량 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 15%\n - 효과 상승 : 보호막 흡수량이 물리 공격력의 130%",
+        "desc": "자신\n - 탑의 관용 [상시]\n - 치명타 확률 증가 [상시]\n - 시전자 마법 공격력의 130%만큼 보호막 [3턴 지속] (라운드당 1회 발동)\n - 적군 사망 시 스킬 쿨타임 감소 8초\n - 모든 아군\n - 무한의 탑, 시련의 탑에서 피해량 증가 [상시]\n - 무한의 탑, 시련의 탑에서 치명타 피해 증가 [상시]\nSkill Enhancement Effect\n - 효과 상승 : 치명타 확률 증가 27%\n - 효과 상승 : 보호막 흡수량이 물리 공격력의 130%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "09 / 24",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "천칭자리",

@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401907",
+      "name": "Yoongun",
+      "subname": "Vollstrecker der himmlischen Gerechtigkeit",
+      "affiliation": "Verborgene Meister",
+      "flavor": "Anstatt in Feigheit zu leben und die Augen vor dem Leiden der Menschen zu verschließen, beschloss Yoongun, dass er lieber mit erhobenem Haupt und intakter Integrität sterben würde, den Himmel ohne Scham anblickend.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40190701",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 145 % des Magieangriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 145 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "40190702",
+        "name": "",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 50 % des Magieangriffs 3 Mal.\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 50 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Ignoriert 40 % der Verteidigung.\nTranscend Lv.6 Effect\n - Effekt hinzugefügt: Aktiviert [Schnelle Salve] erneut bis zu Max. 1 Mal mit 70% Kraft, wenn Feinde mit dieser Fähigkeiten besiegt werden",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "40190703",
+        "name": "",
+        "desc": "Alle Feinde\n - Wenn die aktuellen TP des Ziels 50 % oder mehr betragen, besteht eine [40 % Wahrscheinlichkeit], Aura zu verursachen [Dauer: 2 Runde(n)]\n - 39 % TP-Änderung\n - Verursacht 3 Mal Durchbohren-Schaden in Höhe von 58 % des Magischen Angriffs (Schadens-Erhöhung um Max. 50 %, proportional zu den aktuellen TP des Ziels)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 58 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Ignoriert 40 % der Verteidigung.\nTranscend Lv.6 Effect\n - Effekt hinzugefügt: Aktiviert [Zehnfache Kanone] erneut bis zu Max. 1 Mal mit 70% Kraft, wenn Feinde mit dieser Fähigkeiten besiegt werden",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "40190704",
+        "name": "",
+        "desc": "Selbst\n - Gewährt Segen. [Immer aktiv]\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Gewährt Schwachstellenangriff-Erhöhung. [Immer aktiv]\n - Gewährt ein Schild in Höhe von 185 % des Magieangriffs des Zaubernden. [Dauer: 3 Runde(n)]\n - * Gewährt die folgenden Effekte, wenn 3 oder mehr Magie-Helden aufgestellt sind\n - Bei Aktivierung des eigenen Basisangriffs (1-mal): Erhöht Annullierung allen Schadens [Treffer einstecken: 1-mal] (Max. 6-mal)\n - Erhöht die Trefferanzahl der Annullierung allen Schadens um 2 Treffer, wenn eine Fähigkeit 1 Mal aktiviert wird. [Max. 6 Treffer]\n - Gewährt Schwächung entfernen (alle), wenn man selbst mit Massenkontrolle belegt ist (wird 1-mal pro Kampf ausgelöst)\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - 3 Feinde\n - Verursacht Durchbohren-Schaden in Höhe von 75 % des Magischen Angriffs plus 22 % der Max. TP des Ziels 1 Mal, wenn Alle Angriffe 2 Mal ausgelöst werden (TP-basierter Schaden ist auf 300 % des Angriffs des Zaubernden begrenzt)\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 50 %.\n - Erhöhter Effekt: Schwachstellenangriff-Erhöhung auf 50 %.\n - Erhöht den Effekt: Die Schildabsorption wird gleich 185 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      },
+      "Awaken Skill": {
+        "id": "40190707",
+        "name": "Umfassendes Feuer",
+        "desc": "Alle Feinde\n - 50 % Chance, Fesselseil zu verursachen. [Dauer: 2 Runde(n)]\n - Verursacht Schaden in Höhe von 80 % des Magieangriffs 2 Mal.\n - Verursacht Verteidigungsignorierenden Schaden in Höhe von 80 % des Magieangriffs 2 Mal.\nSkill Enhancement Effect\n - Fügt Effekt hinzu: Ignoriert 65 % der Verteidigung.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Jungfrau",
+      "likes": "Sunran, der König von Shinji, Shinji, das Volk, Untergebene, Shinjis Küche, neue Kultur und Technologie",
+      "dislikes": "Korrupte Beamte, alle Unterdrückung gegen irgendein Volk",
+      "story": "Anstatt in Feigheit zu leben und die Augen vor dem Leiden der Menschen zu verschließen, beschloss Yoongun, dass er lieber mit erhobenem Haupt und intakter Integrität sterben würde, den Himmel ohne Scham anblickend."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101906",
+      "name": "Yoongun",
+      "subname": "Magistrat der Himmelsfeste",
+      "affiliation": "Verborgene Meister",
+      "flavor": "Sowohl für seine Hingabe an die Bevölkerung als auch für seine unerschütterliche Loyalität gegenüber dem König anerkannt, wurde Yoongun zum Magistrat von Skyward Keep ernannt, wo die Bewohner in unsicherer Sicherheit unter der ständigen Bedrohung durch den Riss lebten.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190601",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 100 % des Magieangriffs 1 Mal.\n - Verursacht Schaden in Höhe von 130 % des Magieangriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 130 % des Magieangriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190602",
+        "name": "Zehnfaches Sperrfeuer",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 35 % des Magieangriffs 3 Mal.\n - Verursacht Schaden in Höhe von 43 % des Magieangriffs 3 Mal.\n - Verursacht 2 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 43 % des Magieangriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Ignoriert 40 % der Verteidigung.\nTranscend Lv.6 Effect\n - Effekt hinzugefügt: Aktiviert [Schnelle Salve] erneut bis zu Max. 1 Mal mit 70% Kraft, wenn Feinde mit dieser Fähigkeiten besiegt werden",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190603",
+        "name": "Schnelle Salve",
+        "desc": "Alle Feinde\n - Wenn die aktuellen TP des Ziels 50 % oder mehr betragen, besteht eine [40 % Wahrscheinlichkeit], Aura zu verursachen [Dauer: 2 Runde(n)]\n - 52 % TP-Änderung\n - Verursacht Schaden in Höhe von 50 % des Magischen Angriffs 3 Mal (Schadens-Erhöhung um Max. 50 %, proportional zu den aktuellen TP des Ziels)\n - Verursacht 3 Mal Durchbohren-Schaden in Höhe von 50 % des Magischen Angriffs (Schadens-Erhöhung um Max. 50 %, proportional zu den aktuellen TP des Ziels)\nSkill Enhancement Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Ignoriert 40 % der Verteidigung.\nTranscend Lv.6 Effect\n - Effekt hinzugefügt: Aktiviert [Zehnfache Kanone] erneut bis zu Max. 1 Mal mit 70% Kraft, wenn Feinde mit dieser Fähigkeiten besiegt werden",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190604",
+        "name": "Offizieller von Shinji",
+        "desc": "Selbst\n - Gewährt Segen. [Immer aktiv]\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Gewährt Schwachstellenangriff-Erhöhung. [Immer aktiv]\n - Gewährt ein Schild in Höhe von 160 % des Magieangriffs des Zaubernden. [Dauer: 3 Runde(n)]\n - Gewährt ein Schild in Höhe von 185 % des Magieangriffs des Zaubernden. [Dauer: 3 Runde(n)]\n - * Gewährt die folgenden Effekte, wenn 3 oder mehr Magie-Helden aufgestellt sind\n - Bei Aktivierung des eigenen Basisangriffs (1-mal): Erhöht Annullierung allen Schadens [Treffer einstecken: 1-mal] (Max. 6-mal)\n - Erhöht die Trefferanzahl der Annullierung allen Schadens um 2 Treffer, wenn eine Fähigkeit 1 Mal aktiviert wird. [Max. 6 Treffer]\n - Gewährt Schwächung entfernen (alle), wenn man selbst mit Massenkontrolle belegt ist (wird 1-mal pro Kampf ausgelöst)\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - 3 Feinde\n - Verursacht Durchbohren-Schaden in Höhe von 65 % des Magischen Angriffs plus 18 % der Max. TP des Ziels 1 Mal, wenn Alle Angriffe 2 Mal ausgelöst werden (TP-basierter Schaden ist auf 300 % des Angriffs des Zaubernden begrenzt)\nSkill Enhancement Effect\n - Erhöhter Effekt: Segensobergrenze wird zu 25 % der maximalen TP.\n - Erhöht den Effekt: Die Schildabsorption wird gleich 185 % des Magischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Erhöht alle Angriffe um 12 %.",
+      "transcend_2": "Erhöht alle Angriffe um 6 %.",
+      "transcend_3": "Erhöht die TP um 18 %.",
+      "transcend_4": "Erhöht den Krit. Trefferschaden um 24 %.",
+      "transcend_5": "Erhöht alle Angriffe um 12 %.",
+      "transcend_6": "Erhöht alle Angriffe um 6 %.",
+      "transcend_7": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_8": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_9": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_10": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_11": "Erhöht alle Angriffe, Verteidigung und TP um 2 %.",
+      "transcend_12": "Erhöht alle Angriffe, Verteidigung und TP um 2 %."
+    },
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Jungfrau",
+      "likes": "Sunran, der König von Shinji, Shinji, das Volk, Untergebene, Shinjis Küche, neue Kultur und Technologie",
+      "dislikes": "Korrupte Beamte, alle Unterdrückung gegen irgendein Volk",
+      "story": "Sowohl für seine Hingabe an die Bevölkerung als auch für seine unerschütterliche Loyalität gegenüber dem König anerkannt, wurde Yoongun zum Magistrat von Skyward Keep ernannt, wo die Bewohner in unsicherer Sicherheit unter der ständigen Bedrohung durch den Riss lebten."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101905",
+      "name": "Yoongun",
+      "subname": "Geheimer Königlicher Inspektor",
+      "affiliation": "Verborgene Meister",
+      "flavor": "Im Interesse der Menschen, die nur in Frieden leben wollten, nahm Yoongun den Posten des Geheimen Königlichen Inspektors an. Er verhaftete jedes Mitglied des königlichen Clans und der Hofverwandten, die das einfache Volk ausgenutzt hatten, wurde jedoch letztendlich aus Vergeltung aus dem Amt entfernt.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190501",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 90 % des Magieangriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 90 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190502",
+        "name": "Zehnfaches Sperrfeuer",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 31 % des Magieangriffs 3 Mal.\n - Verursacht 1 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 31 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190503",
+        "name": "Schnelle Salve",
+        "desc": "Alle Feinde\n - Wenn die aktuellen TP des Ziels 50 % oder mehr betragen, besteht eine [40 % Wahrscheinlichkeit], Aura zu verursachen [Dauer: 2 Runde(n)]\n - 58 % TP-Änderung\n - Verursacht Schaden in Höhe von 45 % des Magischen Angriffs 3 Mal (Schadens-Erhöhung um Max. 50 %, proportional zu den aktuellen TP des Ziels)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 45 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190504",
+        "name": "Offizieller von Shinji",
+        "desc": "Selbst\n - Gewährt Segen. [Immer aktiv]\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Gewährt Schwachstellenangriff-Erhöhung. [Immer aktiv]\n - Gewährt ein Schild in Höhe von 145 % des Magieangriffs des Zaubernden. [Dauer: 3 Runde(n)]\n - * Gewährt die folgenden Effekte, wenn 3 oder mehr Magie-Helden aufgestellt sind\n - Bei Aktivierung des eigenen Basisangriffs (1-mal): Erhöht Annullierung allen Schadens [Treffer einstecken: 1-mal] (Max. 6-mal)\n - Erhöht die Trefferanzahl der Annullierung allen Schadens um 2 Treffer, wenn eine Fähigkeit 1 Mal aktiviert wird. [Max. 6 Treffer]\n - Gewährt Schwächung entfernen (alle), wenn man selbst mit Massenkontrolle belegt ist (wird 1-mal pro Kampf ausgelöst)\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - 3 Feinde\n - Verursacht Durchbohren-Schaden in Höhe von 60 % des Magischen Angriffs plus 14 % der Max. TP des Ziels 1 Mal, wenn Alle Angriffe 2 Mal ausgelöst werden (TP-basierter Schaden ist auf 150 % des Angriffs des Zaubernden begrenzt)\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 21 %.\n - Erhöhter Effekt: Schwachstellenangriff-Erhöhung auf 25 %.\n - Erhöht den Effekt: Die Schildabsorption wird gleich 145 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Jungfrau",
+      "likes": "Sunran, der König von Shinji, Shinji, das Volk, Untergebene, Shinjis Küche, neue Kultur und Technologie",
+      "dislikes": "Korrupte Beamte, alle Unterdrückung gegen irgendein Volk",
+      "story": "Im Interesse der Menschen, die nur in Frieden leben wollten, nahm Yoongun den Posten des Geheimen Königlichen Inspektors an. Er verhaftete jedes Mitglied des königlichen Clans und der Hofverwandten, die das einfache Volk ausgenutzt hatten, wurde jedoch letztendlich aus Vergeltung aus dem Amt entfernt."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101904",
+      "name": "Yoongun",
+      "subname": "Exzentrisch",
+      "affiliation": "Verborgene Meister",
+      "flavor": "Tagsüber trainierte Yoongun mit seinem Schwert. Nachts las er seine Bücher und rezitierte die Worte so laut, dass der Klang sogar bis ins Nachbardorf drang. Die Leute betrachteten ihn als exzentrisch und hielten Abstand. Doch oft half er aus, indem er landwirtschaftliche Werkzeuge reparierte oder Heilkräuter für die Kranken sammelte, und die Menschen begannen allmählich, ihm zu vertrauen und ihm zu folgen.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190401",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 80 % des Magieangriffs 1 Mal.\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 1 Runde(n).\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 80 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190402",
+        "name": "Zehnfaches Sperrfeuer",
+        "desc": "4 Feinde\n - Verursacht Schaden in Höhe von 28 % des Magieangriffs 3 Mal.\n - Verursacht 1 Buff-Entfernung(en). [100% Chance]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 28 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190403",
+        "name": "Schnelle Salve",
+        "desc": "Alle Feinde\n - Wenn die aktuellen TP des Ziels 50 % oder mehr betragen, besteht eine [30 % Wahrscheinlichkeit], Aura zu verursachen [Dauer: 2 Runde(n)]\n - 64 % TP-Änderung\n - Verursacht Schaden in Höhe von 41 % des Magischen Angriffs 3 Mal (Schadens-Erhöhung um Max. 50 %, proportional zu den aktuellen TP des Ziels)\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 41 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190404",
+        "name": "Offizieller von Shinji",
+        "desc": "Selbst\n - Gewährt Segen. [Immer aktiv]\n - Gewährt Krit. Trefferraten-Erhöhung. [Immer aktiv]\n - Gewährt Schwachstellenangriff-Erhöhung. [Immer aktiv]\n - Gewährt ein Schild in Höhe von 130 % des Magieangriffs des Zaubernden. [Dauer: 3 Runde(n)]\n - * Gewährt die folgenden Effekte, wenn 3 oder mehr Magie-Helden aufgestellt sind\n - Bei Aktivierung des eigenen Basisangriffs (1-mal): Erhöht Annullierung allen Schadens [Treffer einstecken: 1-mal] (Max. 6-mal)\n - Erhöht die Trefferanzahl der Annullierung allen Schadens um 2 Treffer, wenn eine Fähigkeit 1 Mal aktiviert wird. [Max. 6 Treffer]\n - Gewährt Schwächung entfernen (alle), wenn man selbst mit Massenkontrolle belegt ist (wird 1-mal pro Kampf ausgelöst)\n - Gewährt Immunität gegen Massenkontrolle, wenn ein Debuff entfernt wird. [Dauer: 2 Runde(n)]\n - 3 Feinde\n - Verursacht Durchbohren-Schaden in Höhe von 50 % des Magischen Angriffs plus 10 % der Max. TP des Ziels 1 Mal, wenn Alle Angriffe 2 Mal ausgelöst werden (TP-basierter Schaden ist auf 150 % des Angriffs des Zaubernden begrenzt)\nSkill Enhancement Effect\n - Erhöht den Effekt: Krit. Trefferraten-Erhöhung auf 15 %.\n - Erhöhter Effekt: Schwachstellenangriff-Erhöhung auf 18 %.\n - Erhöht den Effekt: Die Schildabsorption wird gleich 130 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "Mensch",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Jungfrau",
+      "likes": "Sunran, der König von Shinji, Shinji, das Volk, Untergebene, Shinjis Küche, neue Kultur und Technologie",
+      "dislikes": "Korrupte Beamte, alle Unterdrückung gegen irgendein Volk",
+      "story": "Tagsüber trainierte Yoongun mit seinem Schwert. Nachts las er seine Bücher und rezitierte die Worte so laut, dass der Klang sogar bis ins Nachbardorf drang. Die Leute betrachteten ihn als exzentrisch und hielten Abstand. Doch oft half er aus, indem er landwirtschaftliche Werkzeuge reparierte oder Heilkräuter für die Kranken sammelte, und die Menschen begannen allmählich, ihm zu vertrauen und ihm zu folgen."
+    }
+  }
+]

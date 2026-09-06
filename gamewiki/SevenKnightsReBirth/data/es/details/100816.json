@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "Velika",
+      "subname": "Bruja Lunar Oscura",
+      "affiliation": "Aventureros",
+      "flavor": "El dolor es solo temporal. Es un pequeño precio a pagar por dar un paso más cerca de la verdad del universo. Ahora, creo que voy a hurgar en la colección de la Lista de libros prohibidos de la Academia.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "Un solo enemigo\n - Inflige daño de un 120% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional del 115% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "Todos los enemigos\n - En la Torre Celestial y la Torre Desafíos, 100% de probabilidad de aplicar Reducción de duración de beneficio al objetivo por 3 turno(s).\n - Inflige daño que ignora la DEF de un 80% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Ignorar la DEF del 235% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 80% del ATQ físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "Todos los enemigos\n - Inflige daño de Perforación de un 95% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Perforación del 270% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 95% del ATQ físico.\nTranscend Lv.6 Effect\n - Efecto adicional: Silencio [Prob.: 60%] [Duración: 2 turno(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "A sí mismo\n - Generosidad de la Torre [Permanente]\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 160% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Reduce la recarga de habilidades en 12s cuando un enemigo cae en batalla.\n - Todos los aliados\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño [Permanente]\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño crítico [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 45%.\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 160 % del ATQ físico.\nTranscend Lv.2 Effect\n - Aumento de efecto: Absorción del Escudo de un 185% del ATQ mágico.\n - Añade Efecto: Otorga un Escudo igual al 185 % del ATQ mágico del lanzador cuando los PS caen al 50 % o menos. [Duración: 3 Turno(s)] [Una vez por Batalla]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "Sombra de bruja",
+        "desc": "Todos los enemigos\n - 39 % Alteración de PS\n - Inflige daño de Perforación de un 195% del ATQ mágico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 215% del ATQ mágico.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "Humano",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "24 / 09",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Libra",
+      "likes": "Experimentos, investigación, verdades, chocolate, ensalada, todo tipo de instrumentos mágicos",
+      "dislikes": "Los Seven Knights, el Reino Celestial, Ariel, ignorancia",
+      "story": "El dolor es solo temporal. Es un pequeño precio a pagar por dar un paso más cerca de la verdad del universo. Ahora, creo que voy a hurgar en la colección de la Lista de libros prohibidos de la Academia."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "Velika",
       "subname": "Llamas de oscuridad",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\n - Todos los aliados\n - Reduce los tiempos de reutilización de habilidades en 9s en la Torre Celestial y la Torre Desafíos.\n - Reduce los tiempos de reutilización de habilidades en 12s en la Torre Celestial y la Torre Desafíos.\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ mágico.\n - Aumento de efecto: Reducción de recarga de habilidad de 12s.",
+        "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional del 90% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ mágico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "Meteorito",
-        "desc": "Todos los enemigos\n - Inflige daño de un 105% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 40% del ATQ mágico al realizar un Golpe crítico.\n - Causa Quemadura. [Prob.: 60%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ mágico.\n - Añade daño: Inflige daño adicional igual al 50 % del ATQ mágico al realizar un golpe crítico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos los enemigos\n - En la Torre Celestial y la Torre Desafíos, 100% de probabilidad de aplicar Reducción de duración de beneficio al objetivo por 3 turno(s).\n - Inflige daño que ignora la DEF de un 80% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Ignorar la DEF del 180% del ATQ mágico\nSkill Enhancement Effect\n - Efecto adicional: En la Torre Celestial y la Torre Desafíos, 100% de probabilidad de aplicar Reducción de duración de beneficio por 3 turno(s).",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "Apariciones de la oscuridad",
-        "desc": "Todos los enemigos\n - Inflige daño de un 105% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 55% del ATQ mágico al realizar un Golpe crítico.\n - Vulnerabilidad Mágica [Prob.: 100%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 120% del ATQ mágico.\n - Aumento de efecto: Vulnerabilidad mágica 22%.\nTranscend Lv.6 Effect\n - Efecto adicional: Silencio [Prob.: 60%] [Duración: 2 turno(s)]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos los enemigos\n - Inflige daño de Perforación de un 80% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Perforación del 205% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 95% del ATQ mágico.\nTranscend Lv.6 Effect\n - Efecto adicional: Silencio [Prob.: 60%] [Duración: 2 turno(s)]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "Bendición de la luna negra",
-        "desc": "A sí mismo\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 160% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Todos los aliados\n - Otorga Aumento de daño mágico en la Torre Celestial y Torre Desafíos. [Siempre activo]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 33%.\n - Aumento de efecto: Aumento de daño mágico 31%.\nTranscend Lv.2 Effect\n - Aumento de efecto: Absorción del Escudo de un 185% del ATQ mágico.\n - Añade Efecto: Otorga un Escudo igual al 185 % del ATQ mágico del lanzador cuando los PS caen al 50 % o menos. [Duración: 3 Turno(s)] [Una vez por Batalla]",
+        "desc": "A sí mismo\n - Generosidad de la Torre [Permanente]\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 160% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Reduce la recarga de habilidades en 12s cuando un enemigo cae en batalla.\n - Todos los aliados\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño [Permanente]\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño crítico [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 45%.\n - Aumento de efecto: Aumento de daño 28%.\nTranscend Lv.2 Effect\n - Aumento de efecto: Absorción del Escudo de un 185% del ATQ mágico.\n - Añade Efecto: Otorga un Escudo igual al 185 % del ATQ mágico del lanzador cuando los PS caen al 50 % o menos. [Duración: 3 Turno(s)] [Una vez por Batalla]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 100% del ATQ físico.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "Meteorito",
         "desc": "Todos los enemigos\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 50% del ATQ mágico al realizar un Golpe crítico.\n - Causa Quemadura. [Prob.: 60%] [Duración: 10 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 100% del ATQ físico.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "Apariciones de la oscuridad",
         "desc": "Todos los enemigos\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 50% del ATQ mágico al realizar un Golpe crítico.\n - 100 % de probabilidad de infligir Reducción de Duración de Beneficio. [Reducido en: 1 Turno(s).\nSkill Enhancement Effect\n - Aumento de daño: 100% del ATQ físico.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "Bendición de la luna negra",
         "desc": "Todos los aliados\n - Aumento de prob. de golpe crítico. [Permanente]\n - A sí mismo\n - Genera un Escudo de un 20% de los PS MÁX del lanzador cuando sus PS bajen hasta un 50% o menos. [Duración: 3 turno(s)] [1 vez por batalla]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 25%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "Un solo enemigo\n - Inflige daño de un 100% del ATQ mágico 1 vez/veces.\nSkill Enhancement Effect\n - Aumento de daño: 100% del ATQ físico.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "Meteorito",
         "desc": "Todos los enemigos\n - Inflige daño de un 105% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 40% del ATQ mágico al realizar un Golpe crítico.\n - Causa Quemadura. [Prob.: 60%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 105% del ATQ físico.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
-        "name": "Apariciones de la oscuridad",
+        "name": "Apariciones de oscuridad",
         "desc": "Todos los enemigos\n - Inflige daño de un 105% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 55% del ATQ mágico al realizar un Golpe crítico.\n - Vulnerabilidad Mágica [Prob.: 100%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 105% del ATQ físico.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "Bendición de la luna negra",
         "desc": "Todos los aliados\n - Aumento de prob. de golpe crítico. [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 19%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "Un solo enemigo\n - Inflige daño de un 90% del ATQ mágico 1 vez/veces.\n - Todos los aliados\n - Reduce los tiempos de reutilización de habilidades en 7s en la Torre Celestial y la Torre Desafíos.\nSkill Enhancement Effect\n - Aumento de daño: 90% del ATQ físico.",
+        "desc": "Un solo enemigo\n - Inflige daño de un 90% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional del 80% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 90% del ATQ físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "Meteorito",
-        "desc": "Todos los enemigos\n - Inflige daño de un 95% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 40% del ATQ mágico al realizar un Golpe crítico.\n - Causa Quemadura. [Prob.: 60%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 95% del ATQ físico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos los enemigos\n - Inflige daño que ignora la DEF de un 75% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Ignorar la DEF del 165% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 75% del ATQ físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "Apariciones de la oscuridad",
-        "desc": "Todos los enemigos\n - Inflige daño de un 95% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 50% del ATQ mágico al realizar un Golpe crítico.\n - Vulnerabilidad Mágica [Prob.: 100%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 95% del ATQ físico.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos los enemigos\n - Inflige daño de Perforación de un 75% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Perforación del 190% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 75% del ATQ físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "Bendición de la luna negra",
-        "desc": "A sí mismo\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 145% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Todos los aliados\n - Otorga Aumento de daño mágico en la Torre Celestial y Torre Desafíos. [Siempre activo]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 21%.\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 145 % del ATQ físico.",
+        "desc": "A sí mismo\n - Generosidad de la Torre [Permanente]\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 145% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Reduce la recarga de habilidades en 10s cuando un enemigo cae en batalla.\n - Todos los aliados\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño [Permanente]\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño crítico [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 33%.\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 145 % del ATQ físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "Un solo enemigo\n - Inflige daño de un 80% del ATQ mágico 1 vez/veces.\n - Todos los aliados\n - Reduce los tiempos de reutilización de habilidades en 5s en la Torre Celestial y la Torre Desafíos.\nSkill Enhancement Effect\n - Aumento de daño: 80% del ATQ físico.",
+        "desc": "Un solo enemigo\n - Inflige daño de un 80% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional del 70% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 80% del ATQ físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "Meteorito",
-        "desc": "Todos los enemigos\n - Inflige daño de un 85% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 35% del ATQ mágico al realizar un Golpe crítico.\n - Causa Quemadura. [Prob.: 55%] [Duración: 2 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 85% del ATQ físico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos los enemigos\n - Inflige daño que ignora la DEF de un 65% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Ignorar la DEF del 150% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 65% del ATQ físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "Apariciones de la oscuridad",
-        "desc": "Todos los enemigos\n - Inflige daño de un 85% del ATQ mágico 1 vez/veces.\n - Inflige daño adicional de un 45% del ATQ mágico al realizar un Golpe crítico.\n - Vulnerabilidad Mágica [Prob.: 100%] [Duración: 3 turno(s)]\nSkill Enhancement Effect\n - Aumento de daño: 85% del ATQ físico.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos los enemigos\n - Inflige daño de Perforación de un 65% del ATQ mágico 1 vez/veces.\n - En la Torre Celestial y la Torre Desafíos, inflige daño adicional de Perforación del 170% del ATQ mágico\nSkill Enhancement Effect\n - Aumento de daño: 65% del ATQ físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "Bendición de la luna negra",
-        "desc": "A sí mismo\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 130% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Todos los aliados\n - Otorga Aumento de daño mágico en la Torre Celestial y Torre Desafíos. [Siempre activo]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 15%.\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 130 % del ATQ físico.",
+        "desc": "A sí mismo\n - Generosidad de la Torre [Permanente]\n - Aumento de prob. de golpe crítico. [Permanente]\n - Genera un Escudo de un 130% del ATQ mágico del lanzador. [Duración: 3 turno(s)] [1 vez por ronda]\n - Reduce la recarga de habilidades en 8s cuando un enemigo cae en batalla.\n - Todos los aliados\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño [Permanente]\n - En la Torre Celestial y la Torre Desafíos, Aumento de daño crítico [Permanente]\nSkill Enhancement Effect\n - Aumento de efecto: Aumento de probabilidad de golpe crítico 27%.\n - Incrementa el efecto: La absorción de Escudo se vuelve igual a 130 % del ATQ físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",

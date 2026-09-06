@@ -1,0 +1,618 @@
+[
+  {
+    "basicInfo": {
+      "id": "401907",
+      "name": "Yoongun",
+      "subname": "Göksel Adaletin İcra Edicisi",
+      "affiliation": "Gizli Ustalar",
+      "flavor": "Yoongun, halkın çektiği acılara göz yummak ve korkaklık içinde yaşamak yerine, başı dik ve onuru sağlam bir şekilde, utanmadan göklere bakarak ölmeyi tercih edeceğine karar verdi.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40190701",
+        "name": "",
+        "desc": "Tek Düşman\n - Büyü Saldırısının 145%'ine eşit hasar verir 1 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 145% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "40190702",
+        "name": "",
+        "desc": "4 Düşman\n - Büyü Saldırısının 50%'ine eşit hasar verir 3 kez.\n - 2 Güçlendirme Kaldırma uygular. [100% Şans]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 50% kadarına.\nTranscend Lv.2 Effect\n - Etki Ekler: Savunmanın %40 kısmını görmezden gelir.\nTranscend Lv.6 Effect\n - Etki Ekler: Bu Beceriler ile bir Düşmanlar yenildiğinde, %70 güçle [Hızlı Yaylım Ateşi] Max 1 kez ardışık olarak etkinleşir",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "40190703",
+        "name": "",
+        "desc": "Tüm Düşmanlar\n - Hedefin mevcut HP değeri %50 veya üzerindeyse 2 tur boyunca [%40 Görünme Oranı] ile Aura uygular.\n - 39% HP Değişimi\n - Büyü Saldırısı değerinin %58 kadarına eşit 3 kez Delmek hasarı (Hedefin mevcut HP değerine orantılı olarak Max %50 oranında Hasar Artışı)\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 58% kadarına.\nTranscend Lv.2 Effect\n - Etki Ekler: Savunmanın %40 kısmını görmezden gelir.\nTranscend Lv.6 Effect\n - Etki Ekler: Bu Beceriler ile bir Düşmanlar yenildiğinde, %70 güçle [Onlu Top Atışı] Max 1 kez ardışık olarak etkinleşir",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "40190704",
+        "name": "",
+        "desc": "Kendi\n - Kutsama verir. [Her Zaman Aktif]\n - Kritik Oran Artışı sağlar. [Her Zaman Aktif]\n - Zayıflık Vuruş Şansı Artışı sağlar. [Her Zaman Aktif]\n - Büyücü'nün Büyü Saldırısının 185%'üne eşit bir Barikat sağlar. [Süre: 3 Tur]\n - * En az 3 Büyü Kahraman konuşlandırıldığında aşağıdaki etkileri uygular:\n - Kendi Temel Saldırı yeteneği 1 kez tetiklendiğinde, Tüm Hasar İptali [Vuruş Almak 1 kez] artar (Max 6 kez)\n - Bir beceriyi 1 kez etkinleştirdiğinizde, Tüm Hasar İptali'nin isabet sayısını 2 isabet artırır. [Max 6 İsabet]\n - Kendisine Kalabalık Kontrolü uygulandığında Zayıflatma Etkisi Kaldırma (Tümü) sağlar. (Savaş başına 1 kez tetiklenir)\n - Bir zayıflatma etkisi kaldırıldığında Kalabalık Kontrolü Bağışıklığı sağlar. [Süre: 2 Tur(s)]\n - 3 Düşman\n - Kendi Tüm Saldırılar yeteneğinizi 2 kez etkinleştirdiğinizde, Büyü Saldırısının %75 ve hedefin Max HP'sinin %22 kadarına eşit 1 kez Delmek hasarı verir (HP ile orantılı hasar, uygulayıcının saldırı gücünün %300 kadarı ile sınırlıdır)\nSkill Enhancement Effect\n - Etkileri Artırır: Kritik Oran Artışı 50% olur.\n - Etkileri Artırır: Zayıflık Vuruş Şansı Artışı 50% olur.\n - Etkileri Artırır: Engel emilimi, Fiziksel Saldırı'nın %185 kadarına eşit olur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      },
+      "Awaken Skill": {
+        "id": "40190707",
+        "name": "Topyekün Ateş",
+        "desc": "Tüm Düşmanlar\n - %50 şansla Bağlama Halatı uygulama. [Süre: 2 Tur]\n - Büyü Saldırısının 80%'ine eşit hasar verir 2 kez.\n - Büyü Saldırısının 80% kadarını Savunma-Gözardı Eden hasar olarak 2 kez verir.\nSkill Enhancement Effect\n - Etki Ekler: Savunmanın %65 kısmını görmezden gelir.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgo",
+      "likes": "Sunran, Shinji'nin kralı, Shinji, halkı, astları, Shinji'nin mutfağı, yeni kültür ve teknoloji.",
+      "dislikes": "Yolsuz yetkililer, herhangi bir halka karşı tüm baskı",
+      "story": "Yoongun, halkın çektiği acılara göz yummak ve korkaklık içinde yaşamak yerine, başı dik ve onuru sağlam bir şekilde, utanmadan göklere bakarak ölmeyi tercih edeceğine karar verdi."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101906",
+      "name": "Yoongun",
+      "subname": "Skyward Keep'in Yargıcı",
+      "affiliation": "Gizli Ustalar",
+      "flavor": "Hem halka olan bağlılığı hem de Krala olan sarsılmaz sadakatiyle tanınan Yoongun, sakinlerinin yarık tarafından sürekli tehdit altında, tehlikeli bir güvenlik içinde yaşadığı Skyward Keep'in Yargıcı olarak atandı.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "239",
+      "Defense": "92",
+      "HP": "535",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 239,
+        "Defense": 92,
+        "HP": 535
+      },
+      "level30": {
+        "Magical Attack": 1080,
+        "Defense": 411,
+        "HP": 2391
+      },
+      "levelUpBonus": {
+        "Magical Attack": 29,
+        "Defense": 11,
+        "HP": 64
+      },
+      "reinforceBonus": {
+        "Magical Attack": 84,
+        "Defense": 32,
+        "HP": 187
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1080,
+          "Defense": 411,
+          "HP": 2391
+        },
+        "+1": {
+          "Magical Attack": 1164,
+          "Defense": 443,
+          "HP": 2578
+        },
+        "+2": {
+          "Magical Attack": 1248,
+          "Defense": 475,
+          "HP": 2765
+        },
+        "+3": {
+          "Magical Attack": 1332,
+          "Defense": 507,
+          "HP": 2952
+        },
+        "+4": {
+          "Magical Attack": 1416,
+          "Defense": 539,
+          "HP": 3139
+        },
+        "+5": {
+          "Magical Attack": 1500,
+          "Defense": 571,
+          "HP": 3326
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190601",
+        "name": "",
+        "desc": "Tek Düşman\n - Büyü Saldırısının 100%'ine eşit hasar verir 1 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\nSkill Enhancement Effect\n - Hasar Artışı: Büyü Saldırısının 130% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190602",
+        "name": "On Kat Ateş Yağmuru",
+        "desc": "4 Düşman\n - Büyü Saldırısının 35%'ine eşit hasar verir 3 kez.\n - 2 Güçlendirme Kaldırma uygular. [100% Şans]\nSkill Enhancement Effect\n - Hasar Artışı: Büyü Saldırısının 43% kadarına.\nTranscend Lv.2 Effect\n - Etki Ekler: Savunmanın %40 kısmını görmezden gelir.\nTranscend Lv.6 Effect\n - Etki Ekler: Bu Beceriler ile bir Düşmanlar yenildiğinde, %70 güçle [Hızlı Yaylım Ateşi] Max 1 kez ardışık olarak etkinleşir",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190603",
+        "name": "Hızlı Yaylım Ateşi",
+        "desc": "Tüm Düşmanlar\n - Hedefin mevcut HP değeri %50 veya üzerindeyse 2 tur boyunca [%40 Görünme Oranı] ile Aura uygular.\n - 52% HP Değişimi\n - Büyü Saldırısının %50 kadarına eşit 3 kez hasar verir (Hedefin mevcut HP'si ile orantılı olarak Max %50 Hasar Artışı)\n - Büyü Saldırısı değerinin %50 kadarına eşit 3 kez Delmek hasarı (Hedefin mevcut HP değerine orantılı olarak Max %50 oranında Hasar Artışı)\nSkill Enhancement Effect\n - Etki Ekler: Delme\nTranscend Lv.2 Effect\n - Etki Ekler: Savunmanın %40 kısmını görmezden gelir.\nTranscend Lv.6 Effect\n - Etki Ekler: Bu Beceriler ile bir Düşmanlar yenildiğinde, %70 güçle [Onlu Top Atışı] Max 1 kez ardışık olarak etkinleşir",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190604",
+        "name": "Shinji'nin Görevlisi",
+        "desc": "Kendi\n - Kutsama verir. [Her Zaman Aktif]\n - Kritik Oran Artışı sağlar. [Her Zaman Aktif]\n - Zayıflık Vuruş Şansı Artışı sağlar. [Her Zaman Aktif]\n - Büyücü'nün Büyü Saldırısının 160%'üne eşit bir Barikat sağlar. [Süre: 3 Tur]\n - * En az 3 Büyü Kahraman konuşlandırıldığında aşağıdaki etkileri uygular:\n - Kendi Temel Saldırı yeteneği 1 kez tetiklendiğinde, Tüm Hasar İptali [Vuruş Almak 1 kez] artar (Max 6 kez)\n - Bir beceriyi 1 kez etkinleştirdiğinizde, Tüm Hasar İptali'nin isabet sayısını 2 isabet artırır. [Max 6 İsabet]\n - Kendisine Kalabalık Kontrolü uygulandığında Zayıflatma Etkisi Kaldırma (Tümü) sağlar. (Savaş başına 1 kez tetiklenir)\n - Bir zayıflatma etkisi kaldırıldığında Kalabalık Kontrolü Bağışıklığı sağlar. [Süre: 2 Tur(s)]\n - 3 Düşman\n - Kendi Tüm Saldırılar yeteneğinizi 2 kez etkinleştirdiğinizde, Büyü Saldırısının %65 ve hedefin Max HP'sinin %18 kadarına eşit 1 kez Delmek hasarı verir (HP ile orantılı hasar, uygulayıcının saldırı gücünün %300 kadarı ile sınırlıdır)\nSkill Enhancement Effect\n - Etkisini Artırır: Kutsama sınırı, Maksimum HP'nin 25% olur.\n - Etkisini Artırır: Engel emilimi, Büyü Saldırısının %185 kadarına eşit olur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Tüm Saldırıyı %12 artırır.",
+      "transcend_2": "Tüm Saldırıyı %6 artırır.",
+      "transcend_3": "HP'yi %18 artırır.",
+      "transcend_4": "Kritik Hasarı %24 artırır.",
+      "transcend_5": "Tüm Saldırıyı %12 artırır.",
+      "transcend_6": "Tüm Saldırıyı %6 artırır.",
+      "transcend_7": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_8": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_9": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_10": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_11": "Tüm Saldırı, Savunma ve HP'yi %2 artırır.",
+      "transcend_12": "Tüm Saldırı, Savunma ve HP'yi %2 artırır."
+    },
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgo",
+      "likes": "Sunran, Shinji'nin kralı, Shinji, halkı, astları, Shinji'nin mutfağı, yeni kültür ve teknoloji.",
+      "dislikes": "Yolsuz yetkililer, herhangi bir halka karşı tüm baskı",
+      "story": "Hem halka olan bağlılığı hem de Krala olan sarsılmaz sadakatiyle tanınan Yoongun, sakinlerinin yarık tarafından sürekli tehdit altında, tehlikeli bir güvenlik içinde yaşadığı Skyward Keep'in Yargıcı olarak atandı."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101905",
+      "name": "Yoongun",
+      "subname": "Gizli Kraliyet Müfettişi",
+      "affiliation": "Gizli Ustalar",
+      "flavor": "Sadece barış içinde yaşamak isteyen insanlar uğruna, Yoongun Gizli Kraliyet Müfettişi görevini kabul etti. Halkı sömüren kraliyet klanı ve mahkeme akrabalarının her birini tutukladı, ancak sonunda misilleme olarak görevden alındı.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "171",
+      "Defense": "66",
+      "HP": "382",
+      "Speed": "26",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 171,
+        "Defense": 66,
+        "HP": 382
+      },
+      "level30": {
+        "Magical Attack": 780,
+        "Defense": 298,
+        "HP": 1716
+      },
+      "levelUpBonus": {
+        "Magical Attack": 21,
+        "Defense": 8,
+        "HP": 46
+      },
+      "reinforceBonus": {
+        "Magical Attack": 60,
+        "Defense": 22,
+        "HP": 134
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 780,
+          "Defense": 298,
+          "HP": 1716
+        },
+        "+1": {
+          "Magical Attack": 840,
+          "Defense": 320,
+          "HP": 1850
+        },
+        "+2": {
+          "Magical Attack": 900,
+          "Defense": 342,
+          "HP": 1984
+        },
+        "+3": {
+          "Magical Attack": 960,
+          "Defense": 364,
+          "HP": 2118
+        },
+        "+4": {
+          "Magical Attack": 1020,
+          "Defense": 386,
+          "HP": 2252
+        },
+        "+5": {
+          "Magical Attack": 1080,
+          "Defense": 408,
+          "HP": 2386
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190501",
+        "name": "",
+        "desc": "Tek Düşman\n - Büyü Saldırısının 90%'ine eşit hasar verir 1 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 90% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190502",
+        "name": "On Kat Ateş Yağmuru",
+        "desc": "4 Düşman\n - Büyü Saldırısının 31%'ine eşit hasar verir 3 kez.\n - 1 Güçlendirme Kaldırma uygular. [100% Şans]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 31% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190503",
+        "name": "Hızlı Yaylım Ateşi",
+        "desc": "Tüm Düşmanlar\n - Hedefin mevcut HP değeri %50 veya üzerindeyse 2 tur boyunca [%40 Görünme Oranı] ile Aura uygular.\n - 58% HP Değişimi\n - Büyü Saldırısının %45 kadarına eşit 3 kez hasar verir (Hedefin mevcut HP'si ile orantılı olarak Max %50 Hasar Artışı)\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 45% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190504",
+        "name": "Shinji'nin Görevlisi",
+        "desc": "Kendi\n - Kutsama verir. [Her Zaman Aktif]\n - Kritik Oran Artışı sağlar. [Her Zaman Aktif]\n - Zayıflık Vuruş Şansı Artışı sağlar. [Her Zaman Aktif]\n - Büyücü'nün Büyü Saldırısının 145%'üne eşit bir Barikat sağlar. [Süre: 3 Tur]\n - * En az 3 Büyü Kahraman konuşlandırıldığında aşağıdaki etkileri uygular:\n - Kendi Temel Saldırı yeteneği 1 kez tetiklendiğinde, Tüm Hasar İptali [Vuruş Almak 1 kez] artar (Max 6 kez)\n - Bir beceriyi 1 kez etkinleştirdiğinizde, Tüm Hasar İptali'nin isabet sayısını 2 isabet artırır. [Max 6 İsabet]\n - Kendisine Kalabalık Kontrolü uygulandığında Zayıflatma Etkisi Kaldırma (Tümü) sağlar. (Savaş başına 1 kez tetiklenir)\n - Bir zayıflatma etkisi kaldırıldığında Kalabalık Kontrolü Bağışıklığı sağlar. [Süre: 2 Tur(s)]\n - 3 Düşman\n - Kendi Tüm Saldırılar yeteneğinizi 2 kez etkinleştirdiğinizde, Büyü Saldırısının %60 ve hedefin Max HP'sinin %14 kadarına eşit 1 kez Delmek hasarı verir (HP ile orantılı hasar, uygulayıcının saldırı gücünün %150 kadarı ile sınırlıdır)\nSkill Enhancement Effect\n - Etkileri Artırır: Kritik Oran Artışı 21% olur.\n - Etkileri Artırır: Zayıflık Vuruş Şansı Artışı 25% olur.\n - Etkileri Artırır: Engel emilimi, Fiziksel Saldırı'nın %145 kadarına eşit olur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgo",
+      "likes": "Sunran, Shinji'nin kralı, Shinji, halkı, astları, Shinji'nin mutfağı, yeni kültür ve teknoloji.",
+      "dislikes": "Yolsuz yetkililer, herhangi bir halka karşı tüm baskı",
+      "story": "Sadece barış içinde yaşamak isteyen insanlar uğruna, Yoongun Gizli Kraliyet Müfettişi görevini kabul etti. Halkı sömüren kraliyet klanı ve mahkeme akrabalarının her birini tutukladı, ancak sonunda misilleme olarak görevden alındı."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101904",
+      "name": "Yoongun",
+      "subname": "Eksantrik",
+      "affiliation": "Gizli Ustalar",
+      "flavor": "Gün boyunca, Yoongun kılıcıyla antrenman yaptı. Gece olunca, kitaplarını okur, kelimeleri o kadar yüksek sesle tekrar ederdi ki sesi komşu köye bile ulaşırdı. Onu tuhaf biri olarak gören insanlar mesafelerini korudu. Ancak sık sık yardım eli uzatarak çiftlik aletlerini tamir eder veya hasta olanlar için şifalı bitkiler toplardı ve insanlar yavaş yavaş ona güvenmeye ve onu takip etmeye başladılar.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "122",
+      "Defense": "47",
+      "HP": "273",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 122,
+        "Defense": 47,
+        "HP": 273
+      },
+      "level30": {
+        "Magical Attack": 557,
+        "Defense": 221,
+        "HP": 1230
+      },
+      "levelUpBonus": {
+        "Magical Attack": 15,
+        "Defense": 6,
+        "HP": 33
+      },
+      "reinforceBonus": {
+        "Magical Attack": 43,
+        "Defense": 15,
+        "HP": 96
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 557,
+          "Defense": 221,
+          "HP": 1230
+        },
+        "+1": {
+          "Magical Attack": 600,
+          "Defense": 236,
+          "HP": 1326
+        },
+        "+2": {
+          "Magical Attack": 643,
+          "Defense": 251,
+          "HP": 1422
+        },
+        "+3": {
+          "Magical Attack": 686,
+          "Defense": 266,
+          "HP": 1518
+        },
+        "+4": {
+          "Magical Attack": 729,
+          "Defense": 281,
+          "HP": 1614
+        },
+        "+5": {
+          "Magical Attack": 772,
+          "Defense": 296,
+          "HP": 1710
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10190401",
+        "name": "",
+        "desc": "Tek Düşman\n - Büyü Saldırısının 80%'ine eşit hasar verir 1 kez.\n - 100% şansla Güçlendirme Süresi Azaltma uygulama. [Azaltılan: 1 Tur.\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 80% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019001.webp"
+      },
+      "Skill 1": {
+        "id": "10190402",
+        "name": "On Kat Ateş Yağmuru",
+        "desc": "4 Düşman\n - Büyü Saldırısının 28%'ine eşit hasar verir 3 kez.\n - 1 Güçlendirme Kaldırma uygular. [100% Şans]\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 28% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019002.webp"
+      },
+      "Skill 2": {
+        "id": "10190403",
+        "name": "Hızlı Yaylım Ateşi",
+        "desc": "Tüm Düşmanlar\n - Hedefin mevcut HP değeri %50 veya üzerindeyse 2 tur boyunca [%30 Görünme Oranı] ile Aura uygular.\n - 64% HP Değişimi\n - Büyü Saldırısının %41 kadarına eşit 3 kez hasar verir (Hedefin mevcut HP'si ile orantılı olarak Max %50 Hasar Artışı)\nSkill Enhancement Effect\n - Hasar Artışı: Fiziksel Saldırının 41% kadarına.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019003.webp"
+      },
+      "Passive": {
+        "id": "10190404",
+        "name": "Shinji'nin Görevlisi",
+        "desc": "Kendi\n - Kutsama verir. [Her Zaman Aktif]\n - Kritik Oran Artışı sağlar. [Her Zaman Aktif]\n - Zayıflık Vuruş Şansı Artışı sağlar. [Her Zaman Aktif]\n - Büyücü'nün Büyü Saldırısının 130%'üne eşit bir Barikat sağlar. [Süre: 3 Tur]\n - * En az 3 Büyü Kahraman konuşlandırıldığında aşağıdaki etkileri uygular:\n - Kendi Temel Saldırı yeteneği 1 kez tetiklendiğinde, Tüm Hasar İptali [Vuruş Almak 1 kez] artar (Max 6 kez)\n - Bir beceriyi 1 kez etkinleştirdiğinizde, Tüm Hasar İptali'nin isabet sayısını 2 isabet artırır. [Max 6 İsabet]\n - Kendisine Kalabalık Kontrolü uygulandığında Zayıflatma Etkisi Kaldırma (Tümü) sağlar. (Savaş başına 1 kez tetiklenir)\n - Bir zayıflatma etkisi kaldırıldığında Kalabalık Kontrolü Bağışıklığı sağlar. [Süre: 2 Tur(s)]\n - 3 Düşman\n - Kendi Tüm Saldırılar yeteneğinizi 2 kez etkinleştirdiğinizde, Büyü Saldırısının %50 ve hedefin Max HP'sinin %10 kadarına eşit 1 kez Delmek hasarı verir (HP ile orantılı hasar, uygulayıcının saldırı gücünün %150 kadarı ile sınırlıdır)\nSkill Enhancement Effect\n - Etkileri Artırır: Kritik Oran Artışı 15% olur.\n - Etkileri Artırır: Zayıflık Vuruş Şansı Artışı 18% olur.\n - Etkileri Artırır: Engel emilimi, Fiziksel Saldırı'nın %130 kadarına eşit olur.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1019004.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "本田 峻也",
+      "species": "İnsan",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "19 / 09",
+      "age": "28",
+      "height": "182",
+      "weight": "88",
+      "constellation": "Virgo",
+      "likes": "Sunran, Shinji'nin kralı, Shinji, halkı, astları, Shinji'nin mutfağı, yeni kültür ve teknoloji.",
+      "dislikes": "Yolsuz yetkililer, herhangi bir halka karşı tüm baskı",
+      "story": "Gün boyunca, Yoongun kılıcıyla antrenman yaptı. Gece olunca, kitaplarını okur, kelimeleri o kadar yüksek sesle tekrar ederdi ki sesi komşu köye bile ulaşırdı. Onu tuhaf biri olarak gören insanlar mesafelerini korudu. Ancak sık sık yardım eli uzatarak çiftlik aletlerini tamir eder veya hasta olanlar için şifalı bitkiler toplardı ve insanlar yavaş yavaş ona güvenmeye ve onu takip etmeye başladılar."
+    }
+  }
+]

@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "Velika",
+      "subname": "Strega Lunare Oscura",
+      "affiliation": "Avventurieri",
+      "flavor": "Il dolore è solo temporaneo. È un piccolo prezzo da pagare per compiere un altro passo verso la verità dell'universo. Ora, credo che farò un giro nel Registro dei libri proibiti dell'Accademia.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "Singolo nemico\n - Infligge danni pari al 120% dell'attacco magico 1 volta/e\n - Danni aggiuntivi pari al 115% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "Tutti i nemici\n - Durata buff ▼ del bersaglio di 3 turno/i nella Torre Celeste e nella Torre delle Prove. [Probabilità: 100%]\n - Infligge danni ignora difesa pari al 80% dell'attacco magico 1 volta/e\n - Danni aggiuntivi con Ignora difesa pari al 235% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "Tutti i nemici\n - Infligge danni perforanti pari al 95% dell'attacco magico 1 volta/e\n - Danni aggiuntivi da Perforazione pari al 270% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 95% dell'attacco fisico\nTranscend Lv.6 Effect\n - Effetto extra: Silenzio [Probabilità: 60%] [Durata: 2 turno/i]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "Sé\n - Tolleranza della Torre [Sempre attivo]\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 160% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Riduce la ricarica delle abilità di 12s quando un nemico cade in battaglia.\n - Tutti gli alleati\n - Danni ▲ in Torre Celeste e Torre delle Prove [Sempre]\n - Danni critici ▲ in Torre Celeste e Torre delle Prove [Sempre]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲45%\n - Aumenta l'effetto: l'assorbimento della Barriera diventa pari al 160% dell'Attacco fisico.\nTranscend Lv.2 Effect\n - Rafforzamento effetto: Assorbimento barriera pari al 185% dell'attacco magico\n - Aggiunge Effetto: Concede una Barriera pari a 185% dell'Attacco magico dell'incantatore quando i PV scendono a 50% o meno. [Durata: 3 Turno(i)] [Una volta per Battaglia]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "Ombra della strega",
+        "desc": "Tutti i nemici\n - 39% Alterazione PV\n - Infligge danni perforanti pari al 195% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 215% dell'attacco magico",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "Umano",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "24 / 09",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Bilancia",
+      "likes": "Esperimenti, ricerca, verità, cioccolato, insalata, vari equipaggiamenti magici",
+      "dislikes": "I Sette Cavalieri, il Regno Celeste, Ariel, stoltezza",
+      "story": "Il dolore è solo temporaneo. È un piccolo prezzo da pagare per compiere un altro passo verso la verità dell'universo. Ora, credo che farò un giro nel Registro dei libri proibiti dell'Accademia."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "Velika",
       "subname": "Fuoco oscuro",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\n - Tutti gli alleati\n - Riduce i tempi di recupero delle abilità di 9s nella Torre Celeste e nella Torre delle Prove.\n - Riduce i tempi di recupero delle abilità di 12s nella Torre Celeste e nella Torre delle Prove.\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco magico\n - Rafforzamento effetto: Tempo di ricarica abilità ▼12s",
+        "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\n - Danni aggiuntivi pari al 90% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco magico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "Meteora",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 105% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 40% dell'attacco magico quando si effettua un critico\n - Può infliggere Ustione [Probabilità: 60%] [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco magico\n - Aggiunge Danno: Infligge danni aggiuntivi pari al 50% dell'Attacco magico quando si effettua un Colpo Critico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tutti i nemici\n - Durata buff ▼ del bersaglio di 3 turno/i nella Torre Celeste e nella Torre delle Prove. [Probabilità: 100%]\n - Infligge danni ignora difesa pari al 80% dell'attacco magico 1 volta/e\n - Danni aggiuntivi con Ignora difesa pari al 180% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Effetto aggiuntivo: Durata buff ▼ di 3 turno/i nella Torre Celeste e nella Torre delle Prove. [Probabilità: 100%]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "Apparizioni di oscurità",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 105% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 55% dell'attacco magico quando si effettua un critico\n - 100% di probabilità di infliggere Vulnerabilità magica [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 120% dell'attacco magico\n - Rafforzamento effetto: Vulnerabilità magica 22%\nTranscend Lv.6 Effect\n - Effetto extra: Silenzio [Probabilità: 60%] [Durata: 2 turno/i]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tutti i nemici\n - Infligge danni perforanti pari al 80% dell'attacco magico 1 volta/e\n - Danni aggiuntivi da Perforazione pari al 205% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 95% dell'attacco magico\nTranscend Lv.6 Effect\n - Effetto extra: Silenzio [Probabilità: 60%] [Durata: 2 turno/i]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "Benedizione della Luna nera",
-        "desc": "Sé\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 160% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Tutti gli alleati\n - Concede Aumento danni magici nella Torre infinita e nella Torre delle Prove. [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲33%\n - Rafforzamento effetto: Danni magici ▲31%\nTranscend Lv.2 Effect\n - Rafforzamento effetto: Assorbimento barriera pari al 185% dell'attacco magico\n - Aggiunge Effetto: Concede una Barriera pari a 185% dell'Attacco magico dell'incantatore quando i PV scendono a 50% o meno. [Durata: 3 Turno(i)] [Una volta per Battaglia]",
+        "desc": "Sé\n - Tolleranza della Torre [Sempre attivo]\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 160% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Riduce la ricarica delle abilità di 12s quando un nemico cade in battaglia.\n - Tutti gli alleati\n - Danni ▲ in Torre Celeste e Torre delle Prove [Sempre]\n - Danni critici ▲ in Torre Celeste e Torre delle Prove [Sempre]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲45%\n - Rafforzamento effetto: Danni ▲28%\nTranscend Lv.2 Effect\n - Rafforzamento effetto: Assorbimento barriera pari al 185% dell'attacco magico\n - Aggiunge Effetto: Concede una Barriera pari a 185% dell'Attacco magico dell'incantatore quando i PV scendono a 50% o meno. [Durata: 3 Turno(i)] [Una volta per Battaglia]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Bilancia",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "Meteora",
         "desc": "Tutti i nemici\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 50% dell'attacco magico quando si effettua un critico\n - Può infliggere Ustione [Probabilità: 60%] [Durata: 10 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "Apparizioni di oscurità",
         "desc": "Tutti i nemici\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 50% dell'attacco magico quando si effettua un critico\n - 100% di probabilità di infliggere Riduzione della Durata del Buff. [Ridotto di: 1 Turno/i.\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "Benedizione della Luna nera",
         "desc": "Tutti gli alleati\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Sé\n - Concede una Barriera pari al 20% dei PV massimi dell'incantatore quando i PV scendono al di sotto del 50% [Durata: 3 turno/i] [Una volta per battaglia]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲25%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "Singolo nemico\n - Infligge danni pari al 100% dell'attacco magico 1 volta/e\nSkill Enhancement Effect\n - Incremento danno: 100% dell'attacco fisico",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "Meteora",
         "desc": "Tutti i nemici\n - Infligge danni pari al 105% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 40% dell'attacco magico quando si effettua un critico\n - Può infliggere Ustione [Probabilità: 60%] [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 105% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "Apparizioni di oscurità",
         "desc": "Tutti i nemici\n - Infligge danni pari al 105% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 55% dell'attacco magico quando si effettua un critico\n - 100% di probabilità di infliggere Vulnerabilità magica [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 105% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
-        "name": "Benedizione della Luna nera",
+        "name": "Benedizione della luna nera",
         "desc": "Tutti gli alleati\n - Concede Probabilità di critico ▲ [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲19%",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 90% dell'attacco magico 1 volta/e\n - Tutti gli alleati\n - Riduce i tempi di recupero delle abilità di 7s nella Torre Celeste e nella Torre delle Prove.\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
+        "desc": "Singolo nemico\n - Infligge danni pari al 90% dell'attacco magico 1 volta/e\n - Danni aggiuntivi pari al 80% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 90% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "Meteora",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 95% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 40% dell'attacco magico quando si effettua un critico\n - Può infliggere Ustione [Probabilità: 60%] [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 95% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tutti i nemici\n - Infligge danni ignora difesa pari al 75% dell'attacco magico 1 volta/e\n - Danni aggiuntivi con Ignora difesa pari al 165% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 75% dell'attacco fisico",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "Apparizioni di oscurità",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 95% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 50% dell'attacco magico quando si effettua un critico\n - 100% di probabilità di infliggere Vulnerabilità magica [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 95% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tutti i nemici\n - Infligge danni perforanti pari al 75% dell'attacco magico 1 volta/e\n - Danni aggiuntivi da Perforazione pari al 190% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 75% dell'attacco fisico",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "Benedizione della Luna nera",
-        "desc": "Sé\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 145% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Tutti gli alleati\n - Concede Aumento danni magici nella Torre infinita e nella Torre delle Prove. [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲21%\n - Aumenta l'effetto: l'assorbimento della Barriera diventa pari al 145% dell'Attacco fisico.",
+        "desc": "Sé\n - Tolleranza della Torre [Sempre attivo]\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 145% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Riduce la ricarica delle abilità di 10s quando un nemico cade in battaglia.\n - Tutti gli alleati\n - Danni ▲ in Torre Celeste e Torre delle Prove [Sempre]\n - Danni critici ▲ in Torre Celeste e Torre delle Prove [Sempre]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲33%\n - Aumenta l'effetto: l'assorbimento della Barriera diventa pari al 145% dell'Attacco fisico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Bilancia",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "Singolo nemico\n - Infligge danni pari al 80% dell'attacco magico 1 volta/e\n - Tutti gli alleati\n - Riduce i tempi di recupero delle abilità di 5s nella Torre Celeste e nella Torre delle Prove.\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
+        "desc": "Singolo nemico\n - Infligge danni pari al 80% dell'attacco magico 1 volta/e\n - Danni aggiuntivi pari al 70% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 80% dell'attacco fisico",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "Meteora",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 85% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 35% dell'attacco magico quando si effettua un critico\n - Può infliggere Ustione [Probabilità: 55%] [Durata: 2 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 85% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Tutti i nemici\n - Infligge danni ignora difesa pari al 65% dell'attacco magico 1 volta/e\n - Danni aggiuntivi con Ignora difesa pari al 150% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 65% dell'attacco fisico",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "Apparizioni di oscurità",
-        "desc": "Tutti i nemici\n - Infligge danni pari al 85% dell'attacco magico 1 volta/e\n - Infligge danni aggiuntivi pari al 45% dell'attacco magico quando si effettua un critico\n - 100% di probabilità di infliggere Vulnerabilità magica [Durata: 3 turno/i]\nSkill Enhancement Effect\n - Incremento danno: 85% dell'attacco fisico",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Tutti i nemici\n - Infligge danni perforanti pari al 65% dell'attacco magico 1 volta/e\n - Danni aggiuntivi da Perforazione pari al 170% dell'Attacco magico in Torre Celeste e Torre delle Prove\nSkill Enhancement Effect\n - Incremento danno: 65% dell'attacco fisico",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "Benedizione della Luna nera",
-        "desc": "Sé\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 130% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Tutti gli alleati\n - Concede Aumento danni magici nella Torre infinita e nella Torre delle Prove. [Sempre attivo]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲15%\n - Aumenta l'effetto: l'assorbimento della Barriera diventa pari al 130% dell'Attacco fisico.",
+        "desc": "Sé\n - Tolleranza della Torre [Sempre attivo]\n - Concede Probabilità di critico ▲ [Sempre attivo]\n - Concede una Barriera pari al 130% dell'attacco magico dell'incantatore [Durata: 3 turno/i] [Una volta per round]\n - Riduce la ricarica delle abilità di 8s quando un nemico cade in battaglia.\n - Tutti gli alleati\n - Danni ▲ in Torre Celeste e Torre delle Prove [Sempre]\n - Danni critici ▲ in Torre Celeste e Torre delle Prove [Sempre]\nSkill Enhancement Effect\n - Rafforzamento effetto: Probabilità di critico ▲27%\n - Aumenta l'effetto: l'assorbimento della Barriera diventa pari al 130% dell'Attacco fisico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Bilancia",

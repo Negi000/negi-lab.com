@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400817",
+      "name": "Velika",
+      "subname": "Bruxa Lunar Sombria",
+      "affiliation": "Aventureiros",
+      "flavor": "A dor é apenas temporária. É um pequeno preço a pagar por dar mais um passo em direção à verdade do universo. Agora, acho que vou vasculhar a coleção de tomos proibidos da Academia.",
+      "rarity": "legendary",
+      "star": "7",
+      "maxStar": "7",
+      "role": "2",
+      "range": "2",
+      "weaponType": "102",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "275",
+      "Defense": "106",
+      "HP": "615",
+      "Speed": "29",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 275,
+        "Defense": 106,
+        "HP": 615
+      },
+      "level30": {
+        "Magical Attack": 1232,
+        "Defense": 483,
+        "HP": 2761
+      },
+      "levelUpBonus": {
+        "Magical Attack": 33,
+        "Defense": 13,
+        "HP": 74
+      },
+      "reinforceBonus": {
+        "Magical Attack": 96,
+        "Defense": 37,
+        "HP": 215
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 1232,
+          "Defense": 483,
+          "HP": 2761
+        },
+        "+1": {
+          "Magical Attack": 1328,
+          "Defense": 520,
+          "HP": 2976
+        },
+        "+2": {
+          "Magical Attack": 1424,
+          "Defense": 557,
+          "HP": 3191
+        },
+        "+3": {
+          "Magical Attack": 1520,
+          "Defense": 594,
+          "HP": 3406
+        },
+        "+4": {
+          "Magical Attack": 1616,
+          "Defense": 631,
+          "HP": 3621
+        },
+        "+5": {
+          "Magical Attack": 1712,
+          "Defense": 668,
+          "HP": 3836
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40081701",
+        "name": "",
+        "desc": "Inimigo Único\n - Causa dano igual a 120% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de 115% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+      },
+      "Skill 1": {
+        "id": "40081702",
+        "name": "",
+        "desc": "Todos os Inimigos\n - Na Torre Infinita e na Torre da Provação, 100% de chance de infligir Redução de Buff por Turno no alvo por 3 Turno(s).\n - Causa dano que Ignora DEF igual a 80% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Ignorar Defesa de 235% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 80% do ATQ Físico.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+      },
+      "Skill 2": {
+        "id": "40081703",
+        "name": "",
+        "desc": "Todos os Inimigos\n - Causa dano de Perfuração igual a 95% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Perfuração de 270% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 95% do ATQ Físico.\nTranscend Lv.6 Effect\n - Adiciona Efeito: 60% de chance de causar Silêncio. [Duração: 2 turno(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+      },
+      "Passive": {
+        "id": "40081704",
+        "name": "",
+        "desc": "Si Mesmo\n - Tolerância da Torre [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 160% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Reduz os tempos de recarga das habilidades em 12s quando um inimigo cai em batalha.\n - Todos os Aliados\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Causado [Permanente]\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Crítico [Permanente]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 45%.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 160% do ATQ Físico.\nTranscend Lv.2 Effect\n - Aumenta Efeito: A absorção de barreira torna-se 185% do ATQ Mágico.\n - Adiciona Efeito: Concede uma Barreira igual a 185% do ATQ Mágico do lançador quando o HP cair para 50% ou menos. [Duração: 3 Turno(s)] [Uma vez Por Batalha]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+      },
+      "Awaken Skill": {
+        "id": "40081707",
+        "name": "Sombra da Bruxa",
+        "desc": "Todos os Inimigos\n - 39% Alteração de HP\n - Causa dano de Perfuração igual a 195% do ATQ Mágico 1x.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 215% do ATQ Mágico.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "折原くるみ",
+      "species": "Humano",
+      "gender": "2",
+      "bloodType": "4",
+      "birthday": "24 / 09",
+      "age": "22",
+      "height": "171",
+      "weight": "54",
+      "constellation": "Libra",
+      "likes": "Experimentos, pesquisa, verdades, chocolate, salada, vários equipamentos mágicos",
+      "dislikes": "Os Sete Cavaleiros, o Reino Celestial, Ariel, tolice",
+      "story": "A dor é apenas temporária. É um pequeno preço a pagar por dar mais um passo em direção à verdade do universo. Agora, acho que vou vasculhar a coleção de tomos proibidos da Academia."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100816",
       "name": "Velika",
       "subname": "Chamas da Escuridão",
@@ -106,28 +262,28 @@
       "Normal Attack": {
         "id": "10081601",
         "name": "",
-        "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - Todos os Aliados\n - Reduz os tempos de recarga das habilidades em 9s na Torre Infinita e na Torre da Provação.\n - Reduz os tempos de recarga das habilidades em 12s na Torre Infinita e na Torre da Provação.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Mágico.\n - Aumenta Efeito: Redução de Tempo de Recarga de Habilidade em 12s.",
+        "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de 90% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Mágico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081602",
         "name": "Meteoro",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 105% do ATQ Mágico 1x.\n - Causa dano adicional igual a 40% do ATQ Mágico ao acertar um Acerto Crítico.\n - 60% de chance de infligir Queimadura. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Mágico.\n - Adiciona Dano: Causa dano adicional igual a 50% do ATQ Mágico ao acertar um Golpe Crítico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos os Inimigos\n - Na Torre Infinita e na Torre da Provação, 100% de chance de infligir Redução de Buff por Turno no alvo por 3 Turno(s).\n - Causa dano que Ignora DEF igual a 80% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Ignorar Defesa de 180% do Ataque Mágico\nSkill Enhancement Effect\n - Efeito adicional: Na Torre Infinita e na Torre da Provação, 100% de chance de infligir Redução de Buff por Turno por 3 Turno(s).",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081603",
         "name": "Aparições da Escuridão",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 105% do ATQ Mágico 1x.\n - Causa dano adicional igual a 55% do ATQ Mágico ao acertar um Acerto Crítico.\n - 100% de chance de infligir Vulnerabilidade Mágica. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 120% do ATQ Mágico.\n - Aumenta Efeito: Vulnerabilidade Mágica para 22%.\nTranscend Lv.6 Effect\n - Adiciona Efeito: 60% de chance de causar Silêncio. [Duração: 2 turno(s)]",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos os Inimigos\n - Causa dano de Perfuração igual a 80% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Perfuração de 205% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 95% do ATQ Mágico.\nTranscend Lv.6 Effect\n - Adiciona Efeito: 60% de chance de causar Silêncio. [Duração: 2 turno(s)]",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081604",
         "name": "Bênção da Lua Negra",
-        "desc": "Si Mesmo\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 160% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Todos os Aliados\n - Concede Aumento de Dano Mágico na Torre Infinita e na Torre da Provação. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 33%.\n - Aumenta Efeito: Aumento de Dano Mágico para 31%.\nTranscend Lv.2 Effect\n - Aumenta Efeito: A absorção de barreira torna-se 185% do ATQ Mágico.\n - Adiciona Efeito: Concede uma Barreira igual a 185% do ATQ Mágico do lançador quando o HP cair para 50% ou menos. [Duração: 3 Turno(s)] [Uma vez Por Batalha]",
+        "desc": "Si Mesmo\n - Tolerância da Torre [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 160% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Reduz os tempos de recarga das habilidades em 12s quando um inimigo cai em batalha.\n - Todos os Aliados\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Causado [Permanente]\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Crítico [Permanente]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 45%.\n - Aumenta Efeito: Aumento de Dano para 28%.\nTranscend Lv.2 Effect\n - Aumenta Efeito: A absorção de barreira torna-se 185% do ATQ Mágico.\n - Adiciona Efeito: Concede uma Barreira igual a 185% do ATQ Mágico do lançador quando o HP cair para 50% ou menos. [Duração: 3 Turno(s)] [Uma vez Por Batalha]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
@@ -270,28 +426,28 @@
         "name": "",
         "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 100% do ATQ Físico.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32028602",
         "name": "Meteoro",
         "desc": "Todos os Inimigos\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - Causa dano adicional igual a 50% do ATQ Mágico ao acertar um Acerto Crítico.\n - 60% de chance de infligir Queimadura. [Duração: 10 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 100% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32028603",
         "name": "Aparições da Escuridão",
         "desc": "Todos os Inimigos\n - Causa dano igual a 100% do ATQ Mágico 1x.\n - Causa dano adicional igual a 50% do ATQ Mágico ao acertar um Acerto Crítico.\n - 100% de chance de infligir Redução da Duração do Buff. [Reduzido por: 1 Turno(s).\nSkill Enhancement Effect\n - Aumenta o Dano: Para 100% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32028604",
         "name": "Bênção da Lua Negra",
         "desc": "Todos os Aliados\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Si Mesmo\n - Concede uma Barreira igual a 20% do HP MÁX do conjurador quando o HP cair para 50% ou menos. [Duração: 3 turno(s)] [1 vez por batalha]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 25%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -408,28 +564,28 @@
         "name": "",
         "desc": "Inimigo Único\n - Causa dano igual a 100% do ATQ Mágico 1x.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 100% do ATQ Físico.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
+        "icon": ""
       },
       "Skill 1": {
         "id": "32048602",
         "name": "Meteoro",
         "desc": "Todos os Inimigos\n - Causa dano igual a 105% do ATQ Mágico 1x.\n - Causa dano adicional igual a 40% do ATQ Mágico ao acertar um Acerto Crítico.\n - 60% de chance de infligir Queimadura. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 105% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 80s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Skill 2": {
         "id": "32048603",
         "name": "Aparições da Escuridão",
         "desc": "Todos os Inimigos\n - Causa dano igual a 105% do ATQ Mágico 1x.\n - Causa dano adicional igual a 55% do ATQ Mágico ao acertar um Acerto Crítico.\n - 100% de chance de infligir Vulnerabilidade Mágica. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 105% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 88s",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
+        "cooltime": "",
+        "icon": ""
       },
       "Passive": {
         "id": "32048604",
         "name": "Bênção da Lua Negra",
         "desc": "Todos os Aliados\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 19%.",
         "cooltime": "",
-        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
+        "icon": ""
       }
     },
     "transcendence": {},
@@ -544,28 +700,28 @@
       "Normal Attack": {
         "id": "10081501",
         "name": "",
-        "desc": "Inimigo Único\n - Causa dano igual a 90% do ATQ Mágico 1x.\n - Todos os Aliados\n - Reduz os tempos de recarga das habilidades em 7s na Torre Infinita e na Torre da Provação.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 90% do ATQ Físico.",
+        "desc": "Inimigo Único\n - Causa dano igual a 90% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de 80% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 90% do ATQ Físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081502",
         "name": "Meteoro",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 95% do ATQ Mágico 1x.\n - Causa dano adicional igual a 40% do ATQ Mágico ao acertar um Acerto Crítico.\n - 60% de chance de infligir Queimadura. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 95% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos os Inimigos\n - Causa dano que Ignora DEF igual a 75% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Ignorar Defesa de 165% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 75% do ATQ Físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081503",
         "name": "Aparições da Escuridão",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 95% do ATQ Mágico 1x.\n - Causa dano adicional igual a 50% do ATQ Mágico ao acertar um Acerto Crítico.\n - 100% de chance de infligir Vulnerabilidade Mágica. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 95% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos os Inimigos\n - Causa dano de Perfuração igual a 75% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Perfuração de 190% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 75% do ATQ Físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081504",
         "name": "Bênção da Lua Negra",
-        "desc": "Si Mesmo\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 145% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Todos os Aliados\n - Concede Aumento de Dano Mágico na Torre Infinita e na Torre da Provação. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 21%.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 145% do ATQ Físico.",
+        "desc": "Si Mesmo\n - Tolerância da Torre [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 145% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Reduz os tempos de recarga das habilidades em 10s quando um inimigo cai em batalha.\n - Todos os Aliados\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Causado [Permanente]\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Crítico [Permanente]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 33%.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 145% do ATQ Físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -577,7 +733,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
@@ -693,28 +849,28 @@
       "Normal Attack": {
         "id": "10081401",
         "name": "",
-        "desc": "Inimigo Único\n - Causa dano igual a 80% do ATQ Mágico 1x.\n - Todos os Aliados\n - Reduz os tempos de recarga das habilidades em 5s na Torre Infinita e na Torre da Provação.\nSkill Enhancement Effect\n - Aumenta o Dano: Para 80% do ATQ Físico.",
+        "desc": "Inimigo Único\n - Causa dano igual a 80% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de 70% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 80% do ATQ Físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008101.webp"
       },
       "Skill 1": {
         "id": "10081402",
         "name": "Meteoro",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 85% do ATQ Mágico 1x.\n - Causa dano adicional igual a 35% do ATQ Mágico ao acertar um Acerto Crítico.\n - 55% de chance de infligir Queimadura. [Duração: 2 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 85% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 80s",
+        "desc": "Todos os Inimigos\n - Causa dano que Ignora DEF igual a 65% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Ignorar Defesa de 150% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 65% do ATQ Físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008102.webp"
       },
       "Skill 2": {
         "id": "10081403",
         "name": "Aparições da Escuridão",
-        "desc": "Todos os Inimigos\n - Causa dano igual a 85% do ATQ Mágico 1x.\n - Causa dano adicional igual a 45% do ATQ Mágico ao acertar um Acerto Crítico.\n - 100% de chance de infligir Vulnerabilidade Mágica. [Duração: 3 turno(s)]\nSkill Enhancement Effect\n - Aumenta o Dano: Para 85% do ATQ Físico.",
-        "cooltime": "⏱️ CT: 88s",
+        "desc": "Todos os Inimigos\n - Causa dano de Perfuração igual a 65% do ATQ Mágico 1x.\n - Na Torre Infinita e na Torre da Provação, causa dano adicional de Perfuração de 170% do Ataque Mágico\nSkill Enhancement Effect\n - Aumenta o Dano: Para 65% do ATQ Físico.",
+        "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008103.webp"
       },
       "Passive": {
         "id": "10081404",
         "name": "Bênção da Lua Negra",
-        "desc": "Si Mesmo\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 130% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Todos os Aliados\n - Concede Aumento de Dano Mágico na Torre Infinita e na Torre da Provação. [Sempre Ativo]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 15%.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 130% do ATQ Físico.",
+        "desc": "Si Mesmo\n - Tolerância da Torre [Sempre Ativo]\n - Concede Aumento de Chance Crítica. [Sempre Ativo]\n - Concede uma Barreira igual a 130% do ATQ Mágico do conjurador. [Duração: 3 turno(s)] [1 vez por rodada]\n - Reduz os tempos de recarga das habilidades em 8s quando um inimigo cai em batalha.\n - Todos os Aliados\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Causado [Permanente]\n - Na Torre Infinita e na Torre da Provação, Aumenta o Dano Crítico [Permanente]\nSkill Enhancement Effect\n - Aumenta Efeito: Aumento de Chance Crítica para 27%.\n - Aumenta o Efeito: A absorção da Barreira torna-se igual a 130% do ATQ Físico.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1008104.webp"
       }
@@ -726,7 +882,7 @@
       "gender": "2",
       "bloodType": "4",
       "birthday": "24 / 09",
-      "age": "20",
+      "age": "22",
       "height": "171",
       "weight": "54",
       "constellation": "Libra",
