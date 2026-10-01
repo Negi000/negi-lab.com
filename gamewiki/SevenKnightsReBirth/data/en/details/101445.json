@@ -106,7 +106,7 @@
       "Normal Attack": {
         "id": "10144601",
         "name": "",
-        "desc": "Single Enemy\n - Deals damage equal to 50% of Physical Attack plus 12% of the caster's Max HP 1 time(s).\n - 2 Allies with the Lowest Current HP (Excluding Self)\n - Grants a Barrier equal to 8% of the caster's Max HP. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 60% of Physical Attack plus 14% of the caster's Max HP.\n - 2 Allies with the Lowest Current HP (Excluding Self)\n - Adds Effect: Grants a Barrier equal to 8% of the caster's Max HP. [Duration: 2 Turn(s)]",
+        "desc": "Single Enemy\n - Deals damage equal to 50% of Physical Attack plus 12% of the caster's Max HP 1 time(s).\n - 2 Allies with the Lowest Current HP (Excluding Self)\n - Grants a Barrier equal to 8% of the caster's Max HP. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 60% of Physical Attack plus 14% of the caster's Max HP.\n - 2 Allies with the Lowest Current HP (Excluding Self)\n - Adds Effect: Barrier equal to 8% of the caster's Max HP. [Duration: 2 Turn(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014401.webp"
       },
@@ -159,6 +159,144 @@
       "likes": "Karl Heron, the Holy Cross Crusaders, the Night Crows, roasted almonds, order, hell's weed",
       "dislikes": "Bai Jiao, Dellons, stew, chaos, demons",
       "story": "Aquila is the last half-demon in the Holy Cross Crusaders and taught most of its members. She escaped Bai Jiao's trap with the help of the Night Crows, but went into hibernation from her injuries."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "320756",
+      "name": "Aquila",
+      "subname": "Final Executioner",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "3",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "3000",
+      "Magical Attack": "0",
+      "Defense": "3000",
+      "HP": "1000000",
+      "Speed": "50",
+      "Critical Rate": "300"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 3000,
+        "Defense": 3000,
+        "HP": 1000000
+      },
+      "level30": {
+        "Physical Attack": 3000,
+        "Defense": 3000,
+        "HP": 1000000
+      },
+      "levelUpBonus": {
+        "Physical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Physical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        },
+        "+1": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        },
+        "+2": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        },
+        "+3": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        },
+        "+4": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        },
+        "+5": {
+          "Physical Attack": 3000,
+          "Defense": 3000,
+          "HP": 1000000
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "32075601",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 100% of Physical Attack 1 time(s).\n - 100% chance to inflict Death. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 100% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "32075602",
+        "name": "",
+        "desc": "All Enemies\n - Deals damage equal to 100% of Physical Attack 2 time(s).\n - 100% chance to inflict Defense Reduction. [Duration: 5 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 100% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "32075603",
+        "name": "",
+        "desc": "All Enemies\n - Deals damage equal to 150% of Physical Attack 1 time(s).\n - 100% chance to inflict Death. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 150% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "32075604",
+        "name": "",
+        "desc": "All Enemies\n - 100% chance to reduce the duration of the target's buffs by 2 Turn(s) when HP falls to 75%, 50%, or 25%.\n - Self\n - *Receives increased damage from Bleed.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
     }
   },
   {

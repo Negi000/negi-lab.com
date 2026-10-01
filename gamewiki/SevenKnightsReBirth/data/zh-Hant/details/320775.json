@@ -1,0 +1,794 @@
+[
+  {
+    "basicInfo": {
+      "id": "101476",
+      "name": "孫悟空",
+      "subname": "鬥戰勝佛",
+      "affiliation": "四皇",
+      "flavor": "由於各種大鬧而被封印到五行山，但後來被三藏法師所救。之後參加了三藏法師的旅行，因為其功勞被認可而成為了鬥戰勝佛。",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "211",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Magical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Magical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Magical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Magical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Magical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Magical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Magical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Magical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147601",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 石化［30%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的130%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147605",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力60%的2次傷害［額外套用暴擊機率50%］\n - 石化［30%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的75%\nTranscend Lv.6 Effect\n - 效果上升：額外套用暴擊機率100%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "10147602",
+        "name": "勝利打擊",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力53%的3次傷害\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的62%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147606",
+        "name": "幻ㆍ勝利打擊",
+        "desc": "敵軍3名\n - 傷害對象每減少1名時，每次攻擊，增加相當於10%的傷害量\n - 相當於魔法攻擊力86%、對象最大生命力6%的3次無視防禦傷害（生命力比例傷害限制為施展者攻擊力的100%）［額外套用暴擊機率50%］\nSkill Enhancement Effect\n - 傷害量上升：魔法攻擊力的102%、對象最大生命力的7%\nTranscend Lv.6 Effect\n - 效果上升：額外套用暴擊機率100%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147603",
+        "name": "如意亂斬舞",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力43%的3次傷害\n - 石化［40%機率］［持續2回合］\n - 所有我軍\n - 削減［持續3回合］\n自身\n - 分身［持續5回合］\n - 控制行動免疫［持續3回合］\nSkill Enhancement Effect\n - 效果上升：削減效果15%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Passive": {
+        "id": "10147604",
+        "name": "美猴分身術",
+        "desc": "自身\n - 權能（每戰鬥發動1次）\n - 發動權能時，產生相當於施展者魔法攻擊力135%的防護罩［持續3回合］\n - 攻擊力比例防禦力增加［常態］\n - 自身被敵人的攻擊命中時，技能冷卻時間減少10秒\n - 所有我軍\n - 發動自身的技能1次時，恢復相當於施展者魔法攻擊力35%的生命力\nSkill Enhancement Effect\n - 效果上升：防護罩吸收量為魔法攻擊力的155%\n - 恢復量上升：生命力恢復量為魔法攻擊力的45%\nTranscend Lv.2 Effect\n - ［所有我軍］\n - 添加恢復：當自身的生命力達到50%以下時，恢復相當於施展者魔法攻擊力95%的生命力（每戰鬥發動1次）",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "所有攻擊力上升12%。",
+      "transcend_2": "所有攻擊力上升6%。",
+      "transcend_3": "生命力上升18%。",
+      "transcend_4": "受到的傷害減少上升10%。",
+      "transcend_5": "所有攻擊力上升12%。",
+      "transcend_6": "所有攻擊力上升6%。",
+      "transcend_7": "所有攻擊力、防禦力、生命力上升2%。",
+      "transcend_8": "所有攻擊力、防禦力、生命力上升2%。",
+      "transcend_9": "所有攻擊力、防禦力、生命力上升2%。",
+      "transcend_10": "所有攻擊力、防禦力、生命力上升2%。",
+      "transcend_11": "所有攻擊力、防禦力、生命力上升2%。",
+      "transcend_12": "所有攻擊力、防禦力、生命力上升2%。"
+    },
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "妖怪",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "雙魚座",
+      "likes": "三藏、玄奘、蟠桃、酒、自由奔放、溫泉、游泳、刺激",
+      "dislikes": "帕斯卡、戴倫斯、芙蕾雅、熱湯麵、壓迫、不負責任、黑暗洞穴、緊箍",
+      "story": "由於各種大鬧而被封印到五行山，但後來被三藏法師所救。之後參加了三藏法師的旅行，因為其功勞被認可而成為了鬥戰勝佛。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "320786",
+      "name": "孫悟空",
+      "subname": "鬥戰勝佛",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "2500",
+      "Defense": "200",
+      "HP": "2000000",
+      "Speed": "50",
+      "Critical Rate": "300"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 2500,
+        "Defense": 200,
+        "HP": 2000000
+      },
+      "level30": {
+        "Magical Attack": 2500,
+        "Defense": 200,
+        "HP": 2000000
+      },
+      "levelUpBonus": {
+        "Magical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Magical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        },
+        "+1": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        },
+        "+2": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        },
+        "+3": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        },
+        "+4": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        },
+        "+5": {
+          "Magical Attack": 2500,
+          "Defense": 200,
+          "HP": 2000000
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "32078601",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力100%的1次傷害\n - 石化［100%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Normal Attack (Trans)": {
+        "id": "32078605",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力60%的2次傷害\n - 石化［100%機率］［持續2回合］\n - 對象為［出血］狀態時，造成相當於魔法攻擊力500%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的60%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "32078602",
+        "name": "",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力150%的3次傷害\n - 出血［100%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的150%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1 (Trans)": {
+        "id": "32078606",
+        "name": "",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力150%的3次傷害\n - 出血［100%機率］［持續2回合］\n - 對象為［出血］狀態時，造成相當於魔法攻擊力500%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的150%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "32078603",
+        "name": "",
+        "desc": "所有敵軍\n - 相當於魔法攻擊力100%的3次傷害\n - 石化［100%機率］［持續2回合］\n自身\n - 分身［持續5回合］\n - 我軍4名\n - 使死亡的對象以生命力100%復活\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的100%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "32078604",
+        "name": "",
+        "desc": "自身\n - 發動自身的所有攻擊1次時，魔法攻擊力增加疊加1次［最多疊加50次］",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101475",
+      "name": "孫悟空",
+      "subname": "齊天大聖",
+      "affiliation": "四皇",
+      "flavor": "在天界大鬧，玉皇大帝賜給他弼馬溫這個職位，要他安分，但當他得知這只是管理馬廄的職位後，又再次大鬧，後來獲得齊天大聖這個職位。",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "151",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Magical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Magical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Magical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Magical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Magical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Magical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Magical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Magical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147501",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力90%的1次傷害\n - 石化［30%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的90%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147505",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力55%的2次傷害［額外套用暴擊機率50%］\n - 石化［30%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的55%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "10147502",
+        "name": "勝利打擊",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力48%的3次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的48%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147506",
+        "name": "幻ㆍ勝利打擊",
+        "desc": "敵軍3名\n - 傷害對象每減少1名時，每次攻擊，增加相當於10%的傷害量\n - 相當於魔法攻擊力78%、對象最大生命力4%的3次無視防禦傷害（生命力比例傷害限制為施展者攻擊力的50%）［額外套用暴擊機率50%］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的78%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147503",
+        "name": "如意亂斬舞",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力38%的3次傷害\n - 石化［40%機率］［持續2回合］\n - 所有我軍\n - 削減［持續3回合］\n自身\n - 分身［持續5回合］\n - 控制行動免疫［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的38%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Passive": {
+        "id": "10147504",
+        "name": "美猴分身術",
+        "desc": "自身\n - 權能（每戰鬥發動1次）\n - 發動權能時，產生相當於施展者魔法攻擊力125%的防護罩［持續3回合］\n - 攻擊力比例防禦力增加［常態］\n - 自身被敵人的攻擊命中時，技能冷卻時間減少9秒\n - 所有我軍\n - 發動自身的技能1次時，恢復相當於施展者魔法攻擊力30%的生命力",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "妖怪",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "雙魚座",
+      "likes": "三藏、玄奘、蟠桃、酒、自由奔放、溫泉、游泳、刺激",
+      "dislikes": "帕斯卡、戴倫斯、芙蕾雅、熱湯麵、壓迫、不負責任、黑暗洞穴、緊箍",
+      "story": "在天界大鬧，玉皇大帝賜給他弼馬溫這個職位，要他安分，但當他得知這只是管理馬廄的職位後，又再次大鬧，後來獲得齊天大聖這個職位。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "320775",
+      "name": "孫悟空",
+      "subname": "齊天大聖",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "2500",
+      "Defense": "50",
+      "HP": "10000",
+      "Speed": "30",
+      "Critical Rate": "300"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 2500,
+        "Defense": 50,
+        "HP": 10000
+      },
+      "level30": {
+        "Magical Attack": 2500,
+        "Defense": 50,
+        "HP": 10000
+      },
+      "levelUpBonus": {
+        "Magical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Magical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        },
+        "+1": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        },
+        "+2": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        },
+        "+3": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        },
+        "+4": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        },
+        "+5": {
+          "Magical Attack": 2500,
+          "Defense": 50,
+          "HP": 10000
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "32077501",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於1000的1次固定傷害\nSkill Enhancement Effect\n - 傷害量上升：固定傷害100",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "32077502",
+        "name": "",
+        "desc": "敵軍3名\n - 相當於1000的3次固定傷害\nSkill Enhancement Effect\n - 傷害量上升：固定傷害100",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "32077503",
+        "name": "",
+        "desc": "所有敵軍\n - 相當於1000的3次固定傷害\nSkill Enhancement Effect\n - 傷害量上升：固定傷害100",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "32077504",
+        "name": "",
+        "desc": "自身\n - 削減［持續10回合］\n - 我軍後排\n - 削減［常態］",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "101474",
+      "name": "孫悟空",
+      "subname": "美猴王",
+      "affiliation": "四皇",
+      "flavor": "誕生於花果山岩石中的石猴。天生擁有出眾的體魄，征服了花果山所有生物，自封為王。",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "102",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "0",
+      "Magical Attack": "108",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Magical Attack",
+      "level1": {
+        "Magical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Magical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Magical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Magical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Magical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Magical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Magical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Magical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Magical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Magical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10147401",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力80%的1次傷害\n - 石化［25%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014701.webp"
+      },
+      "Normal Attack (Trans)": {
+        "id": "10147405",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於魔法攻擊力50%的2次傷害［額外套用暴擊機率50%］\n - 石化［25%機率］［持續1回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的50%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "10147402",
+        "name": "勝利打擊",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力42%的3次傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的42%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014702.webp"
+      },
+      "Skill 1 (Trans)": {
+        "id": "10147406",
+        "name": "幻ㆍ勝利打擊",
+        "desc": "敵軍3名\n - 傷害對象每減少1名時，每次攻擊，增加相當於10%的傷害量\n - 相當於魔法攻擊力68%、對象最大生命力3%的3次無視防禦傷害（生命力比例傷害限制為施展者攻擊力的50%）［額外套用暴擊機率50%］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的68%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014706.webp"
+      },
+      "Skill 2": {
+        "id": "10147403",
+        "name": "如意亂斬舞",
+        "desc": "敵軍3名\n - 相當於魔法攻擊力35%的3次傷害\n - 石化［30%機率］［持續2回合］\n - 所有我軍\n - 削減［持續3回合］\n自身\n - 分身［持續5回合］\n - 控制行動免疫［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的35%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014703.webp"
+      },
+      "Passive": {
+        "id": "10147404",
+        "name": "美猴分身術",
+        "desc": "自身\n - 權能（每戰鬥發動1次）\n - 發動權能時，產生相當於施展者魔法攻擊力110%的防護罩［持續3回合］\n - 攻擊力比例防禦力增加［常態］\n - 自身被敵人的攻擊命中時，技能冷卻時間減少8秒\n - 所有我軍\n - 發動自身的技能1次時，恢復相當於施展者魔法攻擊力25%的生命力",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1014704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "山口 勝平",
+      "species": "妖怪",
+      "gender": "1",
+      "bloodType": "2",
+      "birthday": "03 / 03",
+      "age": "0",
+      "height": "176",
+      "weight": "70",
+      "constellation": "雙魚座",
+      "likes": "三藏、玄奘、蟠桃、酒、自由奔放、溫泉、游泳、刺激",
+      "dislikes": "帕斯卡、戴倫斯、芙蕾雅、熱湯麵、壓迫、不負責任、黑暗洞穴、緊箍",
+      "story": "誕生於花果山岩石中的石猴。天生擁有出眾的體魄，征服了花果山所有生物，自封為王。"
+    }
+  }
+]

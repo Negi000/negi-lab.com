@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "Eileene",
+      "subname": "Impératrice Immortelle",
+      "affiliation": "Seven Knights",
+      "flavor": "Rachel... Je ne laisserai pas ce pouvoir me contrôler comme ils l'ont fait, j'hériterai de ton pouvoir.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 145 % de l'ATQ PHY 1 fois.\n - Inflige des dégâts supplémentaires équivalents à 65 % de l'ATQ PHY contre les cibles affectées par [Électrocution]\nSkill Enhancement Effect\n - Hausse des dégâts : 145 % de l'ATQ PHY",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "Lance foudroyante",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 61 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 61 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "Éclair céleste : Vrai",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 35 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "Incarnation des flammes",
+        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Confère un Boost de Probabilité d'Électrocution. [Toujours Actif]\n - Soi-même\n - Confère Annulation de tous les dégâts [4 coup(s)]\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\n - Confère Immunité à tous les dégâts lors de la réanimation. [Durée : 3 Tour(s)] [Une fois par bataille]\n - Accorde Augmentation de taux de réussite des effets basée sur l'Attaque. [Toujours actif]\n - Tous les ennemis\n - Confère [Éclair céleste : Véritable] lors de la résurrection.\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 35 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "Rage immortelle",
+        "desc": "Tous les ennemis\n - 100 % de chance d'infliger Réduction de la durée des améliorations. [Réduit de : 2 tour(s).\n - Inflige des dégâts équivalents à 72 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 35 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 55 % de chances d'infliger Brûlure [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Ajout d'effet : A 100 % de chances de réduire la durée de bonus de la cible de 2 tour(s)",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "Humain",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "20 / 09",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Vierge",
+      "likes": "Jave, Rachel, pâtes à la crème, fromage, primo adoptant, chiots, oiseaux",
+      "dislikes": "Dellons, baguettes, tourner autour du pot, grenouilles, chauves-souris",
+      "story": "Rachel... Je ne laisserai pas ce pouvoir me contrôler comme ils l'ont fait, j'hériterai de ton pouvoir."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "Eileene",
       "subname": "Impératrice de Fodina",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "Fureur du Seigneur de la foudre",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 113 % de l'ATQ PHY 3 fois.\n - Inflige des dégâts équivalents à 136 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 35 % de chances d'infliger Électrocution [Durée : 3 tour(s)]\n - Chaque attaque a 45 % de chances d'infliger Électrocution [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 136 % de l'ATQ PHY\n - Hausse de taux : Chances d'Électrocution 45 %\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 48 % de l'ATQ PHY 3 fois.\n - Inflige des dégâts équivalents à 56 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 25 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 56 % de l'ATQ PHY\n - Hausse de taux : Chances d'Électrocution 30 %\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "Éclair céleste",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 62 % de l'ATQ PHY 2 fois.\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Hausse de taux : Chances d'Électrocution 40 %",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 62 % de l'ATQ PHY 2 fois.\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 75 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "Rage de Fodina",
-        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Soi-même\n - Se réanime avec 80 % de PV en cas de mort (1 fois par combat)\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\nSkill Enhancement Effect\n - Gain d'effet : Augmentation d'ATQ PHY 25 %\n - Gain d'effet : PV 100 % lors de la réanimation",
+        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Confère un Boost de Probabilité d'Électrocution. [Toujours Actif]\n - Soi-même\n - Confère Annulation de tous les dégâts [3 coup(s)]\n - Se réanime avec 80 % de PV en cas de mort (1 fois par combat)\n - Se réanime avec 100 % de PV en cas de mort (1 fois par combat)\n - Confère Immunité à tous les dégâts lors de la réanimation. [Durée : 2 Tour(s)] [Une fois par bataille]\n - Accorde Augmentation de taux de réussite des effets basée sur l'Attaque. [Toujours actif]\n - Tous les ennemis\n - Confère [Éclair céleste] lors de la résurrection.\n - Inflige des dégâts équivalents à 62 % de l'ATQ PHY 2 fois.\n - Inflige des dégâts équivalents à 75 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.\nSkill Enhancement Effect\n - Gain d'effet : Augmentation d'ATQ PHY 25 %\n - Gain d'effet : PV 100 % lors de la réanimation\n - Hausse des dégâts : 75 % de l'ATQ PHY\nTranscend Lv.2 Effect\n - Ajout d'effet : Perçage\nTranscend Lv.6 Effect\n - Ajoute un effet : chaque attaque a 100 % de chances d'infliger 1 accumulation(s) de Réduction des soins reçus 15 %. [Max 4 accumulation(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Vierge",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "Fureur du Seigneur de la foudre",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 101 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 35 % de chances d'infliger Électrocution [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 101 % de l'ATQ PHY",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 43 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 25 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 43 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "Éclair céleste",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 57 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 57 % de l'ATQ PHY",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 57 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 57 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "Rage de Fodina",
-        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Soi-même\n - Se réanime avec 60 % de PV en cas de mort (1 fois par combat)",
+        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Confère un Boost de Probabilité d'Électrocution. [Toujours Actif]\n - Soi-même\n - Confère Annulation de tous les dégâts [3 coup(s)]\n - Se réanime avec 60 % de PV en cas de mort (1 fois par combat)\n - Confère Immunité à tous les dégâts lors de la réanimation. [Durée : 1 Tour(s)] [Une fois par bataille]\n - Accorde Augmentation de taux de réussite des effets basée sur l'Attaque. [Toujours actif]\n - Tous les ennemis\n - Confère [Éclair céleste] lors de la résurrection.\n - Inflige des dégâts équivalents à 57 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Vierge",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "Fureur du Seigneur de la foudre",
-        "desc": "Un seul ennemi\n - Inflige des dégâts équivalents à 91 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 30 % de chances d'infliger Électrocution [Durée : 3 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 91 % de l'ATQ PHY",
+        "desc": "3 ennemis\n - Inflige des dégâts équivalents à 38 % de l'ATQ PHY 3 fois.\n - Chaque attaque a 20 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 38 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "Éclair céleste",
-        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 52 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 20 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 52 % de l'ATQ PHY",
+        "desc": "Tous les ennemis\n - Inflige des dégâts équivalents à 52 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 20 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\nSkill Enhancement Effect\n - Hausse des dégâts : 52 % de l'ATQ PHY",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "Rage de Fodina",
-        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Soi-même\n - Se réanime avec 40 % de PV en cas de mort (1 fois par combat)",
+        "desc": "Tous les alliés\n - Confère Augmentation d’ATQ PHY [Toujours actif]\n - Confère un Boost de Probabilité d'Électrocution. [Toujours Actif]\n - Soi-même\n - Confère Annulation de tous les dégâts [3 coup(s)]\n - Se réanime avec 40 % de PV en cas de mort (1 fois par combat)\n - Confère Immunité à tous les dégâts lors de la réanimation. [Durée : 1 Tour(s)] [Une fois par bataille]\n - Accorde Augmentation de taux de réussite des effets basée sur l'Attaque. [Toujours actif]\n - Tous les ennemis\n - Confère [Éclair céleste] lors de la résurrection.\n - Inflige des dégâts équivalents à 52 % de l'ATQ PHY 2 fois.\n - Chaque attaque a 20 % de chances d'infliger Électrocution [Durée : 2 tour(s)]\n - Chaque attaque a 100 % de chances d'infliger 1 charge(s) de Réduction de défense. [Max 4 charge(s)]\n - *Les Compétences déclenchées de cette manière sont considérées comme distinctes de la Compétence d’origine.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Vierge",

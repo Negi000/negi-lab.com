@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "Eileene",
+      "subname": "Unsterbliche Kaiserin",
+      "affiliation": "Sieben Ritter",
+      "flavor": "Rachel ... Ich werde nicht zulassen, dass diese Macht mich kontrolliert, so wie sie es taten. Ich werde deine Kraft erben.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 145 % des physischen Angriffs 1 Mal.\n - Verursacht zusätzlichen Schaden in Höhe von 65 % des physischen Angriffs gegen Ziele, die mit [Blitzschlag] belegt sind.\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 145 % des physischen Angriffs.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "Blitzschnell",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 61 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 61 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "Himmlischer Blitz: Wahr",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "Verkörperung der Flammen",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Gewährt Schock-Wahrscheinlichkeits-Boost. [Immer aktiv]\n - Selbst\n - Gewährt Schadensannullierung. [4 Treffer]\n - Wiederbelebt mit 100 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Gewährt Schadensimmunität bei Wiederbelebung. [Dauer: 3 Runde(n)] [Einmal pro Kampf]\n - Gewährt Angriffsbasierte Effekttrefferquote-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Gewährt [Himmlischer Blitz: Wahr] bei Wiederbelebung.\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\n - *Fähigkeiten, die auf diese Weise ausgelöst werden, werden als getrennt von der ursprünglichen Fähigkeit behandelt.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "Unsterbliche Wut",
+        "desc": "Alle Feinde\n - 100 % Chance, Buff-Dauer-Reduzierung zu verursachen. [Reduziert um: 2 Runde(n).\n - Verursacht Schaden in Höhe von 72 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine 55 %-Chance, Brand zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Fügt Effekt hinzu: 100 % Chance, die Dauer der Stärkungszauber des Ziels um 2 Runde(n) zu verkürzen.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "Mensch",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "20 / 09",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Jungfrau",
+      "likes": "Jave, Rachel, Spaghetti Alfredo, Käse, Early Adopter, Welpen, Vögel",
+      "dislikes": "Dellons, Baguette, um den heißen Brei herumreden, Frösche, Fledermäuse",
+      "story": "Rachel ... Ich werde nicht zulassen, dass diese Macht mich kontrolliert, so wie sie es taten. Ich werde deine Kraft erben."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "Eileene",
       "subname": "Kaiserin von Fodina",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "Zorn des Donnergotts",
-        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 113 % des physischen Angriffs 3 Mal.\n - Verursacht Schaden in Höhe von 136 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\n - Jeder Angriff hat eine 45 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 136 % des physischen Angriffs.\n - Erhöht die Chance: Blitzschlag-Chance wird zu 45 %.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 48 % des physischen Angriffs 3 Mal.\n - Verursacht Schaden in Höhe von 56 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 25 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 56 % des physischen Angriffs.\n - Erhöht die Chance: Blitzschlag-Chance wird zu 30 %.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "Himmlischer Blitz",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 62 % des physischen Angriffs 2 Mal.\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Erhöht die Chance: Blitzschlag-Chance wird zu 40 %.",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 62 % des physischen Angriffs 2 Mal.\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "Fodinas Zorn",
-        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 80 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Wiederbelebt mit 100 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 25 %.\n - Erhöhter Effekt: TP, die bei Wiederbelebung gewonnen werden, werden zu 100 %.",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Gewährt Schock-Wahrscheinlichkeits-Boost. [Immer aktiv]\n - Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Wiederbelebt mit 80 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Wiederbelebt mit 100 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Gewährt Schadensimmunität bei Wiederbelebung. [Dauer: 2 Runde(n)] [Einmal pro Kampf]\n - Gewährt Angriffsbasierte Effekttrefferquote-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Gewährt [Himmlischer Blitz] bei Wiederbelebung.\n - Verursacht Schaden in Höhe von 62 % des physischen Angriffs 2 Mal.\n - Verursacht Schaden in Höhe von 75 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\n - *Fähigkeiten, die auf diese Weise ausgelöst werden, werden als getrennt von der ursprünglichen Fähigkeit behandelt.\nSkill Enhancement Effect\n - Erhöhter Effekt: Physische AK-Erhöhung auf 25 %.\n - Erhöhter Effekt: TP, die bei Wiederbelebung gewonnen werden, werden zu 100 %.\n - Erhöht den Schaden: Auf 75 % des physischen Angriffs.\nTranscend Lv.2 Effect\n - Fügt Effekt hinzu: Durchdringen\nTranscend Lv.6 Effect\n - Fügt Effekt hinzu: Jeder Angriff hat eine 100 %-Chance, 1 Stapel von 15 % Gewährte Heilungs-Verringerung zuzufügen. [Max. 4 Stapel]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Jungfrau",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "Zorn des Donnergotts",
-        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 101 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 35 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 101 % des physischen Angriffs.",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 43 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 25 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 43 % des physischen Angriffs.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "Himmlischer Blitz",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 57 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 57 % des physischen Angriffs.",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 57 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 57 % des physischen Angriffs.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "Fodinas Zorn",
-        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 60 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Gewährt Schock-Wahrscheinlichkeits-Boost. [Immer aktiv]\n - Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Wiederbelebt mit 60 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Gewährt Schadensimmunität bei Wiederbelebung. [Dauer: 1 Runde(n)] [Einmal pro Kampf]\n - Gewährt Angriffsbasierte Effekttrefferquote-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Gewährt [Himmlischer Blitz] bei Wiederbelebung.\n - Verursacht Schaden in Höhe von 57 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\n - *Fähigkeiten, die auf diese Weise ausgelöst werden, werden als getrennt von der ursprünglichen Fähigkeit behandelt.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Jungfrau",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "Zorn des Donnergotts",
-        "desc": "Einzelner Feind\n - Verursacht Schaden in Höhe von 91 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 30 % Chance, Blitzschlag zu verursachen. [Dauer: 3 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 91 % des physischen Angriffs.",
+        "desc": "3 Feinde\n - Verursacht Schaden in Höhe von 38 % des physischen Angriffs 3 Mal.\n - Jeder Angriff hat eine 20 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 38 % des physischen Angriffs.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "Himmlischer Blitz",
-        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 52 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 20 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 52 % des physischen Angriffs.",
+        "desc": "Alle Feinde\n - Verursacht Schaden in Höhe von 52 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 20 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\nSkill Enhancement Effect\n - Erhöht den Schaden: Auf 52 % des physischen Angriffs.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "Fodinas Zorn",
-        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Selbst\n - Wiederbelebt mit 40 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]",
+        "desc": "Alle Verbündeten\n - Gewährt Physische AK-Erhöhung. [Immer aktiv]\n - Gewährt Schock-Wahrscheinlichkeits-Boost. [Immer aktiv]\n - Selbst\n - Gewährt Schadensannullierung. [3 Treffer]\n - Wiederbelebt mit 40 % TP, wenn im Kampf gefallen. [Einmal pro Kampf]\n - Gewährt Schadensimmunität bei Wiederbelebung. [Dauer: 1 Runde(n)] [Einmal pro Kampf]\n - Gewährt Angriffsbasierte Effekttrefferquote-Erhöhung. [Immer aktiv]\n - Alle Feinde\n - Gewährt [Himmlischer Blitz] bei Wiederbelebung.\n - Verursacht Schaden in Höhe von 52 % des physischen Angriffs 2 Mal.\n - Jeder Angriff hat eine 20 % Chance, Blitzschlag zu verursachen. [Dauer: 2 Runde(n)]\n - Jeder Angriff hat eine Chance von 100 %, 1 Stapel VK-Verringerung zuzufügen. [Max. 4 Stapel]\n - *Fähigkeiten, die auf diese Weise ausgelöst werden, werden als getrennt von der ursprünglichen Fähigkeit behandelt.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "20 / 09",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Jungfrau",

@@ -1,0 +1,756 @@
+[
+  {
+    "basicInfo": {
+      "id": "400597",
+      "name": "阿依琳",
+      "subname": "不朽女皇",
+      "affiliation": "七骑士",
+      "flavor": "蕾茜儿……我不会像那家伙一样被这种力量支配。\\n让我来承接你的力量吧。",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力145%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力65%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的145%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "电光火石",
+        "desc": "3名敌人\n - 3次相当于物理攻击力61%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的61%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "晴天霹雳·真",
+        "desc": "全体敌军\n - 2次相当于物理攻击力75%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "火焰化身",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击4次]\n - 死亡时以生命力的100%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续3回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时，发动[晴天霹雳·真]\n - 2次相当于物理攻击力75%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "无尽之怒",
+        "desc": "全体敌军\n - 对象的回合制增益减少2回合 [100%的概率]\n - 2次相当于物理攻击力72%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击赋予灼伤 [55%的概率][持续3回合]\nSkill Enhancement Effect\n - 额外效果：回合制增益减少2回合 [100%的概率]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人类",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "处女座",
+      "likes": "杰伯、蕾茜儿、奶油意大利面、芝士、消费先锋、小狗、鸟",
+      "dislikes": "戴伦兹、法棍面包、犹犹豫豫、青蛙、蝙蝠",
+      "story": "蕾茜儿……我不会像那家伙一样被这种力量支配。\\n让我来承接你的力量吧。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100596",
+      "name": "阿依琳",
+      "subname": "波迪纳女皇",
+      "affiliation": "七骑士",
+      "flavor": "阿依琳通过优秀的指挥能力、力量与智慧成为了拥有波迪纳最高权力的女帝，现在已经做好了要脱离沉默矿山并且扩张领土的准备了。",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059601",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力100%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力45%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的130%\n - 伤害量提升：对象处于[触电]状态时提升至物理攻击力的55%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059602",
+        "name": "雷帝之怒",
+        "desc": "3名敌人\n - 3次相当于物理攻击力48%的伤害\n - 每次攻击赋予触电[25%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的56%\n - 概率提升：触电概率提升至30%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059603",
+        "name": "晴天霹雳",
+        "desc": "全体敌军\n - 2次相当于物理攻击力62%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059604",
+        "name": "波迪纳之怒",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续2回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力62%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关\nSkill Enhancement Effect\n - 效果提升：物理攻击力增加25%\n - 效果提升：复活时生命力提升至100%\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "所有攻击力提升12%。",
+      "transcend_2": "所有攻击力提升6%。",
+      "transcend_3": "生命力提升18%。",
+      "transcend_4": "效果命中提升24%。",
+      "transcend_5": "所有攻击力提升12%。",
+      "transcend_6": "所有攻击力提升6%。",
+      "transcend_7": "所有攻击力、防御力、生命力提升2%。",
+      "transcend_8": "所有攻击力、防御力、生命力提升2%。",
+      "transcend_9": "所有攻击力、防御力、生命力提升2%。",
+      "transcend_10": "所有攻击力、防御力、生命力提升2%。",
+      "transcend_11": "所有攻击力、防御力、生命力提升2%。",
+      "transcend_12": "所有攻击力、防御力、生命力提升2%。"
+    },
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人类",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "处女座",
+      "likes": "杰伯、蕾茜儿、奶油意大利面、芝士、消费先锋、小狗、鸟",
+      "dislikes": "戴伦兹、法棍面包、犹犹豫豫、青蛙、蝙蝠",
+      "story": "阿依琳通过优秀的指挥能力、力量与智慧成为了拥有波迪纳最高权力的女帝，现在已经做好了要脱离沉默矿山并且扩张领土的准备了。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "301100",
+      "name": "阿依琳",
+      "subname": "波迪纳女皇",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "1714",
+      "HP": "60000",
+      "Speed": "25",
+      "Critical Rate": "0"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 1714,
+        "HP": 60000
+      },
+      "level30": {
+        "Physical Attack": 1081,
+        "Defense": 1714,
+        "HP": 60000
+      },
+      "levelUpBonus": {
+        "Physical Attack": 30,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1081,
+          "Defense": 1714,
+          "HP": 60000
+        },
+        "+1": {
+          "Physical Attack": 1155,
+          "Defense": 1750,
+          "HP": 60208
+        },
+        "+2": {
+          "Physical Attack": 1229,
+          "Defense": 1786,
+          "HP": 60416
+        },
+        "+3": {
+          "Physical Attack": 1303,
+          "Defense": 1822,
+          "HP": 60624
+        },
+        "+4": {
+          "Physical Attack": 1377,
+          "Defense": 1858,
+          "HP": 60832
+        },
+        "+5": {
+          "Physical Attack": 1451,
+          "Defense": 1894,
+          "HP": 61040
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "30110001",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力130%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力75%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的130%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "30110002",
+        "name": "",
+        "desc": "3名敌人\n - 3次相当于物理攻击力80%的贯穿伤害\n - 每次攻击赋予触电[100%的概率][持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "30110003",
+        "name": "",
+        "desc": "全体敌军\n - 2次相当于物理攻击力80%的贯穿伤害\n - 每次攻击赋予触电[100%的概率][持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "30110004",
+        "name": "",
+        "desc": "自己\n - 攻城战减免[始终]\n - 30回合后狂暴化[始终]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100595",
+      "name": "阿依琳",
+      "subname": "最高指挥官",
+      "affiliation": "七骑士",
+      "flavor": "阿依琳是凭借不断的成长和严酷的指挥能力而成为司令官的。另外，阿依琳正在计划扩大相对较小的沉默矿山。",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059501",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力90%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力40%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的90%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059502",
+        "name": "雷帝之怒",
+        "desc": "3名敌人\n - 3次相当于物理攻击力43%的伤害\n - 每次攻击赋予触电[25%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的43%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059503",
+        "name": "晴天霹雳",
+        "desc": "全体敌军\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059504",
+        "name": "波迪纳之怒",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续1回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人类",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "处女座",
+      "likes": "杰伯、蕾茜儿、奶油意大利面、芝士、消费先锋、小狗、鸟",
+      "dislikes": "戴伦兹、法棍面包、犹犹豫豫、青蛙、蝙蝠",
+      "story": "阿依琳是凭借不断的成长和严酷的指挥能力而成为司令官的。另外，阿依琳正在计划扩大相对较小的沉默矿山。"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100594",
+      "name": "阿依琳",
+      "subname": "司令官",
+      "affiliation": "七骑士",
+      "flavor": "沉默矿山以力量来判断一切，无论种族或性别。阿依琳能当司令官这件事也不例外。",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059401",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力80%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力35%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的80%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059402",
+        "name": "雷帝之怒",
+        "desc": "3名敌人\n - 3次相当于物理攻击力38%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的38%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059403",
+        "name": "晴天霹雳",
+        "desc": "全体敌军\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059404",
+        "name": "波迪纳之怒",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续1回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人类",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "处女座",
+      "likes": "杰伯、蕾茜儿、奶油意大利面、芝士、消费先锋、小狗、鸟",
+      "dislikes": "戴伦兹、法棍面包、犹犹豫豫、青蛙、蝙蝠",
+      "story": "沉默矿山以力量来判断一切，无论种族或性别。阿依琳能当司令官这件事也不例外。"
+    }
+  }
+]

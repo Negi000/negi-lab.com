@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "阿依琳",
+      "subname": "不朽女皇",
+      "affiliation": "七骑士",
+      "flavor": "蕾茜儿……我不会像那家伙一样被这种力量支配。\\n让我来承接你的力量吧。",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "单一敌军\n - 1次相当于物理攻击力145%的伤害\n - 对象处于[触电]状态时造成相当于物理攻击力65%的额外伤害\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的145%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "电光火石",
+        "desc": "3名敌人\n - 3次相当于物理攻击力61%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的61%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "晴天霹雳·真",
+        "desc": "全体敌军\n - 2次相当于物理攻击力75%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "火焰化身",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击4次]\n - 死亡时以生命力的100%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续3回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时，发动[晴天霹雳·真]\n - 2次相当于物理攻击力75%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "无尽之怒",
+        "desc": "全体敌军\n - 对象的回合制增益减少2回合 [100%的概率]\n - 2次相当于物理攻击力72%的伤害\n - 每次攻击赋予触电[35%的概率][持续2回合]\n - 每次攻击赋予灼伤 [55%的概率][持续3回合]\nSkill Enhancement Effect\n - 额外效果：回合制增益减少2回合 [100%的概率]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人类",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "处女座",
+      "likes": "杰伯、蕾茜儿、奶油意大利面、芝士、消费先锋、小狗、鸟",
+      "dislikes": "戴伦兹、法棍面包、犹犹豫豫、青蛙、蝙蝠",
+      "story": "蕾茜儿……我不会像那家伙一样被这种力量支配。\\n让我来承接你的力量吧。"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "阿依琳",
       "subname": "波迪纳女皇",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "雷帝之怒",
-        "desc": "单一敌军\n - 3次相当于物理攻击力113%的伤害\n - 每次攻击赋予触电[35%的概率][持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的136%\n - 概率提升：触电概率提升至45%\nTranscend Lv.2 Effect\n - 额外效果：贯穿",
+        "desc": "3名敌人\n - 3次相当于物理攻击力48%的伤害\n - 每次攻击赋予触电[25%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的56%\n - 概率提升：触电概率提升至30%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "晴天霹雳",
-        "desc": "全体敌军\n - 2次相当于物理攻击力62%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 概率提升：触电概率提升至40%",
+        "desc": "全体敌军\n - 2次相当于物理攻击力62%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "波迪纳之怒",
-        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 自己\n - 死亡时以生命力的80%复活（每场战斗发动1次）\nSkill Enhancement Effect\n - 效果提升：物理攻击力增加25%\n - 效果提升：复活时生命力提升至100%",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的80%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续2回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力62%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关\nSkill Enhancement Effect\n - 效果提升：物理攻击力增加25%\n - 效果提升：复活时生命力提升至100%\n - 伤害量提升：提升至物理攻击力的75%\nTranscend Lv.2 Effect\n - 额外效果：贯穿\nTranscend Lv.6 Effect\n - 额外效果：每次攻击时所受恢复量减少15% [100%的概率] 叠加1次 [最多叠加4次]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "处女座",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "雷帝之怒",
-        "desc": "单一敌军\n - 3次相当于物理攻击力101%的伤害\n - 每次攻击赋予触电[35%的概率][持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的101%",
+        "desc": "3名敌人\n - 3次相当于物理攻击力43%的伤害\n - 每次攻击赋予触电[25%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的43%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "晴天霹雳",
-        "desc": "全体敌军\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
+        "desc": "全体敌军\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的57%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "波迪纳之怒",
-        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 自己\n - 死亡时以生命力的60%复活（每场战斗发动1次）",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的60%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续1回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力57%的伤害\n - 每次攻击赋予触电[30%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "处女座",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "雷帝之怒",
-        "desc": "单一敌军\n - 3次相当于物理攻击力91%的伤害\n - 每次攻击赋予触电[30%的概率][持续3回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的91%",
+        "desc": "3名敌人\n - 3次相当于物理攻击力38%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的38%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "晴天霹雳",
-        "desc": "全体敌军\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
+        "desc": "全体敌军\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\nSkill Enhancement Effect\n - 伤害量提升：提升至物理攻击力的52%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "波迪纳之怒",
-        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 自己\n - 死亡时以生命力的40%复活（每场战斗发动1次）",
+        "desc": "全体我军\n - 物理攻击力增加 [始终]\n - 触电效果发动率增加 [始终]\n - 自己\n - 所有伤害无效 [被击3次]\n - 死亡时以生命力的40%复活（每场战斗发动1次）\n - 自身复活时赋予所有伤害免疫 [持续1回合] （每场战斗发动1次）\n - 攻击力比例效果命中增加 [始终]\n - 全体敌军\n - 自身复活时发动[晴天霹雳]\n - 2次相当于物理攻击力52%的伤害\n - 每次攻击赋予触电[20%的概率][持续2回合]\n - 每次攻击时防御力减少 [100%的概率] 叠加1次 [最多叠加4次]\n - *以该方式发动的技能与原本的技能无关",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "处女座",

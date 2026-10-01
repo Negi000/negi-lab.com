@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "아일린",
+      "subname": "불멸의 여제",
+      "affiliation": "세븐나이츠",
+      "flavor": "레이첼… 난 저 녀석처럼 이 힘에 지배당하지 않을거야.\\n네 힘. 내가 이어 받을게.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "단일 적군\n - 물리 공격력의 145%만큼 1회 피해\n - 대상이 [감전] 상태일 경우 물리 공격력의 65%만큼 추가 피해\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 145%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "전광석화",
+        "desc": "적군 3명\n - 물리 공격력의 61%만큼 3회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 61%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "청천벽력•진(眞)",
+        "desc": "모든 적군\n - 물리 공격력의 75%만큼 2회 피해\n - 각 공격마다 감전 [35% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "불꽃의 화신",
+        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 감전 효과 적용 확률 증가 [상시]\n - 자신\n - 모든 피해 무효화 [피격 4회]\n - 사망 시 생명력 100%로 부활 (전투당 1회 발동)\n - 자신 부활 시 모든 피해 면역 [3턴 지속] (전투당 1회 발동)\n - 공격력 비례 효과 적중 증가 [상시]\n - 모든 적군\n - 자신 부활 시, [청천벽력•진(眞)] 발동\n - 물리 공격력의 75%만큼 2회 피해\n - 각 공격마다 감전 [35% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "불멸의 분노",
+        "desc": "모든 적군\n - 대상의 턴제 버프 감소 2턴 [100% 확률]\n - 물리 공격력의 72%만큼 2회 피해\n - 각 공격마다 감전 [35% 확률] [2턴 지속]\n - 각 공격마다 화상 [55% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 효과 추가 : 턴제 버프 감소 2턴 [100% 확률]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "김율",
+      "species": "인간",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "처녀자리",
+      "likes": "제이브, 레이첼, 크림 스파게티, 치즈, 얼리어답터, 강아지, 새",
+      "dislikes": "델론즈, 바게뜨(빵), 우물쭈물 하는 것, 개구리, 박쥐",
+      "story": "레이첼… 난 저 녀석처럼 이 힘에 지배당하지 않을거야.\\n네 힘. 내가 이어 받을게."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "아일린",
       "subname": "포디나의 여제",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "뇌제의 분노",
-        "desc": "단일 적군\n - 물리 공격력의 113%만큼 3회 피해\n - 각 공격마다 감전 [35% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 136%\n - 확률 상승 : 감전 확률 45%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통",
+        "desc": "적군 3명\n - 물리 공격력의 48%만큼 3회 피해\n - 각 공격마다 감전 [25% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 56%\n - 확률 상승 : 감전 확률 30%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "청천벽력",
-        "desc": "모든 적군\n - 물리 공격력의 62%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 확률 상승 : 감전 확률 40%",
+        "desc": "모든 적군\n - 물리 공격력의 62%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 75%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "포디나의 분노",
-        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 자신\n - 사망 시 생명력 80%로 부활 (전투당 1회 발동)\nSkill Enhancement Effect\n - 효과 상승 : 물리 공격력 증가 25%\n - 효과 상승 : 부활 시 생명력 100%",
+        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 감전 효과 적용 확률 증가 [상시]\n - 자신\n - 모든 피해 무효화 [피격 3회]\n - 사망 시 생명력 80%로 부활 (전투당 1회 발동)\n - 자신 부활 시 모든 피해 면역 [2턴 지속] (전투당 1회 발동)\n - 공격력 비례 효과 적중 증가 [상시]\n - 모든 적군\n - 자신 부활 시, [청천벽력] 발동\n - 물리 공격력의 62%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급\nSkill Enhancement Effect\n - 효과 상승 : 물리 공격력 증가 25%\n - 효과 상승 : 부활 시 생명력 100%\n - 피해량 상승 : 물리 공격력의 75%\nTranscend Lv.2 Effect\n - 효과 추가 : 관통\nTranscend Lv.6 Effect\n - 효과 추가 : 각 공격마다 받는 회복량 감소 15% [100% 확률] 1중첩 [최대 4중첩]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "처녀자리",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "뇌제의 분노",
-        "desc": "단일 적군\n - 물리 공격력의 101%만큼 3회 피해\n - 각 공격마다 감전 [35% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 101%",
+        "desc": "적군 3명\n - 물리 공격력의 43%만큼 3회 피해\n - 각 공격마다 감전 [25% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 43%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "청천벽력",
-        "desc": "모든 적군\n - 물리 공격력의 57%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 57%",
+        "desc": "모든 적군\n - 물리 공격력의 57%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 57%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "포디나의 분노",
-        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 자신\n - 사망 시 생명력 60%로 부활 (전투당 1회 발동)",
+        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 감전 효과 적용 확률 증가 [상시]\n - 자신\n - 모든 피해 무효화 [피격 3회]\n - 사망 시 생명력 60%로 부활 (전투당 1회 발동)\n - 자신 부활 시 모든 피해 면역 [1턴 지속] (전투당 1회 발동)\n - 공격력 비례 효과 적중 증가 [상시]\n - 모든 적군\n - 자신 부활 시, [청천벽력] 발동\n - 물리 공격력의 57%만큼 2회 피해\n - 각 공격마다 감전 [30% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "처녀자리",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "뇌제의 분노",
-        "desc": "단일 적군\n - 물리 공격력의 91%만큼 3회 피해\n - 각 공격마다 감전 [30% 확률] [3턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 91%",
+        "desc": "적군 3명\n - 물리 공격력의 38%만큼 3회 피해\n - 각 공격마다 감전 [20% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 38%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "청천벽력",
-        "desc": "모든 적군\n - 물리 공격력의 52%만큼 2회 피해\n - 각 공격마다 감전 [20% 확률] [2턴 지속]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 52%",
+        "desc": "모든 적군\n - 물리 공격력의 52%만큼 2회 피해\n - 각 공격마다 감전 [20% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\nSkill Enhancement Effect\n - 피해량 상승 : 물리 공격력의 52%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "포디나의 분노",
-        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 자신\n - 사망 시 생명력 40%로 부활 (전투당 1회 발동)",
+        "desc": "모든 아군\n - 물리 공격력 증가 [상시]\n - 감전 효과 적용 확률 증가 [상시]\n - 자신\n - 모든 피해 무효화 [피격 3회]\n - 사망 시 생명력 40%로 부활 (전투당 1회 발동)\n - 자신 부활 시 모든 피해 면역 [1턴 지속] (전투당 1회 발동)\n - 공격력 비례 효과 적중 증가 [상시]\n - 모든 적군\n - 자신 부활 시, [청천벽력] 발동\n - 물리 공격력의 52%만큼 2회 피해\n - 각 공격마다 감전 [20% 확률] [2턴 지속]\n - 각 공격마다 방어력 감소 [100% 확률] 1중첩 [최대 4중첩]\n - *해당 방식으로 발동된 스킬은 본래의 스킬과 별개 취급",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "처녀자리",

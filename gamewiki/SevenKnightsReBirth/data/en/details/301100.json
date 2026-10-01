@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "Eileene",
+      "subname": "Immortal Empress",
+      "affiliation": "Seven Knights",
+      "flavor": "Rachel... I won't let this power control me like they did I will inherit your power.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 145% of Physical Attack 1 time(s).\n - Deals additional damage equal to 65% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 145% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "Lightning Spear",
+        "desc": "3 Enemies\n - Deals damage equal to 61% of Physical Attack 3 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 61% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "Heavens' Wrath: True",
+        "desc": "All Enemies\n - Deals damage equal to 75% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "Flame Incarnate",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 4 Hit(s)]\n - Revives with 100% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 3 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath: True] upon revival.\n - Deals damage equal to 75% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "Immortal Rage",
+        "desc": "All Enemies\n - 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]\n - Deals damage equal to 72% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 55% chance to inflict Burn. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Adds Effect: 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Virgo",
+      "likes": "Jave, Rachel, cream pasta, cheese, early adopters, puppies, birds",
+      "dislikes": "Dellons, baguettes, beating around the bush, frogs, bats",
+      "story": "Rachel... I won't let this power control me like they did I will inherit your power."
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "Eileene",
       "subname": "Empress of Fodina",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "Empress's Wrath",
-        "desc": "Single Enemy\n - Deals damage equal to 113% of Physical Attack 3 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 136% of Physical Attack.\n - Increases Chance: Shock chance becomes 45%.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce",
+        "desc": "3 Enemies\n - Deals damage equal to 48% of Physical Attack 3 time(s).\n - Each attack has a 25% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 56% of Physical Attack.\n - Increases Chance: Shock chance becomes 30%.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "Heavens' Wrath",
-        "desc": "All Enemies\n - Deals damage equal to 62% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce\nTranscend Lv.6 Effect\n - Increases Chance: Shock chance becomes 40%.",
+        "desc": "All Enemies\n - Deals damage equal to 62% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "Wrath of Fodina",
-        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Self\n - Revives with 80% HP upon falling in battle. [Once per Battle]\nSkill Enhancement Effect\n - Increases Effect: Physical Attack Boost to 25%.\n - Increases Effect: HP gained upon revival becomes 100%.",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 80% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 2 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 62% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.\nSkill Enhancement Effect\n - Increases Effect: Physical Attack Boost to 25%.\n - Increases Effect: HP gained upon revival becomes 100%.\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Virgo",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "Empress's Wrath",
-        "desc": "Single Enemy\n - Deals damage equal to 101% of Physical Attack 3 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 101% of Physical Attack.",
+        "desc": "3 Enemies\n - Deals damage equal to 43% of Physical Attack 3 time(s).\n - Each attack has a 25% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 43% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "Heavens' Wrath",
-        "desc": "All Enemies\n - Deals damage equal to 57% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 57% of Physical Attack.",
+        "desc": "All Enemies\n - Deals damage equal to 57% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 57% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "Wrath of Fodina",
-        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Self\n - Revives with 60% HP upon falling in battle. [Once per Battle]",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 60% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 1 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 57% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Virgo",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "Empress's Wrath",
-        "desc": "Single Enemy\n - Deals damage equal to 91% of Physical Attack 3 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 91% of Physical Attack.",
+        "desc": "3 Enemies\n - Deals damage equal to 38% of Physical Attack 3 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 38% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "Heavens' Wrath",
-        "desc": "All Enemies\n - Deals damage equal to 52% of Physical Attack 2 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 52% of Physical Attack.",
+        "desc": "All Enemies\n - Deals damage equal to 52% of Physical Attack 2 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 52% of Physical Attack.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "Wrath of Fodina",
-        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Self\n - Revives with 40% HP upon falling in battle. [Once per Battle]",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 40% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 1 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 52% of Physical Attack 2 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "Virgo",

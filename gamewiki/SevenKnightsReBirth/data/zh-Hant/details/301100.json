@@ -1,6 +1,162 @@
 [
   {
     "basicInfo": {
+      "id": "400597",
+      "name": "亞依林",
+      "subname": "不滅的女帝",
+      "affiliation": "七騎士",
+      "flavor": "雷伊潔兒…我不會像那傢伙一樣，受到這力量所支配。\\n你的力量，就由我來繼承吧。",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "單一敵軍\n - 相當於物理攻擊力145%的1次傷害\n - 對象為［觸電］狀態時，造成相當於物理攻擊力65%的追加傷害\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的145%",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "電光石火",
+        "desc": "敵軍3名\n - 相當於物理攻擊力61%的3次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的61%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "晴天霹靂・眞",
+        "desc": "所有敵軍\n - 相當於物理攻擊力75%的2次傷害\n - 每次攻擊觸電［35%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的75%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "火焰的化身",
+        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n - 觸電效果套用機率增加［常態］\n自身\n - 所有傷害無效化［被擊中4次］\n - 死亡時，以生命力100%復活（每戰鬥發動1次）\n - 自身復活時，所有傷害免疫［持續3回合］（每戰鬥發動1次）\n - 攻擊力比例效果命中增加［常態］\n所有敵軍\n - 自身復活時，發動［晴天霹靂•眞］\n - 相當於物理攻擊力75%的2次傷害\n - 每次攻擊觸電［35%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\n - *以該方式發動的技能，將視為與原始技能獨立運作\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "不滅的憤怒",
+        "desc": "所有敵軍\n - 對象的回合制Buff減少2回合［100%機率］\n - 相當於物理攻擊力72%的2次傷害\n - 每次攻擊觸電［35%機率］［持續2回合］\n - 每次攻擊灼傷［55%機率］［持續3回合］\nSkill Enhancement Effect\n - 添加效果：回合制Buff減少2回合［100%機率］",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "勝生真沙子",
+      "species": "人類",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "處女座",
+      "likes": "傑伊普、雷伊潔兒、奶油義大利麵、起司、消費先鋒、小狗、鳥",
+      "dislikes": "戴倫斯、長棍麵包、吞吞吐吐、青蛙、蝙蝠",
+      "story": "雷伊潔兒…我不會像那傢伙一樣，受到這力量所支配。\\n你的力量，就由我來繼承吧。"
+    }
+  },
+  {
+    "basicInfo": {
       "id": "100596",
       "name": "亞依林",
       "subname": "波狄納的女帝",
@@ -113,21 +269,21 @@
       "Skill 1": {
         "id": "10059602",
         "name": "雷帝的憤怒",
-        "desc": "單一敵軍\n - 相當於物理攻擊力113%的3次傷害\n - 每次攻擊觸電［35%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的136%\n - 機率上升：觸電機率45%\nTranscend Lv.2 Effect\n - 添加效果：穿透",
+        "desc": "敵軍3名\n - 相當於物理攻擊力48%的3次傷害\n - 每次攻擊觸電［25%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的56%\n - 機率上升：觸電機率30%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059603",
         "name": "晴天霹靂",
-        "desc": "所有敵軍\n - 相當於物理攻擊力62%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的75%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 機率上升：觸電機率40%",
+        "desc": "所有敵軍\n - 相當於物理攻擊力62%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的75%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059604",
         "name": "波狄納的憤怒",
-        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n自身\n - 死亡時，以生命力80%復活（每戰鬥發動1次）\nSkill Enhancement Effect\n - 效果上升：物理攻擊力增加25%\n - 效果上升：復活時，生命力100%",
+        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n - 觸電效果套用機率增加［常態］\n自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以生命力80%復活（每戰鬥發動1次）\n - 自身復活時，所有傷害免疫［持續2回合］（每戰鬥發動1次）\n - 攻擊力比例效果命中增加［常態］\n所有敵軍\n - 自身復活時，發動［晴天霹靂］\n - 相當於物理攻擊力62%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\n - *以該方式發動的技能，將視為與原始技能獨立運作\nSkill Enhancement Effect\n - 效果上升：物理攻擊力增加25%\n - 效果上升：復活時，生命力100%\n - 傷害量上升：物理攻擊力的75%\nTranscend Lv.2 Effect\n - 添加效果：穿透\nTranscend Lv.6 Effect\n - 添加效果：每次攻擊時，受到的恢復量減少15%［100%機率］疊加1次［最多疊加4次］",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -152,7 +308,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "處女座",
@@ -413,21 +569,21 @@
       "Skill 1": {
         "id": "10059502",
         "name": "雷帝的憤怒",
-        "desc": "單一敵軍\n - 相當於物理攻擊力101%的3次傷害\n - 每次攻擊觸電［35%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的101%",
+        "desc": "敵軍3名\n - 相當於物理攻擊力43%的3次傷害\n - 每次攻擊觸電［25%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的43%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059503",
         "name": "晴天霹靂",
-        "desc": "所有敵軍\n - 相當於物理攻擊力57%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的57%",
+        "desc": "所有敵軍\n - 相當於物理攻擊力57%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的57%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059504",
         "name": "波狄納的憤怒",
-        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n自身\n - 死亡時，以生命力60%復活（每戰鬥發動1次）",
+        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n - 觸電效果套用機率增加［常態］\n自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以生命力60%復活（每戰鬥發動1次）\n - 自身復活時，所有傷害免疫［持續1回合］（每戰鬥發動1次）\n - 攻擊力比例效果命中增加［常態］\n所有敵軍\n - 自身復活時，發動［晴天霹靂］\n - 相當於物理攻擊力57%的2次傷害\n - 每次攻擊觸電［30%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\n - *以該方式發動的技能，將視為與原始技能獨立運作",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -439,7 +595,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "處女座",
@@ -562,21 +718,21 @@
       "Skill 1": {
         "id": "10059402",
         "name": "雷帝的憤怒",
-        "desc": "單一敵軍\n - 相當於物理攻擊力91%的3次傷害\n - 每次攻擊觸電［30%機率］［持續3回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的91%",
+        "desc": "敵軍3名\n - 相當於物理攻擊力38%的3次傷害\n - 每次攻擊觸電［20%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的38%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
       },
       "Skill 2": {
         "id": "10059403",
         "name": "晴天霹靂",
-        "desc": "所有敵軍\n - 相當於物理攻擊力52%的2次傷害\n - 每次攻擊觸電［20%機率］［持續2回合］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的52%",
+        "desc": "所有敵軍\n - 相當於物理攻擊力52%的2次傷害\n - 每次攻擊觸電［20%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\nSkill Enhancement Effect\n - 傷害量上升：物理攻擊力的52%",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
       },
       "Passive": {
         "id": "10059404",
         "name": "波狄納的憤怒",
-        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n自身\n - 死亡時，以生命力40%復活（每戰鬥發動1次）",
+        "desc": "所有我軍\n - 物理攻擊力增加［常態］\n - 觸電效果套用機率增加［常態］\n自身\n - 所有傷害無效化［被擊中3次］\n - 死亡時，以生命力40%復活（每戰鬥發動1次）\n - 自身復活時，所有傷害免疫［持續1回合］（每戰鬥發動1次）\n - 攻擊力比例效果命中增加［常態］\n所有敵軍\n - 自身復活時，發動［晴天霹靂］\n - 相當於物理攻擊力52%的2次傷害\n - 每次攻擊觸電［20%機率］［持續2回合］\n - 每次攻擊時，防禦力減少［100%機率］疊加1次［最多疊加4次］\n - *以該方式發動的技能，將視為與原始技能獨立運作",
         "cooltime": "",
         "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
       }
@@ -588,7 +744,7 @@
       "gender": "2",
       "bloodType": "3",
       "birthday": "09 / 20",
-      "age": "27",
+      "age": "29",
       "height": "175",
       "weight": "65",
       "constellation": "處女座",

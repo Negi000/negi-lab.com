@@ -1,0 +1,763 @@
+[
+  {
+    "basicInfo": {
+      "id": "400677",
+      "name": "Heavenia",
+      "subname": "Ketuhanan Ais",
+      "affiliation": "Ekspedisi Evan",
+      "flavor": "Di ambang saat takdirnya dirampas oleh seorang ahli sihir misteri, Heavenia menempa masa depan baharu bersama adiknya, Hellenia. Mengikuti takdir yang baru terjalin ini, Heavenia dilahirkan semula sebagai Ketuhanan Fros bersayap enam.",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "254",
+      "Magical Attack": "0",
+      "Defense": "101",
+      "HP": "587",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 254,
+        "Defense": 101,
+        "HP": 587
+      },
+      "level30": {
+        "Physical Attack": 1124,
+        "Defense": 420,
+        "HP": 2617
+      },
+      "levelUpBonus": {
+        "Physical Attack": 30,
+        "Defense": 11,
+        "HP": 70
+      },
+      "reinforceBonus": {
+        "Physical Attack": 89,
+        "Defense": 35,
+        "HP": 205
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1124,
+          "Defense": 420,
+          "HP": 2617
+        },
+        "+1": {
+          "Physical Attack": 1213,
+          "Defense": 455,
+          "HP": 2822
+        },
+        "+2": {
+          "Physical Attack": 1302,
+          "Defense": 490,
+          "HP": 3027
+        },
+        "+3": {
+          "Physical Attack": 1391,
+          "Defense": 525,
+          "HP": 3232
+        },
+        "+4": {
+          "Physical Attack": 1480,
+          "Defense": 560,
+          "HP": 3437
+        },
+        "+5": {
+          "Physical Attack": 1569,
+          "Defense": 595,
+          "HP": 3642
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40067701",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 120% daripada Serangan Fizikal 1 kali.\n - Peluang 50% untuk menyebabkan Bekukan. [Tempoh: 1 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 120% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "40067702",
+        "name": "",
+        "desc": "3 Musuh\n - Menyebabkan kerosakan bersamaan dengan 160% daripada Serangan Fizikal 1 kali.\n - Peluang 75% untuk menyebabkan Bekukan. [Tempoh: 2 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 160% daripada Serangan Fizikal.\nTranscend Lv.2 Effect\n - Meningkatkan Peluang: Peluang beku menjadi 85%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "40067703",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 340% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 3 Pusingan.\n - Peluang 100% untuk mengenakan Kelemahan Fizikal. [Tempoh: 5 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 340% daripada Serangan Fizikal.\n - Meningkatkan Kesan: Kerentanan Fizikal kepada 29%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "40067704",
+        "name": "",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Sentiasa Aktif]\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\n - Semua Sekutu\n - Menyembuhkan HP sama dengan 35% daripada Serangan Fizikal pengguna apabila menggunakan sebarang serangan 2 kali.\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambah Kesan: Kebal Semua Kerosakan. [Tempoh: 2 Pusingan]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      },
+      "Awaken Skill": {
+        "id": "40067707",
+        "name": "Letupan Meteor",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Tempoh: 5 Pusingan]\n - Memberi Peningkatan Kerosakan Kritikal. [Tempoh: 5 Pusingan]\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\n - Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 350% daripada Serangan Fizikal 1 kali.\nSkill Enhancement Effect\n - Meningkatkan Kesan: Peningkatan Serangan Fizikal kepada 23%.\n - Diri, 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri)\n - Menambah Kesan: 34% Peningkatan Kerosakan Kritikal. [Tempoh: 5 Pusingan]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐久間 紅美",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "Libra",
+      "likes": "Hellenia, Rudy, biskut, keju, makanan pedas, keadilan, ketertiban, kebaikan, rasa ingin tahu, sukan lasak",
+      "dislikes": "Ariel, semua jenis susu, jahat, huru-hara, pembersihan, dobi",
+      "story": "Di ambang saat takdirnya dirampas oleh seorang ahli sihir misteri, Heavenia menempa masa depan baharu bersama adiknya, Hellenia. Mengikuti takdir yang baru terjalin ini, Heavenia dilahirkan semula sebagai Ketuhanan Fros bersayap enam."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "320727",
+      "name": "Heavenia",
+      "subname": "Ketuhanan Ais",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "epic",
+      "star": "7",
+      "maxStar": "7",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "3000",
+      "Magical Attack": "0",
+      "Defense": "2000",
+      "HP": "600000",
+      "Speed": "50",
+      "Critical Rate": "300"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 3000,
+        "Defense": 2000,
+        "HP": 600000
+      },
+      "level30": {
+        "Physical Attack": 3000,
+        "Defense": 2000,
+        "HP": 600000
+      },
+      "levelUpBonus": {
+        "Physical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Physical Attack": 0,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        },
+        "+1": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        },
+        "+2": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        },
+        "+3": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        },
+        "+4": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        },
+        "+5": {
+          "Physical Attack": 3000,
+          "Defense": 2000,
+          "HP": 600000
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "32072701",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 100% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk menyebabkan Bekukan. [Tempoh: 5 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 100% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "32072702",
+        "name": "",
+        "desc": "3 Musuh\n - Menyebabkan kerosakan bersamaan dengan 150% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk menyebabkan Bekukan. [Tempoh: 2 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 150% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "32072703",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan Mengabaikan Pertahanan yang sama dengan 300% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 3 Pusingan.\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 300% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "32072704",
+        "name": "",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Sentiasa Aktif]\n - *Menerima peningkatan kerosakan daripada Racun.\n - Semua Sekutu\n - Pulihkan HP sama dengan 5% daripada Max HP pelontar apabila melakukan sebarang serangan 2 kali.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Awaken Skill": {
+        "id": "32072707",
+        "name": "",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Tempoh: 5 Pusingan]\n - Memberi Peningkatan Kerosakan Kritikal. [Tempoh: 5 Pusingan]\n - Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 350% daripada Serangan Fizikal 1 kali.\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 350% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100676",
+      "name": "Heavenia",
+      "subname": "Azure Comet",
+      "affiliation": "Ekspedisi Evan",
+      "flavor": "Di darat, Heavenia menyertai Ekspedisi Evan dan mengembara ke sekeliling, akhirnya bersatu semula dengan kakaknya. Dia menjadi lebih berkuasa di bawah bimbingan kakaknya.",
+      "rarity": "epic",
+      "star": "6",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "221",
+      "Magical Attack": "0",
+      "Defense": "88",
+      "HP": "510",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 221,
+        "Defense": 88,
+        "HP": 510
+      },
+      "level30": {
+        "Physical Attack": 1004,
+        "Defense": 378,
+        "HP": 2279
+      },
+      "levelUpBonus": {
+        "Physical Attack": 27,
+        "Defense": 10,
+        "HP": 61
+      },
+      "reinforceBonus": {
+        "Physical Attack": 77,
+        "Defense": 31,
+        "HP": 179
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1004,
+          "Defense": 378,
+          "HP": 2279
+        },
+        "+1": {
+          "Physical Attack": 1081,
+          "Defense": 409,
+          "HP": 2458
+        },
+        "+2": {
+          "Physical Attack": 1158,
+          "Defense": 440,
+          "HP": 2637
+        },
+        "+3": {
+          "Physical Attack": 1235,
+          "Defense": 471,
+          "HP": 2816
+        },
+        "+4": {
+          "Physical Attack": 1312,
+          "Defense": 502,
+          "HP": 2995
+        },
+        "+5": {
+          "Physical Attack": 1389,
+          "Defense": 533,
+          "HP": 3174
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10067601",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 100% daripada Serangan Fizikal 1 kali.\n - Peluang 45% untuk menyebabkan Bekukan. [Tempoh: 1 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Peluang: Peluang beku menjadi 50%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "10067602",
+        "name": "Pedang Penghakiman",
+        "desc": "3 Musuh\n - Menyebabkan kerosakan bersamaan dengan 120% daripada Serangan Fizikal 1 kali.\n - Peluang 75% untuk menyebabkan Bekukan. [Tempoh: 2 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 145% daripada Serangan Fizikal.\nTranscend Lv.2 Effect\n - Meningkatkan Peluang: Peluang beku menjadi 85%.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "10067603",
+        "name": "Pedang Kuat",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 285% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 2 Pusingan.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 3 Pusingan.\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 340% daripada Serangan Fizikal.\n - Meningkatkan Kesan: Pengurangan Tempoh Buff kepada 3 pusingan.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "10067604",
+        "name": "Pengitaran Mana",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Sentiasa Aktif]\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\n - Semua Sekutu\n - Menyembuhkan HP sama dengan 30% daripada Serangan Fizikal pengguna apabila menggunakan sebarang serangan 2 kali.\nSkill Enhancement Effect\n - Meningkatkan Kesan: Peningkatan Serangan Fizikal kepada 25%.\nTranscend Lv.6 Effect\n - Diri Sendiri\n - Menambah Kesan: Kebal Semua Kerosakan. [Tempoh: 2 Pusingan]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Meningkatkan Semua Serangan sebanyak 9%.",
+      "transcend_2": "Meningkatkan Semua Serangan sebanyak 4.5%.",
+      "transcend_3": "Meningkatkan HP sebanyak 14%.",
+      "transcend_4": "Meningkatkan Kadar Krit sebanyak 14%.",
+      "transcend_5": "Meningkatkan Semua Serangan sebanyak 9%.",
+      "transcend_6": "Meningkatkan Semua Serangan sebanyak 4.5%.",
+      "transcend_7": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%.",
+      "transcend_8": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%.",
+      "transcend_9": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%.",
+      "transcend_10": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%.",
+      "transcend_11": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%.",
+      "transcend_12": "Meningkatkan Semua Serangan, Pertahanan, dan HP sebanyak 2%."
+    },
+    "profile": {
+      "cv": "佐久間 紅美",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "Libra",
+      "likes": "Hellenia, Rudy, biskut, keju, makanan pedas, keadilan, ketertiban, kebaikan, rasa ingin tahu, sukan lasak",
+      "dislikes": "Ariel, semua jenis susu, jahat, huru-hara, pembersihan, dobi",
+      "story": "Sebagai adik perempuan Hellenia, Heavenia menarik perhatian apabila dia menyertai Valkyries. Walau bagaimanapun, kemajuannya yang perlahan menyebabkan dia sentiasa bimbang."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100675",
+      "name": "Heavenia",
+      "subname": "Bilah Ais",
+      "affiliation": "Ekspedisi Evan",
+      "flavor": "Kemahiran pedang Heavenia yang garang menimbulkan ketakutan dalam hati musuh-musuhnya. Dia diserang hendap ketika dia berangkat untuk misi khas di darat.",
+      "rarity": "epic",
+      "star": "5",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "158",
+      "Magical Attack": "0",
+      "Defense": "63",
+      "HP": "364",
+      "Speed": "22",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 158,
+        "Defense": 63,
+        "HP": 364
+      },
+      "level30": {
+        "Physical Attack": 738,
+        "Defense": 266,
+        "HP": 1611
+      },
+      "levelUpBonus": {
+        "Physical Attack": 20,
+        "Defense": 7,
+        "HP": 43
+      },
+      "reinforceBonus": {
+        "Physical Attack": 55,
+        "Defense": 22,
+        "HP": 127
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 738,
+          "Defense": 266,
+          "HP": 1611
+        },
+        "+1": {
+          "Physical Attack": 793,
+          "Defense": 288,
+          "HP": 1738
+        },
+        "+2": {
+          "Physical Attack": 848,
+          "Defense": 310,
+          "HP": 1865
+        },
+        "+3": {
+          "Physical Attack": 903,
+          "Defense": 332,
+          "HP": 1992
+        },
+        "+4": {
+          "Physical Attack": 958,
+          "Defense": 354,
+          "HP": 2119
+        },
+        "+5": {
+          "Physical Attack": 1013,
+          "Defense": 376,
+          "HP": 2246
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10067501",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 90% daripada Serangan Fizikal 1 kali.\n - Peluang 40% untuk menyebabkan Bekukan. [Tempoh: 1 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 90% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "10067502",
+        "name": "Pedang Penghakiman",
+        "desc": "3 Musuh\n - Menyebabkan kerosakan bersamaan dengan 110% daripada Serangan Fizikal 1 kali.\n - Peluang 65% untuk menyebabkan Bekukan. [Tempoh: 2 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 110% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "10067503",
+        "name": "Pedang Kuat",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 255% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 2 Pusingan.\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 255% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "10067504",
+        "name": "Pengitaran Mana",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Sentiasa Aktif]\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\n - Semua Sekutu\n - Menyembuhkan HP sama dengan 25% daripada Serangan Fizikal pengguna apabila menggunakan sebarang serangan 2 kali.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐久間 紅美",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "Libra",
+      "likes": "Hellenia, Rudy, biskut, keju, makanan pedas, keadilan, ketertiban, kebaikan, rasa ingin tahu, sukan lasak",
+      "dislikes": "Ariel, semua jenis susu, jahat, huru-hara, pembersihan, dobi",
+      "story": "Sebagai adik perempuan Hellenia, Heavenia menarik perhatian apabila dia menyertai Valkyries. Walau bagaimanapun, kemajuannya yang perlahan menyebabkan dia sentiasa bimbang."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100674",
+      "name": "Heavenia",
+      "subname": "Perantis Valkyrie",
+      "affiliation": "Ekspedisi Evan",
+      "flavor": "Sebagai adik perempuan Hellenia, Heavenia menarik perhatian apabila dia menyertai Valkyries. Walau bagaimanapun, kemajuannya yang perlahan menyebabkan dia sentiasa bimbang.",
+      "rarity": "epic",
+      "star": "4",
+      "maxStar": "6",
+      "role": "1",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "113",
+      "Magical Attack": "0",
+      "Defense": "45",
+      "HP": "260",
+      "Speed": "19",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 113,
+        "Defense": 45,
+        "HP": 260
+      },
+      "level30": {
+        "Physical Attack": 519,
+        "Defense": 190,
+        "HP": 1159
+      },
+      "levelUpBonus": {
+        "Physical Attack": 14,
+        "Defense": 5,
+        "HP": 31
+      },
+      "reinforceBonus": {
+        "Physical Attack": 40,
+        "Defense": 16,
+        "HP": 90
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 519,
+          "Defense": 190,
+          "HP": 1159
+        },
+        "+1": {
+          "Physical Attack": 559,
+          "Defense": 206,
+          "HP": 1249
+        },
+        "+2": {
+          "Physical Attack": 599,
+          "Defense": 222,
+          "HP": 1339
+        },
+        "+3": {
+          "Physical Attack": 639,
+          "Defense": 238,
+          "HP": 1429
+        },
+        "+4": {
+          "Physical Attack": 679,
+          "Defense": 254,
+          "HP": 1519
+        },
+        "+5": {
+          "Physical Attack": 719,
+          "Defense": 270,
+          "HP": 1609
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10067401",
+        "name": "",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 80% daripada Serangan Fizikal 1 kali.\n - Peluang 40% untuk menyebabkan Bekukan. [Tempoh: 1 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 80% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006701.webp"
+      },
+      "Skill 1": {
+        "id": "10067402",
+        "name": "Pedang Penghakiman",
+        "desc": "3 Musuh\n - Menyebabkan kerosakan bersamaan dengan 100% daripada Serangan Fizikal 1 kali.\n - Peluang 65% untuk menyebabkan Bekukan. [Tempoh: 2 Pusingan]\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 100% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006702.webp"
+      },
+      "Skill 2": {
+        "id": "10067403",
+        "name": "Pedang Kuat",
+        "desc": "Musuh Tunggal\n - Menyebabkan kerosakan bersamaan dengan 230% daripada Serangan Fizikal 1 kali.\n - Peluang 100% untuk mengenakan Pengurangan Tempoh Buff. [Dikurangkan sebanyak: 1 Pusingan.\nSkill Enhancement Effect\n - Meningkatkan Kerosakan: Kepada 230% daripada Serangan Fizikal.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006703.webp"
+      },
+      "Passive": {
+        "id": "10067404",
+        "name": "Pengitaran Mana",
+        "desc": "Diri Sendiri\n - Memberikan Peningkatan Serangan Fizikal. [Sentiasa Aktif]\n - 2 Sekutu dengan Serang Tertinggi (Tidak Termasuk Diri Sendiri)\n - Semua Sekutu\n - Menyembuhkan HP sama dengan 20% daripada Serangan Fizikal pengguna apabila menggunakan sebarang serangan 2 kali.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1006704.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "佐久間 紅美",
+      "species": "Valkyrie",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "10 / 10",
+      "age": "0",
+      "height": "170",
+      "weight": "53",
+      "constellation": "Libra",
+      "likes": "Hellenia, Rudy, biskut, keju, makanan pedas, keadilan, ketertiban, kebaikan, rasa ingin tahu, sukan lasak",
+      "dislikes": "Ariel, semua jenis susu, jahat, huru-hara, pembersihan, dobi",
+      "story": "Sebagai adik perempuan Hellenia, Heavenia menarik perhatian apabila dia menyertai Valkyries. Walau bagaimanapun, kemajuannya yang perlahan menyebabkan dia sentiasa bimbang."
+    }
+  }
+]

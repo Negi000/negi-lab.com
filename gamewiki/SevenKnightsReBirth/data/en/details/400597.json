@@ -1,0 +1,756 @@
+[
+  {
+    "basicInfo": {
+      "id": "400597",
+      "name": "Eileene",
+      "subname": "Immortal Empress",
+      "affiliation": "Seven Knights",
+      "flavor": "Rachel... I won't let this power control me like they did I will inherit your power.",
+      "rarity": "legendary+",
+      "star": "7",
+      "maxStar": "7",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": true
+    },
+    "stats": {
+      "Physical Attack": "235",
+      "Magical Attack": "0",
+      "Defense": "117",
+      "HP": "774",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 235,
+        "Defense": 117,
+        "HP": 774
+      },
+      "level30": {
+        "Physical Attack": 1047,
+        "Defense": 523,
+        "HP": 3210
+      },
+      "levelUpBonus": {
+        "Physical Attack": 28,
+        "Defense": 14,
+        "HP": 84
+      },
+      "reinforceBonus": {
+        "Physical Attack": 82,
+        "Defense": 41,
+        "HP": 271
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1047,
+          "Defense": 523,
+          "HP": 3210
+        },
+        "+1": {
+          "Physical Attack": 1129,
+          "Defense": 564,
+          "HP": 3481
+        },
+        "+2": {
+          "Physical Attack": 1211,
+          "Defense": 605,
+          "HP": 3752
+        },
+        "+3": {
+          "Physical Attack": 1293,
+          "Defense": 646,
+          "HP": 4023
+        },
+        "+4": {
+          "Physical Attack": 1375,
+          "Defense": 687,
+          "HP": 4294
+        },
+        "+5": {
+          "Physical Attack": 1457,
+          "Defense": 728,
+          "HP": 4565
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "40059701",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 145% of Physical Attack 1 time(s).\n - Deals additional damage equal to 65% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 145% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "40059702",
+        "name": "Lightning Spear",
+        "desc": "3 Enemies\n - Deals damage equal to 61% of Physical Attack 3 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 61% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "40059703",
+        "name": "Heavens' Wrath: True",
+        "desc": "All Enemies\n - Deals damage equal to 75% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "40059704",
+        "name": "Flame Incarnate",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 4 Hit(s)]\n - Revives with 100% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 3 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath: True] upon revival.\n - Deals damage equal to 75% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      },
+      "Awaken Skill": {
+        "id": "40059707",
+        "name": "Immortal Rage",
+        "desc": "All Enemies\n - 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]\n - Deals damage equal to 72% of Physical Attack 2 time(s).\n - Each attack has a 35% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 55% chance to inflict Burn. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Adds Effect: 100% chance to inflict Buff Duration Reduction. [Reduced by: 2 Turn(s)]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Virgo",
+      "likes": "Jave, Rachel, cream pasta, cheese, early adopters, puppies, birds",
+      "dislikes": "Dellons, baguettes, beating around the bush, frogs, bats",
+      "story": "Rachel... I won't let this power control me like they did I will inherit your power."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100596",
+      "name": "Eileene",
+      "subname": "Empress of Fodina",
+      "affiliation": "Seven Knights",
+      "flavor": "Eileene has become renowned for her supreme leadership and strength, and ascended to the throne as Empress of Fodina. Now, her plan to expand the Silent Mine is poised for execution.",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "102",
+      "HP": "594",
+      "Speed": "25",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 102,
+        "HP": 594
+      },
+      "level30": {
+        "Physical Attack": 936,
+        "Defense": 479,
+        "HP": 2653
+      },
+      "levelUpBonus": {
+        "Physical Attack": 25,
+        "Defense": 13,
+        "HP": 71
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 936,
+          "Defense": 479,
+          "HP": 2653
+        },
+        "+1": {
+          "Physical Attack": 1010,
+          "Defense": 515,
+          "HP": 2861
+        },
+        "+2": {
+          "Physical Attack": 1084,
+          "Defense": 551,
+          "HP": 3069
+        },
+        "+3": {
+          "Physical Attack": 1158,
+          "Defense": 587,
+          "HP": 3277
+        },
+        "+4": {
+          "Physical Attack": 1232,
+          "Defense": 623,
+          "HP": 3485
+        },
+        "+5": {
+          "Physical Attack": 1306,
+          "Defense": 659,
+          "HP": 3693
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059601",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 100% of Physical Attack 1 time(s).\n - Deals additional damage equal to 45% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 130% of Physical Attack.\n - Increases Damage: To 55% of Physical Attack against targets inflicted with [Shock].",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059602",
+        "name": "Empress's Wrath",
+        "desc": "3 Enemies\n - Deals damage equal to 48% of Physical Attack 3 time(s).\n - Each attack has a 25% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 56% of Physical Attack.\n - Increases Chance: Shock chance becomes 30%.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059603",
+        "name": "Heavens' Wrath",
+        "desc": "All Enemies\n - Deals damage equal to 62% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059604",
+        "name": "Wrath of Fodina",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 80% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 2 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 62% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.\nSkill Enhancement Effect\n - Increases Effect: Physical Attack Boost to 25%.\n - Increases Effect: HP gained upon revival becomes 100%.\n - Increases Damage: To 75% of Physical Attack.\nTranscend Lv.2 Effect\n - Adds Effect: Pierce.\nTranscend Lv.6 Effect\n - Adds Effect: Each attack has a 100% chance to inflict 1 stack(s) of 15% Incoming Healing Reduction. [Max 4 Stack(s)]",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {
+      "transcend_1": "Increases All Attack by 12%.",
+      "transcend_2": "Increases All Attack by 6%.",
+      "transcend_3": "Increases HP by 18%.",
+      "transcend_4": "Increases Effect Hit Rate by 24%.",
+      "transcend_5": "Increases All Attack by 12%.",
+      "transcend_6": "Increases All Attack by 6%.",
+      "transcend_7": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_8": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_9": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_10": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_11": "Increases All Attack, Defense, and HP by 2%.",
+      "transcend_12": "Increases All Attack, Defense, and HP by 2%."
+    },
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Virgo",
+      "likes": "Jave, Rachel, cream pasta, cheese, early adopters, puppies, birds",
+      "dislikes": "Dellons, baguettes, beating around the bush, frogs, bats",
+      "story": "Eileene has become renowned for her supreme leadership and strength, and ascended to the throne as Empress of Fodina. Now, her plan to expand the Silent Mine is poised for execution."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "301100",
+      "name": "Eileene",
+      "subname": "Empress of Fodina",
+      "affiliation": "",
+      "flavor": "0",
+      "rarity": "legendary+",
+      "star": "6",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "211",
+      "Magical Attack": "0",
+      "Defense": "1714",
+      "HP": "60000",
+      "Speed": "25",
+      "Critical Rate": "0"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 211,
+        "Defense": 1714,
+        "HP": 60000
+      },
+      "level30": {
+        "Physical Attack": 1081,
+        "Defense": 1714,
+        "HP": 60000
+      },
+      "levelUpBonus": {
+        "Physical Attack": 30,
+        "Defense": 0,
+        "HP": 0
+      },
+      "reinforceBonus": {
+        "Physical Attack": 74,
+        "Defense": 36,
+        "HP": 208
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 1081,
+          "Defense": 1714,
+          "HP": 60000
+        },
+        "+1": {
+          "Physical Attack": 1155,
+          "Defense": 1750,
+          "HP": 60208
+        },
+        "+2": {
+          "Physical Attack": 1229,
+          "Defense": 1786,
+          "HP": 60416
+        },
+        "+3": {
+          "Physical Attack": 1303,
+          "Defense": 1822,
+          "HP": 60624
+        },
+        "+4": {
+          "Physical Attack": 1377,
+          "Defense": 1858,
+          "HP": 60832
+        },
+        "+5": {
+          "Physical Attack": 1451,
+          "Defense": 1894,
+          "HP": 61040
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 6400
+        },
+        {
+          "level": 1,
+          "cost": 7600
+        },
+        {
+          "level": 2,
+          "cost": 8000
+        },
+        {
+          "level": 3,
+          "cost": 10000
+        },
+        {
+          "level": 4,
+          "cost": 11200
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "30110001",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 130% of Physical Attack 1 time(s).\n - Deals additional damage equal to 75% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 130% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 1": {
+        "id": "30110002",
+        "name": "",
+        "desc": "3 Enemies\n - Deals Piercing damage equal to 80% of Physical Attack 3 time(s).\n - Each attack has a 100% chance to inflict Shock. [Duration: 3 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 80% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Skill 2": {
+        "id": "30110003",
+        "name": "",
+        "desc": "All Enemies\n - Deals Piercing damage equal to 80% of Physical Attack 2 time(s).\n - Each attack has a 100% chance to inflict Shock. [Duration: 2 Turn(s)]\nSkill Enhancement Effect\n - Increases Damage: To 80% of Physical Attack.",
+        "cooltime": "",
+        "icon": ""
+      },
+      "Passive": {
+        "id": "30110004",
+        "name": "",
+        "desc": "Self\n - Grants Castle Rush Damage Resistance. [Always Active]\n - Grants Berserk in 30 turn(s). [Always Active]",
+        "cooltime": "",
+        "icon": ""
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "story": "0"
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100595",
+      "name": "Eileene",
+      "subname": "Commander-in-Chief",
+      "affiliation": "Seven Knights",
+      "flavor": "Eileene earned the title of Commander-in-Chief through her growing strength and excellent leadership. She plans to expand the Silent Mine.",
+      "rarity": "legendary+",
+      "star": "5",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "151",
+      "Magical Attack": "0",
+      "Defense": "73",
+      "HP": "424",
+      "Speed": "23",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 151,
+        "Defense": 73,
+        "HP": 424
+      },
+      "level30": {
+        "Physical Attack": 673,
+        "Defense": 334,
+        "HP": 1903
+      },
+      "levelUpBonus": {
+        "Physical Attack": 18,
+        "Defense": 9,
+        "HP": 51
+      },
+      "reinforceBonus": {
+        "Physical Attack": 52,
+        "Defense": 26,
+        "HP": 148
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 673,
+          "Defense": 334,
+          "HP": 1903
+        },
+        "+1": {
+          "Physical Attack": 725,
+          "Defense": 360,
+          "HP": 2051
+        },
+        "+2": {
+          "Physical Attack": 777,
+          "Defense": 386,
+          "HP": 2199
+        },
+        "+3": {
+          "Physical Attack": 829,
+          "Defense": 412,
+          "HP": 2347
+        },
+        "+4": {
+          "Physical Attack": 881,
+          "Defense": 438,
+          "HP": 2495
+        },
+        "+5": {
+          "Physical Attack": 933,
+          "Defense": 464,
+          "HP": 2643
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 4400
+        },
+        {
+          "level": 1,
+          "cost": 5400
+        },
+        {
+          "level": 2,
+          "cost": 6400
+        },
+        {
+          "level": 3,
+          "cost": 7400
+        },
+        {
+          "level": 4,
+          "cost": 8400
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059501",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 90% of Physical Attack 1 time(s).\n - Deals additional damage equal to 40% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 90% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059502",
+        "name": "Empress's Wrath",
+        "desc": "3 Enemies\n - Deals damage equal to 43% of Physical Attack 3 time(s).\n - Each attack has a 25% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 43% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059503",
+        "name": "Heavens' Wrath",
+        "desc": "All Enemies\n - Deals damage equal to 57% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 57% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059504",
+        "name": "Wrath of Fodina",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 60% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 1 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 57% of Physical Attack 2 time(s).\n - Each attack has a 30% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Virgo",
+      "likes": "Jave, Rachel, cream pasta, cheese, early adopters, puppies, birds",
+      "dislikes": "Dellons, baguettes, beating around the bush, frogs, bats",
+      "story": "Eileene earned the title of Commander-in-Chief through her growing strength and excellent leadership. She plans to expand the Silent Mine."
+    }
+  },
+  {
+    "basicInfo": {
+      "id": "100594",
+      "name": "Eileene",
+      "subname": "Commander",
+      "affiliation": "Seven Knights",
+      "flavor": "Regardless of race or gender, strength determines everything in the Silent Mine. Eileene is no exception to this rule.",
+      "rarity": "legendary+",
+      "star": "4",
+      "maxStar": "6",
+      "role": "5",
+      "range": "1",
+      "weaponType": "101",
+      "awakened": false
+    },
+    "stats": {
+      "Physical Attack": "108",
+      "Magical Attack": "0",
+      "Defense": "52",
+      "HP": "303",
+      "Speed": "21",
+      "Critical Rate": "50"
+    },
+    "growth": {
+      "attackType": "Physical Attack",
+      "level1": {
+        "Physical Attack": 108,
+        "Defense": 52,
+        "HP": 303
+      },
+      "level30": {
+        "Physical Attack": 485,
+        "Defense": 226,
+        "HP": 1347
+      },
+      "levelUpBonus": {
+        "Physical Attack": 13,
+        "Defense": 6,
+        "HP": 36
+      },
+      "reinforceBonus": {
+        "Physical Attack": 37,
+        "Defense": 18,
+        "HP": 106
+      },
+      "reinforceStages": {
+        "+0": {
+          "Physical Attack": 485,
+          "Defense": 226,
+          "HP": 1347
+        },
+        "+1": {
+          "Physical Attack": 522,
+          "Defense": 244,
+          "HP": 1453
+        },
+        "+2": {
+          "Physical Attack": 559,
+          "Defense": 262,
+          "HP": 1559
+        },
+        "+3": {
+          "Physical Attack": 596,
+          "Defense": 280,
+          "HP": 1665
+        },
+        "+4": {
+          "Physical Attack": 633,
+          "Defense": 298,
+          "HP": 1771
+        },
+        "+5": {
+          "Physical Attack": 670,
+          "Defense": 316,
+          "HP": 1877
+        }
+      },
+      "reinforceCosts": [
+        {
+          "level": 0,
+          "cost": 2800
+        },
+        {
+          "level": 1,
+          "cost": 3600
+        },
+        {
+          "level": 2,
+          "cost": 4400
+        },
+        {
+          "level": 3,
+          "cost": 5200
+        },
+        {
+          "level": 4,
+          "cost": 6000
+        }
+      ]
+    },
+    "experience": {
+      "maxLevelTotal": 123900
+    },
+    "skills": {
+      "Normal Attack": {
+        "id": "10059401",
+        "name": "",
+        "desc": "Single Enemy\n - Deals damage equal to 80% of Physical Attack 1 time(s).\n - Deals additional damage equal to 35% of Physical Attack against targets inflicted with [Shock].\nSkill Enhancement Effect\n - Increases Damage: To 80% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005901.webp"
+      },
+      "Skill 1": {
+        "id": "10059402",
+        "name": "Empress's Wrath",
+        "desc": "3 Enemies\n - Deals damage equal to 38% of Physical Attack 3 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 38% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005902.webp"
+      },
+      "Skill 2": {
+        "id": "10059403",
+        "name": "Heavens' Wrath",
+        "desc": "All Enemies\n - Deals damage equal to 52% of Physical Attack 2 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\nSkill Enhancement Effect\n - Increases Damage: To 52% of Physical Attack.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005903.webp"
+      },
+      "Passive": {
+        "id": "10059404",
+        "name": "Wrath of Fodina",
+        "desc": "All Allies\n - Grants Physical Attack Boost. [Always Active]\n - Grants Shock Probability Boost. [Always Active]\n - Self\n - Grants All Damage Nullification. [Ends After: Taking 3 Hit(s)]\n - Revives with 40% HP upon falling in battle. [Once per Battle]\n - Grants All Damage Immunity upon revival. [Duration: 1 Turn(s)] [Once per Battle]\n - Grants Attack-Based Effect Hit Rate Boost. [Always Active]\n - All Enemies\n - Grants [Heavens' Wrath] upon revival.\n - Deals damage equal to 52% of Physical Attack 2 time(s).\n - Each attack has a 20% chance to inflict Shock. [Duration: 2 Turn(s)]\n - Each attack has a 100% chance to inflict 1 stack(s) of Defense Reduction. [Max 4 Stack(s)]\n - *Skills triggered this way are treated as separate from the original skill.",
+        "cooltime": "",
+        "icon": "images/icon/SkillIcon_PC/Tex_Skill_1005904.webp"
+      }
+    },
+    "transcendence": {},
+    "profile": {
+      "cv": "0",
+      "species": "Human",
+      "gender": "2",
+      "bloodType": "3",
+      "birthday": "09 / 20",
+      "age": "29",
+      "height": "175",
+      "weight": "65",
+      "constellation": "Virgo",
+      "likes": "Jave, Rachel, cream pasta, cheese, early adopters, puppies, birds",
+      "dislikes": "Dellons, baguettes, beating around the bush, frogs, bats",
+      "story": "Regardless of race or gender, strength determines everything in the Silent Mine. Eileene is no exception to this rule."
+    }
+  }
+]
