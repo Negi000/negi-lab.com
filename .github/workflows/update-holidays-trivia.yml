@@ -15,7 +15,7 @@ jobs:
       - name: Node.jsをセットアップ
         uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
         with:
-          node-version: '20'
+          node-version: '24.22.1'
       - name: 依存パッケージインストール
         run: npm install node-fetch@2
       - name: 祝日・トリビアJSON自動生成
